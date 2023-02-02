@@ -38,13 +38,13 @@ export class Document extends pulumi.CustomResource {
     }
 
     /**
-     * If true, makes the document visible to asynchronous policies and rules.
-     */
-    public readonly asyncEnabled!: pulumi.Output<boolean>;
-    /**
      * Document AI format to save the structured content, including OCR.
      */
     public readonly cloudAiDocument!: pulumi.Output<outputs.contentwarehouse.v1.GoogleCloudDocumentaiV1DocumentResponse>;
+    /**
+     * Indicates the category (image, audio, video etc.) of the original content.
+     */
+    public readonly contentCategory!: pulumi.Output<string>;
     /**
      * The time when the document is created.
      */
@@ -96,15 +96,15 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly referenceId!: pulumi.Output<string>;
     /**
-     * A path linked to structured content file.
-     */
-    public readonly structuredContentUri!: pulumi.Output<string>;
-    /**
      * If true, text extraction will not be performed.
      */
     public readonly textExtractionDisabled!: pulumi.Output<boolean>;
     /**
-     * Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+     * If true, text extraction will be performed.
+     */
+    public readonly textExtractionEnabled!: pulumi.Output<boolean>;
+    /**
+     * Title that describes the document. This can be the top heading or text that describes the document.
      */
     public readonly title!: pulumi.Output<string>;
     /**
@@ -130,9 +130,9 @@ export class Document extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            resourceInputs["asyncEnabled"] = args ? args.asyncEnabled : undefined;
             resourceInputs["cloudAiDocument"] = args ? args.cloudAiDocument : undefined;
             resourceInputs["cloudAiDocumentOption"] = args ? args.cloudAiDocumentOption : undefined;
+            resourceInputs["contentCategory"] = args ? args.contentCategory : undefined;
             resourceInputs["createMask"] = args ? args.createMask : undefined;
             resourceInputs["creator"] = args ? args.creator : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -149,15 +149,15 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["rawDocumentPath"] = args ? args.rawDocumentPath : undefined;
             resourceInputs["referenceId"] = args ? args.referenceId : undefined;
             resourceInputs["requestMetadata"] = args ? args.requestMetadata : undefined;
-            resourceInputs["structuredContentUri"] = args ? args.structuredContentUri : undefined;
             resourceInputs["textExtractionDisabled"] = args ? args.textExtractionDisabled : undefined;
+            resourceInputs["textExtractionEnabled"] = args ? args.textExtractionEnabled : undefined;
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["updater"] = args ? args.updater : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            resourceInputs["asyncEnabled"] = undefined /*out*/;
             resourceInputs["cloudAiDocument"] = undefined /*out*/;
+            resourceInputs["contentCategory"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -172,8 +172,8 @@ export class Document extends pulumi.CustomResource {
             resourceInputs["rawDocumentFileType"] = undefined /*out*/;
             resourceInputs["rawDocumentPath"] = undefined /*out*/;
             resourceInputs["referenceId"] = undefined /*out*/;
-            resourceInputs["structuredContentUri"] = undefined /*out*/;
             resourceInputs["textExtractionDisabled"] = undefined /*out*/;
+            resourceInputs["textExtractionEnabled"] = undefined /*out*/;
             resourceInputs["title"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["updater"] = undefined /*out*/;
@@ -190,19 +190,19 @@ export class Document extends pulumi.CustomResource {
  */
 export interface DocumentArgs {
     /**
-     * If true, makes the document visible to asynchronous policies and rules.
-     */
-    asyncEnabled?: pulumi.Input<boolean>;
-    /**
      * Document AI format to save the structured content, including OCR.
      */
     cloudAiDocument?: pulumi.Input<inputs.contentwarehouse.v1.GoogleCloudDocumentaiV1DocumentArgs>;
     /**
-     * Request Option for processing Cloud AI Document in CW Document.
+     * Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
      */
     cloudAiDocumentOption?: pulumi.Input<inputs.contentwarehouse.v1.GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs>;
     /**
-     * Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+     * Indicates the category (image, audio, video etc.) of the original content.
+     */
+    contentCategory?: pulumi.Input<enums.contentwarehouse.v1.DocumentContentCategory>;
+    /**
+     * Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
      */
     createMask?: pulumi.Input<string>;
     /**
@@ -235,7 +235,7 @@ export interface DocumentArgs {
      */
     plainText?: pulumi.Input<string>;
     /**
-     * Default document policy during creation. Conditions defined in the policy will be ignored.
+     * Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
      */
     policy?: pulumi.Input<inputs.contentwarehouse.v1.GoogleIamV1PolicyArgs>;
     project?: pulumi.Input<string>;
@@ -260,15 +260,15 @@ export interface DocumentArgs {
      */
     requestMetadata?: pulumi.Input<inputs.contentwarehouse.v1.GoogleCloudContentwarehouseV1RequestMetadataArgs>;
     /**
-     * A path linked to structured content file.
-     */
-    structuredContentUri?: pulumi.Input<string>;
-    /**
      * If true, text extraction will not be performed.
      */
     textExtractionDisabled?: pulumi.Input<boolean>;
     /**
-     * Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+     * If true, text extraction will be performed.
+     */
+    textExtractionEnabled?: pulumi.Input<boolean>;
+    /**
+     * Title that describes the document. This can be the top heading or text that describes the document.
      */
     title?: pulumi.Input<string>;
     /**

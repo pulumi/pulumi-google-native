@@ -158,7 +158,7 @@ export const UriOverrideScheme = {
 } as const;
 
 /**
- * Scheme override. When specified, the Uri scheme is replaced by the provided value.
+ * Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
  */
 export type UriOverrideScheme = (typeof UriOverrideScheme)[keyof typeof UriOverrideScheme];
 
@@ -178,6 +178,6 @@ export const UriOverrideUriOverrideEnforceMode = {
 } as const;
 
 /**
- * Uri Override Enforce Mode Determines the Target UriOverride mode.
+ * URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
  */
 export type UriOverrideUriOverrideEnforceMode = (typeof UriOverrideUriOverrideEnforceMode)[keyof typeof UriOverrideUriOverrideEnforceMode];

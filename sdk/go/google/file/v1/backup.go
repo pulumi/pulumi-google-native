@@ -26,6 +26,8 @@ type Backup struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 	DownloadBytes pulumi.StringOutput `pulumi:"downloadBytes"`
+	// Immutable. KMS key name used for data encryption.
+	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -98,6 +100,8 @@ type backupArgs struct {
 	BackupId string `pulumi:"backupId"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
+	// Immutable. KMS key name used for data encryption.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Resource labels to represent user provided metadata.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -114,6 +118,8 @@ type BackupArgs struct {
 	BackupId pulumi.StringInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
+	// Immutable. KMS key name used for data encryption.
+	KmsKey pulumi.StringPtrInput
 	// Resource labels to represent user provided metadata.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -184,6 +190,11 @@ func (o BackupOutput) Description() pulumi.StringOutput {
 // Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 func (o BackupOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Immutable. KMS key name used for data encryption.
+func (o BackupOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Resource labels to represent user provided metadata.

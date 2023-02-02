@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+        /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
         /// </summary>
         [Output("timeout")]
         public Output<string> Timeout { get; private set; } = null!;
@@ -358,7 +358,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
 
         /// <summary>
-        /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+        /// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }

@@ -41,7 +41,7 @@ type Connection struct {
 	LockConfig LockConfigResponseOutput `pulumi:"lockConfig"`
 	// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Optional. Configuration for the connection.
+	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
 	Project    pulumi.StringOutput      `pulumi:"project"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
@@ -124,7 +124,7 @@ type connectionArgs struct {
 	Location *string           `pulumi:"location"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig *LockConfig `pulumi:"lockConfig"`
-	// Optional. Configuration for the connection.
+	// Optional. Node configuration for the connection.
 	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	Project    *string     `pulumi:"project"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
@@ -152,7 +152,7 @@ type ConnectionArgs struct {
 	Location pulumi.StringPtrInput
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig LockConfigPtrInput
-	// Optional. Configuration for the connection.
+	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigPtrInput
 	Project    pulumi.StringPtrInput
 	// Optional. Service account needed for runtime plane to access GCP resources.
@@ -262,7 +262,7 @@ func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. Configuration for the connection.
+// Optional. Node configuration for the connection.
 func (o ConnectionOutput) NodeConfig() NodeConfigResponseOutput {
 	return o.ApplyT(func(v *Connection) NodeConfigResponseOutput { return v.NodeConfig }).(NodeConfigResponseOutput)
 }

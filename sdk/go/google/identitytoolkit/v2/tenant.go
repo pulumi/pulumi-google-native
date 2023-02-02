@@ -25,6 +25,8 @@ type Tenant struct {
 	DisableAuth pulumi.BoolOutput `pulumi:"disableAuth"`
 	// Display name of the tenant.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Configuration for settings related to email privacy and public visibility.
+	EmailPrivacyConfig GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput `pulumi:"emailPrivacyConfig"`
 	// Whether to enable anonymous user authentication.
 	EnableAnonymousUser pulumi.BoolOutput `pulumi:"enableAnonymousUser"`
 	// Whether to enable email link user authentication.
@@ -99,6 +101,8 @@ type tenantArgs struct {
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// Display name of the tenant.
 	DisplayName *string `pulumi:"displayName"`
+	// Configuration for settings related to email privacy and public visibility.
+	EmailPrivacyConfig *GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfig `pulumi:"emailPrivacyConfig"`
 	// Whether to enable anonymous user authentication.
 	EnableAnonymousUser *bool `pulumi:"enableAnonymousUser"`
 	// Whether to enable email link user authentication.
@@ -128,6 +132,8 @@ type TenantArgs struct {
 	DisableAuth pulumi.BoolPtrInput
 	// Display name of the tenant.
 	DisplayName pulumi.StringPtrInput
+	// Configuration for settings related to email privacy and public visibility.
+	EmailPrivacyConfig GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigPtrInput
 	// Whether to enable anonymous user authentication.
 	EnableAnonymousUser pulumi.BoolPtrInput
 	// Whether to enable email link user authentication.
@@ -205,6 +211,13 @@ func (o TenantOutput) DisableAuth() pulumi.BoolOutput {
 // Display name of the tenant.
 func (o TenantOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Tenant) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for settings related to email privacy and public visibility.
+func (o TenantOutput) EmailPrivacyConfig() GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput {
+	return o.ApplyT(func(v *Tenant) GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput {
+		return v.EmailPrivacyConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput)
 }
 
 // Whether to enable anonymous user authentication.

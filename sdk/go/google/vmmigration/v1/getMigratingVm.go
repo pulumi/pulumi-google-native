@@ -29,11 +29,13 @@ type LookupMigratingVmArgs struct {
 }
 
 type LookupMigratingVmResult struct {
+	// Details of the VM from an AWS source.
+	AwsSourceVmDetails AwsSourceVmDetailsResponse `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponse `pulumi:"computeEngineTargetDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
 	CreateTime string `pulumi:"createTime"`
-	// The percentage progress of the current running replication cycle.
+	// Details of the current running replication cycle.
 	CurrentSyncInfo ReplicationCycleResponse `pulumi:"currentSyncInfo"`
 	// The description attached to the migrating VM by the user.
 	Description string `pulumi:"description"`
@@ -104,6 +106,11 @@ func (o LookupMigratingVmResultOutput) ToLookupMigratingVmResultOutputWithContex
 	return o
 }
 
+// Details of the VM from an AWS source.
+func (o LookupMigratingVmResultOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) AwsSourceVmDetailsResponse { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
 // Details of the target VM in Compute Engine.
 func (o LookupMigratingVmResultOutput) ComputeEngineTargetDefaults() ComputeEngineTargetDefaultsResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) ComputeEngineTargetDefaultsResponse {
@@ -116,7 +123,7 @@ func (o LookupMigratingVmResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The percentage progress of the current running replication cycle.
+// Details of the current running replication cycle.
 func (o LookupMigratingVmResultOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) ReplicationCycleResponse { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
 }

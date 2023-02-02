@@ -49,6 +49,10 @@ export class IssueModel extends pulumi.CustomResource {
      * Configs for the input data that used to create the issue model.
      */
     public readonly inputDataConfig!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse>;
+    /**
+     * Number of issues in this issue model.
+     */
+    public /*out*/ readonly issueCount!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
@@ -85,6 +89,7 @@ export class IssueModel extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["issueCount"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["trainingStats"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -92,6 +97,7 @@ export class IssueModel extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["inputDataConfig"] = undefined /*out*/;
+            resourceInputs["issueCount"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;

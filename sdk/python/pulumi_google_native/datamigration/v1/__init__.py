@@ -10,13 +10,17 @@ from .connection_profile import *
 from .connection_profile_iam_binding import *
 from .connection_profile_iam_member import *
 from .connection_profile_iam_policy import *
+from .conversion_workspace import *
 from .get_connection_profile import *
 from .get_connection_profile_iam_policy import *
+from .get_conversion_workspace import *
 from .get_migration_job import *
 from .get_migration_job_iam_policy import *
+from .get_private_connection import *
 from .migration_job import *
 from .migration_job_iam_binding import *
 from .migration_job_iam_member import *
 from .migration_job_iam_policy import *
+from .private_connection import *
 from ._inputs import *
 from . import outputs

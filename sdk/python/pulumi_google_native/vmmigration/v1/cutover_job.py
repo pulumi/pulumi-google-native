@@ -183,6 +183,7 @@ class CutoverJob(pulumi.CustomResource):
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
             __props__.__dict__["state_time"] = None
+            __props__.__dict__["steps"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["cutover_job_id", "location", "migrating_vm_id", "project", "source_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(CutoverJob, __self__).__init__(
@@ -222,6 +223,7 @@ class CutoverJob(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["state_message"] = None
         __props__.__dict__["state_time"] = None
+        __props__.__dict__["steps"] = None
         return CutoverJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -331,4 +333,12 @@ class CutoverJob(pulumi.CustomResource):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> pulumi.Output[Sequence['outputs.CutoverStepResponse']]:
+        """
+        The cutover steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
 

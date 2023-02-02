@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
     [OutputType]
     public sealed class TelemetryConfigResponse
     {
+        /// <summary>
+        /// The output format of the Dataproc Metastore service's logs.
+        /// </summary>
         public readonly string LogFormat;
 
         [OutputConstructor]

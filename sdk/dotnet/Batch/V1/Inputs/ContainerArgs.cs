@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<string>? Options { get; set; }
 
         /// <summary>
-        /// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+        /// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+        /// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

@@ -82,7 +82,7 @@ class GetDeploymentResult:
     @pulumi.getter(name="apiSpecRevision")
     def api_spec_revision(self) -> str:
         """
-        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         """
         return pulumi.get(self, "api_spec_revision")
 

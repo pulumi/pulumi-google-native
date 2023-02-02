@@ -21,10 +21,12 @@ class MigrationJobArgs:
                  migration_job_id: pulumi.Input[str],
                  source: pulumi.Input[str],
                  type: pulumi.Input['MigrationJobType'],
+                 conversion_workspace: Optional[pulumi.Input['ConversionWorkspaceInfoArgs']] = None,
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_flags: Optional[pulumi.Input['DumpFlagsArgs']] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -41,10 +43,12 @@ class MigrationJobArgs:
         :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input['MigrationJobType'] type: The migration job type.
+        :param pulumi.Input['ConversionWorkspaceInfoArgs'] conversion_workspace: The conversion workspace used by the migration.
         :param pulumi.Input['DatabaseTypeArgs'] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input['DumpFlagsArgs'] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
+        :param pulumi.Input[str] filter: This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
         :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
@@ -58,6 +62,8 @@ class MigrationJobArgs:
         pulumi.set(__self__, "migration_job_id", migration_job_id)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "type", type)
+        if conversion_workspace is not None:
+            pulumi.set(__self__, "conversion_workspace", conversion_workspace)
         if destination_database is not None:
             pulumi.set(__self__, "destination_database", destination_database)
         if display_name is not None:
@@ -66,6 +72,8 @@ class MigrationJobArgs:
             pulumi.set(__self__, "dump_flags", dump_flags)
         if dump_path is not None:
             pulumi.set(__self__, "dump_path", dump_path)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -136,6 +144,18 @@ class MigrationJobArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="conversionWorkspace")
+    def conversion_workspace(self) -> Optional[pulumi.Input['ConversionWorkspaceInfoArgs']]:
+        """
+        The conversion workspace used by the migration.
+        """
+        return pulumi.get(self, "conversion_workspace")
+
+    @conversion_workspace.setter
+    def conversion_workspace(self, value: Optional[pulumi.Input['ConversionWorkspaceInfoArgs']]):
+        pulumi.set(self, "conversion_workspace", value)
+
+    @property
     @pulumi.getter(name="destinationDatabase")
     def destination_database(self) -> Optional[pulumi.Input['DatabaseTypeArgs']]:
         """
@@ -182,6 +202,18 @@ class MigrationJobArgs:
     @dump_path.setter
     def dump_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "dump_path", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -303,11 +335,13 @@ class MigrationJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 conversion_workspace: Optional[pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_flags: Optional[pulumi.Input[pulumi.InputType['DumpFlagsArgs']]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
@@ -327,11 +361,13 @@ class MigrationJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']] conversion_workspace: The conversion workspace used by the migration.
         :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[pulumi.InputType['DumpFlagsArgs']] dump_flags: The initial dump flags. This field and the "dump_path" field are mutually exclusive.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
+        :param pulumi.Input[str] filter: This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] migration_job_id: Required. The ID of the instance to create.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
@@ -368,11 +404,13 @@ class MigrationJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 conversion_workspace: Optional[pulumi.Input[pulumi.InputType['ConversionWorkspaceInfoArgs']]] = None,
                  destination: Optional[pulumi.Input[str]] = None,
                  destination_database: Optional[pulumi.Input[pulumi.InputType['DatabaseTypeArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_flags: Optional[pulumi.Input[pulumi.InputType['DumpFlagsArgs']]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  migration_job_id: Optional[pulumi.Input[str]] = None,
@@ -395,6 +433,7 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
+            __props__.__dict__["conversion_workspace"] = conversion_workspace
             if destination is None and not opts.urn:
                 raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
@@ -402,6 +441,7 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["dump_flags"] = dump_flags
             __props__.__dict__["dump_path"] = dump_path
+            __props__.__dict__["filter"] = filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             if migration_job_id is None and not opts.urn:
@@ -451,6 +491,7 @@ class MigrationJob(pulumi.CustomResource):
 
         __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
+        __props__.__dict__["conversion_workspace"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["destination"] = None
         __props__.__dict__["destination_database"] = None
@@ -460,6 +501,7 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["duration"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
+        __props__.__dict__["filter"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["migration_job_id"] = None
@@ -476,6 +518,14 @@ class MigrationJob(pulumi.CustomResource):
         __props__.__dict__["update_time"] = None
         __props__.__dict__["vpc_peering_connectivity"] = None
         return MigrationJob(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="conversionWorkspace")
+    def conversion_workspace(self) -> pulumi.Output['outputs.ConversionWorkspaceInfoResponse']:
+        """
+        The conversion workspace used by the migration.
+        """
+        return pulumi.get(self, "conversion_workspace")
 
     @property
     @pulumi.getter(name="createTime")
@@ -548,6 +598,14 @@ class MigrationJob(pulumi.CustomResource):
         The error details in case of state FAILED.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Output[str]:
+        """
+        This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+        """
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter

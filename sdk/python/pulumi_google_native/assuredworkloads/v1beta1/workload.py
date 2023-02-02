@@ -50,7 +50,7 @@ class WorkloadArgs:
         :param pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-        :param pulumi.Input['WorkloadPartner'] partner: Optional. Compliance Regime associated with this workload.
+        :param pulumi.Input['WorkloadPartner'] partner: Optional. Partner regime associated with this workload.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
@@ -269,7 +269,7 @@ class WorkloadArgs:
     @pulumi.getter
     def partner(self) -> Optional[pulumi.Input['WorkloadPartner']]:
         """
-        Optional. Compliance Regime associated with this workload.
+        Optional. Partner regime associated with this workload.
         """
         return pulumi.get(self, "partner")
 
@@ -344,7 +344,7 @@ class Workload(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettingsArgs']] kms_settings: Input only. Settings used to create a CMEK crypto key. When set, a project with a KMS CMEK key is provisioned. This field is deprecated as of Feb 28, 2022. In order to create a Keyring, callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-        :param pulumi.Input['WorkloadPartner'] partner: Optional. Compliance Regime associated with this workload.
+        :param pulumi.Input['WorkloadPartner'] partner: Optional. Partner regime associated with this workload.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettingsArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
@@ -632,7 +632,7 @@ class Workload(pulumi.CustomResource):
     @pulumi.getter
     def partner(self) -> pulumi.Output[str]:
         """
-        Optional. Compliance Regime associated with this workload.
+        Optional. Partner regime associated with this workload.
         """
         return pulumi.get(self, "partner")
 

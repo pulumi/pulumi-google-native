@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly Outputs.NodeConfigResponse Config;
         /// <summary>
+        /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         /// </summary>
         public readonly int InitialNodeCount;
@@ -122,6 +126,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly Outputs.NodeNetworkConfigResponse NetworkConfig;
         /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        public readonly Outputs.PlacementPolicyResponse PlacementPolicy;
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         public readonly int PodIpv4CidrSize;
@@ -146,7 +154,7 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public readonly Outputs.UpgradeSettingsResponse UpgradeSettings;
         /// <summary>
-        /// The version of the Kubernetes of this node.
+        /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         /// </summary>
         public readonly string Version;
 
@@ -157,6 +165,8 @@ namespace Pulumi.GoogleNative.Container.V1
             ImmutableArray<Outputs.StatusConditionResponse> conditions,
 
             Outputs.NodeConfigResponse config,
+
+            string etag,
 
             int initialNodeCount,
 
@@ -171,6 +181,8 @@ namespace Pulumi.GoogleNative.Container.V1
             string name,
 
             Outputs.NodeNetworkConfigResponse networkConfig,
+
+            Outputs.PlacementPolicyResponse placementPolicy,
 
             int podIpv4CidrSize,
 
@@ -189,6 +201,7 @@ namespace Pulumi.GoogleNative.Container.V1
             Autoscaling = autoscaling;
             Conditions = conditions;
             Config = config;
+            Etag = etag;
             InitialNodeCount = initialNodeCount;
             InstanceGroupUrls = instanceGroupUrls;
             Locations = locations;
@@ -196,6 +209,7 @@ namespace Pulumi.GoogleNative.Container.V1
             MaxPodsConstraint = maxPodsConstraint;
             Name = name;
             NetworkConfig = networkConfig;
+            PlacementPolicy = placementPolicy;
             PodIpv4CidrSize = podIpv4CidrSize;
             SelfLink = selfLink;
             Status = status;

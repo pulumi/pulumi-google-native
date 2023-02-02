@@ -80,6 +80,10 @@ export interface GetInstanceResult {
      */
     readonly hostname: string;
     /**
+     * Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
+     */
+    readonly instanceEncryptionKey: outputs.compute.beta.CustomerEncryptionKeyResponse;
+    /**
      * KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
      */
     readonly keyRevocationActionType: string;

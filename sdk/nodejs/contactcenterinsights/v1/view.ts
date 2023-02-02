@@ -53,7 +53,7 @@ export class View extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * String with specific view properties.
+     * String with specific view properties, must be non-empty.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -106,7 +106,7 @@ export interface ViewArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * String with specific view properties.
+     * String with specific view properties, must be non-empty.
      */
     value?: pulumi.Input<string>;
 }

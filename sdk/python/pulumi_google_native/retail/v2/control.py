@@ -279,7 +279,7 @@ class Control(pulumi.CustomResource):
     @pulumi.getter(name="associatedServingConfigIds")
     def associated_serving_config_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
+        List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
         """
         return pulumi.get(self, "associated_serving_config_ids")
 

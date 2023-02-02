@@ -48,7 +48,7 @@ type LookupHostSecurityReportResult struct {
 	ResultRows string `pulumi:"resultRows"`
 	// Self link of the query. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
 	Self string `pulumi:"self"`
-	// Query state could be "enqueued", "running", "completed", "failed".
+	// Query state could be "enqueued", "running", "completed", "expired" and "failed".
 	State string `pulumi:"state"`
 	// Last updated timestamp for the query.
 	Updated string `pulumi:"updated"`
@@ -149,7 +149,7 @@ func (o LookupHostSecurityReportResultOutput) Self() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostSecurityReportResult) string { return v.Self }).(pulumi.StringOutput)
 }
 
-// Query state could be "enqueued", "running", "completed", "failed".
+// Query state could be "enqueued", "running", "completed", "expired" and "failed".
 func (o LookupHostSecurityReportResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHostSecurityReportResult) string { return v.State }).(pulumi.StringOutput)
 }

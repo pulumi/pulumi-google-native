@@ -85,6 +85,10 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * List of threat IDs to be excepted from generating alerts.
+     */
+    public readonly threatExceptions!: pulumi.Output<string[]>;
+    /**
      * Whether the endpoint should report traffic logs in addition to threat logs.
      */
     public readonly trafficLogs!: pulumi.Output<boolean>;
@@ -121,6 +125,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
+            resourceInputs["threatExceptions"] = args ? args.threatExceptions : undefined;
             resourceInputs["trafficLogs"] = args ? args.trafficLogs : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endpointForwardingRule"] = undefined /*out*/;
@@ -142,6 +147,7 @@ export class Endpoint extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["severity"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["threatExceptions"] = undefined /*out*/;
             resourceInputs["trafficLogs"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
@@ -182,6 +188,10 @@ export interface EndpointArgs {
      * Lowest threat severity that this endpoint will alert on.
      */
     severity: pulumi.Input<enums.ids.v1.EndpointSeverity>;
+    /**
+     * List of threat IDs to be excepted from generating alerts.
+     */
+    threatExceptions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Whether the endpoint should report traffic logs in addition to threat logs.
      */

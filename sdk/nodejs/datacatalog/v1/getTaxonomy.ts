@@ -51,6 +51,10 @@ export interface GetTaxonomyResult {
      */
     readonly policyTagCount: number;
     /**
+     * Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+     */
+    readonly service: outputs.datacatalog.v1.GoogleCloudDatacatalogV1TaxonomyServiceResponse;
+    /**
      * Creation and modification timestamps of this taxonomy.
      */
     readonly taxonomyTimestamps: outputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsResponse;

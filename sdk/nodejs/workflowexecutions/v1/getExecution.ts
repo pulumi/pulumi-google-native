@@ -43,6 +43,10 @@ export interface GetExecutionResult {
      */
     readonly callLogLevel: string;
     /**
+     * Measures the duration of the execution.
+     */
+    readonly duration: string;
+    /**
      * Marks the end of execution, successful or not.
      */
     readonly endTime: string;
@@ -50,6 +54,10 @@ export interface GetExecutionResult {
      * The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
      */
     readonly error: outputs.workflowexecutions.v1.ErrorResponse;
+    /**
+     * Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     */
+    readonly labels: {[key: string]: string};
     /**
      * The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
      */

@@ -56,6 +56,10 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly downloadBytes!: pulumi.Output<string>;
     /**
+     * Immutable. KMS key name used for data encryption.
+     */
+    public readonly kmsKey!: pulumi.Output<string>;
+    /**
      * Resource labels to represent user provided metadata.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -106,6 +110,7 @@ export class Backup extends pulumi.CustomResource {
             }
             resourceInputs["backupId"] = args ? args.backupId : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -125,6 +130,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
+            resourceInputs["kmsKey"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -155,6 +161,10 @@ export interface BackupArgs {
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Immutable. KMS key name used for data encryption.
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */

@@ -33,19 +33,19 @@ class InternalRangeArgs:
                  usage: Optional[pulumi.Input['InternalRangeUsage']] = None):
         """
         The set of arguments for constructing a InternalRange resource.
-        :param pulumi.Input[str] create_time: Time when the InternalRange was created.
+        :param pulumi.Input[str] create_time: Time when the internal range was created.
         :param pulumi.Input[str] description: A description of this resource.
         :param pulumi.Input[str] internal_range_id: Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/internalRanges/foo') See https://google.aip.dev/122#resource-id-segments Unique per location.
-        :param pulumi.Input[str] ip_cidr_range: IP range that this InternalRange defines.
+        :param pulumi.Input[str] ip_cidr_range: The IP range that this internal range defines.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
-        :param pulumi.Input[str] name: Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
-        :param pulumi.Input[str] network: The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
-        :param pulumi.Input[Sequence[pulumi.Input['InternalRangeOverlapsItem']]] overlaps: Optional. Types of resources that are allowed to overlap with the current InternalRange.
-        :param pulumi.Input['InternalRangePeering'] peering: The type of peering set for this InternalRange.
-        :param pulumi.Input[int] prefix_length: An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        :param pulumi.Input[str] name: Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        :param pulumi.Input[str] network: The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        :param pulumi.Input[Sequence[pulumi.Input['InternalRangeOverlapsItem']]] overlaps: Optional. Types of resources that are allowed to overlap with the current internal range.
+        :param pulumi.Input['InternalRangePeering'] peering: The type of peering set for this internal range.
+        :param pulumi.Input[int] prefix_length: An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_cidr_range: Optional. Can be set to narrow down or pick a different address space while searching for a free range. If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
-        :param pulumi.Input[str] update_time: Time when the InternalRange was updated.
+        :param pulumi.Input[str] update_time: Time when the internal range was updated.
         :param pulumi.Input['InternalRangeUsage'] usage: The type of usage set for this InternalRange.
         """
         if create_time is not None:
@@ -85,7 +85,7 @@ class InternalRangeArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time when the InternalRange was created.
+        Time when the internal range was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -121,7 +121,7 @@ class InternalRangeArgs:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
         """
-        IP range that this InternalRange defines.
+        The IP range that this internal range defines.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -154,7 +154,7 @@ class InternalRangeArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
         """
         return pulumi.get(self, "name")
 
@@ -166,7 +166,7 @@ class InternalRangeArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         """
         return pulumi.get(self, "network")
 
@@ -178,7 +178,7 @@ class InternalRangeArgs:
     @pulumi.getter
     def overlaps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InternalRangeOverlapsItem']]]]:
         """
-        Optional. Types of resources that are allowed to overlap with the current InternalRange.
+        Optional. Types of resources that are allowed to overlap with the current internal range.
         """
         return pulumi.get(self, "overlaps")
 
@@ -190,7 +190,7 @@ class InternalRangeArgs:
     @pulumi.getter
     def peering(self) -> Optional[pulumi.Input['InternalRangePeering']]:
         """
-        The type of peering set for this InternalRange.
+        The type of peering set for this internal range.
         """
         return pulumi.get(self, "peering")
 
@@ -202,7 +202,7 @@ class InternalRangeArgs:
     @pulumi.getter(name="prefixLength")
     def prefix_length(self) -> Optional[pulumi.Input[int]]:
         """
-        An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         """
         return pulumi.get(self, "prefix_length")
 
@@ -247,7 +247,7 @@ class InternalRangeArgs:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Time when the InternalRange was updated.
+        Time when the internal range was updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -291,23 +291,23 @@ class InternalRange(pulumi.CustomResource):
                  usage: Optional[pulumi.Input['InternalRangeUsage']] = None,
                  __props__=None):
         """
-        Creates a new InternalRange in a given project and location.
+        Creates a new internal range in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_time: Time when the InternalRange was created.
+        :param pulumi.Input[str] create_time: Time when the internal range was created.
         :param pulumi.Input[str] description: A description of this resource.
         :param pulumi.Input[str] internal_range_id: Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/internalRanges/foo') See https://google.aip.dev/122#resource-id-segments Unique per location.
-        :param pulumi.Input[str] ip_cidr_range: IP range that this InternalRange defines.
+        :param pulumi.Input[str] ip_cidr_range: The IP range that this internal range defines.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
-        :param pulumi.Input[str] name: Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
-        :param pulumi.Input[str] network: The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
-        :param pulumi.Input[Sequence[pulumi.Input['InternalRangeOverlapsItem']]] overlaps: Optional. Types of resources that are allowed to overlap with the current InternalRange.
-        :param pulumi.Input['InternalRangePeering'] peering: The type of peering set for this InternalRange.
-        :param pulumi.Input[int] prefix_length: An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        :param pulumi.Input[str] name: Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        :param pulumi.Input[str] network: The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        :param pulumi.Input[Sequence[pulumi.Input['InternalRangeOverlapsItem']]] overlaps: Optional. Types of resources that are allowed to overlap with the current internal range.
+        :param pulumi.Input['InternalRangePeering'] peering: The type of peering set for this internal range.
+        :param pulumi.Input[int] prefix_length: An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_cidr_range: Optional. Can be set to narrow down or pick a different address space while searching for a free range. If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
-        :param pulumi.Input[str] update_time: Time when the InternalRange was updated.
+        :param pulumi.Input[str] update_time: Time when the internal range was updated.
         :param pulumi.Input['InternalRangeUsage'] usage: The type of usage set for this InternalRange.
         """
         ...
@@ -317,7 +317,7 @@ class InternalRange(pulumi.CustomResource):
                  args: Optional[InternalRangeArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new InternalRange in a given project and location.
+        Creates a new internal range in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param InternalRangeArgs args: The arguments to use to populate this resource's properties.
@@ -423,7 +423,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Time when the InternalRange was created.
+        Time when the internal range was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -447,7 +447,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> pulumi.Output[str]:
         """
-        IP range that this InternalRange defines.
+        The IP range that this internal range defines.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -468,7 +468,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
         """
         return pulumi.get(self, "name")
 
@@ -476,7 +476,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[str]:
         """
-        The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         """
         return pulumi.get(self, "network")
 
@@ -484,7 +484,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter
     def overlaps(self) -> pulumi.Output[Sequence[str]]:
         """
-        Optional. Types of resources that are allowed to overlap with the current InternalRange.
+        Optional. Types of resources that are allowed to overlap with the current internal range.
         """
         return pulumi.get(self, "overlaps")
 
@@ -492,7 +492,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter
     def peering(self) -> pulumi.Output[str]:
         """
-        The type of peering set for this InternalRange.
+        The type of peering set for this internal range.
         """
         return pulumi.get(self, "peering")
 
@@ -500,7 +500,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter(name="prefixLength")
     def prefix_length(self) -> pulumi.Output[int]:
         """
-        An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         """
         return pulumi.get(self, "prefix_length")
 
@@ -529,7 +529,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Time when the InternalRange was updated.
+        Time when the internal range was updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -545,7 +545,7 @@ class InternalRange(pulumi.CustomResource):
     @pulumi.getter
     def users(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of resources that refer to this internal range. Resources that use the InternalRange for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this InternalRange. Having a user, based on this reference, prevents deletion of the InternalRange referred to. Can be empty.
+        The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
         """
         return pulumi.get(self, "users")
 

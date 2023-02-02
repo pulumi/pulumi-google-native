@@ -50,6 +50,10 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
+     * Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+     */
+    public readonly eventStream!: pulumi.Output<outputs.storagetransfer.v1.EventStreamResponse>;
+    /**
      * The time that the transfer job was last modified.
      */
     public /*out*/ readonly lastModificationTime!: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class TransferJob extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["eventStream"] = args ? args.eventStream : undefined;
             resourceInputs["latestOperationName"] = args ? args.latestOperationName : undefined;
             resourceInputs["loggingConfig"] = args ? args.loggingConfig : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -113,6 +118,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["deletionTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["eventStream"] = undefined /*out*/;
             resourceInputs["lastModificationTime"] = undefined /*out*/;
             resourceInputs["latestOperationName"] = undefined /*out*/;
             resourceInputs["loggingConfig"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export interface TransferJobArgs {
      * A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+     */
+    eventStream?: pulumi.Input<inputs.storagetransfer.v1.EventStreamArgs>;
     /**
      * The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
      */

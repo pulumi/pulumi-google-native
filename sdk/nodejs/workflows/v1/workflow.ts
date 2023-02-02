@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
+ * Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.
  */
 export class Workflow extends pulumi.CustomResource {
     /**
@@ -35,7 +35,7 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /**
-     * The timestamp of when the workflow was created.
+     * The timestamp for when the workflow was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -43,7 +43,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
@@ -53,7 +53,7 @@ export class Workflow extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The timestamp that the latest revision of the workflow was created.
+     * The timestamp for the latest revision of the workflow's creation.
      */
     public /*out*/ readonly revisionCreateTime!: pulumi.Output<string>;
     /**
@@ -73,7 +73,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The last update timestamp of the workflow.
+     * The timestamp for when the workflow was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
@@ -139,7 +139,7 @@ export interface WorkflowArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;

@@ -368,6 +368,231 @@ func (o DeliveryConfigResponseOutput) DeliveryRequirement() pulumi.StringOutput 
 	return o.ApplyT(func(v DeliveryConfigResponse) string { return v.DeliveryRequirement }).(pulumi.StringOutput)
 }
 
+// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+type ExportConfig struct {
+	// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+	DeadLetterTopic *string `pulumi:"deadLetterTopic"`
+	// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+	DesiredState *ExportConfigDesiredState `pulumi:"desiredState"`
+	// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+	PubsubConfig *PubSubConfig `pulumi:"pubsubConfig"`
+}
+
+// ExportConfigInput is an input type that accepts ExportConfigArgs and ExportConfigOutput values.
+// You can construct a concrete instance of `ExportConfigInput` via:
+//
+//	ExportConfigArgs{...}
+type ExportConfigInput interface {
+	pulumi.Input
+
+	ToExportConfigOutput() ExportConfigOutput
+	ToExportConfigOutputWithContext(context.Context) ExportConfigOutput
+}
+
+// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+type ExportConfigArgs struct {
+	// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+	DeadLetterTopic pulumi.StringPtrInput `pulumi:"deadLetterTopic"`
+	// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+	DesiredState ExportConfigDesiredStatePtrInput `pulumi:"desiredState"`
+	// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+	PubsubConfig PubSubConfigPtrInput `pulumi:"pubsubConfig"`
+}
+
+func (ExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportConfig)(nil)).Elem()
+}
+
+func (i ExportConfigArgs) ToExportConfigOutput() ExportConfigOutput {
+	return i.ToExportConfigOutputWithContext(context.Background())
+}
+
+func (i ExportConfigArgs) ToExportConfigOutputWithContext(ctx context.Context) ExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigOutput)
+}
+
+func (i ExportConfigArgs) ToExportConfigPtrOutput() ExportConfigPtrOutput {
+	return i.ToExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ExportConfigArgs) ToExportConfigPtrOutputWithContext(ctx context.Context) ExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigOutput).ToExportConfigPtrOutputWithContext(ctx)
+}
+
+// ExportConfigPtrInput is an input type that accepts ExportConfigArgs, ExportConfigPtr and ExportConfigPtrOutput values.
+// You can construct a concrete instance of `ExportConfigPtrInput` via:
+//
+//	        ExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToExportConfigPtrOutput() ExportConfigPtrOutput
+	ToExportConfigPtrOutputWithContext(context.Context) ExportConfigPtrOutput
+}
+
+type exportConfigPtrType ExportConfigArgs
+
+func ExportConfigPtr(v *ExportConfigArgs) ExportConfigPtrInput {
+	return (*exportConfigPtrType)(v)
+}
+
+func (*exportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportConfig)(nil)).Elem()
+}
+
+func (i *exportConfigPtrType) ToExportConfigPtrOutput() ExportConfigPtrOutput {
+	return i.ToExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *exportConfigPtrType) ToExportConfigPtrOutputWithContext(ctx context.Context) ExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExportConfigPtrOutput)
+}
+
+// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+type ExportConfigOutput struct{ *pulumi.OutputState }
+
+func (ExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportConfig)(nil)).Elem()
+}
+
+func (o ExportConfigOutput) ToExportConfigOutput() ExportConfigOutput {
+	return o
+}
+
+func (o ExportConfigOutput) ToExportConfigOutputWithContext(ctx context.Context) ExportConfigOutput {
+	return o
+}
+
+func (o ExportConfigOutput) ToExportConfigPtrOutput() ExportConfigPtrOutput {
+	return o.ToExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ExportConfigOutput) ToExportConfigPtrOutputWithContext(ctx context.Context) ExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExportConfig) *ExportConfig {
+		return &v
+	}).(ExportConfigPtrOutput)
+}
+
+// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+func (o ExportConfigOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExportConfig) *string { return v.DeadLetterTopic }).(pulumi.StringPtrOutput)
+}
+
+// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+func (o ExportConfigOutput) DesiredState() ExportConfigDesiredStatePtrOutput {
+	return o.ApplyT(func(v ExportConfig) *ExportConfigDesiredState { return v.DesiredState }).(ExportConfigDesiredStatePtrOutput)
+}
+
+// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+func (o ExportConfigOutput) PubsubConfig() PubSubConfigPtrOutput {
+	return o.ApplyT(func(v ExportConfig) *PubSubConfig { return v.PubsubConfig }).(PubSubConfigPtrOutput)
+}
+
+type ExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ExportConfig)(nil)).Elem()
+}
+
+func (o ExportConfigPtrOutput) ToExportConfigPtrOutput() ExportConfigPtrOutput {
+	return o
+}
+
+func (o ExportConfigPtrOutput) ToExportConfigPtrOutputWithContext(ctx context.Context) ExportConfigPtrOutput {
+	return o
+}
+
+func (o ExportConfigPtrOutput) Elem() ExportConfigOutput {
+	return o.ApplyT(func(v *ExportConfig) ExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ExportConfig
+		return ret
+	}).(ExportConfigOutput)
+}
+
+// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+func (o ExportConfigPtrOutput) DeadLetterTopic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExportConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeadLetterTopic
+	}).(pulumi.StringPtrOutput)
+}
+
+// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+func (o ExportConfigPtrOutput) DesiredState() ExportConfigDesiredStatePtrOutput {
+	return o.ApplyT(func(v *ExportConfig) *ExportConfigDesiredState {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredState
+	}).(ExportConfigDesiredStatePtrOutput)
+}
+
+// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+func (o ExportConfigPtrOutput) PubsubConfig() PubSubConfigPtrOutput {
+	return o.ApplyT(func(v *ExportConfig) *PubSubConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PubsubConfig
+	}).(PubSubConfigPtrOutput)
+}
+
+// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+type ExportConfigResponse struct {
+	// The current state of the export, which may be different to the desired state due to errors. This field is output only.
+	CurrentState string `pulumi:"currentState"`
+	// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+	DeadLetterTopic string `pulumi:"deadLetterTopic"`
+	// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+	DesiredState string `pulumi:"desiredState"`
+	// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+	PubsubConfig PubSubConfigResponse `pulumi:"pubsubConfig"`
+}
+
+// Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+type ExportConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ExportConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExportConfigResponse)(nil)).Elem()
+}
+
+func (o ExportConfigResponseOutput) ToExportConfigResponseOutput() ExportConfigResponseOutput {
+	return o
+}
+
+func (o ExportConfigResponseOutput) ToExportConfigResponseOutputWithContext(ctx context.Context) ExportConfigResponseOutput {
+	return o
+}
+
+// The current state of the export, which may be different to the desired state due to errors. This field is output only.
+func (o ExportConfigResponseOutput) CurrentState() pulumi.StringOutput {
+	return o.ApplyT(func(v ExportConfigResponse) string { return v.CurrentState }).(pulumi.StringOutput)
+}
+
+// Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+func (o ExportConfigResponseOutput) DeadLetterTopic() pulumi.StringOutput {
+	return o.ApplyT(func(v ExportConfigResponse) string { return v.DeadLetterTopic }).(pulumi.StringOutput)
+}
+
+// The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+func (o ExportConfigResponseOutput) DesiredState() pulumi.StringOutput {
+	return o.ApplyT(func(v ExportConfigResponse) string { return v.DesiredState }).(pulumi.StringOutput)
+}
+
+// Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+func (o ExportConfigResponseOutput) PubsubConfig() PubSubConfigResponseOutput {
+	return o.ApplyT(func(v ExportConfigResponse) PubSubConfigResponse { return v.PubsubConfig }).(PubSubConfigResponseOutput)
+}
+
 // The settings for a topic's partitions.
 type PartitionConfig struct {
 	// The capacity configuration.
@@ -596,6 +821,172 @@ func (o PartitionConfigResponseOutput) Count() pulumi.StringOutput {
 // Deprecated: DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
 func (o PartitionConfigResponseOutput) Scale() pulumi.IntOutput {
 	return o.ApplyT(func(v PartitionConfigResponse) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+// Configuration for exporting to a Pub/Sub topic.
+type PubSubConfig struct {
+	// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+	Topic *string `pulumi:"topic"`
+}
+
+// PubSubConfigInput is an input type that accepts PubSubConfigArgs and PubSubConfigOutput values.
+// You can construct a concrete instance of `PubSubConfigInput` via:
+//
+//	PubSubConfigArgs{...}
+type PubSubConfigInput interface {
+	pulumi.Input
+
+	ToPubSubConfigOutput() PubSubConfigOutput
+	ToPubSubConfigOutputWithContext(context.Context) PubSubConfigOutput
+}
+
+// Configuration for exporting to a Pub/Sub topic.
+type PubSubConfigArgs struct {
+	// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (PubSubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubSubConfig)(nil)).Elem()
+}
+
+func (i PubSubConfigArgs) ToPubSubConfigOutput() PubSubConfigOutput {
+	return i.ToPubSubConfigOutputWithContext(context.Background())
+}
+
+func (i PubSubConfigArgs) ToPubSubConfigOutputWithContext(ctx context.Context) PubSubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubSubConfigOutput)
+}
+
+func (i PubSubConfigArgs) ToPubSubConfigPtrOutput() PubSubConfigPtrOutput {
+	return i.ToPubSubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PubSubConfigArgs) ToPubSubConfigPtrOutputWithContext(ctx context.Context) PubSubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubSubConfigOutput).ToPubSubConfigPtrOutputWithContext(ctx)
+}
+
+// PubSubConfigPtrInput is an input type that accepts PubSubConfigArgs, PubSubConfigPtr and PubSubConfigPtrOutput values.
+// You can construct a concrete instance of `PubSubConfigPtrInput` via:
+//
+//	        PubSubConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PubSubConfigPtrInput interface {
+	pulumi.Input
+
+	ToPubSubConfigPtrOutput() PubSubConfigPtrOutput
+	ToPubSubConfigPtrOutputWithContext(context.Context) PubSubConfigPtrOutput
+}
+
+type pubSubConfigPtrType PubSubConfigArgs
+
+func PubSubConfigPtr(v *PubSubConfigArgs) PubSubConfigPtrInput {
+	return (*pubSubConfigPtrType)(v)
+}
+
+func (*pubSubConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubSubConfig)(nil)).Elem()
+}
+
+func (i *pubSubConfigPtrType) ToPubSubConfigPtrOutput() PubSubConfigPtrOutput {
+	return i.ToPubSubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pubSubConfigPtrType) ToPubSubConfigPtrOutputWithContext(ctx context.Context) PubSubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubSubConfigPtrOutput)
+}
+
+// Configuration for exporting to a Pub/Sub topic.
+type PubSubConfigOutput struct{ *pulumi.OutputState }
+
+func (PubSubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubSubConfig)(nil)).Elem()
+}
+
+func (o PubSubConfigOutput) ToPubSubConfigOutput() PubSubConfigOutput {
+	return o
+}
+
+func (o PubSubConfigOutput) ToPubSubConfigOutputWithContext(ctx context.Context) PubSubConfigOutput {
+	return o
+}
+
+func (o PubSubConfigOutput) ToPubSubConfigPtrOutput() PubSubConfigPtrOutput {
+	return o.ToPubSubConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PubSubConfigOutput) ToPubSubConfigPtrOutputWithContext(ctx context.Context) PubSubConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubSubConfig) *PubSubConfig {
+		return &v
+	}).(PubSubConfigPtrOutput)
+}
+
+// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+func (o PubSubConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubSubConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type PubSubConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PubSubConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubSubConfig)(nil)).Elem()
+}
+
+func (o PubSubConfigPtrOutput) ToPubSubConfigPtrOutput() PubSubConfigPtrOutput {
+	return o
+}
+
+func (o PubSubConfigPtrOutput) ToPubSubConfigPtrOutputWithContext(ctx context.Context) PubSubConfigPtrOutput {
+	return o
+}
+
+func (o PubSubConfigPtrOutput) Elem() PubSubConfigOutput {
+	return o.ApplyT(func(v *PubSubConfig) PubSubConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PubSubConfig
+		return ret
+	}).(PubSubConfigOutput)
+}
+
+// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+func (o PubSubConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubSubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for exporting to a Pub/Sub topic.
+type PubSubConfigResponse struct {
+	// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+	Topic string `pulumi:"topic"`
+}
+
+// Configuration for exporting to a Pub/Sub topic.
+type PubSubConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PubSubConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubSubConfigResponse)(nil)).Elem()
+}
+
+func (o PubSubConfigResponseOutput) ToPubSubConfigResponseOutput() PubSubConfigResponseOutput {
+	return o
+}
+
+func (o PubSubConfigResponseOutput) ToPubSubConfigResponseOutputWithContext(ctx context.Context) PubSubConfigResponseOutput {
+	return o
+}
+
+// The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+func (o PubSubConfigResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v PubSubConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
 }
 
 // The settings for this topic's Reservation usage.
@@ -961,8 +1352,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CapacityPtrInput)(nil)).Elem(), CapacityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigInput)(nil)).Elem(), DeliveryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryConfigPtrInput)(nil)).Elem(), DeliveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExportConfigInput)(nil)).Elem(), ExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExportConfigPtrInput)(nil)).Elem(), ExportConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PartitionConfigInput)(nil)).Elem(), PartitionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PartitionConfigPtrInput)(nil)).Elem(), PartitionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubConfigInput)(nil)).Elem(), PubSubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PubSubConfigPtrInput)(nil)).Elem(), PubSubConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationConfigInput)(nil)).Elem(), ReservationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationConfigPtrInput)(nil)).Elem(), ReservationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetentionConfigInput)(nil)).Elem(), RetentionConfigArgs{})
@@ -973,9 +1368,15 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryConfigOutput{})
 	pulumi.RegisterOutputType(DeliveryConfigPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryConfigResponseOutput{})
+	pulumi.RegisterOutputType(ExportConfigOutput{})
+	pulumi.RegisterOutputType(ExportConfigPtrOutput{})
+	pulumi.RegisterOutputType(ExportConfigResponseOutput{})
 	pulumi.RegisterOutputType(PartitionConfigOutput{})
 	pulumi.RegisterOutputType(PartitionConfigPtrOutput{})
 	pulumi.RegisterOutputType(PartitionConfigResponseOutput{})
+	pulumi.RegisterOutputType(PubSubConfigOutput{})
+	pulumi.RegisterOutputType(PubSubConfigPtrOutput{})
+	pulumi.RegisterOutputType(PubSubConfigResponseOutput{})
 	pulumi.RegisterOutputType(ReservationConfigOutput{})
 	pulumi.RegisterOutputType(ReservationConfigPtrOutput{})
 	pulumi.RegisterOutputType(ReservationConfigResponseOutput{})

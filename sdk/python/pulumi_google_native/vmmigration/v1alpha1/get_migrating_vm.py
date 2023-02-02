@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
+    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
+        if aws_source_vm_details and not isinstance(aws_source_vm_details, dict):
+            raise TypeError("Expected argument 'aws_source_vm_details' to be a dict")
+        pulumi.set(__self__, "aws_source_vm_details", aws_source_vm_details)
         if compute_engine_target_defaults and not isinstance(compute_engine_target_defaults, dict):
             raise TypeError("Expected argument 'compute_engine_target_defaults' to be a dict")
         pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
@@ -78,13 +81,21 @@ class GetMigratingVmResult:
         if target_defaults and not isinstance(target_defaults, dict):
             raise TypeError("Expected argument 'target_defaults' to be a dict")
         if target_defaults is not None:
-            warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+            warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
 
         pulumi.set(__self__, "target_defaults", target_defaults)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="awsSourceVmDetails")
+    def aws_source_vm_details(self) -> 'outputs.AwsSourceVmDetailsResponse':
+        """
+        Details of the VM from an AWS source.
+        """
+        return pulumi.get(self, "aws_source_vm_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDefaults")
@@ -114,7 +125,7 @@ class GetMigratingVmResult:
     @pulumi.getter(name="currentSyncInfo")
     def current_sync_info(self) -> 'outputs.ReplicationCycleResponse':
         """
-        The percentage progress of the current running replication cycle.
+        Details of the current running replication cycle.
         """
         return pulumi.get(self, "current_sync_info")
 
@@ -226,7 +237,7 @@ class GetMigratingVmResult:
     @pulumi.getter(name="targetDefaults")
     def target_defaults(self) -> 'outputs.TargetVMDetailsResponse':
         """
-        The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         return pulumi.get(self, "target_defaults")
 
@@ -245,6 +256,7 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
         if False:
             yield self
         return GetMigratingVmResult(
+            aws_source_vm_details=self.aws_source_vm_details,
             compute_engine_target_defaults=self.compute_engine_target_defaults,
             compute_engine_vm_defaults=self.compute_engine_vm_defaults,
             create_time=self.create_time,
@@ -285,6 +297,7 @@ def get_migrating_vm(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1alpha1:getMigratingVm', __args__, opts=opts, typ=GetMigratingVmResult).value
 
     return AwaitableGetMigratingVmResult(
+        aws_source_vm_details=__ret__.aws_source_vm_details,
         compute_engine_target_defaults=__ret__.compute_engine_target_defaults,
         compute_engine_vm_defaults=__ret__.compute_engine_vm_defaults,
         create_time=__ret__.create_time,

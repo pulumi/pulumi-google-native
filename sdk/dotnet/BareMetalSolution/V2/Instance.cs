@@ -119,6 +119,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [Output("volumes")]
         public Output<ImmutableArray<Outputs.VolumeResponse>> Volumes { get; private set; } = null!;
 
+        /// <summary>
+        /// The workload profile for the instance.
+        /// </summary>
+        [Output("workloadProfile")]
+        public Output<string> WorkloadProfile { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -258,6 +264,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             get => _volumes ?? (_volumes = new InputList<Inputs.VolumeArgs>());
             set => _volumes = value;
         }
+
+        /// <summary>
+        /// The workload profile for the instance.
+        /// </summary>
+        [Input("workloadProfile")]
+        public Input<Pulumi.GoogleNative.BareMetalSolution.V2.InstanceWorkloadProfile>? WorkloadProfile { get; set; }
 
         public InstanceArgs()
         {

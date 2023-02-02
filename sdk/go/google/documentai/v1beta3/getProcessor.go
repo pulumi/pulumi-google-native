@@ -41,7 +41,7 @@ type LookupProcessorResult struct {
 	ProcessEndpoint string `pulumi:"processEndpoint"`
 	// The state of the processor.
 	State string `pulumi:"state"`
-	// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+	// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
 	Type string `pulumi:"type"`
 }
 
@@ -117,7 +117,7 @@ func (o LookupProcessorResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
 func (o LookupProcessorResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProcessorResult) string { return v.Type }).(pulumi.StringOutput)
 }

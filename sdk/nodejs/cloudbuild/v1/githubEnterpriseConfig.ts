@@ -59,7 +59,7 @@ export class GithubEnterpriseConfig extends pulumi.CustomResource {
     public readonly hostUrl!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+     * Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -155,7 +155,7 @@ export interface GithubEnterpriseConfigArgs {
     hostUrl?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+     * Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
      */
     name?: pulumi.Input<string>;
     /**

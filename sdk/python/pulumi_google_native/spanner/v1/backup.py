@@ -341,7 +341,7 @@ class Backup(pulumi.CustomResource):
     @pulumi.getter(name="encryptionInfo")
     def encryption_info(self) -> pulumi.Output['outputs.EncryptionInfoResponse']:
         """
-        The encryption information for the backup. .
+        The encryption information for the backup.
         """
         return pulumi.get(self, "encryption_info")
 

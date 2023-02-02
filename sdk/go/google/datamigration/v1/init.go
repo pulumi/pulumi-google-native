@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ConnectionProfileIamMember{}
 	case "google-native:datamigration/v1:ConnectionProfileIamPolicy":
 		r = &ConnectionProfileIamPolicy{}
+	case "google-native:datamigration/v1:ConversionWorkspace":
+		r = &ConversionWorkspace{}
 	case "google-native:datamigration/v1:MigrationJob":
 		r = &MigrationJob{}
 	case "google-native:datamigration/v1:MigrationJobIamBinding":
@@ -37,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MigrationJobIamMember{}
 	case "google-native:datamigration/v1:MigrationJobIamPolicy":
 		r = &MigrationJobIamPolicy{}
+	case "google-native:datamigration/v1:PrivateConnection":
+		r = &PrivateConnection{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -39,7 +39,7 @@ export interface GetDocumentSchemaResult {
      */
     readonly description: string;
     /**
-     * Name of the schema given by the user. Must be unique per customer.
+     * Name of the schema given by the user. Must be unique per project.
      */
     readonly displayName: string;
     /**

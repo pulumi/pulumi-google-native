@@ -133,7 +133,7 @@ export const PersistenceConfigRdbSnapshotPeriod = {
      */
     TwelveHours: "TWELVE_HOURS",
     /**
-     * Snapshot every 24 horus.
+     * Snapshot every 24 hours.
      */
     TwentyFourHours: "TWENTY_FOUR_HOURS",
 } as const;

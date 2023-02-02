@@ -18,9 +18,9 @@ __all__ = ['DocumentArgs', 'Document']
 class DocumentArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
-                 async_enabled: Optional[pulumi.Input[bool]] = None,
                  cloud_ai_document: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentArgs']] = None,
                  cloud_ai_document_option: Optional[pulumi.Input['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']] = None,
+                 content_category: Optional[pulumi.Input['DocumentContentCategory']] = None,
                  create_mask: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  display_uri: Optional[pulumi.Input[str]] = None,
@@ -36,41 +36,41 @@ class DocumentArgs:
                  raw_document_path: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
                  request_metadata: Optional[pulumi.Input['GoogleCloudContentwarehouseV1RequestMetadataArgs']] = None,
-                 structured_content_uri: Optional[pulumi.Input[str]] = None,
                  text_extraction_disabled: Optional[pulumi.Input[bool]] = None,
+                 text_extraction_enabled: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updater: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Document resource.
         :param pulumi.Input[str] display_name: Display name of the document given by the user. This name will be displayed in the UI. Customer can populate this field with the name of the document. This differs from the 'title' field as 'title' is optional and stores the top heading in the document.
-        :param pulumi.Input[bool] async_enabled: If true, makes the document visible to asynchronous policies and rules.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentArgs'] cloud_ai_document: Document AI format to save the structured content, including OCR.
-        :param pulumi.Input['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs'] cloud_ai_document_option: Request Option for processing Cloud AI Document in CW Document.
-        :param pulumi.Input[str] create_mask: Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+        :param pulumi.Input['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs'] cloud_ai_document_option: Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
+        :param pulumi.Input['DocumentContentCategory'] content_category: Indicates the category (image, audio, video etc.) of the original content.
+        :param pulumi.Input[str] create_mask: Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
         :param pulumi.Input[str] creator: The user who creates the document.
         :param pulumi.Input[str] display_uri: Uri to display the document, for example, in the UI.
         :param pulumi.Input[str] document_schema_name: The Document schema name. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
         :param pulumi.Input[str] inline_raw_document: Raw document content.
         :param pulumi.Input[str] name: The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
         :param pulumi.Input[str] plain_text: Other document format, such as PPTX, XLXS
-        :param pulumi.Input['GoogleIamV1PolicyArgs'] policy: Default document policy during creation. Conditions defined in the policy will be ignored.
+        :param pulumi.Input['GoogleIamV1PolicyArgs'] policy: Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudContentwarehouseV1PropertyArgs']]] properties: List of values that are user supplied metadata.
         :param pulumi.Input['DocumentRawDocumentFileType'] raw_document_file_type: This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
         :param pulumi.Input[str] raw_document_path: Raw document file in Cloud Storage path.
         :param pulumi.Input[str] reference_id: The reference ID set by customers. Must be unique per project and location.
         :param pulumi.Input['GoogleCloudContentwarehouseV1RequestMetadataArgs'] request_metadata: The meta information collected about the end user, used to enforce access control for the service.
-        :param pulumi.Input[str] structured_content_uri: A path linked to structured content file.
         :param pulumi.Input[bool] text_extraction_disabled: If true, text extraction will not be performed.
-        :param pulumi.Input[str] title: Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+        :param pulumi.Input[bool] text_extraction_enabled: If true, text extraction will be performed.
+        :param pulumi.Input[str] title: Title that describes the document. This can be the top heading or text that describes the document.
         :param pulumi.Input[str] updater: The user who lastly updates the document.
         """
         pulumi.set(__self__, "display_name", display_name)
-        if async_enabled is not None:
-            pulumi.set(__self__, "async_enabled", async_enabled)
         if cloud_ai_document is not None:
             pulumi.set(__self__, "cloud_ai_document", cloud_ai_document)
         if cloud_ai_document_option is not None:
             pulumi.set(__self__, "cloud_ai_document_option", cloud_ai_document_option)
+        if content_category is not None:
+            pulumi.set(__self__, "content_category", content_category)
         if create_mask is not None:
             pulumi.set(__self__, "create_mask", create_mask)
         if creator is not None:
@@ -101,10 +101,10 @@ class DocumentArgs:
             pulumi.set(__self__, "reference_id", reference_id)
         if request_metadata is not None:
             pulumi.set(__self__, "request_metadata", request_metadata)
-        if structured_content_uri is not None:
-            pulumi.set(__self__, "structured_content_uri", structured_content_uri)
         if text_extraction_disabled is not None:
             pulumi.set(__self__, "text_extraction_disabled", text_extraction_disabled)
+        if text_extraction_enabled is not None:
+            pulumi.set(__self__, "text_extraction_enabled", text_extraction_enabled)
         if title is not None:
             pulumi.set(__self__, "title", title)
         if updater is not None:
@@ -123,18 +123,6 @@ class DocumentArgs:
         pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter(name="asyncEnabled")
-    def async_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If true, makes the document visible to asynchronous policies and rules.
-        """
-        return pulumi.get(self, "async_enabled")
-
-    @async_enabled.setter
-    def async_enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "async_enabled", value)
-
-    @property
     @pulumi.getter(name="cloudAiDocument")
     def cloud_ai_document(self) -> Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentArgs']]:
         """
@@ -150,7 +138,7 @@ class DocumentArgs:
     @pulumi.getter(name="cloudAiDocumentOption")
     def cloud_ai_document_option(self) -> Optional[pulumi.Input['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']]:
         """
-        Request Option for processing Cloud AI Document in CW Document.
+        Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
         """
         return pulumi.get(self, "cloud_ai_document_option")
 
@@ -159,10 +147,22 @@ class DocumentArgs:
         pulumi.set(self, "cloud_ai_document_option", value)
 
     @property
+    @pulumi.getter(name="contentCategory")
+    def content_category(self) -> Optional[pulumi.Input['DocumentContentCategory']]:
+        """
+        Indicates the category (image, audio, video etc.) of the original content.
+        """
+        return pulumi.get(self, "content_category")
+
+    @content_category.setter
+    def content_category(self, value: Optional[pulumi.Input['DocumentContentCategory']]):
+        pulumi.set(self, "content_category", value)
+
+    @property
     @pulumi.getter(name="createMask")
     def create_mask(self) -> Optional[pulumi.Input[str]]:
         """
-        Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+        Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
         """
         return pulumi.get(self, "create_mask")
 
@@ -255,7 +255,7 @@ class DocumentArgs:
     @pulumi.getter
     def policy(self) -> Optional[pulumi.Input['GoogleIamV1PolicyArgs']]:
         """
-        Default document policy during creation. Conditions defined in the policy will be ignored.
+        Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
         """
         return pulumi.get(self, "policy")
 
@@ -333,18 +333,6 @@ class DocumentArgs:
         pulumi.set(self, "request_metadata", value)
 
     @property
-    @pulumi.getter(name="structuredContentUri")
-    def structured_content_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        A path linked to structured content file.
-        """
-        return pulumi.get(self, "structured_content_uri")
-
-    @structured_content_uri.setter
-    def structured_content_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "structured_content_uri", value)
-
-    @property
     @pulumi.getter(name="textExtractionDisabled")
     def text_extraction_disabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -357,10 +345,22 @@ class DocumentArgs:
         pulumi.set(self, "text_extraction_disabled", value)
 
     @property
+    @pulumi.getter(name="textExtractionEnabled")
+    def text_extraction_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, text extraction will be performed.
+        """
+        return pulumi.get(self, "text_extraction_enabled")
+
+    @text_extraction_enabled.setter
+    def text_extraction_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "text_extraction_enabled", value)
+
+    @property
     @pulumi.getter
     def title(self) -> Optional[pulumi.Input[str]]:
         """
-        Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+        Title that describes the document. This can be the top heading or text that describes the document.
         """
         return pulumi.get(self, "title")
 
@@ -386,9 +386,9 @@ class Document(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_enabled: Optional[pulumi.Input[bool]] = None,
                  cloud_ai_document: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDocumentaiV1DocumentArgs']]] = None,
                  cloud_ai_document_option: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']]] = None,
+                 content_category: Optional[pulumi.Input['DocumentContentCategory']] = None,
                  create_mask: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -405,8 +405,8 @@ class Document(pulumi.CustomResource):
                  raw_document_path: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
                  request_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RequestMetadataArgs']]] = None,
-                 structured_content_uri: Optional[pulumi.Input[str]] = None,
                  text_extraction_disabled: Optional[pulumi.Input[bool]] = None,
+                 text_extraction_enabled: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updater: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -415,10 +415,10 @@ class Document(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] async_enabled: If true, makes the document visible to asynchronous policies and rules.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDocumentaiV1DocumentArgs']] cloud_ai_document: Document AI format to save the structured content, including OCR.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']] cloud_ai_document_option: Request Option for processing Cloud AI Document in CW Document.
-        :param pulumi.Input[str] create_mask: Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+        :param pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']] cloud_ai_document_option: Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
+        :param pulumi.Input['DocumentContentCategory'] content_category: Indicates the category (image, audio, video etc.) of the original content.
+        :param pulumi.Input[str] create_mask: Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
         :param pulumi.Input[str] creator: The user who creates the document.
         :param pulumi.Input[str] display_name: Display name of the document given by the user. This name will be displayed in the UI. Customer can populate this field with the name of the document. This differs from the 'title' field as 'title' is optional and stores the top heading in the document.
         :param pulumi.Input[str] display_uri: Uri to display the document, for example, in the UI.
@@ -426,15 +426,15 @@ class Document(pulumi.CustomResource):
         :param pulumi.Input[str] inline_raw_document: Raw document content.
         :param pulumi.Input[str] name: The resource name of the document. Format: projects/{project_number}/locations/{location}/documents/{document_id}. The name is ignored when creating a document.
         :param pulumi.Input[str] plain_text: Other document format, such as PPTX, XLXS
-        :param pulumi.Input[pulumi.InputType['GoogleIamV1PolicyArgs']] policy: Default document policy during creation. Conditions defined in the policy will be ignored.
+        :param pulumi.Input[pulumi.InputType['GoogleIamV1PolicyArgs']] policy: Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyArgs']]]] properties: List of values that are user supplied metadata.
         :param pulumi.Input['DocumentRawDocumentFileType'] raw_document_file_type: This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
         :param pulumi.Input[str] raw_document_path: Raw document file in Cloud Storage path.
         :param pulumi.Input[str] reference_id: The reference ID set by customers. Must be unique per project and location.
         :param pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RequestMetadataArgs']] request_metadata: The meta information collected about the end user, used to enforce access control for the service.
-        :param pulumi.Input[str] structured_content_uri: A path linked to structured content file.
         :param pulumi.Input[bool] text_extraction_disabled: If true, text extraction will not be performed.
-        :param pulumi.Input[str] title: Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+        :param pulumi.Input[bool] text_extraction_enabled: If true, text extraction will be performed.
+        :param pulumi.Input[str] title: Title that describes the document. This can be the top heading or text that describes the document.
         :param pulumi.Input[str] updater: The user who lastly updates the document.
         """
         ...
@@ -461,9 +461,9 @@ class Document(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 async_enabled: Optional[pulumi.Input[bool]] = None,
                  cloud_ai_document: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDocumentaiV1DocumentArgs']]] = None,
                  cloud_ai_document_option: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1CloudAIDocumentOptionArgs']]] = None,
+                 content_category: Optional[pulumi.Input['DocumentContentCategory']] = None,
                  create_mask: Optional[pulumi.Input[str]] = None,
                  creator: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -480,8 +480,8 @@ class Document(pulumi.CustomResource):
                  raw_document_path: Optional[pulumi.Input[str]] = None,
                  reference_id: Optional[pulumi.Input[str]] = None,
                  request_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1RequestMetadataArgs']]] = None,
-                 structured_content_uri: Optional[pulumi.Input[str]] = None,
                  text_extraction_disabled: Optional[pulumi.Input[bool]] = None,
+                 text_extraction_enabled: Optional[pulumi.Input[bool]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  updater: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -493,9 +493,9 @@ class Document(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DocumentArgs.__new__(DocumentArgs)
 
-            __props__.__dict__["async_enabled"] = async_enabled
             __props__.__dict__["cloud_ai_document"] = cloud_ai_document
             __props__.__dict__["cloud_ai_document_option"] = cloud_ai_document_option
+            __props__.__dict__["content_category"] = content_category
             __props__.__dict__["create_mask"] = create_mask
             __props__.__dict__["creator"] = creator
             if display_name is None and not opts.urn:
@@ -514,8 +514,8 @@ class Document(pulumi.CustomResource):
             __props__.__dict__["raw_document_path"] = raw_document_path
             __props__.__dict__["reference_id"] = reference_id
             __props__.__dict__["request_metadata"] = request_metadata
-            __props__.__dict__["structured_content_uri"] = structured_content_uri
             __props__.__dict__["text_extraction_disabled"] = text_extraction_disabled
+            __props__.__dict__["text_extraction_enabled"] = text_extraction_enabled
             __props__.__dict__["title"] = title
             __props__.__dict__["updater"] = updater
             __props__.__dict__["create_time"] = None
@@ -544,8 +544,8 @@ class Document(pulumi.CustomResource):
 
         __props__ = DocumentArgs.__new__(DocumentArgs)
 
-        __props__.__dict__["async_enabled"] = None
         __props__.__dict__["cloud_ai_document"] = None
+        __props__.__dict__["content_category"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["creator"] = None
         __props__.__dict__["display_name"] = None
@@ -560,20 +560,12 @@ class Document(pulumi.CustomResource):
         __props__.__dict__["raw_document_file_type"] = None
         __props__.__dict__["raw_document_path"] = None
         __props__.__dict__["reference_id"] = None
-        __props__.__dict__["structured_content_uri"] = None
         __props__.__dict__["text_extraction_disabled"] = None
+        __props__.__dict__["text_extraction_enabled"] = None
         __props__.__dict__["title"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["updater"] = None
         return Document(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="asyncEnabled")
-    def async_enabled(self) -> pulumi.Output[bool]:
-        """
-        If true, makes the document visible to asynchronous policies and rules.
-        """
-        return pulumi.get(self, "async_enabled")
 
     @property
     @pulumi.getter(name="cloudAiDocument")
@@ -582,6 +574,14 @@ class Document(pulumi.CustomResource):
         Document AI format to save the structured content, including OCR.
         """
         return pulumi.get(self, "cloud_ai_document")
+
+    @property
+    @pulumi.getter(name="contentCategory")
+    def content_category(self) -> pulumi.Output[str]:
+        """
+        Indicates the category (image, audio, video etc.) of the original content.
+        """
+        return pulumi.get(self, "content_category")
 
     @property
     @pulumi.getter(name="createTime")
@@ -690,14 +690,6 @@ class Document(pulumi.CustomResource):
         return pulumi.get(self, "reference_id")
 
     @property
-    @pulumi.getter(name="structuredContentUri")
-    def structured_content_uri(self) -> pulumi.Output[str]:
-        """
-        A path linked to structured content file.
-        """
-        return pulumi.get(self, "structured_content_uri")
-
-    @property
     @pulumi.getter(name="textExtractionDisabled")
     def text_extraction_disabled(self) -> pulumi.Output[bool]:
         """
@@ -706,10 +698,18 @@ class Document(pulumi.CustomResource):
         return pulumi.get(self, "text_extraction_disabled")
 
     @property
+    @pulumi.getter(name="textExtractionEnabled")
+    def text_extraction_enabled(self) -> pulumi.Output[bool]:
+        """
+        If true, text extraction will be performed.
+        """
+        return pulumi.get(self, "text_extraction_enabled")
+
+    @property
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+        Title that describes the document. This can be the top heading or text that describes the document.
         """
         return pulumi.get(self, "title")
 

@@ -97,6 +97,10 @@ export interface GetVersionResult {
      */
     readonly errorHandlers: outputs.appengine.v1beta.ErrorHandlerResponse[];
     /**
+     * Settings for App Engine flexible runtimes.
+     */
+    readonly flexibleRuntimeSettings: outputs.appengine.v1beta.FlexibleRuntimeSettingsResponse;
+    /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
     readonly handlers: outputs.appengine.v1beta.UrlMapResponse[];

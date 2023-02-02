@@ -456,7 +456,7 @@ class HostSecurityReport(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        Query state could be "enqueued", "running", "completed", "failed".
+        Query state could be "enqueued", "running", "completed", "expired" and "failed".
         """
         return pulumi.get(self, "state")
 

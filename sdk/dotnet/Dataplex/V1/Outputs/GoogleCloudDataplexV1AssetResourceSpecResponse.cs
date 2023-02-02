@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+        /// </summary>
+        public readonly string ReadAccessMode;
+        /// <summary>
         /// Immutable. Type of resource.
         /// </summary>
         public readonly string Type;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         private GoogleCloudDataplexV1AssetResourceSpecResponse(
             string name,
 
+            string readAccessMode,
+
             string type)
         {
             Name = name;
+            ReadAccessMode = readAccessMode;
             Type = type;
         }
     }

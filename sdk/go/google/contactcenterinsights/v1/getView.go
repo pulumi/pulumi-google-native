@@ -35,7 +35,7 @@ type LookupViewResult struct {
 	Name string `pulumi:"name"`
 	// The most recent time at which the view was updated.
 	UpdateTime string `pulumi:"updateTime"`
-	// String with specific view properties.
+	// String with specific view properties, must be non-empty.
 	Value string `pulumi:"value"`
 }
 
@@ -96,7 +96,7 @@ func (o LookupViewResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// String with specific view properties.
+// String with specific view properties, must be non-empty.
 func (o LookupViewResultOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupViewResult) string { return v.Value }).(pulumi.StringOutput)
 }

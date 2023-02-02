@@ -12,10 +12,10 @@ from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['NodeArgs', 'Node']
+__all__ = ['NodeInitArgs', 'Node']
 
 @pulumi.input_type
-class NodeArgs:
+class NodeInitArgs:
     def __init__(__self__, *,
                  runtime_version: pulumi.Input[str],
                  accelerator_type: Optional[pulumi.Input[str]] = None,
@@ -334,19 +334,19 @@ class Node(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: NodeArgs,
+                 args: NodeInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a node.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
-        :param NodeArgs args: The arguments to use to populate this resource's properties.
+        :param NodeInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(NodeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(NodeInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -379,7 +379,7 @@ class Node(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = NodeArgs.__new__(NodeArgs)
+            __props__ = NodeInitArgs.__new__(NodeInitArgs)
 
             __props__.__dict__["accelerator_type"] = accelerator_type
             __props__.__dict__["cidr_block"] = cidr_block
@@ -405,6 +405,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["health_description"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["network_endpoints"] = None
+            __props__.__dict__["queued_resource"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["symptoms"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
@@ -429,7 +430,7 @@ class Node(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = NodeArgs.__new__(NodeArgs)
+        __props__ = NodeInitArgs.__new__(NodeInitArgs)
 
         __props__.__dict__["accelerator_type"] = None
         __props__.__dict__["api_version"] = None
@@ -447,6 +448,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["network_endpoints"] = None
         __props__.__dict__["node_id"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["queued_resource"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["runtime_version"] = None
         __props__.__dict__["scheduling_config"] = None
@@ -578,6 +580,14 @@ class Node(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="queuedResource")
+    def queued_resource(self) -> pulumi.Output[str]:
+        """
+        The qualified name of the QueuedResource that requested this Node.
+        """
+        return pulumi.get(self, "queued_resource")
 
     @property
     @pulumi.getter(name="requestId")

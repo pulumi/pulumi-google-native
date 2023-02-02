@@ -855,6 +855,173 @@ func (in *googleFirestoreAdminV1IndexFieldOrderPtr) ToGoogleFirestoreAdminV1Inde
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
 }
 
+// The API scope supported by this index.
+type IndexApiScope string
+
+const (
+	// The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.
+	IndexApiScopeAnyApi = IndexApiScope("ANY_API")
+	// The index can only be used by the Firestore in Datastore Mode query API.
+	IndexApiScopeDatastoreModeApi = IndexApiScope("DATASTORE_MODE_API")
+)
+
+func (IndexApiScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexApiScope)(nil)).Elem()
+}
+
+func (e IndexApiScope) ToIndexApiScopeOutput() IndexApiScopeOutput {
+	return pulumi.ToOutput(e).(IndexApiScopeOutput)
+}
+
+func (e IndexApiScope) ToIndexApiScopeOutputWithContext(ctx context.Context) IndexApiScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IndexApiScopeOutput)
+}
+
+func (e IndexApiScope) ToIndexApiScopePtrOutput() IndexApiScopePtrOutput {
+	return e.ToIndexApiScopePtrOutputWithContext(context.Background())
+}
+
+func (e IndexApiScope) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
+	return IndexApiScope(e).ToIndexApiScopeOutputWithContext(ctx).ToIndexApiScopePtrOutputWithContext(ctx)
+}
+
+func (e IndexApiScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IndexApiScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e IndexApiScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e IndexApiScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IndexApiScopeOutput struct{ *pulumi.OutputState }
+
+func (IndexApiScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexApiScope)(nil)).Elem()
+}
+
+func (o IndexApiScopeOutput) ToIndexApiScopeOutput() IndexApiScopeOutput {
+	return o
+}
+
+func (o IndexApiScopeOutput) ToIndexApiScopeOutputWithContext(ctx context.Context) IndexApiScopeOutput {
+	return o
+}
+
+func (o IndexApiScopeOutput) ToIndexApiScopePtrOutput() IndexApiScopePtrOutput {
+	return o.ToIndexApiScopePtrOutputWithContext(context.Background())
+}
+
+func (o IndexApiScopeOutput) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexApiScope) *IndexApiScope {
+		return &v
+	}).(IndexApiScopePtrOutput)
+}
+
+func (o IndexApiScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IndexApiScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IndexApiScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IndexApiScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IndexApiScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IndexApiScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IndexApiScopePtrOutput struct{ *pulumi.OutputState }
+
+func (IndexApiScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IndexApiScope)(nil)).Elem()
+}
+
+func (o IndexApiScopePtrOutput) ToIndexApiScopePtrOutput() IndexApiScopePtrOutput {
+	return o
+}
+
+func (o IndexApiScopePtrOutput) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
+	return o
+}
+
+func (o IndexApiScopePtrOutput) Elem() IndexApiScopeOutput {
+	return o.ApplyT(func(v *IndexApiScope) IndexApiScope {
+		if v != nil {
+			return *v
+		}
+		var ret IndexApiScope
+		return ret
+	}).(IndexApiScopeOutput)
+}
+
+func (o IndexApiScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IndexApiScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IndexApiScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// IndexApiScopeInput is an input type that accepts IndexApiScopeArgs and IndexApiScopeOutput values.
+// You can construct a concrete instance of `IndexApiScopeInput` via:
+//
+//	IndexApiScopeArgs{...}
+type IndexApiScopeInput interface {
+	pulumi.Input
+
+	ToIndexApiScopeOutput() IndexApiScopeOutput
+	ToIndexApiScopeOutputWithContext(context.Context) IndexApiScopeOutput
+}
+
+var indexApiScopePtrType = reflect.TypeOf((**IndexApiScope)(nil)).Elem()
+
+type IndexApiScopePtrInput interface {
+	pulumi.Input
+
+	ToIndexApiScopePtrOutput() IndexApiScopePtrOutput
+	ToIndexApiScopePtrOutputWithContext(context.Context) IndexApiScopePtrOutput
+}
+
+type indexApiScopePtr string
+
+func IndexApiScopePtr(v string) IndexApiScopePtrInput {
+	return (*indexApiScopePtr)(&v)
+}
+
+func (*indexApiScopePtr) ElementType() reflect.Type {
+	return indexApiScopePtrType
+}
+
+func (in *indexApiScopePtr) ToIndexApiScopePtrOutput() IndexApiScopePtrOutput {
+	return pulumi.ToOutput(in).(IndexApiScopePtrOutput)
+}
+
+func (in *indexApiScopePtr) ToIndexApiScopePtrOutputWithContext(ctx context.Context) IndexApiScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IndexApiScopePtrOutput)
+}
+
 // Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
 type IndexQueryScope string
 
@@ -865,6 +1032,8 @@ const (
 	IndexQueryScopeCollection = IndexQueryScope("COLLECTION")
 	// Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index.
 	IndexQueryScopeCollectionGroup = IndexQueryScope("COLLECTION_GROUP")
+	// Include all the collections's ancestor in the index. Only available for Datastore Mode databases.
+	IndexQueryScopeCollectionRecursive = IndexQueryScope("COLLECTION_RECURSIVE")
 )
 
 func (IndexQueryScope) ElementType() reflect.Type {
@@ -1035,6 +1204,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldArrayConfigPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldArrayConfig("ARRAY_CONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldOrderInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldOrder("ORDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleFirestoreAdminV1IndexFieldOrderPtrInput)(nil)).Elem(), GoogleFirestoreAdminV1IndexFieldOrder("ORDER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexApiScopeInput)(nil)).Elem(), IndexApiScope("ANY_API"))
+	pulumi.RegisterInputType(reflect.TypeOf((*IndexApiScopePtrInput)(nil)).Elem(), IndexApiScope("ANY_API"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopeInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IndexQueryScopePtrInput)(nil)).Elem(), IndexQueryScope("QUERY_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(DatabaseAppEngineIntegrationModeOutput{})
@@ -1047,6 +1218,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOrderOutput{})
 	pulumi.RegisterOutputType(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput{})
+	pulumi.RegisterOutputType(IndexApiScopeOutput{})
+	pulumi.RegisterOutputType(IndexApiScopePtrOutput{})
 	pulumi.RegisterOutputType(IndexQueryScopeOutput{})
 	pulumi.RegisterOutputType(IndexQueryScopePtrOutput{})
 }

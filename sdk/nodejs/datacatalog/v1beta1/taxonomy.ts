@@ -61,6 +61,10 @@ export class Taxonomy extends pulumi.CustomResource {
     public /*out*/ readonly policyTagCount!: pulumi.Output<number>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+     */
+    public /*out*/ readonly service!: pulumi.Output<outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse>;
+    /**
      * Timestamps about this taxonomy. Only create_time and update_time are used.
      */
     public /*out*/ readonly taxonomyTimestamps!: pulumi.Output<outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse>;
@@ -86,6 +90,7 @@ export class Taxonomy extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policyTagCount"] = undefined /*out*/;
+            resourceInputs["service"] = undefined /*out*/;
             resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         } else {
             resourceInputs["activatedPolicyTypes"] = undefined /*out*/;
@@ -95,6 +100,7 @@ export class Taxonomy extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["policyTagCount"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["service"] = undefined /*out*/;
             resourceInputs["taxonomyTimestamps"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse
     {
         /// <summary>
-        /// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        /// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
         /// </summary>
         public readonly string Name;
 

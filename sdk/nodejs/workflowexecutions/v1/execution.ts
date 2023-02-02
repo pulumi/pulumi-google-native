@@ -49,6 +49,10 @@ export class Execution extends pulumi.CustomResource {
      */
     public readonly callLogLevel!: pulumi.Output<string>;
     /**
+     * Measures the duration of the execution.
+     */
+    public /*out*/ readonly duration!: pulumi.Output<string>;
+    /**
      * Marks the end of execution, successful or not.
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
@@ -56,6 +60,10 @@ export class Execution extends pulumi.CustomResource {
      * The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.workflowexecutions.v1.ErrorResponse>;
+    /**
+     * Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
@@ -100,9 +108,11 @@ export class Execution extends pulumi.CustomResource {
             }
             resourceInputs["argument"] = args ? args.argument : undefined;
             resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["workflowId"] = args ? args.workflowId : undefined;
+            resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -114,8 +124,10 @@ export class Execution extends pulumi.CustomResource {
         } else {
             resourceInputs["argument"] = undefined /*out*/;
             resourceInputs["callLogLevel"] = undefined /*out*/;
+            resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -145,6 +157,10 @@ export interface ExecutionArgs {
      * The call logging level associated to this execution.
      */
     callLogLevel?: pulumi.Input<enums.workflowexecutions.v1.ExecutionCallLogLevel>;
+    /**
+     * Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     workflowId: pulumi.Input<string>;

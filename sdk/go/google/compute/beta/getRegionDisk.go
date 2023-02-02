@@ -73,6 +73,8 @@ type LookupRegionDiskResult struct {
 	PhysicalBlockSizeBytes string `pulumi:"physicalBlockSizeBytes"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
+	// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+	ProvisionedThroughput string `pulumi:"provisionedThroughput"`
 	// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
@@ -266,6 +268,11 @@ func (o LookupRegionDiskResultOutput) PhysicalBlockSizeBytes() pulumi.StringOutp
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o LookupRegionDiskResultOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+func (o LookupRegionDiskResultOutput) ProvisionedThroughput() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.ProvisionedThroughput }).(pulumi.StringOutput)
 }
 
 // URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

@@ -87,7 +87,7 @@ export class SecurityReport extends pulumi.CustomResource {
      */
     public /*out*/ readonly self!: pulumi.Output<string>;
     /**
-     * Query state could be "enqueued", "running", "completed", "failed".
+     * Query state could be "enqueued", "running", "completed", "expired" and "failed".
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**

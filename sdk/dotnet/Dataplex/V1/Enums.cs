@@ -90,6 +90,47 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     }
 
     /// <summary>
+    /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDataplexV1AssetResourceSpecReadAccessMode : IEquatable<GoogleCloudDataplexV1AssetResourceSpecReadAccessMode>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDataplexV1AssetResourceSpecReadAccessMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Access mode unspecified.
+        /// </summary>
+        public static GoogleCloudDataplexV1AssetResourceSpecReadAccessMode AccessModeUnspecified { get; } = new GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("ACCESS_MODE_UNSPECIFIED");
+        /// <summary>
+        /// Default. Data is accessed directly using storage APIs.
+        /// </summary>
+        public static GoogleCloudDataplexV1AssetResourceSpecReadAccessMode Direct { get; } = new GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("DIRECT");
+        /// <summary>
+        /// Data is accessed through a managed interface using BigQuery APIs.
+        /// </summary>
+        public static GoogleCloudDataplexV1AssetResourceSpecReadAccessMode Managed { get; } = new GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("MANAGED");
+
+        public static bool operator ==(GoogleCloudDataplexV1AssetResourceSpecReadAccessMode left, GoogleCloudDataplexV1AssetResourceSpecReadAccessMode right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDataplexV1AssetResourceSpecReadAccessMode left, GoogleCloudDataplexV1AssetResourceSpecReadAccessMode right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDataplexV1AssetResourceSpecReadAccessMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDataplexV1AssetResourceSpecReadAccessMode other && Equals(other);
+        public bool Equals(GoogleCloudDataplexV1AssetResourceSpecReadAccessMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Required. Immutable. Type of resource.
     /// </summary>
     [EnumType]
@@ -197,6 +238,48 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDataplexV1ContentSqlScriptEngine other && Equals(other);
         public bool Equals(GoogleCloudDataplexV1ContentSqlScriptEngine other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic : IEquatable<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified statistic type
+        /// </summary>
+        public static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic StatisticUndefined { get; } = new GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("STATISTIC_UNDEFINED");
+        /// <summary>
+        /// Evaluate the column mean
+        /// </summary>
+        public static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic Mean { get; } = new GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("MEAN");
+        /// <summary>
+        /// Evaluate the column min
+        /// </summary>
+        public static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic Min { get; } = new GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("MIN");
+        /// <summary>
+        /// Evaluate the column max
+        /// </summary>
+        public static GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic Max { get; } = new GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("MAX");
+
+        public static bool operator ==(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic left, GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic left, GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic other && Equals(other);
+        public bool Equals(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

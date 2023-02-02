@@ -38,6 +38,7 @@ class ConfigArgs:
                  monitoring: Optional[pulumi.Input['MonitoringArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  producer_project_id: Optional[pulumi.Input[str]] = None,
+                 publishing: Optional[pulumi.Input['PublishingArgs']] = None,
                  quota: Optional[pulumi.Input['QuotaArgs']] = None,
                  system_parameters: Optional[pulumi.Input['SystemParametersArgs']] = None,
                  system_types: Optional[pulumi.Input[Sequence[pulumi.Input['TypeArgs']]]] = None,
@@ -66,6 +67,7 @@ class ConfigArgs:
         :param pulumi.Input['MonitoringArgs'] monitoring: Monitoring configuration.
         :param pulumi.Input[str] name: The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
         :param pulumi.Input[str] producer_project_id: The Google project that owns this service.
+        :param pulumi.Input['PublishingArgs'] publishing: Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
         :param pulumi.Input['QuotaArgs'] quota: Quota configuration.
         :param pulumi.Input['SystemParametersArgs'] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input['TypeArgs']]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
@@ -114,6 +116,8 @@ class ConfigArgs:
             pulumi.set(__self__, "name", name)
         if producer_project_id is not None:
             pulumi.set(__self__, "producer_project_id", producer_project_id)
+        if publishing is not None:
+            pulumi.set(__self__, "publishing", publishing)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
         if system_parameters is not None:
@@ -378,6 +382,18 @@ class ConfigArgs:
 
     @property
     @pulumi.getter
+    def publishing(self) -> Optional[pulumi.Input['PublishingArgs']]:
+        """
+        Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        """
+        return pulumi.get(self, "publishing")
+
+    @publishing.setter
+    def publishing(self, value: Optional[pulumi.Input['PublishingArgs']]):
+        pulumi.set(self, "publishing", value)
+
+    @property
+    @pulumi.getter
     def quota(self) -> Optional[pulumi.Input['QuotaArgs']]:
         """
         Quota configuration.
@@ -474,6 +490,7 @@ class Config(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[pulumi.InputType['MonitoringArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  producer_project_id: Optional[pulumi.Input[str]] = None,
+                 publishing: Optional[pulumi.Input[pulumi.InputType['PublishingArgs']]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['QuotaArgs']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  system_parameters: Optional[pulumi.Input[pulumi.InputType['SystemParametersArgs']]] = None,
@@ -509,6 +526,7 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MonitoringArgs']] monitoring: Monitoring configuration.
         :param pulumi.Input[str] name: The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
         :param pulumi.Input[str] producer_project_id: The Google project that owns this service.
+        :param pulumi.Input[pulumi.InputType['PublishingArgs']] publishing: Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
         :param pulumi.Input[pulumi.InputType['QuotaArgs']] quota: Quota configuration.
         :param pulumi.Input[pulumi.InputType['SystemParametersArgs']] system_parameters: System parameter configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TypeArgs']]]] system_types: A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
@@ -562,6 +580,7 @@ class Config(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[pulumi.InputType['MonitoringArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  producer_project_id: Optional[pulumi.Input[str]] = None,
+                 publishing: Optional[pulumi.Input[pulumi.InputType['PublishingArgs']]] = None,
                  quota: Optional[pulumi.Input[pulumi.InputType['QuotaArgs']]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  system_parameters: Optional[pulumi.Input[pulumi.InputType['SystemParametersArgs']]] = None,
@@ -598,6 +617,7 @@ class Config(pulumi.CustomResource):
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
             __props__.__dict__["producer_project_id"] = producer_project_id
+            __props__.__dict__["publishing"] = publishing
             __props__.__dict__["quota"] = quota
             if service_name is None and not opts.urn:
                 raise TypeError("Missing required property 'service_name'")
@@ -651,6 +671,7 @@ class Config(pulumi.CustomResource):
         __props__.__dict__["monitoring"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["producer_project_id"] = None
+        __props__.__dict__["publishing"] = None
         __props__.__dict__["quota"] = None
         __props__.__dict__["service_name"] = None
         __props__.__dict__["source_info"] = None
@@ -812,6 +833,14 @@ class Config(pulumi.CustomResource):
         The Google project that owns this service.
         """
         return pulumi.get(self, "producer_project_id")
+
+    @property
+    @pulumi.getter
+    def publishing(self) -> pulumi.Output['outputs.PublishingResponse']:
+        """
+        Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        """
+        return pulumi.get(self, "publishing")
 
     @property
     @pulumi.getter

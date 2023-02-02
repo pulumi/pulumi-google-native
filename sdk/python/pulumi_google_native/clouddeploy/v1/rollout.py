@@ -27,6 +27,7 @@ class RolloutArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 starting_phase_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Rollout resource.
@@ -38,6 +39,7 @@ class RolloutArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         :param pulumi.Input[str] name: Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] starting_phase_id: Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
         :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         pulumi.set(__self__, "delivery_pipeline_id", delivery_pipeline_id)
@@ -60,6 +62,8 @@ class RolloutArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if starting_phase_id is not None:
+            pulumi.set(__self__, "starting_phase_id", starting_phase_id)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
 
@@ -196,6 +200,18 @@ class RolloutArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="startingPhaseId")
+    def starting_phase_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+        """
+        return pulumi.get(self, "starting_phase_id")
+
+    @starting_phase_id.setter
+    def starting_phase_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "starting_phase_id", value)
+
+    @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -224,6 +240,7 @@ class Rollout(pulumi.CustomResource):
                  release_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
+                 starting_phase_id: Optional[pulumi.Input[str]] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -242,6 +259,7 @@ class Rollout(pulumi.CustomResource):
         :param pulumi.Input[str] name: Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] rollout_id: Required. ID of the `Rollout`.
+        :param pulumi.Input[str] starting_phase_id: Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
         :param pulumi.Input[str] target_id: The ID of Target to which this `Rollout` is deploying.
         :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
@@ -283,6 +301,7 @@ class Rollout(pulumi.CustomResource):
                  release_id: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  rollout_id: Optional[pulumi.Input[str]] = None,
+                 starting_phase_id: Optional[pulumi.Input[str]] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -311,6 +330,7 @@ class Rollout(pulumi.CustomResource):
             if rollout_id is None and not opts.urn:
                 raise TypeError("Missing required property 'rollout_id'")
             __props__.__dict__["rollout_id"] = rollout_id
+            __props__.__dict__["starting_phase_id"] = starting_phase_id
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__.__dict__["target_id"] = target_id
@@ -374,6 +394,7 @@ class Rollout(pulumi.CustomResource):
         __props__.__dict__["release_id"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["rollout_id"] = None
+        __props__.__dict__["starting_phase_id"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["target_id"] = None
         __props__.__dict__["uid"] = None
@@ -543,6 +564,14 @@ class Rollout(pulumi.CustomResource):
         Required. ID of the `Rollout`.
         """
         return pulumi.get(self, "rollout_id")
+
+    @property
+    @pulumi.getter(name="startingPhaseId")
+    def starting_phase_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+        """
+        return pulumi.get(self, "starting_phase_id")
 
     @property
     @pulumi.getter

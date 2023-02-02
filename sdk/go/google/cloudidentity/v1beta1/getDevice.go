@@ -21,7 +21,8 @@ func LookupDevice(ctx *pulumi.Context, args *LookupDeviceArgs, opts ...pulumi.In
 }
 
 type LookupDeviceArgs struct {
-	DeviceId string `pulumi:"deviceId"`
+	Customer *string `pulumi:"customer"`
+	DeviceId string  `pulumi:"deviceId"`
 }
 
 type LookupDeviceResult struct {
@@ -37,6 +38,8 @@ type LookupDeviceResult struct {
 	Brand string `pulumi:"brand"`
 	// Build number of the device.
 	BuildNumber string `pulumi:"buildNumber"`
+	// List of the clients the device is reporting to.
+	ClientTypes []string `pulumi:"clientTypes"`
 	// Represents whether the Device is compromised.
 	CompromisedState string `pulumi:"compromisedState"`
 	// When the Company-Owned device was imported. This field is empty for BYOD devices.
@@ -53,6 +56,8 @@ type LookupDeviceResult struct {
 	EncryptionState string `pulumi:"encryptionState"`
 	// Attributes specific to Endpoint Verification devices.
 	EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributesResponse `pulumi:"endpointVerificationSpecificAttributes"`
+	// Host name of the device.
+	Hostname string `pulumi:"hostname"`
 	// IMEI number of device if GSM device; empty otherwise.
 	Imei string `pulumi:"imei"`
 	// Kernel version of the device.
@@ -101,7 +106,8 @@ func LookupDeviceOutput(ctx *pulumi.Context, args LookupDeviceOutputArgs, opts .
 }
 
 type LookupDeviceOutputArgs struct {
-	DeviceId pulumi.StringInput `pulumi:"deviceId"`
+	Customer pulumi.StringPtrInput `pulumi:"customer"`
+	DeviceId pulumi.StringInput    `pulumi:"deviceId"`
 }
 
 func (LookupDeviceOutputArgs) ElementType() reflect.Type {
@@ -152,6 +158,11 @@ func (o LookupDeviceResultOutput) BuildNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.BuildNumber }).(pulumi.StringOutput)
 }
 
+// List of the clients the device is reporting to.
+func (o LookupDeviceResultOutput) ClientTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDeviceResult) []string { return v.ClientTypes }).(pulumi.StringArrayOutput)
+}
+
 // Represents whether the Device is compromised.
 func (o LookupDeviceResultOutput) CompromisedState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeviceResult) string { return v.CompromisedState }).(pulumi.StringOutput)
@@ -192,6 +203,11 @@ func (o LookupDeviceResultOutput) EndpointVerificationSpecificAttributes() Endpo
 	return o.ApplyT(func(v LookupDeviceResult) EndpointVerificationSpecificAttributesResponse {
 		return v.EndpointVerificationSpecificAttributes
 	}).(EndpointVerificationSpecificAttributesResponseOutput)
+}
+
+// Host name of the device.
+func (o LookupDeviceResultOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDeviceResult) string { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // IMEI number of device if GSM device; empty otherwise.

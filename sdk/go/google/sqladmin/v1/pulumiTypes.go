@@ -4197,7 +4197,7 @@ type PasswordValidationPolicy struct {
 	EnablePasswordPolicy *bool `pulumi:"enablePasswordPolicy"`
 	// Minimum number of characters allowed.
 	MinLength *int `pulumi:"minLength"`
-	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+	// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
 	PasswordChangeInterval *string `pulumi:"passwordChangeInterval"`
 	// Number of previous passwords that cannot be reused.
 	ReuseInterval *int `pulumi:"reuseInterval"`
@@ -4224,7 +4224,7 @@ type PasswordValidationPolicyArgs struct {
 	EnablePasswordPolicy pulumi.BoolPtrInput `pulumi:"enablePasswordPolicy"`
 	// Minimum number of characters allowed.
 	MinLength pulumi.IntPtrInput `pulumi:"minLength"`
-	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+	// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
 	PasswordChangeInterval pulumi.StringPtrInput `pulumi:"passwordChangeInterval"`
 	// Number of previous passwords that cannot be reused.
 	ReuseInterval pulumi.IntPtrInput `pulumi:"reuseInterval"`
@@ -4328,7 +4328,7 @@ func (o PasswordValidationPolicyOutput) MinLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *int { return v.MinLength }).(pulumi.IntPtrOutput)
 }
 
-// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
 func (o PasswordValidationPolicyOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PasswordValidationPolicy) *string { return v.PasswordChangeInterval }).(pulumi.StringPtrOutput)
 }
@@ -4402,7 +4402,7 @@ func (o PasswordValidationPolicyPtrOutput) MinLength() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
 func (o PasswordValidationPolicyPtrOutput) PasswordChangeInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PasswordValidationPolicy) *string {
 		if v == nil {
@@ -4432,7 +4432,7 @@ type PasswordValidationPolicyResponse struct {
 	EnablePasswordPolicy bool `pulumi:"enablePasswordPolicy"`
 	// Minimum number of characters allowed.
 	MinLength int `pulumi:"minLength"`
-	// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+	// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
 	PasswordChangeInterval string `pulumi:"passwordChangeInterval"`
 	// Number of previous passwords that cannot be reused.
 	ReuseInterval int `pulumi:"reuseInterval"`
@@ -4473,7 +4473,7 @@ func (o PasswordValidationPolicyResponseOutput) MinLength() pulumi.IntOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) int { return v.MinLength }).(pulumi.IntOutput)
 }
 
-// Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+// Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
 func (o PasswordValidationPolicyResponseOutput) PasswordChangeInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v PasswordValidationPolicyResponse) string { return v.PasswordChangeInterval }).(pulumi.StringOutput)
 }

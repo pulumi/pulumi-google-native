@@ -1265,7 +1265,7 @@ func (in *jobTypePtr) ToJobTypePtrOutputWithContext(ctx context.Context) JobType
 	return pulumi.ToOutputWithContext(ctx, in).(JobTypePtrOutput)
 }
 
-// Configuration for VM IPs.
+// Optional. Configuration for VM IPs.
 type RuntimeEnvironmentIpConfiguration string
 
 const (

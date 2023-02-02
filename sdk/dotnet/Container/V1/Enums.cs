@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Container.V1
 {
     /// <summary>
-    /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+    /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
     /// </summary>
     [EnumType]
     public readonly struct BinaryAuthorizationEvaluationMode : IEquatable<BinaryAuthorizationEvaluationMode>
@@ -217,6 +217,47 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterUpdateDesiredStackType : IEquatable<ClusterUpdateDesiredStackType>
+    {
+        private readonly string _value;
+
+        private ClusterUpdateDesiredStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, will be defaulted as IPV4 only
+        /// </summary>
+        public static ClusterUpdateDesiredStackType StackTypeUnspecified { get; } = new ClusterUpdateDesiredStackType("STACK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Cluster is IPV4 only
+        /// </summary>
+        public static ClusterUpdateDesiredStackType Ipv4 { get; } = new ClusterUpdateDesiredStackType("IPV4");
+        /// <summary>
+        /// Cluster can use both IPv4 and IPv6
+        /// </summary>
+        public static ClusterUpdateDesiredStackType Ipv4Ipv6 { get; } = new ClusterUpdateDesiredStackType("IPV4_IPV6");
+
+        public static bool operator ==(ClusterUpdateDesiredStackType left, ClusterUpdateDesiredStackType right) => left.Equals(right);
+        public static bool operator !=(ClusterUpdateDesiredStackType left, ClusterUpdateDesiredStackType right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterUpdateDesiredStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterUpdateDesiredStackType other && Equals(other);
+        public bool Equals(ClusterUpdateDesiredStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// cluster_dns indicates which in-cluster DNS provider should be used.
     /// </summary>
     [EnumType]
@@ -274,6 +315,10 @@ namespace Pulumi.GoogleNative.Container.V1
         /// Default value, will be inferred as cluster scope.
         /// </summary>
         public static DNSConfigClusterDnsScope DnsScopeUnspecified { get; } = new DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED");
+        /// <summary>
+        /// DNS records are accessible from within the cluster.
+        /// </summary>
+        public static DNSConfigClusterDnsScope ClusterScope { get; } = new DNSConfigClusterDnsScope("CLUSTER_SCOPE");
         /// <summary>
         /// DNS records are accessible from within the VPC.
         /// </summary>
@@ -1007,6 +1052,43 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// The type of placement.
+    /// </summary>
+    [EnumType]
+    public readonly struct PlacementPolicyType : IEquatable<PlacementPolicyType>
+    {
+        private readonly string _value;
+
+        private PlacementPolicyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+        /// </summary>
+        public static PlacementPolicyType TypeUnspecified { get; } = new PlacementPolicyType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+        /// </summary>
+        public static PlacementPolicyType Compact { get; } = new PlacementPolicyType("COMPACT");
+
+        public static bool operator ==(PlacementPolicyType left, PlacementPolicyType right) => left.Equals(right);
+        public static bool operator !=(PlacementPolicyType left, PlacementPolicyType right) => !left.Equals(right);
+
+        public static explicit operator string(PlacementPolicyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PlacementPolicyType other && Equals(other);
+        public bool Equals(PlacementPolicyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// channel specifies which release channel the cluster is subscribed to.
     /// </summary>
     [EnumType]
@@ -1301,7 +1383,7 @@ namespace Pulumi.GoogleNative.Container.V1
         }
 
         /// <summary>
-        /// Default value.
+        /// Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
         /// </summary>
         public static UpgradeSettingsStrategy NodePoolUpdateStrategyUnspecified { get; } = new UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED");
         /// <summary>
@@ -1321,6 +1403,47 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is UpgradeSettingsStrategy other && Equals(other);
         public bool Equals(UpgradeSettingsStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// OSVersion specifies the Windows node config to be used on the node
+    /// </summary>
+    [EnumType]
+    public readonly struct WindowsNodeConfigOsVersion : IEquatable<WindowsNodeConfigOsVersion>
+    {
+        private readonly string _value;
+
+        private WindowsNodeConfigOsVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// When OSVersion is not specified
+        /// </summary>
+        public static WindowsNodeConfigOsVersion OsVersionUnspecified { get; } = new WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+        /// </summary>
+        public static WindowsNodeConfigOsVersion OsVersionLtsc2019 { get; } = new WindowsNodeConfigOsVersion("OS_VERSION_LTSC2019");
+        /// <summary>
+        /// LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
+        /// </summary>
+        public static WindowsNodeConfigOsVersion OsVersionLtsc2022 { get; } = new WindowsNodeConfigOsVersion("OS_VERSION_LTSC2022");
+
+        public static bool operator ==(WindowsNodeConfigOsVersion left, WindowsNodeConfigOsVersion right) => left.Equals(right);
+        public static bool operator !=(WindowsNodeConfigOsVersion left, WindowsNodeConfigOsVersion right) => !left.Equals(right);
+
+        public static explicit operator string(WindowsNodeConfigOsVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WindowsNodeConfigOsVersion other && Equals(other);
+        public bool Equals(WindowsNodeConfigOsVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 type BinaryAuthorizationEvaluationMode string
 
 const (
@@ -712,6 +712,18 @@ const (
 	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessToGoogle = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE")
 	// Enables priate IPv6 access to and from Google Services
 	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL")
+)
+
+// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+type ClusterUpdateDesiredStackType string
+
+const (
+	// By default, the clusters will be IPV4 only
+	ClusterUpdateDesiredStackTypeStackTypeUnspecified = ClusterUpdateDesiredStackType("STACK_TYPE_UNSPECIFIED")
+	// The value used if the cluster is a IPV4 only
+	ClusterUpdateDesiredStackTypeIpv4 = ClusterUpdateDesiredStackType("IPV4")
+	// The value used if the cluster is a dual stack cluster
+	ClusterUpdateDesiredStackTypeIpv4Ipv6 = ClusterUpdateDesiredStackType("IPV4_IPV6")
 )
 
 // cluster_dns indicates which in-cluster DNS provider should be used.
@@ -1603,6 +1615,177 @@ func (in *gpusharingConfigGpuSharingStrategyPtr) ToGPUSharingConfigGpuSharingStr
 	return pulumi.ToOutputWithContext(ctx, in).(GPUSharingConfigGpuSharingStrategyPtrOutput)
 }
 
+// The Gateway API release channel to use for Gateway API.
+type GatewayAPIConfigChannel string
+
+const (
+	// Default value.
+	GatewayAPIConfigChannelChannelUnspecified = GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED")
+	// Gateway API support is disabled
+	GatewayAPIConfigChannelChannelDisabled = GatewayAPIConfigChannel("CHANNEL_DISABLED")
+	// Gateway API support is enabled, experimental CRDs are installed
+	GatewayAPIConfigChannelChannelExperimental = GatewayAPIConfigChannel("CHANNEL_EXPERIMENTAL")
+	// Gateway API support is enabled, standard CRDs are installed
+	GatewayAPIConfigChannelChannelStandard = GatewayAPIConfigChannel("CHANNEL_STANDARD")
+)
+
+func (GatewayAPIConfigChannel) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfigChannel)(nil)).Elem()
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelOutput() GatewayAPIConfigChannelOutput {
+	return pulumi.ToOutput(e).(GatewayAPIConfigChannelOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelOutputWithContext(ctx context.Context) GatewayAPIConfigChannelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayAPIConfigChannelOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return e.ToGatewayAPIConfigChannelPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayAPIConfigChannel) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return GatewayAPIConfigChannel(e).ToGatewayAPIConfigChannelOutputWithContext(ctx).ToGatewayAPIConfigChannelPtrOutputWithContext(ctx)
+}
+
+func (e GatewayAPIConfigChannel) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GatewayAPIConfigChannel) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayAPIConfigChannel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GatewayAPIConfigChannelOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigChannelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfigChannel)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelOutput() GatewayAPIConfigChannelOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelOutputWithContext(ctx context.Context) GatewayAPIConfigChannelOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return o.ToGatewayAPIConfigChannelPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelOutput) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayAPIConfigChannel) *GatewayAPIConfigChannel {
+		return &v
+	}).(GatewayAPIConfigChannelPtrOutput)
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayAPIConfigChannel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayAPIConfigChannel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayAPIConfigChannelPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigChannelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAPIConfigChannel)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) Elem() GatewayAPIConfigChannelOutput {
+	return o.ApplyT(func(v *GatewayAPIConfigChannel) GatewayAPIConfigChannel {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayAPIConfigChannel
+		return ret
+	}).(GatewayAPIConfigChannelOutput)
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigChannelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayAPIConfigChannel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GatewayAPIConfigChannelInput is an input type that accepts GatewayAPIConfigChannelArgs and GatewayAPIConfigChannelOutput values.
+// You can construct a concrete instance of `GatewayAPIConfigChannelInput` via:
+//
+//	GatewayAPIConfigChannelArgs{...}
+type GatewayAPIConfigChannelInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigChannelOutput() GatewayAPIConfigChannelOutput
+	ToGatewayAPIConfigChannelOutputWithContext(context.Context) GatewayAPIConfigChannelOutput
+}
+
+var gatewayAPIConfigChannelPtrType = reflect.TypeOf((**GatewayAPIConfigChannel)(nil)).Elem()
+
+type GatewayAPIConfigChannelPtrInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput
+	ToGatewayAPIConfigChannelPtrOutputWithContext(context.Context) GatewayAPIConfigChannelPtrOutput
+}
+
+type gatewayAPIConfigChannelPtr string
+
+func GatewayAPIConfigChannelPtr(v string) GatewayAPIConfigChannelPtrInput {
+	return (*gatewayAPIConfigChannelPtr)(&v)
+}
+
+func (*gatewayAPIConfigChannelPtr) ElementType() reflect.Type {
+	return gatewayAPIConfigChannelPtrType
+}
+
+func (in *gatewayAPIConfigChannelPtr) ToGatewayAPIConfigChannelPtrOutput() GatewayAPIConfigChannelPtrOutput {
+	return pulumi.ToOutput(in).(GatewayAPIConfigChannelPtrOutput)
+}
+
+func (in *gatewayAPIConfigChannelPtr) ToGatewayAPIConfigChannelPtrOutputWithContext(ctx context.Context) GatewayAPIConfigChannelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayAPIConfigChannelPtrOutput)
+}
+
 // The ipv6 access type (internal or external) when create_subnetwork is true
 type IPAllocationPolicyIpv6AccessType string
 
@@ -2286,6 +2469,12 @@ const (
 	LoggingComponentConfigEnableComponentsItemSystemComponents = LoggingComponentConfigEnableComponentsItem("SYSTEM_COMPONENTS")
 	// workloads
 	LoggingComponentConfigEnableComponentsItemWorkloads = LoggingComponentConfigEnableComponentsItem("WORKLOADS")
+	// kube-apiserver
+	LoggingComponentConfigEnableComponentsItemApiserver = LoggingComponentConfigEnableComponentsItem("APISERVER")
+	// kube-scheduler
+	LoggingComponentConfigEnableComponentsItemScheduler = LoggingComponentConfigEnableComponentsItem("SCHEDULER")
+	// kube-controller-manager
+	LoggingComponentConfigEnableComponentsItemControllerManager = LoggingComponentConfigEnableComponentsItem("CONTROLLER_MANAGER")
 )
 
 func (LoggingComponentConfigEnableComponentsItem) ElementType() reflect.Type {
@@ -5451,7 +5640,7 @@ func (in *statusConditionCodePtr) ToStatusConditionCodePtrOutputWithContext(ctx 
 type UpgradeSettingsStrategy string
 
 const (
-	// Default value.
+	// Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
 	UpgradeSettingsStrategyNodePoolUpdateStrategyUnspecified = UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED")
 	// blue-green upgrade.
 	UpgradeSettingsStrategyBlueGreen = UpgradeSettingsStrategy("BLUE_GREEN")
@@ -5614,6 +5803,175 @@ func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutput() Upgra
 
 func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutputWithContext(ctx context.Context) UpgradeSettingsStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeSettingsStrategyPtrOutput)
+}
+
+// OSVersion specifies the Windows node config to be used on the node
+type WindowsNodeConfigOsVersion string
+
+const (
+	// When OSVersion is not specified
+	WindowsNodeConfigOsVersionOsVersionUnspecified = WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED")
+	// LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+	WindowsNodeConfigOsVersionOsVersionLtsc2019 = WindowsNodeConfigOsVersion("OS_VERSION_LTSC2019")
+	// LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
+	WindowsNodeConfigOsVersionOsVersionLtsc2022 = WindowsNodeConfigOsVersion("OS_VERSION_LTSC2022")
+)
+
+func (WindowsNodeConfigOsVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfigOsVersion)(nil)).Elem()
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionOutput() WindowsNodeConfigOsVersionOutput {
+	return pulumi.ToOutput(e).(WindowsNodeConfigOsVersionOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WindowsNodeConfigOsVersionOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return e.ToWindowsNodeConfigOsVersionPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return WindowsNodeConfigOsVersion(e).ToWindowsNodeConfigOsVersionOutputWithContext(ctx).ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx)
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WindowsNodeConfigOsVersionOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigOsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfigOsVersion)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionOutput() WindowsNodeConfigOsVersionOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return o.ToWindowsNodeConfigOsVersionPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsNodeConfigOsVersion) *WindowsNodeConfigOsVersion {
+		return &v
+	}).(WindowsNodeConfigOsVersionPtrOutput)
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsNodeConfigOsVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsNodeConfigOsVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WindowsNodeConfigOsVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigOsVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsNodeConfigOsVersion)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) Elem() WindowsNodeConfigOsVersionOutput {
+	return o.ApplyT(func(v *WindowsNodeConfigOsVersion) WindowsNodeConfigOsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsNodeConfigOsVersion
+		return ret
+	}).(WindowsNodeConfigOsVersionOutput)
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WindowsNodeConfigOsVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WindowsNodeConfigOsVersionInput is an input type that accepts WindowsNodeConfigOsVersionArgs and WindowsNodeConfigOsVersionOutput values.
+// You can construct a concrete instance of `WindowsNodeConfigOsVersionInput` via:
+//
+//	WindowsNodeConfigOsVersionArgs{...}
+type WindowsNodeConfigOsVersionInput interface {
+	pulumi.Input
+
+	ToWindowsNodeConfigOsVersionOutput() WindowsNodeConfigOsVersionOutput
+	ToWindowsNodeConfigOsVersionOutputWithContext(context.Context) WindowsNodeConfigOsVersionOutput
+}
+
+var windowsNodeConfigOsVersionPtrType = reflect.TypeOf((**WindowsNodeConfigOsVersion)(nil)).Elem()
+
+type WindowsNodeConfigOsVersionPtrInput interface {
+	pulumi.Input
+
+	ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput
+	ToWindowsNodeConfigOsVersionPtrOutputWithContext(context.Context) WindowsNodeConfigOsVersionPtrOutput
+}
+
+type windowsNodeConfigOsVersionPtr string
+
+func WindowsNodeConfigOsVersionPtr(v string) WindowsNodeConfigOsVersionPtrInput {
+	return (*windowsNodeConfigOsVersionPtr)(&v)
+}
+
+func (*windowsNodeConfigOsVersionPtr) ElementType() reflect.Type {
+	return windowsNodeConfigOsVersionPtrType
+}
+
+func (in *windowsNodeConfigOsVersionPtr) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return pulumi.ToOutput(in).(WindowsNodeConfigOsVersionPtrOutput)
+}
+
+func (in *windowsNodeConfigOsVersionPtr) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WindowsNodeConfigOsVersionPtrOutput)
 }
 
 // Sets which mode of auditing should be used for the cluster's workloads.
@@ -6149,6 +6507,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterEventTypeItemArrayInput)(nil)).Elem(), FilterEventTypeItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigGpuSharingStrategyPtrInput)(nil)).Elem(), GPUSharingConfigGpuSharingStrategy("GPU_SHARING_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigChannelInput)(nil)).Elem(), GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigChannelPtrInput)(nil)).Elem(), GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypeInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyIpv6AccessTypePtrInput)(nil)).Elem(), IPAllocationPolicyIpv6AccessType("IPV6_ACCESS_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*IPAllocationPolicyStackTypeInput)(nil)).Elem(), IPAllocationPolicyStackType("STACK_TYPE_UNSPECIFIED"))
@@ -6197,6 +6557,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodePtrInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsStrategyInput)(nil)).Elem(), UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsStrategyPtrInput)(nil)).Elem(), UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigOsVersionInput)(nil)).Elem(), WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigOsVersionPtrInput)(nil)).Elem(), WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadConfigAuditModeInput)(nil)).Elem(), WorkloadConfigAuditMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadConfigAuditModePtrInput)(nil)).Elem(), WorkloadConfigAuditMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModeInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
@@ -6222,6 +6584,8 @@ func init() {
 	pulumi.RegisterOutputType(FilterEventTypeItemArrayOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigGpuSharingStrategyPtrOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigChannelOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigChannelPtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypeOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyIpv6AccessTypePtrOutput{})
 	pulumi.RegisterOutputType(IPAllocationPolicyStackTypeOutput{})
@@ -6270,6 +6634,8 @@ func init() {
 	pulumi.RegisterOutputType(StatusConditionCodePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsStrategyOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsStrategyPtrOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigOsVersionOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigOsVersionPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadConfigAuditModeOutput{})
 	pulumi.RegisterOutputType(WorkloadConfigAuditModePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigModeOutput{})

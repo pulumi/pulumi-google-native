@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public Input<bool>? AutoStorageIncrease { get; set; }
 
         /// <summary>
+        /// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+        /// </summary>
+        [Input("availabilityType")]
+        public Input<Pulumi.GoogleNative.Datamigration.V1.CloudSqlSettingsAvailabilityType>? AvailabilityType { get; set; }
+
+        /// <summary>
         /// The KMS key name used for the csql instance.
         /// </summary>
         [Input("cmekKeyName")]
@@ -80,6 +86,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
+
+        /// <summary>
+        /// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+        /// </summary>
+        [Input("secondaryZone")]
+        public Input<string>? SecondaryZone { get; set; }
 
         /// <summary>
         /// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`

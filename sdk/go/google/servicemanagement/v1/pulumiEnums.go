@@ -515,6 +515,398 @@ func (in *backendRulePathTranslationPtr) ToBackendRulePathTranslationPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(BackendRulePathTranslationPtrOutput)
 }
 
+// Launch stage of this version of the API.
+type ClientLibrarySettingsLaunchStage string
+
+const (
+	// Do not use this default value.
+	ClientLibrarySettingsLaunchStageLaunchStageUnspecified = ClientLibrarySettingsLaunchStage("LAUNCH_STAGE_UNSPECIFIED")
+	// The feature is not yet implemented. Users can not use it.
+	ClientLibrarySettingsLaunchStageUnimplemented = ClientLibrarySettingsLaunchStage("UNIMPLEMENTED")
+	// Prelaunch features are hidden from users and are only visible internally.
+	ClientLibrarySettingsLaunchStagePrelaunch = ClientLibrarySettingsLaunchStage("PRELAUNCH")
+	// Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.
+	ClientLibrarySettingsLaunchStageEarlyAccess = ClientLibrarySettingsLaunchStage("EARLY_ACCESS")
+	// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don't have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
+	ClientLibrarySettingsLaunchStageAlpha = ClientLibrarySettingsLaunchStage("ALPHA")
+	// Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.
+	ClientLibrarySettingsLaunchStageBeta = ClientLibrarySettingsLaunchStage("BETA")
+	// GA features are open to all developers and are considered stable and fully qualified for production use.
+	ClientLibrarySettingsLaunchStageGa = ClientLibrarySettingsLaunchStage("GA")
+	// Deprecated features are scheduled to be shut down and removed. For more information, see the "Deprecation Policy" section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation.
+	ClientLibrarySettingsLaunchStageDeprecated = ClientLibrarySettingsLaunchStage("DEPRECATED")
+)
+
+func (ClientLibrarySettingsLaunchStage) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientLibrarySettingsLaunchStage)(nil)).Elem()
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToClientLibrarySettingsLaunchStageOutput() ClientLibrarySettingsLaunchStageOutput {
+	return pulumi.ToOutput(e).(ClientLibrarySettingsLaunchStageOutput)
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToClientLibrarySettingsLaunchStageOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ClientLibrarySettingsLaunchStageOutput)
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToClientLibrarySettingsLaunchStagePtrOutput() ClientLibrarySettingsLaunchStagePtrOutput {
+	return e.ToClientLibrarySettingsLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToClientLibrarySettingsLaunchStagePtrOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStagePtrOutput {
+	return ClientLibrarySettingsLaunchStage(e).ToClientLibrarySettingsLaunchStageOutputWithContext(ctx).ToClientLibrarySettingsLaunchStagePtrOutputWithContext(ctx)
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ClientLibrarySettingsLaunchStage) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ClientLibrarySettingsLaunchStageOutput struct{ *pulumi.OutputState }
+
+func (ClientLibrarySettingsLaunchStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientLibrarySettingsLaunchStage)(nil)).Elem()
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToClientLibrarySettingsLaunchStageOutput() ClientLibrarySettingsLaunchStageOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToClientLibrarySettingsLaunchStageOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStageOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToClientLibrarySettingsLaunchStagePtrOutput() ClientLibrarySettingsLaunchStagePtrOutput {
+	return o.ToClientLibrarySettingsLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToClientLibrarySettingsLaunchStagePtrOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClientLibrarySettingsLaunchStage) *ClientLibrarySettingsLaunchStage {
+		return &v
+	}).(ClientLibrarySettingsLaunchStagePtrOutput)
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClientLibrarySettingsLaunchStage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClientLibrarySettingsLaunchStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ClientLibrarySettingsLaunchStage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClientLibrarySettingsLaunchStagePtrOutput struct{ *pulumi.OutputState }
+
+func (ClientLibrarySettingsLaunchStagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClientLibrarySettingsLaunchStage)(nil)).Elem()
+}
+
+func (o ClientLibrarySettingsLaunchStagePtrOutput) ToClientLibrarySettingsLaunchStagePtrOutput() ClientLibrarySettingsLaunchStagePtrOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsLaunchStagePtrOutput) ToClientLibrarySettingsLaunchStagePtrOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStagePtrOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsLaunchStagePtrOutput) Elem() ClientLibrarySettingsLaunchStageOutput {
+	return o.ApplyT(func(v *ClientLibrarySettingsLaunchStage) ClientLibrarySettingsLaunchStage {
+		if v != nil {
+			return *v
+		}
+		var ret ClientLibrarySettingsLaunchStage
+		return ret
+	}).(ClientLibrarySettingsLaunchStageOutput)
+}
+
+func (o ClientLibrarySettingsLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ClientLibrarySettingsLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ClientLibrarySettingsLaunchStage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ClientLibrarySettingsLaunchStageInput is an input type that accepts ClientLibrarySettingsLaunchStageArgs and ClientLibrarySettingsLaunchStageOutput values.
+// You can construct a concrete instance of `ClientLibrarySettingsLaunchStageInput` via:
+//
+//	ClientLibrarySettingsLaunchStageArgs{...}
+type ClientLibrarySettingsLaunchStageInput interface {
+	pulumi.Input
+
+	ToClientLibrarySettingsLaunchStageOutput() ClientLibrarySettingsLaunchStageOutput
+	ToClientLibrarySettingsLaunchStageOutputWithContext(context.Context) ClientLibrarySettingsLaunchStageOutput
+}
+
+var clientLibrarySettingsLaunchStagePtrType = reflect.TypeOf((**ClientLibrarySettingsLaunchStage)(nil)).Elem()
+
+type ClientLibrarySettingsLaunchStagePtrInput interface {
+	pulumi.Input
+
+	ToClientLibrarySettingsLaunchStagePtrOutput() ClientLibrarySettingsLaunchStagePtrOutput
+	ToClientLibrarySettingsLaunchStagePtrOutputWithContext(context.Context) ClientLibrarySettingsLaunchStagePtrOutput
+}
+
+type clientLibrarySettingsLaunchStagePtr string
+
+func ClientLibrarySettingsLaunchStagePtr(v string) ClientLibrarySettingsLaunchStagePtrInput {
+	return (*clientLibrarySettingsLaunchStagePtr)(&v)
+}
+
+func (*clientLibrarySettingsLaunchStagePtr) ElementType() reflect.Type {
+	return clientLibrarySettingsLaunchStagePtrType
+}
+
+func (in *clientLibrarySettingsLaunchStagePtr) ToClientLibrarySettingsLaunchStagePtrOutput() ClientLibrarySettingsLaunchStagePtrOutput {
+	return pulumi.ToOutput(in).(ClientLibrarySettingsLaunchStagePtrOutput)
+}
+
+func (in *clientLibrarySettingsLaunchStagePtr) ToClientLibrarySettingsLaunchStagePtrOutputWithContext(ctx context.Context) ClientLibrarySettingsLaunchStagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ClientLibrarySettingsLaunchStagePtrOutput)
+}
+
+type CommonLanguageSettingsDestinationsItem string
+
+const (
+	// Client libraries will neither be generated nor published to package managers.
+	CommonLanguageSettingsDestinationsItemClientLibraryDestinationUnspecified = CommonLanguageSettingsDestinationsItem("CLIENT_LIBRARY_DESTINATION_UNSPECIFIED")
+	// Generate the client library in a repo under github.com/googleapis, but don't publish it to package managers.
+	CommonLanguageSettingsDestinationsItemGithub = CommonLanguageSettingsDestinationsItem("GITHUB")
+	// Publish the library to package managers like nuget.org and npmjs.com.
+	CommonLanguageSettingsDestinationsItemPackageManager = CommonLanguageSettingsDestinationsItem("PACKAGE_MANAGER")
+)
+
+func (CommonLanguageSettingsDestinationsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonLanguageSettingsDestinationsItem)(nil)).Elem()
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToCommonLanguageSettingsDestinationsItemOutput() CommonLanguageSettingsDestinationsItemOutput {
+	return pulumi.ToOutput(e).(CommonLanguageSettingsDestinationsItemOutput)
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToCommonLanguageSettingsDestinationsItemOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CommonLanguageSettingsDestinationsItemOutput)
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToCommonLanguageSettingsDestinationsItemPtrOutput() CommonLanguageSettingsDestinationsItemPtrOutput {
+	return e.ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(context.Background())
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemPtrOutput {
+	return CommonLanguageSettingsDestinationsItem(e).ToCommonLanguageSettingsDestinationsItemOutputWithContext(ctx).ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(ctx)
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CommonLanguageSettingsDestinationsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CommonLanguageSettingsDestinationsItemOutput struct{ *pulumi.OutputState }
+
+func (CommonLanguageSettingsDestinationsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonLanguageSettingsDestinationsItem)(nil)).Elem()
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToCommonLanguageSettingsDestinationsItemOutput() CommonLanguageSettingsDestinationsItemOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToCommonLanguageSettingsDestinationsItemOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToCommonLanguageSettingsDestinationsItemPtrOutput() CommonLanguageSettingsDestinationsItemPtrOutput {
+	return o.ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(context.Background())
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonLanguageSettingsDestinationsItem) *CommonLanguageSettingsDestinationsItem {
+		return &v
+	}).(CommonLanguageSettingsDestinationsItemPtrOutput)
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CommonLanguageSettingsDestinationsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CommonLanguageSettingsDestinationsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CommonLanguageSettingsDestinationsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CommonLanguageSettingsDestinationsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonLanguageSettingsDestinationsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonLanguageSettingsDestinationsItem)(nil)).Elem()
+}
+
+func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToCommonLanguageSettingsDestinationsItemPtrOutput() CommonLanguageSettingsDestinationsItemPtrOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemPtrOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsDestinationsItemPtrOutput) Elem() CommonLanguageSettingsDestinationsItemOutput {
+	return o.ApplyT(func(v *CommonLanguageSettingsDestinationsItem) CommonLanguageSettingsDestinationsItem {
+		if v != nil {
+			return *v
+		}
+		var ret CommonLanguageSettingsDestinationsItem
+		return ret
+	}).(CommonLanguageSettingsDestinationsItemOutput)
+}
+
+func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CommonLanguageSettingsDestinationsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CommonLanguageSettingsDestinationsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CommonLanguageSettingsDestinationsItemInput is an input type that accepts CommonLanguageSettingsDestinationsItemArgs and CommonLanguageSettingsDestinationsItemOutput values.
+// You can construct a concrete instance of `CommonLanguageSettingsDestinationsItemInput` via:
+//
+//	CommonLanguageSettingsDestinationsItemArgs{...}
+type CommonLanguageSettingsDestinationsItemInput interface {
+	pulumi.Input
+
+	ToCommonLanguageSettingsDestinationsItemOutput() CommonLanguageSettingsDestinationsItemOutput
+	ToCommonLanguageSettingsDestinationsItemOutputWithContext(context.Context) CommonLanguageSettingsDestinationsItemOutput
+}
+
+var commonLanguageSettingsDestinationsItemPtrType = reflect.TypeOf((**CommonLanguageSettingsDestinationsItem)(nil)).Elem()
+
+type CommonLanguageSettingsDestinationsItemPtrInput interface {
+	pulumi.Input
+
+	ToCommonLanguageSettingsDestinationsItemPtrOutput() CommonLanguageSettingsDestinationsItemPtrOutput
+	ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(context.Context) CommonLanguageSettingsDestinationsItemPtrOutput
+}
+
+type commonLanguageSettingsDestinationsItemPtr string
+
+func CommonLanguageSettingsDestinationsItemPtr(v string) CommonLanguageSettingsDestinationsItemPtrInput {
+	return (*commonLanguageSettingsDestinationsItemPtr)(&v)
+}
+
+func (*commonLanguageSettingsDestinationsItemPtr) ElementType() reflect.Type {
+	return commonLanguageSettingsDestinationsItemPtrType
+}
+
+func (in *commonLanguageSettingsDestinationsItemPtr) ToCommonLanguageSettingsDestinationsItemPtrOutput() CommonLanguageSettingsDestinationsItemPtrOutput {
+	return pulumi.ToOutput(in).(CommonLanguageSettingsDestinationsItemPtrOutput)
+}
+
+func (in *commonLanguageSettingsDestinationsItemPtr) ToCommonLanguageSettingsDestinationsItemPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CommonLanguageSettingsDestinationsItemPtrOutput)
+}
+
+// CommonLanguageSettingsDestinationsItemArrayInput is an input type that accepts CommonLanguageSettingsDestinationsItemArray and CommonLanguageSettingsDestinationsItemArrayOutput values.
+// You can construct a concrete instance of `CommonLanguageSettingsDestinationsItemArrayInput` via:
+//
+//	CommonLanguageSettingsDestinationsItemArray{ CommonLanguageSettingsDestinationsItemArgs{...} }
+type CommonLanguageSettingsDestinationsItemArrayInput interface {
+	pulumi.Input
+
+	ToCommonLanguageSettingsDestinationsItemArrayOutput() CommonLanguageSettingsDestinationsItemArrayOutput
+	ToCommonLanguageSettingsDestinationsItemArrayOutputWithContext(context.Context) CommonLanguageSettingsDestinationsItemArrayOutput
+}
+
+type CommonLanguageSettingsDestinationsItemArray []CommonLanguageSettingsDestinationsItem
+
+func (CommonLanguageSettingsDestinationsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommonLanguageSettingsDestinationsItem)(nil)).Elem()
+}
+
+func (i CommonLanguageSettingsDestinationsItemArray) ToCommonLanguageSettingsDestinationsItemArrayOutput() CommonLanguageSettingsDestinationsItemArrayOutput {
+	return i.ToCommonLanguageSettingsDestinationsItemArrayOutputWithContext(context.Background())
+}
+
+func (i CommonLanguageSettingsDestinationsItemArray) ToCommonLanguageSettingsDestinationsItemArrayOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonLanguageSettingsDestinationsItemArrayOutput)
+}
+
+type CommonLanguageSettingsDestinationsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (CommonLanguageSettingsDestinationsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CommonLanguageSettingsDestinationsItem)(nil)).Elem()
+}
+
+func (o CommonLanguageSettingsDestinationsItemArrayOutput) ToCommonLanguageSettingsDestinationsItemArrayOutput() CommonLanguageSettingsDestinationsItemArrayOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsDestinationsItemArrayOutput) ToCommonLanguageSettingsDestinationsItemArrayOutputWithContext(ctx context.Context) CommonLanguageSettingsDestinationsItemArrayOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsDestinationsItemArrayOutput) Index(i pulumi.IntInput) CommonLanguageSettingsDestinationsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommonLanguageSettingsDestinationsItem {
+		return vs[0].([]CommonLanguageSettingsDestinationsItem)[vs[1].(int)]
+	}).(CommonLanguageSettingsDestinationsItemOutput)
+}
+
 // The source syntax.
 type EnumSyntax string
 
@@ -2275,6 +2667,179 @@ func (in *monitoredResourceDescriptorLaunchStagePtr) ToMonitoredResourceDescript
 	return pulumi.ToOutputWithContext(ctx, in).(MonitoredResourceDescriptorLaunchStagePtrOutput)
 }
 
+// For whom the client library is being published.
+type PublishingOrganization string
+
+const (
+	// Not useful.
+	PublishingOrganizationClientLibraryOrganizationUnspecified = PublishingOrganization("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED")
+	// Google Cloud Platform Org.
+	PublishingOrganizationCloud = PublishingOrganization("CLOUD")
+	// Ads (Advertising) Org.
+	PublishingOrganizationAds = PublishingOrganization("ADS")
+	// Photos Org.
+	PublishingOrganizationPhotos = PublishingOrganization("PHOTOS")
+	// Street View Org.
+	PublishingOrganizationStreetView = PublishingOrganization("STREET_VIEW")
+)
+
+func (PublishingOrganization) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingOrganization)(nil)).Elem()
+}
+
+func (e PublishingOrganization) ToPublishingOrganizationOutput() PublishingOrganizationOutput {
+	return pulumi.ToOutput(e).(PublishingOrganizationOutput)
+}
+
+func (e PublishingOrganization) ToPublishingOrganizationOutputWithContext(ctx context.Context) PublishingOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublishingOrganizationOutput)
+}
+
+func (e PublishingOrganization) ToPublishingOrganizationPtrOutput() PublishingOrganizationPtrOutput {
+	return e.ToPublishingOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (e PublishingOrganization) ToPublishingOrganizationPtrOutputWithContext(ctx context.Context) PublishingOrganizationPtrOutput {
+	return PublishingOrganization(e).ToPublishingOrganizationOutputWithContext(ctx).ToPublishingOrganizationPtrOutputWithContext(ctx)
+}
+
+func (e PublishingOrganization) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublishingOrganization) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PublishingOrganization) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PublishingOrganization) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublishingOrganizationOutput struct{ *pulumi.OutputState }
+
+func (PublishingOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingOrganization)(nil)).Elem()
+}
+
+func (o PublishingOrganizationOutput) ToPublishingOrganizationOutput() PublishingOrganizationOutput {
+	return o
+}
+
+func (o PublishingOrganizationOutput) ToPublishingOrganizationOutputWithContext(ctx context.Context) PublishingOrganizationOutput {
+	return o
+}
+
+func (o PublishingOrganizationOutput) ToPublishingOrganizationPtrOutput() PublishingOrganizationPtrOutput {
+	return o.ToPublishingOrganizationPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOrganizationOutput) ToPublishingOrganizationPtrOutputWithContext(ctx context.Context) PublishingOrganizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublishingOrganization) *PublishingOrganization {
+		return &v
+	}).(PublishingOrganizationPtrOutput)
+}
+
+func (o PublishingOrganizationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublishingOrganizationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublishingOrganization) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublishingOrganizationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOrganizationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublishingOrganization) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublishingOrganizationPtrOutput struct{ *pulumi.OutputState }
+
+func (PublishingOrganizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PublishingOrganization)(nil)).Elem()
+}
+
+func (o PublishingOrganizationPtrOutput) ToPublishingOrganizationPtrOutput() PublishingOrganizationPtrOutput {
+	return o
+}
+
+func (o PublishingOrganizationPtrOutput) ToPublishingOrganizationPtrOutputWithContext(ctx context.Context) PublishingOrganizationPtrOutput {
+	return o
+}
+
+func (o PublishingOrganizationPtrOutput) Elem() PublishingOrganizationOutput {
+	return o.ApplyT(func(v *PublishingOrganization) PublishingOrganization {
+		if v != nil {
+			return *v
+		}
+		var ret PublishingOrganization
+		return ret
+	}).(PublishingOrganizationOutput)
+}
+
+func (o PublishingOrganizationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOrganizationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublishingOrganization) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PublishingOrganizationInput is an input type that accepts PublishingOrganizationArgs and PublishingOrganizationOutput values.
+// You can construct a concrete instance of `PublishingOrganizationInput` via:
+//
+//	PublishingOrganizationArgs{...}
+type PublishingOrganizationInput interface {
+	pulumi.Input
+
+	ToPublishingOrganizationOutput() PublishingOrganizationOutput
+	ToPublishingOrganizationOutputWithContext(context.Context) PublishingOrganizationOutput
+}
+
+var publishingOrganizationPtrType = reflect.TypeOf((**PublishingOrganization)(nil)).Elem()
+
+type PublishingOrganizationPtrInput interface {
+	pulumi.Input
+
+	ToPublishingOrganizationPtrOutput() PublishingOrganizationPtrOutput
+	ToPublishingOrganizationPtrOutputWithContext(context.Context) PublishingOrganizationPtrOutput
+}
+
+type publishingOrganizationPtr string
+
+func PublishingOrganizationPtr(v string) PublishingOrganizationPtrInput {
+	return (*publishingOrganizationPtr)(&v)
+}
+
+func (*publishingOrganizationPtr) ElementType() reflect.Type {
+	return publishingOrganizationPtrType
+}
+
+func (in *publishingOrganizationPtr) ToPublishingOrganizationPtrOutput() PublishingOrganizationPtrOutput {
+	return pulumi.ToOutput(in).(PublishingOrganizationPtrOutput)
+}
+
+func (in *publishingOrganizationPtr) ToPublishingOrganizationPtrOutputWithContext(ctx context.Context) PublishingOrganizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublishingOrganizationPtrOutput)
+}
+
 // The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
 type RolloutStatus string
 
@@ -2469,6 +3034,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendRulePathTranslationInput)(nil)).Elem(), BackendRulePathTranslation("PATH_TRANSLATION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendRulePathTranslationPtrInput)(nil)).Elem(), BackendRulePathTranslation("PATH_TRANSLATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientLibrarySettingsLaunchStageInput)(nil)).Elem(), ClientLibrarySettingsLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientLibrarySettingsLaunchStagePtrInput)(nil)).Elem(), ClientLibrarySettingsLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonLanguageSettingsDestinationsItemInput)(nil)).Elem(), CommonLanguageSettingsDestinationsItem("CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonLanguageSettingsDestinationsItemPtrInput)(nil)).Elem(), CommonLanguageSettingsDestinationsItem("CLIENT_LIBRARY_DESTINATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonLanguageSettingsDestinationsItemArrayInput)(nil)).Elem(), CommonLanguageSettingsDestinationsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnumSyntaxInput)(nil)).Elem(), EnumSyntax("SYNTAX_PROTO2"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnumSyntaxPtrInput)(nil)).Elem(), EnumSyntax("SYNTAX_PROTO2"))
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldCardinalityInput)(nil)).Elem(), FieldCardinality("CARDINALITY_UNKNOWN"))
@@ -2489,6 +3059,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorValueTypePtrInput)(nil)).Elem(), MetricDescriptorValueType("VALUE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceDescriptorLaunchStageInput)(nil)).Elem(), MonitoredResourceDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoredResourceDescriptorLaunchStagePtrInput)(nil)).Elem(), MonitoredResourceDescriptorLaunchStage("LAUNCH_STAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOrganizationInput)(nil)).Elem(), PublishingOrganization("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingOrganizationPtrInput)(nil)).Elem(), PublishingOrganization("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeSyntaxInput)(nil)).Elem(), TypeSyntax("SYNTAX_PROTO2"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeSyntaxPtrInput)(nil)).Elem(), TypeSyntax("SYNTAX_PROTO2"))
 	pulumi.RegisterOutputType(ApiSyntaxOutput{})
@@ -2497,6 +3069,11 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(BackendRulePathTranslationOutput{})
 	pulumi.RegisterOutputType(BackendRulePathTranslationPtrOutput{})
+	pulumi.RegisterOutputType(ClientLibrarySettingsLaunchStageOutput{})
+	pulumi.RegisterOutputType(ClientLibrarySettingsLaunchStagePtrOutput{})
+	pulumi.RegisterOutputType(CommonLanguageSettingsDestinationsItemOutput{})
+	pulumi.RegisterOutputType(CommonLanguageSettingsDestinationsItemPtrOutput{})
+	pulumi.RegisterOutputType(CommonLanguageSettingsDestinationsItemArrayOutput{})
 	pulumi.RegisterOutputType(EnumSyntaxOutput{})
 	pulumi.RegisterOutputType(EnumSyntaxPtrOutput{})
 	pulumi.RegisterOutputType(FieldCardinalityOutput{})
@@ -2517,6 +3094,8 @@ func init() {
 	pulumi.RegisterOutputType(MetricDescriptorValueTypePtrOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceDescriptorLaunchStageOutput{})
 	pulumi.RegisterOutputType(MonitoredResourceDescriptorLaunchStagePtrOutput{})
+	pulumi.RegisterOutputType(PublishingOrganizationOutput{})
+	pulumi.RegisterOutputType(PublishingOrganizationPtrOutput{})
 	pulumi.RegisterOutputType(TypeSyntaxOutput{})
 	pulumi.RegisterOutputType(TypeSyntaxPtrOutput{})
 }

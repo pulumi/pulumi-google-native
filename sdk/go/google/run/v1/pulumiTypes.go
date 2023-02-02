@@ -1253,17 +1253,17 @@ type Container struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 	Command []string `pulumi:"command"`
-	// List of environment variables to set in the container.
+	// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
 	Env []EnvVar `pulumi:"env"`
 	// Not supported by Cloud Run.
 	EnvFrom []EnvFromSource `pulumi:"envFrom"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy *string `pulumi:"imagePullPolicy"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe *Probe `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+	// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name *string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPort `pulumi:"ports"`
@@ -1302,17 +1302,17 @@ type ContainerArgs struct {
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 	Command pulumi.StringArrayInput `pulumi:"command"`
-	// List of environment variables to set in the container.
+	// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
 	Env EnvVarArrayInput `pulumi:"env"`
 	// Not supported by Cloud Run.
 	EnvFrom EnvFromSourceArrayInput `pulumi:"envFrom"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy pulumi.StringPtrInput `pulumi:"imagePullPolicy"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbePtrInput `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+	// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports ContainerPortArrayInput `pulumi:"ports"`
@@ -1396,7 +1396,7 @@ func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// List of environment variables to set in the container.
+// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
 func (o ContainerOutput) Env() EnvVarArrayOutput {
 	return o.ApplyT(func(v Container) []EnvVar { return v.Env }).(EnvVarArrayOutput)
 }
@@ -1406,7 +1406,7 @@ func (o ContainerOutput) EnvFrom() EnvFromSourceArrayOutput {
 	return o.ApplyT(func(v Container) []EnvFromSource { return v.EnvFrom }).(EnvFromSourceArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o ContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v Container) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -1421,7 +1421,7 @@ func (o ContainerOutput) LivenessProbe() ProbePtrOutput {
 	return o.ApplyT(func(v Container) *Probe { return v.LivenessProbe }).(ProbePtrOutput)
 }
 
-// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 func (o ContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -1675,17 +1675,17 @@ type ContainerResponse struct {
 	Args []string `pulumi:"args"`
 	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 	Command []string `pulumi:"command"`
-	// List of environment variables to set in the container.
+	// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
 	Env []EnvVarResponse `pulumi:"env"`
 	// Not supported by Cloud Run.
 	EnvFrom []EnvFromSourceResponse `pulumi:"envFrom"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
 	// Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
 	ImagePullPolicy string `pulumi:"imagePullPolicy"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe ProbeResponse `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+	// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 	Name string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []ContainerPortResponse `pulumi:"ports"`
@@ -1732,7 +1732,7 @@ func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
 
-// List of environment variables to set in the container.
+// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
 func (o ContainerResponseOutput) Env() EnvVarResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvVarResponse { return v.Env }).(EnvVarResponseArrayOutput)
 }
@@ -1742,7 +1742,7 @@ func (o ContainerResponseOutput) EnvFrom() EnvFromSourceResponseArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []EnvFromSourceResponse { return v.EnvFrom }).(EnvFromSourceResponseArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -1757,7 +1757,7 @@ func (o ContainerResponseOutput) LivenessProbe() ProbeResponseOutput {
 	return o.ApplyT(func(v ContainerResponse) ProbeResponse { return v.LivenessProbe }).(ProbeResponseOutput)
 }
 
-// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
 func (o ContainerResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3978,7 +3978,7 @@ func (o JobStatusResponseOutput) ObservedGeneration() pulumi.IntOutput {
 
 // Maps a string key to a path within a volume.
 type KeyToPath struct {
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
 	Key *string `pulumi:"key"`
 	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode *int `pulumi:"mode"`
@@ -3999,7 +3999,7 @@ type KeyToPathInput interface {
 
 // Maps a string key to a path within a volume.
 type KeyToPathArgs struct {
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
@@ -4059,7 +4059,7 @@ func (o KeyToPathOutput) ToKeyToPathOutputWithContext(ctx context.Context) KeyTo
 	return o
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
 func (o KeyToPathOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KeyToPath) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -4096,7 +4096,7 @@ func (o KeyToPathArrayOutput) Index(i pulumi.IntInput) KeyToPathOutput {
 
 // Maps a string key to a path within a volume.
 type KeyToPathResponse struct {
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
 	Key string `pulumi:"key"`
 	// (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
 	Mode int `pulumi:"mode"`
@@ -4119,7 +4119,7 @@ func (o KeyToPathResponseOutput) ToKeyToPathResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
 func (o KeyToPathResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyToPathResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -4405,7 +4405,7 @@ type ObjectMeta struct {
 	Generation *int `pulumi:"generation"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
 	Name string `pulumi:"name"`
 	// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
 	Namespace string `pulumi:"namespace"`
@@ -4450,7 +4450,7 @@ type ObjectMetaArgs struct {
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
 	Name pulumi.StringInput `pulumi:"name"`
 	// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
@@ -4587,7 +4587,7 @@ func (o ObjectMetaOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
 func (o ObjectMetaOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMeta) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4731,7 +4731,7 @@ func (o ObjectMetaPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
 func (o ObjectMetaPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -4811,7 +4811,7 @@ type ObjectMetaResponse struct {
 	Generation int `pulumi:"generation"`
 	// Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+	// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
 	Name string `pulumi:"name"`
 	// Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
 	Namespace string `pulumi:"namespace"`
@@ -4885,7 +4885,7 @@ func (o ObjectMetaResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+// The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
 func (o ObjectMetaResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6505,7 +6505,7 @@ func (o SecretEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 
 // SecretKeySelector selects a key of a Secret.
 type SecretKeySelector struct {
-	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
@@ -6528,7 +6528,7 @@ type SecretKeySelectorInput interface {
 
 // SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorArgs struct {
-	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
@@ -6616,7 +6616,7 @@ func (o SecretKeySelectorOutput) ToSecretKeySelectorPtrOutputWithContext(ctx con
 	}).(SecretKeySelectorPtrOutput)
 }
 
-// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelector) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -6660,7 +6660,7 @@ func (o SecretKeySelectorPtrOutput) Elem() SecretKeySelectorOutput {
 	}).(SecretKeySelectorOutput)
 }
 
-// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecretKeySelector) *string {
 		if v == nil {
@@ -6702,7 +6702,7 @@ func (o SecretKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 
 // SecretKeySelector selects a key of a Secret.
 type SecretKeySelectorResponse struct {
-	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+	// A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 	Key string `pulumi:"key"`
 	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
@@ -6727,7 +6727,7 @@ func (o SecretKeySelectorResponseOutput) ToSecretKeySelectorResponseOutputWithCo
 	return o
 }
 
-// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+// A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
 func (o SecretKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SecretKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -7729,15 +7729,17 @@ func (o TaskTemplateSpecResponseOutput) Spec() TaskSpecResponseOutput {
 
 // TrafficTarget holds a single entry of the routing table for a Route.
 type TrafficTarget struct {
-	// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+	// [Deprecated] Not supported in Cloud Run. It must be empty.
+	//
+	// Deprecated: [Deprecated] Not supported in Cloud Run. It must be empty.
 	ConfigurationName *string `pulumi:"configurationName"`
-	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+	// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
 	LatestRevision *bool `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent *int `pulumi:"percent"`
-	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+	// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
 	RevisionName *string `pulumi:"revisionName"`
-	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+	// Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag *string `pulumi:"tag"`
 }
 
@@ -7754,15 +7756,17 @@ type TrafficTargetInput interface {
 
 // TrafficTarget holds a single entry of the routing table for a Route.
 type TrafficTargetArgs struct {
-	// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+	// [Deprecated] Not supported in Cloud Run. It must be empty.
+	//
+	// Deprecated: [Deprecated] Not supported in Cloud Run. It must be empty.
 	ConfigurationName pulumi.StringPtrInput `pulumi:"configurationName"`
-	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+	// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
 	LatestRevision pulumi.BoolPtrInput `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent pulumi.IntPtrInput `pulumi:"percent"`
-	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+	// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
 	RevisionName pulumi.StringPtrInput `pulumi:"revisionName"`
-	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+	// Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
 
@@ -7818,12 +7822,14 @@ func (o TrafficTargetOutput) ToTrafficTargetOutputWithContext(ctx context.Contex
 	return o
 }
 
-// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+// [Deprecated] Not supported in Cloud Run. It must be empty.
+//
+// Deprecated: [Deprecated] Not supported in Cloud Run. It must be empty.
 func (o TrafficTargetOutput) ConfigurationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.ConfigurationName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
 func (o TrafficTargetOutput) LatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *bool { return v.LatestRevision }).(pulumi.BoolPtrOutput)
 }
@@ -7833,12 +7839,12 @@ func (o TrafficTargetOutput) Percent() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *int { return v.Percent }).(pulumi.IntPtrOutput)
 }
 
-// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
 func (o TrafficTargetOutput) RevisionName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.RevisionName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+// Tag is used to expose a dedicated url for referencing this target exclusively.
 func (o TrafficTargetOutput) Tag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficTarget) *string { return v.Tag }).(pulumi.StringPtrOutput)
 }
@@ -7865,15 +7871,17 @@ func (o TrafficTargetArrayOutput) Index(i pulumi.IntInput) TrafficTargetOutput {
 
 // TrafficTarget holds a single entry of the routing table for a Route.
 type TrafficTargetResponse struct {
-	// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+	// [Deprecated] Not supported in Cloud Run. It must be empty.
+	//
+	// Deprecated: [Deprecated] Not supported in Cloud Run. It must be empty.
 	ConfigurationName string `pulumi:"configurationName"`
-	// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+	// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
 	LatestRevision bool `pulumi:"latestRevision"`
 	// Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
 	Percent int `pulumi:"percent"`
-	// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+	// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
 	RevisionName string `pulumi:"revisionName"`
-	// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+	// Tag is used to expose a dedicated url for referencing this target exclusively.
 	Tag string `pulumi:"tag"`
 	// URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. https://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
 	Url string `pulumi:"url"`
@@ -7894,12 +7902,14 @@ func (o TrafficTargetResponseOutput) ToTrafficTargetResponseOutputWithContext(ct
 	return o
 }
 
-// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+// [Deprecated] Not supported in Cloud Run. It must be empty.
+//
+// Deprecated: [Deprecated] Not supported in Cloud Run. It must be empty.
 func (o TrafficTargetResponseOutput) ConfigurationName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.ConfigurationName }).(pulumi.StringOutput)
 }
 
-// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
 func (o TrafficTargetResponseOutput) LatestRevision() pulumi.BoolOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) bool { return v.LatestRevision }).(pulumi.BoolOutput)
 }
@@ -7909,12 +7919,12 @@ func (o TrafficTargetResponseOutput) Percent() pulumi.IntOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) int { return v.Percent }).(pulumi.IntOutput)
 }
 
-// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
 func (o TrafficTargetResponseOutput) RevisionName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.RevisionName }).(pulumi.StringOutput)
 }
 
-// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+// Tag is used to expose a dedicated url for referencing this target exclusively.
 func (o TrafficTargetResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficTargetResponse) string { return v.Tag }).(pulumi.StringOutput)
 }

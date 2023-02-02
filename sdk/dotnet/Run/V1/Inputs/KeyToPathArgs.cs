@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class KeyToPathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }

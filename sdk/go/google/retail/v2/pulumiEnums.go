@@ -1118,7 +1118,7 @@ func (in *productTypePtr) ToProductTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ProductTypePtrOutput)
 }
 
-// What kind of diversity to use - data driven or rule based.
+// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
 type ServingConfigDiversityType string
 
 const (

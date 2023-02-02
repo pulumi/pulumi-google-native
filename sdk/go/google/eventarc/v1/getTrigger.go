@@ -45,7 +45,7 @@ type LookupTriggerResult struct {
 	Name string `pulumi:"name"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also have the `roles/eventarc.eventReceiver` IAM role.
 	ServiceAccount string `pulumi:"serviceAccount"`
-	// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+	// Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 	Transport TransportResponse `pulumi:"transport"`
 	// Server-assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
 	Uid string `pulumi:"uid"`
@@ -135,7 +135,7 @@ func (o LookupTriggerResultOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTriggerResult) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+// Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
 func (o LookupTriggerResultOutput) Transport() TransportResponseOutput {
 	return o.ApplyT(func(v LookupTriggerResult) TransportResponse { return v.Transport }).(TransportResponseOutput)
 }

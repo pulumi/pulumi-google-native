@@ -35,6 +35,10 @@ export interface GetSubscriptionResult {
      */
     readonly deliveryConfig: outputs.pubsublite.v1.DeliveryConfigResponse;
     /**
+     * If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+     */
+    readonly exportConfig: outputs.pubsublite.v1.ExportConfigResponse;
+    /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
      */
     readonly name: string;

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTriggerResult:
-    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, gitlab_enterprise_events_config=None, ignored_files=None, include_build_logs=None, included_files=None, name=None, pubsub_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
+    def __init__(__self__, approval_config=None, autodetect=None, bitbucket_server_trigger_config=None, build=None, create_time=None, description=None, disabled=None, event_type=None, filename=None, filter=None, git_file_source=None, github=None, gitlab_enterprise_events_config=None, ignored_files=None, include_build_logs=None, included_files=None, name=None, pubsub_config=None, repository_event_config=None, resource_name=None, service_account=None, source_to_build=None, substitutions=None, tags=None, trigger_template=None, webhook_config=None):
         if approval_config and not isinstance(approval_config, dict):
             raise TypeError("Expected argument 'approval_config' to be a dict")
         pulumi.set(__self__, "approval_config", approval_config)
@@ -74,6 +74,9 @@ class GetTriggerResult:
         if pubsub_config and not isinstance(pubsub_config, dict):
             raise TypeError("Expected argument 'pubsub_config' to be a dict")
         pulumi.set(__self__, "pubsub_config", pubsub_config)
+        if repository_event_config and not isinstance(repository_event_config, dict):
+            raise TypeError("Expected argument 'repository_event_config' to be a dict")
+        pulumi.set(__self__, "repository_event_config", repository_event_config)
         if resource_name and not isinstance(resource_name, str):
             raise TypeError("Expected argument 'resource_name' to be a str")
         pulumi.set(__self__, "resource_name", resource_name)
@@ -241,6 +244,14 @@ class GetTriggerResult:
         return pulumi.get(self, "pubsub_config")
 
     @property
+    @pulumi.getter(name="repositoryEventConfig")
+    def repository_event_config(self) -> 'outputs.RepositoryEventConfigResponse':
+        """
+        The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        """
+        return pulumi.get(self, "repository_event_config")
+
+    @property
     @pulumi.getter(name="resourceName")
     def resource_name(self) -> str:
         """
@@ -321,6 +332,7 @@ class AwaitableGetTriggerResult(GetTriggerResult):
             included_files=self.included_files,
             name=self.name,
             pubsub_config=self.pubsub_config,
+            repository_event_config=self.repository_event_config,
             resource_name=self.resource_name,
             service_account=self.service_account,
             source_to_build=self.source_to_build,
@@ -365,6 +377,7 @@ def get_trigger(location: Optional[str] = None,
         included_files=__ret__.included_files,
         name=__ret__.name,
         pubsub_config=__ret__.pubsub_config,
+        repository_event_config=__ret__.repository_event_config,
         resource_name=__ret__.resource_name,
         service_account=__ret__.service_account,
         source_to_build=__ret__.source_to_build,

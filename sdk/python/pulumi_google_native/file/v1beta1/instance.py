@@ -28,6 +28,7 @@ class InstanceArgs:
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input['InstanceProtocol']] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -40,6 +41,7 @@ class InstanceArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input['InstanceProtocol'] protocol: Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
@@ -63,6 +65,8 @@ class InstanceArgs:
             pulumi.set(__self__, "networks", networks)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
 
@@ -194,6 +198,18 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input['InstanceProtocol']]:
+        """
+        Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input['InstanceProtocol']]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter
     def tier(self) -> Optional[pulumi.Input['InstanceTier']]:
         """
         The service tier of the instance.
@@ -221,6 +237,7 @@ class Instance(pulumi.CustomResource):
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input['InstanceProtocol']] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  __props__=None):
         """
@@ -238,6 +255,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
+        :param pulumi.Input['InstanceProtocol'] protocol: Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
         :param pulumi.Input['InstanceTier'] tier: The service tier of the instance.
         """
         ...
@@ -276,6 +294,7 @@ class Instance(pulumi.CustomResource):
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input['InstanceProtocol']] = None,
                  tier: Optional[pulumi.Input['InstanceTier']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -299,6 +318,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["multi_share_enabled"] = multi_share_enabled
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
+            __props__.__dict__["protocol"] = protocol
             __props__.__dict__["tier"] = tier
             __props__.__dict__["capacity_step_size_gb"] = None
             __props__.__dict__["create_time"] = None
@@ -349,6 +369,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["protocol"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
@@ -477,6 +498,14 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Output[str]:
+        """
+        Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+        """
+        return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

@@ -51,6 +51,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.container.v1beta1.NodeConfigResponse>;
     /**
+     * This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
@@ -111,7 +115,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.v1beta1.UpgradeSettingsResponse>;
     /**
-     * The version of the Kubernetes of this node.
+     * The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -133,6 +137,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["locations"] = args ? args.locations : undefined;
@@ -157,6 +162,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["initialNodeCount"] = undefined /*out*/;
             resourceInputs["instanceGroupUrls"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -205,6 +211,10 @@ export interface NodePoolArgs {
      */
     config?: pulumi.Input<inputs.container.v1beta1.NodeConfigArgs>;
     /**
+     * This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
+    /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
     initialNodeCount?: pulumi.Input<number>;
@@ -248,7 +258,7 @@ export interface NodePoolArgs {
      */
     upgradeSettings?: pulumi.Input<inputs.container.v1beta1.UpgradeSettingsArgs>;
     /**
-     * The version of the Kubernetes of this node.
+     * The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
      */
     version?: pulumi.Input<string>;
     /**

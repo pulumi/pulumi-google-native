@@ -25,7 +25,7 @@ class DnsAuthorizationArgs:
         """
         The set of arguments for constructing a DnsAuthorization resource.
         :param pulumi.Input[str] dns_authorization_id: Required. A user-provided name of the dns authorization.
-        :param pulumi.Input[str] domain: Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+        :param pulumi.Input[str] domain: Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a DnsAuthorization.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a DnsAuthorization.
         :param pulumi.Input[str] name: A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
@@ -59,7 +59,7 @@ class DnsAuthorizationArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+        Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         """
         return pulumi.get(self, "domain")
 
@@ -142,7 +142,7 @@ class DnsAuthorization(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: One or more paragraphs of text description of a DnsAuthorization.
         :param pulumi.Input[str] dns_authorization_id: Required. A user-provided name of the dns authorization.
-        :param pulumi.Input[str] domain: Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+        :param pulumi.Input[str] domain: Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Set of labels associated with a DnsAuthorization.
         :param pulumi.Input[str] name: A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
         """
@@ -272,7 +272,7 @@ class DnsAuthorization(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+        Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         """
         return pulumi.get(self, "domain")
 

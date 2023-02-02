@@ -7,6 +7,7 @@ from enum import Enum
 __all__ = [
     'AllowedClientMountPermissions',
     'InstanceConfigNetworkConfig',
+    'InstanceWorkloadProfile',
     'LogicalNetworkInterfaceNetworkType',
     'LunMultiprotocolType',
     'LunState',
@@ -23,6 +24,7 @@ __all__ = [
     'VolumeSnapshotAutoDeleteBehavior',
     'VolumeState',
     'VolumeStorageType',
+    'VolumeWorkloadProfile',
 ]
 
 
@@ -59,6 +61,24 @@ class InstanceConfigNetworkConfig(str, Enum):
     MULTI_VLAN = "MULTI_VLAN"
     """
     Instance part of multiple (or single) client networks and private networks.
+    """
+
+
+class InstanceWorkloadProfile(str, Enum):
+    """
+    The workload profile for the instance.
+    """
+    WORKLOAD_PROFILE_UNSPECIFIED = "WORKLOAD_PROFILE_UNSPECIFIED"
+    """
+    The workload profile is in an unknown state.
+    """
+    WORKLOAD_PROFILE_GENERIC = "WORKLOAD_PROFILE_GENERIC"
+    """
+    The workload profile is generic.
+    """
+    WORKLOAD_PROFILE_HANA = "WORKLOAD_PROFILE_HANA"
+    """
+    The workload profile is hana.
     """
 
 
@@ -387,4 +407,22 @@ class VolumeStorageType(str, Enum):
     HDD = "HDD"
     """
     This storage type for this volume is HDD.
+    """
+
+
+class VolumeWorkloadProfile(str, Enum):
+    """
+    The workload profile for the volume.
+    """
+    WORKLOAD_PROFILE_UNSPECIFIED = "WORKLOAD_PROFILE_UNSPECIFIED"
+    """
+    The workload profile is in an unknown state.
+    """
+    GENERIC = "GENERIC"
+    """
+    The workload profile is generic.
+    """
+    HANA = "HANA"
+    """
+    The workload profile is hana.
     """

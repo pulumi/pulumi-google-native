@@ -1273,13 +1273,15 @@ type GooglePrivacyDlpV2CustomInfoTypeLikelihood string
 const (
 	// Default value; same as POSSIBLE.
 	GooglePrivacyDlpV2CustomInfoTypeLikelihoodLikelihoodUnspecified = GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELIHOOD_UNSPECIFIED")
-	// Few matching elements.
+	// Highest chance of a false positive.
 	GooglePrivacyDlpV2CustomInfoTypeLikelihoodVeryUnlikely = GooglePrivacyDlpV2CustomInfoTypeLikelihood("VERY_UNLIKELY")
-	GooglePrivacyDlpV2CustomInfoTypeLikelihoodUnlikely     = GooglePrivacyDlpV2CustomInfoTypeLikelihood("UNLIKELY")
-	// Some matching elements.
+	// High chance of a false positive.
+	GooglePrivacyDlpV2CustomInfoTypeLikelihoodUnlikely = GooglePrivacyDlpV2CustomInfoTypeLikelihood("UNLIKELY")
+	// Some matching signals. The default value.
 	GooglePrivacyDlpV2CustomInfoTypeLikelihoodPossible = GooglePrivacyDlpV2CustomInfoTypeLikelihood("POSSIBLE")
-	GooglePrivacyDlpV2CustomInfoTypeLikelihoodLikely   = GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELY")
-	// Many matching elements.
+	// Low chance of a false positive.
+	GooglePrivacyDlpV2CustomInfoTypeLikelihoodLikely = GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELY")
+	// Confidence level is high. Lowest chance of a false positive.
 	GooglePrivacyDlpV2CustomInfoTypeLikelihoodVeryLikely = GooglePrivacyDlpV2CustomInfoTypeLikelihood("VERY_LIKELY")
 )
 
@@ -2226,13 +2228,15 @@ type GooglePrivacyDlpV2InspectConfigMinLikelihood string
 const (
 	// Default value; same as POSSIBLE.
 	GooglePrivacyDlpV2InspectConfigMinLikelihoodLikelihoodUnspecified = GooglePrivacyDlpV2InspectConfigMinLikelihood("LIKELIHOOD_UNSPECIFIED")
-	// Few matching elements.
+	// Highest chance of a false positive.
 	GooglePrivacyDlpV2InspectConfigMinLikelihoodVeryUnlikely = GooglePrivacyDlpV2InspectConfigMinLikelihood("VERY_UNLIKELY")
-	GooglePrivacyDlpV2InspectConfigMinLikelihoodUnlikely     = GooglePrivacyDlpV2InspectConfigMinLikelihood("UNLIKELY")
-	// Some matching elements.
+	// High chance of a false positive.
+	GooglePrivacyDlpV2InspectConfigMinLikelihoodUnlikely = GooglePrivacyDlpV2InspectConfigMinLikelihood("UNLIKELY")
+	// Some matching signals. The default value.
 	GooglePrivacyDlpV2InspectConfigMinLikelihoodPossible = GooglePrivacyDlpV2InspectConfigMinLikelihood("POSSIBLE")
-	GooglePrivacyDlpV2InspectConfigMinLikelihoodLikely   = GooglePrivacyDlpV2InspectConfigMinLikelihood("LIKELY")
-	// Many matching elements.
+	// Low chance of a false positive.
+	GooglePrivacyDlpV2InspectConfigMinLikelihoodLikely = GooglePrivacyDlpV2InspectConfigMinLikelihood("LIKELY")
+	// Confidence level is high. Lowest chance of a false positive.
 	GooglePrivacyDlpV2InspectConfigMinLikelihoodVeryLikely = GooglePrivacyDlpV2InspectConfigMinLikelihood("VERY_LIKELY")
 )
 
@@ -2399,13 +2403,15 @@ type GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood string
 const (
 	// Default value; same as POSSIBLE.
 	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodLikelihoodUnspecified = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELIHOOD_UNSPECIFIED")
-	// Few matching elements.
+	// Highest chance of a false positive.
 	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodVeryUnlikely = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("VERY_UNLIKELY")
-	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodUnlikely     = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("UNLIKELY")
-	// Some matching elements.
+	// High chance of a false positive.
+	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodUnlikely = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("UNLIKELY")
+	// Some matching signals. The default value.
 	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPossible = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("POSSIBLE")
-	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodLikely   = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELY")
-	// Many matching elements.
+	// Low chance of a false positive.
+	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodLikely = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELY")
+	// Confidence level is high. Lowest chance of a false positive.
 	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodVeryLikely = GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("VERY_LIKELY")
 )
 

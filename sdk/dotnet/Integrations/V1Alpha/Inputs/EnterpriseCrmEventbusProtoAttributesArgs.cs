@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+    /// Attributes are additional options that can be associated with each event property. For more information, see
     /// </summary>
     public sealed class EnterpriseCrmEventbusProtoAttributesArgs : global::Pulumi.ResourceArgs
     {
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<bool>? IsSearchable { get; set; }
 
         /// <summary>
-        /// See go/integration-platform/analytics/logging_task.md for details.
+        /// See
         /// </summary>
         [Input("logSettings")]
         public Input<Inputs.EnterpriseCrmEventbusProtoLogSettingsArgs>? LogSettings { get; set; }

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     public partial class MigrationJob : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The conversion workspace used by the migration.
+        /// </summary>
+        [Output("conversionWorkspace")]
+        public Output<Outputs.ConversionWorkspaceInfoResponse> ConversionWorkspace { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         [Output("createTime")]
@@ -68,6 +74,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Output("error")]
         public Output<Outputs.StatusResponse> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
         /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
@@ -205,6 +217,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     public sealed class MigrationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The conversion workspace used by the migration.
+        /// </summary>
+        [Input("conversionWorkspace")]
+        public Input<Inputs.ConversionWorkspaceInfoArgs>? ConversionWorkspace { get; set; }
+
+        /// <summary>
         /// The resource name (URI) of the destination connection profile.
         /// </summary>
         [Input("destination", required: true)]
@@ -233,6 +251,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Input("dumpPath")]
         public Input<string>? DumpPath { get; set; }
+
+        /// <summary>
+        /// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

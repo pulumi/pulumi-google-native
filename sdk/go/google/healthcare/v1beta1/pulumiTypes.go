@@ -2834,9 +2834,9 @@ func (o CryptoHashFieldResponseOutput) ToCryptoHashFieldResponseOutputWithContex
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfig struct {
-	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 	CryptoKey *string `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 	KmsWrapped *KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
 }
 
@@ -2853,9 +2853,9 @@ type DateShiftConfigInput interface {
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfigArgs struct {
-	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 	CryptoKey pulumi.StringPtrInput `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 	KmsWrapped KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
 }
 
@@ -2937,12 +2937,12 @@ func (o DateShiftConfigOutput) ToDateShiftConfigPtrOutputWithContext(ctx context
 	}).(DateShiftConfigPtrOutput)
 }
 
-// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 func (o DateShiftConfigOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DateShiftConfig) *string { return v.CryptoKey }).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v DateShiftConfig) *KmsWrappedCryptoKey { return v.KmsWrapped }).(KmsWrappedCryptoKeyPtrOutput)
 }
@@ -2971,7 +2971,7 @@ func (o DateShiftConfigPtrOutput) Elem() DateShiftConfigOutput {
 	}).(DateShiftConfigOutput)
 }
 
-// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DateShiftConfig) *string {
 		if v == nil {
@@ -2981,7 +2981,7 @@ func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v *DateShiftConfig) *KmsWrappedCryptoKey {
 		if v == nil {
@@ -2993,9 +2993,9 @@ func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfigResponse struct {
-	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 	CryptoKey string `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 	KmsWrapped KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
 }
 
@@ -3014,12 +3014,12 @@ func (o DateShiftConfigResponseOutput) ToDateShiftConfigResponseOutputWithContex
 	return o
 }
 
-// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 func (o DateShiftConfigResponseOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
 }
@@ -11169,6 +11169,8 @@ func (o ResourceAnnotationResponseOutput) Label() pulumi.StringOutput {
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
 type SchemaConfig struct {
+	// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+	LastUpdatedPartitionConfig *TimePartitioning `pulumi:"lastUpdatedPartitionConfig"`
 	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth *string `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
@@ -11188,6 +11190,8 @@ type SchemaConfigInput interface {
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
 type SchemaConfigArgs struct {
+	// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+	LastUpdatedPartitionConfig TimePartitioningPtrInput `pulumi:"lastUpdatedPartitionConfig"`
 	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth pulumi.StringPtrInput `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
@@ -11272,6 +11276,11 @@ func (o SchemaConfigOutput) ToSchemaConfigPtrOutputWithContext(ctx context.Conte
 	}).(SchemaConfigPtrOutput)
 }
 
+// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+func (o SchemaConfigOutput) LastUpdatedPartitionConfig() TimePartitioningPtrOutput {
+	return o.ApplyT(func(v SchemaConfig) *TimePartitioning { return v.LastUpdatedPartitionConfig }).(TimePartitioningPtrOutput)
+}
+
 // The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 func (o SchemaConfigOutput) RecursiveStructureDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaConfig) *string { return v.RecursiveStructureDepth }).(pulumi.StringPtrOutput)
@@ -11306,6 +11315,16 @@ func (o SchemaConfigPtrOutput) Elem() SchemaConfigOutput {
 	}).(SchemaConfigOutput)
 }
 
+// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+func (o SchemaConfigPtrOutput) LastUpdatedPartitionConfig() TimePartitioningPtrOutput {
+	return o.ApplyT(func(v *SchemaConfig) *TimePartitioning {
+		if v == nil {
+			return nil
+		}
+		return v.LastUpdatedPartitionConfig
+	}).(TimePartitioningPtrOutput)
+}
+
 // The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 func (o SchemaConfigPtrOutput) RecursiveStructureDepth() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaConfig) *string {
@@ -11328,6 +11347,8 @@ func (o SchemaConfigPtrOutput) SchemaType() SchemaConfigSchemaTypePtrOutput {
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
 type SchemaConfigResponse struct {
+	// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+	LastUpdatedPartitionConfig TimePartitioningResponse `pulumi:"lastUpdatedPartitionConfig"`
 	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth string `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
@@ -11347,6 +11368,11 @@ func (o SchemaConfigResponseOutput) ToSchemaConfigResponseOutput() SchemaConfigR
 
 func (o SchemaConfigResponseOutput) ToSchemaConfigResponseOutputWithContext(ctx context.Context) SchemaConfigResponseOutput {
 	return o
+}
+
+// The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+func (o SchemaConfigResponseOutput) LastUpdatedPartitionConfig() TimePartitioningResponseOutput {
+	return o.ApplyT(func(v SchemaConfigResponse) TimePartitioningResponse { return v.LastUpdatedPartitionConfig }).(TimePartitioningResponseOutput)
 }
 
 // The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
@@ -13225,6 +13251,198 @@ func (o TextConfigResponseOutput) Transformations() InfoTypeTransformationRespon
 	return o.ApplyT(func(v TextConfigResponse) []InfoTypeTransformationResponse { return v.Transformations }).(InfoTypeTransformationResponseArrayOutput)
 }
 
+// Configuration for FHIR BigQuery time-partitioned tables.
+type TimePartitioning struct {
+	// Number of milliseconds for which to keep the storage for a partition.
+	ExpirationMs *string `pulumi:"expirationMs"`
+	// Type of partitioning.
+	Type *TimePartitioningType `pulumi:"type"`
+}
+
+// TimePartitioningInput is an input type that accepts TimePartitioningArgs and TimePartitioningOutput values.
+// You can construct a concrete instance of `TimePartitioningInput` via:
+//
+//	TimePartitioningArgs{...}
+type TimePartitioningInput interface {
+	pulumi.Input
+
+	ToTimePartitioningOutput() TimePartitioningOutput
+	ToTimePartitioningOutputWithContext(context.Context) TimePartitioningOutput
+}
+
+// Configuration for FHIR BigQuery time-partitioned tables.
+type TimePartitioningArgs struct {
+	// Number of milliseconds for which to keep the storage for a partition.
+	ExpirationMs pulumi.StringPtrInput `pulumi:"expirationMs"`
+	// Type of partitioning.
+	Type TimePartitioningTypePtrInput `pulumi:"type"`
+}
+
+func (TimePartitioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimePartitioning)(nil)).Elem()
+}
+
+func (i TimePartitioningArgs) ToTimePartitioningOutput() TimePartitioningOutput {
+	return i.ToTimePartitioningOutputWithContext(context.Background())
+}
+
+func (i TimePartitioningArgs) ToTimePartitioningOutputWithContext(ctx context.Context) TimePartitioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimePartitioningOutput)
+}
+
+func (i TimePartitioningArgs) ToTimePartitioningPtrOutput() TimePartitioningPtrOutput {
+	return i.ToTimePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i TimePartitioningArgs) ToTimePartitioningPtrOutputWithContext(ctx context.Context) TimePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimePartitioningOutput).ToTimePartitioningPtrOutputWithContext(ctx)
+}
+
+// TimePartitioningPtrInput is an input type that accepts TimePartitioningArgs, TimePartitioningPtr and TimePartitioningPtrOutput values.
+// You can construct a concrete instance of `TimePartitioningPtrInput` via:
+//
+//	        TimePartitioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type TimePartitioningPtrInput interface {
+	pulumi.Input
+
+	ToTimePartitioningPtrOutput() TimePartitioningPtrOutput
+	ToTimePartitioningPtrOutputWithContext(context.Context) TimePartitioningPtrOutput
+}
+
+type timePartitioningPtrType TimePartitioningArgs
+
+func TimePartitioningPtr(v *TimePartitioningArgs) TimePartitioningPtrInput {
+	return (*timePartitioningPtrType)(v)
+}
+
+func (*timePartitioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimePartitioning)(nil)).Elem()
+}
+
+func (i *timePartitioningPtrType) ToTimePartitioningPtrOutput() TimePartitioningPtrOutput {
+	return i.ToTimePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (i *timePartitioningPtrType) ToTimePartitioningPtrOutputWithContext(ctx context.Context) TimePartitioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimePartitioningPtrOutput)
+}
+
+// Configuration for FHIR BigQuery time-partitioned tables.
+type TimePartitioningOutput struct{ *pulumi.OutputState }
+
+func (TimePartitioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimePartitioning)(nil)).Elem()
+}
+
+func (o TimePartitioningOutput) ToTimePartitioningOutput() TimePartitioningOutput {
+	return o
+}
+
+func (o TimePartitioningOutput) ToTimePartitioningOutputWithContext(ctx context.Context) TimePartitioningOutput {
+	return o
+}
+
+func (o TimePartitioningOutput) ToTimePartitioningPtrOutput() TimePartitioningPtrOutput {
+	return o.ToTimePartitioningPtrOutputWithContext(context.Background())
+}
+
+func (o TimePartitioningOutput) ToTimePartitioningPtrOutputWithContext(ctx context.Context) TimePartitioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimePartitioning) *TimePartitioning {
+		return &v
+	}).(TimePartitioningPtrOutput)
+}
+
+// Number of milliseconds for which to keep the storage for a partition.
+func (o TimePartitioningOutput) ExpirationMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimePartitioning) *string { return v.ExpirationMs }).(pulumi.StringPtrOutput)
+}
+
+// Type of partitioning.
+func (o TimePartitioningOutput) Type() TimePartitioningTypePtrOutput {
+	return o.ApplyT(func(v TimePartitioning) *TimePartitioningType { return v.Type }).(TimePartitioningTypePtrOutput)
+}
+
+type TimePartitioningPtrOutput struct{ *pulumi.OutputState }
+
+func (TimePartitioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimePartitioning)(nil)).Elem()
+}
+
+func (o TimePartitioningPtrOutput) ToTimePartitioningPtrOutput() TimePartitioningPtrOutput {
+	return o
+}
+
+func (o TimePartitioningPtrOutput) ToTimePartitioningPtrOutputWithContext(ctx context.Context) TimePartitioningPtrOutput {
+	return o
+}
+
+func (o TimePartitioningPtrOutput) Elem() TimePartitioningOutput {
+	return o.ApplyT(func(v *TimePartitioning) TimePartitioning {
+		if v != nil {
+			return *v
+		}
+		var ret TimePartitioning
+		return ret
+	}).(TimePartitioningOutput)
+}
+
+// Number of milliseconds for which to keep the storage for a partition.
+func (o TimePartitioningPtrOutput) ExpirationMs() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TimePartitioning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExpirationMs
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of partitioning.
+func (o TimePartitioningPtrOutput) Type() TimePartitioningTypePtrOutput {
+	return o.ApplyT(func(v *TimePartitioning) *TimePartitioningType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(TimePartitioningTypePtrOutput)
+}
+
+// Configuration for FHIR BigQuery time-partitioned tables.
+type TimePartitioningResponse struct {
+	// Number of milliseconds for which to keep the storage for a partition.
+	ExpirationMs string `pulumi:"expirationMs"`
+	// Type of partitioning.
+	Type string `pulumi:"type"`
+}
+
+// Configuration for FHIR BigQuery time-partitioned tables.
+type TimePartitioningResponseOutput struct{ *pulumi.OutputState }
+
+func (TimePartitioningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimePartitioningResponse)(nil)).Elem()
+}
+
+func (o TimePartitioningResponseOutput) ToTimePartitioningResponseOutput() TimePartitioningResponseOutput {
+	return o
+}
+
+func (o TimePartitioningResponseOutput) ToTimePartitioningResponseOutputWithContext(ctx context.Context) TimePartitioningResponseOutput {
+	return o
+}
+
+// Number of milliseconds for which to keep the storage for a partition.
+func (o TimePartitioningResponseOutput) ExpirationMs() pulumi.StringOutput {
+	return o.ApplyT(func(v TimePartitioningResponse) string { return v.ExpirationMs }).(pulumi.StringOutput)
+}
+
+// Type of partitioning.
+func (o TimePartitioningResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v TimePartitioningResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // A type definition for some HL7v2 type (incl. Segments and Datatypes).
 type Type struct {
 	// The (sub) fields this type has (if not primitive).
@@ -14141,6 +14359,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TagFilterListPtrInput)(nil)).Elem(), TagFilterListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigInput)(nil)).Elem(), TextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigPtrInput)(nil)).Elem(), TextConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningInput)(nil)).Elem(), TimePartitioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningPtrInput)(nil)).Elem(), TimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeInput)(nil)).Elem(), TypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TypeArrayInput)(nil)).Elem(), TypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValidationConfigInput)(nil)).Elem(), ValidationConfigArgs{})
@@ -14386,6 +14606,9 @@ func init() {
 	pulumi.RegisterOutputType(TextConfigOutput{})
 	pulumi.RegisterOutputType(TextConfigPtrOutput{})
 	pulumi.RegisterOutputType(TextConfigResponseOutput{})
+	pulumi.RegisterOutputType(TimePartitioningOutput{})
+	pulumi.RegisterOutputType(TimePartitioningPtrOutput{})
+	pulumi.RegisterOutputType(TimePartitioningResponseOutput{})
 	pulumi.RegisterOutputType(TypeOutput{})
 	pulumi.RegisterOutputType(TypeArrayOutput{})
 	pulumi.RegisterOutputType(TypeResponseOutput{})

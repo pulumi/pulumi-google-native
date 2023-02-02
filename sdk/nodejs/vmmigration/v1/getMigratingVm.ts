@@ -35,6 +35,10 @@ export interface GetMigratingVmArgs {
 
 export interface GetMigratingVmResult {
     /**
+     * Details of the VM from an AWS source.
+     */
+    readonly awsSourceVmDetails: outputs.vmmigration.v1.AwsSourceVmDetailsResponse;
+    /**
      * Details of the target VM in Compute Engine.
      */
     readonly computeEngineTargetDefaults: outputs.vmmigration.v1.ComputeEngineTargetDefaultsResponse;
@@ -43,7 +47,7 @@ export interface GetMigratingVmResult {
      */
     readonly createTime: string;
     /**
-     * The percentage progress of the current running replication cycle.
+     * Details of the current running replication cycle.
      */
     readonly currentSyncInfo: outputs.vmmigration.v1.ReplicationCycleResponse;
     /**

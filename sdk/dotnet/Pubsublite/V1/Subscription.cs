@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Output("deliveryConfig")]
         public Output<Outputs.DeliveryConfigResponse> DeliveryConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        /// </summary>
+        [Output("exportConfig")]
+        public Output<Outputs.ExportConfigResponse> ExportConfig { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -107,6 +113,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// </summary>
         [Input("deliveryConfig")]
         public Input<Inputs.DeliveryConfigArgs>? DeliveryConfig { get; set; }
+
+        /// <summary>
+        /// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        /// </summary>
+        [Input("exportConfig")]
+        public Input<Inputs.ExportConfigArgs>? ExportConfig { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

@@ -152,7 +152,7 @@ class GetHostSecurityReportResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        Query state could be "enqueued", "running", "completed", "failed".
+        Query state could be "enqueued", "running", "completed", "expired" and "failed".
         """
         return pulumi.get(self, "state")
 

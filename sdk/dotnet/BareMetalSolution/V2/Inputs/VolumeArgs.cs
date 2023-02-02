@@ -124,10 +124,22 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<Pulumi.GoogleNative.BareMetalSolution.V2.VolumeState>? State { get; set; }
 
         /// <summary>
+        /// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        /// </summary>
+        [Input("storageAggregatePool")]
+        public Input<string>? StorageAggregatePool { get; set; }
+
+        /// <summary>
         /// The storage type for this volume.
         /// </summary>
         [Input("storageType")]
         public Input<Pulumi.GoogleNative.BareMetalSolution.V2.VolumeStorageType>? StorageType { get; set; }
+
+        /// <summary>
+        /// The workload profile for the volume.
+        /// </summary>
+        [Input("workloadProfile")]
+        public Input<Pulumi.GoogleNative.BareMetalSolution.V2.VolumeWorkloadProfile>? WorkloadProfile { get; set; }
 
         public VolumeArgs()
         {

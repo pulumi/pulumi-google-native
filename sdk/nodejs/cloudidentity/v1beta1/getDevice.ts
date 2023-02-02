@@ -17,11 +17,13 @@ export function getDevice(args: GetDeviceArgs, opts?: pulumi.InvokeOptions): Pro
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("google-native:cloudidentity/v1beta1:getDevice", {
+        "customer": args.customer,
         "deviceId": args.deviceId,
     }, opts);
 }
 
 export interface GetDeviceArgs {
+    customer?: string;
     deviceId: string;
 }
 
@@ -50,6 +52,10 @@ export interface GetDeviceResult {
      * Build number of the device.
      */
     readonly buildNumber: string;
+    /**
+     * List of the clients the device is reporting to.
+     */
+    readonly clientTypes: string[];
     /**
      * Represents whether the Device is compromised.
      */
@@ -82,6 +88,10 @@ export interface GetDeviceResult {
      * Attributes specific to Endpoint Verification devices.
      */
     readonly endpointVerificationSpecificAttributes: outputs.cloudidentity.v1beta1.EndpointVerificationSpecificAttributesResponse;
+    /**
+     * Host name of the device.
+     */
+    readonly hostname: string;
     /**
      * IMEI number of device if GSM device; empty otherwise.
      */
@@ -153,5 +163,6 @@ export function getDeviceOutput(args: GetDeviceOutputArgs, opts?: pulumi.InvokeO
 }
 
 export interface GetDeviceOutputArgs {
+    customer?: pulumi.Input<string>;
     deviceId: pulumi.Input<string>;
 }

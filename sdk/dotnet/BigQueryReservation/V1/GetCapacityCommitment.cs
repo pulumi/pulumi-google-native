@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public readonly string CommitmentStartTime;
         /// <summary>
+        /// Edition of the capacity commitment.
+        /// </summary>
+        public readonly string Edition;
+        /// <summary>
         /// For FAILED commitment plan, provides the reason of failure.
         /// </summary>
         public readonly Outputs.StatusResponse FailureStatus;
@@ -106,6 +110,8 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
             string commitmentStartTime,
 
+            string edition,
+
             Outputs.StatusResponse failureStatus,
 
             bool multiRegionAuxiliary,
@@ -122,6 +128,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         {
             CommitmentEndTime = commitmentEndTime;
             CommitmentStartTime = commitmentStartTime;
+            Edition = edition;
             FailureStatus = failureStatus;
             MultiRegionAuxiliary = multiRegionAuxiliary;
             Name = name;

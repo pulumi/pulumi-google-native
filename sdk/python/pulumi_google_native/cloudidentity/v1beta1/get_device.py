@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetDeviceResult:
-    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, compromised_state=None, create_time=None, device_id=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, endpoint_verification_specific_attributes=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
+    def __init__(__self__, android_specific_attributes=None, asset_tag=None, baseband_version=None, bootloader_version=None, brand=None, build_number=None, client_types=None, compromised_state=None, create_time=None, device_id=None, device_type=None, enabled_developer_options=None, enabled_usb_debugging=None, encryption_state=None, endpoint_verification_specific_attributes=None, hostname=None, imei=None, kernel_version=None, last_sync_time=None, management_state=None, manufacturer=None, meid=None, model=None, name=None, network_operator=None, os_version=None, other_accounts=None, owner_type=None, release_version=None, security_patch_time=None, serial_number=None, wifi_mac_addresses=None):
         if android_specific_attributes and not isinstance(android_specific_attributes, dict):
             raise TypeError("Expected argument 'android_specific_attributes' to be a dict")
         pulumi.set(__self__, "android_specific_attributes", android_specific_attributes)
@@ -38,6 +38,9 @@ class GetDeviceResult:
         if build_number and not isinstance(build_number, str):
             raise TypeError("Expected argument 'build_number' to be a str")
         pulumi.set(__self__, "build_number", build_number)
+        if client_types and not isinstance(client_types, list):
+            raise TypeError("Expected argument 'client_types' to be a list")
+        pulumi.set(__self__, "client_types", client_types)
         if compromised_state and not isinstance(compromised_state, str):
             raise TypeError("Expected argument 'compromised_state' to be a str")
         pulumi.set(__self__, "compromised_state", compromised_state)
@@ -62,6 +65,9 @@ class GetDeviceResult:
         if endpoint_verification_specific_attributes and not isinstance(endpoint_verification_specific_attributes, dict):
             raise TypeError("Expected argument 'endpoint_verification_specific_attributes' to be a dict")
         pulumi.set(__self__, "endpoint_verification_specific_attributes", endpoint_verification_specific_attributes)
+        if hostname and not isinstance(hostname, str):
+            raise TypeError("Expected argument 'hostname' to be a str")
+        pulumi.set(__self__, "hostname", hostname)
         if imei and not isinstance(imei, str):
             raise TypeError("Expected argument 'imei' to be a str")
         pulumi.set(__self__, "imei", imei)
@@ -160,6 +166,14 @@ class GetDeviceResult:
         return pulumi.get(self, "build_number")
 
     @property
+    @pulumi.getter(name="clientTypes")
+    def client_types(self) -> Sequence[str]:
+        """
+        List of the clients the device is reporting to.
+        """
+        return pulumi.get(self, "client_types")
+
+    @property
     @pulumi.getter(name="compromisedState")
     def compromised_state(self) -> str:
         """
@@ -222,6 +236,14 @@ class GetDeviceResult:
         Attributes specific to Endpoint Verification devices.
         """
         return pulumi.get(self, "endpoint_verification_specific_attributes")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Host name of the device.
+        """
+        return pulumi.get(self, "hostname")
 
     @property
     @pulumi.getter
@@ -364,6 +386,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             bootloader_version=self.bootloader_version,
             brand=self.brand,
             build_number=self.build_number,
+            client_types=self.client_types,
             compromised_state=self.compromised_state,
             create_time=self.create_time,
             device_id=self.device_id,
@@ -372,6 +395,7 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             enabled_usb_debugging=self.enabled_usb_debugging,
             encryption_state=self.encryption_state,
             endpoint_verification_specific_attributes=self.endpoint_verification_specific_attributes,
+            hostname=self.hostname,
             imei=self.imei,
             kernel_version=self.kernel_version,
             last_sync_time=self.last_sync_time,
@@ -390,12 +414,14 @@ class AwaitableGetDeviceResult(GetDeviceResult):
             wifi_mac_addresses=self.wifi_mac_addresses)
 
 
-def get_device(device_id: Optional[str] = None,
+def get_device(customer: Optional[str] = None,
+               device_id: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeviceResult:
     """
     Retrieves the specified device.
     """
     __args__ = dict()
+    __args__['customer'] = customer
     __args__['deviceId'] = device_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:cloudidentity/v1beta1:getDevice', __args__, opts=opts, typ=GetDeviceResult).value
@@ -407,6 +433,7 @@ def get_device(device_id: Optional[str] = None,
         bootloader_version=__ret__.bootloader_version,
         brand=__ret__.brand,
         build_number=__ret__.build_number,
+        client_types=__ret__.client_types,
         compromised_state=__ret__.compromised_state,
         create_time=__ret__.create_time,
         device_id=__ret__.device_id,
@@ -415,6 +442,7 @@ def get_device(device_id: Optional[str] = None,
         enabled_usb_debugging=__ret__.enabled_usb_debugging,
         encryption_state=__ret__.encryption_state,
         endpoint_verification_specific_attributes=__ret__.endpoint_verification_specific_attributes,
+        hostname=__ret__.hostname,
         imei=__ret__.imei,
         kernel_version=__ret__.kernel_version,
         last_sync_time=__ret__.last_sync_time,
@@ -434,7 +462,8 @@ def get_device(device_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_device)
-def get_device_output(device_id: Optional[pulumi.Input[str]] = None,
+def get_device_output(customer: Optional[pulumi.Input[Optional[str]]] = None,
+                      device_id: Optional[pulumi.Input[str]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeviceResult]:
     """
     Retrieves the specified device.

@@ -59,6 +59,8 @@ type LookupInstanceResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
 	Volumes []VolumeResponse `pulumi:"volumes"`
+	// The workload profile for the instance.
+	WorkloadProfile string `pulumi:"workloadProfile"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -178,6 +180,11 @@ func (o LookupInstanceResultOutput) UpdateTime() pulumi.StringOutput {
 // Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
 func (o LookupInstanceResultOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []VolumeResponse { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// The workload profile for the instance.
+func (o LookupInstanceResultOutput) WorkloadProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.WorkloadProfile }).(pulumi.StringOutput)
 }
 
 func init() {

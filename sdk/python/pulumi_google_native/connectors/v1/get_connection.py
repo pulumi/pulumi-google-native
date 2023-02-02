@@ -164,7 +164,7 @@ class GetConnectionResult:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> 'outputs.NodeConfigResponse':
         """
-        Optional. Configuration for the connection.
+        Optional. Node configuration for the connection.
         """
         return pulumi.get(self, "node_config")
 

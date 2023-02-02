@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class TrafficTargetResponse
     {
         /// <summary>
-        /// ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+        /// [Deprecated] Not supported in Cloud Run. It must be empty.
         /// </summary>
         public readonly string ConfigurationName;
         /// <summary>
-        /// Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+        /// Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
         /// </summary>
         public readonly bool LatestRevision;
         /// <summary>
@@ -29,11 +29,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly int Percent;
         /// <summary>
-        /// RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+        /// Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
         /// </summary>
         public readonly string RevisionName;
         /// <summary>
-        /// Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+        /// Tag is used to expose a dedicated url for referencing this target exclusively.
         /// </summary>
         public readonly string Tag;
         /// <summary>

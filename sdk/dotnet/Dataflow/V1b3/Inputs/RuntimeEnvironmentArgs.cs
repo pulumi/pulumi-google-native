@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputList<string>? _additionalExperiments;
 
         /// <summary>
-        /// Additional experiment flags for the job, specified with the `--experiments` option.
+        /// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
         /// </summary>
         public InputList<string> AdditionalExperiments
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         private InputMap<string>? _additionalUserLabels;
 
         /// <summary>
-        /// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+        /// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         /// </summary>
         public InputMap<string> AdditionalUserLabels
         {
@@ -40,61 +40,61 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         }
 
         /// <summary>
-        /// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+        /// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
         /// </summary>
         [Input("bypassTempDirValidation")]
         public Input<bool>? BypassTempDirValidation { get; set; }
 
         /// <summary>
-        /// Whether to enable Streaming Engine for the job.
+        /// Optional. Whether to enable Streaming Engine for the job.
         /// </summary>
         [Input("enableStreamingEngine")]
         public Input<bool>? EnableStreamingEngine { get; set; }
 
         /// <summary>
-        /// Configuration for VM IPs.
+        /// Optional. Configuration for VM IPs.
         /// </summary>
         [Input("ipConfiguration")]
         public Input<Pulumi.GoogleNative.Dataflow.V1b3.RuntimeEnvironmentIpConfiguration>? IpConfiguration { get; set; }
 
         /// <summary>
-        /// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+        /// Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
         /// </summary>
         [Input("kmsKeyName")]
         public Input<string>? KmsKeyName { get; set; }
 
         /// <summary>
-        /// The machine type to use for the job. Defaults to the value from the template if not specified.
+        /// Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+        /// Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
         /// </summary>
         [Input("maxWorkers")]
         public Input<int>? MaxWorkers { get; set; }
 
         /// <summary>
-        /// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        /// Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
 
         /// <summary>
-        /// The initial number of Google Compute Engine instances for the job.
+        /// Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
         /// </summary>
         [Input("numWorkers")]
         public Input<int>? NumWorkers { get; set; }
 
         /// <summary>
-        /// The email address of the service account to run the job as.
+        /// Optional. The email address of the service account to run the job as.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
 
         /// <summary>
-        /// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+        /// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
@@ -102,23 +102,23 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         /// <summary>
         /// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
         /// </summary>
-        [Input("tempLocation")]
-        public Input<string>? TempLocation { get; set; }
+        [Input("tempLocation", required: true)]
+        public Input<string> TempLocation { get; set; } = null!;
 
         /// <summary>
         /// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
         /// </summary>
-        [Input("workerRegion")]
-        public Input<string>? WorkerRegion { get; set; }
+        [Input("workerRegion", required: true)]
+        public Input<string> WorkerRegion { get; set; } = null!;
 
         /// <summary>
-        /// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        /// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
         /// </summary>
         [Input("workerZone")]
         public Input<string>? WorkerZone { get; set; }
 
         /// <summary>
-        /// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+        /// Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
         /// </summary>
         [Input("zone")]
         public Input<string>? Zone { get; set; }

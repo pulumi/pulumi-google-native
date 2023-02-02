@@ -17,15 +17,32 @@ __all__ = [
     'GoogleCloudDataplexV1AssetResourceSpecArgs',
     'GoogleCloudDataplexV1ContentNotebookArgs',
     'GoogleCloudDataplexV1ContentSqlScriptArgs',
+    'GoogleCloudDataplexV1DataAccessSpecArgs',
+    'GoogleCloudDataplexV1DataAttributeBindingPathArgs',
+    'GoogleCloudDataplexV1DataProfileSpecArgs',
+    'GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs',
+    'GoogleCloudDataplexV1DataQualityRuleArgs',
+    'GoogleCloudDataplexV1DataQualitySpecArgs',
+    'GoogleCloudDataplexV1DataScanExecutionSpecArgs',
+    'GoogleCloudDataplexV1DataSourceArgs',
     'GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs',
     'GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs',
     'GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs',
     'GoogleCloudDataplexV1EnvironmentSessionSpecArgs',
     'GoogleCloudDataplexV1LakeMetastoreArgs',
+    'GoogleCloudDataplexV1ResourceAccessSpecArgs',
     'GoogleCloudDataplexV1SchemaPartitionFieldArgs',
     'GoogleCloudDataplexV1SchemaSchemaFieldArgs',
     'GoogleCloudDataplexV1SchemaArgs',
     'GoogleCloudDataplexV1StorageFormatCsvOptionsArgs',
+    'GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs',
     'GoogleCloudDataplexV1StorageFormatJsonOptionsArgs',
     'GoogleCloudDataplexV1StorageFormatArgs',
     'GoogleCloudDataplexV1TaskExecutionSpecArgs',
@@ -36,6 +53,9 @@ __all__ = [
     'GoogleCloudDataplexV1TaskNotebookTaskConfigArgs',
     'GoogleCloudDataplexV1TaskSparkTaskConfigArgs',
     'GoogleCloudDataplexV1TaskTriggerSpecArgs',
+    'GoogleCloudDataplexV1TriggerOnDemandArgs',
+    'GoogleCloudDataplexV1TriggerScheduleArgs',
+    'GoogleCloudDataplexV1TriggerArgs',
     'GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs',
     'GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs',
     'GoogleCloudDataplexV1ZoneDiscoverySpecArgs',
@@ -174,7 +194,7 @@ class GoogleCloudDataplexV1AssetDiscoverySpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input['GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
-        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         """
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
@@ -253,7 +273,7 @@ class GoogleCloudDataplexV1AssetDiscoverySpecArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         """
         return pulumi.get(self, "schedule")
 
@@ -266,15 +286,19 @@ class GoogleCloudDataplexV1AssetDiscoverySpecArgs:
 class GoogleCloudDataplexV1AssetResourceSpecArgs:
     def __init__(__self__, *,
                  type: pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecType'],
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 read_access_mode: Optional[pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecReadAccessMode']] = None):
         """
         Identifies the cloud resource that is referenced by this asset.
         :param pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecType'] type: Immutable. Type of resource.
         :param pulumi.Input[str] name: Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
+        :param pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecReadAccessMode'] read_access_mode: Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
         """
         pulumi.set(__self__, "type", type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if read_access_mode is not None:
+            pulumi.set(__self__, "read_access_mode", read_access_mode)
 
     @property
     @pulumi.getter
@@ -299,6 +323,18 @@ class GoogleCloudDataplexV1AssetResourceSpecArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="readAccessMode")
+    def read_access_mode(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecReadAccessMode']]:
+        """
+        Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+        """
+        return pulumi.get(self, "read_access_mode")
+
+    @read_access_mode.setter
+    def read_access_mode(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1AssetResourceSpecReadAccessMode']]):
+        pulumi.set(self, "read_access_mode", value)
 
 
 @pulumi.input_type
@@ -345,6 +381,635 @@ class GoogleCloudDataplexV1ContentSqlScriptArgs:
     @engine.setter
     def engine(self, value: pulumi.Input['GoogleCloudDataplexV1ContentSqlScriptEngine']):
         pulumi.set(self, "engine", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataAccessSpecArgs:
+    def __init__(__self__, *,
+                 readers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] readers: Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+        """
+        if readers is not None:
+            pulumi.set(__self__, "readers", readers)
+
+    @property
+    @pulumi.getter
+    def readers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+        """
+        return pulumi.get(self, "readers")
+
+    @readers.setter
+    def readers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "readers", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataAttributeBindingPathArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Represents a subresource of a given resource, and associated bindings with it.
+        :param pulumi.Input[str] name: The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+        """
+        pulumi.set(__self__, "name", name)
+        if attributes is not None:
+            pulumi.set(__self__, "attributes", attributes)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+        """
+        return pulumi.get(self, "attributes")
+
+    @attributes.setter
+    def attributes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "attributes", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataProfileSpecArgs:
+    def __init__(__self__):
+        """
+        DataProfileScan related setting.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs:
+    def __init__(__self__):
+        """
+        Evaluates whether each column value is null.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs:
+    def __init__(__self__, *,
+                 max_value: Optional[pulumi.Input[str]] = None,
+                 min_value: Optional[pulumi.Input[str]] = None,
+                 strict_max_enabled: Optional[pulumi.Input[bool]] = None,
+                 strict_min_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Evaluates whether each column value lies between a specified range.
+        :param pulumi.Input[str] max_value: Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+        :param pulumi.Input[str] min_value: Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+        :param pulumi.Input[bool] strict_max_enabled: Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        """
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if strict_max_enabled is not None:
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        if strict_min_enabled is not None:
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @strict_max_enabled.setter
+    def strict_max_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_max_enabled", value)
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+    @strict_min_enabled.setter
+    def strict_min_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_min_enabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs:
+    def __init__(__self__, *,
+                 regex: Optional[pulumi.Input[str]] = None):
+        """
+        Evaluates whether each column value matches a specified regex.
+        :param pulumi.Input[str] regex: A regular expression the column value is expected to match.
+        """
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        A regular expression the column value is expected to match.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs:
+    def __init__(__self__, *,
+                 sql_expression: Optional[pulumi.Input[str]] = None):
+        """
+        Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
+        :param pulumi.Input[str] sql_expression: The SQL expression.
+        """
+        if sql_expression is not None:
+            pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+    @sql_expression.setter
+    def sql_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_expression", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs:
+    def __init__(__self__, *,
+                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Evaluates whether each column value is contained by a specified set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Expected values for the column value.
+        """
+        if values is not None:
+            pulumi.set(__self__, "values", values)
+
+    @property
+    @pulumi.getter
+    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Expected values for the column value.
+        """
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs:
+    def __init__(__self__, *,
+                 max_value: Optional[pulumi.Input[str]] = None,
+                 min_value: Optional[pulumi.Input[str]] = None,
+                 statistic: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic']] = None,
+                 strict_max_enabled: Optional[pulumi.Input[bool]] = None,
+                 strict_min_enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Evaluates whether the column aggregate statistic lies between a specified range.
+        :param pulumi.Input[str] max_value: The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param pulumi.Input[str] min_value: The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        :param pulumi.Input[bool] strict_max_enabled: Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        :param pulumi.Input[bool] strict_min_enabled: Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        """
+        if max_value is not None:
+            pulumi.set(__self__, "max_value", max_value)
+        if min_value is not None:
+            pulumi.set(__self__, "min_value", min_value)
+        if statistic is not None:
+            pulumi.set(__self__, "statistic", statistic)
+        if strict_max_enabled is not None:
+            pulumi.set(__self__, "strict_max_enabled", strict_max_enabled)
+        if strict_min_enabled is not None:
+            pulumi.set(__self__, "strict_min_enabled", strict_min_enabled)
+
+    @property
+    @pulumi.getter(name="maxValue")
+    def max_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        """
+        return pulumi.get(self, "max_value")
+
+    @max_value.setter
+    def max_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_value", value)
+
+    @property
+    @pulumi.getter(name="minValue")
+    def min_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+        """
+        return pulumi.get(self, "min_value")
+
+    @min_value.setter
+    def min_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "min_value", value)
+
+    @property
+    @pulumi.getter
+    def statistic(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic']]:
+        return pulumi.get(self, "statistic")
+
+    @statistic.setter
+    def statistic(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic']]):
+        pulumi.set(self, "statistic", value)
+
+    @property
+    @pulumi.getter(name="strictMaxEnabled")
+    def strict_max_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_max_enabled")
+
+    @strict_max_enabled.setter
+    def strict_max_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_max_enabled", value)
+
+    @property
+    @pulumi.getter(name="strictMinEnabled")
+    def strict_min_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+        """
+        return pulumi.get(self, "strict_min_enabled")
+
+    @strict_min_enabled.setter
+    def strict_min_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "strict_min_enabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs:
+    def __init__(__self__, *,
+                 sql_expression: Optional[pulumi.Input[str]] = None):
+        """
+        Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+        :param pulumi.Input[str] sql_expression: The SQL expression.
+        """
+        if sql_expression is not None:
+            pulumi.set(__self__, "sql_expression", sql_expression)
+
+    @property
+    @pulumi.getter(name="sqlExpression")
+    def sql_expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SQL expression.
+        """
+        return pulumi.get(self, "sql_expression")
+
+    @sql_expression.setter
+    def sql_expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_expression", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs:
+    def __init__(__self__):
+        """
+        Evaluates whether the column has duplicates.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualityRuleArgs:
+    def __init__(__self__, *,
+                 dimension: pulumi.Input[str],
+                 column: Optional[pulumi.Input[str]] = None,
+                 ignore_null: Optional[pulumi.Input[bool]] = None,
+                 non_null_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs']] = None,
+                 range_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs']] = None,
+                 regex_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs']] = None,
+                 row_condition_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs']] = None,
+                 set_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs']] = None,
+                 statistic_range_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs']] = None,
+                 table_condition_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs']] = None,
+                 threshold: Optional[pulumi.Input[float]] = None,
+                 uniqueness_expectation: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs']] = None):
+        """
+        A rule captures data quality intent about a data source.
+        :param pulumi.Input[str] dimension: The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        :param pulumi.Input[str] column: Optional. The unnested column which this rule is evaluated against.
+        :param pulumi.Input[bool] ignore_null: Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs'] non_null_expectation: ColumnMap rule which evaluates whether each column value is null.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs'] range_expectation: ColumnMap rule which evaluates whether each column value lies between a specified range.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs'] regex_expectation: ColumnMap rule which evaluates whether each column value matches a specified regex.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs'] row_condition_expectation: Table rule which evaluates whether each row passes the specified condition.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs'] set_expectation: ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs'] statistic_range_expectation: ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs'] table_condition_expectation: Table rule which evaluates whether the provided expression is true.
+        :param pulumi.Input[float] threshold: Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        :param pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs'] uniqueness_expectation: ColumnAggregate rule which evaluates whether the column has duplicates.
+        """
+        pulumi.set(__self__, "dimension", dimension)
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if ignore_null is not None:
+            pulumi.set(__self__, "ignore_null", ignore_null)
+        if non_null_expectation is not None:
+            pulumi.set(__self__, "non_null_expectation", non_null_expectation)
+        if range_expectation is not None:
+            pulumi.set(__self__, "range_expectation", range_expectation)
+        if regex_expectation is not None:
+            pulumi.set(__self__, "regex_expectation", regex_expectation)
+        if row_condition_expectation is not None:
+            pulumi.set(__self__, "row_condition_expectation", row_condition_expectation)
+        if set_expectation is not None:
+            pulumi.set(__self__, "set_expectation", set_expectation)
+        if statistic_range_expectation is not None:
+            pulumi.set(__self__, "statistic_range_expectation", statistic_range_expectation)
+        if table_condition_expectation is not None:
+            pulumi.set(__self__, "table_condition_expectation", table_condition_expectation)
+        if threshold is not None:
+            pulumi.set(__self__, "threshold", threshold)
+        if uniqueness_expectation is not None:
+            pulumi.set(__self__, "uniqueness_expectation", uniqueness_expectation)
+
+    @property
+    @pulumi.getter
+    def dimension(self) -> pulumi.Input[str]:
+        """
+        The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        """
+        return pulumi.get(self, "dimension")
+
+    @dimension.setter
+    def dimension(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dimension", value)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The unnested column which this rule is evaluated against.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="ignoreNull")
+    def ignore_null(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        """
+        return pulumi.get(self, "ignore_null")
+
+    @ignore_null.setter
+    def ignore_null(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_null", value)
+
+    @property
+    @pulumi.getter(name="nonNullExpectation")
+    def non_null_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value is null.
+        """
+        return pulumi.get(self, "non_null_expectation")
+
+    @non_null_expectation.setter
+    def non_null_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs']]):
+        pulumi.set(self, "non_null_expectation", value)
+
+    @property
+    @pulumi.getter(name="rangeExpectation")
+    def range_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value lies between a specified range.
+        """
+        return pulumi.get(self, "range_expectation")
+
+    @range_expectation.setter
+    def range_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs']]):
+        pulumi.set(self, "range_expectation", value)
+
+    @property
+    @pulumi.getter(name="regexExpectation")
+    def regex_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value matches a specified regex.
+        """
+        return pulumi.get(self, "regex_expectation")
+
+    @regex_expectation.setter
+    def regex_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs']]):
+        pulumi.set(self, "regex_expectation", value)
+
+    @property
+    @pulumi.getter(name="rowConditionExpectation")
+    def row_condition_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs']]:
+        """
+        Table rule which evaluates whether each row passes the specified condition.
+        """
+        return pulumi.get(self, "row_condition_expectation")
+
+    @row_condition_expectation.setter
+    def row_condition_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs']]):
+        pulumi.set(self, "row_condition_expectation", value)
+
+    @property
+    @pulumi.getter(name="setExpectation")
+    def set_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs']]:
+        """
+        ColumnMap rule which evaluates whether each column value is contained by a specified set.
+        """
+        return pulumi.get(self, "set_expectation")
+
+    @set_expectation.setter
+    def set_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs']]):
+        pulumi.set(self, "set_expectation", value)
+
+    @property
+    @pulumi.getter(name="statisticRangeExpectation")
+    def statistic_range_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs']]:
+        """
+        ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        """
+        return pulumi.get(self, "statistic_range_expectation")
+
+    @statistic_range_expectation.setter
+    def statistic_range_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs']]):
+        pulumi.set(self, "statistic_range_expectation", value)
+
+    @property
+    @pulumi.getter(name="tableConditionExpectation")
+    def table_condition_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs']]:
+        """
+        Table rule which evaluates whether the provided expression is true.
+        """
+        return pulumi.get(self, "table_condition_expectation")
+
+    @table_condition_expectation.setter
+    def table_condition_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs']]):
+        pulumi.set(self, "table_condition_expectation", value)
+
+    @property
+    @pulumi.getter
+    def threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+        """
+        return pulumi.get(self, "threshold")
+
+    @threshold.setter
+    def threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "threshold", value)
+
+    @property
+    @pulumi.getter(name="uniquenessExpectation")
+    def uniqueness_expectation(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs']]:
+        """
+        ColumnAggregate rule which evaluates whether the column has duplicates.
+        """
+        return pulumi.get(self, "uniqueness_expectation")
+
+    @uniqueness_expectation.setter
+    def uniqueness_expectation(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs']]):
+        pulumi.set(self, "uniqueness_expectation", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataQualitySpecArgs:
+    def __init__(__self__, *,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]] = None):
+        """
+        DataQualityScan related setting.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]] rules: The list of rules to evaluate against a data source. At least one rule is required.
+        """
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]]:
+        """
+        The list of rules to evaluate against a data source. At least one rule is required.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataQualityRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataScanExecutionSpecArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[str]] = None,
+                 trigger: Optional[pulumi.Input['GoogleCloudDataplexV1TriggerArgs']] = None):
+        """
+        DataScan execution settings.
+        :param pulumi.Input[str] field: Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+        :param pulumi.Input['GoogleCloudDataplexV1TriggerArgs'] trigger: Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if trigger is not None:
+            pulumi.set(__self__, "trigger", trigger)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def trigger(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1TriggerArgs']]:
+        """
+        Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+        """
+        return pulumi.get(self, "trigger")
+
+    @trigger.setter
+    def trigger(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1TriggerArgs']]):
+        pulumi.set(self, "trigger", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1DataSourceArgs:
+    def __init__(__self__, *,
+                 entity: Optional[pulumi.Input[str]] = None):
+        """
+        The data source for DataScan.
+        :param pulumi.Input[str] entity: Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+        """
+        if entity is not None:
+            pulumi.set(__self__, "entity", entity)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity", value)
 
 
 @pulumi.input_type
@@ -574,6 +1239,62 @@ class GoogleCloudDataplexV1LakeMetastoreArgs:
     @service.setter
     def service(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1ResourceAccessSpecArgs:
+    def __init__(__self__, *,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 readers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 writers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: Optional. The set of principals to be granted owner role on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] readers: Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] writers: Optional. The set of principals to be granted writer role on the resource.
+        """
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if readers is not None:
+            pulumi.set(__self__, "readers", readers)
+        if writers is not None:
+            pulumi.set(__self__, "writers", writers)
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The set of principals to be granted owner role on the resource.
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "owners", value)
+
+    @property
+    @pulumi.getter
+    def readers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+        """
+        return pulumi.get(self, "readers")
+
+    @readers.setter
+    def readers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "readers", value)
+
+    @property
+    @pulumi.getter
+    def writers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The set of principals to be granted writer role on the resource.
+        """
+        return pulumi.get(self, "writers")
+
+    @writers.setter
+    def writers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "writers", value)
 
 
 @pulumi.input_type
@@ -843,6 +1564,30 @@ class GoogleCloudDataplexV1StorageFormatCsvOptionsArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs:
+    def __init__(__self__, *,
+                 metadata_location: Optional[pulumi.Input[str]] = None):
+        """
+        Describes Iceberg data format.
+        :param pulumi.Input[str] metadata_location: Optional. The location of where the iceberg metadata is present, must be within the table path
+        """
+        if metadata_location is not None:
+            pulumi.set(__self__, "metadata_location", metadata_location)
+
+    @property
+    @pulumi.getter(name="metadataLocation")
+    def metadata_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The location of where the iceberg metadata is present, must be within the table path
+        """
+        return pulumi.get(self, "metadata_location")
+
+    @metadata_location.setter
+    def metadata_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "metadata_location", value)
+
+
+@pulumi.input_type
 class GoogleCloudDataplexV1StorageFormatJsonOptionsArgs:
     def __init__(__self__, *,
                  encoding: Optional[pulumi.Input[str]] = None):
@@ -872,12 +1617,14 @@ class GoogleCloudDataplexV1StorageFormatArgs:
                  mime_type: pulumi.Input[str],
                  compression_format: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatCompressionFormat']] = None,
                  csv: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatCsvOptionsArgs']] = None,
+                 iceberg: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs']] = None,
                  json: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatJsonOptionsArgs']] = None):
         """
         Describes the format of the data within its storage location.
-        :param pulumi.Input[str] mime_type: The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+        :param pulumi.Input[str] mime_type: The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatCompressionFormat'] compression_format: Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatCsvOptionsArgs'] csv: Optional. Additional information about CSV formatted data.
+        :param pulumi.Input['GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs'] iceberg: Optional. Additional information about iceberg tables.
         :param pulumi.Input['GoogleCloudDataplexV1StorageFormatJsonOptionsArgs'] json: Optional. Additional information about CSV formatted data.
         """
         pulumi.set(__self__, "mime_type", mime_type)
@@ -885,6 +1632,8 @@ class GoogleCloudDataplexV1StorageFormatArgs:
             pulumi.set(__self__, "compression_format", compression_format)
         if csv is not None:
             pulumi.set(__self__, "csv", csv)
+        if iceberg is not None:
+            pulumi.set(__self__, "iceberg", iceberg)
         if json is not None:
             pulumi.set(__self__, "json", json)
 
@@ -892,7 +1641,7 @@ class GoogleCloudDataplexV1StorageFormatArgs:
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> pulumi.Input[str]:
         """
-        The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+        The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         """
         return pulumi.get(self, "mime_type")
 
@@ -923,6 +1672,18 @@ class GoogleCloudDataplexV1StorageFormatArgs:
     @csv.setter
     def csv(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatCsvOptionsArgs']]):
         pulumi.set(self, "csv", value)
+
+    @property
+    @pulumi.getter
+    def iceberg(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs']]:
+        """
+        Optional. Additional information about iceberg tables.
+        """
+        return pulumi.get(self, "iceberg")
+
+    @iceberg.setter
+    def iceberg(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs']]):
+        pulumi.set(self, "iceberg", value)
 
     @property
     @pulumi.getter
@@ -1468,7 +2229,7 @@ class GoogleCloudDataplexV1TaskTriggerSpecArgs:
         :param pulumi.Input['GoogleCloudDataplexV1TaskTriggerSpecType'] type: Immutable. Trigger type of the user-specified Task.
         :param pulumi.Input[bool] disabled: Optional. Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
         :param pulumi.Input[int] max_retries: Optional. Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
-        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
         :param pulumi.Input[str] start_time: Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
         """
         pulumi.set(__self__, "type", type)
@@ -1521,7 +2282,7 @@ class GoogleCloudDataplexV1TaskTriggerSpecArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
         """
         return pulumi.get(self, "schedule")
 
@@ -1540,6 +2301,78 @@ class GoogleCloudDataplexV1TaskTriggerSpecArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1TriggerOnDemandArgs:
+    def __init__(__self__):
+        """
+        The scan runs once via RunDataScan API.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1TriggerScheduleArgs:
+    def __init__(__self__, *,
+                 cron: pulumi.Input[str]):
+        """
+        The scan is scheduled to run periodically.
+        :param pulumi.Input[str] cron: Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+        """
+        pulumi.set(__self__, "cron", cron)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> pulumi.Input[str]:
+        """
+        Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+        """
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cron", value)
+
+
+@pulumi.input_type
+class GoogleCloudDataplexV1TriggerArgs:
+    def __init__(__self__, *,
+                 on_demand: Optional[pulumi.Input['GoogleCloudDataplexV1TriggerOnDemandArgs']] = None,
+                 schedule: Optional[pulumi.Input['GoogleCloudDataplexV1TriggerScheduleArgs']] = None):
+        """
+        DataScan scheduling and trigger settings.
+        :param pulumi.Input['GoogleCloudDataplexV1TriggerOnDemandArgs'] on_demand: The scan runs once via RunDataScan API.
+        :param pulumi.Input['GoogleCloudDataplexV1TriggerScheduleArgs'] schedule: The scan is scheduled to run periodically.
+        """
+        if on_demand is not None:
+            pulumi.set(__self__, "on_demand", on_demand)
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @property
+    @pulumi.getter(name="onDemand")
+    def on_demand(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1TriggerOnDemandArgs']]:
+        """
+        The scan runs once via RunDataScan API.
+        """
+        return pulumi.get(self, "on_demand")
+
+    @on_demand.setter
+    def on_demand(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1TriggerOnDemandArgs']]):
+        pulumi.set(self, "on_demand", value)
+
+    @property
+    @pulumi.getter
+    def schedule(self) -> Optional[pulumi.Input['GoogleCloudDataplexV1TriggerScheduleArgs']]:
+        """
+        The scan is scheduled to run periodically.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: Optional[pulumi.Input['GoogleCloudDataplexV1TriggerScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
 
 
 @pulumi.input_type
@@ -1670,7 +2503,7 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] exclude_patterns: Optional. The list of patterns to apply for selecting data to exclude during discovery. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] include_patterns: Optional. The list of patterns to apply for selecting data to include during discovery if only a subset of the data should considered. For Cloud Storage bucket assets, these are interpreted as glob patterns used to match object names. For BigQuery dataset assets, these are interpreted as patterns to match table names.
         :param pulumi.Input['GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs'] json_options: Optional. Configuration for Json data.
-        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        :param pulumi.Input[str] schedule: Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         """
         pulumi.set(__self__, "enabled", enabled)
         if csv_options is not None:
@@ -1748,7 +2581,7 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecArgs:
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+        Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
         """
         return pulumi.get(self, "schedule")
 

@@ -139,7 +139,7 @@ class PersistenceConfigRdbSnapshotPeriod(str, Enum):
     """
     TWENTY_FOUR_HOURS = "TWENTY_FOUR_HOURS"
     """
-    Snapshot every 24 horus.
+    Snapshot every 24 hours.
     """
 
 

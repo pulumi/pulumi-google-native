@@ -86,6 +86,10 @@ export class HealthCheck extends pulumi.CustomResource {
      * Server-defined URL for this resource with the resource id.
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
+    /**
+     * The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
+     */
+    public readonly sourceRegions!: pulumi.Output<string[]>;
     public readonly sslHealthCheck!: pulumi.Output<outputs.compute.alpha.SSLHealthCheckResponse>;
     public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.alpha.TCPHealthCheckResponse>;
     /**
@@ -125,6 +129,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["sourceRegions"] = args ? args.sourceRegions : undefined;
             resourceInputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
             resourceInputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
@@ -152,6 +157,7 @@ export class HealthCheck extends pulumi.CustomResource {
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
+            resourceInputs["sourceRegions"] = undefined /*out*/;
             resourceInputs["sslHealthCheck"] = undefined /*out*/;
             resourceInputs["tcpHealthCheck"] = undefined /*out*/;
             resourceInputs["timeoutSec"] = undefined /*out*/;
@@ -203,6 +209,10 @@ export interface HealthCheckArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
+     */
+    sourceRegions?: pulumi.Input<pulumi.Input<string>[]>;
     sslHealthCheck?: pulumi.Input<inputs.compute.alpha.SSLHealthCheckArgs>;
     tcpHealthCheck?: pulumi.Input<inputs.compute.alpha.TCPHealthCheckArgs>;
     /**

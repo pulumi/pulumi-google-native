@@ -21,6 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:networksecurity/v1beta1:AddressGroupIamBinding":
+		r = &AddressGroupIamBinding{}
+	case "google-native:networksecurity/v1beta1:AddressGroupIamMember":
+		r = &AddressGroupIamMember{}
+	case "google-native:networksecurity/v1beta1:AddressGroupIamPolicy":
+		r = &AddressGroupIamPolicy{}
 	case "google-native:networksecurity/v1beta1:AuthorizationPolicy":
 		r = &AuthorizationPolicy{}
 	case "google-native:networksecurity/v1beta1:AuthorizationPolicyIamBinding":

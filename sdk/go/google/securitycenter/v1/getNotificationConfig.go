@@ -28,7 +28,7 @@ type LookupNotificationConfigArgs struct {
 type LookupNotificationConfigResult struct {
 	// The description of the notification config (max of 1024 characters).
 	Description string `pulumi:"description"`
-	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
 	Name string `pulumi:"name"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic string `pulumi:"pubsubTopic"`
@@ -79,7 +79,7 @@ func (o LookupNotificationConfigResultOutput) Description() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupNotificationConfigResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
 func (o LookupNotificationConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNotificationConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

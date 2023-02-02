@@ -28,7 +28,7 @@ type LookupControlArgs struct {
 }
 
 type LookupControlResult struct {
-	// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
+	// List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
 	AssociatedServingConfigIds []string `pulumi:"associatedServingConfigIds"`
 	// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
 	DisplayName string `pulumi:"displayName"`
@@ -80,7 +80,7 @@ func (o LookupControlResultOutput) ToLookupControlResultOutputWithContext(ctx co
 	return o
 }
 
-// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
+// List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
 func (o LookupControlResultOutput) AssociatedServingConfigIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupControlResult) []string { return v.AssociatedServingConfigIds }).(pulumi.StringArrayOutput)
 }

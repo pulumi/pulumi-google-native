@@ -21,18 +21,25 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
         /// </summary>
         public readonly Outputs.PipelineReadyConditionResponse PipelineReadyCondition;
         /// <summary>
-        /// Detalis around targets enumerated in the pipeline.
+        /// Details around targets enumerated in the pipeline.
         /// </summary>
         public readonly Outputs.TargetsPresentConditionResponse TargetsPresentCondition;
+        /// <summary>
+        /// Details on the whether the targets enumerated in the pipeline are of the same type.
+        /// </summary>
+        public readonly Outputs.TargetsTypeConditionResponse TargetsTypeCondition;
 
         [OutputConstructor]
         private PipelineConditionResponse(
             Outputs.PipelineReadyConditionResponse pipelineReadyCondition,
 
-            Outputs.TargetsPresentConditionResponse targetsPresentCondition)
+            Outputs.TargetsPresentConditionResponse targetsPresentCondition,
+
+            Outputs.TargetsTypeConditionResponse targetsTypeCondition)
         {
             PipelineReadyCondition = pipelineReadyCondition;
             TargetsPresentCondition = targetsPresentCondition;
+            TargetsTypeCondition = targetsTypeCondition;
         }
     }
 }

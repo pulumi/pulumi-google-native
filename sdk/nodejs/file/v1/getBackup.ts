@@ -44,6 +44,10 @@ export interface GetBackupResult {
      */
     readonly downloadBytes: string;
     /**
+     * Immutable. KMS key name used for data encryption.
+     */
+    readonly kmsKey: string;
+    /**
      * Resource labels to represent user provided metadata.
      */
     readonly labels: {[key: string]: string};

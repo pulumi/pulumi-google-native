@@ -58,6 +58,8 @@ type Rollout struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Required. ID of the `Rollout`.
 	RolloutId pulumi.StringOutput `pulumi:"rolloutId"`
+	// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+	StartingPhaseId pulumi.StringPtrOutput `pulumi:"startingPhaseId"`
 	// Current state of the `Rollout`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The ID of Target to which this `Rollout` is deploying.
@@ -145,6 +147,8 @@ type rolloutArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Required. ID of the `Rollout`.
 	RolloutId string `pulumi:"rolloutId"`
+	// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+	StartingPhaseId *string `pulumi:"startingPhaseId"`
 	// The ID of Target to which this `Rollout` is deploying.
 	TargetId string `pulumi:"targetId"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
@@ -171,6 +175,8 @@ type RolloutArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Required. ID of the `Rollout`.
 	RolloutId pulumi.StringInput
+	// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+	StartingPhaseId pulumi.StringPtrInput
 	// The ID of Target to which this `Rollout` is deploying.
 	TargetId pulumi.StringInput
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
@@ -318,6 +324,11 @@ func (o RolloutOutput) RequestId() pulumi.StringPtrOutput {
 // Required. ID of the `Rollout`.
 func (o RolloutOutput) RolloutId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.RolloutId }).(pulumi.StringOutput)
+}
+
+// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+func (o RolloutOutput) StartingPhaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringPtrOutput { return v.StartingPhaseId }).(pulumi.StringPtrOutput)
 }
 
 // Current state of the `Rollout`.

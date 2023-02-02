@@ -37,7 +37,7 @@ type LookupGithubEnterpriseConfigResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The URL of the github enterprise host the configuration is for.
 	HostUrl string `pulumi:"hostUrl"`
-	// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 	Name string `pulumi:"name"`
 	// Optional. The network to be used when reaching out to the GitHub Enterprise server. The VPC network must be enabled for private service connection. This should be set if the GitHub Enterprise server is hosted on-premises and not reachable by public internet. If this field is left empty, no network peering will occur and calls to the GitHub Enterprise server will be made over the public internet. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number or id and {network} is the name of a VPC network in the project.
 	PeeredNetwork string `pulumi:"peeredNetwork"`
@@ -108,7 +108,7 @@ func (o LookupGithubEnterpriseConfigResultOutput) HostUrl() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupGithubEnterpriseConfigResult) string { return v.HostUrl }).(pulumi.StringOutput)
 }
 
-// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 func (o LookupGithubEnterpriseConfigResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGithubEnterpriseConfigResult) string { return v.Name }).(pulumi.StringOutput)
 }

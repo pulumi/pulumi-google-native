@@ -18,6 +18,7 @@ class PrivateConnectionArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  private_connection_id: pulumi.Input[str],
+                 force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -27,12 +28,15 @@ class PrivateConnectionArgs:
         The set of arguments for constructing a PrivateConnection resource.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[str] private_connection_id: Required. The private connectivity identifier.
+        :param pulumi.Input[bool] force: Optional. If set to true, will skip validations.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['VpcPeeringConfigArgs'] vpc_peering_config: VPC Peering Config.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "private_connection_id", private_connection_id)
+        if force is not None:
+            pulumi.set(__self__, "force", force)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -67,6 +71,18 @@ class PrivateConnectionArgs:
     @private_connection_id.setter
     def private_connection_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "private_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def force(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If set to true, will skip validations.
+        """
+        return pulumi.get(self, "force")
+
+    @force.setter
+    def force(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force", value)
 
     @property
     @pulumi.getter
@@ -129,6 +145,7 @@ class PrivateConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
@@ -143,6 +160,7 @@ class PrivateConnection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: Display name.
+        :param pulumi.Input[bool] force: Optional. If set to true, will skip validations.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] private_connection_id: Required. The private connectivity identifier.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -174,6 +192,7 @@ class PrivateConnection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  private_connection_id: Optional[pulumi.Input[str]] = None,
@@ -192,6 +211,7 @@ class PrivateConnection(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["force"] = force
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             if private_connection_id is None and not opts.urn:
@@ -232,6 +252,7 @@ class PrivateConnection(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["error"] = None
+        __props__.__dict__["force"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -266,6 +287,14 @@ class PrivateConnection(pulumi.CustomResource):
         In case of error, the details of the error in a user-friendly format.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def force(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. If set to true, will skip validations.
+        """
+        return pulumi.get(self, "force")
 
     @property
     @pulumi.getter

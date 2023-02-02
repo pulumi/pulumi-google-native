@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Output<string> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        /// Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
         [Output("transport")]
         public Output<Outputs.TransportResponse> Transport { get; private set; } = null!;
@@ -212,7 +212,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public Input<string>? ServiceAccount { get; set; }
 
         /// <summary>
-        /// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        /// Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
         [Input("transport")]
         public Input<Inputs.TransportArgs>? Transport { get; set; }

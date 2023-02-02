@@ -55,6 +55,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// Status information for Reservation resource.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.AllocationResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -67,7 +73,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         [Output("shareSettings")]
         public Output<Outputs.ShareSettingsResponse> ShareSettings { get; private set; } = null!;
@@ -165,7 +171,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }

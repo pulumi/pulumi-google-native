@@ -71,7 +71,7 @@ class GetFunctionResult:
     @pulumi.getter
     def environment(self) -> str:
         """
-        Describe whether the function is gen1 or gen2.
+        Describe whether the function is 1st Gen or 2nd Gen.
         """
         return pulumi.get(self, "environment")
 

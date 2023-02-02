@@ -22,13 +22,15 @@ class DatabaseArgs:
                  database_dialect: Optional[pulumi.Input['DatabaseDatabaseDialect']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 proto_descriptors: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Database resource.
         :param pulumi.Input[str] create_statement: A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
         :param pulumi.Input['DatabaseDatabaseDialect'] database_dialect: Optional. The dialect of the Cloud Spanner Database.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_statements: Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
+        :param pulumi.Input[str] proto_descriptors: Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in 'extra_statements' above. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run \"\"\" $protoc --proto_path=/app_path --proto_path=/lib_path \\ --include_imports \\ --descriptor_set_out=descriptors.data \\ moon/shot/app.proto \"\"\" For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
         """
         pulumi.set(__self__, "create_statement", create_statement)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -40,6 +42,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "extra_statements", extra_statements)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if proto_descriptors is not None:
+            pulumi.set(__self__, "proto_descriptors", proto_descriptors)
 
     @property
     @pulumi.getter(name="createStatement")
@@ -107,6 +111,18 @@ class DatabaseArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="protoDescriptors")
+    def proto_descriptors(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in 'extra_statements' above. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run \"\"\" $protoc --proto_path=/app_path --proto_path=/lib_path \\ --include_imports \\ --descriptor_set_out=descriptors.data \\ moon/shot/app.proto \"\"\" For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
+        """
+        return pulumi.get(self, "proto_descriptors")
+
+    @proto_descriptors.setter
+    def proto_descriptors(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proto_descriptors", value)
+
 
 class Database(pulumi.CustomResource):
     @overload
@@ -119,6 +135,7 @@ class Database(pulumi.CustomResource):
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proto_descriptors: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.
@@ -130,6 +147,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input['DatabaseDatabaseDialect'] database_dialect: Optional. The dialect of the Cloud Spanner Database.
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_statements: Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
+        :param pulumi.Input[str] proto_descriptors: Optional. Proto descriptors used by CREATE/ALTER PROTO BUNDLE statements in 'extra_statements' above. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto). To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with --include_imports and --descriptor_set_out. For example, to generate for moon/shot/app.proto, run \"\"\" $protoc --proto_path=/app_path --proto_path=/lib_path \\ --include_imports \\ --descriptor_set_out=descriptors.data \\ moon/shot/app.proto \"\"\" For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description).
         """
         ...
     @overload
@@ -162,6 +180,7 @@ class Database(pulumi.CustomResource):
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 proto_descriptors: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -181,6 +200,7 @@ class Database(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["project"] = project
+            __props__.__dict__["proto_descriptors"] = proto_descriptors
             __props__.__dict__["create_time"] = None
             __props__.__dict__["default_leader"] = None
             __props__.__dict__["earliest_version_time"] = None

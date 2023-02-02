@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public Input<Inputs.SchedulerResourceArgs>? Scheduler { get; set; }
 
         /// <summary>
+        /// Optional. Resources used by Airflow triggerers.
+        /// </summary>
+        [Input("triggerer")]
+        public Input<Inputs.TriggererResourceArgs>? Triggerer { get; set; }
+
+        /// <summary>
         /// Optional. Resources used by Airflow web server.
         /// </summary>
         [Input("webServer")]

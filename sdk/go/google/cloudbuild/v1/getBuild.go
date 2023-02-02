@@ -79,7 +79,7 @@ type LookupBuildResult struct {
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a `Build`. These are not docker tags.
 	Tags []string `pulumi:"tags"`
-	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
@@ -251,7 +251,7 @@ func (o LookupBuildResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupBuildResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 func (o LookupBuildResultOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBuildResult) string { return v.Timeout }).(pulumi.StringOutput)
 }

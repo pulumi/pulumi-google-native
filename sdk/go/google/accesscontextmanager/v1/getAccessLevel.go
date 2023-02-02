@@ -33,7 +33,7 @@ type LookupAccessLevelResult struct {
 	Custom CustomLevelResponse `pulumi:"custom"`
 	// Description of the `AccessLevel` and its use. Does not affect behavior.
 	Description string `pulumi:"description"`
-	// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+	// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
 	Name string `pulumi:"name"`
 	// Human readable title. Must be unique within the Policy.
 	Title string `pulumi:"title"`
@@ -91,7 +91,7 @@ func (o LookupAccessLevelResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessLevelResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
 func (o LookupAccessLevelResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessLevelResult) string { return v.Name }).(pulumi.StringOutput)
 }

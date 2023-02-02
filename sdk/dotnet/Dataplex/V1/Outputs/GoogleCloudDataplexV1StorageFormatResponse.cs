@@ -29,11 +29,15 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly string Format;
         /// <summary>
+        /// Optional. Additional information about iceberg tables.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse Iceberg;
+        /// <summary>
         /// Optional. Additional information about CSV formatted data.
         /// </summary>
         public readonly Outputs.GoogleCloudDataplexV1StorageFormatJsonOptionsResponse Json;
         /// <summary>
-        /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+        /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         /// </summary>
         public readonly string MimeType;
 
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 
             string format,
 
+            Outputs.GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse iceberg,
+
             Outputs.GoogleCloudDataplexV1StorageFormatJsonOptionsResponse json,
 
             string mimeType)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
             CompressionFormat = compressionFormat;
             Csv = csv;
             Format = format;
+            Iceberg = iceberg;
             Json = json;
             MimeType = mimeType;
         }

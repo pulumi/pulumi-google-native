@@ -36,6 +36,8 @@ type LookupTenantResult struct {
 	DisableAuth bool `pulumi:"disableAuth"`
 	// Display name of the tenant.
 	DisplayName string `pulumi:"displayName"`
+	// Configuration for settings related to email privacy and public visibility.
+	EmailPrivacyConfig GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse `pulumi:"emailPrivacyConfig"`
 	// Whether to enable anonymous user authentication.
 	EnableAnonymousUser bool `pulumi:"enableAnonymousUser"`
 	// Whether to enable email link user authentication.
@@ -117,6 +119,13 @@ func (o LookupTenantResultOutput) DisableAuth() pulumi.BoolOutput {
 // Display name of the tenant.
 func (o LookupTenantResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTenantResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Configuration for settings related to email privacy and public visibility.
+func (o LookupTenantResultOutput) EmailPrivacyConfig() GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput {
+	return o.ApplyT(func(v LookupTenantResult) GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse {
+		return v.EmailPrivacyConfig
+	}).(GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponseOutput)
 }
 
 // Whether to enable anonymous user authentication.

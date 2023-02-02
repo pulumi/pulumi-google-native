@@ -67,7 +67,7 @@ export interface GetTriggerResult {
      */
     readonly serviceAccount: string;
     /**
-     * Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     readonly transport: outputs.eventarc.v1.TransportResponse;
     /**

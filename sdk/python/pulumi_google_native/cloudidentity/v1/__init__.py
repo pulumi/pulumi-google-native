@@ -9,8 +9,12 @@ from ._enums import *
 from .device import *
 from .get_device import *
 from .get_group import *
+from .get_inbound_saml_sso_profile import *
+from .get_inbound_sso_assignment import *
 from .get_membership import *
 from .group import *
+from .inbound_saml_sso_profile import *
+from .inbound_sso_assignment import *
 from .membership import *
 from ._inputs import *
 from . import outputs

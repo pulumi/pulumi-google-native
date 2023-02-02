@@ -15,6 +15,7 @@ __all__ = [
     'GoogleCloudChannelV1AssociationInfoResponse',
     'GoogleCloudChannelV1CloudIdentityInfoResponse',
     'GoogleCloudChannelV1CommitmentSettingsResponse',
+    'GoogleCloudChannelV1ConditionalOverrideResponse',
     'GoogleCloudChannelV1ContactInfoResponse',
     'GoogleCloudChannelV1EduDataResponse',
     'GoogleCloudChannelV1ParameterResponse',
@@ -23,9 +24,11 @@ __all__ = [
     'GoogleCloudChannelV1ProvisionedServiceResponse',
     'GoogleCloudChannelV1RenewalSettingsResponse',
     'GoogleCloudChannelV1RepricingAdjustmentResponse',
+    'GoogleCloudChannelV1RepricingConditionResponse',
     'GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse',
     'GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse',
     'GoogleCloudChannelV1RepricingConfigResponse',
+    'GoogleCloudChannelV1SkuGroupConditionResponse',
     'GoogleCloudChannelV1TrialSettingsResponse',
     'GoogleCloudChannelV1ValueResponse',
     'GoogleTypeDateResponse',
@@ -265,6 +268,69 @@ class GoogleCloudChannelV1CommitmentSettingsResponse(dict):
         Commitment start timestamp.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GoogleCloudChannelV1ConditionalOverrideResponse(dict):
+    """
+    Specifies the override to conditionally apply.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rebillingBasis":
+            suggest = "rebilling_basis"
+        elif key == "repricingCondition":
+            suggest = "repricing_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1ConditionalOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1ConditionalOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1ConditionalOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adjustment: 'outputs.GoogleCloudChannelV1RepricingAdjustmentResponse',
+                 rebilling_basis: str,
+                 repricing_condition: 'outputs.GoogleCloudChannelV1RepricingConditionResponse'):
+        """
+        Specifies the override to conditionally apply.
+        :param 'GoogleCloudChannelV1RepricingAdjustmentResponse' adjustment: Information about the applied override's adjustment.
+        :param str rebilling_basis: The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+        :param 'GoogleCloudChannelV1RepricingConditionResponse' repricing_condition: Specifies the condition which, if met, will apply the override.
+        """
+        pulumi.set(__self__, "adjustment", adjustment)
+        pulumi.set(__self__, "rebilling_basis", rebilling_basis)
+        pulumi.set(__self__, "repricing_condition", repricing_condition)
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> 'outputs.GoogleCloudChannelV1RepricingAdjustmentResponse':
+        """
+        Information about the applied override's adjustment.
+        """
+        return pulumi.get(self, "adjustment")
+
+    @property
+    @pulumi.getter(name="rebillingBasis")
+    def rebilling_basis(self) -> str:
+        """
+        The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+        """
+        return pulumi.get(self, "rebilling_basis")
+
+    @property
+    @pulumi.getter(name="repricingCondition")
+    def repricing_condition(self) -> 'outputs.GoogleCloudChannelV1RepricingConditionResponse':
+        """
+        Specifies the condition which, if met, will apply the override.
+        """
+        return pulumi.get(self, "repricing_condition")
 
 
 @pulumi.output_type
@@ -727,6 +793,45 @@ class GoogleCloudChannelV1RepricingAdjustmentResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudChannelV1RepricingConditionResponse(dict):
+    """
+    Represents the various repricing conditions you can use for a conditional override.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "skuGroupCondition":
+            suggest = "sku_group_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1RepricingConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1RepricingConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1RepricingConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sku_group_condition: 'outputs.GoogleCloudChannelV1SkuGroupConditionResponse'):
+        """
+        Represents the various repricing conditions you can use for a conditional override.
+        :param 'GoogleCloudChannelV1SkuGroupConditionResponse' sku_group_condition: SKU Group condition for override.
+        """
+        pulumi.set(__self__, "sku_group_condition", sku_group_condition)
+
+    @property
+    @pulumi.getter(name="skuGroupCondition")
+    def sku_group_condition(self) -> 'outputs.GoogleCloudChannelV1SkuGroupConditionResponse':
+        """
+        SKU Group condition for override.
+        """
+        return pulumi.get(self, "sku_group_condition")
+
+
+@pulumi.output_type
 class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse(dict):
     """
     Applies the repricing configuration at the channel partner level. The channel partner value is derived from the resource name. Takes an empty json object.
@@ -770,6 +875,8 @@ class GoogleCloudChannelV1RepricingConfigResponse(dict):
         suggest = None
         if key == "channelPartnerGranularity":
             suggest = "channel_partner_granularity"
+        elif key == "conditionalOverrides":
+            suggest = "conditional_overrides"
         elif key == "effectiveInvoiceMonth":
             suggest = "effective_invoice_month"
         elif key == "entitlementGranularity":
@@ -791,6 +898,7 @@ class GoogleCloudChannelV1RepricingConfigResponse(dict):
     def __init__(__self__, *,
                  adjustment: 'outputs.GoogleCloudChannelV1RepricingAdjustmentResponse',
                  channel_partner_granularity: 'outputs.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse',
+                 conditional_overrides: Sequence['outputs.GoogleCloudChannelV1ConditionalOverrideResponse'],
                  effective_invoice_month: 'outputs.GoogleTypeDateResponse',
                  entitlement_granularity: 'outputs.GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse',
                  rebilling_basis: str):
@@ -798,12 +906,14 @@ class GoogleCloudChannelV1RepricingConfigResponse(dict):
         Configuration for repricing a Google bill over a period of time.
         :param 'GoogleCloudChannelV1RepricingAdjustmentResponse' adjustment: Information about the adjustment.
         :param 'GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse' channel_partner_granularity: Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        :param Sequence['GoogleCloudChannelV1ConditionalOverrideResponse'] conditional_overrides: The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
         :param 'GoogleTypeDateResponse' effective_invoice_month: The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
         :param 'GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse' entitlement_granularity: Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
         :param str rebilling_basis: The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
         """
         pulumi.set(__self__, "adjustment", adjustment)
         pulumi.set(__self__, "channel_partner_granularity", channel_partner_granularity)
+        pulumi.set(__self__, "conditional_overrides", conditional_overrides)
         pulumi.set(__self__, "effective_invoice_month", effective_invoice_month)
         pulumi.set(__self__, "entitlement_granularity", entitlement_granularity)
         pulumi.set(__self__, "rebilling_basis", rebilling_basis)
@@ -823,6 +933,14 @@ class GoogleCloudChannelV1RepricingConfigResponse(dict):
         Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
         """
         return pulumi.get(self, "channel_partner_granularity")
+
+    @property
+    @pulumi.getter(name="conditionalOverrides")
+    def conditional_overrides(self) -> Sequence['outputs.GoogleCloudChannelV1ConditionalOverrideResponse']:
+        """
+        The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+        """
+        return pulumi.get(self, "conditional_overrides")
 
     @property
     @pulumi.getter(name="effectiveInvoiceMonth")
@@ -847,6 +965,45 @@ class GoogleCloudChannelV1RepricingConfigResponse(dict):
         The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
         """
         return pulumi.get(self, "rebilling_basis")
+
+
+@pulumi.output_type
+class GoogleCloudChannelV1SkuGroupConditionResponse(dict):
+    """
+    A condition that applies the override if a line item SKU is found in the SKU group.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "skuGroup":
+            suggest = "sku_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1SkuGroupConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1SkuGroupConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1SkuGroupConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 sku_group: str):
+        """
+        A condition that applies the override if a line item SKU is found in the SKU group.
+        :param str sku_group: Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        """
+        pulumi.set(__self__, "sku_group", sku_group)
+
+    @property
+    @pulumi.getter(name="skuGroup")
+    def sku_group(self) -> str:
+        """
+        Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        """
+        return pulumi.get(self, "sku_group")
 
 
 @pulumi.output_type

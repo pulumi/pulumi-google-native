@@ -83,6 +83,10 @@ export interface GetNodeResult {
      */
     readonly networkEndpoints: outputs.tpu.v2alpha1.NetworkEndpointResponse[];
     /**
+     * The qualified name of the QueuedResource that requested this Node.
+     */
+    readonly queuedResource: string;
+    /**
      * The runtime version running in the Node.
      */
     readonly runtimeVersion: string;

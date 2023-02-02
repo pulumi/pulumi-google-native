@@ -13,15 +13,18 @@ from ._enums import *
 __all__ = [
     'GoogleCloudChannelV1AssociationInfoArgs',
     'GoogleCloudChannelV1CommitmentSettingsArgs',
+    'GoogleCloudChannelV1ConditionalOverrideArgs',
     'GoogleCloudChannelV1ContactInfoArgs',
     'GoogleCloudChannelV1ParameterArgs',
     'GoogleCloudChannelV1PercentageAdjustmentArgs',
     'GoogleCloudChannelV1PeriodArgs',
     'GoogleCloudChannelV1RenewalSettingsArgs',
     'GoogleCloudChannelV1RepricingAdjustmentArgs',
+    'GoogleCloudChannelV1RepricingConditionArgs',
     'GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs',
     'GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs',
     'GoogleCloudChannelV1RepricingConfigArgs',
+    'GoogleCloudChannelV1SkuGroupConditionArgs',
     'GoogleCloudChannelV1ValueArgs',
     'GoogleTypeDateArgs',
     'GoogleTypeDecimalArgs',
@@ -74,6 +77,59 @@ class GoogleCloudChannelV1CommitmentSettingsArgs:
     @renewal_settings.setter
     def renewal_settings(self, value: Optional[pulumi.Input['GoogleCloudChannelV1RenewalSettingsArgs']]):
         pulumi.set(self, "renewal_settings", value)
+
+
+@pulumi.input_type
+class GoogleCloudChannelV1ConditionalOverrideArgs:
+    def __init__(__self__, *,
+                 adjustment: pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs'],
+                 rebilling_basis: pulumi.Input['GoogleCloudChannelV1ConditionalOverrideRebillingBasis'],
+                 repricing_condition: pulumi.Input['GoogleCloudChannelV1RepricingConditionArgs']):
+        """
+        Specifies the override to conditionally apply.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs'] adjustment: Information about the applied override's adjustment.
+        :param pulumi.Input['GoogleCloudChannelV1ConditionalOverrideRebillingBasis'] rebilling_basis: The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+        :param pulumi.Input['GoogleCloudChannelV1RepricingConditionArgs'] repricing_condition: Specifies the condition which, if met, will apply the override.
+        """
+        pulumi.set(__self__, "adjustment", adjustment)
+        pulumi.set(__self__, "rebilling_basis", rebilling_basis)
+        pulumi.set(__self__, "repricing_condition", repricing_condition)
+
+    @property
+    @pulumi.getter
+    def adjustment(self) -> pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs']:
+        """
+        Information about the applied override's adjustment.
+        """
+        return pulumi.get(self, "adjustment")
+
+    @adjustment.setter
+    def adjustment(self, value: pulumi.Input['GoogleCloudChannelV1RepricingAdjustmentArgs']):
+        pulumi.set(self, "adjustment", value)
+
+    @property
+    @pulumi.getter(name="rebillingBasis")
+    def rebilling_basis(self) -> pulumi.Input['GoogleCloudChannelV1ConditionalOverrideRebillingBasis']:
+        """
+        The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+        """
+        return pulumi.get(self, "rebilling_basis")
+
+    @rebilling_basis.setter
+    def rebilling_basis(self, value: pulumi.Input['GoogleCloudChannelV1ConditionalOverrideRebillingBasis']):
+        pulumi.set(self, "rebilling_basis", value)
+
+    @property
+    @pulumi.getter(name="repricingCondition")
+    def repricing_condition(self) -> pulumi.Input['GoogleCloudChannelV1RepricingConditionArgs']:
+        """
+        Specifies the condition which, if met, will apply the override.
+        """
+        return pulumi.get(self, "repricing_condition")
+
+    @repricing_condition.setter
+    def repricing_condition(self, value: pulumi.Input['GoogleCloudChannelV1RepricingConditionArgs']):
+        pulumi.set(self, "repricing_condition", value)
 
 
 @pulumi.input_type
@@ -365,6 +421,30 @@ class GoogleCloudChannelV1RepricingAdjustmentArgs:
 
 
 @pulumi.input_type
+class GoogleCloudChannelV1RepricingConditionArgs:
+    def __init__(__self__, *,
+                 sku_group_condition: Optional[pulumi.Input['GoogleCloudChannelV1SkuGroupConditionArgs']] = None):
+        """
+        Represents the various repricing conditions you can use for a conditional override.
+        :param pulumi.Input['GoogleCloudChannelV1SkuGroupConditionArgs'] sku_group_condition: SKU Group condition for override.
+        """
+        if sku_group_condition is not None:
+            pulumi.set(__self__, "sku_group_condition", sku_group_condition)
+
+    @property
+    @pulumi.getter(name="skuGroupCondition")
+    def sku_group_condition(self) -> Optional[pulumi.Input['GoogleCloudChannelV1SkuGroupConditionArgs']]:
+        """
+        SKU Group condition for override.
+        """
+        return pulumi.get(self, "sku_group_condition")
+
+    @sku_group_condition.setter
+    def sku_group_condition(self, value: Optional[pulumi.Input['GoogleCloudChannelV1SkuGroupConditionArgs']]):
+        pulumi.set(self, "sku_group_condition", value)
+
+
+@pulumi.input_type
 class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs:
     def __init__(__self__):
         """
@@ -404,6 +484,7 @@ class GoogleCloudChannelV1RepricingConfigArgs:
                  effective_invoice_month: pulumi.Input['GoogleTypeDateArgs'],
                  rebilling_basis: pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis'],
                  channel_partner_granularity: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs']] = None,
+                 conditional_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ConditionalOverrideArgs']]]] = None,
                  entitlement_granularity: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']] = None):
         """
         Configuration for repricing a Google bill over a period of time.
@@ -411,6 +492,7 @@ class GoogleCloudChannelV1RepricingConfigArgs:
         :param pulumi.Input['GoogleTypeDateArgs'] effective_invoice_month: The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
         :param pulumi.Input['GoogleCloudChannelV1RepricingConfigRebillingBasis'] rebilling_basis: The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
         :param pulumi.Input['GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs'] channel_partner_granularity: Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ConditionalOverrideArgs']]] conditional_overrides: The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
         :param pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs'] entitlement_granularity: Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
         """
         pulumi.set(__self__, "adjustment", adjustment)
@@ -418,6 +500,8 @@ class GoogleCloudChannelV1RepricingConfigArgs:
         pulumi.set(__self__, "rebilling_basis", rebilling_basis)
         if channel_partner_granularity is not None:
             pulumi.set(__self__, "channel_partner_granularity", channel_partner_granularity)
+        if conditional_overrides is not None:
+            pulumi.set(__self__, "conditional_overrides", conditional_overrides)
         if entitlement_granularity is not None:
             pulumi.set(__self__, "entitlement_granularity", entitlement_granularity)
 
@@ -470,6 +554,18 @@ class GoogleCloudChannelV1RepricingConfigArgs:
         pulumi.set(self, "channel_partner_granularity", value)
 
     @property
+    @pulumi.getter(name="conditionalOverrides")
+    def conditional_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ConditionalOverrideArgs']]]]:
+        """
+        The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+        """
+        return pulumi.get(self, "conditional_overrides")
+
+    @conditional_overrides.setter
+    def conditional_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudChannelV1ConditionalOverrideArgs']]]]):
+        pulumi.set(self, "conditional_overrides", value)
+
+    @property
     @pulumi.getter(name="entitlementGranularity")
     def entitlement_granularity(self) -> Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']]:
         """
@@ -480,6 +576,30 @@ class GoogleCloudChannelV1RepricingConfigArgs:
     @entitlement_granularity.setter
     def entitlement_granularity(self, value: Optional[pulumi.Input['GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs']]):
         pulumi.set(self, "entitlement_granularity", value)
+
+
+@pulumi.input_type
+class GoogleCloudChannelV1SkuGroupConditionArgs:
+    def __init__(__self__, *,
+                 sku_group: Optional[pulumi.Input[str]] = None):
+        """
+        A condition that applies the override if a line item SKU is found in the SKU group.
+        :param pulumi.Input[str] sku_group: Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        """
+        if sku_group is not None:
+            pulumi.set(__self__, "sku_group", sku_group)
+
+    @property
+    @pulumi.getter(name="skuGroup")
+    def sku_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        """
+        return pulumi.get(self, "sku_group")
+
+    @sku_group.setter
+    def sku_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sku_group", value)
 
 
 @pulumi.input_type

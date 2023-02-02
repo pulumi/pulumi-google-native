@@ -51,4 +51,124 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
 
         public override string ToString() => _value;
     }
+
+    [EnumType]
+    public readonly struct InternalRangeOverlapsItem : IEquatable<InternalRangeOverlapsItem>
+    {
+        private readonly string _value;
+
+        private InternalRangeOverlapsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No overlap overrides.
+        /// </summary>
+        public static InternalRangeOverlapsItem OverlapUnspecified { get; } = new InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED");
+        /// <summary>
+        /// Allow creation of static routes more specific than the current internal range.
+        /// </summary>
+        public static InternalRangeOverlapsItem OverlapRouteRange { get; } = new InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE");
+
+        public static bool operator ==(InternalRangeOverlapsItem left, InternalRangeOverlapsItem right) => left.Equals(right);
+        public static bool operator !=(InternalRangeOverlapsItem left, InternalRangeOverlapsItem right) => !left.Equals(right);
+
+        public static explicit operator string(InternalRangeOverlapsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InternalRangeOverlapsItem other && Equals(other);
+        public bool Equals(InternalRangeOverlapsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of peering set for this internal range.
+    /// </summary>
+    [EnumType]
+    public readonly struct InternalRangePeering : IEquatable<InternalRangePeering>
+    {
+        private readonly string _value;
+
+        private InternalRangePeering(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If Peering is left unspecified in CreateInternalRange or UpdateInternalRange, it will be defaulted to FOR_SELF.
+        /// </summary>
+        public static InternalRangePeering PeeringUnspecified { get; } = new InternalRangePeering("PEERING_UNSPECIFIED");
+        /// <summary>
+        /// This is the default behavior and represents the case that this internal range is intended to be used in the VPC in which it is created and is accessible from its peers. This implies that peers or peers-of-peers cannot use this range.
+        /// </summary>
+        public static InternalRangePeering ForSelf { get; } = new InternalRangePeering("FOR_SELF");
+        /// <summary>
+        /// This behavior can be set when the internal range is being reserved for usage by the peers. This means that no resource within the VPC in which it is being created can use this to associate with a VPC resource, but one of the peers can. This represents donating a range for peers to use.
+        /// </summary>
+        public static InternalRangePeering ForPeer { get; } = new InternalRangePeering("FOR_PEER");
+        /// <summary>
+        /// This behavior can be set when the internal range is being reserved for usage by the VPC in which it is created but not shared with the peers. In a sense it is local to the VPC. This can be used to create internal ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or for Interconnect routes that are not shared with peers. This also implies that peers cannot use this range in a way that is visible to this VPC, but can re-use this range as long as it is NOT_SHARED from the peer VPC, too.
+        /// </summary>
+        public static InternalRangePeering NotShared { get; } = new InternalRangePeering("NOT_SHARED");
+
+        public static bool operator ==(InternalRangePeering left, InternalRangePeering right) => left.Equals(right);
+        public static bool operator !=(InternalRangePeering left, InternalRangePeering right) => !left.Equals(right);
+
+        public static explicit operator string(InternalRangePeering value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InternalRangePeering other && Equals(other);
+        public bool Equals(InternalRangePeering other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The type of usage set for this internal range.
+    /// </summary>
+    [EnumType]
+    public readonly struct InternalRangeUsage : IEquatable<InternalRangeUsage>
+    {
+        private readonly string _value;
+
+        private InternalRangeUsage(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified usage is allowed in calls which identify the resource by other fields and do not need Usage set to complete. These are, i.e.: GetInternalRange and DeleteInternalRange. Usage needs to be specified explicitly in CreateInternalRange or UpdateInternalRange calls.
+        /// </summary>
+        public static InternalRangeUsage UsageUnspecified { get; } = new InternalRangeUsage("USAGE_UNSPECIFIED");
+        /// <summary>
+        /// A VPC resource can use the reserved CIDR block by associating it with the internal range resource if usage is set to FOR_VPC.
+        /// </summary>
+        public static InternalRangeUsage ForVpc { get; } = new InternalRangeUsage("FOR_VPC");
+        /// <summary>
+        /// Ranges created with EXTERNAL_TO_VPC cannot be associated with VPC resources and are meant to block out address ranges for various use cases such as usage on-premises, with dynamic route announcements via Interconnect.
+        /// </summary>
+        public static InternalRangeUsage ExternalToVpc { get; } = new InternalRangeUsage("EXTERNAL_TO_VPC");
+
+        public static bool operator ==(InternalRangeUsage left, InternalRangeUsage right) => left.Equals(right);
+        public static bool operator !=(InternalRangeUsage left, InternalRangeUsage right) => !left.Equals(right);
+
+        public static explicit operator string(InternalRangeUsage value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InternalRangeUsage other && Equals(other);
+        public bool Equals(InternalRangeUsage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -370,8 +370,8 @@ class DateShiftConfigResponse(dict):
                  kms_wrapped: 'outputs.KmsWrappedCryptoKeyResponse'):
         """
         Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
-        :param str crypto_key: An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
-        :param 'KmsWrappedCryptoKeyResponse' kms_wrapped: KMS wrapped key. Must not be set if `crypto_key` is set.
+        :param str crypto_key: An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+        :param 'KmsWrappedCryptoKeyResponse' kms_wrapped: KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
         pulumi.set(__self__, "kms_wrapped", kms_wrapped)
@@ -380,7 +380,7 @@ class DateShiftConfigResponse(dict):
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> str:
         """
-        An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
         """
         return pulumi.get(self, "crypto_key")
 
@@ -388,7 +388,7 @@ class DateShiftConfigResponse(dict):
     @pulumi.getter(name="kmsWrapped")
     def kms_wrapped(self) -> 'outputs.KmsWrappedCryptoKeyResponse':
         """
-        KMS wrapped key. Must not be set if `crypto_key` is set.
+        KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
         """
         return pulumi.get(self, "kms_wrapped")
 

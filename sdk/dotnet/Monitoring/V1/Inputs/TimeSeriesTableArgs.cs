@@ -15,6 +15,18 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// </summary>
     public sealed class TimeSeriesTableArgs : global::Pulumi.ResourceArgs
     {
+        [Input("columnSettings")]
+        private InputList<Inputs.ColumnSettingsArgs>? _columnSettings;
+
+        /// <summary>
+        /// Optional. The list of the persistent column settings for the table.
+        /// </summary>
+        public InputList<Inputs.ColumnSettingsArgs> ColumnSettings
+        {
+            get => _columnSettings ?? (_columnSettings = new InputList<Inputs.ColumnSettingsArgs>());
+            set => _columnSettings = value;
+        }
+
         [Input("dataSets", required: true)]
         private InputList<Inputs.TableDataSetArgs>? _dataSets;
 

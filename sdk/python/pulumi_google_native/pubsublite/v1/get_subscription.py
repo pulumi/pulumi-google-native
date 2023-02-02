@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubscriptionResult:
-    def __init__(__self__, delivery_config=None, name=None, topic=None):
+    def __init__(__self__, delivery_config=None, export_config=None, name=None, topic=None):
         if delivery_config and not isinstance(delivery_config, dict):
             raise TypeError("Expected argument 'delivery_config' to be a dict")
         pulumi.set(__self__, "delivery_config", delivery_config)
+        if export_config and not isinstance(export_config, dict):
+            raise TypeError("Expected argument 'export_config' to be a dict")
+        pulumi.set(__self__, "export_config", export_config)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -37,6 +40,14 @@ class GetSubscriptionResult:
         The settings for this subscription's message delivery.
         """
         return pulumi.get(self, "delivery_config")
+
+    @property
+    @pulumi.getter(name="exportConfig")
+    def export_config(self) -> 'outputs.ExportConfigResponse':
+        """
+        If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        """
+        return pulumi.get(self, "export_config")
 
     @property
     @pulumi.getter
@@ -62,6 +73,7 @@ class AwaitableGetSubscriptionResult(GetSubscriptionResult):
             yield self
         return GetSubscriptionResult(
             delivery_config=self.delivery_config,
+            export_config=self.export_config,
             name=self.name,
             topic=self.topic)
 
@@ -82,6 +94,7 @@ def get_subscription(location: Optional[str] = None,
 
     return AwaitableGetSubscriptionResult(
         delivery_config=__ret__.delivery_config,
+        export_config=__ret__.export_config,
         name=__ret__.name,
         topic=__ret__.topic)
 

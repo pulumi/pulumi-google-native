@@ -14,7 +14,7 @@ import (
 type Accelerator struct {
 	// The type of an accelator for a CDF instance.
 	AcceleratorType *AcceleratorAcceleratorType `pulumi:"acceleratorType"`
-	// The state of the accelerator
+	// The state of the accelerator.
 	State *AcceleratorState `pulumi:"state"`
 }
 
@@ -33,7 +33,7 @@ type AcceleratorInput interface {
 type AcceleratorArgs struct {
 	// The type of an accelator for a CDF instance.
 	AcceleratorType AcceleratorAcceleratorTypePtrInput `pulumi:"acceleratorType"`
-	// The state of the accelerator
+	// The state of the accelerator.
 	State AcceleratorStatePtrInput `pulumi:"state"`
 }
 
@@ -94,7 +94,7 @@ func (o AcceleratorOutput) AcceleratorType() AcceleratorAcceleratorTypePtrOutput
 	return o.ApplyT(func(v Accelerator) *AcceleratorAcceleratorType { return v.AcceleratorType }).(AcceleratorAcceleratorTypePtrOutput)
 }
 
-// The state of the accelerator
+// The state of the accelerator.
 func (o AcceleratorOutput) State() AcceleratorStatePtrOutput {
 	return o.ApplyT(func(v Accelerator) *AcceleratorState { return v.State }).(AcceleratorStatePtrOutput)
 }
@@ -123,7 +123,7 @@ func (o AcceleratorArrayOutput) Index(i pulumi.IntInput) AcceleratorOutput {
 type AcceleratorResponse struct {
 	// The type of an accelator for a CDF instance.
 	AcceleratorType string `pulumi:"acceleratorType"`
-	// The state of the accelerator
+	// The state of the accelerator.
 	State string `pulumi:"state"`
 }
 
@@ -147,7 +147,7 @@ func (o AcceleratorResponseOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
 }
 
-// The state of the accelerator
+// The state of the accelerator.
 func (o AcceleratorResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorResponse) string { return v.State }).(pulumi.StringOutput)
 }

@@ -1084,6 +1084,8 @@ func (o CloudSqlConnectionProfilePtrOutput) Settings() CloudSqlSettingsPtrOutput
 
 // Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
 type CloudSqlConnectionProfileResponse struct {
+	// The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+	AdditionalPublicIp string `pulumi:"additionalPublicIp"`
 	// The Cloud SQL instance ID that this connection profile is associated with.
 	CloudSqlId string `pulumi:"cloudSqlId"`
 	// The Cloud SQL database instance's private IP.
@@ -1107,6 +1109,11 @@ func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResp
 
 func (o CloudSqlConnectionProfileResponseOutput) ToCloudSqlConnectionProfileResponseOutputWithContext(ctx context.Context) CloudSqlConnectionProfileResponseOutput {
 	return o
+}
+
+// The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+func (o CloudSqlConnectionProfileResponseOutput) AdditionalPublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSqlConnectionProfileResponse) string { return v.AdditionalPublicIp }).(pulumi.StringOutput)
 }
 
 // The Cloud SQL instance ID that this connection profile is associated with.
@@ -1135,6 +1142,8 @@ type CloudSqlSettings struct {
 	ActivationPolicy *CloudSqlSettingsActivationPolicy `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease *bool `pulumi:"autoStorageIncrease"`
+	// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+	AvailabilityType *CloudSqlSettingsAvailabilityType `pulumi:"availabilityType"`
 	// The KMS key name used for the csql instance.
 	CmekKeyName *string `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
@@ -1151,6 +1160,8 @@ type CloudSqlSettings struct {
 	IpConfig *SqlIpConfig `pulumi:"ipConfig"`
 	// Input only. Initial root password.
 	RootPassword *string `pulumi:"rootPassword"`
+	// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+	SecondaryZone *string `pulumi:"secondaryZone"`
 	// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
 	SourceId *string `pulumi:"sourceId"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1180,6 +1191,8 @@ type CloudSqlSettingsArgs struct {
 	ActivationPolicy CloudSqlSettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease pulumi.BoolPtrInput `pulumi:"autoStorageIncrease"`
+	// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+	AvailabilityType CloudSqlSettingsAvailabilityTypePtrInput `pulumi:"availabilityType"`
 	// The KMS key name used for the csql instance.
 	CmekKeyName pulumi.StringPtrInput `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
@@ -1196,6 +1209,8 @@ type CloudSqlSettingsArgs struct {
 	IpConfig SqlIpConfigPtrInput `pulumi:"ipConfig"`
 	// Input only. Initial root password.
 	RootPassword pulumi.StringPtrInput `pulumi:"rootPassword"`
+	// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+	SecondaryZone pulumi.StringPtrInput `pulumi:"secondaryZone"`
 	// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
 	SourceId pulumi.StringPtrInput `pulumi:"sourceId"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1296,6 +1311,11 @@ func (o CloudSqlSettingsOutput) AutoStorageIncrease() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *bool { return v.AutoStorageIncrease }).(pulumi.BoolPtrOutput)
 }
 
+// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+func (o CloudSqlSettingsOutput) AvailabilityType() CloudSqlSettingsAvailabilityTypePtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettingsAvailabilityType { return v.AvailabilityType }).(CloudSqlSettingsAvailabilityTypePtrOutput)
+}
+
 // The KMS key name used for the csql instance.
 func (o CloudSqlSettingsOutput) CmekKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.CmekKeyName }).(pulumi.StringPtrOutput)
@@ -1334,6 +1354,11 @@ func (o CloudSqlSettingsOutput) IpConfig() SqlIpConfigPtrOutput {
 // Input only. Initial root password.
 func (o CloudSqlSettingsOutput) RootPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudSqlSettings) *string { return v.RootPassword }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+func (o CloudSqlSettingsOutput) SecondaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *string { return v.SecondaryZone }).(pulumi.StringPtrOutput)
 }
 
 // The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
@@ -1403,6 +1428,16 @@ func (o CloudSqlSettingsPtrOutput) AutoStorageIncrease() pulumi.BoolPtrOutput {
 		}
 		return v.AutoStorageIncrease
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+func (o CloudSqlSettingsPtrOutput) AvailabilityType() CloudSqlSettingsAvailabilityTypePtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *CloudSqlSettingsAvailabilityType {
+		if v == nil {
+			return nil
+		}
+		return v.AvailabilityType
+	}).(CloudSqlSettingsAvailabilityTypePtrOutput)
 }
 
 // The KMS key name used for the csql instance.
@@ -1485,6 +1520,16 @@ func (o CloudSqlSettingsPtrOutput) RootPassword() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+func (o CloudSqlSettingsPtrOutput) SecondaryZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryZone
+	}).(pulumi.StringPtrOutput)
+}
+
 // The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
 func (o CloudSqlSettingsPtrOutput) SourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudSqlSettings) *string {
@@ -1541,6 +1586,8 @@ type CloudSqlSettingsResponse struct {
 	ActivationPolicy string `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease bool `pulumi:"autoStorageIncrease"`
+	// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+	AvailabilityType string `pulumi:"availabilityType"`
 	// The KMS key name used for the csql instance.
 	CmekKeyName string `pulumi:"cmekKeyName"`
 	// The Cloud SQL default instance level collation.
@@ -1559,6 +1606,8 @@ type CloudSqlSettingsResponse struct {
 	RootPassword string `pulumi:"rootPassword"`
 	// Indicates If this connection profile root password is stored.
 	RootPasswordSet bool `pulumi:"rootPasswordSet"`
+	// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+	SecondaryZone string `pulumi:"secondaryZone"`
 	// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
 	SourceId string `pulumi:"sourceId"`
 	// The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
@@ -1594,6 +1643,11 @@ func (o CloudSqlSettingsResponseOutput) ActivationPolicy() pulumi.StringOutput {
 // [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 func (o CloudSqlSettingsResponseOutput) AutoStorageIncrease() pulumi.BoolOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) bool { return v.AutoStorageIncrease }).(pulumi.BoolOutput)
+}
+
+// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+func (o CloudSqlSettingsResponseOutput) AvailabilityType() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.AvailabilityType }).(pulumi.StringOutput)
 }
 
 // The KMS key name used for the csql instance.
@@ -1641,6 +1695,11 @@ func (o CloudSqlSettingsResponseOutput) RootPasswordSet() pulumi.BoolOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) bool { return v.RootPasswordSet }).(pulumi.BoolOutput)
 }
 
+// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+func (o CloudSqlSettingsResponseOutput) SecondaryZone() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.SecondaryZone }).(pulumi.StringOutput)
+}
+
 // The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
 func (o CloudSqlSettingsResponseOutput) SourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.SourceId }).(pulumi.StringOutput)
@@ -1664,6 +1723,295 @@ func (o CloudSqlSettingsResponseOutput) UserLabels() pulumi.StringMapOutput {
 // The Google Cloud Platform zone where your Cloud SQL database instance is located.
 func (o CloudSqlSettingsResponseOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudSqlSettingsResponse) string { return v.Zone }).(pulumi.StringOutput)
+}
+
+// A conversion workspace's version.
+type ConversionWorkspaceInfo struct {
+	// The commit ID of the conversion workspace.
+	CommitId *string `pulumi:"commitId"`
+	// The resource name (URI) of the conversion workspace.
+	Name *string `pulumi:"name"`
+}
+
+// ConversionWorkspaceInfoInput is an input type that accepts ConversionWorkspaceInfoArgs and ConversionWorkspaceInfoOutput values.
+// You can construct a concrete instance of `ConversionWorkspaceInfoInput` via:
+//
+//	ConversionWorkspaceInfoArgs{...}
+type ConversionWorkspaceInfoInput interface {
+	pulumi.Input
+
+	ToConversionWorkspaceInfoOutput() ConversionWorkspaceInfoOutput
+	ToConversionWorkspaceInfoOutputWithContext(context.Context) ConversionWorkspaceInfoOutput
+}
+
+// A conversion workspace's version.
+type ConversionWorkspaceInfoArgs struct {
+	// The commit ID of the conversion workspace.
+	CommitId pulumi.StringPtrInput `pulumi:"commitId"`
+	// The resource name (URI) of the conversion workspace.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ConversionWorkspaceInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversionWorkspaceInfo)(nil)).Elem()
+}
+
+func (i ConversionWorkspaceInfoArgs) ToConversionWorkspaceInfoOutput() ConversionWorkspaceInfoOutput {
+	return i.ToConversionWorkspaceInfoOutputWithContext(context.Background())
+}
+
+func (i ConversionWorkspaceInfoArgs) ToConversionWorkspaceInfoOutputWithContext(ctx context.Context) ConversionWorkspaceInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversionWorkspaceInfoOutput)
+}
+
+func (i ConversionWorkspaceInfoArgs) ToConversionWorkspaceInfoPtrOutput() ConversionWorkspaceInfoPtrOutput {
+	return i.ToConversionWorkspaceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i ConversionWorkspaceInfoArgs) ToConversionWorkspaceInfoPtrOutputWithContext(ctx context.Context) ConversionWorkspaceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversionWorkspaceInfoOutput).ToConversionWorkspaceInfoPtrOutputWithContext(ctx)
+}
+
+// ConversionWorkspaceInfoPtrInput is an input type that accepts ConversionWorkspaceInfoArgs, ConversionWorkspaceInfoPtr and ConversionWorkspaceInfoPtrOutput values.
+// You can construct a concrete instance of `ConversionWorkspaceInfoPtrInput` via:
+//
+//	        ConversionWorkspaceInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConversionWorkspaceInfoPtrInput interface {
+	pulumi.Input
+
+	ToConversionWorkspaceInfoPtrOutput() ConversionWorkspaceInfoPtrOutput
+	ToConversionWorkspaceInfoPtrOutputWithContext(context.Context) ConversionWorkspaceInfoPtrOutput
+}
+
+type conversionWorkspaceInfoPtrType ConversionWorkspaceInfoArgs
+
+func ConversionWorkspaceInfoPtr(v *ConversionWorkspaceInfoArgs) ConversionWorkspaceInfoPtrInput {
+	return (*conversionWorkspaceInfoPtrType)(v)
+}
+
+func (*conversionWorkspaceInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversionWorkspaceInfo)(nil)).Elem()
+}
+
+func (i *conversionWorkspaceInfoPtrType) ToConversionWorkspaceInfoPtrOutput() ConversionWorkspaceInfoPtrOutput {
+	return i.ToConversionWorkspaceInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *conversionWorkspaceInfoPtrType) ToConversionWorkspaceInfoPtrOutputWithContext(ctx context.Context) ConversionWorkspaceInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConversionWorkspaceInfoPtrOutput)
+}
+
+// A conversion workspace's version.
+type ConversionWorkspaceInfoOutput struct{ *pulumi.OutputState }
+
+func (ConversionWorkspaceInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversionWorkspaceInfo)(nil)).Elem()
+}
+
+func (o ConversionWorkspaceInfoOutput) ToConversionWorkspaceInfoOutput() ConversionWorkspaceInfoOutput {
+	return o
+}
+
+func (o ConversionWorkspaceInfoOutput) ToConversionWorkspaceInfoOutputWithContext(ctx context.Context) ConversionWorkspaceInfoOutput {
+	return o
+}
+
+func (o ConversionWorkspaceInfoOutput) ToConversionWorkspaceInfoPtrOutput() ConversionWorkspaceInfoPtrOutput {
+	return o.ToConversionWorkspaceInfoPtrOutputWithContext(context.Background())
+}
+
+func (o ConversionWorkspaceInfoOutput) ToConversionWorkspaceInfoPtrOutputWithContext(ctx context.Context) ConversionWorkspaceInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConversionWorkspaceInfo) *ConversionWorkspaceInfo {
+		return &v
+	}).(ConversionWorkspaceInfoPtrOutput)
+}
+
+// The commit ID of the conversion workspace.
+func (o ConversionWorkspaceInfoOutput) CommitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversionWorkspaceInfo) *string { return v.CommitId }).(pulumi.StringPtrOutput)
+}
+
+// The resource name (URI) of the conversion workspace.
+func (o ConversionWorkspaceInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConversionWorkspaceInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ConversionWorkspaceInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (ConversionWorkspaceInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConversionWorkspaceInfo)(nil)).Elem()
+}
+
+func (o ConversionWorkspaceInfoPtrOutput) ToConversionWorkspaceInfoPtrOutput() ConversionWorkspaceInfoPtrOutput {
+	return o
+}
+
+func (o ConversionWorkspaceInfoPtrOutput) ToConversionWorkspaceInfoPtrOutputWithContext(ctx context.Context) ConversionWorkspaceInfoPtrOutput {
+	return o
+}
+
+func (o ConversionWorkspaceInfoPtrOutput) Elem() ConversionWorkspaceInfoOutput {
+	return o.ApplyT(func(v *ConversionWorkspaceInfo) ConversionWorkspaceInfo {
+		if v != nil {
+			return *v
+		}
+		var ret ConversionWorkspaceInfo
+		return ret
+	}).(ConversionWorkspaceInfoOutput)
+}
+
+// The commit ID of the conversion workspace.
+func (o ConversionWorkspaceInfoPtrOutput) CommitId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversionWorkspaceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CommitId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name (URI) of the conversion workspace.
+func (o ConversionWorkspaceInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConversionWorkspaceInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A conversion workspace's version.
+type ConversionWorkspaceInfoResponse struct {
+	// The commit ID of the conversion workspace.
+	CommitId string `pulumi:"commitId"`
+	// The resource name (URI) of the conversion workspace.
+	Name string `pulumi:"name"`
+}
+
+// A conversion workspace's version.
+type ConversionWorkspaceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (ConversionWorkspaceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConversionWorkspaceInfoResponse)(nil)).Elem()
+}
+
+func (o ConversionWorkspaceInfoResponseOutput) ToConversionWorkspaceInfoResponseOutput() ConversionWorkspaceInfoResponseOutput {
+	return o
+}
+
+func (o ConversionWorkspaceInfoResponseOutput) ToConversionWorkspaceInfoResponseOutputWithContext(ctx context.Context) ConversionWorkspaceInfoResponseOutput {
+	return o
+}
+
+// The commit ID of the conversion workspace.
+func (o ConversionWorkspaceInfoResponseOutput) CommitId() pulumi.StringOutput {
+	return o.ApplyT(func(v ConversionWorkspaceInfoResponse) string { return v.CommitId }).(pulumi.StringOutput)
+}
+
+// The resource name (URI) of the conversion workspace.
+func (o ConversionWorkspaceInfoResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ConversionWorkspaceInfoResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The type and version of a source or destination DB.
+type DatabaseEngineInfo struct {
+	// Engine Type.
+	Engine DatabaseEngineInfoEngine `pulumi:"engine"`
+	// Engine named version, for e.g. 12.c.1
+	Version string `pulumi:"version"`
+}
+
+// DatabaseEngineInfoInput is an input type that accepts DatabaseEngineInfoArgs and DatabaseEngineInfoOutput values.
+// You can construct a concrete instance of `DatabaseEngineInfoInput` via:
+//
+//	DatabaseEngineInfoArgs{...}
+type DatabaseEngineInfoInput interface {
+	pulumi.Input
+
+	ToDatabaseEngineInfoOutput() DatabaseEngineInfoOutput
+	ToDatabaseEngineInfoOutputWithContext(context.Context) DatabaseEngineInfoOutput
+}
+
+// The type and version of a source or destination DB.
+type DatabaseEngineInfoArgs struct {
+	// Engine Type.
+	Engine DatabaseEngineInfoEngineInput `pulumi:"engine"`
+	// Engine named version, for e.g. 12.c.1
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (DatabaseEngineInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEngineInfo)(nil)).Elem()
+}
+
+func (i DatabaseEngineInfoArgs) ToDatabaseEngineInfoOutput() DatabaseEngineInfoOutput {
+	return i.ToDatabaseEngineInfoOutputWithContext(context.Background())
+}
+
+func (i DatabaseEngineInfoArgs) ToDatabaseEngineInfoOutputWithContext(ctx context.Context) DatabaseEngineInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEngineInfoOutput)
+}
+
+// The type and version of a source or destination DB.
+type DatabaseEngineInfoOutput struct{ *pulumi.OutputState }
+
+func (DatabaseEngineInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEngineInfo)(nil)).Elem()
+}
+
+func (o DatabaseEngineInfoOutput) ToDatabaseEngineInfoOutput() DatabaseEngineInfoOutput {
+	return o
+}
+
+func (o DatabaseEngineInfoOutput) ToDatabaseEngineInfoOutputWithContext(ctx context.Context) DatabaseEngineInfoOutput {
+	return o
+}
+
+// Engine Type.
+func (o DatabaseEngineInfoOutput) Engine() DatabaseEngineInfoEngineOutput {
+	return o.ApplyT(func(v DatabaseEngineInfo) DatabaseEngineInfoEngine { return v.Engine }).(DatabaseEngineInfoEngineOutput)
+}
+
+// Engine named version, for e.g. 12.c.1
+func (o DatabaseEngineInfoOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseEngineInfo) string { return v.Version }).(pulumi.StringOutput)
+}
+
+// The type and version of a source or destination DB.
+type DatabaseEngineInfoResponse struct {
+	// Engine Type.
+	Engine string `pulumi:"engine"`
+	// Engine named version, for e.g. 12.c.1
+	Version string `pulumi:"version"`
+}
+
+// The type and version of a source or destination DB.
+type DatabaseEngineInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (DatabaseEngineInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEngineInfoResponse)(nil)).Elem()
+}
+
+func (o DatabaseEngineInfoResponseOutput) ToDatabaseEngineInfoResponseOutput() DatabaseEngineInfoResponseOutput {
+	return o
+}
+
+func (o DatabaseEngineInfoResponseOutput) ToDatabaseEngineInfoResponseOutputWithContext(ctx context.Context) DatabaseEngineInfoResponseOutput {
+	return o
+}
+
+// Engine Type.
+func (o DatabaseEngineInfoResponseOutput) Engine() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseEngineInfoResponse) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// Engine named version, for e.g. 12.c.1
+func (o DatabaseEngineInfoResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseEngineInfoResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // A message defining the database engine and provider.
@@ -2430,6 +2778,276 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Forward SSH Tunnel connectivity.
+type ForwardSshTunnelConnectivity struct {
+	// Hostname for the SSH tunnel.
+	Hostname string `pulumi:"hostname"`
+	// Input only. SSH password.
+	Password *string `pulumi:"password"`
+	// Port for the SSH tunnel, default value is 22.
+	Port *int `pulumi:"port"`
+	// Input only. SSH private key.
+	PrivateKey *string `pulumi:"privateKey"`
+	// Username for the SSH tunnel.
+	Username string `pulumi:"username"`
+}
+
+// ForwardSshTunnelConnectivityInput is an input type that accepts ForwardSshTunnelConnectivityArgs and ForwardSshTunnelConnectivityOutput values.
+// You can construct a concrete instance of `ForwardSshTunnelConnectivityInput` via:
+//
+//	ForwardSshTunnelConnectivityArgs{...}
+type ForwardSshTunnelConnectivityInput interface {
+	pulumi.Input
+
+	ToForwardSshTunnelConnectivityOutput() ForwardSshTunnelConnectivityOutput
+	ToForwardSshTunnelConnectivityOutputWithContext(context.Context) ForwardSshTunnelConnectivityOutput
+}
+
+// Forward SSH Tunnel connectivity.
+type ForwardSshTunnelConnectivityArgs struct {
+	// Hostname for the SSH tunnel.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Input only. SSH password.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// Port for the SSH tunnel, default value is 22.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Input only. SSH private key.
+	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// Username for the SSH tunnel.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (ForwardSshTunnelConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardSshTunnelConnectivity)(nil)).Elem()
+}
+
+func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityOutput() ForwardSshTunnelConnectivityOutput {
+	return i.ToForwardSshTunnelConnectivityOutputWithContext(context.Background())
+}
+
+func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityOutput)
+}
+
+func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityPtrOutput() ForwardSshTunnelConnectivityPtrOutput {
+	return i.ToForwardSshTunnelConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityOutput).ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx)
+}
+
+// ForwardSshTunnelConnectivityPtrInput is an input type that accepts ForwardSshTunnelConnectivityArgs, ForwardSshTunnelConnectivityPtr and ForwardSshTunnelConnectivityPtrOutput values.
+// You can construct a concrete instance of `ForwardSshTunnelConnectivityPtrInput` via:
+//
+//	        ForwardSshTunnelConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ForwardSshTunnelConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToForwardSshTunnelConnectivityPtrOutput() ForwardSshTunnelConnectivityPtrOutput
+	ToForwardSshTunnelConnectivityPtrOutputWithContext(context.Context) ForwardSshTunnelConnectivityPtrOutput
+}
+
+type forwardSshTunnelConnectivityPtrType ForwardSshTunnelConnectivityArgs
+
+func ForwardSshTunnelConnectivityPtr(v *ForwardSshTunnelConnectivityArgs) ForwardSshTunnelConnectivityPtrInput {
+	return (*forwardSshTunnelConnectivityPtrType)(v)
+}
+
+func (*forwardSshTunnelConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardSshTunnelConnectivity)(nil)).Elem()
+}
+
+func (i *forwardSshTunnelConnectivityPtrType) ToForwardSshTunnelConnectivityPtrOutput() ForwardSshTunnelConnectivityPtrOutput {
+	return i.ToForwardSshTunnelConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *forwardSshTunnelConnectivityPtrType) ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForwardSshTunnelConnectivityPtrOutput)
+}
+
+// Forward SSH Tunnel connectivity.
+type ForwardSshTunnelConnectivityOutput struct{ *pulumi.OutputState }
+
+func (ForwardSshTunnelConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardSshTunnelConnectivity)(nil)).Elem()
+}
+
+func (o ForwardSshTunnelConnectivityOutput) ToForwardSshTunnelConnectivityOutput() ForwardSshTunnelConnectivityOutput {
+	return o
+}
+
+func (o ForwardSshTunnelConnectivityOutput) ToForwardSshTunnelConnectivityOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityOutput {
+	return o
+}
+
+func (o ForwardSshTunnelConnectivityOutput) ToForwardSshTunnelConnectivityPtrOutput() ForwardSshTunnelConnectivityPtrOutput {
+	return o.ToForwardSshTunnelConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o ForwardSshTunnelConnectivityOutput) ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForwardSshTunnelConnectivity) *ForwardSshTunnelConnectivity {
+		return &v
+	}).(ForwardSshTunnelConnectivityPtrOutput)
+}
+
+// Hostname for the SSH tunnel.
+func (o ForwardSshTunnelConnectivityOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivity) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Input only. SSH password.
+func (o ForwardSshTunnelConnectivityOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivity) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// Port for the SSH tunnel, default value is 22.
+func (o ForwardSshTunnelConnectivityOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivity) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Input only. SSH private key.
+func (o ForwardSshTunnelConnectivityOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivity) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
+}
+
+// Username for the SSH tunnel.
+func (o ForwardSshTunnelConnectivityOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivity) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type ForwardSshTunnelConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (ForwardSshTunnelConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForwardSshTunnelConnectivity)(nil)).Elem()
+}
+
+func (o ForwardSshTunnelConnectivityPtrOutput) ToForwardSshTunnelConnectivityPtrOutput() ForwardSshTunnelConnectivityPtrOutput {
+	return o
+}
+
+func (o ForwardSshTunnelConnectivityPtrOutput) ToForwardSshTunnelConnectivityPtrOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityPtrOutput {
+	return o
+}
+
+func (o ForwardSshTunnelConnectivityPtrOutput) Elem() ForwardSshTunnelConnectivityOutput {
+	return o.ApplyT(func(v *ForwardSshTunnelConnectivity) ForwardSshTunnelConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret ForwardSshTunnelConnectivity
+		return ret
+	}).(ForwardSshTunnelConnectivityOutput)
+}
+
+// Hostname for the SSH tunnel.
+func (o ForwardSshTunnelConnectivityPtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardSshTunnelConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. SSH password.
+func (o ForwardSshTunnelConnectivityPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardSshTunnelConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port for the SSH tunnel, default value is 22.
+func (o ForwardSshTunnelConnectivityPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ForwardSshTunnelConnectivity) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Input only. SSH private key.
+func (o ForwardSshTunnelConnectivityPtrOutput) PrivateKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardSshTunnelConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Username for the SSH tunnel.
+func (o ForwardSshTunnelConnectivityPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForwardSshTunnelConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Forward SSH Tunnel connectivity.
+type ForwardSshTunnelConnectivityResponse struct {
+	// Hostname for the SSH tunnel.
+	Hostname string `pulumi:"hostname"`
+	// Input only. SSH password.
+	Password string `pulumi:"password"`
+	// Port for the SSH tunnel, default value is 22.
+	Port int `pulumi:"port"`
+	// Input only. SSH private key.
+	PrivateKey string `pulumi:"privateKey"`
+	// Username for the SSH tunnel.
+	Username string `pulumi:"username"`
+}
+
+// Forward SSH Tunnel connectivity.
+type ForwardSshTunnelConnectivityResponseOutput struct{ *pulumi.OutputState }
+
+func (ForwardSshTunnelConnectivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForwardSshTunnelConnectivityResponse)(nil)).Elem()
+}
+
+func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivityResponseOutput() ForwardSshTunnelConnectivityResponseOutput {
+	return o
+}
+
+func (o ForwardSshTunnelConnectivityResponseOutput) ToForwardSshTunnelConnectivityResponseOutputWithContext(ctx context.Context) ForwardSshTunnelConnectivityResponseOutput {
+	return o
+}
+
+// Hostname for the SSH tunnel.
+func (o ForwardSshTunnelConnectivityResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Input only. SSH password.
+func (o ForwardSshTunnelConnectivityResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port for the SSH tunnel, default value is 22.
+func (o ForwardSshTunnelConnectivityResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Input only. SSH private key.
+func (o ForwardSshTunnelConnectivityResponseOutput) PrivateKey() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.PrivateKey }).(pulumi.StringOutput)
+}
+
+// Username for the SSH tunnel.
+func (o ForwardSshTunnelConnectivityResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v ForwardSshTunnelConnectivityResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
 // MachineConfig describes the configuration of a machine.
 type MachineConfig struct {
 	// The number of CPU's in the VM instance.
@@ -2899,6 +3517,365 @@ func (o MySqlConnectionProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
 }
 
+// Specifies connection parameters required specifically for Oracle databases.
+type OracleConnectionProfile struct {
+	// Database service for the Oracle connection.
+	DatabaseService string `pulumi:"databaseService"`
+	// Forward SSH tunnel connectivity.
+	ForwardSshConnectivity *ForwardSshTunnelConnectivity `pulumi:"forwardSshConnectivity"`
+	// The IP or hostname of the source Oracle database.
+	Host string `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password string `pulumi:"password"`
+	// The network port of the source Oracle database.
+	Port int `pulumi:"port"`
+	// Private connectivity.
+	PrivateConnectivity *PrivateConnectivity `pulumi:"privateConnectivity"`
+	// Static Service IP connectivity.
+	StaticServiceIpConnectivity *StaticServiceIpConnectivity `pulumi:"staticServiceIpConnectivity"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username string `pulumi:"username"`
+}
+
+// OracleConnectionProfileInput is an input type that accepts OracleConnectionProfileArgs and OracleConnectionProfileOutput values.
+// You can construct a concrete instance of `OracleConnectionProfileInput` via:
+//
+//	OracleConnectionProfileArgs{...}
+type OracleConnectionProfileInput interface {
+	pulumi.Input
+
+	ToOracleConnectionProfileOutput() OracleConnectionProfileOutput
+	ToOracleConnectionProfileOutputWithContext(context.Context) OracleConnectionProfileOutput
+}
+
+// Specifies connection parameters required specifically for Oracle databases.
+type OracleConnectionProfileArgs struct {
+	// Database service for the Oracle connection.
+	DatabaseService pulumi.StringInput `pulumi:"databaseService"`
+	// Forward SSH tunnel connectivity.
+	ForwardSshConnectivity ForwardSshTunnelConnectivityPtrInput `pulumi:"forwardSshConnectivity"`
+	// The IP or hostname of the source Oracle database.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The network port of the source Oracle database.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Private connectivity.
+	PrivateConnectivity PrivateConnectivityPtrInput `pulumi:"privateConnectivity"`
+	// Static Service IP connectivity.
+	StaticServiceIpConnectivity StaticServiceIpConnectivityPtrInput `pulumi:"staticServiceIpConnectivity"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (OracleConnectionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleConnectionProfile)(nil)).Elem()
+}
+
+func (i OracleConnectionProfileArgs) ToOracleConnectionProfileOutput() OracleConnectionProfileOutput {
+	return i.ToOracleConnectionProfileOutputWithContext(context.Background())
+}
+
+func (i OracleConnectionProfileArgs) ToOracleConnectionProfileOutputWithContext(ctx context.Context) OracleConnectionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleConnectionProfileOutput)
+}
+
+func (i OracleConnectionProfileArgs) ToOracleConnectionProfilePtrOutput() OracleConnectionProfilePtrOutput {
+	return i.ToOracleConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i OracleConnectionProfileArgs) ToOracleConnectionProfilePtrOutputWithContext(ctx context.Context) OracleConnectionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleConnectionProfileOutput).ToOracleConnectionProfilePtrOutputWithContext(ctx)
+}
+
+// OracleConnectionProfilePtrInput is an input type that accepts OracleConnectionProfileArgs, OracleConnectionProfilePtr and OracleConnectionProfilePtrOutput values.
+// You can construct a concrete instance of `OracleConnectionProfilePtrInput` via:
+//
+//	        OracleConnectionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type OracleConnectionProfilePtrInput interface {
+	pulumi.Input
+
+	ToOracleConnectionProfilePtrOutput() OracleConnectionProfilePtrOutput
+	ToOracleConnectionProfilePtrOutputWithContext(context.Context) OracleConnectionProfilePtrOutput
+}
+
+type oracleConnectionProfilePtrType OracleConnectionProfileArgs
+
+func OracleConnectionProfilePtr(v *OracleConnectionProfileArgs) OracleConnectionProfilePtrInput {
+	return (*oracleConnectionProfilePtrType)(v)
+}
+
+func (*oracleConnectionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleConnectionProfile)(nil)).Elem()
+}
+
+func (i *oracleConnectionProfilePtrType) ToOracleConnectionProfilePtrOutput() OracleConnectionProfilePtrOutput {
+	return i.ToOracleConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *oracleConnectionProfilePtrType) ToOracleConnectionProfilePtrOutputWithContext(ctx context.Context) OracleConnectionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OracleConnectionProfilePtrOutput)
+}
+
+// Specifies connection parameters required specifically for Oracle databases.
+type OracleConnectionProfileOutput struct{ *pulumi.OutputState }
+
+func (OracleConnectionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleConnectionProfile)(nil)).Elem()
+}
+
+func (o OracleConnectionProfileOutput) ToOracleConnectionProfileOutput() OracleConnectionProfileOutput {
+	return o
+}
+
+func (o OracleConnectionProfileOutput) ToOracleConnectionProfileOutputWithContext(ctx context.Context) OracleConnectionProfileOutput {
+	return o
+}
+
+func (o OracleConnectionProfileOutput) ToOracleConnectionProfilePtrOutput() OracleConnectionProfilePtrOutput {
+	return o.ToOracleConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o OracleConnectionProfileOutput) ToOracleConnectionProfilePtrOutputWithContext(ctx context.Context) OracleConnectionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OracleConnectionProfile) *OracleConnectionProfile {
+		return &v
+	}).(OracleConnectionProfilePtrOutput)
+}
+
+// Database service for the Oracle connection.
+func (o OracleConnectionProfileOutput) DatabaseService() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) string { return v.DatabaseService }).(pulumi.StringOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o OracleConnectionProfileOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityPtrOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) *ForwardSshTunnelConnectivity { return v.ForwardSshConnectivity }).(ForwardSshTunnelConnectivityPtrOutput)
+}
+
+// The IP or hostname of the source Oracle database.
+func (o OracleConnectionProfileOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o OracleConnectionProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The network port of the source Oracle database.
+func (o OracleConnectionProfileOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Private connectivity.
+func (o OracleConnectionProfileOutput) PrivateConnectivity() PrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) *PrivateConnectivity { return v.PrivateConnectivity }).(PrivateConnectivityPtrOutput)
+}
+
+// Static Service IP connectivity.
+func (o OracleConnectionProfileOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityPtrOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) *StaticServiceIpConnectivity { return v.StaticServiceIpConnectivity }).(StaticServiceIpConnectivityPtrOutput)
+}
+
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o OracleConnectionProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfile) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type OracleConnectionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (OracleConnectionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OracleConnectionProfile)(nil)).Elem()
+}
+
+func (o OracleConnectionProfilePtrOutput) ToOracleConnectionProfilePtrOutput() OracleConnectionProfilePtrOutput {
+	return o
+}
+
+func (o OracleConnectionProfilePtrOutput) ToOracleConnectionProfilePtrOutputWithContext(ctx context.Context) OracleConnectionProfilePtrOutput {
+	return o
+}
+
+func (o OracleConnectionProfilePtrOutput) Elem() OracleConnectionProfileOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) OracleConnectionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret OracleConnectionProfile
+		return ret
+	}).(OracleConnectionProfileOutput)
+}
+
+// Database service for the Oracle connection.
+func (o OracleConnectionProfilePtrOutput) DatabaseService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DatabaseService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o OracleConnectionProfilePtrOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *ForwardSshTunnelConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardSshConnectivity
+	}).(ForwardSshTunnelConnectivityPtrOutput)
+}
+
+// The IP or hostname of the source Oracle database.
+func (o OracleConnectionProfilePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o OracleConnectionProfilePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The network port of the source Oracle database.
+func (o OracleConnectionProfilePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Private connectivity.
+func (o OracleConnectionProfilePtrOutput) PrivateConnectivity() PrivateConnectivityPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *PrivateConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateConnectivity
+	}).(PrivateConnectivityPtrOutput)
+}
+
+// Static Service IP connectivity.
+func (o OracleConnectionProfilePtrOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *StaticServiceIpConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.StaticServiceIpConnectivity
+	}).(StaticServiceIpConnectivityPtrOutput)
+}
+
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o OracleConnectionProfilePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OracleConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies connection parameters required specifically for Oracle databases.
+type OracleConnectionProfileResponse struct {
+	// Database service for the Oracle connection.
+	DatabaseService string `pulumi:"databaseService"`
+	// Forward SSH tunnel connectivity.
+	ForwardSshConnectivity ForwardSshTunnelConnectivityResponse `pulumi:"forwardSshConnectivity"`
+	// The IP or hostname of the source Oracle database.
+	Host string `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password string `pulumi:"password"`
+	// Indicates whether a new password is included in the request.
+	PasswordSet bool `pulumi:"passwordSet"`
+	// The network port of the source Oracle database.
+	Port int `pulumi:"port"`
+	// Private connectivity.
+	PrivateConnectivity PrivateConnectivityResponse `pulumi:"privateConnectivity"`
+	// Static Service IP connectivity.
+	StaticServiceIpConnectivity StaticServiceIpConnectivityResponse `pulumi:"staticServiceIpConnectivity"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username string `pulumi:"username"`
+}
+
+// Specifies connection parameters required specifically for Oracle databases.
+type OracleConnectionProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (OracleConnectionProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OracleConnectionProfileResponse)(nil)).Elem()
+}
+
+func (o OracleConnectionProfileResponseOutput) ToOracleConnectionProfileResponseOutput() OracleConnectionProfileResponseOutput {
+	return o
+}
+
+func (o OracleConnectionProfileResponseOutput) ToOracleConnectionProfileResponseOutputWithContext(ctx context.Context) OracleConnectionProfileResponseOutput {
+	return o
+}
+
+// Database service for the Oracle connection.
+func (o OracleConnectionProfileResponseOutput) DatabaseService() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) string { return v.DatabaseService }).(pulumi.StringOutput)
+}
+
+// Forward SSH tunnel connectivity.
+func (o OracleConnectionProfileResponseOutput) ForwardSshConnectivity() ForwardSshTunnelConnectivityResponseOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) ForwardSshTunnelConnectivityResponse {
+		return v.ForwardSshConnectivity
+	}).(ForwardSshTunnelConnectivityResponseOutput)
+}
+
+// The IP or hostname of the source Oracle database.
+func (o OracleConnectionProfileResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o OracleConnectionProfileResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Indicates whether a new password is included in the request.
+func (o OracleConnectionProfileResponseOutput) PasswordSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) bool { return v.PasswordSet }).(pulumi.BoolOutput)
+}
+
+// The network port of the source Oracle database.
+func (o OracleConnectionProfileResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Private connectivity.
+func (o OracleConnectionProfileResponseOutput) PrivateConnectivity() PrivateConnectivityResponseOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) PrivateConnectivityResponse { return v.PrivateConnectivity }).(PrivateConnectivityResponseOutput)
+}
+
+// Static Service IP connectivity.
+func (o OracleConnectionProfileResponseOutput) StaticServiceIpConnectivity() StaticServiceIpConnectivityResponseOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) StaticServiceIpConnectivityResponse {
+		return v.StaticServiceIpConnectivity
+	}).(StaticServiceIpConnectivityResponseOutput)
+}
+
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o OracleConnectionProfileResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v OracleConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
 // Specifies connection parameters required specifically for PostgreSQL databases.
 type PostgreSqlConnectionProfile struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2909,8 +3886,12 @@ type PostgreSqlConnectionProfile struct {
 	Password string `pulumi:"password"`
 	// The network port of the source PostgreSQL database.
 	Port int `pulumi:"port"`
+	// Private service connect connectivity.
+	PrivateServiceConnectConnectivity *PrivateServiceConnectConnectivity `pulumi:"privateServiceConnectConnectivity"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl *SslConfig `pulumi:"ssl"`
+	// Static ip connectivity data (default, no additional details needed).
+	StaticIpConnectivity *StaticIpConnectivity `pulumi:"staticIpConnectivity"`
 	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 	Username string `pulumi:"username"`
 }
@@ -2936,8 +3917,12 @@ type PostgreSqlConnectionProfileArgs struct {
 	Password pulumi.StringInput `pulumi:"password"`
 	// The network port of the source PostgreSQL database.
 	Port pulumi.IntInput `pulumi:"port"`
+	// Private service connect connectivity.
+	PrivateServiceConnectConnectivity PrivateServiceConnectConnectivityPtrInput `pulumi:"privateServiceConnectConnectivity"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl SslConfigPtrInput `pulumi:"ssl"`
+	// Static ip connectivity data (default, no additional details needed).
+	StaticIpConnectivity StaticIpConnectivityPtrInput `pulumi:"staticIpConnectivity"`
 	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 	Username pulumi.StringInput `pulumi:"username"`
 }
@@ -3040,9 +4025,21 @@ func (o PostgreSqlConnectionProfileOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfile) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Private service connect connectivity.
+func (o PostgreSqlConnectionProfileOutput) PrivateServiceConnectConnectivity() PrivateServiceConnectConnectivityPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfile) *PrivateServiceConnectConnectivity {
+		return v.PrivateServiceConnectConnectivity
+	}).(PrivateServiceConnectConnectivityPtrOutput)
+}
+
 // SSL configuration for the destination to connect to the source database.
 func (o PostgreSqlConnectionProfileOutput) Ssl() SslConfigPtrOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfile) *SslConfig { return v.Ssl }).(SslConfigPtrOutput)
+}
+
+// Static ip connectivity data (default, no additional details needed).
+func (o PostgreSqlConnectionProfileOutput) StaticIpConnectivity() StaticIpConnectivityPtrOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfile) *StaticIpConnectivity { return v.StaticIpConnectivity }).(StaticIpConnectivityPtrOutput)
 }
 
 // The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -3114,6 +4111,16 @@ func (o PostgreSqlConnectionProfilePtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Private service connect connectivity.
+func (o PostgreSqlConnectionProfilePtrOutput) PrivateServiceConnectConnectivity() PrivateServiceConnectConnectivityPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionProfile) *PrivateServiceConnectConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnectConnectivity
+	}).(PrivateServiceConnectConnectivityPtrOutput)
+}
+
 // SSL configuration for the destination to connect to the source database.
 func (o PostgreSqlConnectionProfilePtrOutput) Ssl() SslConfigPtrOutput {
 	return o.ApplyT(func(v *PostgreSqlConnectionProfile) *SslConfig {
@@ -3122,6 +4129,16 @@ func (o PostgreSqlConnectionProfilePtrOutput) Ssl() SslConfigPtrOutput {
 		}
 		return v.Ssl
 	}).(SslConfigPtrOutput)
+}
+
+// Static ip connectivity data (default, no additional details needed).
+func (o PostgreSqlConnectionProfilePtrOutput) StaticIpConnectivity() StaticIpConnectivityPtrOutput {
+	return o.ApplyT(func(v *PostgreSqlConnectionProfile) *StaticIpConnectivity {
+		if v == nil {
+			return nil
+		}
+		return v.StaticIpConnectivity
+	}).(StaticIpConnectivityPtrOutput)
 }
 
 // The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -3148,8 +4165,12 @@ type PostgreSqlConnectionProfileResponse struct {
 	PasswordSet bool `pulumi:"passwordSet"`
 	// The network port of the source PostgreSQL database.
 	Port int `pulumi:"port"`
+	// Private service connect connectivity.
+	PrivateServiceConnectConnectivity PrivateServiceConnectConnectivityResponse `pulumi:"privateServiceConnectConnectivity"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl SslConfigResponse `pulumi:"ssl"`
+	// Static ip connectivity data (default, no additional details needed).
+	StaticIpConnectivity StaticIpConnectivityResponse `pulumi:"staticIpConnectivity"`
 	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 	Username string `pulumi:"username"`
 }
@@ -3199,9 +4220,23 @@ func (o PostgreSqlConnectionProfileResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
+// Private service connect connectivity.
+func (o PostgreSqlConnectionProfileResponseOutput) PrivateServiceConnectConnectivity() PrivateServiceConnectConnectivityResponseOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) PrivateServiceConnectConnectivityResponse {
+		return v.PrivateServiceConnectConnectivity
+	}).(PrivateServiceConnectConnectivityResponseOutput)
+}
+
 // SSL configuration for the destination to connect to the source database.
 func (o PostgreSqlConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) SslConfigResponse { return v.Ssl }).(SslConfigResponseOutput)
+}
+
+// Static ip connectivity data (default, no additional details needed).
+func (o PostgreSqlConnectionProfileResponseOutput) StaticIpConnectivity() StaticIpConnectivityResponseOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) StaticIpConnectivityResponse {
+		return v.StaticIpConnectivity
+	}).(StaticIpConnectivityResponseOutput)
 }
 
 // The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
@@ -3451,6 +4486,338 @@ func (o PrimaryInstanceSettingsResponseOutput) MachineConfig() MachineConfigResp
 // The private IP address for the Instance. This is the connection endpoint for an end-user application.
 func (o PrimaryInstanceSettingsResponseOutput) PrivateIp() pulumi.StringOutput {
 	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) string { return v.PrivateIp }).(pulumi.StringOutput)
+}
+
+// Private Connectivity.
+type PrivateConnectivity struct {
+	// The resource name (URI) of the private connection.
+	PrivateConnection string `pulumi:"privateConnection"`
+}
+
+// PrivateConnectivityInput is an input type that accepts PrivateConnectivityArgs and PrivateConnectivityOutput values.
+// You can construct a concrete instance of `PrivateConnectivityInput` via:
+//
+//	PrivateConnectivityArgs{...}
+type PrivateConnectivityInput interface {
+	pulumi.Input
+
+	ToPrivateConnectivityOutput() PrivateConnectivityOutput
+	ToPrivateConnectivityOutputWithContext(context.Context) PrivateConnectivityOutput
+}
+
+// Private Connectivity.
+type PrivateConnectivityArgs struct {
+	// The resource name (URI) of the private connection.
+	PrivateConnection pulumi.StringInput `pulumi:"privateConnection"`
+}
+
+func (PrivateConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectivity)(nil)).Elem()
+}
+
+func (i PrivateConnectivityArgs) ToPrivateConnectivityOutput() PrivateConnectivityOutput {
+	return i.ToPrivateConnectivityOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectivityArgs) ToPrivateConnectivityOutputWithContext(ctx context.Context) PrivateConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityOutput)
+}
+
+func (i PrivateConnectivityArgs) ToPrivateConnectivityPtrOutput() PrivateConnectivityPtrOutput {
+	return i.ToPrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateConnectivityArgs) ToPrivateConnectivityPtrOutputWithContext(ctx context.Context) PrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityOutput).ToPrivateConnectivityPtrOutputWithContext(ctx)
+}
+
+// PrivateConnectivityPtrInput is an input type that accepts PrivateConnectivityArgs, PrivateConnectivityPtr and PrivateConnectivityPtrOutput values.
+// You can construct a concrete instance of `PrivateConnectivityPtrInput` via:
+//
+//	        PrivateConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToPrivateConnectivityPtrOutput() PrivateConnectivityPtrOutput
+	ToPrivateConnectivityPtrOutputWithContext(context.Context) PrivateConnectivityPtrOutput
+}
+
+type privateConnectivityPtrType PrivateConnectivityArgs
+
+func PrivateConnectivityPtr(v *PrivateConnectivityArgs) PrivateConnectivityPtrInput {
+	return (*privateConnectivityPtrType)(v)
+}
+
+func (*privateConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectivity)(nil)).Elem()
+}
+
+func (i *privateConnectivityPtrType) ToPrivateConnectivityPtrOutput() PrivateConnectivityPtrOutput {
+	return i.ToPrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *privateConnectivityPtrType) ToPrivateConnectivityPtrOutputWithContext(ctx context.Context) PrivateConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateConnectivityPtrOutput)
+}
+
+// Private Connectivity.
+type PrivateConnectivityOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectivity)(nil)).Elem()
+}
+
+func (o PrivateConnectivityOutput) ToPrivateConnectivityOutput() PrivateConnectivityOutput {
+	return o
+}
+
+func (o PrivateConnectivityOutput) ToPrivateConnectivityOutputWithContext(ctx context.Context) PrivateConnectivityOutput {
+	return o
+}
+
+func (o PrivateConnectivityOutput) ToPrivateConnectivityPtrOutput() PrivateConnectivityPtrOutput {
+	return o.ToPrivateConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateConnectivityOutput) ToPrivateConnectivityPtrOutputWithContext(ctx context.Context) PrivateConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateConnectivity) *PrivateConnectivity {
+		return &v
+	}).(PrivateConnectivityPtrOutput)
+}
+
+// The resource name (URI) of the private connection.
+func (o PrivateConnectivityOutput) PrivateConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectivity) string { return v.PrivateConnection }).(pulumi.StringOutput)
+}
+
+type PrivateConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateConnectivity)(nil)).Elem()
+}
+
+func (o PrivateConnectivityPtrOutput) ToPrivateConnectivityPtrOutput() PrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o PrivateConnectivityPtrOutput) ToPrivateConnectivityPtrOutputWithContext(ctx context.Context) PrivateConnectivityPtrOutput {
+	return o
+}
+
+func (o PrivateConnectivityPtrOutput) Elem() PrivateConnectivityOutput {
+	return o.ApplyT(func(v *PrivateConnectivity) PrivateConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateConnectivity
+		return ret
+	}).(PrivateConnectivityOutput)
+}
+
+// The resource name (URI) of the private connection.
+func (o PrivateConnectivityPtrOutput) PrivateConnection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PrivateConnection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Connectivity.
+type PrivateConnectivityResponse struct {
+	// The resource name (URI) of the private connection.
+	PrivateConnection string `pulumi:"privateConnection"`
+}
+
+// Private Connectivity.
+type PrivateConnectivityResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateConnectivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateConnectivityResponse)(nil)).Elem()
+}
+
+func (o PrivateConnectivityResponseOutput) ToPrivateConnectivityResponseOutput() PrivateConnectivityResponseOutput {
+	return o
+}
+
+func (o PrivateConnectivityResponseOutput) ToPrivateConnectivityResponseOutputWithContext(ctx context.Context) PrivateConnectivityResponseOutput {
+	return o
+}
+
+// The resource name (URI) of the private connection.
+func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateConnectivityResponse) string { return v.PrivateConnection }).(pulumi.StringOutput)
+}
+
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+type PrivateServiceConnectConnectivity struct {
+	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// PrivateServiceConnectConnectivityInput is an input type that accepts PrivateServiceConnectConnectivityArgs and PrivateServiceConnectConnectivityOutput values.
+// You can construct a concrete instance of `PrivateServiceConnectConnectivityInput` via:
+//
+//	PrivateServiceConnectConnectivityArgs{...}
+type PrivateServiceConnectConnectivityInput interface {
+	pulumi.Input
+
+	ToPrivateServiceConnectConnectivityOutput() PrivateServiceConnectConnectivityOutput
+	ToPrivateServiceConnectConnectivityOutputWithContext(context.Context) PrivateServiceConnectConnectivityOutput
+}
+
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+type PrivateServiceConnectConnectivityArgs struct {
+	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
+}
+
+func (PrivateServiceConnectConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateServiceConnectConnectivity)(nil)).Elem()
+}
+
+func (i PrivateServiceConnectConnectivityArgs) ToPrivateServiceConnectConnectivityOutput() PrivateServiceConnectConnectivityOutput {
+	return i.ToPrivateServiceConnectConnectivityOutputWithContext(context.Background())
+}
+
+func (i PrivateServiceConnectConnectivityArgs) ToPrivateServiceConnectConnectivityOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConnectivityOutput)
+}
+
+func (i PrivateServiceConnectConnectivityArgs) ToPrivateServiceConnectConnectivityPtrOutput() PrivateServiceConnectConnectivityPtrOutput {
+	return i.ToPrivateServiceConnectConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i PrivateServiceConnectConnectivityArgs) ToPrivateServiceConnectConnectivityPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConnectivityOutput).ToPrivateServiceConnectConnectivityPtrOutputWithContext(ctx)
+}
+
+// PrivateServiceConnectConnectivityPtrInput is an input type that accepts PrivateServiceConnectConnectivityArgs, PrivateServiceConnectConnectivityPtr and PrivateServiceConnectConnectivityPtrOutput values.
+// You can construct a concrete instance of `PrivateServiceConnectConnectivityPtrInput` via:
+//
+//	        PrivateServiceConnectConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrivateServiceConnectConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToPrivateServiceConnectConnectivityPtrOutput() PrivateServiceConnectConnectivityPtrOutput
+	ToPrivateServiceConnectConnectivityPtrOutputWithContext(context.Context) PrivateServiceConnectConnectivityPtrOutput
+}
+
+type privateServiceConnectConnectivityPtrType PrivateServiceConnectConnectivityArgs
+
+func PrivateServiceConnectConnectivityPtr(v *PrivateServiceConnectConnectivityArgs) PrivateServiceConnectConnectivityPtrInput {
+	return (*privateServiceConnectConnectivityPtrType)(v)
+}
+
+func (*privateServiceConnectConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateServiceConnectConnectivity)(nil)).Elem()
+}
+
+func (i *privateServiceConnectConnectivityPtrType) ToPrivateServiceConnectConnectivityPtrOutput() PrivateServiceConnectConnectivityPtrOutput {
+	return i.ToPrivateServiceConnectConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *privateServiceConnectConnectivityPtrType) ToPrivateServiceConnectConnectivityPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrivateServiceConnectConnectivityPtrOutput)
+}
+
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+type PrivateServiceConnectConnectivityOutput struct{ *pulumi.OutputState }
+
+func (PrivateServiceConnectConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateServiceConnectConnectivity)(nil)).Elem()
+}
+
+func (o PrivateServiceConnectConnectivityOutput) ToPrivateServiceConnectConnectivityOutput() PrivateServiceConnectConnectivityOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConnectivityOutput) ToPrivateServiceConnectConnectivityOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConnectivityOutput) ToPrivateServiceConnectConnectivityPtrOutput() PrivateServiceConnectConnectivityPtrOutput {
+	return o.ToPrivateServiceConnectConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o PrivateServiceConnectConnectivityOutput) ToPrivateServiceConnectConnectivityPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrivateServiceConnectConnectivity) *PrivateServiceConnectConnectivity {
+		return &v
+	}).(PrivateServiceConnectConnectivityPtrOutput)
+}
+
+// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+func (o PrivateServiceConnectConnectivityOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConnectivity) string { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+type PrivateServiceConnectConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (PrivateServiceConnectConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrivateServiceConnectConnectivity)(nil)).Elem()
+}
+
+func (o PrivateServiceConnectConnectivityPtrOutput) ToPrivateServiceConnectConnectivityPtrOutput() PrivateServiceConnectConnectivityPtrOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConnectivityPtrOutput) ToPrivateServiceConnectConnectivityPtrOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityPtrOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConnectivityPtrOutput) Elem() PrivateServiceConnectConnectivityOutput {
+	return o.ApplyT(func(v *PrivateServiceConnectConnectivity) PrivateServiceConnectConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret PrivateServiceConnectConnectivity
+		return ret
+	}).(PrivateServiceConnectConnectivityOutput)
+}
+
+// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+func (o PrivateServiceConnectConnectivityPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateServiceConnectConnectivity) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+type PrivateServiceConnectConnectivityResponse struct {
+	// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+type PrivateServiceConnectConnectivityResponseOutput struct{ *pulumi.OutputState }
+
+func (PrivateServiceConnectConnectivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrivateServiceConnectConnectivityResponse)(nil)).Elem()
+}
+
+func (o PrivateServiceConnectConnectivityResponseOutput) ToPrivateServiceConnectConnectivityResponseOutput() PrivateServiceConnectConnectivityResponseOutput {
+	return o
+}
+
+func (o PrivateServiceConnectConnectivityResponseOutput) ToPrivateServiceConnectConnectivityResponseOutputWithContext(ctx context.Context) PrivateServiceConnectConnectivityResponseOutput {
+	return o
+}
+
+// A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+func (o PrivateServiceConnectConnectivityResponseOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateServiceConnectConnectivityResponse) string { return v.ServiceAttachment }).(pulumi.StringOutput)
 }
 
 // The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
@@ -4500,6 +5867,146 @@ func (o StaticIpConnectivityResponseOutput) ToStaticIpConnectivityResponseOutput
 	return o
 }
 
+// Static IP address connectivity configured on service project.
+type StaticServiceIpConnectivity struct {
+}
+
+// StaticServiceIpConnectivityInput is an input type that accepts StaticServiceIpConnectivityArgs and StaticServiceIpConnectivityOutput values.
+// You can construct a concrete instance of `StaticServiceIpConnectivityInput` via:
+//
+//	StaticServiceIpConnectivityArgs{...}
+type StaticServiceIpConnectivityInput interface {
+	pulumi.Input
+
+	ToStaticServiceIpConnectivityOutput() StaticServiceIpConnectivityOutput
+	ToStaticServiceIpConnectivityOutputWithContext(context.Context) StaticServiceIpConnectivityOutput
+}
+
+// Static IP address connectivity configured on service project.
+type StaticServiceIpConnectivityArgs struct {
+}
+
+func (StaticServiceIpConnectivityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityOutput() StaticServiceIpConnectivityOutput {
+	return i.ToStaticServiceIpConnectivityOutputWithContext(context.Background())
+}
+
+func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityOutputWithContext(ctx context.Context) StaticServiceIpConnectivityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityOutput)
+}
+
+func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityPtrOutput() StaticServiceIpConnectivityPtrOutput {
+	return i.ToStaticServiceIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityOutput).ToStaticServiceIpConnectivityPtrOutputWithContext(ctx)
+}
+
+// StaticServiceIpConnectivityPtrInput is an input type that accepts StaticServiceIpConnectivityArgs, StaticServiceIpConnectivityPtr and StaticServiceIpConnectivityPtrOutput values.
+// You can construct a concrete instance of `StaticServiceIpConnectivityPtrInput` via:
+//
+//	        StaticServiceIpConnectivityArgs{...}
+//
+//	or:
+//
+//	        nil
+type StaticServiceIpConnectivityPtrInput interface {
+	pulumi.Input
+
+	ToStaticServiceIpConnectivityPtrOutput() StaticServiceIpConnectivityPtrOutput
+	ToStaticServiceIpConnectivityPtrOutputWithContext(context.Context) StaticServiceIpConnectivityPtrOutput
+}
+
+type staticServiceIpConnectivityPtrType StaticServiceIpConnectivityArgs
+
+func StaticServiceIpConnectivityPtr(v *StaticServiceIpConnectivityArgs) StaticServiceIpConnectivityPtrInput {
+	return (*staticServiceIpConnectivityPtrType)(v)
+}
+
+func (*staticServiceIpConnectivityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (i *staticServiceIpConnectivityPtrType) ToStaticServiceIpConnectivityPtrOutput() StaticServiceIpConnectivityPtrOutput {
+	return i.ToStaticServiceIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (i *staticServiceIpConnectivityPtrType) ToStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityPtrOutput)
+}
+
+// Static IP address connectivity configured on service project.
+type StaticServiceIpConnectivityOutput struct{ *pulumi.OutputState }
+
+func (StaticServiceIpConnectivityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (o StaticServiceIpConnectivityOutput) ToStaticServiceIpConnectivityOutput() StaticServiceIpConnectivityOutput {
+	return o
+}
+
+func (o StaticServiceIpConnectivityOutput) ToStaticServiceIpConnectivityOutputWithContext(ctx context.Context) StaticServiceIpConnectivityOutput {
+	return o
+}
+
+func (o StaticServiceIpConnectivityOutput) ToStaticServiceIpConnectivityPtrOutput() StaticServiceIpConnectivityPtrOutput {
+	return o.ToStaticServiceIpConnectivityPtrOutputWithContext(context.Background())
+}
+
+func (o StaticServiceIpConnectivityOutput) ToStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StaticServiceIpConnectivity) *StaticServiceIpConnectivity {
+		return &v
+	}).(StaticServiceIpConnectivityPtrOutput)
+}
+
+type StaticServiceIpConnectivityPtrOutput struct{ *pulumi.OutputState }
+
+func (StaticServiceIpConnectivityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StaticServiceIpConnectivity)(nil)).Elem()
+}
+
+func (o StaticServiceIpConnectivityPtrOutput) ToStaticServiceIpConnectivityPtrOutput() StaticServiceIpConnectivityPtrOutput {
+	return o
+}
+
+func (o StaticServiceIpConnectivityPtrOutput) ToStaticServiceIpConnectivityPtrOutputWithContext(ctx context.Context) StaticServiceIpConnectivityPtrOutput {
+	return o
+}
+
+func (o StaticServiceIpConnectivityPtrOutput) Elem() StaticServiceIpConnectivityOutput {
+	return o.ApplyT(func(v *StaticServiceIpConnectivity) StaticServiceIpConnectivity {
+		if v != nil {
+			return *v
+		}
+		var ret StaticServiceIpConnectivity
+		return ret
+	}).(StaticServiceIpConnectivityOutput)
+}
+
+// Static IP address connectivity configured on service project.
+type StaticServiceIpConnectivityResponse struct {
+}
+
+// Static IP address connectivity configured on service project.
+type StaticServiceIpConnectivityResponseOutput struct{ *pulumi.OutputState }
+
+func (StaticServiceIpConnectivityResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StaticServiceIpConnectivityResponse)(nil)).Elem()
+}
+
+func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivityResponseOutput() StaticServiceIpConnectivityResponseOutput {
+	return o
+}
+
+func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivityResponseOutputWithContext(ctx context.Context) StaticServiceIpConnectivityResponseOutput {
+	return o
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -4739,6 +6246,198 @@ func (o UserPasswordResponseOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPasswordResponse) string { return v.User }).(pulumi.StringOutput)
 }
 
+// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+type VpcPeeringConfig struct {
+	// A free subnet for peering. (CIDR of /29)
+	Subnet string `pulumi:"subnet"`
+	// Fully qualified name of the VPC DMS will peer to.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// VpcPeeringConfigInput is an input type that accepts VpcPeeringConfigArgs and VpcPeeringConfigOutput values.
+// You can construct a concrete instance of `VpcPeeringConfigInput` via:
+//
+//	VpcPeeringConfigArgs{...}
+type VpcPeeringConfigInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConfigOutput() VpcPeeringConfigOutput
+	ToVpcPeeringConfigOutputWithContext(context.Context) VpcPeeringConfigOutput
+}
+
+// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+type VpcPeeringConfigArgs struct {
+	// A free subnet for peering. (CIDR of /29)
+	Subnet pulumi.StringInput `pulumi:"subnet"`
+	// Fully qualified name of the VPC DMS will peer to.
+	VpcName pulumi.StringInput `pulumi:"vpcName"`
+}
+
+func (VpcPeeringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConfig)(nil)).Elem()
+}
+
+func (i VpcPeeringConfigArgs) ToVpcPeeringConfigOutput() VpcPeeringConfigOutput {
+	return i.ToVpcPeeringConfigOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConfigArgs) ToVpcPeeringConfigOutputWithContext(ctx context.Context) VpcPeeringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigOutput)
+}
+
+func (i VpcPeeringConfigArgs) ToVpcPeeringConfigPtrOutput() VpcPeeringConfigPtrOutput {
+	return i.ToVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VpcPeeringConfigArgs) ToVpcPeeringConfigPtrOutputWithContext(ctx context.Context) VpcPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigOutput).ToVpcPeeringConfigPtrOutputWithContext(ctx)
+}
+
+// VpcPeeringConfigPtrInput is an input type that accepts VpcPeeringConfigArgs, VpcPeeringConfigPtr and VpcPeeringConfigPtrOutput values.
+// You can construct a concrete instance of `VpcPeeringConfigPtrInput` via:
+//
+//	        VpcPeeringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcPeeringConfigPtrInput interface {
+	pulumi.Input
+
+	ToVpcPeeringConfigPtrOutput() VpcPeeringConfigPtrOutput
+	ToVpcPeeringConfigPtrOutputWithContext(context.Context) VpcPeeringConfigPtrOutput
+}
+
+type vpcPeeringConfigPtrType VpcPeeringConfigArgs
+
+func VpcPeeringConfigPtr(v *VpcPeeringConfigArgs) VpcPeeringConfigPtrInput {
+	return (*vpcPeeringConfigPtrType)(v)
+}
+
+func (*vpcPeeringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcPeeringConfig)(nil)).Elem()
+}
+
+func (i *vpcPeeringConfigPtrType) ToVpcPeeringConfigPtrOutput() VpcPeeringConfigPtrOutput {
+	return i.ToVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcPeeringConfigPtrType) ToVpcPeeringConfigPtrOutputWithContext(ctx context.Context) VpcPeeringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigPtrOutput)
+}
+
+// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+type VpcPeeringConfigOutput struct{ *pulumi.OutputState }
+
+func (VpcPeeringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConfig)(nil)).Elem()
+}
+
+func (o VpcPeeringConfigOutput) ToVpcPeeringConfigOutput() VpcPeeringConfigOutput {
+	return o
+}
+
+func (o VpcPeeringConfigOutput) ToVpcPeeringConfigOutputWithContext(ctx context.Context) VpcPeeringConfigOutput {
+	return o
+}
+
+func (o VpcPeeringConfigOutput) ToVpcPeeringConfigPtrOutput() VpcPeeringConfigPtrOutput {
+	return o.ToVpcPeeringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VpcPeeringConfigOutput) ToVpcPeeringConfigPtrOutputWithContext(ctx context.Context) VpcPeeringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcPeeringConfig) *VpcPeeringConfig {
+		return &v
+	}).(VpcPeeringConfigPtrOutput)
+}
+
+// A free subnet for peering. (CIDR of /29)
+func (o VpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Fully qualified name of the VPC DMS will peer to.
+func (o VpcPeeringConfigOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcPeeringConfig) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
+type VpcPeeringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcPeeringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcPeeringConfig)(nil)).Elem()
+}
+
+func (o VpcPeeringConfigPtrOutput) ToVpcPeeringConfigPtrOutput() VpcPeeringConfigPtrOutput {
+	return o
+}
+
+func (o VpcPeeringConfigPtrOutput) ToVpcPeeringConfigPtrOutputWithContext(ctx context.Context) VpcPeeringConfigPtrOutput {
+	return o
+}
+
+func (o VpcPeeringConfigPtrOutput) Elem() VpcPeeringConfigOutput {
+	return o.ApplyT(func(v *VpcPeeringConfig) VpcPeeringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VpcPeeringConfig
+		return ret
+	}).(VpcPeeringConfigOutput)
+}
+
+// A free subnet for peering. (CIDR of /29)
+func (o VpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subnet
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fully qualified name of the VPC DMS will peer to.
+func (o VpcPeeringConfigPtrOutput) VpcName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcPeeringConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+type VpcPeeringConfigResponse struct {
+	// A free subnet for peering. (CIDR of /29)
+	Subnet string `pulumi:"subnet"`
+	// Fully qualified name of the VPC DMS will peer to.
+	VpcName string `pulumi:"vpcName"`
+}
+
+// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+type VpcPeeringConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (VpcPeeringConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcPeeringConfigResponse)(nil)).Elem()
+}
+
+func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponseOutput() VpcPeeringConfigResponseOutput {
+	return o
+}
+
+func (o VpcPeeringConfigResponseOutput) ToVpcPeeringConfigResponseOutputWithContext(ctx context.Context) VpcPeeringConfigResponseOutput {
+	return o
+}
+
+// A free subnet for peering. (CIDR of /29)
+func (o VpcPeeringConfigResponseOutput) Subnet() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.Subnet }).(pulumi.StringOutput)
+}
+
+// Fully qualified name of the VPC DMS will peer to.
+func (o VpcPeeringConfigResponseOutput) VpcName() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.VpcName }).(pulumi.StringOutput)
+}
+
 // The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
 type VpcPeeringConnectivity struct {
 	// The name of the VPC network to peer with the Cloud SQL private network.
@@ -4920,6 +6619,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlConnectionProfilePtrInput)(nil)).Elem(), CloudSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsInput)(nil)).Elem(), CloudSqlSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsPtrInput)(nil)).Elem(), CloudSqlSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversionWorkspaceInfoInput)(nil)).Elem(), ConversionWorkspaceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConversionWorkspaceInfoPtrInput)(nil)).Elem(), ConversionWorkspaceInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEngineInfoInput)(nil)).Elem(), DatabaseEngineInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeInput)(nil)).Elem(), DatabaseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypePtrInput)(nil)).Elem(), DatabaseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagInput)(nil)).Elem(), DumpFlagArgs{})
@@ -4928,14 +6630,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsPtrInput)(nil)).Elem(), DumpFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityPtrInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigPtrInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfilePtrInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleConnectionProfileInput)(nil)).Elem(), OracleConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OracleConnectionProfilePtrInput)(nil)).Elem(), OracleConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfileInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfilePtrInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrimaryInstanceSettingsInput)(nil)).Elem(), PrimaryInstanceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrimaryInstanceSettingsPtrInput)(nil)).Elem(), PrimaryInstanceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityInput)(nil)).Elem(), PrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityPtrInput)(nil)).Elem(), PrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateServiceConnectConnectivityInput)(nil)).Elem(), PrivateServiceConnectConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrivateServiceConnectConnectivityPtrInput)(nil)).Elem(), PrivateServiceConnectConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityPtrInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryInput)(nil)).Elem(), SqlAclEntryArgs{})
@@ -4946,8 +6656,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigPtrInput)(nil)).Elem(), SslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityInput)(nil)).Elem(), StaticIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityPtrInput)(nil)).Elem(), StaticIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityPtrInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigInput)(nil)).Elem(), VpcPeeringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigPtrInput)(nil)).Elem(), VpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityPtrInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
 	pulumi.RegisterOutputType(AlloyDbConnectionProfileOutput{})
@@ -4974,6 +6688,11 @@ func init() {
 	pulumi.RegisterOutputType(CloudSqlSettingsOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsPtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ConversionWorkspaceInfoOutput{})
+	pulumi.RegisterOutputType(ConversionWorkspaceInfoPtrOutput{})
+	pulumi.RegisterOutputType(ConversionWorkspaceInfoResponseOutput{})
+	pulumi.RegisterOutputType(DatabaseEngineInfoOutput{})
+	pulumi.RegisterOutputType(DatabaseEngineInfoResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeOutput{})
 	pulumi.RegisterOutputType(DatabaseTypePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeResponseOutput{})
@@ -4987,18 +6706,30 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityOutput{})
+	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(ForwardSshTunnelConnectivityResponseOutput{})
 	pulumi.RegisterOutputType(MachineConfigOutput{})
 	pulumi.RegisterOutputType(MachineConfigPtrOutput{})
 	pulumi.RegisterOutputType(MachineConfigResponseOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileResponseOutput{})
+	pulumi.RegisterOutputType(OracleConnectionProfileOutput{})
+	pulumi.RegisterOutputType(OracleConnectionProfilePtrOutput{})
+	pulumi.RegisterOutputType(OracleConnectionProfileResponseOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileResponseOutput{})
 	pulumi.RegisterOutputType(PrimaryInstanceSettingsOutput{})
 	pulumi.RegisterOutputType(PrimaryInstanceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(PrimaryInstanceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(PrivateConnectivityOutput{})
+	pulumi.RegisterOutputType(PrivateConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(PrivateConnectivityResponseOutput{})
+	pulumi.RegisterOutputType(PrivateServiceConnectConnectivityOutput{})
+	pulumi.RegisterOutputType(PrivateServiceConnectConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(PrivateServiceConnectConnectivityResponseOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityResponseOutput{})
@@ -5015,10 +6746,16 @@ func init() {
 	pulumi.RegisterOutputType(StaticIpConnectivityOutput{})
 	pulumi.RegisterOutputType(StaticIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticIpConnectivityResponseOutput{})
+	pulumi.RegisterOutputType(StaticServiceIpConnectivityOutput{})
+	pulumi.RegisterOutputType(StaticServiceIpConnectivityPtrOutput{})
+	pulumi.RegisterOutputType(StaticServiceIpConnectivityResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 	pulumi.RegisterOutputType(UserPasswordOutput{})
 	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
 	pulumi.RegisterOutputType(UserPasswordResponseOutput{})
+	pulumi.RegisterOutputType(VpcPeeringConfigOutput{})
+	pulumi.RegisterOutputType(VpcPeeringConfigPtrOutput{})
+	pulumi.RegisterOutputType(VpcPeeringConfigResponseOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityResponseOutput{})

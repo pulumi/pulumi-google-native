@@ -28,25 +28,25 @@ export type AcceleratorAcceleratorType = (typeof AcceleratorAcceleratorType)[key
 
 export const AcceleratorState = {
     /**
-     * Default value, do not use
+     * Default value, do not use.
      */
     StateUnspecified: "STATE_UNSPECIFIED",
     /**
-     * Indicates that the accelerator is enabled and available to use
+     * Indicates that the accelerator is enabled and available to use.
      */
     Enabled: "ENABLED",
     /**
-     * Indicates that the accelerator is disabled and not available to use
+     * Indicates that the accelerator is disabled and not available to use.
      */
     Disabled: "DISABLED",
     /**
-     * Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state
+     * Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
      */
     Unknown: "UNKNOWN",
 } as const;
 
 /**
- * The state of the accelerator
+ * The state of the accelerator.
  */
 export type AcceleratorState = (typeof AcceleratorState)[keyof typeof AcceleratorState];
 

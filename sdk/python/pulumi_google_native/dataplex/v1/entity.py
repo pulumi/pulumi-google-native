@@ -377,10 +377,12 @@ class Entity(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["zone"] = zone
+            __props__.__dict__["access"] = None
             __props__.__dict__["catalog_entry"] = None
             __props__.__dict__["compatibility"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["lake_id", "location", "project", "zone"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -406,6 +408,7 @@ class Entity(pulumi.CustomResource):
 
         __props__ = EntityArgs.__new__(EntityArgs)
 
+        __props__.__dict__["access"] = None
         __props__.__dict__["asset"] = None
         __props__.__dict__["catalog_entry"] = None
         __props__.__dict__["compatibility"] = None
@@ -423,10 +426,19 @@ class Entity(pulumi.CustomResource):
         __props__.__dict__["schema"] = None
         __props__.__dict__["system"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["validate_only"] = None
         __props__.__dict__["zone"] = None
         return Entity(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def access(self) -> pulumi.Output['outputs.GoogleCloudDataplexV1StorageAccessResponse']:
+        """
+        Identifies the access mechanism to the entity. Not user settable.
+        """
+        return pulumi.get(self, "access")
 
     @property
     @pulumi.getter
@@ -554,6 +566,14 @@ class Entity(pulumi.CustomResource):
         Immutable. The type of entity.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+        """
+        return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter(name="updateTime")

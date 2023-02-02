@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, cluster_states=None, column_families=None, granularity=None, name=None, restore_info=None):
+    def __init__(__self__, cluster_states=None, column_families=None, deletion_protection=None, granularity=None, name=None, restore_info=None, stats=None):
         if cluster_states and not isinstance(cluster_states, dict):
             raise TypeError("Expected argument 'cluster_states' to be a dict")
         pulumi.set(__self__, "cluster_states", cluster_states)
         if column_families and not isinstance(column_families, dict):
             raise TypeError("Expected argument 'column_families' to be a dict")
         pulumi.set(__self__, "column_families", column_families)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if granularity and not isinstance(granularity, str):
             raise TypeError("Expected argument 'granularity' to be a str")
         pulumi.set(__self__, "granularity", granularity)
@@ -35,6 +38,9 @@ class GetTableResult:
         if restore_info and not isinstance(restore_info, dict):
             raise TypeError("Expected argument 'restore_info' to be a dict")
         pulumi.set(__self__, "restore_info", restore_info)
+        if stats and not isinstance(stats, dict):
+            raise TypeError("Expected argument 'stats' to be a dict")
+        pulumi.set(__self__, "stats", stats)
 
     @property
     @pulumi.getter(name="clusterStates")
@@ -48,9 +54,17 @@ class GetTableResult:
     @pulumi.getter(name="columnFamilies")
     def column_families(self) -> Mapping[str, str]:
         """
-        The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         """
         return pulumi.get(self, "column_families")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        """
+        Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+        """
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter
@@ -64,7 +78,7 @@ class GetTableResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         """
         return pulumi.get(self, "name")
 
@@ -76,6 +90,14 @@ class GetTableResult:
         """
         return pulumi.get(self, "restore_info")
 
+    @property
+    @pulumi.getter
+    def stats(self) -> 'outputs.TableStatsResponse':
+        """
+        Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+        """
+        return pulumi.get(self, "stats")
+
 
 class AwaitableGetTableResult(GetTableResult):
     # pylint: disable=using-constant-test
@@ -85,9 +107,11 @@ class AwaitableGetTableResult(GetTableResult):
         return GetTableResult(
             cluster_states=self.cluster_states,
             column_families=self.column_families,
+            deletion_protection=self.deletion_protection,
             granularity=self.granularity,
             name=self.name,
-            restore_info=self.restore_info)
+            restore_info=self.restore_info,
+            stats=self.stats)
 
 
 def get_table(instance_id: Optional[str] = None,
@@ -109,9 +133,11 @@ def get_table(instance_id: Optional[str] = None,
     return AwaitableGetTableResult(
         cluster_states=__ret__.cluster_states,
         column_families=__ret__.column_families,
+        deletion_protection=__ret__.deletion_protection,
         granularity=__ret__.granularity,
         name=__ret__.name,
-        restore_info=__ret__.restore_info)
+        restore_info=__ret__.restore_info,
+        stats=__ret__.stats)
 
 
 @_utilities.lift_output_func(get_table)

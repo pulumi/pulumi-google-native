@@ -33,7 +33,7 @@ class DeploymentArgs:
         :param pulumi.Input[str] api_deployment_id: Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         :param pulumi.Input[str] access_guidance: Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
-        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         :param pulumi.Input[str] description: A detailed description.
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[str] endpoint_uri: The address where the deployment is serving. Changes to this value will update the revision.
@@ -118,7 +118,7 @@ class DeploymentArgs:
     @pulumi.getter(name="apiSpecRevision")
     def api_spec_revision(self) -> Optional[pulumi.Input[str]]:
         """
-        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         """
         return pulumi.get(self, "api_spec_revision")
 
@@ -257,7 +257,7 @@ class Deployment(pulumi.CustomResource):
         :param pulumi.Input[str] access_guidance: Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
         :param pulumi.Input[str] api_deployment_id: Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
-        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         :param pulumi.Input[str] description: A detailed description.
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[str] endpoint_uri: The address where the deployment is serving. Changes to this value will update the revision.
@@ -412,7 +412,7 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter(name="apiSpecRevision")
     def api_spec_revision(self) -> pulumi.Output[str]:
         """
-        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         """
         return pulumi.get(self, "api_spec_revision")
 

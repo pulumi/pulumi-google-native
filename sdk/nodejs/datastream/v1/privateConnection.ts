@@ -51,6 +51,10 @@ export class PrivateConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.datastream.v1.ErrorResponse>;
     /**
+     * Optional. If set to true, will skip validations.
+     */
+    public readonly force!: pulumi.Output<boolean | undefined>;
+    /**
      * Labels.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -99,6 +103,7 @@ export class PrivateConnection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'privateConnectionId'");
             }
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["force"] = args ? args.force : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["privateConnectionId"] = args ? args.privateConnectionId : undefined;
@@ -114,6 +119,7 @@ export class PrivateConnection extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["force"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -139,6 +145,10 @@ export interface PrivateConnectionArgs {
      * Display name.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Optional. If set to true, will skip validations.
+     */
+    force?: pulumi.Input<boolean>;
     /**
      * Labels.
      */

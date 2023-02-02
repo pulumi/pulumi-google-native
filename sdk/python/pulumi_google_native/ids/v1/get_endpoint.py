@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointResult:
-    def __init__(__self__, create_time=None, description=None, endpoint_forwarding_rule=None, endpoint_ip=None, labels=None, name=None, network=None, severity=None, state=None, traffic_logs=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, endpoint_forwarding_rule=None, endpoint_ip=None, labels=None, name=None, network=None, severity=None, state=None, threat_exceptions=None, traffic_logs=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -46,6 +46,9 @@ class GetEndpointResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if threat_exceptions and not isinstance(threat_exceptions, list):
+            raise TypeError("Expected argument 'threat_exceptions' to be a list")
+        pulumi.set(__self__, "threat_exceptions", threat_exceptions)
         if traffic_logs and not isinstance(traffic_logs, bool):
             raise TypeError("Expected argument 'traffic_logs' to be a bool")
         pulumi.set(__self__, "traffic_logs", traffic_logs)
@@ -126,6 +129,14 @@ class GetEndpointResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="threatExceptions")
+    def threat_exceptions(self) -> Sequence[str]:
+        """
+        List of threat IDs to be excepted from generating alerts.
+        """
+        return pulumi.get(self, "threat_exceptions")
+
+    @property
     @pulumi.getter(name="trafficLogs")
     def traffic_logs(self) -> bool:
         """
@@ -157,6 +168,7 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             network=self.network,
             severity=self.severity,
             state=self.state,
+            threat_exceptions=self.threat_exceptions,
             traffic_logs=self.traffic_logs,
             update_time=self.update_time)
 
@@ -185,6 +197,7 @@ def get_endpoint(endpoint_id: Optional[str] = None,
         network=__ret__.network,
         severity=__ret__.severity,
         state=__ret__.state,
+        threat_exceptions=__ret__.threat_exceptions,
         traffic_logs=__ret__.traffic_logs,
         update_time=__ret__.update_time)
 

@@ -100,6 +100,10 @@ namespace Pulumi.GoogleNative.IDS.V1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// List of threat IDs to be excepted from generating alerts.
+        /// </summary>
+        public readonly ImmutableArray<string> ThreatExceptions;
+        /// <summary>
         /// Whether the endpoint should report traffic logs in addition to threat logs.
         /// </summary>
         public readonly bool TrafficLogs;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.IDS.V1
 
             string state,
 
+            ImmutableArray<string> threatExceptions,
+
             bool trafficLogs,
 
             string updateTime)
@@ -141,6 +147,7 @@ namespace Pulumi.GoogleNative.IDS.V1
             Network = network;
             Severity = severity;
             State = state;
+            ThreatExceptions = threatExceptions;
             TrafficLogs = trafficLogs;
             UpdateTime = updateTime;
         }

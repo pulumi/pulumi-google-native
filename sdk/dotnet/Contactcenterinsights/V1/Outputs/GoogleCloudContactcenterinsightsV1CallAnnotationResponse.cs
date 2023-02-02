@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1InterruptionDataResponse InterruptionData;
         /// <summary>
+        /// Data specifying an issue match.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1IssueMatchDataResponse IssueMatchData;
+        /// <summary>
         /// Data specifying a phrase match.
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse PhraseMatchData;
@@ -73,6 +77,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
 
             Outputs.GoogleCloudContactcenterinsightsV1InterruptionDataResponse interruptionData,
 
+            Outputs.GoogleCloudContactcenterinsightsV1IssueMatchDataResponse issueMatchData,
+
             Outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse phraseMatchData,
 
             Outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse sentimentData,
@@ -86,6 +92,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Outputs
             HoldData = holdData;
             IntentMatchData = intentMatchData;
             InterruptionData = interruptionData;
+            IssueMatchData = issueMatchData;
             PhraseMatchData = phraseMatchData;
             SentimentData = sentimentData;
             SilenceData = silenceData;

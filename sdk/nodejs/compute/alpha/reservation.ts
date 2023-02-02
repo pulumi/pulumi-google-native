@@ -38,6 +38,10 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    public readonly aggregateReservation!: pulumi.Output<outputs.compute.alpha.AllocationAggregateReservationResponse>;
+    /**
      * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
     public /*out*/ readonly commitment!: pulumi.Output<string>;
@@ -83,7 +87,7 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLinkWithId!: pulumi.Output<string>;
     /**
-     * Share-settings for shared-reservation
+     * Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
      */
     public readonly shareSettings!: pulumi.Output<outputs.compute.alpha.ShareSettingsResponse>;
     /**
@@ -111,6 +115,7 @@ export class Reservation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["aggregateReservation"] = args ? args.aggregateReservation : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -129,6 +134,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         } else {
+            resourceInputs["aggregateReservation"] = undefined /*out*/;
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -159,6 +165,10 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationArgs {
     /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    aggregateReservation?: pulumi.Input<inputs.compute.alpha.AllocationAggregateReservationArgs>;
+    /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
     description?: pulumi.Input<string>;
@@ -176,7 +186,7 @@ export interface ReservationArgs {
      */
     resourcePolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Share-settings for shared-reservation
+     * Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
      */
     shareSettings?: pulumi.Input<inputs.compute.alpha.ShareSettingsArgs>;
     /**

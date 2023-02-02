@@ -40,6 +40,8 @@ type Endpoint struct {
 	Severity pulumi.StringOutput `pulumi:"severity"`
 	// Current state of the endpoint.
 	State pulumi.StringOutput `pulumi:"state"`
+	// List of threat IDs to be excepted from generating alerts.
+	ThreatExceptions pulumi.StringArrayOutput `pulumi:"threatExceptions"`
 	// Whether the endpoint should report traffic logs in addition to threat logs.
 	TrafficLogs pulumi.BoolOutput `pulumi:"trafficLogs"`
 	// The update time timestamp.
@@ -114,6 +116,8 @@ type endpointArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Lowest threat severity that this endpoint will alert on.
 	Severity EndpointSeverity `pulumi:"severity"`
+	// List of threat IDs to be excepted from generating alerts.
+	ThreatExceptions []string `pulumi:"threatExceptions"`
 	// Whether the endpoint should report traffic logs in addition to threat logs.
 	TrafficLogs *bool `pulumi:"trafficLogs"`
 }
@@ -134,6 +138,8 @@ type EndpointArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Lowest threat severity that this endpoint will alert on.
 	Severity EndpointSeverityInput
+	// List of threat IDs to be excepted from generating alerts.
+	ThreatExceptions pulumi.StringArrayInput
 	// Whether the endpoint should report traffic logs in addition to threat logs.
 	TrafficLogs pulumi.BoolPtrInput
 }
@@ -236,6 +242,11 @@ func (o EndpointOutput) Severity() pulumi.StringOutput {
 // Current state of the endpoint.
 func (o EndpointOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Endpoint) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// List of threat IDs to be excepted from generating alerts.
+func (o EndpointOutput) ThreatExceptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Endpoint) pulumi.StringArrayOutput { return v.ThreatExceptions }).(pulumi.StringArrayOutput)
 }
 
 // Whether the endpoint should report traffic logs in addition to threat logs.

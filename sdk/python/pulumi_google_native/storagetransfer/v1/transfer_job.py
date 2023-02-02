@@ -18,6 +18,7 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 class TransferJobArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 event_stream: Optional[pulumi.Input['EventStreamArgs']] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class TransferJobArgs:
         """
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        :param pulumi.Input['EventStreamArgs'] event_stream: Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with `transferJobs/OPI` specifically. For all other transfer types, this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
@@ -40,6 +42,8 @@ class TransferJobArgs:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if event_stream is not None:
+            pulumi.set(__self__, "event_stream", event_stream)
         if latest_operation_name is not None:
             pulumi.set(__self__, "latest_operation_name", latest_operation_name)
         if logging_config is not None:
@@ -68,6 +72,18 @@ class TransferJobArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="eventStream")
+    def event_stream(self) -> Optional[pulumi.Input['EventStreamArgs']]:
+        """
+        Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        """
+        return pulumi.get(self, "event_stream")
+
+    @event_stream.setter
+    def event_stream(self, value: Optional[pulumi.Input['EventStreamArgs']]):
+        pulumi.set(self, "event_stream", value)
 
     @property
     @pulumi.getter(name="latestOperationName")
@@ -172,6 +188,7 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 event_stream: Optional[pulumi.Input[pulumi.InputType['EventStreamArgs']]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -187,6 +204,7 @@ class TransferJob(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
+        :param pulumi.Input[pulumi.InputType['EventStreamArgs']] event_stream: Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
         :param pulumi.Input[pulumi.InputType['LoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service assigns a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. For transfers involving PosixFilesystem, this name must start with `transferJobs/OPI` specifically. For all other transfer types, this name must not start with `transferJobs/OPI`. Non-PosixFilesystem example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` PosixFilesystem example: `"transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Applications must not rely on the enforcement of naming requirements involving OPI. Invalid job names fail with an INVALID_ARGUMENT error.
@@ -221,6 +239,7 @@ class TransferJob(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 event_stream: Optional[pulumi.Input[pulumi.InputType['EventStreamArgs']]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  logging_config: Optional[pulumi.Input[pulumi.InputType['LoggingConfigArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -239,6 +258,7 @@ class TransferJob(pulumi.CustomResource):
             __props__ = TransferJobArgs.__new__(TransferJobArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["event_stream"] = event_stream
             __props__.__dict__["latest_operation_name"] = latest_operation_name
             __props__.__dict__["logging_config"] = logging_config
             __props__.__dict__["name"] = name
@@ -275,6 +295,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["deletion_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["event_stream"] = None
         __props__.__dict__["last_modification_time"] = None
         __props__.__dict__["latest_operation_name"] = None
         __props__.__dict__["logging_config"] = None
@@ -309,6 +330,14 @@ class TransferJob(pulumi.CustomResource):
         A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="eventStream")
+    def event_stream(self) -> pulumi.Output['outputs.EventStreamResponse']:
+        """
+        Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        """
+        return pulumi.get(self, "event_stream")
 
     @property
     @pulumi.getter(name="lastModificationTime")

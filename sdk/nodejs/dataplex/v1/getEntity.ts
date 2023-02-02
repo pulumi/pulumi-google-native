@@ -37,6 +37,10 @@ export interface GetEntityArgs {
 
 export interface GetEntityResult {
     /**
+     * Identifies the access mechanism to the entity. Not user settable.
+     */
+    readonly access: outputs.dataplex.v1.GoogleCloudDataplexV1StorageAccessResponse;
+    /**
      * Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
      */
     readonly asset: string;
@@ -92,6 +96,10 @@ export interface GetEntityResult {
      * Immutable. The type of entity.
      */
     readonly type: string;
+    /**
+     * System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+     */
+    readonly uid: string;
     /**
      * The time when the entity was last updated.
      */

@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1AddonsConfigResponse> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         [Output("analyticsRegion")]
         public Output<string> AnalyticsRegion { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+        /// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<Inputs.GoogleCloudApigeeV1AddonsConfigArgs>? AddonsConfig { get; set; }
 
         /// <summary>
-        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         [Input("analyticsRegion", required: true)]
         public Input<string> AnalyticsRegion { get; set; } = null!;
@@ -264,7 +264,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+        /// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;

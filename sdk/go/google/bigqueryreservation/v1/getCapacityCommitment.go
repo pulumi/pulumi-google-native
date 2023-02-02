@@ -31,6 +31,8 @@ type LookupCapacityCommitmentResult struct {
 	CommitmentEndTime string `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime string `pulumi:"commitmentStartTime"`
+	// Edition of the capacity commitment.
+	Edition string `pulumi:"edition"`
 	// For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusResponse `pulumi:"failureStatus"`
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
@@ -92,6 +94,11 @@ func (o LookupCapacityCommitmentResultOutput) CommitmentEndTime() pulumi.StringO
 // The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 func (o LookupCapacityCommitmentResultOutput) CommitmentStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCapacityCommitmentResult) string { return v.CommitmentStartTime }).(pulumi.StringOutput)
+}
+
+// Edition of the capacity commitment.
+func (o LookupCapacityCommitmentResultOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCapacityCommitmentResult) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 // For FAILED commitment plan, provides the reason of failure.

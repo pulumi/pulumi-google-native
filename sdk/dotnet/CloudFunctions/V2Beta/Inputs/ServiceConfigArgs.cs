@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
 {
 
     /// <summary>
-    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
     /// </summary>
     public sealed class ServiceConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -20,6 +20,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
         /// </summary>
         [Input("allTrafficOnLatestRevision")]
         public Input<bool>? AllTrafficOnLatestRevision { get; set; }
+
+        /// <summary>
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        /// </summary>
+        [Input("availableCpu")]
+        public Input<string>? AvailableCpu { get; set; }
 
         /// <summary>
         /// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
@@ -52,6 +58,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
         public Input<int>? MaxInstanceCount { get; set; }
 
         /// <summary>
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// </summary>
+        [Input("maxInstanceRequestConcurrency")]
+        public Input<int>? MaxInstanceRequestConcurrency { get; set; }
+
+        /// <summary>
         /// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         /// </summary>
         [Input("minInstanceCount")]
@@ -82,7 +94,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
         }
 
         /// <summary>
-        /// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        /// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         /// </summary>
         [Input("securityLevel")]
         public Input<Pulumi.GoogleNative.CloudFunctions.V2Beta.ServiceConfigSecurityLevel>? SecurityLevel { get; set; }

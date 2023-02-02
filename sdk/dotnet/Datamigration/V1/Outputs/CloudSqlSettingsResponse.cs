@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly bool AutoStorageIncrease;
         /// <summary>
+        /// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+        /// </summary>
+        public readonly string AvailabilityType;
+        /// <summary>
         /// The KMS key name used for the csql instance.
         /// </summary>
         public readonly string CmekKeyName;
@@ -61,6 +65,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly bool RootPasswordSet;
         /// <summary>
+        /// Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+        /// </summary>
+        public readonly string SecondaryZone;
+        /// <summary>
         /// The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
         /// </summary>
         public readonly string SourceId;
@@ -87,6 +95,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             bool autoStorageIncrease,
 
+            string availabilityType,
+
             string cmekKeyName,
 
             string collation,
@@ -105,6 +115,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             bool rootPasswordSet,
 
+            string secondaryZone,
+
             string sourceId,
 
             string storageAutoResizeLimit,
@@ -117,6 +129,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         {
             ActivationPolicy = activationPolicy;
             AutoStorageIncrease = autoStorageIncrease;
+            AvailabilityType = availabilityType;
             CmekKeyName = cmekKeyName;
             Collation = collation;
             DataDiskSizeGb = dataDiskSizeGb;
@@ -126,6 +139,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
             IpConfig = ipConfig;
             RootPassword = rootPassword;
             RootPasswordSet = rootPasswordSet;
+            SecondaryZone = secondaryZone;
             SourceId = sourceId;
             StorageAutoResizeLimit = storageAutoResizeLimit;
             Tier = tier;

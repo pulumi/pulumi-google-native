@@ -53,6 +53,8 @@ type LookupNodeResult struct {
 	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 	NetworkEndpoints []NetworkEndpointResponse `pulumi:"networkEndpoints"`
+	// The qualified name of the QueuedResource that requested this Node.
+	QueuedResource string `pulumi:"queuedResource"`
 	// The runtime version running in the Node.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// The scheduling options for this node.
@@ -169,6 +171,11 @@ func (o LookupNodeResultOutput) NetworkConfig() NetworkConfigResponseOutput {
 // The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
 func (o LookupNodeResultOutput) NetworkEndpoints() NetworkEndpointResponseArrayOutput {
 	return o.ApplyT(func(v LookupNodeResult) []NetworkEndpointResponse { return v.NetworkEndpoints }).(NetworkEndpointResponseArrayOutput)
+}
+
+// The qualified name of the QueuedResource that requested this Node.
+func (o LookupNodeResultOutput) QueuedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodeResult) string { return v.QueuedResource }).(pulumi.StringOutput)
 }
 
 // The runtime version running in the Node.

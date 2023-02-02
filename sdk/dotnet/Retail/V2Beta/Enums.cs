@@ -260,7 +260,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
     }
 
     /// <summary>
-    /// What kind of diversity to use - data driven or rule based.
+    /// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
     /// </summary>
     [EnumType]
     public readonly struct ServingConfigDiversityType : IEquatable<ServingConfigDiversityType>

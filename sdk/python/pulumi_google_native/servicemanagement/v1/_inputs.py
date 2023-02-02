@@ -23,27 +23,35 @@ __all__ = [
     'BillingDestinationArgs',
     'BillingArgs',
     'BindingArgs',
+    'ClientLibrarySettingsArgs',
+    'CommonLanguageSettingsArgs',
     'ContextRuleArgs',
     'ContextArgs',
     'ControlArgs',
+    'CppSettingsArgs',
     'CustomErrorRuleArgs',
     'CustomErrorArgs',
     'CustomHttpPatternArgs',
     'DeleteServiceStrategyArgs',
     'DocumentationRuleArgs',
     'DocumentationArgs',
+    'DotnetSettingsArgs',
     'EndpointArgs',
     'EnumValueArgs',
     'EnumArgs',
     'ExprArgs',
     'FieldArgs',
+    'GoSettingsArgs',
     'HttpRuleArgs',
     'HttpArgs',
+    'JavaSettingsArgs',
     'JwtLocationArgs',
     'LabelDescriptorArgs',
     'LogDescriptorArgs',
     'LoggingDestinationArgs',
     'LoggingArgs',
+    'LongRunningArgs',
+    'MethodSettingsArgs',
     'MethodArgs',
     'MetricDescriptorMetadataArgs',
     'MetricDescriptorArgs',
@@ -52,11 +60,16 @@ __all__ = [
     'MonitoredResourceDescriptorArgs',
     'MonitoringDestinationArgs',
     'MonitoringArgs',
+    'NodeSettingsArgs',
     'OAuthRequirementsArgs',
     'OptionArgs',
     'PageArgs',
+    'PhpSettingsArgs',
+    'PublishingArgs',
+    'PythonSettingsArgs',
     'QuotaLimitArgs',
     'QuotaArgs',
+    'RubySettingsArgs',
     'SourceContextArgs',
     'SystemParameterRuleArgs',
     'SystemParametersArgs',
@@ -530,6 +543,7 @@ class BackendRuleArgs:
                  deadline: Optional[pulumi.Input[float]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  jwt_audience: Optional[pulumi.Input[str]] = None,
+                 min_deadline: Optional[pulumi.Input[float]] = None,
                  operation_deadline: Optional[pulumi.Input[float]] = None,
                  path_translation: Optional[pulumi.Input['BackendRulePathTranslation']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
@@ -540,6 +554,7 @@ class BackendRuleArgs:
         :param pulumi.Input[float] deadline: The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
         :param pulumi.Input[bool] disable_auth: When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
         :param pulumi.Input[str] jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
+        :param pulumi.Input[float] min_deadline: Deprecated, do not use.
         :param pulumi.Input[float] operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         :param pulumi.Input[str] protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -552,6 +567,11 @@ class BackendRuleArgs:
             pulumi.set(__self__, "disable_auth", disable_auth)
         if jwt_audience is not None:
             pulumi.set(__self__, "jwt_audience", jwt_audience)
+        if min_deadline is not None:
+            warnings.warn("""Deprecated, do not use.""", DeprecationWarning)
+            pulumi.log.warn("""min_deadline is deprecated: Deprecated, do not use.""")
+        if min_deadline is not None:
+            pulumi.set(__self__, "min_deadline", min_deadline)
         if operation_deadline is not None:
             pulumi.set(__self__, "operation_deadline", operation_deadline)
         if path_translation is not None:
@@ -608,6 +628,18 @@ class BackendRuleArgs:
     @jwt_audience.setter
     def jwt_audience(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "jwt_audience", value)
+
+    @property
+    @pulumi.getter(name="minDeadline")
+    def min_deadline(self) -> Optional[pulumi.Input[float]]:
+        """
+        Deprecated, do not use.
+        """
+        return pulumi.get(self, "min_deadline")
+
+    @min_deadline.setter
+    def min_deadline(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_deadline", value)
 
     @property
     @pulumi.getter(name="operationDeadline")
@@ -752,7 +784,7 @@ class BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
@@ -778,7 +810,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -797,6 +829,230 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class ClientLibrarySettingsArgs:
+    def __init__(__self__, *,
+                 cpp_settings: Optional[pulumi.Input['CppSettingsArgs']] = None,
+                 dotnet_settings: Optional[pulumi.Input['DotnetSettingsArgs']] = None,
+                 go_settings: Optional[pulumi.Input['GoSettingsArgs']] = None,
+                 java_settings: Optional[pulumi.Input['JavaSettingsArgs']] = None,
+                 launch_stage: Optional[pulumi.Input['ClientLibrarySettingsLaunchStage']] = None,
+                 node_settings: Optional[pulumi.Input['NodeSettingsArgs']] = None,
+                 php_settings: Optional[pulumi.Input['PhpSettingsArgs']] = None,
+                 python_settings: Optional[pulumi.Input['PythonSettingsArgs']] = None,
+                 rest_numeric_enums: Optional[pulumi.Input[bool]] = None,
+                 ruby_settings: Optional[pulumi.Input['RubySettingsArgs']] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        Details about how and where to publish client libraries.
+        :param pulumi.Input['CppSettingsArgs'] cpp_settings: Settings for C++ client libraries.
+        :param pulumi.Input['DotnetSettingsArgs'] dotnet_settings: Settings for .NET client libraries.
+        :param pulumi.Input['GoSettingsArgs'] go_settings: Settings for Go client libraries.
+        :param pulumi.Input['JavaSettingsArgs'] java_settings: Settings for legacy Java features, supported in the Service YAML.
+        :param pulumi.Input['ClientLibrarySettingsLaunchStage'] launch_stage: Launch stage of this version of the API.
+        :param pulumi.Input['NodeSettingsArgs'] node_settings: Settings for Node client libraries.
+        :param pulumi.Input['PhpSettingsArgs'] php_settings: Settings for PHP client libraries.
+        :param pulumi.Input['PythonSettingsArgs'] python_settings: Settings for Python client libraries.
+        :param pulumi.Input[bool] rest_numeric_enums: When using transport=rest, the client request will encode enums as numbers rather than strings.
+        :param pulumi.Input['RubySettingsArgs'] ruby_settings: Settings for Ruby client libraries.
+        :param pulumi.Input[str] version: Version of the API to apply these settings to.
+        """
+        if cpp_settings is not None:
+            pulumi.set(__self__, "cpp_settings", cpp_settings)
+        if dotnet_settings is not None:
+            pulumi.set(__self__, "dotnet_settings", dotnet_settings)
+        if go_settings is not None:
+            pulumi.set(__self__, "go_settings", go_settings)
+        if java_settings is not None:
+            pulumi.set(__self__, "java_settings", java_settings)
+        if launch_stage is not None:
+            pulumi.set(__self__, "launch_stage", launch_stage)
+        if node_settings is not None:
+            pulumi.set(__self__, "node_settings", node_settings)
+        if php_settings is not None:
+            pulumi.set(__self__, "php_settings", php_settings)
+        if python_settings is not None:
+            pulumi.set(__self__, "python_settings", python_settings)
+        if rest_numeric_enums is not None:
+            pulumi.set(__self__, "rest_numeric_enums", rest_numeric_enums)
+        if ruby_settings is not None:
+            pulumi.set(__self__, "ruby_settings", ruby_settings)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="cppSettings")
+    def cpp_settings(self) -> Optional[pulumi.Input['CppSettingsArgs']]:
+        """
+        Settings for C++ client libraries.
+        """
+        return pulumi.get(self, "cpp_settings")
+
+    @cpp_settings.setter
+    def cpp_settings(self, value: Optional[pulumi.Input['CppSettingsArgs']]):
+        pulumi.set(self, "cpp_settings", value)
+
+    @property
+    @pulumi.getter(name="dotnetSettings")
+    def dotnet_settings(self) -> Optional[pulumi.Input['DotnetSettingsArgs']]:
+        """
+        Settings for .NET client libraries.
+        """
+        return pulumi.get(self, "dotnet_settings")
+
+    @dotnet_settings.setter
+    def dotnet_settings(self, value: Optional[pulumi.Input['DotnetSettingsArgs']]):
+        pulumi.set(self, "dotnet_settings", value)
+
+    @property
+    @pulumi.getter(name="goSettings")
+    def go_settings(self) -> Optional[pulumi.Input['GoSettingsArgs']]:
+        """
+        Settings for Go client libraries.
+        """
+        return pulumi.get(self, "go_settings")
+
+    @go_settings.setter
+    def go_settings(self, value: Optional[pulumi.Input['GoSettingsArgs']]):
+        pulumi.set(self, "go_settings", value)
+
+    @property
+    @pulumi.getter(name="javaSettings")
+    def java_settings(self) -> Optional[pulumi.Input['JavaSettingsArgs']]:
+        """
+        Settings for legacy Java features, supported in the Service YAML.
+        """
+        return pulumi.get(self, "java_settings")
+
+    @java_settings.setter
+    def java_settings(self, value: Optional[pulumi.Input['JavaSettingsArgs']]):
+        pulumi.set(self, "java_settings", value)
+
+    @property
+    @pulumi.getter(name="launchStage")
+    def launch_stage(self) -> Optional[pulumi.Input['ClientLibrarySettingsLaunchStage']]:
+        """
+        Launch stage of this version of the API.
+        """
+        return pulumi.get(self, "launch_stage")
+
+    @launch_stage.setter
+    def launch_stage(self, value: Optional[pulumi.Input['ClientLibrarySettingsLaunchStage']]):
+        pulumi.set(self, "launch_stage", value)
+
+    @property
+    @pulumi.getter(name="nodeSettings")
+    def node_settings(self) -> Optional[pulumi.Input['NodeSettingsArgs']]:
+        """
+        Settings for Node client libraries.
+        """
+        return pulumi.get(self, "node_settings")
+
+    @node_settings.setter
+    def node_settings(self, value: Optional[pulumi.Input['NodeSettingsArgs']]):
+        pulumi.set(self, "node_settings", value)
+
+    @property
+    @pulumi.getter(name="phpSettings")
+    def php_settings(self) -> Optional[pulumi.Input['PhpSettingsArgs']]:
+        """
+        Settings for PHP client libraries.
+        """
+        return pulumi.get(self, "php_settings")
+
+    @php_settings.setter
+    def php_settings(self, value: Optional[pulumi.Input['PhpSettingsArgs']]):
+        pulumi.set(self, "php_settings", value)
+
+    @property
+    @pulumi.getter(name="pythonSettings")
+    def python_settings(self) -> Optional[pulumi.Input['PythonSettingsArgs']]:
+        """
+        Settings for Python client libraries.
+        """
+        return pulumi.get(self, "python_settings")
+
+    @python_settings.setter
+    def python_settings(self, value: Optional[pulumi.Input['PythonSettingsArgs']]):
+        pulumi.set(self, "python_settings", value)
+
+    @property
+    @pulumi.getter(name="restNumericEnums")
+    def rest_numeric_enums(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When using transport=rest, the client request will encode enums as numbers rather than strings.
+        """
+        return pulumi.get(self, "rest_numeric_enums")
+
+    @rest_numeric_enums.setter
+    def rest_numeric_enums(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "rest_numeric_enums", value)
+
+    @property
+    @pulumi.getter(name="rubySettings")
+    def ruby_settings(self) -> Optional[pulumi.Input['RubySettingsArgs']]:
+        """
+        Settings for Ruby client libraries.
+        """
+        return pulumi.get(self, "ruby_settings")
+
+    @ruby_settings.setter
+    def ruby_settings(self, value: Optional[pulumi.Input['RubySettingsArgs']]):
+        pulumi.set(self, "ruby_settings", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the API to apply these settings to.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class CommonLanguageSettingsArgs:
+    def __init__(__self__, *,
+                 destinations: Optional[pulumi.Input[Sequence[pulumi.Input['CommonLanguageSettingsDestinationsItem']]]] = None,
+                 reference_docs_uri: Optional[pulumi.Input[str]] = None):
+        """
+        Required information for every language.
+        :param pulumi.Input[Sequence[pulumi.Input['CommonLanguageSettingsDestinationsItem']]] destinations: The destination where API teams want this client library to be published.
+        :param pulumi.Input[str] reference_docs_uri: Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+        """
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
+        if reference_docs_uri is not None:
+            pulumi.set(__self__, "reference_docs_uri", reference_docs_uri)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CommonLanguageSettingsDestinationsItem']]]]:
+        """
+        The destination where API teams want this client library to be published.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CommonLanguageSettingsDestinationsItem']]]]):
+        pulumi.set(self, "destinations", value)
+
+    @property
+    @pulumi.getter(name="referenceDocsUri")
+    def reference_docs_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+        """
+        return pulumi.get(self, "reference_docs_uri")
+
+    @reference_docs_uri.setter
+    def reference_docs_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reference_docs_uri", value)
 
 
 @pulumi.input_type
@@ -916,7 +1172,7 @@ class ControlArgs:
     def __init__(__self__, *,
                  environment: Optional[pulumi.Input[str]] = None):
         """
-        Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+        Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
         :param pulumi.Input[str] environment: The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
         """
         if environment is not None:
@@ -933,6 +1189,30 @@ class ControlArgs:
     @environment.setter
     def environment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "environment", value)
+
+
+@pulumi.input_type
+class CppSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for C++ client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
 
 
 @pulumi.input_type
@@ -1225,23 +1505,66 @@ class DocumentationArgs:
 
 
 @pulumi.input_type
+class DotnetSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for Dotnet client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
+
+
+@pulumi.input_type
 class EndpointArgs:
     def __init__(__self__, *,
+                 aliases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  allow_cors: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
         """
         `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] aliases: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
         :param pulumi.Input[bool] allow_cors: Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
         :param pulumi.Input[str] name: The canonical name of this endpoint.
         :param pulumi.Input[str] target: The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
         """
+        if aliases is not None:
+            warnings.warn("""Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.""", DeprecationWarning)
+            pulumi.log.warn("""aliases is deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.""")
+        if aliases is not None:
+            pulumi.set(__self__, "aliases", aliases)
         if allow_cors is not None:
             pulumi.set(__self__, "allow_cors", allow_cors)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if target is not None:
             pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def aliases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+        """
+        return pulumi.get(self, "aliases")
+
+    @aliases.setter
+    def aliases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "aliases", value)
 
     @property
     @pulumi.getter(name="allowCors")
@@ -1665,6 +1988,30 @@ class FieldArgs:
 
 
 @pulumi.input_type
+class GoSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for Go client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
+
+
+@pulumi.input_type
 class HttpRuleArgs:
     def __init__(__self__, *,
                  additional_bindings: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]] = None,
@@ -1870,6 +2217,62 @@ class HttpArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class JavaSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None,
+                 library_package: Optional[pulumi.Input[str]] = None,
+                 service_class_names: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Settings for Java client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        :param pulumi.Input[str] library_package: The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_class_names: Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+        if library_package is not None:
+            pulumi.set(__self__, "library_package", library_package)
+        if service_class_names is not None:
+            pulumi.set(__self__, "service_class_names", service_class_names)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
+
+    @property
+    @pulumi.getter(name="libraryPackage")
+    def library_package(self) -> Optional[pulumi.Input[str]]:
+        """
+        The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+        """
+        return pulumi.get(self, "library_package")
+
+    @library_package.setter
+    def library_package(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "library_package", value)
+
+    @property
+    @pulumi.getter(name="serviceClassNames")
+    def service_class_names(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+        """
+        return pulumi.get(self, "service_class_names")
+
+    @service_class_names.setter
+    def service_class_names(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "service_class_names", value)
 
 
 @pulumi.input_type
@@ -2150,6 +2553,118 @@ class LoggingArgs:
     @producer_destinations.setter
     def producer_destinations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoggingDestinationArgs']]]]):
         pulumi.set(self, "producer_destinations", value)
+
+
+@pulumi.input_type
+class LongRunningArgs:
+    def __init__(__self__, *,
+                 initial_poll_delay: Optional[pulumi.Input[str]] = None,
+                 max_poll_delay: Optional[pulumi.Input[str]] = None,
+                 poll_delay_multiplier: Optional[pulumi.Input[float]] = None,
+                 total_poll_timeout: Optional[pulumi.Input[str]] = None):
+        """
+        Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+        :param pulumi.Input[str] initial_poll_delay: Initial delay after which the first poll request will be made. Default value: 5 seconds.
+        :param pulumi.Input[str] max_poll_delay: Maximum time between two subsequent poll requests. Default value: 45 seconds.
+        :param pulumi.Input[float] poll_delay_multiplier: Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+        :param pulumi.Input[str] total_poll_timeout: Total polling timeout. Default value: 5 minutes.
+        """
+        if initial_poll_delay is not None:
+            pulumi.set(__self__, "initial_poll_delay", initial_poll_delay)
+        if max_poll_delay is not None:
+            pulumi.set(__self__, "max_poll_delay", max_poll_delay)
+        if poll_delay_multiplier is not None:
+            pulumi.set(__self__, "poll_delay_multiplier", poll_delay_multiplier)
+        if total_poll_timeout is not None:
+            pulumi.set(__self__, "total_poll_timeout", total_poll_timeout)
+
+    @property
+    @pulumi.getter(name="initialPollDelay")
+    def initial_poll_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial delay after which the first poll request will be made. Default value: 5 seconds.
+        """
+        return pulumi.get(self, "initial_poll_delay")
+
+    @initial_poll_delay.setter
+    def initial_poll_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "initial_poll_delay", value)
+
+    @property
+    @pulumi.getter(name="maxPollDelay")
+    def max_poll_delay(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum time between two subsequent poll requests. Default value: 45 seconds.
+        """
+        return pulumi.get(self, "max_poll_delay")
+
+    @max_poll_delay.setter
+    def max_poll_delay(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_poll_delay", value)
+
+    @property
+    @pulumi.getter(name="pollDelayMultiplier")
+    def poll_delay_multiplier(self) -> Optional[pulumi.Input[float]]:
+        """
+        Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+        """
+        return pulumi.get(self, "poll_delay_multiplier")
+
+    @poll_delay_multiplier.setter
+    def poll_delay_multiplier(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "poll_delay_multiplier", value)
+
+    @property
+    @pulumi.getter(name="totalPollTimeout")
+    def total_poll_timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Total polling timeout. Default value: 5 minutes.
+        """
+        return pulumi.get(self, "total_poll_timeout")
+
+    @total_poll_timeout.setter
+    def total_poll_timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "total_poll_timeout", value)
+
+
+@pulumi.input_type
+class MethodSettingsArgs:
+    def __init__(__self__, *,
+                 long_running: Optional[pulumi.Input['LongRunningArgs']] = None,
+                 selector: Optional[pulumi.Input[str]] = None):
+        """
+        Describes the generator configuration for a method.
+        :param pulumi.Input['LongRunningArgs'] long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        :param pulumi.Input[str] selector: The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+        """
+        if long_running is not None:
+            pulumi.set(__self__, "long_running", long_running)
+        if selector is not None:
+            pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="longRunning")
+    def long_running(self) -> Optional[pulumi.Input['LongRunningArgs']]:
+        """
+        Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        """
+        return pulumi.get(self, "long_running")
+
+    @long_running.setter
+    def long_running(self, value: Optional[pulumi.Input['LongRunningArgs']]):
+        pulumi.set(self, "long_running", value)
+
+    @property
+    @pulumi.getter
+    def selector(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+        """
+        return pulumi.get(self, "selector")
+
+    @selector.setter
+    def selector(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "selector", value)
 
 
 @pulumi.input_type
@@ -2778,6 +3293,30 @@ class MonitoringArgs:
 
 
 @pulumi.input_type
+class NodeSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for Node client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
+
+
+@pulumi.input_type
 class OAuthRequirementsArgs:
     def __init__(__self__, *,
                  canonical_scopes: Optional[pulumi.Input[str]] = None):
@@ -2895,6 +3434,206 @@ class PageArgs:
     @subpages.setter
     def subpages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PageArgs']]]]):
         pulumi.set(self, "subpages", value)
+
+
+@pulumi.input_type
+class PhpSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for Php client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
+
+
+@pulumi.input_type
+class PublishingArgs:
+    def __init__(__self__, *,
+                 api_short_name: Optional[pulumi.Input[str]] = None,
+                 codeowner_github_teams: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 doc_tag_prefix: Optional[pulumi.Input[str]] = None,
+                 documentation_uri: Optional[pulumi.Input[str]] = None,
+                 github_label: Optional[pulumi.Input[str]] = None,
+                 library_settings: Optional[pulumi.Input[Sequence[pulumi.Input['ClientLibrarySettingsArgs']]]] = None,
+                 method_settings: Optional[pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]]] = None,
+                 new_issue_uri: Optional[pulumi.Input[str]] = None,
+                 organization: Optional[pulumi.Input['PublishingOrganization']] = None):
+        """
+        This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+        :param pulumi.Input[str] api_short_name: Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] codeowner_github_teams: GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+        :param pulumi.Input[str] doc_tag_prefix: A prefix used in sample code when demarking regions to be included in documentation.
+        :param pulumi.Input[str] documentation_uri: Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+        :param pulumi.Input[str] github_label: GitHub label to apply to issues and pull requests opened for this API.
+        :param pulumi.Input[Sequence[pulumi.Input['ClientLibrarySettingsArgs']]] library_settings: Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+        :param pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]] method_settings: A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+        :param pulumi.Input[str] new_issue_uri: Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+        :param pulumi.Input['PublishingOrganization'] organization: For whom the client library is being published.
+        """
+        if api_short_name is not None:
+            pulumi.set(__self__, "api_short_name", api_short_name)
+        if codeowner_github_teams is not None:
+            pulumi.set(__self__, "codeowner_github_teams", codeowner_github_teams)
+        if doc_tag_prefix is not None:
+            pulumi.set(__self__, "doc_tag_prefix", doc_tag_prefix)
+        if documentation_uri is not None:
+            pulumi.set(__self__, "documentation_uri", documentation_uri)
+        if github_label is not None:
+            pulumi.set(__self__, "github_label", github_label)
+        if library_settings is not None:
+            pulumi.set(__self__, "library_settings", library_settings)
+        if method_settings is not None:
+            pulumi.set(__self__, "method_settings", method_settings)
+        if new_issue_uri is not None:
+            pulumi.set(__self__, "new_issue_uri", new_issue_uri)
+        if organization is not None:
+            pulumi.set(__self__, "organization", organization)
+
+    @property
+    @pulumi.getter(name="apiShortName")
+    def api_short_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+        """
+        return pulumi.get(self, "api_short_name")
+
+    @api_short_name.setter
+    def api_short_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_short_name", value)
+
+    @property
+    @pulumi.getter(name="codeownerGithubTeams")
+    def codeowner_github_teams(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+        """
+        return pulumi.get(self, "codeowner_github_teams")
+
+    @codeowner_github_teams.setter
+    def codeowner_github_teams(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "codeowner_github_teams", value)
+
+    @property
+    @pulumi.getter(name="docTagPrefix")
+    def doc_tag_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        A prefix used in sample code when demarking regions to be included in documentation.
+        """
+        return pulumi.get(self, "doc_tag_prefix")
+
+    @doc_tag_prefix.setter
+    def doc_tag_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "doc_tag_prefix", value)
+
+    @property
+    @pulumi.getter(name="documentationUri")
+    def documentation_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+        """
+        return pulumi.get(self, "documentation_uri")
+
+    @documentation_uri.setter
+    def documentation_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "documentation_uri", value)
+
+    @property
+    @pulumi.getter(name="githubLabel")
+    def github_label(self) -> Optional[pulumi.Input[str]]:
+        """
+        GitHub label to apply to issues and pull requests opened for this API.
+        """
+        return pulumi.get(self, "github_label")
+
+    @github_label.setter
+    def github_label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "github_label", value)
+
+    @property
+    @pulumi.getter(name="librarySettings")
+    def library_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClientLibrarySettingsArgs']]]]:
+        """
+        Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+        """
+        return pulumi.get(self, "library_settings")
+
+    @library_settings.setter
+    def library_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClientLibrarySettingsArgs']]]]):
+        pulumi.set(self, "library_settings", value)
+
+    @property
+    @pulumi.getter(name="methodSettings")
+    def method_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]]]:
+        """
+        A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+        """
+        return pulumi.get(self, "method_settings")
+
+    @method_settings.setter
+    def method_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]]]):
+        pulumi.set(self, "method_settings", value)
+
+    @property
+    @pulumi.getter(name="newIssueUri")
+    def new_issue_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+        """
+        return pulumi.get(self, "new_issue_uri")
+
+    @new_issue_uri.setter
+    def new_issue_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "new_issue_uri", value)
+
+    @property
+    @pulumi.getter
+    def organization(self) -> Optional[pulumi.Input['PublishingOrganization']]:
+        """
+        For whom the client library is being published.
+        """
+        return pulumi.get(self, "organization")
+
+    @organization.setter
+    def organization(self, value: Optional[pulumi.Input['PublishingOrganization']]):
+        pulumi.set(self, "organization", value)
+
+
+@pulumi.input_type
+class PythonSettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for Python client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
 
 
 @pulumi.input_type
@@ -3103,6 +3842,30 @@ class QuotaArgs:
     @metric_rules.setter
     def metric_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MetricRuleArgs']]]]):
         pulumi.set(self, "metric_rules", value)
+
+
+@pulumi.input_type
+class RubySettingsArgs:
+    def __init__(__self__, *,
+                 common: Optional[pulumi.Input['CommonLanguageSettingsArgs']] = None):
+        """
+        Settings for Ruby client libraries.
+        :param pulumi.Input['CommonLanguageSettingsArgs'] common: Some settings.
+        """
+        if common is not None:
+            pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> Optional[pulumi.Input['CommonLanguageSettingsArgs']]:
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @common.setter
+    def common(self, value: Optional[pulumi.Input['CommonLanguageSettingsArgs']]):
+        pulumi.set(self, "common", value)
 
 
 @pulumi.input_type

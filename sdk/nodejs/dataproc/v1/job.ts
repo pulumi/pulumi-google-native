@@ -51,6 +51,10 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly driverOutputResourceUri!: pulumi.Output<string>;
     /**
+     * Optional. Driver scheduling configuration.
+     */
+    public readonly driverSchedulingConfig!: pulumi.Output<outputs.dataproc.v1.DriverSchedulingConfigResponse>;
+    /**
      * Optional. Job is a Hadoop job.
      */
     public readonly hadoopJob!: pulumi.Output<outputs.dataproc.v1.HadoopJobResponse>;
@@ -138,6 +142,7 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
+            resourceInputs["driverSchedulingConfig"] = args ? args.driverSchedulingConfig : undefined;
             resourceInputs["hadoopJob"] = args ? args.hadoopJob : undefined;
             resourceInputs["hiveJob"] = args ? args.hiveJob : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -165,6 +170,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["done"] = undefined /*out*/;
             resourceInputs["driverControlFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
+            resourceInputs["driverSchedulingConfig"] = undefined /*out*/;
             resourceInputs["hadoopJob"] = undefined /*out*/;
             resourceInputs["hiveJob"] = undefined /*out*/;
             resourceInputs["jobUuid"] = undefined /*out*/;
@@ -196,6 +202,10 @@ export class Job extends pulumi.CustomResource {
  * The set of arguments for constructing a Job resource.
  */
 export interface JobArgs {
+    /**
+     * Optional. Driver scheduling configuration.
+     */
+    driverSchedulingConfig?: pulumi.Input<inputs.dataproc.v1.DriverSchedulingConfigArgs>;
     /**
      * Optional. Job is a Hadoop job.
      */

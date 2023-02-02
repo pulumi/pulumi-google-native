@@ -27,10 +27,14 @@ type LookupReservationArgs struct {
 }
 
 type LookupReservationResult struct {
+	// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+	Autoscale AutoscaleResponse `pulumi:"autoscale"`
 	// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 	Concurrency string `pulumi:"concurrency"`
 	// Creation time of the reservation.
 	CreationTime string `pulumi:"creationTime"`
+	// Edition of the reservation.
+	Edition string `pulumi:"edition"`
 	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
 	IgnoreIdleSlots bool `pulumi:"ignoreIdleSlots"`
 	// Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
@@ -80,6 +84,11 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContex
 	return o
 }
 
+// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+func (o LookupReservationResultOutput) Autoscale() AutoscaleResponseOutput {
+	return o.ApplyT(func(v LookupReservationResult) AutoscaleResponse { return v.Autoscale }).(AutoscaleResponseOutput)
+}
+
 // Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
 func (o LookupReservationResultOutput) Concurrency() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.Concurrency }).(pulumi.StringOutput)
@@ -88,6 +97,11 @@ func (o LookupReservationResultOutput) Concurrency() pulumi.StringOutput {
 // Creation time of the reservation.
 func (o LookupReservationResultOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
+// Edition of the reservation.
+func (o LookupReservationResultOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupReservationResult) string { return v.Edition }).(pulumi.StringOutput)
 }
 
 // If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.

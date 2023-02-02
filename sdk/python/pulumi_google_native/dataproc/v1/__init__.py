@@ -17,6 +17,7 @@ from .get_autoscaling_policy_iam_policy import *
 from .get_batch import *
 from .get_cluster import *
 from .get_job import *
+from .get_node_group import *
 from .get_region_autoscaling_policy_iam_policy import *
 from .get_region_cluster_iam_policy import *
 from .get_region_job_iam_policy import *
@@ -25,6 +26,7 @@ from .get_region_workflow_template_iam_policy import *
 from .get_workflow_template import *
 from .get_workflow_template_iam_policy import *
 from .job import *
+from .node_group import *
 from .region_autoscaling_policy_iam_binding import *
 from .region_autoscaling_policy_iam_member import *
 from .region_autoscaling_policy_iam_policy import *

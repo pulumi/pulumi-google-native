@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetCapacityCommitmentResult:
-    def __init__(__self__, commitment_end_time=None, commitment_start_time=None, failure_status=None, multi_region_auxiliary=None, name=None, plan=None, renewal_plan=None, slot_count=None, state=None):
+    def __init__(__self__, commitment_end_time=None, commitment_start_time=None, edition=None, failure_status=None, multi_region_auxiliary=None, name=None, plan=None, renewal_plan=None, slot_count=None, state=None):
         if commitment_end_time and not isinstance(commitment_end_time, str):
             raise TypeError("Expected argument 'commitment_end_time' to be a str")
         pulumi.set(__self__, "commitment_end_time", commitment_end_time)
         if commitment_start_time and not isinstance(commitment_start_time, str):
             raise TypeError("Expected argument 'commitment_start_time' to be a str")
         pulumi.set(__self__, "commitment_start_time", commitment_start_time)
+        if edition and not isinstance(edition, str):
+            raise TypeError("Expected argument 'edition' to be a str")
+        pulumi.set(__self__, "edition", edition)
         if failure_status and not isinstance(failure_status, dict):
             raise TypeError("Expected argument 'failure_status' to be a dict")
         pulumi.set(__self__, "failure_status", failure_status)
@@ -63,6 +66,14 @@ class GetCapacityCommitmentResult:
         The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         """
         return pulumi.get(self, "commitment_start_time")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        Edition of the capacity commitment.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="failureStatus")
@@ -129,6 +140,7 @@ class AwaitableGetCapacityCommitmentResult(GetCapacityCommitmentResult):
         return GetCapacityCommitmentResult(
             commitment_end_time=self.commitment_end_time,
             commitment_start_time=self.commitment_start_time,
+            edition=self.edition,
             failure_status=self.failure_status,
             multi_region_auxiliary=self.multi_region_auxiliary,
             name=self.name,
@@ -155,6 +167,7 @@ def get_capacity_commitment(capacity_commitment_id: Optional[str] = None,
     return AwaitableGetCapacityCommitmentResult(
         commitment_end_time=__ret__.commitment_end_time,
         commitment_start_time=__ret__.commitment_start_time,
+        edition=__ret__.edition,
         failure_status=__ret__.failure_status,
         multi_region_auxiliary=__ret__.multi_region_auxiliary,
         name=__ret__.name,

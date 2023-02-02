@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     public static class GetInternalRange
     {
         /// <summary>
-        /// Gets details of a single InternalRange.
+        /// Gets details of a single internal range.
         /// </summary>
         public static Task<GetInternalRangeResult> InvokeAsync(GetInternalRangeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInternalRangeResult>("google-native:networkconnectivity/v1:getInternalRange", args ?? new GetInternalRangeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets details of a single InternalRange.
+        /// Gets details of a single internal range.
         /// </summary>
         public static Output<GetInternalRangeResult> Invoke(GetInternalRangeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInternalRangeResult>("google-native:networkconnectivity/v1:getInternalRange", args ?? new GetInternalRangeInvokeArgs(), options.WithDefaults());
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     public sealed class GetInternalRangeResult
     {
         /// <summary>
-        /// Time when the InternalRange was created.
+        /// Time when the internal range was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// IP range that this InternalRange defines.
+        /// The IP range that this internal range defines.
         /// </summary>
         public readonly string IpCidrRange;
         /// <summary>
@@ -80,23 +80,23 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        /// Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        /// The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Optional. Types of resources that are allowed to overlap with the current InternalRange.
+        /// Optional. Types of resources that are allowed to overlap with the current internal range.
         /// </summary>
         public readonly ImmutableArray<string> Overlaps;
         /// <summary>
-        /// The type of peering set for this InternalRange.
+        /// The type of peering set for this internal range.
         /// </summary>
         public readonly string Peering;
         /// <summary>
-        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         /// </summary>
         public readonly int PrefixLength;
         /// <summary>
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly ImmutableArray<string> TargetCidrRange;
         /// <summary>
-        /// Time when the InternalRange was updated.
+        /// Time when the internal range was updated.
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public readonly string Usage;
         /// <summary>
-        /// The list of resources that refer to this internal range. Resources that use the InternalRange for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this InternalRange. Having a user, based on this reference, prevents deletion of the InternalRange referred to. Can be empty.
+        /// The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
         /// </summary>
         public readonly ImmutableArray<string> Users;
 

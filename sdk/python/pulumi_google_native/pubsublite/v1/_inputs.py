@@ -13,7 +13,9 @@ from ._enums import *
 __all__ = [
     'CapacityArgs',
     'DeliveryConfigArgs',
+    'ExportConfigArgs',
     'PartitionConfigArgs',
+    'PubSubConfigArgs',
     'ReservationConfigArgs',
     'RetentionConfigArgs',
 ]
@@ -83,6 +85,62 @@ class DeliveryConfigArgs:
 
 
 @pulumi.input_type
+class ExportConfigArgs:
+    def __init__(__self__, *,
+                 dead_letter_topic: Optional[pulumi.Input[str]] = None,
+                 desired_state: Optional[pulumi.Input['ExportConfigDesiredState']] = None,
+                 pubsub_config: Optional[pulumi.Input['PubSubConfigArgs']] = None):
+        """
+        Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+        :param pulumi.Input[str] dead_letter_topic: Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+        :param pulumi.Input['ExportConfigDesiredState'] desired_state: The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+        :param pulumi.Input['PubSubConfigArgs'] pubsub_config: Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+        """
+        if dead_letter_topic is not None:
+            pulumi.set(__self__, "dead_letter_topic", dead_letter_topic)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
+        if pubsub_config is not None:
+            pulumi.set(__self__, "pubsub_config", pubsub_config)
+
+    @property
+    @pulumi.getter(name="deadLetterTopic")
+    def dead_letter_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+        """
+        return pulumi.get(self, "dead_letter_topic")
+
+    @dead_letter_topic.setter
+    def dead_letter_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dead_letter_topic", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input['ExportConfigDesiredState']]:
+        """
+        The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input['ExportConfigDesiredState']]):
+        pulumi.set(self, "desired_state", value)
+
+    @property
+    @pulumi.getter(name="pubsubConfig")
+    def pubsub_config(self) -> Optional[pulumi.Input['PubSubConfigArgs']]:
+        """
+        Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+        """
+        return pulumi.get(self, "pubsub_config")
+
+    @pubsub_config.setter
+    def pubsub_config(self, value: Optional[pulumi.Input['PubSubConfigArgs']]):
+        pulumi.set(self, "pubsub_config", value)
+
+
+@pulumi.input_type
 class PartitionConfigArgs:
     def __init__(__self__, *,
                  capacity: Optional[pulumi.Input['CapacityArgs']] = None,
@@ -139,6 +197,30 @@ class PartitionConfigArgs:
     @scale.setter
     def scale(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class PubSubConfigArgs:
+    def __init__(__self__, *,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for exporting to a Pub/Sub topic.
+        :param pulumi.Input[str] topic: The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+        """
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type

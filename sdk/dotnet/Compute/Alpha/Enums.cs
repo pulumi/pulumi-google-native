@@ -309,6 +309,80 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Type of Performance Monitoring Unit requested on instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct AdvancedMachineFeaturesPerformanceMonitoringUnit : IEquatable<AdvancedMachineFeaturesPerformanceMonitoringUnit>
+    {
+        private readonly string _value;
+
+        private AdvancedMachineFeaturesPerformanceMonitoringUnit(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Architecturally defined non-LLC events.
+        /// </summary>
+        public static AdvancedMachineFeaturesPerformanceMonitoringUnit Architectural { get; } = new AdvancedMachineFeaturesPerformanceMonitoringUnit("ARCHITECTURAL");
+        /// <summary>
+        /// Most documented core/L2 and LLC events.
+        /// </summary>
+        public static AdvancedMachineFeaturesPerformanceMonitoringUnit Enhanced { get; } = new AdvancedMachineFeaturesPerformanceMonitoringUnit("ENHANCED");
+        public static AdvancedMachineFeaturesPerformanceMonitoringUnit PerformanceMonitoringUnitUnspecified { get; } = new AdvancedMachineFeaturesPerformanceMonitoringUnit("PERFORMANCE_MONITORING_UNIT_UNSPECIFIED");
+        /// <summary>
+        /// Most documented core/L2 events.
+        /// </summary>
+        public static AdvancedMachineFeaturesPerformanceMonitoringUnit Standard { get; } = new AdvancedMachineFeaturesPerformanceMonitoringUnit("STANDARD");
+
+        public static bool operator ==(AdvancedMachineFeaturesPerformanceMonitoringUnit left, AdvancedMachineFeaturesPerformanceMonitoringUnit right) => left.Equals(right);
+        public static bool operator !=(AdvancedMachineFeaturesPerformanceMonitoringUnit left, AdvancedMachineFeaturesPerformanceMonitoringUnit right) => !left.Equals(right);
+
+        public static explicit operator string(AdvancedMachineFeaturesPerformanceMonitoringUnit value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AdvancedMachineFeaturesPerformanceMonitoringUnit other && Equals(other);
+        public bool Equals(AdvancedMachineFeaturesPerformanceMonitoringUnit other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The VM family that all instances scheduled against this reservation must belong to.
+    /// </summary>
+    [EnumType]
+    public readonly struct AllocationAggregateReservationVmFamily : IEquatable<AllocationAggregateReservationVmFamily>
+    {
+        private readonly string _value;
+
+        private AllocationAggregateReservationVmFamily(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static AllocationAggregateReservationVmFamily VmFamilyCloudTpuPodSliceCt4p { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P");
+        public static AllocationAggregateReservationVmFamily VmFamilyGeneralPurposeT2d { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_GENERAL_PURPOSE_T2D");
+        public static AllocationAggregateReservationVmFamily VmFamilyMemoryOptimizedM3 { get; } = new AllocationAggregateReservationVmFamily("VM_FAMILY_MEMORY_OPTIMIZED_M3");
+
+        public static bool operator ==(AllocationAggregateReservationVmFamily left, AllocationAggregateReservationVmFamily right) => left.Equals(right);
+        public static bool operator !=(AllocationAggregateReservationVmFamily left, AllocationAggregateReservationVmFamily right) => !left.Equals(right);
+
+        public static explicit operator string(AllocationAggregateReservationVmFamily value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AllocationAggregateReservationVmFamily other && Equals(other);
+        public bool Equals(AllocationAggregateReservationVmFamily other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
     /// </summary>
     [EnumType]
@@ -357,6 +431,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
         /// </summary>
         public static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval Periodic { get; } = new AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("PERIODIC");
+        /// <summary>
+        /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+        /// </summary>
+        public static AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval Recurrent { get; } = new AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval("RECURRENT");
 
         public static bool operator ==(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval left, AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval right) => left.Equals(right);
         public static bool operator !=(AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval left, AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval right) => !left.Equals(right);
@@ -1148,6 +1226,51 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceIpAddressSelectionPolicy : IEquatable<BackendServiceIpAddressSelectionPolicy>
+    {
+        private readonly string _value;
+
+        private BackendServiceIpAddressSelectionPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
+        /// </summary>
+        public static BackendServiceIpAddressSelectionPolicy Ipv4Only { get; } = new BackendServiceIpAddressSelectionPolicy("IPV4_ONLY");
+        /// <summary>
+        /// Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends.
+        /// </summary>
+        public static BackendServiceIpAddressSelectionPolicy Ipv6Only { get; } = new BackendServiceIpAddressSelectionPolicy("IPV6_ONLY");
+        /// <summary>
+        /// Unspecified IP address selection policy.
+        /// </summary>
+        public static BackendServiceIpAddressSelectionPolicy IpAddressSelectionPolicyUnspecified { get; } = new BackendServiceIpAddressSelectionPolicy("IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address).
+        /// </summary>
+        public static BackendServiceIpAddressSelectionPolicy PreferIpv6 { get; } = new BackendServiceIpAddressSelectionPolicy("PREFER_IPV6");
+
+        public static bool operator ==(BackendServiceIpAddressSelectionPolicy left, BackendServiceIpAddressSelectionPolicy right) => left.Equals(right);
+        public static bool operator !=(BackendServiceIpAddressSelectionPolicy left, BackendServiceIpAddressSelectionPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceIpAddressSelectionPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceIpAddressSelectionPolicy other && Equals(other);
+        public bool Equals(BackendServiceIpAddressSelectionPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
     /// </summary>
     [EnumType]
@@ -1256,7 +1379,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+    /// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceLocalityLoadBalancingPolicyConfigPolicyName : IEquatable<BackendServiceLocalityLoadBalancingPolicyConfigPolicyName>
@@ -1314,7 +1437,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+    /// Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceLogConfigOptional : IEquatable<BackendServiceLogConfigOptional>
@@ -1348,6 +1471,48 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is BackendServiceLogConfigOptional other && Equals(other);
         public bool Equals(BackendServiceLogConfigOptional other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceLogConfigOptionalMode : IEquatable<BackendServiceLogConfigOptionalMode>
+    {
+        private readonly string _value;
+
+        private BackendServiceLogConfigOptionalMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// A subset of optional fields.
+        /// </summary>
+        public static BackendServiceLogConfigOptionalMode Custom { get; } = new BackendServiceLogConfigOptionalMode("CUSTOM");
+        /// <summary>
+        /// None optional fields.
+        /// </summary>
+        public static BackendServiceLogConfigOptionalMode ExcludeAllOptional { get; } = new BackendServiceLogConfigOptionalMode("EXCLUDE_ALL_OPTIONAL");
+        /// <summary>
+        /// All optional fields.
+        /// </summary>
+        public static BackendServiceLogConfigOptionalMode IncludeAllOptional { get; } = new BackendServiceLogConfigOptionalMode("INCLUDE_ALL_OPTIONAL");
+        public static BackendServiceLogConfigOptionalMode UnspecifiedOptionalMode { get; } = new BackendServiceLogConfigOptionalMode("UNSPECIFIED_OPTIONAL_MODE");
+
+        public static bool operator ==(BackendServiceLogConfigOptionalMode left, BackendServiceLogConfigOptionalMode right) => left.Equals(right);
+        public static bool operator !=(BackendServiceLogConfigOptionalMode left, BackendServiceLogConfigOptionalMode right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceLogConfigOptionalMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceLogConfigOptionalMode other && Equals(other);
+        public bool Equals(BackendServiceLogConfigOptionalMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -3711,6 +3876,43 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Defines behaviour for all instance or failures
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure : IEquatable<InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure>
+    {
+        private readonly string _value;
+
+        private InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// If any of the MIG's VMs is not running, or is failing, no repair action will be taken.
+        /// </summary>
+        public static InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure DoNothing { get; } = new InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("DO_NOTHING");
+        /// <summary>
+        /// *[Default]* If any of the MIG's VMs is not running - for example, a VM cannot be created during a scale out or a VM fails – then the group will retry until it creates that VM successfully. For more information about how a MIG manages its VMs, see What is a managed instance."
+        /// </summary>
+        public static InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure Repair { get; } = new InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure("REPAIR");
+
+        public static bool operator ==(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure left, InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure right) => left.Equals(right);
+        public static bool operator !=(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure left, InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure other && Equals(other);
+        public bool Equals(InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
     /// </summary>
     [EnumType]
@@ -5512,6 +5714,51 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    /// </summary>
+    [EnumType]
+    public readonly struct RegionBackendServiceIpAddressSelectionPolicy : IEquatable<RegionBackendServiceIpAddressSelectionPolicy>
+    {
+        private readonly string _value;
+
+        private RegionBackendServiceIpAddressSelectionPolicy(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
+        /// </summary>
+        public static RegionBackendServiceIpAddressSelectionPolicy Ipv4Only { get; } = new RegionBackendServiceIpAddressSelectionPolicy("IPV4_ONLY");
+        /// <summary>
+        /// Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends.
+        /// </summary>
+        public static RegionBackendServiceIpAddressSelectionPolicy Ipv6Only { get; } = new RegionBackendServiceIpAddressSelectionPolicy("IPV6_ONLY");
+        /// <summary>
+        /// Unspecified IP address selection policy.
+        /// </summary>
+        public static RegionBackendServiceIpAddressSelectionPolicy IpAddressSelectionPolicyUnspecified { get; } = new RegionBackendServiceIpAddressSelectionPolicy("IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED");
+        /// <summary>
+        /// Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address).
+        /// </summary>
+        public static RegionBackendServiceIpAddressSelectionPolicy PreferIpv6 { get; } = new RegionBackendServiceIpAddressSelectionPolicy("PREFER_IPV6");
+
+        public static bool operator ==(RegionBackendServiceIpAddressSelectionPolicy left, RegionBackendServiceIpAddressSelectionPolicy right) => left.Equals(right);
+        public static bool operator !=(RegionBackendServiceIpAddressSelectionPolicy left, RegionBackendServiceIpAddressSelectionPolicy right) => !left.Equals(right);
+
+        public static explicit operator string(RegionBackendServiceIpAddressSelectionPolicy value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RegionBackendServiceIpAddressSelectionPolicy other && Equals(other);
+        public bool Equals(RegionBackendServiceIpAddressSelectionPolicy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
     /// </summary>
     [EnumType]
@@ -5861,6 +6108,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public static RegionCommitmentType GeneralPurposeN2 { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2");
         public static RegionCommitmentType GeneralPurposeN2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_N2D");
         public static RegionCommitmentType GeneralPurposeT2d { get; } = new RegionCommitmentType("GENERAL_PURPOSE_T2D");
+        public static RegionCommitmentType GraphicsOptimized { get; } = new RegionCommitmentType("GRAPHICS_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimized { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED");
         public static RegionCommitmentType MemoryOptimizedM3 { get; } = new RegionCommitmentType("MEMORY_OPTIMIZED_M3");
         public static RegionCommitmentType TypeUnspecified { get; } = new RegionCommitmentType("TYPE_UNSPECIFIED");
@@ -5985,7 +6233,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+    /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
     /// </summary>
     [EnumType]
     public readonly struct RegionHealthCheckServiceHealthStatusAggregationPolicy : IEquatable<RegionHealthCheckServiceHealthStatusAggregationPolicy>
@@ -6571,7 +6819,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+    /// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
     /// </summary>
     [EnumType]
     public readonly struct ResourceCommitmentType : IEquatable<ResourceCommitmentType>
@@ -7609,6 +7857,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
         /// </summary>
         public static SchedulingMaintenanceInterval Periodic { get; } = new SchedulingMaintenanceInterval("PERIODIC");
+        /// <summary>
+        /// VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+        /// </summary>
+        public static SchedulingMaintenanceInterval Recurrent { get; } = new SchedulingMaintenanceInterval("RECURRENT");
 
         public static bool operator ==(SchedulingMaintenanceInterval left, SchedulingMaintenanceInterval right) => left.Equals(right);
         public static bool operator !=(SchedulingMaintenanceInterval left, SchedulingMaintenanceInterval right) => !left.Equals(right);
@@ -7967,7 +8219,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -7997,6 +8249,44 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyRuleRateLimitOptionsEnforceOnKey other && Equals(other);
         public bool Equals(SecurityPolicyRuleRateLimitOptionsEnforceOnKey other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType All { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType AllIps { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL_IPS");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpCookie { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpHeader { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpPath { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP");
+
+        public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType other && Equals(other);
+        public bool Equals(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

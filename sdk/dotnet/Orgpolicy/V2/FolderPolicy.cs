@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         [Output("alternate")]
         public Output<Outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse> Alternate { get; private set; } = null!;
 
+        /// <summary>
+        /// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Output("dryRunSpec")]
+        public Output<Outputs.GoogleCloudOrgpolicyV2PolicySpecResponse> DryRunSpec { get; private set; } = null!;
+
         [Output("folderId")]
         public Output<string> FolderId { get; private set; } = null!;
 
@@ -91,6 +97,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         [Input("alternate")]
         public Input<Inputs.GoogleCloudOrgpolicyV2AlternatePolicySpecArgs>? Alternate { get; set; }
+
+        /// <summary>
+        /// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Input("dryRunSpec")]
+        public Input<Inputs.GoogleCloudOrgpolicyV2PolicySpecArgs>? DryRunSpec { get; set; }
 
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;

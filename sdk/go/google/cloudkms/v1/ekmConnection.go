@@ -20,7 +20,7 @@ type EkmConnection struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId pulumi.StringOutput `pulumi:"ekmConnectionId"`
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. Etag of the currently stored EkmConnection.
 	Etag     pulumi.StringOutput `pulumi:"etag"`
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
@@ -77,7 +77,7 @@ func (EkmConnectionState) ElementType() reflect.Type {
 type ekmConnectionArgs struct {
 	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId *string `pulumi:"ekmConnectionId"`
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. Etag of the currently stored EkmConnection.
 	Etag     *string `pulumi:"etag"`
 	Location *string `pulumi:"location"`
 	Project  *string `pulumi:"project"`
@@ -89,7 +89,7 @@ type ekmConnectionArgs struct {
 type EkmConnectionArgs struct {
 	// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
 	EkmConnectionId pulumi.StringPtrInput
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. Etag of the currently stored EkmConnection.
 	Etag     pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
@@ -144,7 +144,7 @@ func (o EkmConnectionOutput) EkmConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.EkmConnectionId }).(pulumi.StringOutput)
 }
 
-// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+// Optional. Etag of the currently stored EkmConnection.
 func (o EkmConnectionOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *EkmConnection) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }

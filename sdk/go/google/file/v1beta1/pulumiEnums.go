@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+type InstanceProtocol string
+
+const (
+	// FILE_PROTOCOL_UNSPECIFIED serves a "not set" default value when a FileProtocol is a separate field in a message.
+	InstanceProtocolFileProtocolUnspecified = InstanceProtocol("FILE_PROTOCOL_UNSPECIFIED")
+	// NFS 3.0.
+	InstanceProtocolNfsV3 = InstanceProtocol("NFS_V3")
+	// NFS 4.1.
+	InstanceProtocolNfsV41 = InstanceProtocol("NFS_V4_1")
+)
+
+func (InstanceProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceProtocol)(nil)).Elem()
+}
+
+func (e InstanceProtocol) ToInstanceProtocolOutput() InstanceProtocolOutput {
+	return pulumi.ToOutput(e).(InstanceProtocolOutput)
+}
+
+func (e InstanceProtocol) ToInstanceProtocolOutputWithContext(ctx context.Context) InstanceProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceProtocolOutput)
+}
+
+func (e InstanceProtocol) ToInstanceProtocolPtrOutput() InstanceProtocolPtrOutput {
+	return e.ToInstanceProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceProtocol) ToInstanceProtocolPtrOutputWithContext(ctx context.Context) InstanceProtocolPtrOutput {
+	return InstanceProtocol(e).ToInstanceProtocolOutputWithContext(ctx).ToInstanceProtocolPtrOutputWithContext(ctx)
+}
+
+func (e InstanceProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceProtocolOutput struct{ *pulumi.OutputState }
+
+func (InstanceProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceProtocol)(nil)).Elem()
+}
+
+func (o InstanceProtocolOutput) ToInstanceProtocolOutput() InstanceProtocolOutput {
+	return o
+}
+
+func (o InstanceProtocolOutput) ToInstanceProtocolOutputWithContext(ctx context.Context) InstanceProtocolOutput {
+	return o
+}
+
+func (o InstanceProtocolOutput) ToInstanceProtocolPtrOutput() InstanceProtocolPtrOutput {
+	return o.ToInstanceProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceProtocolOutput) ToInstanceProtocolPtrOutputWithContext(ctx context.Context) InstanceProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceProtocol) *InstanceProtocol {
+		return &v
+	}).(InstanceProtocolPtrOutput)
+}
+
+func (o InstanceProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceProtocol)(nil)).Elem()
+}
+
+func (o InstanceProtocolPtrOutput) ToInstanceProtocolPtrOutput() InstanceProtocolPtrOutput {
+	return o
+}
+
+func (o InstanceProtocolPtrOutput) ToInstanceProtocolPtrOutputWithContext(ctx context.Context) InstanceProtocolPtrOutput {
+	return o
+}
+
+func (o InstanceProtocolPtrOutput) Elem() InstanceProtocolOutput {
+	return o.ApplyT(func(v *InstanceProtocol) InstanceProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceProtocol
+		return ret
+	}).(InstanceProtocolOutput)
+}
+
+func (o InstanceProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceProtocolInput is an input type that accepts InstanceProtocolArgs and InstanceProtocolOutput values.
+// You can construct a concrete instance of `InstanceProtocolInput` via:
+//
+//	InstanceProtocolArgs{...}
+type InstanceProtocolInput interface {
+	pulumi.Input
+
+	ToInstanceProtocolOutput() InstanceProtocolOutput
+	ToInstanceProtocolOutputWithContext(context.Context) InstanceProtocolOutput
+}
+
+var instanceProtocolPtrType = reflect.TypeOf((**InstanceProtocol)(nil)).Elem()
+
+type InstanceProtocolPtrInput interface {
+	pulumi.Input
+
+	ToInstanceProtocolPtrOutput() InstanceProtocolPtrOutput
+	ToInstanceProtocolPtrOutputWithContext(context.Context) InstanceProtocolPtrOutput
+}
+
+type instanceProtocolPtr string
+
+func InstanceProtocolPtr(v string) InstanceProtocolPtrInput {
+	return (*instanceProtocolPtr)(&v)
+}
+
+func (*instanceProtocolPtr) ElementType() reflect.Type {
+	return instanceProtocolPtrType
+}
+
+func (in *instanceProtocolPtr) ToInstanceProtocolPtrOutput() InstanceProtocolPtrOutput {
+	return pulumi.ToOutput(in).(InstanceProtocolPtrOutput)
+}
+
+func (in *instanceProtocolPtr) ToInstanceProtocolPtrOutputWithContext(ctx context.Context) InstanceProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceProtocolPtrOutput)
+}
+
 // The service tier of the instance.
 type InstanceTier string
 
@@ -906,6 +1075,8 @@ func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutputWi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceProtocolInput)(nil)).Elem(), InstanceProtocol("FILE_PROTOCOL_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceProtocolPtrInput)(nil)).Elem(), InstanceProtocol("FILE_PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTierPtrInput)(nil)).Elem(), InstanceTier("TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigConnectModeInput)(nil)).Elem(), NetworkConfigConnectMode("CONNECT_MODE_UNSPECIFIED"))
@@ -917,6 +1088,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsAccessModePtrInput)(nil)).Elem(), NfsExportOptionsAccessMode("ACCESS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModeInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportOptionsSquashModePtrInput)(nil)).Elem(), NfsExportOptionsSquashMode("SQUASH_MODE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(InstanceProtocolOutput{})
+	pulumi.RegisterOutputType(InstanceProtocolPtrOutput{})
 	pulumi.RegisterOutputType(InstanceTierOutput{})
 	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigConnectModeOutput{})

@@ -51,12 +51,108 @@ export const EntryType = {
      * A service, for example, a Dataproc Metastore service.
      */
     Service: "SERVICE",
+    /**
+     * Schema within a relational database.
+     */
+    DatabaseSchema: "DATABASE_SCHEMA",
+    /**
+     * A Dashboard, for example from Looker.
+     */
+    Dashboard: "DASHBOARD",
+    /**
+     * A Looker Explore. For more information, see [Looker Explore API] (https://developers.looker.com/api/explorer/4.0/methods/LookmlModel/lookml_model_explore).
+     */
+    Explore: "EXPLORE",
+    /**
+     * A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
+     */
+    Look: "LOOK",
 } as const;
 
 /**
  * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
  */
 export type EntryType = (typeof EntryType)[keyof typeof EntryType];
+
+export const GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType = {
+    /**
+     * Unspecified.
+     */
+    IndexingTypeUnspecified: "INDEXING_TYPE_UNSPECIFIED",
+    /**
+     * Column not a part of an index.
+     */
+    IndexingTypeNone: "INDEXING_TYPE_NONE",
+    /**
+     * Column Part of non unique index.
+     */
+    IndexingTypeNonUnique: "INDEXING_TYPE_NON_UNIQUE",
+    /**
+     * Column part of unique index.
+     */
+    IndexingTypeUnique: "INDEXING_TYPE_UNIQUE",
+    /**
+     * Column part of the primary key.
+     */
+    IndexingTypePrimaryKey: "INDEXING_TYPE_PRIMARY_KEY",
+} as const;
+
+/**
+ * Optional. Most important inclusion of this column.
+ */
+export type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType = (typeof GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType)[keyof typeof GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType];
+
+export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType = {
+    /**
+     * Unspecified.
+     */
+    LookerColumnTypeUnspecified: "LOOKER_COLUMN_TYPE_UNSPECIFIED",
+    /**
+     * Dimension.
+     */
+    Dimension: "DIMENSION",
+    /**
+     * Dimension group - parent for Dimension.
+     */
+    DimensionGroup: "DIMENSION_GROUP",
+    /**
+     * Filter.
+     */
+    Filter: "FILTER",
+    /**
+     * Measure.
+     */
+    Measure: "MEASURE",
+    /**
+     * Parameter.
+     */
+    Paremeter: "PAREMETER",
+} as const;
+
+/**
+ * Looker specific column type of this column.
+ */
+export type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType = (typeof GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType)[keyof typeof GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType];
+
+export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType = {
+    /**
+     * Default unknown view type.
+     */
+    ViewTypeUnspecified: "VIEW_TYPE_UNSPECIFIED",
+    /**
+     * Standard view.
+     */
+    StandardView: "STANDARD_VIEW",
+    /**
+     * Materialized view.
+     */
+    MaterializedView: "MATERIALIZED_VIEW",
+} as const;
+
+/**
+ * Type of this view.
+ */
+export type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType = (typeof GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType)[keyof typeof GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType];
 
 export const GoogleCloudDatacatalogV1DatabaseTableSpecType = {
     /**

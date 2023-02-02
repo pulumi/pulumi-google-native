@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class FirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        /// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         /// </summary>
         [Input("action")]
         public Input<string>? Action { get; set; }

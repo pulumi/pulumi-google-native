@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly Outputs.AbortInfoResponse Abort;
         /// <summary>
+        /// Display information of an App Engine service version.
+        /// </summary>
+        public readonly Outputs.AppEngineVersionInfoResponse AppEngineVersion;
+        /// <summary>
         /// This is a step that leads to the final state Drop.
         /// </summary>
         public readonly bool CausesDrop;
@@ -28,6 +32,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// Display information of a Cloud Function.
         /// </summary>
         public readonly Outputs.CloudFunctionInfoResponse CloudFunction;
+        /// <summary>
+        /// Display information of a Cloud Run revision.
+        /// </summary>
+        public readonly Outputs.CloudRunRevisionInfoResponse CloudRunRevision;
         /// <summary>
         /// Display information of a Cloud SQL instance.
         /// </summary>
@@ -105,9 +113,13 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         private StepResponse(
             Outputs.AbortInfoResponse abort,
 
+            Outputs.AppEngineVersionInfoResponse appEngineVersion,
+
             bool causesDrop,
 
             Outputs.CloudFunctionInfoResponse cloudFunction,
+
+            Outputs.CloudRunRevisionInfoResponse cloudRunRevision,
 
             Outputs.CloudSQLInstanceInfoResponse cloudSqlInstance,
 
@@ -146,8 +158,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Outputs.VpnTunnelInfoResponse vpnTunnel)
         {
             Abort = abort;
+            AppEngineVersion = appEngineVersion;
             CausesDrop = causesDrop;
             CloudFunction = cloudFunction;
+            CloudRunRevision = cloudRunRevision;
             CloudSqlInstance = cloudSqlInstance;
             Deliver = deliver;
             Description = description;

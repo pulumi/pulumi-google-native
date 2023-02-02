@@ -43,6 +43,8 @@ type LookupCloneJobResult struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The clone steps list representing its progress.
+	Steps []CloneStepResponse `pulumi:"steps"`
 }
 
 func LookupCloneJobOutput(ctx *pulumi.Context, args LookupCloneJobOutputArgs, opts ...pulumi.InvokeOption) LookupCloneJobResultOutput {
@@ -117,6 +119,11 @@ func (o LookupCloneJobResultOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o LookupCloneJobResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloneJobResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The clone steps list representing its progress.
+func (o LookupCloneJobResultOutput) Steps() CloneStepResponseArrayOutput {
+	return o.ApplyT(func(v LookupCloneJobResult) []CloneStepResponse { return v.Steps }).(CloneStepResponseArrayOutput)
 }
 
 func init() {

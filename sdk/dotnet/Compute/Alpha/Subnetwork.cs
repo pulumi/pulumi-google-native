@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> EnablePrivateV6Access { get; private set; } = null!;
 
         /// <summary>
-        /// The external IPv6 address range that is assigned to this subnetwork.
+        /// The external IPv6 address range that is owned by this subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
         public Output<string> ExternalIpv6Prefix { get; private set; } = null!;
@@ -298,6 +298,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("enablePrivateV6Access")]
         public Input<bool>? EnablePrivateV6Access { get; set; }
+
+        /// <summary>
+        /// The external IPv6 address range that is owned by this subnetwork.
+        /// </summary>
+        [Input("externalIpv6Prefix")]
+        public Input<string>? ExternalIpv6Prefix { get; set; }
 
         /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.

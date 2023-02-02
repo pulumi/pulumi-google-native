@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("inputDataConfig")]
         public Output<Outputs.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse> InputDataConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of issues in this issue model.
+        /// </summary>
+        [Output("issueCount")]
+        public Output<string> IssueCount { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 

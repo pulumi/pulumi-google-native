@@ -43,7 +43,7 @@ type LookupSubnetworkResult struct {
 	//
 	// Deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
 	EnablePrivateV6Access bool `pulumi:"enablePrivateV6Access"`
-	// The external IPv6 address range that is assigned to this subnetwork.
+	// The external IPv6 address range that is owned by this subnetwork.
 	ExternalIpv6Prefix string `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint string `pulumi:"fingerprint"`
@@ -169,7 +169,7 @@ func (o LookupSubnetworkResultOutput) EnablePrivateV6Access() pulumi.BoolOutput 
 	return o.ApplyT(func(v LookupSubnetworkResult) bool { return v.EnablePrivateV6Access }).(pulumi.BoolOutput)
 }
 
-// The external IPv6 address range that is assigned to this subnetwork.
+// The external IPv6 address range that is owned by this subnetwork.
 func (o LookupSubnetworkResultOutput) ExternalIpv6Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
 }

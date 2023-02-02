@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     [OutputType]
     public sealed class SingleTargetDatasetResponse
     {
+        /// <summary>
+        /// The dataset ID of the target dataset.
+        /// </summary>
         public readonly string DatasetId;
 
         [OutputConstructor]

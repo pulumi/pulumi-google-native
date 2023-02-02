@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+    /// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
     /// </summary>
     [OutputType]
     public sealed class EnterpriseCrmEventbusProtoEventBusPropertiesResponse

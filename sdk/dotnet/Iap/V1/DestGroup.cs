@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Iap.V1
     public partial class DestGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// null List of CIDRs that this group applies to.
+        /// Unordered list. List of CIDRs that this group applies to.
         /// </summary>
         [Output("cidrs")]
         public Output<ImmutableArray<string>> Cidrs { get; private set; } = null!;
 
         /// <summary>
-        /// null List of FQDNs that this group applies to.
+        /// Unordered list. List of FQDNs that this group applies to.
         /// </summary>
         [Output("fqdns")]
         public Output<ImmutableArray<string>> Fqdns { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         private InputList<string>? _cidrs;
 
         /// <summary>
-        /// null List of CIDRs that this group applies to.
+        /// Unordered list. List of CIDRs that this group applies to.
         /// </summary>
         public InputList<string> Cidrs
         {
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         private InputList<string>? _fqdns;
 
         /// <summary>
-        /// null List of FQDNs that this group applies to.
+        /// Unordered list. List of FQDNs that this group applies to.
         /// </summary>
         public InputList<string> Fqdns
         {

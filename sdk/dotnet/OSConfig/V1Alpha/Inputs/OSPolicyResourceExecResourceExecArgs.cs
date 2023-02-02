@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public Input<string>? OutputFilePath { get; set; }
 
         /// <summary>
-        /// An inline script. The size of the script is limited to 1024 characters.
+        /// An inline script. The size of the script is limited to 32KiB.
         /// </summary>
         [Input("script")]
         public Input<string>? Script { get; set; }

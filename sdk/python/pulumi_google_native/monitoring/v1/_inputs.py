@@ -17,6 +17,7 @@ __all__ = [
     'ChartOptionsArgs',
     'CollapsibleGroupArgs',
     'ColumnLayoutArgs',
+    'ColumnSettingsArgs',
     'ColumnArgs',
     'DashboardFilterArgs',
     'DataSetArgs',
@@ -250,6 +251,44 @@ class ColumnLayoutArgs:
     @columns.setter
     def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnArgs']]]]):
         pulumi.set(self, "columns", value)
+
+
+@pulumi.input_type
+class ColumnSettingsArgs:
+    def __init__(__self__, *,
+                 column: pulumi.Input[str],
+                 visible: pulumi.Input[bool]):
+        """
+        The persistent settings for a table's columns.
+        :param pulumi.Input[str] column: The id of the column.
+        :param pulumi.Input[bool] visible: Whether the column should be visible on page load.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "visible", visible)
+
+    @property
+    @pulumi.getter
+    def column(self) -> pulumi.Input[str]:
+        """
+        The id of the column.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: pulumi.Input[str]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter
+    def visible(self) -> pulumi.Input[bool]:
+        """
+        Whether the column should be visible on page load.
+        """
+        return pulumi.get(self, "visible")
+
+    @visible.setter
+    def visible(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "visible", value)
 
 
 @pulumi.input_type
@@ -790,7 +829,7 @@ class ScorecardArgs:
         :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         :param pulumi.Input['GaugeViewArgs'] gauge_view: Will cause the scorecard to show a gauge chart.
         :param pulumi.Input['SparkChartViewArgs'] spark_chart_view: Will cause the scorecard to show a spark chart.
-        :param pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        :param pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
         """
         pulumi.set(__self__, "time_series_query", time_series_query)
         if gauge_view is not None:
@@ -840,7 +879,7 @@ class ScorecardArgs:
     @pulumi.getter
     def thresholds(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]]:
         """
-        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
         """
         return pulumi.get(self, "thresholds")
 
@@ -1512,13 +1551,17 @@ class TimeSeriesQueryArgs:
 class TimeSeriesTableArgs:
     def __init__(__self__, *,
                  data_sets: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]],
+                 column_settings: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnSettingsArgs']]]] = None,
                  metric_visualization: Optional[pulumi.Input['TimeSeriesTableMetricVisualization']] = None):
         """
         A table that displays time series data.
         :param pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]] data_sets: The data displayed in this table.
+        :param pulumi.Input[Sequence[pulumi.Input['ColumnSettingsArgs']]] column_settings: Optional. The list of the persistent column settings for the table.
         :param pulumi.Input['TimeSeriesTableMetricVisualization'] metric_visualization: Optional. Store rendering strategy
         """
         pulumi.set(__self__, "data_sets", data_sets)
+        if column_settings is not None:
+            pulumi.set(__self__, "column_settings", column_settings)
         if metric_visualization is not None:
             pulumi.set(__self__, "metric_visualization", metric_visualization)
 
@@ -1533,6 +1576,18 @@ class TimeSeriesTableArgs:
     @data_sets.setter
     def data_sets(self, value: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]]):
         pulumi.set(self, "data_sets", value)
+
+    @property
+    @pulumi.getter(name="columnSettings")
+    def column_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ColumnSettingsArgs']]]]:
+        """
+        Optional. The list of the persistent column settings for the table.
+        """
+        return pulumi.get(self, "column_settings")
+
+    @column_settings.setter
+    def column_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ColumnSettingsArgs']]]]):
+        pulumi.set(self, "column_settings", value)
 
     @property
     @pulumi.getter(name="metricVisualization")

@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly bool SnapshotsEnabled;
         /// <summary>
+        /// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        /// </summary>
+        public readonly string StorageAggregatePool;
+        /// <summary>
         /// The type of this Volume.
         /// </summary>
         public readonly string Type;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             bool snapshotsEnabled,
 
+            string storageAggregatePool,
+
             string type,
 
             string userNote)
@@ -94,6 +100,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             Protocol = protocol;
             SizeGb = sizeGb;
             SnapshotsEnabled = snapshotsEnabled;
+            StorageAggregatePool = storageAggregatePool;
             Type = type;
             UserNote = userNote;
         }

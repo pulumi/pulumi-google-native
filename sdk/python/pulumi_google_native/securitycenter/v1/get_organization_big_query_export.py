@@ -48,7 +48,7 @@ class GetOrganizationBigQueryExportResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+        The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -80,7 +80,7 @@ class GetOrganizationBigQueryExportResult:
     @pulumi.getter(name="mostRecentEditor")
     def most_recent_editor(self) -> str:
         """
-        Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+        Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
         """
         return pulumi.get(self, "most_recent_editor")
 
@@ -96,7 +96,7 @@ class GetOrganizationBigQueryExportResult:
     @pulumi.getter
     def principal(self) -> str:
         """
-        The service account that needs permission to create table, upload data to the big query dataset.
+        The service account that needs permission to create table and upload data to the BigQuery dataset.
         """
         return pulumi.get(self, "principal")
 
@@ -104,7 +104,7 @@ class GetOrganizationBigQueryExportResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+        The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
         """
         return pulumi.get(self, "update_time")
 
@@ -129,7 +129,7 @@ def get_organization_big_query_export(big_query_export_id: Optional[str] = None,
                                       organization_id: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationBigQueryExportResult:
     """
-    Gets a big query export.
+    Gets a BigQuery export.
     """
     __args__ = dict()
     __args__['bigQueryExportId'] = big_query_export_id
@@ -153,6 +153,6 @@ def get_organization_big_query_export_output(big_query_export_id: Optional[pulum
                                              organization_id: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationBigQueryExportResult]:
     """
-    Gets a big query export.
+    Gets a BigQuery export.
     """
     ...

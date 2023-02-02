@@ -27,6 +27,8 @@ type LookupMigrationJobArgs struct {
 }
 
 type LookupMigrationJobResult struct {
+	// The conversion workspace used by the migration.
+	ConversionWorkspace ConversionWorkspaceInfoResponse `pulumi:"conversionWorkspace"`
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime string `pulumi:"createTime"`
 	// The resource name (URI) of the destination connection profile.
@@ -45,6 +47,8 @@ type LookupMigrationJobResult struct {
 	EndTime string `pulumi:"endTime"`
 	// The error details in case of state FAILED.
 	Error StatusResponse `pulumi:"error"`
+	// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+	Filter string `pulumi:"filter"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels map[string]string `pulumi:"labels"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
@@ -106,6 +110,11 @@ func (o LookupMigrationJobResultOutput) ToLookupMigrationJobResultOutputWithCont
 	return o
 }
 
+// The conversion workspace used by the migration.
+func (o LookupMigrationJobResultOutput) ConversionWorkspace() ConversionWorkspaceInfoResponseOutput {
+	return o.ApplyT(func(v LookupMigrationJobResult) ConversionWorkspaceInfoResponse { return v.ConversionWorkspace }).(ConversionWorkspaceInfoResponseOutput)
+}
+
 // The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o LookupMigrationJobResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -149,6 +158,11 @@ func (o LookupMigrationJobResultOutput) EndTime() pulumi.StringOutput {
 // The error details in case of state FAILED.
 func (o LookupMigrationJobResultOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v LookupMigrationJobResult) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+func (o LookupMigrationJobResultOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMigrationJobResult) string { return v.Filter }).(pulumi.StringOutput)
 }
 
 // The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.

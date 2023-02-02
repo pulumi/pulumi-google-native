@@ -1905,7 +1905,7 @@ class DocumentNoteArgs:
                  data_licence: Optional[pulumi.Input[str]] = None,
                  spdx_version: Optional[pulumi.Input[str]] = None):
         """
-        DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+        DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
         :param pulumi.Input[str] data_licence: Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
         :param pulumi.Input[str] spdx_version: Provide a reference number that can be used to understand how to parse and interpret the rest of the file
         """
@@ -1952,7 +1952,7 @@ class DocumentOccurrenceArgs:
                  namespace: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
-        DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+        DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
         :param pulumi.Input[str] create_time: Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
         :param pulumi.Input[str] creator_comment: A field for creators of the SPDX file to provide general comments about the creation of the SPDX file or any other relevant comment not included in the other fields
         :param pulumi.Input[Sequence[pulumi.Input[str]]] creators: Identify who (or what, in the case of a tool) created the SPDX file. If the SPDX file was created by an individual, indicate the person's name

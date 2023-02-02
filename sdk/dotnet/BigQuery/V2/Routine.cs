@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<ImmutableArray<string>> ImportedLibraries { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Defaults to "SQL".
+        /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         /// </summary>
         [Output("language")]
         public Output<string> Language { get; private set; } = null!;
@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.RemoteFunctionOptionsResponse> RemoteFunctionOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         /// </summary>
         [Output("returnTableType")]
         public Output<Outputs.StandardSqlTableTypeResponse> ReturnTableType { get; private set; } = null!;
@@ -214,7 +214,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
 
         /// <summary>
-        /// Optional. Defaults to "SQL".
+        /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         /// </summary>
         [Input("language")]
         public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineLanguage>? Language { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<Inputs.RemoteFunctionOptionsArgs>? RemoteFunctionOptions { get; set; }
 
         /// <summary>
-        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         /// </summary>
         [Input("returnTableType")]
         public Input<Inputs.StandardSqlTableTypeArgs>? ReturnTableType { get; set; }

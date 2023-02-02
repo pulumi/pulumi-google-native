@@ -181,7 +181,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> str:
         """
-        The external IPv6 address range that is assigned to this subnetwork.
+        The external IPv6 address range that is owned by this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 

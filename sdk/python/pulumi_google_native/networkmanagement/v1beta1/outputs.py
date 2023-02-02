@@ -13,11 +13,15 @@ from ._enums import *
 
 __all__ = [
     'AbortInfoResponse',
+    'AppEngineVersionEndpointResponse',
+    'AppEngineVersionInfoResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
     'CloudFunctionEndpointResponse',
     'CloudFunctionInfoResponse',
+    'CloudRunRevisionEndpointResponse',
+    'CloudRunRevisionInfoResponse',
     'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
@@ -107,6 +111,100 @@ class AbortInfoResponse(dict):
         URI of the resource that caused the abort.
         """
         return pulumi.get(self, "resource_uri")
+
+
+@pulumi.output_type
+class AppEngineVersionEndpointResponse(dict):
+    """
+    Wrapper for app engine service version attributes.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Wrapper for app engine service version attributes.
+        :param str uri: An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class AppEngineVersionInfoResponse(dict):
+    """
+    For display only. Metadata associated with an App Engine version.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEngineVersionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEngineVersionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEngineVersionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 environment: str,
+                 runtime: str,
+                 uri: str):
+        """
+        For display only. Metadata associated with an App Engine version.
+        :param str display_name: Name of an App Engine version.
+        :param str environment: App Engine execution environment for a version.
+        :param str runtime: Runtime of the App Engine version.
+        :param str uri: URI of an App Engine version.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "environment", environment)
+        pulumi.set(__self__, "runtime", runtime)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of an App Engine version.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def environment(self) -> str:
+        """
+        App Engine execution environment for a version.
+        """
+        return pulumi.get(self, "environment")
+
+    @property
+    @pulumi.getter
+    def runtime(self) -> str:
+        """
+        Runtime of the App Engine version.
+        """
+        return pulumi.get(self, "runtime")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of an App Engine version.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -349,6 +447,115 @@ class CloudFunctionInfoResponse(dict):
         Latest successfully deployed version id of the Cloud Function.
         """
         return pulumi.get(self, "version_id")
+
+
+@pulumi.output_type
+class CloudRunRevisionEndpointResponse(dict):
+    """
+    Wrapper for Cloud Run revision attributes.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Wrapper for Cloud Run revision attributes.
+        :param str uri: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CloudRunRevisionInfoResponse(dict):
+    """
+    For display only. Metadata associated with a Cloud Run revision.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "serviceUri":
+            suggest = "service_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudRunRevisionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudRunRevisionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudRunRevisionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 location: str,
+                 service_name: str,
+                 service_uri: str,
+                 uri: str):
+        """
+        For display only. Metadata associated with a Cloud Run revision.
+        :param str display_name: Name of a Cloud Run revision.
+        :param str location: Location in which this revision is deployed.
+        :param str service_name: ID of Cloud Run Service this revision belongs to.
+        :param str service_uri: URI of Cloud Run service this revision belongs to.
+        :param str uri: URI of a Cloud Run revision.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "service_name", service_name)
+        pulumi.set(__self__, "service_uri", service_uri)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of a Cloud Run revision.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location in which this revision is deployed.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="serviceName")
+    def service_name(self) -> str:
+        """
+        ID of Cloud Run Service this revision belongs to.
+        """
+        return pulumi.get(self, "service_name")
+
+    @property
+    @pulumi.getter(name="serviceUri")
+    def service_uri(self) -> str:
+        """
+        URI of Cloud Run service this revision belongs to.
+        """
+        return pulumi.get(self, "service_uri")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of a Cloud Run revision.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -726,8 +933,12 @@ class EndpointResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudFunction":
+        if key == "appEngineVersion":
+            suggest = "app_engine_version"
+        elif key == "cloudFunction":
             suggest = "cloud_function"
+        elif key == "cloudRunRevision":
+            suggest = "cloud_run_revision"
         elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
         elif key == "gkeMasterCluster":
@@ -749,7 +960,9 @@ class EndpointResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 app_engine_version: 'outputs.AppEngineVersionEndpointResponse',
                  cloud_function: 'outputs.CloudFunctionEndpointResponse',
+                 cloud_run_revision: 'outputs.CloudRunRevisionEndpointResponse',
                  cloud_sql_instance: str,
                  gke_master_cluster: str,
                  instance: str,
@@ -760,7 +973,9 @@ class EndpointResponse(dict):
                  project: str):
         """
         Source or destination of the Connectivity Test.
+        :param 'AppEngineVersionEndpointResponse' app_engine_version: An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
         :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud Function](https://cloud.google.com/functions).
+        :param 'CloudRunRevisionEndpointResponse' cloud_run_revision: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
         :param str cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
@@ -770,7 +985,9 @@ class EndpointResponse(dict):
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
         :param str project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
+        pulumi.set(__self__, "app_engine_version", app_engine_version)
         pulumi.set(__self__, "cloud_function", cloud_function)
+        pulumi.set(__self__, "cloud_run_revision", cloud_run_revision)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
         pulumi.set(__self__, "instance", instance)
@@ -781,12 +998,28 @@ class EndpointResponse(dict):
         pulumi.set(__self__, "project", project)
 
     @property
+    @pulumi.getter(name="appEngineVersion")
+    def app_engine_version(self) -> 'outputs.AppEngineVersionEndpointResponse':
+        """
+        An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+        """
+        return pulumi.get(self, "app_engine_version")
+
+    @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> 'outputs.CloudFunctionEndpointResponse':
         """
         A [Cloud Function](https://cloud.google.com/functions).
         """
         return pulumi.get(self, "cloud_function")
+
+    @property
+    @pulumi.getter(name="cloudRunRevision")
+    def cloud_run_revision(self) -> 'outputs.CloudRunRevisionEndpointResponse':
+        """
+        A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+        """
+        return pulumi.get(self, "cloud_run_revision")
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
@@ -2201,10 +2434,14 @@ class StepResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "causesDrop":
+        if key == "appEngineVersion":
+            suggest = "app_engine_version"
+        elif key == "causesDrop":
             suggest = "causes_drop"
         elif key == "cloudFunction":
             suggest = "cloud_function"
+        elif key == "cloudRunRevision":
+            suggest = "cloud_run_revision"
         elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
         elif key == "forwardingRule":
@@ -2233,8 +2470,10 @@ class StepResponse(dict):
 
     def __init__(__self__, *,
                  abort: 'outputs.AbortInfoResponse',
+                 app_engine_version: 'outputs.AppEngineVersionInfoResponse',
                  causes_drop: bool,
                  cloud_function: 'outputs.CloudFunctionInfoResponse',
+                 cloud_run_revision: 'outputs.CloudRunRevisionInfoResponse',
                  cloud_sql_instance: 'outputs.CloudSQLInstanceInfoResponse',
                  deliver: 'outputs.DeliverInfoResponse',
                  description: str,
@@ -2256,8 +2495,10 @@ class StepResponse(dict):
         """
         A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
         :param 'AbortInfoResponse' abort: Display information of the final state "abort" and reason.
+        :param 'AppEngineVersionInfoResponse' app_engine_version: Display information of an App Engine service version.
         :param bool causes_drop: This is a step that leads to the final state Drop.
         :param 'CloudFunctionInfoResponse' cloud_function: Display information of a Cloud Function.
+        :param 'CloudRunRevisionInfoResponse' cloud_run_revision: Display information of a Cloud Run revision.
         :param 'CloudSQLInstanceInfoResponse' cloud_sql_instance: Display information of a Cloud SQL instance.
         :param 'DeliverInfoResponse' deliver: Display information of the final state "deliver" and reason.
         :param str description: A description of the step. Usually this is a summary of the state.
@@ -2278,8 +2519,10 @@ class StepResponse(dict):
         :param 'VpnTunnelInfoResponse' vpn_tunnel: Display information of a Compute Engine VPN tunnel.
         """
         pulumi.set(__self__, "abort", abort)
+        pulumi.set(__self__, "app_engine_version", app_engine_version)
         pulumi.set(__self__, "causes_drop", causes_drop)
         pulumi.set(__self__, "cloud_function", cloud_function)
+        pulumi.set(__self__, "cloud_run_revision", cloud_run_revision)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "deliver", deliver)
         pulumi.set(__self__, "description", description)
@@ -2308,6 +2551,14 @@ class StepResponse(dict):
         return pulumi.get(self, "abort")
 
     @property
+    @pulumi.getter(name="appEngineVersion")
+    def app_engine_version(self) -> 'outputs.AppEngineVersionInfoResponse':
+        """
+        Display information of an App Engine service version.
+        """
+        return pulumi.get(self, "app_engine_version")
+
+    @property
     @pulumi.getter(name="causesDrop")
     def causes_drop(self) -> bool:
         """
@@ -2322,6 +2573,14 @@ class StepResponse(dict):
         Display information of a Cloud Function.
         """
         return pulumi.get(self, "cloud_function")
+
+    @property
+    @pulumi.getter(name="cloudRunRevision")
+    def cloud_run_revision(self) -> 'outputs.CloudRunRevisionInfoResponse':
+        """
+        Display information of a Cloud Run revision.
+        """
+        return pulumi.get(self, "cloud_run_revision")
 
     @property
     @pulumi.getter(name="cloudSqlInstance")

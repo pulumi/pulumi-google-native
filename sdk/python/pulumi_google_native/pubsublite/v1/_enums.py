@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'DeliveryConfigDeliveryRequirement',
+    'ExportConfigDesiredState',
 ]
 
 
@@ -24,4 +25,30 @@ class DeliveryConfigDeliveryRequirement(str, Enum):
     DELIVER_AFTER_STORED = "DELIVER_AFTER_STORED"
     """
     The server will not deliver a published message to subscribers until the message has been successfully written to storage. This will result in higher end-to-end latency, but consistent delivery.
+    """
+
+
+class ExportConfigDesiredState(str, Enum):
+    """
+    The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Default value. This value is unused.
+    """
+    ACTIVE = "ACTIVE"
+    """
+    Messages are being exported.
+    """
+    PAUSED = "PAUSED"
+    """
+    Exporting messages is suspended.
+    """
+    PERMISSION_DENIED = "PERMISSION_DENIED"
+    """
+    Messages cannot be exported due to permission denied errors. Output only.
+    """
+    NOT_FOUND = "NOT_FOUND"
+    """
+    Messages cannot be exported due to missing resources. Output only.
     """

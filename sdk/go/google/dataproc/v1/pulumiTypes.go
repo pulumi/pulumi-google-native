@@ -338,6 +338,168 @@ func (o AutoscalingConfigResponseOutput) PolicyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoscalingConfigResponse) string { return v.PolicyUri }).(pulumi.StringOutput)
 }
 
+// Node group identification and configuration information.
+type AuxiliaryNodeGroup struct {
+	// Node group configuration.
+	NodeGroup NodeGroupType `pulumi:"nodeGroup"`
+	// Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+	NodeGroupId *string `pulumi:"nodeGroupId"`
+}
+
+// AuxiliaryNodeGroupInput is an input type that accepts AuxiliaryNodeGroupArgs and AuxiliaryNodeGroupOutput values.
+// You can construct a concrete instance of `AuxiliaryNodeGroupInput` via:
+//
+//	AuxiliaryNodeGroupArgs{...}
+type AuxiliaryNodeGroupInput interface {
+	pulumi.Input
+
+	ToAuxiliaryNodeGroupOutput() AuxiliaryNodeGroupOutput
+	ToAuxiliaryNodeGroupOutputWithContext(context.Context) AuxiliaryNodeGroupOutput
+}
+
+// Node group identification and configuration information.
+type AuxiliaryNodeGroupArgs struct {
+	// Node group configuration.
+	NodeGroup NodeGroupTypeInput `pulumi:"nodeGroup"`
+	// Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+	NodeGroupId pulumi.StringPtrInput `pulumi:"nodeGroupId"`
+}
+
+func (AuxiliaryNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (i AuxiliaryNodeGroupArgs) ToAuxiliaryNodeGroupOutput() AuxiliaryNodeGroupOutput {
+	return i.ToAuxiliaryNodeGroupOutputWithContext(context.Background())
+}
+
+func (i AuxiliaryNodeGroupArgs) ToAuxiliaryNodeGroupOutputWithContext(ctx context.Context) AuxiliaryNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryNodeGroupOutput)
+}
+
+// AuxiliaryNodeGroupArrayInput is an input type that accepts AuxiliaryNodeGroupArray and AuxiliaryNodeGroupArrayOutput values.
+// You can construct a concrete instance of `AuxiliaryNodeGroupArrayInput` via:
+//
+//	AuxiliaryNodeGroupArray{ AuxiliaryNodeGroupArgs{...} }
+type AuxiliaryNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToAuxiliaryNodeGroupArrayOutput() AuxiliaryNodeGroupArrayOutput
+	ToAuxiliaryNodeGroupArrayOutputWithContext(context.Context) AuxiliaryNodeGroupArrayOutput
+}
+
+type AuxiliaryNodeGroupArray []AuxiliaryNodeGroupInput
+
+func (AuxiliaryNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (i AuxiliaryNodeGroupArray) ToAuxiliaryNodeGroupArrayOutput() AuxiliaryNodeGroupArrayOutput {
+	return i.ToAuxiliaryNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i AuxiliaryNodeGroupArray) ToAuxiliaryNodeGroupArrayOutputWithContext(ctx context.Context) AuxiliaryNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AuxiliaryNodeGroupArrayOutput)
+}
+
+// Node group identification and configuration information.
+type AuxiliaryNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (o AuxiliaryNodeGroupOutput) ToAuxiliaryNodeGroupOutput() AuxiliaryNodeGroupOutput {
+	return o
+}
+
+func (o AuxiliaryNodeGroupOutput) ToAuxiliaryNodeGroupOutputWithContext(ctx context.Context) AuxiliaryNodeGroupOutput {
+	return o
+}
+
+// Node group configuration.
+func (o AuxiliaryNodeGroupOutput) NodeGroup() NodeGroupTypeOutput {
+	return o.ApplyT(func(v AuxiliaryNodeGroup) NodeGroupType { return v.NodeGroup }).(NodeGroupTypeOutput)
+}
+
+// Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+func (o AuxiliaryNodeGroupOutput) NodeGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AuxiliaryNodeGroup) *string { return v.NodeGroupId }).(pulumi.StringPtrOutput)
+}
+
+type AuxiliaryNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (o AuxiliaryNodeGroupArrayOutput) ToAuxiliaryNodeGroupArrayOutput() AuxiliaryNodeGroupArrayOutput {
+	return o
+}
+
+func (o AuxiliaryNodeGroupArrayOutput) ToAuxiliaryNodeGroupArrayOutputWithContext(ctx context.Context) AuxiliaryNodeGroupArrayOutput {
+	return o
+}
+
+func (o AuxiliaryNodeGroupArrayOutput) Index(i pulumi.IntInput) AuxiliaryNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuxiliaryNodeGroup {
+		return vs[0].([]AuxiliaryNodeGroup)[vs[1].(int)]
+	}).(AuxiliaryNodeGroupOutput)
+}
+
+// Node group identification and configuration information.
+type AuxiliaryNodeGroupResponse struct {
+	// Node group configuration.
+	NodeGroup NodeGroupResponse `pulumi:"nodeGroup"`
+	// Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+	NodeGroupId string `pulumi:"nodeGroupId"`
+}
+
+// Node group identification and configuration information.
+type AuxiliaryNodeGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryNodeGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuxiliaryNodeGroupResponse)(nil)).Elem()
+}
+
+func (o AuxiliaryNodeGroupResponseOutput) ToAuxiliaryNodeGroupResponseOutput() AuxiliaryNodeGroupResponseOutput {
+	return o
+}
+
+func (o AuxiliaryNodeGroupResponseOutput) ToAuxiliaryNodeGroupResponseOutputWithContext(ctx context.Context) AuxiliaryNodeGroupResponseOutput {
+	return o
+}
+
+// Node group configuration.
+func (o AuxiliaryNodeGroupResponseOutput) NodeGroup() NodeGroupResponseOutput {
+	return o.ApplyT(func(v AuxiliaryNodeGroupResponse) NodeGroupResponse { return v.NodeGroup }).(NodeGroupResponseOutput)
+}
+
+// Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+func (o AuxiliaryNodeGroupResponseOutput) NodeGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v AuxiliaryNodeGroupResponse) string { return v.NodeGroupId }).(pulumi.StringOutput)
+}
+
+type AuxiliaryNodeGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AuxiliaryNodeGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AuxiliaryNodeGroupResponse)(nil)).Elem()
+}
+
+func (o AuxiliaryNodeGroupResponseArrayOutput) ToAuxiliaryNodeGroupResponseArrayOutput() AuxiliaryNodeGroupResponseArrayOutput {
+	return o
+}
+
+func (o AuxiliaryNodeGroupResponseArrayOutput) ToAuxiliaryNodeGroupResponseArrayOutputWithContext(ctx context.Context) AuxiliaryNodeGroupResponseArrayOutput {
+	return o
+}
+
+func (o AuxiliaryNodeGroupResponseArrayOutput) Index(i pulumi.IntInput) AuxiliaryNodeGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuxiliaryNodeGroupResponse {
+		return vs[0].([]AuxiliaryNodeGroupResponse)[vs[1].(int)]
+	}).(AuxiliaryNodeGroupResponseOutput)
+}
+
 // Auxiliary services configuration for a Cluster.
 type AuxiliaryServicesConfig struct {
 	// Optional. The Hive Metastore configuration for this workload.
@@ -1204,6 +1366,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 type ClusterConfig struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig *AutoscalingConfig `pulumi:"autoscalingConfig"`
+	// Optional. The node group settings.
+	AuxiliaryNodeGroups []AuxiliaryNodeGroup `pulumi:"auxiliaryNodeGroups"`
 	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket *string `pulumi:"configBucket"`
 	// Optional. The config for Dataproc metrics.
@@ -1251,6 +1415,8 @@ type ClusterConfigInput interface {
 type ClusterConfigArgs struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig AutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
+	// Optional. The node group settings.
+	AuxiliaryNodeGroups AuxiliaryNodeGroupArrayInput `pulumi:"auxiliaryNodeGroups"`
 	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket pulumi.StringPtrInput `pulumi:"configBucket"`
 	// Optional. The config for Dataproc metrics.
@@ -1366,6 +1532,11 @@ func (o ClusterConfigOutput) AutoscalingConfig() AutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *AutoscalingConfig { return v.AutoscalingConfig }).(AutoscalingConfigPtrOutput)
 }
 
+// Optional. The node group settings.
+func (o ClusterConfigOutput) AuxiliaryNodeGroups() AuxiliaryNodeGroupArrayOutput {
+	return o.ApplyT(func(v ClusterConfig) []AuxiliaryNodeGroup { return v.AuxiliaryNodeGroups }).(AuxiliaryNodeGroupArrayOutput)
+}
+
 // Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 func (o ClusterConfigOutput) ConfigBucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterConfig) *string { return v.ConfigBucket }).(pulumi.StringPtrOutput)
@@ -1473,6 +1644,16 @@ func (o ClusterConfigPtrOutput) AutoscalingConfig() AutoscalingConfigPtrOutput {
 		}
 		return v.AutoscalingConfig
 	}).(AutoscalingConfigPtrOutput)
+}
+
+// Optional. The node group settings.
+func (o ClusterConfigPtrOutput) AuxiliaryNodeGroups() AuxiliaryNodeGroupArrayOutput {
+	return o.ApplyT(func(v *ClusterConfig) []AuxiliaryNodeGroup {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryNodeGroups
+	}).(AuxiliaryNodeGroupArrayOutput)
 }
 
 // Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
@@ -1629,6 +1810,8 @@ func (o ClusterConfigPtrOutput) WorkerConfig() InstanceGroupConfigPtrOutput {
 type ClusterConfigResponse struct {
 	// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 	AutoscalingConfig AutoscalingConfigResponse `pulumi:"autoscalingConfig"`
+	// Optional. The node group settings.
+	AuxiliaryNodeGroups []AuxiliaryNodeGroupResponse `pulumi:"auxiliaryNodeGroups"`
 	// Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
 	ConfigBucket string `pulumi:"configBucket"`
 	// Optional. The config for Dataproc metrics.
@@ -1679,6 +1862,11 @@ func (o ClusterConfigResponseOutput) ToClusterConfigResponseOutputWithContext(ct
 // Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
 func (o ClusterConfigResponseOutput) AutoscalingConfig() AutoscalingConfigResponseOutput {
 	return o.ApplyT(func(v ClusterConfigResponse) AutoscalingConfigResponse { return v.AutoscalingConfig }).(AutoscalingConfigResponseOutput)
+}
+
+// Optional. The node group settings.
+func (o ClusterConfigResponseOutput) AuxiliaryNodeGroups() AuxiliaryNodeGroupResponseArrayOutput {
+	return o.ApplyT(func(v ClusterConfigResponse) []AuxiliaryNodeGroupResponse { return v.AuxiliaryNodeGroups }).(AuxiliaryNodeGroupResponseArrayOutput)
 }
 
 // Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
@@ -2624,6 +2812,198 @@ func (o DiskConfigResponseOutput) NumLocalSsds() pulumi.IntOutput {
 	return o.ApplyT(func(v DiskConfigResponse) int { return v.NumLocalSsds }).(pulumi.IntOutput)
 }
 
+// Driver scheduling configuration.
+type DriverSchedulingConfig struct {
+	// The amount of memory in MB the driver is requesting.
+	MemoryMb int `pulumi:"memoryMb"`
+	// The number of vCPUs the driver is requesting.
+	Vcores int `pulumi:"vcores"`
+}
+
+// DriverSchedulingConfigInput is an input type that accepts DriverSchedulingConfigArgs and DriverSchedulingConfigOutput values.
+// You can construct a concrete instance of `DriverSchedulingConfigInput` via:
+//
+//	DriverSchedulingConfigArgs{...}
+type DriverSchedulingConfigInput interface {
+	pulumi.Input
+
+	ToDriverSchedulingConfigOutput() DriverSchedulingConfigOutput
+	ToDriverSchedulingConfigOutputWithContext(context.Context) DriverSchedulingConfigOutput
+}
+
+// Driver scheduling configuration.
+type DriverSchedulingConfigArgs struct {
+	// The amount of memory in MB the driver is requesting.
+	MemoryMb pulumi.IntInput `pulumi:"memoryMb"`
+	// The number of vCPUs the driver is requesting.
+	Vcores pulumi.IntInput `pulumi:"vcores"`
+}
+
+func (DriverSchedulingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DriverSchedulingConfig)(nil)).Elem()
+}
+
+func (i DriverSchedulingConfigArgs) ToDriverSchedulingConfigOutput() DriverSchedulingConfigOutput {
+	return i.ToDriverSchedulingConfigOutputWithContext(context.Background())
+}
+
+func (i DriverSchedulingConfigArgs) ToDriverSchedulingConfigOutputWithContext(ctx context.Context) DriverSchedulingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DriverSchedulingConfigOutput)
+}
+
+func (i DriverSchedulingConfigArgs) ToDriverSchedulingConfigPtrOutput() DriverSchedulingConfigPtrOutput {
+	return i.ToDriverSchedulingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DriverSchedulingConfigArgs) ToDriverSchedulingConfigPtrOutputWithContext(ctx context.Context) DriverSchedulingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DriverSchedulingConfigOutput).ToDriverSchedulingConfigPtrOutputWithContext(ctx)
+}
+
+// DriverSchedulingConfigPtrInput is an input type that accepts DriverSchedulingConfigArgs, DriverSchedulingConfigPtr and DriverSchedulingConfigPtrOutput values.
+// You can construct a concrete instance of `DriverSchedulingConfigPtrInput` via:
+//
+//	        DriverSchedulingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DriverSchedulingConfigPtrInput interface {
+	pulumi.Input
+
+	ToDriverSchedulingConfigPtrOutput() DriverSchedulingConfigPtrOutput
+	ToDriverSchedulingConfigPtrOutputWithContext(context.Context) DriverSchedulingConfigPtrOutput
+}
+
+type driverSchedulingConfigPtrType DriverSchedulingConfigArgs
+
+func DriverSchedulingConfigPtr(v *DriverSchedulingConfigArgs) DriverSchedulingConfigPtrInput {
+	return (*driverSchedulingConfigPtrType)(v)
+}
+
+func (*driverSchedulingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DriverSchedulingConfig)(nil)).Elem()
+}
+
+func (i *driverSchedulingConfigPtrType) ToDriverSchedulingConfigPtrOutput() DriverSchedulingConfigPtrOutput {
+	return i.ToDriverSchedulingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *driverSchedulingConfigPtrType) ToDriverSchedulingConfigPtrOutputWithContext(ctx context.Context) DriverSchedulingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DriverSchedulingConfigPtrOutput)
+}
+
+// Driver scheduling configuration.
+type DriverSchedulingConfigOutput struct{ *pulumi.OutputState }
+
+func (DriverSchedulingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DriverSchedulingConfig)(nil)).Elem()
+}
+
+func (o DriverSchedulingConfigOutput) ToDriverSchedulingConfigOutput() DriverSchedulingConfigOutput {
+	return o
+}
+
+func (o DriverSchedulingConfigOutput) ToDriverSchedulingConfigOutputWithContext(ctx context.Context) DriverSchedulingConfigOutput {
+	return o
+}
+
+func (o DriverSchedulingConfigOutput) ToDriverSchedulingConfigPtrOutput() DriverSchedulingConfigPtrOutput {
+	return o.ToDriverSchedulingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DriverSchedulingConfigOutput) ToDriverSchedulingConfigPtrOutputWithContext(ctx context.Context) DriverSchedulingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DriverSchedulingConfig) *DriverSchedulingConfig {
+		return &v
+	}).(DriverSchedulingConfigPtrOutput)
+}
+
+// The amount of memory in MB the driver is requesting.
+func (o DriverSchedulingConfigOutput) MemoryMb() pulumi.IntOutput {
+	return o.ApplyT(func(v DriverSchedulingConfig) int { return v.MemoryMb }).(pulumi.IntOutput)
+}
+
+// The number of vCPUs the driver is requesting.
+func (o DriverSchedulingConfigOutput) Vcores() pulumi.IntOutput {
+	return o.ApplyT(func(v DriverSchedulingConfig) int { return v.Vcores }).(pulumi.IntOutput)
+}
+
+type DriverSchedulingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DriverSchedulingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DriverSchedulingConfig)(nil)).Elem()
+}
+
+func (o DriverSchedulingConfigPtrOutput) ToDriverSchedulingConfigPtrOutput() DriverSchedulingConfigPtrOutput {
+	return o
+}
+
+func (o DriverSchedulingConfigPtrOutput) ToDriverSchedulingConfigPtrOutputWithContext(ctx context.Context) DriverSchedulingConfigPtrOutput {
+	return o
+}
+
+func (o DriverSchedulingConfigPtrOutput) Elem() DriverSchedulingConfigOutput {
+	return o.ApplyT(func(v *DriverSchedulingConfig) DriverSchedulingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DriverSchedulingConfig
+		return ret
+	}).(DriverSchedulingConfigOutput)
+}
+
+// The amount of memory in MB the driver is requesting.
+func (o DriverSchedulingConfigPtrOutput) MemoryMb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DriverSchedulingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MemoryMb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of vCPUs the driver is requesting.
+func (o DriverSchedulingConfigPtrOutput) Vcores() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *DriverSchedulingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Vcores
+	}).(pulumi.IntPtrOutput)
+}
+
+// Driver scheduling configuration.
+type DriverSchedulingConfigResponse struct {
+	// The amount of memory in MB the driver is requesting.
+	MemoryMb int `pulumi:"memoryMb"`
+	// The number of vCPUs the driver is requesting.
+	Vcores int `pulumi:"vcores"`
+}
+
+// Driver scheduling configuration.
+type DriverSchedulingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DriverSchedulingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DriverSchedulingConfigResponse)(nil)).Elem()
+}
+
+func (o DriverSchedulingConfigResponseOutput) ToDriverSchedulingConfigResponseOutput() DriverSchedulingConfigResponseOutput {
+	return o
+}
+
+func (o DriverSchedulingConfigResponseOutput) ToDriverSchedulingConfigResponseOutputWithContext(ctx context.Context) DriverSchedulingConfigResponseOutput {
+	return o
+}
+
+// The amount of memory in MB the driver is requesting.
+func (o DriverSchedulingConfigResponseOutput) MemoryMb() pulumi.IntOutput {
+	return o.ApplyT(func(v DriverSchedulingConfigResponse) int { return v.MemoryMb }).(pulumi.IntOutput)
+}
+
+// The number of vCPUs the driver is requesting.
+func (o DriverSchedulingConfigResponseOutput) Vcores() pulumi.IntOutput {
+	return o.ApplyT(func(v DriverSchedulingConfigResponse) int { return v.Vcores }).(pulumi.IntOutput)
+}
+
 // Encryption settings for the cluster.
 type EncryptionConfig struct {
 	// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -3157,7 +3537,7 @@ func (o EnvironmentConfigResponseOutput) PeripheralsConfig() PeripheralsConfigRe
 
 // Execution configuration for a workload.
 type ExecutionConfig struct {
-	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
 	IdleTtl *string `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -3184,7 +3564,7 @@ type ExecutionConfigInput interface {
 
 // Execution configuration for a workload.
 type ExecutionConfigArgs struct {
-	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
 	IdleTtl pulumi.StringPtrInput `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
@@ -3276,7 +3656,7 @@ func (o ExecutionConfigOutput) ToExecutionConfigPtrOutputWithContext(ctx context
 	}).(ExecutionConfigPtrOutput)
 }
 
-// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
 func (o ExecutionConfigOutput) IdleTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.IdleTtl }).(pulumi.StringPtrOutput)
 }
@@ -3330,7 +3710,7 @@ func (o ExecutionConfigPtrOutput) Elem() ExecutionConfigOutput {
 	}).(ExecutionConfigOutput)
 }
 
-// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
 func (o ExecutionConfigPtrOutput) IdleTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionConfig) *string {
 		if v == nil {
@@ -3392,7 +3772,7 @@ func (o ExecutionConfigPtrOutput) SubnetworkUri() pulumi.StringPtrOutput {
 
 // Execution configuration for a workload.
 type ExecutionConfigResponse struct {
-	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
 	IdleTtl string `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey string `pulumi:"kmsKey"`
@@ -3421,7 +3801,7 @@ func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutputWithContex
 	return o
 }
 
-// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
 func (o ExecutionConfigResponseOutput) IdleTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.IdleTtl }).(pulumi.StringOutput)
 }
@@ -7238,9 +7618,9 @@ func (o JobReferenceResponseOutput) Project() pulumi.StringOutput {
 
 // Job scheduling options.
 type JobScheduling struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresPerHour *int `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+	// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresTotal *int `pulumi:"maxFailuresTotal"`
 }
 
@@ -7257,9 +7637,9 @@ type JobSchedulingInput interface {
 
 // Job scheduling options.
 type JobSchedulingArgs struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresPerHour pulumi.IntPtrInput `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+	// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresTotal pulumi.IntPtrInput `pulumi:"maxFailuresTotal"`
 }
 
@@ -7341,12 +7721,12 @@ func (o JobSchedulingOutput) ToJobSchedulingPtrOutputWithContext(ctx context.Con
 	}).(JobSchedulingPtrOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobScheduling) *int { return v.MaxFailuresPerHour }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v JobScheduling) *int { return v.MaxFailuresTotal }).(pulumi.IntPtrOutput)
 }
@@ -7375,7 +7755,7 @@ func (o JobSchedulingPtrOutput) Elem() JobSchedulingOutput {
 	}).(JobSchedulingOutput)
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -7385,7 +7765,7 @@ func (o JobSchedulingPtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *JobScheduling) *int {
 		if v == nil {
@@ -7397,9 +7777,9 @@ func (o JobSchedulingPtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
 
 // Job scheduling options.
 type JobSchedulingResponse struct {
-	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresPerHour int `pulumi:"maxFailuresPerHour"`
-	// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+	// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 	MaxFailuresTotal int `pulumi:"maxFailuresTotal"`
 }
 
@@ -7418,12 +7798,12 @@ func (o JobSchedulingResponseOutput) ToJobSchedulingResponseOutputWithContext(ct
 	return o
 }
 
-// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingResponseOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
 }
 
-// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
 func (o JobSchedulingResponseOutput) MaxFailuresTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
 }
@@ -9599,7 +9979,89 @@ func (o NamespacedGkeDeploymentTargetResponseOutput) TargetGkeCluster() pulumi.S
 	return o.ApplyT(func(v NamespacedGkeDeploymentTargetResponse) string { return v.TargetGkeCluster }).(pulumi.StringOutput)
 }
 
-// Node Group Affinity for clusters using sole-tenant node groups.
+// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+type NodeGroupType struct {
+	// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+	Labels map[string]string `pulumi:"labels"`
+	// The Node group resource name (https://aip.dev/122).
+	Name *string `pulumi:"name"`
+	// Optional. The node group instance group configuration.
+	NodeGroupConfig *InstanceGroupConfig `pulumi:"nodeGroupConfig"`
+	// Node group roles.
+	Roles []NodeGroupRolesItem `pulumi:"roles"`
+}
+
+// NodeGroupTypeInput is an input type that accepts NodeGroupTypeArgs and NodeGroupTypeOutput values.
+// You can construct a concrete instance of `NodeGroupTypeInput` via:
+//
+//	NodeGroupTypeArgs{...}
+type NodeGroupTypeInput interface {
+	pulumi.Input
+
+	ToNodeGroupTypeOutput() NodeGroupTypeOutput
+	ToNodeGroupTypeOutputWithContext(context.Context) NodeGroupTypeOutput
+}
+
+// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+type NodeGroupTypeArgs struct {
+	// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The Node group resource name (https://aip.dev/122).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The node group instance group configuration.
+	NodeGroupConfig InstanceGroupConfigPtrInput `pulumi:"nodeGroupConfig"`
+	// Node group roles.
+	Roles NodeGroupRolesItemArrayInput `pulumi:"roles"`
+}
+
+func (NodeGroupTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupType)(nil)).Elem()
+}
+
+func (i NodeGroupTypeArgs) ToNodeGroupTypeOutput() NodeGroupTypeOutput {
+	return i.ToNodeGroupTypeOutputWithContext(context.Background())
+}
+
+func (i NodeGroupTypeArgs) ToNodeGroupTypeOutputWithContext(ctx context.Context) NodeGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupTypeOutput)
+}
+
+// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+type NodeGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupType)(nil)).Elem()
+}
+
+func (o NodeGroupTypeOutput) ToNodeGroupTypeOutput() NodeGroupTypeOutput {
+	return o
+}
+
+func (o NodeGroupTypeOutput) ToNodeGroupTypeOutputWithContext(ctx context.Context) NodeGroupTypeOutput {
+	return o
+}
+
+// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+func (o NodeGroupTypeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeGroupType) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Node group resource name (https://aip.dev/122).
+func (o NodeGroupTypeOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodeGroupType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The node group instance group configuration.
+func (o NodeGroupTypeOutput) NodeGroupConfig() InstanceGroupConfigPtrOutput {
+	return o.ApplyT(func(v NodeGroupType) *InstanceGroupConfig { return v.NodeGroupConfig }).(InstanceGroupConfigPtrOutput)
+}
+
+// Node group roles.
+func (o NodeGroupTypeOutput) Roles() NodeGroupRolesItemArrayOutput {
+	return o.ApplyT(func(v NodeGroupType) []NodeGroupRolesItem { return v.Roles }).(NodeGroupRolesItemArrayOutput)
+}
+
+// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
 type NodeGroupAffinity struct {
 	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 	NodeGroupUri string `pulumi:"nodeGroupUri"`
@@ -9616,7 +10078,7 @@ type NodeGroupAffinityInput interface {
 	ToNodeGroupAffinityOutputWithContext(context.Context) NodeGroupAffinityOutput
 }
 
-// Node Group Affinity for clusters using sole-tenant node groups.
+// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
 type NodeGroupAffinityArgs struct {
 	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 	NodeGroupUri pulumi.StringInput `pulumi:"nodeGroupUri"`
@@ -9675,7 +10137,7 @@ func (i *nodeGroupAffinityPtrType) ToNodeGroupAffinityPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupAffinityPtrOutput)
 }
 
-// Node Group Affinity for clusters using sole-tenant node groups.
+// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
 type NodeGroupAffinityOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupAffinityOutput) ElementType() reflect.Type {
@@ -9739,13 +10201,13 @@ func (o NodeGroupAffinityPtrOutput) NodeGroupUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Node Group Affinity for clusters using sole-tenant node groups.
+// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
 type NodeGroupAffinityResponse struct {
 	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 	NodeGroupUri string `pulumi:"nodeGroupUri"`
 }
 
-// Node Group Affinity for clusters using sole-tenant node groups.
+// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
 type NodeGroupAffinityResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeGroupAffinityResponseOutput) ElementType() reflect.Type {
@@ -9763,6 +10225,53 @@ func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponseOutputWithCo
 // The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 func (o NodeGroupAffinityResponseOutput) NodeGroupUri() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeGroupAffinityResponse) string { return v.NodeGroupUri }).(pulumi.StringOutput)
+}
+
+// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+type NodeGroupResponse struct {
+	// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+	Labels map[string]string `pulumi:"labels"`
+	// The Node group resource name (https://aip.dev/122).
+	Name string `pulumi:"name"`
+	// Optional. The node group instance group configuration.
+	NodeGroupConfig InstanceGroupConfigResponse `pulumi:"nodeGroupConfig"`
+	// Node group roles.
+	Roles []string `pulumi:"roles"`
+}
+
+// Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+type NodeGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupResponse)(nil)).Elem()
+}
+
+func (o NodeGroupResponseOutput) ToNodeGroupResponseOutput() NodeGroupResponseOutput {
+	return o
+}
+
+func (o NodeGroupResponseOutput) ToNodeGroupResponseOutputWithContext(ctx context.Context) NodeGroupResponseOutput {
+	return o
+}
+
+// Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+func (o NodeGroupResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeGroupResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The Node group resource name (https://aip.dev/122).
+func (o NodeGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The node group instance group configuration.
+func (o NodeGroupResponseOutput) NodeGroupConfig() InstanceGroupConfigResponseOutput {
+	return o.ApplyT(func(v NodeGroupResponse) InstanceGroupConfigResponse { return v.NodeGroupConfig }).(InstanceGroupConfigResponseOutput)
+}
+
+// Node group roles.
+func (o NodeGroupResponseOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NodeGroupResponse) []string { return v.Roles }).(pulumi.StringArrayOutput)
 }
 
 // Specifies an executable to run on a fully configured node and a timeout period for executable completion.
@@ -12709,8 +13218,10 @@ func (o RuntimeConfigResponseOutput) Version() pulumi.StringOutput {
 
 // Runtime information about workload execution.
 type RuntimeInfoResponse struct {
-	// Approximate workload resource usage calculated after workload finishes.
+	// Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 	ApproximateUsage UsageMetricsResponse `pulumi:"approximateUsage"`
+	// Snapshot of current workload resource usage.
+	CurrentUsage UsageSnapshotResponse `pulumi:"currentUsage"`
 	// A URI pointing to the location of the diagnostics tarball.
 	DiagnosticOutputUri string `pulumi:"diagnosticOutputUri"`
 	// Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
@@ -12734,9 +13245,14 @@ func (o RuntimeInfoResponseOutput) ToRuntimeInfoResponseOutputWithContext(ctx co
 	return o
 }
 
-// Approximate workload resource usage calculated after workload finishes.
+// Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 func (o RuntimeInfoResponseOutput) ApproximateUsage() UsageMetricsResponseOutput {
 	return o.ApplyT(func(v RuntimeInfoResponse) UsageMetricsResponse { return v.ApproximateUsage }).(UsageMetricsResponseOutput)
+}
+
+// Snapshot of current workload resource usage.
+func (o RuntimeInfoResponseOutput) CurrentUsage() UsageSnapshotResponseOutput {
+	return o.ApplyT(func(v RuntimeInfoResponse) UsageSnapshotResponse { return v.CurrentUsage }).(UsageSnapshotResponseOutput)
 }
 
 // A URI pointing to the location of the diagnostics tarball.
@@ -16092,15 +16608,15 @@ func (o TrinoJobResponseOutput) QueryList() QueryListResponseOutput {
 	return o.ApplyT(func(v TrinoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
 }
 
-// Usage metrics represent total resources consumed by a workload.
+// Usage metrics represent approximate total resources consumed by a workload.
 type UsageMetricsResponse struct {
-	// Optional. DCU usage in milliDCU*seconds.
+	// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 	MilliDcuSeconds string `pulumi:"milliDcuSeconds"`
-	// Optional. Shuffle storage usage in GB*Seconds
+	// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 	ShuffleStorageGbSeconds string `pulumi:"shuffleStorageGbSeconds"`
 }
 
-// Usage metrics represent total resources consumed by a workload.
+// Usage metrics represent approximate total resources consumed by a workload.
 type UsageMetricsResponseOutput struct{ *pulumi.OutputState }
 
 func (UsageMetricsResponseOutput) ElementType() reflect.Type {
@@ -16115,14 +16631,54 @@ func (o UsageMetricsResponseOutput) ToUsageMetricsResponseOutputWithContext(ctx 
 	return o
 }
 
-// Optional. DCU usage in milliDCU*seconds.
+// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 func (o UsageMetricsResponseOutput) MilliDcuSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v UsageMetricsResponse) string { return v.MilliDcuSeconds }).(pulumi.StringOutput)
 }
 
-// Optional. Shuffle storage usage in GB*Seconds
+// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
 func (o UsageMetricsResponseOutput) ShuffleStorageGbSeconds() pulumi.StringOutput {
 	return o.ApplyT(func(v UsageMetricsResponse) string { return v.ShuffleStorageGbSeconds }).(pulumi.StringOutput)
+}
+
+// The usage snaphot represents the resources consumed by a workload at a specified time.
+type UsageSnapshotResponse struct {
+	// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+	MilliDcu string `pulumi:"milliDcu"`
+	// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+	ShuffleStorageGb string `pulumi:"shuffleStorageGb"`
+	// Optional. The timestamp of the usage snapshot.
+	SnapshotTime string `pulumi:"snapshotTime"`
+}
+
+// The usage snaphot represents the resources consumed by a workload at a specified time.
+type UsageSnapshotResponseOutput struct{ *pulumi.OutputState }
+
+func (UsageSnapshotResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UsageSnapshotResponse)(nil)).Elem()
+}
+
+func (o UsageSnapshotResponseOutput) ToUsageSnapshotResponseOutput() UsageSnapshotResponseOutput {
+	return o
+}
+
+func (o UsageSnapshotResponseOutput) ToUsageSnapshotResponseOutputWithContext(ctx context.Context) UsageSnapshotResponseOutput {
+	return o
+}
+
+// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+func (o UsageSnapshotResponseOutput) MilliDcu() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.MilliDcu }).(pulumi.StringOutput)
+}
+
+// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+func (o UsageSnapshotResponseOutput) ShuffleStorageGb() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.ShuffleStorageGb }).(pulumi.StringOutput)
+}
+
+// Optional. The timestamp of the usage snapshot.
+func (o UsageSnapshotResponseOutput) SnapshotTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UsageSnapshotResponse) string { return v.SnapshotTime }).(pulumi.StringOutput)
 }
 
 // Validation based on a list of allowed values.
@@ -16678,6 +17234,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigArrayInput)(nil)).Elem(), AcceleratorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigInput)(nil)).Elem(), AutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AutoscalingConfigPtrInput)(nil)).Elem(), AutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryNodeGroupInput)(nil)).Elem(), AuxiliaryNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryNodeGroupArrayInput)(nil)).Elem(), AuxiliaryNodeGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryServicesConfigInput)(nil)).Elem(), AuxiliaryServicesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuxiliaryServicesConfigPtrInput)(nil)).Elem(), AuxiliaryServicesConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicAutoscalingAlgorithmInput)(nil)).Elem(), BasicAutoscalingAlgorithmArgs{})
@@ -16696,6 +17254,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataprocMetricConfigPtrInput)(nil)).Elem(), DataprocMetricConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskConfigInput)(nil)).Elem(), DiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskConfigPtrInput)(nil)).Elem(), DiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DriverSchedulingConfigInput)(nil)).Elem(), DriverSchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DriverSchedulingConfigPtrInput)(nil)).Elem(), DriverSchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointConfigInput)(nil)).Elem(), EndpointConfigArgs{})
@@ -16753,6 +17313,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricArrayInput)(nil)).Elem(), MetricArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacedGkeDeploymentTargetInput)(nil)).Elem(), NamespacedGkeDeploymentTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamespacedGkeDeploymentTargetPtrInput)(nil)).Elem(), NamespacedGkeDeploymentTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupTypeInput)(nil)).Elem(), NodeGroupTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAffinityInput)(nil)).Elem(), NodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupAffinityPtrInput)(nil)).Elem(), NodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeInitializationActionInput)(nil)).Elem(), NodeInitializationActionArgs{})
@@ -16817,6 +17378,10 @@ func init() {
 	pulumi.RegisterOutputType(AutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigPtrOutput{})
 	pulumi.RegisterOutputType(AutoscalingConfigResponseOutput{})
+	pulumi.RegisterOutputType(AuxiliaryNodeGroupOutput{})
+	pulumi.RegisterOutputType(AuxiliaryNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(AuxiliaryNodeGroupResponseOutput{})
+	pulumi.RegisterOutputType(AuxiliaryNodeGroupResponseArrayOutput{})
 	pulumi.RegisterOutputType(AuxiliaryServicesConfigOutput{})
 	pulumi.RegisterOutputType(AuxiliaryServicesConfigPtrOutput{})
 	pulumi.RegisterOutputType(AuxiliaryServicesConfigResponseOutput{})
@@ -16848,6 +17413,9 @@ func init() {
 	pulumi.RegisterOutputType(DiskConfigOutput{})
 	pulumi.RegisterOutputType(DiskConfigPtrOutput{})
 	pulumi.RegisterOutputType(DiskConfigResponseOutput{})
+	pulumi.RegisterOutputType(DriverSchedulingConfigOutput{})
+	pulumi.RegisterOutputType(DriverSchedulingConfigPtrOutput{})
+	pulumi.RegisterOutputType(DriverSchedulingConfigResponseOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
 	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
@@ -16942,9 +17510,11 @@ func init() {
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetPtrOutput{})
 	pulumi.RegisterOutputType(NamespacedGkeDeploymentTargetResponseOutput{})
+	pulumi.RegisterOutputType(NodeGroupTypeOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(NodeGroupAffinityResponseOutput{})
+	pulumi.RegisterOutputType(NodeGroupResponseOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionArrayOutput{})
 	pulumi.RegisterOutputType(NodeInitializationActionResponseOutput{})
@@ -17027,6 +17597,7 @@ func init() {
 	pulumi.RegisterOutputType(TrinoJobPtrOutput{})
 	pulumi.RegisterOutputType(TrinoJobResponseOutput{})
 	pulumi.RegisterOutputType(UsageMetricsResponseOutput{})
+	pulumi.RegisterOutputType(UsageSnapshotResponseOutput{})
 	pulumi.RegisterOutputType(ValueValidationOutput{})
 	pulumi.RegisterOutputType(ValueValidationPtrOutput{})
 	pulumi.RegisterOutputType(ValueValidationResponseOutput{})

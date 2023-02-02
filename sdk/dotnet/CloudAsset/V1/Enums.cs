@@ -33,11 +33,11 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         /// </summary>
         public static FeedContentType IamPolicy { get; } = new FeedContentType("IAM_POLICY");
         /// <summary>
-        /// The Cloud Organization Policy set on an asset.
+        /// The organization policy set on an asset.
         /// </summary>
         public static FeedContentType OrgPolicy { get; } = new FeedContentType("ORG_POLICY");
         /// <summary>
-        /// The Cloud Access context manager Policy set on an asset.
+        /// The Access Context Manager policy set on an asset.
         /// </summary>
         public static FeedContentType AccessPolicy { get; } = new FeedContentType("ACCESS_POLICY");
         /// <summary>

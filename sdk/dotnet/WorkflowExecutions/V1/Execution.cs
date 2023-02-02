@@ -31,6 +31,12 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         public Output<string> CallLogLevel { get; private set; } = null!;
 
         /// <summary>
+        /// Measures the duration of the execution.
+        /// </summary>
+        [Output("duration")]
+        public Output<string> Duration { get; private set; } = null!;
+
+        /// <summary>
         /// Marks the end of execution, successful or not.
         /// </summary>
         [Output("endTime")]
@@ -41,6 +47,12 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         [Output("error")]
         public Output<Outputs.ErrorResponse> Error { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -149,6 +161,18 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         [Input("callLogLevel")]
         public Input<Pulumi.GoogleNative.WorkflowExecutions.V1.ExecutionCallLogLevel>? CallLogLevel { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

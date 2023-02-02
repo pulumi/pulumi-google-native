@@ -41,6 +41,14 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
+        /// </summary>
+        public readonly Outputs.EphemeralStorageLocalSsdConfigResponse EphemeralStorageLocalSsdConfig;
+        /// <summary>
+        /// Enable or disable NCCL fast socket for the node pool.
+        /// </summary>
+        public readonly Outputs.FastSocketResponse FastSocket;
+        /// <summary>
         /// Google Container File System (image streaming) configs.
         /// </summary>
         public readonly Outputs.GcfsConfigResponse GcfsConfig;
@@ -49,7 +57,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly Outputs.VirtualNICResponse Gvnic;
         /// <summary>
-        /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        /// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         /// </summary>
         public readonly string ImageType;
         /// <summary>
@@ -64,6 +72,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Parameters that can be configured on Linux nodes.
         /// </summary>
         public readonly Outputs.LinuxNodeConfigResponse LinuxNodeConfig;
+        /// <summary>
+        /// Parameters for using raw-block Local NVMe SSDs.
+        /// </summary>
+        public readonly Outputs.LocalNvmeSsdBlockConfigResponse LocalNvmeSsdBlockConfig;
         /// <summary>
         /// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
         /// </summary>
@@ -129,6 +141,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NodeTaintResponse> Taints;
         /// <summary>
+        /// Parameters that can be configured on Windows nodes.
+        /// </summary>
+        public readonly Outputs.WindowsNodeConfigResponse WindowsNodeConfig;
+        /// <summary>
         /// The workload metadata configuration for this node.
         /// </summary>
         public readonly Outputs.WorkloadMetadataConfigResponse WorkloadMetadataConfig;
@@ -147,6 +163,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string diskType,
 
+            Outputs.EphemeralStorageLocalSsdConfigResponse ephemeralStorageLocalSsdConfig,
+
+            Outputs.FastSocketResponse fastSocket,
+
             Outputs.GcfsConfigResponse gcfsConfig,
 
             Outputs.VirtualNICResponse gvnic,
@@ -158,6 +178,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             ImmutableDictionary<string, string> labels,
 
             Outputs.LinuxNodeConfigResponse linuxNodeConfig,
+
+            Outputs.LocalNvmeSsdBlockConfigResponse localNvmeSsdBlockConfig,
 
             int localSsdCount,
 
@@ -191,6 +213,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             ImmutableArray<Outputs.NodeTaintResponse> taints,
 
+            Outputs.WindowsNodeConfigResponse windowsNodeConfig,
+
             Outputs.WorkloadMetadataConfigResponse workloadMetadataConfig)
         {
             Accelerators = accelerators;
@@ -199,12 +223,15 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             ConfidentialNodes = confidentialNodes;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            EphemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
+            FastSocket = fastSocket;
             GcfsConfig = gcfsConfig;
             Gvnic = gvnic;
             ImageType = imageType;
             KubeletConfig = kubeletConfig;
             Labels = labels;
             LinuxNodeConfig = linuxNodeConfig;
+            LocalNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             LocalSsdCount = localSsdCount;
             LoggingConfig = loggingConfig;
             MachineType = machineType;
@@ -221,6 +248,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             Spot = spot;
             Tags = tags;
             Taints = taints;
+            WindowsNodeConfig = windowsNodeConfig;
             WorkloadMetadataConfig = workloadMetadataConfig;
         }
     }

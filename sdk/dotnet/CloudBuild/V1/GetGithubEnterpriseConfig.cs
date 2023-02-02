@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         public readonly string HostUrl;
         /// <summary>
-        /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         public readonly string Name;
         /// <summary>

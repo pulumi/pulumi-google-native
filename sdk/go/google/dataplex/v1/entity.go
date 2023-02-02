@@ -16,6 +16,8 @@ import (
 type Entity struct {
 	pulumi.CustomResourceState
 
+	// Identifies the access mechanism to the entity. Not user settable.
+	Access GoogleCloudDataplexV1StorageAccessResponseOutput `pulumi:"access"`
 	// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
 	Asset pulumi.StringOutput `pulumi:"asset"`
 	// The name of the associated Data Catalog entry.
@@ -47,6 +49,8 @@ type Entity struct {
 	System pulumi.StringOutput `pulumi:"system"`
 	// Immutable. The type of entity.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+	Uid pulumi.StringOutput `pulumi:"uid"`
 	// The time when the entity was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
@@ -223,6 +227,11 @@ func (o EntityOutput) ToEntityOutputWithContext(ctx context.Context) EntityOutpu
 	return o
 }
 
+// Identifies the access mechanism to the entity. Not user settable.
+func (o EntityOutput) Access() GoogleCloudDataplexV1StorageAccessResponseOutput {
+	return o.ApplyT(func(v *Entity) GoogleCloudDataplexV1StorageAccessResponseOutput { return v.Access }).(GoogleCloudDataplexV1StorageAccessResponseOutput)
+}
+
 // Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
 func (o EntityOutput) Asset() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Asset }).(pulumi.StringOutput)
@@ -303,6 +312,11 @@ func (o EntityOutput) System() pulumi.StringOutput {
 // Immutable. The type of entity.
 func (o EntityOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+func (o EntityOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Entity) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The time when the entity was last updated.

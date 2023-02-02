@@ -1849,6 +1849,7 @@ class SingleTargetDatasetArgs:
                  dataset_id: Optional[pulumi.Input[str]] = None):
         """
         A single target dataset to which all data will be streamed.
+        :param pulumi.Input[str] dataset_id: The dataset ID of the target dataset.
         """
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
@@ -1856,6 +1857,9 @@ class SingleTargetDatasetArgs:
     @property
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The dataset ID of the target dataset.
+        """
         return pulumi.get(self, "dataset_id")
 
     @dataset_id.setter

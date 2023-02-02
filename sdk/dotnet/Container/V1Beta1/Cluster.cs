@@ -136,6 +136,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         [Output("expireTime")]
@@ -592,6 +598,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("enableTpu")]
         public Input<bool>? EnableTpu { get; set; }
+
+        /// <summary>
+        /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// Configuration for Identity Service component.

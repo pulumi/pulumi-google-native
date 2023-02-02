@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
     /// <summary>
-    /// Node Group Affinity for clusters using sole-tenant node groups.
+    /// Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
     /// </summary>
     [OutputType]
     public sealed class NodeGroupAffinityResponse

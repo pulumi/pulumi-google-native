@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
     public sealed class CloudSqlConnectionProfileResponse
     {
         /// <summary>
+        /// The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+        /// </summary>
+        public readonly string AdditionalPublicIp;
+        /// <summary>
         /// The Cloud SQL instance ID that this connection profile is associated with.
         /// </summary>
         public readonly string CloudSqlId;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
         [OutputConstructor]
         private CloudSqlConnectionProfileResponse(
+            string additionalPublicIp,
+
             string cloudSqlId,
 
             string privateIp,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             Outputs.CloudSqlSettingsResponse settings)
         {
+            AdditionalPublicIp = additionalPublicIp;
             CloudSqlId = cloudSqlId;
             PrivateIp = privateIp;
             PublicIp = publicIp;

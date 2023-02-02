@@ -38,6 +38,7 @@ __all__ = [
     'StrategyResponse',
     'TargetResponse',
     'TargetsPresentConditionResponse',
+    'TargetsTypeConditionResponse',
     'VerifyJobResponse',
 ]
 
@@ -991,6 +992,8 @@ class PipelineConditionResponse(dict):
             suggest = "pipeline_ready_condition"
         elif key == "targetsPresentCondition":
             suggest = "targets_present_condition"
+        elif key == "targetsTypeCondition":
+            suggest = "targets_type_condition"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineConditionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1005,14 +1008,17 @@ class PipelineConditionResponse(dict):
 
     def __init__(__self__, *,
                  pipeline_ready_condition: 'outputs.PipelineReadyConditionResponse',
-                 targets_present_condition: 'outputs.TargetsPresentConditionResponse'):
+                 targets_present_condition: 'outputs.TargetsPresentConditionResponse',
+                 targets_type_condition: 'outputs.TargetsTypeConditionResponse'):
         """
         PipelineCondition contains all conditions relevant to a Delivery Pipeline.
         :param 'PipelineReadyConditionResponse' pipeline_ready_condition: Details around the Pipeline's overall status.
-        :param 'TargetsPresentConditionResponse' targets_present_condition: Detalis around targets enumerated in the pipeline.
+        :param 'TargetsPresentConditionResponse' targets_present_condition: Details around targets enumerated in the pipeline.
+        :param 'TargetsTypeConditionResponse' targets_type_condition: Details on the whether the targets enumerated in the pipeline are of the same type.
         """
         pulumi.set(__self__, "pipeline_ready_condition", pipeline_ready_condition)
         pulumi.set(__self__, "targets_present_condition", targets_present_condition)
+        pulumi.set(__self__, "targets_type_condition", targets_type_condition)
 
     @property
     @pulumi.getter(name="pipelineReadyCondition")
@@ -1026,9 +1032,17 @@ class PipelineConditionResponse(dict):
     @pulumi.getter(name="targetsPresentCondition")
     def targets_present_condition(self) -> 'outputs.TargetsPresentConditionResponse':
         """
-        Detalis around targets enumerated in the pipeline.
+        Details around targets enumerated in the pipeline.
         """
         return pulumi.get(self, "targets_present_condition")
+
+    @property
+    @pulumi.getter(name="targetsTypeCondition")
+    def targets_type_condition(self) -> 'outputs.TargetsTypeConditionResponse':
+        """
+        Details on the whether the targets enumerated in the pipeline are of the same type.
+        """
+        return pulumi.get(self, "targets_type_condition")
 
 
 @pulumi.output_type
@@ -1495,7 +1509,7 @@ class TargetsPresentConditionResponse(dict):
                  update_time: str):
         """
         TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
-        :param Sequence[str] missing_targets: The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        :param Sequence[str] missing_targets: The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
         :param bool status: True if there aren't any missing Targets.
         :param str update_time: Last time the condition was updated.
         """
@@ -1507,7 +1521,7 @@ class TargetsPresentConditionResponse(dict):
     @pulumi.getter(name="missingTargets")
     def missing_targets(self) -> Sequence[str]:
         """
-        The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
         """
         return pulumi.get(self, "missing_targets")
 
@@ -1526,6 +1540,56 @@ class TargetsPresentConditionResponse(dict):
         Last time the condition was updated.
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class TargetsTypeConditionResponse(dict):
+    """
+    TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorDetails":
+            suggest = "error_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TargetsTypeConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TargetsTypeConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TargetsTypeConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 error_details: str,
+                 status: bool):
+        """
+        TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.
+        :param str error_details: Human readable error message.
+        :param bool status: True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+        """
+        pulumi.set(__self__, "error_details", error_details)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> str:
+        """
+        Human readable error message.
+        """
+        return pulumi.get(self, "error_details")
+
+    @property
+    @pulumi.getter
+    def status(self) -> bool:
+        """
+        True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+        """
+        return pulumi.get(self, "status")
 
 
 @pulumi.output_type

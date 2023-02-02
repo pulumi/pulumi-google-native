@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourcePolicies;
         /// <summary>
+        /// Status information for Reservation resource.
+        /// </summary>
+        public readonly Outputs.AllocationResourceStatusResponse ResourceStatus;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -49,7 +53,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         public readonly Outputs.ShareSettingsResponse ShareSettings;
         /// <summary>
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             ImmutableDictionary<string, string> resourcePolicies,
 
+            Outputs.AllocationResourceStatusResponse resourceStatus,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             Kind = kind;
             Name = name;
             ResourcePolicies = resourcePolicies;
+            ResourceStatus = resourceStatus;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             ShareSettings = shareSettings;

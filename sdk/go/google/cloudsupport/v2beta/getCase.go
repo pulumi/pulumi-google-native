@@ -39,6 +39,8 @@ type LookupCaseResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Whether the case is currently escalated.
 	Escalated bool `pulumi:"escalated"`
+	// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+	LanguageCode string `pulumi:"languageCode"`
 	// The resource name for the case.
 	Name string `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
@@ -124,6 +126,11 @@ func (o LookupCaseResultOutput) DisplayName() pulumi.StringOutput {
 // Whether the case is currently escalated.
 func (o LookupCaseResultOutput) Escalated() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupCaseResult) bool { return v.Escalated }).(pulumi.BoolOutput)
+}
+
+// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+func (o LookupCaseResultOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupCaseResult) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // The resource name for the case.

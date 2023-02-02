@@ -871,13 +871,15 @@ class SecretVolumeResponse(dict):
 @pulumi.output_type
 class ServiceConfigResponse(dict):
     """
-    Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+    Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "allTrafficOnLatestRevision":
             suggest = "all_traffic_on_latest_revision"
+        elif key == "availableCpu":
+            suggest = "available_cpu"
         elif key == "availableMemory":
             suggest = "available_memory"
         elif key == "environmentVariables":
@@ -886,6 +888,8 @@ class ServiceConfigResponse(dict):
             suggest = "ingress_settings"
         elif key == "maxInstanceCount":
             suggest = "max_instance_count"
+        elif key == "maxInstanceRequestConcurrency":
+            suggest = "max_instance_request_concurrency"
         elif key == "minInstanceCount":
             suggest = "min_instance_count"
         elif key == "secretEnvironmentVariables":
@@ -916,10 +920,12 @@ class ServiceConfigResponse(dict):
 
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: bool,
+                 available_cpu: str,
                  available_memory: str,
                  environment_variables: Mapping[str, str],
                  ingress_settings: str,
                  max_instance_count: int,
+                 max_instance_request_concurrency: int,
                  min_instance_count: int,
                  revision: str,
                  secret_environment_variables: Sequence['outputs.SecretEnvVarResponse'],
@@ -932,17 +938,19 @@ class ServiceConfigResponse(dict):
                  vpc_connector: str,
                  vpc_connector_egress_settings: str):
         """
-        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
         :param bool all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+        :param str available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         :param str available_memory: The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
         :param Mapping[str, str] environment_variables: Environment variables that shall be available during function execution.
         :param str ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param int max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+        :param int max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param int min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param str revision: The name of service revision.
         :param Sequence['SecretEnvVarResponse'] secret_environment_variables: Secret environment variables configuration.
         :param Sequence['SecretVolumeResponse'] secret_volumes: Secret volumes configuration.
-        :param str security_level: Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        :param str security_level: Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         :param str service: Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
         :param str service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param int timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
@@ -951,10 +959,12 @@ class ServiceConfigResponse(dict):
         :param str vpc_connector_egress_settings: The egress settings for the connector, controlling what traffic is diverted through it.
         """
         pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        pulumi.set(__self__, "available_cpu", available_cpu)
         pulumi.set(__self__, "available_memory", available_memory)
         pulumi.set(__self__, "environment_variables", environment_variables)
         pulumi.set(__self__, "ingress_settings", ingress_settings)
         pulumi.set(__self__, "max_instance_count", max_instance_count)
+        pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
         pulumi.set(__self__, "revision", revision)
         pulumi.set(__self__, "secret_environment_variables", secret_environment_variables)
@@ -974,6 +984,14 @@ class ServiceConfigResponse(dict):
         Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
         """
         return pulumi.get(self, "all_traffic_on_latest_revision")
+
+    @property
+    @pulumi.getter(name="availableCpu")
+    def available_cpu(self) -> str:
+        """
+        The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        """
+        return pulumi.get(self, "available_cpu")
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -1006,6 +1024,14 @@ class ServiceConfigResponse(dict):
         The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
         """
         return pulumi.get(self, "max_instance_count")
+
+    @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> int:
+        """
+        Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        """
+        return pulumi.get(self, "max_instance_request_concurrency")
 
     @property
     @pulumi.getter(name="minInstanceCount")
@@ -1043,7 +1069,7 @@ class ServiceConfigResponse(dict):
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> str:
         """
-        Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         """
         return pulumi.get(self, "security_level")
 

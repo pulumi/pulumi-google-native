@@ -348,6 +348,175 @@ func (in *entityTypePtr) ToEntityTypePtrOutputWithContext(ctx context.Context) E
 	return pulumi.ToOutputWithContext(ctx, in).(EntityTypePtrOutput)
 }
 
+// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+type GoogleCloudDataplexV1AssetResourceSpecReadAccessMode string
+
+const (
+	// Access mode unspecified.
+	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeAccessModeUnspecified = GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("ACCESS_MODE_UNSPECIFIED")
+	// Default. Data is accessed directly using storage APIs.
+	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeDirect = GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("DIRECT")
+	// Data is accessed through a managed interface using BigQuery APIs.
+	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeManaged = GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("MANAGED")
+)
+
+func (GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AssetResourceSpecReadAccessMode)(nil)).Elem()
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput)
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput)
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return e.ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return GoogleCloudDataplexV1AssetResourceSpecReadAccessMode(e).ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutputWithContext(ctx).ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1AssetResourceSpecReadAccessMode)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return o.ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) *GoogleCloudDataplexV1AssetResourceSpecReadAccessMode {
+		return &v
+	}).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput)
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1AssetResourceSpecReadAccessMode)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) Elem() GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) GoogleCloudDataplexV1AssetResourceSpecReadAccessMode {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1AssetResourceSpecReadAccessMode
+		return ret
+	}).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput)
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDataplexV1AssetResourceSpecReadAccessMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput is an input type that accepts GoogleCloudDataplexV1AssetResourceSpecReadAccessModeArgs and GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput` via:
+//
+//	GoogleCloudDataplexV1AssetResourceSpecReadAccessModeArgs{...}
+type GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput
+	ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutputWithContext(context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput
+}
+
+var googleCloudDataplexV1AssetResourceSpecReadAccessModePtrType = reflect.TypeOf((**GoogleCloudDataplexV1AssetResourceSpecReadAccessMode)(nil)).Elem()
+
+type GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput
+	ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput
+}
+
+type googleCloudDataplexV1AssetResourceSpecReadAccessModePtr string
+
+func GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtr(v string) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrInput {
+	return (*googleCloudDataplexV1AssetResourceSpecReadAccessModePtr)(&v)
+}
+
+func (*googleCloudDataplexV1AssetResourceSpecReadAccessModePtr) ElementType() reflect.Type {
+	return googleCloudDataplexV1AssetResourceSpecReadAccessModePtrType
+}
+
+func (in *googleCloudDataplexV1AssetResourceSpecReadAccessModePtr) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput() GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput)
+}
+
+func (in *googleCloudDataplexV1AssetResourceSpecReadAccessModePtr) ToGoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput)
+}
+
 // Required. Immutable. Type of resource.
 type GoogleCloudDataplexV1AssetResourceSpecType string
 
@@ -849,6 +1018,176 @@ func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToGoogleCloudDataplexV
 
 func (in *googleCloudDataplexV1ContentSqlScriptEnginePtr) ToGoogleCloudDataplexV1ContentSqlScriptEnginePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic string
+
+const (
+	// Unspecified statistic type
+	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticStatisticUndefined = GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("STATISTIC_UNDEFINED")
+	// Evaluate the column mean
+	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticMean = GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("MEAN")
+	// Evaluate the column min
+	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticMin = GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("MIN")
+	// Evaluate the column max
+	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticMax = GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("MAX")
+)
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)(nil)).Elem()
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput)
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput)
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return e.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(e).ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutputWithContext(ctx).ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticArgs and GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput
+}
+
+var googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrType = reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)(nil)).Elem()
+
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr string
+
+func GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr(v string) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr)(&v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr) ElementType() reflect.Type {
+	return googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrType
+}
+
+func (in *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
+}
+
+func (in *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtr) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
 }
 
 // Required. Immutable. The type of field.
@@ -2431,12 +2770,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntitySystemPtrInput)(nil)).Elem(), EntitySystem("STORAGE_SYSTEM_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypeInput)(nil)).Elem(), EntityType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityTypePtrInput)(nil)).Elem(), EntityType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetResourceSpecReadAccessModeInput)(nil)).Elem(), GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("ACCESS_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrInput)(nil)).Elem(), GoogleCloudDataplexV1AssetResourceSpecReadAccessMode("ACCESS_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetResourceSpecTypeInput)(nil)).Elem(), GoogleCloudDataplexV1AssetResourceSpecType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1AssetResourceSpecTypePtrInput)(nil)).Elem(), GoogleCloudDataplexV1AssetResourceSpecType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentNotebookKernelTypeInput)(nil)).Elem(), GoogleCloudDataplexV1ContentNotebookKernelType("KERNEL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentNotebookKernelTypePtrInput)(nil)).Elem(), GoogleCloudDataplexV1ContentNotebookKernelType("KERNEL_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentSqlScriptEngineInput)(nil)).Elem(), GoogleCloudDataplexV1ContentSqlScriptEngine("QUERY_ENGINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentSqlScriptEnginePtrInput)(nil)).Elem(), GoogleCloudDataplexV1ContentSqlScriptEngine("QUERY_ENGINE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("STATISTIC_UNDEFINED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic("STATISTIC_UNDEFINED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1SchemaPartitionFieldTypeInput)(nil)).Elem(), GoogleCloudDataplexV1SchemaPartitionFieldType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1SchemaPartitionFieldTypePtrInput)(nil)).Elem(), GoogleCloudDataplexV1SchemaPartitionFieldType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1SchemaPartitionStyleInput)(nil)).Elem(), GoogleCloudDataplexV1SchemaPartitionStyle("PARTITION_STYLE_UNSPECIFIED"))
@@ -2459,12 +2802,16 @@ func init() {
 	pulumi.RegisterOutputType(EntitySystemPtrOutput{})
 	pulumi.RegisterOutputType(EntityTypeOutput{})
 	pulumi.RegisterOutputType(EntityTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetResourceSpecReadAccessModeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetResourceSpecTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentNotebookKernelTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentSqlScriptEngineOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaPartitionStyleOutput{})

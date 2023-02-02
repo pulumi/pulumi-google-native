@@ -30,14 +30,18 @@ type LookupTableArgs struct {
 type LookupTableResult struct {
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
 	ClusterStates map[string]string `pulumi:"clusterStates"`
-	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
+	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+	DeletionProtection bool `pulumi:"deletionProtection"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity string `pulumi:"granularity"`
-	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 	Name string `pulumi:"name"`
 	// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
 	RestoreInfo RestoreInfoResponse `pulumi:"restoreInfo"`
+	// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+	Stats TableStatsResponse `pulumi:"stats"`
 }
 
 func LookupTableOutput(ctx *pulumi.Context, args LookupTableOutputArgs, opts ...pulumi.InvokeOption) LookupTableResultOutput {
@@ -83,9 +87,14 @@ func (o LookupTableResultOutput) ClusterStates() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTableResult) map[string]string { return v.ClusterStates }).(pulumi.StringMapOutput)
 }
 
-// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 func (o LookupTableResultOutput) ColumnFamilies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTableResult) map[string]string { return v.ColumnFamilies }).(pulumi.StringMapOutput)
+}
+
+// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+func (o LookupTableResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTableResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -93,7 +102,7 @@ func (o LookupTableResultOutput) Granularity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Granularity }).(pulumi.StringOutput)
 }
 
-// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 func (o LookupTableResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTableResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -101,6 +110,11 @@ func (o LookupTableResultOutput) Name() pulumi.StringOutput {
 // If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
 func (o LookupTableResultOutput) RestoreInfo() RestoreInfoResponseOutput {
 	return o.ApplyT(func(v LookupTableResult) RestoreInfoResponse { return v.RestoreInfo }).(RestoreInfoResponseOutput)
+}
+
+// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+func (o LookupTableResultOutput) Stats() TableStatsResponseOutput {
+	return o.ApplyT(func(v LookupTableResult) TableStatsResponse { return v.Stats }).(TableStatsResponseOutput)
 }
 
 func init() {

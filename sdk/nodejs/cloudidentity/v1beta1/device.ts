@@ -63,6 +63,10 @@ export class Device extends pulumi.CustomResource {
      */
     public /*out*/ readonly buildNumber!: pulumi.Output<string>;
     /**
+     * List of the clients the device is reporting to.
+     */
+    public readonly clientTypes!: pulumi.Output<string[]>;
+    /**
      * Represents whether the Device is compromised.
      */
     public /*out*/ readonly compromisedState!: pulumi.Output<string>;
@@ -94,6 +98,10 @@ export class Device extends pulumi.CustomResource {
      * Attributes specific to Endpoint Verification devices.
      */
     public /*out*/ readonly endpointVerificationSpecificAttributes!: pulumi.Output<outputs.cloudidentity.v1beta1.EndpointVerificationSpecificAttributesResponse>;
+    /**
+     * Host name of the device.
+     */
+    public readonly hostname!: pulumi.Output<string>;
     /**
      * IMEI number of device if GSM device; empty otherwise.
      */
@@ -171,7 +179,10 @@ export class Device extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["assetTag"] = args ? args.assetTag : undefined;
+            resourceInputs["clientTypes"] = args ? args.clientTypes : undefined;
+            resourceInputs["customer"] = args ? args.customer : undefined;
             resourceInputs["deviceId"] = args ? args.deviceId : undefined;
+            resourceInputs["hostname"] = args ? args.hostname : undefined;
             resourceInputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
             resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
             resourceInputs["wifiMacAddresses"] = args ? args.wifiMacAddresses : undefined;
@@ -207,6 +218,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["bootloaderVersion"] = undefined /*out*/;
             resourceInputs["brand"] = undefined /*out*/;
             resourceInputs["buildNumber"] = undefined /*out*/;
+            resourceInputs["clientTypes"] = undefined /*out*/;
             resourceInputs["compromisedState"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deviceId"] = undefined /*out*/;
@@ -215,6 +227,7 @@ export class Device extends pulumi.CustomResource {
             resourceInputs["enabledUsbDebugging"] = undefined /*out*/;
             resourceInputs["encryptionState"] = undefined /*out*/;
             resourceInputs["endpointVerificationSpecificAttributes"] = undefined /*out*/;
+            resourceInputs["hostname"] = undefined /*out*/;
             resourceInputs["imei"] = undefined /*out*/;
             resourceInputs["kernelVersion"] = undefined /*out*/;
             resourceInputs["lastSyncTime"] = undefined /*out*/;
@@ -246,9 +259,21 @@ export interface DeviceArgs {
      */
     assetTag?: pulumi.Input<string>;
     /**
+     * List of the clients the device is reporting to.
+     */
+    clientTypes?: pulumi.Input<pulumi.Input<enums.cloudidentity.v1beta1.DeviceClientTypesItem>[]>;
+    /**
+     * Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+     */
+    customer?: pulumi.Input<string>;
+    /**
      * Unique identifier for the device.
      */
     deviceId?: pulumi.Input<string>;
+    /**
+     * Host name of the device.
+     */
+    hostname?: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.
      */

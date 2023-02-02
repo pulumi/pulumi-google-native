@@ -742,6 +742,8 @@ func (o BiEngineReasonResponseArrayOutput) Index(i pulumi.IntInput) BiEngineReas
 
 type BiEngineStatisticsResponse struct {
 	// Specifies which mode of BI Engine acceleration was performed (if any).
+	AccelerationMode string `pulumi:"accelerationMode"`
+	// Specifies which mode of BI Engine acceleration was performed (if any).
 	BiEngineMode string `pulumi:"biEngineMode"`
 	// In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
 	BiEngineReasons []BiEngineReasonResponse `pulumi:"biEngineReasons"`
@@ -759,6 +761,11 @@ func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponseOutput() B
 
 func (o BiEngineStatisticsResponseOutput) ToBiEngineStatisticsResponseOutputWithContext(ctx context.Context) BiEngineStatisticsResponseOutput {
 	return o
+}
+
+// Specifies which mode of BI Engine acceleration was performed (if any).
+func (o BiEngineStatisticsResponseOutput) AccelerationMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BiEngineStatisticsResponse) string { return v.AccelerationMode }).(pulumi.StringOutput)
 }
 
 // Specifies which mode of BI Engine acceleration was performed (if any).
@@ -9765,6 +9772,8 @@ func (o JobStatusResponseOutput) State() pulumi.StringOutput {
 }
 
 type MaterializedViewDefinition struct {
+	// [Optional] Allow non incremental materialized view definition. The default value is "false".
+	AllowNonIncrementalDefinition *bool `pulumi:"allowNonIncrementalDefinition"`
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh *bool `pulumi:"enableRefresh"`
 	// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
@@ -9787,6 +9796,8 @@ type MaterializedViewDefinitionInput interface {
 }
 
 type MaterializedViewDefinitionArgs struct {
+	// [Optional] Allow non incremental materialized view definition. The default value is "false".
+	AllowNonIncrementalDefinition pulumi.BoolPtrInput `pulumi:"allowNonIncrementalDefinition"`
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh pulumi.BoolPtrInput `pulumi:"enableRefresh"`
 	// [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
@@ -9874,6 +9885,11 @@ func (o MaterializedViewDefinitionOutput) ToMaterializedViewDefinitionPtrOutputW
 	}).(MaterializedViewDefinitionPtrOutput)
 }
 
+// [Optional] Allow non incremental materialized view definition. The default value is "false".
+func (o MaterializedViewDefinitionOutput) AllowNonIncrementalDefinition() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MaterializedViewDefinition) *bool { return v.AllowNonIncrementalDefinition }).(pulumi.BoolPtrOutput)
+}
+
 // [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 func (o MaterializedViewDefinitionOutput) EnableRefresh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MaterializedViewDefinition) *bool { return v.EnableRefresh }).(pulumi.BoolPtrOutput)
@@ -9918,6 +9934,16 @@ func (o MaterializedViewDefinitionPtrOutput) Elem() MaterializedViewDefinitionOu
 	}).(MaterializedViewDefinitionOutput)
 }
 
+// [Optional] Allow non incremental materialized view definition. The default value is "false".
+func (o MaterializedViewDefinitionPtrOutput) AllowNonIncrementalDefinition() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MaterializedViewDefinition) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowNonIncrementalDefinition
+	}).(pulumi.BoolPtrOutput)
+}
+
 // [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 func (o MaterializedViewDefinitionPtrOutput) EnableRefresh() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MaterializedViewDefinition) *bool {
@@ -9959,6 +9985,8 @@ func (o MaterializedViewDefinitionPtrOutput) RefreshIntervalMs() pulumi.StringPt
 }
 
 type MaterializedViewDefinitionResponse struct {
+	// [Optional] Allow non incremental materialized view definition. The default value is "false".
+	AllowNonIncrementalDefinition bool `pulumi:"allowNonIncrementalDefinition"`
 	// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
 	EnableRefresh bool `pulumi:"enableRefresh"`
 	// [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
@@ -9983,6 +10011,11 @@ func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionRe
 
 func (o MaterializedViewDefinitionResponseOutput) ToMaterializedViewDefinitionResponseOutputWithContext(ctx context.Context) MaterializedViewDefinitionResponseOutput {
 	return o
+}
+
+// [Optional] Allow non incremental materialized view definition. The default value is "false".
+func (o MaterializedViewDefinitionResponseOutput) AllowNonIncrementalDefinition() pulumi.BoolOutput {
+	return o.ApplyT(func(v MaterializedViewDefinitionResponse) bool { return v.AllowNonIncrementalDefinition }).(pulumi.BoolOutput)
 }
 
 // [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -12988,7 +13021,7 @@ type SparkOptions struct {
 	FileUris []string `pulumi:"fileUris"`
 	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	JarUris []string `pulumi:"jarUris"`
-	// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 	MainFileUri *string `pulumi:"mainFileUri"`
 	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	Properties map[string]string `pulumi:"properties"`
@@ -13021,7 +13054,7 @@ type SparkOptionsArgs struct {
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	JarUris pulumi.StringArrayInput `pulumi:"jarUris"`
-	// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 	MainFileUri pulumi.StringPtrInput `pulumi:"mainFileUri"`
 	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -13134,7 +13167,7 @@ func (o SparkOptionsOutput) JarUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SparkOptions) []string { return v.JarUris }).(pulumi.StringArrayOutput)
 }
 
-// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 func (o SparkOptionsOutput) MainFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkOptions) *string { return v.MainFileUri }).(pulumi.StringPtrOutput)
 }
@@ -13228,7 +13261,7 @@ func (o SparkOptionsPtrOutput) JarUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 func (o SparkOptionsPtrOutput) MainFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkOptions) *string {
 		if v == nil {
@@ -13280,7 +13313,7 @@ type SparkOptionsResponse struct {
 	FileUris []string `pulumi:"fileUris"`
 	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	JarUris []string `pulumi:"jarUris"`
-	// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 	MainFileUri string `pulumi:"mainFileUri"`
 	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	Properties map[string]string `pulumi:"properties"`
@@ -13330,7 +13363,7 @@ func (o SparkOptionsResponseOutput) JarUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) []string { return v.JarUris }).(pulumi.StringArrayOutput)
 }
 
-// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
 func (o SparkOptionsResponseOutput) MainFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) string { return v.MainFileUri }).(pulumi.StringOutput)
 }

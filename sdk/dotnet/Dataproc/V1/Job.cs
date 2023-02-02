@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<string> DriverOutputResourceUri { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Driver scheduling configuration.
+        /// </summary>
+        [Output("driverSchedulingConfig")]
+        public Output<Outputs.DriverSchedulingConfigResponse> DriverSchedulingConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         [Output("hadoopJob")]
@@ -192,6 +198,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
     public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. Driver scheduling configuration.
+        /// </summary>
+        [Input("driverSchedulingConfig")]
+        public Input<Inputs.DriverSchedulingConfigArgs>? DriverSchedulingConfig { get; set; }
+
         /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>

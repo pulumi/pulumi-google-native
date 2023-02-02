@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
         /// </summary>
         public static AcceleratorAcceleratorType Healthcare { get; } = new AcceleratorAcceleratorType("HEALTHCARE");
+        /// <summary>
+        /// Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
+        /// </summary>
+        public static AcceleratorAcceleratorType CcaiInsights { get; } = new AcceleratorAcceleratorType("CCAI_INSIGHTS");
 
         public static bool operator ==(AcceleratorAcceleratorType left, AcceleratorAcceleratorType right) => left.Equals(right);
         public static bool operator !=(AcceleratorAcceleratorType left, AcceleratorAcceleratorType right) => !left.Equals(right);
@@ -41,6 +45,51 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is AcceleratorAcceleratorType other && Equals(other);
         public bool Equals(AcceleratorAcceleratorType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of the accelerator.
+    /// </summary>
+    [EnumType]
+    public readonly struct AcceleratorState : IEquatable<AcceleratorState>
+    {
+        private readonly string _value;
+
+        private AcceleratorState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, do not use.
+        /// </summary>
+        public static AcceleratorState StateUnspecified { get; } = new AcceleratorState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// Indicates that the accelerator is enabled and available to use.
+        /// </summary>
+        public static AcceleratorState Enabled { get; } = new AcceleratorState("ENABLED");
+        /// <summary>
+        /// Indicates that the accelerator is disabled and not available to use.
+        /// </summary>
+        public static AcceleratorState Disabled { get; } = new AcceleratorState("DISABLED");
+        /// <summary>
+        /// Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
+        /// </summary>
+        public static AcceleratorState Unknown { get; } = new AcceleratorState("UNKNOWN");
+
+        public static bool operator ==(AcceleratorState left, AcceleratorState right) => left.Equals(right);
+        public static bool operator !=(AcceleratorState left, AcceleratorState right) => !left.Equals(right);
+
+        public static explicit operator string(AcceleratorState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AcceleratorState other && Equals(other);
+        public bool Equals(AcceleratorState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

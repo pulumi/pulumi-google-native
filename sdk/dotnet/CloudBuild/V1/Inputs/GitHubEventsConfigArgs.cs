@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     public sealed class GitHubEventsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Input("enterpriseConfigResourceName")]
         public Input<string>? EnterpriseConfigResourceName { get; set; }

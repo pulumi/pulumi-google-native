@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.File.V1Beta1
 {
     /// <summary>
+    /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceProtocol : IEquatable<InstanceProtocol>
+    {
+        private readonly string _value;
+
+        private InstanceProtocol(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// FILE_PROTOCOL_UNSPECIFIED serves a "not set" default value when a FileProtocol is a separate field in a message.
+        /// </summary>
+        public static InstanceProtocol FileProtocolUnspecified { get; } = new InstanceProtocol("FILE_PROTOCOL_UNSPECIFIED");
+        /// <summary>
+        /// NFS 3.0.
+        /// </summary>
+        public static InstanceProtocol NfsV3 { get; } = new InstanceProtocol("NFS_V3");
+        /// <summary>
+        /// NFS 4.1.
+        /// </summary>
+        public static InstanceProtocol NfsV41 { get; } = new InstanceProtocol("NFS_V4_1");
+
+        public static bool operator ==(InstanceProtocol left, InstanceProtocol right) => left.Equals(right);
+        public static bool operator !=(InstanceProtocol left, InstanceProtocol right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceProtocol value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceProtocol other && Equals(other);
+        public bool Equals(InstanceProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The service tier of the instance.
     /// </summary>
     [EnumType]

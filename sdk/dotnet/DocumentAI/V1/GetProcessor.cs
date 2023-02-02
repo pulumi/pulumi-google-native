@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         /// </summary>
         public readonly string Type;
 

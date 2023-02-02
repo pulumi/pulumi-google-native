@@ -89,6 +89,8 @@ if typing.TYPE_CHECKING:
     config = __config
     import pulumi_google_native.connectors as __connectors
     connectors = __connectors
+    import pulumi_google_native.contactcenteraiplatform as __contactcenteraiplatform
+    contactcenteraiplatform = __contactcenteraiplatform
     import pulumi_google_native.contactcenterinsights as __contactcenterinsights
     contactcenterinsights = __contactcenterinsights
     import pulumi_google_native.container as __container
@@ -101,6 +103,8 @@ if typing.TYPE_CHECKING:
     datacatalog = __datacatalog
     import pulumi_google_native.dataflow as __dataflow
     dataflow = __dataflow
+    import pulumi_google_native.dataform as __dataform
+    dataform = __dataform
     import pulumi_google_native.datafusion as __datafusion
     datafusion = __datafusion
     import pulumi_google_native.datalabeling as __datalabeling
@@ -121,6 +125,8 @@ if typing.TYPE_CHECKING:
     deploymentmanager = __deploymentmanager
     import pulumi_google_native.dialogflow as __dialogflow
     dialogflow = __dialogflow
+    import pulumi_google_native.discoveryengine as __discoveryengine
+    discoveryengine = __discoveryengine
     import pulumi_google_native.dlp as __dlp
     dlp = __dlp
     import pulumi_google_native.dns as __dns
@@ -263,6 +269,10 @@ if typing.TYPE_CHECKING:
     workflowexecutions = __workflowexecutions
     import pulumi_google_native.workflows as __workflows
     workflows = __workflows
+    import pulumi_google_native.workloadmanager as __workloadmanager
+    workloadmanager = __workloadmanager
+    import pulumi_google_native.workstations as __workstations
+    workstations = __workstations
 else:
     accesscontextmanager = _utilities.lazy_import('pulumi_google_native.accesscontextmanager')
     analyticshub = _utilities.lazy_import('pulumi_google_native.analyticshub')
@@ -304,12 +314,14 @@ else:
     compute = _utilities.lazy_import('pulumi_google_native.compute')
     config = _utilities.lazy_import('pulumi_google_native.config')
     connectors = _utilities.lazy_import('pulumi_google_native.connectors')
+    contactcenteraiplatform = _utilities.lazy_import('pulumi_google_native.contactcenteraiplatform')
     contactcenterinsights = _utilities.lazy_import('pulumi_google_native.contactcenterinsights')
     container = _utilities.lazy_import('pulumi_google_native.container')
     containeranalysis = _utilities.lazy_import('pulumi_google_native.containeranalysis')
     contentwarehouse = _utilities.lazy_import('pulumi_google_native.contentwarehouse')
     datacatalog = _utilities.lazy_import('pulumi_google_native.datacatalog')
     dataflow = _utilities.lazy_import('pulumi_google_native.dataflow')
+    dataform = _utilities.lazy_import('pulumi_google_native.dataform')
     datafusion = _utilities.lazy_import('pulumi_google_native.datafusion')
     datalabeling = _utilities.lazy_import('pulumi_google_native.datalabeling')
     datamigration = _utilities.lazy_import('pulumi_google_native.datamigration')
@@ -320,6 +332,7 @@ else:
     datastream = _utilities.lazy_import('pulumi_google_native.datastream')
     deploymentmanager = _utilities.lazy_import('pulumi_google_native.deploymentmanager')
     dialogflow = _utilities.lazy_import('pulumi_google_native.dialogflow')
+    discoveryengine = _utilities.lazy_import('pulumi_google_native.discoveryengine')
     dlp = _utilities.lazy_import('pulumi_google_native.dlp')
     dns = _utilities.lazy_import('pulumi_google_native.dns')
     documentai = _utilities.lazy_import('pulumi_google_native.documentai')
@@ -391,6 +404,8 @@ else:
     websecurityscanner = _utilities.lazy_import('pulumi_google_native.websecurityscanner')
     workflowexecutions = _utilities.lazy_import('pulumi_google_native.workflowexecutions')
     workflows = _utilities.lazy_import('pulumi_google_native.workflows')
+    workloadmanager = _utilities.lazy_import('pulumi_google_native.workloadmanager')
+    workstations = _utilities.lazy_import('pulumi_google_native.workstations')
 
 _utilities.register(
     resource_modules="""
@@ -405,6 +420,7 @@ _utilities.register(
    "google-native:accesscontextmanager/v1:AccessPolicyIamBinding": "AccessPolicyIamBinding",
    "google-native:accesscontextmanager/v1:AccessPolicyIamMember": "AccessPolicyIamMember",
    "google-native:accesscontextmanager/v1:AccessPolicyIamPolicy": "AccessPolicyIamPolicy",
+   "google-native:accesscontextmanager/v1:AuthorizedOrgsDesc": "AuthorizedOrgsDesc",
    "google-native:accesscontextmanager/v1:GcpUserAccessBinding": "GcpUserAccessBinding",
    "google-native:accesscontextmanager/v1:ServicePerimeter": "ServicePerimeter"
   }
@@ -689,13 +705,7 @@ _utilities.register(
    "google-native:batch/v1:Job": "Job",
    "google-native:batch/v1:JobIamBinding": "JobIamBinding",
    "google-native:batch/v1:JobIamMember": "JobIamMember",
-   "google-native:batch/v1:JobIamPolicy": "JobIamPolicy",
-   "google-native:batch/v1:NodeIamBinding": "NodeIamBinding",
-   "google-native:batch/v1:NodeIamMember": "NodeIamMember",
-   "google-native:batch/v1:NodeIamPolicy": "NodeIamPolicy",
-   "google-native:batch/v1:TaskIamBinding": "TaskIamBinding",
-   "google-native:batch/v1:TaskIamMember": "TaskIamMember",
-   "google-native:batch/v1:TaskIamPolicy": "TaskIamPolicy"
+   "google-native:batch/v1:JobIamPolicy": "JobIamPolicy"
   }
  },
  {
@@ -1035,6 +1045,8 @@ _utilities.register(
   "classes": {
    "google-native:cloudidentity/v1:Device": "Device",
    "google-native:cloudidentity/v1:Group": "Group",
+   "google-native:cloudidentity/v1:InboundSamlSsoProfile": "InboundSamlSsoProfile",
+   "google-native:cloudidentity/v1:InboundSsoAssignment": "InboundSsoAssignment",
    "google-native:cloudidentity/v1:Membership": "Membership"
   }
  },
@@ -1486,6 +1498,10 @@ _utilities.register(
    "google-native:compute/beta:MachineImageIamMember": "MachineImageIamMember",
    "google-native:compute/beta:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/beta:Network": "Network",
+   "google-native:compute/beta:NetworkAttachment": "NetworkAttachment",
+   "google-native:compute/beta:NetworkAttachmentIamBinding": "NetworkAttachmentIamBinding",
+   "google-native:compute/beta:NetworkAttachmentIamMember": "NetworkAttachmentIamMember",
+   "google-native:compute/beta:NetworkAttachmentIamPolicy": "NetworkAttachmentIamPolicy",
    "google-native:compute/beta:NetworkEdgeSecurityService": "NetworkEdgeSecurityService",
    "google-native:compute/beta:NetworkEndpointGroup": "NetworkEndpointGroup",
    "google-native:compute/beta:NetworkFirewallPolicy": "NetworkFirewallPolicy",
@@ -1623,6 +1639,10 @@ _utilities.register(
    "google-native:compute/v1:MachineImageIamMember": "MachineImageIamMember",
    "google-native:compute/v1:MachineImageIamPolicy": "MachineImageIamPolicy",
    "google-native:compute/v1:Network": "Network",
+   "google-native:compute/v1:NetworkAttachment": "NetworkAttachment",
+   "google-native:compute/v1:NetworkAttachmentIamBinding": "NetworkAttachmentIamBinding",
+   "google-native:compute/v1:NetworkAttachmentIamMember": "NetworkAttachmentIamMember",
+   "google-native:compute/v1:NetworkAttachmentIamPolicy": "NetworkAttachmentIamPolicy",
    "google-native:compute/v1:NetworkEdgeSecurityService": "NetworkEdgeSecurityService",
    "google-native:compute/v1:NetworkEndpointGroup": "NetworkEndpointGroup",
    "google-native:compute/v1:NetworkFirewallPolicy": "NetworkFirewallPolicy",
@@ -1724,6 +1744,14 @@ _utilities.register(
   "fqn": "pulumi_google_native.connectors.v2",
   "classes": {
    "google-native:connectors/v2:Entity": "Entity"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "contactcenteraiplatform/v1alpha1",
+  "fqn": "pulumi_google_native.contactcenteraiplatform.v1alpha1",
+  "classes": {
+   "google-native:contactcenteraiplatform/v1alpha1:ContactCenter": "ContactCenter"
   }
  },
  {
@@ -1874,6 +1902,19 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "dataform/v1beta1",
+  "fqn": "pulumi_google_native.dataform.v1beta1",
+  "classes": {
+   "google-native:dataform/v1beta1:CompilationResult": "CompilationResult",
+   "google-native:dataform/v1beta1:ReleaseConfig": "ReleaseConfig",
+   "google-native:dataform/v1beta1:Repository": "Repository",
+   "google-native:dataform/v1beta1:WorkflowConfig": "WorkflowConfig",
+   "google-native:dataform/v1beta1:WorkflowInvocation": "WorkflowInvocation",
+   "google-native:dataform/v1beta1:Workspace": "Workspace"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "datafusion/v1",
   "fqn": "pulumi_google_native.datafusion.v1",
   "classes": {
@@ -1918,10 +1959,12 @@ _utilities.register(
    "google-native:datamigration/v1:ConnectionProfileIamBinding": "ConnectionProfileIamBinding",
    "google-native:datamigration/v1:ConnectionProfileIamMember": "ConnectionProfileIamMember",
    "google-native:datamigration/v1:ConnectionProfileIamPolicy": "ConnectionProfileIamPolicy",
+   "google-native:datamigration/v1:ConversionWorkspace": "ConversionWorkspace",
    "google-native:datamigration/v1:MigrationJob": "MigrationJob",
    "google-native:datamigration/v1:MigrationJobIamBinding": "MigrationJobIamBinding",
    "google-native:datamigration/v1:MigrationJobIamMember": "MigrationJobIamMember",
-   "google-native:datamigration/v1:MigrationJobIamPolicy": "MigrationJobIamPolicy"
+   "google-native:datamigration/v1:MigrationJobIamPolicy": "MigrationJobIamPolicy",
+   "google-native:datamigration/v1:PrivateConnection": "PrivateConnection"
   }
  },
  {
@@ -1953,8 +1996,24 @@ _utilities.register(
   "fqn": "pulumi_google_native.dataplex.v1",
   "classes": {
    "google-native:dataplex/v1:Asset": "Asset",
+   "google-native:dataplex/v1:Attribute": "Attribute",
    "google-native:dataplex/v1:Content": "Content",
    "google-native:dataplex/v1:Contentitem": "Contentitem",
+   "google-native:dataplex/v1:DataAttributeBinding": "DataAttributeBinding",
+   "google-native:dataplex/v1:DataAttributeBindingIamBinding": "DataAttributeBindingIamBinding",
+   "google-native:dataplex/v1:DataAttributeBindingIamMember": "DataAttributeBindingIamMember",
+   "google-native:dataplex/v1:DataAttributeBindingIamPolicy": "DataAttributeBindingIamPolicy",
+   "google-native:dataplex/v1:DataScan": "DataScan",
+   "google-native:dataplex/v1:DataScanIamBinding": "DataScanIamBinding",
+   "google-native:dataplex/v1:DataScanIamMember": "DataScanIamMember",
+   "google-native:dataplex/v1:DataScanIamPolicy": "DataScanIamPolicy",
+   "google-native:dataplex/v1:DataTaxonomy": "DataTaxonomy",
+   "google-native:dataplex/v1:DataTaxonomyAttributeIamBinding": "DataTaxonomyAttributeIamBinding",
+   "google-native:dataplex/v1:DataTaxonomyAttributeIamMember": "DataTaxonomyAttributeIamMember",
+   "google-native:dataplex/v1:DataTaxonomyAttributeIamPolicy": "DataTaxonomyAttributeIamPolicy",
+   "google-native:dataplex/v1:DataTaxonomyIamBinding": "DataTaxonomyIamBinding",
+   "google-native:dataplex/v1:DataTaxonomyIamMember": "DataTaxonomyIamMember",
+   "google-native:dataplex/v1:DataTaxonomyIamPolicy": "DataTaxonomyIamPolicy",
    "google-native:dataplex/v1:Entity": "Entity",
    "google-native:dataplex/v1:Environment": "Environment",
    "google-native:dataplex/v1:Lake": "Lake",
@@ -1996,6 +2055,7 @@ _utilities.register(
    "google-native:dataproc/v1:Batch": "Batch",
    "google-native:dataproc/v1:Cluster": "Cluster",
    "google-native:dataproc/v1:Job": "Job",
+   "google-native:dataproc/v1:NodeGroup": "NodeGroup",
    "google-native:dataproc/v1:RegionAutoscalingPolicyIamBinding": "RegionAutoscalingPolicyIamBinding",
    "google-native:dataproc/v1:RegionAutoscalingPolicyIamMember": "RegionAutoscalingPolicyIamMember",
    "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy": "RegionAutoscalingPolicyIamPolicy",
@@ -2193,6 +2253,22 @@ _utilities.register(
    "google-native:dialogflow/v3beta1:TransitionRouteGroup": "TransitionRouteGroup",
    "google-native:dialogflow/v3beta1:Version": "Version",
    "google-native:dialogflow/v3beta1:Webhook": "Webhook"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "discoveryengine/v1alpha",
+  "fqn": "pulumi_google_native.discoveryengine.v1alpha",
+  "classes": {
+   "google-native:discoveryengine/v1alpha:Document": "Document"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "discoveryengine/v1beta",
+  "fqn": "pulumi_google_native.discoveryengine.v1beta",
+  "classes": {
+   "google-native:discoveryengine/v1beta:Document": "Document"
   }
  },
  {
@@ -2824,6 +2900,26 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "metastore/v1",
+  "fqn": "pulumi_google_native.metastore.v1",
+  "classes": {
+   "google-native:metastore/v1:Backup": "Backup",
+   "google-native:metastore/v1:Federation": "Federation",
+   "google-native:metastore/v1:FederationIamBinding": "FederationIamBinding",
+   "google-native:metastore/v1:FederationIamMember": "FederationIamMember",
+   "google-native:metastore/v1:FederationIamPolicy": "FederationIamPolicy",
+   "google-native:metastore/v1:MetadataImport": "MetadataImport",
+   "google-native:metastore/v1:Service": "Service",
+   "google-native:metastore/v1:ServiceBackupIamBinding": "ServiceBackupIamBinding",
+   "google-native:metastore/v1:ServiceBackupIamMember": "ServiceBackupIamMember",
+   "google-native:metastore/v1:ServiceBackupIamPolicy": "ServiceBackupIamPolicy",
+   "google-native:metastore/v1:ServiceIamBinding": "ServiceIamBinding",
+   "google-native:metastore/v1:ServiceIamMember": "ServiceIamMember",
+   "google-native:metastore/v1:ServiceIamPolicy": "ServiceIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "metastore/v1alpha",
   "fqn": "pulumi_google_native.metastore.v1alpha",
   "classes": {
@@ -2911,6 +3007,7 @@ _utilities.register(
    "google-native:monitoring/v3:NotificationChannel": "NotificationChannel",
    "google-native:monitoring/v3:Service": "Service",
    "google-native:monitoring/v3:ServiceLevelObjective": "ServiceLevelObjective",
+   "google-native:monitoring/v3:Snooze": "Snooze",
    "google-native:monitoring/v3:UptimeCheckConfig": "UptimeCheckConfig"
   }
  },
@@ -2951,18 +3048,10 @@ _utilities.register(
    "google-native:networkconnectivity/v1alpha1:HubIamBinding": "HubIamBinding",
    "google-native:networkconnectivity/v1alpha1:HubIamMember": "HubIamMember",
    "google-native:networkconnectivity/v1alpha1:HubIamPolicy": "HubIamPolicy",
+   "google-native:networkconnectivity/v1alpha1:InternalRange": "InternalRange",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamBinding": "InternalRangeIamBinding",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamMember": "InternalRangeIamMember",
    "google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy": "InternalRangeIamPolicy",
-   "google-native:networkconnectivity/v1alpha1:ServiceClassIamBinding": "ServiceClassIamBinding",
-   "google-native:networkconnectivity/v1alpha1:ServiceClassIamMember": "ServiceClassIamMember",
-   "google-native:networkconnectivity/v1alpha1:ServiceClassIamPolicy": "ServiceClassIamPolicy",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamBinding": "ServiceConnectionMapIamBinding",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamMember": "ServiceConnectionMapIamMember",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectionMapIamPolicy": "ServiceConnectionMapIamPolicy",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamBinding": "ServiceConnectionPolicyIamBinding",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamMember": "ServiceConnectionPolicyIamMember",
-   "google-native:networkconnectivity/v1alpha1:ServiceConnectionPolicyIamPolicy": "ServiceConnectionPolicyIamPolicy",
    "google-native:networkconnectivity/v1alpha1:Spoke": "Spoke",
    "google-native:networkconnectivity/v1alpha1:SpokeIamBinding": "SpokeIamBinding",
    "google-native:networkconnectivity/v1alpha1:SpokeIamMember": "SpokeIamMember",
@@ -3015,6 +3104,9 @@ _utilities.register(
   "mod": "networksecurity/v1beta1",
   "fqn": "pulumi_google_native.networksecurity.v1beta1",
   "classes": {
+   "google-native:networksecurity/v1beta1:AddressGroupIamBinding": "AddressGroupIamBinding",
+   "google-native:networksecurity/v1beta1:AddressGroupIamMember": "AddressGroupIamMember",
+   "google-native:networksecurity/v1beta1:AddressGroupIamPolicy": "AddressGroupIamPolicy",
    "google-native:networksecurity/v1beta1:AuthorizationPolicy": "AuthorizationPolicy",
    "google-native:networksecurity/v1beta1:AuthorizationPolicyIamBinding": "AuthorizationPolicyIamBinding",
    "google-native:networksecurity/v1beta1:AuthorizationPolicyIamMember": "AuthorizationPolicyIamMember",
@@ -3648,7 +3740,8 @@ _utilities.register(
   "mod": "tpu/v2alpha1",
   "fqn": "pulumi_google_native.tpu.v2alpha1",
   "classes": {
-   "google-native:tpu/v2alpha1:Node": "Node"
+   "google-native:tpu/v2alpha1:Node": "Node",
+   "google-native:tpu/v2alpha1:QueuedResource": "QueuedResource"
   }
  },
  {
@@ -3665,8 +3758,10 @@ _utilities.register(
   "mod": "translate/v3",
   "fqn": "pulumi_google_native.translate.v3",
   "classes": {
+   "google-native:translate/v3:Dataset": "Dataset",
    "google-native:translate/v3:Glossary": "Glossary",
-   "google-native:translate/v3:GlossaryEntry": "GlossaryEntry"
+   "google-native:translate/v3:GlossaryEntry": "GlossaryEntry",
+   "google-native:translate/v3:Model": "Model"
   }
  },
  {
@@ -3779,6 +3874,30 @@ _utilities.register(
   "fqn": "pulumi_google_native.workflows.v1beta",
   "classes": {
    "google-native:workflows/v1beta:Workflow": "Workflow"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "workloadmanager/v1",
+  "fqn": "pulumi_google_native.workloadmanager.v1",
+  "classes": {
+   "google-native:workloadmanager/v1:Evaluation": "Evaluation"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "workstations/v1beta",
+  "fqn": "pulumi_google_native.workstations.v1beta",
+  "classes": {
+   "google-native:workstations/v1beta:Workstation": "Workstation",
+   "google-native:workstations/v1beta:WorkstationCluster": "WorkstationCluster",
+   "google-native:workstations/v1beta:WorkstationClusterWorkstationConfigIamBinding": "WorkstationClusterWorkstationConfigIamBinding",
+   "google-native:workstations/v1beta:WorkstationClusterWorkstationConfigIamMember": "WorkstationClusterWorkstationConfigIamMember",
+   "google-native:workstations/v1beta:WorkstationClusterWorkstationConfigIamPolicy": "WorkstationClusterWorkstationConfigIamPolicy",
+   "google-native:workstations/v1beta:WorkstationClusterWorkstationConfigWorkstationIamBinding": "WorkstationClusterWorkstationConfigWorkstationIamBinding",
+   "google-native:workstations/v1beta:WorkstationClusterWorkstationConfigWorkstationIamMember": "WorkstationClusterWorkstationConfigWorkstationIamMember",
+   "google-native:workstations/v1beta:WorkstationClusterWorkstationConfigWorkstationIamPolicy": "WorkstationClusterWorkstationConfigWorkstationIamPolicy",
+   "google-native:workstations/v1beta:WorkstationConfig": "WorkstationConfig"
   }
  }
 ]

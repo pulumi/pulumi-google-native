@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = ['AnalysisArgs', 'Analysis']
 
@@ -16,14 +17,18 @@ __all__ = ['AnalysisArgs', 'Analysis']
 class AnalysisArgs:
     def __init__(__self__, *,
                  conversation_id: pulumi.Input[str],
+                 annotator_selector: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Analysis resource.
+        :param pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs'] annotator_selector: To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
         :param pulumi.Input[str] name: Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
         """
         pulumi.set(__self__, "conversation_id", conversation_id)
+        if annotator_selector is not None:
+            pulumi.set(__self__, "annotator_selector", annotator_selector)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -39,6 +44,18 @@ class AnalysisArgs:
     @conversation_id.setter
     def conversation_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "conversation_id", value)
+
+    @property
+    @pulumi.getter(name="annotatorSelector")
+    def annotator_selector(self) -> Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']]:
+        """
+        To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        """
+        return pulumi.get(self, "annotator_selector")
+
+    @annotator_selector.setter
+    def annotator_selector(self, value: Optional[pulumi.Input['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']]):
+        pulumi.set(self, "annotator_selector", value)
 
     @property
     @pulumi.getter
@@ -76,6 +93,7 @@ class Analysis(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotator_selector: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']]] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -86,6 +104,7 @@ class Analysis(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']] annotator_selector: To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
         :param pulumi.Input[str] name: Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
         """
         ...
@@ -112,6 +131,7 @@ class Analysis(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotator_selector: Optional[pulumi.Input[pulumi.InputType['GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs']]] = None,
                  conversation_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -125,6 +145,7 @@ class Analysis(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AnalysisArgs.__new__(AnalysisArgs)
 
+            __props__.__dict__["annotator_selector"] = annotator_selector
             if conversation_id is None and not opts.urn:
                 raise TypeError("Missing required property 'conversation_id'")
             __props__.__dict__["conversation_id"] = conversation_id
@@ -159,6 +180,7 @@ class Analysis(pulumi.CustomResource):
         __props__ = AnalysisArgs.__new__(AnalysisArgs)
 
         __props__.__dict__["analysis_result"] = None
+        __props__.__dict__["annotator_selector"] = None
         __props__.__dict__["conversation_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["location"] = None
@@ -174,6 +196,14 @@ class Analysis(pulumi.CustomResource):
         The result of the analysis, which is populated when the analysis finishes.
         """
         return pulumi.get(self, "analysis_result")
+
+    @property
+    @pulumi.getter(name="annotatorSelector")
+    def annotator_selector(self) -> pulumi.Output['outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse']:
+        """
+        To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        """
+        return pulumi.get(self, "annotator_selector")
 
     @property
     @pulumi.getter(name="conversationId")

@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+        /// </summary>
+        [Input("readAccessMode")]
+        public Input<Pulumi.GoogleNative.Dataplex.V1.GoogleCloudDataplexV1AssetResourceSpecReadAccessMode>? ReadAccessMode { get; set; }
+
+        /// <summary>
         /// Immutable. Type of resource.
         /// </summary>
         [Input("type", required: true)]

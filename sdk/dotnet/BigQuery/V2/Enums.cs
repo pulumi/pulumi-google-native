@@ -150,6 +150,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// This entry applies to views in the dataset.
         /// </summary>
         public static DatasetAccessEntryTargetTypesItem Views { get; } = new DatasetAccessEntryTargetTypesItem("VIEWS");
+        /// <summary>
+        /// This entry applies to routines in the dataset.
+        /// </summary>
+        public static DatasetAccessEntryTargetTypesItem Routines { get; } = new DatasetAccessEntryTargetTypesItem("ROUTINES");
 
         public static bool operator ==(DatasetAccessEntryTargetTypesItem left, DatasetAccessEntryTargetTypesItem right) => left.Equals(right);
         public static bool operator !=(DatasetAccessEntryTargetTypesItem left, DatasetAccessEntryTargetTypesItem right) => !left.Equals(right);
@@ -208,7 +212,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
     /// <summary>
-    /// Optional. Defaults to "SQL".
+    /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
     /// </summary>
     [EnumType]
     public readonly struct RoutineLanguage : IEquatable<RoutineLanguage>

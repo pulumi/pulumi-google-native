@@ -21,10 +21,14 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:translate/v3:Dataset":
+		r = &Dataset{}
 	case "google-native:translate/v3:Glossary":
 		r = &Glossary{}
 	case "google-native:translate/v3:GlossaryEntry":
 		r = &GlossaryEntry{}
+	case "google-native:translate/v3:Model":
+		r = &Model{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

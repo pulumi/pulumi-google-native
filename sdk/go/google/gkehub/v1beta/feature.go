@@ -21,6 +21,8 @@ type Feature struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// The ID of the feature to create.
 	FeatureId pulumi.StringPtrOutput `pulumi:"featureId"`
+	// Optional. Feature configuration applicable to all memberships of the fleet.
+	FleetDefaultMemberConfig CommonFleetDefaultMemberConfigSpecResponseOutput `pulumi:"fleetDefaultMemberConfig"`
 	// GCP labels for this Feature.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -93,6 +95,8 @@ func (FeatureState) ElementType() reflect.Type {
 type featureArgs struct {
 	// The ID of the feature to create.
 	FeatureId *string `pulumi:"featureId"`
+	// Optional. Feature configuration applicable to all memberships of the fleet.
+	FleetDefaultMemberConfig *CommonFleetDefaultMemberConfigSpec `pulumi:"fleetDefaultMemberConfig"`
 	// GCP labels for this Feature.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -111,6 +115,8 @@ type featureArgs struct {
 type FeatureArgs struct {
 	// The ID of the feature to create.
 	FeatureId pulumi.StringPtrInput
+	// Optional. Feature configuration applicable to all memberships of the fleet.
+	FleetDefaultMemberConfig CommonFleetDefaultMemberConfigSpecPtrInput
 	// GCP labels for this Feature.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -175,6 +181,11 @@ func (o FeatureOutput) DeleteTime() pulumi.StringOutput {
 // The ID of the feature to create.
 func (o FeatureOutput) FeatureId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Feature) pulumi.StringPtrOutput { return v.FeatureId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Feature configuration applicable to all memberships of the fleet.
+func (o FeatureOutput) FleetDefaultMemberConfig() CommonFleetDefaultMemberConfigSpecResponseOutput {
+	return o.ApplyT(func(v *Feature) CommonFleetDefaultMemberConfigSpecResponseOutput { return v.FleetDefaultMemberConfig }).(CommonFleetDefaultMemberConfigSpecResponseOutput)
 }
 
 // GCP labels for this Feature.

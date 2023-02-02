@@ -5,9 +5,25 @@
 from enum import Enum
 
 __all__ = [
+    'CapacityCommitmentEdition',
     'CapacityCommitmentPlan',
     'CapacityCommitmentRenewalPlan',
+    'ReservationEdition',
 ]
+
+
+class CapacityCommitmentEdition(str, Enum):
+    """
+    Edition of the capacity commitment.
+    """
+    EDITION_UNSPECIFIED = "EDITION_UNSPECIFIED"
+    """
+    Default value, only for legacy reservations and capacity commitments.
+    """
+    ENTERPRISE = "ENTERPRISE"
+    """
+    Enterprise edition.
+    """
 
 
 class CapacityCommitmentPlan(str, Enum):
@@ -34,6 +50,10 @@ class CapacityCommitmentPlan(str, Enum):
     """
     Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
     """
+    NONE = "NONE"
+    """
+    Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+    """
 
 
 class CapacityCommitmentRenewalPlan(str, Enum):
@@ -59,4 +79,22 @@ class CapacityCommitmentRenewalPlan(str, Enum):
     ANNUAL = "ANNUAL"
     """
     Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+    """
+    NONE = "NONE"
+    """
+    Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+    """
+
+
+class ReservationEdition(str, Enum):
+    """
+    Edition of the reservation.
+    """
+    EDITION_UNSPECIFIED = "EDITION_UNSPECIFIED"
+    """
+    Default value, only for legacy reservations and capacity commitments.
+    """
+    ENTERPRISE = "ENTERPRISE"
+    """
+    Enterprise edition.
     """

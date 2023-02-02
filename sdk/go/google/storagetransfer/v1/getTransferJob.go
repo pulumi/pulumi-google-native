@@ -32,6 +32,8 @@ type LookupTransferJobResult struct {
 	DeletionTime string `pulumi:"deletionTime"`
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description string `pulumi:"description"`
+	// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+	EventStream EventStreamResponse `pulumi:"eventStream"`
 	// The time that the transfer job was last modified.
 	LastModificationTime string `pulumi:"lastModificationTime"`
 	// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
@@ -101,6 +103,11 @@ func (o LookupTransferJobResultOutput) DeletionTime() pulumi.StringOutput {
 // A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 func (o LookupTransferJobResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTransferJobResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+func (o LookupTransferJobResultOutput) EventStream() EventStreamResponseOutput {
+	return o.ApplyT(func(v LookupTransferJobResult) EventStreamResponse { return v.EventStream }).(EventStreamResponseOutput)
 }
 
 // The time that the transfer job was last modified.

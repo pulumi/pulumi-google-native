@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

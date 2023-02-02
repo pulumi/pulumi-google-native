@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2DictionaryResponse Dictionary;
         /// <summary>
+        /// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+        /// </summary>
+        public readonly Outputs.GooglePrivacyDlpV2ExcludeByHotwordResponse ExcludeByHotword;
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2ExcludeInfoTypesResponse ExcludeInfoTypes;
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         private GooglePrivacyDlpV2ExclusionRuleResponse(
             Outputs.GooglePrivacyDlpV2DictionaryResponse dictionary,
 
+            Outputs.GooglePrivacyDlpV2ExcludeByHotwordResponse excludeByHotword,
+
             Outputs.GooglePrivacyDlpV2ExcludeInfoTypesResponse excludeInfoTypes,
 
             string matchingType,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
             Outputs.GooglePrivacyDlpV2RegexResponse regex)
         {
             Dictionary = dictionary;
+            ExcludeByHotword = excludeByHotword;
             ExcludeInfoTypes = excludeInfoTypes;
             MatchingType = matchingType;
             Regex = regex;

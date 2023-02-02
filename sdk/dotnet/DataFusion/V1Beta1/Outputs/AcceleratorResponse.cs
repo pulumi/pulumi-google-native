@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Outputs
         /// The type of an accelator for a CDF instance.
         /// </summary>
         public readonly string AcceleratorType;
+        /// <summary>
+        /// The state of the accelerator.
+        /// </summary>
+        public readonly string State;
 
         [OutputConstructor]
-        private AcceleratorResponse(string acceleratorType)
+        private AcceleratorResponse(
+            string acceleratorType,
+
+            string state)
         {
             AcceleratorType = acceleratorType;
+            State = state;
         }
     }
 }

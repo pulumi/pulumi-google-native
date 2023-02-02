@@ -68,6 +68,22 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// A service, for example, a Dataproc Metastore service.
         /// </summary>
         public static EntryType Service { get; } = new EntryType("SERVICE");
+        /// <summary>
+        /// Schema within a relational database.
+        /// </summary>
+        public static EntryType DatabaseSchema { get; } = new EntryType("DATABASE_SCHEMA");
+        /// <summary>
+        /// A Dashboard, for example from Looker.
+        /// </summary>
+        public static EntryType Dashboard { get; } = new EntryType("DASHBOARD");
+        /// <summary>
+        /// A Looker Explore. For more information, see [Looker Explore API] (https://developers.looker.com/api/explorer/4.0/methods/LookmlModel/lookml_model_explore).
+        /// </summary>
+        public static EntryType Explore { get; } = new EntryType("EXPLORE");
+        /// <summary>
+        /// A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
+        /// </summary>
+        public static EntryType Look { get; } = new EntryType("LOOK");
 
         public static bool operator ==(EntryType left, EntryType right) => left.Equals(right);
         public static bool operator !=(EntryType left, EntryType right) => !left.Equals(right);
@@ -77,6 +93,149 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is EntryType other && Equals(other);
         public bool Equals(EntryType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. Most important inclusion of this column.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType : IEquatable<GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType IndexingTypeUnspecified { get; } = new GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Column not a part of an index.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType IndexingTypeNone { get; } = new GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_NONE");
+        /// <summary>
+        /// Column Part of non unique index.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType IndexingTypeNonUnique { get; } = new GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_NON_UNIQUE");
+        /// <summary>
+        /// Column part of unique index.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType IndexingTypeUnique { get; } = new GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_UNIQUE");
+        /// <summary>
+        /// Column part of the primary key.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType IndexingTypePrimaryKey { get; } = new GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_PRIMARY_KEY");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType left, GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType left, GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Looker specific column type of this column.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType : IEquatable<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType LookerColumnTypeUnspecified { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("LOOKER_COLUMN_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Dimension.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Dimension { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("DIMENSION");
+        /// <summary>
+        /// Dimension group - parent for Dimension.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType DimensionGroup { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("DIMENSION_GROUP");
+        /// <summary>
+        /// Filter.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Filter { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("FILTER");
+        /// <summary>
+        /// Measure.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Measure { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("MEASURE");
+        /// <summary>
+        /// Parameter.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType Paremeter { get; } = new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PAREMETER");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType left, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType left, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of this view.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType : IEquatable<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default unknown view type.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType ViewTypeUnspecified { get; } = new GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("VIEW_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Standard view.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType StandardView { get; } = new GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("STANDARD_VIEW");
+        /// <summary>
+        /// Materialized view.
+        /// </summary>
+        public static GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType MaterializedView { get; } = new GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("MATERIALIZED_VIEW");
+
+        public static bool operator ==(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType left, GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType left, GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType other && Equals(other);
+        public bool Equals(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

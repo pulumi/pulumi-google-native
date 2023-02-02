@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2DictionaryArgs>? Dictionary { get; set; }
 
         /// <summary>
+        /// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+        /// </summary>
+        [Input("excludeByHotword")]
+        public Input<Inputs.GooglePrivacyDlpV2ExcludeByHotwordArgs>? ExcludeByHotword { get; set; }
+
+        /// <summary>
         /// Set of infoTypes for which findings would affect this rule.
         /// </summary>
         [Input("excludeInfoTypes")]

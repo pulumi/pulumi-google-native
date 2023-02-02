@@ -20,6 +20,8 @@ type TransferJob struct {
 	DeletionTime pulumi.StringOutput `pulumi:"deletionTime"`
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+	EventStream EventStreamResponseOutput `pulumi:"eventStream"`
 	// The time that the transfer job was last modified.
 	LastModificationTime pulumi.StringOutput `pulumi:"lastModificationTime"`
 	// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
@@ -81,6 +83,8 @@ func (TransferJobState) ElementType() reflect.Type {
 type transferJobArgs struct {
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description *string `pulumi:"description"`
+	// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+	EventStream *EventStream `pulumi:"eventStream"`
 	// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
 	LatestOperationName *string `pulumi:"latestOperationName"`
 	// Logging configuration.
@@ -103,6 +107,8 @@ type transferJobArgs struct {
 type TransferJobArgs struct {
 	// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 	Description pulumi.StringPtrInput
+	// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+	EventStream EventStreamPtrInput
 	// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.
 	LatestOperationName pulumi.StringPtrInput
 	// Logging configuration.
@@ -171,6 +177,11 @@ func (o TransferJobOutput) DeletionTime() pulumi.StringOutput {
 // A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
 func (o TransferJobOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+func (o TransferJobOutput) EventStream() EventStreamResponseOutput {
+	return o.ApplyT(func(v *TransferJob) EventStreamResponseOutput { return v.EventStream }).(EventStreamResponseOutput)
 }
 
 // The time that the transfer job was last modified.

@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse InputDataConfig;
         /// <summary>
+        /// Number of issues in this issue model.
+        /// </summary>
+        public readonly string IssueCount;
+        /// <summary>
         /// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
         /// </summary>
         public readonly string Name;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
             Outputs.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse inputDataConfig,
 
+            string issueCount,
+
             string name,
 
             string state,
@@ -111,6 +117,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             CreateTime = createTime;
             DisplayName = displayName;
             InputDataConfig = inputDataConfig;
+            IssueCount = issueCount;
             Name = name;
             State = state;
             TrainingStats = trainingStats;

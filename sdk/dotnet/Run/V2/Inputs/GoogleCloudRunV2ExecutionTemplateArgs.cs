@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         private InputMap<string>? _annotations;
 
         /// <summary>
-        /// KRM-style annotations for the resource.
+        /// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
         /// </summary>
         public InputMap<string> Annotations
         {
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// KRM-style labels for the resource.
+        /// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         /// </summary>
         public InputMap<string> Labels
         {

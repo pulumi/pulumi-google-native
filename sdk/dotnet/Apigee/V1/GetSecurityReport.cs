@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Self;
         /// <summary>
-        /// Query state could be "enqueued", "running", "completed", "failed".
+        /// Query state could be "enqueued", "running", "completed", "expired" and "failed".
         /// </summary>
         public readonly string State;
         /// <summary>

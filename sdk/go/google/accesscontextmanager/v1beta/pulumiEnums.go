@@ -788,7 +788,7 @@ func (in *osConstraintOsTypePtr) ToOsConstraintOsTypePtrOutputWithContext(ctx co
 type ServicePerimeterPerimeterType string
 
 const (
-	// Regular Perimeter.
+	// Regular Perimeter. When no value is specified, the perimeter uses this type.
 	ServicePerimeterPerimeterTypePerimeterTypeRegular = ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR")
 	// Perimeter Bridge.
 	ServicePerimeterPerimeterTypePerimeterTypeBridge = ServicePerimeterPerimeterType("PERIMETER_TYPE_BRIDGE")

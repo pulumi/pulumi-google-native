@@ -64,6 +64,10 @@ export class Version extends pulumi.CustomResource {
      * Resource name.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+     */
+    public readonly primarySpec!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
@@ -99,6 +103,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["primarySpec"] = args ? args.primarySpec : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -113,6 +118,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["primarySpec"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -154,6 +160,10 @@ export interface VersionArgs {
      * Resource name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+     */
+    primarySpec?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".

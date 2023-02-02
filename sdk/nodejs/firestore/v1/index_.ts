@@ -38,6 +38,10 @@ export class Index extends pulumi.CustomResource {
         return obj['__pulumiType'] === Index.__pulumiType;
     }
 
+    /**
+     * The API scope supported by this index.
+     */
+    public readonly apiScope!: pulumi.Output<string>;
     public readonly collectionGroupId!: pulumi.Output<string>;
     public readonly databaseId!: pulumi.Output<string>;
     /**
@@ -75,6 +79,7 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.databaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'databaseId'");
             }
+            resourceInputs["apiScope"] = args ? args.apiScope : undefined;
             resourceInputs["collectionGroupId"] = args ? args.collectionGroupId : undefined;
             resourceInputs["databaseId"] = args ? args.databaseId : undefined;
             resourceInputs["fields"] = args ? args.fields : undefined;
@@ -83,6 +88,7 @@ export class Index extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["apiScope"] = undefined /*out*/;
             resourceInputs["collectionGroupId"] = undefined /*out*/;
             resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["fields"] = undefined /*out*/;
@@ -102,6 +108,10 @@ export class Index extends pulumi.CustomResource {
  * The set of arguments for constructing a Index resource.
  */
 export interface IndexArgs {
+    /**
+     * The API scope supported by this index.
+     */
+    apiScope?: pulumi.Input<enums.firestore.v1.IndexApiScope>;
     collectionGroupId: pulumi.Input<string>;
     databaseId: pulumi.Input<string>;
     /**

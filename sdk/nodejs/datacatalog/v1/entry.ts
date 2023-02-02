@@ -59,7 +59,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly dataSourceConnectionSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse>;
     /**
-     * Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+     * Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
      */
     public readonly databaseTableSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecResponse>;
     /**
@@ -67,7 +67,7 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+     * Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
      */
     public readonly displayName!: pulumi.Output<string>;
     public readonly entryGroupId!: pulumi.Output<string>;
@@ -101,6 +101,10 @@ export class Entry extends pulumi.CustomResource {
     public readonly linkedResource!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+     */
+    public readonly lookerSystemSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1LookerSystemSpecResponse>;
+    /**
      * The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -121,6 +125,10 @@ export class Entry extends pulumi.CustomResource {
      * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */
     public readonly sourceSystemTimestamps!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsResponse>;
+    /**
+     * Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+     */
+    public readonly sqlDatabaseSystemSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse>;
     /**
      * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
      */
@@ -168,10 +176,12 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linkedResource"] = args ? args.linkedResource : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["lookerSystemSpec"] = args ? args.lookerSystemSpec : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routineSpec"] = args ? args.routineSpec : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["sourceSystemTimestamps"] = args ? args.sourceSystemTimestamps : undefined;
+            resourceInputs["sqlDatabaseSystemSpec"] = args ? args.sqlDatabaseSystemSpec : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["usageSignal"] = args ? args.usageSignal : undefined;
             resourceInputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
@@ -200,12 +210,14 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["linkedResource"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["lookerSystemSpec"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["personalDetails"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["routineSpec"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["sourceSystemTimestamps"] = undefined /*out*/;
+            resourceInputs["sqlDatabaseSystemSpec"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["usageSignal"] = undefined /*out*/;
             resourceInputs["userSpecifiedSystem"] = undefined /*out*/;
@@ -231,7 +243,7 @@ export interface EntryArgs {
      */
     dataSourceConnectionSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs>;
     /**
-     * Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+     * Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
      */
     databaseTableSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1DatabaseTableSpecArgs>;
     /**
@@ -239,7 +251,7 @@ export interface EntryArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+     * Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
      */
     displayName?: pulumi.Input<string>;
     entryGroupId: pulumi.Input<string>;
@@ -268,6 +280,10 @@ export interface EntryArgs {
      */
     linkedResource?: pulumi.Input<string>;
     location?: pulumi.Input<string>;
+    /**
+     * Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+     */
+    lookerSystemSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1LookerSystemSpecArgs>;
     project?: pulumi.Input<string>;
     /**
      * Specification that applies to a user-defined function or procedure. Valid only for entries with the `ROUTINE` type.
@@ -281,6 +297,10 @@ export interface EntryArgs {
      * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */
     sourceSystemTimestamps?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsArgs>;
+    /**
+     * Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+     */
+    sqlDatabaseSystemSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs>;
     /**
      * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
      */

@@ -1372,6 +1372,7 @@ func (in *serviceTierPtr) ToServiceTierPtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ServiceTierPtrOutput)
 }
 
+// The output format of the Dataproc Metastore service's logs.
 type TelemetryConfigLogFormat string
 
 const (

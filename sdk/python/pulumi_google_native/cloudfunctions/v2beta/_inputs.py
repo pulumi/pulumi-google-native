@@ -852,10 +852,12 @@ class SecretVolumeArgs:
 class ServiceConfigArgs:
     def __init__(__self__, *,
                  all_traffic_on_latest_revision: Optional[pulumi.Input[bool]] = None,
+                 available_cpu: Optional[pulumi.Input[str]] = None,
                  available_memory: Optional[pulumi.Input[str]] = None,
                  environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  ingress_settings: Optional[pulumi.Input['ServiceConfigIngressSettings']] = None,
                  max_instance_count: Optional[pulumi.Input[int]] = None,
+                 max_instance_request_concurrency: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None,
                  secret_environment_variables: Optional[pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]]] = None,
                  secret_volumes: Optional[pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]]] = None,
@@ -865,16 +867,18 @@ class ServiceConfigArgs:
                  vpc_connector: Optional[pulumi.Input[str]] = None,
                  vpc_connector_egress_settings: Optional[pulumi.Input['ServiceConfigVpcConnectorEgressSettings']] = None):
         """
-        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+        Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
         :param pulumi.Input[bool] all_traffic_on_latest_revision: Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
+        :param pulumi.Input[str] available_cpu: The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
         :param pulumi.Input[str] available_memory: The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: Environment variables that shall be available during function execution.
         :param pulumi.Input['ServiceConfigIngressSettings'] ingress_settings: The ingress settings for the function, controlling what traffic can reach it.
         :param pulumi.Input[int] max_instance_count: The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
+        :param pulumi.Input[int] max_instance_request_concurrency: Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
         :param pulumi.Input[int] min_instance_count: The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         :param pulumi.Input[Sequence[pulumi.Input['SecretEnvVarArgs']]] secret_environment_variables: Secret environment variables configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SecretVolumeArgs']]] secret_volumes: Secret volumes configuration.
-        :param pulumi.Input['ServiceConfigSecurityLevel'] security_level: Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        :param pulumi.Input['ServiceConfigSecurityLevel'] security_level: Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         :param pulumi.Input[str] service_account_email: The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
         :param pulumi.Input[int] timeout_seconds: The function execution timeout. Execution is considered failed and can be terminated if the function is not completed at the end of the timeout period. Defaults to 60 seconds.
         :param pulumi.Input[str] vpc_connector: The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
@@ -882,6 +886,8 @@ class ServiceConfigArgs:
         """
         if all_traffic_on_latest_revision is not None:
             pulumi.set(__self__, "all_traffic_on_latest_revision", all_traffic_on_latest_revision)
+        if available_cpu is not None:
+            pulumi.set(__self__, "available_cpu", available_cpu)
         if available_memory is not None:
             pulumi.set(__self__, "available_memory", available_memory)
         if environment_variables is not None:
@@ -890,6 +896,8 @@ class ServiceConfigArgs:
             pulumi.set(__self__, "ingress_settings", ingress_settings)
         if max_instance_count is not None:
             pulumi.set(__self__, "max_instance_count", max_instance_count)
+        if max_instance_request_concurrency is not None:
+            pulumi.set(__self__, "max_instance_request_concurrency", max_instance_request_concurrency)
         if min_instance_count is not None:
             pulumi.set(__self__, "min_instance_count", min_instance_count)
         if secret_environment_variables is not None:
@@ -918,6 +926,18 @@ class ServiceConfigArgs:
     @all_traffic_on_latest_revision.setter
     def all_traffic_on_latest_revision(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "all_traffic_on_latest_revision", value)
+
+    @property
+    @pulumi.getter(name="availableCpu")
+    def available_cpu(self) -> Optional[pulumi.Input[str]]:
+        """
+        The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        """
+        return pulumi.get(self, "available_cpu")
+
+    @available_cpu.setter
+    def available_cpu(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "available_cpu", value)
 
     @property
     @pulumi.getter(name="availableMemory")
@@ -968,6 +988,18 @@ class ServiceConfigArgs:
         pulumi.set(self, "max_instance_count", value)
 
     @property
+    @pulumi.getter(name="maxInstanceRequestConcurrency")
+    def max_instance_request_concurrency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        """
+        return pulumi.get(self, "max_instance_request_concurrency")
+
+    @max_instance_request_concurrency.setter
+    def max_instance_request_concurrency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instance_request_concurrency", value)
+
+    @property
     @pulumi.getter(name="minInstanceCount")
     def min_instance_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1007,7 +1039,7 @@ class ServiceConfigArgs:
     @pulumi.getter(name="securityLevel")
     def security_level(self) -> Optional[pulumi.Input['ServiceConfigSecurityLevel']]:
         """
-        Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         """
         return pulumi.get(self, "security_level")
 

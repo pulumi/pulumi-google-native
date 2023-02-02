@@ -19,16 +19,20 @@ class IndexArgs:
     def __init__(__self__, *,
                  collection_group_id: pulumi.Input[str],
                  database_id: pulumi.Input[str],
+                 api_scope: Optional[pulumi.Input['IndexApiScope']] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input['IndexQueryScope']] = None):
         """
         The set of arguments for constructing a Index resource.
+        :param pulumi.Input['IndexApiScope'] api_scope: The API scope supported by this index.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]] fields: The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
         :param pulumi.Input['IndexQueryScope'] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         """
         pulumi.set(__self__, "collection_group_id", collection_group_id)
         pulumi.set(__self__, "database_id", database_id)
+        if api_scope is not None:
+            pulumi.set(__self__, "api_scope", api_scope)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
         if project is not None:
@@ -53,6 +57,18 @@ class IndexArgs:
     @database_id.setter
     def database_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "database_id", value)
+
+    @property
+    @pulumi.getter(name="apiScope")
+    def api_scope(self) -> Optional[pulumi.Input['IndexApiScope']]:
+        """
+        The API scope supported by this index.
+        """
+        return pulumi.get(self, "api_scope")
+
+    @api_scope.setter
+    def api_scope(self, value: Optional[pulumi.Input['IndexApiScope']]):
+        pulumi.set(self, "api_scope", value)
 
     @property
     @pulumi.getter
@@ -93,6 +109,7 @@ class Index(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_scope: Optional[pulumi.Input['IndexApiScope']] = None,
                  collection_group_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
@@ -105,6 +122,7 @@ class Index(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['IndexApiScope'] api_scope: The API scope supported by this index.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]] fields: The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
         :param pulumi.Input['IndexQueryScope'] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         """
@@ -133,6 +151,7 @@ class Index(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_scope: Optional[pulumi.Input['IndexApiScope']] = None,
                  collection_group_id: Optional[pulumi.Input[str]] = None,
                  database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
@@ -147,6 +166,7 @@ class Index(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = IndexArgs.__new__(IndexArgs)
 
+            __props__.__dict__["api_scope"] = api_scope
             if collection_group_id is None and not opts.urn:
                 raise TypeError("Missing required property 'collection_group_id'")
             __props__.__dict__["collection_group_id"] = collection_group_id
@@ -182,6 +202,7 @@ class Index(pulumi.CustomResource):
 
         __props__ = IndexArgs.__new__(IndexArgs)
 
+        __props__.__dict__["api_scope"] = None
         __props__.__dict__["collection_group_id"] = None
         __props__.__dict__["database_id"] = None
         __props__.__dict__["fields"] = None
@@ -190,6 +211,14 @@ class Index(pulumi.CustomResource):
         __props__.__dict__["query_scope"] = None
         __props__.__dict__["state"] = None
         return Index(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="apiScope")
+    def api_scope(self) -> pulumi.Output[str]:
+        """
+        The API scope supported by this index.
+        """
+        return pulumi.get(self, "api_scope")
 
     @property
     @pulumi.getter(name="collectionGroupId")

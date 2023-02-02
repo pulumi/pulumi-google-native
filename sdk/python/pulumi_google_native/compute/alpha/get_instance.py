@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, post_key_revocation_action_type=None, preserved_state_size_gb=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, secure_tags=None, self_link=None, self_link_with_id=None, service_accounts=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, upcoming_maintenance=None, zone=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_config=None, cpu_platform=None, creation_timestamp=None, deletion_protection=None, description=None, disks=None, display_device=None, erase_windows_vss_signature=None, fingerprint=None, guest_accelerators=None, hostname=None, instance_encryption_key=None, key_revocation_action_type=None, kind=None, label_fingerprint=None, labels=None, last_start_timestamp=None, last_stop_timestamp=None, last_suspended_timestamp=None, machine_type=None, metadata=None, min_cpu_platform=None, name=None, network_interfaces=None, network_performance_config=None, params=None, post_key_revocation_action_type=None, preserved_state_size_gb=None, private_ipv6_google_access=None, reservation_affinity=None, resource_policies=None, resource_status=None, satisfies_pzs=None, scheduling=None, secure_tags=None, self_link=None, self_link_with_id=None, service_accounts=None, service_integration_specs=None, shielded_instance_config=None, shielded_instance_integrity_policy=None, shielded_vm_config=None, shielded_vm_integrity_policy=None, source_machine_image=None, source_machine_image_encryption_key=None, start_restricted=None, status=None, status_message=None, tags=None, upcoming_maintenance=None, zone=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, dict):
             raise TypeError("Expected argument 'advanced_machine_features' to be a dict")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -140,6 +140,9 @@ class GetInstanceResult:
         if service_accounts and not isinstance(service_accounts, list):
             raise TypeError("Expected argument 'service_accounts' to be a list")
         pulumi.set(__self__, "service_accounts", service_accounts)
+        if service_integration_specs and not isinstance(service_integration_specs, dict):
+            raise TypeError("Expected argument 'service_integration_specs' to be a dict")
+        pulumi.set(__self__, "service_integration_specs", service_integration_specs)
         if shielded_instance_config and not isinstance(shielded_instance_config, dict):
             raise TypeError("Expected argument 'shielded_instance_config' to be a dict")
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
@@ -282,7 +285,7 @@ class GetInstanceResult:
     @pulumi.getter(name="instanceEncryptionKey")
     def instance_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
         """
-        Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
         """
         return pulumi.get(self, "instance_encryption_key")
 
@@ -492,6 +495,14 @@ class GetInstanceResult:
         return pulumi.get(self, "service_accounts")
 
     @property
+    @pulumi.getter(name="serviceIntegrationSpecs")
+    def service_integration_specs(self) -> Mapping[str, str]:
+        """
+        Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        """
+        return pulumi.get(self, "service_integration_specs")
+
+    @property
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> 'outputs.ShieldedInstanceConfigResponse':
         return pulumi.get(self, "shielded_instance_config")
@@ -628,6 +639,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             service_accounts=self.service_accounts,
+            service_integration_specs=self.service_integration_specs,
             shielded_instance_config=self.shielded_instance_config,
             shielded_instance_integrity_policy=self.shielded_instance_integrity_policy,
             shielded_vm_config=self.shielded_vm_config,
@@ -697,6 +709,7 @@ def get_instance(instance: Optional[str] = None,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         service_accounts=__ret__.service_accounts,
+        service_integration_specs=__ret__.service_integration_specs,
         shielded_instance_config=__ret__.shielded_instance_config,
         shielded_instance_integrity_policy=__ret__.shielded_instance_integrity_policy,
         shielded_vm_config=__ret__.shielded_vm_config,

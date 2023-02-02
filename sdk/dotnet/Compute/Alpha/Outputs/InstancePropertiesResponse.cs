@@ -102,6 +102,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAccountResponse> ServiceAccounts;
         /// <summary>
+        /// Mapping of user defined keys to ServiceIntegrationSpec.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ServiceIntegrationSpecs;
+        /// <summary>
         /// Note that for MachineImage, this is not supported yet.
         /// </summary>
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
@@ -160,6 +164,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.ServiceAccountResponse> serviceAccounts,
 
+            ImmutableDictionary<string, string> serviceIntegrationSpecs,
+
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
 
             Outputs.ShieldedVmConfigResponse shieldedVmConfig,
@@ -188,6 +194,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Scheduling = scheduling;
             SecureTags = secureTags;
             ServiceAccounts = serviceAccounts;
+            ServiceIntegrationSpecs = serviceIntegrationSpecs;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             ShieldedVmConfig = shieldedVmConfig;
             Tags = tags;

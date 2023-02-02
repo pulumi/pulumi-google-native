@@ -93,9 +93,17 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        /// </summary>
+        public readonly string StorageAggregatePool;
+        /// <summary>
         /// The storage type for this volume.
         /// </summary>
         public readonly string StorageType;
+        /// <summary>
+        /// The workload profile for the volume.
+        /// </summary>
+        public readonly string WorkloadProfile;
 
         [OutputConstructor]
         private VolumeResponse(
@@ -137,7 +145,11 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string state,
 
-            string storageType)
+            string storageAggregatePool,
+
+            string storageType,
+
+            string workloadProfile)
         {
             AutoGrownSizeGib = autoGrownSizeGib;
             BootVolume = bootVolume;
@@ -158,7 +170,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             SnapshotReservationDetail = snapshotReservationDetail;
             SnapshotSchedulePolicy = snapshotSchedulePolicy;
             State = state;
+            StorageAggregatePool = storageAggregatePool;
             StorageType = storageType;
+            WorkloadProfile = workloadProfile;
         }
     }
 }

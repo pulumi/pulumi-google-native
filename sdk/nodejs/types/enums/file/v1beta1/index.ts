@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const InstanceProtocol = {
+    /**
+     * FILE_PROTOCOL_UNSPECIFIED serves a "not set" default value when a FileProtocol is a separate field in a message.
+     */
+    FileProtocolUnspecified: "FILE_PROTOCOL_UNSPECIFIED",
+    /**
+     * NFS 3.0.
+     */
+    NfsV3: "NFS_V3",
+    /**
+     * NFS 4.1.
+     */
+    NfsV41: "NFS_V4_1",
+} as const;
+
+/**
+ * Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+ */
+export type InstanceProtocol = (typeof InstanceProtocol)[keyof typeof InstanceProtocol];
+
 export const InstanceTier = {
     /**
      * Not set.

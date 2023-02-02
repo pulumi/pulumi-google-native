@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new InternalRange in a given project and location.
+ * Creates a new internal range in a given project and location.
  */
 export class InternalRange extends pulumi.CustomResource {
     /**
@@ -38,7 +38,7 @@ export class InternalRange extends pulumi.CustomResource {
     }
 
     /**
-     * Time when the InternalRange was created.
+     * Time when the internal range was created.
      */
     public readonly createTime!: pulumi.Output<string>;
     /**
@@ -50,7 +50,7 @@ export class InternalRange extends pulumi.CustomResource {
      */
     public readonly internalRangeId!: pulumi.Output<string | undefined>;
     /**
-     * IP range that this InternalRange defines.
+     * The IP range that this internal range defines.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
@@ -59,23 +59,23 @@ export class InternalRange extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+     * Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+     * The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
      */
     public readonly network!: pulumi.Output<string>;
     /**
-     * Optional. Types of resources that are allowed to overlap with the current InternalRange.
+     * Optional. Types of resources that are allowed to overlap with the current internal range.
      */
     public readonly overlaps!: pulumi.Output<string[]>;
     /**
-     * The type of peering set for this InternalRange.
+     * The type of peering set for this internal range.
      */
     public readonly peering!: pulumi.Output<string>;
     /**
-     * An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+     * An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
      */
     public readonly prefixLength!: pulumi.Output<number>;
     public readonly project!: pulumi.Output<string>;
@@ -88,7 +88,7 @@ export class InternalRange extends pulumi.CustomResource {
      */
     public readonly targetCidrRange!: pulumi.Output<string[]>;
     /**
-     * Time when the InternalRange was updated.
+     * Time when the internal range was updated.
      */
     public readonly updateTime!: pulumi.Output<string>;
     /**
@@ -96,7 +96,7 @@ export class InternalRange extends pulumi.CustomResource {
      */
     public readonly usage!: pulumi.Output<string>;
     /**
-     * The list of resources that refer to this internal range. Resources that use the InternalRange for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this InternalRange. Having a user, based on this reference, prevents deletion of the InternalRange referred to. Can be empty.
+     * The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
      */
     public /*out*/ readonly users!: pulumi.Output<string[]>;
 
@@ -159,7 +159,7 @@ export class InternalRange extends pulumi.CustomResource {
  */
 export interface InternalRangeArgs {
     /**
-     * Time when the InternalRange was created.
+     * Time when the internal range was created.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface InternalRangeArgs {
      */
     internalRangeId?: pulumi.Input<string>;
     /**
-     * IP range that this InternalRange defines.
+     * The IP range that this internal range defines.
      */
     ipCidrRange?: pulumi.Input<string>;
     /**
@@ -180,23 +180,23 @@ export interface InternalRangeArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+     * Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
      */
     name?: pulumi.Input<string>;
     /**
-     * The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+     * The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
      */
     network?: pulumi.Input<string>;
     /**
-     * Optional. Types of resources that are allowed to overlap with the current InternalRange.
+     * Optional. Types of resources that are allowed to overlap with the current internal range.
      */
     overlaps?: pulumi.Input<pulumi.Input<enums.networkconnectivity.v1.InternalRangeOverlapsItem>[]>;
     /**
-     * The type of peering set for this InternalRange.
+     * The type of peering set for this internal range.
      */
     peering?: pulumi.Input<enums.networkconnectivity.v1.InternalRangePeering>;
     /**
-     * An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+     * An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
      */
     prefixLength?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
@@ -209,7 +209,7 @@ export interface InternalRangeArgs {
      */
     targetCidrRange?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Time when the InternalRange was updated.
+     * Time when the internal range was updated.
      */
     updateTime?: pulumi.Input<string>;
     /**

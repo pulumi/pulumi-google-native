@@ -22,6 +22,7 @@ class VersionArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_spec: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
@@ -32,6 +33,7 @@ class VersionArgs:
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
+        :param pulumi.Input[str] primary_spec: The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
         :param pulumi.Input[str] state: A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
         """
         pulumi.set(__self__, "api_id", api_id)
@@ -48,6 +50,8 @@ class VersionArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primary_spec is not None:
+            pulumi.set(__self__, "primary_spec", primary_spec)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if state is not None:
@@ -144,6 +148,18 @@ class VersionArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="primarySpec")
+    def primary_spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        """
+        return pulumi.get(self, "primary_spec")
+
+    @primary_spec.setter
+    def primary_spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "primary_spec", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -178,6 +194,7 @@ class Version(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_spec: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -192,6 +209,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
+        :param pulumi.Input[str] primary_spec: The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
         :param pulumi.Input[str] state: A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
         """
         ...
@@ -226,6 +244,7 @@ class Version(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primary_spec: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -249,6 +268,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
+            __props__.__dict__["primary_spec"] = primary_spec
             __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             __props__.__dict__["create_time"] = None
@@ -286,6 +306,7 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["primary_spec"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
@@ -356,6 +377,14 @@ class Version(pulumi.CustomResource):
         Resource name.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="primarySpec")
+    def primary_spec(self) -> pulumi.Output[str]:
+        """
+        The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        """
+        return pulumi.get(self, "primary_spec")
 
     @property
     @pulumi.getter

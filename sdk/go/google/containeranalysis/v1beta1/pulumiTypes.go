@@ -5891,7 +5891,7 @@ func (o DistributionResponseArrayOutput) Index(i pulumi.IntInput) DistributionRe
 	}).(DistributionResponseOutput)
 }
 
-// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentNote struct {
 	// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
 	DataLicence *string `pulumi:"dataLicence"`
@@ -5910,7 +5910,7 @@ type DocumentNoteInput interface {
 	ToDocumentNoteOutputWithContext(context.Context) DocumentNoteOutput
 }
 
-// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentNoteArgs struct {
 	// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
 	DataLicence pulumi.StringPtrInput `pulumi:"dataLicence"`
@@ -5971,7 +5971,7 @@ func (i *documentNotePtrType) ToDocumentNotePtrOutputWithContext(ctx context.Con
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentNotePtrOutput)
 }
 
-// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentNoteOutput struct{ *pulumi.OutputState }
 
 func (DocumentNoteOutput) ElementType() reflect.Type {
@@ -6050,7 +6050,7 @@ func (o DocumentNotePtrOutput) SpdxVersion() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentNoteResponse struct {
 	// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
 	DataLicence string `pulumi:"dataLicence"`
@@ -6058,7 +6058,7 @@ type DocumentNoteResponse struct {
 	SpdxVersion string `pulumi:"spdxVersion"`
 }
 
-// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentNote represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentNoteResponseOutput struct{ *pulumi.OutputState }
 
 func (DocumentNoteResponseOutput) ElementType() reflect.Type {
@@ -6083,7 +6083,7 @@ func (o DocumentNoteResponseOutput) SpdxVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentNoteResponse) string { return v.SpdxVersion }).(pulumi.StringOutput)
 }
 
-// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentOccurrence struct {
 	// Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
 	CreateTime *string `pulumi:"createTime"`
@@ -6116,7 +6116,7 @@ type DocumentOccurrenceInput interface {
 	ToDocumentOccurrenceOutputWithContext(context.Context) DocumentOccurrenceOutput
 }
 
-// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentOccurrenceArgs struct {
 	// Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
@@ -6191,7 +6191,7 @@ func (i *documentOccurrencePtrType) ToDocumentOccurrencePtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(DocumentOccurrencePtrOutput)
 }
 
-// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentOccurrenceOutput struct{ *pulumi.OutputState }
 
 func (DocumentOccurrenceOutput) ElementType() reflect.Type {
@@ -6375,7 +6375,7 @@ func (o DocumentOccurrencePtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentOccurrenceResponse struct {
 	// Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
 	CreateTime string `pulumi:"createTime"`
@@ -6395,7 +6395,7 @@ type DocumentOccurrenceResponse struct {
 	Title string `pulumi:"title"`
 }
 
-// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
+// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
 type DocumentOccurrenceResponseOutput struct{ *pulumi.OutputState }
 
 func (DocumentOccurrenceResponseOutput) ElementType() reflect.Type {

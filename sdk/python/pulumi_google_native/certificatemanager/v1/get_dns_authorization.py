@@ -70,7 +70,7 @@ class GetDnsAuthorizationResult:
     @pulumi.getter
     def domain(self) -> str:
         """
-        Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+        Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
         """
         return pulumi.get(self, "domain")
 

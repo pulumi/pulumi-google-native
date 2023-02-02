@@ -45,7 +45,7 @@ export interface GetDatacenterConnectorResult {
      */
     readonly availableVersions: outputs.vmmigration.v1.AvailableUpdatesResponse;
     /**
-     * The communication channel between the datacenter connector and GCP.
+     * The communication channel between the datacenter connector and Google Cloud.
      */
     readonly bucket: string;
     /**

@@ -13,12 +13,14 @@ from .get_metric_descriptor import *
 from .get_notification_channel import *
 from .get_service import *
 from .get_service_level_objective import *
+from .get_snooze import *
 from .get_uptime_check_config import *
 from .group import *
 from .metric_descriptor import *
 from .notification_channel import *
 from .service import *
 from .service_level_objective import *
+from .snooze import *
 from .uptime_check_config import *
 from ._inputs import *
 from . import outputs

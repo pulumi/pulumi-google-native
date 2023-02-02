@@ -38,7 +38,7 @@ export interface GetDeploymentResult {
      */
     readonly annotations: {[key: string]: string};
     /**
-     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
      */
     readonly apiSpecRevision: string;
     /**

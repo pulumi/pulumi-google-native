@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, hyperthreading_enabled=None, interactive_serial_console_enabled=None, labels=None, logical_interfaces=None, login_info=None, luns=None, machine_type=None, name=None, network_template=None, networks=None, os_image=None, pod=None, state=None, update_time=None, volumes=None):
+    def __init__(__self__, create_time=None, hyperthreading_enabled=None, interactive_serial_console_enabled=None, labels=None, logical_interfaces=None, login_info=None, luns=None, machine_type=None, name=None, network_template=None, networks=None, os_image=None, pod=None, state=None, update_time=None, volumes=None, workload_profile=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -68,6 +68,9 @@ class GetInstanceResult:
         if volumes and not isinstance(volumes, list):
             raise TypeError("Expected argument 'volumes' to be a list")
         pulumi.set(__self__, "volumes", volumes)
+        if workload_profile and not isinstance(workload_profile, str):
+            raise TypeError("Expected argument 'workload_profile' to be a str")
+        pulumi.set(__self__, "workload_profile", workload_profile)
 
     @property
     @pulumi.getter(name="createTime")
@@ -197,6 +200,14 @@ class GetInstanceResult:
         """
         return pulumi.get(self, "volumes")
 
+    @property
+    @pulumi.getter(name="workloadProfile")
+    def workload_profile(self) -> str:
+        """
+        The workload profile for the instance.
+        """
+        return pulumi.get(self, "workload_profile")
+
 
 class AwaitableGetInstanceResult(GetInstanceResult):
     # pylint: disable=using-constant-test
@@ -219,7 +230,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             pod=self.pod,
             state=self.state,
             update_time=self.update_time,
-            volumes=self.volumes)
+            volumes=self.volumes,
+            workload_profile=self.workload_profile)
 
 
 def get_instance(instance_id: Optional[str] = None,
@@ -252,7 +264,8 @@ def get_instance(instance_id: Optional[str] = None,
         pod=__ret__.pod,
         state=__ret__.state,
         update_time=__ret__.update_time,
-        volumes=__ret__.volumes)
+        volumes=__ret__.volumes,
+        workload_profile=__ret__.workload_profile)
 
 
 @_utilities.lift_output_func(get_instance)

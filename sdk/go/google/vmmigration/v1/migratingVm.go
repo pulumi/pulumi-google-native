@@ -16,11 +16,13 @@ import (
 type MigratingVm struct {
 	pulumi.CustomResourceState
 
+	// Details of the VM from an AWS source.
+	AwsSourceVmDetails AwsSourceVmDetailsResponseOutput `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponseOutput `pulumi:"computeEngineTargetDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The percentage progress of the current running replication cycle.
+	// Details of the current running replication cycle.
 	CurrentSyncInfo ReplicationCycleResponseOutput `pulumi:"currentSyncInfo"`
 	// The description attached to the migrating VM by the user.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -192,6 +194,11 @@ func (o MigratingVmOutput) ToMigratingVmOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// Details of the VM from an AWS source.
+func (o MigratingVmOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) AwsSourceVmDetailsResponseOutput { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
 // Details of the target VM in Compute Engine.
 func (o MigratingVmOutput) ComputeEngineTargetDefaults() ComputeEngineTargetDefaultsResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) ComputeEngineTargetDefaultsResponseOutput { return v.ComputeEngineTargetDefaults }).(ComputeEngineTargetDefaultsResponseOutput)
@@ -202,7 +209,7 @@ func (o MigratingVmOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The percentage progress of the current running replication cycle.
+// Details of the current running replication cycle.
 func (o MigratingVmOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) ReplicationCycleResponseOutput { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
 }

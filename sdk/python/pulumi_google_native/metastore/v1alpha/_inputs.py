@@ -171,7 +171,7 @@ class ConsumerArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         Contains information of the customer's network configurations.
-        :param pulumi.Input[str] subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        :param pulumi.Input[str] subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
@@ -180,7 +180,7 @@ class ConsumerArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         return pulumi.get(self, "subnetwork")
 
@@ -683,6 +683,7 @@ class TelemetryConfigArgs:
                  log_format: Optional[pulumi.Input['TelemetryConfigLogFormat']] = None):
         """
         Telemetry Configuration for the Dataproc Metastore service.
+        :param pulumi.Input['TelemetryConfigLogFormat'] log_format: The output format of the Dataproc Metastore service's logs.
         """
         if log_format is not None:
             pulumi.set(__self__, "log_format", log_format)
@@ -690,6 +691,9 @@ class TelemetryConfigArgs:
     @property
     @pulumi.getter(name="logFormat")
     def log_format(self) -> Optional[pulumi.Input['TelemetryConfigLogFormat']]:
+        """
+        The output format of the Dataproc Metastore service's logs.
+        """
         return pulumi.get(self, "log_format")
 
     @log_format.setter

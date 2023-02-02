@@ -9,6 +9,7 @@ __all__ = [
     'GkeNodePoolTargetRolesItem',
     'InstanceGroupConfigPreemptibility',
     'MetricMetricSource',
+    'NodeGroupRolesItem',
     'ReservationAffinityConsumeReservationType',
     'SoftwareConfigOptionalComponentsItem',
 ]
@@ -113,6 +114,21 @@ class MetricMetricSource(str, Enum):
     """
     Hiveserver2 metric source.
     """
+    HIVEMETASTORE = "HIVEMETASTORE"
+    """
+    hivemetastore metric source
+    """
+
+
+class NodeGroupRolesItem(str, Enum):
+    ROLE_UNSPECIFIED = "ROLE_UNSPECIFIED"
+    """
+    Required unspecified role.
+    """
+    DRIVER = "DRIVER"
+    """
+    Job drivers run on the node pool.
+    """
 
 
 class ReservationAffinityConsumeReservationType(str, Enum):
@@ -170,6 +186,10 @@ class SoftwareConfigOptionalComponentsItem(str, Enum):
     PRESTO = "PRESTO"
     """
     The Presto query engine.
+    """
+    TRINO = "TRINO"
+    """
+    The Trino query engine.
     """
     RANGER = "RANGER"
     """

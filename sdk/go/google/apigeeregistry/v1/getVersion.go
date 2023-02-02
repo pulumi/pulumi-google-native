@@ -40,6 +40,8 @@ type LookupVersionResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name.
 	Name string `pulumi:"name"`
+	// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+	PrimarySpec string `pulumi:"primarySpec"`
 	// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
 	State string `pulumi:"state"`
 	// Last update timestamp.
@@ -112,6 +114,11 @@ func (o LookupVersionResultOutput) Labels() pulumi.StringMapOutput {
 // Resource name.
 func (o LookupVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+func (o LookupVersionResultOutput) PrimarySpec() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.PrimarySpec }).(pulumi.StringOutput)
 }
 
 // A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".

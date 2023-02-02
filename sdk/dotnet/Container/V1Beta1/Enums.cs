@@ -8,7 +8,7 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Container.V1Beta1
 {
     /// <summary>
-    /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+    /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
     /// </summary>
     [EnumType]
     public readonly struct BinaryAuthorizationEvaluationMode : IEquatable<BinaryAuthorizationEvaluationMode>
@@ -262,6 +262,47 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterUpdateDesiredStackType : IEquatable<ClusterUpdateDesiredStackType>
+    {
+        private readonly string _value;
+
+        private ClusterUpdateDesiredStackType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// By default, the clusters will be IPV4 only
+        /// </summary>
+        public static ClusterUpdateDesiredStackType StackTypeUnspecified { get; } = new ClusterUpdateDesiredStackType("STACK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The value used if the cluster is a IPV4 only
+        /// </summary>
+        public static ClusterUpdateDesiredStackType Ipv4 { get; } = new ClusterUpdateDesiredStackType("IPV4");
+        /// <summary>
+        /// The value used if the cluster is a dual stack cluster
+        /// </summary>
+        public static ClusterUpdateDesiredStackType Ipv4Ipv6 { get; } = new ClusterUpdateDesiredStackType("IPV4_IPV6");
+
+        public static bool operator ==(ClusterUpdateDesiredStackType left, ClusterUpdateDesiredStackType right) => left.Equals(right);
+        public static bool operator !=(ClusterUpdateDesiredStackType left, ClusterUpdateDesiredStackType right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterUpdateDesiredStackType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterUpdateDesiredStackType other && Equals(other);
+        public bool Equals(ClusterUpdateDesiredStackType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// cluster_dns indicates which in-cluster DNS provider should be used.
     /// </summary>
     [EnumType]
@@ -464,6 +505,51 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
     /// <summary>
+    /// The Gateway API release channel to use for Gateway API.
+    /// </summary>
+    [EnumType]
+    public readonly struct GatewayAPIConfigChannel : IEquatable<GatewayAPIConfigChannel>
+    {
+        private readonly string _value;
+
+        private GatewayAPIConfigChannel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelUnspecified { get; } = new GatewayAPIConfigChannel("CHANNEL_UNSPECIFIED");
+        /// <summary>
+        /// Gateway API support is disabled
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelDisabled { get; } = new GatewayAPIConfigChannel("CHANNEL_DISABLED");
+        /// <summary>
+        /// Gateway API support is enabled, experimental CRDs are installed
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelExperimental { get; } = new GatewayAPIConfigChannel("CHANNEL_EXPERIMENTAL");
+        /// <summary>
+        /// Gateway API support is enabled, standard CRDs are installed
+        /// </summary>
+        public static GatewayAPIConfigChannel ChannelStandard { get; } = new GatewayAPIConfigChannel("CHANNEL_STANDARD");
+
+        public static bool operator ==(GatewayAPIConfigChannel left, GatewayAPIConfigChannel right) => left.Equals(right);
+        public static bool operator !=(GatewayAPIConfigChannel left, GatewayAPIConfigChannel right) => !left.Equals(right);
+
+        public static explicit operator string(GatewayAPIConfigChannel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GatewayAPIConfigChannel other && Equals(other);
+        public bool Equals(GatewayAPIConfigChannel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The ipv6 access type (internal or external) when create_subnetwork is true
     /// </summary>
     [EnumType]
@@ -645,6 +731,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// workloads
         /// </summary>
         public static LoggingComponentConfigEnableComponentsItem Workloads { get; } = new LoggingComponentConfigEnableComponentsItem("WORKLOADS");
+        /// <summary>
+        /// kube-apiserver
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem Apiserver { get; } = new LoggingComponentConfigEnableComponentsItem("APISERVER");
+        /// <summary>
+        /// kube-scheduler
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem Scheduler { get; } = new LoggingComponentConfigEnableComponentsItem("SCHEDULER");
+        /// <summary>
+        /// kube-controller-manager
+        /// </summary>
+        public static LoggingComponentConfigEnableComponentsItem ControllerManager { get; } = new LoggingComponentConfigEnableComponentsItem("CONTROLLER_MANAGER");
 
         public static bool operator ==(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => left.Equals(right);
         public static bool operator !=(LoggingComponentConfigEnableComponentsItem left, LoggingComponentConfigEnableComponentsItem right) => !left.Equals(right);
@@ -1449,7 +1547,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         }
 
         /// <summary>
-        /// Default value.
+        /// Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
         /// </summary>
         public static UpgradeSettingsStrategy NodePoolUpdateStrategyUnspecified { get; } = new UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED");
         /// <summary>
@@ -1469,6 +1567,47 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is UpgradeSettingsStrategy other && Equals(other);
         public bool Equals(UpgradeSettingsStrategy other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// OSVersion specifies the Windows node config to be used on the node
+    /// </summary>
+    [EnumType]
+    public readonly struct WindowsNodeConfigOsVersion : IEquatable<WindowsNodeConfigOsVersion>
+    {
+        private readonly string _value;
+
+        private WindowsNodeConfigOsVersion(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// When OSVersion is not specified
+        /// </summary>
+        public static WindowsNodeConfigOsVersion OsVersionUnspecified { get; } = new WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED");
+        /// <summary>
+        /// LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+        /// </summary>
+        public static WindowsNodeConfigOsVersion OsVersionLtsc2019 { get; } = new WindowsNodeConfigOsVersion("OS_VERSION_LTSC2019");
+        /// <summary>
+        /// LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
+        /// </summary>
+        public static WindowsNodeConfigOsVersion OsVersionLtsc2022 { get; } = new WindowsNodeConfigOsVersion("OS_VERSION_LTSC2022");
+
+        public static bool operator ==(WindowsNodeConfigOsVersion left, WindowsNodeConfigOsVersion right) => left.Equals(right);
+        public static bool operator !=(WindowsNodeConfigOsVersion left, WindowsNodeConfigOsVersion right) => !left.Equals(right);
+
+        public static explicit operator string(WindowsNodeConfigOsVersion value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is WindowsNodeConfigOsVersion other && Equals(other);
+        public bool Equals(WindowsNodeConfigOsVersion other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

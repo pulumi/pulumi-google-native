@@ -11,10 +11,14 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AWSV4SignatureArgs',
     'AcceleratorConfigArgs',
     'AccessConfigArgs',
     'AdvancedMachineFeaturesArgs',
     'AliasIpRangeArgs',
+    'AllocationAggregateReservationReservedResourceInfoAcceleratorArgs',
+    'AllocationAggregateReservationReservedResourceInfoArgs',
+    'AllocationAggregateReservationArgs',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesArgs',
     'AllocationSpecificSKUReservationArgs',
@@ -231,6 +235,7 @@ __all__ = [
     'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
     'SecurityPolicyRulePreconfiguredWafConfigArgs',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs',
     'SecurityPolicyRuleRateLimitOptionsRpcStatusArgs',
     'SecurityPolicyRuleRateLimitOptionsThresholdArgs',
     'SecurityPolicyRuleRateLimitOptionsArgs',
@@ -269,6 +274,78 @@ __all__ = [
     'VpnGatewayVpnGatewayInterfaceArgs',
     'WeightedBackendServiceArgs',
 ]
+
+@pulumi.input_type
+class AWSV4SignatureArgs:
+    def __init__(__self__, *,
+                 access_key: Optional[pulumi.Input[str]] = None,
+                 access_key_id: Optional[pulumi.Input[str]] = None,
+                 access_key_version: Optional[pulumi.Input[str]] = None,
+                 origin_region: Optional[pulumi.Input[str]] = None):
+        """
+        Contains the configurations necessary to generate a signature for access to private storage buckets that support Signature Version 4 for authentication. The service name for generating the authentication header will always default to 's3'.
+        :param pulumi.Input[str] access_key: The access key used for s3 bucket authentication. Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request. @InputOnly
+        :param pulumi.Input[str] access_key_id: The identifier of an access key used for s3 bucket authentication.
+        :param pulumi.Input[str] access_key_version: The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+        :param pulumi.Input[str] origin_region: The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin. For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+        """
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if access_key_version is not None:
+            pulumi.set(__self__, "access_key_version", access_key_version)
+        if origin_region is not None:
+            pulumi.set(__self__, "origin_region", origin_region)
+
+    @property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The access key used for s3 bucket authentication. Required for updating or creating a backend that uses AWS v4 signature authentication, but will not be returned as part of the configuration when queried with a REST API GET request. @InputOnly
+        """
+        return pulumi.get(self, "access_key")
+
+    @access_key.setter
+    def access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key", value)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The identifier of an access key used for s3 bucket authentication.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key_id", value)
+
+    @property
+    @pulumi.getter(name="accessKeyVersion")
+    def access_key_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The optional version identifier for the access key. You can use this to keep track of different iterations of your access key.
+        """
+        return pulumi.get(self, "access_key_version")
+
+    @access_key_version.setter
+    def access_key_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key_version", value)
+
+    @property
+    @pulumi.getter(name="originRegion")
+    def origin_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the cloud region of your origin. This is a free-form field with the name of the region your cloud uses to host your origin. For example, "us-east-1" for AWS or "us-ashburn-1" for OCI.
+        """
+        return pulumi.get(self, "origin_region")
+
+    @origin_region.setter
+    def origin_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "origin_region", value)
+
 
 @pulumi.input_type
 class AcceleratorConfigArgs:
@@ -468,6 +545,7 @@ class AdvancedMachineFeaturesArgs:
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
                  enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
                  numa_node_count: Optional[pulumi.Input[int]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input['AdvancedMachineFeaturesPerformanceMonitoringUnit']] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
         """
@@ -475,6 +553,7 @@ class AdvancedMachineFeaturesArgs:
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
         :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
         :param pulumi.Input[int] numa_node_count: The number of vNUMA nodes.
+        :param pulumi.Input['AdvancedMachineFeaturesPerformanceMonitoringUnit'] performance_monitoring_unit: Type of Performance Monitoring Unit requested on instance.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance's nominal CPU count and the underlying platform's SMT width.
         """
@@ -484,6 +563,8 @@ class AdvancedMachineFeaturesArgs:
             pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
         if numa_node_count is not None:
             pulumi.set(__self__, "numa_node_count", numa_node_count)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if visible_core_count is not None:
@@ -524,6 +605,18 @@ class AdvancedMachineFeaturesArgs:
     @numa_node_count.setter
     def numa_node_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "numa_node_count", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input['AdvancedMachineFeaturesPerformanceMonitoringUnit']]:
+        """
+        Type of Performance Monitoring Unit requested on instance.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input['AdvancedMachineFeaturesPerformanceMonitoringUnit']]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -588,6 +681,108 @@ class AliasIpRangeArgs:
     @subnetwork_range_name.setter
     def subnetwork_range_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_range_name", value)
+
+
+@pulumi.input_type
+class AllocationAggregateReservationReservedResourceInfoAcceleratorArgs:
+    def __init__(__self__, *,
+                 accelerator_count: Optional[pulumi.Input[int]] = None,
+                 accelerator_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] accelerator_count: Number of accelerators of specified type.
+        :param pulumi.Input[str] accelerator_type: Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        if accelerator_count is not None:
+            pulumi.set(__self__, "accelerator_count", accelerator_count)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of accelerators of specified type.
+        """
+        return pulumi.get(self, "accelerator_count")
+
+    @accelerator_count.setter
+    def accelerator_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "accelerator_count", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+
+@pulumi.input_type
+class AllocationAggregateReservationReservedResourceInfoArgs:
+    def __init__(__self__, *,
+                 accelerator: Optional[pulumi.Input['AllocationAggregateReservationReservedResourceInfoAcceleratorArgs']] = None):
+        """
+        :param pulumi.Input['AllocationAggregateReservationReservedResourceInfoAcceleratorArgs'] accelerator: Properties of accelerator resources in this reservation.
+        """
+        if accelerator is not None:
+            pulumi.set(__self__, "accelerator", accelerator)
+
+    @property
+    @pulumi.getter
+    def accelerator(self) -> Optional[pulumi.Input['AllocationAggregateReservationReservedResourceInfoAcceleratorArgs']]:
+        """
+        Properties of accelerator resources in this reservation.
+        """
+        return pulumi.get(self, "accelerator")
+
+    @accelerator.setter
+    def accelerator(self, value: Optional[pulumi.Input['AllocationAggregateReservationReservedResourceInfoAcceleratorArgs']]):
+        pulumi.set(self, "accelerator", value)
+
+
+@pulumi.input_type
+class AllocationAggregateReservationArgs:
+    def __init__(__self__, *,
+                 reserved_resources: Optional[pulumi.Input[Sequence[pulumi.Input['AllocationAggregateReservationReservedResourceInfoArgs']]]] = None,
+                 vm_family: Optional[pulumi.Input['AllocationAggregateReservationVmFamily']] = None):
+        """
+        This reservation type is specified by total resource amounts (e.g. total count of CPUs) and can account for multiple instance SKUs. In other words, one can create instances of varying shapes against this reservation.
+        :param pulumi.Input[Sequence[pulumi.Input['AllocationAggregateReservationReservedResourceInfoArgs']]] reserved_resources: List of reserved resources (CPUs, memory, accelerators).
+        :param pulumi.Input['AllocationAggregateReservationVmFamily'] vm_family: The VM family that all instances scheduled against this reservation must belong to.
+        """
+        if reserved_resources is not None:
+            pulumi.set(__self__, "reserved_resources", reserved_resources)
+        if vm_family is not None:
+            pulumi.set(__self__, "vm_family", vm_family)
+
+    @property
+    @pulumi.getter(name="reservedResources")
+    def reserved_resources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AllocationAggregateReservationReservedResourceInfoArgs']]]]:
+        """
+        List of reserved resources (CPUs, memory, accelerators).
+        """
+        return pulumi.get(self, "reserved_resources")
+
+    @reserved_resources.setter
+    def reserved_resources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AllocationAggregateReservationReservedResourceInfoArgs']]]]):
+        pulumi.set(self, "reserved_resources", value)
+
+    @property
+    @pulumi.getter(name="vmFamily")
+    def vm_family(self) -> Optional[pulumi.Input['AllocationAggregateReservationVmFamily']]:
+        """
+        The VM family that all instances scheduled against this reservation must belong to.
+        """
+        return pulumi.get(self, "vm_family")
+
+    @vm_family.setter
+    def vm_family(self, value: Optional[pulumi.Input['AllocationAggregateReservationVmFamily']]):
+        pulumi.set(self, "vm_family", value)
 
 
 @pulumi.input_type
@@ -759,7 +954,7 @@ class AllocationSpecificSKUReservationArgs:
         This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param pulumi.Input[str] count: Specifies the number of resources that are allocated.
         :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
-        :param pulumi.Input[str] source_instance_template: Specific URL of the instance template used in the reservation
+        :param pulumi.Input[str] source_instance_template: Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
         """
         if count is not None:
             pulumi.set(__self__, "count", count)
@@ -796,7 +991,7 @@ class AllocationSpecificSKUReservationArgs:
     @pulumi.getter(name="sourceInstanceTemplate")
     def source_instance_template(self) -> Optional[pulumi.Input[str]]:
         """
-        Specific URL of the instance template used in the reservation
+        Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
         """
         return pulumi.get(self, "source_instance_template")
 
@@ -836,7 +1031,7 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input[str] description: An optional description. Provide this property when creating the disk.
         :param pulumi.Input[str] disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param pulumi.Input[str] disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
-        :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+        :param pulumi.Input[str] disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
         :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options. Guest OS features are applied by merging initializeParams.guestOsFeatures and disks.guestOsFeatures
         :param pulumi.Input['AttachedDiskInitializeParamsInterface'] interface: [Deprecated] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
@@ -846,11 +1041,11 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction'] on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[str] provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param pulumi.Input[str] source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         :param pulumi.Input[str] source_instant_snapshot: The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.
         :param pulumi.Input[str] source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
@@ -955,7 +1150,7 @@ class AttachedDiskInitializeParamsArgs:
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+        Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
         """
         return pulumi.get(self, "disk_type")
 
@@ -1075,7 +1270,7 @@ class AttachedDiskInitializeParamsArgs:
     @pulumi.getter(name="replicaZones")
     def replica_zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
+        Required for each regional disk associated with the instance. Specify the URLs of the zones where the disk should be replicated to. You must provide exactly two replica zones, and one zone must be the same as the instance zone. You can't use this option with boot disks.
         """
         return pulumi.get(self, "replica_zones")
 
@@ -1123,7 +1318,7 @@ class AttachedDiskInitializeParamsArgs:
     @pulumi.getter(name="sourceImageEncryptionKey")
     def source_image_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         """
         return pulumi.get(self, "source_image_encryption_key")
 
@@ -2807,7 +3002,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs:
         """
         The configuration for a custom policy implemented by the user and deployed with the client.
         :param pulumi.Input[str] data: An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
-        :param pulumi.Input[str] name: Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        :param pulumi.Input[str] name: Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
         """
         if data is not None:
             pulumi.set(__self__, "data", data)
@@ -2830,7 +3025,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
         """
         return pulumi.get(self, "name")
 
@@ -2845,7 +3040,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs:
                  name: Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']] = None):
         """
         The configuration for a built-in load balancing policy.
-        :param pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName'] name: The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        :param pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName'] name: The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -2854,7 +3049,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input['BackendServiceLocalityLoadBalancingPolicyConfigPolicyName']]:
         """
-        The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
         """
         return pulumi.get(self, "name")
 
@@ -2901,20 +3096,27 @@ class BackendServiceLogConfigArgs:
                  enable: Optional[pulumi.Input[bool]] = None,
                  optional: Optional[pulumi.Input['BackendServiceLogConfigOptional']] = None,
                  optional_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 optional_mode: Optional[pulumi.Input['BackendServiceLogConfigOptionalMode']] = None,
                  sample_rate: Optional[pulumi.Input[float]] = None):
         """
         The available logging options for the load balancer traffic served by this backend service.
         :param pulumi.Input[bool] enable: Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
-        :param pulumi.Input['BackendServiceLogConfigOptional'] optional: This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] optional_fields: This field can only be specified if logging is enabled for this backend service and "logConfig.optional" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        :param pulumi.Input['BackendServiceLogConfigOptional'] optional: Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] optional_fields: This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        :param pulumi.Input['BackendServiceLogConfigOptionalMode'] optional_mode: This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
         :param pulumi.Input[float] sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if optional is not None:
+            warnings.warn("""Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""", DeprecationWarning)
+            pulumi.log.warn("""optional is deprecated: Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.""")
+        if optional is not None:
             pulumi.set(__self__, "optional", optional)
         if optional_fields is not None:
             pulumi.set(__self__, "optional_fields", optional_fields)
+        if optional_mode is not None:
+            pulumi.set(__self__, "optional_mode", optional_mode)
         if sample_rate is not None:
             pulumi.set(__self__, "sample_rate", sample_rate)
 
@@ -2934,7 +3136,7 @@ class BackendServiceLogConfigArgs:
     @pulumi.getter
     def optional(self) -> Optional[pulumi.Input['BackendServiceLogConfigOptional']]:
         """
-        This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
         """
         return pulumi.get(self, "optional")
 
@@ -2946,13 +3148,25 @@ class BackendServiceLogConfigArgs:
     @pulumi.getter(name="optionalFields")
     def optional_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        This field can only be specified if logging is enabled for this backend service and "logConfig.optional" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
         """
         return pulumi.get(self, "optional_fields")
 
     @optional_fields.setter
     def optional_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "optional_fields", value)
+
+    @property
+    @pulumi.getter(name="optionalMode")
+    def optional_mode(self) -> Optional[pulumi.Input['BackendServiceLogConfigOptionalMode']]:
+        """
+        This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        """
+        return pulumi.get(self, "optional_mode")
+
+    @optional_mode.setter
+    def optional_mode(self, value: Optional[pulumi.Input['BackendServiceLogConfigOptionalMode']]):
+        pulumi.set(self, "optional_mode", value)
 
     @property
     @pulumi.getter(name="sampleRate")
@@ -2985,7 +3199,7 @@ class BackendArgs:
         """
         Message containing information of one individual backend.
         :param pulumi.Input['BackendBalancingMode'] balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
-        :param pulumi.Input[float] capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+        :param pulumi.Input[float] capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
         :param pulumi.Input[str] group: The fully-qualified URL of an instance group or network endpoint group (NEG) resource. To determine what types of backends a load balancer supports, see the [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service#backends). You must use the *fully-qualified* URL (starting with https://www.googleapis.com/) to specify the instance group or NEG. Partial URLs are not supported.
@@ -3038,7 +3252,7 @@ class BackendArgs:
     @pulumi.getter(name="capacityScaler")
     def capacity_scaler(self) -> Optional[pulumi.Input[float]]:
         """
-        A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+        A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -5257,7 +5471,7 @@ class FirewallPolicyRuleArgs:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param pulumi.Input[str] action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param pulumi.Input[str] description: An optional description for this resource.
         :param pulumi.Input['FirewallPolicyRuleDirection'] direction: The direction in which this rule applies.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -5299,7 +5513,7 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -7659,16 +7873,32 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArg
 @pulumi.input_type
 class InstanceGroupManagerInstanceLifecyclePolicyArgs:
     def __init__(__self__, *,
+                 default_action_on_failure: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure']] = None,
                  force_update_on_repair: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair']] = None,
                  metadata_based_readiness_signal: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs']] = None):
         """
+        :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure'] default_action_on_failure: Defines behaviour for all instance or failures
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair'] force_update_on_repair: A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
         :param pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs'] metadata_based_readiness_signal: The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them.
         """
+        if default_action_on_failure is not None:
+            pulumi.set(__self__, "default_action_on_failure", default_action_on_failure)
         if force_update_on_repair is not None:
             pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
         if metadata_based_readiness_signal is not None:
             pulumi.set(__self__, "metadata_based_readiness_signal", metadata_based_readiness_signal)
+
+    @property
+    @pulumi.getter(name="defaultActionOnFailure")
+    def default_action_on_failure(self) -> Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure']]:
+        """
+        Defines behaviour for all instance or failures
+        """
+        return pulumi.get(self, "default_action_on_failure")
+
+    @default_action_on_failure.setter
+    def default_action_on_failure(self, value: Optional[pulumi.Input['InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure']]):
+        pulumi.set(self, "default_action_on_failure", value)
 
     @property
     @pulumi.getter(name="forceUpdateOnRepair")
@@ -8010,6 +8240,7 @@ class InstancePropertiesArgs:
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  shielded_vm_config: Optional[pulumi.Input['ShieldedVmConfigArgs']] = None,
                  tags: Optional[pulumi.Input['TagsArgs']] = None):
@@ -8036,6 +8267,7 @@ class InstancePropertiesArgs:
         :param pulumi.Input['SchedulingArgs'] scheduling: Specifies the scheduling options for the instances that are created from these properties.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. Maximum number of secure tags allowed is 50. Note that for MachineImage, this is not supported yet.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_integration_specs: Mapping of user defined keys to ServiceIntegrationSpec.
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Note that for MachineImage, this is not supported yet.
         :param pulumi.Input['ShieldedVmConfigArgs'] shielded_vm_config: Specifies the Shielded VM options for the instances that are created from these properties.
         :param pulumi.Input['TagsArgs'] tags: A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
@@ -8084,6 +8316,8 @@ class InstancePropertiesArgs:
             pulumi.set(__self__, "secure_tags", secure_tags)
         if service_accounts is not None:
             pulumi.set(__self__, "service_accounts", service_accounts)
+        if service_integration_specs is not None:
+            pulumi.set(__self__, "service_integration_specs", service_integration_specs)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if shielded_vm_config is not None:
@@ -8356,6 +8590,18 @@ class InstancePropertiesArgs:
         pulumi.set(self, "service_accounts", value)
 
     @property
+    @pulumi.getter(name="serviceIntegrationSpecs")
+    def service_integration_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Mapping of user defined keys to ServiceIntegrationSpec.
+        """
+        return pulumi.get(self, "service_integration_specs")
+
+    @service_integration_specs.setter
+    def service_integration_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "service_integration_specs", value)
+
+    @property
     @pulumi.getter(name="shieldedInstanceConfig")
     def shielded_instance_config(self) -> Optional[pulumi.Input['ShieldedInstanceConfigArgs']]:
         """
@@ -8423,6 +8669,7 @@ class InstanceArgs:
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
+                 service_integration_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
                  shielded_vm_config: Optional[pulumi.Input['ShieldedVmConfigArgs']] = None,
@@ -8441,7 +8688,7 @@ class InstanceArgs:
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] instance_encryption_key: Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
         :param pulumi.Input['InstanceKeyRevocationActionType'] key_revocation_action_type: KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
         :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
@@ -8458,6 +8705,7 @@ class InstanceArgs:
         :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] service_integration_specs: Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
         :param pulumi.Input['ShieldedVmConfigArgs'] shielded_vm_config: Deprecating, please use shielded_instance_config.
         :param pulumi.Input['ShieldedVmIntegrityPolicyArgs'] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_machine_image: Source machine image
@@ -8520,6 +8768,8 @@ class InstanceArgs:
             pulumi.set(__self__, "secure_tags", secure_tags)
         if service_accounts is not None:
             pulumi.set(__self__, "service_accounts", service_accounts)
+        if service_integration_specs is not None:
+            pulumi.set(__self__, "service_integration_specs", service_integration_specs)
         if shielded_instance_config is not None:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if shielded_instance_integrity_policy is not None:
@@ -8656,7 +8906,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceEncryptionKey")
     def instance_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
         """
         return pulumi.get(self, "instance_encryption_key")
 
@@ -8864,6 +9114,18 @@ class InstanceArgs:
     @service_accounts.setter
     def service_accounts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]):
         pulumi.set(self, "service_accounts", value)
+
+    @property
+    @pulumi.getter(name="serviceIntegrationSpecs")
+    def service_integration_specs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        """
+        return pulumi.get(self, "service_integration_specs")
+
+    @service_integration_specs.setter
+    def service_integration_specs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "service_integration_specs", value)
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")
@@ -10274,12 +10536,15 @@ class NetworkInterfaceArgs:
                  ipv6_access_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]]] = None,
                  ipv6_address: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_attachment: Optional[pulumi.Input[str]] = None,
                  network_ip: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['NetworkInterfaceNicType']] = None,
+                 parent_nic_name: Optional[pulumi.Input[str]] = None,
                  queue_count: Optional[pulumi.Input[int]] = None,
                  stack_type: Optional[pulumi.Input['NetworkInterfaceStackType']] = None,
                  subinterfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceSubInterfaceArgs']]]] = None,
-                 subnetwork: Optional[pulumi.Input[str]] = None):
+                 subnetwork: Optional[pulumi.Input[str]] = None,
+                 vlan: Optional[pulumi.Input[int]] = None):
         """
         A network interface resource attached to an instance.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] access_configs: An array of configurations for this interface. Currently, only one access config, ONE_TO_ONE_NAT, is supported. If there are no accessConfigs specified, then this instance will have no external internet access.
@@ -10288,12 +10553,15 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
         :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface.
         :param pulumi.Input[str] network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+        :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param pulumi.Input['NetworkInterfaceNicType'] nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        :param pulumi.Input[str] parent_nic_name: Name of the parent network interface of a VLAN based nic. If this field is specified, vlan must be set.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
         :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceSubInterfaceArgs']]] subinterfaces: SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
         :param pulumi.Input[str] subnetwork: The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
+        :param pulumi.Input[int] vlan: VLAN tag of a VLAN based network interface, must be in range from 2 to 4094 inclusively. This field is mandatory if the parent network interface name is set.
         """
         if access_configs is not None:
             pulumi.set(__self__, "access_configs", access_configs)
@@ -10307,10 +10575,14 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "ipv6_address", ipv6_address)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_attachment is not None:
+            pulumi.set(__self__, "network_attachment", network_attachment)
         if network_ip is not None:
             pulumi.set(__self__, "network_ip", network_ip)
         if nic_type is not None:
             pulumi.set(__self__, "nic_type", nic_type)
+        if parent_nic_name is not None:
+            pulumi.set(__self__, "parent_nic_name", parent_nic_name)
         if queue_count is not None:
             pulumi.set(__self__, "queue_count", queue_count)
         if stack_type is not None:
@@ -10319,6 +10591,8 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "subinterfaces", subinterfaces)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
+        if vlan is not None:
+            pulumi.set(__self__, "vlan", vlan)
 
     @property
     @pulumi.getter(name="accessConfigs")
@@ -10393,6 +10667,18 @@ class NetworkInterfaceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_attachment", value)
+
+    @property
     @pulumi.getter(name="networkIP")
     def network_ip(self) -> Optional[pulumi.Input[str]]:
         """
@@ -10415,6 +10701,18 @@ class NetworkInterfaceArgs:
     @nic_type.setter
     def nic_type(self, value: Optional[pulumi.Input['NetworkInterfaceNicType']]):
         pulumi.set(self, "nic_type", value)
+
+    @property
+    @pulumi.getter(name="parentNicName")
+    def parent_nic_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the parent network interface of a VLAN based nic. If this field is specified, vlan must be set.
+        """
+        return pulumi.get(self, "parent_nic_name")
+
+    @parent_nic_name.setter
+    def parent_nic_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_nic_name", value)
 
     @property
     @pulumi.getter(name="queueCount")
@@ -10463,6 +10761,18 @@ class NetworkInterfaceArgs:
     @subnetwork.setter
     def subnetwork(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork", value)
+
+    @property
+    @pulumi.getter
+    def vlan(self) -> Optional[pulumi.Input[int]]:
+        """
+        VLAN tag of a VLAN based network interface, must be in range from 2 to 4094 inclusively. This field is mandatory if the parent network interface name is set.
+        """
+        return pulumi.get(self, "vlan")
+
+    @vlan.setter
+    def vlan(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "vlan", value)
 
 
 @pulumi.input_type
@@ -10651,7 +10961,7 @@ class NotificationEndpointGrpcSettingsArgs:
         :param pulumi.Input[str] authority: Optional. If specified, this field is used to set the authority header by the sender of notifications. See https://tools.ietf.org/html/rfc7540#section-8.1.2.3
         :param pulumi.Input[str] endpoint: Endpoint to which gRPC notifications are sent. This must be a valid gRPCLB DNS name.
         :param pulumi.Input[str] payload_name: Optional. If specified, this field is used to populate the "name" field in gRPC requests.
-        :param pulumi.Input['DurationArgs'] resend_interval: Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+        :param pulumi.Input['DurationArgs'] resend_interval: Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
         :param pulumi.Input[int] retry_duration_sec: How much time (in seconds) is spent attempting notification retries until a successful response is received. Default is 30s. Limit is 20m (1200s). Must be a positive number.
         """
         if authority is not None:
@@ -10705,7 +11015,7 @@ class NotificationEndpointGrpcSettingsArgs:
     @pulumi.getter(name="resendInterval")
     def resend_interval(self) -> Optional[pulumi.Input['DurationArgs']]:
         """
-        Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+        Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
         """
         return pulumi.get(self, "resend_interval")
 
@@ -12022,6 +12332,7 @@ class ReservationAffinityArgs:
 @pulumi.input_type
 class ReservationArgs:
     def __init__(__self__, *,
+                 aggregate_reservation: Optional[pulumi.Input['AllocationAggregateReservationArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -12031,14 +12342,17 @@ class ReservationArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
+        :param pulumi.Input['AllocationAggregateReservationArgs'] aggregate_reservation: Reservation for aggregated resources, providing shape flexibility.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_policies: Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
-        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         """
+        if aggregate_reservation is not None:
+            pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -12053,6 +12367,18 @@ class ReservationArgs:
             pulumi.set(__self__, "specific_reservation_required", specific_reservation_required)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> Optional[pulumi.Input['AllocationAggregateReservationArgs']]:
+        """
+        Reservation for aggregated resources, providing shape flexibility.
+        """
+        return pulumi.get(self, "aggregate_reservation")
+
+    @aggregate_reservation.setter
+    def aggregate_reservation(self, value: Optional[pulumi.Input['AllocationAggregateReservationArgs']]):
+        pulumi.set(self, "aggregate_reservation", value)
 
     @property
     @pulumi.getter
@@ -12094,7 +12420,7 @@ class ReservationArgs:
     @pulumi.getter(name="shareSettings")
     def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
         """
-        Share-settings for shared-reservation
+        Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         """
         return pulumi.get(self, "share_settings")
 
@@ -12149,7 +12475,7 @@ class ResourceCommitmentArgs:
         Commitment for a particular resource (a Commitment is composed of one or more of these).
         :param pulumi.Input[str] accelerator_type: Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
         :param pulumi.Input[str] amount: The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
-        :param pulumi.Input['ResourceCommitmentType'] type: Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+        :param pulumi.Input['ResourceCommitmentType'] type: Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
         """
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -12186,7 +12512,7 @@ class ResourceCommitmentArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['ResourceCommitmentType']]:
         """
-        Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+        Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
         """
         return pulumi.get(self, "type")
 
@@ -12250,16 +12576,20 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                  availability_domain_count: Optional[pulumi.Input[int]] = None,
                  collocation: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyCollocation']] = None,
                  locality: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyLocality']] = None,
+                 max_distance: Optional[pulumi.Input[int]] = None,
                  scope: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyScope']] = None,
                  style: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyStyle']] = None,
+                 tpu_topology: Optional[pulumi.Input[str]] = None,
                  vm_count: Optional[pulumi.Input[int]] = None):
         """
         A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
         :param pulumi.Input[int] availability_domain_count: The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyCollocation'] collocation: Specifies network collocation
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyLocality'] locality: Specifies network locality
+        :param pulumi.Input[int] max_distance: Specifies the number of max logical switches.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyScope'] scope: Scope specifies the availability domain to which the VMs should be spread.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyStyle'] style: Specifies instances to hosts placement relationship
+        :param pulumi.Input[str] tpu_topology: Specifies the shape of the TPU slice
         :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
         """
         if availability_domain_count is not None:
@@ -12268,10 +12598,14 @@ class ResourcePolicyGroupPlacementPolicyArgs:
             pulumi.set(__self__, "collocation", collocation)
         if locality is not None:
             pulumi.set(__self__, "locality", locality)
+        if max_distance is not None:
+            pulumi.set(__self__, "max_distance", max_distance)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
         if style is not None:
             pulumi.set(__self__, "style", style)
+        if tpu_topology is not None:
+            pulumi.set(__self__, "tpu_topology", tpu_topology)
         if vm_count is not None:
             pulumi.set(__self__, "vm_count", vm_count)
 
@@ -12312,6 +12646,18 @@ class ResourcePolicyGroupPlacementPolicyArgs:
         pulumi.set(self, "locality", value)
 
     @property
+    @pulumi.getter(name="maxDistance")
+    def max_distance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of max logical switches.
+        """
+        return pulumi.get(self, "max_distance")
+
+    @max_distance.setter
+    def max_distance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_distance", value)
+
+    @property
     @pulumi.getter
     def scope(self) -> Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyScope']]:
         """
@@ -12334,6 +12680,18 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @style.setter
     def style(self, value: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyStyle']]):
         pulumi.set(self, "style", value)
+
+    @property
+    @pulumi.getter(name="tpuTopology")
+    def tpu_topology(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the shape of the TPU slice
+        """
+        return pulumi.get(self, "tpu_topology")
+
+    @tpu_topology.setter
+    def tpu_topology(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tpu_topology", value)
 
     @property
     @pulumi.getter(name="vmCount")
@@ -15651,6 +16009,45 @@ class SecurityPolicyRulePreconfiguredWafConfigArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs:
+    def __init__(__self__, *,
+                 enforce_on_key_name: Optional[pulumi.Input[str]] = None,
+                 enforce_on_key_type: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType']] = None):
+        """
+        :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType'] enforce_on_key_type: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        """
+        if enforce_on_key_name is not None:
+            pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
+        if enforce_on_key_type is not None:
+            pulumi.set(__self__, "enforce_on_key_type", enforce_on_key_type)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyName")
+    def enforce_on_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+        """
+        return pulumi.get(self, "enforce_on_key_name")
+
+    @enforce_on_key_name.setter
+    def enforce_on_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforce_on_key_name", value)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyType")
+    def enforce_on_key_type(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType']]:
+        """
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        """
+        return pulumi.get(self, "enforce_on_key_type")
+
+    @enforce_on_key_type.setter
+    def enforce_on_key_type(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType']]):
+        pulumi.set(self, "enforce_on_key_type", value)
+
+
+@pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsRpcStatusArgs:
     def __init__(__self__, *,
                  code: Optional[pulumi.Input[int]] = None,
@@ -15736,6 +16133,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                  ban_threshold: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs']] = None,
                  conform_action: Optional[pulumi.Input[str]] = None,
                  enforce_on_key: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']] = None,
+                 enforce_on_key_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]] = None,
                  enforce_on_key_name: Optional[pulumi.Input[str]] = None,
                  exceed_action: Optional[pulumi.Input[str]] = None,
                  exceed_action_rpc_status: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsRpcStatusArgs']] = None,
@@ -15745,9 +16143,10 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
         :param pulumi.Input[int] ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param pulumi.Input[str] conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey'] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        :param pulumi.Input[str] exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsRpcStatusArgs'] exceed_action_rpc_status: Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
         :param pulumi.Input['SecurityPolicyRuleRedirectOptionsArgs'] exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsThresholdArgs'] rate_limit_threshold: Threshold at which to begin ratelimiting.
@@ -15760,6 +16159,8 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
             pulumi.set(__self__, "conform_action", conform_action)
         if enforce_on_key is not None:
             pulumi.set(__self__, "enforce_on_key", enforce_on_key)
+        if enforce_on_key_configs is not None:
+            pulumi.set(__self__, "enforce_on_key_configs", enforce_on_key_configs)
         if enforce_on_key_name is not None:
             pulumi.set(__self__, "enforce_on_key_name", enforce_on_key_name)
         if exceed_action is not None:
@@ -15811,13 +16212,25 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         """
         return pulumi.get(self, "enforce_on_key")
 
     @enforce_on_key.setter
     def enforce_on_key(self, value: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKey']]):
         pulumi.set(self, "enforce_on_key", value)
+
+    @property
+    @pulumi.getter(name="enforceOnKeyConfigs")
+    def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]:
+        """
+        If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+        """
+        return pulumi.get(self, "enforce_on_key_configs")
+
+    @enforce_on_key_configs.setter
+    def enforce_on_key_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]):
+        pulumi.set(self, "enforce_on_key_configs", value)
 
     @property
     @pulumi.getter(name="enforceOnKeyName")
@@ -15835,7 +16248,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> Optional[pulumi.Input[str]]:
         """
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -15940,7 +16353,7 @@ class SecurityPolicyRuleArgs:
                  target_service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        :param pulumi.Input[str] action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['SecurityPolicyRuleDirection'] direction: The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
@@ -15994,7 +16407,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter
     def action(self) -> Optional[pulumi.Input[str]]:
         """
-        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         """
         return pulumi.get(self, "action")
 
@@ -16276,6 +16689,7 @@ class SecuritySettingsArgs:
                  authentication: Optional[pulumi.Input[str]] = None,
                  authentication_policy: Optional[pulumi.Input['AuthenticationPolicyArgs']] = None,
                  authorization_config: Optional[pulumi.Input['AuthorizationConfigArgs']] = None,
+                 aws_v4_authentication: Optional[pulumi.Input['AWSV4SignatureArgs']] = None,
                  client_tls_policy: Optional[pulumi.Input[str]] = None,
                  client_tls_settings: Optional[pulumi.Input['ClientTlsSettingsArgs']] = None,
                  subject_alt_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -16284,6 +16698,7 @@ class SecuritySettingsArgs:
         :param pulumi.Input[str] authentication: [Deprecated] Use clientTlsPolicy instead.
         :param pulumi.Input['AuthenticationPolicyArgs'] authentication_policy: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
         :param pulumi.Input['AuthorizationConfigArgs'] authorization_config: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+        :param pulumi.Input['AWSV4SignatureArgs'] aws_v4_authentication: The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
         :param pulumi.Input[str] client_tls_policy: Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         :param pulumi.Input['ClientTlsSettingsArgs'] client_tls_settings: [Deprecated] TLS Settings for the backend service.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] subject_alt_names: Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
@@ -16303,6 +16718,8 @@ class SecuritySettingsArgs:
             pulumi.log.warn("""authorization_config is deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.""")
         if authorization_config is not None:
             pulumi.set(__self__, "authorization_config", authorization_config)
+        if aws_v4_authentication is not None:
+            pulumi.set(__self__, "aws_v4_authentication", aws_v4_authentication)
         if client_tls_policy is not None:
             pulumi.set(__self__, "client_tls_policy", client_tls_policy)
         if client_tls_settings is not None:
@@ -16348,6 +16765,18 @@ class SecuritySettingsArgs:
     @authorization_config.setter
     def authorization_config(self, value: Optional[pulumi.Input['AuthorizationConfigArgs']]):
         pulumi.set(self, "authorization_config", value)
+
+    @property
+    @pulumi.getter(name="awsV4Authentication")
+    def aws_v4_authentication(self) -> Optional[pulumi.Input['AWSV4SignatureArgs']]:
+        """
+        The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        """
+        return pulumi.get(self, "aws_v4_authentication")
+
+    @aws_v4_authentication.setter
+    def aws_v4_authentication(self, value: Optional[pulumi.Input['AWSV4SignatureArgs']]):
+        pulumi.set(self, "aws_v4_authentication", value)
 
     @property
     @pulumi.getter(name="clientTlsPolicy")
@@ -16503,13 +16932,17 @@ class ServiceAccountArgs:
 class ServiceAttachmentConsumerProjectLimitArgs:
     def __init__(__self__, *,
                  connection_limit: Optional[pulumi.Input[int]] = None,
+                 network_url: Optional[pulumi.Input[str]] = None,
                  project_id_or_num: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[int] connection_limit: The value of the limit to set.
+        :param pulumi.Input[str] network_url: The network URL for the network to set the limit for.
         :param pulumi.Input[str] project_id_or_num: The project id or number for the project to set the limit for.
         """
         if connection_limit is not None:
             pulumi.set(__self__, "connection_limit", connection_limit)
+        if network_url is not None:
+            pulumi.set(__self__, "network_url", network_url)
         if project_id_or_num is not None:
             pulumi.set(__self__, "project_id_or_num", project_id_or_num)
 
@@ -16524,6 +16957,18 @@ class ServiceAttachmentConsumerProjectLimitArgs:
     @connection_limit.setter
     def connection_limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "connection_limit", value)
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network URL for the network to set the limit for.
+        """
+        return pulumi.get(self, "network_url")
+
+    @network_url.setter
+    def network_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_url", value)
 
     @property
     @pulumi.getter(name="projectIdOrNum")
@@ -16815,7 +17260,7 @@ class SourceInstanceParamsArgs:
                  disk_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DiskInstantiationConfigArgs']]]] = None):
         """
         A specification of the parameters to use when creating the instance template from a source instance.
-        :param pulumi.Input[Sequence[pulumi.Input['DiskInstantiationConfigArgs']]] disk_configs: Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+        :param pulumi.Input[Sequence[pulumi.Input['DiskInstantiationConfigArgs']]] disk_configs: Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
         """
         if disk_configs is not None:
             pulumi.set(__self__, "disk_configs", disk_configs)
@@ -16824,7 +17269,7 @@ class SourceInstanceParamsArgs:
     @pulumi.getter(name="diskConfigs")
     def disk_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DiskInstantiationConfigArgs']]]]:
         """
-        Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+        Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
         """
         return pulumi.get(self, "disk_configs")
 

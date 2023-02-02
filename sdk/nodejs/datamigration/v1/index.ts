@@ -25,6 +25,11 @@ export type ConnectionProfileIamPolicy = import("./connectionProfileIamPolicy").
 export const ConnectionProfileIamPolicy: typeof import("./connectionProfileIamPolicy").ConnectionProfileIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ConnectionProfileIamPolicy"], () => require("./connectionProfileIamPolicy"));
 
+export { ConversionWorkspaceArgs } from "./conversionWorkspace";
+export type ConversionWorkspace = import("./conversionWorkspace").ConversionWorkspace;
+export const ConversionWorkspace: typeof import("./conversionWorkspace").ConversionWorkspace = null as any;
+utilities.lazyLoad(exports, ["ConversionWorkspace"], () => require("./conversionWorkspace"));
+
 export { GetConnectionProfileArgs, GetConnectionProfileResult, GetConnectionProfileOutputArgs } from "./getConnectionProfile";
 export const getConnectionProfile: typeof import("./getConnectionProfile").getConnectionProfile = null as any;
 export const getConnectionProfileOutput: typeof import("./getConnectionProfile").getConnectionProfileOutput = null as any;
@@ -35,6 +40,11 @@ export const getConnectionProfileIamPolicy: typeof import("./getConnectionProfil
 export const getConnectionProfileIamPolicyOutput: typeof import("./getConnectionProfileIamPolicy").getConnectionProfileIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getConnectionProfileIamPolicy","getConnectionProfileIamPolicyOutput"], () => require("./getConnectionProfileIamPolicy"));
 
+export { GetConversionWorkspaceArgs, GetConversionWorkspaceResult, GetConversionWorkspaceOutputArgs } from "./getConversionWorkspace";
+export const getConversionWorkspace: typeof import("./getConversionWorkspace").getConversionWorkspace = null as any;
+export const getConversionWorkspaceOutput: typeof import("./getConversionWorkspace").getConversionWorkspaceOutput = null as any;
+utilities.lazyLoad(exports, ["getConversionWorkspace","getConversionWorkspaceOutput"], () => require("./getConversionWorkspace"));
+
 export { GetMigrationJobArgs, GetMigrationJobResult, GetMigrationJobOutputArgs } from "./getMigrationJob";
 export const getMigrationJob: typeof import("./getMigrationJob").getMigrationJob = null as any;
 export const getMigrationJobOutput: typeof import("./getMigrationJob").getMigrationJobOutput = null as any;
@@ -44,6 +54,11 @@ export { GetMigrationJobIamPolicyArgs, GetMigrationJobIamPolicyResult, GetMigrat
 export const getMigrationJobIamPolicy: typeof import("./getMigrationJobIamPolicy").getMigrationJobIamPolicy = null as any;
 export const getMigrationJobIamPolicyOutput: typeof import("./getMigrationJobIamPolicy").getMigrationJobIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMigrationJobIamPolicy","getMigrationJobIamPolicyOutput"], () => require("./getMigrationJobIamPolicy"));
+
+export { GetPrivateConnectionArgs, GetPrivateConnectionResult, GetPrivateConnectionOutputArgs } from "./getPrivateConnection";
+export const getPrivateConnection: typeof import("./getPrivateConnection").getPrivateConnection = null as any;
+export const getPrivateConnectionOutput: typeof import("./getPrivateConnection").getPrivateConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getPrivateConnection","getPrivateConnectionOutput"], () => require("./getPrivateConnection"));
 
 export { MigrationJobArgs } from "./migrationJob";
 export type MigrationJob = import("./migrationJob").MigrationJob;
@@ -65,6 +80,11 @@ export type MigrationJobIamPolicy = import("./migrationJobIamPolicy").MigrationJ
 export const MigrationJobIamPolicy: typeof import("./migrationJobIamPolicy").MigrationJobIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MigrationJobIamPolicy"], () => require("./migrationJobIamPolicy"));
 
+export { PrivateConnectionArgs } from "./privateConnection";
+export type PrivateConnection = import("./privateConnection").PrivateConnection;
+export const PrivateConnection: typeof import("./privateConnection").PrivateConnection = null as any;
+utilities.lazyLoad(exports, ["PrivateConnection"], () => require("./privateConnection"));
+
 
 // Export enums:
 export * from "../../types/enums/datamigration/v1";
@@ -81,6 +101,8 @@ const _module = {
                 return new ConnectionProfileIamMember(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:ConnectionProfileIamPolicy":
                 return new ConnectionProfileIamPolicy(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:ConversionWorkspace":
+                return new ConversionWorkspace(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJob":
                 return new MigrationJob(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJobIamBinding":
@@ -89,6 +111,8 @@ const _module = {
                 return new MigrationJobIamMember(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJobIamPolicy":
                 return new MigrationJobIamPolicy(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:PrivateConnection":
+                return new PrivateConnection(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

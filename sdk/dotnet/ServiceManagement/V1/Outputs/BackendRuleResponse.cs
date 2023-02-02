@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// </summary>
         public readonly string JwtAudience;
         /// <summary>
+        /// Deprecated, do not use.
+        /// </summary>
+        public readonly double MinDeadline;
+        /// <summary>
         /// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         /// </summary>
         public readonly double OperationDeadline;
@@ -56,6 +60,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
 
             string jwtAudience,
 
+            double minDeadline,
+
             double operationDeadline,
 
             string pathTranslation,
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
             Deadline = deadline;
             DisableAuth = disableAuth;
             JwtAudience = jwtAudience;
+            MinDeadline = minDeadline;
             OperationDeadline = operationDeadline;
             PathTranslation = pathTranslation;
             Protocol = protocol;

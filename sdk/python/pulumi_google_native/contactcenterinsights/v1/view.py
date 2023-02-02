@@ -23,7 +23,7 @@ class ViewArgs:
         The set of arguments for constructing a View resource.
         :param pulumi.Input[str] display_name: The human-readable display name of the view.
         :param pulumi.Input[str] name: Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
-        :param pulumi.Input[str] value: String with specific view properties.
+        :param pulumi.Input[str] value: String with specific view properties, must be non-empty.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -82,7 +82,7 @@ class ViewArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        String with specific view properties.
+        String with specific view properties, must be non-empty.
         """
         return pulumi.get(self, "value")
 
@@ -109,7 +109,7 @@ class View(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The human-readable display name of the view.
         :param pulumi.Input[str] name: Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
-        :param pulumi.Input[str] value: String with specific view properties.
+        :param pulumi.Input[str] value: String with specific view properties, must be non-empty.
         """
         ...
     @overload
@@ -235,7 +235,7 @@ class View(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         """
-        String with specific view properties.
+        String with specific view properties, must be non-empty.
         """
         return pulumi.get(self, "value")
 

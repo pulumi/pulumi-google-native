@@ -17,7 +17,9 @@ type Subscription struct {
 
 	// The settings for this subscription's message delivery.
 	DeliveryConfig DeliveryConfigResponseOutput `pulumi:"deliveryConfig"`
-	Location       pulumi.StringOutput          `pulumi:"location"`
+	// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+	ExportConfig ExportConfigResponseOutput `pulumi:"exportConfig"`
+	Location     pulumi.StringOutput        `pulumi:"location"`
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -79,7 +81,9 @@ func (SubscriptionState) ElementType() reflect.Type {
 type subscriptionArgs struct {
 	// The settings for this subscription's message delivery.
 	DeliveryConfig *DeliveryConfig `pulumi:"deliveryConfig"`
-	Location       *string         `pulumi:"location"`
+	// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+	ExportConfig *ExportConfig `pulumi:"exportConfig"`
+	Location     *string       `pulumi:"location"`
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -95,7 +99,9 @@ type subscriptionArgs struct {
 type SubscriptionArgs struct {
 	// The settings for this subscription's message delivery.
 	DeliveryConfig DeliveryConfigPtrInput
-	Location       pulumi.StringPtrInput
+	// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+	ExportConfig ExportConfigPtrInput
+	Location     pulumi.StringPtrInput
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -147,6 +153,11 @@ func (o SubscriptionOutput) ToSubscriptionOutputWithContext(ctx context.Context)
 // The settings for this subscription's message delivery.
 func (o SubscriptionOutput) DeliveryConfig() DeliveryConfigResponseOutput {
 	return o.ApplyT(func(v *Subscription) DeliveryConfigResponseOutput { return v.DeliveryConfig }).(DeliveryConfigResponseOutput)
+}
+
+// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+func (o SubscriptionOutput) ExportConfig() ExportConfigResponseOutput {
+	return o.ApplyT(func(v *Subscription) ExportConfigResponseOutput { return v.ExportConfig }).(ExportConfigResponseOutput)
 }
 
 func (o SubscriptionOutput) Location() pulumi.StringOutput {

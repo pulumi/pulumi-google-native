@@ -15,7 +15,7 @@ class ExecutionCallLogLevel(str, Enum):
     """
     CALL_LOG_LEVEL_UNSPECIFIED = "CALL_LOG_LEVEL_UNSPECIFIED"
     """
-    No call logging specified.
+    No call logging level specified.
     """
     LOG_ALL_CALLS = "LOG_ALL_CALLS"
     """

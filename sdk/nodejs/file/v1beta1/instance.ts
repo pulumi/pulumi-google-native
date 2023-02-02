@@ -97,6 +97,10 @@ export class Instance extends pulumi.CustomResource {
     public readonly networks!: pulumi.Output<outputs.file.v1beta1.NetworkConfigResponse[]>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+     */
+    public readonly protocol!: pulumi.Output<string>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -142,6 +146,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["multiShareEnabled"] = args ? args.multiShareEnabled : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["capacityStepSizeGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -169,6 +174,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networks"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["protocol"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -224,6 +230,10 @@ export interface InstanceArgs {
      */
     networks?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.NetworkConfigArgs>[]>;
     project?: pulumi.Input<string>;
+    /**
+     * Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+     */
+    protocol?: pulumi.Input<enums.file.v1beta1.InstanceProtocol>;
     /**
      * The service tier of the instance.
      */

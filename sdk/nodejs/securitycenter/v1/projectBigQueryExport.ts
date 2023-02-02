@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a big query export.
+ * Creates a BigQuery export.
  * Auto-naming is currently not supported for this resource.
  */
 export class ProjectBigQueryExport extends pulumi.CustomResource {
@@ -40,7 +40,7 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
      */
     public readonly bigQueryExportId!: pulumi.Output<string>;
     /**
-     * The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+     * The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -56,7 +56,7 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
      */
     public readonly filter!: pulumi.Output<string>;
     /**
-     * Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+     * Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
      */
     public /*out*/ readonly mostRecentEditor!: pulumi.Output<string>;
     /**
@@ -64,12 +64,12 @@ export class ProjectBigQueryExport extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The service account that needs permission to create table, upload data to the big query dataset.
+     * The service account that needs permission to create table and upload data to the BigQuery dataset.
      */
     public /*out*/ readonly principal!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+     * The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 

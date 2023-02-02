@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'ChannelPartnerLinkLinkState',
+    'GoogleCloudChannelV1ConditionalOverrideRebillingBasis',
     'GoogleCloudChannelV1PeriodPeriodType',
     'GoogleCloudChannelV1RenewalSettingsPaymentPlan',
     'GoogleCloudChannelV1RepricingConfigRebillingBasis',
@@ -35,6 +36,24 @@ class ChannelPartnerLinkLinkState(str, Enum):
     SUSPENDED = "SUSPENDED"
     """
     Status when the reseller is suspended by Google or distributor.
+    """
+
+
+class GoogleCloudChannelV1ConditionalOverrideRebillingBasis(str, Enum):
+    """
+    Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+    """
+    REBILLING_BASIS_UNSPECIFIED = "REBILLING_BASIS_UNSPECIFIED"
+    """
+    Not used.
+    """
+    COST_AT_LIST = "COST_AT_LIST"
+    """
+    Use the list cost, also known as the MSRP.
+    """
+    DIRECT_CUSTOMER_COST = "DIRECT_CUSTOMER_COST"
+    """
+    Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
     """
 
 

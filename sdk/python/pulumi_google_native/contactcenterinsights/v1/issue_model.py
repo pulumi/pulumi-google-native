@@ -158,6 +158,7 @@ class IssueModel(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["issue_count"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["training_stats"] = None
             __props__.__dict__["update_time"] = None
@@ -188,6 +189,7 @@ class IssueModel(pulumi.CustomResource):
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["input_data_config"] = None
+        __props__.__dict__["issue_count"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -219,6 +221,14 @@ class IssueModel(pulumi.CustomResource):
         Configs for the input data that used to create the issue model.
         """
         return pulumi.get(self, "input_data_config")
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> pulumi.Output[str]:
+        """
+        Number of issues in this issue model.
+        """
+        return pulumi.get(self, "issue_count")
 
     @property
     @pulumi.getter

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
             set => _airflowConfigOverrides = value;
         }
 
+        /// <summary>
+        /// Optional. The configuration for Cloud Data Lineage integration.
+        /// </summary>
+        [Input("cloudDataLineageIntegration")]
+        public Input<Inputs.CloudDataLineageIntegrationArgs>? CloudDataLineageIntegration { get; set; }
+
         [Input("envVariables")]
         private InputMap<string>? _envVariables;
 

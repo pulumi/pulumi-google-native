@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<string> DownloadBytes { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. KMS key name used for data encryption.
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string> KmsKey { get; private set; } = null!;
+
+        /// <summary>
         /// Resource labels to represent user provided metadata.
         /// </summary>
         [Output("labels")]
@@ -162,6 +168,12 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Immutable. KMS key name used for data encryption.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

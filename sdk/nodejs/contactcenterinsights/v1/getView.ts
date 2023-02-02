@@ -44,7 +44,7 @@ export interface GetViewResult {
      */
     readonly updateTime: string;
     /**
-     * String with specific view properties.
+     * String with specific view properties, must be non-empty.
      */
     readonly value: string;
 }

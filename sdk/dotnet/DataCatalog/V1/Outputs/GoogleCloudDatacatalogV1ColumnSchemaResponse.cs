@@ -21,13 +21,33 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// </summary>
         public readonly string Column;
         /// <summary>
+        /// Optional. Default value for the column.
+        /// </summary>
+        public readonly string DefaultValue;
+        /// <summary>
         /// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        /// </summary>
+        public readonly string GcRule;
+        /// <summary>
+        /// Optional. Most important inclusion of this column.
+        /// </summary>
+        public readonly string HighestIndexingType;
+        /// <summary>
+        /// Looker specific column info of this column.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse LookerColumnSpec;
+        /// <summary>
         /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// Optional. Ordinal position
+        /// </summary>
+        public readonly int OrdinalPosition;
         /// <summary>
         /// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         /// </summary>
@@ -41,17 +61,32 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         private GoogleCloudDatacatalogV1ColumnSchemaResponse(
             string column,
 
+            string defaultValue,
+
             string description,
 
+            string gcRule,
+
+            string highestIndexingType,
+
+            Outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse lookerColumnSpec,
+
             string mode,
+
+            int ordinalPosition,
 
             ImmutableArray<Outputs.GoogleCloudDatacatalogV1ColumnSchemaResponse> subcolumns,
 
             string type)
         {
             Column = column;
+            DefaultValue = defaultValue;
             Description = description;
+            GcRule = gcRule;
+            HighestIndexingType = highestIndexingType;
+            LookerColumnSpec = lookerColumnSpec;
             Mode = mode;
+            OrdinalPosition = ordinalPosition;
             Subcolumns = subcolumns;
             Type = type;
         }

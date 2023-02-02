@@ -18,15 +18,21 @@ __all__ = [
     'AttemptResponse',
     'BindingResponse',
     'ExprResponse',
+    'HeaderOverrideResponse',
+    'HeaderResponse',
     'HttpRequestResponse',
+    'HttpTargetResponse',
     'OAuthTokenResponse',
     'OidcTokenResponse',
+    'PathOverrideResponse',
     'PullMessageResponse',
+    'QueryOverrideResponse',
     'QueueStatsResponse',
     'RateLimitsResponse',
     'RetryConfigResponse',
     'StackdriverLoggingConfigResponse',
     'StatusResponse',
+    'UriOverrideResponse',
 ]
 
 @pulumi.output_type
@@ -388,6 +394,61 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class HeaderOverrideResponse(dict):
+    """
+    Wraps the Header object.
+    """
+    def __init__(__self__, *,
+                 header: 'outputs.HeaderResponse'):
+        """
+        Wraps the Header object.
+        :param 'HeaderResponse' header: header embodying a key and a value.
+        """
+        pulumi.set(__self__, "header", header)
+
+    @property
+    @pulumi.getter
+    def header(self) -> 'outputs.HeaderResponse':
+        """
+        header embodying a key and a value.
+        """
+        return pulumi.get(self, "header")
+
+
+@pulumi.output_type
+class HeaderResponse(dict):
+    """
+    Defines a header message. A header can have a key and a value.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        Defines a header message. A header can have a key and a value.
+        :param str key: The Key of the header.
+        :param str value: The Value of the header.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The Key of the header.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The Value of the header.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
 class HttpRequestResponse(dict):
     """
     HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
@@ -483,6 +544,71 @@ class HttpRequestResponse(dict):
         The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
         """
         return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class HttpTargetResponse(dict):
+    """
+    HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerOverrides":
+            suggest = "header_overrides"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "uriOverride":
+            suggest = "uri_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 header_overrides: Sequence['outputs.HeaderOverrideResponse'],
+                 http_method: str,
+                 uri_override: 'outputs.UriOverrideResponse'):
+        """
+        HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+        :param Sequence['HeaderOverrideResponse'] header_overrides: HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        :param str http_method: The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        :param 'UriOverrideResponse' uri_override: URI override. When specified, modifies the execution URI for all the tasks in the queue.
+        """
+        pulumi.set(__self__, "header_overrides", header_overrides)
+        pulumi.set(__self__, "http_method", http_method)
+        pulumi.set(__self__, "uri_override", uri_override)
+
+    @property
+    @pulumi.getter(name="headerOverrides")
+    def header_overrides(self) -> Sequence['outputs.HeaderOverrideResponse']:
+        """
+        HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"`. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        """
+        return pulumi.get(self, "header_overrides")
+
+    @property
+    @pulumi.getter(name="httpMethod")
+    def http_method(self) -> str:
+        """
+        The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        """
+        return pulumi.get(self, "http_method")
+
+    @property
+    @pulumi.getter(name="uriOverride")
+    def uri_override(self) -> 'outputs.UriOverrideResponse':
+        """
+        URI override. When specified, modifies the execution URI for all the tasks in the queue.
+        """
+        return pulumi.get(self, "uri_override")
 
 
 @pulumi.output_type
@@ -586,6 +712,28 @@ class OidcTokenResponse(dict):
 
 
 @pulumi.output_type
+class PathOverrideResponse(dict):
+    """
+    PathOverride. Path message defines path override for HTTP targets.
+    """
+    def __init__(__self__, *,
+                 path: str):
+        """
+        PathOverride. Path message defines path override for HTTP targets.
+        :param str path: The URI path (e.g., a/b/c). Default is Empty string.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The URI path (e.g., a/b/c). Default is Empty string.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
 class PullMessageResponse(dict):
     """
     Pull Message. This proto can only be used for tasks in a queue which has PULL type. It currently exists for backwards compatibility with the App Engine Task Queue SDK. This message type maybe returned with methods list and get, when the response view is FULL.
@@ -616,6 +764,45 @@ class PullMessageResponse(dict):
         The tasks's tag. The tag is less than 500 characters. SDK compatibility: Although the SDK allows tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud Tasks.
         """
         return pulumi.get(self, "tag")
+
+
+@pulumi.output_type
+class QueryOverrideResponse(dict):
+    """
+    QueryOverride. Query message defines query override for HTTP targets.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_params: str):
+        """
+        QueryOverride. Query message defines query override for HTTP targets.
+        :param str query_params: The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        """
+        pulumi.set(__self__, "query_params", query_params)
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> str:
+        """
+        The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        """
+        return pulumi.get(self, "query_params")
 
 
 @pulumi.output_type
@@ -946,5 +1133,103 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class UriOverrideResponse(dict):
+    """
+    URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathOverride":
+            suggest = "path_override"
+        elif key == "queryOverride":
+            suggest = "query_override"
+        elif key == "uriOverrideEnforceMode":
+            suggest = "uri_override_enforce_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UriOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UriOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UriOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 host: str,
+                 path_override: 'outputs.PathOverrideResponse',
+                 port: str,
+                 query_override: 'outputs.QueryOverrideResponse',
+                 scheme: str,
+                 uri_override_enforce_mode: str):
+        """
+        URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+        :param str host: Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+        :param 'PathOverrideResponse' path_override: URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+        :param str port: Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+        :param 'QueryOverrideResponse' query_override: URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        :param str scheme: Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        :param str uri_override_enforce_mode: URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "path_override", path_override)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "query_override", query_override)
+        pulumi.set(__self__, "scheme", scheme)
+        pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="pathOverride")
+    def path_override(self) -> 'outputs.PathOverrideResponse':
+        """
+        URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+        """
+        return pulumi.get(self, "path_override")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="queryOverride")
+    def query_override(self) -> 'outputs.QueryOverrideResponse':
+        """
+        URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        """
+        return pulumi.get(self, "query_override")
+
+    @property
+    @pulumi.getter
+    def scheme(self) -> str:
+        """
+        Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        """
+        return pulumi.get(self, "scheme")
+
+    @property
+    @pulumi.getter(name="uriOverrideEnforceMode")
+    def uri_override_enforce_mode(self) -> str:
+        """
+        URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+        """
+        return pulumi.get(self, "uri_override_enforce_mode")
 
 

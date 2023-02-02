@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public Input<string>? Ipv4Address { get; set; }
 
         /// <summary>
-        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp; ipv6) being populated.
+        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp; ipv6) being populated. Public preview as of November 2022.
         /// </summary>
         [Input("ipv6Address")]
         public Input<string>? Ipv6Address { get; set; }

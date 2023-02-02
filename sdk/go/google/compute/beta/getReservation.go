@@ -39,11 +39,13 @@ type LookupReservationResult struct {
 	Name string `pulumi:"name"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
@@ -122,6 +124,11 @@ func (o LookupReservationResultOutput) ResourcePolicies() pulumi.StringMapOutput
 	return o.ApplyT(func(v LookupReservationResult) map[string]string { return v.ResourcePolicies }).(pulumi.StringMapOutput)
 }
 
+// Status information for Reservation resource.
+func (o LookupReservationResultOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupReservationResult) AllocationResourceStatusResponse { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o LookupReservationResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReservationResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -132,7 +139,7 @@ func (o LookupReservationResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o LookupReservationResultOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v LookupReservationResult) ShareSettingsResponse { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }

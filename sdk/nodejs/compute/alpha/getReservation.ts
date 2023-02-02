@@ -31,6 +31,10 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
+     * Reservation for aggregated resources, providing shape flexibility.
+     */
+    readonly aggregateReservation: outputs.compute.alpha.AllocationAggregateReservationResponse;
+    /**
      * Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
      */
     readonly commitment: string;
@@ -71,7 +75,7 @@ export interface GetReservationResult {
      */
     readonly selfLinkWithId: string;
     /**
-     * Share-settings for shared-reservation
+     * Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
      */
     readonly shareSettings: outputs.compute.alpha.ShareSettingsResponse;
     /**

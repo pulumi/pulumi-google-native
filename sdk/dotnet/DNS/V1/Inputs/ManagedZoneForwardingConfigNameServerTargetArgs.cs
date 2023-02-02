@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         [Input("ipv4Address")]
         public Input<string>? Ipv4Address { get; set; }
 
+        /// <summary>
+        /// IPv6 address of a target name server. Does not accept both fields (ipv4 &amp; ipv6) being populated. Public preview as of November 2022.
+        /// </summary>
+        [Input("ipv6Address")]
+        public Input<string>? Ipv6Address { get; set; }
+
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

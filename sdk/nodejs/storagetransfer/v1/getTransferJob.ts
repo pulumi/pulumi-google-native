@@ -41,6 +41,10 @@ export interface GetTransferJobResult {
      */
     readonly description: string;
     /**
+     * Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+     */
+    readonly eventStream: outputs.storagetransfer.v1.EventStreamResponse;
+    /**
      * The time that the transfer job was last modified.
      */
     readonly lastModificationTime: string;

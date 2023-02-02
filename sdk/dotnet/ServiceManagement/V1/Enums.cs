@@ -125,6 +125,105 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     }
 
     /// <summary>
+    /// Launch stage of this version of the API.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClientLibrarySettingsLaunchStage : IEquatable<ClientLibrarySettingsLaunchStage>
+    {
+        private readonly string _value;
+
+        private ClientLibrarySettingsLaunchStage(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Do not use this default value.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage LaunchStageUnspecified { get; } = new ClientLibrarySettingsLaunchStage("LAUNCH_STAGE_UNSPECIFIED");
+        /// <summary>
+        /// The feature is not yet implemented. Users can not use it.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage Unimplemented { get; } = new ClientLibrarySettingsLaunchStage("UNIMPLEMENTED");
+        /// <summary>
+        /// Prelaunch features are hidden from users and are only visible internally.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage Prelaunch { get; } = new ClientLibrarySettingsLaunchStage("PRELAUNCH");
+        /// <summary>
+        /// Early Access features are limited to a closed group of testers. To use these features, you must sign up in advance and sign a Trusted Tester agreement (which includes confidentiality provisions). These features may be unstable, changed in backward-incompatible ways, and are not guaranteed to be released.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage EarlyAccess { get; } = new ClientLibrarySettingsLaunchStage("EARLY_ACCESS");
+        /// <summary>
+        /// Alpha is a limited availability test for releases before they are cleared for widespread use. By Alpha, all significant design issues are resolved and we are in the process of verifying functionality. Alpha customers need to apply for access, agree to applicable terms, and have their projects allowlisted. Alpha releases don't have to be feature complete, no SLAs are provided, and there are no technical support obligations, but they will be far enough along that customers can actually use them in test environments or for limited-use tests -- just like they would in normal production cases.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage Alpha { get; } = new ClientLibrarySettingsLaunchStage("ALPHA");
+        /// <summary>
+        /// Beta is the point at which we are ready to open a release for any customer to use. There are no SLA or technical support obligations in a Beta release. Products will be complete from a feature perspective, but may have some open outstanding issues. Beta releases are suitable for limited production use cases.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage Beta { get; } = new ClientLibrarySettingsLaunchStage("BETA");
+        /// <summary>
+        /// GA features are open to all developers and are considered stable and fully qualified for production use.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage Ga { get; } = new ClientLibrarySettingsLaunchStage("GA");
+        /// <summary>
+        /// Deprecated features are scheduled to be shut down and removed. For more information, see the "Deprecation Policy" section of our [Terms of Service](https://cloud.google.com/terms/) and the [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation) documentation.
+        /// </summary>
+        public static ClientLibrarySettingsLaunchStage Deprecated { get; } = new ClientLibrarySettingsLaunchStage("DEPRECATED");
+
+        public static bool operator ==(ClientLibrarySettingsLaunchStage left, ClientLibrarySettingsLaunchStage right) => left.Equals(right);
+        public static bool operator !=(ClientLibrarySettingsLaunchStage left, ClientLibrarySettingsLaunchStage right) => !left.Equals(right);
+
+        public static explicit operator string(ClientLibrarySettingsLaunchStage value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClientLibrarySettingsLaunchStage other && Equals(other);
+        public bool Equals(ClientLibrarySettingsLaunchStage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct CommonLanguageSettingsDestinationsItem : IEquatable<CommonLanguageSettingsDestinationsItem>
+    {
+        private readonly string _value;
+
+        private CommonLanguageSettingsDestinationsItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Client libraries will neither be generated nor published to package managers.
+        /// </summary>
+        public static CommonLanguageSettingsDestinationsItem ClientLibraryDestinationUnspecified { get; } = new CommonLanguageSettingsDestinationsItem("CLIENT_LIBRARY_DESTINATION_UNSPECIFIED");
+        /// <summary>
+        /// Generate the client library in a repo under github.com/googleapis, but don't publish it to package managers.
+        /// </summary>
+        public static CommonLanguageSettingsDestinationsItem Github { get; } = new CommonLanguageSettingsDestinationsItem("GITHUB");
+        /// <summary>
+        /// Publish the library to package managers like nuget.org and npmjs.com.
+        /// </summary>
+        public static CommonLanguageSettingsDestinationsItem PackageManager { get; } = new CommonLanguageSettingsDestinationsItem("PACKAGE_MANAGER");
+
+        public static bool operator ==(CommonLanguageSettingsDestinationsItem left, CommonLanguageSettingsDestinationsItem right) => left.Equals(right);
+        public static bool operator !=(CommonLanguageSettingsDestinationsItem left, CommonLanguageSettingsDestinationsItem right) => !left.Equals(right);
+
+        public static explicit operator string(CommonLanguageSettingsDestinationsItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CommonLanguageSettingsDestinationsItem other && Equals(other);
+        public bool Equals(CommonLanguageSettingsDestinationsItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The source syntax.
     /// </summary>
     [EnumType]
@@ -667,6 +766,55 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MonitoredResourceDescriptorLaunchStage other && Equals(other);
         public bool Equals(MonitoredResourceDescriptorLaunchStage other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// For whom the client library is being published.
+    /// </summary>
+    [EnumType]
+    public readonly struct PublishingOrganization : IEquatable<PublishingOrganization>
+    {
+        private readonly string _value;
+
+        private PublishingOrganization(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not useful.
+        /// </summary>
+        public static PublishingOrganization ClientLibraryOrganizationUnspecified { get; } = new PublishingOrganization("CLIENT_LIBRARY_ORGANIZATION_UNSPECIFIED");
+        /// <summary>
+        /// Google Cloud Platform Org.
+        /// </summary>
+        public static PublishingOrganization Cloud { get; } = new PublishingOrganization("CLOUD");
+        /// <summary>
+        /// Ads (Advertising) Org.
+        /// </summary>
+        public static PublishingOrganization Ads { get; } = new PublishingOrganization("ADS");
+        /// <summary>
+        /// Photos Org.
+        /// </summary>
+        public static PublishingOrganization Photos { get; } = new PublishingOrganization("PHOTOS");
+        /// <summary>
+        /// Street View Org.
+        /// </summary>
+        public static PublishingOrganization StreetView { get; } = new PublishingOrganization("STREET_VIEW");
+
+        public static bool operator ==(PublishingOrganization left, PublishingOrganization right) => left.Equals(right);
+        public static bool operator !=(PublishingOrganization left, PublishingOrganization right) => !left.Equals(right);
+
+        public static explicit operator string(PublishingOrganization value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is PublishingOrganization other && Equals(other);
+        public bool Equals(PublishingOrganization other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

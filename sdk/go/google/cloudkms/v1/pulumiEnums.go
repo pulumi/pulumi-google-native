@@ -585,6 +585,14 @@ const (
 	CryptoKeyVersionTemplateAlgorithmEcSignSecp256k1Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256")
 	// HMAC-SHA256 signing with a 256 bit key.
 	CryptoKeyVersionTemplateAlgorithmHmacSha256 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA256")
+	// HMAC-SHA1 signing with a 160 bit key.
+	CryptoKeyVersionTemplateAlgorithmHmacSha1 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA1")
+	// HMAC-SHA384 signing with a 384 bit key.
+	CryptoKeyVersionTemplateAlgorithmHmacSha384 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA384")
+	// HMAC-SHA512 signing with a 512 bit key.
+	CryptoKeyVersionTemplateAlgorithmHmacSha512 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA512")
+	// HMAC-SHA224 signing with a 224 bit key.
+	CryptoKeyVersionTemplateAlgorithmHmacSha224 = CryptoKeyVersionTemplateAlgorithm("HMAC_SHA224")
 	// Algorithm representing symmetric encryption by an external key manager.
 	CryptoKeyVersionTemplateAlgorithmExternalSymmetricEncryption = CryptoKeyVersionTemplateAlgorithm("EXTERNAL_SYMMETRIC_ENCRYPTION")
 )

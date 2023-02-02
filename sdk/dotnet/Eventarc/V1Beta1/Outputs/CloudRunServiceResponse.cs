@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+        /// The name of the Cloud run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
         /// </summary>
         public readonly string Service;
 

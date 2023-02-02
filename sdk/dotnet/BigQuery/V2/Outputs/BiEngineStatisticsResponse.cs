@@ -16,6 +16,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// Specifies which mode of BI Engine acceleration was performed (if any).
         /// </summary>
+        public readonly string AccelerationMode;
+        /// <summary>
+        /// Specifies which mode of BI Engine acceleration was performed (if any).
+        /// </summary>
         public readonly string BiEngineMode;
         /// <summary>
         /// In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
@@ -24,10 +28,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
         [OutputConstructor]
         private BiEngineStatisticsResponse(
+            string accelerationMode,
+
             string biEngineMode,
 
             ImmutableArray<Outputs.BiEngineReasonResponse> biEngineReasons)
         {
+            AccelerationMode = accelerationMode;
             BiEngineMode = biEngineMode;
             BiEngineReasons = biEngineReasons;
         }

@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     public partial class Entity : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Identifies the access mechanism to the entity. Not user settable.
+        /// </summary>
+        [Output("access")]
+        public Output<Outputs.GoogleCloudDataplexV1StorageAccessResponse> Access { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
         /// </summary>
         [Output("asset")]
@@ -108,6 +114,12 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
         /// The time when the entity was last updated.

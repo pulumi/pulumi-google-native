@@ -33,6 +33,8 @@ type LookupIssueModelResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Configs for the input data that used to create the issue model.
 	InputDataConfig GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse `pulumi:"inputDataConfig"`
+	// Number of issues in this issue model.
+	IssueCount string `pulumi:"issueCount"`
 	// Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
 	Name string `pulumi:"name"`
 	// State of the model.
@@ -95,6 +97,11 @@ func (o LookupIssueModelResultOutput) InputDataConfig() GoogleCloudContactcenter
 	return o.ApplyT(func(v LookupIssueModelResult) GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse {
 		return v.InputDataConfig
 	}).(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput)
+}
+
+// Number of issues in this issue model.
+func (o LookupIssueModelResultOutput) IssueCount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIssueModelResult) string { return v.IssueCount }).(pulumi.StringOutput)
 }
 
 // Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}

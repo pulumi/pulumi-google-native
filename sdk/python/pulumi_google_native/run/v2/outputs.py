@@ -21,6 +21,7 @@ __all__ = [
     'GoogleCloudRunV2EnvVarSourceResponse',
     'GoogleCloudRunV2ExecutionReferenceResponse',
     'GoogleCloudRunV2ExecutionTemplateResponse',
+    'GoogleCloudRunV2GRPCActionResponse',
     'GoogleCloudRunV2HTTPGetActionResponse',
     'GoogleCloudRunV2HTTPHeaderResponse',
     'GoogleCloudRunV2ProbeResponse',
@@ -98,12 +99,12 @@ class GoogleCloudRunV2BinaryAuthorizationResponse(dict):
 @pulumi.output_type
 class GoogleCloudRunV2CloudSqlInstanceResponse(dict):
     """
-    Represents a specific Cloud SQL instance.
+    Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
     """
     def __init__(__self__, *,
                  instances: Sequence[str]):
         """
-        Represents a specific Cloud SQL instance.
+        Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
         :param Sequence[str] instances: The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
         """
         pulumi.set(__self__, "instances", instances)
@@ -332,9 +333,9 @@ class GoogleCloudRunV2ContainerResponse(dict):
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         :param Sequence['GoogleCloudRunV2EnvVarResponse'] env: List of environment variables to set in the container.
-        :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param str image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         :param 'GoogleCloudRunV2ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param str name: Name of the container specified as a DNS_LABEL.
+        :param str name: Name of the container specified as a DNS_LABEL (RFC 1123).
         :param Sequence['GoogleCloudRunV2ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'GoogleCloudRunV2ResourceRequirementsResponse' resources: Compute Resource requirements by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         :param 'GoogleCloudRunV2ProbeResponse' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -381,7 +382,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         """
         return pulumi.get(self, "image")
 
@@ -397,7 +398,7 @@ class GoogleCloudRunV2ContainerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the container specified as a DNS_LABEL.
+        Name of the container specified as a DNS_LABEL (RFC 1123).
         """
         return pulumi.get(self, "name")
 
@@ -635,8 +636,8 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
                  template: 'outputs.GoogleCloudRunV2TaskTemplateResponse'):
         """
         ExecutionTemplate describes the data an execution should have when created from a template.
-        :param Mapping[str, str] annotations: KRM-style annotations for the resource.
-        :param Mapping[str, str] labels: KRM-style labels for the resource.
+        :param Mapping[str, str] annotations: KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
+        :param Mapping[str, str] labels: KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         :param int parallelism: Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
         :param int task_count: Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
         :param 'GoogleCloudRunV2TaskTemplateResponse' template: Describes the task(s) that will be created when executing an execution.
@@ -651,7 +652,7 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        KRM-style annotations for the resource.
+        KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
         """
         return pulumi.get(self, "annotations")
 
@@ -659,7 +660,7 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        KRM-style labels for the resource.
+        KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
         """
         return pulumi.get(self, "labels")
 
@@ -686,6 +687,39 @@ class GoogleCloudRunV2ExecutionTemplateResponse(dict):
         Describes the task(s) that will be created when executing an execution.
         """
         return pulumi.get(self, "template")
+
+
+@pulumi.output_type
+class GoogleCloudRunV2GRPCActionResponse(dict):
+    """
+    GRPCAction describes an action involving a GRPC port.
+    """
+    def __init__(__self__, *,
+                 port: int,
+                 service: str):
+        """
+        GRPCAction describes an action involving a GRPC port.
+        :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+        :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+        """
+        return pulumi.get(self, "service")
 
 
 @pulumi.output_type
@@ -805,6 +839,7 @@ class GoogleCloudRunV2ProbeResponse(dict):
 
     def __init__(__self__, *,
                  failure_threshold: int,
+                 grpc: 'outputs.GoogleCloudRunV2GRPCActionResponse',
                  http_get: 'outputs.GoogleCloudRunV2HTTPGetActionResponse',
                  initial_delay_seconds: int,
                  period_seconds: int,
@@ -813,13 +848,15 @@ class GoogleCloudRunV2ProbeResponse(dict):
         """
         Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'GoogleCloudRunV2HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param 'GoogleCloudRunV2GRPCActionResponse' grpc: GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        :param 'GoogleCloudRunV2HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
-        :param 'GoogleCloudRunV2TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        :param 'GoogleCloudRunV2TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         pulumi.set(__self__, "failure_threshold", failure_threshold)
+        pulumi.set(__self__, "grpc", grpc)
         pulumi.set(__self__, "http_get", http_get)
         pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         pulumi.set(__self__, "period_seconds", period_seconds)
@@ -835,10 +872,18 @@ class GoogleCloudRunV2ProbeResponse(dict):
         return pulumi.get(self, "failure_threshold")
 
     @property
+    @pulumi.getter
+    def grpc(self) -> 'outputs.GoogleCloudRunV2GRPCActionResponse':
+        """
+        GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        """
+        return pulumi.get(self, "grpc")
+
+    @property
     @pulumi.getter(name="httpGet")
     def http_get(self) -> 'outputs.GoogleCloudRunV2HTTPGetActionResponse':
         """
-        HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         """
         return pulumi.get(self, "http_get")
 
@@ -862,7 +907,7 @@ class GoogleCloudRunV2ProbeResponse(dict):
     @pulumi.getter(name="tcpSocket")
     def tcp_socket(self) -> 'outputs.GoogleCloudRunV2TCPSocketActionResponse':
         """
-        TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         """
         return pulumi.get(self, "tcp_socket")
 
@@ -903,7 +948,7 @@ class GoogleCloudRunV2ResourceRequirementsResponse(dict):
         """
         ResourceRequirements describes the compute resource requirements.
         :param bool cpu_idle: Determines whether CPU should be throttled or not outside of requests.
-        :param Mapping[str, str] limits: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, str] limits: Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         pulumi.set(__self__, "cpu_idle", cpu_idle)
         pulumi.set(__self__, "limits", limits)
@@ -920,7 +965,7 @@ class GoogleCloudRunV2ResourceRequirementsResponse(dict):
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
         """
-        Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -1022,11 +1067,11 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
                  vpc_access: 'outputs.GoogleCloudRunV2VpcAccessResponse'):
         """
         RevisionTemplate describes the data a revision should have when created from a template.
-        :param Mapping[str, str] annotations: KRM-style annotations for the resource.
+        :param Mapping[str, str] annotations: KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
         :param Sequence['GoogleCloudRunV2ContainerResponse'] containers: Holds the single container that defines the unit of execution for this Revision.
         :param str encryption_key: A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek
         :param str execution_environment: The sandbox environment to host this Revision.
-        :param Mapping[str, str] labels: KRM-style labels for the resource.
+        :param Mapping[str, str] labels: KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         :param int max_instance_request_concurrency: Sets the maximum number of requests that each serving instance can receive.
         :param str revision: The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
         :param 'GoogleCloudRunV2RevisionScalingResponse' scaling: Scaling settings for this Revision.
@@ -1052,7 +1097,7 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        KRM-style annotations for the resource.
+        KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
         """
         return pulumi.get(self, "annotations")
 
@@ -1084,7 +1129,7 @@ class GoogleCloudRunV2RevisionTemplateResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        KRM-style labels for the resource.
+        KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         """
         return pulumi.get(self, "labels")
 
@@ -1156,7 +1201,7 @@ class GoogleCloudRunV2SecretKeySelectorResponse(dict):
         """
         SecretEnvVarSource represents a source for the value of an EnvVar.
         :param str secret: The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
-        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
         """
         pulumi.set(__self__, "secret", secret)
         pulumi.set(__self__, "version", version)
@@ -1173,7 +1218,7 @@ class GoogleCloudRunV2SecretKeySelectorResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
         """
         return pulumi.get(self, "version")
 
@@ -1519,7 +1564,7 @@ class GoogleCloudRunV2VersionToPathResponse(dict):
         VersionToPath maps a specific version of a secret to a relative file to mount to, relative to VolumeMount's mount_path.
         :param int mode: Integer octal mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
         :param str path: The relative path of the secret in the container.
-        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        :param str version: The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
         """
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "path", path)
@@ -1545,7 +1590,7 @@ class GoogleCloudRunV2VersionToPathResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
         """
         return pulumi.get(self, "version")
 
@@ -1671,7 +1716,7 @@ class GoogleCloudRunV2VpcAccessResponse(dict):
                  egress: str):
         """
         VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
-        :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+        :param str connector: VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         :param str egress: Traffic VPC egress settings.
         """
         pulumi.set(__self__, "connector", connector)
@@ -1681,7 +1726,7 @@ class GoogleCloudRunV2VpcAccessResponse(dict):
     @pulumi.getter
     def connector(self) -> str:
         """
-        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+        VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         """
         return pulumi.get(self, "connector")
 

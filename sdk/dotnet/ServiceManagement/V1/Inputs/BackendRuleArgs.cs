@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? JwtAudience { get; set; }
 
         /// <summary>
+        /// Deprecated, do not use.
+        /// </summary>
+        [Input("minDeadline")]
+        public Input<double>? MinDeadline { get; set; }
+
+        /// <summary>
         /// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         /// </summary>
         [Input("operationDeadline")]

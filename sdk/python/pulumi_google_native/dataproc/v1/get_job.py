@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, done=None, driver_control_files_uri=None, driver_output_resource_uri=None, hadoop_job=None, hive_job=None, job_uuid=None, labels=None, pig_job=None, placement=None, presto_job=None, pyspark_job=None, reference=None, scheduling=None, spark_job=None, spark_r_job=None, spark_sql_job=None, status=None, status_history=None, trino_job=None, yarn_applications=None):
+    def __init__(__self__, done=None, driver_control_files_uri=None, driver_output_resource_uri=None, driver_scheduling_config=None, hadoop_job=None, hive_job=None, job_uuid=None, labels=None, pig_job=None, placement=None, presto_job=None, pyspark_job=None, reference=None, scheduling=None, spark_job=None, spark_r_job=None, spark_sql_job=None, status=None, status_history=None, trino_job=None, yarn_applications=None):
         if done and not isinstance(done, bool):
             raise TypeError("Expected argument 'done' to be a bool")
         pulumi.set(__self__, "done", done)
@@ -29,6 +29,9 @@ class GetJobResult:
         if driver_output_resource_uri and not isinstance(driver_output_resource_uri, str):
             raise TypeError("Expected argument 'driver_output_resource_uri' to be a str")
         pulumi.set(__self__, "driver_output_resource_uri", driver_output_resource_uri)
+        if driver_scheduling_config and not isinstance(driver_scheduling_config, dict):
+            raise TypeError("Expected argument 'driver_scheduling_config' to be a dict")
+        pulumi.set(__self__, "driver_scheduling_config", driver_scheduling_config)
         if hadoop_job and not isinstance(hadoop_job, dict):
             raise TypeError("Expected argument 'hadoop_job' to be a dict")
         pulumi.set(__self__, "hadoop_job", hadoop_job)
@@ -104,6 +107,14 @@ class GetJobResult:
         A URI pointing to the location of the stdout of the job's driver program.
         """
         return pulumi.get(self, "driver_output_resource_uri")
+
+    @property
+    @pulumi.getter(name="driverSchedulingConfig")
+    def driver_scheduling_config(self) -> 'outputs.DriverSchedulingConfigResponse':
+        """
+        Optional. Driver scheduling configuration.
+        """
+        return pulumi.get(self, "driver_scheduling_config")
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -251,6 +262,7 @@ class AwaitableGetJobResult(GetJobResult):
             done=self.done,
             driver_control_files_uri=self.driver_control_files_uri,
             driver_output_resource_uri=self.driver_output_resource_uri,
+            driver_scheduling_config=self.driver_scheduling_config,
             hadoop_job=self.hadoop_job,
             hive_job=self.hive_job,
             job_uuid=self.job_uuid,
@@ -288,6 +300,7 @@ def get_job(job_id: Optional[str] = None,
         done=__ret__.done,
         driver_control_files_uri=__ret__.driver_control_files_uri,
         driver_output_resource_uri=__ret__.driver_output_resource_uri,
+        driver_scheduling_config=__ret__.driver_scheduling_config,
         hadoop_job=__ret__.hadoop_job,
         hive_job=__ret__.hive_job,
         job_uuid=__ret__.job_uuid,

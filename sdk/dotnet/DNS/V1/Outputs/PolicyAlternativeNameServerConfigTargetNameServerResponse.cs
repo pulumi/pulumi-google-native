@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
         /// IPv4 address to forward queries to.
         /// </summary>
         public readonly string Ipv4Address;
+        /// <summary>
+        /// IPv6 address to forward to. Does not accept both fields (ipv4 &amp; ipv6) being populated. Public preview as of November 2022.
+        /// </summary>
+        public readonly string Ipv6Address;
         public readonly string Kind;
 
         [OutputConstructor]
@@ -29,10 +33,13 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
 
             string ipv4Address,
 
+            string ipv6Address,
+
             string kind)
         {
             ForwardingPath = forwardingPath;
             Ipv4Address = ipv4Address;
+            Ipv6Address = ipv6Address;
             Kind = kind;
         }
     }

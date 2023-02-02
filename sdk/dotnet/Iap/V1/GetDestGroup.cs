@@ -64,11 +64,11 @@ namespace Pulumi.GoogleNative.Iap.V1
     public sealed class GetDestGroupResult
     {
         /// <summary>
-        /// null List of CIDRs that this group applies to.
+        /// Unordered list. List of CIDRs that this group applies to.
         /// </summary>
         public readonly ImmutableArray<string> Cidrs;
         /// <summary>
-        /// null List of FQDNs that this group applies to.
+        /// Unordered list. List of FQDNs that this group applies to.
         /// </summary>
         public readonly ImmutableArray<string> Fqdns;
         /// <summary>

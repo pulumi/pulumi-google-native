@@ -1272,6 +1272,168 @@ func (o ColumnResponseArrayOutput) Index(i pulumi.IntInput) ColumnResponseOutput
 	}).(ColumnResponseOutput)
 }
 
+// The persistent settings for a table's columns.
+type ColumnSettings struct {
+	// The id of the column.
+	Column string `pulumi:"column"`
+	// Whether the column should be visible on page load.
+	Visible bool `pulumi:"visible"`
+}
+
+// ColumnSettingsInput is an input type that accepts ColumnSettingsArgs and ColumnSettingsOutput values.
+// You can construct a concrete instance of `ColumnSettingsInput` via:
+//
+//	ColumnSettingsArgs{...}
+type ColumnSettingsInput interface {
+	pulumi.Input
+
+	ToColumnSettingsOutput() ColumnSettingsOutput
+	ToColumnSettingsOutputWithContext(context.Context) ColumnSettingsOutput
+}
+
+// The persistent settings for a table's columns.
+type ColumnSettingsArgs struct {
+	// The id of the column.
+	Column pulumi.StringInput `pulumi:"column"`
+	// Whether the column should be visible on page load.
+	Visible pulumi.BoolInput `pulumi:"visible"`
+}
+
+func (ColumnSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnSettings)(nil)).Elem()
+}
+
+func (i ColumnSettingsArgs) ToColumnSettingsOutput() ColumnSettingsOutput {
+	return i.ToColumnSettingsOutputWithContext(context.Background())
+}
+
+func (i ColumnSettingsArgs) ToColumnSettingsOutputWithContext(ctx context.Context) ColumnSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnSettingsOutput)
+}
+
+// ColumnSettingsArrayInput is an input type that accepts ColumnSettingsArray and ColumnSettingsArrayOutput values.
+// You can construct a concrete instance of `ColumnSettingsArrayInput` via:
+//
+//	ColumnSettingsArray{ ColumnSettingsArgs{...} }
+type ColumnSettingsArrayInput interface {
+	pulumi.Input
+
+	ToColumnSettingsArrayOutput() ColumnSettingsArrayOutput
+	ToColumnSettingsArrayOutputWithContext(context.Context) ColumnSettingsArrayOutput
+}
+
+type ColumnSettingsArray []ColumnSettingsInput
+
+func (ColumnSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ColumnSettings)(nil)).Elem()
+}
+
+func (i ColumnSettingsArray) ToColumnSettingsArrayOutput() ColumnSettingsArrayOutput {
+	return i.ToColumnSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i ColumnSettingsArray) ToColumnSettingsArrayOutputWithContext(ctx context.Context) ColumnSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ColumnSettingsArrayOutput)
+}
+
+// The persistent settings for a table's columns.
+type ColumnSettingsOutput struct{ *pulumi.OutputState }
+
+func (ColumnSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnSettings)(nil)).Elem()
+}
+
+func (o ColumnSettingsOutput) ToColumnSettingsOutput() ColumnSettingsOutput {
+	return o
+}
+
+func (o ColumnSettingsOutput) ToColumnSettingsOutputWithContext(ctx context.Context) ColumnSettingsOutput {
+	return o
+}
+
+// The id of the column.
+func (o ColumnSettingsOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v ColumnSettings) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Whether the column should be visible on page load.
+func (o ColumnSettingsOutput) Visible() pulumi.BoolOutput {
+	return o.ApplyT(func(v ColumnSettings) bool { return v.Visible }).(pulumi.BoolOutput)
+}
+
+type ColumnSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (ColumnSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ColumnSettings)(nil)).Elem()
+}
+
+func (o ColumnSettingsArrayOutput) ToColumnSettingsArrayOutput() ColumnSettingsArrayOutput {
+	return o
+}
+
+func (o ColumnSettingsArrayOutput) ToColumnSettingsArrayOutputWithContext(ctx context.Context) ColumnSettingsArrayOutput {
+	return o
+}
+
+func (o ColumnSettingsArrayOutput) Index(i pulumi.IntInput) ColumnSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ColumnSettings {
+		return vs[0].([]ColumnSettings)[vs[1].(int)]
+	}).(ColumnSettingsOutput)
+}
+
+// The persistent settings for a table's columns.
+type ColumnSettingsResponse struct {
+	// The id of the column.
+	Column string `pulumi:"column"`
+	// Whether the column should be visible on page load.
+	Visible bool `pulumi:"visible"`
+}
+
+// The persistent settings for a table's columns.
+type ColumnSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ColumnSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ColumnSettingsResponse)(nil)).Elem()
+}
+
+func (o ColumnSettingsResponseOutput) ToColumnSettingsResponseOutput() ColumnSettingsResponseOutput {
+	return o
+}
+
+func (o ColumnSettingsResponseOutput) ToColumnSettingsResponseOutputWithContext(ctx context.Context) ColumnSettingsResponseOutput {
+	return o
+}
+
+// The id of the column.
+func (o ColumnSettingsResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v ColumnSettingsResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// Whether the column should be visible on page load.
+func (o ColumnSettingsResponseOutput) Visible() pulumi.BoolOutput {
+	return o.ApplyT(func(v ColumnSettingsResponse) bool { return v.Visible }).(pulumi.BoolOutput)
+}
+
+type ColumnSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ColumnSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ColumnSettingsResponse)(nil)).Elem()
+}
+
+func (o ColumnSettingsResponseArrayOutput) ToColumnSettingsResponseArrayOutput() ColumnSettingsResponseArrayOutput {
+	return o
+}
+
+func (o ColumnSettingsResponseArrayOutput) ToColumnSettingsResponseArrayOutputWithContext(ctx context.Context) ColumnSettingsResponseArrayOutput {
+	return o
+}
+
+func (o ColumnSettingsResponseArrayOutput) Index(i pulumi.IntInput) ColumnSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ColumnSettingsResponse {
+		return vs[0].([]ColumnSettingsResponse)[vs[1].(int)]
+	}).(ColumnSettingsResponseOutput)
+}
+
 // A filter to reduce the amount of data charted in relevant widgets.
 type DashboardFilter struct {
 	// The specified filter type
@@ -3328,7 +3490,7 @@ type Scorecard struct {
 	GaugeView *GaugeView `pulumi:"gaugeView"`
 	// Will cause the scorecard to show a spark chart.
 	SparkChartView *SparkChartView `pulumi:"sparkChartView"`
-	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds []Threshold `pulumi:"thresholds"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
@@ -3351,7 +3513,7 @@ type ScorecardArgs struct {
 	GaugeView GaugeViewPtrInput `pulumi:"gaugeView"`
 	// Will cause the scorecard to show a spark chart.
 	SparkChartView SparkChartViewPtrInput `pulumi:"sparkChartView"`
-	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds ThresholdArrayInput `pulumi:"thresholds"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
@@ -3445,7 +3607,7 @@ func (o ScorecardOutput) SparkChartView() SparkChartViewPtrOutput {
 	return o.ApplyT(func(v Scorecard) *SparkChartView { return v.SparkChartView }).(SparkChartViewPtrOutput)
 }
 
-// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 func (o ScorecardOutput) Thresholds() ThresholdArrayOutput {
 	return o.ApplyT(func(v Scorecard) []Threshold { return v.Thresholds }).(ThresholdArrayOutput)
 }
@@ -3499,7 +3661,7 @@ func (o ScorecardPtrOutput) SparkChartView() SparkChartViewPtrOutput {
 	}).(SparkChartViewPtrOutput)
 }
 
-// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 func (o ScorecardPtrOutput) Thresholds() ThresholdArrayOutput {
 	return o.ApplyT(func(v *Scorecard) []Threshold {
 		if v == nil {
@@ -3525,7 +3687,7 @@ type ScorecardResponse struct {
 	GaugeView GaugeViewResponse `pulumi:"gaugeView"`
 	// Will cause the scorecard to show a spark chart.
 	SparkChartView SparkChartViewResponse `pulumi:"sparkChartView"`
-	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds []ThresholdResponse `pulumi:"thresholds"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
@@ -3556,7 +3718,7 @@ func (o ScorecardResponseOutput) SparkChartView() SparkChartViewResponseOutput {
 	return o.ApplyT(func(v ScorecardResponse) SparkChartViewResponse { return v.SparkChartView }).(SparkChartViewResponseOutput)
 }
 
-// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 func (o ScorecardResponseOutput) Thresholds() ThresholdResponseArrayOutput {
 	return o.ApplyT(func(v ScorecardResponse) []ThresholdResponse { return v.Thresholds }).(ThresholdResponseArrayOutput)
 }
@@ -5762,6 +5924,8 @@ func (o TimeSeriesQueryResponseOutput) UnitOverride() pulumi.StringOutput {
 
 // A table that displays time series data.
 type TimeSeriesTable struct {
+	// Optional. The list of the persistent column settings for the table.
+	ColumnSettings []ColumnSettings `pulumi:"columnSettings"`
 	// The data displayed in this table.
 	DataSets []TableDataSet `pulumi:"dataSets"`
 	// Optional. Store rendering strategy
@@ -5781,6 +5945,8 @@ type TimeSeriesTableInput interface {
 
 // A table that displays time series data.
 type TimeSeriesTableArgs struct {
+	// Optional. The list of the persistent column settings for the table.
+	ColumnSettings ColumnSettingsArrayInput `pulumi:"columnSettings"`
 	// The data displayed in this table.
 	DataSets TableDataSetArrayInput `pulumi:"dataSets"`
 	// Optional. Store rendering strategy
@@ -5865,6 +6031,11 @@ func (o TimeSeriesTableOutput) ToTimeSeriesTablePtrOutputWithContext(ctx context
 	}).(TimeSeriesTablePtrOutput)
 }
 
+// Optional. The list of the persistent column settings for the table.
+func (o TimeSeriesTableOutput) ColumnSettings() ColumnSettingsArrayOutput {
+	return o.ApplyT(func(v TimeSeriesTable) []ColumnSettings { return v.ColumnSettings }).(ColumnSettingsArrayOutput)
+}
+
 // The data displayed in this table.
 func (o TimeSeriesTableOutput) DataSets() TableDataSetArrayOutput {
 	return o.ApplyT(func(v TimeSeriesTable) []TableDataSet { return v.DataSets }).(TableDataSetArrayOutput)
@@ -5899,6 +6070,16 @@ func (o TimeSeriesTablePtrOutput) Elem() TimeSeriesTableOutput {
 	}).(TimeSeriesTableOutput)
 }
 
+// Optional. The list of the persistent column settings for the table.
+func (o TimeSeriesTablePtrOutput) ColumnSettings() ColumnSettingsArrayOutput {
+	return o.ApplyT(func(v *TimeSeriesTable) []ColumnSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ColumnSettings
+	}).(ColumnSettingsArrayOutput)
+}
+
 // The data displayed in this table.
 func (o TimeSeriesTablePtrOutput) DataSets() TableDataSetArrayOutput {
 	return o.ApplyT(func(v *TimeSeriesTable) []TableDataSet {
@@ -5921,6 +6102,8 @@ func (o TimeSeriesTablePtrOutput) MetricVisualization() TimeSeriesTableMetricVis
 
 // A table that displays time series data.
 type TimeSeriesTableResponse struct {
+	// Optional. The list of the persistent column settings for the table.
+	ColumnSettings []ColumnSettingsResponse `pulumi:"columnSettings"`
 	// The data displayed in this table.
 	DataSets []TableDataSetResponse `pulumi:"dataSets"`
 	// Optional. Store rendering strategy
@@ -5940,6 +6123,11 @@ func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutput() TimeSer
 
 func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutputWithContext(ctx context.Context) TimeSeriesTableResponseOutput {
 	return o
+}
+
+// Optional. The list of the persistent column settings for the table.
+func (o TimeSeriesTableResponseOutput) ColumnSettings() ColumnSettingsResponseArrayOutput {
+	return o.ApplyT(func(v TimeSeriesTableResponse) []ColumnSettingsResponse { return v.ColumnSettings }).(ColumnSettingsResponseArrayOutput)
 }
 
 // The data displayed in this table.
@@ -6728,6 +6916,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnArrayInput)(nil)).Elem(), ColumnArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutInput)(nil)).Elem(), ColumnLayoutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColumnLayoutPtrInput)(nil)).Elem(), ColumnLayoutArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnSettingsInput)(nil)).Elem(), ColumnSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ColumnSettingsArrayInput)(nil)).Elem(), ColumnSettingsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterInput)(nil)).Elem(), DashboardFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DashboardFilterArrayInput)(nil)).Elem(), DashboardFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataSetInput)(nil)).Elem(), DataSetArgs{})
@@ -6801,6 +6991,10 @@ func init() {
 	pulumi.RegisterOutputType(ColumnLayoutResponseOutput{})
 	pulumi.RegisterOutputType(ColumnResponseOutput{})
 	pulumi.RegisterOutputType(ColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(ColumnSettingsOutput{})
+	pulumi.RegisterOutputType(ColumnSettingsArrayOutput{})
+	pulumi.RegisterOutputType(ColumnSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ColumnSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(DashboardFilterOutput{})
 	pulumi.RegisterOutputType(DashboardFilterArrayOutput{})
 	pulumi.RegisterOutputType(DashboardFilterResponseOutput{})

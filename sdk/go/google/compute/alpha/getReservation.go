@@ -27,6 +27,8 @@ type LookupReservationArgs struct {
 }
 
 type LookupReservationResult struct {
+	// Reservation for aggregated resources, providing shape flexibility.
+	AggregateReservation AllocationAggregateReservationResponse `pulumi:"aggregateReservation"`
 	// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
 	Commitment string `pulumi:"commitment"`
 	// Creation timestamp in RFC3339 text format.
@@ -47,7 +49,7 @@ type LookupReservationResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
@@ -94,6 +96,11 @@ func (o LookupReservationResultOutput) ToLookupReservationResultOutput() LookupR
 
 func (o LookupReservationResultOutput) ToLookupReservationResultOutputWithContext(ctx context.Context) LookupReservationResultOutput {
 	return o
+}
+
+// Reservation for aggregated resources, providing shape flexibility.
+func (o LookupReservationResultOutput) AggregateReservation() AllocationAggregateReservationResponseOutput {
+	return o.ApplyT(func(v LookupReservationResult) AllocationAggregateReservationResponse { return v.AggregateReservation }).(AllocationAggregateReservationResponseOutput)
 }
 
 // Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
@@ -146,7 +153,7 @@ func (o LookupReservationResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o LookupReservationResultOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v LookupReservationResult) ShareSettingsResponse { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }

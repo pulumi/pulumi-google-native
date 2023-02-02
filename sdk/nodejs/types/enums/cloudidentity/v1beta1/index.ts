@@ -2,6 +2,35 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const DeviceClientTypesItem = {
+    /**
+     * Default value
+     */
+    ClientTypeUnspecified: "CLIENT_TYPE_UNSPECIFIED",
+    /**
+     * Managed by DriveFS
+     */
+    DriveFs: "DRIVE_FS",
+    /**
+     * Management type for every secure device
+     */
+    Fundamental: "FUNDAMENTAL",
+    /**
+     * Managed by Endpoint Verification
+     */
+    EndpointVerification: "ENDPOINT_VERIFICATION",
+    /**
+     * Managed by Windows
+     */
+    WindowsAdvanced: "WINDOWS_ADVANCED",
+    /**
+     * Managed by Google credential provider for windows
+     */
+    GoogleCredentialsProviderForWindows: "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS",
+} as const;
+
+export type DeviceClientTypesItem = (typeof DeviceClientTypesItem)[keyof typeof DeviceClientTypesItem];
+
 export const DynamicGroupQueryResourceType = {
     /**
      * Default value (not valid)

@@ -53,7 +53,7 @@ type Workload struct {
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
-	// Optional. Compliance Regime associated with this workload.
+	// Optional. Partner regime associated with this workload.
 	Partner pulumi.StringOutput `pulumi:"partner"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringOutput `pulumi:"provisionedResourcesParent"`
@@ -148,7 +148,7 @@ type workloadArgs struct {
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
-	// Optional. Compliance Regime associated with this workload.
+	// Optional. Partner regime associated with this workload.
 	Partner *WorkloadPartner `pulumi:"partner"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
@@ -188,7 +188,7 @@ type WorkloadArgs struct {
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
-	// Optional. Compliance Regime associated with this workload.
+	// Optional. Partner regime associated with this workload.
 	Partner WorkloadPartnerPtrInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
@@ -340,7 +340,7 @@ func (o WorkloadOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// Optional. Compliance Regime associated with this workload.
+// Optional. Partner regime associated with this workload.
 func (o WorkloadOutput) Partner() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workload) pulumi.StringOutput { return v.Partner }).(pulumi.StringOutput)
 }

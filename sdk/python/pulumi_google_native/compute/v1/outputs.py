@@ -16,6 +16,8 @@ __all__ = [
     'AccessConfigResponse',
     'AdvancedMachineFeaturesResponse',
     'AliasIpRangeResponse',
+    'AllocationResourceStatusResponse',
+    'AllocationResourceStatusSpecificSKUAllocationResponse',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse',
     'AllocationSpecificSKUReservationResponse',
@@ -124,6 +126,7 @@ __all__ = [
     'MetadataItemsItemResponse',
     'MetadataResponse',
     'NamedPortResponse',
+    'NetworkAttachmentConnectedEndpointResponse',
     'NetworkEndpointGroupAppEngineResponse',
     'NetworkEndpointGroupCloudFunctionResponse',
     'NetworkEndpointGroupCloudRunResponse',
@@ -551,6 +554,64 @@ class AliasIpRangeResponse(dict):
 
 
 @pulumi.output_type
+class AllocationResourceStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specificSkuAllocation":
+            suggest = "specific_sku_allocation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 specific_sku_allocation: 'outputs.AllocationResourceStatusSpecificSKUAllocationResponse'):
+        pulumi.set(__self__, "specific_sku_allocation", specific_sku_allocation)
+
+    @property
+    @pulumi.getter(name="specificSkuAllocation")
+    def specific_sku_allocation(self) -> 'outputs.AllocationResourceStatusSpecificSKUAllocationResponse':
+        return pulumi.get(self, "specific_sku_allocation")
+
+
+@pulumi.output_type
+class AllocationResourceStatusSpecificSKUAllocationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceInstanceTemplateId":
+            suggest = "source_instance_template_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationResourceStatusSpecificSKUAllocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationResourceStatusSpecificSKUAllocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationResourceStatusSpecificSKUAllocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_instance_template_id: str):
+        pulumi.set(__self__, "source_instance_template_id", source_instance_template_id)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplateId")
+    def source_instance_template_id(self) -> str:
+        return pulumi.get(self, "source_instance_template_id")
+
+
+@pulumi.output_type
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -701,6 +762,8 @@ class AllocationSpecificSKUReservationResponse(dict):
             suggest = "in_use_count"
         elif key == "instanceProperties":
             suggest = "instance_properties"
+        elif key == "sourceInstanceTemplate":
+            suggest = "source_instance_template"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AllocationSpecificSKUReservationResponse. Access the value via the '{suggest}' property getter instead.")
@@ -717,18 +780,21 @@ class AllocationSpecificSKUReservationResponse(dict):
                  assured_count: str,
                  count: str,
                  in_use_count: str,
-                 instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
+                 instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse',
+                 source_instance_template: str):
         """
         This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param str assured_count: Indicates how many instances are actually usable currently.
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: The instance properties for the reservation.
+        :param str source_instance_template: Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
         """
         pulumi.set(__self__, "assured_count", assured_count)
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "in_use_count", in_use_count)
         pulumi.set(__self__, "instance_properties", instance_properties)
+        pulumi.set(__self__, "source_instance_template", source_instance_template)
 
     @property
     @pulumi.getter(name="assuredCount")
@@ -761,6 +827,14 @@ class AllocationSpecificSKUReservationResponse(dict):
         The instance properties for the reservation.
         """
         return pulumi.get(self, "instance_properties")
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> str:
+        """
+        Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+        """
+        return pulumi.get(self, "source_instance_template")
 
 
 @pulumi.output_type
@@ -827,7 +901,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param str description: An optional description. Provide this property when creating the disk.
         :param str disk_name: Specifies the disk name. If not specified, the default is to use the name of the instance. If a disk with the same name already exists in the given region, the existing disk is attached to the new instance and the new disk is not created.
         :param str disk_size_gb: Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
-        :param str disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+        :param str disk_type: Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
         :param Mapping[str, str] labels: Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
         :param Sequence[str] licenses: A list of publicly visible licenses. Reserved for Google's use.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
@@ -835,7 +909,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param str source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
-        :param 'CustomerEncryptionKeyResponse' source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        :param 'CustomerEncryptionKeyResponse' source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         :param str source_snapshot: The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
         :param 'CustomerEncryptionKeyResponse' source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot.
         """
@@ -891,7 +965,7 @@ class AttachedDiskInitializeParamsResponse(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> str:
         """
-        Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+        Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
         """
         return pulumi.get(self, "disk_type")
 
@@ -955,7 +1029,7 @@ class AttachedDiskInitializeParamsResponse(dict):
     @pulumi.getter(name="sourceImageEncryptionKey")
     def source_image_encryption_key(self) -> 'outputs.CustomerEncryptionKeyResponse':
         """
-        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+        The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
         """
         return pulumi.get(self, "source_image_encryption_key")
 
@@ -2128,7 +2202,7 @@ class BackendResponse(dict):
         """
         Message containing information of one individual backend.
         :param str balancing_mode: Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
-        :param float capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+        :param float capacity_scaler: A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param bool failover: This field designates whether this is a failover backend. More than one failover backend can be configured for a given BackendService.
         :param str group: The fully-qualified URL of an instance group or network endpoint group (NEG) resource. To determine what types of backends a load balancer supports, see the [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service#backends). You must use the *fully-qualified* URL (starting with https://www.googleapis.com/) to specify the instance group or NEG. Partial URLs are not supported.
@@ -2165,7 +2239,7 @@ class BackendResponse(dict):
     @pulumi.getter(name="capacityScaler")
     def capacity_scaler(self) -> float:
         """
-        A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+        A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
         """
         return pulumi.get(self, "capacity_scaler")
 
@@ -2734,7 +2808,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse(dict):
         """
         The configuration for a custom policy implemented by the user and deployed with the client.
         :param str data: An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
-        :param str name: Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        :param str name: Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "name", name)
@@ -2751,7 +2825,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+        Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
         """
         return pulumi.get(self, "name")
 
@@ -2765,7 +2839,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse(dict):
                  name: str):
         """
         The configuration for a built-in load balancing policy.
-        :param str name: The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        :param str name: The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
         """
         pulumi.set(__self__, "name", name)
 
@@ -2773,7 +2847,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+        The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
         """
         return pulumi.get(self, "name")
 
@@ -2828,7 +2902,11 @@ class BackendServiceLogConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "sampleRate":
+        if key == "optionalFields":
+            suggest = "optional_fields"
+        elif key == "optionalMode":
+            suggest = "optional_mode"
+        elif key == "sampleRate":
             suggest = "sample_rate"
 
         if suggest:
@@ -2844,13 +2922,19 @@ class BackendServiceLogConfigResponse(dict):
 
     def __init__(__self__, *,
                  enable: bool,
+                 optional_fields: Sequence[str],
+                 optional_mode: str,
                  sample_rate: float):
         """
         The available logging options for the load balancer traffic served by this backend service.
         :param bool enable: Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
+        :param Sequence[str] optional_fields: This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        :param str optional_mode: This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
         :param float sample_rate: This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
         """
         pulumi.set(__self__, "enable", enable)
+        pulumi.set(__self__, "optional_fields", optional_fields)
+        pulumi.set(__self__, "optional_mode", optional_mode)
         pulumi.set(__self__, "sample_rate", sample_rate)
 
     @property
@@ -2860,6 +2944,22 @@ class BackendServiceLogConfigResponse(dict):
         Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
         """
         return pulumi.get(self, "enable")
+
+    @property
+    @pulumi.getter(name="optionalFields")
+    def optional_fields(self) -> Sequence[str]:
+        """
+        This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+        """
+        return pulumi.get(self, "optional_fields")
+
+    @property
+    @pulumi.getter(name="optionalMode")
+    def optional_mode(self) -> str:
+        """
+        This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+        """
+        return pulumi.get(self, "optional_mode")
 
     @property
     @pulumi.getter(name="sampleRate")
@@ -4457,7 +4557,7 @@ class FirewallPolicyRuleResponse(dict):
                  target_service_accounts: Sequence[str]):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param str action: The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        :param str action: The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         :param str description: An optional description for this resource.
         :param str direction: The direction in which this rule applies.
         :param bool disabled: Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -4489,7 +4589,7 @@ class FirewallPolicyRuleResponse(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+        The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
         """
         return pulumi.get(self, "action")
 
@@ -8176,6 +8276,93 @@ class NamedPortResponse(dict):
 
 
 @pulumi.output_type
+class NetworkAttachmentConnectedEndpointResponse(dict):
+    """
+    [Output Only] A connection connected to this network attachment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "projectIdOrNum":
+            suggest = "project_id_or_num"
+        elif key == "secondaryIpCidrRanges":
+            suggest = "secondary_ip_cidr_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAttachmentConnectedEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAttachmentConnectedEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAttachmentConnectedEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_address: str,
+                 project_id_or_num: str,
+                 secondary_ip_cidr_ranges: Sequence[str],
+                 status: str,
+                 subnetwork: str):
+        """
+        [Output Only] A connection connected to this network attachment.
+        :param str ip_address: The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        :param str project_id_or_num: The project id or number of the interface to which the IP was assigned.
+        :param Sequence[str] secondary_ip_cidr_ranges: Alias IP ranges from the same subnetwork
+        :param str status: The status of a connected endpoint to this network attachment.
+        :param str subnetwork: The subnetwork used to assign the IP to the producer instance network interface.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+        pulumi.set(__self__, "secondary_ip_cidr_ranges", secondary_ip_cidr_ranges)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "subnetwork", subnetwork)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> str:
+        """
+        The project id or number of the interface to which the IP was assigned.
+        """
+        return pulumi.get(self, "project_id_or_num")
+
+    @property
+    @pulumi.getter(name="secondaryIpCidrRanges")
+    def secondary_ip_cidr_ranges(self) -> Sequence[str]:
+        """
+        Alias IP ranges from the same subnetwork
+        """
+        return pulumi.get(self, "secondary_ip_cidr_ranges")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of a connected endpoint to this network attachment.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def subnetwork(self) -> str:
+        """
+        The subnetwork used to assign the IP to the producer instance network interface.
+        """
+        return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
 class NetworkEndpointGroupAppEngineResponse(dict):
     """
     Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
@@ -8432,6 +8619,8 @@ class NetworkInterfaceResponse(dict):
             suggest = "ipv6_access_type"
         elif key == "ipv6Address":
             suggest = "ipv6_address"
+        elif key == "networkAttachment":
+            suggest = "network_attachment"
         elif key == "networkIP":
             suggest = "network_ip"
         elif key == "nicType":
@@ -8463,6 +8652,7 @@ class NetworkInterfaceResponse(dict):
                  kind: str,
                  name: str,
                  network: str,
+                 network_attachment: str,
                  network_ip: str,
                  nic_type: str,
                  queue_count: int,
@@ -8480,6 +8670,7 @@ class NetworkInterfaceResponse(dict):
         :param str kind: Type of the resource. Always compute#networkInterface for network interfaces.
         :param str name: The name of the network interface, which is generated by the server. For a VM, the network interface uses the nicN naming format. Where N is a value between 0 and 7. The default interface value is nic0.
         :param str network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
+        :param str network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param str network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param str nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
@@ -8496,6 +8687,7 @@ class NetworkInterfaceResponse(dict):
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "network_attachment", network_attachment)
         pulumi.set(__self__, "network_ip", network_ip)
         pulumi.set(__self__, "nic_type", nic_type)
         pulumi.set(__self__, "queue_count", queue_count)
@@ -8581,6 +8773,14 @@ class NetworkInterfaceResponse(dict):
         URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        """
+        The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        """
+        return pulumi.get(self, "network_attachment")
 
     @property
     @pulumi.getter(name="networkIP")
@@ -9058,7 +9258,7 @@ class NotificationEndpointGrpcSettingsResponse(dict):
         :param str authority: Optional. If specified, this field is used to set the authority header by the sender of notifications. See https://tools.ietf.org/html/rfc7540#section-8.1.2.3
         :param str endpoint: Endpoint to which gRPC notifications are sent. This must be a valid gRPCLB DNS name.
         :param str payload_name: Optional. If specified, this field is used to populate the "name" field in gRPC requests.
-        :param 'DurationResponse' resend_interval: Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+        :param 'DurationResponse' resend_interval: Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
         :param int retry_duration_sec: How much time (in seconds) is spent attempting notification retries until a successful response is received. Default is 30s. Limit is 20m (1200s). Must be a positive number.
         """
         pulumi.set(__self__, "authority", authority)
@@ -9095,7 +9295,7 @@ class NotificationEndpointGrpcSettingsResponse(dict):
     @pulumi.getter(name="resendInterval")
     def resend_interval(self) -> 'outputs.DurationResponse':
         """
-        Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+        Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
         """
         return pulumi.get(self, "resend_interval")
 
@@ -10129,6 +10329,8 @@ class ReservationResponse(dict):
         suggest = None
         if key == "creationTimestamp":
             suggest = "creation_timestamp"
+        elif key == "resourceStatus":
+            suggest = "resource_status"
         elif key == "satisfiesPzs":
             suggest = "satisfies_pzs"
         elif key == "selfLink":
@@ -10157,6 +10359,7 @@ class ReservationResponse(dict):
                  description: str,
                  kind: str,
                  name: str,
+                 resource_status: 'outputs.AllocationResourceStatusResponse',
                  satisfies_pzs: bool,
                  self_link: str,
                  share_settings: 'outputs.ShareSettingsResponse',
@@ -10171,9 +10374,10 @@ class ReservationResponse(dict):
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param str kind: Type of the resource. Always compute#reservations for reservations.
         :param str name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param 'AllocationResourceStatusResponse' resource_status: Status information for Reservation resource.
         :param bool satisfies_pzs: Reserved for future use.
         :param str self_link: Server-defined fully-qualified URL for this resource.
-        :param 'ShareSettingsResponse' share_settings: Share-settings for shared-reservation
+        :param 'ShareSettingsResponse' share_settings: Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         :param 'AllocationSpecificSKUReservationResponse' specific_reservation: Reservation for instances with specific machine shapes.
         :param bool specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param str status: The status of the reservation.
@@ -10184,6 +10388,7 @@ class ReservationResponse(dict):
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_status", resource_status)
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "share_settings", share_settings)
@@ -10233,6 +10438,14 @@ class ReservationResponse(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.AllocationResourceStatusResponse':
+        """
+        Status information for Reservation resource.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -10252,7 +10465,7 @@ class ReservationResponse(dict):
     @pulumi.getter(name="shareSettings")
     def share_settings(self) -> 'outputs.ShareSettingsResponse':
         """
-        Share-settings for shared-reservation
+        Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         """
         return pulumi.get(self, "share_settings")
 
@@ -10319,7 +10532,7 @@ class ResourceCommitmentResponse(dict):
         Commitment for a particular resource (a Commitment is composed of one or more of these).
         :param str accelerator_type: Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
         :param str amount: The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
-        :param str type: Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+        :param str type: Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
         """
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "amount", amount)
@@ -10345,7 +10558,7 @@ class ResourceCommitmentResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+        Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
         """
         return pulumi.get(self, "type")
 
@@ -13419,9 +13632,9 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
         :param int ban_duration_sec: Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' ban_threshold: Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
         :param str conform_action: Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        :param str enforce_on_key: Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         :param str enforce_on_key_name: Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        :param str exceed_action: Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
         :param 'SecurityPolicyRuleRedirectOptionsResponse' exceed_redirect_options: Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
         :param 'SecurityPolicyRuleRateLimitOptionsThresholdResponse' rate_limit_threshold: Threshold at which to begin ratelimiting.
         """
@@ -13462,7 +13675,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="enforceOnKey")
     def enforce_on_key(self) -> str:
         """
-        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+        Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
         """
         return pulumi.get(self, "enforce_on_key")
 
@@ -13478,7 +13691,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @pulumi.getter(name="exceedAction")
     def exceed_action(self) -> str:
         """
-        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+        Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
         """
         return pulumi.get(self, "exceed_action")
 
@@ -13612,7 +13825,7 @@ class SecurityPolicyRuleResponse(dict):
                  redirect_options: 'outputs.SecurityPolicyRuleRedirectOptionsResponse'):
         """
         Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
-        :param str action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        :param str action: The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         :param str description: An optional description of this resource. Provide this property when you create the resource.
         :param 'SecurityPolicyRuleHttpHeaderActionResponse' header_action: Optional, additional actions that are performed on headers.
         :param str kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
@@ -13636,7 +13849,7 @@ class SecurityPolicyRuleResponse(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
+        The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
         """
         return pulumi.get(self, "action")
 
@@ -13870,6 +14083,8 @@ class ServiceAttachmentConsumerProjectLimitResponse(dict):
         suggest = None
         if key == "connectionLimit":
             suggest = "connection_limit"
+        elif key == "networkUrl":
+            suggest = "network_url"
         elif key == "projectIdOrNum":
             suggest = "project_id_or_num"
 
@@ -13886,12 +14101,15 @@ class ServiceAttachmentConsumerProjectLimitResponse(dict):
 
     def __init__(__self__, *,
                  connection_limit: int,
+                 network_url: str,
                  project_id_or_num: str):
         """
         :param int connection_limit: The value of the limit to set.
+        :param str network_url: The network URL for the network to set the limit for.
         :param str project_id_or_num: The project id or number for the project to set the limit for.
         """
         pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "network_url", network_url)
         pulumi.set(__self__, "project_id_or_num", project_id_or_num)
 
     @property
@@ -13901,6 +14119,14 @@ class ServiceAttachmentConsumerProjectLimitResponse(dict):
         The value of the limit to set.
         """
         return pulumi.get(self, "connection_limit")
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> str:
+        """
+        The network URL for the network to set the limit for.
+        """
+        return pulumi.get(self, "network_url")
 
     @property
     @pulumi.getter(name="projectIdOrNum")
@@ -14141,7 +14367,7 @@ class SourceInstanceParamsResponse(dict):
                  disk_configs: Sequence['outputs.DiskInstantiationConfigResponse']):
         """
         A specification of the parameters to use when creating the instance template from a source instance.
-        :param Sequence['DiskInstantiationConfigResponse'] disk_configs: Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+        :param Sequence['DiskInstantiationConfigResponse'] disk_configs: Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
         """
         pulumi.set(__self__, "disk_configs", disk_configs)
 
@@ -14149,7 +14375,7 @@ class SourceInstanceParamsResponse(dict):
     @pulumi.getter(name="diskConfigs")
     def disk_configs(self) -> Sequence['outputs.DiskInstantiationConfigResponse']:
         """
-        Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+        Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
         """
         return pulumi.get(self, "disk_configs")
 

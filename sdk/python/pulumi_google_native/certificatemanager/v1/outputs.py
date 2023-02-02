@@ -220,7 +220,7 @@ class DnsResourceRecordResponse(dict):
 @pulumi.output_type
 class GclbTargetResponse(dict):
     """
-    Describes a Target Proxy which uses this Certificate Map.
+    Describes a Target Proxy that uses this Certificate Map.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -248,7 +248,7 @@ class GclbTargetResponse(dict):
                  target_https_proxy: str,
                  target_ssl_proxy: str):
         """
-        Describes a Target Proxy which uses this Certificate Map.
+        Describes a Target Proxy that uses this Certificate Map.
         :param Sequence['IpConfigResponse'] ip_configs: IP configurations for this Target Proxy where the Certificate Map is serving.
         :param str target_https_proxy: This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetHttpsProxies/*`.
         :param str target_ssl_proxy: This field returns the resource name in the following format: `//compute.googleapis.com/projects/*/global/targetSslProxies/*`.

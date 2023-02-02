@@ -293,7 +293,7 @@ class JobType(str, Enum):
 
 class RuntimeEnvironmentIpConfiguration(str, Enum):
     """
-    Configuration for VM IPs.
+    Optional. Configuration for VM IPs.
     """
     WORKER_IP_UNSPECIFIED = "WORKER_IP_UNSPECIFIED"
     """

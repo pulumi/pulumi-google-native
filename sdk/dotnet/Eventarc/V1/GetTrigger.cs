@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
-        /// Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        /// Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         /// </summary>
         public readonly Outputs.TransportResponse Transport;
         /// <summary>

@@ -272,6 +272,22 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm HmacSha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("HMAC_SHA256");
         /// <summary>
+        /// HMAC-SHA1 signing with a 160 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm HmacSha1 { get; } = new CryptoKeyVersionTemplateAlgorithm("HMAC_SHA1");
+        /// <summary>
+        /// HMAC-SHA384 signing with a 384 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm HmacSha384 { get; } = new CryptoKeyVersionTemplateAlgorithm("HMAC_SHA384");
+        /// <summary>
+        /// HMAC-SHA512 signing with a 512 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm HmacSha512 { get; } = new CryptoKeyVersionTemplateAlgorithm("HMAC_SHA512");
+        /// <summary>
+        /// HMAC-SHA224 signing with a 224 bit key.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm HmacSha224 { get; } = new CryptoKeyVersionTemplateAlgorithm("HMAC_SHA224");
+        /// <summary>
         /// Algorithm representing symmetric encryption by an external key manager.
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm ExternalSymmetricEncryption { get; } = new CryptoKeyVersionTemplateAlgorithm("EXTERNAL_SYMMETRIC_ENCRYPTION");

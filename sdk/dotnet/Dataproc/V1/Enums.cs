@@ -184,6 +184,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// Hiveserver2 metric source.
         /// </summary>
         public static MetricMetricSource Hiveserver2 { get; } = new MetricMetricSource("HIVESERVER2");
+        /// <summary>
+        /// hivemetastore metric source
+        /// </summary>
+        public static MetricMetricSource Hivemetastore { get; } = new MetricMetricSource("HIVEMETASTORE");
 
         public static bool operator ==(MetricMetricSource left, MetricMetricSource right) => left.Equals(right);
         public static bool operator !=(MetricMetricSource left, MetricMetricSource right) => !left.Equals(right);
@@ -193,6 +197,40 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is MetricMetricSource other && Equals(other);
         public bool Equals(MetricMetricSource other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct NodeGroupRolesItem : IEquatable<NodeGroupRolesItem>
+    {
+        private readonly string _value;
+
+        private NodeGroupRolesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Required unspecified role.
+        /// </summary>
+        public static NodeGroupRolesItem RoleUnspecified { get; } = new NodeGroupRolesItem("ROLE_UNSPECIFIED");
+        /// <summary>
+        /// Job drivers run on the node pool.
+        /// </summary>
+        public static NodeGroupRolesItem Driver { get; } = new NodeGroupRolesItem("DRIVER");
+
+        public static bool operator ==(NodeGroupRolesItem left, NodeGroupRolesItem right) => left.Equals(right);
+        public static bool operator !=(NodeGroupRolesItem left, NodeGroupRolesItem right) => !left.Equals(right);
+
+        public static explicit operator string(NodeGroupRolesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NodeGroupRolesItem other && Equals(other);
+        public bool Equals(NodeGroupRolesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -288,6 +326,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// The Presto query engine.
         /// </summary>
         public static SoftwareConfigOptionalComponentsItem Presto { get; } = new SoftwareConfigOptionalComponentsItem("PRESTO");
+        /// <summary>
+        /// The Trino query engine.
+        /// </summary>
+        public static SoftwareConfigOptionalComponentsItem Trino { get; } = new SoftwareConfigOptionalComponentsItem("TRINO");
         /// <summary>
         /// The Ranger service.
         /// </summary>

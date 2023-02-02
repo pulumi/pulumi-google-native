@@ -10,6 +10,225 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type DeviceClientTypesItem string
+
+const (
+	// Default value
+	DeviceClientTypesItemClientTypeUnspecified = DeviceClientTypesItem("CLIENT_TYPE_UNSPECIFIED")
+	// Managed by DriveFS
+	DeviceClientTypesItemDriveFs = DeviceClientTypesItem("DRIVE_FS")
+	// Management type for every secure device
+	DeviceClientTypesItemFundamental = DeviceClientTypesItem("FUNDAMENTAL")
+	// Managed by Endpoint Verification
+	DeviceClientTypesItemEndpointVerification = DeviceClientTypesItem("ENDPOINT_VERIFICATION")
+	// Managed by Windows
+	DeviceClientTypesItemWindowsAdvanced = DeviceClientTypesItem("WINDOWS_ADVANCED")
+	// Managed by Google credential provider for windows
+	DeviceClientTypesItemGoogleCredentialsProviderForWindows = DeviceClientTypesItem("GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS")
+)
+
+func (DeviceClientTypesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceClientTypesItem)(nil)).Elem()
+}
+
+func (e DeviceClientTypesItem) ToDeviceClientTypesItemOutput() DeviceClientTypesItemOutput {
+	return pulumi.ToOutput(e).(DeviceClientTypesItemOutput)
+}
+
+func (e DeviceClientTypesItem) ToDeviceClientTypesItemOutputWithContext(ctx context.Context) DeviceClientTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DeviceClientTypesItemOutput)
+}
+
+func (e DeviceClientTypesItem) ToDeviceClientTypesItemPtrOutput() DeviceClientTypesItemPtrOutput {
+	return e.ToDeviceClientTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e DeviceClientTypesItem) ToDeviceClientTypesItemPtrOutputWithContext(ctx context.Context) DeviceClientTypesItemPtrOutput {
+	return DeviceClientTypesItem(e).ToDeviceClientTypesItemOutputWithContext(ctx).ToDeviceClientTypesItemPtrOutputWithContext(ctx)
+}
+
+func (e DeviceClientTypesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeviceClientTypesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DeviceClientTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DeviceClientTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DeviceClientTypesItemOutput struct{ *pulumi.OutputState }
+
+func (DeviceClientTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceClientTypesItem)(nil)).Elem()
+}
+
+func (o DeviceClientTypesItemOutput) ToDeviceClientTypesItemOutput() DeviceClientTypesItemOutput {
+	return o
+}
+
+func (o DeviceClientTypesItemOutput) ToDeviceClientTypesItemOutputWithContext(ctx context.Context) DeviceClientTypesItemOutput {
+	return o
+}
+
+func (o DeviceClientTypesItemOutput) ToDeviceClientTypesItemPtrOutput() DeviceClientTypesItemPtrOutput {
+	return o.ToDeviceClientTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceClientTypesItemOutput) ToDeviceClientTypesItemPtrOutputWithContext(ctx context.Context) DeviceClientTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceClientTypesItem) *DeviceClientTypesItem {
+		return &v
+	}).(DeviceClientTypesItemPtrOutput)
+}
+
+func (o DeviceClientTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DeviceClientTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeviceClientTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DeviceClientTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceClientTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeviceClientTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceClientTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceClientTypesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeviceClientTypesItem)(nil)).Elem()
+}
+
+func (o DeviceClientTypesItemPtrOutput) ToDeviceClientTypesItemPtrOutput() DeviceClientTypesItemPtrOutput {
+	return o
+}
+
+func (o DeviceClientTypesItemPtrOutput) ToDeviceClientTypesItemPtrOutputWithContext(ctx context.Context) DeviceClientTypesItemPtrOutput {
+	return o
+}
+
+func (o DeviceClientTypesItemPtrOutput) Elem() DeviceClientTypesItemOutput {
+	return o.ApplyT(func(v *DeviceClientTypesItem) DeviceClientTypesItem {
+		if v != nil {
+			return *v
+		}
+		var ret DeviceClientTypesItem
+		return ret
+	}).(DeviceClientTypesItemOutput)
+}
+
+func (o DeviceClientTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceClientTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DeviceClientTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DeviceClientTypesItemInput is an input type that accepts DeviceClientTypesItemArgs and DeviceClientTypesItemOutput values.
+// You can construct a concrete instance of `DeviceClientTypesItemInput` via:
+//
+//	DeviceClientTypesItemArgs{...}
+type DeviceClientTypesItemInput interface {
+	pulumi.Input
+
+	ToDeviceClientTypesItemOutput() DeviceClientTypesItemOutput
+	ToDeviceClientTypesItemOutputWithContext(context.Context) DeviceClientTypesItemOutput
+}
+
+var deviceClientTypesItemPtrType = reflect.TypeOf((**DeviceClientTypesItem)(nil)).Elem()
+
+type DeviceClientTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToDeviceClientTypesItemPtrOutput() DeviceClientTypesItemPtrOutput
+	ToDeviceClientTypesItemPtrOutputWithContext(context.Context) DeviceClientTypesItemPtrOutput
+}
+
+type deviceClientTypesItemPtr string
+
+func DeviceClientTypesItemPtr(v string) DeviceClientTypesItemPtrInput {
+	return (*deviceClientTypesItemPtr)(&v)
+}
+
+func (*deviceClientTypesItemPtr) ElementType() reflect.Type {
+	return deviceClientTypesItemPtrType
+}
+
+func (in *deviceClientTypesItemPtr) ToDeviceClientTypesItemPtrOutput() DeviceClientTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(DeviceClientTypesItemPtrOutput)
+}
+
+func (in *deviceClientTypesItemPtr) ToDeviceClientTypesItemPtrOutputWithContext(ctx context.Context) DeviceClientTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DeviceClientTypesItemPtrOutput)
+}
+
+// DeviceClientTypesItemArrayInput is an input type that accepts DeviceClientTypesItemArray and DeviceClientTypesItemArrayOutput values.
+// You can construct a concrete instance of `DeviceClientTypesItemArrayInput` via:
+//
+//	DeviceClientTypesItemArray{ DeviceClientTypesItemArgs{...} }
+type DeviceClientTypesItemArrayInput interface {
+	pulumi.Input
+
+	ToDeviceClientTypesItemArrayOutput() DeviceClientTypesItemArrayOutput
+	ToDeviceClientTypesItemArrayOutputWithContext(context.Context) DeviceClientTypesItemArrayOutput
+}
+
+type DeviceClientTypesItemArray []DeviceClientTypesItem
+
+func (DeviceClientTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceClientTypesItem)(nil)).Elem()
+}
+
+func (i DeviceClientTypesItemArray) ToDeviceClientTypesItemArrayOutput() DeviceClientTypesItemArrayOutput {
+	return i.ToDeviceClientTypesItemArrayOutputWithContext(context.Background())
+}
+
+func (i DeviceClientTypesItemArray) ToDeviceClientTypesItemArrayOutputWithContext(ctx context.Context) DeviceClientTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeviceClientTypesItemArrayOutput)
+}
+
+type DeviceClientTypesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DeviceClientTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeviceClientTypesItem)(nil)).Elem()
+}
+
+func (o DeviceClientTypesItemArrayOutput) ToDeviceClientTypesItemArrayOutput() DeviceClientTypesItemArrayOutput {
+	return o
+}
+
+func (o DeviceClientTypesItemArrayOutput) ToDeviceClientTypesItemArrayOutputWithContext(ctx context.Context) DeviceClientTypesItemArrayOutput {
+	return o
+}
+
+func (o DeviceClientTypesItemArrayOutput) Index(i pulumi.IntInput) DeviceClientTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeviceClientTypesItem {
+		return vs[0].([]DeviceClientTypesItem)[vs[1].(int)]
+	}).(DeviceClientTypesItemOutput)
+}
+
 type DynamicGroupQueryResourceType string
 
 const (
@@ -515,12 +734,18 @@ func (in *signInBehaviorRedirectConditionPtr) ToSignInBehaviorRedirectConditionP
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceClientTypesItemInput)(nil)).Elem(), DeviceClientTypesItem("CLIENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceClientTypesItemPtrInput)(nil)).Elem(), DeviceClientTypesItem("CLIENT_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DeviceClientTypesItemArrayInput)(nil)).Elem(), DeviceClientTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResourceTypeInput)(nil)).Elem(), DynamicGroupQueryResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryResourceTypePtrInput)(nil)).Elem(), DynamicGroupQueryResourceType("RESOURCE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSsoAssignmentSsoModeInput)(nil)).Elem(), InboundSsoAssignmentSsoMode("SSO_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InboundSsoAssignmentSsoModePtrInput)(nil)).Elem(), InboundSsoAssignmentSsoMode("SSO_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorRedirectConditionInput)(nil)).Elem(), SignInBehaviorRedirectCondition("REDIRECT_CONDITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SignInBehaviorRedirectConditionPtrInput)(nil)).Elem(), SignInBehaviorRedirectCondition("REDIRECT_CONDITION_UNSPECIFIED"))
+	pulumi.RegisterOutputType(DeviceClientTypesItemOutput{})
+	pulumi.RegisterOutputType(DeviceClientTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(DeviceClientTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypeOutput{})
 	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypePtrOutput{})
 	pulumi.RegisterOutputType(InboundSsoAssignmentSsoModeOutput{})

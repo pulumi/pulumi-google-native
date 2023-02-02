@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyLocality>? Locality { get; set; }
 
         /// <summary>
+        /// Specifies the number of max logical switches.
+        /// </summary>
+        [Input("maxDistance")]
+        public Input<int>? MaxDistance { get; set; }
+
+        /// <summary>
         /// Scope specifies the availability domain to which the VMs should be spread.
         /// </summary>
         [Input("scope")]
@@ -44,6 +50,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("style")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.ResourcePolicyGroupPlacementPolicyStyle>? Style { get; set; }
+
+        /// <summary>
+        /// Specifies the shape of the TPU slice
+        /// </summary>
+        [Input("tpuTopology")]
+        public Input<string>? TpuTopology { get; set; }
 
         /// <summary>
         /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.

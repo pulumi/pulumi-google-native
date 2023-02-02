@@ -59,6 +59,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Configuration for settings related to email privacy and public visibility.
+     */
+    public readonly emailPrivacyConfig!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse>;
+    /**
      * Whether to enable anonymous user authentication.
      */
     public readonly enableAnonymousUser!: pulumi.Output<boolean>;
@@ -112,6 +116,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["disableAuth"] = args ? args.disableAuth : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["emailPrivacyConfig"] = args ? args.emailPrivacyConfig : undefined;
             resourceInputs["enableAnonymousUser"] = args ? args.enableAnonymousUser : undefined;
             resourceInputs["enableEmailLinkSignin"] = args ? args.enableEmailLinkSignin : undefined;
             resourceInputs["inheritance"] = args ? args.inheritance : undefined;
@@ -128,6 +133,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["client"] = undefined /*out*/;
             resourceInputs["disableAuth"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["emailPrivacyConfig"] = undefined /*out*/;
             resourceInputs["enableAnonymousUser"] = undefined /*out*/;
             resourceInputs["enableEmailLinkSignin"] = undefined /*out*/;
             resourceInputs["hashConfig"] = undefined /*out*/;
@@ -170,6 +176,10 @@ export interface TenantArgs {
      * Display name of the tenant.
      */
     displayName?: pulumi.Input<string>;
+    /**
+     * Configuration for settings related to email privacy and public visibility.
+     */
+    emailPrivacyConfig?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs>;
     /**
      * Whether to enable anonymous user authentication.
      */

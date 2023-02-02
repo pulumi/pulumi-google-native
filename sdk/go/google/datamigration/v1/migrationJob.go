@@ -15,6 +15,8 @@ import (
 type MigrationJob struct {
 	pulumi.CustomResourceState
 
+	// The conversion workspace used by the migration.
+	ConversionWorkspace ConversionWorkspaceInfoResponseOutput `pulumi:"conversionWorkspace"`
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The resource name (URI) of the destination connection profile.
@@ -33,6 +35,8 @@ type MigrationJob struct {
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The error details in case of state FAILED.
 	Error StatusResponseOutput `pulumi:"error"`
+	// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+	Filter pulumi.StringOutput `pulumi:"filter"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -120,6 +124,8 @@ func (MigrationJobState) ElementType() reflect.Type {
 }
 
 type migrationJobArgs struct {
+	// The conversion workspace used by the migration.
+	ConversionWorkspace *ConversionWorkspaceInfo `pulumi:"conversionWorkspace"`
 	// The resource name (URI) of the destination connection profile.
 	Destination string `pulumi:"destination"`
 	// The database engine type and provider of the destination.
@@ -130,6 +136,8 @@ type migrationJobArgs struct {
 	DumpFlags *DumpFlags `pulumi:"dumpFlags"`
 	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 	DumpPath *string `pulumi:"dumpPath"`
+	// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+	Filter *string `pulumi:"filter"`
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -158,6 +166,8 @@ type migrationJobArgs struct {
 
 // The set of arguments for constructing a MigrationJob resource.
 type MigrationJobArgs struct {
+	// The conversion workspace used by the migration.
+	ConversionWorkspace ConversionWorkspaceInfoPtrInput
 	// The resource name (URI) of the destination connection profile.
 	Destination pulumi.StringInput
 	// The database engine type and provider of the destination.
@@ -168,6 +178,8 @@ type MigrationJobArgs struct {
 	DumpFlags DumpFlagsPtrInput
 	// The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
 	DumpPath pulumi.StringPtrInput
+	// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+	Filter pulumi.StringPtrInput
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -231,6 +243,11 @@ func (o MigrationJobOutput) ToMigrationJobOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The conversion workspace used by the migration.
+func (o MigrationJobOutput) ConversionWorkspace() ConversionWorkspaceInfoResponseOutput {
+	return o.ApplyT(func(v *MigrationJob) ConversionWorkspaceInfoResponseOutput { return v.ConversionWorkspace }).(ConversionWorkspaceInfoResponseOutput)
+}
+
 // The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o MigrationJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
@@ -274,6 +291,11 @@ func (o MigrationJobOutput) EndTime() pulumi.StringOutput {
 // The error details in case of state FAILED.
 func (o MigrationJobOutput) Error() StatusResponseOutput {
 	return o.ApplyT(func(v *MigrationJob) StatusResponseOutput { return v.Error }).(StatusResponseOutput)
+}
+
+// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+func (o MigrationJobOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Filter }).(pulumi.StringOutput)
 }
 
 // The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.

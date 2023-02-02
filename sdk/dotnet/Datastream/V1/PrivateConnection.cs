@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public Output<Outputs.ErrorResponse> Error { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. If set to true, will skip validations.
+        /// </summary>
+        [Output("force")]
+        public Output<bool?> Force { get; private set; } = null!;
+
+        /// <summary>
         /// Labels.
         /// </summary>
         [Output("labels")]
@@ -138,6 +144,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. If set to true, will skip validations.
+        /// </summary>
+        [Input("force")]
+        public Input<bool>? Force { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

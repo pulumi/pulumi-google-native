@@ -8,6 +8,43 @@ using Pulumi;
 namespace Pulumi.GoogleNative.BigQueryReservation.V1
 {
     /// <summary>
+    /// Edition of the capacity commitment.
+    /// </summary>
+    [EnumType]
+    public readonly struct CapacityCommitmentEdition : IEquatable<CapacityCommitmentEdition>
+    {
+        private readonly string _value;
+
+        private CapacityCommitmentEdition(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, only for legacy reservations and capacity commitments.
+        /// </summary>
+        public static CapacityCommitmentEdition EditionUnspecified { get; } = new CapacityCommitmentEdition("EDITION_UNSPECIFIED");
+        /// <summary>
+        /// Enterprise edition.
+        /// </summary>
+        public static CapacityCommitmentEdition Enterprise { get; } = new CapacityCommitmentEdition("ENTERPRISE");
+
+        public static bool operator ==(CapacityCommitmentEdition left, CapacityCommitmentEdition right) => left.Equals(right);
+        public static bool operator !=(CapacityCommitmentEdition left, CapacityCommitmentEdition right) => !left.Equals(right);
+
+        public static explicit operator string(CapacityCommitmentEdition value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CapacityCommitmentEdition other && Equals(other);
+        public bool Equals(CapacityCommitmentEdition other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Capacity commitment commitment plan.
     /// </summary>
     [EnumType]
@@ -40,6 +77,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
         /// </summary>
         public static CapacityCommitmentPlan Annual { get; } = new CapacityCommitmentPlan("ANNUAL");
+        /// <summary>
+        /// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+        /// </summary>
+        public static CapacityCommitmentPlan None { get; } = new CapacityCommitmentPlan("NONE");
 
         public static bool operator ==(CapacityCommitmentPlan left, CapacityCommitmentPlan right) => left.Equals(right);
         public static bool operator !=(CapacityCommitmentPlan left, CapacityCommitmentPlan right) => !left.Equals(right);
@@ -89,6 +130,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
         /// </summary>
         public static CapacityCommitmentRenewalPlan Annual { get; } = new CapacityCommitmentRenewalPlan("ANNUAL");
+        /// <summary>
+        /// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+        /// </summary>
+        public static CapacityCommitmentRenewalPlan None { get; } = new CapacityCommitmentRenewalPlan("NONE");
 
         public static bool operator ==(CapacityCommitmentRenewalPlan left, CapacityCommitmentRenewalPlan right) => left.Equals(right);
         public static bool operator !=(CapacityCommitmentRenewalPlan left, CapacityCommitmentRenewalPlan right) => !left.Equals(right);
@@ -98,6 +143,43 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is CapacityCommitmentRenewalPlan other && Equals(other);
         public bool Equals(CapacityCommitmentRenewalPlan other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Edition of the reservation.
+    /// </summary>
+    [EnumType]
+    public readonly struct ReservationEdition : IEquatable<ReservationEdition>
+    {
+        private readonly string _value;
+
+        private ReservationEdition(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value, only for legacy reservations and capacity commitments.
+        /// </summary>
+        public static ReservationEdition EditionUnspecified { get; } = new ReservationEdition("EDITION_UNSPECIFIED");
+        /// <summary>
+        /// Enterprise edition.
+        /// </summary>
+        public static ReservationEdition Enterprise { get; } = new ReservationEdition("ENTERPRISE");
+
+        public static bool operator ==(ReservationEdition left, ReservationEdition right) => left.Equals(right);
+        public static bool operator !=(ReservationEdition left, ReservationEdition right) => !left.Equals(right);
+
+        public static explicit operator string(ReservationEdition value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ReservationEdition other && Equals(other);
+        public bool Equals(ReservationEdition other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

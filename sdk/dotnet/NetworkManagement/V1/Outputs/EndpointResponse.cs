@@ -17,9 +17,17 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
     public sealed class EndpointResponse
     {
         /// <summary>
+        /// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+        /// </summary>
+        public readonly Outputs.AppEngineVersionEndpointResponse AppEngineVersion;
+        /// <summary>
         /// A [Cloud Function](https://cloud.google.com/functions).
         /// </summary>
         public readonly Outputs.CloudFunctionEndpointResponse CloudFunction;
+        /// <summary>
+        /// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+        /// </summary>
+        public readonly Outputs.CloudRunRevisionEndpointResponse CloudRunRevision;
         /// <summary>
         /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         /// </summary>
@@ -55,7 +63,11 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
         [OutputConstructor]
         private EndpointResponse(
+            Outputs.AppEngineVersionEndpointResponse appEngineVersion,
+
             Outputs.CloudFunctionEndpointResponse cloudFunction,
+
+            Outputs.CloudRunRevisionEndpointResponse cloudRunRevision,
 
             string cloudSqlInstance,
 
@@ -73,7 +85,9 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             string project)
         {
+            AppEngineVersion = appEngineVersion;
             CloudFunction = cloudFunction;
+            CloudRunRevision = cloudRunRevision;
             CloudSqlInstance = cloudSqlInstance;
             GkeMasterCluster = gkeMasterCluster;
             Instance = instance;

@@ -27,11 +27,13 @@ type Reservation struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponseOutput `pulumi:"specificReservation"`
@@ -93,7 +95,7 @@ type reservationArgs struct {
 	Project *string `pulumi:"project"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
@@ -112,7 +114,7 @@ type ReservationArgs struct {
 	Project pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput
@@ -193,6 +195,11 @@ func (o ReservationOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
+// Status information for Reservation resource.
+func (o ReservationOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Reservation) AllocationResourceStatusResponseOutput { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o ReservationOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -203,7 +210,7 @@ func (o ReservationOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o ReservationOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v *Reservation) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }

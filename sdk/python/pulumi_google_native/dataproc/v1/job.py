@@ -18,6 +18,7 @@ class JobArgs:
     def __init__(__self__, *,
                  placement: pulumi.Input['JobPlacementArgs'],
                  region: pulumi.Input[str],
+                 driver_scheduling_config: Optional[pulumi.Input['DriverSchedulingConfigArgs']] = None,
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -35,6 +36,7 @@ class JobArgs:
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['JobPlacementArgs'] placement: Job information, including how, when, and where to run the job.
+        :param pulumi.Input['DriverSchedulingConfigArgs'] driver_scheduling_config: Optional. Driver scheduling configuration.
         :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
@@ -51,6 +53,8 @@ class JobArgs:
         """
         pulumi.set(__self__, "placement", placement)
         pulumi.set(__self__, "region", region)
+        if driver_scheduling_config is not None:
+            pulumi.set(__self__, "driver_scheduling_config", driver_scheduling_config)
         if hadoop_job is not None:
             pulumi.set(__self__, "hadoop_job", hadoop_job)
         if hive_job is not None:
@@ -100,6 +104,18 @@ class JobArgs:
     @region.setter
     def region(self, value: pulumi.Input[str]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="driverSchedulingConfig")
+    def driver_scheduling_config(self) -> Optional[pulumi.Input['DriverSchedulingConfigArgs']]:
+        """
+        Optional. Driver scheduling configuration.
+        """
+        return pulumi.get(self, "driver_scheduling_config")
+
+    @driver_scheduling_config.setter
+    def driver_scheduling_config(self, value: Optional[pulumi.Input['DriverSchedulingConfigArgs']]):
+        pulumi.set(self, "driver_scheduling_config", value)
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -272,6 +288,7 @@ class Job(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 driver_scheduling_config: Optional[pulumi.Input[pulumi.InputType['DriverSchedulingConfigArgs']]] = None,
                  hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
                  hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -295,6 +312,7 @@ class Job(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['DriverSchedulingConfigArgs']] driver_scheduling_config: Optional. Driver scheduling configuration.
         :param pulumi.Input[pulumi.InputType['HadoopJobArgs']] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input[pulumi.InputType['HiveJobArgs']] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
@@ -335,6 +353,7 @@ class Job(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 driver_scheduling_config: Optional[pulumi.Input[pulumi.InputType['DriverSchedulingConfigArgs']]] = None,
                  hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
                  hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -360,6 +379,7 @@ class Job(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = JobArgs.__new__(JobArgs)
 
+            __props__.__dict__["driver_scheduling_config"] = driver_scheduling_config
             __props__.__dict__["hadoop_job"] = hadoop_job
             __props__.__dict__["hive_job"] = hive_job
             __props__.__dict__["labels"] = labels
@@ -414,6 +434,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["done"] = None
         __props__.__dict__["driver_control_files_uri"] = None
         __props__.__dict__["driver_output_resource_uri"] = None
+        __props__.__dict__["driver_scheduling_config"] = None
         __props__.__dict__["hadoop_job"] = None
         __props__.__dict__["hive_job"] = None
         __props__.__dict__["job_uuid"] = None
@@ -458,6 +479,14 @@ class Job(pulumi.CustomResource):
         A URI pointing to the location of the stdout of the job's driver program.
         """
         return pulumi.get(self, "driver_output_resource_uri")
+
+    @property
+    @pulumi.getter(name="driverSchedulingConfig")
+    def driver_scheduling_config(self) -> pulumi.Output['outputs.DriverSchedulingConfigResponse']:
+        """
+        Optional. Driver scheduling configuration.
+        """
+        return pulumi.get(self, "driver_scheduling_config")
 
     @property
     @pulumi.getter(name="hadoopJob")

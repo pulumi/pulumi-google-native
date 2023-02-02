@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -38,6 +38,9 @@ class GetReservationResult:
         if resource_policies and not isinstance(resource_policies, dict):
             raise TypeError("Expected argument 'resource_policies' to be a dict")
         pulumi.set(__self__, "resource_policies", resource_policies)
+        if resource_status and not isinstance(resource_status, dict):
+            raise TypeError("Expected argument 'resource_status' to be a dict")
+        pulumi.set(__self__, "resource_status", resource_status)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -109,6 +112,14 @@ class GetReservationResult:
         return pulumi.get(self, "resource_policies")
 
     @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.AllocationResourceStatusResponse':
+        """
+        Status information for Reservation resource.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -128,7 +139,7 @@ class GetReservationResult:
     @pulumi.getter(name="shareSettings")
     def share_settings(self) -> 'outputs.ShareSettingsResponse':
         """
-        Share-settings for shared-reservation
+        Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         """
         return pulumi.get(self, "share_settings")
 
@@ -177,6 +188,7 @@ class AwaitableGetReservationResult(GetReservationResult):
             kind=self.kind,
             name=self.name,
             resource_policies=self.resource_policies,
+            resource_status=self.resource_status,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             share_settings=self.share_settings,
@@ -207,6 +219,7 @@ def get_reservation(project: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         resource_policies=__ret__.resource_policies,
+        resource_status=__ret__.resource_status,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         share_settings=__ret__.share_settings,

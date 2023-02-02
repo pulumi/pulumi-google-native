@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public sealed class GetReservationResult
     {
         /// <summary>
+        /// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        /// </summary>
+        public readonly Outputs.AutoscaleResponse Autoscale;
+        /// <summary>
         /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
         /// </summary>
         public readonly string Concurrency;
@@ -71,6 +75,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// Creation time of the reservation.
         /// </summary>
         public readonly string CreationTime;
+        /// <summary>
+        /// Edition of the reservation.
+        /// </summary>
+        public readonly string Edition;
         /// <summary>
         /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
         /// </summary>
@@ -94,9 +102,13 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
         [OutputConstructor]
         private GetReservationResult(
+            Outputs.AutoscaleResponse autoscale,
+
             string concurrency,
 
             string creationTime,
+
+            string edition,
 
             bool ignoreIdleSlots,
 
@@ -108,8 +120,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
             string updateTime)
         {
+            Autoscale = autoscale;
             Concurrency = concurrency;
             CreationTime = creationTime;
+            Edition = edition;
             IgnoreIdleSlots = ignoreIdleSlots;
             MultiRegionAuxiliary = multiRegionAuxiliary;
             Name = name;

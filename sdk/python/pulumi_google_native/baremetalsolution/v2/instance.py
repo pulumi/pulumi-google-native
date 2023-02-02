@@ -28,7 +28,8 @@ class InstanceArgs:
                  os_image: Optional[pulumi.Input[str]] = None,
                  pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None):
+                 volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None,
+                 workload_profile: Optional[pulumi.Input['InstanceWorkloadProfile']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[bool] hyperthreading_enabled: True if you enable hyperthreading for the server, otherwise false. The default value is false.
@@ -41,6 +42,7 @@ class InstanceArgs:
         :param pulumi.Input[str] os_image: The OS image currently installed on the server.
         :param pulumi.Input[str] pod: Immutable. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes) allocated in the same pod only.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
+        :param pulumi.Input['InstanceWorkloadProfile'] workload_profile: The workload profile for the instance.
         """
         if hyperthreading_enabled is not None:
             pulumi.set(__self__, "hyperthreading_enabled", hyperthreading_enabled)
@@ -66,6 +68,8 @@ class InstanceArgs:
             pulumi.set(__self__, "project", project)
         if volumes is not None:
             pulumi.set(__self__, "volumes", volumes)
+        if workload_profile is not None:
+            pulumi.set(__self__, "workload_profile", workload_profile)
 
     @property
     @pulumi.getter(name="hyperthreadingEnabled")
@@ -205,6 +209,18 @@ class InstanceArgs:
     def volumes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]]):
         pulumi.set(self, "volumes", value)
 
+    @property
+    @pulumi.getter(name="workloadProfile")
+    def workload_profile(self) -> Optional[pulumi.Input['InstanceWorkloadProfile']]:
+        """
+        The workload profile for the instance.
+        """
+        return pulumi.get(self, "workload_profile")
+
+    @workload_profile.setter
+    def workload_profile(self, value: Optional[pulumi.Input['InstanceWorkloadProfile']]):
+        pulumi.set(self, "workload_profile", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -223,6 +239,7 @@ class Instance(pulumi.CustomResource):
                  pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeArgs']]]]] = None,
+                 workload_profile: Optional[pulumi.Input['InstanceWorkloadProfile']] = None,
                  __props__=None):
         """
         Create an Instance.
@@ -241,6 +258,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] os_image: The OS image currently installed on the server.
         :param pulumi.Input[str] pod: Immutable. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets (networks, volumes) allocated in the same pod only.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeArgs']]]] volumes: Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
+        :param pulumi.Input['InstanceWorkloadProfile'] workload_profile: The workload profile for the instance.
         """
         ...
     @overload
@@ -280,6 +298,7 @@ class Instance(pulumi.CustomResource):
                  pod: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VolumeArgs']]]]] = None,
+                 workload_profile: Optional[pulumi.Input['InstanceWorkloadProfile']] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -301,6 +320,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["pod"] = pod
             __props__.__dict__["project"] = project
             __props__.__dict__["volumes"] = volumes
+            __props__.__dict__["workload_profile"] = workload_profile
             __props__.__dict__["create_time"] = None
             __props__.__dict__["interactive_serial_console_enabled"] = None
             __props__.__dict__["login_info"] = None
@@ -349,6 +369,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["volumes"] = None
+        __props__.__dict__["workload_profile"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -488,4 +509,12 @@ class Instance(pulumi.CustomResource):
         Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
         """
         return pulumi.get(self, "volumes")
+
+    @property
+    @pulumi.getter(name="workloadProfile")
+    def workload_profile(self) -> pulumi.Output[str]:
+        """
+        The workload profile for the instance.
+        """
+        return pulumi.get(self, "workload_profile")
 

@@ -62,6 +62,10 @@ export interface GetCloneJobResult {
      * The time the state was last updated.
      */
     readonly stateTime: string;
+    /**
+     * The clone steps list representing its progress.
+     */
+    readonly steps: outputs.vmmigration.v1.CloneStepResponse[];
 }
 
 export function getCloneJobOutput(args: GetCloneJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloneJobResult> {

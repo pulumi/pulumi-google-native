@@ -41,7 +41,7 @@ class MigratingVmArgs:
         :param pulumi.Input['SchedulePolicyArgs'] policy: The replication schedule policy.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
-        :param pulumi.Input['TargetVMDetailsArgs'] target_defaults: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        :param pulumi.Input['TargetVMDetailsArgs'] target_defaults: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         pulumi.set(__self__, "migrating_vm_id", migrating_vm_id)
         pulumi.set(__self__, "source_id", source_id)
@@ -69,8 +69,8 @@ class MigratingVmArgs:
         if source_vm_id is not None:
             pulumi.set(__self__, "source_vm_id", source_vm_id)
         if target_defaults is not None:
-            warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+            warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+            pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
         if target_defaults is not None:
             pulumi.set(__self__, "target_defaults", target_defaults)
 
@@ -213,7 +213,7 @@ class MigratingVmArgs:
     @pulumi.getter(name="targetDefaults")
     def target_defaults(self) -> Optional[pulumi.Input['TargetVMDetailsArgs']]:
         """
-        The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         return pulumi.get(self, "target_defaults")
 
@@ -256,7 +256,7 @@ class MigratingVm(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SchedulePolicyArgs']] policy: The replication schedule policy.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
-        :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] target_defaults: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        :param pulumi.Input[pulumi.InputType['TargetVMDetailsArgs']] target_defaults: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         ...
     @overload
@@ -325,9 +325,10 @@ class MigratingVm(pulumi.CustomResource):
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["source_vm_id"] = source_vm_id
             if target_defaults is not None and not opts.urn:
-                warnings.warn("""The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
-                pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
+                warnings.warn("""The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""", DeprecationWarning)
+                pulumi.log.warn("""target_defaults is deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.""")
             __props__.__dict__["target_defaults"] = target_defaults
+            __props__.__dict__["aws_source_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
             __props__.__dict__["error"] = None
@@ -363,6 +364,7 @@ class MigratingVm(pulumi.CustomResource):
 
         __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
+        __props__.__dict__["aws_source_vm_details"] = None
         __props__.__dict__["compute_engine_target_defaults"] = None
         __props__.__dict__["compute_engine_vm_defaults"] = None
         __props__.__dict__["create_time"] = None
@@ -388,6 +390,14 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["target_defaults"] = None
         __props__.__dict__["update_time"] = None
         return MigratingVm(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="awsSourceVmDetails")
+    def aws_source_vm_details(self) -> pulumi.Output['outputs.AwsSourceVmDetailsResponse']:
+        """
+        Details of the VM from an AWS source.
+        """
+        return pulumi.get(self, "aws_source_vm_details")
 
     @property
     @pulumi.getter(name="computeEngineTargetDefaults")
@@ -417,7 +427,7 @@ class MigratingVm(pulumi.CustomResource):
     @pulumi.getter(name="currentSyncInfo")
     def current_sync_info(self) -> pulumi.Output['outputs.ReplicationCycleResponse']:
         """
-        The percentage progress of the current running replication cycle.
+        Details of the current running replication cycle.
         """
         return pulumi.get(self, "current_sync_info")
 
@@ -560,7 +570,7 @@ class MigratingVm(pulumi.CustomResource):
     @pulumi.getter(name="targetDefaults")
     def target_defaults(self) -> pulumi.Output['outputs.TargetVMDetailsResponse']:
         """
-        The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+        The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
         """
         return pulumi.get(self, "target_defaults")
 

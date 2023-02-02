@@ -19,6 +19,7 @@ __all__ = [
     'CollapsibleGroupResponse',
     'ColumnLayoutResponse',
     'ColumnResponse',
+    'ColumnSettingsResponse',
     'DashboardFilterResponse',
     'DataSetResponse',
     'EmptyResponse',
@@ -276,6 +277,39 @@ class ColumnResponse(dict):
         The display widgets arranged vertically in this column.
         """
         return pulumi.get(self, "widgets")
+
+
+@pulumi.output_type
+class ColumnSettingsResponse(dict):
+    """
+    The persistent settings for a table's columns.
+    """
+    def __init__(__self__, *,
+                 column: str,
+                 visible: bool):
+        """
+        The persistent settings for a table's columns.
+        :param str column: The id of the column.
+        :param bool visible: Whether the column should be visible on page load.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "visible", visible)
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        The id of the column.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter
+    def visible(self) -> bool:
+        """
+        Whether the column should be visible on page load.
+        """
+        return pulumi.get(self, "visible")
 
 
 @pulumi.output_type
@@ -813,7 +847,7 @@ class ScorecardResponse(dict):
         A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
         :param 'GaugeViewResponse' gauge_view: Will cause the scorecard to show a gauge chart.
         :param 'SparkChartViewResponse' spark_chart_view: Will cause the scorecard to show a spark chart.
-        :param Sequence['ThresholdResponse'] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        :param Sequence['ThresholdResponse'] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
         :param 'TimeSeriesQueryResponse' time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         """
         pulumi.set(__self__, "gauge_view", gauge_view)
@@ -841,7 +875,7 @@ class ScorecardResponse(dict):
     @pulumi.getter
     def thresholds(self) -> Sequence['outputs.ThresholdResponse']:
         """
-        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
+        The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', } Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
         """
         return pulumi.get(self, "thresholds")
 
@@ -1549,7 +1583,9 @@ class TimeSeriesTableResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dataSets":
+        if key == "columnSettings":
+            suggest = "column_settings"
+        elif key == "dataSets":
             suggest = "data_sets"
         elif key == "metricVisualization":
             suggest = "metric_visualization"
@@ -1566,15 +1602,26 @@ class TimeSeriesTableResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 column_settings: Sequence['outputs.ColumnSettingsResponse'],
                  data_sets: Sequence['outputs.TableDataSetResponse'],
                  metric_visualization: str):
         """
         A table that displays time series data.
+        :param Sequence['ColumnSettingsResponse'] column_settings: Optional. The list of the persistent column settings for the table.
         :param Sequence['TableDataSetResponse'] data_sets: The data displayed in this table.
         :param str metric_visualization: Optional. Store rendering strategy
         """
+        pulumi.set(__self__, "column_settings", column_settings)
         pulumi.set(__self__, "data_sets", data_sets)
         pulumi.set(__self__, "metric_visualization", metric_visualization)
+
+    @property
+    @pulumi.getter(name="columnSettings")
+    def column_settings(self) -> Sequence['outputs.ColumnSettingsResponse']:
+        """
+        Optional. The list of the persistent column settings for the table.
+        """
+        return pulumi.get(self, "column_settings")
 
     @property
     @pulumi.getter(name="dataSets")

@@ -31,13 +31,13 @@ export interface GetDocumentArgs {
 
 export interface GetDocumentResult {
     /**
-     * If true, makes the document visible to asynchronous policies and rules.
-     */
-    readonly asyncEnabled: boolean;
-    /**
      * Document AI format to save the structured content, including OCR.
      */
     readonly cloudAiDocument: outputs.contentwarehouse.v1.GoogleCloudDocumentaiV1DocumentResponse;
+    /**
+     * Indicates the category (image, audio, video etc.) of the original content.
+     */
+    readonly contentCategory: string;
     /**
      * The time when the document is created.
      */
@@ -87,15 +87,15 @@ export interface GetDocumentResult {
      */
     readonly referenceId: string;
     /**
-     * A path linked to structured content file.
-     */
-    readonly structuredContentUri: string;
-    /**
      * If true, text extraction will not be performed.
      */
     readonly textExtractionDisabled: boolean;
     /**
-     * Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+     * If true, text extraction will be performed.
+     */
+    readonly textExtractionEnabled: boolean;
+    /**
+     * Title that describes the document. This can be the top heading or text that describes the document.
      */
     readonly title: string;
     /**

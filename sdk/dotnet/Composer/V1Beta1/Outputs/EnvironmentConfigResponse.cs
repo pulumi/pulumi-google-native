@@ -61,6 +61,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.PrivateEnvironmentConfigResponse PrivateEnvironmentConfig;
         /// <summary>
+        /// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly Outputs.RecoveryConfigResponse RecoveryConfig;
+        /// <summary>
         /// The configuration settings for software inside the environment.
         /// </summary>
         public readonly Outputs.SoftwareConfigResponse SoftwareConfig;
@@ -101,6 +105,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             Outputs.PrivateEnvironmentConfigResponse privateEnvironmentConfig,
 
+            Outputs.RecoveryConfigResponse recoveryConfig,
+
             Outputs.SoftwareConfigResponse softwareConfig,
 
             Outputs.WebServerConfigResponse webServerConfig,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             NodeConfig = nodeConfig;
             NodeCount = nodeCount;
             PrivateEnvironmentConfig = privateEnvironmentConfig;
+            RecoveryConfig = recoveryConfig;
             SoftwareConfig = softwareConfig;
             WebServerConfig = webServerConfig;
             WebServerNetworkAccessControl = webServerNetworkAccessControl;

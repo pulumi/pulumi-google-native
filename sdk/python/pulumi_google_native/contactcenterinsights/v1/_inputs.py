@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs',
     'GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs',
     'GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs',
     'GoogleCloudContactcenterinsightsV1DialogflowSourceArgs',
@@ -21,6 +22,158 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupArgs',
     'GoogleCloudContactcenterinsightsV1PhraseMatchRuleArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs:
+    def __init__(__self__, *,
+                 issue_models: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 phrase_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 run_entity_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_intent_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_interruption_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_issue_model_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_phrase_matcher_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_sentiment_annotator: Optional[pulumi.Input[bool]] = None,
+                 run_silence_annotator: Optional[pulumi.Input[bool]] = None):
+        """
+        Selector of all available annotators and phrase matchers to run.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] issue_models: The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] phrase_matchers: The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        :param pulumi.Input[bool] run_entity_annotator: Whether to run the entity annotator.
+        :param pulumi.Input[bool] run_intent_annotator: Whether to run the intent annotator.
+        :param pulumi.Input[bool] run_interruption_annotator: Whether to run the interruption annotator.
+        :param pulumi.Input[bool] run_issue_model_annotator: Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        :param pulumi.Input[bool] run_phrase_matcher_annotator: Whether to run the active phrase matcher annotator(s).
+        :param pulumi.Input[bool] run_sentiment_annotator: Whether to run the sentiment annotator.
+        :param pulumi.Input[bool] run_silence_annotator: Whether to run the silence annotator.
+        """
+        if issue_models is not None:
+            pulumi.set(__self__, "issue_models", issue_models)
+        if phrase_matchers is not None:
+            pulumi.set(__self__, "phrase_matchers", phrase_matchers)
+        if run_entity_annotator is not None:
+            pulumi.set(__self__, "run_entity_annotator", run_entity_annotator)
+        if run_intent_annotator is not None:
+            pulumi.set(__self__, "run_intent_annotator", run_intent_annotator)
+        if run_interruption_annotator is not None:
+            pulumi.set(__self__, "run_interruption_annotator", run_interruption_annotator)
+        if run_issue_model_annotator is not None:
+            pulumi.set(__self__, "run_issue_model_annotator", run_issue_model_annotator)
+        if run_phrase_matcher_annotator is not None:
+            pulumi.set(__self__, "run_phrase_matcher_annotator", run_phrase_matcher_annotator)
+        if run_sentiment_annotator is not None:
+            pulumi.set(__self__, "run_sentiment_annotator", run_sentiment_annotator)
+        if run_silence_annotator is not None:
+            pulumi.set(__self__, "run_silence_annotator", run_silence_annotator)
+
+    @property
+    @pulumi.getter(name="issueModels")
+    def issue_models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+        """
+        return pulumi.get(self, "issue_models")
+
+    @issue_models.setter
+    def issue_models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "issue_models", value)
+
+    @property
+    @pulumi.getter(name="phraseMatchers")
+    def phrase_matchers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        """
+        return pulumi.get(self, "phrase_matchers")
+
+    @phrase_matchers.setter
+    def phrase_matchers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "phrase_matchers", value)
+
+    @property
+    @pulumi.getter(name="runEntityAnnotator")
+    def run_entity_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the entity annotator.
+        """
+        return pulumi.get(self, "run_entity_annotator")
+
+    @run_entity_annotator.setter
+    def run_entity_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_entity_annotator", value)
+
+    @property
+    @pulumi.getter(name="runIntentAnnotator")
+    def run_intent_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the intent annotator.
+        """
+        return pulumi.get(self, "run_intent_annotator")
+
+    @run_intent_annotator.setter
+    def run_intent_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_intent_annotator", value)
+
+    @property
+    @pulumi.getter(name="runInterruptionAnnotator")
+    def run_interruption_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the interruption annotator.
+        """
+        return pulumi.get(self, "run_interruption_annotator")
+
+    @run_interruption_annotator.setter
+    def run_interruption_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_interruption_annotator", value)
+
+    @property
+    @pulumi.getter(name="runIssueModelAnnotator")
+    def run_issue_model_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        """
+        return pulumi.get(self, "run_issue_model_annotator")
+
+    @run_issue_model_annotator.setter
+    def run_issue_model_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_issue_model_annotator", value)
+
+    @property
+    @pulumi.getter(name="runPhraseMatcherAnnotator")
+    def run_phrase_matcher_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the active phrase matcher annotator(s).
+        """
+        return pulumi.get(self, "run_phrase_matcher_annotator")
+
+    @run_phrase_matcher_annotator.setter
+    def run_phrase_matcher_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_phrase_matcher_annotator", value)
+
+    @property
+    @pulumi.getter(name="runSentimentAnnotator")
+    def run_sentiment_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the sentiment annotator.
+        """
+        return pulumi.get(self, "run_sentiment_annotator")
+
+    @run_sentiment_annotator.setter
+    def run_sentiment_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_sentiment_annotator", value)
+
+    @property
+    @pulumi.getter(name="runSilenceAnnotator")
+    def run_silence_annotator(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run the silence annotator.
+        """
+        return pulumi.get(self, "run_silence_annotator")
+
+    @run_silence_annotator.setter
+    def run_silence_annotator(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "run_silence_annotator", value)
+
 
 @pulumi.input_type
 class GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs:

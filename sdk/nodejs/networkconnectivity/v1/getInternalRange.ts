@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Gets details of a single InternalRange.
+ * Gets details of a single internal range.
  */
 export function getInternalRange(args: GetInternalRangeArgs, opts?: pulumi.InvokeOptions): Promise<GetInternalRangeResult> {
     if (!opts) {
@@ -28,7 +28,7 @@ export interface GetInternalRangeArgs {
 
 export interface GetInternalRangeResult {
     /**
-     * Time when the InternalRange was created.
+     * Time when the internal range was created.
      */
     readonly createTime: string;
     /**
@@ -36,7 +36,7 @@ export interface GetInternalRangeResult {
      */
     readonly description: string;
     /**
-     * IP range that this InternalRange defines.
+     * The IP range that this internal range defines.
      */
     readonly ipCidrRange: string;
     /**
@@ -44,23 +44,23 @@ export interface GetInternalRangeResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+     * Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
      */
     readonly name: string;
     /**
-     * The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+     * The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
      */
     readonly network: string;
     /**
-     * Optional. Types of resources that are allowed to overlap with the current InternalRange.
+     * Optional. Types of resources that are allowed to overlap with the current internal range.
      */
     readonly overlaps: string[];
     /**
-     * The type of peering set for this InternalRange.
+     * The type of peering set for this internal range.
      */
     readonly peering: string;
     /**
-     * An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+     * An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
      */
     readonly prefixLength: number;
     /**
@@ -68,7 +68,7 @@ export interface GetInternalRangeResult {
      */
     readonly targetCidrRange: string[];
     /**
-     * Time when the InternalRange was updated.
+     * Time when the internal range was updated.
      */
     readonly updateTime: string;
     /**
@@ -76,7 +76,7 @@ export interface GetInternalRangeResult {
      */
     readonly usage: string;
     /**
-     * The list of resources that refer to this internal range. Resources that use the InternalRange for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this InternalRange. Having a user, based on this reference, prevents deletion of the InternalRange referred to. Can be empty.
+     * The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
      */
     readonly users: string[];
 }

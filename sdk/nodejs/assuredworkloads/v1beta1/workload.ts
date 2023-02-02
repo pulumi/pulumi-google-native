@@ -110,7 +110,7 @@ export class Workload extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
-     * Optional. Compliance Regime associated with this workload.
+     * Optional. Partner regime associated with this workload.
      */
     public readonly partner!: pulumi.Output<string>;
     /**
@@ -268,7 +268,7 @@ export interface WorkloadArgs {
     name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
-     * Optional. Compliance Regime associated with this workload.
+     * Optional. Partner regime associated with this workload.
      */
     partner?: pulumi.Input<enums.assuredworkloads.v1beta1.WorkloadPartner>;
     /**

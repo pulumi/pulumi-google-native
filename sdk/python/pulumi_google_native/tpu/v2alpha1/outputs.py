@@ -12,15 +12,44 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AcceptedDataResponse',
     'AccessConfigResponse',
+    'ActiveDataResponse',
     'AttachedDiskResponse',
+    'BestEffortResponse',
+    'CreatingDataResponse',
+    'DeletingDataResponse',
+    'FailedDataResponse',
+    'GuaranteedResponse',
+    'IntervalResponse',
     'NetworkConfigResponse',
     'NetworkEndpointResponse',
+    'NodeResponse',
+    'NodeSpecResponse',
+    'ProvisioningDataResponse',
+    'QueuedResourceStateResponse',
+    'QueueingPolicyResponse',
     'SchedulingConfigResponse',
     'ServiceAccountResponse',
     'ShieldedInstanceConfigResponse',
+    'StatusResponse',
+    'SuspendedDataResponse',
+    'SuspendingDataResponse',
     'SymptomResponse',
+    'TpuResponse',
 ]
+
+@pulumi.output_type
+class AcceptedDataResponse(dict):
+    """
+    Further data for the accepted state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the accepted state.
+        """
+        pass
+
 
 @pulumi.output_type
 class AccessConfigResponse(dict):
@@ -59,6 +88,18 @@ class AccessConfigResponse(dict):
         An external IP address associated with the TPU worker.
         """
         return pulumi.get(self, "external_ip")
+
+
+@pulumi.output_type
+class ActiveDataResponse(dict):
+    """
+    Further data for the active state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the active state.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -109,6 +150,166 @@ class AttachedDiskResponse(dict):
         Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk".
         """
         return pulumi.get(self, "source_disk")
+
+
+@pulumi.output_type
+class BestEffortResponse(dict):
+    """
+    BestEffort tier definition.
+    """
+    def __init__(__self__):
+        """
+        BestEffort tier definition.
+        """
+        pass
+
+
+@pulumi.output_type
+class CreatingDataResponse(dict):
+    """
+    Further data for the creating state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the creating state.
+        """
+        pass
+
+
+@pulumi.output_type
+class DeletingDataResponse(dict):
+    """
+    Further data for the deleting state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the deleting state.
+        """
+        pass
+
+
+@pulumi.output_type
+class FailedDataResponse(dict):
+    """
+    Further data for the failed state.
+    """
+    def __init__(__self__, *,
+                 error: 'outputs.StatusResponse'):
+        """
+        Further data for the failed state.
+        :param 'StatusResponse' error: The error that caused the queued resource to enter the FAILED state.
+        """
+        pulumi.set(__self__, "error", error)
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        The error that caused the queued resource to enter the FAILED state.
+        """
+        return pulumi.get(self, "error")
+
+
+@pulumi.output_type
+class GuaranteedResponse(dict):
+    """
+    Guaranteed tier definition.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minDuration":
+            suggest = "min_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GuaranteedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GuaranteedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GuaranteedResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 min_duration: str,
+                 reserved: bool):
+        """
+        Guaranteed tier definition.
+        :param str min_duration: Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+        :param bool reserved: Optional. Specifies the request should be scheduled on reserved capacity.
+        """
+        pulumi.set(__self__, "min_duration", min_duration)
+        pulumi.set(__self__, "reserved", reserved)
+
+    @property
+    @pulumi.getter(name="minDuration")
+    def min_duration(self) -> str:
+        """
+        Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration.
+        """
+        return pulumi.get(self, "min_duration")
+
+    @property
+    @pulumi.getter
+    def reserved(self) -> bool:
+        """
+        Optional. Specifies the request should be scheduled on reserved capacity.
+        """
+        return pulumi.get(self, "reserved")
+
+
+@pulumi.output_type
+class IntervalResponse(dict):
+    """
+    Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntervalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntervalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntervalResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 start_time: str):
+        """
+        Represents a time interval, encoded as a Timestamp start (inclusive) and a Timestamp end (exclusive). The start must be less than or equal to the end. When the start equals the end, the interval is empty (matches no time). When both start and end are unspecified, the interval matches any time.
+        :param str end_time: Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+        :param str start_time: Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -249,6 +450,594 @@ class NetworkEndpointResponse(dict):
 
 
 @pulumi.output_type
+class NodeResponse(dict):
+    """
+    A TPU instance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "apiVersion":
+            suggest = "api_version"
+        elif key == "cidrBlock":
+            suggest = "cidr_block"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "dataDisks":
+            suggest = "data_disks"
+        elif key == "healthDescription":
+            suggest = "health_description"
+        elif key == "networkConfig":
+            suggest = "network_config"
+        elif key == "networkEndpoints":
+            suggest = "network_endpoints"
+        elif key == "queuedResource":
+            suggest = "queued_resource"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+        elif key == "schedulingConfig":
+            suggest = "scheduling_config"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_type: str,
+                 api_version: str,
+                 cidr_block: str,
+                 create_time: str,
+                 data_disks: Sequence['outputs.AttachedDiskResponse'],
+                 description: str,
+                 health: str,
+                 health_description: str,
+                 labels: Mapping[str, str],
+                 metadata: Mapping[str, str],
+                 name: str,
+                 network_config: 'outputs.NetworkConfigResponse',
+                 network_endpoints: Sequence['outputs.NetworkEndpointResponse'],
+                 queued_resource: str,
+                 runtime_version: str,
+                 scheduling_config: 'outputs.SchedulingConfigResponse',
+                 service_account: 'outputs.ServiceAccountResponse',
+                 shielded_instance_config: 'outputs.ShieldedInstanceConfigResponse',
+                 state: str,
+                 symptoms: Sequence['outputs.SymptomResponse'],
+                 tags: Sequence[str]):
+        """
+        A TPU instance.
+        :param str accelerator_type: The type of hardware accelerators associated with this node.
+        :param str api_version: The API version that created this Node.
+        :param str cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+        :param str create_time: The time when the node was created.
+        :param Sequence['AttachedDiskResponse'] data_disks: The additional data disks for the Node.
+        :param str description: The user-supplied description of the TPU. Maximum of 512 characters.
+        :param str health: The health status of the TPU node.
+        :param str health_description: If this field is populated, it contains a description of why the TPU Node is unhealthy.
+        :param Mapping[str, str] labels: Resource labels to represent user-provided metadata.
+        :param Mapping[str, str] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+        :param str name: Immutable. The name of the TPU.
+        :param 'NetworkConfigResponse' network_config: Network configurations for the TPU node.
+        :param Sequence['NetworkEndpointResponse'] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
+        :param str queued_resource: The qualified name of the QueuedResource that requested this Node.
+        :param str runtime_version: The runtime version running in the Node.
+        :param 'SchedulingConfigResponse' scheduling_config: The scheduling options for this node.
+        :param 'ServiceAccountResponse' service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+        :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
+        :param str state: The current state for the TPU Node.
+        :param Sequence['SymptomResponse'] symptoms: The Symptoms that have occurred to the TPU Node.
+        :param Sequence[str] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+        """
+        pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "api_version", api_version)
+        pulumi.set(__self__, "cidr_block", cidr_block)
+        pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "data_disks", data_disks)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "health", health)
+        pulumi.set(__self__, "health_description", health_description)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "metadata", metadata)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network_config", network_config)
+        pulumi.set(__self__, "network_endpoints", network_endpoints)
+        pulumi.set(__self__, "queued_resource", queued_resource)
+        pulumi.set(__self__, "runtime_version", runtime_version)
+        pulumi.set(__self__, "scheduling_config", scheduling_config)
+        pulumi.set(__self__, "service_account", service_account)
+        pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "symptoms", symptoms)
+        pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> str:
+        """
+        The type of hardware accelerators associated with this node.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> str:
+        """
+        The API version that created this Node.
+        """
+        return pulumi.get(self, "api_version")
+
+    @property
+    @pulumi.getter(name="cidrBlock")
+    def cidr_block(self) -> str:
+        """
+        The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
+        """
+        return pulumi.get(self, "cidr_block")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The time when the node was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dataDisks")
+    def data_disks(self) -> Sequence['outputs.AttachedDiskResponse']:
+        """
+        The additional data disks for the Node.
+        """
+        return pulumi.get(self, "data_disks")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The user-supplied description of the TPU. Maximum of 512 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def health(self) -> str:
+        """
+        The health status of the TPU node.
+        """
+        return pulumi.get(self, "health")
+
+    @property
+    @pulumi.getter(name="healthDescription")
+    def health_description(self) -> str:
+        """
+        If this field is populated, it contains a description of why the TPU Node is unhealthy.
+        """
+        return pulumi.get(self, "health_description")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Mapping[str, str]:
+        """
+        Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Immutable. The name of the TPU.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.NetworkConfigResponse':
+        """
+        Network configurations for the TPU node.
+        """
+        return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="networkEndpoints")
+    def network_endpoints(self) -> Sequence['outputs.NetworkEndpointResponse']:
+        """
+        The network endpoints where TPU workers can be accessed and sent work. It is recommended that runtime clients of the node reach out to the 0th entry in this map first.
+        """
+        return pulumi.get(self, "network_endpoints")
+
+    @property
+    @pulumi.getter(name="queuedResource")
+    def queued_resource(self) -> str:
+        """
+        The qualified name of the QueuedResource that requested this Node.
+        """
+        return pulumi.get(self, "queued_resource")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> str:
+        """
+        The runtime version running in the Node.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @property
+    @pulumi.getter(name="schedulingConfig")
+    def scheduling_config(self) -> 'outputs.SchedulingConfigResponse':
+        """
+        The scheduling options for this node.
+        """
+        return pulumi.get(self, "scheduling_config")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> 'outputs.ServiceAccountResponse':
+        """
+        The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+        """
+        return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> 'outputs.ShieldedInstanceConfigResponse':
+        """
+        Shielded Instance options.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state for the TPU Node.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def symptoms(self) -> Sequence['outputs.SymptomResponse']:
+        """
+        The Symptoms that have occurred to the TPU Node.
+        """
+        return pulumi.get(self, "symptoms")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
+        """
+        return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class NodeSpecResponse(dict):
+    """
+    Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node: 'outputs.NodeResponse',
+                 node_id: str,
+                 parent: str):
+        """
+        Details of the TPU node(s) being requested. Users can request either a single node or multiple nodes. NodeSpec provides the specification for node(s) to be created.
+        :param 'NodeResponse' node: The node.
+        :param str node_id: The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
+        :param str parent: The parent resource name.
+        """
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "node_id", node_id)
+        pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter
+    def node(self) -> 'outputs.NodeResponse':
+        """
+        The node.
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> str:
+        """
+        The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. This is only specified when requesting a single node. In case of multi-node requests, multi_node_params must be populated instead. It's an error to specify both node_id and multi_node_params.
+        """
+        return pulumi.get(self, "node_id")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The parent resource name.
+        """
+        return pulumi.get(self, "parent")
+
+
+@pulumi.output_type
+class ProvisioningDataResponse(dict):
+    """
+    Further data for the provisioning state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the provisioning state.
+        """
+        pass
+
+
+@pulumi.output_type
+class QueuedResourceStateResponse(dict):
+    """
+    QueuedResourceState defines the details of the QueuedResource request.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceptedData":
+            suggest = "accepted_data"
+        elif key == "activeData":
+            suggest = "active_data"
+        elif key == "creatingData":
+            suggest = "creating_data"
+        elif key == "deletingData":
+            suggest = "deleting_data"
+        elif key == "failedData":
+            suggest = "failed_data"
+        elif key == "provisioningData":
+            suggest = "provisioning_data"
+        elif key == "suspendedData":
+            suggest = "suspended_data"
+        elif key == "suspendingData":
+            suggest = "suspending_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueuedResourceStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueuedResourceStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueuedResourceStateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accepted_data: 'outputs.AcceptedDataResponse',
+                 active_data: 'outputs.ActiveDataResponse',
+                 creating_data: 'outputs.CreatingDataResponse',
+                 deleting_data: 'outputs.DeletingDataResponse',
+                 failed_data: 'outputs.FailedDataResponse',
+                 provisioning_data: 'outputs.ProvisioningDataResponse',
+                 state: str,
+                 suspended_data: 'outputs.SuspendedDataResponse',
+                 suspending_data: 'outputs.SuspendingDataResponse'):
+        """
+        QueuedResourceState defines the details of the QueuedResource request.
+        :param 'AcceptedDataResponse' accepted_data: Further data for the accepted state.
+        :param 'ActiveDataResponse' active_data: Further data for the active state.
+        :param 'CreatingDataResponse' creating_data: Further data for the creating state.
+        :param 'DeletingDataResponse' deleting_data: Further data for the deleting state.
+        :param 'FailedDataResponse' failed_data: Further data for the failed state.
+        :param 'ProvisioningDataResponse' provisioning_data: Further data for the provisioning state.
+        :param str state: State of the QueuedResource request.
+        :param 'SuspendedDataResponse' suspended_data: Further data for the suspended state.
+        :param 'SuspendingDataResponse' suspending_data: Further data for the suspending state.
+        """
+        pulumi.set(__self__, "accepted_data", accepted_data)
+        pulumi.set(__self__, "active_data", active_data)
+        pulumi.set(__self__, "creating_data", creating_data)
+        pulumi.set(__self__, "deleting_data", deleting_data)
+        pulumi.set(__self__, "failed_data", failed_data)
+        pulumi.set(__self__, "provisioning_data", provisioning_data)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "suspended_data", suspended_data)
+        pulumi.set(__self__, "suspending_data", suspending_data)
+
+    @property
+    @pulumi.getter(name="acceptedData")
+    def accepted_data(self) -> 'outputs.AcceptedDataResponse':
+        """
+        Further data for the accepted state.
+        """
+        return pulumi.get(self, "accepted_data")
+
+    @property
+    @pulumi.getter(name="activeData")
+    def active_data(self) -> 'outputs.ActiveDataResponse':
+        """
+        Further data for the active state.
+        """
+        return pulumi.get(self, "active_data")
+
+    @property
+    @pulumi.getter(name="creatingData")
+    def creating_data(self) -> 'outputs.CreatingDataResponse':
+        """
+        Further data for the creating state.
+        """
+        return pulumi.get(self, "creating_data")
+
+    @property
+    @pulumi.getter(name="deletingData")
+    def deleting_data(self) -> 'outputs.DeletingDataResponse':
+        """
+        Further data for the deleting state.
+        """
+        return pulumi.get(self, "deleting_data")
+
+    @property
+    @pulumi.getter(name="failedData")
+    def failed_data(self) -> 'outputs.FailedDataResponse':
+        """
+        Further data for the failed state.
+        """
+        return pulumi.get(self, "failed_data")
+
+    @property
+    @pulumi.getter(name="provisioningData")
+    def provisioning_data(self) -> 'outputs.ProvisioningDataResponse':
+        """
+        Further data for the provisioning state.
+        """
+        return pulumi.get(self, "provisioning_data")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the QueuedResource request.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="suspendedData")
+    def suspended_data(self) -> 'outputs.SuspendedDataResponse':
+        """
+        Further data for the suspended state.
+        """
+        return pulumi.get(self, "suspended_data")
+
+    @property
+    @pulumi.getter(name="suspendingData")
+    def suspending_data(self) -> 'outputs.SuspendingDataResponse':
+        """
+        Further data for the suspending state.
+        """
+        return pulumi.get(self, "suspending_data")
+
+
+@pulumi.output_type
+class QueueingPolicyResponse(dict):
+    """
+    Defines the policy of the QueuedRequest.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "validAfterDuration":
+            suggest = "valid_after_duration"
+        elif key == "validAfterTime":
+            suggest = "valid_after_time"
+        elif key == "validInterval":
+            suggest = "valid_interval"
+        elif key == "validUntilDuration":
+            suggest = "valid_until_duration"
+        elif key == "validUntilTime":
+            suggest = "valid_until_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 valid_after_duration: str,
+                 valid_after_time: str,
+                 valid_interval: 'outputs.IntervalResponse',
+                 valid_until_duration: str,
+                 valid_until_time: str):
+        """
+        Defines the policy of the QueuedRequest.
+        :param str valid_after_duration: A relative time after which resources may be created.
+        :param str valid_after_time: An absolute time at which resources may be created.
+        :param 'IntervalResponse' valid_interval: An absolute time interval within which resources may be created.
+        :param str valid_until_duration: A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+        :param str valid_until_time: An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+        """
+        pulumi.set(__self__, "valid_after_duration", valid_after_duration)
+        pulumi.set(__self__, "valid_after_time", valid_after_time)
+        pulumi.set(__self__, "valid_interval", valid_interval)
+        pulumi.set(__self__, "valid_until_duration", valid_until_duration)
+        pulumi.set(__self__, "valid_until_time", valid_until_time)
+
+    @property
+    @pulumi.getter(name="validAfterDuration")
+    def valid_after_duration(self) -> str:
+        """
+        A relative time after which resources may be created.
+        """
+        return pulumi.get(self, "valid_after_duration")
+
+    @property
+    @pulumi.getter(name="validAfterTime")
+    def valid_after_time(self) -> str:
+        """
+        An absolute time at which resources may be created.
+        """
+        return pulumi.get(self, "valid_after_time")
+
+    @property
+    @pulumi.getter(name="validInterval")
+    def valid_interval(self) -> 'outputs.IntervalResponse':
+        """
+        An absolute time interval within which resources may be created.
+        """
+        return pulumi.get(self, "valid_interval")
+
+    @property
+    @pulumi.getter(name="validUntilDuration")
+    def valid_until_duration(self) -> str:
+        """
+        A relative time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+        """
+        return pulumi.get(self, "valid_until_duration")
+
+    @property
+    @pulumi.getter(name="validUntilTime")
+    def valid_until_time(self) -> str:
+        """
+        An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed.
+        """
+        return pulumi.get(self, "valid_until_time")
+
+
+@pulumi.output_type
 class SchedulingConfigResponse(dict):
     """
     Sets the scheduling options for this node.
@@ -354,6 +1143,74 @@ class ShieldedInstanceConfigResponse(dict):
 
 
 @pulumi.output_type
+class StatusResponse(dict):
+    """
+    The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    """
+    def __init__(__self__, *,
+                 code: int,
+                 details: Sequence[Mapping[str, str]],
+                 message: str):
+        """
+        The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+        :param int code: The status code, which should be an enum value of google.rpc.Code.
+        :param Sequence[Mapping[str, str]] details: A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        :param str message: A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> int:
+        """
+        The status code, which should be an enum value of google.rpc.Code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def details(self) -> Sequence[Mapping[str, str]]:
+        """
+        A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class SuspendedDataResponse(dict):
+    """
+    Further data for the suspended state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the suspended state.
+        """
+        pass
+
+
+@pulumi.output_type
+class SuspendingDataResponse(dict):
+    """
+    Further data for the suspending state.
+    """
+    def __init__(__self__):
+        """
+        Further data for the suspending state.
+        """
+        pass
+
+
+@pulumi.output_type
 class SymptomResponse(dict):
     """
     A Symptom instance.
@@ -427,5 +1284,44 @@ class SymptomResponse(dict):
         A string used to uniquely distinguish a worker within a TPU node.
         """
         return pulumi.get(self, "worker_id")
+
+
+@pulumi.output_type
+class TpuResponse(dict):
+    """
+    Details of the TPU resource(s) being requested.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeSpec":
+            suggest = "node_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TpuResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TpuResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TpuResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_spec: Sequence['outputs.NodeSpecResponse']):
+        """
+        Details of the TPU resource(s) being requested.
+        :param Sequence['NodeSpecResponse'] node_spec: The TPU node(s) being requested.
+        """
+        pulumi.set(__self__, "node_spec", node_spec)
+
+    @property
+    @pulumi.getter(name="nodeSpec")
+    def node_spec(self) -> Sequence['outputs.NodeSpecResponse']:
+        """
+        The TPU node(s) being requested.
+        """
+        return pulumi.get(self, "node_spec")
 
 

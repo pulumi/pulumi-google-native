@@ -38,6 +38,14 @@ const (
 	EntryTypeZone = EntryType("ZONE")
 	// A service, for example, a Dataproc Metastore service.
 	EntryTypeService = EntryType("SERVICE")
+	// Schema within a relational database.
+	EntryTypeDatabaseSchema = EntryType("DATABASE_SCHEMA")
+	// A Dashboard, for example from Looker.
+	EntryTypeDashboard = EntryType("DASHBOARD")
+	// A Looker Explore. For more information, see [Looker Explore API] (https://developers.looker.com/api/explorer/4.0/methods/LookmlModel/lookml_model_explore).
+	EntryTypeExplore = EntryType("EXPLORE")
+	// A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
+	EntryTypeLook = EntryType("LOOK")
 )
 
 func (EntryType) ElementType() reflect.Type {
@@ -195,6 +203,523 @@ func (in *entryTypePtr) ToEntryTypePtrOutput() EntryTypePtrOutput {
 
 func (in *entryTypePtr) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(EntryTypePtrOutput)
+}
+
+// Optional. Most important inclusion of this column.
+type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType string
+
+const (
+	// Unspecified.
+	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeUnspecified = GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_UNSPECIFIED")
+	// Column not a part of an index.
+	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeNone = GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_NONE")
+	// Column Part of non unique index.
+	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeNonUnique = GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_NON_UNIQUE")
+	// Column part of unique index.
+	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypeUnique = GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_UNIQUE")
+	// Column part of the primary key.
+	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeIndexingTypePrimaryKey = GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_PRIMARY_KEY")
+)
+
+func (GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType(e).ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) *GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType {
+		return &v
+	}).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) Elem() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType
+		return ret
+	}).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput)
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeArgs and GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeArgs{...}
+type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput
+	ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput
+}
+
+var googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput
+	ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput
+}
+
+type googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr string
+
+func GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr(v string) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrInput {
+	return (*googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput)
+}
+
+// Looker specific column type of this column.
+type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType string
+
+const (
+	// Unspecified.
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeLookerColumnTypeUnspecified = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("LOOKER_COLUMN_TYPE_UNSPECIFIED")
+	// Dimension.
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeDimension = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("DIMENSION")
+	// Dimension group - parent for Dimension.
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeDimensionGroup = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("DIMENSION_GROUP")
+	// Filter.
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeFilter = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("FILTER")
+	// Measure.
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeMeasure = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("MEASURE")
+	// Parameter.
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeParemeter = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PAREMETER")
+)
+
+func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(e).ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
+		return &v
+	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType
+		return ret
+	}).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput)
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs{...}
+type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput
+	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput
+}
+
+var googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput
+	ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput
+}
+
+type googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr string
+
+func GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr(v string) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrInput {
+	return (*googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput() GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtr) ToGoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput)
+}
+
+// Type of this view.
+type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType string
+
+const (
+	// Default unknown view type.
+	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeViewTypeUnspecified = GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("VIEW_TYPE_UNSPECIFIED")
+	// Standard view.
+	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeStandardView = GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("STANDARD_VIEW")
+	// Materialized view.
+	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeMaterializedView = GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("MATERIALIZED_VIEW")
+)
+
+func (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType(e).ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) *GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType {
+		return &v
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType
+		return ret
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeArgs and GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput` via:
+//
+//	GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeArgs{...}
+type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput
+}
+
+var googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput
+}
+
+type googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr string
+
+func GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr(v string) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrInput {
+	return (*googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput)
 }
 
 // Type of this table.
@@ -920,6 +1445,12 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) Ta
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypeInput)(nil)).Elem(), EntryType("ENTRY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EntryTypePtrInput)(nil)).Elem(), EntryType("ENTRY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType("INDEXING_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("LOOKER_COLUMN_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("LOOKER_COLUMN_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("VIEW_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType("VIEW_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecType("TABLE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1DatabaseTableSpecType("TABLE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentMode("MODE_UNSPECIFIED"))
@@ -931,6 +1462,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TaxonomyActivatedPolicyTypesItemArrayInput)(nil)).Elem(), TaxonomyActivatedPolicyTypesItemArray{})
 	pulumi.RegisterOutputType(EntryTypeOutput{})
 	pulumi.RegisterOutputType(EntryTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput{})

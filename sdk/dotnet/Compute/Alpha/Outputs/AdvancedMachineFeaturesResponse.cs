@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int NumaNodeCount;
         /// <summary>
+        /// Type of Performance Monitoring Unit requested on instance.
+        /// </summary>
+        public readonly string PerformanceMonitoringUnit;
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         public readonly int ThreadsPerCore;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int numaNodeCount,
 
+            string performanceMonitoringUnit,
+
             int threadsPerCore,
 
             int visibleCoreCount)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             EnableNestedVirtualization = enableNestedVirtualization;
             EnableUefiNetworking = enableUefiNetworking;
             NumaNodeCount = numaNodeCount;
+            PerformanceMonitoringUnit = performanceMonitoringUnit;
             ThreadsPerCore = threadsPerCore;
             VisibleCoreCount = visibleCoreCount;
         }

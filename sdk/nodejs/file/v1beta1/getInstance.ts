@@ -83,6 +83,10 @@ export interface GetInstanceResult {
      */
     readonly networks: outputs.file.v1beta1.NetworkConfigResponse[];
     /**
+     * Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+     */
+    readonly protocol: string;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;

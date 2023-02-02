@@ -177,6 +177,7 @@ class Evaluation(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["raw_human_eval_template_csv"] = None
             __props__.__dict__["smart_reply_metrics"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["conversation_model_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -209,6 +210,7 @@ class Evaluation(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["raw_human_eval_template_csv"] = None
         __props__.__dict__["smart_reply_metrics"] = None
         return Evaluation(resource_name, opts=opts, __props__=__props__)
 
@@ -258,6 +260,14 @@ class Evaluation(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="rawHumanEvalTemplateCsv")
+    def raw_human_eval_template_csv(self) -> pulumi.Output[str]:
+        """
+        Human eval template in csv format. It tooks real-world conversations provided through input dataset, generates example suggestions for customer to verify quality of the model. For Smart Reply, the generated csv file contains columns of Context, (Suggestions,Q1,Q2)*3, Actual reply. Context contains at most 10 latest messages in the conversation prior to the current suggestion. Q1: "Would you send it as the next message of agent?" Evaluated based on whether the suggest is appropriate to be sent by agent in current context. Q2: "Does the suggestion move the conversation closer to resolution?" Evaluated based on whether the suggestion provide solutions, or answers customer's question or collect information from customer to resolve the customer's issue. Actual reply column contains the actual agent reply sent in the context.
+        """
+        return pulumi.get(self, "raw_human_eval_template_csv")
 
     @property
     @pulumi.getter(name="smartReplyMetrics")

@@ -192,6 +192,22 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      */
     HmacSha256: "HMAC_SHA256",
     /**
+     * HMAC-SHA1 signing with a 160 bit key.
+     */
+    HmacSha1: "HMAC_SHA1",
+    /**
+     * HMAC-SHA384 signing with a 384 bit key.
+     */
+    HmacSha384: "HMAC_SHA384",
+    /**
+     * HMAC-SHA512 signing with a 512 bit key.
+     */
+    HmacSha512: "HMAC_SHA512",
+    /**
+     * HMAC-SHA224 signing with a 224 bit key.
+     */
+    HmacSha224: "HMAC_SHA224",
+    /**
      * Algorithm representing symmetric encryption by an external key manager.
      */
     ExternalSymmetricEncryption: "EXTERNAL_SYMMETRIC_ENCRYPTION",

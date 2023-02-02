@@ -82,6 +82,7 @@ __all__ = [
     'StreamConfigArgs',
     'TagFilterListArgs',
     'TextConfigArgs',
+    'TimePartitioningArgs',
     'TypeArgs',
     'ValidationConfigArgs',
     'VersionSourceArgs',
@@ -669,8 +670,8 @@ class DateShiftConfigArgs:
                  kms_wrapped: Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']] = None):
         """
         Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
-        :param pulumi.Input[str] crypto_key: An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
-        :param pulumi.Input['KmsWrappedCryptoKeyArgs'] kms_wrapped: KMS wrapped key. Must not be set if `crypto_key` is set.
+        :param pulumi.Input[str] crypto_key: An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+        :param pulumi.Input['KmsWrappedCryptoKeyArgs'] kms_wrapped: KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
         """
         if crypto_key is not None:
             pulumi.set(__self__, "crypto_key", crypto_key)
@@ -681,7 +682,7 @@ class DateShiftConfigArgs:
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> Optional[pulumi.Input[str]]:
         """
-        An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
         """
         return pulumi.get(self, "crypto_key")
 
@@ -693,7 +694,7 @@ class DateShiftConfigArgs:
     @pulumi.getter(name="kmsWrapped")
     def kms_wrapped(self) -> Optional[pulumi.Input['KmsWrappedCryptoKeyArgs']]:
         """
-        KMS wrapped key. Must not be set if `crypto_key` is set.
+        KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
         """
         return pulumi.get(self, "kms_wrapped")
 
@@ -2539,17 +2540,33 @@ class ResourceAnnotationArgs:
 @pulumi.input_type
 class SchemaConfigArgs:
     def __init__(__self__, *,
+                 last_updated_partition_config: Optional[pulumi.Input['TimePartitioningArgs']] = None,
                  recursive_structure_depth: Optional[pulumi.Input[str]] = None,
                  schema_type: Optional[pulumi.Input['SchemaConfigSchemaType']] = None):
         """
         Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
+        :param pulumi.Input['TimePartitioningArgs'] last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
         :param pulumi.Input[str] recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
         :param pulumi.Input['SchemaConfigSchemaType'] schema_type: Specifies the output schema type. Schema type is required.
         """
+        if last_updated_partition_config is not None:
+            pulumi.set(__self__, "last_updated_partition_config", last_updated_partition_config)
         if recursive_structure_depth is not None:
             pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
         if schema_type is not None:
             pulumi.set(__self__, "schema_type", schema_type)
+
+    @property
+    @pulumi.getter(name="lastUpdatedPartitionConfig")
+    def last_updated_partition_config(self) -> Optional[pulumi.Input['TimePartitioningArgs']]:
+        """
+        The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        """
+        return pulumi.get(self, "last_updated_partition_config")
+
+    @last_updated_partition_config.setter
+    def last_updated_partition_config(self, value: Optional[pulumi.Input['TimePartitioningArgs']]):
+        pulumi.set(self, "last_updated_partition_config", value)
 
     @property
     @pulumi.getter(name="recursiveStructureDepth")
@@ -3016,6 +3033,46 @@ class TextConfigArgs:
     @transformations.setter
     def transformations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]):
         pulumi.set(self, "transformations", value)
+
+
+@pulumi.input_type
+class TimePartitioningArgs:
+    def __init__(__self__, *,
+                 expiration_ms: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['TimePartitioningType']] = None):
+        """
+        Configuration for FHIR BigQuery time-partitioned tables.
+        :param pulumi.Input[str] expiration_ms: Number of milliseconds for which to keep the storage for a partition.
+        :param pulumi.Input['TimePartitioningType'] type: Type of partitioning.
+        """
+        if expiration_ms is not None:
+            pulumi.set(__self__, "expiration_ms", expiration_ms)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="expirationMs")
+    def expiration_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of milliseconds for which to keep the storage for a partition.
+        """
+        return pulumi.get(self, "expiration_ms")
+
+    @expiration_ms.setter
+    def expiration_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration_ms", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['TimePartitioningType']]:
+        """
+        Type of partitioning.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['TimePartitioningType']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

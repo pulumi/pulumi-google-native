@@ -20,6 +20,16 @@ export const getGroup: typeof import("./getGroup").getGroup = null as any;
 export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
 
+export { GetInboundSamlSsoProfileArgs, GetInboundSamlSsoProfileResult, GetInboundSamlSsoProfileOutputArgs } from "./getInboundSamlSsoProfile";
+export const getInboundSamlSsoProfile: typeof import("./getInboundSamlSsoProfile").getInboundSamlSsoProfile = null as any;
+export const getInboundSamlSsoProfileOutput: typeof import("./getInboundSamlSsoProfile").getInboundSamlSsoProfileOutput = null as any;
+utilities.lazyLoad(exports, ["getInboundSamlSsoProfile","getInboundSamlSsoProfileOutput"], () => require("./getInboundSamlSsoProfile"));
+
+export { GetInboundSsoAssignmentArgs, GetInboundSsoAssignmentResult, GetInboundSsoAssignmentOutputArgs } from "./getInboundSsoAssignment";
+export const getInboundSsoAssignment: typeof import("./getInboundSsoAssignment").getInboundSsoAssignment = null as any;
+export const getInboundSsoAssignmentOutput: typeof import("./getInboundSsoAssignment").getInboundSsoAssignmentOutput = null as any;
+utilities.lazyLoad(exports, ["getInboundSsoAssignment","getInboundSsoAssignmentOutput"], () => require("./getInboundSsoAssignment"));
+
 export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
 export const getMembership: typeof import("./getMembership").getMembership = null as any;
 export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
@@ -29,6 +39,16 @@ export { GroupArgs } from "./group";
 export type Group = import("./group").Group;
 export const Group: typeof import("./group").Group = null as any;
 utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { InboundSamlSsoProfileArgs } from "./inboundSamlSsoProfile";
+export type InboundSamlSsoProfile = import("./inboundSamlSsoProfile").InboundSamlSsoProfile;
+export const InboundSamlSsoProfile: typeof import("./inboundSamlSsoProfile").InboundSamlSsoProfile = null as any;
+utilities.lazyLoad(exports, ["InboundSamlSsoProfile"], () => require("./inboundSamlSsoProfile"));
+
+export { InboundSsoAssignmentArgs } from "./inboundSsoAssignment";
+export type InboundSsoAssignment = import("./inboundSsoAssignment").InboundSsoAssignment;
+export const InboundSsoAssignment: typeof import("./inboundSsoAssignment").InboundSsoAssignment = null as any;
+utilities.lazyLoad(exports, ["InboundSsoAssignment"], () => require("./inboundSsoAssignment"));
 
 export { MembershipArgs } from "./membership";
 export type Membership = import("./membership").Membership;
@@ -47,6 +67,10 @@ const _module = {
                 return new Device(name, <any>undefined, { urn })
             case "google-native:cloudidentity/v1:Group":
                 return new Group(name, <any>undefined, { urn })
+            case "google-native:cloudidentity/v1:InboundSamlSsoProfile":
+                return new InboundSamlSsoProfile(name, <any>undefined, { urn })
+            case "google-native:cloudidentity/v1:InboundSsoAssignment":
+                return new InboundSsoAssignment(name, <any>undefined, { urn })
             case "google-native:cloudidentity/v1:Membership":
                 return new Membership(name, <any>undefined, { urn })
             default:

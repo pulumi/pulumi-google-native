@@ -32,6 +32,7 @@ class VersionArgs:
                  env: Optional[pulumi.Input[str]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input['FlexibleRuntimeSettingsArgs']] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]]] = None,
                  health_check: Optional[pulumi.Input['HealthCheckArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -69,6 +70,7 @@ class VersionArgs:
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input['FlexibleRuntimeSettingsArgs'] flexible_runtime_settings: Settings for App Engine flexible runtimes.
         :param pulumi.Input[Sequence[pulumi.Input['UrlMapArgs']]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input['HealthCheckArgs'] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
@@ -120,6 +122,8 @@ class VersionArgs:
             pulumi.set(__self__, "env_variables", env_variables)
         if error_handlers is not None:
             pulumi.set(__self__, "error_handlers", error_handlers)
+        if flexible_runtime_settings is not None:
+            pulumi.set(__self__, "flexible_runtime_settings", flexible_runtime_settings)
         if handlers is not None:
             pulumi.set(__self__, "handlers", handlers)
         if health_check is not None:
@@ -341,6 +345,18 @@ class VersionArgs:
     @error_handlers.setter
     def error_handlers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ErrorHandlerArgs']]]]):
         pulumi.set(self, "error_handlers", value)
+
+    @property
+    @pulumi.getter(name="flexibleRuntimeSettings")
+    def flexible_runtime_settings(self) -> Optional[pulumi.Input['FlexibleRuntimeSettingsArgs']]:
+        """
+        Settings for App Engine flexible runtimes.
+        """
+        return pulumi.get(self, "flexible_runtime_settings")
+
+    @flexible_runtime_settings.setter
+    def flexible_runtime_settings(self, value: Optional[pulumi.Input['FlexibleRuntimeSettingsArgs']]):
+        pulumi.set(self, "flexible_runtime_settings", value)
 
     @property
     @pulumi.getter
@@ -626,6 +642,7 @@ class Version(pulumi.CustomResource):
                  env: Optional[pulumi.Input[str]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -669,6 +686,7 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[str] env: App Engine execution environment for this version.Defaults to standard.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] env_variables: Environment variables available to the application.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]] error_handlers: Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']] flexible_runtime_settings: Settings for App Engine flexible runtimes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]] handlers: An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[pulumi.InputType['HealthCheckArgs']] health_check: Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[str] id: Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
@@ -731,6 +749,7 @@ class Version(pulumi.CustomResource):
                  env: Optional[pulumi.Input[str]] = None,
                  env_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  error_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ErrorHandlerArgs']]]]] = None,
+                 flexible_runtime_settings: Optional[pulumi.Input[pulumi.InputType['FlexibleRuntimeSettingsArgs']]] = None,
                  handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapArgs']]]]] = None,
                  health_check: Optional[pulumi.Input[pulumi.InputType['HealthCheckArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -779,6 +798,7 @@ class Version(pulumi.CustomResource):
             __props__.__dict__["env"] = env
             __props__.__dict__["env_variables"] = env_variables
             __props__.__dict__["error_handlers"] = error_handlers
+            __props__.__dict__["flexible_runtime_settings"] = flexible_runtime_settings
             __props__.__dict__["handlers"] = handlers
             __props__.__dict__["health_check"] = health_check
             __props__.__dict__["id"] = id
@@ -853,6 +873,7 @@ class Version(pulumi.CustomResource):
         __props__.__dict__["env"] = None
         __props__.__dict__["env_variables"] = None
         __props__.__dict__["error_handlers"] = None
+        __props__.__dict__["flexible_runtime_settings"] = None
         __props__.__dict__["handlers"] = None
         __props__.__dict__["health_check"] = None
         __props__.__dict__["inbound_services"] = None
@@ -1011,6 +1032,14 @@ class Version(pulumi.CustomResource):
         Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "error_handlers")
+
+    @property
+    @pulumi.getter(name="flexibleRuntimeSettings")
+    def flexible_runtime_settings(self) -> pulumi.Output['outputs.FlexibleRuntimeSettingsResponse']:
+        """
+        Settings for App Engine flexible runtimes.
+        """
+        return pulumi.get(self, "flexible_runtime_settings")
 
     @property
     @pulumi.getter

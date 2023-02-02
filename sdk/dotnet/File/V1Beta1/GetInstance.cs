@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkConfigResponse> Networks;
         /// <summary>
+        /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+        /// </summary>
+        public readonly string Protocol;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -164,6 +168,8 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
             ImmutableArray<Outputs.NetworkConfigResponse> networks,
 
+            string protocol,
+
             bool satisfiesPzs,
 
             string state,
@@ -187,6 +193,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             MultiShareEnabled = multiShareEnabled;
             Name = name;
             Networks = networks;
+            Protocol = protocol;
             SatisfiesPzs = satisfiesPzs;
             State = state;
             StatusMessage = statusMessage;

@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     public sealed class GetMigrationJobResult
     {
         /// <summary>
+        /// The conversion workspace used by the migration.
+        /// </summary>
+        public readonly Outputs.ConversionWorkspaceInfoResponse ConversionWorkspace;
+        /// <summary>
         /// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         /// </summary>
         public readonly string CreateTime;
@@ -99,6 +103,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// The error details in case of state FAILED.
         /// </summary>
         public readonly Outputs.StatusResponse Error;
+        /// <summary>
+        /// This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+        /// </summary>
+        public readonly string Filter;
         /// <summary>
         /// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         /// </summary>
@@ -146,6 +154,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
         [OutputConstructor]
         private GetMigrationJobResult(
+            Outputs.ConversionWorkspaceInfoResponse conversionWorkspace,
+
             string createTime,
 
             string destination,
@@ -163,6 +173,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             string endTime,
 
             Outputs.StatusResponse error,
+
+            string filter,
 
             ImmutableDictionary<string, string> labels,
 
@@ -186,6 +198,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             Outputs.VpcPeeringConnectivityResponse vpcPeeringConnectivity)
         {
+            ConversionWorkspace = conversionWorkspace;
             CreateTime = createTime;
             Destination = destination;
             DestinationDatabase = destinationDatabase;
@@ -195,6 +208,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             Duration = duration;
             EndTime = endTime;
             Error = error;
+            Filter = filter;
             Labels = labels;
             Name = name;
             Phase = phase;

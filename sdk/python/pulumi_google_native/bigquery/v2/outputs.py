@@ -347,7 +347,9 @@ class BiEngineStatisticsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "biEngineMode":
+        if key == "accelerationMode":
+            suggest = "acceleration_mode"
+        elif key == "biEngineMode":
             suggest = "bi_engine_mode"
         elif key == "biEngineReasons":
             suggest = "bi_engine_reasons"
@@ -364,14 +366,25 @@ class BiEngineStatisticsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 acceleration_mode: str,
                  bi_engine_mode: str,
                  bi_engine_reasons: Sequence['outputs.BiEngineReasonResponse']):
         """
+        :param str acceleration_mode: Specifies which mode of BI Engine acceleration was performed (if any).
         :param str bi_engine_mode: Specifies which mode of BI Engine acceleration was performed (if any).
         :param Sequence['BiEngineReasonResponse'] bi_engine_reasons: In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
         """
+        pulumi.set(__self__, "acceleration_mode", acceleration_mode)
         pulumi.set(__self__, "bi_engine_mode", bi_engine_mode)
         pulumi.set(__self__, "bi_engine_reasons", bi_engine_reasons)
+
+    @property
+    @pulumi.getter(name="accelerationMode")
+    def acceleration_mode(self) -> str:
+        """
+        Specifies which mode of BI Engine acceleration was performed (if any).
+        """
+        return pulumi.get(self, "acceleration_mode")
 
     @property
     @pulumi.getter(name="biEngineMode")
@@ -4994,7 +5007,9 @@ class MaterializedViewDefinitionResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "enableRefresh":
+        if key == "allowNonIncrementalDefinition":
+            suggest = "allow_non_incremental_definition"
+        elif key == "enableRefresh":
             suggest = "enable_refresh"
         elif key == "lastRefreshTime":
             suggest = "last_refresh_time"
@@ -5015,23 +5030,34 @@ class MaterializedViewDefinitionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_non_incremental_definition: bool,
                  enable_refresh: bool,
                  last_refresh_time: str,
                  max_staleness: str,
                  query: str,
                  refresh_interval_ms: str):
         """
+        :param bool allow_non_incremental_definition: [Optional] Allow non incremental materialized view definition. The default value is "false".
         :param bool enable_refresh: [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         :param str last_refresh_time: [TrustedTester] The time when this materialized view was last modified, in milliseconds since the epoch.
         :param str max_staleness: [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
         :param str query: [Required] A query whose result is persisted.
         :param str refresh_interval_ms: [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
+        pulumi.set(__self__, "allow_non_incremental_definition", allow_non_incremental_definition)
         pulumi.set(__self__, "enable_refresh", enable_refresh)
         pulumi.set(__self__, "last_refresh_time", last_refresh_time)
         pulumi.set(__self__, "max_staleness", max_staleness)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
+
+    @property
+    @pulumi.getter(name="allowNonIncrementalDefinition")
+    def allow_non_incremental_definition(self) -> bool:
+        """
+        [Optional] Allow non incremental materialized view definition. The default value is "false".
+        """
+        return pulumi.get(self, "allow_non_incremental_definition")
 
     @property
     @pulumi.getter(name="enableRefresh")
@@ -6334,7 +6360,7 @@ class SparkOptionsResponse(dict):
         :param str container_image: Custom container image for the runtime environment.
         :param Sequence[str] file_uris: Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param Sequence[str] jar_uris: JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
-        :param str main_file_uri: The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+        :param str main_file_uri: The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
         :param Mapping[str, str] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param Sequence[str] py_file_uris: Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param str runtime_version: Runtime version. If not specified, the default runtime version is used.
@@ -6393,7 +6419,7 @@ class SparkOptionsResponse(dict):
     @pulumi.getter(name="mainFileUri")
     def main_file_uri(self) -> str:
         """
-        The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+        The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
         """
         return pulumi.get(self, "main_file_uri")
 

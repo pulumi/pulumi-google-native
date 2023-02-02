@@ -684,6 +684,8 @@ type EnvironmentConfig struct {
 	NodeCount *int `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig *PrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
+	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	RecoveryConfig *RecoveryConfig `pulumi:"recoveryConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
@@ -723,6 +725,8 @@ type EnvironmentConfigArgs struct {
 	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
+	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	RecoveryConfig RecoveryConfigPtrInput `pulumi:"recoveryConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
@@ -851,6 +855,11 @@ func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() PrivateEnvironmentCo
 	return o.ApplyT(func(v EnvironmentConfig) *PrivateEnvironmentConfig { return v.PrivateEnvironmentConfig }).(PrivateEnvironmentConfigPtrOutput)
 }
 
+// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+func (o EnvironmentConfigOutput) RecoveryConfig() RecoveryConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *RecoveryConfig { return v.RecoveryConfig }).(RecoveryConfigPtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
@@ -975,6 +984,16 @@ func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() PrivateEnvironmen
 	}).(PrivateEnvironmentConfigPtrOutput)
 }
 
+// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+func (o EnvironmentConfigPtrOutput) RecoveryConfig() RecoveryConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *RecoveryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryConfig
+	}).(RecoveryConfigPtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *SoftwareConfig {
@@ -1039,6 +1058,8 @@ type EnvironmentConfigResponse struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigResponse `pulumi:"privateEnvironmentConfig"`
+	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	RecoveryConfig RecoveryConfigResponse `pulumi:"recoveryConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance.
@@ -1119,6 +1140,11 @@ func (o EnvironmentConfigResponseOutput) NodeCount() pulumi.IntOutput {
 // The configuration used for the Private IP Cloud Composer environment.
 func (o EnvironmentConfigResponseOutput) PrivateEnvironmentConfig() PrivateEnvironmentConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) PrivateEnvironmentConfigResponse { return v.PrivateEnvironmentConfig }).(PrivateEnvironmentConfigResponseOutput)
+}
+
+// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+func (o EnvironmentConfigResponseOutput) RecoveryConfig() RecoveryConfigResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) RecoveryConfigResponse { return v.RecoveryConfig }).(RecoveryConfigResponseOutput)
 }
 
 // The configuration settings for software inside the environment.
@@ -2009,7 +2035,7 @@ type NodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -2044,7 +2070,7 @@ type NodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -2171,7 +2197,7 @@ func (o NodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 func (o NodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2290,7 +2316,7 @@ func (o NodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfig) []string {
 		if v == nil {
@@ -2320,7 +2346,7 @@ type NodeConfigResponse struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork string `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -2384,7 +2410,7 @@ func (o NodeConfigResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 func (o NodeConfigResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2948,6 +2974,416 @@ func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4CidrBlock() pulumi.
 // The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
 func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4ReservedRange() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.WebServerIpv4ReservedRange }).(pulumi.StringOutput)
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfig struct {
+	// Optional. The configuration for scheduled snapshot creation mechanism.
+	ScheduledSnapshotsConfig *ScheduledSnapshotsConfig `pulumi:"scheduledSnapshotsConfig"`
+}
+
+// RecoveryConfigInput is an input type that accepts RecoveryConfigArgs and RecoveryConfigOutput values.
+// You can construct a concrete instance of `RecoveryConfigInput` via:
+//
+//	RecoveryConfigArgs{...}
+type RecoveryConfigInput interface {
+	pulumi.Input
+
+	ToRecoveryConfigOutput() RecoveryConfigOutput
+	ToRecoveryConfigOutputWithContext(context.Context) RecoveryConfigOutput
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigArgs struct {
+	// Optional. The configuration for scheduled snapshot creation mechanism.
+	ScheduledSnapshotsConfig ScheduledSnapshotsConfigPtrInput `pulumi:"scheduledSnapshotsConfig"`
+}
+
+func (RecoveryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecoveryConfig)(nil)).Elem()
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigOutput() RecoveryConfigOutput {
+	return i.ToRecoveryConfigOutputWithContext(context.Background())
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigOutputWithContext(ctx context.Context) RecoveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigOutput)
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return i.ToRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigOutput).ToRecoveryConfigPtrOutputWithContext(ctx)
+}
+
+// RecoveryConfigPtrInput is an input type that accepts RecoveryConfigArgs, RecoveryConfigPtr and RecoveryConfigPtrOutput values.
+// You can construct a concrete instance of `RecoveryConfigPtrInput` via:
+//
+//	        RecoveryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecoveryConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput
+	ToRecoveryConfigPtrOutputWithContext(context.Context) RecoveryConfigPtrOutput
+}
+
+type recoveryConfigPtrType RecoveryConfigArgs
+
+func RecoveryConfigPtr(v *RecoveryConfigArgs) RecoveryConfigPtrInput {
+	return (*recoveryConfigPtrType)(v)
+}
+
+func (*recoveryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecoveryConfig)(nil)).Elem()
+}
+
+func (i *recoveryConfigPtrType) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return i.ToRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recoveryConfigPtrType) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigPtrOutput)
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigOutput struct{ *pulumi.OutputState }
+
+func (RecoveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecoveryConfig)(nil)).Elem()
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigOutput() RecoveryConfigOutput {
+	return o
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigOutputWithContext(ctx context.Context) RecoveryConfigOutput {
+	return o
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return o.ToRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecoveryConfig) *RecoveryConfig {
+		return &v
+	}).(RecoveryConfigPtrOutput)
+}
+
+// Optional. The configuration for scheduled snapshot creation mechanism.
+func (o RecoveryConfigOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyT(func(v RecoveryConfig) *ScheduledSnapshotsConfig { return v.ScheduledSnapshotsConfig }).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+type RecoveryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecoveryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecoveryConfig)(nil)).Elem()
+}
+
+func (o RecoveryConfigPtrOutput) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return o
+}
+
+func (o RecoveryConfigPtrOutput) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return o
+}
+
+func (o RecoveryConfigPtrOutput) Elem() RecoveryConfigOutput {
+	return o.ApplyT(func(v *RecoveryConfig) RecoveryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecoveryConfig
+		return ret
+	}).(RecoveryConfigOutput)
+}
+
+// Optional. The configuration for scheduled snapshot creation mechanism.
+func (o RecoveryConfigPtrOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyT(func(v *RecoveryConfig) *ScheduledSnapshotsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledSnapshotsConfig
+	}).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigResponse struct {
+	// Optional. The configuration for scheduled snapshot creation mechanism.
+	ScheduledSnapshotsConfig ScheduledSnapshotsConfigResponse `pulumi:"scheduledSnapshotsConfig"`
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RecoveryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecoveryConfigResponse)(nil)).Elem()
+}
+
+func (o RecoveryConfigResponseOutput) ToRecoveryConfigResponseOutput() RecoveryConfigResponseOutput {
+	return o
+}
+
+func (o RecoveryConfigResponseOutput) ToRecoveryConfigResponseOutputWithContext(ctx context.Context) RecoveryConfigResponseOutput {
+	return o
+}
+
+// Optional. The configuration for scheduled snapshot creation mechanism.
+func (o RecoveryConfigResponseOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigResponseOutput {
+	return o.ApplyT(func(v RecoveryConfigResponse) ScheduledSnapshotsConfigResponse { return v.ScheduledSnapshotsConfig }).(ScheduledSnapshotsConfigResponseOutput)
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfig struct {
+	// Optional. Whether scheduled snapshots creation is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+	SnapshotCreationSchedule *string `pulumi:"snapshotCreationSchedule"`
+	// Optional. The Cloud Storage location for storing automatically created snapshots.
+	SnapshotLocation *string `pulumi:"snapshotLocation"`
+	// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// ScheduledSnapshotsConfigInput is an input type that accepts ScheduledSnapshotsConfigArgs and ScheduledSnapshotsConfigOutput values.
+// You can construct a concrete instance of `ScheduledSnapshotsConfigInput` via:
+//
+//	ScheduledSnapshotsConfigArgs{...}
+type ScheduledSnapshotsConfigInput interface {
+	pulumi.Input
+
+	ToScheduledSnapshotsConfigOutput() ScheduledSnapshotsConfigOutput
+	ToScheduledSnapshotsConfigOutputWithContext(context.Context) ScheduledSnapshotsConfigOutput
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigArgs struct {
+	// Optional. Whether scheduled snapshots creation is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+	SnapshotCreationSchedule pulumi.StringPtrInput `pulumi:"snapshotCreationSchedule"`
+	// Optional. The Cloud Storage location for storing automatically created snapshots.
+	SnapshotLocation pulumi.StringPtrInput `pulumi:"snapshotLocation"`
+	// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (ScheduledSnapshotsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigOutput() ScheduledSnapshotsConfigOutput {
+	return i.ToScheduledSnapshotsConfigOutputWithContext(context.Background())
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigOutput)
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return i.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigOutput).ToScheduledSnapshotsConfigPtrOutputWithContext(ctx)
+}
+
+// ScheduledSnapshotsConfigPtrInput is an input type that accepts ScheduledSnapshotsConfigArgs, ScheduledSnapshotsConfigPtr and ScheduledSnapshotsConfigPtrOutput values.
+// You can construct a concrete instance of `ScheduledSnapshotsConfigPtrInput` via:
+//
+//	        ScheduledSnapshotsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduledSnapshotsConfigPtrInput interface {
+	pulumi.Input
+
+	ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput
+	ToScheduledSnapshotsConfigPtrOutputWithContext(context.Context) ScheduledSnapshotsConfigPtrOutput
+}
+
+type scheduledSnapshotsConfigPtrType ScheduledSnapshotsConfigArgs
+
+func ScheduledSnapshotsConfigPtr(v *ScheduledSnapshotsConfigArgs) ScheduledSnapshotsConfigPtrInput {
+	return (*scheduledSnapshotsConfigPtrType)(v)
+}
+
+func (*scheduledSnapshotsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i *scheduledSnapshotsConfigPtrType) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return i.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduledSnapshotsConfigPtrType) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSnapshotsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigOutput() ScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return o.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledSnapshotsConfig) *ScheduledSnapshotsConfig {
+		return &v
+	}).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+// Optional. Whether scheduled snapshots creation is enabled.
+func (o ScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+func (o ScheduledSnapshotsConfigOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *string { return v.SnapshotCreationSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage location for storing automatically created snapshots.
+func (o ScheduledSnapshotsConfigOutput) SnapshotLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *string { return v.SnapshotLocation }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+func (o ScheduledSnapshotsConfigOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type ScheduledSnapshotsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSnapshotsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) Elem() ScheduledSnapshotsConfigOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) ScheduledSnapshotsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledSnapshotsConfig
+		return ret
+	}).(ScheduledSnapshotsConfigOutput)
+}
+
+// Optional. Whether scheduled snapshots creation is enabled.
+func (o ScheduledSnapshotsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+func (o ScheduledSnapshotsConfigPtrOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotCreationSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage location for storing automatically created snapshots.
+func (o ScheduledSnapshotsConfigPtrOutput) SnapshotLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+func (o ScheduledSnapshotsConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigResponse struct {
+	// Optional. Whether scheduled snapshots creation is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+	SnapshotCreationSchedule string `pulumi:"snapshotCreationSchedule"`
+	// Optional. The Cloud Storage location for storing automatically created snapshots.
+	SnapshotLocation string `pulumi:"snapshotLocation"`
+	// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSnapshotsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSnapshotsConfigResponse)(nil)).Elem()
+}
+
+func (o ScheduledSnapshotsConfigResponseOutput) ToScheduledSnapshotsConfigResponseOutput() ScheduledSnapshotsConfigResponseOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigResponseOutput) ToScheduledSnapshotsConfigResponseOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigResponseOutput {
+	return o
+}
+
+// Optional. Whether scheduled snapshots creation is enabled.
+func (o ScheduledSnapshotsConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+func (o ScheduledSnapshotsConfigResponseOutput) SnapshotCreationSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) string { return v.SnapshotCreationSchedule }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage location for storing automatically created snapshots.
+func (o ScheduledSnapshotsConfigResponseOutput) SnapshotLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) string { return v.SnapshotLocation }).(pulumi.StringOutput)
+}
+
+// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+func (o ScheduledSnapshotsConfigResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // Configuration for resources used by Airflow schedulers.
@@ -4553,6 +4989,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigPtrInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecoveryConfigInput)(nil)).Elem(), RecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecoveryConfigPtrInput)(nil)).Elem(), RecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSnapshotsConfigInput)(nil)).Elem(), ScheduledSnapshotsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSnapshotsConfigPtrInput)(nil)).Elem(), ScheduledSnapshotsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourcePtrInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
@@ -4605,6 +5045,12 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigResponseOutput{})
+	pulumi.RegisterOutputType(RecoveryConfigOutput{})
+	pulumi.RegisterOutputType(RecoveryConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecoveryConfigResponseOutput{})
+	pulumi.RegisterOutputType(ScheduledSnapshotsConfigOutput{})
+	pulumi.RegisterOutputType(ScheduledSnapshotsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ScheduledSnapshotsConfigResponseOutput{})
 	pulumi.RegisterOutputType(SchedulerResourceOutput{})
 	pulumi.RegisterOutputType(SchedulerResourcePtrOutput{})
 	pulumi.RegisterOutputType(SchedulerResourceResponseOutput{})

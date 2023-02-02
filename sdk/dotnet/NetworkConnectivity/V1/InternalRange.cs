@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.NetworkConnectivity.V1
 {
     /// <summary>
-    /// Creates a new InternalRange in a given project and location.
+    /// Creates a new internal range in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1:InternalRange")]
     public partial class InternalRange : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Time when the InternalRange was created.
+        /// Time when the internal range was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string?> InternalRangeId { get; private set; } = null!;
 
         /// <summary>
-        /// IP range that this InternalRange defines.
+        /// The IP range that this internal range defines.
         /// </summary>
         [Output("ipCidrRange")]
         public Output<string> IpCidrRange { get; private set; } = null!;
@@ -49,31 +49,31 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        /// Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        /// The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         /// </summary>
         [Output("network")]
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Types of resources that are allowed to overlap with the current InternalRange.
+        /// Optional. Types of resources that are allowed to overlap with the current internal range.
         /// </summary>
         [Output("overlaps")]
         public Output<ImmutableArray<string>> Overlaps { get; private set; } = null!;
 
         /// <summary>
-        /// The type of peering set for this InternalRange.
+        /// The type of peering set for this internal range.
         /// </summary>
         [Output("peering")]
         public Output<string> Peering { get; private set; } = null!;
 
         /// <summary>
-        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         /// </summary>
         [Output("prefixLength")]
         public Output<int> PrefixLength { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<ImmutableArray<string>> TargetCidrRange { get; private set; } = null!;
 
         /// <summary>
-        /// Time when the InternalRange was updated.
+        /// Time when the internal range was updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Output<string> Usage { get; private set; } = null!;
 
         /// <summary>
-        /// The list of resources that refer to this internal range. Resources that use the InternalRange for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this InternalRange. Having a user, based on this reference, prevents deletion of the InternalRange referred to. Can be empty.
+        /// The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
         /// </summary>
         [Output("users")]
         public Output<ImmutableArray<string>> Users { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     public sealed class InternalRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Time when the InternalRange was created.
+        /// Time when the internal range was created.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Input<string>? InternalRangeId { get; set; }
 
         /// <summary>
-        /// IP range that this InternalRange defines.
+        /// The IP range that this internal range defines.
         /// </summary>
         [Input("ipCidrRange")]
         public Input<string>? IpCidrRange { get; set; }
@@ -201,13 +201,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        /// Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        /// The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -216,7 +216,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         private InputList<Pulumi.GoogleNative.NetworkConnectivity.V1.InternalRangeOverlapsItem>? _overlaps;
 
         /// <summary>
-        /// Optional. Types of resources that are allowed to overlap with the current InternalRange.
+        /// Optional. Types of resources that are allowed to overlap with the current internal range.
         /// </summary>
         public InputList<Pulumi.GoogleNative.NetworkConnectivity.V1.InternalRangeOverlapsItem> Overlaps
         {
@@ -225,13 +225,13 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         }
 
         /// <summary>
-        /// The type of peering set for this InternalRange.
+        /// The type of peering set for this internal range.
         /// </summary>
         [Input("peering")]
         public Input<Pulumi.GoogleNative.NetworkConnectivity.V1.InternalRangePeering>? Peering { get; set; }
 
         /// <summary>
-        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        /// An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         /// </summary>
         [Input("prefixLength")]
         public Input<int>? PrefixLength { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         }
 
         /// <summary>
-        /// Time when the InternalRange was updated.
+        /// Time when the internal range was updated.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

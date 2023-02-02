@@ -348,6 +348,175 @@ func (in *instanceConfigNetworkConfigPtr) ToInstanceConfigNetworkConfigPtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceConfigNetworkConfigPtrOutput)
 }
 
+// The workload profile for the instance.
+type InstanceWorkloadProfile string
+
+const (
+	// The workload profile is in an unknown state.
+	InstanceWorkloadProfileWorkloadProfileUnspecified = InstanceWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED")
+	// The workload profile is generic.
+	InstanceWorkloadProfileWorkloadProfileGeneric = InstanceWorkloadProfile("WORKLOAD_PROFILE_GENERIC")
+	// The workload profile is hana.
+	InstanceWorkloadProfileWorkloadProfileHana = InstanceWorkloadProfile("WORKLOAD_PROFILE_HANA")
+)
+
+func (InstanceWorkloadProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceWorkloadProfile)(nil)).Elem()
+}
+
+func (e InstanceWorkloadProfile) ToInstanceWorkloadProfileOutput() InstanceWorkloadProfileOutput {
+	return pulumi.ToOutput(e).(InstanceWorkloadProfileOutput)
+}
+
+func (e InstanceWorkloadProfile) ToInstanceWorkloadProfileOutputWithContext(ctx context.Context) InstanceWorkloadProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceWorkloadProfileOutput)
+}
+
+func (e InstanceWorkloadProfile) ToInstanceWorkloadProfilePtrOutput() InstanceWorkloadProfilePtrOutput {
+	return e.ToInstanceWorkloadProfilePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceWorkloadProfile) ToInstanceWorkloadProfilePtrOutputWithContext(ctx context.Context) InstanceWorkloadProfilePtrOutput {
+	return InstanceWorkloadProfile(e).ToInstanceWorkloadProfileOutputWithContext(ctx).ToInstanceWorkloadProfilePtrOutputWithContext(ctx)
+}
+
+func (e InstanceWorkloadProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceWorkloadProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InstanceWorkloadProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceWorkloadProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceWorkloadProfileOutput struct{ *pulumi.OutputState }
+
+func (InstanceWorkloadProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceWorkloadProfile)(nil)).Elem()
+}
+
+func (o InstanceWorkloadProfileOutput) ToInstanceWorkloadProfileOutput() InstanceWorkloadProfileOutput {
+	return o
+}
+
+func (o InstanceWorkloadProfileOutput) ToInstanceWorkloadProfileOutputWithContext(ctx context.Context) InstanceWorkloadProfileOutput {
+	return o
+}
+
+func (o InstanceWorkloadProfileOutput) ToInstanceWorkloadProfilePtrOutput() InstanceWorkloadProfilePtrOutput {
+	return o.ToInstanceWorkloadProfilePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceWorkloadProfileOutput) ToInstanceWorkloadProfilePtrOutputWithContext(ctx context.Context) InstanceWorkloadProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceWorkloadProfile) *InstanceWorkloadProfile {
+		return &v
+	}).(InstanceWorkloadProfilePtrOutput)
+}
+
+func (o InstanceWorkloadProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceWorkloadProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceWorkloadProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceWorkloadProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceWorkloadProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceWorkloadProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceWorkloadProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceWorkloadProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceWorkloadProfile)(nil)).Elem()
+}
+
+func (o InstanceWorkloadProfilePtrOutput) ToInstanceWorkloadProfilePtrOutput() InstanceWorkloadProfilePtrOutput {
+	return o
+}
+
+func (o InstanceWorkloadProfilePtrOutput) ToInstanceWorkloadProfilePtrOutputWithContext(ctx context.Context) InstanceWorkloadProfilePtrOutput {
+	return o
+}
+
+func (o InstanceWorkloadProfilePtrOutput) Elem() InstanceWorkloadProfileOutput {
+	return o.ApplyT(func(v *InstanceWorkloadProfile) InstanceWorkloadProfile {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceWorkloadProfile
+		return ret
+	}).(InstanceWorkloadProfileOutput)
+}
+
+func (o InstanceWorkloadProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceWorkloadProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceWorkloadProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InstanceWorkloadProfileInput is an input type that accepts InstanceWorkloadProfileArgs and InstanceWorkloadProfileOutput values.
+// You can construct a concrete instance of `InstanceWorkloadProfileInput` via:
+//
+//	InstanceWorkloadProfileArgs{...}
+type InstanceWorkloadProfileInput interface {
+	pulumi.Input
+
+	ToInstanceWorkloadProfileOutput() InstanceWorkloadProfileOutput
+	ToInstanceWorkloadProfileOutputWithContext(context.Context) InstanceWorkloadProfileOutput
+}
+
+var instanceWorkloadProfilePtrType = reflect.TypeOf((**InstanceWorkloadProfile)(nil)).Elem()
+
+type InstanceWorkloadProfilePtrInput interface {
+	pulumi.Input
+
+	ToInstanceWorkloadProfilePtrOutput() InstanceWorkloadProfilePtrOutput
+	ToInstanceWorkloadProfilePtrOutputWithContext(context.Context) InstanceWorkloadProfilePtrOutput
+}
+
+type instanceWorkloadProfilePtr string
+
+func InstanceWorkloadProfilePtr(v string) InstanceWorkloadProfilePtrInput {
+	return (*instanceWorkloadProfilePtr)(&v)
+}
+
+func (*instanceWorkloadProfilePtr) ElementType() reflect.Type {
+	return instanceWorkloadProfilePtrType
+}
+
+func (in *instanceWorkloadProfilePtr) ToInstanceWorkloadProfilePtrOutput() InstanceWorkloadProfilePtrOutput {
+	return pulumi.ToOutput(in).(InstanceWorkloadProfilePtrOutput)
+}
+
+func (in *instanceWorkloadProfilePtr) ToInstanceWorkloadProfilePtrOutputWithContext(ctx context.Context) InstanceWorkloadProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceWorkloadProfilePtrOutput)
+}
+
 // Type of network.
 type LogicalNetworkInterfaceNetworkType string
 
@@ -3072,11 +3241,182 @@ func (in *volumeStorageTypePtr) ToVolumeStorageTypePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeStorageTypePtrOutput)
 }
 
+// The workload profile for the volume.
+type VolumeWorkloadProfile string
+
+const (
+	// The workload profile is in an unknown state.
+	VolumeWorkloadProfileWorkloadProfileUnspecified = VolumeWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED")
+	// The workload profile is generic.
+	VolumeWorkloadProfileGeneric = VolumeWorkloadProfile("GENERIC")
+	// The workload profile is hana.
+	VolumeWorkloadProfileHana = VolumeWorkloadProfile("HANA")
+)
+
+func (VolumeWorkloadProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeWorkloadProfile)(nil)).Elem()
+}
+
+func (e VolumeWorkloadProfile) ToVolumeWorkloadProfileOutput() VolumeWorkloadProfileOutput {
+	return pulumi.ToOutput(e).(VolumeWorkloadProfileOutput)
+}
+
+func (e VolumeWorkloadProfile) ToVolumeWorkloadProfileOutputWithContext(ctx context.Context) VolumeWorkloadProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VolumeWorkloadProfileOutput)
+}
+
+func (e VolumeWorkloadProfile) ToVolumeWorkloadProfilePtrOutput() VolumeWorkloadProfilePtrOutput {
+	return e.ToVolumeWorkloadProfilePtrOutputWithContext(context.Background())
+}
+
+func (e VolumeWorkloadProfile) ToVolumeWorkloadProfilePtrOutputWithContext(ctx context.Context) VolumeWorkloadProfilePtrOutput {
+	return VolumeWorkloadProfile(e).ToVolumeWorkloadProfileOutputWithContext(ctx).ToVolumeWorkloadProfilePtrOutputWithContext(ctx)
+}
+
+func (e VolumeWorkloadProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeWorkloadProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeWorkloadProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeWorkloadProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VolumeWorkloadProfileOutput struct{ *pulumi.OutputState }
+
+func (VolumeWorkloadProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeWorkloadProfile)(nil)).Elem()
+}
+
+func (o VolumeWorkloadProfileOutput) ToVolumeWorkloadProfileOutput() VolumeWorkloadProfileOutput {
+	return o
+}
+
+func (o VolumeWorkloadProfileOutput) ToVolumeWorkloadProfileOutputWithContext(ctx context.Context) VolumeWorkloadProfileOutput {
+	return o
+}
+
+func (o VolumeWorkloadProfileOutput) ToVolumeWorkloadProfilePtrOutput() VolumeWorkloadProfilePtrOutput {
+	return o.ToVolumeWorkloadProfilePtrOutputWithContext(context.Background())
+}
+
+func (o VolumeWorkloadProfileOutput) ToVolumeWorkloadProfilePtrOutputWithContext(ctx context.Context) VolumeWorkloadProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeWorkloadProfile) *VolumeWorkloadProfile {
+		return &v
+	}).(VolumeWorkloadProfilePtrOutput)
+}
+
+func (o VolumeWorkloadProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VolumeWorkloadProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeWorkloadProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VolumeWorkloadProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeWorkloadProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeWorkloadProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeWorkloadProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeWorkloadProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeWorkloadProfile)(nil)).Elem()
+}
+
+func (o VolumeWorkloadProfilePtrOutput) ToVolumeWorkloadProfilePtrOutput() VolumeWorkloadProfilePtrOutput {
+	return o
+}
+
+func (o VolumeWorkloadProfilePtrOutput) ToVolumeWorkloadProfilePtrOutputWithContext(ctx context.Context) VolumeWorkloadProfilePtrOutput {
+	return o
+}
+
+func (o VolumeWorkloadProfilePtrOutput) Elem() VolumeWorkloadProfileOutput {
+	return o.ApplyT(func(v *VolumeWorkloadProfile) VolumeWorkloadProfile {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeWorkloadProfile
+		return ret
+	}).(VolumeWorkloadProfileOutput)
+}
+
+func (o VolumeWorkloadProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeWorkloadProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VolumeWorkloadProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumeWorkloadProfileInput is an input type that accepts VolumeWorkloadProfileArgs and VolumeWorkloadProfileOutput values.
+// You can construct a concrete instance of `VolumeWorkloadProfileInput` via:
+//
+//	VolumeWorkloadProfileArgs{...}
+type VolumeWorkloadProfileInput interface {
+	pulumi.Input
+
+	ToVolumeWorkloadProfileOutput() VolumeWorkloadProfileOutput
+	ToVolumeWorkloadProfileOutputWithContext(context.Context) VolumeWorkloadProfileOutput
+}
+
+var volumeWorkloadProfilePtrType = reflect.TypeOf((**VolumeWorkloadProfile)(nil)).Elem()
+
+type VolumeWorkloadProfilePtrInput interface {
+	pulumi.Input
+
+	ToVolumeWorkloadProfilePtrOutput() VolumeWorkloadProfilePtrOutput
+	ToVolumeWorkloadProfilePtrOutputWithContext(context.Context) VolumeWorkloadProfilePtrOutput
+}
+
+type volumeWorkloadProfilePtr string
+
+func VolumeWorkloadProfilePtr(v string) VolumeWorkloadProfilePtrInput {
+	return (*volumeWorkloadProfilePtr)(&v)
+}
+
+func (*volumeWorkloadProfilePtr) ElementType() reflect.Type {
+	return volumeWorkloadProfilePtrType
+}
+
+func (in *volumeWorkloadProfilePtr) ToVolumeWorkloadProfilePtrOutput() VolumeWorkloadProfilePtrOutput {
+	return pulumi.ToOutput(in).(VolumeWorkloadProfilePtrOutput)
+}
+
+func (in *volumeWorkloadProfilePtr) ToVolumeWorkloadProfilePtrOutputWithContext(ctx context.Context) VolumeWorkloadProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VolumeWorkloadProfilePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientMountPermissionsInput)(nil)).Elem(), AllowedClientMountPermissions("MOUNT_PERMISSIONS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientMountPermissionsPtrInput)(nil)).Elem(), AllowedClientMountPermissions("MOUNT_PERMISSIONS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigPtrInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWorkloadProfileInput)(nil)).Elem(), InstanceWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWorkloadProfilePtrInput)(nil)).Elem(), InstanceWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypeInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypePtrInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LunMultiprotocolTypeInput)(nil)).Elem(), LunMultiprotocolType("MULTIPROTOCOL_TYPE_UNSPECIFIED"))
@@ -3109,10 +3449,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStatePtrInput)(nil)).Elem(), VolumeState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStorageTypeInput)(nil)).Elem(), VolumeStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStorageTypePtrInput)(nil)).Elem(), VolumeStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeWorkloadProfileInput)(nil)).Elem(), VolumeWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeWorkloadProfilePtrInput)(nil)).Elem(), VolumeWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AllowedClientMountPermissionsOutput{})
 	pulumi.RegisterOutputType(AllowedClientMountPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfigNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceWorkloadProfileOutput{})
+	pulumi.RegisterOutputType(InstanceWorkloadProfilePtrOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypeOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypePtrOutput{})
 	pulumi.RegisterOutputType(LunMultiprotocolTypeOutput{})
@@ -3145,4 +3489,6 @@ func init() {
 	pulumi.RegisterOutputType(VolumeStatePtrOutput{})
 	pulumi.RegisterOutputType(VolumeStorageTypeOutput{})
 	pulumi.RegisterOutputType(VolumeStorageTypePtrOutput{})
+	pulumi.RegisterOutputType(VolumeWorkloadProfileOutput{})
+	pulumi.RegisterOutputType(VolumeWorkloadProfilePtrOutput{})
 }

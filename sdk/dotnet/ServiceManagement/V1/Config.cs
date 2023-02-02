@@ -132,6 +132,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public Output<string> ProducerProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        /// </summary>
+        [Output("publishing")]
+        public Output<Outputs.PublishingResponse> Publishing { get; private set; } = null!;
+
+        /// <summary>
         /// Quota configuration.
         /// </summary>
         [Output("quota")]
@@ -380,6 +386,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         [Input("producerProjectId")]
         public Input<string>? ProducerProjectId { get; set; }
+
+        /// <summary>
+        /// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        /// </summary>
+        [Input("publishing")]
+        public Input<Inputs.PublishingArgs>? Publishing { get; set; }
 
         /// <summary>
         /// Quota configuration.

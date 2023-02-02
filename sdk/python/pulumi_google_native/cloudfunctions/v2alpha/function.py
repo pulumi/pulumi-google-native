@@ -31,7 +31,7 @@ class FunctionArgs:
         The set of arguments for constructing a Function resource.
         :param pulumi.Input['BuildConfigArgs'] build_config: Describes the Build step of the function that builds a container from the given source.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is gen1 or gen2.
+        :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is 1st Gen or 2nd Gen.
         :param pulumi.Input['EventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
         :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
@@ -87,7 +87,7 @@ class FunctionArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input['FunctionEnvironment']]:
         """
-        Describe whether the function is gen1 or gen2.
+        Describe whether the function is 1st Gen or 2nd Gen.
         """
         return pulumi.get(self, "environment")
 
@@ -197,7 +197,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['BuildConfigArgs']] build_config: Describes the Build step of the function that builds a container from the given source.
         :param pulumi.Input[str] description: User-provided description of a function.
-        :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is gen1 or gen2.
+        :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is 1st Gen or 2nd Gen.
         :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
         :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
@@ -319,7 +319,7 @@ class Function(pulumi.CustomResource):
     @pulumi.getter
     def environment(self) -> pulumi.Output[str]:
         """
-        Describe whether the function is gen1 or gen2.
+        Describe whether the function is 1st Gen or 2nd Gen.
         """
         return pulumi.get(self, "environment")
 

@@ -62,7 +62,7 @@ class GetDocumentSchemaResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Name of the schema given by the user. Must be unique per customer.
+        Name of the schema given by the user. Must be unique per project.
         """
         return pulumi.get(self, "display_name")
 

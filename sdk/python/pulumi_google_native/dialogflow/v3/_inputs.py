@@ -2278,6 +2278,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageTextArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowCxV3ResponseMessageArgs:
     def __init__(__self__, *,
+                 channel: Optional[pulumi.Input[str]] = None,
                  conversation_success: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs']] = None,
                  live_agent_handoff: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs']] = None,
                  output_audio_text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs']] = None,
@@ -2287,6 +2288,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
                  text: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs']] = None):
         """
         Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
+        :param pulumi.Input[str] channel: The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs'] conversation_success: Indicates that the conversation succeeded.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs'] live_agent_handoff: Hands off conversation to a human agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs'] output_audio_text: A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
@@ -2295,6 +2297,8 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs'] telephony_transfer_call: A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
         :param pulumi.Input['GoogleCloudDialogflowCxV3ResponseMessageTextArgs'] text: Returns a text response.
         """
+        if channel is not None:
+            pulumi.set(__self__, "channel", channel)
         if conversation_success is not None:
             pulumi.set(__self__, "conversation_success", conversation_success)
         if live_agent_handoff is not None:
@@ -2309,6 +2313,18 @@ class GoogleCloudDialogflowCxV3ResponseMessageArgs:
             pulumi.set(__self__, "telephony_transfer_call", telephony_transfer_call)
         if text is not None:
             pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> Optional[pulumi.Input[str]]:
+        """
+        The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "channel", value)
 
     @property
     @pulumi.getter(name="conversationSuccess")

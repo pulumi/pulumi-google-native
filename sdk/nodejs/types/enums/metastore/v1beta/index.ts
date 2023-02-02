@@ -197,4 +197,7 @@ export const TelemetryConfigLogFormat = {
     Json: "JSON",
 } as const;
 
+/**
+ * The output format of the Dataproc Metastore service's logs.
+ */
 export type TelemetryConfigLogFormat = (typeof TelemetryConfigLogFormat)[keyof typeof TelemetryConfigLogFormat];

@@ -1561,6 +1561,8 @@ const (
 	ParserConfigVersionV1 = ParserConfigVersion("V1")
 	// The `parsed_data` includes every given non-empty message field.
 	ParserConfigVersionV2 = ParserConfigVersion("V2")
+	// This version is the same as V2, with the following change. The `parsed_data` contains unescaped escaped field separators, component separators, sub-component separators, repetition separators, escape characters, and truncation characters. If `schema` is specified, the schematized parser uses improved parsing heuristics compared to previous versions.
+	ParserConfigVersionV3 = ParserConfigVersion("V3")
 )
 
 func (ParserConfigVersion) ElementType() reflect.Type {

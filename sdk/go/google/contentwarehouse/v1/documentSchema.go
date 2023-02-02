@@ -19,7 +19,7 @@ type DocumentSchema struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Schema description.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Name of the schema given by the user. Must be unique per customer.
+	// Name of the schema given by the user. Must be unique per project.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Document Type, true refers the document is a folder, otherwise it is a typical document.
 	DocumentIsFolder pulumi.BoolOutput   `pulumi:"documentIsFolder"`
@@ -82,7 +82,7 @@ func (DocumentSchemaState) ElementType() reflect.Type {
 type documentSchemaArgs struct {
 	// Schema description.
 	Description *string `pulumi:"description"`
-	// Name of the schema given by the user. Must be unique per customer.
+	// Name of the schema given by the user. Must be unique per project.
 	DisplayName string `pulumi:"displayName"`
 	// Document Type, true refers the document is a folder, otherwise it is a typical document.
 	DocumentIsFolder *bool   `pulumi:"documentIsFolder"`
@@ -98,7 +98,7 @@ type documentSchemaArgs struct {
 type DocumentSchemaArgs struct {
 	// Schema description.
 	Description pulumi.StringPtrInput
-	// Name of the schema given by the user. Must be unique per customer.
+	// Name of the schema given by the user. Must be unique per project.
 	DisplayName pulumi.StringInput
 	// Document Type, true refers the document is a folder, otherwise it is a typical document.
 	DocumentIsFolder pulumi.BoolPtrInput
@@ -157,7 +157,7 @@ func (o DocumentSchemaOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentSchema) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the schema given by the user. Must be unique per customer.
+// Name of the schema given by the user. Must be unique per project.
 func (o DocumentSchemaOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DocumentSchema) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

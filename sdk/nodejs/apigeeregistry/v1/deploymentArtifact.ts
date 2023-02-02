@@ -34,6 +34,10 @@ export class DeploymentArtifact extends pulumi.CustomResource {
         return obj['__pulumiType'] === DeploymentArtifact.__pulumiType;
     }
 
+    /**
+     * Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
     public readonly apiId!: pulumi.Output<string>;
     /**
      * Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
@@ -52,6 +56,10 @@ export class DeploymentArtifact extends pulumi.CustomResource {
      * A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
      */
     public /*out*/ readonly hash!: pulumi.Output<string>;
+    /**
+     * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
@@ -91,10 +99,12 @@ export class DeploymentArtifact extends pulumi.CustomResource {
             if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["apiId"] = args ? args.apiId : undefined;
             resourceInputs["artifactId"] = args ? args.artifactId : undefined;
             resourceInputs["contents"] = args ? args.contents : undefined;
             resourceInputs["deploymentId"] = args ? args.deploymentId : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mimeType"] = args ? args.mimeType : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -104,12 +114,14 @@ export class DeploymentArtifact extends pulumi.CustomResource {
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["apiId"] = undefined /*out*/;
             resourceInputs["artifactId"] = undefined /*out*/;
             resourceInputs["contents"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deploymentId"] = undefined /*out*/;
             resourceInputs["hash"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mimeType"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -128,6 +140,10 @@ export class DeploymentArtifact extends pulumi.CustomResource {
  * The set of arguments for constructing a DeploymentArtifact resource.
  */
 export interface DeploymentArtifactArgs {
+    /**
+     * Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     apiId: pulumi.Input<string>;
     /**
      * Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
@@ -138,6 +154,10 @@ export interface DeploymentArtifactArgs {
      */
     contents?: pulumi.Input<string>;
     deploymentId: pulumi.Input<string>;
+    /**
+     * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
      * A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").

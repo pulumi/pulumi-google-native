@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const DocumentContentCategory = {
+    /**
+     * No category is specified.
+     */
+    ContentCategoryUnspecified: "CONTENT_CATEGORY_UNSPECIFIED",
+    /**
+     * Content is of image type.
+     */
+    ContentCategoryImage: "CONTENT_CATEGORY_IMAGE",
+    /**
+     * Content is of audio type.
+     */
+    ContentCategoryAudio: "CONTENT_CATEGORY_AUDIO",
+    /**
+     * Content is of video type.
+     */
+    ContentCategoryVideo: "CONTENT_CATEGORY_VIDEO",
+} as const;
+
+/**
+ * Indicates the category (image, audio, video etc.) of the original content.
+ */
+export type DocumentContentCategory = (typeof DocumentContentCategory)[keyof typeof DocumentContentCategory];
+
 export const DocumentRawDocumentFileType = {
     /**
      * No raw document specified or it is non-parsable
@@ -27,6 +51,10 @@ export const DocumentRawDocumentFileType = {
      * UTF-8 encoded text format
      */
     RawDocumentFileTypeText: "RAW_DOCUMENT_FILE_TYPE_TEXT",
+    /**
+     * TIFF or TIF image file format
+     */
+    RawDocumentFileTypeTiff: "RAW_DOCUMENT_FILE_TYPE_TIFF",
 } as const;
 
 /**
@@ -35,6 +63,9 @@ export const DocumentRawDocumentFileType = {
 export type DocumentRawDocumentFileType = (typeof DocumentRawDocumentFileType)[keyof typeof DocumentRawDocumentFileType];
 
 export const GoogleCloudContentwarehouseV1AccessControlActionOperationType = {
+    /**
+     * The unknown operation type.
+     */
     Unknown: "UNKNOWN",
     /**
      * Adds newly given policy bindings in the existing bindings list.
@@ -55,7 +86,46 @@ export const GoogleCloudContentwarehouseV1AccessControlActionOperationType = {
  */
 export type GoogleCloudContentwarehouseV1AccessControlActionOperationType = (typeof GoogleCloudContentwarehouseV1AccessControlActionOperationType)[keyof typeof GoogleCloudContentwarehouseV1AccessControlActionOperationType];
 
+export const GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance = {
+    /**
+     * No importance specified. Default medium importance.
+     */
+    RetrievalImportanceUnspecified: "RETRIEVAL_IMPORTANCE_UNSPECIFIED",
+    /**
+     * Highest importance.
+     */
+    Highest: "HIGHEST",
+    /**
+     * Higher importance.
+     */
+    Higher: "HIGHER",
+    /**
+     * High importance.
+     */
+    High: "HIGH",
+    /**
+     * Medium importance.
+     */
+    Medium: "MEDIUM",
+    /**
+     * Low importance (negative).
+     */
+    Low: "LOW",
+    /**
+     * Lowest importance (negative).
+     */
+    Lowest: "LOWEST",
+} as const;
+
+/**
+ * The retrieval importance of the property during search.
+ */
+export type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance = (typeof GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance)[keyof typeof GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance];
+
 export const GoogleCloudContentwarehouseV1RuleTriggerType = {
+    /**
+     * Trigger for unknown action.
+     */
     Unknown: "UNKNOWN",
     /**
      * Trigger for create document action.
@@ -78,7 +148,7 @@ export const GoogleCloudContentwarehouseV1UpdateOptionsUpdateType = {
      */
     UpdateTypeUnspecified: "UPDATE_TYPE_UNSPECIFIED",
     /**
-     * Fully replace all the fields. Any field masks will be ignored.
+     * Fully replace all the fields (including previously linked raw document). Any field masks will be ignored.
      */
     UpdateTypeReplace: "UPDATE_TYPE_REPLACE",
     /**

@@ -50,9 +50,9 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly enableFlowLogs!: pulumi.Output<boolean>;
     /**
-     * The external IPv6 address range that is assigned to this subnetwork.
+     * The external IPv6 address range that is owned by this subnetwork.
      */
-    public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
+    public readonly externalIpv6Prefix!: pulumi.Output<string>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
      */
@@ -148,6 +148,7 @@ export class Subnetwork extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
+            resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
             resourceInputs["logConfig"] = args ? args.logConfig : undefined;
@@ -163,7 +164,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
-            resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
             resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
@@ -217,6 +217,10 @@ export interface SubnetworkArgs {
      * Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
      */
     enableFlowLogs?: pulumi.Input<boolean>;
+    /**
+     * The external IPv6 address range that is owned by this subnetwork.
+     */
+    externalIpv6Prefix?: pulumi.Input<string>;
     /**
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */

@@ -39,6 +39,10 @@ export interface GetFeatureResult {
      */
     readonly deleteTime: string;
     /**
+     * Optional. Feature configuration applicable to all memberships of the fleet.
+     */
+    readonly fleetDefaultMemberConfig: outputs.gkehub.v1alpha.CommonFleetDefaultMemberConfigSpecResponse;
+    /**
      * GCP labels for this Feature.
      */
     readonly labels: {[key: string]: string};

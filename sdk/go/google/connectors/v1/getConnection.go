@@ -50,7 +50,7 @@ type LookupConnectionResult struct {
 	LockConfig LockConfigResponse `pulumi:"lockConfig"`
 	// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 	Name string `pulumi:"name"`
-	// Optional. Configuration for the connection.
+	// Optional. Node configuration for the connection.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -157,7 +157,7 @@ func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. Configuration for the connection.
+// Optional. Node configuration for the connection.
 func (o LookupConnectionResultOutput) NodeConfig() NodeConfigResponseOutput {
 	return o.ApplyT(func(v LookupConnectionResult) NodeConfigResponse { return v.NodeConfig }).(NodeConfigResponseOutput)
 }

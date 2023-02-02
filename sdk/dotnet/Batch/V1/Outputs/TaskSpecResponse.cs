@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.EnvironmentResponse Environment;
         /// <summary>
-        /// Environment variables to set before running the Task. You can set up to 100 environments.
+        /// Deprecated: please use environment(non-plural) instead.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Environments;
         /// <summary>

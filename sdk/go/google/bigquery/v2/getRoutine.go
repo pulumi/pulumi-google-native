@@ -42,13 +42,13 @@ type LookupRoutineResult struct {
 	Etag string `pulumi:"etag"`
 	// Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
 	ImportedLibraries []string `pulumi:"importedLibraries"`
-	// Optional. Defaults to "SQL".
+	// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
 	Language string `pulumi:"language"`
 	// The time when this routine was last modified, in milliseconds since the epoch.
 	LastModifiedTime string `pulumi:"lastModifiedTime"`
 	// Optional. Remote function specific options.
 	RemoteFunctionOptions RemoteFunctionOptionsResponse `pulumi:"remoteFunctionOptions"`
-	// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+	// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
 	ReturnTableType StandardSqlTableTypeResponse `pulumi:"returnTableType"`
 	// Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
 	ReturnType StandardSqlDataTypeResponse `pulumi:"returnType"`
@@ -135,7 +135,7 @@ func (o LookupRoutineResultOutput) ImportedLibraries() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v LookupRoutineResult) []string { return v.ImportedLibraries }).(pulumi.StringArrayOutput)
 }
 
-// Optional. Defaults to "SQL".
+// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
 func (o LookupRoutineResultOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutineResult) string { return v.Language }).(pulumi.StringOutput)
 }
@@ -150,7 +150,7 @@ func (o LookupRoutineResultOutput) RemoteFunctionOptions() RemoteFunctionOptions
 	return o.ApplyT(func(v LookupRoutineResult) RemoteFunctionOptionsResponse { return v.RemoteFunctionOptions }).(RemoteFunctionOptionsResponseOutput)
 }
 
-// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
 func (o LookupRoutineResultOutput) ReturnTableType() StandardSqlTableTypeResponseOutput {
 	return o.ApplyT(func(v LookupRoutineResult) StandardSqlTableTypeResponse { return v.ReturnTableType }).(StandardSqlTableTypeResponseOutput)
 }

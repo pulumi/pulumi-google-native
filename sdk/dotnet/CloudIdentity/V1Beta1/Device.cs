@@ -53,6 +53,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public Output<string> BuildNumber { get; private set; } = null!;
 
         /// <summary>
+        /// List of the clients the device is reporting to.
+        /// </summary>
+        [Output("clientTypes")]
+        public Output<ImmutableArray<string>> ClientTypes { get; private set; } = null!;
+
+        /// <summary>
         /// Represents whether the Device is compromised.
         /// </summary>
         [Output("compromisedState")]
@@ -99,6 +105,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         [Output("endpointVerificationSpecificAttributes")]
         public Output<Outputs.EndpointVerificationSpecificAttributesResponse> EndpointVerificationSpecificAttributes { get; private set; } = null!;
+
+        /// <summary>
+        /// Host name of the device.
+        /// </summary>
+        [Output("hostname")]
+        public Output<string> Hostname { get; private set; } = null!;
 
         /// <summary>
         /// IMEI number of device if GSM device; empty otherwise.
@@ -247,11 +259,35 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Input("assetTag")]
         public Input<string>? AssetTag { get; set; }
 
+        [Input("clientTypes")]
+        private InputList<Pulumi.GoogleNative.CloudIdentity.V1Beta1.DeviceClientTypesItem>? _clientTypes;
+
+        /// <summary>
+        /// List of the clients the device is reporting to.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.CloudIdentity.V1Beta1.DeviceClientTypesItem> ClientTypes
+        {
+            get => _clientTypes ?? (_clientTypes = new InputList<Pulumi.GoogleNative.CloudIdentity.V1Beta1.DeviceClientTypesItem>());
+            set => _clientTypes = value;
+        }
+
+        /// <summary>
+        /// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+        /// </summary>
+        [Input("customer")]
+        public Input<string>? Customer { get; set; }
+
         /// <summary>
         /// Unique identifier for the device.
         /// </summary>
         [Input("deviceId")]
         public Input<string>? DeviceId { get; set; }
+
+        /// <summary>
+        /// Host name of the device.
+        /// </summary>
+        [Input("hostname")]
+        public Input<string>? Hostname { get; set; }
 
         /// <summary>
         /// Most recent time when device synced with this service.

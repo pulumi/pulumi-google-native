@@ -18,6 +18,7 @@ class IosAppArgs:
                  app_store_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  team_id: Optional[pulumi.Input[str]] = None):
@@ -27,6 +28,7 @@ class IosAppArgs:
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
         :param pulumi.Input[str] bundle_id: Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `IosApp`.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
         :param pulumi.Input[str] name: The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
         :param pulumi.Input[str] team_id: The Apple Developer Team ID associated with the App in the App Store.
         """
@@ -38,6 +40,8 @@ class IosAppArgs:
             pulumi.set(__self__, "bundle_id", bundle_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -95,6 +99,18 @@ class IosAppArgs:
 
     @property
     @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
@@ -136,6 +152,7 @@ class IosApp(pulumi.CustomResource):
                  app_store_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
@@ -151,6 +168,7 @@ class IosApp(pulumi.CustomResource):
         :param pulumi.Input[str] app_store_id: The automatically generated Apple ID assigned to the iOS app by Apple in the iOS App Store.
         :param pulumi.Input[str] bundle_id: Immutable. The canonical bundle ID of the iOS app as it would appear in the iOS AppStore.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `IosApp`.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
         :param pulumi.Input[str] name: The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
         :param pulumi.Input[str] team_id: The Apple Developer Team ID associated with the App in the App Store.
         """
@@ -184,6 +202,7 @@ class IosApp(pulumi.CustomResource):
                  app_store_id: Optional[pulumi.Input[str]] = None,
                  bundle_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  team_id: Optional[pulumi.Input[str]] = None,
@@ -200,6 +219,7 @@ class IosApp(pulumi.CustomResource):
             __props__.__dict__["app_store_id"] = app_store_id
             __props__.__dict__["bundle_id"] = bundle_id
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["etag"] = etag
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["team_id"] = team_id
@@ -234,6 +254,7 @@ class IosApp(pulumi.CustomResource):
         __props__.__dict__["app_store_id"] = None
         __props__.__dict__["bundle_id"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
@@ -279,6 +300,14 @@ class IosApp(pulumi.CustomResource):
         The user-assigned display name for the `IosApp`.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter

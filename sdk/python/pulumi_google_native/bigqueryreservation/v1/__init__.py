@@ -10,4 +10,5 @@ from .capacity_commitment import *
 from .get_capacity_commitment import *
 from .get_reservation import *
 from .reservation import *
+from ._inputs import *
 from . import outputs

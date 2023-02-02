@@ -16,7 +16,7 @@ import (
 type Control struct {
 	pulumi.CustomResourceState
 
-	// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
+	// List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
 	AssociatedServingConfigIds pulumi.StringArrayOutput `pulumi:"associatedServingConfigIds"`
 	CatalogId                  pulumi.StringOutput      `pulumi:"catalogId"`
 	// Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
@@ -172,7 +172,7 @@ func (o ControlOutput) ToControlOutputWithContext(ctx context.Context) ControlOu
 	return o
 }
 
-// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
+// List of serving config ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
 func (o ControlOutput) AssociatedServingConfigIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Control) pulumi.StringArrayOutput { return v.AssociatedServingConfigIds }).(pulumi.StringArrayOutput)
 }

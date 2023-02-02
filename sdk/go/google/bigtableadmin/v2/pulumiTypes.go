@@ -2289,6 +2289,250 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+type TableStats struct {
+	// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+	AverageCellsPerColumn *float64 `pulumi:"averageCellsPerColumn"`
+	// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+	AverageColumnsPerRow *float64 `pulumi:"averageColumnsPerRow"`
+	// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+	LogicalDataBytes *string `pulumi:"logicalDataBytes"`
+	// How many rows are in the table.
+	RowCount *string `pulumi:"rowCount"`
+}
+
+// TableStatsInput is an input type that accepts TableStatsArgs and TableStatsOutput values.
+// You can construct a concrete instance of `TableStatsInput` via:
+//
+//	TableStatsArgs{...}
+type TableStatsInput interface {
+	pulumi.Input
+
+	ToTableStatsOutput() TableStatsOutput
+	ToTableStatsOutputWithContext(context.Context) TableStatsOutput
+}
+
+// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+type TableStatsArgs struct {
+	// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+	AverageCellsPerColumn pulumi.Float64PtrInput `pulumi:"averageCellsPerColumn"`
+	// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+	AverageColumnsPerRow pulumi.Float64PtrInput `pulumi:"averageColumnsPerRow"`
+	// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+	LogicalDataBytes pulumi.StringPtrInput `pulumi:"logicalDataBytes"`
+	// How many rows are in the table.
+	RowCount pulumi.StringPtrInput `pulumi:"rowCount"`
+}
+
+func (TableStatsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableStats)(nil)).Elem()
+}
+
+func (i TableStatsArgs) ToTableStatsOutput() TableStatsOutput {
+	return i.ToTableStatsOutputWithContext(context.Background())
+}
+
+func (i TableStatsArgs) ToTableStatsOutputWithContext(ctx context.Context) TableStatsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableStatsOutput)
+}
+
+func (i TableStatsArgs) ToTableStatsPtrOutput() TableStatsPtrOutput {
+	return i.ToTableStatsPtrOutputWithContext(context.Background())
+}
+
+func (i TableStatsArgs) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableStatsOutput).ToTableStatsPtrOutputWithContext(ctx)
+}
+
+// TableStatsPtrInput is an input type that accepts TableStatsArgs, TableStatsPtr and TableStatsPtrOutput values.
+// You can construct a concrete instance of `TableStatsPtrInput` via:
+//
+//	        TableStatsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableStatsPtrInput interface {
+	pulumi.Input
+
+	ToTableStatsPtrOutput() TableStatsPtrOutput
+	ToTableStatsPtrOutputWithContext(context.Context) TableStatsPtrOutput
+}
+
+type tableStatsPtrType TableStatsArgs
+
+func TableStatsPtr(v *TableStatsArgs) TableStatsPtrInput {
+	return (*tableStatsPtrType)(v)
+}
+
+func (*tableStatsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableStats)(nil)).Elem()
+}
+
+func (i *tableStatsPtrType) ToTableStatsPtrOutput() TableStatsPtrOutput {
+	return i.ToTableStatsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableStatsPtrType) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableStatsPtrOutput)
+}
+
+// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+type TableStatsOutput struct{ *pulumi.OutputState }
+
+func (TableStatsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableStats)(nil)).Elem()
+}
+
+func (o TableStatsOutput) ToTableStatsOutput() TableStatsOutput {
+	return o
+}
+
+func (o TableStatsOutput) ToTableStatsOutputWithContext(ctx context.Context) TableStatsOutput {
+	return o
+}
+
+func (o TableStatsOutput) ToTableStatsPtrOutput() TableStatsPtrOutput {
+	return o.ToTableStatsPtrOutputWithContext(context.Background())
+}
+
+func (o TableStatsOutput) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableStats) *TableStats {
+		return &v
+	}).(TableStatsPtrOutput)
+}
+
+// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+func (o TableStatsOutput) AverageCellsPerColumn() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableStats) *float64 { return v.AverageCellsPerColumn }).(pulumi.Float64PtrOutput)
+}
+
+// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+func (o TableStatsOutput) AverageColumnsPerRow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TableStats) *float64 { return v.AverageColumnsPerRow }).(pulumi.Float64PtrOutput)
+}
+
+// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+func (o TableStatsOutput) LogicalDataBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableStats) *string { return v.LogicalDataBytes }).(pulumi.StringPtrOutput)
+}
+
+// How many rows are in the table.
+func (o TableStatsOutput) RowCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableStats) *string { return v.RowCount }).(pulumi.StringPtrOutput)
+}
+
+type TableStatsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableStatsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableStats)(nil)).Elem()
+}
+
+func (o TableStatsPtrOutput) ToTableStatsPtrOutput() TableStatsPtrOutput {
+	return o
+}
+
+func (o TableStatsPtrOutput) ToTableStatsPtrOutputWithContext(ctx context.Context) TableStatsPtrOutput {
+	return o
+}
+
+func (o TableStatsPtrOutput) Elem() TableStatsOutput {
+	return o.ApplyT(func(v *TableStats) TableStats {
+		if v != nil {
+			return *v
+		}
+		var ret TableStats
+		return ret
+	}).(TableStatsOutput)
+}
+
+// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+func (o TableStatsPtrOutput) AverageCellsPerColumn() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableStats) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AverageCellsPerColumn
+	}).(pulumi.Float64PtrOutput)
+}
+
+// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+func (o TableStatsPtrOutput) AverageColumnsPerRow() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TableStats) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.AverageColumnsPerRow
+	}).(pulumi.Float64PtrOutput)
+}
+
+// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+func (o TableStatsPtrOutput) LogicalDataBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableStats) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogicalDataBytes
+	}).(pulumi.StringPtrOutput)
+}
+
+// How many rows are in the table.
+func (o TableStatsPtrOutput) RowCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableStats) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RowCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+type TableStatsResponse struct {
+	// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+	AverageCellsPerColumn float64 `pulumi:"averageCellsPerColumn"`
+	// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+	AverageColumnsPerRow float64 `pulumi:"averageColumnsPerRow"`
+	// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+	LogicalDataBytes string `pulumi:"logicalDataBytes"`
+	// How many rows are in the table.
+	RowCount string `pulumi:"rowCount"`
+}
+
+// Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+type TableStatsResponseOutput struct{ *pulumi.OutputState }
+
+func (TableStatsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableStatsResponse)(nil)).Elem()
+}
+
+func (o TableStatsResponseOutput) ToTableStatsResponseOutput() TableStatsResponseOutput {
+	return o
+}
+
+func (o TableStatsResponseOutput) ToTableStatsResponseOutputWithContext(ctx context.Context) TableStatsResponseOutput {
+	return o
+}
+
+// How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+func (o TableStatsResponseOutput) AverageCellsPerColumn() pulumi.Float64Output {
+	return o.ApplyT(func(v TableStatsResponse) float64 { return v.AverageCellsPerColumn }).(pulumi.Float64Output)
+}
+
+// How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+func (o TableStatsResponseOutput) AverageColumnsPerRow() pulumi.Float64Output {
+	return o.ApplyT(func(v TableStatsResponse) float64 { return v.AverageColumnsPerRow }).(pulumi.Float64Output)
+}
+
+// This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+func (o TableStatsResponseOutput) LogicalDataBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v TableStatsResponse) string { return v.LogicalDataBytes }).(pulumi.StringOutput)
+}
+
+// How many rows are in the table.
+func (o TableStatsResponseOutput) RowCount() pulumi.StringOutput {
+	return o.ApplyT(func(v TableStatsResponse) string { return v.RowCount }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
@@ -2314,6 +2558,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SingleClusterRoutingPtrInput)(nil)).Elem(), SingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitInput)(nil)).Elem(), SplitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SplitArrayInput)(nil)).Elem(), SplitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableStatsInput)(nil)).Elem(), TableStatsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableStatsPtrInput)(nil)).Elem(), TableStatsArgs{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2356,4 +2602,7 @@ func init() {
 	pulumi.RegisterOutputType(SplitOutput{})
 	pulumi.RegisterOutputType(SplitArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(TableStatsOutput{})
+	pulumi.RegisterOutputType(TableStatsPtrOutput{})
+	pulumi.RegisterOutputType(TableStatsResponseOutput{})
 }

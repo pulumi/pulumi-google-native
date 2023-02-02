@@ -14,6 +14,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigResponse',
     'AutoscalingConfigResponse',
+    'AuxiliaryNodeGroupResponse',
     'AuxiliaryServicesConfigResponse',
     'BasicAutoscalingAlgorithmResponse',
     'BasicYarnAutoscalingConfigResponse',
@@ -25,6 +26,7 @@ __all__ = [
     'ConfidentialInstanceConfigResponse',
     'DataprocMetricConfigResponse',
     'DiskConfigResponse',
+    'DriverSchedulingConfigResponse',
     'EncryptionConfigResponse',
     'EndpointConfigResponse',
     'EnvironmentConfigResponse',
@@ -58,6 +60,7 @@ __all__ = [
     'MetricResponse',
     'NamespacedGkeDeploymentTargetResponse',
     'NodeGroupAffinityResponse',
+    'NodeGroupResponse',
     'NodeInitializationActionResponse',
     'OrderedJobResponse',
     'ParameterValidationResponse',
@@ -86,6 +89,7 @@ __all__ = [
     'TemplateParameterResponse',
     'TrinoJobResponse',
     'UsageMetricsResponse',
+    'UsageSnapshotResponse',
     'ValueValidationResponse',
     'VirtualClusterConfigResponse',
     'WorkflowTemplatePlacementResponse',
@@ -181,6 +185,58 @@ class AutoscalingConfigResponse(dict):
         Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
         """
         return pulumi.get(self, "policy_uri")
+
+
+@pulumi.output_type
+class AuxiliaryNodeGroupResponse(dict):
+    """
+    Node group identification and configuration information.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeGroup":
+            suggest = "node_group"
+        elif key == "nodeGroupId":
+            suggest = "node_group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuxiliaryNodeGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuxiliaryNodeGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuxiliaryNodeGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_group: 'outputs.NodeGroupResponse',
+                 node_group_id: str):
+        """
+        Node group identification and configuration information.
+        :param 'NodeGroupResponse' node_group: Node group configuration.
+        :param str node_group_id: Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        """
+        pulumi.set(__self__, "node_group", node_group)
+        pulumi.set(__self__, "node_group_id", node_group_id)
+
+    @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> 'outputs.NodeGroupResponse':
+        """
+        Node group configuration.
+        """
+        return pulumi.get(self, "node_group")
+
+    @property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> str:
+        """
+        Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        """
+        return pulumi.get(self, "node_group_id")
 
 
 @pulumi.output_type
@@ -445,6 +501,8 @@ class ClusterConfigResponse(dict):
         suggest = None
         if key == "autoscalingConfig":
             suggest = "autoscaling_config"
+        elif key == "auxiliaryNodeGroups":
+            suggest = "auxiliary_node_groups"
         elif key == "configBucket":
             suggest = "config_bucket"
         elif key == "dataprocMetricConfig":
@@ -489,6 +547,7 @@ class ClusterConfigResponse(dict):
 
     def __init__(__self__, *,
                  autoscaling_config: 'outputs.AutoscalingConfigResponse',
+                 auxiliary_node_groups: Sequence['outputs.AuxiliaryNodeGroupResponse'],
                  config_bucket: str,
                  dataproc_metric_config: 'outputs.DataprocMetricConfigResponse',
                  encryption_config: 'outputs.EncryptionConfigResponse',
@@ -507,6 +566,7 @@ class ClusterConfigResponse(dict):
         """
         The cluster config.
         :param 'AutoscalingConfigResponse' autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        :param Sequence['AuxiliaryNodeGroupResponse'] auxiliary_node_groups: Optional. The node group settings.
         :param str config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         :param 'DataprocMetricConfigResponse' dataproc_metric_config: Optional. The config for Dataproc metrics.
         :param 'EncryptionConfigResponse' encryption_config: Optional. Encryption settings for the cluster.
@@ -524,6 +584,7 @@ class ClusterConfigResponse(dict):
         :param 'InstanceGroupConfigResponse' worker_config: Optional. The Compute Engine config settings for the cluster's worker instances.
         """
         pulumi.set(__self__, "autoscaling_config", autoscaling_config)
+        pulumi.set(__self__, "auxiliary_node_groups", auxiliary_node_groups)
         pulumi.set(__self__, "config_bucket", config_bucket)
         pulumi.set(__self__, "dataproc_metric_config", dataproc_metric_config)
         pulumi.set(__self__, "encryption_config", encryption_config)
@@ -547,6 +608,14 @@ class ClusterConfigResponse(dict):
         Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
         """
         return pulumi.get(self, "autoscaling_config")
+
+    @property
+    @pulumi.getter(name="auxiliaryNodeGroups")
+    def auxiliary_node_groups(self) -> Sequence['outputs.AuxiliaryNodeGroupResponse']:
+        """
+        Optional. The node group settings.
+        """
+        return pulumi.get(self, "auxiliary_node_groups")
 
     @property
     @pulumi.getter(name="configBucket")
@@ -983,6 +1052,56 @@ class DiskConfigResponse(dict):
 
 
 @pulumi.output_type
+class DriverSchedulingConfigResponse(dict):
+    """
+    Driver scheduling configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryMb":
+            suggest = "memory_mb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DriverSchedulingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DriverSchedulingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DriverSchedulingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 memory_mb: int,
+                 vcores: int):
+        """
+        Driver scheduling configuration.
+        :param int memory_mb: The amount of memory in MB the driver is requesting.
+        :param int vcores: The number of vCPUs the driver is requesting.
+        """
+        pulumi.set(__self__, "memory_mb", memory_mb)
+        pulumi.set(__self__, "vcores", vcores)
+
+    @property
+    @pulumi.getter(name="memoryMb")
+    def memory_mb(self) -> int:
+        """
+        The amount of memory in MB the driver is requesting.
+        """
+        return pulumi.get(self, "memory_mb")
+
+    @property
+    @pulumi.getter
+    def vcores(self) -> int:
+        """
+        The number of vCPUs the driver is requesting.
+        """
+        return pulumi.get(self, "vcores")
+
+
+@pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     Encryption settings for the cluster.
@@ -1166,7 +1285,7 @@ class ExecutionConfigResponse(dict):
                  subnetwork_uri: str):
         """
         Execution configuration for a workload.
-        :param str idle_ttl: Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        :param str idle_ttl: Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
         :param str kms_key: Optional. The Cloud KMS key to use for encryption.
         :param Sequence[str] network_tags: Optional. Tags used for network traffic control.
         :param str network_uri: Optional. Network URI to connect workload to.
@@ -1184,7 +1303,7 @@ class ExecutionConfigResponse(dict):
     @pulumi.getter(name="idleTtl")
     def idle_ttl(self) -> str:
         """
-        Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
         """
         return pulumi.get(self, "idle_ttl")
 
@@ -2592,8 +2711,8 @@ class JobSchedulingResponse(dict):
                  max_failures_total: int):
         """
         Job scheduling options.
-        :param int max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
-        :param int max_failures_total: Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        :param int max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+        :param int max_failures_total: Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
         pulumi.set(__self__, "max_failures_total", max_failures_total)
@@ -2602,7 +2721,7 @@ class JobSchedulingResponse(dict):
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> int:
         """
-        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         return pulumi.get(self, "max_failures_per_hour")
 
@@ -2610,7 +2729,7 @@ class JobSchedulingResponse(dict):
     @pulumi.getter(name="maxFailuresTotal")
     def max_failures_total(self) -> int:
         """
-        Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         return pulumi.get(self, "max_failures_total")
 
@@ -3397,7 +3516,7 @@ class NamespacedGkeDeploymentTargetResponse(dict):
 @pulumi.output_type
 class NodeGroupAffinityResponse(dict):
     """
-    Node Group Affinity for clusters using sole-tenant node groups.
+    Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3419,7 +3538,7 @@ class NodeGroupAffinityResponse(dict):
     def __init__(__self__, *,
                  node_group_uri: str):
         """
-        Node Group Affinity for clusters using sole-tenant node groups.
+        Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
         :param str node_group_uri: The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
         """
         pulumi.set(__self__, "node_group_uri", node_group_uri)
@@ -3431,6 +3550,78 @@ class NodeGroupAffinityResponse(dict):
         The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
         """
         return pulumi.get(self, "node_group_uri")
+
+
+@pulumi.output_type
+class NodeGroupResponse(dict):
+    """
+    Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeGroupConfig":
+            suggest = "node_group_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 labels: Mapping[str, str],
+                 name: str,
+                 node_group_config: 'outputs.InstanceGroupConfigResponse',
+                 roles: Sequence[str]):
+        """
+        Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+        :param Mapping[str, str] labels: Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+        :param str name: The Node group resource name (https://aip.dev/122).
+        :param 'InstanceGroupConfigResponse' node_group_config: Optional. The node group instance group configuration.
+        :param Sequence[str] roles: Node group roles.
+        """
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "node_group_config", node_group_config)
+        pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The Node group resource name (https://aip.dev/122).
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeGroupConfig")
+    def node_group_config(self) -> 'outputs.InstanceGroupConfigResponse':
+        """
+        Optional. The node group instance group configuration.
+        """
+        return pulumi.get(self, "node_group_config")
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Sequence[str]:
+        """
+        Node group roles.
+        """
+        return pulumi.get(self, "roles")
 
 
 @pulumi.output_type
@@ -4395,6 +4586,8 @@ class RuntimeInfoResponse(dict):
         suggest = None
         if key == "approximateUsage":
             suggest = "approximate_usage"
+        elif key == "currentUsage":
+            suggest = "current_usage"
         elif key == "diagnosticOutputUri":
             suggest = "diagnostic_output_uri"
         elif key == "outputUri":
@@ -4413,17 +4606,20 @@ class RuntimeInfoResponse(dict):
 
     def __init__(__self__, *,
                  approximate_usage: 'outputs.UsageMetricsResponse',
+                 current_usage: 'outputs.UsageSnapshotResponse',
                  diagnostic_output_uri: str,
                  endpoints: Mapping[str, str],
                  output_uri: str):
         """
         Runtime information about workload execution.
-        :param 'UsageMetricsResponse' approximate_usage: Approximate workload resource usage calculated after workload finishes.
+        :param 'UsageMetricsResponse' approximate_usage: Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        :param 'UsageSnapshotResponse' current_usage: Snapshot of current workload resource usage.
         :param str diagnostic_output_uri: A URI pointing to the location of the diagnostics tarball.
         :param Mapping[str, str] endpoints: Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
         :param str output_uri: A URI pointing to the location of the stdout and stderr of the workload.
         """
         pulumi.set(__self__, "approximate_usage", approximate_usage)
+        pulumi.set(__self__, "current_usage", current_usage)
         pulumi.set(__self__, "diagnostic_output_uri", diagnostic_output_uri)
         pulumi.set(__self__, "endpoints", endpoints)
         pulumi.set(__self__, "output_uri", output_uri)
@@ -4432,9 +4628,17 @@ class RuntimeInfoResponse(dict):
     @pulumi.getter(name="approximateUsage")
     def approximate_usage(self) -> 'outputs.UsageMetricsResponse':
         """
-        Approximate workload resource usage calculated after workload finishes.
+        Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         """
         return pulumi.get(self, "approximate_usage")
+
+    @property
+    @pulumi.getter(name="currentUsage")
+    def current_usage(self) -> 'outputs.UsageSnapshotResponse':
+        """
+        Snapshot of current workload resource usage.
+        """
+        return pulumi.get(self, "current_usage")
 
     @property
     @pulumi.getter(name="diagnosticOutputUri")
@@ -5578,7 +5782,7 @@ class TrinoJobResponse(dict):
 @pulumi.output_type
 class UsageMetricsResponse(dict):
     """
-    Usage metrics represent total resources consumed by a workload.
+    Usage metrics represent approximate total resources consumed by a workload.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -5603,9 +5807,9 @@ class UsageMetricsResponse(dict):
                  milli_dcu_seconds: str,
                  shuffle_storage_gb_seconds: str):
         """
-        Usage metrics represent total resources consumed by a workload.
-        :param str milli_dcu_seconds: Optional. DCU usage in milliDCU*seconds.
-        :param str shuffle_storage_gb_seconds: Optional. Shuffle storage usage in GB*Seconds
+        Usage metrics represent approximate total resources consumed by a workload.
+        :param str milli_dcu_seconds: Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        :param str shuffle_storage_gb_seconds: Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         """
         pulumi.set(__self__, "milli_dcu_seconds", milli_dcu_seconds)
         pulumi.set(__self__, "shuffle_storage_gb_seconds", shuffle_storage_gb_seconds)
@@ -5614,7 +5818,7 @@ class UsageMetricsResponse(dict):
     @pulumi.getter(name="milliDcuSeconds")
     def milli_dcu_seconds(self) -> str:
         """
-        Optional. DCU usage in milliDCU*seconds.
+        Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         """
         return pulumi.get(self, "milli_dcu_seconds")
 
@@ -5622,9 +5826,74 @@ class UsageMetricsResponse(dict):
     @pulumi.getter(name="shuffleStorageGbSeconds")
     def shuffle_storage_gb_seconds(self) -> str:
         """
-        Optional. Shuffle storage usage in GB*Seconds
+        Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         """
         return pulumi.get(self, "shuffle_storage_gb_seconds")
+
+
+@pulumi.output_type
+class UsageSnapshotResponse(dict):
+    """
+    The usage snaphot represents the resources consumed by a workload at a specified time.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "milliDcu":
+            suggest = "milli_dcu"
+        elif key == "shuffleStorageGb":
+            suggest = "shuffle_storage_gb"
+        elif key == "snapshotTime":
+            suggest = "snapshot_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UsageSnapshotResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UsageSnapshotResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UsageSnapshotResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 milli_dcu: str,
+                 shuffle_storage_gb: str,
+                 snapshot_time: str):
+        """
+        The usage snaphot represents the resources consumed by a workload at a specified time.
+        :param str milli_dcu: Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        :param str shuffle_storage_gb: Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+        :param str snapshot_time: Optional. The timestamp of the usage snapshot.
+        """
+        pulumi.set(__self__, "milli_dcu", milli_dcu)
+        pulumi.set(__self__, "shuffle_storage_gb", shuffle_storage_gb)
+        pulumi.set(__self__, "snapshot_time", snapshot_time)
+
+    @property
+    @pulumi.getter(name="milliDcu")
+    def milli_dcu(self) -> str:
+        """
+        Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        """
+        return pulumi.get(self, "milli_dcu")
+
+    @property
+    @pulumi.getter(name="shuffleStorageGb")
+    def shuffle_storage_gb(self) -> str:
+        """
+        Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing))
+        """
+        return pulumi.get(self, "shuffle_storage_gb")
+
+    @property
+    @pulumi.getter(name="snapshotTime")
+    def snapshot_time(self) -> str:
+        """
+        Optional. The timestamp of the usage snapshot.
+        """
+        return pulumi.get(self, "snapshot_time")
 
 
 @pulumi.output_type

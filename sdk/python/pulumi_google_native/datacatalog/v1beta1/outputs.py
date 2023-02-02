@@ -22,6 +22,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1beta1SchemaResponse',
     'GoogleCloudDatacatalogV1beta1SystemTimestampsResponse',
     'GoogleCloudDatacatalogV1beta1TableSpecResponse',
+    'GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse',
     'GoogleCloudDatacatalogV1beta1UsageSignalResponse',
     'GoogleCloudDatacatalogV1beta1ViewSpecResponse',
 ]
@@ -560,6 +561,39 @@ class GoogleCloudDatacatalogV1beta1TableSpecResponse(dict):
         If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty.
         """
         return pulumi.get(self, "grouped_entry")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse(dict):
+    """
+    The source system of the Taxonomy.
+    """
+    def __init__(__self__, *,
+                 identity: str,
+                 name: str):
+        """
+        The source system of the Taxonomy.
+        :param str identity: P4SA Identity of the service.
+        :param str name: The GCP service name.
+        """
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> str:
+        """
+        P4SA Identity of the service.
+        """
+        return pulumi.get(self, "identity")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The GCP service name.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

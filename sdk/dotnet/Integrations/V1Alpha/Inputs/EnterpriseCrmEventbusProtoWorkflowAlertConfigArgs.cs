@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+    /// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
     /// </summary>
     public sealed class EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType>? ThresholdType { get; set; }
 
         /// <summary>
-        /// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+        /// The metric value, above or below which the alert should be triggered.
         /// </summary>
         [Input("thresholdValue")]
         public Input<Inputs.EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs>? ThresholdValue { get; set; }

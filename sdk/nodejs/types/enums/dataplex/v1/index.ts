@@ -42,6 +42,26 @@ export const EntityType = {
  */
 export type EntityType = (typeof EntityType)[keyof typeof EntityType];
 
+export const GoogleCloudDataplexV1AssetResourceSpecReadAccessMode = {
+    /**
+     * Access mode unspecified.
+     */
+    AccessModeUnspecified: "ACCESS_MODE_UNSPECIFIED",
+    /**
+     * Default. Data is accessed directly using storage APIs.
+     */
+    Direct: "DIRECT",
+    /**
+     * Data is accessed through a managed interface using BigQuery APIs.
+     */
+    Managed: "MANAGED",
+} as const;
+
+/**
+ * Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+ */
+export type GoogleCloudDataplexV1AssetResourceSpecReadAccessMode = (typeof GoogleCloudDataplexV1AssetResourceSpecReadAccessMode)[keyof typeof GoogleCloudDataplexV1AssetResourceSpecReadAccessMode];
+
 export const GoogleCloudDataplexV1AssetResourceSpecType = {
     /**
      * Type not specified.
@@ -93,6 +113,27 @@ export const GoogleCloudDataplexV1ContentSqlScriptEngine = {
  * Required. Query Engine to be used for the Sql Query.
  */
 export type GoogleCloudDataplexV1ContentSqlScriptEngine = (typeof GoogleCloudDataplexV1ContentSqlScriptEngine)[keyof typeof GoogleCloudDataplexV1ContentSqlScriptEngine];
+
+export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic = {
+    /**
+     * Unspecified statistic type
+     */
+    StatisticUndefined: "STATISTIC_UNDEFINED",
+    /**
+     * Evaluate the column mean
+     */
+    Mean: "MEAN",
+    /**
+     * Evaluate the column min
+     */
+    Min: "MIN",
+    /**
+     * Evaluate the column max
+     */
+    Max: "MAX",
+} as const;
+
+export type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic = (typeof GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic)[keyof typeof GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic];
 
 export const GoogleCloudDataplexV1SchemaPartitionFieldType = {
     /**

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3ResponseMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        /// </summary>
+        [Input("channel")]
+        public Input<string>? Channel { get; set; }
+
+        /// <summary>
         /// Indicates that the conversation succeeded.
         /// </summary>
         [Input("conversationSuccess")]

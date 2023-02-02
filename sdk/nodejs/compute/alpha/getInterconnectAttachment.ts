@@ -189,7 +189,7 @@ export interface GetInterconnectAttachmentResult {
      */
     readonly type: string;
     /**
-     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
      */
     readonly vlanTag8021q: number;
 }

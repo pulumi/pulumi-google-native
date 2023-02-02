@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Create a new case and associate it with the given Cloud resource.
+ * Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
  * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
  * on Google Cloud even though it will be deleted from Pulumi state.
  */
@@ -63,6 +63,10 @@ export class Case extends pulumi.CustomResource {
      * Whether the case is currently escalated.
      */
     public readonly escalated!: pulumi.Output<boolean>;
+    /**
+     * The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+     */
+    public readonly languageCode!: pulumi.Output<string>;
     /**
      * The resource name for the case.
      */
@@ -122,6 +126,7 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["escalated"] = args ? args.escalated : undefined;
+            resourceInputs["languageCode"] = args ? args.languageCode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["severity"] = args ? args.severity : undefined;
@@ -140,6 +145,7 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["escalated"] = undefined /*out*/;
+            resourceInputs["languageCode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["priority"] = undefined /*out*/;
             resourceInputs["severity"] = undefined /*out*/;
@@ -182,6 +188,10 @@ export interface CaseArgs {
      * Whether the case is currently escalated.
      */
     escalated?: pulumi.Input<boolean>;
+    /**
+     * The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+     */
+    languageCode?: pulumi.Input<string>;
     /**
      * The resource name for the case.
      */

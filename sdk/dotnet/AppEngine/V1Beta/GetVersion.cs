@@ -134,6 +134,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         /// </summary>
         public readonly ImmutableArray<Outputs.ErrorHandlerResponse> ErrorHandlers;
         /// <summary>
+        /// Settings for App Engine flexible runtimes.
+        /// </summary>
+        public readonly Outputs.FlexibleRuntimeSettingsResponse FlexibleRuntimeSettings;
+        /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
         /// </summary>
         public readonly ImmutableArray<Outputs.UrlMapResponse> Handlers;
@@ -260,6 +264,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 
             ImmutableArray<Outputs.ErrorHandlerResponse> errorHandlers,
 
+            Outputs.FlexibleRuntimeSettingsResponse flexibleRuntimeSettings,
+
             ImmutableArray<Outputs.UrlMapResponse> handlers,
 
             Outputs.HealthCheckResponse healthCheck,
@@ -322,6 +328,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
             Env = env;
             EnvVariables = envVariables;
             ErrorHandlers = errorHandlers;
+            FlexibleRuntimeSettings = flexibleRuntimeSettings;
             Handlers = handlers;
             HealthCheck = healthCheck;
             InboundServices = inboundServices;

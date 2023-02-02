@@ -204,7 +204,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         /// </summary>
         public readonly int VlanTag8021q;
 

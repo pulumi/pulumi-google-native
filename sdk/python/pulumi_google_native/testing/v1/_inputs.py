@@ -1318,7 +1318,7 @@ class ManualShardingArgs:
                  test_targets_for_shard: pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]):
         """
         Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
-        :param pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]] test_targets_for_shard: Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
+        :param pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]] test_targets_for_shard: Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
         """
         pulumi.set(__self__, "test_targets_for_shard", test_targets_for_shard)
 
@@ -1326,7 +1326,7 @@ class ManualShardingArgs:
     @pulumi.getter(name="testTargetsForShard")
     def test_targets_for_shard(self) -> pulumi.Input[Sequence[pulumi.Input['TestTargetsForShardArgs']]]:
         """
-        Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
+        Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
         """
         return pulumi.get(self, "test_targets_for_shard")
 
@@ -2054,7 +2054,7 @@ class UniformShardingArgs:
                  num_shards: pulumi.Input[int]):
         """
         Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
-        :param pulumi.Input[int] num_shards: The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
+        :param pulumi.Input[int] num_shards: The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
         """
         pulumi.set(__self__, "num_shards", num_shards)
 
@@ -2062,7 +2062,7 @@ class UniformShardingArgs:
     @pulumi.getter(name="numShards")
     def num_shards(self) -> pulumi.Input[int]:
         """
-        The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
+        The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 100. When you select only x86 virtual devices, it must be <= 500.
         """
         return pulumi.get(self, "num_shards")
 

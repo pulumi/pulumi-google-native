@@ -6,6 +6,9 @@ from enum import Enum
 
 __all__ = [
     'EntryType',
+    'GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType',
+    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType',
+    'GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
     'GoogleCloudDatacatalogV1RoutineSpecRoutineType',
@@ -64,6 +67,96 @@ class EntryType(str, Enum):
     SERVICE = "SERVICE"
     """
     A service, for example, a Dataproc Metastore service.
+    """
+    DATABASE_SCHEMA = "DATABASE_SCHEMA"
+    """
+    Schema within a relational database.
+    """
+    DASHBOARD = "DASHBOARD"
+    """
+    A Dashboard, for example from Looker.
+    """
+    EXPLORE = "EXPLORE"
+    """
+    A Looker Explore. For more information, see [Looker Explore API] (https://developers.looker.com/api/explorer/4.0/methods/LookmlModel/lookml_model_explore).
+    """
+    LOOK = "LOOK"
+    """
+    A Looker Look. For more information, see [Looker Look API] (https://developers.looker.com/api/explorer/4.0/methods/Look).
+    """
+
+
+class GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType(str, Enum):
+    """
+    Optional. Most important inclusion of this column.
+    """
+    INDEXING_TYPE_UNSPECIFIED = "INDEXING_TYPE_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    INDEXING_TYPE_NONE = "INDEXING_TYPE_NONE"
+    """
+    Column not a part of an index.
+    """
+    INDEXING_TYPE_NON_UNIQUE = "INDEXING_TYPE_NON_UNIQUE"
+    """
+    Column Part of non unique index.
+    """
+    INDEXING_TYPE_UNIQUE = "INDEXING_TYPE_UNIQUE"
+    """
+    Column part of unique index.
+    """
+    INDEXING_TYPE_PRIMARY_KEY = "INDEXING_TYPE_PRIMARY_KEY"
+    """
+    Column part of the primary key.
+    """
+
+
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(str, Enum):
+    """
+    Looker specific column type of this column.
+    """
+    LOOKER_COLUMN_TYPE_UNSPECIFIED = "LOOKER_COLUMN_TYPE_UNSPECIFIED"
+    """
+    Unspecified.
+    """
+    DIMENSION = "DIMENSION"
+    """
+    Dimension.
+    """
+    DIMENSION_GROUP = "DIMENSION_GROUP"
+    """
+    Dimension group - parent for Dimension.
+    """
+    FILTER = "FILTER"
+    """
+    Filter.
+    """
+    MEASURE = "MEASURE"
+    """
+    Measure.
+    """
+    PAREMETER = "PAREMETER"
+    """
+    Parameter.
+    """
+
+
+class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType(str, Enum):
+    """
+    Type of this view.
+    """
+    VIEW_TYPE_UNSPECIFIED = "VIEW_TYPE_UNSPECIFIED"
+    """
+    Default unknown view type.
+    """
+    STANDARD_VIEW = "STANDARD_VIEW"
+    """
+    Standard view.
+    """
+    MATERIALIZED_VIEW = "MATERIALIZED_VIEW"
+    """
+    Materialized view.
     """
 
 

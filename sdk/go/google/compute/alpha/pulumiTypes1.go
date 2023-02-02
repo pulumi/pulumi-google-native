@@ -10,6 +10,1243 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatus struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code *int `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsRpcStatusInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs and SecurityPolicyRuleRateLimitOptionsRpcStatusOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusInput` via:
+//
+//	SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
+type SecurityPolicyRuleRateLimitOptionsRpcStatusInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusArgs struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code pulumi.IntPtrInput `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput).ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsRpcStatusArgs, SecurityPolicyRuleRateLimitOptionsRpcStatusPtr and SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput` via:
+//
+//	        SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsRpcStatusPtrType SecurityPolicyRuleRateLimitOptionsRpcStatusArgs
+
+func SecurityPolicyRuleRateLimitOptionsRpcStatusPtr(v *SecurityPolicyRuleRateLimitOptionsRpcStatusArgs) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsRpcStatusPtrType) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsRpcStatus) *SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *int { return v.Code }).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatus) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsRpcStatus)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsRpcStatusOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) SecurityPolicyRuleRateLimitOptionsRpcStatus {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleRateLimitOptionsRpcStatus
+		return ret
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput)
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Code() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Code
+	}).(pulumi.IntPtrOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsRpcStatus) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Message
+	}).(pulumi.StringPtrOutput)
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusResponse struct {
+	// The status code, which should be an enum value of google.rpc.Code.
+	Code int `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message string `pulumi:"message"`
+}
+
+// Simplified google.rpc.Status type (omitting details).
+type SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) ToSecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o
+}
+
+// The status code, which should be an enum value of google.rpc.Code.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) Code() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatusResponse) int { return v.Code }).(pulumi.IntOutput)
+}
+
+// A developer-facing error message, which should be in English.
+func (o SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsRpcStatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThreshold struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count *int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec *int `pulumi:"intervalSec"`
+}
+
+// SecurityPolicyRuleRateLimitOptionsThresholdInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsThresholdArgs and SecurityPolicyRuleRateLimitOptionsThresholdOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsThresholdInput` via:
+//
+//	SecurityPolicyRuleRateLimitOptionsThresholdArgs{...}
+type SecurityPolicyRuleRateLimitOptionsThresholdInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsThresholdOutput() SecurityPolicyRuleRateLimitOptionsThresholdOutput
+	ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsThresholdOutput
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdArgs struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec pulumi.IntPtrInput `pulumi:"intervalSec"`
+}
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdOutput() SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdOutput)
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRateLimitOptionsThresholdArgs) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdOutput).ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRateLimitOptionsThresholdPtrInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsThresholdArgs, SecurityPolicyRuleRateLimitOptionsThresholdPtr and SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsThresholdPtrInput` via:
+//
+//	        SecurityPolicyRuleRateLimitOptionsThresholdArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleRateLimitOptionsThresholdPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput
+	ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput
+}
+
+type securityPolicyRuleRateLimitOptionsThresholdPtrType SecurityPolicyRuleRateLimitOptionsThresholdArgs
+
+func SecurityPolicyRuleRateLimitOptionsThresholdPtr(v *SecurityPolicyRuleRateLimitOptionsThresholdArgs) SecurityPolicyRuleRateLimitOptionsThresholdPtrInput {
+	return (*securityPolicyRuleRateLimitOptionsThresholdPtrType)(v)
+}
+
+func (*securityPolicyRuleRateLimitOptionsThresholdPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRateLimitOptionsThresholdPtrType) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return i.ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRateLimitOptionsThresholdPtrType) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdOutput() SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRateLimitOptionsThreshold) *SecurityPolicyRuleRateLimitOptionsThreshold {
+		return &v
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput)
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThreshold) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdOutput) IntervalSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThreshold) *int { return v.IntervalSec }).(pulumi.IntPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRateLimitOptionsThreshold)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutput() SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) Elem() SecurityPolicyRuleRateLimitOptionsThresholdOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsThreshold) SecurityPolicyRuleRateLimitOptionsThreshold {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleRateLimitOptionsThreshold
+		return ret
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdOutput)
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput) IntervalSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptionsThreshold) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IntervalSec
+	}).(pulumi.IntPtrOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdResponse struct {
+	// Number of HTTP(S) requests for calculating the threshold.
+	Count int `pulumi:"count"`
+	// Interval over which the threshold is computed.
+	IntervalSec int `pulumi:"intervalSec"`
+}
+
+type SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutput() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) ToSecurityPolicyRuleRateLimitOptionsThresholdResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o
+}
+
+// Number of HTTP(S) requests for calculating the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThresholdResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Interval over which the threshold is computed.
+func (o SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput) IntervalSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsThresholdResponse) int { return v.IntervalSec }).(pulumi.IntOutput)
+}
+
+type SecurityPolicyRuleRedirectOptions struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target *string `pulumi:"target"`
+	// Type of the redirect action.
+	Type *SecurityPolicyRuleRedirectOptionsType `pulumi:"type"`
+}
+
+// SecurityPolicyRuleRedirectOptionsInput is an input type that accepts SecurityPolicyRuleRedirectOptionsArgs and SecurityPolicyRuleRedirectOptionsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRedirectOptionsInput` via:
+//
+//	SecurityPolicyRuleRedirectOptionsArgs{...}
+type SecurityPolicyRuleRedirectOptionsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRedirectOptionsOutput() SecurityPolicyRuleRedirectOptionsOutput
+	ToSecurityPolicyRuleRedirectOptionsOutputWithContext(context.Context) SecurityPolicyRuleRedirectOptionsOutput
+}
+
+type SecurityPolicyRuleRedirectOptionsArgs struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target pulumi.StringPtrInput `pulumi:"target"`
+	// Type of the redirect action.
+	Type SecurityPolicyRuleRedirectOptionsTypePtrInput `pulumi:"type"`
+}
+
+func (SecurityPolicyRuleRedirectOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRedirectOptions)(nil)).Elem()
+}
+
+func (i SecurityPolicyRuleRedirectOptionsArgs) ToSecurityPolicyRuleRedirectOptionsOutput() SecurityPolicyRuleRedirectOptionsOutput {
+	return i.ToSecurityPolicyRuleRedirectOptionsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRedirectOptionsArgs) ToSecurityPolicyRuleRedirectOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRedirectOptionsOutput)
+}
+
+func (i SecurityPolicyRuleRedirectOptionsArgs) ToSecurityPolicyRuleRedirectOptionsPtrOutput() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRuleRedirectOptionsArgs) ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRedirectOptionsOutput).ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRuleRedirectOptionsPtrInput is an input type that accepts SecurityPolicyRuleRedirectOptionsArgs, SecurityPolicyRuleRedirectOptionsPtr and SecurityPolicyRuleRedirectOptionsPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRuleRedirectOptionsPtrInput` via:
+//
+//	        SecurityPolicyRuleRedirectOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRuleRedirectOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRuleRedirectOptionsPtrOutput() SecurityPolicyRuleRedirectOptionsPtrOutput
+	ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(context.Context) SecurityPolicyRuleRedirectOptionsPtrOutput
+}
+
+type securityPolicyRuleRedirectOptionsPtrType SecurityPolicyRuleRedirectOptionsArgs
+
+func SecurityPolicyRuleRedirectOptionsPtr(v *SecurityPolicyRuleRedirectOptionsArgs) SecurityPolicyRuleRedirectOptionsPtrInput {
+	return (*securityPolicyRuleRedirectOptionsPtrType)(v)
+}
+
+func (*securityPolicyRuleRedirectOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRedirectOptions)(nil)).Elem()
+}
+
+func (i *securityPolicyRuleRedirectOptionsPtrType) ToSecurityPolicyRuleRedirectOptionsPtrOutput() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return i.ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRuleRedirectOptionsPtrType) ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRuleRedirectOptionsPtrOutput)
+}
+
+type SecurityPolicyRuleRedirectOptionsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRedirectOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRedirectOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRedirectOptionsOutput) ToSecurityPolicyRuleRedirectOptionsOutput() SecurityPolicyRuleRedirectOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRedirectOptionsOutput) ToSecurityPolicyRuleRedirectOptionsOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRedirectOptionsOutput) ToSecurityPolicyRuleRedirectOptionsPtrOutput() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRuleRedirectOptionsOutput) ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRuleRedirectOptions) *SecurityPolicyRuleRedirectOptions {
+		return &v
+	}).(SecurityPolicyRuleRedirectOptionsPtrOutput)
+}
+
+// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+func (o SecurityPolicyRuleRedirectOptionsOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRedirectOptions) *string { return v.Target }).(pulumi.StringPtrOutput)
+}
+
+// Type of the redirect action.
+func (o SecurityPolicyRuleRedirectOptionsOutput) Type() SecurityPolicyRuleRedirectOptionsTypePtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRedirectOptions) *SecurityPolicyRuleRedirectOptionsType { return v.Type }).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
+}
+
+type SecurityPolicyRuleRedirectOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRedirectOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRuleRedirectOptions)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRedirectOptionsPtrOutput) ToSecurityPolicyRuleRedirectOptionsPtrOutput() SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRedirectOptionsPtrOutput) ToSecurityPolicyRuleRedirectOptionsPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRedirectOptionsPtrOutput) Elem() SecurityPolicyRuleRedirectOptionsOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRedirectOptions) SecurityPolicyRuleRedirectOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRuleRedirectOptions
+		return ret
+	}).(SecurityPolicyRuleRedirectOptionsOutput)
+}
+
+// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+func (o SecurityPolicyRuleRedirectOptionsPtrOutput) Target() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRedirectOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Target
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the redirect action.
+func (o SecurityPolicyRuleRedirectOptionsPtrOutput) Type() SecurityPolicyRuleRedirectOptionsTypePtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyRuleRedirectOptions) *SecurityPolicyRuleRedirectOptionsType {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
+}
+
+type SecurityPolicyRuleRedirectOptionsResponse struct {
+	// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+	Target string `pulumi:"target"`
+	// Type of the redirect action.
+	Type string `pulumi:"type"`
+}
+
+type SecurityPolicyRuleRedirectOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRedirectOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRedirectOptionsResponseOutput) ToSecurityPolicyRuleRedirectOptionsResponseOutput() SecurityPolicyRuleRedirectOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRedirectOptionsResponseOutput) ToSecurityPolicyRuleRedirectOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRedirectOptionsResponseOutput {
+	return o
+}
+
+// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
+func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Target() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRedirectOptionsResponse) string { return v.Target }).(pulumi.StringOutput)
+}
+
+// Type of the redirect action.
+func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRedirectOptionsResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type SecurityPolicyRuleResponse struct {
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	Action string `pulumi:"action"`
+	// An optional description of this resource. Provide this property when you create the resource.
+	Description string `pulumi:"description"`
+	// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
+	Direction string `pulumi:"direction"`
+	// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
+	EnableLogging bool `pulumi:"enableLogging"`
+	// Optional, additional actions that are performed on headers.
+	HeaderAction SecurityPolicyRuleHttpHeaderActionResponse `pulumi:"headerAction"`
+	// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
+	Kind string `pulumi:"kind"`
+	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	Match SecurityPolicyRuleMatcherResponse `pulumi:"match"`
+	// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+	NetworkMatch SecurityPolicyRuleNetworkMatcherResponse `pulumi:"networkMatch"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigResponse `pulumi:"preconfiguredWafConfig"`
+	// If set to true, the specified action is not enforced.
+	Preview bool `pulumi:"preview"`
+	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+	Priority int `pulumi:"priority"`
+	// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+	RateLimitOptions SecurityPolicyRuleRateLimitOptionsResponse `pulumi:"rateLimitOptions"`
+	// Parameters defining the redirect action. Cannot be specified for any other actions.
+	RedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"redirectOptions"`
+	// This must be specified for redirect actions. Cannot be specified for any other actions.
+	RedirectTarget string `pulumi:"redirectTarget"`
+	// The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.
+	//
+	// Deprecated: [Output Only] The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.
+	RuleManagedProtectionTier string `pulumi:"ruleManagedProtectionTier"`
+	// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
+	RuleNumber string `pulumi:"ruleNumber"`
+	// Calculation of the complexity of a single firewall security policy rule.
+	RuleTupleCount int `pulumi:"ruleTupleCount"`
+	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
+	TargetResources []string `pulumi:"targetResources"`
+	// A list of service accounts indicating the sets of instances that are applied with this rule.
+	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+}
+
+// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+type SecurityPolicyRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutput() SecurityPolicyRuleResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleResponseOutput {
+	return o
+}
+
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+func (o SecurityPolicyRuleResponseOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// An optional description of this resource. Provide this property when you create the resource.
+func (o SecurityPolicyRuleResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The direction in which this rule applies. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleResponseOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Direction }).(pulumi.StringOutput)
+}
+
+// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleResponseOutput) EnableLogging() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) bool { return v.EnableLogging }).(pulumi.BoolOutput)
+}
+
+// Optional, additional actions that are performed on headers.
+func (o SecurityPolicyRuleResponseOutput) HeaderAction() SecurityPolicyRuleHttpHeaderActionResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleHttpHeaderActionResponse { return v.HeaderAction }).(SecurityPolicyRuleHttpHeaderActionResponseOutput)
+}
+
+// [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
+func (o SecurityPolicyRuleResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+func (o SecurityPolicyRuleResponseOutput) Match() SecurityPolicyRuleMatcherResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleMatcherResponse { return v.Match }).(SecurityPolicyRuleMatcherResponseOutput)
+}
+
+// A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced. The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields'). Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds. Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all. For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet. Example: networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4_fragment_offset" values: - "1-0x1fff" The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4_fragment_offset" with a value between 1 and 0x1fff inclusive.
+func (o SecurityPolicyRuleResponseOutput) NetworkMatch() SecurityPolicyRuleNetworkMatcherResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleNetworkMatcherResponse { return v.NetworkMatch }).(SecurityPolicyRuleNetworkMatcherResponseOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o SecurityPolicyRuleResponseOutput) PreconfiguredWafConfig() SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRulePreconfiguredWafConfigResponse {
+		return v.PreconfiguredWafConfig
+	}).(SecurityPolicyRulePreconfiguredWafConfigResponseOutput)
+}
+
+// If set to true, the specified action is not enforced.
+func (o SecurityPolicyRuleResponseOutput) Preview() pulumi.BoolOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) bool { return v.Preview }).(pulumi.BoolOutput)
+}
+
+// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+func (o SecurityPolicyRuleResponseOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
+func (o SecurityPolicyRuleResponseOutput) RateLimitOptions() SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleRateLimitOptionsResponse {
+		return v.RateLimitOptions
+	}).(SecurityPolicyRuleRateLimitOptionsResponseOutput)
+}
+
+// Parameters defining the redirect action. Cannot be specified for any other actions.
+func (o SecurityPolicyRuleResponseOutput) RedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleRedirectOptionsResponse { return v.RedirectOptions }).(SecurityPolicyRuleRedirectOptionsResponseOutput)
+}
+
+// This must be specified for redirect actions. Cannot be specified for any other actions.
+func (o SecurityPolicyRuleResponseOutput) RedirectTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.RedirectTarget }).(pulumi.StringOutput)
+}
+
+// The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.
+//
+// Deprecated: [Output Only] The minimum managed protection tier required for this rule. [Deprecated] Use requiredManagedProtectionTiers instead.
+func (o SecurityPolicyRuleResponseOutput) RuleManagedProtectionTier() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.RuleManagedProtectionTier }).(pulumi.StringOutput)
+}
+
+// Identifier for the rule. This is only unique within the given security policy. This can only be set during rule creation, if rule number is not specified it will be generated by the server.
+func (o SecurityPolicyRuleResponseOutput) RuleNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.RuleNumber }).(pulumi.StringOutput)
+}
+
+// Calculation of the complexity of a single firewall security policy rule.
+func (o SecurityPolicyRuleResponseOutput) RuleTupleCount() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) int { return v.RuleTupleCount }).(pulumi.IntOutput)
+}
+
+// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
+func (o SecurityPolicyRuleResponseOutput) TargetResources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) []string { return v.TargetResources }).(pulumi.StringArrayOutput)
+}
+
+// A list of service accounts indicating the sets of instances that are applied with this rule.
+func (o SecurityPolicyRuleResponseOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleResponseArrayOutput) ToSecurityPolicyRuleResponseArrayOutput() SecurityPolicyRuleResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleResponseArrayOutput) ToSecurityPolicyRuleResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleResponse {
+		return vs[0].([]SecurityPolicyRuleResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleResponseOutput)
+}
+
+type SecurityPolicyUserDefinedField struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base *SecurityPolicyUserDefinedFieldBase `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask *string `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name *string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset *int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size *int `pulumi:"size"`
+}
+
+// SecurityPolicyUserDefinedFieldInput is an input type that accepts SecurityPolicyUserDefinedFieldArgs and SecurityPolicyUserDefinedFieldOutput values.
+// You can construct a concrete instance of `SecurityPolicyUserDefinedFieldInput` via:
+//
+//	SecurityPolicyUserDefinedFieldArgs{...}
+type SecurityPolicyUserDefinedFieldInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldOutput() SecurityPolicyUserDefinedFieldOutput
+	ToSecurityPolicyUserDefinedFieldOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldOutput
+}
+
+type SecurityPolicyUserDefinedFieldArgs struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base SecurityPolicyUserDefinedFieldBasePtrInput `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask pulumi.StringPtrInput `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset pulumi.IntPtrInput `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size pulumi.IntPtrInput `pulumi:"size"`
+}
+
+func (SecurityPolicyUserDefinedFieldArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (i SecurityPolicyUserDefinedFieldArgs) ToSecurityPolicyUserDefinedFieldOutput() SecurityPolicyUserDefinedFieldOutput {
+	return i.ToSecurityPolicyUserDefinedFieldOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyUserDefinedFieldArgs) ToSecurityPolicyUserDefinedFieldOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyUserDefinedFieldOutput)
+}
+
+// SecurityPolicyUserDefinedFieldArrayInput is an input type that accepts SecurityPolicyUserDefinedFieldArray and SecurityPolicyUserDefinedFieldArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyUserDefinedFieldArrayInput` via:
+//
+//	SecurityPolicyUserDefinedFieldArray{ SecurityPolicyUserDefinedFieldArgs{...} }
+type SecurityPolicyUserDefinedFieldArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyUserDefinedFieldArrayOutput() SecurityPolicyUserDefinedFieldArrayOutput
+	ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(context.Context) SecurityPolicyUserDefinedFieldArrayOutput
+}
+
+type SecurityPolicyUserDefinedFieldArray []SecurityPolicyUserDefinedFieldInput
+
+func (SecurityPolicyUserDefinedFieldArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (i SecurityPolicyUserDefinedFieldArray) ToSecurityPolicyUserDefinedFieldArrayOutput() SecurityPolicyUserDefinedFieldArrayOutput {
+	return i.ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyUserDefinedFieldArray) ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyUserDefinedFieldArrayOutput)
+}
+
+type SecurityPolicyUserDefinedFieldOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldOutput) ToSecurityPolicyUserDefinedFieldOutput() SecurityPolicyUserDefinedFieldOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldOutput) ToSecurityPolicyUserDefinedFieldOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+func (o SecurityPolicyUserDefinedFieldOutput) Base() SecurityPolicyUserDefinedFieldBasePtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *SecurityPolicyUserDefinedFieldBase { return v.Base }).(SecurityPolicyUserDefinedFieldBasePtrOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o SecurityPolicyUserDefinedFieldOutput) Mask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *string { return v.Mask }).(pulumi.StringPtrOutput)
+}
+
+// The name of this field. Must be unique within the policy.
+func (o SecurityPolicyUserDefinedFieldOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o SecurityPolicyUserDefinedFieldOutput) Offset() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *int { return v.Offset }).(pulumi.IntPtrOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o SecurityPolicyUserDefinedFieldOutput) Size() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedField) *int { return v.Size }).(pulumi.IntPtrOutput)
+}
+
+type SecurityPolicyUserDefinedFieldArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedField)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldArrayOutput) ToSecurityPolicyUserDefinedFieldArrayOutput() SecurityPolicyUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldArrayOutput) ToSecurityPolicyUserDefinedFieldArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedField {
+		return vs[0].([]SecurityPolicyUserDefinedField)[vs[1].(int)]
+	}).(SecurityPolicyUserDefinedFieldOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponse struct {
+	// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+	Base string `pulumi:"base"`
+	// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+	Mask string `pulumi:"mask"`
+	// The name of this field. Must be unique within the policy.
+	Name string `pulumi:"name"`
+	// Offset of the first byte of the field (in network byte order) relative to 'base'.
+	Offset int `pulumi:"offset"`
+	// Size of the field in bytes. Valid values: 1-4.
+	Size int `pulumi:"size"`
+}
+
+type SecurityPolicyUserDefinedFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutput() SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseOutput) ToSecurityPolicyUserDefinedFieldResponseOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseOutput {
+	return o
+}
+
+// The base relative to which 'offset' is measured. Possible values are: - IPV4: Points to the beginning of the IPv4 header. - IPV6: Points to the beginning of the IPv6 header. - TCP: Points to the beginning of the TCP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. - UDP: Points to the beginning of the UDP header, skipping over any IPv4 options or IPv6 extension headers. Not present for non-first fragments. required
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Base() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Base }).(pulumi.StringOutput)
+}
+
+// If specified, apply this mask (bitwise AND) to the field to ignore bits before matching. Encoded as a hexadecimal number (starting with "0x"). The last byte of the field (in network byte order) corresponds to the least significant byte of the mask.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Mask() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Mask }).(pulumi.StringOutput)
+}
+
+// The name of this field. Must be unique within the policy.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Offset of the first byte of the field (in network byte order) relative to 'base'.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Offset() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Offset }).(pulumi.IntOutput)
+}
+
+// Size of the field in bytes. Valid values: 1-4.
+func (o SecurityPolicyUserDefinedFieldResponseOutput) Size() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyUserDefinedFieldResponse) int { return v.Size }).(pulumi.IntOutput)
+}
+
+type SecurityPolicyUserDefinedFieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyUserDefinedFieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyUserDefinedFieldResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutput() SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) ToSecurityPolicyUserDefinedFieldResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyUserDefinedFieldResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyUserDefinedFieldResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyUserDefinedFieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyUserDefinedFieldResponse {
+		return vs[0].([]SecurityPolicyUserDefinedFieldResponse)[vs[1].(int)]
+	}).(SecurityPolicyUserDefinedFieldResponseOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettings struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication *string `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy *AuthenticationPolicy `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig *AuthorizationConfig `pulumi:"authorizationConfig"`
+	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+	AwsV4Authentication *AWSV4Signature `pulumi:"awsV4Authentication"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy *string `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings *ClientTlsSettings `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames []string `pulumi:"subjectAltNames"`
+}
+
+// SecuritySettingsInput is an input type that accepts SecuritySettingsArgs and SecuritySettingsOutput values.
+// You can construct a concrete instance of `SecuritySettingsInput` via:
+//
+//	SecuritySettingsArgs{...}
+type SecuritySettingsInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsOutput() SecuritySettingsOutput
+	ToSecuritySettingsOutputWithContext(context.Context) SecuritySettingsOutput
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsArgs struct {
+	// [Deprecated] Use clientTlsPolicy instead.
+	//
+	// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+	Authentication pulumi.StringPtrInput `pulumi:"authentication"`
+	// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	//
+	// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+	AuthenticationPolicy AuthenticationPolicyPtrInput `pulumi:"authenticationPolicy"`
+	// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	//
+	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+	AuthorizationConfig AuthorizationConfigPtrInput `pulumi:"authorizationConfig"`
+	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+	AwsV4Authentication AWSV4SignaturePtrInput `pulumi:"awsV4Authentication"`
+	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	ClientTlsPolicy pulumi.StringPtrInput `pulumi:"clientTlsPolicy"`
+	// [Deprecated] TLS Settings for the backend service.
+	//
+	// Deprecated: [Deprecated] TLS Settings for the backend service.
+	ClientTlsSettings ClientTlsSettingsPtrInput `pulumi:"clientTlsSettings"`
+	// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+	SubjectAltNames pulumi.StringArrayInput `pulumi:"subjectAltNames"`
+}
+
+func (SecuritySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return i.ToSecuritySettingsOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput)
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i SecuritySettingsArgs) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsOutput).ToSecuritySettingsPtrOutputWithContext(ctx)
+}
+
+// SecuritySettingsPtrInput is an input type that accepts SecuritySettingsArgs, SecuritySettingsPtr and SecuritySettingsPtrOutput values.
+// You can construct a concrete instance of `SecuritySettingsPtrInput` via:
+//
+//	        SecuritySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecuritySettingsPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput
+	ToSecuritySettingsPtrOutputWithContext(context.Context) SecuritySettingsPtrOutput
+}
+
+type securitySettingsPtrType SecuritySettingsArgs
+
+func SecuritySettingsPtr(v *SecuritySettingsArgs) SecuritySettingsPtrInput {
+	return (*securitySettingsPtrType)(v)
+}
+
+func (*securitySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return i.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *securitySettingsPtrType) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecuritySettingsPtrOutput)
+}
+
+// The authentication and authorization settings for a BackendService.
+type SecuritySettingsOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutput() SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsOutputWithContext(ctx context.Context) SecuritySettingsOutput {
+	return o
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o.ToSecuritySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingsOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettings) *SecuritySettings {
+		return &v
+	}).(SecuritySettingsPtrOutput)
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.Authentication }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthenticationPolicy { return v.AuthenticationPolicy }).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AuthorizationConfig { return v.AuthorizationConfig }).(AuthorizationConfigPtrOutput)
+}
+
+// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+func (o SecuritySettingsOutput) AwsV4Authentication() AWSV4SignaturePtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *AWSV4Signature { return v.AwsV4Authentication }).(AWSV4SignaturePtrOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *string { return v.ClientTlsPolicy }).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v SecuritySettings) *ClientTlsSettings { return v.ClientTlsSettings }).(ClientTlsSettingsPtrOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecuritySettings) []string { return v.SubjectAltNames }).(pulumi.StringArrayOutput)
+}
+
+type SecuritySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecuritySettings)(nil)).Elem()
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutput() SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) ToSecuritySettingsPtrOutputWithContext(ctx context.Context) SecuritySettingsPtrOutput {
+	return o
+}
+
+func (o SecuritySettingsPtrOutput) Elem() SecuritySettingsOutput {
+	return o.ApplyT(func(v *SecuritySettings) SecuritySettings {
+		if v != nil {
+			return *v
+		}
+		var ret SecuritySettings
+		return ret
+	}).(SecuritySettingsOutput)
+}
+
+// [Deprecated] Use clientTlsPolicy instead.
+//
+// Deprecated: [Deprecated] Use clientTlsPolicy instead.
+func (o SecuritySettingsPtrOutput) Authentication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Authentication
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+//
+// Deprecated: [Deprecated] Authentication policy defines what authentication methods can be accepted on backends, and if authenticated, which method/certificate will set the request principal. request principal.
+func (o SecuritySettingsPtrOutput) AuthenticationPolicy() AuthenticationPolicyPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthenticationPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.AuthenticationPolicy
+	}).(AuthenticationPolicyPtrOutput)
+}
+
+// [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+//
+// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
+func (o SecuritySettingsPtrOutput) AuthorizationConfig() AuthorizationConfigPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AuthorizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AuthorizationConfig
+	}).(AuthorizationConfigPtrOutput)
+}
+
+// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+func (o SecuritySettingsPtrOutput) AwsV4Authentication() AWSV4SignaturePtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *AWSV4Signature {
+		if v == nil {
+			return nil
+		}
+		return v.AwsV4Authentication
+	}).(AWSV4SignaturePtrOutput)
+}
+
+// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+func (o SecuritySettingsPtrOutput) ClientTlsPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// [Deprecated] TLS Settings for the backend service.
+//
+// Deprecated: [Deprecated] TLS Settings for the backend service.
+func (o SecuritySettingsPtrOutput) ClientTlsSettings() ClientTlsSettingsPtrOutput {
+	return o.ApplyT(func(v *SecuritySettings) *ClientTlsSettings {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTlsSettings
+	}).(ClientTlsSettingsPtrOutput)
+}
+
+// Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.
+func (o SecuritySettingsPtrOutput) SubjectAltNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecuritySettings) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SubjectAltNames
+	}).(pulumi.StringArrayOutput)
+}
+
 // The authentication and authorization settings for a BackendService.
 type SecuritySettingsResponse struct {
 	// [Deprecated] Use clientTlsPolicy instead.
@@ -24,6 +1261,8 @@ type SecuritySettingsResponse struct {
 	//
 	// Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
 	AuthorizationConfig AuthorizationConfigResponse `pulumi:"authorizationConfig"`
+	// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+	AwsV4Authentication AWSV4SignatureResponse `pulumi:"awsV4Authentication"`
 	// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
 	ClientTlsPolicy string `pulumi:"clientTlsPolicy"`
 	// [Deprecated] TLS Settings for the backend service.
@@ -68,6 +1307,11 @@ func (o SecuritySettingsResponseOutput) AuthenticationPolicy() AuthenticationPol
 // Deprecated: [Deprecated] Authorization config defines the Role Based Access Control (RBAC) config. Authorization config defines the Role Based Access Control (RBAC) config.
 func (o SecuritySettingsResponseOutput) AuthorizationConfig() AuthorizationConfigResponseOutput {
 	return o.ApplyT(func(v SecuritySettingsResponse) AuthorizationConfigResponse { return v.AuthorizationConfig }).(AuthorizationConfigResponseOutput)
+}
+
+// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+func (o SecuritySettingsResponseOutput) AwsV4Authentication() AWSV4SignatureResponseOutput {
+	return o.ApplyT(func(v SecuritySettingsResponse) AWSV4SignatureResponse { return v.AwsV4Authentication }).(AWSV4SignatureResponseOutput)
 }
 
 // Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
@@ -685,6 +1929,8 @@ func (o ServiceAttachmentConnectedEndpointResponseArrayOutput) Index(i pulumi.In
 type ServiceAttachmentConsumerProjectLimit struct {
 	// The value of the limit to set.
 	ConnectionLimit *int `pulumi:"connectionLimit"`
+	// The network URL for the network to set the limit for.
+	NetworkUrl *string `pulumi:"networkUrl"`
 	// The project id or number for the project to set the limit for.
 	ProjectIdOrNum *string `pulumi:"projectIdOrNum"`
 }
@@ -703,6 +1949,8 @@ type ServiceAttachmentConsumerProjectLimitInput interface {
 type ServiceAttachmentConsumerProjectLimitArgs struct {
 	// The value of the limit to set.
 	ConnectionLimit pulumi.IntPtrInput `pulumi:"connectionLimit"`
+	// The network URL for the network to set the limit for.
+	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
 	// The project id or number for the project to set the limit for.
 	ProjectIdOrNum pulumi.StringPtrInput `pulumi:"projectIdOrNum"`
 }
@@ -763,6 +2011,11 @@ func (o ServiceAttachmentConsumerProjectLimitOutput) ConnectionLimit() pulumi.In
 	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimit) *int { return v.ConnectionLimit }).(pulumi.IntPtrOutput)
 }
 
+// The network URL for the network to set the limit for.
+func (o ServiceAttachmentConsumerProjectLimitOutput) NetworkUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimit) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
+}
+
 // The project id or number for the project to set the limit for.
 func (o ServiceAttachmentConsumerProjectLimitOutput) ProjectIdOrNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimit) *string { return v.ProjectIdOrNum }).(pulumi.StringPtrOutput)
@@ -791,6 +2044,8 @@ func (o ServiceAttachmentConsumerProjectLimitArrayOutput) Index(i pulumi.IntInpu
 type ServiceAttachmentConsumerProjectLimitResponse struct {
 	// The value of the limit to set.
 	ConnectionLimit int `pulumi:"connectionLimit"`
+	// The network URL for the network to set the limit for.
+	NetworkUrl string `pulumi:"networkUrl"`
 	// The project id or number for the project to set the limit for.
 	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
 }
@@ -812,6 +2067,11 @@ func (o ServiceAttachmentConsumerProjectLimitResponseOutput) ToServiceAttachment
 // The value of the limit to set.
 func (o ServiceAttachmentConsumerProjectLimitResponseOutput) ConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimitResponse) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The network URL for the network to set the limit for.
+func (o ServiceAttachmentConsumerProjectLimitResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimitResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
 // The project id or number for the project to set the limit for.
@@ -2010,7 +3270,7 @@ func (o SourceDiskEncryptionKeyResponseArrayOutput) Index(i pulumi.IntInput) Sou
 
 // A specification of the parameters to use when creating the instance template from a source instance.
 type SourceInstanceParams struct {
-	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 	DiskConfigs []DiskInstantiationConfig `pulumi:"diskConfigs"`
 }
 
@@ -2027,7 +3287,7 @@ type SourceInstanceParamsInput interface {
 
 // A specification of the parameters to use when creating the instance template from a source instance.
 type SourceInstanceParamsArgs struct {
-	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 	DiskConfigs DiskInstantiationConfigArrayInput `pulumi:"diskConfigs"`
 }
 
@@ -2109,7 +3369,7 @@ func (o SourceInstanceParamsOutput) ToSourceInstanceParamsPtrOutputWithContext(c
 	}).(SourceInstanceParamsPtrOutput)
 }
 
-// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 func (o SourceInstanceParamsOutput) DiskConfigs() DiskInstantiationConfigArrayOutput {
 	return o.ApplyT(func(v SourceInstanceParams) []DiskInstantiationConfig { return v.DiskConfigs }).(DiskInstantiationConfigArrayOutput)
 }
@@ -2138,7 +3398,7 @@ func (o SourceInstanceParamsPtrOutput) Elem() SourceInstanceParamsOutput {
 	}).(SourceInstanceParamsOutput)
 }
 
-// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 func (o SourceInstanceParamsPtrOutput) DiskConfigs() DiskInstantiationConfigArrayOutput {
 	return o.ApplyT(func(v *SourceInstanceParams) []DiskInstantiationConfig {
 		if v == nil {
@@ -2150,7 +3410,7 @@ func (o SourceInstanceParamsPtrOutput) DiskConfigs() DiskInstantiationConfigArra
 
 // A specification of the parameters to use when creating the instance template from a source instance.
 type SourceInstanceParamsResponse struct {
-	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 	DiskConfigs []DiskInstantiationConfigResponse `pulumi:"diskConfigs"`
 }
 
@@ -2169,7 +3429,7 @@ func (o SourceInstanceParamsResponseOutput) ToSourceInstanceParamsResponseOutput
 	return o
 }
 
-// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 func (o SourceInstanceParamsResponseOutput) DiskConfigs() DiskInstantiationConfigResponseArrayOutput {
 	return o.ApplyT(func(v SourceInstanceParamsResponse) []DiskInstantiationConfigResponse { return v.DiskConfigs }).(DiskInstantiationConfigResponseArrayOutput)
 }
@@ -6449,6 +7709,16 @@ func (o WeightedBackendServiceResponseArrayOutput) Index(i pulumi.IntInput) Weig
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsRpcStatusPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsRpcStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyUserDefinedFieldArrayInput)(nil)).Elem(), SecurityPolicyUserDefinedFieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsInput)(nil)).Elem(), SecuritySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecuritySettingsPtrInput)(nil)).Elem(), SecuritySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingInput)(nil)).Elem(), ServerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBindingPtrInput)(nil)).Elem(), ServerBindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsSettingsInput)(nil)).Elem(), ServerTlsSettingsArgs{})
@@ -6509,6 +7779,23 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyUserDefinedFieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsOutput{})
+	pulumi.RegisterOutputType(SecuritySettingsPtrOutput{})
 	pulumi.RegisterOutputType(SecuritySettingsResponseOutput{})
 	pulumi.RegisterOutputType(ServerBindingOutput{})
 	pulumi.RegisterOutputType(ServerBindingPtrOutput{})

@@ -2194,8 +2194,10 @@ func (o PhaseResponseArrayOutput) Index(i pulumi.IntInput) PhaseResponseOutput {
 type PipelineConditionResponse struct {
 	// Details around the Pipeline's overall status.
 	PipelineReadyCondition PipelineReadyConditionResponse `pulumi:"pipelineReadyCondition"`
-	// Detalis around targets enumerated in the pipeline.
+	// Details around targets enumerated in the pipeline.
 	TargetsPresentCondition TargetsPresentConditionResponse `pulumi:"targetsPresentCondition"`
+	// Details on the whether the targets enumerated in the pipeline are of the same type.
+	TargetsTypeCondition TargetsTypeConditionResponse `pulumi:"targetsTypeCondition"`
 }
 
 // PipelineCondition contains all conditions relevant to a Delivery Pipeline.
@@ -2218,9 +2220,14 @@ func (o PipelineConditionResponseOutput) PipelineReadyCondition() PipelineReadyC
 	return o.ApplyT(func(v PipelineConditionResponse) PipelineReadyConditionResponse { return v.PipelineReadyCondition }).(PipelineReadyConditionResponseOutput)
 }
 
-// Detalis around targets enumerated in the pipeline.
+// Details around targets enumerated in the pipeline.
 func (o PipelineConditionResponseOutput) TargetsPresentCondition() TargetsPresentConditionResponseOutput {
 	return o.ApplyT(func(v PipelineConditionResponse) TargetsPresentConditionResponse { return v.TargetsPresentCondition }).(TargetsPresentConditionResponseOutput)
+}
+
+// Details on the whether the targets enumerated in the pipeline are of the same type.
+func (o PipelineConditionResponseOutput) TargetsTypeCondition() TargetsTypeConditionResponseOutput {
+	return o.ApplyT(func(v PipelineConditionResponse) TargetsTypeConditionResponse { return v.TargetsTypeCondition }).(TargetsTypeConditionResponseOutput)
 }
 
 // PipelineReadyCondition contains information around the status of the Pipeline.
@@ -3289,7 +3296,7 @@ func (o TargetResponseArrayOutput) Index(i pulumi.IntInput) TargetResponseOutput
 
 // TargetsPresentCondition contains information on any Targets defined in the Delivery Pipeline that do not actually exist.
 type TargetsPresentConditionResponse struct {
-	// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+	// The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
 	MissingTargets []string `pulumi:"missingTargets"`
 	// True if there aren't any missing Targets.
 	Status bool `pulumi:"status"`
@@ -3312,7 +3319,7 @@ func (o TargetsPresentConditionResponseOutput) ToTargetsPresentConditionResponse
 	return o
 }
 
-// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+// The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
 func (o TargetsPresentConditionResponseOutput) MissingTargets() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TargetsPresentConditionResponse) []string { return v.MissingTargets }).(pulumi.StringArrayOutput)
 }
@@ -3325,6 +3332,39 @@ func (o TargetsPresentConditionResponseOutput) Status() pulumi.BoolOutput {
 // Last time the condition was updated.
 func (o TargetsPresentConditionResponseOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v TargetsPresentConditionResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.
+type TargetsTypeConditionResponse struct {
+	// Human readable error message.
+	ErrorDetails string `pulumi:"errorDetails"`
+	// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+	Status bool `pulumi:"status"`
+}
+
+// TargetsTypeCondition contains information on whether the Targets defined in the Delivery Pipeline are of the same type.
+type TargetsTypeConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (TargetsTypeConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetsTypeConditionResponse)(nil)).Elem()
+}
+
+func (o TargetsTypeConditionResponseOutput) ToTargetsTypeConditionResponseOutput() TargetsTypeConditionResponseOutput {
+	return o
+}
+
+func (o TargetsTypeConditionResponseOutput) ToTargetsTypeConditionResponseOutputWithContext(ctx context.Context) TargetsTypeConditionResponseOutput {
+	return o
+}
+
+// Human readable error message.
+func (o TargetsTypeConditionResponseOutput) ErrorDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetsTypeConditionResponse) string { return v.ErrorDetails }).(pulumi.StringOutput)
+}
+
+// True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
+func (o TargetsTypeConditionResponseOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v TargetsTypeConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
 }
 
 // A verify Job.
@@ -3441,5 +3481,6 @@ func init() {
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
 	pulumi.RegisterOutputType(TargetsPresentConditionResponseOutput{})
+	pulumi.RegisterOutputType(TargetsTypeConditionResponseOutput{})
 	pulumi.RegisterOutputType(VerifyJobResponseOutput{})
 }

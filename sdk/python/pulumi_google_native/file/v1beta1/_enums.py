@@ -5,12 +5,31 @@
 from enum import Enum
 
 __all__ = [
+    'InstanceProtocol',
     'InstanceTier',
     'NetworkConfigConnectMode',
     'NetworkConfigModesItem',
     'NfsExportOptionsAccessMode',
     'NfsExportOptionsSquashMode',
 ]
+
+
+class InstanceProtocol(str, Enum):
+    """
+    Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+    """
+    FILE_PROTOCOL_UNSPECIFIED = "FILE_PROTOCOL_UNSPECIFIED"
+    """
+    FILE_PROTOCOL_UNSPECIFIED serves a "not set" default value when a FileProtocol is a separate field in a message.
+    """
+    NFS_V3 = "NFS_V3"
+    """
+    NFS 3.0.
+    """
+    NFS_V41 = "NFS_V4_1"
+    """
+    NFS 4.1.
+    """
 
 
 class InstanceTier(str, Enum):

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     public sealed class QueryContentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
+        /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
         /// </summary>
         [Input("iamPolicyAnalysisQuery")]
         public Input<Inputs.IamPolicyAnalysisQueryArgs>? IamPolicyAnalysisQuery { get; set; }

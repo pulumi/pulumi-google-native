@@ -51,7 +51,7 @@ export interface GetGithubEnterpriseConfigResult {
      */
     readonly hostUrl: string;
     /**
-     * Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+     * Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
      */
     readonly name: string;
     /**

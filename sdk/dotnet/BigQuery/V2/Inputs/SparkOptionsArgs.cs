@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         /// <summary>
-        /// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+        /// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
         /// </summary>
         [Input("mainFileUri")]
         public Input<string>? MainFileUri { get; set; }

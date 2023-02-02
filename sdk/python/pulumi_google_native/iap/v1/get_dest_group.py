@@ -33,7 +33,7 @@ class GetDestGroupResult:
     @pulumi.getter
     def cidrs(self) -> Sequence[str]:
         """
-        null List of CIDRs that this group applies to.
+        Unordered list. List of CIDRs that this group applies to.
         """
         return pulumi.get(self, "cidrs")
 
@@ -41,7 +41,7 @@ class GetDestGroupResult:
     @pulumi.getter
     def fqdns(self) -> Sequence[str]:
         """
-        null List of FQDNs that this group applies to.
+        Unordered list. List of FQDNs that this group applies to.
         """
         return pulumi.get(self, "fqdns")
 

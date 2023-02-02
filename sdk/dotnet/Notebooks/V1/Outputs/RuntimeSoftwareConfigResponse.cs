@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// Bool indicating whether an newer image is available in an image family.
         /// </summary>
         public readonly bool Upgradeable;
+        /// <summary>
+        /// version of boot image such as M100, from release label of the image.
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
         private RuntimeSoftwareConfigResponse(
@@ -83,7 +87,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string postStartupScriptBehavior,
 
-            bool upgradeable)
+            bool upgradeable,
+
+            string version)
         {
             CustomGpuDriverPath = customGpuDriverPath;
             DisableTerminal = disableTerminal;
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             PostStartupScript = postStartupScript;
             PostStartupScriptBehavior = postStartupScriptBehavior;
             Upgradeable = upgradeable;
+            Version = version;
         }
     }
 }

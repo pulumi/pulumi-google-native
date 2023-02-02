@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// The instance properties for the reservation.
         /// </summary>
         public readonly Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse InstanceProperties;
+        /// <summary>
+        /// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate 
+        /// </summary>
+        public readonly string SourceInstanceTemplate;
 
         [OutputConstructor]
         private AllocationSpecificSKUReservationResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string inUseCount,
 
-            Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse instanceProperties)
+            Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse instanceProperties,
+
+            string sourceInstanceTemplate)
         {
             AssuredCount = assuredCount;
             Count = count;
             InUseCount = inUseCount;
             InstanceProperties = instanceProperties;
+            SourceInstanceTemplate = sourceInstanceTemplate;
         }
     }
 }

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetIosAppResult:
-    def __init__(__self__, api_key_id=None, app_id=None, app_store_id=None, bundle_id=None, display_name=None, name=None, project=None, state=None, team_id=None):
+    def __init__(__self__, api_key_id=None, app_id=None, app_store_id=None, bundle_id=None, display_name=None, etag=None, name=None, project=None, state=None, team_id=None):
         if api_key_id and not isinstance(api_key_id, str):
             raise TypeError("Expected argument 'api_key_id' to be a str")
         pulumi.set(__self__, "api_key_id", api_key_id)
@@ -34,6 +34,9 @@ class GetIosAppResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -89,6 +92,14 @@ class GetIosAppResult:
 
     @property
     @pulumi.getter
+    def etag(self) -> str:
+        """
+        This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+        """
+        return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
@@ -131,6 +142,7 @@ class AwaitableGetIosAppResult(GetIosAppResult):
             app_store_id=self.app_store_id,
             bundle_id=self.bundle_id,
             display_name=self.display_name,
+            etag=self.etag,
             name=self.name,
             project=self.project,
             state=self.state,
@@ -155,6 +167,7 @@ def get_ios_app(ios_app_id: Optional[str] = None,
         app_store_id=__ret__.app_store_id,
         bundle_id=__ret__.bundle_id,
         display_name=__ret__.display_name,
+        etag=__ret__.etag,
         name=__ret__.name,
         project=__ret__.project,
         state=__ret__.state,

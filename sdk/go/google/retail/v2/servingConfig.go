@@ -23,7 +23,7 @@ type ServingConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	DiversityLevel pulumi.StringOutput `pulumi:"diversityLevel"`
-	// What kind of diversity to use - data driven or rule based.
+	// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
 	DiversityType pulumi.StringOutput `pulumi:"diversityType"`
 	// Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
 	DoNotAssociateControlIds pulumi.StringArrayOutput `pulumi:"doNotAssociateControlIds"`
@@ -46,7 +46,7 @@ type ServingConfig struct {
 	OnewaySynonymsControlIds pulumi.StringArrayOutput `pulumi:"onewaySynonymsControlIds"`
 	// The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
 	PersonalizationSpec GoogleCloudRetailV2SearchRequestPersonalizationSpecResponseOutput `pulumi:"personalizationSpec"`
-	// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+	// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	PriceRerankingLevel pulumi.StringOutput `pulumi:"priceRerankingLevel"`
 	Project             pulumi.StringOutput `pulumi:"project"`
 	// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -126,7 +126,7 @@ type servingConfigArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	DiversityLevel *string `pulumi:"diversityLevel"`
-	// What kind of diversity to use - data driven or rule based.
+	// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
 	DiversityType *ServingConfigDiversityType `pulumi:"diversityType"`
 	// Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
 	DoNotAssociateControlIds []string `pulumi:"doNotAssociateControlIds"`
@@ -149,7 +149,7 @@ type servingConfigArgs struct {
 	OnewaySynonymsControlIds []string `pulumi:"onewaySynonymsControlIds"`
 	// The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
 	PersonalizationSpec *GoogleCloudRetailV2SearchRequestPersonalizationSpec `pulumi:"personalizationSpec"`
-	// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+	// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	PriceRerankingLevel *string `pulumi:"priceRerankingLevel"`
 	Project             *string `pulumi:"project"`
 	// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -173,7 +173,7 @@ type ServingConfigArgs struct {
 	DisplayName pulumi.StringInput
 	// How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	DiversityLevel pulumi.StringPtrInput
-	// What kind of diversity to use - data driven or rule based.
+	// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
 	DiversityType ServingConfigDiversityTypePtrInput
 	// Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
 	DoNotAssociateControlIds pulumi.StringArrayInput
@@ -196,7 +196,7 @@ type ServingConfigArgs struct {
 	OnewaySynonymsControlIds pulumi.StringArrayInput
 	// The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
 	PersonalizationSpec GoogleCloudRetailV2SearchRequestPersonalizationSpecPtrInput
-	// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+	// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 	PriceRerankingLevel pulumi.StringPtrInput
 	Project             pulumi.StringPtrInput
 	// Condition redirect specifications. Only the first triggered redirect action is applied, even if multiple apply. Maximum number of specifications is 1000. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -267,7 +267,7 @@ func (o ServingConfigOutput) DiversityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServingConfig) pulumi.StringOutput { return v.DiversityLevel }).(pulumi.StringOutput)
 }
 
-// What kind of diversity to use - data driven or rule based.
+// What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
 func (o ServingConfigOutput) DiversityType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServingConfig) pulumi.StringOutput { return v.DiversityType }).(pulumi.StringOutput)
 }
@@ -330,7 +330,7 @@ func (o ServingConfigOutput) PersonalizationSpec() GoogleCloudRetailV2SearchRequ
 	}).(GoogleCloudRetailV2SearchRequestPersonalizationSpecResponseOutput)
 }
 
-// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+// How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-reranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
 func (o ServingConfigOutput) PriceRerankingLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServingConfig) pulumi.StringOutput { return v.PriceRerankingLevel }).(pulumi.StringOutput)
 }

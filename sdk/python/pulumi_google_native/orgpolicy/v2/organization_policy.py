@@ -18,11 +18,13 @@ class OrganizationPolicyArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[str],
                  alternate: Optional[pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']] = None,
+                 dry_run_spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']] = None):
         """
         The set of arguments for constructing a OrganizationPolicy resource.
         :param pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs'] alternate: Deprecated.
+        :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] dry_run_spec: dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
@@ -32,6 +34,8 @@ class OrganizationPolicyArgs:
             pulumi.log.warn("""alternate is deprecated: Deprecated.""")
         if alternate is not None:
             pulumi.set(__self__, "alternate", alternate)
+        if dry_run_spec is not None:
+            pulumi.set(__self__, "dry_run_spec", dry_run_spec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if spec is not None:
@@ -57,6 +61,18 @@ class OrganizationPolicyArgs:
     @alternate.setter
     def alternate(self, value: Optional[pulumi.Input['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]):
         pulumi.set(self, "alternate", value)
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']]:
+        """
+        dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
+
+    @dry_run_spec.setter
+    def dry_run_spec(self, value: Optional[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecArgs']]):
+        pulumi.set(self, "dry_run_spec", value)
 
     @property
     @pulumi.getter
@@ -89,6 +105,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]] = None,
+                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
@@ -100,6 +117,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']] alternate: Deprecated.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']] dry_run_spec: dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']] spec: Basic information about the Organization Policy.
         """
@@ -129,6 +147,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternate: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2AlternatePolicySpecArgs']]] = None,
+                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudOrgpolicyV2PolicySpecArgs']]] = None,
@@ -145,6 +164,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                 warnings.warn("""Deprecated.""", DeprecationWarning)
                 pulumi.log.warn("""alternate is deprecated: Deprecated.""")
             __props__.__dict__["alternate"] = alternate
+            __props__.__dict__["dry_run_spec"] = dry_run_spec
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
@@ -175,6 +195,7 @@ class OrganizationPolicy(pulumi.CustomResource):
         __props__ = OrganizationPolicyArgs.__new__(OrganizationPolicyArgs)
 
         __props__.__dict__["alternate"] = None
+        __props__.__dict__["dry_run_spec"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["organization_id"] = None
         __props__.__dict__["spec"] = None
@@ -187,6 +208,14 @@ class OrganizationPolicy(pulumi.CustomResource):
         Deprecated.
         """
         return pulumi.get(self, "alternate")
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> pulumi.Output['outputs.GoogleCloudOrgpolicyV2PolicySpecResponse']:
+        """
+        dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
 
     @property
     @pulumi.getter

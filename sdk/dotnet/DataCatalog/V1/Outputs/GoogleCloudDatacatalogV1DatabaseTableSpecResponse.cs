@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
     public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecResponse
     {
         /// <summary>
+        /// Spec what aplies to tables that are actually views. Not set for "real" tables.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse DatabaseViewSpec;
+        /// <summary>
         /// Fields specific to a Dataplex table and present only in the Dataplex table entries.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse DataplexTable;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDatacatalogV1DatabaseTableSpecResponse(
+            Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse databaseViewSpec,
+
             Outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse dataplexTable,
 
             string type)
         {
+            DatabaseViewSpec = databaseViewSpec;
             DataplexTable = dataplexTable;
             Type = type;
         }

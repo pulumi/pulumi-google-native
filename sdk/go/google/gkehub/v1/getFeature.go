@@ -31,6 +31,8 @@ type LookupFeatureResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// When the Feature resource was deleted.
 	DeleteTime string `pulumi:"deleteTime"`
+	// Optional. Feature configuration applicable to all memberships of the fleet.
+	FleetDefaultMemberConfig CommonFleetDefaultMemberConfigSpecResponse `pulumi:"fleetDefaultMemberConfig"`
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: `projects/{p}/locations/{l}/memberships/{m}` Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
@@ -98,6 +100,13 @@ func (o LookupFeatureResultOutput) CreateTime() pulumi.StringOutput {
 // When the Feature resource was deleted.
 func (o LookupFeatureResultOutput) DeleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFeatureResult) string { return v.DeleteTime }).(pulumi.StringOutput)
+}
+
+// Optional. Feature configuration applicable to all memberships of the fleet.
+func (o LookupFeatureResultOutput) FleetDefaultMemberConfig() CommonFleetDefaultMemberConfigSpecResponseOutput {
+	return o.ApplyT(func(v LookupFeatureResult) CommonFleetDefaultMemberConfigSpecResponse {
+		return v.FleetDefaultMemberConfig
+	}).(CommonFleetDefaultMemberConfigSpecResponseOutput)
 }
 
 // GCP labels for this Feature.

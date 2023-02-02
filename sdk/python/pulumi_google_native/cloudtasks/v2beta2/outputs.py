@@ -24,8 +24,10 @@ __all__ = [
     'HttpTargetResponse',
     'OAuthTokenResponse',
     'OidcTokenResponse',
+    'PathOverrideResponse',
     'PullMessageResponse',
     'PullTargetResponse',
+    'QueryOverrideResponse',
     'QueueStatsResponse',
     'RateLimitsResponse',
     'RetryConfigResponse',
@@ -737,6 +739,28 @@ class OidcTokenResponse(dict):
 
 
 @pulumi.output_type
+class PathOverrideResponse(dict):
+    """
+    PathOverride. Path message defines path override for HTTP targets.
+    """
+    def __init__(__self__, *,
+                 path: str):
+        """
+        PathOverride. Path message defines path override for HTTP targets.
+        :param str path: The URI path (e.g., a/b/c). Default is Empty string.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The URI path (e.g., a/b/c). Default is Empty string.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
 class PullMessageResponse(dict):
     """
     The pull message contains data that can be used by the caller of LeaseTasks to process the task. This proto can only be used for tasks in a queue which has pull_target set.
@@ -779,6 +803,45 @@ class PullTargetResponse(dict):
         Pull target.
         """
         pass
+
+
+@pulumi.output_type
+class QueryOverrideResponse(dict):
+    """
+    QueryOverride. Query message defines query override for HTTP targets.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryParams":
+            suggest = "query_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryOverrideResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryOverrideResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryOverrideResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 query_params: str):
+        """
+        QueryOverride. Query message defines query override for HTTP targets.
+        :param str query_params: The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        """
+        pulumi.set(__self__, "query_params", query_params)
+
+    @property
+    @pulumi.getter(name="queryParams")
+    def query_params(self) -> str:
+        """
+        The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+        """
+        return pulumi.get(self, "query_params")
 
 
 @pulumi.output_type
@@ -1171,7 +1234,11 @@ class UriOverrideResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "uriOverrideEnforceMode":
+        if key == "pathOverride":
+            suggest = "path_override"
+        elif key == "queryOverride":
+            suggest = "query_override"
+        elif key == "uriOverrideEnforceMode":
             suggest = "uri_override_enforce_mode"
 
         if suggest:
@@ -1187,24 +1254,24 @@ class UriOverrideResponse(dict):
 
     def __init__(__self__, *,
                  host: str,
-                 path: str,
+                 path_override: 'outputs.PathOverrideResponse',
                  port: str,
-                 query: str,
+                 query_override: 'outputs.QueryOverrideResponse',
                  scheme: str,
                  uri_override_enforce_mode: str):
         """
         Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
-        :param str host: Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
-        :param str path: Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-        :param str port: Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
-        :param str query: Uri Query. Will replace the query part of the task uri.
-        :param str scheme: Scheme override. When specified, the Uri scheme is replaced by the provided value.
-        :param str uri_override_enforce_mode: Uri Override Enforce Mode Determines the Target UriOverride mode.
+        :param str host: Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+        :param 'PathOverrideResponse' path_override: URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+        :param str port: Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+        :param 'QueryOverrideResponse' query_override: URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+        :param str scheme: Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+        :param str uri_override_enforce_mode: URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
         """
         pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "path_override", path_override)
         pulumi.set(__self__, "port", port)
-        pulumi.set(__self__, "query", query)
+        pulumi.set(__self__, "query_override", query_override)
         pulumi.set(__self__, "scheme", scheme)
         pulumi.set(__self__, "uri_override_enforce_mode", uri_override_enforce_mode)
 
@@ -1212,39 +1279,39 @@ class UriOverrideResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+        Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
         """
         return pulumi.get(self, "host")
 
     @property
-    @pulumi.getter
-    def path(self) -> str:
+    @pulumi.getter(name="pathOverride")
+    def path_override(self) -> 'outputs.PathOverrideResponse':
         """
-        Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
+        URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
         """
-        return pulumi.get(self, "path")
+        return pulumi.get(self, "path_override")
 
     @property
     @pulumi.getter
     def port(self) -> str:
         """
-        Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+        Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
         """
         return pulumi.get(self, "port")
 
     @property
-    @pulumi.getter
-    def query(self) -> str:
+    @pulumi.getter(name="queryOverride")
+    def query_override(self) -> 'outputs.QueryOverrideResponse':
         """
-        Uri Query. Will replace the query part of the task uri.
+        URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
         """
-        return pulumi.get(self, "query")
+        return pulumi.get(self, "query_override")
 
     @property
     @pulumi.getter
     def scheme(self) -> str:
         """
-        Scheme override. When specified, the Uri scheme is replaced by the provided value.
+        Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
         """
         return pulumi.get(self, "scheme")
 
@@ -1252,7 +1319,7 @@ class UriOverrideResponse(dict):
     @pulumi.getter(name="uriOverrideEnforceMode")
     def uri_override_enforce_mode(self) -> str:
         """
-        Uri Override Enforce Mode Determines the Target UriOverride mode.
+        URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
         """
         return pulumi.get(self, "uri_override_enforce_mode")
 

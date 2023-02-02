@@ -156,6 +156,38 @@ export const AddressPurpose = {
  */
 export type AddressPurpose = (typeof AddressPurpose)[keyof typeof AddressPurpose];
 
+export const AdvancedMachineFeaturesPerformanceMonitoringUnit = {
+    /**
+     * Architecturally defined non-LLC events.
+     */
+    Architectural: "ARCHITECTURAL",
+    /**
+     * Most documented core/L2 and LLC events.
+     */
+    Enhanced: "ENHANCED",
+    PerformanceMonitoringUnitUnspecified: "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED",
+    /**
+     * Most documented core/L2 events.
+     */
+    Standard: "STANDARD",
+} as const;
+
+/**
+ * Type of Performance Monitoring Unit requested on instance.
+ */
+export type AdvancedMachineFeaturesPerformanceMonitoringUnit = (typeof AdvancedMachineFeaturesPerformanceMonitoringUnit)[keyof typeof AdvancedMachineFeaturesPerformanceMonitoringUnit];
+
+export const AllocationAggregateReservationVmFamily = {
+    VmFamilyCloudTpuPodSliceCt4p: "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P",
+    VmFamilyGeneralPurposeT2d: "VM_FAMILY_GENERAL_PURPOSE_T2D",
+    VmFamilyMemoryOptimizedM3: "VM_FAMILY_MEMORY_OPTIMIZED_M3",
+} as const;
+
+/**
+ * The VM family that all instances scheduled against this reservation must belong to.
+ */
+export type AllocationAggregateReservationVmFamily = (typeof AllocationAggregateReservationVmFamily)[keyof typeof AllocationAggregateReservationVmFamily];
+
 export const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface = {
     Nvdimm: "NVDIMM",
     Nvme: "NVME",
@@ -172,6 +204,10 @@ export const AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanc
      * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
      */
     Periodic: "PERIODIC",
+    /**
+     * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+     */
+    Recurrent: "RECURRENT",
 } as const;
 
 /**
@@ -533,6 +569,30 @@ export const BackendServiceConnectionTrackingPolicyTrackingMode = {
  */
 export type BackendServiceConnectionTrackingPolicyTrackingMode = (typeof BackendServiceConnectionTrackingPolicyTrackingMode)[keyof typeof BackendServiceConnectionTrackingPolicyTrackingMode];
 
+export const BackendServiceIpAddressSelectionPolicy = {
+    /**
+     * Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
+     */
+    Ipv4Only: "IPV4_ONLY",
+    /**
+     * Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends.
+     */
+    Ipv6Only: "IPV6_ONLY",
+    /**
+     * Unspecified IP address selection policy.
+     */
+    IpAddressSelectionPolicyUnspecified: "IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED",
+    /**
+     * Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address).
+     */
+    PreferIpv6: "PREFER_IPV6",
+} as const;
+
+/**
+ * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+ */
+export type BackendServiceIpAddressSelectionPolicy = (typeof BackendServiceIpAddressSelectionPolicy)[keyof typeof BackendServiceIpAddressSelectionPolicy];
+
 export const BackendServiceLoadBalancingScheme = {
     /**
      * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
@@ -632,7 +692,7 @@ export const BackendServiceLocalityLoadBalancingPolicyConfigPolicyName = {
 } as const;
 
 /**
- * The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+ * The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
  */
 export type BackendServiceLocalityLoadBalancingPolicyConfigPolicyName = (typeof BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)[keyof typeof BackendServiceLocalityLoadBalancingPolicyConfigPolicyName];
 
@@ -653,9 +713,30 @@ export const BackendServiceLogConfigOptional = {
 } as const;
 
 /**
- * This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+ * Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
  */
 export type BackendServiceLogConfigOptional = (typeof BackendServiceLogConfigOptional)[keyof typeof BackendServiceLogConfigOptional];
+
+export const BackendServiceLogConfigOptionalMode = {
+    /**
+     * A subset of optional fields.
+     */
+    Custom: "CUSTOM",
+    /**
+     * None optional fields.
+     */
+    ExcludeAllOptional: "EXCLUDE_ALL_OPTIONAL",
+    /**
+     * All optional fields.
+     */
+    IncludeAllOptional: "INCLUDE_ALL_OPTIONAL",
+    UnspecifiedOptionalMode: "UNSPECIFIED_OPTIONAL_MODE",
+} as const;
+
+/**
+ * This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+ */
+export type BackendServiceLogConfigOptionalMode = (typeof BackendServiceLogConfigOptionalMode)[keyof typeof BackendServiceLogConfigOptionalMode];
 
 export const BackendServiceProtocol = {
     /**
@@ -1794,6 +1875,22 @@ export const InstanceGroupManagerFailoverAction = {
  */
 export type InstanceGroupManagerFailoverAction = (typeof InstanceGroupManagerFailoverAction)[keyof typeof InstanceGroupManagerFailoverAction];
 
+export const InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure = {
+    /**
+     * If any of the MIG's VMs is not running, or is failing, no repair action will be taken.
+     */
+    DoNothing: "DO_NOTHING",
+    /**
+     * *[Default]* If any of the MIG's VMs is not running - for example, a VM cannot be created during a scale out or a VM fails – then the group will retry until it creates that VM successfully. For more information about how a MIG manages its VMs, see What is a managed instance."
+     */
+    Repair: "REPAIR",
+} as const;
+
+/**
+ * Defines behaviour for all instance or failures
+ */
+export type InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure = (typeof InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure)[keyof typeof InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure];
+
 export const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = {
     No: "NO",
     Yes: "YES",
@@ -2629,6 +2726,30 @@ export const RegionBackendServiceCompressionMode = {
  */
 export type RegionBackendServiceCompressionMode = (typeof RegionBackendServiceCompressionMode)[keyof typeof RegionBackendServiceCompressionMode];
 
+export const RegionBackendServiceIpAddressSelectionPolicy = {
+    /**
+     * Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
+     */
+    Ipv4Only: "IPV4_ONLY",
+    /**
+     * Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends.
+     */
+    Ipv6Only: "IPV6_ONLY",
+    /**
+     * Unspecified IP address selection policy.
+     */
+    IpAddressSelectionPolicyUnspecified: "IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED",
+    /**
+     * Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address).
+     */
+    PreferIpv6: "PREFER_IPV6",
+} as const;
+
+/**
+ * Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+ */
+export type RegionBackendServiceIpAddressSelectionPolicy = (typeof RegionBackendServiceIpAddressSelectionPolicy)[keyof typeof RegionBackendServiceIpAddressSelectionPolicy];
+
 export const RegionBackendServiceLoadBalancingScheme = {
     /**
      * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
@@ -2820,6 +2941,7 @@ export const RegionCommitmentType = {
     GeneralPurposeN2: "GENERAL_PURPOSE_N2",
     GeneralPurposeN2d: "GENERAL_PURPOSE_N2D",
     GeneralPurposeT2d: "GENERAL_PURPOSE_T2D",
+    GraphicsOptimized: "GRAPHICS_OPTIMIZED",
     MemoryOptimized: "MEMORY_OPTIMIZED",
     MemoryOptimizedM3: "MEMORY_OPTIMIZED_M3",
     TypeUnspecified: "TYPE_UNSPECIFIED",
@@ -2883,7 +3005,7 @@ export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
 } as const;
 
 /**
- * Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+ * Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
  */
 export type RegionHealthCheckServiceHealthStatusAggregationPolicy = (typeof RegionHealthCheckServiceHealthStatusAggregationPolicy)[keyof typeof RegionHealthCheckServiceHealthStatusAggregationPolicy];
 
@@ -3151,7 +3273,7 @@ export const ResourceCommitmentType = {
 } as const;
 
 /**
- * Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+ * Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
  */
 export type ResourceCommitmentType = (typeof ResourceCommitmentType)[keyof typeof ResourceCommitmentType];
 
@@ -3581,6 +3703,10 @@ export const SchedulingMaintenanceInterval = {
      * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
      */
     Periodic: "PERIODIC",
+    /**
+     * VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+     */
+    Recurrent: "RECURRENT",
 } as const;
 
 /**
@@ -3732,9 +3858,26 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
+
+export const SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType = {
+    All: "ALL",
+    AllIps: "ALL_IPS",
+    HttpCookie: "HTTP_COOKIE",
+    HttpHeader: "HTTP_HEADER",
+    HttpPath: "HTTP_PATH",
+    Ip: "IP",
+    RegionCode: "REGION_CODE",
+    Sni: "SNI",
+    XffIp: "XFF_IP",
+} as const;
+
+/**
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+ */
+export type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType];
 
 export const SecurityPolicyRuleRedirectOptionsType = {
     External302: "EXTERNAL_302",

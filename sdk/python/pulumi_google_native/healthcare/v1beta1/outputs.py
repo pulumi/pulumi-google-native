@@ -85,6 +85,7 @@ __all__ = [
     'StreamConfigResponse',
     'TagFilterListResponse',
     'TextConfigResponse',
+    'TimePartitioningResponse',
     'TypeResponse',
     'ValidationConfigResponse',
     'VersionSourceResponse',
@@ -766,8 +767,8 @@ class DateShiftConfigResponse(dict):
                  kms_wrapped: 'outputs.KmsWrappedCryptoKeyResponse'):
         """
         Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
-        :param str crypto_key: An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
-        :param 'KmsWrappedCryptoKeyResponse' kms_wrapped: KMS wrapped key. Must not be set if `crypto_key` is set.
+        :param str crypto_key: An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+        :param 'KmsWrappedCryptoKeyResponse' kms_wrapped: KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
         """
         pulumi.set(__self__, "crypto_key", crypto_key)
         pulumi.set(__self__, "kms_wrapped", kms_wrapped)
@@ -776,7 +777,7 @@ class DateShiftConfigResponse(dict):
     @pulumi.getter(name="cryptoKey")
     def crypto_key(self) -> str:
         """
-        An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+        An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
         """
         return pulumi.get(self, "crypto_key")
 
@@ -784,7 +785,7 @@ class DateShiftConfigResponse(dict):
     @pulumi.getter(name="kmsWrapped")
     def kms_wrapped(self) -> 'outputs.KmsWrappedCryptoKeyResponse':
         """
-        KMS wrapped key. Must not be set if `crypto_key` is set.
+        KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
         """
         return pulumi.get(self, "kms_wrapped")
 
@@ -2809,7 +2810,9 @@ class SchemaConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "recursiveStructureDepth":
+        if key == "lastUpdatedPartitionConfig":
+            suggest = "last_updated_partition_config"
+        elif key == "recursiveStructureDepth":
             suggest = "recursive_structure_depth"
         elif key == "schemaType":
             suggest = "schema_type"
@@ -2826,15 +2829,26 @@ class SchemaConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 last_updated_partition_config: 'outputs.TimePartitioningResponse',
                  recursive_structure_depth: str,
                  schema_type: str):
         """
         Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
+        :param 'TimePartitioningResponse' last_updated_partition_config: The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
         :param str recursive_structure_depth: The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
         :param str schema_type: Specifies the output schema type. Schema type is required.
         """
+        pulumi.set(__self__, "last_updated_partition_config", last_updated_partition_config)
         pulumi.set(__self__, "recursive_structure_depth", recursive_structure_depth)
         pulumi.set(__self__, "schema_type", schema_type)
+
+    @property
+    @pulumi.getter(name="lastUpdatedPartitionConfig")
+    def last_updated_partition_config(self) -> 'outputs.TimePartitioningResponse':
+        """
+        The configuration for exported BigQuery tables to be partitioned by FHIR resource's last updated time column.
+        """
+        return pulumi.get(self, "last_updated_partition_config")
 
     @property
     @pulumi.getter(name="recursiveStructureDepth")
@@ -3382,6 +3396,56 @@ class TextConfigResponse(dict):
         The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         return pulumi.get(self, "transformations")
+
+
+@pulumi.output_type
+class TimePartitioningResponse(dict):
+    """
+    Configuration for FHIR BigQuery time-partitioned tables.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationMs":
+            suggest = "expiration_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimePartitioningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimePartitioningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimePartitioningResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expiration_ms: str,
+                 type: str):
+        """
+        Configuration for FHIR BigQuery time-partitioned tables.
+        :param str expiration_ms: Number of milliseconds for which to keep the storage for a partition.
+        :param str type: Type of partitioning.
+        """
+        pulumi.set(__self__, "expiration_ms", expiration_ms)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="expirationMs")
+    def expiration_ms(self) -> str:
+        """
+        Number of milliseconds for which to keep the storage for a partition.
+        """
+        return pulumi.get(self, "expiration_ms")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of partitioning.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

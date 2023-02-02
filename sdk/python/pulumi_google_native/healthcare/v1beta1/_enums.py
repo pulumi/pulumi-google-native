@@ -23,6 +23,7 @@ __all__ = [
     'SchemaPackageSchematizedParsingType',
     'SchemaPackageUnexpectedSegmentHandling',
     'TextConfigProfileType',
+    'TimePartitioningType',
     'TypePrimitive',
 ]
 
@@ -420,6 +421,32 @@ class TextConfigProfileType(str, Enum):
     BASIC = "BASIC"
     """
     Basic profile applies: DATE -> DateShift Default -> ReplaceWithInfoType
+    """
+
+
+class TimePartitioningType(str, Enum):
+    """
+    Type of partitioning.
+    """
+    PARTITION_TYPE_UNSPECIFIED = "PARTITION_TYPE_UNSPECIFIED"
+    """
+    Default unknown time.
+    """
+    HOUR = "HOUR"
+    """
+    Data partitioned by hour.
+    """
+    DAY = "DAY"
+    """
+    Data partitioned by day.
+    """
+    MONTH = "MONTH"
+    """
+    Data partitioned by month.
+    """
+    YEAR = "YEAR"
+    """
+    Data partitioned by year.
     """
 
 

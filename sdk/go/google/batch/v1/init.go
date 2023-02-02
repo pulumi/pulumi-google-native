@@ -29,18 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &JobIamMember{}
 	case "google-native:batch/v1:JobIamPolicy":
 		r = &JobIamPolicy{}
-	case "google-native:batch/v1:NodeIamBinding":
-		r = &NodeIamBinding{}
-	case "google-native:batch/v1:NodeIamMember":
-		r = &NodeIamMember{}
-	case "google-native:batch/v1:NodeIamPolicy":
-		r = &NodeIamPolicy{}
-	case "google-native:batch/v1:TaskIamBinding":
-		r = &TaskIamBinding{}
-	case "google-native:batch/v1:TaskIamMember":
-		r = &TaskIamMember{}
-	case "google-native:batch/v1:TaskIamPolicy":
-		r = &TaskIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string PhysicalHost;
         public readonly Outputs.ResourceStatusSchedulingResponse Scheduling;
+        /// <summary>
+        /// Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ServiceIntegrationStatuses;
         public readonly Outputs.ResourceStatusUpcomingMaintenanceResponse UpcomingMaintenance;
 
         [OutputConstructor]
@@ -29,10 +33,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.ResourceStatusSchedulingResponse scheduling,
 
+            ImmutableDictionary<string, string> serviceIntegrationStatuses,
+
             Outputs.ResourceStatusUpcomingMaintenanceResponse upcomingMaintenance)
         {
             PhysicalHost = physicalHost;
             Scheduling = scheduling;
+            ServiceIntegrationStatuses = serviceIntegrationStatuses;
             UpcomingMaintenance = upcomingMaintenance;
         }
     }

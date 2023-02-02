@@ -26,6 +26,62 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const AuthorizedOrgsDescAssetType = {
+    /**
+     * No asset type specified.
+     */
+    AssetTypeUnspecified: "ASSET_TYPE_UNSPECIFIED",
+    /**
+     * Device asset type.
+     */
+    AssetTypeDevice: "ASSET_TYPE_DEVICE",
+    /**
+     * credential strength asset type.
+     */
+    AssetTypeCredentialStrength: "ASSET_TYPE_CREDENTIAL_STRENGTH",
+} as const;
+
+/**
+ * The asset type of this authorized orgs desc. e.g. device, credential strength.
+ */
+export type AuthorizedOrgsDescAssetType = (typeof AuthorizedOrgsDescAssetType)[keyof typeof AuthorizedOrgsDescAssetType];
+
+export const AuthorizedOrgsDescAuthorizationDirection = {
+    /**
+     * No direction specified.
+     */
+    AuthorizationDirectionUnspecified: "AUTHORIZATION_DIRECTION_UNSPECIFIED",
+    /**
+     * Specified orgs will evaluate traffic.
+     */
+    AuthorizationDirectionTo: "AUTHORIZATION_DIRECTION_TO",
+    /**
+     * Specified orgs' traffic will be evaluated.
+     */
+    AuthorizationDirectionFrom: "AUTHORIZATION_DIRECTION_FROM",
+} as const;
+
+/**
+ * Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+ */
+export type AuthorizedOrgsDescAuthorizationDirection = (typeof AuthorizedOrgsDescAuthorizationDirection)[keyof typeof AuthorizedOrgsDescAuthorizationDirection];
+
+export const AuthorizedOrgsDescAuthorizationType = {
+    /**
+     * No authorization type specified.
+     */
+    AuthorizationTypeUnspecified: "AUTHORIZATION_TYPE_UNSPECIFIED",
+    /**
+     * This authorization relationship is "trust".
+     */
+    AuthorizationTypeTrust: "AUTHORIZATION_TYPE_TRUST",
+} as const;
+
+/**
+ * The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+ */
+export type AuthorizedOrgsDescAuthorizationType = (typeof AuthorizedOrgsDescAuthorizationType)[keyof typeof AuthorizedOrgsDescAuthorizationType];
+
 export const BasicLevelCombiningFunction = {
     /**
      * All `Conditions` must be true for the `BasicLevel` to be true.
@@ -170,7 +226,7 @@ export type OsConstraintOsType = (typeof OsConstraintOsType)[keyof typeof OsCons
 
 export const ServicePerimeterPerimeterType = {
     /**
-     * Regular Perimeter.
+     * Regular Perimeter. When no value is specified, the perimeter uses this type.
      */
     PerimeterTypeRegular: "PERIMETER_TYPE_REGULAR",
     /**

@@ -38,11 +38,11 @@ type LookupEntryResult struct {
 	DataSource GoogleCloudDatacatalogV1DataSourceResponse `pulumi:"dataSource"`
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
 	DataSourceConnectionSpec GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse `pulumi:"dataSourceConnectionSpec"`
-	// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+	// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
 	DatabaseTableSpec GoogleCloudDatacatalogV1DatabaseTableSpecResponse `pulumi:"databaseTableSpec"`
 	// Entry description that can consist of several sentences or paragraphs that describe entry contents. The description must not contain Unicode non-characters as well as C0 and C1 control codes except tabs (HT), new lines (LF), carriage returns (CR), and page breaks (FF). The maximum size is 2000 bytes when encoded in UTF-8. Default value is an empty string.
 	Description string `pulumi:"description"`
-	// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+	// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
 	DisplayName string `pulumi:"displayName"`
 	// Specification that applies to a fileset resource. Valid only for entries with the `FILESET` type.
 	FilesetSpec GoogleCloudDatacatalogV1FilesetSpecResponse `pulumi:"filesetSpec"`
@@ -56,6 +56,8 @@ type LookupEntryResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [Full Resource Name] (https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: `//bigquery.googleapis.com/projects/{PROJECT_ID}/datasets/{DATASET_ID}/tables/{TABLE_ID}` Output only when the entry is one of the types in the `EntryType` enum. For entries with a `user_specified_type`, this field is optional and defaults to an empty string. The resource string must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), periods (.), colons (:), slashes (/), dashes (-), and hashes (#). The maximum size is 200 bytes when encoded in UTF-8.
 	LinkedResource string `pulumi:"linkedResource"`
+	// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+	LookerSystemSpec GoogleCloudDatacatalogV1LookerSystemSpecResponse `pulumi:"lookerSystemSpec"`
 	// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 	Name string `pulumi:"name"`
 	// Additional information related to the entry. Private to the current user.
@@ -66,6 +68,8 @@ type LookupEntryResult struct {
 	Schema GoogleCloudDatacatalogV1SchemaResponse `pulumi:"schema"`
 	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 	SourceSystemTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponse `pulumi:"sourceSystemTimestamps"`
+	// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+	SqlDatabaseSystemSpec GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse `pulumi:"sqlDatabaseSystemSpec"`
 	// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
 	Type string `pulumi:"type"`
 	// Resource usage statistics.
@@ -145,7 +149,7 @@ func (o LookupEntryResultOutput) DataSourceConnectionSpec() GoogleCloudDatacatal
 	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput)
 }
 
-// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
 func (o LookupEntryResultOutput) DatabaseTableSpec() GoogleCloudDatacatalogV1DatabaseTableSpecResponseOutput {
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1DatabaseTableSpecResponse {
 		return v.DatabaseTableSpec
@@ -157,7 +161,7 @@ func (o LookupEntryResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
 func (o LookupEntryResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -192,6 +196,11 @@ func (o LookupEntryResultOutput) LinkedResource() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.LinkedResource }).(pulumi.StringOutput)
 }
 
+// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+func (o LookupEntryResultOutput) LookerSystemSpec() GoogleCloudDatacatalogV1LookerSystemSpecResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1LookerSystemSpecResponse { return v.LookerSystemSpec }).(GoogleCloudDatacatalogV1LookerSystemSpecResponseOutput)
+}
+
 // The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
 func (o LookupEntryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntryResult) string { return v.Name }).(pulumi.StringOutput)
@@ -217,6 +226,13 @@ func (o LookupEntryResultOutput) SourceSystemTimestamps() GoogleCloudDatacatalog
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1SystemTimestampsResponse {
 		return v.SourceSystemTimestamps
 	}).(GoogleCloudDatacatalogV1SystemTimestampsResponseOutput)
+}
+
+// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+func (o LookupEntryResultOutput) SqlDatabaseSystemSpec() GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse {
+		return v.SqlDatabaseSystemSpec
+	}).(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponseOutput)
 }
 
 // The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.

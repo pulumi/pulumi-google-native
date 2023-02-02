@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCutoverJobResult:
-    def __init__(__self__, compute_engine_target_details=None, create_time=None, end_time=None, error=None, name=None, progress_percent=None, state=None, state_message=None, state_time=None):
+    def __init__(__self__, compute_engine_target_details=None, create_time=None, end_time=None, error=None, name=None, progress_percent=None, state=None, state_message=None, state_time=None, steps=None):
         if compute_engine_target_details and not isinstance(compute_engine_target_details, dict):
             raise TypeError("Expected argument 'compute_engine_target_details' to be a dict")
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
@@ -47,6 +47,9 @@ class GetCutoverJobResult:
         if state_time and not isinstance(state_time, str):
             raise TypeError("Expected argument 'state_time' to be a str")
         pulumi.set(__self__, "state_time", state_time)
+        if steps and not isinstance(steps, list):
+            raise TypeError("Expected argument 'steps' to be a list")
+        pulumi.set(__self__, "steps", steps)
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -120,6 +123,14 @@ class GetCutoverJobResult:
         """
         return pulumi.get(self, "state_time")
 
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CutoverStepResponse']:
+        """
+        The cutover steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
 
 class AwaitableGetCutoverJobResult(GetCutoverJobResult):
     # pylint: disable=using-constant-test
@@ -135,7 +146,8 @@ class AwaitableGetCutoverJobResult(GetCutoverJobResult):
             progress_percent=self.progress_percent,
             state=self.state,
             state_message=self.state_message,
-            state_time=self.state_time)
+            state_time=self.state_time,
+            steps=self.steps)
 
 
 def get_cutover_job(cutover_job_id: Optional[str] = None,
@@ -165,7 +177,8 @@ def get_cutover_job(cutover_job_id: Optional[str] = None,
         progress_percent=__ret__.progress_percent,
         state=__ret__.state,
         state_message=__ret__.state_message,
-        state_time=__ret__.state_time)
+        state_time=__ret__.state_time,
+        steps=__ret__.steps)
 
 
 @_utilities.lift_output_func(get_cutover_job)

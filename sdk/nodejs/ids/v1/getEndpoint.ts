@@ -64,6 +64,10 @@ export interface GetEndpointResult {
      */
     readonly state: string;
     /**
+     * List of threat IDs to be excepted from generating alerts.
+     */
+    readonly threatExceptions: string[];
+    /**
      * Whether the endpoint should report traffic logs in addition to threat logs.
      */
     readonly trafficLogs: boolean;

@@ -46,12 +46,15 @@ class AcceleratorResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 accelerator_type: str):
+                 accelerator_type: str,
+                 state: str):
         """
         Identifies Data Fusion accelerators for an instance.
         :param str accelerator_type: The type of an accelator for a CDF instance.
+        :param str state: The state of the accelerator.
         """
         pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -60,6 +63,14 @@ class AcceleratorResponse(dict):
         The type of an accelator for a CDF instance.
         """
         return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of the accelerator.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string Secret;
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
         /// </summary>
         public readonly string Version;
 

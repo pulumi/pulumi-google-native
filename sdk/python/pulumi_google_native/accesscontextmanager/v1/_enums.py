@@ -6,6 +6,9 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'AuthorizedOrgsDescAssetType',
+    'AuthorizedOrgsDescAuthorizationDirection',
+    'AuthorizedOrgsDescAuthorizationType',
     'BasicLevelCombiningFunction',
     'DevicePolicyAllowedDeviceManagementLevelsItem',
     'DevicePolicyAllowedEncryptionStatusesItem',
@@ -35,6 +38,56 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class AuthorizedOrgsDescAssetType(str, Enum):
+    """
+    The asset type of this authorized orgs desc. e.g. device, credential strength.
+    """
+    ASSET_TYPE_UNSPECIFIED = "ASSET_TYPE_UNSPECIFIED"
+    """
+    No asset type specified.
+    """
+    ASSET_TYPE_DEVICE = "ASSET_TYPE_DEVICE"
+    """
+    Device asset type.
+    """
+    ASSET_TYPE_CREDENTIAL_STRENGTH = "ASSET_TYPE_CREDENTIAL_STRENGTH"
+    """
+    credential strength asset type.
+    """
+
+
+class AuthorizedOrgsDescAuthorizationDirection(str, Enum):
+    """
+    Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+    """
+    AUTHORIZATION_DIRECTION_UNSPECIFIED = "AUTHORIZATION_DIRECTION_UNSPECIFIED"
+    """
+    No direction specified.
+    """
+    AUTHORIZATION_DIRECTION_TO = "AUTHORIZATION_DIRECTION_TO"
+    """
+    Specified orgs will evaluate traffic.
+    """
+    AUTHORIZATION_DIRECTION_FROM = "AUTHORIZATION_DIRECTION_FROM"
+    """
+    Specified orgs' traffic will be evaluated.
+    """
+
+
+class AuthorizedOrgsDescAuthorizationType(str, Enum):
+    """
+    The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+    """
+    AUTHORIZATION_TYPE_UNSPECIFIED = "AUTHORIZATION_TYPE_UNSPECIFIED"
+    """
+    No authorization type specified.
+    """
+    AUTHORIZATION_TYPE_TRUST = "AUTHORIZATION_TYPE_TRUST"
+    """
+    This authorization relationship is "trust".
     """
 
 
@@ -174,7 +227,7 @@ class ServicePerimeterPerimeterType(str, Enum):
     """
     PERIMETER_TYPE_REGULAR = "PERIMETER_TYPE_REGULAR"
     """
-    Regular Perimeter.
+    Regular Perimeter. When no value is specified, the perimeter uses this type.
     """
     PERIMETER_TYPE_BRIDGE = "PERIMETER_TYPE_BRIDGE"
     """

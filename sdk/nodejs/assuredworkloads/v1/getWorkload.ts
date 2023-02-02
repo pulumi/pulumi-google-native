@@ -81,7 +81,7 @@ export interface GetWorkloadResult {
      */
     readonly name: string;
     /**
-     * Optional. Compliance Regime associated with this workload.
+     * Optional. Partner regime associated with this workload.
      */
     readonly partner: string;
     /**

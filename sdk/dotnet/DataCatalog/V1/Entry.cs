@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse> DataSourceConnectionSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         /// </summary>
         [Output("databaseTableSpec")]
         public Output<Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecResponse> DatabaseTableSpec { get; private set; } = null!;
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        /// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -113,6 +113,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        /// </summary>
+        [Output("lookerSystemSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse> LookerSystemSpec { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         [Output("name")]
@@ -144,6 +150,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Output("sourceSystemTimestamps")]
         public Output<Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse> SourceSystemTimestamps { get; private set; } = null!;
+
+        /// <summary>
+        /// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+        /// </summary>
+        [Output("sqlDatabaseSystemSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse> SqlDatabaseSystemSpec { get; private set; } = null!;
 
         /// <summary>
         /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
@@ -234,7 +246,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<Inputs.GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs>? DataSourceConnectionSpec { get; set; }
 
         /// <summary>
-        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         /// </summary>
         [Input("databaseTableSpec")]
         public Input<Inputs.GoogleCloudDatacatalogV1DatabaseTableSpecArgs>? DatabaseTableSpec { get; set; }
@@ -246,7 +258,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        /// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -299,6 +311,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         [Input("location")]
         public Input<string>? Location { get; set; }
 
+        /// <summary>
+        /// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        /// </summary>
+        [Input("lookerSystemSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1LookerSystemSpecArgs>? LookerSystemSpec { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -319,6 +337,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Input("sourceSystemTimestamps")]
         public Input<Inputs.GoogleCloudDatacatalogV1SystemTimestampsArgs>? SourceSystemTimestamps { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+        /// </summary>
+        [Input("sqlDatabaseSystemSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs>? SqlDatabaseSystemSpec { get; set; }
 
         /// <summary>
         /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.

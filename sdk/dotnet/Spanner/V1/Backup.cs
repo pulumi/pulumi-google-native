@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<string?> EncryptionConfigKmsKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// The encryption information for the backup. .
+        /// The encryption information for the backup.
         /// </summary>
         [Output("encryptionInfo")]
         public Output<Outputs.EncryptionInfoResponse> EncryptionInfo { get; private set; } = null!;

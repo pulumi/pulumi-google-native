@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
-    /// Creates a Interconnect in the specified project using the data included in the request.
+    /// Creates an Interconnect in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:Interconnect")]
     public partial class Interconnect : global::Pulumi.CustomResource
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+        /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         /// </summary>
         [Output("nocContactEmail")]
         public Output<string> NocContactEmail { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+        /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         /// </summary>
         [Input("nocContactEmail")]
         public Input<string>? NocContactEmail { get; set; }

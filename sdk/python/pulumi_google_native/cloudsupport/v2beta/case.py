@@ -24,6 +24,7 @@ class CaseArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  escalated: Optional[pulumi.Input[bool]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
                  severity: Optional[pulumi.Input['CaseSeverity']] = None,
@@ -37,6 +38,7 @@ class CaseArgs:
         :param pulumi.Input[str] description: A broad description of the issue.
         :param pulumi.Input[str] display_name: The short summary of the issue reported in this case.
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
+        :param pulumi.Input[str] language_code: The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
         :param pulumi.Input[str] name: The resource name for the case.
         :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
         :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
@@ -56,6 +58,8 @@ class CaseArgs:
             pulumi.set(__self__, "display_name", display_name)
         if escalated is not None:
             pulumi.set(__self__, "escalated", escalated)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if priority is not None:
@@ -151,6 +155,18 @@ class CaseArgs:
         pulumi.set(self, "escalated", value)
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -233,6 +249,7 @@ class Case(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  escalated: Optional[pulumi.Input[bool]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
                  severity: Optional[pulumi.Input['CaseSeverity']] = None,
@@ -243,7 +260,7 @@ class Case(pulumi.CustomResource):
                  v2betum_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a new case and associate it with the given Cloud resource.
+        Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -254,6 +271,7 @@ class Case(pulumi.CustomResource):
         :param pulumi.Input[str] description: A broad description of the issue.
         :param pulumi.Input[str] display_name: The short summary of the issue reported in this case.
         :param pulumi.Input[bool] escalated: Whether the case is currently escalated.
+        :param pulumi.Input[str] language_code: The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
         :param pulumi.Input[str] name: The resource name for the case.
         :param pulumi.Input['CasePriority'] priority: The priority of this case. If this is set, do not set severity.
         :param pulumi.Input['CaseSeverity'] severity: The severity of this case. Deprecated. Use priority instead.
@@ -268,7 +286,7 @@ class Case(pulumi.CustomResource):
                  args: CaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a new case and associate it with the given Cloud resource.
+        Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -292,6 +310,7 @@ class Case(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  escalated: Optional[pulumi.Input[bool]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input['CasePriority']] = None,
                  severity: Optional[pulumi.Input['CaseSeverity']] = None,
@@ -314,6 +333,7 @@ class Case(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["escalated"] = escalated
+            __props__.__dict__["language_code"] = language_code
             __props__.__dict__["name"] = name
             __props__.__dict__["priority"] = priority
             if severity is not None and not opts.urn:
@@ -362,6 +382,7 @@ class Case(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["escalated"] = None
+        __props__.__dict__["language_code"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["priority"] = None
         __props__.__dict__["severity"] = None
@@ -421,6 +442,14 @@ class Case(pulumi.CustomResource):
         Whether the case is currently escalated.
         """
         return pulumi.get(self, "escalated")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Output[str]:
+        """
+        The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+        """
+        return pulumi.get(self, "language_code")
 
     @property
     @pulumi.getter

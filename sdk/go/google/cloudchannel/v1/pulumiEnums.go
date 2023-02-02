@@ -183,6 +183,175 @@ func (in *channelPartnerLinkLinkStatePtr) ToChannelPartnerLinkLinkStatePtrOutput
 	return pulumi.ToOutputWithContext(ctx, in).(ChannelPartnerLinkLinkStatePtrOutput)
 }
 
+// Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+type GoogleCloudChannelV1ConditionalOverrideRebillingBasis string
+
+const (
+	// Not used.
+	GoogleCloudChannelV1ConditionalOverrideRebillingBasisRebillingBasisUnspecified = GoogleCloudChannelV1ConditionalOverrideRebillingBasis("REBILLING_BASIS_UNSPECIFIED")
+	// Use the list cost, also known as the MSRP.
+	GoogleCloudChannelV1ConditionalOverrideRebillingBasisCostAtList = GoogleCloudChannelV1ConditionalOverrideRebillingBasis("COST_AT_LIST")
+	// Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
+	GoogleCloudChannelV1ConditionalOverrideRebillingBasisDirectCustomerCost = GoogleCloudChannelV1ConditionalOverrideRebillingBasis("DIRECT_CUSTOMER_COST")
+)
+
+func (GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideRebillingBasis)(nil)).Elem()
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
+	return pulumi.ToOutput(e).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput)
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput)
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return e.ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return GoogleCloudChannelV1ConditionalOverrideRebillingBasis(e).ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutputWithContext(ctx).ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideRebillingBasis)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return o.ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1ConditionalOverrideRebillingBasis) *GoogleCloudChannelV1ConditionalOverrideRebillingBasis {
+		return &v
+	}).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput)
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1ConditionalOverrideRebillingBasis) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1ConditionalOverrideRebillingBasis)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) Elem() GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1ConditionalOverrideRebillingBasis) GoogleCloudChannelV1ConditionalOverrideRebillingBasis {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1ConditionalOverrideRebillingBasis
+		return ret
+	}).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput)
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudChannelV1ConditionalOverrideRebillingBasis) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput is an input type that accepts GoogleCloudChannelV1ConditionalOverrideRebillingBasisArgs and GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput` via:
+//
+//	GoogleCloudChannelV1ConditionalOverrideRebillingBasisArgs{...}
+type GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput
+	ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisOutputWithContext(context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput
+}
+
+var googleCloudChannelV1ConditionalOverrideRebillingBasisPtrType = reflect.TypeOf((**GoogleCloudChannelV1ConditionalOverrideRebillingBasis)(nil)).Elem()
+
+type GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput
+	ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput
+}
+
+type googleCloudChannelV1ConditionalOverrideRebillingBasisPtr string
+
+func GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtr(v string) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrInput {
+	return (*googleCloudChannelV1ConditionalOverrideRebillingBasisPtr)(&v)
+}
+
+func (*googleCloudChannelV1ConditionalOverrideRebillingBasisPtr) ElementType() reflect.Type {
+	return googleCloudChannelV1ConditionalOverrideRebillingBasisPtrType
+}
+
+func (in *googleCloudChannelV1ConditionalOverrideRebillingBasisPtr) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput() GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput)
+}
+
+func (in *googleCloudChannelV1ConditionalOverrideRebillingBasisPtr) ToGoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput)
+}
+
 // Period Type.
 type GoogleCloudChannelV1PeriodPeriodType string
 
@@ -701,6 +870,8 @@ func (in *googleCloudChannelV1RepricingConfigRebillingBasisPtr) ToGoogleCloudCha
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkLinkStateInput)(nil)).Elem(), ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ChannelPartnerLinkLinkStatePtrInput)(nil)).Elem(), ChannelPartnerLinkLinkState("CHANNEL_PARTNER_LINK_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput)(nil)).Elem(), GoogleCloudChannelV1ConditionalOverrideRebillingBasis("REBILLING_BASIS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrInput)(nil)).Elem(), GoogleCloudChannelV1ConditionalOverrideRebillingBasis("REBILLING_BASIS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodTypeInput)(nil)).Elem(), GoogleCloudChannelV1PeriodPeriodType("PERIOD_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodTypePtrInput)(nil)).Elem(), GoogleCloudChannelV1PeriodPeriodType("PERIOD_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlanInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsPaymentPlan("PAYMENT_PLAN_UNSPECIFIED"))
@@ -709,6 +880,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigRebillingBasisPtrInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigRebillingBasis("REBILLING_BASIS_UNSPECIFIED"))
 	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStateOutput{})
 	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1ConditionalOverrideRebillingBasisPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput{})

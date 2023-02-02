@@ -1440,7 +1440,8 @@ class RuntimeSoftwareConfigResponse(dict):
                  notebook_upgrade_schedule: str,
                  post_startup_script: str,
                  post_startup_script_behavior: str,
-                 upgradeable: bool):
+                 upgradeable: bool,
+                 version: str):
         """
         Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
         :param str custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -1454,6 +1455,7 @@ class RuntimeSoftwareConfigResponse(dict):
         :param str post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         :param str post_startup_script_behavior: Behavior for the post startup script.
         :param bool upgradeable: Bool indicating whether an newer image is available in an image family.
+        :param str version: version of boot image such as M100, from release label of the image.
         """
         pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
         pulumi.set(__self__, "disable_terminal", disable_terminal)
@@ -1466,6 +1468,7 @@ class RuntimeSoftwareConfigResponse(dict):
         pulumi.set(__self__, "post_startup_script", post_startup_script)
         pulumi.set(__self__, "post_startup_script_behavior", post_startup_script_behavior)
         pulumi.set(__self__, "upgradeable", upgradeable)
+        pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="customGpuDriverPath")
@@ -1554,6 +1557,14 @@ class RuntimeSoftwareConfigResponse(dict):
         Bool indicating whether an newer image is available in an image family.
         """
         return pulumi.get(self, "upgradeable")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        version of boot image such as M100, from release label of the image.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

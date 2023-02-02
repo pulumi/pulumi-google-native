@@ -94,6 +94,10 @@ export interface GetInstanceResult {
      * Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
      */
     readonly volumes: outputs.baremetalsolution.v2.VolumeResponse[];
+    /**
+     * The workload profile for the instance.
+     */
+    readonly workloadProfile: string;
 }
 
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {

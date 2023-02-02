@@ -28,6 +28,8 @@ type LookupIndexArgs struct {
 }
 
 type LookupIndexResult struct {
+	// The API scope supported by this index.
+	ApiScope string `pulumi:"apiScope"`
 	// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
 	Fields []GoogleFirestoreAdminV1IndexFieldResponse `pulumi:"fields"`
 	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
@@ -74,6 +76,11 @@ func (o LookupIndexResultOutput) ToLookupIndexResultOutput() LookupIndexResultOu
 
 func (o LookupIndexResultOutput) ToLookupIndexResultOutputWithContext(ctx context.Context) LookupIndexResultOutput {
 	return o
+}
+
+// The API scope supported by this index.
+func (o LookupIndexResultOutput) ApiScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIndexResult) string { return v.ApiScope }).(pulumi.StringOutput)
 }
 
 // The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.

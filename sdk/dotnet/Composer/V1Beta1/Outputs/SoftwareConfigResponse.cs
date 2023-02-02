@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> AirflowConfigOverrides;
         /// <summary>
+        /// Optional. The configuration for Cloud Data Lineage integration.
+        /// </summary>
+        public readonly Outputs.CloudDataLineageIntegrationResponse CloudDataLineageIntegration;
+        /// <summary>
         /// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
         /// </summary>
         public readonly ImmutableDictionary<string, string> EnvVariables;
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         private SoftwareConfigResponse(
             ImmutableDictionary<string, string> airflowConfigOverrides,
 
+            Outputs.CloudDataLineageIntegrationResponse cloudDataLineageIntegration,
+
             ImmutableDictionary<string, string> envVariables,
 
             string imageVersion,
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
             int schedulerCount)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
+            CloudDataLineageIntegration = cloudDataLineageIntegration;
             EnvVariables = envVariables;
             ImageVersion = imageVersion;
             PypiPackages = pypiPackages;

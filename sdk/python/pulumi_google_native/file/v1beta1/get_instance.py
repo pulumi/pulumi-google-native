@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
+    def __init__(__self__, capacity_gb=None, capacity_step_size_gb=None, create_time=None, description=None, etag=None, file_shares=None, kms_key_name=None, labels=None, max_capacity_gb=None, max_share_count=None, multi_share_enabled=None, name=None, networks=None, protocol=None, satisfies_pzs=None, state=None, status_message=None, suspension_reasons=None, tier=None):
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -59,6 +59,9 @@ class GetInstanceResult:
         if networks and not isinstance(networks, list):
             raise TypeError("Expected argument 'networks' to be a list")
         pulumi.set(__self__, "networks", networks)
+        if protocol and not isinstance(protocol, str):
+            raise TypeError("Expected argument 'protocol' to be a str")
+        pulumi.set(__self__, "protocol", protocol)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -180,6 +183,14 @@ class GetInstanceResult:
         return pulumi.get(self, "networks")
 
     @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -239,6 +250,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             multi_share_enabled=self.multi_share_enabled,
             name=self.name,
             networks=self.networks,
+            protocol=self.protocol,
             satisfies_pzs=self.satisfies_pzs,
             state=self.state,
             status_message=self.status_message,
@@ -274,6 +286,7 @@ def get_instance(instance_id: Optional[str] = None,
         multi_share_enabled=__ret__.multi_share_enabled,
         name=__ret__.name,
         networks=__ret__.networks,
+        protocol=__ret__.protocol,
         satisfies_pzs=__ret__.satisfies_pzs,
         state=__ret__.state,
         status_message=__ret__.status_message,

@@ -132,7 +132,7 @@ class ProductType(str, Enum):
 
 class ServingConfigDiversityType(str, Enum):
     """
-    What kind of diversity to use - data driven or rule based.
+    What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
     """
     DIVERSITY_TYPE_UNSPECIFIED = "DIVERSITY_TYPE_UNSPECIFIED"
     """

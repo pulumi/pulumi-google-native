@@ -17,13 +17,28 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
     public sealed class EnvironmentResponse
     {
         /// <summary>
+        /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+        /// </summary>
+        public readonly Outputs.KMSEnvMapResponse EncryptedVariables;
+        /// <summary>
+        /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> SecretVariables;
+        /// <summary>
         /// A map of environment variable names to values.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Variables;
 
         [OutputConstructor]
-        private EnvironmentResponse(ImmutableDictionary<string, string> variables)
+        private EnvironmentResponse(
+            Outputs.KMSEnvMapResponse encryptedVariables,
+
+            ImmutableDictionary<string, string> secretVariables,
+
+            ImmutableDictionary<string, string> variables)
         {
+            EncryptedVariables = encryptedVariables;
+            SecretVariables = secretVariables;
             Variables = variables;
         }
     }

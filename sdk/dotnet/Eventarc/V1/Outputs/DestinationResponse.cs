@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Outputs
     public sealed class DestinationResponse
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         /// </summary>
         public readonly string CloudFunction;
         /// <summary>

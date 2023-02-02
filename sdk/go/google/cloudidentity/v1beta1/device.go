@@ -27,6 +27,8 @@ type Device struct {
 	Brand pulumi.StringOutput `pulumi:"brand"`
 	// Build number of the device.
 	BuildNumber pulumi.StringOutput `pulumi:"buildNumber"`
+	// List of the clients the device is reporting to.
+	ClientTypes pulumi.StringArrayOutput `pulumi:"clientTypes"`
 	// Represents whether the Device is compromised.
 	CompromisedState pulumi.StringOutput `pulumi:"compromisedState"`
 	// When the Company-Owned device was imported. This field is empty for BYOD devices.
@@ -43,6 +45,8 @@ type Device struct {
 	EncryptionState pulumi.StringOutput `pulumi:"encryptionState"`
 	// Attributes specific to Endpoint Verification devices.
 	EndpointVerificationSpecificAttributes EndpointVerificationSpecificAttributesResponseOutput `pulumi:"endpointVerificationSpecificAttributes"`
+	// Host name of the device.
+	Hostname pulumi.StringOutput `pulumi:"hostname"`
 	// IMEI number of device if GSM device; empty otherwise.
 	Imei pulumi.StringOutput `pulumi:"imei"`
 	// Kernel version of the device.
@@ -118,8 +122,14 @@ func (DeviceState) ElementType() reflect.Type {
 type deviceArgs struct {
 	// Asset tag of the device.
 	AssetTag *string `pulumi:"assetTag"`
+	// List of the clients the device is reporting to.
+	ClientTypes []DeviceClientTypesItem `pulumi:"clientTypes"`
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+	Customer *string `pulumi:"customer"`
 	// Unique identifier for the device.
 	DeviceId *string `pulumi:"deviceId"`
+	// Host name of the device.
+	Hostname *string `pulumi:"hostname"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
 	// Serial Number of device. Example: HT82V1A01076.
@@ -132,8 +142,14 @@ type deviceArgs struct {
 type DeviceArgs struct {
 	// Asset tag of the device.
 	AssetTag pulumi.StringPtrInput
+	// List of the clients the device is reporting to.
+	ClientTypes DeviceClientTypesItemArrayInput
+	// Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs.
+	Customer pulumi.StringPtrInput
 	// Unique identifier for the device.
 	DeviceId pulumi.StringPtrInput
+	// Host name of the device.
+	Hostname pulumi.StringPtrInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput
 	// Serial Number of device. Example: HT82V1A01076.
@@ -209,6 +225,11 @@ func (o DeviceOutput) BuildNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.BuildNumber }).(pulumi.StringOutput)
 }
 
+// List of the clients the device is reporting to.
+func (o DeviceOutput) ClientTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringArrayOutput { return v.ClientTypes }).(pulumi.StringArrayOutput)
+}
+
 // Represents whether the Device is compromised.
 func (o DeviceOutput) CompromisedState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.CompromisedState }).(pulumi.StringOutput)
@@ -249,6 +270,11 @@ func (o DeviceOutput) EndpointVerificationSpecificAttributes() EndpointVerificat
 	return o.ApplyT(func(v *Device) EndpointVerificationSpecificAttributesResponseOutput {
 		return v.EndpointVerificationSpecificAttributes
 	}).(EndpointVerificationSpecificAttributesResponseOutput)
+}
+
+// Host name of the device.
+func (o DeviceOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Device) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
 // IMEI number of device if GSM device; empty otherwise.

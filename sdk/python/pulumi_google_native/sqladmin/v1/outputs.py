@@ -1418,7 +1418,7 @@ class PasswordValidationPolicyResponse(dict):
         :param bool disallow_username_substring: Disallow username as a part of the password.
         :param bool enable_password_policy: Whether the password policy is enabled or not.
         :param int min_length: Minimum number of characters allowed.
-        :param str password_change_interval: Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        :param str password_change_interval: Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
         :param int reuse_interval: Number of previous passwords that cannot be reused.
         """
         pulumi.set(__self__, "complexity", complexity)
@@ -1464,7 +1464,7 @@ class PasswordValidationPolicyResponse(dict):
     @pulumi.getter(name="passwordChangeInterval")
     def password_change_interval(self) -> str:
         """
-        Minimum interval after which the password can be changed. This flag is only supported for PostgresSQL.
+        Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
         """
         return pulumi.get(self, "password_change_interval")
 

@@ -41,9 +41,9 @@ class RoutineArgs:
         :param pulumi.Input[str] description: Optional. The description of the routine, if defined.
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
-        :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
+        :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         :param pulumi.Input['RemoteFunctionOptionsArgs'] remote_function_options: Optional. Remote function specific options.
-        :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input['SparkOptionsArgs'] spark_options: Optional. Spark specific options.
         :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
@@ -172,7 +172,7 @@ class RoutineArgs:
     @pulumi.getter
     def language(self) -> Optional[pulumi.Input['RoutineLanguage']]:
         """
-        Optional. Defaults to "SQL".
+        Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         """
         return pulumi.get(self, "language")
 
@@ -205,7 +205,7 @@ class RoutineArgs:
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> Optional[pulumi.Input['StandardSqlTableTypeArgs']]:
         """
-        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         """
         return pulumi.get(self, "return_table_type")
 
@@ -282,9 +282,9 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. The description of the routine, if defined.
         :param pulumi.Input['RoutineDeterminismLevel'] determinism_level: Optional. The determinism level of the JavaScript UDF, if defined.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
-        :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL".
+        :param pulumi.Input['RoutineLanguage'] language: Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         :param pulumi.Input[pulumi.InputType['RemoteFunctionOptionsArgs']] remote_function_options: Optional. Remote function specific options.
-        :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        :param pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
@@ -475,7 +475,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter
     def language(self) -> pulumi.Output[str]:
         """
-        Optional. Defaults to "SQL".
+        Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         """
         return pulumi.get(self, "language")
 
@@ -504,7 +504,7 @@ class Routine(pulumi.CustomResource):
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> pulumi.Output['outputs.StandardSqlTableTypeResponse']:
         """
-        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         """
         return pulumi.get(self, "return_table_type")
 

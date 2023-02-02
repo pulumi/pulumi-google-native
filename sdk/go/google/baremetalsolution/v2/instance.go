@@ -50,6 +50,8 @@ type Instance struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
 	Volumes VolumeResponseArrayOutput `pulumi:"volumes"`
+	// The workload profile for the instance.
+	WorkloadProfile pulumi.StringOutput `pulumi:"workloadProfile"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -118,6 +120,8 @@ type instanceArgs struct {
 	Project *string `pulumi:"project"`
 	// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
 	Volumes []Volume `pulumi:"volumes"`
+	// The workload profile for the instance.
+	WorkloadProfile *InstanceWorkloadProfile `pulumi:"workloadProfile"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -144,6 +148,8 @@ type InstanceArgs struct {
 	Project pulumi.StringPtrInput
 	// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
 	Volumes VolumeArrayInput
+	// The workload profile for the instance.
+	WorkloadProfile InstanceWorkloadProfilePtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -271,6 +277,11 @@ func (o InstanceOutput) UpdateTime() pulumi.StringOutput {
 // Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
 func (o InstanceOutput) Volumes() VolumeResponseArrayOutput {
 	return o.ApplyT(func(v *Instance) VolumeResponseArrayOutput { return v.Volumes }).(VolumeResponseArrayOutput)
+}
+
+// The workload profile for the instance.
+func (o InstanceOutput) WorkloadProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.WorkloadProfile }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -79,6 +79,10 @@ export interface GetInstanceResult {
      */
     readonly enableStackdriverMonitoring: boolean;
     /**
+     * Option to enable zone separation.
+     */
+    readonly enableZoneSeparation: boolean;
+    /**
      * Option to enable and pass metadata for event publishing.
      */
     readonly eventPublishConfig: outputs.datafusion.v1beta1.EventPublishConfigResponse;

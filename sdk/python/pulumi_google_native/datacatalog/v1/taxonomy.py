@@ -161,6 +161,7 @@ class Taxonomy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
             __props__.__dict__["policy_tag_count"] = None
+            __props__.__dict__["service"] = None
             __props__.__dict__["taxonomy_timestamps"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -193,6 +194,7 @@ class Taxonomy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["policy_tag_count"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["service"] = None
         __props__.__dict__["taxonomy_timestamps"] = None
         return Taxonomy(resource_name, opts=opts, __props__=__props__)
 
@@ -245,6 +247,14 @@ class Taxonomy(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Output['outputs.GoogleCloudDatacatalogV1TaxonomyServiceResponse']:
+        """
+        Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        """
+        return pulumi.get(self, "service")
 
     @property
     @pulumi.getter(name="taxonomyTimestamps")

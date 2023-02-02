@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         public readonly string DriverOutputResourceUri;
         /// <summary>
+        /// Optional. Driver scheduling configuration.
+        /// </summary>
+        public readonly Outputs.DriverSchedulingConfigResponse DriverSchedulingConfig;
+        /// <summary>
         /// Optional. Job is a Hadoop job.
         /// </summary>
         public readonly Outputs.HadoopJobResponse HadoopJob;
@@ -152,6 +156,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 
             string driverOutputResourceUri,
 
+            Outputs.DriverSchedulingConfigResponse driverSchedulingConfig,
+
             Outputs.HadoopJobResponse hadoopJob,
 
             Outputs.HiveJobResponse hiveJob,
@@ -189,6 +195,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
             Done = done;
             DriverControlFilesUri = driverControlFilesUri;
             DriverOutputResourceUri = driverOutputResourceUri;
+            DriverSchedulingConfig = driverSchedulingConfig;
             HadoopJob = hadoopJob;
             HiveJob = hiveJob;
             JobUuid = jobUuid;

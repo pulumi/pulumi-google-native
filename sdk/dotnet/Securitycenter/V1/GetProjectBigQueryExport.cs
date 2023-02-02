@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public static class GetProjectBigQueryExport
     {
         /// <summary>
-        /// Gets a big query export.
+        /// Gets a BigQuery export.
         /// </summary>
         public static Task<GetProjectBigQueryExportResult> InvokeAsync(GetProjectBigQueryExportArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectBigQueryExportResult>("google-native:securitycenter/v1:getProjectBigQueryExport", args ?? new GetProjectBigQueryExportArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a big query export.
+        /// Gets a BigQuery export.
         /// </summary>
         public static Output<GetProjectBigQueryExportResult> Invoke(GetProjectBigQueryExportInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectBigQueryExportResult>("google-native:securitycenter/v1:getProjectBigQueryExport", args ?? new GetProjectBigQueryExportInvokeArgs(), options.WithDefaults());
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public sealed class GetProjectBigQueryExportResult
     {
         /// <summary>
-        /// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+        /// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         public readonly string Filter;
         /// <summary>
-        /// Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+        /// Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
         /// </summary>
         public readonly string MostRecentEditor;
         /// <summary>
@@ -82,11 +82,11 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The service account that needs permission to create table, upload data to the big query dataset.
+        /// The service account that needs permission to create table and upload data to the BigQuery dataset.
         /// </summary>
         public readonly string Principal;
         /// <summary>
-        /// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+        /// The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
         /// </summary>
         public readonly string UpdateTime;
 

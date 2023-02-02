@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetReservationResult',
@@ -18,13 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, concurrency=None, creation_time=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, slot_capacity=None, update_time=None):
+    def __init__(__self__, autoscale=None, concurrency=None, creation_time=None, edition=None, ignore_idle_slots=None, multi_region_auxiliary=None, name=None, slot_capacity=None, update_time=None):
+        if autoscale and not isinstance(autoscale, dict):
+            raise TypeError("Expected argument 'autoscale' to be a dict")
+        pulumi.set(__self__, "autoscale", autoscale)
         if concurrency and not isinstance(concurrency, str):
             raise TypeError("Expected argument 'concurrency' to be a str")
         pulumi.set(__self__, "concurrency", concurrency)
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
+        if edition and not isinstance(edition, str):
+            raise TypeError("Expected argument 'edition' to be a str")
+        pulumi.set(__self__, "edition", edition)
         if ignore_idle_slots and not isinstance(ignore_idle_slots, bool):
             raise TypeError("Expected argument 'ignore_idle_slots' to be a bool")
         pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
@@ -43,6 +50,14 @@ class GetReservationResult:
 
     @property
     @pulumi.getter
+    def autoscale(self) -> 'outputs.AutoscaleResponse':
+        """
+        The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        """
+        return pulumi.get(self, "autoscale")
+
+    @property
+    @pulumi.getter
     def concurrency(self) -> str:
         """
         Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
@@ -56,6 +71,14 @@ class GetReservationResult:
         Creation time of the reservation.
         """
         return pulumi.get(self, "creation_time")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        Edition of the reservation.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="ignoreIdleSlots")
@@ -104,8 +127,10 @@ class AwaitableGetReservationResult(GetReservationResult):
         if False:
             yield self
         return GetReservationResult(
+            autoscale=self.autoscale,
             concurrency=self.concurrency,
             creation_time=self.creation_time,
+            edition=self.edition,
             ignore_idle_slots=self.ignore_idle_slots,
             multi_region_auxiliary=self.multi_region_auxiliary,
             name=self.name,
@@ -128,8 +153,10 @@ def get_reservation(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:bigqueryreservation/v1:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
+        autoscale=__ret__.autoscale,
         concurrency=__ret__.concurrency,
         creation_time=__ret__.creation_time,
+        edition=__ret__.edition,
         ignore_idle_slots=__ret__.ignore_idle_slots,
         multi_region_auxiliary=__ret__.multi_region_auxiliary,
         name=__ret__.name,

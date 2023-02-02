@@ -22,10 +22,16 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<ImmutableDictionary<string, string>> ClusterStates { get; private set; } = null!;
 
         /// <summary>
-        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         [Output("columnFamilies")]
         public Output<ImmutableDictionary<string, string>> ColumnFamilies { get; private set; } = null!;
+
+        /// <summary>
+        /// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+        /// </summary>
+        [Output("deletionProtection")]
+        public Output<bool> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -37,7 +43,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Output("restoreInfo")]
         public Output<Outputs.RestoreInfoResponse> RestoreInfo { get; private set; } = null!;
+
+        /// <summary>
+        /// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+        /// </summary>
+        [Output("stats")]
+        public Output<Outputs.TableStatsResponse> Stats { get; private set; } = null!;
 
 
         /// <summary>
@@ -105,13 +117,19 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         private InputMap<string>? _columnFamilies;
 
         /// <summary>
-        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         public InputMap<string> ColumnFamilies
         {
             get => _columnFamilies ?? (_columnFamilies = new InputMap<string>());
             set => _columnFamilies = value;
         }
+
+        /// <summary>
+        /// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+        /// </summary>
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -135,13 +153,19 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+        /// </summary>
+        [Input("stats")]
+        public Input<Inputs.TableStatsArgs>? Stats { get; set; }
 
         /// <summary>
         /// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.

@@ -23,8 +23,8 @@ class DestGroupArgs:
         """
         The set of arguments for constructing a DestGroup resource.
         :param pulumi.Input[str] tunnel_dest_group_id: Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: null List of CIDRs that this group applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: null List of FQDNs that this group applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: Unordered list. List of CIDRs that this group applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: Unordered list. List of FQDNs that this group applies to.
         :param pulumi.Input[str] name: Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
         """
         pulumi.set(__self__, "tunnel_dest_group_id", tunnel_dest_group_id)
@@ -55,7 +55,7 @@ class DestGroupArgs:
     @pulumi.getter
     def cidrs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        null List of CIDRs that this group applies to.
+        Unordered list. List of CIDRs that this group applies to.
         """
         return pulumi.get(self, "cidrs")
 
@@ -67,7 +67,7 @@ class DestGroupArgs:
     @pulumi.getter
     def fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        null List of FQDNs that this group applies to.
+        Unordered list. List of FQDNs that this group applies to.
         """
         return pulumi.get(self, "fqdns")
 
@@ -123,8 +123,8 @@ class DestGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: null List of CIDRs that this group applies to.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: null List of FQDNs that this group applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] cidrs: Unordered list. List of CIDRs that this group applies to.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fqdns: Unordered list. List of FQDNs that this group applies to.
         :param pulumi.Input[str] name: Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
         :param pulumi.Input[str] tunnel_dest_group_id: Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`.
         """
@@ -211,7 +211,7 @@ class DestGroup(pulumi.CustomResource):
     @pulumi.getter
     def cidrs(self) -> pulumi.Output[Sequence[str]]:
         """
-        null List of CIDRs that this group applies to.
+        Unordered list. List of CIDRs that this group applies to.
         """
         return pulumi.get(self, "cidrs")
 
@@ -219,7 +219,7 @@ class DestGroup(pulumi.CustomResource):
     @pulumi.getter
     def fqdns(self) -> pulumi.Output[Sequence[str]]:
         """
-        null List of FQDNs that this group applies to.
+        Unordered list. List of FQDNs that this group applies to.
         """
         return pulumi.get(self, "fqdns")
 

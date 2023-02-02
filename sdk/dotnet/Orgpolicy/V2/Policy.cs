@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public Output<Outputs.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse> Alternate { get; private set; } = null!;
 
         /// <summary>
+        /// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Output("dryRunSpec")]
+        public Output<Outputs.GoogleCloudOrgpolicyV2PolicySpecResponse> DryRunSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         /// </summary>
         [Output("name")]
@@ -90,6 +96,12 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         [Input("alternate")]
         public Input<Inputs.GoogleCloudOrgpolicyV2AlternatePolicySpecArgs>? Alternate { get; set; }
+
+        /// <summary>
+        /// dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Input("dryRunSpec")]
+        public Input<Inputs.GoogleCloudOrgpolicyV2PolicySpecArgs>? DryRunSpec { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.

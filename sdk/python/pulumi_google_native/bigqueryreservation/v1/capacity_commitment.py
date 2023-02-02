@@ -17,6 +17,7 @@ __all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
 class CapacityCommitmentArgs:
     def __init__(__self__, *,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input['CapacityCommitmentEdition']] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -27,6 +28,7 @@ class CapacityCommitmentArgs:
         """
         The set of arguments for constructing a CapacityCommitment resource.
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        :param pulumi.Input['CapacityCommitmentEdition'] edition: Edition of the capacity commitment.
         :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
@@ -35,6 +37,8 @@ class CapacityCommitmentArgs:
         """
         if capacity_commitment_id is not None:
             pulumi.set(__self__, "capacity_commitment_id", capacity_commitment_id)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if enforce_single_admin_project_per_org is not None:
             pulumi.set(__self__, "enforce_single_admin_project_per_org", enforce_single_admin_project_per_org)
         if location is not None:
@@ -61,6 +65,18 @@ class CapacityCommitmentArgs:
     @capacity_commitment_id.setter
     def capacity_commitment_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "capacity_commitment_id", value)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input['CapacityCommitmentEdition']]:
+        """
+        Edition of the capacity commitment.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input['CapacityCommitmentEdition']]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
@@ -147,6 +163,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input['CapacityCommitmentEdition']] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -162,6 +179,7 @@ class CapacityCommitment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
+        :param pulumi.Input['CapacityCommitmentEdition'] edition: Edition of the capacity commitment.
         :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
@@ -194,6 +212,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
+                 edition: Optional[pulumi.Input['CapacityCommitmentEdition']] = None,
                  enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
@@ -211,6 +230,7 @@ class CapacityCommitment(pulumi.CustomResource):
             __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
             __props__.__dict__["capacity_commitment_id"] = capacity_commitment_id
+            __props__.__dict__["edition"] = edition
             __props__.__dict__["enforce_single_admin_project_per_org"] = enforce_single_admin_project_per_org
             __props__.__dict__["location"] = location
             __props__.__dict__["multi_region_auxiliary"] = multi_region_auxiliary
@@ -250,6 +270,7 @@ class CapacityCommitment(pulumi.CustomResource):
         __props__.__dict__["capacity_commitment_id"] = None
         __props__.__dict__["commitment_end_time"] = None
         __props__.__dict__["commitment_start_time"] = None
+        __props__.__dict__["edition"] = None
         __props__.__dict__["enforce_single_admin_project_per_org"] = None
         __props__.__dict__["failure_status"] = None
         __props__.__dict__["location"] = None
@@ -285,6 +306,14 @@ class CapacityCommitment(pulumi.CustomResource):
         The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
         """
         return pulumi.get(self, "commitment_start_time")
+
+    @property
+    @pulumi.getter
+    def edition(self) -> pulumi.Output[str]:
+        """
+        Edition of the capacity commitment.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")

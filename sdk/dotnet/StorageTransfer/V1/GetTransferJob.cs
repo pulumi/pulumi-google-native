@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        /// </summary>
+        public readonly Outputs.EventStreamResponse EventStream;
+        /// <summary>
         /// The time that the transfer job was last modified.
         /// </summary>
         public readonly string LastModificationTime;
@@ -114,6 +118,8 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
 
             string description,
 
+            Outputs.EventStreamResponse eventStream,
+
             string lastModificationTime,
 
             string latestOperationName,
@@ -135,6 +141,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
             CreationTime = creationTime;
             DeletionTime = deletionTime;
             Description = description;
+            EventStream = eventStream;
             LastModificationTime = lastModificationTime;
             LatestOperationName = latestOperationName;
             LoggingConfig = loggingConfig;

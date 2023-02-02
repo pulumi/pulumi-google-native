@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly Outputs.GoogleCloudContactcenterinsightsV1AnalysisResultResponse AnalysisResult;
         /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        /// </summary>
+        public readonly Outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse AnnotatorSelector;
+        /// <summary>
         /// The time at which the analysis was created, which occurs when the long-running operation completes.
         /// </summary>
         public readonly string CreateTime;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         private GetAnalysisResult(
             Outputs.GoogleCloudContactcenterinsightsV1AnalysisResultResponse analysisResult,
 
+            Outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse annotatorSelector,
+
             string createTime,
 
             string name,
@@ -97,6 +103,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
             string requestTime)
         {
             AnalysisResult = analysisResult;
+            AnnotatorSelector = annotatorSelector;
             CreateTime = createTime;
             Name = name;
             RequestTime = requestTime;

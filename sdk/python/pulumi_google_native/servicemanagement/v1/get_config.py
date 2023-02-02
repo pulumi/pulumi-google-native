@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConfigResult:
-    def __init__(__self__, apis=None, authentication=None, backend=None, billing=None, config_version=None, context=None, control=None, custom_error=None, documentation=None, endpoints=None, enums=None, http=None, logging=None, logs=None, metrics=None, monitored_resources=None, monitoring=None, name=None, producer_project_id=None, quota=None, source_info=None, system_parameters=None, system_types=None, title=None, types=None, usage=None):
+    def __init__(__self__, apis=None, authentication=None, backend=None, billing=None, config_version=None, context=None, control=None, custom_error=None, documentation=None, endpoints=None, enums=None, http=None, logging=None, logs=None, metrics=None, monitored_resources=None, monitoring=None, name=None, producer_project_id=None, publishing=None, quota=None, source_info=None, system_parameters=None, system_types=None, title=None, types=None, usage=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -77,6 +77,9 @@ class GetConfigResult:
         if producer_project_id and not isinstance(producer_project_id, str):
             raise TypeError("Expected argument 'producer_project_id' to be a str")
         pulumi.set(__self__, "producer_project_id", producer_project_id)
+        if publishing and not isinstance(publishing, dict):
+            raise TypeError("Expected argument 'publishing' to be a dict")
+        pulumi.set(__self__, "publishing", publishing)
         if quota and not isinstance(quota, dict):
             raise TypeError("Expected argument 'quota' to be a dict")
         pulumi.set(__self__, "quota", quota)
@@ -253,6 +256,14 @@ class GetConfigResult:
 
     @property
     @pulumi.getter
+    def publishing(self) -> 'outputs.PublishingResponse':
+        """
+        Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        """
+        return pulumi.get(self, "publishing")
+
+    @property
+    @pulumi.getter
     def quota(self) -> 'outputs.QuotaResponse':
         """
         Quota configuration.
@@ -333,6 +344,7 @@ class AwaitableGetConfigResult(GetConfigResult):
             monitoring=self.monitoring,
             name=self.name,
             producer_project_id=self.producer_project_id,
+            publishing=self.publishing,
             quota=self.quota,
             source_info=self.source_info,
             system_parameters=self.system_parameters,
@@ -376,6 +388,7 @@ def get_config(config_id: Optional[str] = None,
         monitoring=__ret__.monitoring,
         name=__ret__.name,
         producer_project_id=__ret__.producer_project_id,
+        publishing=__ret__.publishing,
         quota=__ret__.quota,
         source_info=__ret__.source_info,
         system_parameters=__ret__.system_parameters,

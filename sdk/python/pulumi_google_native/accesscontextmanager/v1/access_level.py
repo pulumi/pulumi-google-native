@@ -28,7 +28,7 @@ class AccessLevelArgs:
         :param pulumi.Input['BasicLevelArgs'] basic: A `BasicLevel` composed of `Conditions`.
         :param pulumi.Input['CustomLevelArgs'] custom: A `CustomLevel` written in the Common Expression Language.
         :param pulumi.Input[str] description: Description of the `AccessLevel` and its use. Does not affect behavior.
-        :param pulumi.Input[str] name: Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+        :param pulumi.Input[str] name: Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         pulumi.set(__self__, "access_policy_id", access_policy_id)
@@ -92,7 +92,7 @@ class AccessLevelArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+        Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         """
         return pulumi.get(self, "name")
 
@@ -133,7 +133,7 @@ class AccessLevel(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BasicLevelArgs']] basic: A `BasicLevel` composed of `Conditions`.
         :param pulumi.Input[pulumi.InputType['CustomLevelArgs']] custom: A `CustomLevel` written in the Common Expression Language.
         :param pulumi.Input[str] description: Description of the `AccessLevel` and its use. Does not affect behavior.
-        :param pulumi.Input[str] name: Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+        :param pulumi.Input[str] name: Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         ...
@@ -248,7 +248,7 @@ class AccessLevel(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The maximum length of the `access_level` component is 50 characters.
+        Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         """
         return pulumi.get(self, "name")
 

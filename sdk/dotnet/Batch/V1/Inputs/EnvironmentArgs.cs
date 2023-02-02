@@ -15,6 +15,24 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
     /// </summary>
     public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+        /// </summary>
+        [Input("encryptedVariables")]
+        public Input<Inputs.KMSEnvMapArgs>? EncryptedVariables { get; set; }
+
+        [Input("secretVariables")]
+        private InputMap<string>? _secretVariables;
+
+        /// <summary>
+        /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+        /// </summary>
+        public InputMap<string> SecretVariables
+        {
+            get => _secretVariables ?? (_secretVariables = new InputMap<string>());
+            set => _secretVariables = value;
+        }
+
         [Input("variables")]
         private InputMap<string>? _variables;
 

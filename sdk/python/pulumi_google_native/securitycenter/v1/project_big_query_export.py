@@ -123,7 +123,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a big query export.
+        Creates a BigQuery export.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -141,7 +141,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
                  args: ProjectBigQueryExportArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a big query export.
+        Creates a BigQuery export.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -234,7 +234,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+        The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
         """
         return pulumi.get(self, "create_time")
 
@@ -266,7 +266,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
     @pulumi.getter(name="mostRecentEditor")
     def most_recent_editor(self) -> pulumi.Output[str]:
         """
-        Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+        Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
         """
         return pulumi.get(self, "most_recent_editor")
 
@@ -282,7 +282,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
     @pulumi.getter
     def principal(self) -> pulumi.Output[str]:
         """
-        The service account that needs permission to create table, upload data to the big query dataset.
+        The service account that needs permission to create table and upload data to the BigQuery dataset.
         """
         return pulumi.get(self, "principal")
 
@@ -295,7 +295,7 @@ class ProjectBigQueryExport(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+        The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
         """
         return pulumi.get(self, "update_time")
 

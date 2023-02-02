@@ -11,17 +11,17 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 {
 
     /// <summary>
-    /// Usage metrics represent total resources consumed by a workload.
+    /// Usage metrics represent approximate total resources consumed by a workload.
     /// </summary>
     [OutputType]
     public sealed class UsageMetricsResponse
     {
         /// <summary>
-        /// Optional. DCU usage in milliDCU*seconds.
+        /// Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         /// </summary>
         public readonly string MilliDcuSeconds;
         /// <summary>
-        /// Optional. Shuffle storage usage in GB*Seconds
+        /// Optional. Shuffle storage usage in (GB x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         /// </summary>
         public readonly string ShuffleStorageGbSeconds;
 

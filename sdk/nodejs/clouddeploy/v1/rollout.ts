@@ -117,6 +117,10 @@ export class Rollout extends pulumi.CustomResource {
      */
     public readonly rolloutId!: pulumi.Output<string>;
     /**
+     * Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+     */
+    public readonly startingPhaseId!: pulumi.Output<string | undefined>;
+    /**
      * Current state of the `Rollout`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -167,6 +171,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["releaseId"] = args ? args.releaseId : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["rolloutId"] = args ? args.rolloutId : undefined;
+            resourceInputs["startingPhaseId"] = args ? args.startingPhaseId : undefined;
             resourceInputs["targetId"] = args ? args.targetId : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["approvalState"] = undefined /*out*/;
@@ -205,6 +210,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["releaseId"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["rolloutId"] = undefined /*out*/;
+            resourceInputs["startingPhaseId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
@@ -253,6 +259,10 @@ export interface RolloutArgs {
      * Required. ID of the `Rollout`.
      */
     rolloutId: pulumi.Input<string>;
+    /**
+     * Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+     */
+    startingPhaseId?: pulumi.Input<string>;
     /**
      * The ID of Target to which this `Rollout` is deploying.
      */

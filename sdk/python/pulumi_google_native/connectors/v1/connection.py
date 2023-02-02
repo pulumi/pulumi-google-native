@@ -40,7 +40,7 @@ class ConnectionArgs:
         :param pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['LockConfigArgs'] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
-        :param pulumi.Input['NodeConfigArgs'] node_config: Optional. Configuration for the connection.
+        :param pulumi.Input['NodeConfigArgs'] node_config: Optional. Node configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
@@ -178,7 +178,7 @@ class ConnectionArgs:
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> Optional[pulumi.Input['NodeConfigArgs']]:
         """
-        Optional. Configuration for the connection.
+        Optional. Node configuration for the connection.
         """
         return pulumi.get(self, "node_config")
 
@@ -253,7 +253,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[pulumi.InputType['LockConfigArgs']] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
-        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Optional. Configuration for the connection.
+        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Optional. Node configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
@@ -479,7 +479,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="nodeConfig")
     def node_config(self) -> pulumi.Output['outputs.NodeConfigResponse']:
         """
-        Optional. Configuration for the connection.
+        Optional. Node configuration for the connection.
         """
         return pulumi.get(self, "node_config")
 

@@ -21,6 +21,7 @@ class NodePoolInitArgs:
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -29,6 +30,7 @@ class NodePoolInitArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -39,6 +41,7 @@ class NodePoolInitArgs:
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
@@ -46,9 +49,10 @@ class NodePoolInitArgs:
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+        :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
-        :param pulumi.Input[str] version: The version of the Kubernetes of this node.
+        :param pulumi.Input[str] version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
         if cluster_id is not None:
@@ -61,6 +65,8 @@ class NodePoolInitArgs:
             pulumi.set(__self__, "conditions", conditions)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if location is not None:
@@ -77,6 +83,8 @@ class NodePoolInitArgs:
             pulumi.set(__self__, "network_config", network_config)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if project is not None:
             warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
             pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
@@ -139,6 +147,18 @@ class NodePoolInitArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input['NodeConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -234,6 +254,18 @@ class NodePoolInitArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input['PlacementPolicyArgs']]:
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input['PlacementPolicyArgs']]):
+        pulumi.set(self, "placement_policy", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -261,7 +293,7 @@ class NodePoolInitArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the Kubernetes of this node.
+        The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         return pulumi.get(self, "version")
 
@@ -291,6 +323,7 @@ class NodePool(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -299,6 +332,7 @@ class NodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -313,6 +347,7 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_id: Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] config: The node configuration of the pool.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param pulumi.Input[pulumi.InputType['NodeManagementArgs']] management: NodeManagement configuration for this NodePool.
@@ -320,9 +355,10 @@ class NodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
         :param pulumi.Input[str] parent: The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
+        :param pulumi.Input[pulumi.InputType['PlacementPolicyArgs']] placement_policy: Specifies the node placement policy.
         :param pulumi.Input[str] project: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         :param pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
-        :param pulumi.Input[str] version: The version of the Kubernetes of this node.
+        :param pulumi.Input[str] version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         :param pulumi.Input[str] zone: Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
         """
         ...
@@ -353,6 +389,7 @@ class NodePool(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -361,6 +398,7 @@ class NodePool(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NodeNetworkConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 placement_policy: Optional[pulumi.Input[pulumi.InputType['PlacementPolicyArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  upgrade_settings: Optional[pulumi.Input[pulumi.InputType['UpgradeSettingsArgs']]] = None,
                  version: Optional[pulumi.Input[str]] = None,
@@ -383,6 +421,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["config"] = config
+            __props__.__dict__["etag"] = etag
             __props__.__dict__["initial_node_count"] = initial_node_count
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
@@ -391,6 +430,7 @@ class NodePool(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["placement_policy"] = placement_policy
             if project is not None and not opts.urn:
                 warnings.warn("""Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""", DeprecationWarning)
                 pulumi.log.warn("""project is deprecated: Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.""")
@@ -435,6 +475,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["cluster_id"] = None
         __props__.__dict__["conditions"] = None
         __props__.__dict__["config"] = None
+        __props__.__dict__["etag"] = None
         __props__.__dict__["initial_node_count"] = None
         __props__.__dict__["instance_group_urls"] = None
         __props__.__dict__["location"] = None
@@ -443,6 +484,7 @@ class NodePool(pulumi.CustomResource):
         __props__.__dict__["max_pods_constraint"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_config"] = None
+        __props__.__dict__["placement_policy"] = None
         __props__.__dict__["pod_ipv4_cidr_size"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["self_link"] = None
@@ -481,6 +523,14 @@ class NodePool(pulumi.CustomResource):
         The node configuration of the pool.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> pulumi.Output[str]:
+        """
+        This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -544,6 +594,14 @@ class NodePool(pulumi.CustomResource):
         return pulumi.get(self, "network_config")
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> pulumi.Output['outputs.PlacementPolicyResponse']:
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @property
     @pulumi.getter(name="podIpv4CidrSize")
     def pod_ipv4_cidr_size(self) -> pulumi.Output[int]:
         """
@@ -600,7 +658,7 @@ class NodePool(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        The version of the Kubernetes of this node.
+        The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         return pulumi.get(self, "version")
 

@@ -31,7 +31,7 @@ type LookupFunctionResult struct {
 	BuildConfig BuildConfigResponse `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description string `pulumi:"description"`
-	// Describe whether the function is gen1 or gen2.
+	// Describe whether the function is 1st Gen or 2nd Gen.
 	Environment string `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger EventTriggerResponse `pulumi:"eventTrigger"`
@@ -96,7 +96,7 @@ func (o LookupFunctionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Describe whether the function is gen1 or gen2.
+// Describe whether the function is 1st Gen or 2nd Gen.
 func (o LookupFunctionResultOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFunctionResult) string { return v.Environment }).(pulumi.StringOutput)
 }

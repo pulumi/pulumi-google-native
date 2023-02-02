@@ -116,12 +116,12 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
                  searchable: Optional[pulumi.Input['EnterpriseCrmEventbusProtoAttributesSearchable']] = None,
                  task_visibility: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+        Attributes are additional options that can be associated with each event property. For more information, see
         :param pulumi.Input['EnterpriseCrmEventbusProtoAttributesDataType'] data_type: Things like URL, Email, Currency, Timestamp (rather than string, int64...)
         :param pulumi.Input['EnterpriseCrmEventbusProtoValueTypeArgs'] default_value: Used to define defaults.
         :param pulumi.Input[bool] is_required: Required for event execution. The validation will be done by the event bus when the event is triggered.
         :param pulumi.Input[bool] is_searchable: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
-        :param pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsArgs'] log_settings: See go/integration-platform/analytics/logging_task.md for details.
+        :param pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsArgs'] log_settings: See
         :param pulumi.Input[Sequence[pulumi.Input[str]]] task_visibility: List of tasks that can view this property, if empty then all.
         """
         if data_type is not None:
@@ -194,7 +194,7 @@ class EnterpriseCrmEventbusProtoAttributesArgs:
     @pulumi.getter(name="logSettings")
     def log_settings(self) -> Optional[pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsArgs']]:
         """
-        See go/integration-platform/analytics/logging_task.md for details.
+        See
         """
         return pulumi.get(self, "log_settings")
 
@@ -262,7 +262,7 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs:
                  absolute: Optional[pulumi.Input[str]] = None,
                  percentage: Optional[pulumi.Input[int]] = None):
         """
-        The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+        The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
         """
         if absolute is not None:
             pulumi.set(__self__, "absolute", absolute)
@@ -525,7 +525,7 @@ class EnterpriseCrmEventbusProtoEventBusPropertiesArgs:
     def __init__(__self__, *,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoPropertyEntryArgs']]]] = None):
         """
-        LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+        LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoPropertyEntryArgs']]] properties: An unordered list of property entries.
         """
         if properties is not None:
@@ -549,7 +549,7 @@ class EnterpriseCrmEventbusProtoEventParametersArgs:
     def __init__(__self__, *,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoParameterEntryArgs']]]] = None):
         """
-        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoParameterEntryArgs']]] parameters: Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
         """
         if parameters is not None:
@@ -667,7 +667,7 @@ class EnterpriseCrmEventbusProtoLogSettingsArgs:
                  seed_scope: Optional[pulumi.Input['EnterpriseCrmEventbusProtoLogSettingsSeedScope']] = None,
                  shortening_limits: Optional[pulumi.Input['EnterpriseCrmLoggingGwsFieldLimitsArgs']] = None):
         """
-        The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+        The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
         :param pulumi.Input[str] log_field_name: The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
         :param pulumi.Input['EnterpriseCrmLoggingGwsSanitizeOptionsArgs'] sanitize_options: Contains the scrubbing options, such as whether to scrub, obfuscate, etc.
         :param pulumi.Input['EnterpriseCrmLoggingGwsFieldLimitsArgs'] shortening_limits: Contains the field limits for shortening, such as max string length and max array length.
@@ -1580,7 +1580,7 @@ class EnterpriseCrmEventbusProtoTaskAlertConfigArgs:
                  threshold_value: Optional[pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs']] = None,
                  warning_enum_list: Optional[pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListArgs']] = None):
         """
-        Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+        Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
         :param pulumi.Input[str] aggregation_period: The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
         :param pulumi.Input[bool] alert_disabled: Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this workflow alert.
         :param pulumi.Input[str] alert_name: A name to identify this alert. This will be displayed in the alert subject. If set, this name should be unique in within the scope of the containing workflow.
@@ -1825,7 +1825,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataArgs:
                  system: Optional[pulumi.Input['EnterpriseCrmEventbusProtoTaskMetadataSystem']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+        TaskMetadata are attributes that are associated to every common Task we have.
         :param pulumi.Input[str] active_task_name: The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
         :param pulumi.Input[str] code_search_link: The Code Search link to the Task Java file.
         :param pulumi.Input['EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption'] default_json_validation_option: Controls whether JSON workflow parameters are validated against provided schemas before and/or after this task's execution.
@@ -1838,7 +1838,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataArgs:
         :param pulumi.Input[str] external_doc_link: Doc link for external-facing documentation (separate from g3doc).
         :param pulumi.Input[str] external_doc_markdown: DEPRECATED: Use external_doc_html.
         :param pulumi.Input[str] g3_doc_link: URL to the associated G3 Doc for the task if available
-        :param pulumi.Input[str] icon_link: URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+        :param pulumi.Input[str] icon_link: URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
         :param pulumi.Input[bool] is_deprecated: The deprecation status of the current task. Default value is false;
         :param pulumi.Input[str] name: The actual class name or the annotated name of the task. Task Author should initialize this field with value from the getName() method of the Task class.
         :param pulumi.Input[str] standalone_external_doc_html: External-facing documention for standalone IP in pantheon embedded in the RHP for this task. Non null only if different from external_doc_html
@@ -2068,7 +2068,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataArgs:
     @pulumi.getter(name="iconLink")
     def icon_link(self) -> Optional[pulumi.Input[str]]:
         """
-        URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+        URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
         """
         return pulumi.get(self, "icon_link")
 
@@ -2151,7 +2151,7 @@ class EnterpriseCrmEventbusProtoTaskUiConfigArgs:
     def __init__(__self__, *,
                  task_ui_module_configs: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoTaskUiModuleConfigArgs']]]] = None):
         """
-        Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+        Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoTaskUiModuleConfigArgs']]] task_ui_module_configs: Configurations of included config modules.
         """
         if task_ui_module_configs is not None:
@@ -2484,7 +2484,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs:
                  threshold_value: Optional[pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs']] = None,
                  warning_enum_list: Optional[pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListArgs']] = None):
         """
-        Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+        Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
         :param pulumi.Input[str] aggregation_period: For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
         :param pulumi.Input[bool] alert_disabled: Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this workflow alert.
         :param pulumi.Input[str] alert_name: A name to identify this alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the workflow.
@@ -2494,7 +2494,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs:
         :param pulumi.Input[bool] only_final_attempt: For either events or tasks, depending on the type of alert, count only final attempts, not retries.
         :param pulumi.Input[str] playbook_url: Link to a playbook for resolving the issue that triggered this alert.
         :param pulumi.Input['EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType'] threshold_type: The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
-        :param pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs'] threshold_value: The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+        :param pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs'] threshold_value: The metric value, above or below which the alert should be triggered.
         """
         if aggregation_period is not None:
             pulumi.set(__self__, "aggregation_period", aggregation_period)
@@ -2653,7 +2653,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs:
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> Optional[pulumi.Input['EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs']]:
         """
-        The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+        The metric value, above or below which the alert should be triggered.
         """
         return pulumi.get(self, "threshold_value")
 
@@ -2933,7 +2933,7 @@ class EnterpriseCrmFrontendsEventbusProtoEventParametersArgs:
     def __init__(__self__, *,
                  parameters: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs']]]] = None):
         """
-        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterEntryArgs']]] parameters: Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
         """
         if parameters is not None:
@@ -3525,7 +3525,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
                  task_template_name: Optional[pulumi.Input[str]] = None,
                  task_type: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType']] = None):
         """
-        The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+        The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoTaskAlertConfigArgs']]] alert_configs: Alert configurations on error rate, warning rate, number of runs, durations, etc.
         :param pulumi.Input[str] create_time: Auto-generated.
         :param pulumi.Input[str] creator_email: The creator's email address. Auto-generated from the user's email.
@@ -3549,7 +3549,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy'] task_execution_strategy: The policy dictating the execution strategy of this task.
         :param pulumi.Input[str] task_name: The name for the task.
         :param pulumi.Input[str] task_number: REQUIRED: the identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_number`).
-        :param pulumi.Input[str] task_spec: A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+        :param pulumi.Input[str] task_spec: A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
         :param pulumi.Input[str] task_template_name: Used to define task-template name if task is of type task-template
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskType'] task_type: Defines the type of the task
         """
@@ -3886,7 +3886,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
     @pulumi.getter(name="taskSpec")
     def task_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+        A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
         """
         return pulumi.get(self, "task_spec")
 
@@ -4270,7 +4270,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs:
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryDataType'] data_type: The data type of the parameter.
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoParameterValueTypeArgs'] default_value: Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType'] in_out_type: Specifies the input/output type for the parameter.
-        :param pulumi.Input[bool] is_transient: Whether this parameter is a transient parameter. go/ip-transient-parameters
+        :param pulumi.Input[bool] is_transient: Whether this parameter is a transient parameter.
         :param pulumi.Input[str] json_schema: This schema will be used to validate runtime JSON-typed values of this parameter.
         :param pulumi.Input[str] key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
         :param pulumi.Input[str] name: The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
@@ -4369,7 +4369,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs:
     @pulumi.getter(name="isTransient")
     def is_transient(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this parameter is a transient parameter. go/ip-transient-parameters
+        Whether this parameter is a transient parameter.
         """
         return pulumi.get(self, "is_transient")
 

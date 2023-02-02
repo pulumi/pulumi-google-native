@@ -437,6 +437,194 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponseOutput) StartTime() pulumi
 	return o.ApplyT(func(v GoogleCloudChannelV1CommitmentSettingsResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// Specifies the override to conditionally apply.
+type GoogleCloudChannelV1ConditionalOverride struct {
+	// Information about the applied override's adjustment.
+	Adjustment GoogleCloudChannelV1RepricingAdjustment `pulumi:"adjustment"`
+	// The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+	RebillingBasis GoogleCloudChannelV1ConditionalOverrideRebillingBasis `pulumi:"rebillingBasis"`
+	// Specifies the condition which, if met, will apply the override.
+	RepricingCondition GoogleCloudChannelV1RepricingCondition `pulumi:"repricingCondition"`
+}
+
+// GoogleCloudChannelV1ConditionalOverrideInput is an input type that accepts GoogleCloudChannelV1ConditionalOverrideArgs and GoogleCloudChannelV1ConditionalOverrideOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1ConditionalOverrideInput` via:
+//
+//	GoogleCloudChannelV1ConditionalOverrideArgs{...}
+type GoogleCloudChannelV1ConditionalOverrideInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1ConditionalOverrideOutput() GoogleCloudChannelV1ConditionalOverrideOutput
+	ToGoogleCloudChannelV1ConditionalOverrideOutputWithContext(context.Context) GoogleCloudChannelV1ConditionalOverrideOutput
+}
+
+// Specifies the override to conditionally apply.
+type GoogleCloudChannelV1ConditionalOverrideArgs struct {
+	// Information about the applied override's adjustment.
+	Adjustment GoogleCloudChannelV1RepricingAdjustmentInput `pulumi:"adjustment"`
+	// The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+	RebillingBasis GoogleCloudChannelV1ConditionalOverrideRebillingBasisInput `pulumi:"rebillingBasis"`
+	// Specifies the condition which, if met, will apply the override.
+	RepricingCondition GoogleCloudChannelV1RepricingConditionInput `pulumi:"repricingCondition"`
+}
+
+func (GoogleCloudChannelV1ConditionalOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverride)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1ConditionalOverrideArgs) ToGoogleCloudChannelV1ConditionalOverrideOutput() GoogleCloudChannelV1ConditionalOverrideOutput {
+	return i.ToGoogleCloudChannelV1ConditionalOverrideOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1ConditionalOverrideArgs) ToGoogleCloudChannelV1ConditionalOverrideOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ConditionalOverrideOutput)
+}
+
+// GoogleCloudChannelV1ConditionalOverrideArrayInput is an input type that accepts GoogleCloudChannelV1ConditionalOverrideArray and GoogleCloudChannelV1ConditionalOverrideArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1ConditionalOverrideArrayInput` via:
+//
+//	GoogleCloudChannelV1ConditionalOverrideArray{ GoogleCloudChannelV1ConditionalOverrideArgs{...} }
+type GoogleCloudChannelV1ConditionalOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1ConditionalOverrideArrayOutput() GoogleCloudChannelV1ConditionalOverrideArrayOutput
+	ToGoogleCloudChannelV1ConditionalOverrideArrayOutputWithContext(context.Context) GoogleCloudChannelV1ConditionalOverrideArrayOutput
+}
+
+type GoogleCloudChannelV1ConditionalOverrideArray []GoogleCloudChannelV1ConditionalOverrideInput
+
+func (GoogleCloudChannelV1ConditionalOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudChannelV1ConditionalOverride)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1ConditionalOverrideArray) ToGoogleCloudChannelV1ConditionalOverrideArrayOutput() GoogleCloudChannelV1ConditionalOverrideArrayOutput {
+	return i.ToGoogleCloudChannelV1ConditionalOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1ConditionalOverrideArray) ToGoogleCloudChannelV1ConditionalOverrideArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1ConditionalOverrideArrayOutput)
+}
+
+// Specifies the override to conditionally apply.
+type GoogleCloudChannelV1ConditionalOverrideOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1ConditionalOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverride)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideOutput) ToGoogleCloudChannelV1ConditionalOverrideOutput() GoogleCloudChannelV1ConditionalOverrideOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideOutput) ToGoogleCloudChannelV1ConditionalOverrideOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideOutput {
+	return o
+}
+
+// Information about the applied override's adjustment.
+func (o GoogleCloudChannelV1ConditionalOverrideOutput) Adjustment() GoogleCloudChannelV1RepricingAdjustmentOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ConditionalOverride) GoogleCloudChannelV1RepricingAdjustment {
+		return v.Adjustment
+	}).(GoogleCloudChannelV1RepricingAdjustmentOutput)
+}
+
+// The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+func (o GoogleCloudChannelV1ConditionalOverrideOutput) RebillingBasis() GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ConditionalOverride) GoogleCloudChannelV1ConditionalOverrideRebillingBasis {
+		return v.RebillingBasis
+	}).(GoogleCloudChannelV1ConditionalOverrideRebillingBasisOutput)
+}
+
+// Specifies the condition which, if met, will apply the override.
+func (o GoogleCloudChannelV1ConditionalOverrideOutput) RepricingCondition() GoogleCloudChannelV1RepricingConditionOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ConditionalOverride) GoogleCloudChannelV1RepricingCondition {
+		return v.RepricingCondition
+	}).(GoogleCloudChannelV1RepricingConditionOutput)
+}
+
+type GoogleCloudChannelV1ConditionalOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1ConditionalOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudChannelV1ConditionalOverride)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideArrayOutput) ToGoogleCloudChannelV1ConditionalOverrideArrayOutput() GoogleCloudChannelV1ConditionalOverrideArrayOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideArrayOutput) ToGoogleCloudChannelV1ConditionalOverrideArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideArrayOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideArrayOutput) Index(i pulumi.IntInput) GoogleCloudChannelV1ConditionalOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudChannelV1ConditionalOverride {
+		return vs[0].([]GoogleCloudChannelV1ConditionalOverride)[vs[1].(int)]
+	}).(GoogleCloudChannelV1ConditionalOverrideOutput)
+}
+
+// Specifies the override to conditionally apply.
+type GoogleCloudChannelV1ConditionalOverrideResponse struct {
+	// Information about the applied override's adjustment.
+	Adjustment GoogleCloudChannelV1RepricingAdjustmentResponse `pulumi:"adjustment"`
+	// The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+	RebillingBasis string `pulumi:"rebillingBasis"`
+	// Specifies the condition which, if met, will apply the override.
+	RepricingCondition GoogleCloudChannelV1RepricingConditionResponse `pulumi:"repricingCondition"`
+}
+
+// Specifies the override to conditionally apply.
+type GoogleCloudChannelV1ConditionalOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1ConditionalOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) ToGoogleCloudChannelV1ConditionalOverrideResponseOutput() GoogleCloudChannelV1ConditionalOverrideResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) ToGoogleCloudChannelV1ConditionalOverrideResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideResponseOutput {
+	return o
+}
+
+// Information about the applied override's adjustment.
+func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) Adjustment() GoogleCloudChannelV1RepricingAdjustmentResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ConditionalOverrideResponse) GoogleCloudChannelV1RepricingAdjustmentResponse {
+		return v.Adjustment
+	}).(GoogleCloudChannelV1RepricingAdjustmentResponseOutput)
+}
+
+// The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) RebillingBasis() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ConditionalOverrideResponse) string { return v.RebillingBasis }).(pulumi.StringOutput)
+}
+
+// Specifies the condition which, if met, will apply the override.
+func (o GoogleCloudChannelV1ConditionalOverrideResponseOutput) RepricingCondition() GoogleCloudChannelV1RepricingConditionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1ConditionalOverrideResponse) GoogleCloudChannelV1RepricingConditionResponse {
+		return v.RepricingCondition
+	}).(GoogleCloudChannelV1RepricingConditionResponseOutput)
+}
+
+type GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudChannelV1ConditionalOverrideResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) ToGoogleCloudChannelV1ConditionalOverrideResponseArrayOutput() GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) ToGoogleCloudChannelV1ConditionalOverrideResponseArrayOutputWithContext(ctx context.Context) GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudChannelV1ConditionalOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudChannelV1ConditionalOverrideResponse {
+		return vs[0].([]GoogleCloudChannelV1ConditionalOverrideResponse)[vs[1].(int)]
+	}).(GoogleCloudChannelV1ConditionalOverrideResponseOutput)
+}
+
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfo struct {
 	// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
@@ -1656,12 +1844,99 @@ func (o GoogleCloudChannelV1RepricingAdjustmentResponseOutput) PercentageAdjustm
 	}).(GoogleCloudChannelV1PercentageAdjustmentResponseOutput)
 }
 
+// Represents the various repricing conditions you can use for a conditional override.
+type GoogleCloudChannelV1RepricingCondition struct {
+	// SKU Group condition for override.
+	SkuGroupCondition *GoogleCloudChannelV1SkuGroupCondition `pulumi:"skuGroupCondition"`
+}
+
+// GoogleCloudChannelV1RepricingConditionInput is an input type that accepts GoogleCloudChannelV1RepricingConditionArgs and GoogleCloudChannelV1RepricingConditionOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RepricingConditionInput` via:
+//
+//	GoogleCloudChannelV1RepricingConditionArgs{...}
+type GoogleCloudChannelV1RepricingConditionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RepricingConditionOutput() GoogleCloudChannelV1RepricingConditionOutput
+	ToGoogleCloudChannelV1RepricingConditionOutputWithContext(context.Context) GoogleCloudChannelV1RepricingConditionOutput
+}
+
+// Represents the various repricing conditions you can use for a conditional override.
+type GoogleCloudChannelV1RepricingConditionArgs struct {
+	// SKU Group condition for override.
+	SkuGroupCondition GoogleCloudChannelV1SkuGroupConditionPtrInput `pulumi:"skuGroupCondition"`
+}
+
+func (GoogleCloudChannelV1RepricingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingCondition)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1RepricingConditionArgs) ToGoogleCloudChannelV1RepricingConditionOutput() GoogleCloudChannelV1RepricingConditionOutput {
+	return i.ToGoogleCloudChannelV1RepricingConditionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1RepricingConditionArgs) ToGoogleCloudChannelV1RepricingConditionOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1RepricingConditionOutput)
+}
+
+// Represents the various repricing conditions you can use for a conditional override.
+type GoogleCloudChannelV1RepricingConditionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingCondition)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConditionOutput) ToGoogleCloudChannelV1RepricingConditionOutput() GoogleCloudChannelV1RepricingConditionOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConditionOutput) ToGoogleCloudChannelV1RepricingConditionOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConditionOutput {
+	return o
+}
+
+// SKU Group condition for override.
+func (o GoogleCloudChannelV1RepricingConditionOutput) SkuGroupCondition() GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingCondition) *GoogleCloudChannelV1SkuGroupCondition {
+		return v.SkuGroupCondition
+	}).(GoogleCloudChannelV1SkuGroupConditionPtrOutput)
+}
+
+// Represents the various repricing conditions you can use for a conditional override.
+type GoogleCloudChannelV1RepricingConditionResponse struct {
+	// SKU Group condition for override.
+	SkuGroupCondition GoogleCloudChannelV1SkuGroupConditionResponse `pulumi:"skuGroupCondition"`
+}
+
+// Represents the various repricing conditions you can use for a conditional override.
+type GoogleCloudChannelV1RepricingConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RepricingConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RepricingConditionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RepricingConditionResponseOutput) ToGoogleCloudChannelV1RepricingConditionResponseOutput() GoogleCloudChannelV1RepricingConditionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RepricingConditionResponseOutput) ToGoogleCloudChannelV1RepricingConditionResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1RepricingConditionResponseOutput {
+	return o
+}
+
+// SKU Group condition for override.
+func (o GoogleCloudChannelV1RepricingConditionResponseOutput) SkuGroupCondition() GoogleCloudChannelV1SkuGroupConditionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConditionResponse) GoogleCloudChannelV1SkuGroupConditionResponse {
+		return v.SkuGroupCondition
+	}).(GoogleCloudChannelV1SkuGroupConditionResponseOutput)
+}
+
 // Configuration for repricing a Google bill over a period of time.
 type GoogleCloudChannelV1RepricingConfig struct {
 	// Information about the adjustment.
 	Adjustment GoogleCloudChannelV1RepricingAdjustment `pulumi:"adjustment"`
 	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
 	ChannelPartnerGranularity *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity `pulumi:"channelPartnerGranularity"`
+	// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+	ConditionalOverrides []GoogleCloudChannelV1ConditionalOverride `pulumi:"conditionalOverrides"`
 	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 	EffectiveInvoiceMonth GoogleTypeDate `pulumi:"effectiveInvoiceMonth"`
 	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
@@ -1687,6 +1962,8 @@ type GoogleCloudChannelV1RepricingConfigArgs struct {
 	Adjustment GoogleCloudChannelV1RepricingAdjustmentInput `pulumi:"adjustment"`
 	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
 	ChannelPartnerGranularity GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput `pulumi:"channelPartnerGranularity"`
+	// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+	ConditionalOverrides GoogleCloudChannelV1ConditionalOverrideArrayInput `pulumi:"conditionalOverrides"`
 	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 	EffectiveInvoiceMonth GoogleTypeDateInput `pulumi:"effectiveInvoiceMonth"`
 	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
@@ -1734,6 +2011,13 @@ func (o GoogleCloudChannelV1RepricingConfigOutput) ChannelPartnerGranularity() G
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) *GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {
 		return v.ChannelPartnerGranularity
 	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput)
+}
+
+// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+func (o GoogleCloudChannelV1RepricingConfigOutput) ConditionalOverrides() GoogleCloudChannelV1ConditionalOverrideArrayOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfig) []GoogleCloudChannelV1ConditionalOverride {
+		return v.ConditionalOverrides
+	}).(GoogleCloudChannelV1ConditionalOverrideArrayOutput)
 }
 
 // The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
@@ -2067,6 +2351,8 @@ type GoogleCloudChannelV1RepricingConfigResponse struct {
 	Adjustment GoogleCloudChannelV1RepricingAdjustmentResponse `pulumi:"adjustment"`
 	// Applies the repricing configuration at the channel partner level. This is the only supported value for ChannelPartnerRepricingConfig.
 	ChannelPartnerGranularity GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse `pulumi:"channelPartnerGranularity"`
+	// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+	ConditionalOverrides []GoogleCloudChannelV1ConditionalOverrideResponse `pulumi:"conditionalOverrides"`
 	// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 	EffectiveInvoiceMonth GoogleTypeDateResponse `pulumi:"effectiveInvoiceMonth"`
 	// Applies the repricing configuration at the entitlement level. This is the only supported value for CustomerRepricingConfig.
@@ -2104,6 +2390,13 @@ func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ChannelPartnerGranula
 	}).(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponseOutput)
 }
 
+// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+func (o GoogleCloudChannelV1RepricingConfigResponseOutput) ConditionalOverrides() GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) []GoogleCloudChannelV1ConditionalOverrideResponse {
+		return v.ConditionalOverrides
+	}).(GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput)
+}
+
 // The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
 func (o GoogleCloudChannelV1RepricingConfigResponseOutput) EffectiveInvoiceMonth() GoogleTypeDateResponseOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) GoogleTypeDateResponse {
@@ -2121,6 +2414,172 @@ func (o GoogleCloudChannelV1RepricingConfigResponseOutput) EntitlementGranularit
 // The RebillingBasis to use for this bill. Specifies the relative cost based on repricing costs you will apply.
 func (o GoogleCloudChannelV1RepricingConfigResponseOutput) RebillingBasis() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1RepricingConfigResponse) string { return v.RebillingBasis }).(pulumi.StringOutput)
+}
+
+// A condition that applies the override if a line item SKU is found in the SKU group.
+type GoogleCloudChannelV1SkuGroupCondition struct {
+	// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+	SkuGroup *string `pulumi:"skuGroup"`
+}
+
+// GoogleCloudChannelV1SkuGroupConditionInput is an input type that accepts GoogleCloudChannelV1SkuGroupConditionArgs and GoogleCloudChannelV1SkuGroupConditionOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1SkuGroupConditionInput` via:
+//
+//	GoogleCloudChannelV1SkuGroupConditionArgs{...}
+type GoogleCloudChannelV1SkuGroupConditionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1SkuGroupConditionOutput() GoogleCloudChannelV1SkuGroupConditionOutput
+	ToGoogleCloudChannelV1SkuGroupConditionOutputWithContext(context.Context) GoogleCloudChannelV1SkuGroupConditionOutput
+}
+
+// A condition that applies the override if a line item SKU is found in the SKU group.
+type GoogleCloudChannelV1SkuGroupConditionArgs struct {
+	// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+	SkuGroup pulumi.StringPtrInput `pulumi:"skuGroup"`
+}
+
+func (GoogleCloudChannelV1SkuGroupConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1SkuGroupCondition)(nil)).Elem()
+}
+
+func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToGoogleCloudChannelV1SkuGroupConditionOutput() GoogleCloudChannelV1SkuGroupConditionOutput {
+	return i.ToGoogleCloudChannelV1SkuGroupConditionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToGoogleCloudChannelV1SkuGroupConditionOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1SkuGroupConditionOutput)
+}
+
+func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToGoogleCloudChannelV1SkuGroupConditionPtrOutput() GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return i.ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudChannelV1SkuGroupConditionArgs) ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1SkuGroupConditionOutput).ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudChannelV1SkuGroupConditionPtrInput is an input type that accepts GoogleCloudChannelV1SkuGroupConditionArgs, GoogleCloudChannelV1SkuGroupConditionPtr and GoogleCloudChannelV1SkuGroupConditionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1SkuGroupConditionPtrInput` via:
+//
+//	        GoogleCloudChannelV1SkuGroupConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudChannelV1SkuGroupConditionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1SkuGroupConditionPtrOutput() GoogleCloudChannelV1SkuGroupConditionPtrOutput
+	ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(context.Context) GoogleCloudChannelV1SkuGroupConditionPtrOutput
+}
+
+type googleCloudChannelV1SkuGroupConditionPtrType GoogleCloudChannelV1SkuGroupConditionArgs
+
+func GoogleCloudChannelV1SkuGroupConditionPtr(v *GoogleCloudChannelV1SkuGroupConditionArgs) GoogleCloudChannelV1SkuGroupConditionPtrInput {
+	return (*googleCloudChannelV1SkuGroupConditionPtrType)(v)
+}
+
+func (*googleCloudChannelV1SkuGroupConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1SkuGroupCondition)(nil)).Elem()
+}
+
+func (i *googleCloudChannelV1SkuGroupConditionPtrType) ToGoogleCloudChannelV1SkuGroupConditionPtrOutput() GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return i.ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudChannelV1SkuGroupConditionPtrType) ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudChannelV1SkuGroupConditionPtrOutput)
+}
+
+// A condition that applies the override if a line item SKU is found in the SKU group.
+type GoogleCloudChannelV1SkuGroupConditionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1SkuGroupConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1SkuGroupCondition)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionOutput) ToGoogleCloudChannelV1SkuGroupConditionOutput() GoogleCloudChannelV1SkuGroupConditionOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionOutput) ToGoogleCloudChannelV1SkuGroupConditionOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionOutput) ToGoogleCloudChannelV1SkuGroupConditionPtrOutput() GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return o.ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionOutput) ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1SkuGroupCondition) *GoogleCloudChannelV1SkuGroupCondition {
+		return &v
+	}).(GoogleCloudChannelV1SkuGroupConditionPtrOutput)
+}
+
+// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+func (o GoogleCloudChannelV1SkuGroupConditionOutput) SkuGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1SkuGroupCondition) *string { return v.SkuGroup }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudChannelV1SkuGroupConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1SkuGroupConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudChannelV1SkuGroupCondition)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) ToGoogleCloudChannelV1SkuGroupConditionPtrOutput() GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) ToGoogleCloudChannelV1SkuGroupConditionPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) Elem() GoogleCloudChannelV1SkuGroupConditionOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1SkuGroupCondition) GoogleCloudChannelV1SkuGroupCondition {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudChannelV1SkuGroupCondition
+		return ret
+	}).(GoogleCloudChannelV1SkuGroupConditionOutput)
+}
+
+// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+func (o GoogleCloudChannelV1SkuGroupConditionPtrOutput) SkuGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1SkuGroupCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SkuGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// A condition that applies the override if a line item SKU is found in the SKU group.
+type GoogleCloudChannelV1SkuGroupConditionResponse struct {
+	// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+	SkuGroup string `pulumi:"skuGroup"`
+}
+
+// A condition that applies the override if a line item SKU is found in the SKU group.
+type GoogleCloudChannelV1SkuGroupConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1SkuGroupConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1SkuGroupConditionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionResponseOutput) ToGoogleCloudChannelV1SkuGroupConditionResponseOutput() GoogleCloudChannelV1SkuGroupConditionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1SkuGroupConditionResponseOutput) ToGoogleCloudChannelV1SkuGroupConditionResponseOutputWithContext(ctx context.Context) GoogleCloudChannelV1SkuGroupConditionResponseOutput {
+	return o
+}
+
+// Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+func (o GoogleCloudChannelV1SkuGroupConditionResponseOutput) SkuGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1SkuGroupConditionResponse) string { return v.SkuGroup }).(pulumi.StringOutput)
 }
 
 // Settings for trial offers.
@@ -2951,6 +3410,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1AssociationInfoPtrInput)(nil)).Elem(), GoogleCloudChannelV1AssociationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsInput)(nil)).Elem(), GoogleCloudChannelV1CommitmentSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1CommitmentSettingsPtrInput)(nil)).Elem(), GoogleCloudChannelV1CommitmentSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideInput)(nil)).Elem(), GoogleCloudChannelV1ConditionalOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ConditionalOverrideArrayInput)(nil)).Elem(), GoogleCloudChannelV1ConditionalOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ContactInfoPtrInput)(nil)).Elem(), GoogleCloudChannelV1ContactInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ParameterInput)(nil)).Elem(), GoogleCloudChannelV1ParameterArgs{})
@@ -2962,11 +3423,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPtrInput)(nil)).Elem(), GoogleCloudChannelV1RenewalSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingAdjustmentInput)(nil)).Elem(), GoogleCloudChannelV1RepricingAdjustmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConditionInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput)(nil)).Elem(), GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1SkuGroupConditionInput)(nil)).Elem(), GoogleCloudChannelV1SkuGroupConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1SkuGroupConditionPtrInput)(nil)).Elem(), GoogleCloudChannelV1SkuGroupConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValueInput)(nil)).Elem(), GoogleCloudChannelV1ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudChannelV1ValuePtrInput)(nil)).Elem(), GoogleCloudChannelV1ValueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleTypeDateInput)(nil)).Elem(), GoogleTypeDateArgs{})
@@ -2980,6 +3444,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1CommitmentSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1ConditionalOverrideOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1ConditionalOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1ConditionalOverrideResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1ConditionalOverrideResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ContactInfoResponseOutput{})
@@ -3000,6 +3468,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingAdjustmentOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingAdjustmentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConditionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConditionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput{})
@@ -3008,6 +3478,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1RepricingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1SkuGroupConditionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1SkuGroupConditionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1SkuGroupConditionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1TrialSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValueOutput{})
 	pulumi.RegisterOutputType(GoogleCloudChannelV1ValuePtrOutput{})

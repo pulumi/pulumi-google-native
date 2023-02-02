@@ -30,6 +30,8 @@ type LookupEntityArgs struct {
 }
 
 type LookupEntityResult struct {
+	// Identifies the access mechanism to the entity. Not user settable.
+	Access GoogleCloudDataplexV1StorageAccessResponse `pulumi:"access"`
 	// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
 	Asset string `pulumi:"asset"`
 	// The name of the associated Data Catalog entry.
@@ -58,6 +60,8 @@ type LookupEntityResult struct {
 	System string `pulumi:"system"`
 	// Immutable. The type of entity.
 	Type string `pulumi:"type"`
+	// System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+	Uid string `pulumi:"uid"`
 	// The time when the entity was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -100,6 +104,11 @@ func (o LookupEntityResultOutput) ToLookupEntityResultOutput() LookupEntityResul
 
 func (o LookupEntityResultOutput) ToLookupEntityResultOutputWithContext(ctx context.Context) LookupEntityResultOutput {
 	return o
+}
+
+// Identifies the access mechanism to the entity. Not user settable.
+func (o LookupEntityResultOutput) Access() GoogleCloudDataplexV1StorageAccessResponseOutput {
+	return o.ApplyT(func(v LookupEntityResult) GoogleCloudDataplexV1StorageAccessResponse { return v.Access }).(GoogleCloudDataplexV1StorageAccessResponseOutput)
 }
 
 // Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
@@ -172,6 +181,11 @@ func (o LookupEntityResultOutput) System() pulumi.StringOutput {
 // Immutable. The type of entity.
 func (o LookupEntityResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntityResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+func (o LookupEntityResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEntityResult) string { return v.Uid }).(pulumi.StringOutput)
 }
 
 // The time when the entity was last updated.

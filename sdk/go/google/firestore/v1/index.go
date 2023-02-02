@@ -16,6 +16,8 @@ import (
 type Index struct {
 	pulumi.CustomResourceState
 
+	// The API scope supported by this index.
+	ApiScope          pulumi.StringOutput `pulumi:"apiScope"`
 	CollectionGroupId pulumi.StringOutput `pulumi:"collectionGroupId"`
 	DatabaseId        pulumi.StringOutput `pulumi:"databaseId"`
 	// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
@@ -80,8 +82,10 @@ func (IndexState) ElementType() reflect.Type {
 }
 
 type indexArgs struct {
-	CollectionGroupId string `pulumi:"collectionGroupId"`
-	DatabaseId        string `pulumi:"databaseId"`
+	// The API scope supported by this index.
+	ApiScope          *IndexApiScope `pulumi:"apiScope"`
+	CollectionGroupId string         `pulumi:"collectionGroupId"`
+	DatabaseId        string         `pulumi:"databaseId"`
 	// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
 	Fields  []GoogleFirestoreAdminV1IndexField `pulumi:"fields"`
 	Project *string                            `pulumi:"project"`
@@ -91,6 +95,8 @@ type indexArgs struct {
 
 // The set of arguments for constructing a Index resource.
 type IndexArgs struct {
+	// The API scope supported by this index.
+	ApiScope          IndexApiScopePtrInput
 	CollectionGroupId pulumi.StringInput
 	DatabaseId        pulumi.StringInput
 	// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
@@ -135,6 +141,11 @@ func (o IndexOutput) ToIndexOutput() IndexOutput {
 
 func (o IndexOutput) ToIndexOutputWithContext(ctx context.Context) IndexOutput {
 	return o
+}
+
+// The API scope supported by this index.
+func (o IndexOutput) ApiScope() pulumi.StringOutput {
+	return o.ApplyT(func(v *Index) pulumi.StringOutput { return v.ApiScope }).(pulumi.StringOutput)
 }
 
 func (o IndexOutput) CollectionGroupId() pulumi.StringOutput {

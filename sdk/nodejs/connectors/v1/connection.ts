@@ -88,7 +88,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Optional. Configuration for the connection.
+     * Optional. Node configuration for the connection.
      */
     public readonly nodeConfig!: pulumi.Output<outputs.connectors.v1.NodeConfigResponse>;
     public readonly project!: pulumi.Output<string>;
@@ -217,7 +217,7 @@ export interface ConnectionArgs {
      */
     lockConfig?: pulumi.Input<inputs.connectors.v1.LockConfigArgs>;
     /**
-     * Optional. Configuration for the connection.
+     * Optional. Node configuration for the connection.
      */
     nodeConfig?: pulumi.Input<inputs.connectors.v1.NodeConfigArgs>;
     project?: pulumi.Input<string>;

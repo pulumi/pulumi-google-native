@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -62,6 +62,9 @@ class GetEntryResult:
         if linked_resource and not isinstance(linked_resource, str):
             raise TypeError("Expected argument 'linked_resource' to be a str")
         pulumi.set(__self__, "linked_resource", linked_resource)
+        if looker_system_spec and not isinstance(looker_system_spec, dict):
+            raise TypeError("Expected argument 'looker_system_spec' to be a dict")
+        pulumi.set(__self__, "looker_system_spec", looker_system_spec)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -77,6 +80,9 @@ class GetEntryResult:
         if source_system_timestamps and not isinstance(source_system_timestamps, dict):
             raise TypeError("Expected argument 'source_system_timestamps' to be a dict")
         pulumi.set(__self__, "source_system_timestamps", source_system_timestamps)
+        if sql_database_system_spec and not isinstance(sql_database_system_spec, dict):
+            raise TypeError("Expected argument 'sql_database_system_spec' to be a dict")
+        pulumi.set(__self__, "sql_database_system_spec", sql_database_system_spec)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -134,7 +140,7 @@ class GetEntryResult:
     @pulumi.getter(name="databaseTableSpec")
     def database_table_spec(self) -> 'outputs.GoogleCloudDatacatalogV1DatabaseTableSpecResponse':
         """
-        Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         """
         return pulumi.get(self, "database_table_spec")
 
@@ -150,7 +156,7 @@ class GetEntryResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         """
         return pulumi.get(self, "display_name")
 
@@ -203,6 +209,14 @@ class GetEntryResult:
         return pulumi.get(self, "linked_resource")
 
     @property
+    @pulumi.getter(name="lookerSystemSpec")
+    def looker_system_spec(self) -> 'outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse':
+        """
+        Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        """
+        return pulumi.get(self, "looker_system_spec")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -241,6 +255,14 @@ class GetEntryResult:
         Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         """
         return pulumi.get(self, "source_system_timestamps")
+
+    @property
+    @pulumi.getter(name="sqlDatabaseSystemSpec")
+    def sql_database_system_spec(self) -> 'outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse':
+        """
+        Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+        """
+        return pulumi.get(self, "sql_database_system_spec")
 
     @property
     @pulumi.getter
@@ -295,11 +317,13 @@ class AwaitableGetEntryResult(GetEntryResult):
             integrated_system=self.integrated_system,
             labels=self.labels,
             linked_resource=self.linked_resource,
+            looker_system_spec=self.looker_system_spec,
             name=self.name,
             personal_details=self.personal_details,
             routine_spec=self.routine_spec,
             schema=self.schema,
             source_system_timestamps=self.source_system_timestamps,
+            sql_database_system_spec=self.sql_database_system_spec,
             type=self.type,
             usage_signal=self.usage_signal,
             user_specified_system=self.user_specified_system,
@@ -337,11 +361,13 @@ def get_entry(entry_group_id: Optional[str] = None,
         integrated_system=__ret__.integrated_system,
         labels=__ret__.labels,
         linked_resource=__ret__.linked_resource,
+        looker_system_spec=__ret__.looker_system_spec,
         name=__ret__.name,
         personal_details=__ret__.personal_details,
         routine_spec=__ret__.routine_spec,
         schema=__ret__.schema,
         source_system_timestamps=__ret__.source_system_timestamps,
+        sql_database_system_spec=__ret__.sql_database_system_spec,
         type=__ret__.type,
         usage_signal=__ret__.usage_signal,
         user_specified_system=__ret__.user_specified_system,

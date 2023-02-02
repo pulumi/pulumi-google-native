@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None, vpc_network_scope=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, ip_address_selection_policy=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, self_link_with_id=None, service_bindings=None, service_lb_policy=None, session_affinity=None, subsetting=None, timeout_sec=None, vpc_network_scope=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -74,6 +74,9 @@ class GetRegionBackendServiceResult:
         if iap and not isinstance(iap, dict):
             raise TypeError("Expected argument 'iap' to be a dict")
         pulumi.set(__self__, "iap", iap)
+        if ip_address_selection_policy and not isinstance(ip_address_selection_policy, str):
+            raise TypeError("Expected argument 'ip_address_selection_policy' to be a str")
+        pulumi.set(__self__, "ip_address_selection_policy", ip_address_selection_policy)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -287,6 +290,14 @@ class GetRegionBackendServiceResult:
         return pulumi.get(self, "iap")
 
     @property
+    @pulumi.getter(name="ipAddressSelectionPolicy")
+    def ip_address_selection_policy(self) -> str:
+        """
+        Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+        """
+        return pulumi.get(self, "ip_address_selection_policy")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -306,7 +317,7 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="localityLbPolicies")
     def locality_lb_policies(self) -> Sequence['outputs.BackendServiceLocalityLoadBalancingPolicyConfigResponse']:
         """
-        A list of locality load balancing policies to be used in order of preference. Either the policy or the customPolicy field should be set. Overrides any value set in the localityLbPolicy field. localityLbPolicies is only supported when the BackendService is referenced by a URL Map that is referenced by a target gRPC proxy that has the validateForProxyless field set to true.
+        A list of locality load-balancing policies to be used in order of preference. When you use localityLbPolicies, you must set at least one value for either the localityLbPolicies[].policy or the localityLbPolicies[].customPolicy field. localityLbPolicies overrides any value set in the localityLbPolicy field. For an example of how to use this field, see Define a list of preferred policies. Caution: This field and its children are intended for use in a service mesh that includes gRPC clients only. Envoy proxies can't use backend services that have this configuration.
         """
         return pulumi.get(self, "locality_lb_policies")
 
@@ -492,6 +503,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             fingerprint=self.fingerprint,
             health_checks=self.health_checks,
             iap=self.iap,
+            ip_address_selection_policy=self.ip_address_selection_policy,
             kind=self.kind,
             load_balancing_scheme=self.load_balancing_scheme,
             locality_lb_policies=self.locality_lb_policies,
@@ -550,6 +562,7 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         fingerprint=__ret__.fingerprint,
         health_checks=__ret__.health_checks,
         iap=__ret__.iap,
+        ip_address_selection_policy=__ret__.ip_address_selection_policy,
         kind=__ret__.kind,
         load_balancing_scheme=__ret__.load_balancing_scheme,
         locality_lb_policies=__ret__.locality_lb_policies,

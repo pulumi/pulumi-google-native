@@ -368,7 +368,7 @@ func (o DnsResourceRecordResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DnsResourceRecordResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// Describes a Target Proxy which uses this Certificate Map.
+// Describes a Target Proxy that uses this Certificate Map.
 type GclbTargetResponse struct {
 	// IP configurations for this Target Proxy where the Certificate Map is serving.
 	IpConfigs []IpConfigResponse `pulumi:"ipConfigs"`
@@ -378,7 +378,7 @@ type GclbTargetResponse struct {
 	TargetSslProxy string `pulumi:"targetSslProxy"`
 }
 
-// Describes a Target Proxy which uses this Certificate Map.
+// Describes a Target Proxy that uses this Certificate Map.
 type GclbTargetResponseOutput struct{ *pulumi.OutputState }
 
 func (GclbTargetResponseOutput) ElementType() reflect.Type {

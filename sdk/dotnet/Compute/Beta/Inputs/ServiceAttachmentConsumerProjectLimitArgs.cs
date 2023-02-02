@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<int>? ConnectionLimit { get; set; }
 
         /// <summary>
+        /// The network URL for the network to set the limit for.
+        /// </summary>
+        [Input("networkUrl")]
+        public Input<string>? NetworkUrl { get; set; }
+
+        /// <summary>
         /// The project id or number for the project to set the limit for.
         /// </summary>
         [Input("projectIdOrNum")]

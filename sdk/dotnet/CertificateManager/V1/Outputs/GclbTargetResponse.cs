@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
 {
 
     /// <summary>
-    /// Describes a Target Proxy which uses this Certificate Map.
+    /// Describes a Target Proxy that uses this Certificate Map.
     /// </summary>
     [OutputType]
     public sealed class GclbTargetResponse

@@ -27,10 +27,10 @@ type LookupDocumentArgs struct {
 }
 
 type LookupDocumentResult struct {
-	// If true, makes the document visible to asynchronous policies and rules.
-	AsyncEnabled bool `pulumi:"asyncEnabled"`
 	// Document AI format to save the structured content, including OCR.
 	CloudAiDocument GoogleCloudDocumentaiV1DocumentResponse `pulumi:"cloudAiDocument"`
+	// Indicates the category (image, audio, video etc.) of the original content.
+	ContentCategory string `pulumi:"contentCategory"`
 	// The time when the document is created.
 	CreateTime string `pulumi:"createTime"`
 	// The user who creates the document.
@@ -55,11 +55,11 @@ type LookupDocumentResult struct {
 	RawDocumentPath string `pulumi:"rawDocumentPath"`
 	// The reference ID set by customers. Must be unique per project and location.
 	ReferenceId string `pulumi:"referenceId"`
-	// A path linked to structured content file.
-	StructuredContentUri string `pulumi:"structuredContentUri"`
 	// If true, text extraction will not be performed.
 	TextExtractionDisabled bool `pulumi:"textExtractionDisabled"`
-	// Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+	// If true, text extraction will be performed.
+	TextExtractionEnabled bool `pulumi:"textExtractionEnabled"`
+	// Title that describes the document. This can be the top heading or text that describes the document.
 	Title string `pulumi:"title"`
 	// The time when the document is last updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -104,14 +104,14 @@ func (o LookupDocumentResultOutput) ToLookupDocumentResultOutputWithContext(ctx 
 	return o
 }
 
-// If true, makes the document visible to asynchronous policies and rules.
-func (o LookupDocumentResultOutput) AsyncEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupDocumentResult) bool { return v.AsyncEnabled }).(pulumi.BoolOutput)
-}
-
 // Document AI format to save the structured content, including OCR.
 func (o LookupDocumentResultOutput) CloudAiDocument() GoogleCloudDocumentaiV1DocumentResponseOutput {
 	return o.ApplyT(func(v LookupDocumentResult) GoogleCloudDocumentaiV1DocumentResponse { return v.CloudAiDocument }).(GoogleCloudDocumentaiV1DocumentResponseOutput)
+}
+
+// Indicates the category (image, audio, video etc.) of the original content.
+func (o LookupDocumentResultOutput) ContentCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDocumentResult) string { return v.ContentCategory }).(pulumi.StringOutput)
 }
 
 // The time when the document is created.
@@ -174,17 +174,17 @@ func (o LookupDocumentResultOutput) ReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.ReferenceId }).(pulumi.StringOutput)
 }
 
-// A path linked to structured content file.
-func (o LookupDocumentResultOutput) StructuredContentUri() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupDocumentResult) string { return v.StructuredContentUri }).(pulumi.StringOutput)
-}
-
 // If true, text extraction will not be performed.
 func (o LookupDocumentResultOutput) TextExtractionDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDocumentResult) bool { return v.TextExtractionDisabled }).(pulumi.BoolOutput)
 }
 
-// Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+// If true, text extraction will be performed.
+func (o LookupDocumentResultOutput) TextExtractionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDocumentResult) bool { return v.TextExtractionEnabled }).(pulumi.BoolOutput)
+}
+
+// Title that describes the document. This can be the top heading or text that describes the document.
 func (o LookupDocumentResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentResult) string { return v.Title }).(pulumi.StringOutput)
 }

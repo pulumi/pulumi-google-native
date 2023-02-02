@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTaxonomyResult:
-    def __init__(__self__, activated_policy_types=None, description=None, display_name=None, name=None, policy_tag_count=None, taxonomy_timestamps=None):
+    def __init__(__self__, activated_policy_types=None, description=None, display_name=None, name=None, policy_tag_count=None, service=None, taxonomy_timestamps=None):
         if activated_policy_types and not isinstance(activated_policy_types, list):
             raise TypeError("Expected argument 'activated_policy_types' to be a list")
         pulumi.set(__self__, "activated_policy_types", activated_policy_types)
@@ -35,6 +35,9 @@ class GetTaxonomyResult:
         if policy_tag_count and not isinstance(policy_tag_count, int):
             raise TypeError("Expected argument 'policy_tag_count' to be a int")
         pulumi.set(__self__, "policy_tag_count", policy_tag_count)
+        if service and not isinstance(service, dict):
+            raise TypeError("Expected argument 'service' to be a dict")
+        pulumi.set(__self__, "service", service)
         if taxonomy_timestamps and not isinstance(taxonomy_timestamps, dict):
             raise TypeError("Expected argument 'taxonomy_timestamps' to be a dict")
         pulumi.set(__self__, "taxonomy_timestamps", taxonomy_timestamps)
@@ -80,6 +83,14 @@ class GetTaxonomyResult:
         return pulumi.get(self, "policy_tag_count")
 
     @property
+    @pulumi.getter
+    def service(self) -> 'outputs.GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse':
+        """
+        Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        """
+        return pulumi.get(self, "service")
+
+    @property
     @pulumi.getter(name="taxonomyTimestamps")
     def taxonomy_timestamps(self) -> 'outputs.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse':
         """
@@ -99,6 +110,7 @@ class AwaitableGetTaxonomyResult(GetTaxonomyResult):
             display_name=self.display_name,
             name=self.name,
             policy_tag_count=self.policy_tag_count,
+            service=self.service,
             taxonomy_timestamps=self.taxonomy_timestamps)
 
 
@@ -122,6 +134,7 @@ def get_taxonomy(location: Optional[str] = None,
         display_name=__ret__.display_name,
         name=__ret__.name,
         policy_tag_count=__ret__.policy_tag_count,
+        service=__ret__.service,
         taxonomy_timestamps=__ret__.taxonomy_timestamps)
 
 

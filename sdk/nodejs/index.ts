@@ -52,12 +52,14 @@ import * as composer from "./composer";
 import * as compute from "./compute";
 import * as config from "./config";
 import * as connectors from "./connectors";
+import * as contactcenteraiplatform from "./contactcenteraiplatform";
 import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
 import * as contentwarehouse from "./contentwarehouse";
 import * as datacatalog from "./datacatalog";
 import * as dataflow from "./dataflow";
+import * as dataform from "./dataform";
 import * as datafusion from "./datafusion";
 import * as datalabeling from "./datalabeling";
 import * as datamigration from "./datamigration";
@@ -68,6 +70,7 @@ import * as datastore from "./datastore";
 import * as datastream from "./datastream";
 import * as deploymentmanager from "./deploymentmanager";
 import * as dialogflow from "./dialogflow";
+import * as discoveryengine from "./discoveryengine";
 import * as dlp from "./dlp";
 import * as dns from "./dns";
 import * as documentai from "./documentai";
@@ -140,6 +143,8 @@ import * as vpcaccess from "./vpcaccess";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
 import * as workflows from "./workflows";
+import * as workloadmanager from "./workloadmanager";
+import * as workstations from "./workstations";
 
 export {
     accesscontextmanager,
@@ -182,12 +187,14 @@ export {
     compute,
     config,
     connectors,
+    contactcenteraiplatform,
     contactcenterinsights,
     container,
     containeranalysis,
     contentwarehouse,
     datacatalog,
     dataflow,
+    dataform,
     datafusion,
     datalabeling,
     datamigration,
@@ -198,6 +205,7 @@ export {
     datastream,
     deploymentmanager,
     dialogflow,
+    discoveryengine,
     dlp,
     dns,
     documentai,
@@ -270,6 +278,8 @@ export {
     websecurityscanner,
     workflowexecutions,
     workflows,
+    workloadmanager,
+    workstations,
 };
 pulumi.runtime.registerResourcePackage("google-native", {
     version: utilities.getVersion(),

@@ -36,6 +36,8 @@ __all__ = [
     'DatabaseEncryptionResponse',
     'DefaultSnatStatusResponse',
     'DnsCacheConfigResponse',
+    'EphemeralStorageLocalSsdConfigResponse',
+    'FastSocketResponse',
     'FilterResponse',
     'GPUSharingConfigResponse',
     'GatewayAPIConfigResponse',
@@ -50,6 +52,7 @@ __all__ = [
     'KubernetesDashboardResponse',
     'LegacyAbacResponse',
     'LinuxNodeConfigResponse',
+    'LocalNvmeSsdBlockConfigResponse',
     'LoggingComponentConfigResponse',
     'LoggingConfigResponse',
     'LoggingVariantConfigResponse',
@@ -80,6 +83,7 @@ __all__ = [
     'NodePoolResponse',
     'NodeTaintResponse',
     'NotificationConfigResponse',
+    'PlacementPolicyResponse',
     'PrivateClusterConfigResponse',
     'PrivateClusterMasterGlobalAccessConfigResponse',
     'PubSubResponse',
@@ -100,6 +104,7 @@ __all__ = [
     'UpgradeSettingsResponse',
     'VerticalPodAutoscalingResponse',
     'VirtualNICResponse',
+    'WindowsNodeConfigResponse',
     'WorkloadIdentityConfigResponse',
     'WorkloadMetadataConfigResponse',
 ]
@@ -553,9 +558,9 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
-        :param str image_type: The image type to use for NAP created node.
+        :param str image_type: The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         :param 'NodeManagementResponse' management: Specifies the node management options for NAP created node-pools.
-        :param str min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        :param str min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: Scopes that are used by NAP when creating node pools.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
@@ -600,7 +605,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> str:
         """
-        The image type to use for NAP created node.
+        The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         """
         return pulumi.get(self, "image_type")
 
@@ -616,7 +621,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> str:
         """
-        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -720,7 +725,7 @@ class BinaryAuthorizationResponse(dict):
         """
         Configuration for Binary Authorization.
         :param bool enabled: This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
-        :param str evaluation_mode: Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        :param str evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "evaluation_mode", evaluation_mode)
@@ -737,7 +742,7 @@ class BinaryAuthorizationResponse(dict):
     @pulumi.getter(name="evaluationMode")
     def evaluation_mode(self) -> str:
         """
-        Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -1413,6 +1418,67 @@ class DnsCacheConfigResponse(dict):
 
 
 @pulumi.output_type
+class EphemeralStorageLocalSsdConfigResponse(dict):
+    """
+    EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EphemeralStorageLocalSsdConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EphemeralStorageLocalSsdConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EphemeralStorageLocalSsdConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        """
+        EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+        :param int local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        """
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+
+@pulumi.output_type
+class FastSocketResponse(dict):
+    """
+    Configuration of Fast Socket feature.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration of Fast Socket feature.
+        :param bool enabled: Whether Fast Socket features are enabled in the node pool.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether Fast Socket features are enabled in the node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class FilterResponse(dict):
     """
     Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
@@ -1683,10 +1749,14 @@ class IPAllocationPolicyResponse(dict):
             suggest = "services_ipv4_cidr"
         elif key == "servicesIpv4CidrBlock":
             suggest = "services_ipv4_cidr_block"
+        elif key == "servicesIpv6CidrBlock":
+            suggest = "services_ipv6_cidr_block"
         elif key == "servicesSecondaryRangeName":
             suggest = "services_secondary_range_name"
         elif key == "stackType":
             suggest = "stack_type"
+        elif key == "subnetIpv6CidrBlock":
+            suggest = "subnet_ipv6_cidr_block"
         elif key == "subnetworkName":
             suggest = "subnetwork_name"
         elif key == "tpuIpv4CidrBlock":
@@ -1717,8 +1787,10 @@ class IPAllocationPolicyResponse(dict):
                  node_ipv4_cidr_block: str,
                  services_ipv4_cidr: str,
                  services_ipv4_cidr_block: str,
+                 services_ipv6_cidr_block: str,
                  services_secondary_range_name: str,
                  stack_type: str,
+                 subnet_ipv6_cidr_block: str,
                  subnetwork_name: str,
                  tpu_ipv4_cidr_block: str,
                  use_ip_aliases: bool,
@@ -1734,8 +1806,10 @@ class IPAllocationPolicyResponse(dict):
         :param str node_ipv4_cidr_block: The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param str services_ipv4_cidr: This field is deprecated, use services_ipv4_cidr_block.
         :param str services_ipv4_cidr_block: The IP address range of the services IPs in this cluster. If blank, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
+        :param str services_ipv6_cidr_block: [Output only] The services IPv6 CIDR block for the cluster.
         :param str services_secondary_range_name: The name of the secondary range to be used as for the services CIDR block. The secondary range will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster subnetwork. This field is only applicable with use_ip_aliases is true and create_subnetwork is false.
         :param str stack_type: The IP stack type of the cluster
+        :param str subnet_ipv6_cidr_block: [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
         :param str subnetwork_name: A custom subnetwork name to be used if `create_subnetwork` is true. If this field is empty, then an automatic name will be chosen for the new subnetwork.
         :param str tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster. If unspecified, a range will be automatically chosen with the default size. This field is only applicable when `use_ip_aliases` is true. If unspecified, the range will use the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         :param bool use_ip_aliases: Whether alias IPs will be used for pod IPs in the cluster. This is used in conjunction with use_routes. It cannot be true if use_routes is true. If both use_ip_aliases and use_routes are false, then the server picks the default IP allocation mode
@@ -1750,8 +1824,10 @@ class IPAllocationPolicyResponse(dict):
         pulumi.set(__self__, "node_ipv4_cidr_block", node_ipv4_cidr_block)
         pulumi.set(__self__, "services_ipv4_cidr", services_ipv4_cidr)
         pulumi.set(__self__, "services_ipv4_cidr_block", services_ipv4_cidr_block)
+        pulumi.set(__self__, "services_ipv6_cidr_block", services_ipv6_cidr_block)
         pulumi.set(__self__, "services_secondary_range_name", services_secondary_range_name)
         pulumi.set(__self__, "stack_type", stack_type)
+        pulumi.set(__self__, "subnet_ipv6_cidr_block", subnet_ipv6_cidr_block)
         pulumi.set(__self__, "subnetwork_name", subnetwork_name)
         pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         pulumi.set(__self__, "use_ip_aliases", use_ip_aliases)
@@ -1830,6 +1906,14 @@ class IPAllocationPolicyResponse(dict):
         return pulumi.get(self, "services_ipv4_cidr_block")
 
     @property
+    @pulumi.getter(name="servicesIpv6CidrBlock")
+    def services_ipv6_cidr_block(self) -> str:
+        """
+        [Output only] The services IPv6 CIDR block for the cluster.
+        """
+        return pulumi.get(self, "services_ipv6_cidr_block")
+
+    @property
     @pulumi.getter(name="servicesSecondaryRangeName")
     def services_secondary_range_name(self) -> str:
         """
@@ -1844,6 +1928,14 @@ class IPAllocationPolicyResponse(dict):
         The IP stack type of the cluster
         """
         return pulumi.get(self, "stack_type")
+
+    @property
+    @pulumi.getter(name="subnetIpv6CidrBlock")
+    def subnet_ipv6_cidr_block(self) -> str:
+        """
+        [Output only] The subnet's IPv6 CIDR block used by nodes and pods.
+        """
+        return pulumi.get(self, "subnet_ipv6_cidr_block")
 
     @property
     @pulumi.getter(name="subnetworkName")
@@ -1992,6 +2084,45 @@ class LinuxNodeConfigResponse(dict):
         The Linux kernel parameters to be applied to the nodes and all pods running on the nodes. The following parameters are supported. net.core.busy_poll net.core.busy_read net.core.netdev_max_backlog net.core.rmem_max net.core.wmem_default net.core.wmem_max net.core.optmem_max net.core.somaxconn net.ipv4.tcp_rmem net.ipv4.tcp_wmem net.ipv4.tcp_tw_reuse
         """
         return pulumi.get(self, "sysctls")
+
+
+@pulumi.output_type
+class LocalNvmeSsdBlockConfigResponse(dict):
+    """
+    LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsdCount":
+            suggest = "local_ssd_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocalNvmeSsdBlockConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocalNvmeSsdBlockConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocalNvmeSsdBlockConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_ssd_count: int):
+        """
+        LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+        :param int local_ssd_count: The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> int:
+        """
+        The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        return pulumi.get(self, "local_ssd_count")
 
 
 @pulumi.output_type
@@ -2923,6 +3054,10 @@ class NodeConfigResponse(dict):
             suggest = "disk_size_gb"
         elif key == "diskType":
             suggest = "disk_type"
+        elif key == "ephemeralStorageLocalSsdConfig":
+            suggest = "ephemeral_storage_local_ssd_config"
+        elif key == "fastSocket":
+            suggest = "fast_socket"
         elif key == "gcfsConfig":
             suggest = "gcfs_config"
         elif key == "imageType":
@@ -2931,6 +3066,8 @@ class NodeConfigResponse(dict):
             suggest = "kubelet_config"
         elif key == "linuxNodeConfig":
             suggest = "linux_node_config"
+        elif key == "localNvmeSsdBlockConfig":
+            suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
         elif key == "loggingConfig":
@@ -2953,6 +3090,8 @@ class NodeConfigResponse(dict):
             suggest = "service_account"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
+        elif key == "windowsNodeConfig":
+            suggest = "windows_node_config"
         elif key == "workloadMetadataConfig":
             suggest = "workload_metadata_config"
 
@@ -2974,12 +3113,15 @@ class NodeConfigResponse(dict):
                  confidential_nodes: 'outputs.ConfidentialNodesResponse',
                  disk_size_gb: int,
                  disk_type: str,
+                 ephemeral_storage_local_ssd_config: 'outputs.EphemeralStorageLocalSsdConfigResponse',
+                 fast_socket: 'outputs.FastSocketResponse',
                  gcfs_config: 'outputs.GcfsConfigResponse',
                  gvnic: 'outputs.VirtualNICResponse',
                  image_type: str,
                  kubelet_config: 'outputs.NodeKubeletConfigResponse',
                  labels: Mapping[str, str],
                  linux_node_config: 'outputs.LinuxNodeConfigResponse',
+                 local_nvme_ssd_block_config: 'outputs.LocalNvmeSsdBlockConfigResponse',
                  local_ssd_count: int,
                  logging_config: 'outputs.NodePoolLoggingConfigResponse',
                  machine_type: str,
@@ -2996,6 +3138,7 @@ class NodeConfigResponse(dict):
                  spot: bool,
                  tags: Sequence[str],
                  taints: Sequence['outputs.NodeTaintResponse'],
+                 windows_node_config: 'outputs.WindowsNodeConfigResponse',
                  workload_metadata_config: 'outputs.WorkloadMetadataConfigResponse'):
         """
         Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
@@ -3005,12 +3148,15 @@ class NodeConfigResponse(dict):
         :param 'ConfidentialNodesResponse' confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param int disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param 'EphemeralStorageLocalSsdConfigResponse' ephemeral_storage_local_ssd_config: Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
+        :param 'FastSocketResponse' fast_socket: Enable or disable NCCL fast socket for the node pool.
         :param 'GcfsConfigResponse' gcfs_config: Google Container File System (image streaming) configs.
         :param 'VirtualNICResponse' gvnic: Enable or disable gvnic in the node pool.
-        :param str image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        :param str image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         :param 'NodeKubeletConfigResponse' kubelet_config: Node kubelet configs.
         :param Mapping[str, str] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
         :param 'LinuxNodeConfigResponse' linux_node_config: Parameters that can be configured on Linux nodes.
+        :param 'LocalNvmeSsdBlockConfigResponse' local_nvme_ssd_block_config: Parameters for using raw-block Local NVMe SSDs.
         :param int local_ssd_count: The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
         :param 'NodePoolLoggingConfigResponse' logging_config: Logging configuration.
         :param str machine_type: The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
@@ -3027,6 +3173,7 @@ class NodeConfigResponse(dict):
         :param bool spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         :param Sequence[str] tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         :param Sequence['NodeTaintResponse'] taints: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+        :param 'WindowsNodeConfigResponse' windows_node_config: Parameters that can be configured on Windows nodes.
         :param 'WorkloadMetadataConfigResponse' workload_metadata_config: The workload metadata configuration for this node.
         """
         pulumi.set(__self__, "accelerators", accelerators)
@@ -3035,12 +3182,15 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "disk_type", disk_type)
+        pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
+        pulumi.set(__self__, "fast_socket", fast_socket)
         pulumi.set(__self__, "gcfs_config", gcfs_config)
         pulumi.set(__self__, "gvnic", gvnic)
         pulumi.set(__self__, "image_type", image_type)
         pulumi.set(__self__, "kubelet_config", kubelet_config)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "linux_node_config", linux_node_config)
+        pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         pulumi.set(__self__, "logging_config", logging_config)
         pulumi.set(__self__, "machine_type", machine_type)
@@ -3057,6 +3207,7 @@ class NodeConfigResponse(dict):
         pulumi.set(__self__, "spot", spot)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "taints", taints)
+        pulumi.set(__self__, "windows_node_config", windows_node_config)
         pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
     @property
@@ -3108,6 +3259,22 @@ class NodeConfigResponse(dict):
         return pulumi.get(self, "disk_type")
 
     @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
+    def ephemeral_storage_local_ssd_config(self) -> 'outputs.EphemeralStorageLocalSsdConfigResponse':
+        """
+        Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
+        """
+        return pulumi.get(self, "ephemeral_storage_local_ssd_config")
+
+    @property
+    @pulumi.getter(name="fastSocket")
+    def fast_socket(self) -> 'outputs.FastSocketResponse':
+        """
+        Enable or disable NCCL fast socket for the node pool.
+        """
+        return pulumi.get(self, "fast_socket")
+
+    @property
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> 'outputs.GcfsConfigResponse':
         """
@@ -3127,7 +3294,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> str:
         """
-        The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         """
         return pulumi.get(self, "image_type")
 
@@ -3154,6 +3321,14 @@ class NodeConfigResponse(dict):
         Parameters that can be configured on Linux nodes.
         """
         return pulumi.get(self, "linux_node_config")
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfig")
+    def local_nvme_ssd_block_config(self) -> 'outputs.LocalNvmeSsdBlockConfigResponse':
+        """
+        Parameters for using raw-block Local NVMe SSDs.
+        """
+        return pulumi.get(self, "local_nvme_ssd_block_config")
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -3282,6 +3457,14 @@ class NodeConfigResponse(dict):
         List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
         """
         return pulumi.get(self, "taints")
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> 'outputs.WindowsNodeConfigResponse':
+        """
+        Parameters that can be configured on Windows nodes.
+        """
+        return pulumi.get(self, "windows_node_config")
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -3772,6 +3955,8 @@ class NodePoolResponse(dict):
             suggest = "max_pods_constraint"
         elif key == "networkConfig":
             suggest = "network_config"
+        elif key == "placementPolicy":
+            suggest = "placement_policy"
         elif key == "podIpv4CidrSize":
             suggest = "pod_ipv4_cidr_size"
         elif key == "selfLink":
@@ -3798,6 +3983,7 @@ class NodePoolResponse(dict):
                  autoscaling: 'outputs.NodePoolAutoscalingResponse',
                  conditions: Sequence['outputs.StatusConditionResponse'],
                  config: 'outputs.NodeConfigResponse',
+                 etag: str,
                  initial_node_count: int,
                  instance_group_urls: Sequence[str],
                  locations: Sequence[str],
@@ -3805,6 +3991,7 @@ class NodePoolResponse(dict):
                  max_pods_constraint: 'outputs.MaxPodsConstraintResponse',
                  name: str,
                  network_config: 'outputs.NodeNetworkConfigResponse',
+                 placement_policy: 'outputs.PlacementPolicyResponse',
                  pod_ipv4_cidr_size: int,
                  self_link: str,
                  status: str,
@@ -3817,6 +4004,7 @@ class NodePoolResponse(dict):
         :param 'NodePoolAutoscalingResponse' autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         :param Sequence['StatusConditionResponse'] conditions: Which conditions caused the current node pool state.
         :param 'NodeConfigResponse' config: The node configuration of the pool.
+        :param str etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param int initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         :param Sequence[str] instance_group_urls: [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         :param Sequence[str] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
@@ -3824,17 +4012,19 @@ class NodePoolResponse(dict):
         :param 'MaxPodsConstraintResponse' max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param str name: The name of the node pool.
         :param 'NodeNetworkConfigResponse' network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param 'PlacementPolicyResponse' placement_policy: Specifies the node placement policy.
         :param int pod_ipv4_cidr_size: [Output only] The pod CIDR block size per node in this node pool.
         :param str self_link: [Output only] Server-defined URL for the resource.
         :param str status: [Output only] The status of the nodes in this pool instance.
         :param str status_message: [Output only] Deprecated. Use conditions instead. Additional information about the current status of this node pool instance, if available.
         :param 'UpdateInfoResponse' update_info: [Output only] Update info contains relevant information during a node pool update.
         :param 'UpgradeSettingsResponse' upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
-        :param str version: The version of the Kubernetes of this node.
+        :param str version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         pulumi.set(__self__, "autoscaling", autoscaling)
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "etag", etag)
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         pulumi.set(__self__, "instance_group_urls", instance_group_urls)
         pulumi.set(__self__, "locations", locations)
@@ -3842,6 +4032,7 @@ class NodePoolResponse(dict):
         pulumi.set(__self__, "max_pods_constraint", max_pods_constraint)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "network_config", network_config)
+        pulumi.set(__self__, "placement_policy", placement_policy)
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "status", status)
@@ -3873,6 +4064,14 @@ class NodePoolResponse(dict):
         The node configuration of the pool.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -3931,6 +4130,14 @@ class NodePoolResponse(dict):
         return pulumi.get(self, "network_config")
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> 'outputs.PlacementPolicyResponse':
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @property
     @pulumi.getter(name="podIpv4CidrSize")
     def pod_ipv4_cidr_size(self) -> int:
         """
@@ -3982,7 +4189,7 @@ class NodePoolResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The version of the Kubernetes of this node.
+        The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         return pulumi.get(self, "version")
 
@@ -4051,6 +4258,28 @@ class NotificationConfigResponse(dict):
         Notification config for Pub/Sub.
         """
         return pulumi.get(self, "pubsub")
+
+
+@pulumi.output_type
+class PlacementPolicyResponse(dict):
+    """
+    PlacementPolicy defines the placement policy used by the node pool.
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        PlacementPolicy defines the placement policy used by the node pool.
+        :param str type: The type of placement.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of placement.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -5001,6 +5230,45 @@ class VirtualNICResponse(dict):
         Whether gVNIC features are enabled in the node pool.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class WindowsNodeConfigResponse(dict):
+    """
+    Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "osVersion":
+            suggest = "os_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WindowsNodeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WindowsNodeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WindowsNodeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 os_version: str):
+        """
+        Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+        :param str os_version: OSVersion specifies the Windows node config to be used on the node
+        """
+        pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> str:
+        """
+        OSVersion specifies the Windows node config to be used on the node
+        """
+        return pulumi.get(self, "os_version")
 
 
 @pulumi.output_type

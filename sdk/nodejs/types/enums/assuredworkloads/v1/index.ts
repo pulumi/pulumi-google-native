@@ -83,6 +83,14 @@ export const WorkloadComplianceRegime = {
      * Assured Workloads for Partners
      */
     AssuredWorkloadsForPartners: "ASSURED_WORKLOADS_FOR_PARTNERS",
+    /**
+     * Assured Workloads for Israel Regions
+     */
+    IsrRegions: "ISR_REGIONS",
+    /**
+     * Assured Workloads for Canada Protected B regime
+     */
+    CaProtectedB: "CA_PROTECTED_B",
 } as const;
 
 /**
@@ -91,17 +99,18 @@ export const WorkloadComplianceRegime = {
 export type WorkloadComplianceRegime = (typeof WorkloadComplianceRegime)[keyof typeof WorkloadComplianceRegime];
 
 export const WorkloadPartner = {
-    /**
-     * Unknown partner regime/controls.
-     */
     PartnerUnspecified: "PARTNER_UNSPECIFIED",
     /**
-     * S3NS regime/controls.
+     * Enum representing S3NS partner.
      */
     LocalControlsByS3ns: "LOCAL_CONTROLS_BY_S3NS",
+    /**
+     * Enum representing T_SYSTEM partner.
+     */
+    SovereignControlsByTSystems: "SOVEREIGN_CONTROLS_BY_T_SYSTEMS",
 } as const;
 
 /**
- * Optional. Compliance Regime associated with this workload.
+ * Optional. Partner regime associated with this workload.
  */
 export type WorkloadPartner = (typeof WorkloadPartner)[keyof typeof WorkloadPartner];

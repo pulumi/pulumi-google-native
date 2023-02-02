@@ -4,7 +4,7 @@
 
 export const ExecutionCallLogLevel = {
     /**
-     * No call logging specified.
+     * No call logging level specified.
      */
     CallLogLevelUnspecified: "CALL_LOG_LEVEL_UNSPECIFIED",
     /**

@@ -18,9 +18,9 @@ type Organization struct {
 
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponseOutput `pulumi:"addonsConfig"`
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringOutput `pulumi:"analyticsRegion"`
 	// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
 	ApigeeProjectId pulumi.StringOutput `pulumi:"apigeeProjectId"`
@@ -48,7 +48,7 @@ type Organization struct {
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Name of the Apigee organization.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+	// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configuration for the Portals settings.
 	PortalDisabled pulumi.BoolOutput `pulumi:"portalDisabled"`
@@ -124,9 +124,9 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig *GoogleCloudApigeeV1AddonsConfig `pulumi:"addonsConfig"`
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion string `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
 	Attributes []string `pulumi:"attributes"`
@@ -140,7 +140,7 @@ type organizationArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName *string `pulumi:"displayName"`
-	// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+	// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
 	Parent string `pulumi:"parent"`
 	// Configuration for the Portals settings.
 	PortalDisabled *bool `pulumi:"portalDisabled"`
@@ -158,9 +158,9 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigPtrInput
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringInput
 	// Not used by Apigee.
 	Attributes pulumi.StringArrayInput
@@ -174,7 +174,7 @@ type OrganizationArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name for the Apigee organization. Unused, but reserved for future use.
 	DisplayName pulumi.StringPtrInput
-	// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+	// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
 	Parent pulumi.StringInput
 	// Configuration for the Portals settings.
 	PortalDisabled pulumi.BoolPtrInput
@@ -230,9 +230,9 @@ func (o OrganizationOutput) AddonsConfig() GoogleCloudApigeeV1AddonsConfigRespon
 	return o.ApplyT(func(v *Organization) GoogleCloudApigeeV1AddonsConfigResponseOutput { return v.AddonsConfig }).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
 }
 
-// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 //
-// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 func (o OrganizationOutput) AnalyticsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.AnalyticsRegion }).(pulumi.StringOutput)
 }
@@ -302,7 +302,7 @@ func (o OrganizationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. Name of the GCP project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
+// Required. Name of the Google Cloud project in which to associate the Apigee organization. Pass the information as a query parameter using the following structure in your request: `projects/`
 func (o OrganizationOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *Organization) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

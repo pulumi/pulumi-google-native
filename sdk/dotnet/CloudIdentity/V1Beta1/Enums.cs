@@ -8,6 +8,56 @@ using Pulumi;
 namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 {
     [EnumType]
+    public readonly struct DeviceClientTypesItem : IEquatable<DeviceClientTypesItem>
+    {
+        private readonly string _value;
+
+        private DeviceClientTypesItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value
+        /// </summary>
+        public static DeviceClientTypesItem ClientTypeUnspecified { get; } = new DeviceClientTypesItem("CLIENT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Managed by DriveFS
+        /// </summary>
+        public static DeviceClientTypesItem DriveFs { get; } = new DeviceClientTypesItem("DRIVE_FS");
+        /// <summary>
+        /// Management type for every secure device
+        /// </summary>
+        public static DeviceClientTypesItem Fundamental { get; } = new DeviceClientTypesItem("FUNDAMENTAL");
+        /// <summary>
+        /// Managed by Endpoint Verification
+        /// </summary>
+        public static DeviceClientTypesItem EndpointVerification { get; } = new DeviceClientTypesItem("ENDPOINT_VERIFICATION");
+        /// <summary>
+        /// Managed by Windows
+        /// </summary>
+        public static DeviceClientTypesItem WindowsAdvanced { get; } = new DeviceClientTypesItem("WINDOWS_ADVANCED");
+        /// <summary>
+        /// Managed by Google credential provider for windows
+        /// </summary>
+        public static DeviceClientTypesItem GoogleCredentialsProviderForWindows { get; } = new DeviceClientTypesItem("GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS");
+
+        public static bool operator ==(DeviceClientTypesItem left, DeviceClientTypesItem right) => left.Equals(right);
+        public static bool operator !=(DeviceClientTypesItem left, DeviceClientTypesItem right) => !left.Equals(right);
+
+        public static explicit operator string(DeviceClientTypesItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DeviceClientTypesItem other && Equals(other);
+        public bool Equals(DeviceClientTypesItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct DynamicGroupQueryResourceType : IEquatable<DynamicGroupQueryResourceType>
     {
         private readonly string _value;

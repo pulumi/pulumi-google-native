@@ -16,12 +16,12 @@ import (
 type FolderNotificationConfig struct {
 	pulumi.CustomResourceState
 
-	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
 	ConfigId pulumi.StringOutput `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringOutput `pulumi:"description"`
 	FolderId    pulumi.StringOutput `pulumi:"folderId"`
-	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringOutput `pulumi:"pubsubTopic"`
@@ -81,12 +81,12 @@ func (FolderNotificationConfigState) ElementType() reflect.Type {
 }
 
 type folderNotificationConfigArgs struct {
-	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
 	ConfigId string `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	FolderId    string  `pulumi:"folderId"`
-	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
 	Name *string `pulumi:"name"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
@@ -96,12 +96,12 @@ type folderNotificationConfigArgs struct {
 
 // The set of arguments for constructing a FolderNotificationConfig resource.
 type FolderNotificationConfigArgs struct {
-	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+	// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
 	ConfigId pulumi.StringInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	FolderId    pulumi.StringInput
-	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
 	Name pulumi.StringPtrInput
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
@@ -146,7 +146,7 @@ func (o FolderNotificationConfigOutput) ToFolderNotificationConfigOutputWithCont
 	return o
 }
 
-// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
 func (o FolderNotificationConfigOutput) ConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderNotificationConfig) pulumi.StringOutput { return v.ConfigId }).(pulumi.StringOutput)
 }
@@ -160,7 +160,7 @@ func (o FolderNotificationConfigOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderNotificationConfig) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
 func (o FolderNotificationConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderNotificationConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

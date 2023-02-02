@@ -64,6 +64,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.EphemeralStorageConfigArgs>? EphemeralStorageConfig { get; set; }
 
         /// <summary>
+        /// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+        /// </summary>
+        [Input("ephemeralStorageLocalSsdConfig")]
+        public Input<Inputs.EphemeralStorageLocalSsdConfigArgs>? EphemeralStorageLocalSsdConfig { get; set; }
+
+        /// <summary>
+        /// Enable or disable NCCL fast socket for the node pool.
+        /// </summary>
+        [Input("fastSocket")]
+        public Input<Inputs.FastSocketArgs>? FastSocket { get; set; }
+
+        /// <summary>
         /// GCFS (Google Container File System) configs.
         /// </summary>
         [Input("gcfsConfig")]
@@ -76,7 +88,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.VirtualNICArgs>? Gvnic { get; set; }
 
         /// <summary>
-        /// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        /// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
@@ -104,6 +116,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         /// </summary>
         [Input("linuxNodeConfig")]
         public Input<Inputs.LinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
+
+        /// <summary>
+        /// Parameters for using raw-block Local NVMe SSDs.
+        /// </summary>
+        [Input("localNvmeSsdBlockConfig")]
+        public Input<Inputs.LocalNvmeSsdBlockConfigArgs>? LocalNvmeSsdBlockConfig { get; set; }
 
         /// <summary>
         /// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
@@ -171,6 +189,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("reservationAffinity")]
         public Input<Inputs.ReservationAffinityArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceLabels")]
+        private InputMap<string>? _resourceLabels;
+
+        /// <summary>
+        /// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+        /// </summary>
+        public InputMap<string> ResourceLabels
+        {
+            get => _resourceLabels ?? (_resourceLabels = new InputMap<string>());
+            set => _resourceLabels = value;
+        }
+
         /// <summary>
         /// Sandbox configuration for this node.
         /// </summary>
@@ -218,6 +248,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
             get => _taints ?? (_taints = new InputList<Inputs.NodeTaintArgs>());
             set => _taints = value;
         }
+
+        /// <summary>
+        /// Parameters that can be configured on Windows nodes.
+        /// </summary>
+        [Input("windowsNodeConfig")]
+        public Input<Inputs.WindowsNodeConfigArgs>? WindowsNodeConfig { get; set; }
 
         /// <summary>
         /// The workload metadata configuration for this node.

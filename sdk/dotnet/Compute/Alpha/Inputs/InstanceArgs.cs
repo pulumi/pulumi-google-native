@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Hostname { get; set; }
 
         /// <summary>
-        /// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        /// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
         /// </summary>
         [Input("instanceEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? InstanceEncryptionKey { get; set; }
@@ -217,6 +217,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         {
             get => _serviceAccounts ?? (_serviceAccounts = new InputList<Inputs.ServiceAccountArgs>());
             set => _serviceAccounts = value;
+        }
+
+        [Input("serviceIntegrationSpecs")]
+        private InputMap<string>? _serviceIntegrationSpecs;
+
+        /// <summary>
+        /// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        /// </summary>
+        public InputMap<string> ServiceIntegrationSpecs
+        {
+            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<string>());
+            set => _serviceIntegrationSpecs = value;
         }
 
         [Input("shieldedInstanceConfig")]

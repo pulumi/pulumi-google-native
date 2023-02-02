@@ -40,6 +40,8 @@ type CloneJob struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
+	// The clone steps list representing its progress.
+	Steps CloneStepResponseArrayOutput `pulumi:"steps"`
 }
 
 // NewCloneJob registers a new resource with the given unique name, arguments, and options.
@@ -216,6 +218,11 @@ func (o CloneJobOutput) State() pulumi.StringOutput {
 // The time the state was last updated.
 func (o CloneJobOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloneJob) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The clone steps list representing its progress.
+func (o CloneJobOutput) Steps() CloneStepResponseArrayOutput {
+	return o.ApplyT(func(v *CloneJob) CloneStepResponseArrayOutput { return v.Steps }).(CloneStepResponseArrayOutput)
 }
 
 func init() {

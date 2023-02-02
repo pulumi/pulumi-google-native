@@ -28,11 +28,11 @@ export interface GetDestGroupArgs {
 
 export interface GetDestGroupResult {
     /**
-     * null List of CIDRs that this group applies to.
+     * Unordered list. List of CIDRs that this group applies to.
      */
     readonly cidrs: string[];
     /**
-     * null List of FQDNs that this group applies to.
+     * Unordered list. List of FQDNs that this group applies to.
      */
     readonly fqdns: string[];
     /**

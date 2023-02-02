@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionProfileResult:
-    def __init__(__self__, alloydb=None, cloudsql=None, create_time=None, display_name=None, error=None, labels=None, mysql=None, name=None, postgresql=None, provider=None, state=None, update_time=None):
+    def __init__(__self__, alloydb=None, cloudsql=None, create_time=None, display_name=None, error=None, labels=None, mysql=None, name=None, oracle=None, postgresql=None, provider=None, state=None, update_time=None):
         if alloydb and not isinstance(alloydb, dict):
             raise TypeError("Expected argument 'alloydb' to be a dict")
         pulumi.set(__self__, "alloydb", alloydb)
@@ -44,6 +44,9 @@ class GetConnectionProfileResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if oracle and not isinstance(oracle, dict):
+            raise TypeError("Expected argument 'oracle' to be a dict")
+        pulumi.set(__self__, "oracle", oracle)
         if postgresql and not isinstance(postgresql, dict):
             raise TypeError("Expected argument 'postgresql' to be a dict")
         pulumi.set(__self__, "postgresql", postgresql)
@@ -123,6 +126,14 @@ class GetConnectionProfileResult:
 
     @property
     @pulumi.getter
+    def oracle(self) -> 'outputs.OracleConnectionProfileResponse':
+        """
+        An Oracle database connection profile.
+        """
+        return pulumi.get(self, "oracle")
+
+    @property
+    @pulumi.getter
     def postgresql(self) -> 'outputs.PostgreSqlConnectionProfileResponse':
         """
         A PostgreSQL database connection profile.
@@ -168,6 +179,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
             labels=self.labels,
             mysql=self.mysql,
             name=self.name,
+            oracle=self.oracle,
             postgresql=self.postgresql,
             provider=self.provider,
             state=self.state,
@@ -197,6 +209,7 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
         labels=__ret__.labels,
         mysql=__ret__.mysql,
         name=__ret__.name,
+        oracle=__ret__.oracle,
         postgresql=__ret__.postgresql,
         provider=__ret__.provider,
         state=__ret__.state,

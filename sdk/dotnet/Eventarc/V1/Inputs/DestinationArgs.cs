@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     public sealed class DestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+        /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
         /// </summary>
         [Input("cloudFunction")]
         public Input<string>? CloudFunction { get; set; }

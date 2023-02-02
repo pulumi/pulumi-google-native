@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// </summary>
     public sealed class TelemetryConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The output format of the Dataproc Metastore service's logs.
+        /// </summary>
         [Input("logFormat")]
         public Input<Pulumi.GoogleNative.Metastore.V1Alpha.TelemetryConfigLogFormat>? LogFormat { get; set; }
 

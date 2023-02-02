@@ -34,17 +34,23 @@ type ConnectionProfile struct {
 	Mysql MySqlConnectionProfileResponseOutput `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// An Oracle database connection profile.
+	Oracle OracleConnectionProfileResponseOutput `pulumi:"oracle"`
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfileResponseOutput `pulumi:"postgresql"`
 	Project    pulumi.StringOutput                       `pulumi:"project"`
 	// The database provider.
 	Provider pulumi.StringOutput `pulumi:"provider"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State pulumi.StringOutput `pulumi:"state"`
 	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -110,15 +116,21 @@ type connectionProfileArgs struct {
 	Mysql *MySqlConnectionProfile `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name *string `pulumi:"name"`
+	// An Oracle database connection profile.
+	Oracle *OracleConnectionProfile `pulumi:"oracle"`
 	// A PostgreSQL database connection profile.
 	Postgresql *PostgreSqlConnectionProfile `pulumi:"postgresql"`
 	Project    *string                      `pulumi:"project"`
 	// The database provider.
 	Provider *ConnectionProfileProvider `pulumi:"provider"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
+	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+	SkipValidation *bool `pulumi:"skipValidation"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State *ConnectionProfileStateEnum `pulumi:"state"`
+	// Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -138,15 +150,21 @@ type ConnectionProfileArgs struct {
 	Mysql MySqlConnectionProfilePtrInput
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name pulumi.StringPtrInput
+	// An Oracle database connection profile.
+	Oracle OracleConnectionProfilePtrInput
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfilePtrInput
 	Project    pulumi.StringPtrInput
 	// The database provider.
 	Provider ConnectionProfileProviderPtrInput
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
+	// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+	SkipValidation pulumi.BoolPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State ConnectionProfileStateEnumPtrInput
+	// Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {
@@ -235,6 +253,11 @@ func (o ConnectionProfileOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// An Oracle database connection profile.
+func (o ConnectionProfileOutput) Oracle() OracleConnectionProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) OracleConnectionProfileResponseOutput { return v.Oracle }).(OracleConnectionProfileResponseOutput)
+}
+
 // A PostgreSQL database connection profile.
 func (o ConnectionProfileOutput) Postgresql() PostgreSqlConnectionProfileResponseOutput {
 	return o.ApplyT(func(v *ConnectionProfile) PostgreSqlConnectionProfileResponseOutput { return v.Postgresql }).(PostgreSqlConnectionProfileResponseOutput)
@@ -249,9 +272,14 @@ func (o ConnectionProfileOutput) Provider() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.Provider }).(pulumi.StringOutput)
 }
 
-// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 func (o ConnectionProfileOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+func (o ConnectionProfileOutput) SkipValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
 }
 
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -262,6 +290,11 @@ func (o ConnectionProfileOutput) State() pulumi.StringOutput {
 // The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 func (o ConnectionProfileOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+func (o ConnectionProfileOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

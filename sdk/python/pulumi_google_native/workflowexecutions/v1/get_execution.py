@@ -19,19 +19,25 @@ __all__ = [
 
 @pulumi.output_type
 class GetExecutionResult:
-    def __init__(__self__, argument=None, call_log_level=None, end_time=None, error=None, name=None, result=None, start_time=None, state=None, status=None, workflow_revision_id=None):
+    def __init__(__self__, argument=None, call_log_level=None, duration=None, end_time=None, error=None, labels=None, name=None, result=None, start_time=None, state=None, status=None, workflow_revision_id=None):
         if argument and not isinstance(argument, str):
             raise TypeError("Expected argument 'argument' to be a str")
         pulumi.set(__self__, "argument", argument)
         if call_log_level and not isinstance(call_log_level, str):
             raise TypeError("Expected argument 'call_log_level' to be a str")
         pulumi.set(__self__, "call_log_level", call_log_level)
+        if duration and not isinstance(duration, str):
+            raise TypeError("Expected argument 'duration' to be a str")
+        pulumi.set(__self__, "duration", duration)
         if end_time and not isinstance(end_time, str):
             raise TypeError("Expected argument 'end_time' to be a str")
         pulumi.set(__self__, "end_time", end_time)
         if error and not isinstance(error, dict):
             raise TypeError("Expected argument 'error' to be a dict")
         pulumi.set(__self__, "error", error)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -68,6 +74,14 @@ class GetExecutionResult:
         return pulumi.get(self, "call_log_level")
 
     @property
+    @pulumi.getter
+    def duration(self) -> str:
+        """
+        Measures the duration of the execution.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
         """
@@ -82,6 +96,14 @@ class GetExecutionResult:
         The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -140,8 +162,10 @@ class AwaitableGetExecutionResult(GetExecutionResult):
         return GetExecutionResult(
             argument=self.argument,
             call_log_level=self.call_log_level,
+            duration=self.duration,
             end_time=self.end_time,
             error=self.error,
+            labels=self.labels,
             name=self.name,
             result=self.result,
             start_time=self.start_time,
@@ -171,8 +195,10 @@ def get_execution(execution_id: Optional[str] = None,
     return AwaitableGetExecutionResult(
         argument=__ret__.argument,
         call_log_level=__ret__.call_log_level,
+        duration=__ret__.duration,
         end_time=__ret__.end_time,
         error=__ret__.error,
+        labels=__ret__.labels,
         name=__ret__.name,
         result=__ret__.result,
         start_time=__ret__.start_time,

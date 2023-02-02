@@ -19,6 +19,7 @@ __all__ = [
     'AzureCredentialsResponse',
     'BandwidthLimitResponse',
     'DateResponse',
+    'EventStreamResponse',
     'GcsDataResponse',
     'HttpDataResponse',
     'LoggingConfigResponse',
@@ -441,6 +442,69 @@ class DateResponse(dict):
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         return pulumi.get(self, "year")
+
+
+@pulumi.output_type
+class EventStreamResponse(dict):
+    """
+    Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventStreamExpirationTime":
+            suggest = "event_stream_expiration_time"
+        elif key == "eventStreamStartTime":
+            suggest = "event_stream_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventStreamResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventStreamResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventStreamResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 event_stream_expiration_time: str,
+                 event_stream_start_time: str,
+                 name: str):
+        """
+        Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+        :param str event_stream_expiration_time: Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+        :param str event_stream_start_time: Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+        :param str name: Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        """
+        pulumi.set(__self__, "event_stream_expiration_time", event_stream_expiration_time)
+        pulumi.set(__self__, "event_stream_start_time", event_stream_start_time)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="eventStreamExpirationTime")
+    def event_stream_expiration_time(self) -> str:
+        """
+        Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+        """
+        return pulumi.get(self, "event_stream_expiration_time")
+
+    @property
+    @pulumi.getter(name="eventStreamStartTime")
+    def event_stream_start_time(self) -> str:
+        """
+        Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+        """
+        return pulumi.get(self, "event_stream_start_time")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

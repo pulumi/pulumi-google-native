@@ -3993,6 +3993,8 @@ type RuntimeSoftwareConfigResponse struct {
 	PostStartupScriptBehavior string `pulumi:"postStartupScriptBehavior"`
 	// Bool indicating whether an newer image is available in an image family.
 	Upgradeable bool `pulumi:"upgradeable"`
+	// version of boot image such as M100, from release label of the image.
+	Version string `pulumi:"version"`
 }
 
 // Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
@@ -4063,6 +4065,11 @@ func (o RuntimeSoftwareConfigResponseOutput) PostStartupScriptBehavior() pulumi.
 // Bool indicating whether an newer image is available in an image family.
 func (o RuntimeSoftwareConfigResponseOutput) Upgradeable() pulumi.BoolOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.Upgradeable }).(pulumi.BoolOutput)
+}
+
+// version of boot image such as M100, from release label of the image.
+func (o RuntimeSoftwareConfigResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.Version }).(pulumi.StringOutput)
 }
 
 // Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not supported.

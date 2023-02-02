@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV2EnvVarResponse> Env;
         /// <summary>
-        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         public readonly string Image;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2ProbeResponse LivenessProbe;
         /// <summary>
-        /// Name of the container specified as a DNS_LABEL.
+        /// Name of the container specified as a DNS_LABEL (RFC 1123).
         /// </summary>
         public readonly string Name;
         /// <summary>

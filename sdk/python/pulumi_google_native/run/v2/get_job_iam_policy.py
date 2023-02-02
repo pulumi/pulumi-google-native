@@ -84,7 +84,7 @@ def get_job_iam_policy(job_id: Optional[str] = None,
                        project: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetJobIamPolicyResult:
     """
-    Get the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
+    Gets the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
     """
     __args__ = dict()
     __args__['jobId'] = job_id
@@ -108,6 +108,6 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobIamPolicyResult]:
     """
-    Get the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
+    Gets the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
     """
     ...

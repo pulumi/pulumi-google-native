@@ -220,6 +220,10 @@ export const InstanceDatabaseVersion = {
      */
     Mysql8030: "MYSQL_8_0_30",
     /**
+     * The database major version is MySQL 8.0 and the minor version is 31.
+     */
+    Mysql8031: "MYSQL_8_0_31",
+    /**
      * The database version is SQL Server 2019 Standard.
      */
     Sqlserver2019Standard: "SQLSERVER_2019_STANDARD",

@@ -43,6 +43,7 @@ __all__ = [
     'GooglePrivacyDlpV2DetectionRuleArgs',
     'GooglePrivacyDlpV2DictionaryArgs',
     'GooglePrivacyDlpV2EntityIdArgs',
+    'GooglePrivacyDlpV2ExcludeByHotwordArgs',
     'GooglePrivacyDlpV2ExcludeInfoTypesArgs',
     'GooglePrivacyDlpV2ExclusionRuleArgs',
     'GooglePrivacyDlpV2ExpressionsArgs',
@@ -1849,6 +1850,46 @@ class GooglePrivacyDlpV2EntityIdArgs:
 
 
 @pulumi.input_type
+class GooglePrivacyDlpV2ExcludeByHotwordArgs:
+    def __init__(__self__, *,
+                 hotword_regex: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']] = None,
+                 proximity: Optional[pulumi.Input['GooglePrivacyDlpV2ProximityArgs']] = None):
+        """
+        The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
+        :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] hotword_regex: Regular expression pattern defining what qualifies as a hotword.
+        :param pulumi.Input['GooglePrivacyDlpV2ProximityArgs'] proximity: Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+        """
+        if hotword_regex is not None:
+            pulumi.set(__self__, "hotword_regex", hotword_regex)
+        if proximity is not None:
+            pulumi.set(__self__, "proximity", proximity)
+
+    @property
+    @pulumi.getter(name="hotwordRegex")
+    def hotword_regex(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']]:
+        """
+        Regular expression pattern defining what qualifies as a hotword.
+        """
+        return pulumi.get(self, "hotword_regex")
+
+    @hotword_regex.setter
+    def hotword_regex(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']]):
+        pulumi.set(self, "hotword_regex", value)
+
+    @property
+    @pulumi.getter
+    def proximity(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ProximityArgs']]:
+        """
+        Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+        """
+        return pulumi.get(self, "proximity")
+
+    @proximity.setter
+    def proximity(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ProximityArgs']]):
+        pulumi.set(self, "proximity", value)
+
+
+@pulumi.input_type
 class GooglePrivacyDlpV2ExcludeInfoTypesArgs:
     def __init__(__self__, *,
                  info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]] = None):
@@ -1876,18 +1917,22 @@ class GooglePrivacyDlpV2ExcludeInfoTypesArgs:
 class GooglePrivacyDlpV2ExclusionRuleArgs:
     def __init__(__self__, *,
                  dictionary: Optional[pulumi.Input['GooglePrivacyDlpV2DictionaryArgs']] = None,
+                 exclude_by_hotword: Optional[pulumi.Input['GooglePrivacyDlpV2ExcludeByHotwordArgs']] = None,
                  exclude_info_types: Optional[pulumi.Input['GooglePrivacyDlpV2ExcludeInfoTypesArgs']] = None,
                  matching_type: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleMatchingType']] = None,
                  regex: Optional[pulumi.Input['GooglePrivacyDlpV2RegexArgs']] = None):
         """
         The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
         :param pulumi.Input['GooglePrivacyDlpV2DictionaryArgs'] dictionary: Dictionary which defines the rule.
+        :param pulumi.Input['GooglePrivacyDlpV2ExcludeByHotwordArgs'] exclude_by_hotword: Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
         :param pulumi.Input['GooglePrivacyDlpV2ExcludeInfoTypesArgs'] exclude_info_types: Set of infoTypes for which findings would affect this rule.
         :param pulumi.Input['GooglePrivacyDlpV2ExclusionRuleMatchingType'] matching_type: How the rule is applied, see MatchingType documentation for details.
         :param pulumi.Input['GooglePrivacyDlpV2RegexArgs'] regex: Regular expression which defines the rule.
         """
         if dictionary is not None:
             pulumi.set(__self__, "dictionary", dictionary)
+        if exclude_by_hotword is not None:
+            pulumi.set(__self__, "exclude_by_hotword", exclude_by_hotword)
         if exclude_info_types is not None:
             pulumi.set(__self__, "exclude_info_types", exclude_info_types)
         if matching_type is not None:
@@ -1906,6 +1951,18 @@ class GooglePrivacyDlpV2ExclusionRuleArgs:
     @dictionary.setter
     def dictionary(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2DictionaryArgs']]):
         pulumi.set(self, "dictionary", value)
+
+    @property
+    @pulumi.getter(name="excludeByHotword")
+    def exclude_by_hotword(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ExcludeByHotwordArgs']]:
+        """
+        Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+        """
+        return pulumi.get(self, "exclude_by_hotword")
+
+    @exclude_by_hotword.setter
+    def exclude_by_hotword(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ExcludeByHotwordArgs']]):
+        pulumi.set(self, "exclude_by_hotword", value)
 
     @property
     @pulumi.getter(name="excludeInfoTypes")
@@ -3662,7 +3719,7 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs:
 class GooglePrivacyDlpV2PublishSummaryToCsccArgs:
     def __init__(__self__):
         """
-        Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+        Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect
         """
         pass
 

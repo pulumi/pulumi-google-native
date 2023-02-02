@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodePoolResult:
-    def __init__(__self__, autoscaling=None, conditions=None, config=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, pod_ipv4_cidr_size=None, self_link=None, status=None, status_message=None, update_info=None, upgrade_settings=None, version=None):
+    def __init__(__self__, autoscaling=None, conditions=None, config=None, etag=None, initial_node_count=None, instance_group_urls=None, locations=None, management=None, max_pods_constraint=None, name=None, network_config=None, placement_policy=None, pod_ipv4_cidr_size=None, self_link=None, status=None, status_message=None, update_info=None, upgrade_settings=None, version=None):
         if autoscaling and not isinstance(autoscaling, dict):
             raise TypeError("Expected argument 'autoscaling' to be a dict")
         pulumi.set(__self__, "autoscaling", autoscaling)
@@ -29,6 +29,9 @@ class GetNodePoolResult:
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
+        if etag and not isinstance(etag, str):
+            raise TypeError("Expected argument 'etag' to be a str")
+        pulumi.set(__self__, "etag", etag)
         if initial_node_count and not isinstance(initial_node_count, int):
             raise TypeError("Expected argument 'initial_node_count' to be a int")
         pulumi.set(__self__, "initial_node_count", initial_node_count)
@@ -50,6 +53,9 @@ class GetNodePoolResult:
         if network_config and not isinstance(network_config, dict):
             raise TypeError("Expected argument 'network_config' to be a dict")
         pulumi.set(__self__, "network_config", network_config)
+        if placement_policy and not isinstance(placement_policy, dict):
+            raise TypeError("Expected argument 'placement_policy' to be a dict")
+        pulumi.set(__self__, "placement_policy", placement_policy)
         if pod_ipv4_cidr_size and not isinstance(pod_ipv4_cidr_size, int):
             raise TypeError("Expected argument 'pod_ipv4_cidr_size' to be a int")
         pulumi.set(__self__, "pod_ipv4_cidr_size", pod_ipv4_cidr_size)
@@ -99,6 +105,14 @@ class GetNodePoolResult:
         The node configuration of the pool.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter
+    def etag(self) -> str:
+        """
+        This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -157,6 +171,14 @@ class GetNodePoolResult:
         return pulumi.get(self, "network_config")
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> 'outputs.PlacementPolicyResponse':
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @property
     @pulumi.getter(name="podIpv4CidrSize")
     def pod_ipv4_cidr_size(self) -> int:
         """
@@ -208,7 +230,7 @@ class GetNodePoolResult:
     @pulumi.getter
     def version(self) -> str:
         """
-        The version of the Kubernetes of this node.
+        The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         return pulumi.get(self, "version")
 
@@ -222,6 +244,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             autoscaling=self.autoscaling,
             conditions=self.conditions,
             config=self.config,
+            etag=self.etag,
             initial_node_count=self.initial_node_count,
             instance_group_urls=self.instance_group_urls,
             locations=self.locations,
@@ -229,6 +252,7 @@ class AwaitableGetNodePoolResult(GetNodePoolResult):
             max_pods_constraint=self.max_pods_constraint,
             name=self.name,
             network_config=self.network_config,
+            placement_policy=self.placement_policy,
             pod_ipv4_cidr_size=self.pod_ipv4_cidr_size,
             self_link=self.self_link,
             status=self.status,
@@ -262,6 +286,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         autoscaling=__ret__.autoscaling,
         conditions=__ret__.conditions,
         config=__ret__.config,
+        etag=__ret__.etag,
         initial_node_count=__ret__.initial_node_count,
         instance_group_urls=__ret__.instance_group_urls,
         locations=__ret__.locations,
@@ -269,6 +294,7 @@ def get_node_pool(cluster_id: Optional[str] = None,
         max_pods_constraint=__ret__.max_pods_constraint,
         name=__ret__.name,
         network_config=__ret__.network_config,
+        placement_policy=__ret__.placement_policy,
         pod_ipv4_cidr_size=__ret__.pod_ipv4_cidr_size,
         self_link=__ret__.self_link,
         status=__ret__.status,

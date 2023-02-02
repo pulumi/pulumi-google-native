@@ -2135,12 +2135,16 @@ class SingleTargetDatasetResponse(dict):
                  dataset_id: str):
         """
         A single target dataset to which all data will be streamed.
+        :param str dataset_id: The dataset ID of the target dataset.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
 
     @property
     @pulumi.getter(name="datasetId")
     def dataset_id(self) -> str:
+        """
+        The dataset ID of the target dataset.
+        """
         return pulumi.get(self, "dataset_id")
 
 

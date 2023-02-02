@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         }
 
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }

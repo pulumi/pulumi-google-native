@@ -87,7 +87,7 @@ type InterconnectAttachment struct {
 	Type pulumi.StringOutput `pulumi:"type"`
 	// If true, the request will not be committed.
 	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
-	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
 	VlanTag8021q pulumi.IntOutput `pulumi:"vlanTag8021q"`
 }
 
@@ -182,7 +182,7 @@ type interconnectAttachmentArgs struct {
 	Type *InterconnectAttachmentType `pulumi:"type"`
 	// If true, the request will not be committed.
 	ValidateOnly *bool `pulumi:"validateOnly"`
-	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
 	VlanTag8021q *int `pulumi:"vlanTag8021q"`
 }
 
@@ -232,7 +232,7 @@ type InterconnectAttachmentArgs struct {
 	Type InterconnectAttachmentTypePtrInput
 	// If true, the request will not be committed.
 	ValidateOnly pulumi.BoolPtrInput
-	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
 	VlanTag8021q pulumi.IntPtrInput
 }
 
@@ -457,7 +457,7 @@ func (o InterconnectAttachmentOutput) ValidateOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
-// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
 func (o InterconnectAttachmentOutput) VlanTag8021q() pulumi.IntOutput {
 	return o.ApplyT(func(v *InterconnectAttachment) pulumi.IntOutput { return v.VlanTag8021q }).(pulumi.IntOutput)
 }

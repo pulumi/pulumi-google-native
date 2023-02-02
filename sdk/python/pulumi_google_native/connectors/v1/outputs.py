@@ -639,7 +639,7 @@ class LockConfigResponse(dict):
 @pulumi.output_type
 class NodeConfigResponse(dict):
     """
-    Configuration for the connection.
+    Node configuration for the connection.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -664,7 +664,7 @@ class NodeConfigResponse(dict):
                  max_node_count: int,
                  min_node_count: int):
         """
-        Configuration for the connection.
+        Node configuration for the connection.
         :param int max_node_count: Maximum number of nodes in the runtime nodes.
         :param int min_node_count: Minimum number of nodes in the runtime nodes.
         """

@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         /// </summary>
         public readonly Outputs.DeliveryConfigResponse DeliveryConfig;
         /// <summary>
+        /// If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        /// </summary>
+        public readonly Outputs.ExportConfigResponse ExportConfig;
+        /// <summary>
         /// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         /// </summary>
         public readonly string Name;
@@ -80,11 +84,14 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         private GetSubscriptionResult(
             Outputs.DeliveryConfigResponse deliveryConfig,
 
+            Outputs.ExportConfigResponse exportConfig,
+
             string name,
 
             string topic)
         {
             DeliveryConfig = deliveryConfig;
+            ExportConfig = exportConfig;
             Name = name;
             Topic = topic;
         }

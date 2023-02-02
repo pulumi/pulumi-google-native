@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// </summary>
     public sealed class SingleTargetDatasetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The dataset ID of the target dataset.
+        /// </summary>
         [Input("datasetId")]
         public Input<string>? DatasetId { get; set; }
 

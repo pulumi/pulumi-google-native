@@ -30,6 +30,26 @@ export const ChannelPartnerLinkLinkState = {
  */
 export type ChannelPartnerLinkLinkState = (typeof ChannelPartnerLinkLinkState)[keyof typeof ChannelPartnerLinkLinkState];
 
+export const GoogleCloudChannelV1ConditionalOverrideRebillingBasis = {
+    /**
+     * Not used.
+     */
+    RebillingBasisUnspecified: "REBILLING_BASIS_UNSPECIFIED",
+    /**
+     * Use the list cost, also known as the MSRP.
+     */
+    CostAtList: "COST_AT_LIST",
+    /**
+     * Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
+     */
+    DirectCustomerCost: "DIRECT_CUSTOMER_COST",
+} as const;
+
+/**
+ * Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+ */
+export type GoogleCloudChannelV1ConditionalOverrideRebillingBasis = (typeof GoogleCloudChannelV1ConditionalOverrideRebillingBasis)[keyof typeof GoogleCloudChannelV1ConditionalOverrideRebillingBasis];
+
 export const GoogleCloudChannelV1PeriodPeriodType = {
     /**
      * Not used.

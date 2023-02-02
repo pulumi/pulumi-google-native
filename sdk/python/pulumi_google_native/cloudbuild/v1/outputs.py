@@ -47,6 +47,7 @@ __all__ = [
     'PushFilterResponse',
     'PythonPackageResponse',
     'RepoSourceResponse',
+    'RepositoryEventConfigResponse',
     'ResultsResponse',
     'SecretManagerSecretResponse',
     'SecretResponse',
@@ -787,7 +788,7 @@ class BuildOptionsResponse(dict):
                  worker_pool: str):
         """
         Optional arguments to enable specific features of builds.
-        :param str disk_size_gb: Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+        :param str disk_size_gb: Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         :param bool dynamic_substitutions: Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
         :param Sequence[str] env: A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         :param str log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
@@ -819,7 +820,7 @@ class BuildOptionsResponse(dict):
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> str:
         """
-        Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+        Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
         """
         return pulumi.get(self, "disk_size_gb")
 
@@ -1020,7 +1021,7 @@ class BuildResponse(dict):
         :param Sequence['BuildStepResponse'] steps: The operations to be performed on the workspace.
         :param Mapping[str, str] substitutions: Substitutions data for `Build` resource.
         :param Sequence[str] tags: Tags for annotation of a `Build`. These are not docker tags.
-        :param str timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+        :param str timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
         :param Mapping[str, str] timing: Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
         :param Sequence['WarningResponse'] warnings: Non-fatal problems encountered during the execution of the build.
         """
@@ -1257,7 +1258,7 @@ class BuildResponse(dict):
     @pulumi.getter
     def timeout(self) -> str:
         """
-        Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+        Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
         """
         return pulumi.get(self, "timeout")
 
@@ -1888,7 +1889,7 @@ class GitHubEventsConfigResponse(dict):
                  push: 'outputs.PushFilterResponse'):
         """
         GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
-        :param str enterprise_config_resource_name: Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        :param str enterprise_config_resource_name: Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         :param str installation_id: The installationID that emits the GitHub event.
         :param str name: Name of the repository. For example: The name for https://github.com/googlecloudplatform/cloud-builders is "cloud-builders".
         :param str owner: Owner of the repository. For example: The owner for https://github.com/googlecloudplatform/cloud-builders is "googlecloudplatform".
@@ -1906,7 +1907,7 @@ class GitHubEventsConfigResponse(dict):
     @pulumi.getter(name="enterpriseConfigResourceName")
     def enterprise_config_resource_name(self) -> str:
         """
-        Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         """
         return pulumi.get(self, "enterprise_config_resource_name")
 
@@ -2602,6 +2603,8 @@ class NetworkConfigResponse(dict):
             suggest = "egress_option"
         elif key == "peeredNetwork":
             suggest = "peered_network"
+        elif key == "peeredNetworkIpRange":
+            suggest = "peered_network_ip_range"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in NetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2616,14 +2619,17 @@ class NetworkConfigResponse(dict):
 
     def __init__(__self__, *,
                  egress_option: str,
-                 peered_network: str):
+                 peered_network: str,
+                 peered_network_ip_range: str):
         """
         Defines the network configuration for the pool.
         :param str egress_option: Option to configure network egress for the workers.
         :param str peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
+        :param str peered_network_ip_range: Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
         """
         pulumi.set(__self__, "egress_option", egress_option)
         pulumi.set(__self__, "peered_network", peered_network)
+        pulumi.set(__self__, "peered_network_ip_range", peered_network_ip_range)
 
     @property
     @pulumi.getter(name="egressOption")
@@ -2640,6 +2646,14 @@ class NetworkConfigResponse(dict):
         Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
         """
         return pulumi.get(self, "peered_network")
+
+    @property
+    @pulumi.getter(name="peeredNetworkIpRange")
+    def peered_network_ip_range(self) -> str:
+        """
+        Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+        """
+        return pulumi.get(self, "peered_network_ip_range")
 
 
 @pulumi.output_type
@@ -3067,6 +3081,80 @@ class RepoSourceResponse(dict):
         Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
         """
         return pulumi.get(self, "tag_name")
+
+
+@pulumi.output_type
+class RepositoryEventConfigResponse(dict):
+    """
+    The configuration of a trigger that creates a build whenever an event from Repo API is received.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pullRequest":
+            suggest = "pull_request"
+        elif key == "repositoryType":
+            suggest = "repository_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryEventConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryEventConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryEventConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pull_request: 'outputs.PullRequestFilterResponse',
+                 push: 'outputs.PushFilterResponse',
+                 repository: str,
+                 repository_type: str):
+        """
+        The configuration of a trigger that creates a build whenever an event from Repo API is received.
+        :param 'PullRequestFilterResponse' pull_request: Filter to match changes in pull requests.
+        :param 'PushFilterResponse' push: Filter to match changes in refs like branches, tags.
+        :param str repository: The resource name of the Repo API resource.
+        :param str repository_type: The type of the SCM vendor the repository points to.
+        """
+        pulumi.set(__self__, "pull_request", pull_request)
+        pulumi.set(__self__, "push", push)
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository_type", repository_type)
+
+    @property
+    @pulumi.getter(name="pullRequest")
+    def pull_request(self) -> 'outputs.PullRequestFilterResponse':
+        """
+        Filter to match changes in pull requests.
+        """
+        return pulumi.get(self, "pull_request")
+
+    @property
+    @pulumi.getter
+    def push(self) -> 'outputs.PushFilterResponse':
+        """
+        Filter to match changes in refs like branches, tags.
+        """
+        return pulumi.get(self, "push")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        The resource name of the Repo API resource.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter(name="repositoryType")
+    def repository_type(self) -> str:
+        """
+        The type of the SCM vendor the repository points to.
+        """
+        return pulumi.get(self, "repository_type")
 
 
 @pulumi.output_type
@@ -3908,7 +3996,7 @@ class WorkerConfigResponse(dict):
                  machine_type: str):
         """
         Defines the configuration to be used for creating workers in the pool.
-        :param str disk_size_gb: Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param str disk_size_gb: Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
         :param str machine_type: Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
         """
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -3918,7 +4006,7 @@ class WorkerConfigResponse(dict):
     @pulumi.getter(name="diskSizeGb")
     def disk_size_gb(self) -> str:
         """
-        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
         """
         return pulumi.get(self, "disk_size_gb")
 

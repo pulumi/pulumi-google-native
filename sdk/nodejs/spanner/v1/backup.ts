@@ -62,7 +62,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public readonly encryptionConfigKmsKeyName!: pulumi.Output<string | undefined>;
     /**
-     * The encryption information for the backup. .
+     * The encryption information for the backup.
      */
     public /*out*/ readonly encryptionInfo!: pulumi.Output<outputs.spanner.v1.EncryptionInfoResponse>;
     /**

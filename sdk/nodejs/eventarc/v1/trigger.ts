@@ -76,7 +76,7 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
-     * Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     public readonly transport!: pulumi.Output<outputs.eventarc.v1.TransportResponse>;
     /**
@@ -191,7 +191,7 @@ export interface TriggerArgs {
      */
     serviceAccount?: pulumi.Input<string>;
     /**
-     * Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+     * Optional. To deliver messages, Eventarc might use other Google Cloud products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     transport?: pulumi.Input<inputs.eventarc.v1.TransportArgs>;
     /**

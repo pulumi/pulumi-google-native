@@ -50,7 +50,7 @@ export class CertificateMap extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
+     * A list of GCLB targets that use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
      */
     public /*out*/ readonly gclbTargets!: pulumi.Output<outputs.certificatemanager.v1.GclbTargetResponse[]>;
     /**

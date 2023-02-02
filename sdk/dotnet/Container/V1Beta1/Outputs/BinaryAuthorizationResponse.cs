@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         /// </summary>
         public readonly string EvaluationMode;
 

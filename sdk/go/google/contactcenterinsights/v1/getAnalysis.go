@@ -30,6 +30,8 @@ type LookupAnalysisArgs struct {
 type LookupAnalysisResult struct {
 	// The result of the analysis, which is populated when the analysis finishes.
 	AnalysisResult GoogleCloudContactcenterinsightsV1AnalysisResultResponse `pulumi:"analysisResult"`
+	// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+	AnnotatorSelector GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse `pulumi:"annotatorSelector"`
 	// The time at which the analysis was created, which occurs when the long-running operation completes.
 	CreateTime string `pulumi:"createTime"`
 	// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
@@ -81,6 +83,13 @@ func (o LookupAnalysisResultOutput) AnalysisResult() GoogleCloudContactcenterins
 	return o.ApplyT(func(v LookupAnalysisResult) GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
 		return v.AnalysisResult
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput)
+}
+
+// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+func (o LookupAnalysisResultOutput) AnnotatorSelector() GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput {
+	return o.ApplyT(func(v LookupAnalysisResult) GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse {
+		return v.AnnotatorSelector
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput)
 }
 
 // The time at which the analysis was created, which occurs when the long-running operation completes.

@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Create a new case and associate it with the given Cloud resource.
+// Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
 // Note - this resource's API doesn't support deletion. When deleted, the resource will persist
 // on Google Cloud even though it will be deleted from Pulumi state.
 type Case struct {
@@ -29,6 +29,8 @@ type Case struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Whether the case is currently escalated.
 	Escalated pulumi.BoolOutput `pulumi:"escalated"`
+	// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// The resource name for the case.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
@@ -111,6 +113,8 @@ type caseArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Whether the case is currently escalated.
 	Escalated *bool `pulumi:"escalated"`
+	// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+	LanguageCode *string `pulumi:"languageCode"`
 	// The resource name for the case.
 	Name *string `pulumi:"name"`
 	// The priority of this case. If this is set, do not set severity.
@@ -141,6 +145,8 @@ type CaseArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Whether the case is currently escalated.
 	Escalated pulumi.BoolPtrInput
+	// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+	LanguageCode pulumi.StringPtrInput
 	// The resource name for the case.
 	Name pulumi.StringPtrInput
 	// The priority of this case. If this is set, do not set severity.
@@ -224,6 +230,11 @@ func (o CaseOutput) DisplayName() pulumi.StringOutput {
 // Whether the case is currently escalated.
 func (o CaseOutput) Escalated() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Case) pulumi.BoolOutput { return v.Escalated }).(pulumi.BoolOutput)
+}
+
+// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+func (o CaseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // The resource name for the case.

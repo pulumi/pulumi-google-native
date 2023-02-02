@@ -107,7 +107,7 @@ type LookupInterconnectAttachmentResult struct {
 	SubnetLength int `pulumi:"subnetLength"`
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type string `pulumi:"type"`
-	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
 	VlanTag8021q int `pulumi:"vlanTag8021q"`
 }
 
@@ -351,7 +351,7 @@ func (o LookupInterconnectAttachmentResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
 func (o LookupInterconnectAttachmentResultOutput) VlanTag8021q() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupInterconnectAttachmentResult) int { return v.VlanTag8021q }).(pulumi.IntOutput)
 }

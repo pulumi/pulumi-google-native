@@ -1360,13 +1360,13 @@ type AutoprovisioningNodePoolDefaults struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
-	// The image type to use for NAP created node.
+	// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType *string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management *NodeManagement `pulumi:"management"`
-	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 	//
-	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 	OauthScopes []string `pulumi:"oauthScopes"`
@@ -1397,13 +1397,13 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// The image type to use for NAP created node.
+	// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementPtrInput `pulumi:"management"`
-	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 	//
-	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
@@ -1508,7 +1508,7 @@ func (o AutoprovisioningNodePoolDefaultsOutput) DiskType() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// The image type to use for NAP created node.
+// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 func (o AutoprovisioningNodePoolDefaultsOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
@@ -1518,9 +1518,9 @@ func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
 }
 
-// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 //
-// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 func (o AutoprovisioningNodePoolDefaultsOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
@@ -1599,7 +1599,7 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) DiskType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The image type to use for NAP created node.
+// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
 		if v == nil {
@@ -1619,9 +1619,9 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPt
 	}).(NodeManagementPtrOutput)
 }
 
-// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 //
-// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
 		if v == nil {
@@ -1679,13 +1679,13 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType string `pulumi:"diskType"`
-	// The image type to use for NAP created node.
+	// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementResponse `pulumi:"management"`
-	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 	//
-	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+	// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
 	OauthScopes []string `pulumi:"oauthScopes"`
@@ -1727,7 +1727,7 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) DiskType() pulumi.String
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// The image type to use for NAP created node.
+// The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.ImageType }).(pulumi.StringOutput)
 }
@@ -1737,9 +1737,9 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagem
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
 }
 
-// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+// Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 //
-// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+// Deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
@@ -1991,7 +1991,7 @@ type BinaryAuthorization struct {
 	//
 	// Deprecated: This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
 	Enabled *bool `pulumi:"enabled"`
-	// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+	// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 	EvaluationMode *BinaryAuthorizationEvaluationMode `pulumi:"evaluationMode"`
 }
 
@@ -2012,7 +2012,7 @@ type BinaryAuthorizationArgs struct {
 	//
 	// Deprecated: This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+	// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 	EvaluationMode BinaryAuthorizationEvaluationModePtrInput `pulumi:"evaluationMode"`
 }
 
@@ -2101,7 +2101,7 @@ func (o BinaryAuthorizationOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BinaryAuthorization) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 func (o BinaryAuthorizationOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
 	return o.ApplyT(func(v BinaryAuthorization) *BinaryAuthorizationEvaluationMode { return v.EvaluationMode }).(BinaryAuthorizationEvaluationModePtrOutput)
 }
@@ -2142,7 +2142,7 @@ func (o BinaryAuthorizationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 func (o BinaryAuthorizationPtrOutput) EvaluationMode() BinaryAuthorizationEvaluationModePtrOutput {
 	return o.ApplyT(func(v *BinaryAuthorization) *BinaryAuthorizationEvaluationMode {
 		if v == nil {
@@ -2158,7 +2158,7 @@ type BinaryAuthorizationResponse struct {
 	//
 	// Deprecated: This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
 	Enabled bool `pulumi:"enabled"`
-	// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+	// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 	EvaluationMode string `pulumi:"evaluationMode"`
 }
 
@@ -2184,7 +2184,7 @@ func (o BinaryAuthorizationResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v BinaryAuthorizationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 func (o BinaryAuthorizationResponseOutput) EvaluationMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BinaryAuthorizationResponse) string { return v.EvaluationMode }).(pulumi.StringOutput)
 }
@@ -3417,6 +3417,10 @@ type ClusterUpdate struct {
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
 	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
+	// Enable/Disable private endpoint for the cluster's master.
+	DesiredEnablePrivateEndpoint *bool `pulumi:"desiredEnablePrivateEndpoint"`
+	// The desired config of Gateway API on this cluster.
+	DesiredGatewayApiConfig *GatewayAPIConfig `pulumi:"desiredGatewayApiConfig"`
 	// The desired GCFS config for the cluster.
 	DesiredGcfsConfig *GcfsConfig `pulumi:"desiredGcfsConfig"`
 	// The desired Identity Service component configuration.
@@ -3473,6 +3477,8 @@ type ClusterUpdate struct {
 	DesiredServiceExternalIpsConfig *ServiceExternalIPsConfig `pulumi:"desiredServiceExternalIpsConfig"`
 	// Configuration for Shielded Nodes.
 	DesiredShieldedNodes *ShieldedNodes `pulumi:"desiredShieldedNodes"`
+	// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+	DesiredStackType *ClusterUpdateDesiredStackType `pulumi:"desiredStackType"`
 	// The desired Cloud TPU configuration.
 	DesiredTpuConfig *TpuConfig `pulumi:"desiredTpuConfig"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
@@ -3483,6 +3489,8 @@ type ClusterUpdate struct {
 	DesiredWorkloadCertificates *WorkloadCertificates `pulumi:"desiredWorkloadCertificates"`
 	// Configuration for Workload Identity.
 	DesiredWorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"desiredWorkloadIdentityConfig"`
+	// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
+	Etag *string `pulumi:"etag"`
 }
 
 // ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
@@ -5230,6 +5238,338 @@ func (o EphemeralStorageConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v EphemeralStorageConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
 }
 
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
+type EphemeralStorageLocalSsdConfig struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+}
+
+// EphemeralStorageLocalSsdConfigInput is an input type that accepts EphemeralStorageLocalSsdConfigArgs and EphemeralStorageLocalSsdConfigOutput values.
+// You can construct a concrete instance of `EphemeralStorageLocalSsdConfigInput` via:
+//
+//	EphemeralStorageLocalSsdConfigArgs{...}
+type EphemeralStorageLocalSsdConfigInput interface {
+	pulumi.Input
+
+	ToEphemeralStorageLocalSsdConfigOutput() EphemeralStorageLocalSsdConfigOutput
+	ToEphemeralStorageLocalSsdConfigOutputWithContext(context.Context) EphemeralStorageLocalSsdConfigOutput
+}
+
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
+type EphemeralStorageLocalSsdConfigArgs struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+}
+
+func (EphemeralStorageLocalSsdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralStorageLocalSsdConfig)(nil)).Elem()
+}
+
+func (i EphemeralStorageLocalSsdConfigArgs) ToEphemeralStorageLocalSsdConfigOutput() EphemeralStorageLocalSsdConfigOutput {
+	return i.ToEphemeralStorageLocalSsdConfigOutputWithContext(context.Background())
+}
+
+func (i EphemeralStorageLocalSsdConfigArgs) ToEphemeralStorageLocalSsdConfigOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralStorageLocalSsdConfigOutput)
+}
+
+func (i EphemeralStorageLocalSsdConfigArgs) ToEphemeralStorageLocalSsdConfigPtrOutput() EphemeralStorageLocalSsdConfigPtrOutput {
+	return i.ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EphemeralStorageLocalSsdConfigArgs) ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralStorageLocalSsdConfigOutput).ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(ctx)
+}
+
+// EphemeralStorageLocalSsdConfigPtrInput is an input type that accepts EphemeralStorageLocalSsdConfigArgs, EphemeralStorageLocalSsdConfigPtr and EphemeralStorageLocalSsdConfigPtrOutput values.
+// You can construct a concrete instance of `EphemeralStorageLocalSsdConfigPtrInput` via:
+//
+//	        EphemeralStorageLocalSsdConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EphemeralStorageLocalSsdConfigPtrInput interface {
+	pulumi.Input
+
+	ToEphemeralStorageLocalSsdConfigPtrOutput() EphemeralStorageLocalSsdConfigPtrOutput
+	ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(context.Context) EphemeralStorageLocalSsdConfigPtrOutput
+}
+
+type ephemeralStorageLocalSsdConfigPtrType EphemeralStorageLocalSsdConfigArgs
+
+func EphemeralStorageLocalSsdConfigPtr(v *EphemeralStorageLocalSsdConfigArgs) EphemeralStorageLocalSsdConfigPtrInput {
+	return (*ephemeralStorageLocalSsdConfigPtrType)(v)
+}
+
+func (*ephemeralStorageLocalSsdConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EphemeralStorageLocalSsdConfig)(nil)).Elem()
+}
+
+func (i *ephemeralStorageLocalSsdConfigPtrType) ToEphemeralStorageLocalSsdConfigPtrOutput() EphemeralStorageLocalSsdConfigPtrOutput {
+	return i.ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *ephemeralStorageLocalSsdConfigPtrType) ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
+type EphemeralStorageLocalSsdConfigOutput struct{ *pulumi.OutputState }
+
+func (EphemeralStorageLocalSsdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralStorageLocalSsdConfig)(nil)).Elem()
+}
+
+func (o EphemeralStorageLocalSsdConfigOutput) ToEphemeralStorageLocalSsdConfigOutput() EphemeralStorageLocalSsdConfigOutput {
+	return o
+}
+
+func (o EphemeralStorageLocalSsdConfigOutput) ToEphemeralStorageLocalSsdConfigOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigOutput {
+	return o
+}
+
+func (o EphemeralStorageLocalSsdConfigOutput) ToEphemeralStorageLocalSsdConfigPtrOutput() EphemeralStorageLocalSsdConfigPtrOutput {
+	return o.ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EphemeralStorageLocalSsdConfigOutput) ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EphemeralStorageLocalSsdConfig) *EphemeralStorageLocalSsdConfig {
+		return &v
+	}).(EphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+func (o EphemeralStorageLocalSsdConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v EphemeralStorageLocalSsdConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+type EphemeralStorageLocalSsdConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EphemeralStorageLocalSsdConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EphemeralStorageLocalSsdConfig)(nil)).Elem()
+}
+
+func (o EphemeralStorageLocalSsdConfigPtrOutput) ToEphemeralStorageLocalSsdConfigPtrOutput() EphemeralStorageLocalSsdConfigPtrOutput {
+	return o
+}
+
+func (o EphemeralStorageLocalSsdConfigPtrOutput) ToEphemeralStorageLocalSsdConfigPtrOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigPtrOutput {
+	return o
+}
+
+func (o EphemeralStorageLocalSsdConfigPtrOutput) Elem() EphemeralStorageLocalSsdConfigOutput {
+	return o.ApplyT(func(v *EphemeralStorageLocalSsdConfig) EphemeralStorageLocalSsdConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EphemeralStorageLocalSsdConfig
+		return ret
+	}).(EphemeralStorageLocalSsdConfigOutput)
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+func (o EphemeralStorageLocalSsdConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *EphemeralStorageLocalSsdConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
+type EphemeralStorageLocalSsdConfigResponse struct {
+	// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSDs.
+type EphemeralStorageLocalSsdConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EphemeralStorageLocalSsdConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EphemeralStorageLocalSsdConfigResponse)(nil)).Elem()
+}
+
+func (o EphemeralStorageLocalSsdConfigResponseOutput) ToEphemeralStorageLocalSsdConfigResponseOutput() EphemeralStorageLocalSsdConfigResponseOutput {
+	return o
+}
+
+func (o EphemeralStorageLocalSsdConfigResponseOutput) ToEphemeralStorageLocalSsdConfigResponseOutputWithContext(ctx context.Context) EphemeralStorageLocalSsdConfigResponseOutput {
+	return o
+}
+
+// Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+func (o EphemeralStorageLocalSsdConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v EphemeralStorageLocalSsdConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+// Configuration of Fast Socket feature.
+type FastSocket struct {
+	// Whether Fast Socket features are enabled in the node pool.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// FastSocketInput is an input type that accepts FastSocketArgs and FastSocketOutput values.
+// You can construct a concrete instance of `FastSocketInput` via:
+//
+//	FastSocketArgs{...}
+type FastSocketInput interface {
+	pulumi.Input
+
+	ToFastSocketOutput() FastSocketOutput
+	ToFastSocketOutputWithContext(context.Context) FastSocketOutput
+}
+
+// Configuration of Fast Socket feature.
+type FastSocketArgs struct {
+	// Whether Fast Socket features are enabled in the node pool.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (FastSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FastSocket)(nil)).Elem()
+}
+
+func (i FastSocketArgs) ToFastSocketOutput() FastSocketOutput {
+	return i.ToFastSocketOutputWithContext(context.Background())
+}
+
+func (i FastSocketArgs) ToFastSocketOutputWithContext(ctx context.Context) FastSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FastSocketOutput)
+}
+
+func (i FastSocketArgs) ToFastSocketPtrOutput() FastSocketPtrOutput {
+	return i.ToFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i FastSocketArgs) ToFastSocketPtrOutputWithContext(ctx context.Context) FastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FastSocketOutput).ToFastSocketPtrOutputWithContext(ctx)
+}
+
+// FastSocketPtrInput is an input type that accepts FastSocketArgs, FastSocketPtr and FastSocketPtrOutput values.
+// You can construct a concrete instance of `FastSocketPtrInput` via:
+//
+//	        FastSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type FastSocketPtrInput interface {
+	pulumi.Input
+
+	ToFastSocketPtrOutput() FastSocketPtrOutput
+	ToFastSocketPtrOutputWithContext(context.Context) FastSocketPtrOutput
+}
+
+type fastSocketPtrType FastSocketArgs
+
+func FastSocketPtr(v *FastSocketArgs) FastSocketPtrInput {
+	return (*fastSocketPtrType)(v)
+}
+
+func (*fastSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FastSocket)(nil)).Elem()
+}
+
+func (i *fastSocketPtrType) ToFastSocketPtrOutput() FastSocketPtrOutput {
+	return i.ToFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *fastSocketPtrType) ToFastSocketPtrOutputWithContext(ctx context.Context) FastSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FastSocketPtrOutput)
+}
+
+// Configuration of Fast Socket feature.
+type FastSocketOutput struct{ *pulumi.OutputState }
+
+func (FastSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FastSocket)(nil)).Elem()
+}
+
+func (o FastSocketOutput) ToFastSocketOutput() FastSocketOutput {
+	return o
+}
+
+func (o FastSocketOutput) ToFastSocketOutputWithContext(ctx context.Context) FastSocketOutput {
+	return o
+}
+
+func (o FastSocketOutput) ToFastSocketPtrOutput() FastSocketPtrOutput {
+	return o.ToFastSocketPtrOutputWithContext(context.Background())
+}
+
+func (o FastSocketOutput) ToFastSocketPtrOutputWithContext(ctx context.Context) FastSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FastSocket) *FastSocket {
+		return &v
+	}).(FastSocketPtrOutput)
+}
+
+// Whether Fast Socket features are enabled in the node pool.
+func (o FastSocketOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FastSocket) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type FastSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (FastSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FastSocket)(nil)).Elem()
+}
+
+func (o FastSocketPtrOutput) ToFastSocketPtrOutput() FastSocketPtrOutput {
+	return o
+}
+
+func (o FastSocketPtrOutput) ToFastSocketPtrOutputWithContext(ctx context.Context) FastSocketPtrOutput {
+	return o
+}
+
+func (o FastSocketPtrOutput) Elem() FastSocketOutput {
+	return o.ApplyT(func(v *FastSocket) FastSocket {
+		if v != nil {
+			return *v
+		}
+		var ret FastSocket
+		return ret
+	}).(FastSocketOutput)
+}
+
+// Whether Fast Socket features are enabled in the node pool.
+func (o FastSocketPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FastSocket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration of Fast Socket feature.
+type FastSocketResponse struct {
+	// Whether Fast Socket features are enabled in the node pool.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration of Fast Socket feature.
+type FastSocketResponseOutput struct{ *pulumi.OutputState }
+
+func (FastSocketResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FastSocketResponse)(nil)).Elem()
+}
+
+func (o FastSocketResponseOutput) ToFastSocketResponseOutput() FastSocketResponseOutput {
+	return o
+}
+
+func (o FastSocketResponseOutput) ToFastSocketResponseOutputWithContext(ctx context.Context) FastSocketResponseOutput {
+	return o
+}
+
+// Whether Fast Socket features are enabled in the node pool.
+func (o FastSocketResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v FastSocketResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
 type Filter struct {
 	// Event types to allowlist.
@@ -5586,6 +5926,172 @@ func (o GPUSharingConfigResponseOutput) GpuSharingStrategy() pulumi.StringOutput
 // The max number of containers that can share a physical GPU.
 func (o GPUSharingConfigResponseOutput) MaxSharedClientsPerGpu() pulumi.StringOutput {
 	return o.ApplyT(func(v GPUSharingConfigResponse) string { return v.MaxSharedClientsPerGpu }).(pulumi.StringOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfig struct {
+	// The Gateway API release channel to use for Gateway API.
+	Channel *GatewayAPIConfigChannel `pulumi:"channel"`
+}
+
+// GatewayAPIConfigInput is an input type that accepts GatewayAPIConfigArgs and GatewayAPIConfigOutput values.
+// You can construct a concrete instance of `GatewayAPIConfigInput` via:
+//
+//	GatewayAPIConfigArgs{...}
+type GatewayAPIConfigInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigOutput() GatewayAPIConfigOutput
+	ToGatewayAPIConfigOutputWithContext(context.Context) GatewayAPIConfigOutput
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigArgs struct {
+	// The Gateway API release channel to use for Gateway API.
+	Channel GatewayAPIConfigChannelPtrInput `pulumi:"channel"`
+}
+
+func (GatewayAPIConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfig)(nil)).Elem()
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigOutput() GatewayAPIConfigOutput {
+	return i.ToGatewayAPIConfigOutputWithContext(context.Background())
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigOutputWithContext(ctx context.Context) GatewayAPIConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAPIConfigOutput)
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return i.ToGatewayAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayAPIConfigArgs) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAPIConfigOutput).ToGatewayAPIConfigPtrOutputWithContext(ctx)
+}
+
+// GatewayAPIConfigPtrInput is an input type that accepts GatewayAPIConfigArgs, GatewayAPIConfigPtr and GatewayAPIConfigPtrOutput values.
+// You can construct a concrete instance of `GatewayAPIConfigPtrInput` via:
+//
+//	        GatewayAPIConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayAPIConfigPtrInput interface {
+	pulumi.Input
+
+	ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput
+	ToGatewayAPIConfigPtrOutputWithContext(context.Context) GatewayAPIConfigPtrOutput
+}
+
+type gatewayAPIConfigPtrType GatewayAPIConfigArgs
+
+func GatewayAPIConfigPtr(v *GatewayAPIConfigArgs) GatewayAPIConfigPtrInput {
+	return (*gatewayAPIConfigPtrType)(v)
+}
+
+func (*gatewayAPIConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAPIConfig)(nil)).Elem()
+}
+
+func (i *gatewayAPIConfigPtrType) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return i.ToGatewayAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayAPIConfigPtrType) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayAPIConfigPtrOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfig)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigOutput() GatewayAPIConfigOutput {
+	return o
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigOutputWithContext(ctx context.Context) GatewayAPIConfigOutput {
+	return o
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return o.ToGatewayAPIConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayAPIConfigOutput) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayAPIConfig) *GatewayAPIConfig {
+		return &v
+	}).(GatewayAPIConfigPtrOutput)
+}
+
+// The Gateway API release channel to use for Gateway API.
+func (o GatewayAPIConfigOutput) Channel() GatewayAPIConfigChannelPtrOutput {
+	return o.ApplyT(func(v GatewayAPIConfig) *GatewayAPIConfigChannel { return v.Channel }).(GatewayAPIConfigChannelPtrOutput)
+}
+
+type GatewayAPIConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayAPIConfig)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigPtrOutput) ToGatewayAPIConfigPtrOutput() GatewayAPIConfigPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigPtrOutput) ToGatewayAPIConfigPtrOutputWithContext(ctx context.Context) GatewayAPIConfigPtrOutput {
+	return o
+}
+
+func (o GatewayAPIConfigPtrOutput) Elem() GatewayAPIConfigOutput {
+	return o.ApplyT(func(v *GatewayAPIConfig) GatewayAPIConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayAPIConfig
+		return ret
+	}).(GatewayAPIConfigOutput)
+}
+
+// The Gateway API release channel to use for Gateway API.
+func (o GatewayAPIConfigPtrOutput) Channel() GatewayAPIConfigChannelPtrOutput {
+	return o.ApplyT(func(v *GatewayAPIConfig) *GatewayAPIConfigChannel {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(GatewayAPIConfigChannelPtrOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigResponse struct {
+	// The Gateway API release channel to use for Gateway API.
+	Channel string `pulumi:"channel"`
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+type GatewayAPIConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayAPIConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayAPIConfigResponse)(nil)).Elem()
+}
+
+func (o GatewayAPIConfigResponseOutput) ToGatewayAPIConfigResponseOutput() GatewayAPIConfigResponseOutput {
+	return o
+}
+
+func (o GatewayAPIConfigResponseOutput) ToGatewayAPIConfigResponseOutputWithContext(ctx context.Context) GatewayAPIConfigResponseOutput {
+	return o
+}
+
+// The Gateway API release channel to use for Gateway API.
+func (o GatewayAPIConfigResponseOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayAPIConfigResponse) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 // Configuration for the Compute Engine PD CSI driver.
@@ -8262,6 +8768,172 @@ func (o LinuxNodeConfigResponseOutput) Sysctls() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LinuxNodeConfigResponse) map[string]string { return v.Sysctls }).(pulumi.StringMapOutput)
 }
 
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
+type LocalNvmeSsdBlockConfig struct {
+	// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	LocalSsdCount *int `pulumi:"localSsdCount"`
+}
+
+// LocalNvmeSsdBlockConfigInput is an input type that accepts LocalNvmeSsdBlockConfigArgs and LocalNvmeSsdBlockConfigOutput values.
+// You can construct a concrete instance of `LocalNvmeSsdBlockConfigInput` via:
+//
+//	LocalNvmeSsdBlockConfigArgs{...}
+type LocalNvmeSsdBlockConfigInput interface {
+	pulumi.Input
+
+	ToLocalNvmeSsdBlockConfigOutput() LocalNvmeSsdBlockConfigOutput
+	ToLocalNvmeSsdBlockConfigOutputWithContext(context.Context) LocalNvmeSsdBlockConfigOutput
+}
+
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
+type LocalNvmeSsdBlockConfigArgs struct {
+	// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+}
+
+func (LocalNvmeSsdBlockConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i LocalNvmeSsdBlockConfigArgs) ToLocalNvmeSsdBlockConfigOutput() LocalNvmeSsdBlockConfigOutput {
+	return i.ToLocalNvmeSsdBlockConfigOutputWithContext(context.Background())
+}
+
+func (i LocalNvmeSsdBlockConfigArgs) ToLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalNvmeSsdBlockConfigOutput)
+}
+
+func (i LocalNvmeSsdBlockConfigArgs) ToLocalNvmeSsdBlockConfigPtrOutput() LocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LocalNvmeSsdBlockConfigArgs) ToLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalNvmeSsdBlockConfigOutput).ToLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx)
+}
+
+// LocalNvmeSsdBlockConfigPtrInput is an input type that accepts LocalNvmeSsdBlockConfigArgs, LocalNvmeSsdBlockConfigPtr and LocalNvmeSsdBlockConfigPtrOutput values.
+// You can construct a concrete instance of `LocalNvmeSsdBlockConfigPtrInput` via:
+//
+//	        LocalNvmeSsdBlockConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LocalNvmeSsdBlockConfigPtrInput interface {
+	pulumi.Input
+
+	ToLocalNvmeSsdBlockConfigPtrOutput() LocalNvmeSsdBlockConfigPtrOutput
+	ToLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Context) LocalNvmeSsdBlockConfigPtrOutput
+}
+
+type localNvmeSsdBlockConfigPtrType LocalNvmeSsdBlockConfigArgs
+
+func LocalNvmeSsdBlockConfigPtr(v *LocalNvmeSsdBlockConfigArgs) LocalNvmeSsdBlockConfigPtrInput {
+	return (*localNvmeSsdBlockConfigPtrType)(v)
+}
+
+func (*localNvmeSsdBlockConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (i *localNvmeSsdBlockConfigPtrType) ToLocalNvmeSsdBlockConfigPtrOutput() LocalNvmeSsdBlockConfigPtrOutput {
+	return i.ToLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *localNvmeSsdBlockConfigPtrType) ToLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LocalNvmeSsdBlockConfigPtrOutput)
+}
+
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
+type LocalNvmeSsdBlockConfigOutput struct{ *pulumi.OutputState }
+
+func (LocalNvmeSsdBlockConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o LocalNvmeSsdBlockConfigOutput) ToLocalNvmeSsdBlockConfigOutput() LocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o LocalNvmeSsdBlockConfigOutput) ToLocalNvmeSsdBlockConfigOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigOutput {
+	return o
+}
+
+func (o LocalNvmeSsdBlockConfigOutput) ToLocalNvmeSsdBlockConfigPtrOutput() LocalNvmeSsdBlockConfigPtrOutput {
+	return o.ToLocalNvmeSsdBlockConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LocalNvmeSsdBlockConfigOutput) ToLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LocalNvmeSsdBlockConfig) *LocalNvmeSsdBlockConfig {
+		return &v
+	}).(LocalNvmeSsdBlockConfigPtrOutput)
+}
+
+// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+func (o LocalNvmeSsdBlockConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LocalNvmeSsdBlockConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+type LocalNvmeSsdBlockConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LocalNvmeSsdBlockConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LocalNvmeSsdBlockConfig)(nil)).Elem()
+}
+
+func (o LocalNvmeSsdBlockConfigPtrOutput) ToLocalNvmeSsdBlockConfigPtrOutput() LocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o LocalNvmeSsdBlockConfigPtrOutput) ToLocalNvmeSsdBlockConfigPtrOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigPtrOutput {
+	return o
+}
+
+func (o LocalNvmeSsdBlockConfigPtrOutput) Elem() LocalNvmeSsdBlockConfigOutput {
+	return o.ApplyT(func(v *LocalNvmeSsdBlockConfig) LocalNvmeSsdBlockConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LocalNvmeSsdBlockConfig
+		return ret
+	}).(LocalNvmeSsdBlockConfigOutput)
+}
+
+// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+func (o LocalNvmeSsdBlockConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *LocalNvmeSsdBlockConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
+type LocalNvmeSsdBlockConfigResponse struct {
+	// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+	LocalSsdCount int `pulumi:"localSsdCount"`
+}
+
+// LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSDs
+type LocalNvmeSsdBlockConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LocalNvmeSsdBlockConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalNvmeSsdBlockConfigResponse)(nil)).Elem()
+}
+
+func (o LocalNvmeSsdBlockConfigResponseOutput) ToLocalNvmeSsdBlockConfigResponseOutput() LocalNvmeSsdBlockConfigResponseOutput {
+	return o
+}
+
+func (o LocalNvmeSsdBlockConfigResponseOutput) ToLocalNvmeSsdBlockConfigResponseOutputWithContext(ctx context.Context) LocalNvmeSsdBlockConfigResponseOutput {
+	return o
+}
+
+// The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+func (o LocalNvmeSsdBlockConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
+	return o.ApplyT(func(v LocalNvmeSsdBlockConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
 // LoggingComponentConfig is cluster logging component configuration.
 type LoggingComponentConfig struct {
 	// Select components to collect logs. An empty set would disable all logging.
@@ -9881,6 +10553,8 @@ type MasterAuthorizedNetworksConfig struct {
 	CidrBlocks []CidrBlock `pulumi:"cidrBlocks"`
 	// Whether or not master authorized networks is enabled.
 	Enabled *bool `pulumi:"enabled"`
+	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	GcpPublicCidrsAccessEnabled *bool `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 // MasterAuthorizedNetworksConfigInput is an input type that accepts MasterAuthorizedNetworksConfigArgs and MasterAuthorizedNetworksConfigOutput values.
@@ -9900,6 +10574,8 @@ type MasterAuthorizedNetworksConfigArgs struct {
 	CidrBlocks CidrBlockArrayInput `pulumi:"cidrBlocks"`
 	// Whether or not master authorized networks is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	GcpPublicCidrsAccessEnabled pulumi.BoolPtrInput `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 func (MasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -9990,6 +10666,11 @@ func (o MasterAuthorizedNetworksConfigOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether master is accessbile via Google Compute Engine Public IP addresses.
+func (o MasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfig) *bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type MasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (MasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
@@ -10034,12 +10715,24 @@ func (o MasterAuthorizedNetworksConfigPtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether master is accessbile via Google Compute Engine Public IP addresses.
+func (o MasterAuthorizedNetworksConfigPtrOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MasterAuthorizedNetworksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GcpPublicCidrsAccessEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
 type MasterAuthorizedNetworksConfigResponse struct {
 	// cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
 	CidrBlocks []CidrBlockResponse `pulumi:"cidrBlocks"`
 	// Whether or not master authorized networks is enabled.
 	Enabled bool `pulumi:"enabled"`
+	// Whether master is accessbile via Google Compute Engine Public IP addresses.
+	GcpPublicCidrsAccessEnabled bool `pulumi:"gcpPublicCidrsAccessEnabled"`
 }
 
 // Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
@@ -10065,6 +10758,11 @@ func (o MasterAuthorizedNetworksConfigResponseOutput) CidrBlocks() CidrBlockResp
 // Whether or not master authorized networks is enabled.
 func (o MasterAuthorizedNetworksConfigResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Whether master is accessbile via Google Compute Engine Public IP addresses.
+func (o MasterAuthorizedNetworksConfigResponseOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v MasterAuthorizedNetworksConfigResponse) bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolOutput)
 }
 
 // Master is the configuration for components on master.
@@ -10790,6 +11488,8 @@ type NetworkConfig struct {
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
+	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+	GatewayApiConfig *GatewayAPIConfig `pulumi:"gatewayApiConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -10819,6 +11519,8 @@ type NetworkConfigArgs struct {
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
+	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+	GatewayApiConfig GatewayAPIConfigPtrInput `pulumi:"gatewayApiConfig"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess NetworkConfigPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -10928,6 +11630,11 @@ func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolPtrOutput)
 }
 
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+func (o NetworkConfigOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *GatewayAPIConfig { return v.GatewayApiConfig }).(GatewayAPIConfigPtrOutput)
+}
+
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigOutput) PrivateIpv6GoogleAccess() NetworkConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *NetworkConfigPrivateIpv6GoogleAccess { return v.PrivateIpv6GoogleAccess }).(NetworkConfigPrivateIpv6GoogleAccessPtrOutput)
@@ -11012,6 +11719,16 @@ func (o NetworkConfigPtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+func (o NetworkConfigPtrOutput) GatewayApiConfig() GatewayAPIConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *GatewayAPIConfig {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayApiConfig
+	}).(GatewayAPIConfigPtrOutput)
+}
+
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() NetworkConfigPrivateIpv6GoogleAccessPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigPrivateIpv6GoogleAccess {
@@ -11044,6 +11761,8 @@ type NetworkConfigResponse struct {
 	EnableIntraNodeVisibility bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting bool `pulumi:"enableL4ilbSubsetting"`
+	// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+	GatewayApiConfig GatewayAPIConfigResponse `pulumi:"gatewayApiConfig"`
 	// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
 	Network string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
@@ -11092,6 +11811,11 @@ func (o NetworkConfigResponseOutput) EnableIntraNodeVisibility() pulumi.BoolOutp
 // Whether L4ILB Subsetting is enabled for this cluster.
 func (o NetworkConfigResponseOutput) EnableL4ilbSubsetting() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableL4ilbSubsetting }).(pulumi.BoolOutput)
+}
+
+// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+func (o NetworkConfigResponseOutput) GatewayApiConfig() GatewayAPIConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) GatewayAPIConfigResponse { return v.GatewayApiConfig }).(GatewayAPIConfigResponseOutput)
 }
 
 // The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
@@ -11850,11 +12574,15 @@ type NodeConfig struct {
 	DiskType *string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig *EphemeralStorageConfig `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+	EphemeralStorageLocalSsdConfig *EphemeralStorageLocalSsdConfig `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Enable or disable NCCL fast socket for the node pool.
+	FastSocket *FastSocket `pulumi:"fastSocket"`
 	// GCFS (Google Container File System) configs.
 	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic *VirtualNIC `pulumi:"gvnic"`
-	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+	// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType *string `pulumi:"imageType"`
 	// Node kubelet configs.
 	KubeletConfig *NodeKubeletConfig `pulumi:"kubeletConfig"`
@@ -11862,6 +12590,8 @@ type NodeConfig struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Parameters that can be configured on Linux nodes.
 	LinuxNodeConfig *LinuxNodeConfig `pulumi:"linuxNodeConfig"`
+	// Parameters for using raw-block Local NVMe SSDs.
+	LocalNvmeSsdBlockConfig *LocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
 	// Logging configuration.
@@ -11880,6 +12610,8 @@ type NodeConfig struct {
 	Preemptible *bool `pulumi:"preemptible"`
 	// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
+	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Sandbox configuration for this node.
 	SandboxConfig *SandboxConfig `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -11892,6 +12624,8 @@ type NodeConfig struct {
 	Tags []string `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 	Taints []NodeTaint `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfig *WindowsNodeConfig `pulumi:"windowsNodeConfig"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfig *WorkloadMetadataConfig `pulumi:"workloadMetadataConfig"`
 }
@@ -11923,11 +12657,15 @@ type NodeConfigArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigPtrInput `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+	EphemeralStorageLocalSsdConfig EphemeralStorageLocalSsdConfigPtrInput `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Enable or disable NCCL fast socket for the node pool.
+	FastSocket FastSocketPtrInput `pulumi:"fastSocket"`
 	// GCFS (Google Container File System) configs.
 	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic VirtualNICPtrInput `pulumi:"gvnic"`
-	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+	// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Node kubelet configs.
 	KubeletConfig NodeKubeletConfigPtrInput `pulumi:"kubeletConfig"`
@@ -11935,6 +12673,8 @@ type NodeConfigArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Parameters that can be configured on Linux nodes.
 	LinuxNodeConfig LinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
+	// Parameters for using raw-block Local NVMe SSDs.
+	LocalNvmeSsdBlockConfig LocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
 	// Logging configuration.
@@ -11953,6 +12693,8 @@ type NodeConfigArgs struct {
 	Preemptible pulumi.BoolPtrInput `pulumi:"preemptible"`
 	// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 	ReservationAffinity ReservationAffinityPtrInput `pulumi:"reservationAffinity"`
+	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+	ResourceLabels pulumi.StringMapInput `pulumi:"resourceLabels"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigPtrInput `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -11965,6 +12707,8 @@ type NodeConfigArgs struct {
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 	Taints NodeTaintArrayInput `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfig WindowsNodeConfigPtrInput `pulumi:"windowsNodeConfig"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfig WorkloadMetadataConfigPtrInput `pulumi:"workloadMetadataConfig"`
 }
@@ -12082,6 +12826,16 @@ func (o NodeConfigOutput) EphemeralStorageConfig() EphemeralStorageConfigPtrOutp
 	return o.ApplyT(func(v NodeConfig) *EphemeralStorageConfig { return v.EphemeralStorageConfig }).(EphemeralStorageConfigPtrOutput)
 }
 
+// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+func (o NodeConfigOutput) EphemeralStorageLocalSsdConfig() EphemeralStorageLocalSsdConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *EphemeralStorageLocalSsdConfig { return v.EphemeralStorageLocalSsdConfig }).(EphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Enable or disable NCCL fast socket for the node pool.
+func (o NodeConfigOutput) FastSocket() FastSocketPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *FastSocket { return v.FastSocket }).(FastSocketPtrOutput)
+}
+
 // GCFS (Google Container File System) configs.
 func (o NodeConfigOutput) GcfsConfig() GcfsConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
@@ -12092,7 +12846,7 @@ func (o NodeConfigOutput) Gvnic() VirtualNICPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *VirtualNIC { return v.Gvnic }).(VirtualNICPtrOutput)
 }
 
-// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 func (o NodeConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
@@ -12110,6 +12864,11 @@ func (o NodeConfigOutput) Labels() pulumi.StringMapOutput {
 // Parameters that can be configured on Linux nodes.
 func (o NodeConfigOutput) LinuxNodeConfig() LinuxNodeConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *LinuxNodeConfig { return v.LinuxNodeConfig }).(LinuxNodeConfigPtrOutput)
+}
+
+// Parameters for using raw-block Local NVMe SSDs.
+func (o NodeConfigOutput) LocalNvmeSsdBlockConfig() LocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *LocalNvmeSsdBlockConfig { return v.LocalNvmeSsdBlockConfig }).(LocalNvmeSsdBlockConfigPtrOutput)
 }
 
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
@@ -12157,6 +12916,11 @@ func (o NodeConfigOutput) ReservationAffinity() ReservationAffinityPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *ReservationAffinity { return v.ReservationAffinity }).(ReservationAffinityPtrOutput)
 }
 
+// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+func (o NodeConfigOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeConfig) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
 // Sandbox configuration for this node.
 func (o NodeConfigOutput) SandboxConfig() SandboxConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *SandboxConfig { return v.SandboxConfig }).(SandboxConfigPtrOutput)
@@ -12185,6 +12949,11 @@ func (o NodeConfigOutput) Tags() pulumi.StringArrayOutput {
 // List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 func (o NodeConfigOutput) Taints() NodeTaintArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []NodeTaint { return v.Taints }).(NodeTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o NodeConfigOutput) WindowsNodeConfig() WindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *WindowsNodeConfig { return v.WindowsNodeConfig }).(WindowsNodeConfigPtrOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -12286,6 +13055,26 @@ func (o NodeConfigPtrOutput) EphemeralStorageConfig() EphemeralStorageConfigPtrO
 	}).(EphemeralStorageConfigPtrOutput)
 }
 
+// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+func (o NodeConfigPtrOutput) EphemeralStorageLocalSsdConfig() EphemeralStorageLocalSsdConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *EphemeralStorageLocalSsdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EphemeralStorageLocalSsdConfig
+	}).(EphemeralStorageLocalSsdConfigPtrOutput)
+}
+
+// Enable or disable NCCL fast socket for the node pool.
+func (o NodeConfigPtrOutput) FastSocket() FastSocketPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *FastSocket {
+		if v == nil {
+			return nil
+		}
+		return v.FastSocket
+	}).(FastSocketPtrOutput)
+}
+
 // GCFS (Google Container File System) configs.
 func (o NodeConfigPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *GcfsConfig {
@@ -12306,7 +13095,7 @@ func (o NodeConfigPtrOutput) Gvnic() VirtualNICPtrOutput {
 	}).(VirtualNICPtrOutput)
 }
 
-// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 func (o NodeConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
 		if v == nil {
@@ -12344,6 +13133,16 @@ func (o NodeConfigPtrOutput) LinuxNodeConfig() LinuxNodeConfigPtrOutput {
 		}
 		return v.LinuxNodeConfig
 	}).(LinuxNodeConfigPtrOutput)
+}
+
+// Parameters for using raw-block Local NVMe SSDs.
+func (o NodeConfigPtrOutput) LocalNvmeSsdBlockConfig() LocalNvmeSsdBlockConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *LocalNvmeSsdBlockConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LocalNvmeSsdBlockConfig
+	}).(LocalNvmeSsdBlockConfigPtrOutput)
 }
 
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
@@ -12436,6 +13235,16 @@ func (o NodeConfigPtrOutput) ReservationAffinity() ReservationAffinityPtrOutput 
 	}).(ReservationAffinityPtrOutput)
 }
 
+// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+func (o NodeConfigPtrOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *NodeConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceLabels
+	}).(pulumi.StringMapOutput)
+}
+
 // Sandbox configuration for this node.
 func (o NodeConfigPtrOutput) SandboxConfig() SandboxConfigPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *SandboxConfig {
@@ -12494,6 +13303,16 @@ func (o NodeConfigPtrOutput) Taints() NodeTaintArrayOutput {
 		}
 		return v.Taints
 	}).(NodeTaintArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o NodeConfigPtrOutput) WindowsNodeConfig() WindowsNodeConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *WindowsNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.WindowsNodeConfig
+	}).(WindowsNodeConfigPtrOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -12714,11 +13533,15 @@ type NodeConfigResponse struct {
 	DiskType string `pulumi:"diskType"`
 	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk.
 	EphemeralStorageConfig EphemeralStorageConfigResponse `pulumi:"ephemeralStorageConfig"`
+	// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+	EphemeralStorageLocalSsdConfig EphemeralStorageLocalSsdConfigResponse `pulumi:"ephemeralStorageLocalSsdConfig"`
+	// Enable or disable NCCL fast socket for the node pool.
+	FastSocket FastSocketResponse `pulumi:"fastSocket"`
 	// GCFS (Google Container File System) configs.
 	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
 	// Enable or disable gvnic on the node pool.
 	Gvnic VirtualNICResponse `pulumi:"gvnic"`
-	// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+	// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 	ImageType string `pulumi:"imageType"`
 	// Node kubelet configs.
 	KubeletConfig NodeKubeletConfigResponse `pulumi:"kubeletConfig"`
@@ -12726,6 +13549,8 @@ type NodeConfigResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Parameters that can be configured on Linux nodes.
 	LinuxNodeConfig LinuxNodeConfigResponse `pulumi:"linuxNodeConfig"`
+	// Parameters for using raw-block Local NVMe SSDs.
+	LocalNvmeSsdBlockConfig LocalNvmeSsdBlockConfigResponse `pulumi:"localNvmeSsdBlockConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount int `pulumi:"localSsdCount"`
 	// Logging configuration.
@@ -12744,6 +13569,8 @@ type NodeConfigResponse struct {
 	Preemptible bool `pulumi:"preemptible"`
 	// The optional reservation affinity. Setting this field will apply the specified [Zonal Compute Reservation](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) to this node pool.
 	ReservationAffinity ReservationAffinityResponse `pulumi:"reservationAffinity"`
+	// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+	ResourceLabels map[string]string `pulumi:"resourceLabels"`
 	// Sandbox configuration for this node.
 	SandboxConfig SandboxConfigResponse `pulumi:"sandboxConfig"`
 	// The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
@@ -12756,6 +13583,8 @@ type NodeConfigResponse struct {
 	Tags []string `pulumi:"tags"`
 	// List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 	Taints []NodeTaintResponse `pulumi:"taints"`
+	// Parameters that can be configured on Windows nodes.
+	WindowsNodeConfig WindowsNodeConfigResponse `pulumi:"windowsNodeConfig"`
 	// The workload metadata configuration for this node.
 	WorkloadMetadataConfig WorkloadMetadataConfigResponse `pulumi:"workloadMetadataConfig"`
 }
@@ -12810,6 +13639,18 @@ func (o NodeConfigResponseOutput) EphemeralStorageConfig() EphemeralStorageConfi
 	return o.ApplyT(func(v NodeConfigResponse) EphemeralStorageConfigResponse { return v.EphemeralStorageConfig }).(EphemeralStorageConfigResponseOutput)
 }
 
+// Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk. This field is functionally equivalent to the ephemeral_storage_config
+func (o NodeConfigResponseOutput) EphemeralStorageLocalSsdConfig() EphemeralStorageLocalSsdConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) EphemeralStorageLocalSsdConfigResponse {
+		return v.EphemeralStorageLocalSsdConfig
+	}).(EphemeralStorageLocalSsdConfigResponseOutput)
+}
+
+// Enable or disable NCCL fast socket for the node pool.
+func (o NodeConfigResponseOutput) FastSocket() FastSocketResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) FastSocketResponse { return v.FastSocket }).(FastSocketResponseOutput)
+}
+
 // GCFS (Google Container File System) configs.
 func (o NodeConfigResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
@@ -12820,7 +13661,7 @@ func (o NodeConfigResponseOutput) Gvnic() VirtualNICResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) VirtualNICResponse { return v.Gvnic }).(VirtualNICResponseOutput)
 }
 
-// The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+// The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
 func (o NodeConfigResponseOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.ImageType }).(pulumi.StringOutput)
 }
@@ -12838,6 +13679,11 @@ func (o NodeConfigResponseOutput) Labels() pulumi.StringMapOutput {
 // Parameters that can be configured on Linux nodes.
 func (o NodeConfigResponseOutput) LinuxNodeConfig() LinuxNodeConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) LinuxNodeConfigResponse { return v.LinuxNodeConfig }).(LinuxNodeConfigResponseOutput)
+}
+
+// Parameters for using raw-block Local NVMe SSDs.
+func (o NodeConfigResponseOutput) LocalNvmeSsdBlockConfig() LocalNvmeSsdBlockConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) LocalNvmeSsdBlockConfigResponse { return v.LocalNvmeSsdBlockConfig }).(LocalNvmeSsdBlockConfigResponseOutput)
 }
 
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
@@ -12885,6 +13731,11 @@ func (o NodeConfigResponseOutput) ReservationAffinity() ReservationAffinityRespo
 	return o.ApplyT(func(v NodeConfigResponse) ReservationAffinityResponse { return v.ReservationAffinity }).(ReservationAffinityResponseOutput)
 }
 
+// The resource labels for the node pool to use to annotate any related Google Compute Engine resources.
+func (o NodeConfigResponseOutput) ResourceLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v NodeConfigResponse) map[string]string { return v.ResourceLabels }).(pulumi.StringMapOutput)
+}
+
 // Sandbox configuration for this node.
 func (o NodeConfigResponseOutput) SandboxConfig() SandboxConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigResponse) SandboxConfigResponse { return v.SandboxConfig }).(SandboxConfigResponseOutput)
@@ -12913,6 +13764,11 @@ func (o NodeConfigResponseOutput) Tags() pulumi.StringArrayOutput {
 // List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 func (o NodeConfigResponseOutput) Taints() NodeTaintResponseArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []NodeTaintResponse { return v.Taints }).(NodeTaintResponseArrayOutput)
+}
+
+// Parameters that can be configured on Windows nodes.
+func (o NodeConfigResponseOutput) WindowsNodeConfig() WindowsNodeConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) WindowsNodeConfigResponse { return v.WindowsNodeConfig }).(WindowsNodeConfigResponseOutput)
 }
 
 // The workload metadata configuration for this node.
@@ -13392,6 +14248,8 @@ func (o NodeManagementResponseOutput) UpgradeOptions() AutoUpgradeOptionsRespons
 type NodeNetworkConfig struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange *bool `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig *NetworkPerformanceConfig `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -13415,6 +14273,8 @@ type NodeNetworkConfigInput interface {
 type NodeNetworkConfigArgs struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig NetworkPerformanceConfigPtrInput `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -13506,6 +14366,11 @@ func (o NodeNetworkConfigOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.CreatePodRange }).(pulumi.BoolPtrOutput)
 }
 
+// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+func (o NodeNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NodeNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
+}
+
 // Network bandwidth tier configuration.
 func (o NodeNetworkConfigOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v NodeNetworkConfig) *NetworkPerformanceConfig { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigPtrOutput)
@@ -13555,6 +14420,16 @@ func (o NodeNetworkConfigPtrOutput) CreatePodRange() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+func (o NodeNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodeNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateNodes
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Network bandwidth tier configuration.
 func (o NodeNetworkConfigPtrOutput) NetworkPerformanceConfig() NetworkPerformanceConfigPtrOutput {
 	return o.ApplyT(func(v *NodeNetworkConfig) *NetworkPerformanceConfig {
@@ -13589,6 +14464,8 @@ func (o NodeNetworkConfigPtrOutput) PodRange() pulumi.StringPtrOutput {
 type NodeNetworkConfigResponse struct {
 	// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
 	CreatePodRange bool `pulumi:"createPodRange"`
+	// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+	EnablePrivateNodes bool `pulumi:"enablePrivateNodes"`
 	// Network bandwidth tier configuration.
 	NetworkPerformanceConfig NetworkPerformanceConfigResponse `pulumi:"networkPerformanceConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if `create_pod_range` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) to pick a specific range to use. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -13617,6 +14494,11 @@ func (o NodeNetworkConfigResponseOutput) CreatePodRange() pulumi.BoolOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.CreatePodRange }).(pulumi.BoolOutput)
 }
 
+// Whether nodes have internal IP addresses only. If enable_private_nodes is not specified, then the value is derived from cluster.privateClusterConfig.enablePrivateNodes
+func (o NodeNetworkConfigResponseOutput) EnablePrivateNodes() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodeNetworkConfigResponse) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
+}
+
 // Network bandwidth tier configuration.
 func (o NodeNetworkConfigResponseOutput) NetworkPerformanceConfig() NetworkPerformanceConfigResponseOutput {
 	return o.ApplyT(func(v NodeNetworkConfigResponse) NetworkPerformanceConfigResponse { return v.NetworkPerformanceConfig }).(NetworkPerformanceConfigResponseOutput)
@@ -13640,6 +14522,8 @@ type NodePoolType struct {
 	Conditions []StatusCondition `pulumi:"conditions"`
 	// The node configuration of the pool.
 	Config *NodeConfig `pulumi:"config"`
+	// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	Etag *string `pulumi:"etag"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount *int `pulumi:"initialNodeCount"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
@@ -13656,7 +14540,7 @@ type NodePoolType struct {
 	PlacementPolicy *PlacementPolicy `pulumi:"placementPolicy"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings *UpgradeSettings `pulumi:"upgradeSettings"`
-	// The version of the Kubernetes of this node.
+	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 	Version *string `pulumi:"version"`
 }
 
@@ -13679,6 +14563,8 @@ type NodePoolTypeArgs struct {
 	Conditions StatusConditionArrayInput `pulumi:"conditions"`
 	// The node configuration of the pool.
 	Config NodeConfigPtrInput `pulumi:"config"`
+	// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount pulumi.IntPtrInput `pulumi:"initialNodeCount"`
 	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
@@ -13695,7 +14581,7 @@ type NodePoolTypeArgs struct {
 	PlacementPolicy PlacementPolicyPtrInput `pulumi:"placementPolicy"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
-	// The version of the Kubernetes of this node.
+	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -13766,6 +14652,11 @@ func (o NodePoolTypeOutput) Config() NodeConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *NodeConfig { return v.Config }).(NodeConfigPtrOutput)
 }
 
+// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+func (o NodePoolTypeOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolType) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
 // The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 func (o NodePoolTypeOutput) InitialNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *int { return v.InitialNodeCount }).(pulumi.IntPtrOutput)
@@ -13806,7 +14697,7 @@ func (o NodePoolTypeOutput) UpgradeSettings() UpgradeSettingsPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *UpgradeSettings { return v.UpgradeSettings }).(UpgradeSettingsPtrOutput)
 }
 
-// The version of the Kubernetes of this node.
+// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 func (o NodePoolTypeOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodePoolType) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -14659,6 +15550,8 @@ type NodePoolResponse struct {
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
 	// The node configuration of the pool.
 	Config NodeConfigResponse `pulumi:"config"`
+	// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount int `pulumi:"initialNodeCount"`
 	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
@@ -14689,7 +15582,7 @@ type NodePoolResponse struct {
 	UpdateInfo UpdateInfoResponse `pulumi:"updateInfo"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
-	// The version of the Kubernetes of this node.
+	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 	Version string `pulumi:"version"`
 }
 
@@ -14721,6 +15614,11 @@ func (o NodePoolResponseOutput) Conditions() StatusConditionResponseArrayOutput 
 // The node configuration of the pool.
 func (o NodePoolResponseOutput) Config() NodeConfigResponseOutput {
 	return o.ApplyT(func(v NodePoolResponse) NodeConfigResponse { return v.Config }).(NodeConfigResponseOutput)
+}
+
+// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+func (o NodePoolResponseOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolResponse) string { return v.Etag }).(pulumi.StringOutput)
 }
 
 // The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
@@ -14795,7 +15693,7 @@ func (o NodePoolResponseOutput) UpgradeSettings() UpgradeSettingsResponseOutput 
 	return o.ApplyT(func(v NodePoolResponse) UpgradeSettingsResponse { return v.UpgradeSettings }).(UpgradeSettingsResponseOutput)
 }
 
-// The version of the Kubernetes of this node.
+// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 func (o NodePoolResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v NodePoolResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -15512,6 +16410,8 @@ type PrivateClusterConfig struct {
 	MasterGlobalAccessConfig *PrivateClusterMasterGlobalAccessConfig `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
 	MasterIpv4CidrBlock *string `pulumi:"masterIpv4CidrBlock"`
+	// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+	PrivateEndpointSubnetwork *string `pulumi:"privateEndpointSubnetwork"`
 }
 
 // PrivateClusterConfigInput is an input type that accepts PrivateClusterConfigArgs and PrivateClusterConfigOutput values.
@@ -15535,6 +16435,8 @@ type PrivateClusterConfigArgs struct {
 	MasterGlobalAccessConfig PrivateClusterMasterGlobalAccessConfigPtrInput `pulumi:"masterGlobalAccessConfig"`
 	// The IP range in CIDR notation to use for the hosted master network. This range will be used for assigning internal IP addresses to the master or set of masters, as well as the ILB VIP. This range must not overlap with any other ranges in use within the cluster's network.
 	MasterIpv4CidrBlock pulumi.StringPtrInput `pulumi:"masterIpv4CidrBlock"`
+	// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+	PrivateEndpointSubnetwork pulumi.StringPtrInput `pulumi:"privateEndpointSubnetwork"`
 }
 
 func (PrivateClusterConfigArgs) ElementType() reflect.Type {
@@ -15637,6 +16539,11 @@ func (o PrivateClusterConfigOutput) MasterIpv4CidrBlock() pulumi.StringPtrOutput
 	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.MasterIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
+// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+func (o PrivateClusterConfigOutput) PrivateEndpointSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateClusterConfig) *string { return v.PrivateEndpointSubnetwork }).(pulumi.StringPtrOutput)
+}
+
 type PrivateClusterConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (PrivateClusterConfigPtrOutput) ElementType() reflect.Type {
@@ -15701,6 +16608,16 @@ func (o PrivateClusterConfigPtrOutput) MasterIpv4CidrBlock() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
+// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+func (o PrivateClusterConfigPtrOutput) PrivateEndpointSubnetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateClusterConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointSubnetwork
+	}).(pulumi.StringPtrOutput)
+}
+
 // Configuration options for private clusters.
 type PrivateClusterConfigResponse struct {
 	// Whether the master's internal IP address is used as the cluster endpoint.
@@ -15715,6 +16632,8 @@ type PrivateClusterConfigResponse struct {
 	PeeringName string `pulumi:"peeringName"`
 	// The internal IP address of this cluster's master endpoint.
 	PrivateEndpoint string `pulumi:"privateEndpoint"`
+	// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+	PrivateEndpointSubnetwork string `pulumi:"privateEndpointSubnetwork"`
 	// The external IP address of this cluster's master endpoint.
 	PublicEndpoint string `pulumi:"publicEndpoint"`
 }
@@ -15764,6 +16683,11 @@ func (o PrivateClusterConfigResponseOutput) PeeringName() pulumi.StringOutput {
 // The internal IP address of this cluster's master endpoint.
 func (o PrivateClusterConfigResponseOutput) PrivateEndpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.PrivateEndpoint }).(pulumi.StringOutput)
+}
+
+// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+func (o PrivateClusterConfigResponseOutput) PrivateEndpointSubnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v PrivateClusterConfigResponse) string { return v.PrivateEndpointSubnetwork }).(pulumi.StringOutput)
 }
 
 // The external IP address of this cluster's master endpoint.
@@ -16996,6 +17920,12 @@ func (o ReservationAffinityResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ReservationAffinityResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
+// Collection of [GCP labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels).
+type ResourceLabels struct {
+	// Map of node label keys and node label values.
+	Labels map[string]string `pulumi:"labels"`
+}
+
 // Contains information about amount of some resource in the cluster. For memory, value should be in GB.
 type ResourceLimit struct {
 	// Maximum amount of the resource in the cluster.
@@ -18114,7 +19044,7 @@ func (o ShieldedNodesResponseOutput) Enabled() pulumi.BoolOutput {
 type StandardRolloutPolicy struct {
 	// Number of blue nodes to drain in a batch.
 	BatchNodeCount *int `pulumi:"batchNodeCount"`
-	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 	BatchPercentage *float64 `pulumi:"batchPercentage"`
 	// Soak time after each batch gets drained. Default to zero.
 	BatchSoakDuration *string `pulumi:"batchSoakDuration"`
@@ -18135,7 +19065,7 @@ type StandardRolloutPolicyInput interface {
 type StandardRolloutPolicyArgs struct {
 	// Number of blue nodes to drain in a batch.
 	BatchNodeCount pulumi.IntPtrInput `pulumi:"batchNodeCount"`
-	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 	BatchPercentage pulumi.Float64PtrInput `pulumi:"batchPercentage"`
 	// Soak time after each batch gets drained. Default to zero.
 	BatchSoakDuration pulumi.StringPtrInput `pulumi:"batchSoakDuration"`
@@ -18224,7 +19154,7 @@ func (o StandardRolloutPolicyOutput) BatchNodeCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v StandardRolloutPolicy) *int { return v.BatchNodeCount }).(pulumi.IntPtrOutput)
 }
 
-// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 func (o StandardRolloutPolicyOutput) BatchPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v StandardRolloutPolicy) *float64 { return v.BatchPercentage }).(pulumi.Float64PtrOutput)
 }
@@ -18268,7 +19198,7 @@ func (o StandardRolloutPolicyPtrOutput) BatchNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 func (o StandardRolloutPolicyPtrOutput) BatchPercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *StandardRolloutPolicy) *float64 {
 		if v == nil {
@@ -18292,7 +19222,7 @@ func (o StandardRolloutPolicyPtrOutput) BatchSoakDuration() pulumi.StringPtrOutp
 type StandardRolloutPolicyResponse struct {
 	// Number of blue nodes to drain in a batch.
 	BatchNodeCount int `pulumi:"batchNodeCount"`
-	// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+	// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 	BatchPercentage float64 `pulumi:"batchPercentage"`
 	// Soak time after each batch gets drained. Default to zero.
 	BatchSoakDuration string `pulumi:"batchSoakDuration"`
@@ -18318,7 +19248,7 @@ func (o StandardRolloutPolicyResponseOutput) BatchNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v StandardRolloutPolicyResponse) int { return v.BatchNodeCount }).(pulumi.IntOutput)
 }
 
-// Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
+// Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
 func (o StandardRolloutPolicyResponseOutput) BatchPercentage() pulumi.Float64Output {
 	return o.ApplyT(func(v StandardRolloutPolicyResponse) float64 { return v.BatchPercentage }).(pulumi.Float64Output)
 }
@@ -19554,6 +20484,172 @@ func (o VirtualNICResponseOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VirtualNICResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+type WindowsNodeConfig struct {
+	// OSVersion specifies the Windows node config to be used on the node
+	OsVersion *WindowsNodeConfigOsVersion `pulumi:"osVersion"`
+}
+
+// WindowsNodeConfigInput is an input type that accepts WindowsNodeConfigArgs and WindowsNodeConfigOutput values.
+// You can construct a concrete instance of `WindowsNodeConfigInput` via:
+//
+//	WindowsNodeConfigArgs{...}
+type WindowsNodeConfigInput interface {
+	pulumi.Input
+
+	ToWindowsNodeConfigOutput() WindowsNodeConfigOutput
+	ToWindowsNodeConfigOutputWithContext(context.Context) WindowsNodeConfigOutput
+}
+
+// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+type WindowsNodeConfigArgs struct {
+	// OSVersion specifies the Windows node config to be used on the node
+	OsVersion WindowsNodeConfigOsVersionPtrInput `pulumi:"osVersion"`
+}
+
+func (WindowsNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfig)(nil)).Elem()
+}
+
+func (i WindowsNodeConfigArgs) ToWindowsNodeConfigOutput() WindowsNodeConfigOutput {
+	return i.ToWindowsNodeConfigOutputWithContext(context.Background())
+}
+
+func (i WindowsNodeConfigArgs) ToWindowsNodeConfigOutputWithContext(ctx context.Context) WindowsNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsNodeConfigOutput)
+}
+
+func (i WindowsNodeConfigArgs) ToWindowsNodeConfigPtrOutput() WindowsNodeConfigPtrOutput {
+	return i.ToWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i WindowsNodeConfigArgs) ToWindowsNodeConfigPtrOutputWithContext(ctx context.Context) WindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsNodeConfigOutput).ToWindowsNodeConfigPtrOutputWithContext(ctx)
+}
+
+// WindowsNodeConfigPtrInput is an input type that accepts WindowsNodeConfigArgs, WindowsNodeConfigPtr and WindowsNodeConfigPtrOutput values.
+// You can construct a concrete instance of `WindowsNodeConfigPtrInput` via:
+//
+//	        WindowsNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type WindowsNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToWindowsNodeConfigPtrOutput() WindowsNodeConfigPtrOutput
+	ToWindowsNodeConfigPtrOutputWithContext(context.Context) WindowsNodeConfigPtrOutput
+}
+
+type windowsNodeConfigPtrType WindowsNodeConfigArgs
+
+func WindowsNodeConfigPtr(v *WindowsNodeConfigArgs) WindowsNodeConfigPtrInput {
+	return (*windowsNodeConfigPtrType)(v)
+}
+
+func (*windowsNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsNodeConfig)(nil)).Elem()
+}
+
+func (i *windowsNodeConfigPtrType) ToWindowsNodeConfigPtrOutput() WindowsNodeConfigPtrOutput {
+	return i.ToWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *windowsNodeConfigPtrType) ToWindowsNodeConfigPtrOutputWithContext(ctx context.Context) WindowsNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WindowsNodeConfigPtrOutput)
+}
+
+// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+type WindowsNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfig)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigOutput) ToWindowsNodeConfigOutput() WindowsNodeConfigOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOutput) ToWindowsNodeConfigOutputWithContext(ctx context.Context) WindowsNodeConfigOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOutput) ToWindowsNodeConfigPtrOutput() WindowsNodeConfigPtrOutput {
+	return o.ToWindowsNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOutput) ToWindowsNodeConfigPtrOutputWithContext(ctx context.Context) WindowsNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsNodeConfig) *WindowsNodeConfig {
+		return &v
+	}).(WindowsNodeConfigPtrOutput)
+}
+
+// OSVersion specifies the Windows node config to be used on the node
+func (o WindowsNodeConfigOutput) OsVersion() WindowsNodeConfigOsVersionPtrOutput {
+	return o.ApplyT(func(v WindowsNodeConfig) *WindowsNodeConfigOsVersion { return v.OsVersion }).(WindowsNodeConfigOsVersionPtrOutput)
+}
+
+type WindowsNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsNodeConfig)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigPtrOutput) ToWindowsNodeConfigPtrOutput() WindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o WindowsNodeConfigPtrOutput) ToWindowsNodeConfigPtrOutputWithContext(ctx context.Context) WindowsNodeConfigPtrOutput {
+	return o
+}
+
+func (o WindowsNodeConfigPtrOutput) Elem() WindowsNodeConfigOutput {
+	return o.ApplyT(func(v *WindowsNodeConfig) WindowsNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsNodeConfig
+		return ret
+	}).(WindowsNodeConfigOutput)
+}
+
+// OSVersion specifies the Windows node config to be used on the node
+func (o WindowsNodeConfigPtrOutput) OsVersion() WindowsNodeConfigOsVersionPtrOutput {
+	return o.ApplyT(func(v *WindowsNodeConfig) *WindowsNodeConfigOsVersion {
+		if v == nil {
+			return nil
+		}
+		return v.OsVersion
+	}).(WindowsNodeConfigOsVersionPtrOutput)
+}
+
+// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+type WindowsNodeConfigResponse struct {
+	// OSVersion specifies the Windows node config to be used on the node
+	OsVersion string `pulumi:"osVersion"`
+}
+
+// Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+type WindowsNodeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfigResponse)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigResponseOutput) ToWindowsNodeConfigResponseOutput() WindowsNodeConfigResponseOutput {
+	return o
+}
+
+func (o WindowsNodeConfigResponseOutput) ToWindowsNodeConfigResponseOutputWithContext(ctx context.Context) WindowsNodeConfigResponseOutput {
+	return o
+}
+
+// OSVersion specifies the Windows node config to be used on the node
+func (o WindowsNodeConfigResponseOutput) OsVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsNodeConfigResponse) string { return v.OsVersion }).(pulumi.StringOutput)
+}
+
 // Configuration for direct-path (via ALTS) with workload identity.
 type WorkloadALTSConfig struct {
 	// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
@@ -20513,10 +21609,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsCacheConfigPtrInput)(nil)).Elem(), DnsCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigInput)(nil)).Elem(), EphemeralStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageConfigPtrInput)(nil)).Elem(), EphemeralStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageLocalSsdConfigInput)(nil)).Elem(), EphemeralStorageLocalSsdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EphemeralStorageLocalSsdConfigPtrInput)(nil)).Elem(), EphemeralStorageLocalSsdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FastSocketInput)(nil)).Elem(), FastSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FastSocketPtrInput)(nil)).Elem(), FastSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterPtrInput)(nil)).Elem(), FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigInput)(nil)).Elem(), GPUSharingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GPUSharingConfigPtrInput)(nil)).Elem(), GPUSharingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigInput)(nil)).Elem(), GatewayAPIConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayAPIConfigPtrInput)(nil)).Elem(), GatewayAPIConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcePersistentDiskCsiDriverConfigPtrInput)(nil)).Elem(), GcePersistentDiskCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcfsConfigInput)(nil)).Elem(), GcfsConfigArgs{})
@@ -20543,6 +21645,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LegacyAbacPtrInput)(nil)).Elem(), LegacyAbacArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigInput)(nil)).Elem(), LinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LinuxNodeConfigPtrInput)(nil)).Elem(), LinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalNvmeSsdBlockConfigInput)(nil)).Elem(), LocalNvmeSsdBlockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LocalNvmeSsdBlockConfigPtrInput)(nil)).Elem(), LocalNvmeSsdBlockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigInput)(nil)).Elem(), LoggingComponentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigPtrInput)(nil)).Elem(), LoggingComponentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigInput)(nil)).Elem(), LoggingConfigArgs{})
@@ -20649,6 +21753,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VerticalPodAutoscalingPtrInput)(nil)).Elem(), VerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICInput)(nil)).Elem(), VirtualNICArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualNICPtrInput)(nil)).Elem(), VirtualNICArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigInput)(nil)).Elem(), WindowsNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigPtrInput)(nil)).Elem(), WindowsNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadALTSConfigInput)(nil)).Elem(), WorkloadALTSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadALTSConfigPtrInput)(nil)).Elem(), WorkloadALTSConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadCertificatesInput)(nil)).Elem(), WorkloadCertificatesArgs{})
@@ -20739,12 +21845,21 @@ func init() {
 	pulumi.RegisterOutputType(EphemeralStorageConfigOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageConfigPtrOutput{})
 	pulumi.RegisterOutputType(EphemeralStorageConfigResponseOutput{})
+	pulumi.RegisterOutputType(EphemeralStorageLocalSsdConfigOutput{})
+	pulumi.RegisterOutputType(EphemeralStorageLocalSsdConfigPtrOutput{})
+	pulumi.RegisterOutputType(EphemeralStorageLocalSsdConfigResponseOutput{})
+	pulumi.RegisterOutputType(FastSocketOutput{})
+	pulumi.RegisterOutputType(FastSocketPtrOutput{})
+	pulumi.RegisterOutputType(FastSocketResponseOutput{})
 	pulumi.RegisterOutputType(FilterOutput{})
 	pulumi.RegisterOutputType(FilterPtrOutput{})
 	pulumi.RegisterOutputType(FilterResponseOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigPtrOutput{})
 	pulumi.RegisterOutputType(GPUSharingConfigResponseOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigPtrOutput{})
+	pulumi.RegisterOutputType(GatewayAPIConfigResponseOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(GcePersistentDiskCsiDriverConfigResponseOutput{})
@@ -20784,6 +21899,9 @@ func init() {
 	pulumi.RegisterOutputType(LinuxNodeConfigOutput{})
 	pulumi.RegisterOutputType(LinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(LinuxNodeConfigResponseOutput{})
+	pulumi.RegisterOutputType(LocalNvmeSsdBlockConfigOutput{})
+	pulumi.RegisterOutputType(LocalNvmeSsdBlockConfigPtrOutput{})
+	pulumi.RegisterOutputType(LocalNvmeSsdBlockConfigResponseOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigResponseOutput{})
@@ -20950,6 +22068,9 @@ func init() {
 	pulumi.RegisterOutputType(VirtualNICOutput{})
 	pulumi.RegisterOutputType(VirtualNICPtrOutput{})
 	pulumi.RegisterOutputType(VirtualNICResponseOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(WorkloadALTSConfigOutput{})
 	pulumi.RegisterOutputType(WorkloadALTSConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadALTSConfigResponseOutput{})

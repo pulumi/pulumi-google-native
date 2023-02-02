@@ -182,6 +182,9 @@ class ServiceTier(str, Enum):
 
 
 class TelemetryConfigLogFormat(str, Enum):
+    """
+    The output format of the Dataproc Metastore service's logs.
+    """
     LOG_FORMAT_UNSPECIFIED = "LOG_FORMAT_UNSPECIFIED"
     """
     The LOG_FORMAT is not set.

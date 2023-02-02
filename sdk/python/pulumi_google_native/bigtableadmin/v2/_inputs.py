@@ -23,6 +23,7 @@ __all__ = [
     'MultiClusterRoutingUseAnyArgs',
     'SingleClusterRoutingArgs',
     'SplitArgs',
+    'TableStatsArgs',
 ]
 
 @pulumi.input_type
@@ -483,5 +484,77 @@ class SplitArgs:
     @key.setter
     def key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key", value)
+
+
+@pulumi.input_type
+class TableStatsArgs:
+    def __init__(__self__, *,
+                 average_cells_per_column: Optional[pulumi.Input[float]] = None,
+                 average_columns_per_row: Optional[pulumi.Input[float]] = None,
+                 logical_data_bytes: Optional[pulumi.Input[str]] = None,
+                 row_count: Optional[pulumi.Input[str]] = None):
+        """
+        Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+        :param pulumi.Input[float] average_cells_per_column: How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+        :param pulumi.Input[float] average_columns_per_row: How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+        :param pulumi.Input[str] logical_data_bytes: This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+        :param pulumi.Input[str] row_count: How many rows are in the table.
+        """
+        if average_cells_per_column is not None:
+            pulumi.set(__self__, "average_cells_per_column", average_cells_per_column)
+        if average_columns_per_row is not None:
+            pulumi.set(__self__, "average_columns_per_row", average_columns_per_row)
+        if logical_data_bytes is not None:
+            pulumi.set(__self__, "logical_data_bytes", logical_data_bytes)
+        if row_count is not None:
+            pulumi.set(__self__, "row_count", row_count)
+
+    @property
+    @pulumi.getter(name="averageCellsPerColumn")
+    def average_cells_per_column(self) -> Optional[pulumi.Input[float]]:
+        """
+        How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+        """
+        return pulumi.get(self, "average_cells_per_column")
+
+    @average_cells_per_column.setter
+    def average_cells_per_column(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "average_cells_per_column", value)
+
+    @property
+    @pulumi.getter(name="averageColumnsPerRow")
+    def average_columns_per_row(self) -> Optional[pulumi.Input[float]]:
+        """
+        How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+        """
+        return pulumi.get(self, "average_columns_per_row")
+
+    @average_columns_per_row.setter
+    def average_columns_per_row(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "average_columns_per_row", value)
+
+    @property
+    @pulumi.getter(name="logicalDataBytes")
+    def logical_data_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+        """
+        return pulumi.get(self, "logical_data_bytes")
+
+    @logical_data_bytes.setter
+    def logical_data_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logical_data_bytes", value)
+
+    @property
+    @pulumi.getter(name="rowCount")
+    def row_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        How many rows are in the table.
+        """
+        return pulumi.get(self, "row_count")
+
+    @row_count.setter
+    def row_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "row_count", value)
 
 

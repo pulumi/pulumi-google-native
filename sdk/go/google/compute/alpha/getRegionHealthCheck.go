@@ -50,7 +50,9 @@ type LookupRegionHealthCheckResult struct {
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId string                 `pulumi:"selfLinkWithId"`
+	SelfLinkWithId string `pulumi:"selfLinkWithId"`
+	// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing.
+	SourceRegions  []string               `pulumi:"sourceRegions"`
 	SslHealthCheck SSLHealthCheckResponse `pulumi:"sslHealthCheck"`
 	TcpHealthCheck TCPHealthCheckResponse `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
@@ -163,6 +165,11 @@ func (o LookupRegionHealthCheckResultOutput) SelfLink() pulumi.StringOutput {
 // Server-defined URL for this resource with the resource id.
 func (o LookupRegionHealthCheckResultOutput) SelfLinkWithId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionHealthCheckResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
+}
+
+// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing.
+func (o LookupRegionHealthCheckResultOutput) SourceRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupRegionHealthCheckResult) []string { return v.SourceRegions }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupRegionHealthCheckResultOutput) SslHealthCheck() SSLHealthCheckResponseOutput {

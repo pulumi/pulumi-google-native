@@ -3344,7 +3344,7 @@ type H264CodecSettings struct {
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels *int `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat *string `pulumi:"pixelFormat"`
@@ -3360,7 +3360,7 @@ type H264CodecSettings struct {
 	VbvFullnessBits *int `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits *int `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels *int `pulumi:"widthPixels"`
 }
 
@@ -3399,7 +3399,7 @@ type H264CodecSettingsArgs struct {
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels pulumi.IntPtrInput `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
@@ -3415,7 +3415,7 @@ type H264CodecSettingsArgs struct {
 	VbvFullnessBits pulumi.IntPtrInput `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits pulumi.IntPtrInput `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
 }
 
@@ -3552,7 +3552,7 @@ func (o H264CodecSettingsOutput) GopFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.GopFrameCount }).(pulumi.IntPtrOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.HeightPixels }).(pulumi.IntPtrOutput)
 }
@@ -3592,7 +3592,7 @@ func (o H264CodecSettingsOutput) VbvSizeBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.VbvSizeBits }).(pulumi.IntPtrOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H264CodecSettings) *int { return v.WidthPixels }).(pulumi.IntPtrOutput)
 }
@@ -3731,7 +3731,7 @@ func (o H264CodecSettingsPtrOutput) GopFrameCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *int {
 		if v == nil {
@@ -3811,7 +3811,7 @@ func (o H264CodecSettingsPtrOutput) VbvSizeBits() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsPtrOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H264CodecSettings) *int {
 		if v == nil {
@@ -3845,7 +3845,7 @@ type H264CodecSettingsResponse struct {
 	GopDuration string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount int `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels int `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat string `pulumi:"pixelFormat"`
@@ -3861,7 +3861,7 @@ type H264CodecSettingsResponse struct {
 	VbvFullnessBits int `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits int `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels int `pulumi:"widthPixels"`
 }
 
@@ -3935,7 +3935,7 @@ func (o H264CodecSettingsResponseOutput) GopFrameCount() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.GopFrameCount }).(pulumi.IntOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsResponseOutput) HeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.HeightPixels }).(pulumi.IntOutput)
 }
@@ -3975,7 +3975,7 @@ func (o H264CodecSettingsResponseOutput) VbvSizeBits() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.VbvSizeBits }).(pulumi.IntOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H264CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H264CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
 }
@@ -4002,7 +4002,7 @@ type H265CodecSettings struct {
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels *int `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat *string `pulumi:"pixelFormat"`
@@ -4018,7 +4018,7 @@ type H265CodecSettings struct {
 	VbvFullnessBits *int `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits *int `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels *int `pulumi:"widthPixels"`
 }
 
@@ -4055,7 +4055,7 @@ type H265CodecSettingsArgs struct {
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels pulumi.IntPtrInput `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
@@ -4071,7 +4071,7 @@ type H265CodecSettingsArgs struct {
 	VbvFullnessBits pulumi.IntPtrInput `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits pulumi.IntPtrInput `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
 }
 
@@ -4203,7 +4203,7 @@ func (o H265CodecSettingsOutput) GopFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.GopFrameCount }).(pulumi.IntPtrOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.HeightPixels }).(pulumi.IntPtrOutput)
 }
@@ -4243,7 +4243,7 @@ func (o H265CodecSettingsOutput) VbvSizeBits() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.VbvSizeBits }).(pulumi.IntPtrOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v H265CodecSettings) *int { return v.WidthPixels }).(pulumi.IntPtrOutput)
 }
@@ -4372,7 +4372,7 @@ func (o H265CodecSettingsPtrOutput) GopFrameCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *int {
 		if v == nil {
@@ -4452,7 +4452,7 @@ func (o H265CodecSettingsPtrOutput) VbvSizeBits() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsPtrOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *H265CodecSettings) *int {
 		if v == nil {
@@ -4484,7 +4484,7 @@ type H265CodecSettingsResponse struct {
 	GopDuration string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount int `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels int `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat string `pulumi:"pixelFormat"`
@@ -4500,7 +4500,7 @@ type H265CodecSettingsResponse struct {
 	VbvFullnessBits int `pulumi:"vbvFullnessBits"`
 	// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal to `VideoStream.bitrate_bps`.
 	VbvSizeBits int `pulumi:"vbvSizeBits"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels int `pulumi:"widthPixels"`
 }
 
@@ -4569,7 +4569,7 @@ func (o H265CodecSettingsResponseOutput) GopFrameCount() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.GopFrameCount }).(pulumi.IntOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsResponseOutput) HeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.HeightPixels }).(pulumi.IntOutput)
 }
@@ -4609,7 +4609,7 @@ func (o H265CodecSettingsResponseOutput) VbvSizeBits() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.VbvSizeBits }).(pulumi.IntOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o H265CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v H265CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
 }
@@ -7258,9 +7258,9 @@ type SpriteSheet struct {
 	Quality *int `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount *int `pulumi:"rowCount"`
-	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	SpriteHeightPixels int `pulumi:"spriteHeightPixels"`
-	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	SpriteWidthPixels int `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
@@ -7295,9 +7295,9 @@ type SpriteSheetArgs struct {
 	Quality pulumi.IntPtrInput `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount pulumi.IntPtrInput `pulumi:"rowCount"`
-	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	SpriteHeightPixels pulumi.IntInput `pulumi:"spriteHeightPixels"`
-	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	SpriteWidthPixels pulumi.IntInput `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
@@ -7392,12 +7392,12 @@ func (o SpriteSheetOutput) RowCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *int { return v.RowCount }).(pulumi.IntPtrOutput)
 }
 
-// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o SpriteSheetOutput) SpriteHeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheet) int { return v.SpriteHeightPixels }).(pulumi.IntOutput)
 }
 
-// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o SpriteSheetOutput) SpriteWidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheet) int { return v.SpriteWidthPixels }).(pulumi.IntOutput)
 }
@@ -7448,9 +7448,9 @@ type SpriteSheetResponse struct {
 	Quality int `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount int `pulumi:"rowCount"`
-	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	SpriteHeightPixels int `pulumi:"spriteHeightPixels"`
-	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	SpriteWidthPixels int `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset string `pulumi:"startTimeOffset"`
@@ -7508,12 +7508,12 @@ func (o SpriteSheetResponseOutput) RowCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) int { return v.RowCount }).(pulumi.IntOutput)
 }
 
-// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o SpriteSheetResponseOutput) SpriteHeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) int { return v.SpriteHeightPixels }).(pulumi.IntOutput)
 }
 
-// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field). For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o SpriteSheetResponseOutput) SpriteWidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) int { return v.SpriteWidthPixels }).(pulumi.IntOutput)
 }
@@ -8188,7 +8188,7 @@ type Vp9CodecSettings struct {
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount *int `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels *int `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat *string `pulumi:"pixelFormat"`
@@ -8196,7 +8196,7 @@ type Vp9CodecSettings struct {
 	Profile *string `pulumi:"profile"`
 	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode *string `pulumi:"rateControlMode"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels *int `pulumi:"widthPixels"`
 }
 
@@ -8223,7 +8223,7 @@ type Vp9CodecSettingsArgs struct {
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount pulumi.IntPtrInput `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels pulumi.IntPtrInput `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat pulumi.StringPtrInput `pulumi:"pixelFormat"`
@@ -8231,7 +8231,7 @@ type Vp9CodecSettingsArgs struct {
 	Profile pulumi.StringPtrInput `pulumi:"profile"`
 	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode pulumi.StringPtrInput `pulumi:"rateControlMode"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels pulumi.IntPtrInput `pulumi:"widthPixels"`
 }
 
@@ -8338,7 +8338,7 @@ func (o Vp9CodecSettingsOutput) GopFrameCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.GopFrameCount }).(pulumi.IntPtrOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.HeightPixels }).(pulumi.IntPtrOutput)
 }
@@ -8358,7 +8358,7 @@ func (o Vp9CodecSettingsOutput) RateControlMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *string { return v.RateControlMode }).(pulumi.StringPtrOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v Vp9CodecSettings) *int { return v.WidthPixels }).(pulumi.IntPtrOutput)
 }
@@ -8437,7 +8437,7 @@ func (o Vp9CodecSettingsPtrOutput) GopFrameCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsPtrOutput) HeightPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *int {
 		if v == nil {
@@ -8477,7 +8477,7 @@ func (o Vp9CodecSettingsPtrOutput) RateControlMode() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsPtrOutput) WidthPixels() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Vp9CodecSettings) *int {
 		if v == nil {
@@ -8499,7 +8499,7 @@ type Vp9CodecSettingsResponse struct {
 	GopDuration string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
 	GopFrameCount int `pulumi:"gopFrameCount"`
-	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+	// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	HeightPixels int `pulumi:"heightPixels"`
 	// Pixel format to use. The default is `yuv420p`. Supported pixel formats: - `yuv420p` pixel format - `yuv422p` pixel format - `yuv444p` pixel format - `yuv420p10` 10-bit HDR pixel format - `yuv422p10` 10-bit HDR pixel format - `yuv444p10` 10-bit HDR pixel format - `yuv420p12` 12-bit HDR pixel format - `yuv422p12` 12-bit HDR pixel format - `yuv444p12` 12-bit HDR pixel format
 	PixelFormat string `pulumi:"pixelFormat"`
@@ -8507,7 +8507,7 @@ type Vp9CodecSettingsResponse struct {
 	Profile string `pulumi:"profile"`
 	// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
 	RateControlMode string `pulumi:"rateControlMode"`
-	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+	// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 	WidthPixels int `pulumi:"widthPixels"`
 }
 
@@ -8551,7 +8551,7 @@ func (o Vp9CodecSettingsResponseOutput) GopFrameCount() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.GopFrameCount }).(pulumi.IntOutput)
 }
 
-// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
+// The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the height, in pixels, per the horizontal ASR. The API calculates the width per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsResponseOutput) HeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.HeightPixels }).(pulumi.IntOutput)
 }
@@ -8571,7 +8571,7 @@ func (o Vp9CodecSettingsResponseOutput) RateControlMode() pulumi.StringOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) string { return v.RateControlMode }).(pulumi.StringOutput)
 }
 
-// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
+// The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used. For portrait videos that contain horizontal ASR and rotation metadata, provide the width, in pixels, per the horizontal ASR. The API calculates the height per the horizontal ASR. The API detects any rotation metadata and swaps the requested height and width for the output.
 func (o Vp9CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
 }

@@ -39,6 +39,10 @@ export interface GetCapacityCommitmentResult {
      */
     readonly commitmentStartTime: string;
     /**
+     * Edition of the capacity commitment.
+     */
+    readonly edition: string;
+    /**
      * For FAILED commitment plan, provides the reason of failure.
      */
     readonly failureStatus: outputs.bigqueryreservation.v1.StatusResponse;

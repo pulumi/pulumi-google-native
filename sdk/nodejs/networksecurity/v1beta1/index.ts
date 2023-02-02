@@ -5,6 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { AddressGroupIamBindingArgs } from "./addressGroupIamBinding";
+export type AddressGroupIamBinding = import("./addressGroupIamBinding").AddressGroupIamBinding;
+export const AddressGroupIamBinding: typeof import("./addressGroupIamBinding").AddressGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamBinding"], () => require("./addressGroupIamBinding"));
+
+export { AddressGroupIamMemberArgs } from "./addressGroupIamMember";
+export type AddressGroupIamMember = import("./addressGroupIamMember").AddressGroupIamMember;
+export const AddressGroupIamMember: typeof import("./addressGroupIamMember").AddressGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamMember"], () => require("./addressGroupIamMember"));
+
+export { AddressGroupIamPolicyArgs } from "./addressGroupIamPolicy";
+export type AddressGroupIamPolicy = import("./addressGroupIamPolicy").AddressGroupIamPolicy;
+export const AddressGroupIamPolicy: typeof import("./addressGroupIamPolicy").AddressGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamPolicy"], () => require("./addressGroupIamPolicy"));
+
 export { AuthorizationPolicyArgs } from "./authorizationPolicy";
 export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationPolicy;
 export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
@@ -44,6 +59,11 @@ export { ClientTlsPolicyIamPolicyArgs } from "./clientTlsPolicyIamPolicy";
 export type ClientTlsPolicyIamPolicy = import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy;
 export const ClientTlsPolicyIamPolicy: typeof import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ClientTlsPolicyIamPolicy"], () => require("./clientTlsPolicyIamPolicy"));
+
+export { GetAddressGroupIamPolicyArgs, GetAddressGroupIamPolicyResult, GetAddressGroupIamPolicyOutputArgs } from "./getAddressGroupIamPolicy";
+export const getAddressGroupIamPolicy: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicy = null as any;
+export const getAddressGroupIamPolicyOutput: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressGroupIamPolicy","getAddressGroupIamPolicyOutput"], () => require("./getAddressGroupIamPolicy"));
 
 export { GetAuthorizationPolicyArgs, GetAuthorizationPolicyResult, GetAuthorizationPolicyOutputArgs } from "./getAuthorizationPolicy";
 export const getAuthorizationPolicy: typeof import("./getAuthorizationPolicy").getAuthorizationPolicy = null as any;
@@ -103,6 +123,12 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:networksecurity/v1beta1:AddressGroupIamBinding":
+                return new AddressGroupIamBinding(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1beta1:AddressGroupIamMember":
+                return new AddressGroupIamMember(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1beta1:AddressGroupIamPolicy":
+                return new AddressGroupIamPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:AuthorizationPolicy":
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1beta1:AuthorizationPolicyIamBinding":

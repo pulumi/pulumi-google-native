@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2RevisionTemplateResponse
     {
         /// <summary>
-        /// KRM-style annotations for the resource.
+        /// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string ExecutionEnvironment;
         /// <summary>
-        /// KRM-style labels for the resource.
+        /// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>

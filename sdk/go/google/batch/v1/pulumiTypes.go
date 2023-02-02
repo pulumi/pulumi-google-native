@@ -1705,9 +1705,9 @@ type Container struct {
 	ImageUri *string `pulumi:"imageUri"`
 	// Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
 	Options *string `pulumi:"options"`
-	// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+	// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
 	Password *string `pulumi:"password"`
-	// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 	Username *string `pulumi:"username"`
 	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
 	Volumes []string `pulumi:"volumes"`
@@ -1736,9 +1736,9 @@ type ContainerArgs struct {
 	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
 	// Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
 	Options pulumi.StringPtrInput `pulumi:"options"`
-	// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+	// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
 	Volumes pulumi.StringArrayInput `pulumi:"volumes"`
@@ -1847,12 +1847,12 @@ func (o ContainerOutput) Options() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Options }).(pulumi.StringPtrOutput)
 }
 
-// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
 func (o ContainerOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 func (o ContainerOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Container) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -1936,7 +1936,7 @@ func (o ContainerPtrOutput) Options() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
 func (o ContainerPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -1946,7 +1946,7 @@ func (o ContainerPtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 func (o ContainerPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Container) *string {
 		if v == nil {
@@ -1978,9 +1978,9 @@ type ContainerResponse struct {
 	ImageUri string `pulumi:"imageUri"`
 	// Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
 	Options string `pulumi:"options"`
-	// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+	// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
 	Password string `pulumi:"password"`
-	// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+	// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 	Username string `pulumi:"username"`
 	// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
 	Volumes []string `pulumi:"volumes"`
@@ -2026,12 +2026,12 @@ func (o ContainerResponseOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Options }).(pulumi.StringOutput)
 }
 
-// Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+// Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
 func (o ContainerResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+// Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
 func (o ContainerResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -2045,13 +2045,13 @@ func (o ContainerResponseOutput) Volumes() pulumi.StringArrayOutput {
 type Disk struct {
 	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
 	DiskInterface *string `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source.
+	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
 	Image *string `pulumi:"image"`
-	// Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 	SizeGb *string `pulumi:"sizeGb"`
 	// Name of a snapshot used as the data source.
 	Snapshot *string `pulumi:"snapshot"`
-	// Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+	// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 	Type *string `pulumi:"type"`
 }
 
@@ -2070,13 +2070,13 @@ type DiskInput interface {
 type DiskArgs struct {
 	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
 	DiskInterface pulumi.StringPtrInput `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source.
+	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
 	Image pulumi.StringPtrInput `pulumi:"image"`
-	// Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 	SizeGb pulumi.StringPtrInput `pulumi:"sizeGb"`
 	// Name of a snapshot used as the data source.
 	Snapshot pulumi.StringPtrInput `pulumi:"snapshot"`
-	// Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+	// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2163,12 +2163,12 @@ func (o DiskOutput) DiskInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.DiskInterface }).(pulumi.StringPtrOutput)
 }
 
-// Name of a public or custom image used as the data source.
+// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
 func (o DiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
 
-// Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 func (o DiskOutput) SizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.SizeGb }).(pulumi.StringPtrOutput)
 }
@@ -2178,7 +2178,7 @@ func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Snapshot }).(pulumi.StringPtrOutput)
 }
 
-// Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 func (o DiskOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2217,7 +2217,7 @@ func (o DiskPtrOutput) DiskInterface() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of a public or custom image used as the data source.
+// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
 func (o DiskPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2227,7 +2227,7 @@ func (o DiskPtrOutput) Image() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 func (o DiskPtrOutput) SizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2247,7 +2247,7 @@ func (o DiskPtrOutput) Snapshot() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 func (o DiskPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2261,13 +2261,13 @@ func (o DiskPtrOutput) Type() pulumi.StringPtrOutput {
 type DiskResponse struct {
 	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
 	DiskInterface string `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source.
+	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
 	Image string `pulumi:"image"`
-	// Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 	SizeGb string `pulumi:"sizeGb"`
 	// Name of a snapshot used as the data source.
 	Snapshot string `pulumi:"snapshot"`
-	// Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+	// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 	Type string `pulumi:"type"`
 }
 
@@ -2291,12 +2291,12 @@ func (o DiskResponseOutput) DiskInterface() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.DiskInterface }).(pulumi.StringOutput)
 }
 
-// Name of a public or custom image used as the data source.
+// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
 func (o DiskResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Image }).(pulumi.StringOutput)
 }
 
-// Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 func (o DiskResponseOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.SizeGb }).(pulumi.StringOutput)
 }
@@ -2306,13 +2306,17 @@ func (o DiskResponseOutput) Snapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Snapshot }).(pulumi.StringOutput)
 }
 
-// Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 func (o DiskResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // An Environment describes a collection of environment variables to set when executing Tasks.
 type Environment struct {
+	// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+	EncryptedVariables *KMSEnvMap `pulumi:"encryptedVariables"`
+	// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+	SecretVariables map[string]string `pulumi:"secretVariables"`
 	// A map of environment variable names to values.
 	Variables map[string]string `pulumi:"variables"`
 }
@@ -2330,6 +2334,10 @@ type EnvironmentInput interface {
 
 // An Environment describes a collection of environment variables to set when executing Tasks.
 type EnvironmentArgs struct {
+	// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+	EncryptedVariables KMSEnvMapPtrInput `pulumi:"encryptedVariables"`
+	// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+	SecretVariables pulumi.StringMapInput `pulumi:"secretVariables"`
 	// A map of environment variable names to values.
 	Variables pulumi.StringMapInput `pulumi:"variables"`
 }
@@ -2437,6 +2445,16 @@ func (o EnvironmentOutput) ToEnvironmentPtrOutputWithContext(ctx context.Context
 	}).(EnvironmentPtrOutput)
 }
 
+// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+func (o EnvironmentOutput) EncryptedVariables() KMSEnvMapPtrOutput {
+	return o.ApplyT(func(v Environment) *KMSEnvMap { return v.EncryptedVariables }).(KMSEnvMapPtrOutput)
+}
+
+// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+func (o EnvironmentOutput) SecretVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Environment) map[string]string { return v.SecretVariables }).(pulumi.StringMapOutput)
+}
+
 // A map of environment variable names to values.
 func (o EnvironmentOutput) Variables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Environment) map[string]string { return v.Variables }).(pulumi.StringMapOutput)
@@ -2464,6 +2482,26 @@ func (o EnvironmentPtrOutput) Elem() EnvironmentOutput {
 		var ret Environment
 		return ret
 	}).(EnvironmentOutput)
+}
+
+// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+func (o EnvironmentPtrOutput) EncryptedVariables() KMSEnvMapPtrOutput {
+	return o.ApplyT(func(v *Environment) *KMSEnvMap {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptedVariables
+	}).(KMSEnvMapPtrOutput)
+}
+
+// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+func (o EnvironmentPtrOutput) SecretVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Environment) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretVariables
+	}).(pulumi.StringMapOutput)
 }
 
 // A map of environment variable names to values.
@@ -2498,6 +2536,10 @@ func (o EnvironmentArrayOutput) Index(i pulumi.IntInput) EnvironmentOutput {
 
 // An Environment describes a collection of environment variables to set when executing Tasks.
 type EnvironmentResponse struct {
+	// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+	EncryptedVariables KMSEnvMapResponse `pulumi:"encryptedVariables"`
+	// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+	SecretVariables map[string]string `pulumi:"secretVariables"`
 	// A map of environment variable names to values.
 	Variables map[string]string `pulumi:"variables"`
 }
@@ -2515,6 +2557,16 @@ func (o EnvironmentResponseOutput) ToEnvironmentResponseOutput() EnvironmentResp
 
 func (o EnvironmentResponseOutput) ToEnvironmentResponseOutputWithContext(ctx context.Context) EnvironmentResponseOutput {
 	return o
+}
+
+// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+func (o EnvironmentResponseOutput) EncryptedVariables() KMSEnvMapResponseOutput {
+	return o.ApplyT(func(v EnvironmentResponse) KMSEnvMapResponse { return v.EncryptedVariables }).(KMSEnvMapResponseOutput)
+}
+
+// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+func (o EnvironmentResponseOutput) SecretVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v EnvironmentResponse) map[string]string { return v.SecretVariables }).(pulumi.StringMapOutput)
 }
 
 // A map of environment variable names to values.
@@ -2956,6 +3008,8 @@ func (o GCSResponseOutput) RemotePath() pulumi.StringOutput {
 type InstancePolicy struct {
 	// The accelerators attached to each VM instance.
 	Accelerators []Accelerator `pulumi:"accelerators"`
+	// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+	BootDisk *Disk `pulumi:"bootDisk"`
 	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 	Disks []AttachedDisk `pulumi:"disks"`
 	// The Compute Engine machine type.
@@ -2981,6 +3035,8 @@ type InstancePolicyInput interface {
 type InstancePolicyArgs struct {
 	// The accelerators attached to each VM instance.
 	Accelerators AcceleratorArrayInput `pulumi:"accelerators"`
+	// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+	BootDisk DiskPtrInput `pulumi:"bootDisk"`
 	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 	Disks AttachedDiskArrayInput `pulumi:"disks"`
 	// The Compute Engine machine type.
@@ -3074,6 +3130,11 @@ func (o InstancePolicyOutput) Accelerators() AcceleratorArrayOutput {
 	return o.ApplyT(func(v InstancePolicy) []Accelerator { return v.Accelerators }).(AcceleratorArrayOutput)
 }
 
+// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+func (o InstancePolicyOutput) BootDisk() DiskPtrOutput {
+	return o.ApplyT(func(v InstancePolicy) *Disk { return v.BootDisk }).(DiskPtrOutput)
+}
+
 // Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 func (o InstancePolicyOutput) Disks() AttachedDiskArrayOutput {
 	return o.ApplyT(func(v InstancePolicy) []AttachedDisk { return v.Disks }).(AttachedDiskArrayOutput)
@@ -3126,6 +3187,16 @@ func (o InstancePolicyPtrOutput) Accelerators() AcceleratorArrayOutput {
 		}
 		return v.Accelerators
 	}).(AcceleratorArrayOutput)
+}
+
+// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+func (o InstancePolicyPtrOutput) BootDisk() DiskPtrOutput {
+	return o.ApplyT(func(v *InstancePolicy) *Disk {
+		if v == nil {
+			return nil
+		}
+		return v.BootDisk
+	}).(DiskPtrOutput)
 }
 
 // Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
@@ -3350,6 +3421,8 @@ func (o InstancePolicyOrTemplateResponseArrayOutput) Index(i pulumi.IntInput) In
 type InstancePolicyResponse struct {
 	// The accelerators attached to each VM instance.
 	Accelerators []AcceleratorResponse `pulumi:"accelerators"`
+	// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+	BootDisk DiskResponse `pulumi:"bootDisk"`
 	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 	Disks []AttachedDiskResponse `pulumi:"disks"`
 	// The Compute Engine machine type.
@@ -3378,6 +3451,11 @@ func (o InstancePolicyResponseOutput) ToInstancePolicyResponseOutputWithContext(
 // The accelerators attached to each VM instance.
 func (o InstancePolicyResponseOutput) Accelerators() AcceleratorResponseArrayOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) []AcceleratorResponse { return v.Accelerators }).(AcceleratorResponseArrayOutput)
+}
+
+// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+func (o InstancePolicyResponseOutput) BootDisk() DiskResponseOutput {
+	return o.ApplyT(func(v InstancePolicyResponse) DiskResponse { return v.BootDisk }).(DiskResponseOutput)
 }
 
 // Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
@@ -3607,6 +3685,193 @@ func (o JobStatusResponseOutput) StatusEvents() StatusEventResponseArrayOutput {
 // Aggregated task status for each TaskGroup in the Job. The map key is TaskGroup ID.
 func (o JobStatusResponseOutput) TaskGroups() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobStatusResponse) map[string]string { return v.TaskGroups }).(pulumi.StringMapOutput)
+}
+
+type KMSEnvMap struct {
+	// The value of the cipherText response from the `encrypt` method.
+	CipherText *string `pulumi:"cipherText"`
+	// The name of the KMS key that will be used to decrypt the cipher text.
+	KeyName *string `pulumi:"keyName"`
+}
+
+// KMSEnvMapInput is an input type that accepts KMSEnvMap and KMSEnvMapOutput values.
+// You can construct a concrete instance of `KMSEnvMapInput` via:
+//
+//	KMSEnvMap{ "key": KMSEnvArgs{...} }
+type KMSEnvMapInput interface {
+	pulumi.Input
+
+	ToKMSEnvMapOutput() KMSEnvMapOutput
+	ToKMSEnvMapOutputWithContext(context.Context) KMSEnvMapOutput
+}
+
+type KMSEnvMapArgs struct {
+	// The value of the cipherText response from the `encrypt` method.
+	CipherText pulumi.StringPtrInput `pulumi:"cipherText"`
+	// The name of the KMS key that will be used to decrypt the cipher text.
+	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
+}
+
+func (KMSEnvMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KMSEnvMap)(nil)).Elem()
+}
+
+func (i KMSEnvMapArgs) ToKMSEnvMapOutput() KMSEnvMapOutput {
+	return i.ToKMSEnvMapOutputWithContext(context.Background())
+}
+
+func (i KMSEnvMapArgs) ToKMSEnvMapOutputWithContext(ctx context.Context) KMSEnvMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KMSEnvMapOutput)
+}
+
+func (i KMSEnvMapArgs) ToKMSEnvMapPtrOutput() KMSEnvMapPtrOutput {
+	return i.ToKMSEnvMapPtrOutputWithContext(context.Background())
+}
+
+func (i KMSEnvMapArgs) ToKMSEnvMapPtrOutputWithContext(ctx context.Context) KMSEnvMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KMSEnvMapOutput).ToKMSEnvMapPtrOutputWithContext(ctx)
+}
+
+// KMSEnvMapPtrInput is an input type that accepts KMSEnvMapArgs, KMSEnvMapPtr and KMSEnvMapPtrOutput values.
+// You can construct a concrete instance of `KMSEnvMapPtrInput` via:
+//
+//	        KMSEnvMapArgs{...}
+//
+//	or:
+//
+//	        nil
+type KMSEnvMapPtrInput interface {
+	pulumi.Input
+
+	ToKMSEnvMapPtrOutput() KMSEnvMapPtrOutput
+	ToKMSEnvMapPtrOutputWithContext(context.Context) KMSEnvMapPtrOutput
+}
+
+type kmsenvMapPtrType KMSEnvMapArgs
+
+func KMSEnvMapPtr(v *KMSEnvMapArgs) KMSEnvMapPtrInput {
+	return (*kmsenvMapPtrType)(v)
+}
+
+func (*kmsenvMapPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KMSEnvMap)(nil)).Elem()
+}
+
+func (i *kmsenvMapPtrType) ToKMSEnvMapPtrOutput() KMSEnvMapPtrOutput {
+	return i.ToKMSEnvMapPtrOutputWithContext(context.Background())
+}
+
+func (i *kmsenvMapPtrType) ToKMSEnvMapPtrOutputWithContext(ctx context.Context) KMSEnvMapPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KMSEnvMapPtrOutput)
+}
+
+type KMSEnvMapOutput struct{ *pulumi.OutputState }
+
+func (KMSEnvMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KMSEnvMap)(nil)).Elem()
+}
+
+func (o KMSEnvMapOutput) ToKMSEnvMapOutput() KMSEnvMapOutput {
+	return o
+}
+
+func (o KMSEnvMapOutput) ToKMSEnvMapOutputWithContext(ctx context.Context) KMSEnvMapOutput {
+	return o
+}
+
+func (o KMSEnvMapOutput) ToKMSEnvMapPtrOutput() KMSEnvMapPtrOutput {
+	return o.ToKMSEnvMapPtrOutputWithContext(context.Background())
+}
+
+func (o KMSEnvMapOutput) ToKMSEnvMapPtrOutputWithContext(ctx context.Context) KMSEnvMapPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KMSEnvMap) *KMSEnvMap {
+		return &v
+	}).(KMSEnvMapPtrOutput)
+}
+
+// The value of the cipherText response from the `encrypt` method.
+func (o KMSEnvMapOutput) CipherText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KMSEnvMap) *string { return v.CipherText }).(pulumi.StringPtrOutput)
+}
+
+// The name of the KMS key that will be used to decrypt the cipher text.
+func (o KMSEnvMapOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KMSEnvMap) *string { return v.KeyName }).(pulumi.StringPtrOutput)
+}
+
+type KMSEnvMapPtrOutput struct{ *pulumi.OutputState }
+
+func (KMSEnvMapPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KMSEnvMap)(nil)).Elem()
+}
+
+func (o KMSEnvMapPtrOutput) ToKMSEnvMapPtrOutput() KMSEnvMapPtrOutput {
+	return o
+}
+
+func (o KMSEnvMapPtrOutput) ToKMSEnvMapPtrOutputWithContext(ctx context.Context) KMSEnvMapPtrOutput {
+	return o
+}
+
+func (o KMSEnvMapPtrOutput) Elem() KMSEnvMapOutput {
+	return o.ApplyT(func(v *KMSEnvMap) KMSEnvMap {
+		if v != nil {
+			return *v
+		}
+		var ret KMSEnvMap
+		return ret
+	}).(KMSEnvMapOutput)
+}
+
+// The value of the cipherText response from the `encrypt` method.
+func (o KMSEnvMapPtrOutput) CipherText() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KMSEnvMap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CipherText
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the KMS key that will be used to decrypt the cipher text.
+func (o KMSEnvMapPtrOutput) KeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *KMSEnvMap) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+type KMSEnvMapResponse struct {
+	// The value of the cipherText response from the `encrypt` method.
+	CipherText string `pulumi:"cipherText"`
+	// The name of the KMS key that will be used to decrypt the cipher text.
+	KeyName string `pulumi:"keyName"`
+}
+
+type KMSEnvMapResponseOutput struct{ *pulumi.OutputState }
+
+func (KMSEnvMapResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KMSEnvMapResponse)(nil)).Elem()
+}
+
+func (o KMSEnvMapResponseOutput) ToKMSEnvMapResponseOutput() KMSEnvMapResponseOutput {
+	return o
+}
+
+func (o KMSEnvMapResponseOutput) ToKMSEnvMapResponseOutputWithContext(ctx context.Context) KMSEnvMapResponseOutput {
+	return o
+}
+
+// The value of the cipherText response from the `encrypt` method.
+func (o KMSEnvMapResponseOutput) CipherText() pulumi.StringOutput {
+	return o.ApplyT(func(v KMSEnvMapResponse) string { return v.CipherText }).(pulumi.StringOutput)
+}
+
+// The name of the KMS key that will be used to decrypt the cipher text.
+func (o KMSEnvMapResponseOutput) KeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v KMSEnvMapResponse) string { return v.KeyName }).(pulumi.StringOutput)
 }
 
 // LifecyclePolicy describes how to deal with task failures based on different conditions.
@@ -4536,11 +4801,11 @@ func (o NFSResponseOutput) Server() pulumi.StringOutput {
 
 // A network interface.
 type NetworkInterface struct {
-	// The URL of the network resource.
+	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
 	Network *string `pulumi:"network"`
 	// Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
 	NoExternalIpAddress *bool `pulumi:"noExternalIpAddress"`
-	// The URL of the Subnetwork resource.
+	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
@@ -4557,11 +4822,11 @@ type NetworkInterfaceInput interface {
 
 // A network interface.
 type NetworkInterfaceArgs struct {
-	// The URL of the network resource.
+	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
 	NoExternalIpAddress pulumi.BoolPtrInput `pulumi:"noExternalIpAddress"`
-	// The URL of the Subnetwork resource.
+	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
@@ -4617,7 +4882,7 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
-// The URL of the network resource.
+// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
 func (o NetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -4627,7 +4892,7 @@ func (o NetworkInterfaceOutput) NoExternalIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *bool { return v.NoExternalIpAddress }).(pulumi.BoolPtrOutput)
 }
 
-// The URL of the Subnetwork resource.
+// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
 func (o NetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
@@ -4654,11 +4919,11 @@ func (o NetworkInterfaceArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceOu
 
 // A network interface.
 type NetworkInterfaceResponse struct {
-	// The URL of the network resource.
+	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
 	Network string `pulumi:"network"`
 	// Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
 	NoExternalIpAddress bool `pulumi:"noExternalIpAddress"`
-	// The URL of the Subnetwork resource.
+	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
 	Subnetwork string `pulumi:"subnetwork"`
 }
 
@@ -4677,7 +4942,7 @@ func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutputWithCont
 	return o
 }
 
-// The URL of the network resource.
+// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
 func (o NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -4687,7 +4952,7 @@ func (o NetworkInterfaceResponseOutput) NoExternalIpAddress() pulumi.BoolOutput 
 	return o.ApplyT(func(v NetworkInterfaceResponse) bool { return v.NoExternalIpAddress }).(pulumi.BoolOutput)
 }
 
-// The URL of the Subnetwork resource.
+// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
 func (o NetworkInterfaceResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
@@ -5332,6 +5597,8 @@ func (o ScriptResponseOutput) Text() pulumi.StringOutput {
 type ServiceAccount struct {
 	// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
 	Email *string `pulumi:"email"`
+	// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+	Scopes []string `pulumi:"scopes"`
 }
 
 // ServiceAccountInput is an input type that accepts ServiceAccountArgs and ServiceAccountOutput values.
@@ -5349,6 +5616,8 @@ type ServiceAccountInput interface {
 type ServiceAccountArgs struct {
 	// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
 	Email pulumi.StringPtrInput `pulumi:"email"`
+	// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+	Scopes pulumi.StringArrayInput `pulumi:"scopes"`
 }
 
 func (ServiceAccountArgs) ElementType() reflect.Type {
@@ -5434,6 +5703,11 @@ func (o ServiceAccountOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAccount) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
+// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+func (o ServiceAccountOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceAccount) []string { return v.Scopes }).(pulumi.StringArrayOutput)
+}
+
 type ServiceAccountPtrOutput struct{ *pulumi.OutputState }
 
 func (ServiceAccountPtrOutput) ElementType() reflect.Type {
@@ -5468,10 +5742,22 @@ func (o ServiceAccountPtrOutput) Email() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+func (o ServiceAccountPtrOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServiceAccount) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringArrayOutput)
+}
+
 // Carries information about a Google Cloud service account.
 type ServiceAccountResponse struct {
 	// Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
 	Email string `pulumi:"email"`
+	// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+	Scopes []string `pulumi:"scopes"`
 }
 
 // Carries information about a Google Cloud service account.
@@ -5492,6 +5778,11 @@ func (o ServiceAccountResponseOutput) ToServiceAccountResponseOutputWithContext(
 // Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
 func (o ServiceAccountResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+func (o ServiceAccountResponseOutput) Scopes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServiceAccountResponse) []string { return v.Scopes }).(pulumi.StringArrayOutput)
 }
 
 // Status event
@@ -5842,7 +6133,9 @@ type TaskSpec struct {
 	ComputeResource *ComputeResource `pulumi:"computeResource"`
 	// Environment variables to set before running the Task.
 	Environment *Environment `pulumi:"environment"`
-	// Environment variables to set before running the Task. You can set up to 100 environments.
+	// Deprecated: please use environment(non-plural) instead.
+	//
+	// Deprecated: Deprecated: please use environment(non-plural) instead.
 	Environments map[string]string `pulumi:"environments"`
 	// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 	LifecyclePolicies []LifecyclePolicy `pulumi:"lifecyclePolicies"`
@@ -5873,7 +6166,9 @@ type TaskSpecArgs struct {
 	ComputeResource ComputeResourcePtrInput `pulumi:"computeResource"`
 	// Environment variables to set before running the Task.
 	Environment EnvironmentPtrInput `pulumi:"environment"`
-	// Environment variables to set before running the Task. You can set up to 100 environments.
+	// Deprecated: please use environment(non-plural) instead.
+	//
+	// Deprecated: Deprecated: please use environment(non-plural) instead.
 	Environments pulumi.StringMapInput `pulumi:"environments"`
 	// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 	LifecyclePolicies LifecyclePolicyArrayInput `pulumi:"lifecyclePolicies"`
@@ -5924,7 +6219,9 @@ func (o TaskSpecOutput) Environment() EnvironmentPtrOutput {
 	return o.ApplyT(func(v TaskSpec) *Environment { return v.Environment }).(EnvironmentPtrOutput)
 }
 
-// Environment variables to set before running the Task. You can set up to 100 environments.
+// Deprecated: please use environment(non-plural) instead.
+//
+// Deprecated: Deprecated: please use environment(non-plural) instead.
 func (o TaskSpecOutput) Environments() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskSpec) map[string]string { return v.Environments }).(pulumi.StringMapOutput)
 }
@@ -5960,7 +6257,9 @@ type TaskSpecResponse struct {
 	ComputeResource ComputeResourceResponse `pulumi:"computeResource"`
 	// Environment variables to set before running the Task.
 	Environment EnvironmentResponse `pulumi:"environment"`
-	// Environment variables to set before running the Task. You can set up to 100 environments.
+	// Deprecated: please use environment(non-plural) instead.
+	//
+	// Deprecated: Deprecated: please use environment(non-plural) instead.
 	Environments map[string]string `pulumi:"environments"`
 	// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 	LifecyclePolicies []LifecyclePolicyResponse `pulumi:"lifecyclePolicies"`
@@ -5999,7 +6298,9 @@ func (o TaskSpecResponseOutput) Environment() EnvironmentResponseOutput {
 	return o.ApplyT(func(v TaskSpecResponse) EnvironmentResponse { return v.Environment }).(EnvironmentResponseOutput)
 }
 
-// Environment variables to set before running the Task. You can set up to 100 environments.
+// Deprecated: please use environment(non-plural) instead.
+//
+// Deprecated: Deprecated: please use environment(non-plural) instead.
 func (o TaskSpecResponseOutput) Environments() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskSpecResponse) map[string]string { return v.Environments }).(pulumi.StringMapOutput)
 }
@@ -6275,6 +6576,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePolicyOrTemplateArrayInput)(nil)).Elem(), InstancePolicyOrTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotificationInput)(nil)).Elem(), JobNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobNotificationArrayInput)(nil)).Elem(), JobNotificationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KMSEnvMapInput)(nil)).Elem(), KMSEnvMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KMSEnvMapPtrInput)(nil)).Elem(), KMSEnvMapArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LifecyclePolicyInput)(nil)).Elem(), LifecyclePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LifecyclePolicyArrayInput)(nil)).Elem(), LifecyclePolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LocationPolicyInput)(nil)).Elem(), LocationPolicyArgs{})
@@ -6361,6 +6664,9 @@ func init() {
 	pulumi.RegisterOutputType(JobNotificationResponseOutput{})
 	pulumi.RegisterOutputType(JobNotificationResponseArrayOutput{})
 	pulumi.RegisterOutputType(JobStatusResponseOutput{})
+	pulumi.RegisterOutputType(KMSEnvMapOutput{})
+	pulumi.RegisterOutputType(KMSEnvMapPtrOutput{})
+	pulumi.RegisterOutputType(KMSEnvMapResponseOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyArrayOutput{})
 	pulumi.RegisterOutputType(LifecyclePolicyResponseOutput{})

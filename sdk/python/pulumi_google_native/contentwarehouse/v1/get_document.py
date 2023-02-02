@@ -19,13 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetDocumentResult:
-    def __init__(__self__, async_enabled=None, cloud_ai_document=None, create_time=None, creator=None, display_name=None, display_uri=None, document_schema_name=None, inline_raw_document=None, name=None, plain_text=None, properties=None, raw_document_file_type=None, raw_document_path=None, reference_id=None, structured_content_uri=None, text_extraction_disabled=None, title=None, update_time=None, updater=None):
-        if async_enabled and not isinstance(async_enabled, bool):
-            raise TypeError("Expected argument 'async_enabled' to be a bool")
-        pulumi.set(__self__, "async_enabled", async_enabled)
+    def __init__(__self__, cloud_ai_document=None, content_category=None, create_time=None, creator=None, display_name=None, display_uri=None, document_schema_name=None, inline_raw_document=None, name=None, plain_text=None, properties=None, raw_document_file_type=None, raw_document_path=None, reference_id=None, text_extraction_disabled=None, text_extraction_enabled=None, title=None, update_time=None, updater=None):
         if cloud_ai_document and not isinstance(cloud_ai_document, dict):
             raise TypeError("Expected argument 'cloud_ai_document' to be a dict")
         pulumi.set(__self__, "cloud_ai_document", cloud_ai_document)
+        if content_category and not isinstance(content_category, str):
+            raise TypeError("Expected argument 'content_category' to be a str")
+        pulumi.set(__self__, "content_category", content_category)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -62,12 +62,12 @@ class GetDocumentResult:
         if reference_id and not isinstance(reference_id, str):
             raise TypeError("Expected argument 'reference_id' to be a str")
         pulumi.set(__self__, "reference_id", reference_id)
-        if structured_content_uri and not isinstance(structured_content_uri, str):
-            raise TypeError("Expected argument 'structured_content_uri' to be a str")
-        pulumi.set(__self__, "structured_content_uri", structured_content_uri)
         if text_extraction_disabled and not isinstance(text_extraction_disabled, bool):
             raise TypeError("Expected argument 'text_extraction_disabled' to be a bool")
         pulumi.set(__self__, "text_extraction_disabled", text_extraction_disabled)
+        if text_extraction_enabled and not isinstance(text_extraction_enabled, bool):
+            raise TypeError("Expected argument 'text_extraction_enabled' to be a bool")
+        pulumi.set(__self__, "text_extraction_enabled", text_extraction_enabled)
         if title and not isinstance(title, str):
             raise TypeError("Expected argument 'title' to be a str")
         pulumi.set(__self__, "title", title)
@@ -79,20 +79,20 @@ class GetDocumentResult:
         pulumi.set(__self__, "updater", updater)
 
     @property
-    @pulumi.getter(name="asyncEnabled")
-    def async_enabled(self) -> bool:
-        """
-        If true, makes the document visible to asynchronous policies and rules.
-        """
-        return pulumi.get(self, "async_enabled")
-
-    @property
     @pulumi.getter(name="cloudAiDocument")
     def cloud_ai_document(self) -> 'outputs.GoogleCloudDocumentaiV1DocumentResponse':
         """
         Document AI format to save the structured content, including OCR.
         """
         return pulumi.get(self, "cloud_ai_document")
+
+    @property
+    @pulumi.getter(name="contentCategory")
+    def content_category(self) -> str:
+        """
+        Indicates the category (image, audio, video etc.) of the original content.
+        """
+        return pulumi.get(self, "content_category")
 
     @property
     @pulumi.getter(name="createTime")
@@ -191,14 +191,6 @@ class GetDocumentResult:
         return pulumi.get(self, "reference_id")
 
     @property
-    @pulumi.getter(name="structuredContentUri")
-    def structured_content_uri(self) -> str:
-        """
-        A path linked to structured content file.
-        """
-        return pulumi.get(self, "structured_content_uri")
-
-    @property
     @pulumi.getter(name="textExtractionDisabled")
     def text_extraction_disabled(self) -> bool:
         """
@@ -207,10 +199,18 @@ class GetDocumentResult:
         return pulumi.get(self, "text_extraction_disabled")
 
     @property
+    @pulumi.getter(name="textExtractionEnabled")
+    def text_extraction_enabled(self) -> bool:
+        """
+        If true, text extraction will be performed.
+        """
+        return pulumi.get(self, "text_extraction_enabled")
+
+    @property
     @pulumi.getter
     def title(self) -> str:
         """
-        Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+        Title that describes the document. This can be the top heading or text that describes the document.
         """
         return pulumi.get(self, "title")
 
@@ -237,8 +237,8 @@ class AwaitableGetDocumentResult(GetDocumentResult):
         if False:
             yield self
         return GetDocumentResult(
-            async_enabled=self.async_enabled,
             cloud_ai_document=self.cloud_ai_document,
+            content_category=self.content_category,
             create_time=self.create_time,
             creator=self.creator,
             display_name=self.display_name,
@@ -251,8 +251,8 @@ class AwaitableGetDocumentResult(GetDocumentResult):
             raw_document_file_type=self.raw_document_file_type,
             raw_document_path=self.raw_document_path,
             reference_id=self.reference_id,
-            structured_content_uri=self.structured_content_uri,
             text_extraction_disabled=self.text_extraction_disabled,
+            text_extraction_enabled=self.text_extraction_enabled,
             title=self.title,
             update_time=self.update_time,
             updater=self.updater)
@@ -273,8 +273,8 @@ def get_document(document_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:contentwarehouse/v1:getDocument', __args__, opts=opts, typ=GetDocumentResult).value
 
     return AwaitableGetDocumentResult(
-        async_enabled=__ret__.async_enabled,
         cloud_ai_document=__ret__.cloud_ai_document,
+        content_category=__ret__.content_category,
         create_time=__ret__.create_time,
         creator=__ret__.creator,
         display_name=__ret__.display_name,
@@ -287,8 +287,8 @@ def get_document(document_id: Optional[str] = None,
         raw_document_file_type=__ret__.raw_document_file_type,
         raw_document_path=__ret__.raw_document_path,
         reference_id=__ret__.reference_id,
-        structured_content_uri=__ret__.structured_content_uri,
         text_extraction_disabled=__ret__.text_extraction_disabled,
+        text_extraction_enabled=__ret__.text_extraction_enabled,
         title=__ret__.title,
         update_time=__ret__.update_time,
         updater=__ret__.updater)

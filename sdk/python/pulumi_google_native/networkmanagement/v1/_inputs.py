@@ -11,13 +11,39 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AppEngineVersionEndpointArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
     'CloudFunctionEndpointArgs',
+    'CloudRunRevisionEndpointArgs',
     'EndpointArgs',
     'ExprArgs',
 ]
+
+@pulumi.input_type
+class AppEngineVersionEndpointArgs:
+    def __init__(__self__, *,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        Wrapper for app engine service version attributes.
+        :param pulumi.Input[str] uri: An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
 
 @pulumi.input_type
 class AuditConfigArgs:
@@ -180,9 +206,35 @@ class CloudFunctionEndpointArgs:
 
 
 @pulumi.input_type
+class CloudRunRevisionEndpointArgs:
+    def __init__(__self__, *,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        Wrapper for Cloud Run revision attributes.
+        :param pulumi.Input[str] uri: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+        """
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
 class EndpointArgs:
     def __init__(__self__, *,
+                 app_engine_version: Optional[pulumi.Input['AppEngineVersionEndpointArgs']] = None,
                  cloud_function: Optional[pulumi.Input['CloudFunctionEndpointArgs']] = None,
+                 cloud_run_revision: Optional[pulumi.Input['CloudRunRevisionEndpointArgs']] = None,
                  cloud_sql_instance: Optional[pulumi.Input[str]] = None,
                  gke_master_cluster: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
@@ -193,7 +245,9 @@ class EndpointArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         Source or destination of the Connectivity Test.
+        :param pulumi.Input['AppEngineVersionEndpointArgs'] app_engine_version: An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
         :param pulumi.Input['CloudFunctionEndpointArgs'] cloud_function: A [Cloud Function](https://cloud.google.com/functions).
+        :param pulumi.Input['CloudRunRevisionEndpointArgs'] cloud_run_revision: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
         :param pulumi.Input[str] cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         :param pulumi.Input[str] gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param pulumi.Input[str] instance: A Compute Engine instance URI.
@@ -203,8 +257,12 @@ class EndpointArgs:
         :param pulumi.Input[int] port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
         :param pulumi.Input[str] project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
+        if app_engine_version is not None:
+            pulumi.set(__self__, "app_engine_version", app_engine_version)
         if cloud_function is not None:
             pulumi.set(__self__, "cloud_function", cloud_function)
+        if cloud_run_revision is not None:
+            pulumi.set(__self__, "cloud_run_revision", cloud_run_revision)
         if cloud_sql_instance is not None:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if gke_master_cluster is not None:
@@ -223,6 +281,18 @@ class EndpointArgs:
             pulumi.set(__self__, "project", project)
 
     @property
+    @pulumi.getter(name="appEngineVersion")
+    def app_engine_version(self) -> Optional[pulumi.Input['AppEngineVersionEndpointArgs']]:
+        """
+        An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+        """
+        return pulumi.get(self, "app_engine_version")
+
+    @app_engine_version.setter
+    def app_engine_version(self, value: Optional[pulumi.Input['AppEngineVersionEndpointArgs']]):
+        pulumi.set(self, "app_engine_version", value)
+
+    @property
     @pulumi.getter(name="cloudFunction")
     def cloud_function(self) -> Optional[pulumi.Input['CloudFunctionEndpointArgs']]:
         """
@@ -233,6 +303,18 @@ class EndpointArgs:
     @cloud_function.setter
     def cloud_function(self, value: Optional[pulumi.Input['CloudFunctionEndpointArgs']]):
         pulumi.set(self, "cloud_function", value)
+
+    @property
+    @pulumi.getter(name="cloudRunRevision")
+    def cloud_run_revision(self) -> Optional[pulumi.Input['CloudRunRevisionEndpointArgs']]:
+        """
+        A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+        """
+        return pulumi.get(self, "cloud_run_revision")
+
+    @cloud_run_revision.setter
+    def cloud_run_revision(self, value: Optional[pulumi.Input['CloudRunRevisionEndpointArgs']]):
+        pulumi.set(self, "cloud_run_revision", value)
 
     @property
     @pulumi.getter(name="cloudSqlInstance")

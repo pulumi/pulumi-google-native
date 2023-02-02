@@ -68,7 +68,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
-        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         pulumi.set(__self__, "region", region)
         if admin_enabled is not None:
@@ -420,7 +420,7 @@ class InterconnectAttachmentArgs:
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> Optional[pulumi.Input[int]]:
         """
-        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         return pulumi.get(self, "vlan_tag8021q")
 
@@ -489,7 +489,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
-        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         ...
     @overload
@@ -998,7 +998,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> pulumi.Output[int]:
         """
-        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         return pulumi.get(self, "vlan_tag8021q")
 

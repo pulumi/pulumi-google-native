@@ -10,13 +10,13 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Workflows.V1
 {
     /// <summary>
-    /// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
+    /// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.
     /// </summary>
     [GoogleNativeResourceType("google-native:workflows/v1:Workflow")]
     public partial class Workflow : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The timestamp of when the workflow was created.
+        /// The timestamp for when the workflow was created.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp that the latest revision of the workflow was created.
+        /// The timestamp for the latest revision of the workflow's creation.
         /// </summary>
         [Output("revisionCreateTime")]
         public Output<string> RevisionCreateTime { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// The last update timestamp of the workflow.
+        /// The timestamp for when the workflow was last updated.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
         /// </summary>
         public InputMap<string> Labels
         {

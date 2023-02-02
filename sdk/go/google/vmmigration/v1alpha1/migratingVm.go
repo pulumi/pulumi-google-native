@@ -16,6 +16,8 @@ import (
 type MigratingVm struct {
 	pulumi.CustomResourceState
 
+	// Details of the VM from an AWS source.
+	AwsSourceVmDetails AwsSourceVmDetailsResponseOutput `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponseOutput `pulumi:"computeEngineTargetDefaults"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -24,7 +26,7 @@ type MigratingVm struct {
 	ComputeEngineVmDefaults TargetVMDetailsResponseOutput `pulumi:"computeEngineVmDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The percentage progress of the current running replication cycle.
+	// Details of the current running replication cycle.
 	CurrentSyncInfo ReplicationCycleResponseOutput `pulumi:"currentSyncInfo"`
 	// The description attached to the migrating VM by the user.
 	Description pulumi.StringOutput `pulumi:"description"`
@@ -59,9 +61,9 @@ type MigratingVm struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The last time the migrating VM state was updated.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
-	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	//
-	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// Deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	TargetDefaults TargetVMDetailsResponseOutput `pulumi:"targetDefaults"`
 	// The last time the migrating VM resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -142,9 +144,9 @@ type migratingVmArgs struct {
 	SourceId  string  `pulumi:"sourceId"`
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
 	SourceVmId *string `pulumi:"sourceVmId"`
-	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	//
-	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// Deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	TargetDefaults *TargetVMDetails `pulumi:"targetDefaults"`
 }
 
@@ -173,9 +175,9 @@ type MigratingVmArgs struct {
 	SourceId  pulumi.StringInput
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
 	SourceVmId pulumi.StringPtrInput
-	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	//
-	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// Deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	TargetDefaults TargetVMDetailsPtrInput
 }
 
@@ -216,6 +218,11 @@ func (o MigratingVmOutput) ToMigratingVmOutputWithContext(ctx context.Context) M
 	return o
 }
 
+// Details of the VM from an AWS source.
+func (o MigratingVmOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) AwsSourceVmDetailsResponseOutput { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
 // Details of the target VM in Compute Engine.
 func (o MigratingVmOutput) ComputeEngineTargetDefaults() ComputeEngineTargetDefaultsResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) ComputeEngineTargetDefaultsResponseOutput { return v.ComputeEngineTargetDefaults }).(ComputeEngineTargetDefaultsResponseOutput)
@@ -233,7 +240,7 @@ func (o MigratingVmOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The percentage progress of the current running replication cycle.
+// Details of the current running replication cycle.
 func (o MigratingVmOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) ReplicationCycleResponseOutput { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
 }
@@ -325,9 +332,9 @@ func (o MigratingVmOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
 }
 
-// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 //
-// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+// Deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 func (o MigratingVmOutput) TargetDefaults() TargetVMDetailsResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) TargetVMDetailsResponseOutput { return v.TargetDefaults }).(TargetVMDetailsResponseOutput)
 }

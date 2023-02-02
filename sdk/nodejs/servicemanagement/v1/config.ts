@@ -116,6 +116,10 @@ export class Config extends pulumi.CustomResource {
      */
     public readonly producerProjectId!: pulumi.Output<string>;
     /**
+     * Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+     */
+    public readonly publishing!: pulumi.Output<outputs.servicemanagement.v1.PublishingResponse>;
+    /**
      * Quota configuration.
      */
     public readonly quota!: pulumi.Output<outputs.servicemanagement.v1.QuotaResponse>;
@@ -179,6 +183,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["producerProjectId"] = args ? args.producerProjectId : undefined;
+            resourceInputs["publishing"] = args ? args.publishing : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
             resourceInputs["serviceName"] = args ? args.serviceName : undefined;
             resourceInputs["systemParameters"] = args ? args.systemParameters : undefined;
@@ -207,6 +212,7 @@ export class Config extends pulumi.CustomResource {
             resourceInputs["monitoring"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["producerProjectId"] = undefined /*out*/;
+            resourceInputs["publishing"] = undefined /*out*/;
             resourceInputs["quota"] = undefined /*out*/;
             resourceInputs["serviceName"] = undefined /*out*/;
             resourceInputs["sourceInfo"] = undefined /*out*/;
@@ -307,6 +313,10 @@ export interface ConfigArgs {
      * The Google project that owns this service.
      */
     producerProjectId?: pulumi.Input<string>;
+    /**
+     * Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+     */
+    publishing?: pulumi.Input<inputs.servicemanagement.v1.PublishingArgs>;
     /**
      * Quota configuration.
      */

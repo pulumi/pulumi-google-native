@@ -238,7 +238,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<bool?> ValidateOnly { get; private set; } = null!;
 
         /// <summary>
-        /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         /// </summary>
         [Output("vlanTag8021q")]
         public Output<int> VlanTag8021q { get; private set; } = null!;
@@ -456,7 +456,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
-        /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         /// </summary>
         [Input("vlanTag8021q")]
         public Input<int>? VlanTag8021q { get; set; }

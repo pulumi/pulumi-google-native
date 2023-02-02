@@ -20,11 +20,13 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryTableSpecResponse',
     'GoogleCloudDatacatalogV1BusinessContextResponse',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse',
+    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaResponse',
     'GoogleCloudDatacatalogV1ContactsPersonResponse',
     'GoogleCloudDatacatalogV1ContactsResponse',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse',
     'GoogleCloudDatacatalogV1DataSourceResponse',
+    'GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse',
     'GoogleCloudDatacatalogV1DatabaseTableSpecResponse',
     'GoogleCloudDatacatalogV1DataplexExternalTableResponse',
     'GoogleCloudDatacatalogV1DataplexFilesetSpecResponse',
@@ -34,6 +36,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1FilesetSpecResponse',
     'GoogleCloudDatacatalogV1GcsFileSpecResponse',
     'GoogleCloudDatacatalogV1GcsFilesetSpecResponse',
+    'GoogleCloudDatacatalogV1LookerSystemSpecResponse',
     'GoogleCloudDatacatalogV1PersonalDetailsResponse',
     'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaResponse',
     'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaResponse',
@@ -45,9 +48,11 @@ __all__ = [
     'GoogleCloudDatacatalogV1RoutineSpecArgumentResponse',
     'GoogleCloudDatacatalogV1RoutineSpecResponse',
     'GoogleCloudDatacatalogV1SchemaResponse',
+    'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse',
     'GoogleCloudDatacatalogV1StoragePropertiesResponse',
     'GoogleCloudDatacatalogV1SystemTimestampsResponse',
     'GoogleCloudDatacatalogV1TableSpecResponse',
+    'GoogleCloudDatacatalogV1TaxonomyServiceResponse',
     'GoogleCloudDatacatalogV1UsageSignalResponse',
     'GoogleCloudDatacatalogV1ViewSpecResponse',
 ]
@@ -508,27 +513,89 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse(dict):
+    """
+    Column info specific to Looker System.
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        Column info specific to Looker System.
+        :param str type: Looker specific column type of this column.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Looker specific column type of this column.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
     """
     A column within a schema. Columns can be nested inside other columns.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "gcRule":
+            suggest = "gc_rule"
+        elif key == "highestIndexingType":
+            suggest = "highest_indexing_type"
+        elif key == "lookerColumnSpec":
+            suggest = "looker_column_spec"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1ColumnSchemaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1ColumnSchemaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1ColumnSchemaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  column: str,
+                 default_value: str,
                  description: str,
+                 gc_rule: str,
+                 highest_indexing_type: str,
+                 looker_column_spec: 'outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse',
                  mode: str,
+                 ordinal_position: int,
                  subcolumns: Sequence['outputs.GoogleCloudDatacatalogV1ColumnSchemaResponse'],
                  type: str):
         """
         A column within a schema. Columns can be nested inside other columns.
         :param str column: Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
+        :param str default_value: Optional. Default value for the column.
         :param str description: Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
+        :param str gc_rule: Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        :param str highest_indexing_type: Optional. Most important inclusion of this column.
+        :param 'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse' looker_column_spec: Looker specific column info of this column.
         :param str mode: Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
+        :param int ordinal_position: Optional. Ordinal position
         :param Sequence['GoogleCloudDatacatalogV1ColumnSchemaResponse'] subcolumns: Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         :param str type: Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
         """
         pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "default_value", default_value)
         pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "gc_rule", gc_rule)
+        pulumi.set(__self__, "highest_indexing_type", highest_indexing_type)
+        pulumi.set(__self__, "looker_column_spec", looker_column_spec)
         pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "ordinal_position", ordinal_position)
         pulumi.set(__self__, "subcolumns", subcolumns)
         pulumi.set(__self__, "type", type)
 
@@ -541,6 +608,14 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
         return pulumi.get(self, "column")
 
     @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> str:
+        """
+        Optional. Default value for the column.
+        """
+        return pulumi.get(self, "default_value")
+
+    @property
     @pulumi.getter
     def description(self) -> str:
         """
@@ -549,12 +624,44 @@ class GoogleCloudDatacatalogV1ColumnSchemaResponse(dict):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="gcRule")
+    def gc_rule(self) -> str:
+        """
+        Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        """
+        return pulumi.get(self, "gc_rule")
+
+    @property
+    @pulumi.getter(name="highestIndexingType")
+    def highest_indexing_type(self) -> str:
+        """
+        Optional. Most important inclusion of this column.
+        """
+        return pulumi.get(self, "highest_indexing_type")
+
+    @property
+    @pulumi.getter(name="lookerColumnSpec")
+    def looker_column_spec(self) -> 'outputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse':
+        """
+        Looker specific column info of this column.
+        """
+        return pulumi.get(self, "looker_column_spec")
+
+    @property
     @pulumi.getter
     def mode(self) -> str:
         """
         Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         """
         return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> int:
+        """
+        Optional. Ordinal position
+        """
+        return pulumi.get(self, "ordinal_position")
 
     @property
     @pulumi.getter
@@ -742,6 +849,71 @@ class GoogleCloudDatacatalogV1DataSourceResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse(dict):
+    """
+    Specification that applies to database view.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseTable":
+            suggest = "base_table"
+        elif key == "sqlQuery":
+            suggest = "sql_query"
+        elif key == "viewType":
+            suggest = "view_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 base_table: str,
+                 sql_query: str,
+                 view_type: str):
+        """
+        Specification that applies to database view.
+        :param str base_table: Name of a singular table this view reflects one to one.
+        :param str sql_query: SQL query used to generate this view.
+        :param str view_type: Type of this view.
+        """
+        pulumi.set(__self__, "base_table", base_table)
+        pulumi.set(__self__, "sql_query", sql_query)
+        pulumi.set(__self__, "view_type", view_type)
+
+    @property
+    @pulumi.getter(name="baseTable")
+    def base_table(self) -> str:
+        """
+        Name of a singular table this view reflects one to one.
+        """
+        return pulumi.get(self, "base_table")
+
+    @property
+    @pulumi.getter(name="sqlQuery")
+    def sql_query(self) -> str:
+        """
+        SQL query used to generate this view.
+        """
+        return pulumi.get(self, "sql_query")
+
+    @property
+    @pulumi.getter(name="viewType")
+    def view_type(self) -> str:
+        """
+        Type of this view.
+        """
+        return pulumi.get(self, "view_type")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1DatabaseTableSpecResponse(dict):
     """
     Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -749,7 +921,9 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "dataplexTable":
+        if key == "databaseViewSpec":
+            suggest = "database_view_spec"
+        elif key == "dataplexTable":
             suggest = "dataplex_table"
 
         if suggest:
@@ -764,15 +938,26 @@ class GoogleCloudDatacatalogV1DatabaseTableSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 database_view_spec: 'outputs.GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse',
                  dataplex_table: 'outputs.GoogleCloudDatacatalogV1DataplexTableSpecResponse',
                  type: str):
         """
         Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        :param 'GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse' database_view_spec: Spec what aplies to tables that are actually views. Not set for "real" tables.
         :param 'GoogleCloudDatacatalogV1DataplexTableSpecResponse' dataplex_table: Fields specific to a Dataplex table and present only in the Dataplex table entries.
         :param str type: Type of this table.
         """
+        pulumi.set(__self__, "database_view_spec", database_view_spec)
         pulumi.set(__self__, "dataplex_table", dataplex_table)
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="databaseViewSpec")
+    def database_view_spec(self) -> 'outputs.GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecResponse':
+        """
+        Spec what aplies to tables that are actually views. Not set for "real" tables.
+        """
+        return pulumi.get(self, "database_view_spec")
 
     @property
     @pulumi.getter(name="dataplexTable")
@@ -1224,6 +1409,110 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1LookerSystemSpecResponse(dict):
+    """
+    Specification that applies to entries that are part `LOOKER` system (user_specified_type)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parentInstanceDisplayName":
+            suggest = "parent_instance_display_name"
+        elif key == "parentInstanceId":
+            suggest = "parent_instance_id"
+        elif key == "parentModelDisplayName":
+            suggest = "parent_model_display_name"
+        elif key == "parentModelId":
+            suggest = "parent_model_id"
+        elif key == "parentViewDisplayName":
+            suggest = "parent_view_display_name"
+        elif key == "parentViewId":
+            suggest = "parent_view_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1LookerSystemSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1LookerSystemSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1LookerSystemSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 parent_instance_display_name: str,
+                 parent_instance_id: str,
+                 parent_model_display_name: str,
+                 parent_model_id: str,
+                 parent_view_display_name: str,
+                 parent_view_id: str):
+        """
+        Specification that applies to entries that are part `LOOKER` system (user_specified_type)
+        :param str parent_instance_display_name: Name of the parent Looker Instance. Empty if it does not exist.
+        :param str parent_instance_id: ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+        :param str parent_model_display_name: Name of the parent Model. Empty if it does not exist.
+        :param str parent_model_id: ID of the parent Model. Empty if it does not exist.
+        :param str parent_view_display_name: Name of the parent View. Empty if it does not exist.
+        :param str parent_view_id: ID of the parent View. Empty if it does not exist.
+        """
+        pulumi.set(__self__, "parent_instance_display_name", parent_instance_display_name)
+        pulumi.set(__self__, "parent_instance_id", parent_instance_id)
+        pulumi.set(__self__, "parent_model_display_name", parent_model_display_name)
+        pulumi.set(__self__, "parent_model_id", parent_model_id)
+        pulumi.set(__self__, "parent_view_display_name", parent_view_display_name)
+        pulumi.set(__self__, "parent_view_id", parent_view_id)
+
+    @property
+    @pulumi.getter(name="parentInstanceDisplayName")
+    def parent_instance_display_name(self) -> str:
+        """
+        Name of the parent Looker Instance. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_instance_display_name")
+
+    @property
+    @pulumi.getter(name="parentInstanceId")
+    def parent_instance_id(self) -> str:
+        """
+        ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+        """
+        return pulumi.get(self, "parent_instance_id")
+
+    @property
+    @pulumi.getter(name="parentModelDisplayName")
+    def parent_model_display_name(self) -> str:
+        """
+        Name of the parent Model. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_model_display_name")
+
+    @property
+    @pulumi.getter(name="parentModelId")
+    def parent_model_id(self) -> str:
+        """
+        ID of the parent Model. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_model_id")
+
+    @property
+    @pulumi.getter(name="parentViewDisplayName")
+    def parent_view_display_name(self) -> str:
+        """
+        Name of the parent View. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_view_display_name")
+
+    @property
+    @pulumi.getter(name="parentViewId")
+    def parent_view_id(self) -> str:
+        """
+        ID of the parent View. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_view_id")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1PersonalDetailsResponse(dict):
     """
     Entry metadata relevant only to the user and private to them.
@@ -1621,6 +1910,71 @@ class GoogleCloudDatacatalogV1SchemaResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse(dict):
+    """
+    Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseVersion":
+            suggest = "database_version"
+        elif key == "instanceHost":
+            suggest = "instance_host"
+        elif key == "sqlEngine":
+            suggest = "sql_engine"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_version: str,
+                 instance_host: str,
+                 sql_engine: str):
+        """
+        Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
+        :param str database_version: Version of the database engine.
+        :param str instance_host: Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
+        :param str sql_engine: SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
+        """
+        pulumi.set(__self__, "database_version", database_version)
+        pulumi.set(__self__, "instance_host", instance_host)
+        pulumi.set(__self__, "sql_engine", sql_engine)
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> str:
+        """
+        Version of the database engine.
+        """
+        return pulumi.get(self, "database_version")
+
+    @property
+    @pulumi.getter(name="instanceHost")
+    def instance_host(self) -> str:
+        """
+        Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
+        """
+        return pulumi.get(self, "instance_host")
+
+    @property
+    @pulumi.getter(name="sqlEngine")
+    def sql_engine(self) -> str:
+        """
+        SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
+        """
+        return pulumi.get(self, "sql_engine")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1StoragePropertiesResponse(dict):
     """
     Details the properties of the underlying storage.
@@ -1777,6 +2131,39 @@ class GoogleCloudDatacatalogV1TableSpecResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1TaxonomyServiceResponse(dict):
+    """
+    The source system of the Taxonomy.
+    """
+    def __init__(__self__, *,
+                 identity: str,
+                 name: str):
+        """
+        The source system of the Taxonomy.
+        :param str identity: P4SA Identity of the service.
+        :param str name: The GCP service name.
+        """
+        pulumi.set(__self__, "identity", identity)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def identity(self) -> str:
+        """
+        P4SA Identity of the service.
+        """
+        return pulumi.get(self, "identity")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The GCP service name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
     """
     The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
@@ -1784,7 +2171,11 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "updateTime":
+        if key == "commonUsageWithinTimeRange":
+            suggest = "common_usage_within_time_range"
+        elif key == "favoriteCount":
+            suggest = "favorite_count"
+        elif key == "updateTime":
             suggest = "update_time"
         elif key == "usageWithinTimeRange":
             suggest = "usage_within_time_range"
@@ -1801,15 +2192,37 @@ class GoogleCloudDatacatalogV1UsageSignalResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 common_usage_within_time_range: Mapping[str, str],
+                 favorite_count: str,
                  update_time: str,
                  usage_within_time_range: Mapping[str, str]):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
+        :param Mapping[str, str] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        :param str favorite_count: Favorite count in the source system.
         :param str update_time: The end timestamp of the duration of usage statistics.
         :param Mapping[str, str] usage_within_time_range: BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
         """
+        pulumi.set(__self__, "common_usage_within_time_range", common_usage_within_time_range)
+        pulumi.set(__self__, "favorite_count", favorite_count)
         pulumi.set(__self__, "update_time", update_time)
         pulumi.set(__self__, "usage_within_time_range", usage_within_time_range)
+
+    @property
+    @pulumi.getter(name="commonUsageWithinTimeRange")
+    def common_usage_within_time_range(self) -> Mapping[str, str]:
+        """
+        Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        """
+        return pulumi.get(self, "common_usage_within_time_range")
+
+    @property
+    @pulumi.getter(name="favoriteCount")
+    def favorite_count(self) -> str:
+        """
+        Favorite count in the source system.
+        """
+        return pulumi.get(self, "favorite_count")
 
     @property
     @pulumi.getter(name="updateTime")

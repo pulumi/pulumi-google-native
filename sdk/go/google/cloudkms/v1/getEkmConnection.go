@@ -29,7 +29,7 @@ type LookupEkmConnectionArgs struct {
 type LookupEkmConnectionResult struct {
 	// The time at which the EkmConnection was created.
 	CreateTime string `pulumi:"createTime"`
-	// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	// Optional. Etag of the currently stored EkmConnection.
 	Etag string `pulumi:"etag"`
 	// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
 	Name string `pulumi:"name"`
@@ -79,7 +79,7 @@ func (o LookupEkmConnectionResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEkmConnectionResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+// Optional. Etag of the currently stored EkmConnection.
 func (o LookupEkmConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEkmConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
 }

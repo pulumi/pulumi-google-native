@@ -31,6 +31,10 @@ export interface GetSourceArgs {
 
 export interface GetSourceResult {
     /**
+     * AWS type source details.
+     */
+    readonly aws: outputs.vmmigration.v1.AwsSourceDetailsResponse;
+    /**
      * The create time timestamp.
      */
     readonly createTime: string;

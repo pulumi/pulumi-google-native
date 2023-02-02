@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
             set => _accelerators = value;
         }
 
+        /// <summary>
+        /// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+        /// </summary>
+        [Input("bootDisk")]
+        public Input<Inputs.DiskArgs>? BootDisk { get; set; }
+
         [Input("disks")]
         private InputList<Inputs.AttachedDiskArgs>? _disks;
 

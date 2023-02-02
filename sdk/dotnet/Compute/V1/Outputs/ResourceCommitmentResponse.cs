@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Amount;
         /// <summary>
-        /// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+        /// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
         /// </summary>
         public readonly string Type;
 

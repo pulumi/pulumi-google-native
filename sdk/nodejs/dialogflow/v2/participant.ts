@@ -49,6 +49,10 @@ export class Participant extends pulumi.CustomResource {
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow returns an error if you try to add a user id for a non-END_USER participant. Dialogflow uses this user id for billing and measurement purposes. For example, Dialogflow determines whether a user in one conversation returned in a later conversation. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
+     */
+    public readonly obfuscatedExternalUserId!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
@@ -77,6 +81,7 @@ export class Participant extends pulumi.CustomResource {
             resourceInputs["documentsMetadataFilters"] = args ? args.documentsMetadataFilters : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["obfuscatedExternalUserId"] = args ? args.obfuscatedExternalUserId : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
             resourceInputs["sipRecordingMediaLabel"] = args ? args.sipRecordingMediaLabel : undefined;
@@ -85,6 +90,7 @@ export class Participant extends pulumi.CustomResource {
             resourceInputs["documentsMetadataFilters"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["obfuscatedExternalUserId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["role"] = undefined /*out*/;
             resourceInputs["sipRecordingMediaLabel"] = undefined /*out*/;
@@ -110,6 +116,10 @@ export interface ParticipantArgs {
      * Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow returns an error if you try to add a user id for a non-END_USER participant. Dialogflow uses this user id for billing and measurement purposes. For example, Dialogflow determines whether a user in one conversation returned in a later conversation. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
+     */
+    obfuscatedExternalUserId?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
      * Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.

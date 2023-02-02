@@ -302,7 +302,7 @@ export const RuntimeEnvironmentIpConfiguration = {
 } as const;
 
 /**
- * Configuration for VM IPs.
+ * Optional. Configuration for VM IPs.
  */
 export type RuntimeEnvironmentIpConfiguration = (typeof RuntimeEnvironmentIpConfiguration)[keyof typeof RuntimeEnvironmentIpConfiguration];
 

@@ -37,11 +37,13 @@ type LookupReservationResult struct {
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
@@ -115,6 +117,11 @@ func (o LookupReservationResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Status information for Reservation resource.
+func (o LookupReservationResultOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupReservationResult) AllocationResourceStatusResponse { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o LookupReservationResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupReservationResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -125,7 +132,7 @@ func (o LookupReservationResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservationResult) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o LookupReservationResultOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v LookupReservationResult) ShareSettingsResponse { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }

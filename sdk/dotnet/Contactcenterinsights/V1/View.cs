@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// String with specific view properties.
+        /// String with specific view properties, must be non-empty.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// String with specific view properties.
+        /// String with specific view properties, must be non-empty.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AcceleratorAcceleratorType',
+    'AcceleratorState',
     'AuditLogConfigLogType',
     'InstanceType',
     'VersionType',
@@ -27,6 +28,32 @@ class AcceleratorAcceleratorType(str, Enum):
     HEALTHCARE = "HEALTHCARE"
     """
     Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
+    """
+    CCAI_INSIGHTS = "CCAI_INSIGHTS"
+    """
+    Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
+    """
+
+
+class AcceleratorState(str, Enum):
+    """
+    The state of the accelerator.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    Default value, do not use.
+    """
+    ENABLED = "ENABLED"
+    """
+    Indicates that the accelerator is enabled and available to use.
+    """
+    DISABLED = "DISABLED"
+    """
+    Indicates that the accelerator is disabled and not available to use.
+    """
+    UNKNOWN = "UNKNOWN"
+    """
+    Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
     """
 
 

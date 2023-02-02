@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
     }
 
     /// <summary>
-    /// Describe whether the function is gen1 or gen2.
+    /// Describe whether the function is 1st Gen or 2nd Gen.
     /// </summary>
     [EnumType]
     public readonly struct FunctionEnvironment : IEquatable<FunctionEnvironment>
@@ -221,7 +221,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
     }
 
     /// <summary>
-    /// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+    /// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
     /// </summary>
     [EnumType]
     public readonly struct ServiceConfigSecurityLevel : IEquatable<ServiceConfigSecurityLevel>

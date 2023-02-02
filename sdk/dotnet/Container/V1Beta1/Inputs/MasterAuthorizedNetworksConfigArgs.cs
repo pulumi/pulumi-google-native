@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Whether master is accessbile via Google Compute Engine Public IP addresses.
+        /// </summary>
+        [Input("gcpPublicCidrsAccessEnabled")]
+        public Input<bool>? GcpPublicCidrsAccessEnabled { get; set; }
+
         public MasterAuthorizedNetworksConfigArgs()
         {
         }

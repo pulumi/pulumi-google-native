@@ -11,11 +11,13 @@ __all__ = [
     'ClusterTelemetryType',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
+    'ClusterUpdateDesiredStackType',
     'DNSConfigClusterDns',
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
     'FilterEventTypeItem',
     'GPUSharingConfigGpuSharingStrategy',
+    'GatewayAPIConfigChannel',
     'IPAllocationPolicyIpv6AccessType',
     'IPAllocationPolicyStackType',
     'IstioConfigAuth',
@@ -39,6 +41,7 @@ __all__ = [
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
     'UpgradeSettingsStrategy',
+    'WindowsNodeConfigOsVersion',
     'WorkloadConfigAuditMode',
     'WorkloadMetadataConfigMode',
     'WorkloadMetadataConfigNodeMetadata',
@@ -47,7 +50,7 @@ __all__ = [
 
 class BinaryAuthorizationEvaluationMode(str, Enum):
     """
-    Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+    Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
     """
     EVALUATION_MODE_UNSPECIFIED = "EVALUATION_MODE_UNSPECIFIED"
     """
@@ -161,6 +164,24 @@ class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
     """
 
 
+class ClusterUpdateDesiredStackType(str, Enum):
+    """
+    The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+    """
+    STACK_TYPE_UNSPECIFIED = "STACK_TYPE_UNSPECIFIED"
+    """
+    By default, the clusters will be IPV4 only
+    """
+    IPV4 = "IPV4"
+    """
+    The value used if the cluster is a IPV4 only
+    """
+    IPV4_IPV6 = "IPV4_IPV6"
+    """
+    The value used if the cluster is a dual stack cluster
+    """
+
+
 class DNSConfigClusterDns(str, Enum):
     """
     cluster_dns indicates which in-cluster DNS provider should be used.
@@ -248,6 +269,28 @@ class GPUSharingConfigGpuSharingStrategy(str, Enum):
     """
 
 
+class GatewayAPIConfigChannel(str, Enum):
+    """
+    The Gateway API release channel to use for Gateway API.
+    """
+    CHANNEL_UNSPECIFIED = "CHANNEL_UNSPECIFIED"
+    """
+    Default value.
+    """
+    CHANNEL_DISABLED = "CHANNEL_DISABLED"
+    """
+    Gateway API support is disabled
+    """
+    CHANNEL_EXPERIMENTAL = "CHANNEL_EXPERIMENTAL"
+    """
+    Gateway API support is enabled, experimental CRDs are installed
+    """
+    CHANNEL_STANDARD = "CHANNEL_STANDARD"
+    """
+    Gateway API support is enabled, standard CRDs are installed
+    """
+
+
 class IPAllocationPolicyIpv6AccessType(str, Enum):
     """
     The ipv6 access type (internal or external) when create_subnetwork is true
@@ -328,6 +371,18 @@ class LoggingComponentConfigEnableComponentsItem(str, Enum):
     WORKLOADS = "WORKLOADS"
     """
     workloads
+    """
+    APISERVER = "APISERVER"
+    """
+    kube-apiserver
+    """
+    SCHEDULER = "SCHEDULER"
+    """
+    kube-scheduler
+    """
+    CONTROLLER_MANAGER = "CONTROLLER_MANAGER"
+    """
+    kube-controller-manager
     """
 
 
@@ -720,7 +775,7 @@ class UpgradeSettingsStrategy(str, Enum):
     """
     NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED = "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"
     """
-    Default value.
+    Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
     """
     BLUE_GREEN = "BLUE_GREEN"
     """
@@ -729,6 +784,24 @@ class UpgradeSettingsStrategy(str, Enum):
     SURGE = "SURGE"
     """
     SURGE is the traditional way of upgrading a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
+    """
+
+
+class WindowsNodeConfigOsVersion(str, Enum):
+    """
+    OSVersion specifies the Windows node config to be used on the node
+    """
+    OS_VERSION_UNSPECIFIED = "OS_VERSION_UNSPECIFIED"
+    """
+    When OSVersion is not specified
+    """
+    OS_VERSION_LTSC2019 = "OS_VERSION_LTSC2019"
+    """
+    LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+    """
+    OS_VERSION_LTSC2022 = "OS_VERSION_LTSC2022"
+    """
+    LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
     """
 
 

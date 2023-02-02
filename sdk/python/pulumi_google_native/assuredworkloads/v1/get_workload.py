@@ -176,7 +176,7 @@ class GetWorkloadResult:
     @pulumi.getter
     def partner(self) -> str:
         """
-        Optional. Compliance Regime associated with this workload.
+        Optional. Partner regime associated with this workload.
         """
         return pulumi.get(self, "partner")
 

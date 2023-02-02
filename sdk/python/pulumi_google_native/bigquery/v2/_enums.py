@@ -81,6 +81,10 @@ class DatasetAccessEntryTargetTypesItem(str, Enum):
     """
     This entry applies to views in the dataset.
     """
+    ROUTINES = "ROUTINES"
+    """
+    This entry applies to routines in the dataset.
+    """
 
 
 class RoutineDeterminismLevel(str, Enum):
@@ -103,7 +107,7 @@ class RoutineDeterminismLevel(str, Enum):
 
 class RoutineLanguage(str, Enum):
     """
-    Optional. Defaults to "SQL".
+    Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
     """
     LANGUAGE_UNSPECIFIED = "LANGUAGE_UNSPECIFIED"
     SQL = "SQL"

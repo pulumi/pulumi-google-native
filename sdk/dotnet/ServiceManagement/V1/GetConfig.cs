@@ -140,6 +140,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         /// </summary>
         public readonly string ProducerProjectId;
         /// <summary>
+        /// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+        /// </summary>
+        public readonly Outputs.PublishingResponse Publishing;
+        /// <summary>
         /// Quota configuration.
         /// </summary>
         public readonly Outputs.QuotaResponse Quota;
@@ -208,6 +212,8 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
 
             string producerProjectId,
 
+            Outputs.PublishingResponse publishing,
+
             Outputs.QuotaResponse quota,
 
             Outputs.SourceInfoResponse sourceInfo,
@@ -241,6 +247,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
             Monitoring = monitoring;
             Name = name;
             ProducerProjectId = producerProjectId;
+            Publishing = publishing;
             Quota = quota;
             SourceInfo = sourceInfo;
             SystemParameters = systemParameters;

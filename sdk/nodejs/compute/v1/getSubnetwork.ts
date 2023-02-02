@@ -43,7 +43,7 @@ export interface GetSubnetworkResult {
      */
     readonly enableFlowLogs: boolean;
     /**
-     * The external IPv6 address range that is assigned to this subnetwork.
+     * The external IPv6 address range that is owned by this subnetwork.
      */
     readonly externalIpv6Prefix: string;
     /**

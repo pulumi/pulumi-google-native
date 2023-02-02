@@ -21,11 +21,17 @@ __all__ = [
     'BindingArgs',
     'CloudAuditLoggingFeatureSpecArgs',
     'CommonFeatureSpecArgs',
+    'CommonFleetDefaultMemberConfigSpecArgs',
     'EdgeClusterArgs',
     'ExprArgs',
     'FeatureSpecArgs',
     'FleetObservabilityFeatureSpecArgs',
     'GkeClusterArgs',
+    'IdentityServiceAuthMethodArgs',
+    'IdentityServiceAzureADConfigArgs',
+    'IdentityServiceGoogleConfigArgs',
+    'IdentityServiceMembershipSpecArgs',
+    'IdentityServiceOidcConfigArgs',
     'KubernetesResourceArgs',
     'MembershipEndpointArgs',
     'MembershipSpecArgs',
@@ -453,6 +459,30 @@ class CommonFeatureSpecArgs:
 
 
 @pulumi.input_type
+class CommonFleetDefaultMemberConfigSpecArgs:
+    def __init__(__self__, *,
+                 identityservice: Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']] = None):
+        """
+        CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+        :param pulumi.Input['IdentityServiceMembershipSpecArgs'] identityservice: Identity Service-specific spec.
+        """
+        if identityservice is not None:
+            pulumi.set(__self__, "identityservice", identityservice)
+
+    @property
+    @pulumi.getter
+    def identityservice(self) -> Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']]:
+        """
+        Identity Service-specific spec.
+        """
+        return pulumi.get(self, "identityservice")
+
+    @identityservice.setter
+    def identityservice(self, value: Optional[pulumi.Input['IdentityServiceMembershipSpecArgs']]):
+        pulumi.set(self, "identityservice", value)
+
+
+@pulumi.input_type
 class EdgeClusterArgs:
     def __init__(__self__, *,
                  resource_link: Optional[pulumi.Input[str]] = None):
@@ -619,6 +649,430 @@ class GkeClusterArgs:
     @resource_link.setter
     def resource_link(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_link", value)
+
+
+@pulumi.input_type
+class IdentityServiceAuthMethodArgs:
+    def __init__(__self__, *,
+                 azuread_config: Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']] = None,
+                 google_config: Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 oidc_config: Optional[pulumi.Input['IdentityServiceOidcConfigArgs']] = None,
+                 proxy: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+        :param pulumi.Input['IdentityServiceAzureADConfigArgs'] azuread_config: AzureAD specific Configuration.
+        :param pulumi.Input['IdentityServiceGoogleConfigArgs'] google_config: GoogleConfig specific configuration
+        :param pulumi.Input[str] name: Identifier for auth config.
+        :param pulumi.Input['IdentityServiceOidcConfigArgs'] oidc_config: OIDC specific configuration.
+        :param pulumi.Input[str] proxy: Proxy server address to use for auth method.
+        """
+        if azuread_config is not None:
+            pulumi.set(__self__, "azuread_config", azuread_config)
+        if google_config is not None:
+            pulumi.set(__self__, "google_config", google_config)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if oidc_config is not None:
+            pulumi.set(__self__, "oidc_config", oidc_config)
+        if proxy is not None:
+            pulumi.set(__self__, "proxy", proxy)
+
+    @property
+    @pulumi.getter(name="azureadConfig")
+    def azuread_config(self) -> Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']]:
+        """
+        AzureAD specific Configuration.
+        """
+        return pulumi.get(self, "azuread_config")
+
+    @azuread_config.setter
+    def azuread_config(self, value: Optional[pulumi.Input['IdentityServiceAzureADConfigArgs']]):
+        pulumi.set(self, "azuread_config", value)
+
+    @property
+    @pulumi.getter(name="googleConfig")
+    def google_config(self) -> Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']]:
+        """
+        GoogleConfig specific configuration
+        """
+        return pulumi.get(self, "google_config")
+
+    @google_config.setter
+    def google_config(self, value: Optional[pulumi.Input['IdentityServiceGoogleConfigArgs']]):
+        pulumi.set(self, "google_config", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier for auth config.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="oidcConfig")
+    def oidc_config(self) -> Optional[pulumi.Input['IdentityServiceOidcConfigArgs']]:
+        """
+        OIDC specific configuration.
+        """
+        return pulumi.get(self, "oidc_config")
+
+    @oidc_config.setter
+    def oidc_config(self, value: Optional[pulumi.Input['IdentityServiceOidcConfigArgs']]):
+        pulumi.set(self, "oidc_config", value)
+
+    @property
+    @pulumi.getter
+    def proxy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Proxy server address to use for auth method.
+        """
+        return pulumi.get(self, "proxy")
+
+    @proxy.setter
+    def proxy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy", value)
+
+
+@pulumi.input_type
+class IdentityServiceAzureADConfigArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 kubectl_redirect_uri: Optional[pulumi.Input[str]] = None,
+                 tenant: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for the AzureAD Auth flow.
+        :param pulumi.Input[str] client_id: ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+        :param pulumi.Input[str] client_secret: Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+        :param pulumi.Input[str] kubectl_redirect_uri: The redirect URL that kubectl uses for authorization.
+        :param pulumi.Input[str] tenant: Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if kubectl_redirect_uri is not None:
+            pulumi.set(__self__, "kubectl_redirect_uri", kubectl_redirect_uri)
+        if tenant is not None:
+            pulumi.set(__self__, "tenant", tenant)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="kubectlRedirectUri")
+    def kubectl_redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        The redirect URL that kubectl uses for authorization.
+        """
+        return pulumi.get(self, "kubectl_redirect_uri")
+
+    @kubectl_redirect_uri.setter
+    def kubectl_redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubectl_redirect_uri", value)
+
+    @property
+    @pulumi.getter
+    def tenant(self) -> Optional[pulumi.Input[str]]:
+        """
+        Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+        """
+        return pulumi.get(self, "tenant")
+
+    @tenant.setter
+    def tenant(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant", value)
+
+
+@pulumi.input_type
+class IdentityServiceGoogleConfigArgs:
+    def __init__(__self__, *,
+                 disable: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Google Plugin Auth flow.
+        :param pulumi.Input[bool] disable: Disable automatic configuration of Google Plugin on supported platforms.
+        """
+        if disable is not None:
+            pulumi.set(__self__, "disable", disable)
+
+    @property
+    @pulumi.getter
+    def disable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable automatic configuration of Google Plugin on supported platforms.
+        """
+        return pulumi.get(self, "disable")
+
+    @disable.setter
+    def disable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable", value)
+
+
+@pulumi.input_type
+class IdentityServiceMembershipSpecArgs:
+    def __init__(__self__, *,
+                 auth_methods: Optional[pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]]] = None):
+        """
+        **Anthos Identity Service**: Configuration for a single Membership.
+        :param pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]] auth_methods: A member may support multiple auth methods.
+        """
+        if auth_methods is not None:
+            pulumi.set(__self__, "auth_methods", auth_methods)
+
+    @property
+    @pulumi.getter(name="authMethods")
+    def auth_methods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]]]:
+        """
+        A member may support multiple auth methods.
+        """
+        return pulumi.get(self, "auth_methods")
+
+    @auth_methods.setter
+    def auth_methods(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['IdentityServiceAuthMethodArgs']]]]):
+        pulumi.set(self, "auth_methods", value)
+
+
+@pulumi.input_type
+class IdentityServiceOidcConfigArgs:
+    def __init__(__self__, *,
+                 certificate_authority_data: Optional[pulumi.Input[str]] = None,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 client_secret: Optional[pulumi.Input[str]] = None,
+                 deploy_cloud_console_proxy: Optional[pulumi.Input[bool]] = None,
+                 enable_access_token: Optional[pulumi.Input[bool]] = None,
+                 extra_params: Optional[pulumi.Input[str]] = None,
+                 group_prefix: Optional[pulumi.Input[str]] = None,
+                 groups_claim: Optional[pulumi.Input[str]] = None,
+                 issuer_uri: Optional[pulumi.Input[str]] = None,
+                 kubectl_redirect_uri: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[str]] = None,
+                 user_claim: Optional[pulumi.Input[str]] = None,
+                 user_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        Configuration for OIDC Auth flow.
+        :param pulumi.Input[str] certificate_authority_data: PEM-encoded CA for OIDC provider.
+        :param pulumi.Input[str] client_id: ID for OIDC client application.
+        :param pulumi.Input[str] client_secret: Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        :param pulumi.Input[bool] deploy_cloud_console_proxy: Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+        :param pulumi.Input[bool] enable_access_token: Enable access token.
+        :param pulumi.Input[str] extra_params: Comma-separated list of key-value pairs.
+        :param pulumi.Input[str] group_prefix: Prefix to prepend to group name.
+        :param pulumi.Input[str] groups_claim: Claim in OIDC ID token that holds group information.
+        :param pulumi.Input[str] issuer_uri: URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+        :param pulumi.Input[str] kubectl_redirect_uri: Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+        :param pulumi.Input[str] scopes: Comma-separated list of identifiers.
+        :param pulumi.Input[str] user_claim: Claim in OIDC ID token that holds username.
+        :param pulumi.Input[str] user_prefix: Prefix to prepend to user name.
+        """
+        if certificate_authority_data is not None:
+            pulumi.set(__self__, "certificate_authority_data", certificate_authority_data)
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if client_secret is not None:
+            pulumi.set(__self__, "client_secret", client_secret)
+        if deploy_cloud_console_proxy is not None:
+            pulumi.set(__self__, "deploy_cloud_console_proxy", deploy_cloud_console_proxy)
+        if enable_access_token is not None:
+            pulumi.set(__self__, "enable_access_token", enable_access_token)
+        if extra_params is not None:
+            pulumi.set(__self__, "extra_params", extra_params)
+        if group_prefix is not None:
+            pulumi.set(__self__, "group_prefix", group_prefix)
+        if groups_claim is not None:
+            pulumi.set(__self__, "groups_claim", groups_claim)
+        if issuer_uri is not None:
+            pulumi.set(__self__, "issuer_uri", issuer_uri)
+        if kubectl_redirect_uri is not None:
+            pulumi.set(__self__, "kubectl_redirect_uri", kubectl_redirect_uri)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
+        if user_claim is not None:
+            pulumi.set(__self__, "user_claim", user_claim)
+        if user_prefix is not None:
+            pulumi.set(__self__, "user_prefix", user_prefix)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityData")
+    def certificate_authority_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        PEM-encoded CA for OIDC provider.
+        """
+        return pulumi.get(self, "certificate_authority_data")
+
+    @certificate_authority_data.setter
+    def certificate_authority_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_authority_data", value)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID for OIDC client application.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @client_secret.setter
+    def client_secret(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_secret", value)
+
+    @property
+    @pulumi.getter(name="deployCloudConsoleProxy")
+    def deploy_cloud_console_proxy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+        """
+        return pulumi.get(self, "deploy_cloud_console_proxy")
+
+    @deploy_cloud_console_proxy.setter
+    def deploy_cloud_console_proxy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deploy_cloud_console_proxy", value)
+
+    @property
+    @pulumi.getter(name="enableAccessToken")
+    def enable_access_token(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable access token.
+        """
+        return pulumi.get(self, "enable_access_token")
+
+    @enable_access_token.setter
+    def enable_access_token(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_access_token", value)
+
+    @property
+    @pulumi.getter(name="extraParams")
+    def extra_params(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of key-value pairs.
+        """
+        return pulumi.get(self, "extra_params")
+
+    @extra_params.setter
+    def extra_params(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "extra_params", value)
+
+    @property
+    @pulumi.getter(name="groupPrefix")
+    def group_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix to prepend to group name.
+        """
+        return pulumi.get(self, "group_prefix")
+
+    @group_prefix.setter
+    def group_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_prefix", value)
+
+    @property
+    @pulumi.getter(name="groupsClaim")
+    def groups_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        Claim in OIDC ID token that holds group information.
+        """
+        return pulumi.get(self, "groups_claim")
+
+    @groups_claim.setter
+    def groups_claim(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "groups_claim", value)
+
+    @property
+    @pulumi.getter(name="issuerUri")
+    def issuer_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+        """
+        return pulumi.get(self, "issuer_uri")
+
+    @issuer_uri.setter
+    def issuer_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuer_uri", value)
+
+    @property
+    @pulumi.getter(name="kubectlRedirectUri")
+    def kubectl_redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+        """
+        return pulumi.get(self, "kubectl_redirect_uri")
+
+    @kubectl_redirect_uri.setter
+    def kubectl_redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kubectl_redirect_uri", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Comma-separated list of identifiers.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scopes", value)
+
+    @property
+    @pulumi.getter(name="userClaim")
+    def user_claim(self) -> Optional[pulumi.Input[str]]:
+        """
+        Claim in OIDC ID token that holds username.
+        """
+        return pulumi.get(self, "user_claim")
+
+    @user_claim.setter
+    def user_claim(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_claim", value)
+
+    @property
+    @pulumi.getter(name="userPrefix")
+    def user_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Prefix to prepend to user name.
+        """
+        return pulumi.get(self, "user_prefix")
+
+    @user_prefix.setter
+    def user_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_prefix", value)
 
 
 @pulumi.input_type

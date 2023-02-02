@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Configuration for the connection.
+        /// Optional. Node configuration for the connection.
         /// </summary>
         [Output("nodeConfig")]
         public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
@@ -251,7 +251,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Input<Inputs.LockConfigArgs>? LockConfig { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the connection.
+        /// Optional. Node configuration for the connection.
         /// </summary>
         [Input("nodeConfig")]
         public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }

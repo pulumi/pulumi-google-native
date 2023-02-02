@@ -213,6 +213,43 @@ namespace Pulumi.GoogleNative.Firestore.V1
     }
 
     /// <summary>
+    /// The API scope supported by this index.
+    /// </summary>
+    [EnumType]
+    public readonly struct IndexApiScope : IEquatable<IndexApiScope>
+    {
+        private readonly string _value;
+
+        private IndexApiScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.
+        /// </summary>
+        public static IndexApiScope AnyApi { get; } = new IndexApiScope("ANY_API");
+        /// <summary>
+        /// The index can only be used by the Firestore in Datastore Mode query API.
+        /// </summary>
+        public static IndexApiScope DatastoreModeApi { get; } = new IndexApiScope("DATASTORE_MODE_API");
+
+        public static bool operator ==(IndexApiScope left, IndexApiScope right) => left.Equals(right);
+        public static bool operator !=(IndexApiScope left, IndexApiScope right) => !left.Equals(right);
+
+        public static explicit operator string(IndexApiScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is IndexApiScope other && Equals(other);
+        public bool Equals(IndexApiScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
     /// </summary>
     [EnumType]
@@ -237,6 +274,10 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index.
         /// </summary>
         public static IndexQueryScope CollectionGroup { get; } = new IndexQueryScope("COLLECTION_GROUP");
+        /// <summary>
+        /// Include all the collections's ancestor in the index. Only available for Datastore Mode databases.
+        /// </summary>
+        public static IndexQueryScope CollectionRecursive { get; } = new IndexQueryScope("COLLECTION_RECURSIVE");
 
         public static bool operator ==(IndexQueryScope left, IndexQueryScope right) => left.Equals(right);
         public static bool operator !=(IndexQueryScope left, IndexQueryScope right) => !left.Equals(right);

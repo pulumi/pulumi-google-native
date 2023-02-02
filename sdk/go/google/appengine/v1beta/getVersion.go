@@ -60,6 +60,8 @@ type LookupVersionResult struct {
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
 	ErrorHandlers []ErrorHandlerResponse `pulumi:"errorHandlers"`
+	// Settings for App Engine flexible runtimes.
+	FlexibleRuntimeSettings FlexibleRuntimeSettingsResponse `pulumi:"flexibleRuntimeSettings"`
 	// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
 	Handlers []UrlMapResponse `pulumi:"handlers"`
 	// Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
@@ -226,6 +228,11 @@ func (o LookupVersionResultOutput) EnvVariables() pulumi.StringMapOutput {
 // Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
 func (o LookupVersionResultOutput) ErrorHandlers() ErrorHandlerResponseArrayOutput {
 	return o.ApplyT(func(v LookupVersionResult) []ErrorHandlerResponse { return v.ErrorHandlers }).(ErrorHandlerResponseArrayOutput)
+}
+
+// Settings for App Engine flexible runtimes.
+func (o LookupVersionResultOutput) FlexibleRuntimeSettings() FlexibleRuntimeSettingsResponseOutput {
+	return o.ApplyT(func(v LookupVersionResult) FlexibleRuntimeSettingsResponse { return v.FlexibleRuntimeSettings }).(FlexibleRuntimeSettingsResponseOutput)
 }
 
 // An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.

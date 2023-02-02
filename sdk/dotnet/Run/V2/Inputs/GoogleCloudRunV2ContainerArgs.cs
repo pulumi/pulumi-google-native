@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         }
 
         /// <summary>
-        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<Inputs.GoogleCloudRunV2ProbeArgs>? LivenessProbe { get; set; }
 
         /// <summary>
-        /// Name of the container specified as a DNS_LABEL.
+        /// Name of the container specified as a DNS_LABEL (RFC 1123).
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -139,6 +139,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> RolloutId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+        /// </summary>
+        [Output("startingPhaseId")]
+        public Output<string?> StartingPhaseId { get; private set; } = null!;
+
+        /// <summary>
         /// Current state of the `Rollout`.
         /// </summary>
         [Output("state")]
@@ -280,6 +286,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Input("rolloutId", required: true)]
         public Input<string> RolloutId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
+        /// </summary>
+        [Input("startingPhaseId")]
+        public Input<string>? StartingPhaseId { get; set; }
 
         /// <summary>
         /// The ID of Target to which this `Rollout` is deploying.

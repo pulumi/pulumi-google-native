@@ -34,7 +34,7 @@ type LookupDatacenterConnectorResult struct {
 	ApplianceSoftwareVersion string `pulumi:"applianceSoftwareVersion"`
 	// The available versions for updating this appliance.
 	AvailableVersions AvailableUpdatesResponse `pulumi:"availableVersions"`
-	// The communication channel between the datacenter connector and GCP.
+	// The communication channel between the datacenter connector and Google Cloud.
 	Bucket string `pulumi:"bucket"`
 	// The time the connector was created (as an API call, not when it was actually installed).
 	CreateTime string `pulumi:"createTime"`
@@ -111,7 +111,7 @@ func (o LookupDatacenterConnectorResultOutput) AvailableVersions() AvailableUpda
 	return o.ApplyT(func(v LookupDatacenterConnectorResult) AvailableUpdatesResponse { return v.AvailableVersions }).(AvailableUpdatesResponseOutput)
 }
 
-// The communication channel between the datacenter connector and GCP.
+// The communication channel between the datacenter connector and Google Cloud.
 func (o LookupDatacenterConnectorResultOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatacenterConnectorResult) string { return v.Bucket }).(pulumi.StringOutput)
 }

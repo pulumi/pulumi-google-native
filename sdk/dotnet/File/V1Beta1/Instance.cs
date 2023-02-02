@@ -107,6 +107,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+        /// </summary>
+        [Output("protocol")]
+        public Output<string> Protocol { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
@@ -264,6 +270,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+        /// </summary>
+        [Input("protocol")]
+        public Input<Pulumi.GoogleNative.File.V1Beta1.InstanceProtocol>? Protocol { get; set; }
 
         /// <summary>
         /// The service tier of the instance.

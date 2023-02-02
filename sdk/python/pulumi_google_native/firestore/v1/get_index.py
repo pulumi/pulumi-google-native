@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetIndexResult:
-    def __init__(__self__, fields=None, name=None, query_scope=None, state=None):
+    def __init__(__self__, api_scope=None, fields=None, name=None, query_scope=None, state=None):
+        if api_scope and not isinstance(api_scope, str):
+            raise TypeError("Expected argument 'api_scope' to be a str")
+        pulumi.set(__self__, "api_scope", api_scope)
         if fields and not isinstance(fields, list):
             raise TypeError("Expected argument 'fields' to be a list")
         pulumi.set(__self__, "fields", fields)
@@ -32,6 +35,14 @@ class GetIndexResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="apiScope")
+    def api_scope(self) -> str:
+        """
+        The API scope supported by this index.
+        """
+        return pulumi.get(self, "api_scope")
 
     @property
     @pulumi.getter
@@ -72,6 +83,7 @@ class AwaitableGetIndexResult(GetIndexResult):
         if False:
             yield self
         return GetIndexResult(
+            api_scope=self.api_scope,
             fields=self.fields,
             name=self.name,
             query_scope=self.query_scope,
@@ -95,6 +107,7 @@ def get_index(collection_group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:firestore/v1:getIndex', __args__, opts=opts, typ=GetIndexResult).value
 
     return AwaitableGetIndexResult(
+        api_scope=__ret__.api_scope,
         fields=__ret__.fields,
         name=__ret__.name,
         query_scope=__ret__.query_scope,

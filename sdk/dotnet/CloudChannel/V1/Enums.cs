@@ -57,6 +57,47 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     }
 
     /// <summary>
+    /// Required. The RebillingBasis to use for the applied override. Shows the relative cost based on your repricing costs.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudChannelV1ConditionalOverrideRebillingBasis : IEquatable<GoogleCloudChannelV1ConditionalOverrideRebillingBasis>
+    {
+        private readonly string _value;
+
+        private GoogleCloudChannelV1ConditionalOverrideRebillingBasis(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not used.
+        /// </summary>
+        public static GoogleCloudChannelV1ConditionalOverrideRebillingBasis RebillingBasisUnspecified { get; } = new GoogleCloudChannelV1ConditionalOverrideRebillingBasis("REBILLING_BASIS_UNSPECIFIED");
+        /// <summary>
+        /// Use the list cost, also known as the MSRP.
+        /// </summary>
+        public static GoogleCloudChannelV1ConditionalOverrideRebillingBasis CostAtList { get; } = new GoogleCloudChannelV1ConditionalOverrideRebillingBasis("COST_AT_LIST");
+        /// <summary>
+        /// Pass through all discounts except the Reseller Program Discount. If this is the default cost base and no adjustments are specified, the output cost will be exactly what the customer would see if they viewed the bill in the Google Cloud Console.
+        /// </summary>
+        public static GoogleCloudChannelV1ConditionalOverrideRebillingBasis DirectCustomerCost { get; } = new GoogleCloudChannelV1ConditionalOverrideRebillingBasis("DIRECT_CUSTOMER_COST");
+
+        public static bool operator ==(GoogleCloudChannelV1ConditionalOverrideRebillingBasis left, GoogleCloudChannelV1ConditionalOverrideRebillingBasis right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudChannelV1ConditionalOverrideRebillingBasis left, GoogleCloudChannelV1ConditionalOverrideRebillingBasis right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudChannelV1ConditionalOverrideRebillingBasis value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudChannelV1ConditionalOverrideRebillingBasis other && Equals(other);
+        public bool Equals(GoogleCloudChannelV1ConditionalOverrideRebillingBasis other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Period Type.
     /// </summary>
     [EnumType]

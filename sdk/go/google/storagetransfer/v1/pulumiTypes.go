@@ -1510,6 +1510,224 @@ func (o DateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v DateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
+// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+type EventStream struct {
+	// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+	EventStreamExpirationTime *string `pulumi:"eventStreamExpirationTime"`
+	// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+	EventStreamStartTime *string `pulumi:"eventStreamStartTime"`
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	Name string `pulumi:"name"`
+}
+
+// EventStreamInput is an input type that accepts EventStreamArgs and EventStreamOutput values.
+// You can construct a concrete instance of `EventStreamInput` via:
+//
+//	EventStreamArgs{...}
+type EventStreamInput interface {
+	pulumi.Input
+
+	ToEventStreamOutput() EventStreamOutput
+	ToEventStreamOutputWithContext(context.Context) EventStreamOutput
+}
+
+// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+type EventStreamArgs struct {
+	// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+	EventStreamExpirationTime pulumi.StringPtrInput `pulumi:"eventStreamExpirationTime"`
+	// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+	EventStreamStartTime pulumi.StringPtrInput `pulumi:"eventStreamStartTime"`
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (EventStreamArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStream)(nil)).Elem()
+}
+
+func (i EventStreamArgs) ToEventStreamOutput() EventStreamOutput {
+	return i.ToEventStreamOutputWithContext(context.Background())
+}
+
+func (i EventStreamArgs) ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamOutput)
+}
+
+func (i EventStreamArgs) ToEventStreamPtrOutput() EventStreamPtrOutput {
+	return i.ToEventStreamPtrOutputWithContext(context.Background())
+}
+
+func (i EventStreamArgs) ToEventStreamPtrOutputWithContext(ctx context.Context) EventStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamOutput).ToEventStreamPtrOutputWithContext(ctx)
+}
+
+// EventStreamPtrInput is an input type that accepts EventStreamArgs, EventStreamPtr and EventStreamPtrOutput values.
+// You can construct a concrete instance of `EventStreamPtrInput` via:
+//
+//	        EventStreamArgs{...}
+//
+//	or:
+//
+//	        nil
+type EventStreamPtrInput interface {
+	pulumi.Input
+
+	ToEventStreamPtrOutput() EventStreamPtrOutput
+	ToEventStreamPtrOutputWithContext(context.Context) EventStreamPtrOutput
+}
+
+type eventStreamPtrType EventStreamArgs
+
+func EventStreamPtr(v *EventStreamArgs) EventStreamPtrInput {
+	return (*eventStreamPtrType)(v)
+}
+
+func (*eventStreamPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStream)(nil)).Elem()
+}
+
+func (i *eventStreamPtrType) ToEventStreamPtrOutput() EventStreamPtrOutput {
+	return i.ToEventStreamPtrOutputWithContext(context.Background())
+}
+
+func (i *eventStreamPtrType) ToEventStreamPtrOutputWithContext(ctx context.Context) EventStreamPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EventStreamPtrOutput)
+}
+
+// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+type EventStreamOutput struct{ *pulumi.OutputState }
+
+func (EventStreamOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStream)(nil)).Elem()
+}
+
+func (o EventStreamOutput) ToEventStreamOutput() EventStreamOutput {
+	return o
+}
+
+func (o EventStreamOutput) ToEventStreamOutputWithContext(ctx context.Context) EventStreamOutput {
+	return o
+}
+
+func (o EventStreamOutput) ToEventStreamPtrOutput() EventStreamPtrOutput {
+	return o.ToEventStreamPtrOutputWithContext(context.Background())
+}
+
+func (o EventStreamOutput) ToEventStreamPtrOutputWithContext(ctx context.Context) EventStreamPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EventStream) *EventStream {
+		return &v
+	}).(EventStreamPtrOutput)
+}
+
+// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+func (o EventStreamOutput) EventStreamExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStream) *string { return v.EventStreamExpirationTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+func (o EventStreamOutput) EventStreamStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EventStream) *string { return v.EventStreamStartTime }).(pulumi.StringPtrOutput)
+}
+
+// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+func (o EventStreamOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStream) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type EventStreamPtrOutput struct{ *pulumi.OutputState }
+
+func (EventStreamPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EventStream)(nil)).Elem()
+}
+
+func (o EventStreamPtrOutput) ToEventStreamPtrOutput() EventStreamPtrOutput {
+	return o
+}
+
+func (o EventStreamPtrOutput) ToEventStreamPtrOutputWithContext(ctx context.Context) EventStreamPtrOutput {
+	return o
+}
+
+func (o EventStreamPtrOutput) Elem() EventStreamOutput {
+	return o.ApplyT(func(v *EventStream) EventStream {
+		if v != nil {
+			return *v
+		}
+		var ret EventStream
+		return ret
+	}).(EventStreamOutput)
+}
+
+// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+func (o EventStreamPtrOutput) EventStreamExpirationTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventStreamExpirationTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+func (o EventStreamPtrOutput) EventStreamStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventStreamStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+func (o EventStreamPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EventStream) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+type EventStreamResponse struct {
+	// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+	EventStreamExpirationTime string `pulumi:"eventStreamExpirationTime"`
+	// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+	EventStreamStartTime string `pulumi:"eventStreamStartTime"`
+	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	Name string `pulumi:"name"`
+}
+
+// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+type EventStreamResponseOutput struct{ *pulumi.OutputState }
+
+func (EventStreamResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EventStreamResponse)(nil)).Elem()
+}
+
+func (o EventStreamResponseOutput) ToEventStreamResponseOutput() EventStreamResponseOutput {
+	return o
+}
+
+func (o EventStreamResponseOutput) ToEventStreamResponseOutputWithContext(ctx context.Context) EventStreamResponseOutput {
+	return o
+}
+
+// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+func (o EventStreamResponseOutput) EventStreamExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamResponse) string { return v.EventStreamExpirationTime }).(pulumi.StringOutput)
+}
+
+// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+func (o EventStreamResponseOutput) EventStreamStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamResponse) string { return v.EventStreamStartTime }).(pulumi.StringOutput)
+}
+
+// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+func (o EventStreamResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v EventStreamResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsData struct {
 	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
@@ -4853,6 +5071,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BandwidthLimitPtrInput)(nil)).Elem(), BandwidthLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DateInput)(nil)).Elem(), DateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatePtrInput)(nil)).Elem(), DateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamInput)(nil)).Elem(), EventStreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EventStreamPtrInput)(nil)).Elem(), EventStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataInput)(nil)).Elem(), GcsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsDataPtrInput)(nil)).Elem(), GcsDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpDataInput)(nil)).Elem(), HttpDataArgs{})
@@ -4900,6 +5120,9 @@ func init() {
 	pulumi.RegisterOutputType(DateOutput{})
 	pulumi.RegisterOutputType(DatePtrOutput{})
 	pulumi.RegisterOutputType(DateResponseOutput{})
+	pulumi.RegisterOutputType(EventStreamOutput{})
+	pulumi.RegisterOutputType(EventStreamPtrOutput{})
+	pulumi.RegisterOutputType(EventStreamResponseOutput{})
 	pulumi.RegisterOutputType(GcsDataOutput{})
 	pulumi.RegisterOutputType(GcsDataPtrOutput{})
 	pulumi.RegisterOutputType(GcsDataResponseOutput{})

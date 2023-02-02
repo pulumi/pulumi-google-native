@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -35,6 +38,10 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /**
+     * The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+     */
+    public readonly autoscale!: pulumi.Output<outputs.bigqueryreservation.v1.AutoscaleResponse>;
+    /**
      * Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
      */
     public readonly concurrency!: pulumi.Output<string>;
@@ -42,6 +49,10 @@ export class Reservation extends pulumi.CustomResource {
      * Creation time of the reservation.
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
+    /**
+     * Edition of the reservation.
+     */
+    public readonly edition!: pulumi.Output<string>;
     /**
      * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */
@@ -80,7 +91,9 @@ export class Reservation extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["autoscale"] = args ? args.autoscale : undefined;
             resourceInputs["concurrency"] = args ? args.concurrency : undefined;
+            resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
@@ -91,8 +104,10 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["autoscale"] = undefined /*out*/;
             resourceInputs["concurrency"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
+            resourceInputs["edition"] = undefined /*out*/;
             resourceInputs["ignoreIdleSlots"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["multiRegionAuxiliary"] = undefined /*out*/;
@@ -114,9 +129,17 @@ export class Reservation extends pulumi.CustomResource {
  */
 export interface ReservationArgs {
     /**
+     * The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+     */
+    autoscale?: pulumi.Input<inputs.bigqueryreservation.v1.AutoscaleArgs>;
+    /**
      * Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
      */
     concurrency?: pulumi.Input<string>;
+    /**
+     * Edition of the reservation.
+     */
+    edition?: pulumi.Input<enums.bigqueryreservation.v1.ReservationEdition>;
     /**
      * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */

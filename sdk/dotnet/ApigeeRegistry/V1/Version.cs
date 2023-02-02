@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        /// </summary>
+        [Output("primarySpec")]
+        public Output<string> PrimarySpec { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -183,6 +189,12 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        /// </summary>
+        [Input("primarySpec")]
+        public Input<string>? PrimarySpec { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

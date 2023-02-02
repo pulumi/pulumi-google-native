@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<Outputs.NodeConfigResponse> Config { get; private set; } = null!;
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Output("etag")]
+        public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
         /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         /// </summary>
         [Output("initialNodeCount")]
@@ -82,6 +88,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<Outputs.NodeNetworkConfigResponse> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        [Output("placementPolicy")]
+        public Output<Outputs.PlacementPolicyResponse> PlacementPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The pod CIDR block size per node in this node pool.
         /// </summary>
         [Output("podIpv4CidrSize")]
@@ -121,7 +133,7 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<Outputs.UpgradeSettingsResponse> UpgradeSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the Kubernetes of this node.
+        /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -208,6 +220,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Input<Inputs.NodeConfigArgs>? Config { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
         /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         /// </summary>
         [Input("initialNodeCount")]
@@ -259,6 +277,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Input<string>? Parent { get; set; }
 
         /// <summary>
+        /// Specifies the node placement policy.
+        /// </summary>
+        [Input("placementPolicy")]
+        public Input<Inputs.PlacementPolicyArgs>? PlacementPolicy { get; set; }
+
+        /// <summary>
         /// Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
         /// </summary>
         [Input("project")]
@@ -271,7 +295,7 @@ namespace Pulumi.GoogleNative.Container.V1
         public Input<Inputs.UpgradeSettingsArgs>? UpgradeSettings { get; set; }
 
         /// <summary>
-        /// The version of the Kubernetes of this node.
+        /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

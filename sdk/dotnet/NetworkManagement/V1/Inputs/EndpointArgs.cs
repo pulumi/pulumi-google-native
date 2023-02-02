@@ -16,10 +16,22 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Inputs
     public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+        /// </summary>
+        [Input("appEngineVersion")]
+        public Input<Inputs.AppEngineVersionEndpointArgs>? AppEngineVersion { get; set; }
+
+        /// <summary>
         /// A [Cloud Function](https://cloud.google.com/functions).
         /// </summary>
         [Input("cloudFunction")]
         public Input<Inputs.CloudFunctionEndpointArgs>? CloudFunction { get; set; }
+
+        /// <summary>
+        /// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+        /// </summary>
+        [Input("cloudRunRevision")]
+        public Input<Inputs.CloudRunRevisionEndpointArgs>? CloudRunRevision { get; set; }
 
         /// <summary>
         /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.

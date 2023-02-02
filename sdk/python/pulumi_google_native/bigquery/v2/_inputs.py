@@ -3245,16 +3245,20 @@ class JobReferenceArgs:
 @pulumi.input_type
 class MaterializedViewDefinitionArgs:
     def __init__(__self__, *,
+                 allow_non_incremental_definition: Optional[pulumi.Input[bool]] = None,
                  enable_refresh: Optional[pulumi.Input[bool]] = None,
                  max_staleness: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input[str]] = None,
                  refresh_interval_ms: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input[bool] allow_non_incremental_definition: [Optional] Allow non incremental materialized view definition. The default value is "false".
         :param pulumi.Input[bool] enable_refresh: [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         :param pulumi.Input[str] max_staleness: [Optional] Max staleness of data that could be returned when materizlized view is queried (formatted as Google SQL Interval type).
         :param pulumi.Input[str] query: [Required] A query whose result is persisted.
         :param pulumi.Input[str] refresh_interval_ms: [Optional] [TrustedTester] The maximum frequency at which this materialized view will be refreshed. The default value is "1800000" (30 minutes).
         """
+        if allow_non_incremental_definition is not None:
+            pulumi.set(__self__, "allow_non_incremental_definition", allow_non_incremental_definition)
         if enable_refresh is not None:
             pulumi.set(__self__, "enable_refresh", enable_refresh)
         if max_staleness is not None:
@@ -3263,6 +3267,18 @@ class MaterializedViewDefinitionArgs:
             pulumi.set(__self__, "query", query)
         if refresh_interval_ms is not None:
             pulumi.set(__self__, "refresh_interval_ms", refresh_interval_ms)
+
+    @property
+    @pulumi.getter(name="allowNonIncrementalDefinition")
+    def allow_non_incremental_definition(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Optional] Allow non incremental materialized view definition. The default value is "false".
+        """
+        return pulumi.get(self, "allow_non_incremental_definition")
+
+    @allow_non_incremental_definition.setter
+    def allow_non_incremental_definition(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_non_incremental_definition", value)
 
     @property
     @pulumi.getter(name="enableRefresh")
@@ -3951,7 +3967,7 @@ class SparkOptionsArgs:
         :param pulumi.Input[str] container_image: Custom container image for the runtime environment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_uris: JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
-        :param pulumi.Input[str] main_file_uri: The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+        :param pulumi.Input[str] main_file_uri: The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] py_file_uris: Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param pulumi.Input[str] runtime_version: Runtime version. If not specified, the default runtime version is used.
@@ -4039,7 +4055,7 @@ class SparkOptionsArgs:
     @pulumi.getter(name="mainFileUri")
     def main_file_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+        The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
         """
         return pulumi.get(self, "main_file_uri")
 

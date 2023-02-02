@@ -10,6 +10,177 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Indicates the category (image, audio, video etc.) of the original content.
+type DocumentContentCategory string
+
+const (
+	// No category is specified.
+	DocumentContentCategoryContentCategoryUnspecified = DocumentContentCategory("CONTENT_CATEGORY_UNSPECIFIED")
+	// Content is of image type.
+	DocumentContentCategoryContentCategoryImage = DocumentContentCategory("CONTENT_CATEGORY_IMAGE")
+	// Content is of audio type.
+	DocumentContentCategoryContentCategoryAudio = DocumentContentCategory("CONTENT_CATEGORY_AUDIO")
+	// Content is of video type.
+	DocumentContentCategoryContentCategoryVideo = DocumentContentCategory("CONTENT_CATEGORY_VIDEO")
+)
+
+func (DocumentContentCategory) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentContentCategory)(nil)).Elem()
+}
+
+func (e DocumentContentCategory) ToDocumentContentCategoryOutput() DocumentContentCategoryOutput {
+	return pulumi.ToOutput(e).(DocumentContentCategoryOutput)
+}
+
+func (e DocumentContentCategory) ToDocumentContentCategoryOutputWithContext(ctx context.Context) DocumentContentCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DocumentContentCategoryOutput)
+}
+
+func (e DocumentContentCategory) ToDocumentContentCategoryPtrOutput() DocumentContentCategoryPtrOutput {
+	return e.ToDocumentContentCategoryPtrOutputWithContext(context.Background())
+}
+
+func (e DocumentContentCategory) ToDocumentContentCategoryPtrOutputWithContext(ctx context.Context) DocumentContentCategoryPtrOutput {
+	return DocumentContentCategory(e).ToDocumentContentCategoryOutputWithContext(ctx).ToDocumentContentCategoryPtrOutputWithContext(ctx)
+}
+
+func (e DocumentContentCategory) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DocumentContentCategory) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DocumentContentCategory) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DocumentContentCategory) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DocumentContentCategoryOutput struct{ *pulumi.OutputState }
+
+func (DocumentContentCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DocumentContentCategory)(nil)).Elem()
+}
+
+func (o DocumentContentCategoryOutput) ToDocumentContentCategoryOutput() DocumentContentCategoryOutput {
+	return o
+}
+
+func (o DocumentContentCategoryOutput) ToDocumentContentCategoryOutputWithContext(ctx context.Context) DocumentContentCategoryOutput {
+	return o
+}
+
+func (o DocumentContentCategoryOutput) ToDocumentContentCategoryPtrOutput() DocumentContentCategoryPtrOutput {
+	return o.ToDocumentContentCategoryPtrOutputWithContext(context.Background())
+}
+
+func (o DocumentContentCategoryOutput) ToDocumentContentCategoryPtrOutputWithContext(ctx context.Context) DocumentContentCategoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DocumentContentCategory) *DocumentContentCategory {
+		return &v
+	}).(DocumentContentCategoryPtrOutput)
+}
+
+func (o DocumentContentCategoryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DocumentContentCategoryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DocumentContentCategory) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DocumentContentCategoryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DocumentContentCategoryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DocumentContentCategory) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DocumentContentCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (DocumentContentCategoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DocumentContentCategory)(nil)).Elem()
+}
+
+func (o DocumentContentCategoryPtrOutput) ToDocumentContentCategoryPtrOutput() DocumentContentCategoryPtrOutput {
+	return o
+}
+
+func (o DocumentContentCategoryPtrOutput) ToDocumentContentCategoryPtrOutputWithContext(ctx context.Context) DocumentContentCategoryPtrOutput {
+	return o
+}
+
+func (o DocumentContentCategoryPtrOutput) Elem() DocumentContentCategoryOutput {
+	return o.ApplyT(func(v *DocumentContentCategory) DocumentContentCategory {
+		if v != nil {
+			return *v
+		}
+		var ret DocumentContentCategory
+		return ret
+	}).(DocumentContentCategoryOutput)
+}
+
+func (o DocumentContentCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DocumentContentCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DocumentContentCategory) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DocumentContentCategoryInput is an input type that accepts DocumentContentCategoryArgs and DocumentContentCategoryOutput values.
+// You can construct a concrete instance of `DocumentContentCategoryInput` via:
+//
+//	DocumentContentCategoryArgs{...}
+type DocumentContentCategoryInput interface {
+	pulumi.Input
+
+	ToDocumentContentCategoryOutput() DocumentContentCategoryOutput
+	ToDocumentContentCategoryOutputWithContext(context.Context) DocumentContentCategoryOutput
+}
+
+var documentContentCategoryPtrType = reflect.TypeOf((**DocumentContentCategory)(nil)).Elem()
+
+type DocumentContentCategoryPtrInput interface {
+	pulumi.Input
+
+	ToDocumentContentCategoryPtrOutput() DocumentContentCategoryPtrOutput
+	ToDocumentContentCategoryPtrOutputWithContext(context.Context) DocumentContentCategoryPtrOutput
+}
+
+type documentContentCategoryPtr string
+
+func DocumentContentCategoryPtr(v string) DocumentContentCategoryPtrInput {
+	return (*documentContentCategoryPtr)(&v)
+}
+
+func (*documentContentCategoryPtr) ElementType() reflect.Type {
+	return documentContentCategoryPtrType
+}
+
+func (in *documentContentCategoryPtr) ToDocumentContentCategoryPtrOutput() DocumentContentCategoryPtrOutput {
+	return pulumi.ToOutput(in).(DocumentContentCategoryPtrOutput)
+}
+
+func (in *documentContentCategoryPtr) ToDocumentContentCategoryPtrOutputWithContext(ctx context.Context) DocumentContentCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DocumentContentCategoryPtrOutput)
+}
+
 // This is used when DocAI was not used to load the document and parsing/ extracting is needed for the inline_raw_document. For example, if inline_raw_document is the byte representation of a PDF file, then this should be set to: RAW_DOCUMENT_FILE_TYPE_PDF.
 type DocumentRawDocumentFileType string
 
@@ -26,6 +197,8 @@ const (
 	DocumentRawDocumentFileTypeRawDocumentFileTypePptx = DocumentRawDocumentFileType("RAW_DOCUMENT_FILE_TYPE_PPTX")
 	// UTF-8 encoded text format
 	DocumentRawDocumentFileTypeRawDocumentFileTypeText = DocumentRawDocumentFileType("RAW_DOCUMENT_FILE_TYPE_TEXT")
+	// TIFF or TIF image file format
+	DocumentRawDocumentFileTypeRawDocumentFileTypeTiff = DocumentRawDocumentFileType("RAW_DOCUMENT_FILE_TYPE_TIFF")
 )
 
 func (DocumentRawDocumentFileType) ElementType() reflect.Type {
@@ -189,6 +362,7 @@ func (in *documentRawDocumentFileTypePtr) ToDocumentRawDocumentFileTypePtrOutput
 type GoogleCloudContentwarehouseV1AccessControlActionOperationType string
 
 const (
+	// The unknown operation type.
 	GoogleCloudContentwarehouseV1AccessControlActionOperationTypeUnknown = GoogleCloudContentwarehouseV1AccessControlActionOperationType("UNKNOWN")
 	// Adds newly given policy bindings in the existing bindings list.
 	GoogleCloudContentwarehouseV1AccessControlActionOperationTypeAddPolicyBinding = GoogleCloudContentwarehouseV1AccessControlActionOperationType("ADD_POLICY_BINDING")
@@ -355,10 +529,188 @@ func (in *googleCloudContentwarehouseV1AccessControlActionOperationTypePtr) ToGo
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput)
 }
 
+// The retrieval importance of the property during search.
+type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance string
+
+const (
+	// No importance specified. Default medium importance.
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceRetrievalImportanceUnspecified = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("RETRIEVAL_IMPORTANCE_UNSPECIFIED")
+	// Highest importance.
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceHighest = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("HIGHEST")
+	// Higher importance.
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceHigher = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("HIGHER")
+	// High importance.
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceHigh = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("HIGH")
+	// Medium importance.
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceMedium = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("MEDIUM")
+	// Low importance (negative).
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceLow = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("LOW")
+	// Lowest importance (negative).
+	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceLowest = GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("LOWEST")
+)
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance)(nil)).Elem()
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput {
+	return pulumi.ToOutput(e).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput)
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput)
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return e.ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance(e).ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutputWithContext(ctx).ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return o.ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) *GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance {
+		return &v
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) Elem() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput {
+	return o.ApplyT(func(v *GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance
+		return ret
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput)
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceInput is an input type that accepts GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceArgs and GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput values.
+// You can construct a concrete instance of `GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceInput` via:
+//
+//	GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceArgs{...}
+type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutputWithContext(context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput
+}
+
+var googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrType = reflect.TypeOf((**GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance)(nil)).Elem()
+
+type GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput
+}
+
+type googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr string
+
+func GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr(v string) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrInput {
+	return (*googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr)(&v)
+}
+
+func (*googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr) ElementType() reflect.Type {
+	return googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrType
+}
+
+func (in *googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
+}
+
+func (in *googleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtr) ToGoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
+}
+
 // Identifies the trigger type for running the policy.
 type GoogleCloudContentwarehouseV1RuleTriggerType string
 
 const (
+	// Trigger for unknown action.
 	GoogleCloudContentwarehouseV1RuleTriggerTypeUnknown = GoogleCloudContentwarehouseV1RuleTriggerType("UNKNOWN")
 	// Trigger for create document action.
 	GoogleCloudContentwarehouseV1RuleTriggerTypeOnCreate = GoogleCloudContentwarehouseV1RuleTriggerType("ON_CREATE")
@@ -529,7 +881,7 @@ type GoogleCloudContentwarehouseV1UpdateOptionsUpdateType string
 const (
 	// Defaults to full replace behavior, ie. FULL_REPLACE.
 	GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeUpdateTypeUnspecified = GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_UNSPECIFIED")
-	// Fully replace all the fields. Any field masks will be ignored.
+	// Fully replace all the fields (including previously linked raw document). Any field masks will be ignored.
 	GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeUpdateTypeReplace = GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_REPLACE")
 	// Merge the fields into the existing entities.
 	GoogleCloudContentwarehouseV1UpdateOptionsUpdateTypeUpdateTypeMerge = GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_MERGE")
@@ -1413,10 +1765,14 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentContentCategoryInput)(nil)).Elem(), DocumentContentCategory("CONTENT_CATEGORY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DocumentContentCategoryPtrInput)(nil)).Elem(), DocumentContentCategory("CONTENT_CATEGORY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentRawDocumentFileTypeInput)(nil)).Elem(), DocumentRawDocumentFileType("RAW_DOCUMENT_FILE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentRawDocumentFileTypePtrInput)(nil)).Elem(), DocumentRawDocumentFileType("RAW_DOCUMENT_FILE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1AccessControlActionOperationTypeInput)(nil)).Elem(), GoogleCloudContentwarehouseV1AccessControlActionOperationType("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1AccessControlActionOperationType("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("RETRIEVAL_IMPORTANCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance("RETRIEVAL_IMPORTANCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1RuleTriggerTypeInput)(nil)).Elem(), GoogleCloudContentwarehouseV1RuleTriggerType("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1RuleTriggerTypePtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1RuleTriggerType("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType("LAYOUT_TYPE_UNSPECIFIED"))
@@ -1429,10 +1785,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDocumentaiV1DocumentProvenanceTypePtrInput)(nil)).Elem(), GoogleCloudDocumentaiV1DocumentProvenanceType("OPERATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(DocumentContentCategoryOutput{})
+	pulumi.RegisterOutputType(DocumentContentCategoryPtrOutput{})
 	pulumi.RegisterOutputType(DocumentRawDocumentFileTypeOutput{})
 	pulumi.RegisterOutputType(DocumentRawDocumentFileTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1AccessControlActionOperationTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1AccessControlActionOperationTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportanceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1RuleTriggerTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1RuleTriggerTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypeOutput{})

@@ -67,6 +67,10 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly resourcePolicies!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Status information for Reservation resource.
+     */
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.beta.AllocationResourceStatusResponse>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -75,7 +79,7 @@ export class Reservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Share-settings for shared-reservation
+     * Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
      */
     public readonly shareSettings!: pulumi.Output<outputs.compute.beta.ShareSettingsResponse>;
     /**
@@ -115,6 +119,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
@@ -127,6 +132,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["shareSettings"] = undefined /*out*/;
@@ -164,7 +170,7 @@ export interface ReservationArgs {
      */
     resourcePolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Share-settings for shared-reservation
+     * Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
      */
     shareSettings?: pulumi.Input<inputs.compute.beta.ShareSettingsArgs>;
     /**

@@ -51,6 +51,10 @@ export class Feature extends pulumi.CustomResource {
      */
     public readonly featureId!: pulumi.Output<string | undefined>;
     /**
+     * Optional. Feature configuration applicable to all memberships of the fleet.
+     */
+    public readonly fleetDefaultMemberConfig!: pulumi.Output<outputs.gkehub.v1alpha.CommonFleetDefaultMemberConfigSpecResponse>;
+    /**
      * GCP labels for this Feature.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -109,6 +113,7 @@ export class Feature extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["featureId"] = args ? args.featureId : undefined;
+            resourceInputs["fleetDefaultMemberConfig"] = args ? args.fleetDefaultMemberConfig : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
@@ -128,6 +133,7 @@ export class Feature extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deleteTime"] = undefined /*out*/;
             resourceInputs["featureId"] = undefined /*out*/;
+            resourceInputs["fleetDefaultMemberConfig"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["membershipSpecs"] = undefined /*out*/;
@@ -157,6 +163,10 @@ export interface FeatureArgs {
      * The ID of the feature to create.
      */
     featureId?: pulumi.Input<string>;
+    /**
+     * Optional. Feature configuration applicable to all memberships of the fleet.
+     */
+    fleetDefaultMemberConfig?: pulumi.Input<inputs.gkehub.v1alpha.CommonFleetDefaultMemberConfigSpecArgs>;
     /**
      * GCP labels for this Feature.
      */

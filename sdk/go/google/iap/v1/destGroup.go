@@ -15,9 +15,9 @@ import (
 type DestGroup struct {
 	pulumi.CustomResourceState
 
-	// null List of CIDRs that this group applies to.
+	// Unordered list. List of CIDRs that this group applies to.
 	Cidrs pulumi.StringArrayOutput `pulumi:"cidrs"`
-	// null List of FQDNs that this group applies to.
+	// Unordered list. List of FQDNs that this group applies to.
 	Fqdns    pulumi.StringArrayOutput `pulumi:"fqdns"`
 	Location pulumi.StringOutput      `pulumi:"location"`
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
@@ -75,9 +75,9 @@ func (DestGroupState) ElementType() reflect.Type {
 }
 
 type destGroupArgs struct {
-	// null List of CIDRs that this group applies to.
+	// Unordered list. List of CIDRs that this group applies to.
 	Cidrs []string `pulumi:"cidrs"`
-	// null List of FQDNs that this group applies to.
+	// Unordered list. List of FQDNs that this group applies to.
 	Fqdns    []string `pulumi:"fqdns"`
 	Location *string  `pulumi:"location"`
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
@@ -89,9 +89,9 @@ type destGroupArgs struct {
 
 // The set of arguments for constructing a DestGroup resource.
 type DestGroupArgs struct {
-	// null List of CIDRs that this group applies to.
+	// Unordered list. List of CIDRs that this group applies to.
 	Cidrs pulumi.StringArrayInput
-	// null List of FQDNs that this group applies to.
+	// Unordered list. List of FQDNs that this group applies to.
 	Fqdns    pulumi.StringArrayInput
 	Location pulumi.StringPtrInput
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
@@ -138,12 +138,12 @@ func (o DestGroupOutput) ToDestGroupOutputWithContext(ctx context.Context) DestG
 	return o
 }
 
-// null List of CIDRs that this group applies to.
+// Unordered list. List of CIDRs that this group applies to.
 func (o DestGroupOutput) Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringArrayOutput { return v.Cidrs }).(pulumi.StringArrayOutput)
 }
 
-// null List of FQDNs that this group applies to.
+// Unordered list. List of FQDNs that this group applies to.
 func (o DestGroupOutput) Fqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DestGroup) pulumi.StringArrayOutput { return v.Fqdns }).(pulumi.StringArrayOutput)
 }

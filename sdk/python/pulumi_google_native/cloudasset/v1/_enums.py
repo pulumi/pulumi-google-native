@@ -27,11 +27,11 @@ class FeedContentType(str, Enum):
     """
     ORG_POLICY = "ORG_POLICY"
     """
-    The Cloud Organization Policy set on an asset.
+    The organization policy set on an asset.
     """
     ACCESS_POLICY = "ACCESS_POLICY"
     """
-    The Cloud Access context manager Policy set on an asset.
+    The Access Context Manager policy set on an asset.
     """
     OS_INVENTORY = "OS_INVENTORY"
     """

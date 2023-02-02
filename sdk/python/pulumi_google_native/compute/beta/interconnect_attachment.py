@@ -66,7 +66,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
-        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         pulumi.set(__self__, "region", region)
         if admin_enabled is not None:
@@ -404,7 +404,7 @@ class InterconnectAttachmentArgs:
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> Optional[pulumi.Input[int]]:
         """
-        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         return pulumi.get(self, "vlan_tag8021q")
 
@@ -471,7 +471,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
-        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         ...
     @overload
@@ -939,7 +939,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> pulumi.Output[int]:
         """
-        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         return pulumi.get(self, "vlan_tag8021q")
 

@@ -20,6 +20,8 @@ const (
 	AcceleratorAcceleratorTypeCdc = AcceleratorAcceleratorType("CDC")
 	// Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
 	AcceleratorAcceleratorTypeHealthcare = AcceleratorAcceleratorType("HEALTHCARE")
+	// Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
+	AcceleratorAcceleratorTypeCcaiInsights = AcceleratorAcceleratorType("CCAI_INSIGHTS")
 )
 
 func (AcceleratorAcceleratorType) ElementType() reflect.Type {
@@ -177,6 +179,177 @@ func (in *acceleratorAcceleratorTypePtr) ToAcceleratorAcceleratorTypePtrOutput()
 
 func (in *acceleratorAcceleratorTypePtr) ToAcceleratorAcceleratorTypePtrOutputWithContext(ctx context.Context) AcceleratorAcceleratorTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorAcceleratorTypePtrOutput)
+}
+
+// The state of the accelerator.
+type AcceleratorState string
+
+const (
+	// Default value, do not use.
+	AcceleratorStateStateUnspecified = AcceleratorState("STATE_UNSPECIFIED")
+	// Indicates that the accelerator is enabled and available to use.
+	AcceleratorStateEnabled = AcceleratorState("ENABLED")
+	// Indicates that the accelerator is disabled and not available to use.
+	AcceleratorStateDisabled = AcceleratorState("DISABLED")
+	// Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
+	AcceleratorStateUnknown = AcceleratorState("UNKNOWN")
+)
+
+func (AcceleratorState) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorState)(nil)).Elem()
+}
+
+func (e AcceleratorState) ToAcceleratorStateOutput() AcceleratorStateOutput {
+	return pulumi.ToOutput(e).(AcceleratorStateOutput)
+}
+
+func (e AcceleratorState) ToAcceleratorStateOutputWithContext(ctx context.Context) AcceleratorStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AcceleratorStateOutput)
+}
+
+func (e AcceleratorState) ToAcceleratorStatePtrOutput() AcceleratorStatePtrOutput {
+	return e.ToAcceleratorStatePtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorState) ToAcceleratorStatePtrOutputWithContext(ctx context.Context) AcceleratorStatePtrOutput {
+	return AcceleratorState(e).ToAcceleratorStateOutputWithContext(ctx).ToAcceleratorStatePtrOutputWithContext(ctx)
+}
+
+func (e AcceleratorState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AcceleratorState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AcceleratorState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AcceleratorStateOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorState)(nil)).Elem()
+}
+
+func (o AcceleratorStateOutput) ToAcceleratorStateOutput() AcceleratorStateOutput {
+	return o
+}
+
+func (o AcceleratorStateOutput) ToAcceleratorStateOutputWithContext(ctx context.Context) AcceleratorStateOutput {
+	return o
+}
+
+func (o AcceleratorStateOutput) ToAcceleratorStatePtrOutput() AcceleratorStatePtrOutput {
+	return o.ToAcceleratorStatePtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorStateOutput) ToAcceleratorStatePtrOutputWithContext(ctx context.Context) AcceleratorStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorState) *AcceleratorState {
+		return &v
+	}).(AcceleratorStatePtrOutput)
+}
+
+func (o AcceleratorStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AcceleratorStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AcceleratorStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AcceleratorState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AcceleratorStatePtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorState)(nil)).Elem()
+}
+
+func (o AcceleratorStatePtrOutput) ToAcceleratorStatePtrOutput() AcceleratorStatePtrOutput {
+	return o
+}
+
+func (o AcceleratorStatePtrOutput) ToAcceleratorStatePtrOutputWithContext(ctx context.Context) AcceleratorStatePtrOutput {
+	return o
+}
+
+func (o AcceleratorStatePtrOutput) Elem() AcceleratorStateOutput {
+	return o.ApplyT(func(v *AcceleratorState) AcceleratorState {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorState
+		return ret
+	}).(AcceleratorStateOutput)
+}
+
+func (o AcceleratorStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AcceleratorState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AcceleratorStateInput is an input type that accepts AcceleratorStateArgs and AcceleratorStateOutput values.
+// You can construct a concrete instance of `AcceleratorStateInput` via:
+//
+//	AcceleratorStateArgs{...}
+type AcceleratorStateInput interface {
+	pulumi.Input
+
+	ToAcceleratorStateOutput() AcceleratorStateOutput
+	ToAcceleratorStateOutputWithContext(context.Context) AcceleratorStateOutput
+}
+
+var acceleratorStatePtrType = reflect.TypeOf((**AcceleratorState)(nil)).Elem()
+
+type AcceleratorStatePtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorStatePtrOutput() AcceleratorStatePtrOutput
+	ToAcceleratorStatePtrOutputWithContext(context.Context) AcceleratorStatePtrOutput
+}
+
+type acceleratorStatePtr string
+
+func AcceleratorStatePtr(v string) AcceleratorStatePtrInput {
+	return (*acceleratorStatePtr)(&v)
+}
+
+func (*acceleratorStatePtr) ElementType() reflect.Type {
+	return acceleratorStatePtrType
+}
+
+func (in *acceleratorStatePtr) ToAcceleratorStatePtrOutput() AcceleratorStatePtrOutput {
+	return pulumi.ToOutput(in).(AcceleratorStatePtrOutput)
+}
+
+func (in *acceleratorStatePtr) ToAcceleratorStatePtrOutputWithContext(ctx context.Context) AcceleratorStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorStatePtrOutput)
 }
 
 // The log type that this config enables.
@@ -693,6 +866,8 @@ func (in *versionTypePtr) ToVersionTypePtrOutputWithContext(ctx context.Context)
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorAcceleratorTypeInput)(nil)).Elem(), AcceleratorAcceleratorType("ACCELERATOR_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorAcceleratorTypePtrInput)(nil)).Elem(), AcceleratorAcceleratorType("ACCELERATOR_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorStateInput)(nil)).Elem(), AcceleratorState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorStatePtrInput)(nil)).Elem(), AcceleratorState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceTypeInput)(nil)).Elem(), InstanceType("TYPE_UNSPECIFIED"))
@@ -701,6 +876,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionTypePtrInput)(nil)).Elem(), VersionType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AcceleratorAcceleratorTypeOutput{})
 	pulumi.RegisterOutputType(AcceleratorAcceleratorTypePtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorStateOutput{})
+	pulumi.RegisterOutputType(AcceleratorStatePtrOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(InstanceTypeOutput{})

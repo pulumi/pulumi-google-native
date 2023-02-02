@@ -22,7 +22,7 @@ type GoogleCloudDataplexV1AssetDiscoverySpec struct {
 	IncludePatterns []string `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions *GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -49,7 +49,7 @@ type GoogleCloudDataplexV1AssetDiscoverySpecArgs struct {
 	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrInput `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -160,7 +160,7 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecOutput) JsonOptions() GoogleCloud
 	}).(GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 func (o GoogleCloudDataplexV1AssetDiscoverySpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetDiscoverySpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -239,7 +239,7 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput) JsonOptions() GoogleCl
 	}).(GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 func (o GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1AssetDiscoverySpec) *string {
 		if v == nil {
@@ -697,7 +697,7 @@ type GoogleCloudDataplexV1AssetDiscoverySpecResponse struct {
 	IncludePatterns []string `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponse `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 	Schedule string `pulumi:"schedule"`
 }
 
@@ -745,7 +745,7 @@ func (o GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput) JsonOptions() Goo
 	}).(GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsResponseOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 func (o GoogleCloudDataplexV1AssetDiscoverySpecResponseOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetDiscoverySpecResponse) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -864,6 +864,8 @@ func (o GoogleCloudDataplexV1AssetDiscoveryStatusStatsResponseOutput) Tables() p
 type GoogleCloudDataplexV1AssetResourceSpec struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
 	Name *string `pulumi:"name"`
+	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+	ReadAccessMode *GoogleCloudDataplexV1AssetResourceSpecReadAccessMode `pulumi:"readAccessMode"`
 	// Immutable. Type of resource.
 	Type GoogleCloudDataplexV1AssetResourceSpecType `pulumi:"type"`
 }
@@ -883,6 +885,8 @@ type GoogleCloudDataplexV1AssetResourceSpecInput interface {
 type GoogleCloudDataplexV1AssetResourceSpecArgs struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+	ReadAccessMode GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrInput `pulumi:"readAccessMode"`
 	// Immutable. Type of resource.
 	Type GoogleCloudDataplexV1AssetResourceSpecTypeInput `pulumi:"type"`
 }
@@ -919,6 +923,13 @@ func (o GoogleCloudDataplexV1AssetResourceSpecOutput) Name() pulumi.StringPtrOut
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceSpec) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+func (o GoogleCloudDataplexV1AssetResourceSpecOutput) ReadAccessMode() GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceSpec) *GoogleCloudDataplexV1AssetResourceSpecReadAccessMode {
+		return v.ReadAccessMode
+	}).(GoogleCloudDataplexV1AssetResourceSpecReadAccessModePtrOutput)
+}
+
 // Immutable. Type of resource.
 func (o GoogleCloudDataplexV1AssetResourceSpecOutput) Type() GoogleCloudDataplexV1AssetResourceSpecTypeOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceSpec) GoogleCloudDataplexV1AssetResourceSpecType {
@@ -930,6 +941,8 @@ func (o GoogleCloudDataplexV1AssetResourceSpecOutput) Type() GoogleCloudDataplex
 type GoogleCloudDataplexV1AssetResourceSpecResponse struct {
 	// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
 	Name string `pulumi:"name"`
+	// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+	ReadAccessMode string `pulumi:"readAccessMode"`
 	// Immutable. Type of resource.
 	Type string `pulumi:"type"`
 }
@@ -952,6 +965,11 @@ func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) ToGoogleCloudDatap
 // Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
 func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceSpecResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) ReadAccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceSpecResponse) string { return v.ReadAccessMode }).(pulumi.StringOutput)
 }
 
 // Immutable. Type of resource.
@@ -1413,6 +1431,3413 @@ func (o GoogleCloudDataplexV1ContentSqlScriptResponseOutput) ToGoogleCloudDatapl
 // Query Engine to be used for the Sql Query.
 func (o GoogleCloudDataplexV1ContentSqlScriptResponseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ContentSqlScriptResponse) string { return v.Engine }).(pulumi.StringOutput)
+}
+
+// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+type GoogleCloudDataplexV1DataAccessSpec struct {
+	// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+	Readers []string `pulumi:"readers"`
+}
+
+// GoogleCloudDataplexV1DataAccessSpecInput is an input type that accepts GoogleCloudDataplexV1DataAccessSpecArgs and GoogleCloudDataplexV1DataAccessSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataAccessSpecInput` via:
+//
+//	GoogleCloudDataplexV1DataAccessSpecArgs{...}
+type GoogleCloudDataplexV1DataAccessSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataAccessSpecOutput() GoogleCloudDataplexV1DataAccessSpecOutput
+	ToGoogleCloudDataplexV1DataAccessSpecOutputWithContext(context.Context) GoogleCloudDataplexV1DataAccessSpecOutput
+}
+
+// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+type GoogleCloudDataplexV1DataAccessSpecArgs struct {
+	// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+	Readers pulumi.StringArrayInput `pulumi:"readers"`
+}
+
+func (GoogleCloudDataplexV1DataAccessSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataAccessSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAccessSpecOutput() GoogleCloudDataplexV1DataAccessSpecOutput {
+	return i.ToGoogleCloudDataplexV1DataAccessSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAccessSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAccessSpecOutput)
+}
+
+func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAccessSpecPtrOutput() GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataAccessSpecArgs) ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAccessSpecOutput).ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataAccessSpecPtrInput is an input type that accepts GoogleCloudDataplexV1DataAccessSpecArgs, GoogleCloudDataplexV1DataAccessSpecPtr and GoogleCloudDataplexV1DataAccessSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataAccessSpecPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataAccessSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataAccessSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataAccessSpecPtrOutput() GoogleCloudDataplexV1DataAccessSpecPtrOutput
+	ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataAccessSpecPtrOutput
+}
+
+type googleCloudDataplexV1DataAccessSpecPtrType GoogleCloudDataplexV1DataAccessSpecArgs
+
+func GoogleCloudDataplexV1DataAccessSpecPtr(v *GoogleCloudDataplexV1DataAccessSpecArgs) GoogleCloudDataplexV1DataAccessSpecPtrInput {
+	return (*googleCloudDataplexV1DataAccessSpecPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataAccessSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataAccessSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataAccessSpecPtrType) ToGoogleCloudDataplexV1DataAccessSpecPtrOutput() GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataAccessSpecPtrType) ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAccessSpecPtrOutput)
+}
+
+// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+type GoogleCloudDataplexV1DataAccessSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAccessSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataAccessSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecOutput) ToGoogleCloudDataplexV1DataAccessSpecOutput() GoogleCloudDataplexV1DataAccessSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecOutput) ToGoogleCloudDataplexV1DataAccessSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecOutput) ToGoogleCloudDataplexV1DataAccessSpecPtrOutput() GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecOutput) ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataAccessSpec) *GoogleCloudDataplexV1DataAccessSpec {
+		return &v
+	}).(GoogleCloudDataplexV1DataAccessSpecPtrOutput)
+}
+
+// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+func (o GoogleCloudDataplexV1DataAccessSpecOutput) Readers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataAccessSpec) []string { return v.Readers }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDataplexV1DataAccessSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAccessSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataAccessSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) ToGoogleCloudDataplexV1DataAccessSpecPtrOutput() GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) ToGoogleCloudDataplexV1DataAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) Elem() GoogleCloudDataplexV1DataAccessSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataAccessSpec) GoogleCloudDataplexV1DataAccessSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataAccessSpec
+		return ret
+	}).(GoogleCloudDataplexV1DataAccessSpecOutput)
+}
+
+// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+func (o GoogleCloudDataplexV1DataAccessSpecPtrOutput) Readers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataAccessSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Readers
+	}).(pulumi.StringArrayOutput)
+}
+
+// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+type GoogleCloudDataplexV1DataAccessSpecResponse struct {
+	// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+	Readers []string `pulumi:"readers"`
+}
+
+// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+type GoogleCloudDataplexV1DataAccessSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAccessSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataAccessSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) ToGoogleCloudDataplexV1DataAccessSpecResponseOutput() GoogleCloudDataplexV1DataAccessSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) ToGoogleCloudDataplexV1DataAccessSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAccessSpecResponseOutput {
+	return o
+}
+
+// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources.
+func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) Readers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataAccessSpecResponse) []string { return v.Readers }).(pulumi.StringArrayOutput)
+}
+
+// Represents a subresource of a given resource, and associated bindings with it.
+type GoogleCloudDataplexV1DataAttributeBindingPath struct {
+	// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+	Attributes []string `pulumi:"attributes"`
+	// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+	Name string `pulumi:"name"`
+}
+
+// GoogleCloudDataplexV1DataAttributeBindingPathInput is an input type that accepts GoogleCloudDataplexV1DataAttributeBindingPathArgs and GoogleCloudDataplexV1DataAttributeBindingPathOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataAttributeBindingPathInput` via:
+//
+//	GoogleCloudDataplexV1DataAttributeBindingPathArgs{...}
+type GoogleCloudDataplexV1DataAttributeBindingPathInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataAttributeBindingPathOutput() GoogleCloudDataplexV1DataAttributeBindingPathOutput
+	ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(context.Context) GoogleCloudDataplexV1DataAttributeBindingPathOutput
+}
+
+// Represents a subresource of a given resource, and associated bindings with it.
+type GoogleCloudDataplexV1DataAttributeBindingPathArgs struct {
+	// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
+	// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GoogleCloudDataplexV1DataAttributeBindingPathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataAttributeBindingPath)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataAttributeBindingPathArgs) ToGoogleCloudDataplexV1DataAttributeBindingPathOutput() GoogleCloudDataplexV1DataAttributeBindingPathOutput {
+	return i.ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataAttributeBindingPathArgs) ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAttributeBindingPathOutput)
+}
+
+// GoogleCloudDataplexV1DataAttributeBindingPathArrayInput is an input type that accepts GoogleCloudDataplexV1DataAttributeBindingPathArray and GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataAttributeBindingPathArrayInput` via:
+//
+//	GoogleCloudDataplexV1DataAttributeBindingPathArray{ GoogleCloudDataplexV1DataAttributeBindingPathArgs{...} }
+type GoogleCloudDataplexV1DataAttributeBindingPathArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutput() GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput
+	ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutputWithContext(context.Context) GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput
+}
+
+type GoogleCloudDataplexV1DataAttributeBindingPathArray []GoogleCloudDataplexV1DataAttributeBindingPathInput
+
+func (GoogleCloudDataplexV1DataAttributeBindingPathArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataAttributeBindingPath)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataAttributeBindingPathArray) ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutput() GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput {
+	return i.ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataAttributeBindingPathArray) ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput)
+}
+
+// Represents a subresource of a given resource, and associated bindings with it.
+type GoogleCloudDataplexV1DataAttributeBindingPathOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAttributeBindingPathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataAttributeBindingPath)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathOutput() GoogleCloudDataplexV1DataAttributeBindingPathOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathOutput {
+	return o
+}
+
+// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) Attributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPath) []string { return v.Attributes }).(pulumi.StringArrayOutput)
+}
+
+// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPath) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataAttributeBindingPath)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutput() GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataAttributeBindingPathOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataAttributeBindingPath {
+		return vs[0].([]GoogleCloudDataplexV1DataAttributeBindingPath)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataAttributeBindingPathOutput)
+}
+
+// Represents a subresource of a given resource, and associated bindings with it.
+type GoogleCloudDataplexV1DataAttributeBindingPathResponse struct {
+	// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+	Attributes []string `pulumi:"attributes"`
+	// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+	Name string `pulumi:"name"`
+}
+
+// Represents a subresource of a given resource, and associated bindings with it.
+type GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataAttributeBindingPathResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathResponseOutput() GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput {
+	return o
+}
+
+// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) Attributes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPathResponse) []string { return v.Attributes }).(pulumi.StringArrayOutput)
+}
+
+// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPathResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataAttributeBindingPathResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput() GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) ToGoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataAttributeBindingPathResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataAttributeBindingPathResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput)
+}
+
+// The profile information for a double type field.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse struct {
+	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+	Average float64 `pulumi:"average"`
+	// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Max float64 `pulumi:"max"`
+	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Min float64 `pulumi:"min"`
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	Quartiles []float64 `pulumi:"quartiles"`
+	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+	StandardDeviation float64 `pulumi:"standardDeviation"`
+}
+
+// The profile information for a double type field.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput {
+	return o
+}
+
+// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) Average() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse) float64 {
+		return v.Average
+	}).(pulumi.Float64Output)
+}
+
+// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) Max() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse) float64 {
+		return v.Max
+	}).(pulumi.Float64Output)
+}
+
+// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) Min() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse) float64 {
+		return v.Min
+	}).(pulumi.Float64Output)
+}
+
+// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) Quartiles() pulumi.Float64ArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse) []float64 {
+		return v.Quartiles
+	}).(pulumi.Float64ArrayOutput)
+}
+
+// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput) StandardDeviation() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse) float64 {
+		return v.StandardDeviation
+	}).(pulumi.Float64Output)
+}
+
+// The profile information for an integer type field.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse struct {
+	// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+	Average float64 `pulumi:"average"`
+	// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Max string `pulumi:"max"`
+	// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+	Min string `pulumi:"min"`
+	// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+	Quartiles []string `pulumi:"quartiles"`
+	// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+	StandardDeviation float64 `pulumi:"standardDeviation"`
+}
+
+// The profile information for an integer type field.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput {
+	return o
+}
+
+// Average of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) Average() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) float64 {
+		return v.Average
+	}).(pulumi.Float64Output)
+}
+
+// Maximum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) Max() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) string {
+		return v.Max
+	}).(pulumi.StringOutput)
+}
+
+// Minimum of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) Min() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) string {
+		return v.Min
+	}).(pulumi.StringOutput)
+}
+
+// A quartile divides the number of data points into four parts, or quarters, of more-or-less equal size. Three main quartiles used are: The first quartile (Q1) splits off the lowest 25% of data from the highest 75%. It is also known as the lower or 25th empirical quartile, as 25% of the data is below this point. The second quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of quartile values for the scanned data, occurring in order Q1, median, Q3.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) Quartiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) []string {
+		return v.Quartiles
+	}).(pulumi.StringArrayOutput)
+}
+
+// Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput) StandardDeviation() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse) float64 {
+		return v.StandardDeviation
+	}).(pulumi.Float64Output)
+}
+
+// The profile information for each field type.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse struct {
+	// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	DistinctRatio float64 `pulumi:"distinctRatio"`
+	// Double type field information.
+	DoubleProfile GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse `pulumi:"doubleProfile"`
+	// Integer type field information.
+	IntegerProfile GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse `pulumi:"integerProfile"`
+	// Ratio of rows with null value against total scanned rows.
+	NullRatio float64 `pulumi:"nullRatio"`
+	// String type field information.
+	StringProfile GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse `pulumi:"stringProfile"`
+	// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+	TopNValues []GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse `pulumi:"topNValues"`
+}
+
+// The profile information for each field type.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput {
+	return o
+}
+
+// Ratio of rows with distinct values against total scanned rows. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) DistinctRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) float64 {
+		return v.DistinctRatio
+	}).(pulumi.Float64Output)
+}
+
+// Double type field information.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) DoubleProfile() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponse {
+		return v.DoubleProfile
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput)
+}
+
+// Integer type field information.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) IntegerProfile() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponse {
+		return v.IntegerProfile
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput)
+}
+
+// Ratio of rows with null value against total scanned rows.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) NullRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) float64 {
+		return v.NullRatio
+	}).(pulumi.Float64Output)
+}
+
+// String type field information.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) StringProfile() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse {
+		return v.StringProfile
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput)
+}
+
+// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable field type RECORD and fields with REPEATABLE mode.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput) TopNValues() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse) []GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse {
+		return v.TopNValues
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput)
+}
+
+// The profile information for a string type field.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse struct {
+	// Average length of non-null values in the scanned data.
+	AverageLength float64 `pulumi:"averageLength"`
+	// Maximum length of non-null values in the scanned data.
+	MaxLength string `pulumi:"maxLength"`
+	// Minimum length of non-null values in the scanned data.
+	MinLength string `pulumi:"minLength"`
+}
+
+// The profile information for a string type field.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput {
+	return o
+}
+
+// Average length of non-null values in the scanned data.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) AverageLength() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse) float64 {
+		return v.AverageLength
+	}).(pulumi.Float64Output)
+}
+
+// Maximum length of non-null values in the scanned data.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) MaxLength() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse) string {
+		return v.MaxLength
+	}).(pulumi.StringOutput)
+}
+
+// Minimum length of non-null values in the scanned data.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput) MinLength() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse) string {
+		return v.MinLength
+	}).(pulumi.StringOutput)
+}
+
+// Top N non-null values in the scanned data.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse struct {
+	// Count of the corresponding value in the scanned data.
+	Count string `pulumi:"count"`
+	// String value of a top N non-null value.
+	Value string `pulumi:"value"`
+}
+
+// Top N non-null values in the scanned data.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput {
+	return o
+}
+
+// Count of the corresponding value in the scanned data.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) Count() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse) string {
+		return v.Count
+	}).(pulumi.StringOutput)
+}
+
+// String value of a top N non-null value.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput)
+}
+
+// A field within a table.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldResponse struct {
+	// The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated field.
+	Mode string `pulumi:"mode"`
+	// The name of the field.
+	Name string `pulumi:"name"`
+	// Profile information for the corresponding field.
+	Profile GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse `pulumi:"profile"`
+	// The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+	Type string `pulumi:"type"`
+}
+
+// A field within a table.
+type GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileFieldResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput {
+	return o
+}
+
+// The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated field.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The name of the field.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Profile information for the corresponding field.
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) Profile() GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldResponse) GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse {
+		return v.Profile
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput)
+}
+
+// The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataProfileResultProfileFieldResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput() GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) ToGoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataProfileResultProfileFieldResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataProfileResultProfileFieldResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput)
+}
+
+// Contains name, type, mode and field type specific profile information.
+type GoogleCloudDataplexV1DataProfileResultProfileResponse struct {
+	// List of fields with structural and profile information for each field.
+	Fields []GoogleCloudDataplexV1DataProfileResultProfileFieldResponse `pulumi:"fields"`
+}
+
+// Contains name, type, mode and field type specific profile information.
+type GoogleCloudDataplexV1DataProfileResultProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultProfileResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileResponseOutput() GoogleCloudDataplexV1DataProfileResultProfileResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) ToGoogleCloudDataplexV1DataProfileResultProfileResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultProfileResponseOutput {
+	return o
+}
+
+// List of fields with structural and profile information for each field.
+func (o GoogleCloudDataplexV1DataProfileResultProfileResponseOutput) Fields() GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileResponse) []GoogleCloudDataplexV1DataProfileResultProfileFieldResponse {
+		return v.Fields
+	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput)
+}
+
+// DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result.
+type GoogleCloudDataplexV1DataProfileResultResponse struct {
+	// The profile information per field.
+	Profile GoogleCloudDataplexV1DataProfileResultProfileResponse `pulumi:"profile"`
+	// The count of rows scanned.
+	RowCount string `pulumi:"rowCount"`
+	// The data scanned for this result.
+	ScannedData GoogleCloudDataplexV1ScannedDataResponse `pulumi:"scannedData"`
+}
+
+// DataProfileResult defines the output of DataProfileScan. Each field of the table will have field type specific profile result.
+type GoogleCloudDataplexV1DataProfileResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultResponseOutput() GoogleCloudDataplexV1DataProfileResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ToGoogleCloudDataplexV1DataProfileResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileResultResponseOutput {
+	return o
+}
+
+// The profile information per field.
+func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) Profile() GoogleCloudDataplexV1DataProfileResultProfileResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultResponse) GoogleCloudDataplexV1DataProfileResultProfileResponse {
+		return v.Profile
+	}).(GoogleCloudDataplexV1DataProfileResultProfileResponseOutput)
+}
+
+// The count of rows scanned.
+func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) RowCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultResponse) string { return v.RowCount }).(pulumi.StringOutput)
+}
+
+// The data scanned for this result.
+func (o GoogleCloudDataplexV1DataProfileResultResponseOutput) ScannedData() GoogleCloudDataplexV1ScannedDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultResponse) GoogleCloudDataplexV1ScannedDataResponse {
+		return v.ScannedData
+	}).(GoogleCloudDataplexV1ScannedDataResponseOutput)
+}
+
+// DataProfileScan related setting.
+type GoogleCloudDataplexV1DataProfileSpec struct {
+}
+
+// GoogleCloudDataplexV1DataProfileSpecInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecArgs and GoogleCloudDataplexV1DataProfileSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecInput` via:
+//
+//	GoogleCloudDataplexV1DataProfileSpecArgs{...}
+type GoogleCloudDataplexV1DataProfileSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecOutput() GoogleCloudDataplexV1DataProfileSpecOutput
+	ToGoogleCloudDataplexV1DataProfileSpecOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecOutput
+}
+
+// DataProfileScan related setting.
+type GoogleCloudDataplexV1DataProfileSpecArgs struct {
+}
+
+func (GoogleCloudDataplexV1DataProfileSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToGoogleCloudDataplexV1DataProfileSpecOutput() GoogleCloudDataplexV1DataProfileSpecOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToGoogleCloudDataplexV1DataProfileSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecOutput)
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToGoogleCloudDataplexV1DataProfileSpecPtrOutput() GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataProfileSpecArgs) ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecOutput).ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataProfileSpecPtrInput is an input type that accepts GoogleCloudDataplexV1DataProfileSpecArgs, GoogleCloudDataplexV1DataProfileSpecPtr and GoogleCloudDataplexV1DataProfileSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataProfileSpecPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataProfileSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataProfileSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataProfileSpecPtrOutput() GoogleCloudDataplexV1DataProfileSpecPtrOutput
+	ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataProfileSpecPtrOutput
+}
+
+type googleCloudDataplexV1DataProfileSpecPtrType GoogleCloudDataplexV1DataProfileSpecArgs
+
+func GoogleCloudDataplexV1DataProfileSpecPtr(v *GoogleCloudDataplexV1DataProfileSpecArgs) GoogleCloudDataplexV1DataProfileSpecPtrInput {
+	return (*googleCloudDataplexV1DataProfileSpecPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataProfileSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPtrType) ToGoogleCloudDataplexV1DataProfileSpecPtrOutput() GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataProfileSpecPtrType) ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataProfileSpecPtrOutput)
+}
+
+// DataProfileScan related setting.
+type GoogleCloudDataplexV1DataProfileSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataProfileSpecOutput() GoogleCloudDataplexV1DataProfileSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataProfileSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataProfileSpecPtrOutput() GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecOutput) ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataProfileSpec) *GoogleCloudDataplexV1DataProfileSpec {
+		return &v
+	}).(GoogleCloudDataplexV1DataProfileSpecPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataProfileSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataProfileSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPtrOutput() GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) ToGoogleCloudDataplexV1DataProfileSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecPtrOutput) Elem() GoogleCloudDataplexV1DataProfileSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataProfileSpec) GoogleCloudDataplexV1DataProfileSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataProfileSpec
+		return ret
+	}).(GoogleCloudDataplexV1DataProfileSpecOutput)
+}
+
+// DataProfileScan related setting.
+type GoogleCloudDataplexV1DataProfileSpecResponse struct {
+}
+
+// DataProfileScan related setting.
+type GoogleCloudDataplexV1DataProfileSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataProfileSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecResponseOutput() GoogleCloudDataplexV1DataProfileSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataProfileSpecResponseOutput) ToGoogleCloudDataplexV1DataProfileSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataProfileSpecResponseOutput {
+	return o
+}
+
+// DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
+type GoogleCloudDataplexV1DataQualityDimensionResultResponse struct {
+	// Whether the dimension passed or failed.
+	Passed bool `pulumi:"passed"`
+}
+
+// DataQualityDimensionResult provides a more detailed, per-dimension view of the results.
+type GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityDimensionResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ToGoogleCloudDataplexV1DataQualityDimensionResultResponseOutput() GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) ToGoogleCloudDataplexV1DataQualityDimensionResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput {
+	return o
+}
+
+// Whether the dimension passed or failed.
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput) Passed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityDimensionResultResponse) bool { return v.Passed }).(pulumi.BoolOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataQualityDimensionResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput() GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityDimensionResultResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataQualityDimensionResultResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput)
+}
+
+// The output of a DataQualityScan.
+type GoogleCloudDataplexV1DataQualityResultResponse struct {
+	// A list of results at the dimension level.
+	Dimensions []GoogleCloudDataplexV1DataQualityDimensionResultResponse `pulumi:"dimensions"`
+	// Overall data quality result -- true if all rules passed.
+	Passed bool `pulumi:"passed"`
+	// The count of rows processed.
+	RowCount string `pulumi:"rowCount"`
+	// A list of all the rules in a job, and their results.
+	Rules []GoogleCloudDataplexV1DataQualityRuleResultResponse `pulumi:"rules"`
+	// The data scanned for this result.
+	ScannedData GoogleCloudDataplexV1ScannedDataResponse `pulumi:"scannedData"`
+}
+
+// The output of a DataQualityScan.
+type GoogleCloudDataplexV1DataQualityResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultResponseOutput() GoogleCloudDataplexV1DataQualityResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ToGoogleCloudDataplexV1DataQualityResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityResultResponseOutput {
+	return o
+}
+
+// A list of results at the dimension level.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Dimensions() GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) []GoogleCloudDataplexV1DataQualityDimensionResultResponse {
+		return v.Dimensions
+	}).(GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput)
+}
+
+// Overall data quality result -- true if all rules passed.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Passed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) bool { return v.Passed }).(pulumi.BoolOutput)
+}
+
+// The count of rows processed.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) RowCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) string { return v.RowCount }).(pulumi.StringOutput)
+}
+
+// A list of all the rules in a job, and their results.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) Rules() GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) []GoogleCloudDataplexV1DataQualityRuleResultResponse {
+		return v.Rules
+	}).(GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput)
+}
+
+// The data scanned for this result.
+func (o GoogleCloudDataplexV1DataQualityResultResponseOutput) ScannedData() GoogleCloudDataplexV1ScannedDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityResultResponse) GoogleCloudDataplexV1ScannedDataResponse {
+		return v.ScannedData
+	}).(GoogleCloudDataplexV1ScannedDataResponseOutput)
+}
+
+// A rule captures data quality intent about a data source.
+type GoogleCloudDataplexV1DataQualityRule struct {
+	// Optional. The unnested column which this rule is evaluated against.
+	Column *string `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+	Dimension string `pulumi:"dimension"`
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+	IgnoreNull *bool `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectation *GoogleCloudDataplexV1DataQualityRuleNonNullExpectation `pulumi:"nonNullExpectation"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	RangeExpectation *GoogleCloudDataplexV1DataQualityRuleRangeExpectation `pulumi:"rangeExpectation"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	RegexExpectation *GoogleCloudDataplexV1DataQualityRuleRegexExpectation `pulumi:"regexExpectation"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	RowConditionExpectation *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation `pulumi:"rowConditionExpectation"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	SetExpectation *GoogleCloudDataplexV1DataQualityRuleSetExpectation `pulumi:"setExpectation"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	StatisticRangeExpectation *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation `pulumi:"statisticRangeExpectation"`
+	// Table rule which evaluates whether the provided expression is true.
+	TableConditionExpectation *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation `pulumi:"tableConditionExpectation"`
+	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+	Threshold *float64 `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectation *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation `pulumi:"uniquenessExpectation"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleArgs and GoogleCloudDataplexV1DataQualityRuleOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleOutput() GoogleCloudDataplexV1DataQualityRuleOutput
+	ToGoogleCloudDataplexV1DataQualityRuleOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleOutput
+}
+
+// A rule captures data quality intent about a data source.
+type GoogleCloudDataplexV1DataQualityRuleArgs struct {
+	// Optional. The unnested column which this rule is evaluated against.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+	Dimension pulumi.StringInput `pulumi:"dimension"`
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+	IgnoreNull pulumi.BoolPtrInput `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectation GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput `pulumi:"nonNullExpectation"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	RangeExpectation GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput `pulumi:"rangeExpectation"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	RegexExpectation GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput `pulumi:"regexExpectation"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	RowConditionExpectation GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput `pulumi:"rowConditionExpectation"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	SetExpectation GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput `pulumi:"setExpectation"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	StatisticRangeExpectation GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput `pulumi:"statisticRangeExpectation"`
+	// Table rule which evaluates whether the provided expression is true.
+	TableConditionExpectation GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput `pulumi:"tableConditionExpectation"`
+	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+	Threshold pulumi.Float64PtrInput `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectation GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput `pulumi:"uniquenessExpectation"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRule)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleArgs) ToGoogleCloudDataplexV1DataQualityRuleOutput() GoogleCloudDataplexV1DataQualityRuleOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleArgs) ToGoogleCloudDataplexV1DataQualityRuleOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleOutput)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleArrayInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleArray and GoogleCloudDataplexV1DataQualityRuleArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleArrayInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleArray{ GoogleCloudDataplexV1DataQualityRuleArgs{...} }
+type GoogleCloudDataplexV1DataQualityRuleArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleArrayOutput() GoogleCloudDataplexV1DataQualityRuleArrayOutput
+	ToGoogleCloudDataplexV1DataQualityRuleArrayOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleArrayOutput
+}
+
+type GoogleCloudDataplexV1DataQualityRuleArray []GoogleCloudDataplexV1DataQualityRuleInput
+
+func (GoogleCloudDataplexV1DataQualityRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataQualityRule)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleArray) ToGoogleCloudDataplexV1DataQualityRuleArrayOutput() GoogleCloudDataplexV1DataQualityRuleArrayOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleArray) ToGoogleCloudDataplexV1DataQualityRuleArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
+}
+
+// A rule captures data quality intent about a data source.
+type GoogleCloudDataplexV1DataQualityRuleOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRule)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) ToGoogleCloudDataplexV1DataQualityRuleOutput() GoogleCloudDataplexV1DataQualityRuleOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) ToGoogleCloudDataplexV1DataQualityRuleOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleOutput {
+	return o
+}
+
+// Optional. The unnested column which this rule is evaluated against.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) Dimension() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) string { return v.Dimension }).(pulumi.StringOutput)
+}
+
+// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) IgnoreNull() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *bool { return v.IgnoreNull }).(pulumi.BoolPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is null.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) NonNullExpectation() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleNonNullExpectation {
+		return v.NonNullExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value lies between a specified range.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) RangeExpectation() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
+		return v.RangeExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value matches a specified regex.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) RegexExpectation() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
+		return v.RegexExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput)
+}
+
+// Table rule which evaluates whether each row passes the specified condition.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) RowConditionExpectation() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
+		return v.RowConditionExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) SetExpectation() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleSetExpectation {
+		return v.SetExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) StatisticRangeExpectation() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
+		return v.StatisticRangeExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput)
+}
+
+// Table rule which evaluates whether the provided expression is true.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) TableConditionExpectation() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
+		return v.TableConditionExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput)
+}
+
+// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) Threshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *float64 { return v.Threshold }).(pulumi.Float64PtrOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column has duplicates.
+func (o GoogleCloudDataplexV1DataQualityRuleOutput) UniquenessExpectation() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRule) *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation {
+		return v.UniquenessExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataQualityRule)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleArrayOutput) ToGoogleCloudDataplexV1DataQualityRuleArrayOutput() GoogleCloudDataplexV1DataQualityRuleArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleArrayOutput) ToGoogleCloudDataplexV1DataQualityRuleArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityRule {
+		return vs[0].([]GoogleCloudDataplexV1DataQualityRule)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataQualityRuleOutput)
+}
+
+// Evaluates whether each column value is null.
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectation struct {
+}
+
+// GoogleCloudDataplexV1DataQualityRuleNonNullExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs and GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleNonNullExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput
+}
+
+// Evaluates whether each column value is null.
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs struct {
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs, GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtr and GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleNonNullExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput)
+}
+
+// Evaluates whether each column value is null.
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleNonNullExpectation) *GoogleCloudDataplexV1DataQualityRuleNonNullExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleNonNullExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleNonNullExpectation) GoogleCloudDataplexV1DataQualityRuleNonNullExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleNonNullExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput)
+}
+
+// Evaluates whether each column value is null.
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse struct {
+}
+
+// Evaluates whether each column value is null.
+type GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput {
+	return o
+}
+
+// Evaluates whether each column value lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectation struct {
+	// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+	MaxValue *string `pulumi:"maxValue"`
+	// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+	MinValue *string `pulumi:"minValue"`
+	// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
+	// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleRangeExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs and GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleRangeExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput
+}
+
+// Evaluates whether each column value lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs struct {
+	// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+	MinValue pulumi.StringPtrInput `pulumi:"minValue"`
+	// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
+	// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs, GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtr and GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleRangeExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleRangeExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput)
+}
+
+// Evaluates whether each column value lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput)
+}
+
+// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleRangeExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRangeExpectation) GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleRangeExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput)
+}
+
+// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMaxEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMinEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Evaluates whether each column value lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse struct {
+	// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+	MaxValue string `pulumi:"maxValue"`
+	// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+	MinValue string `pulumi:"minValue"`
+	// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	StrictMaxEnabled bool `pulumi:"strictMaxEnabled"`
+	// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	StrictMinEnabled bool `pulumi:"strictMinEnabled"`
+}
+
+// Evaluates whether each column value lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput {
+	return o
+}
+
+// Optional. The maximum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) MaxValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse) string { return v.MaxValue }).(pulumi.StringOutput)
+}
+
+// Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) MinValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse) string { return v.MinValue }).(pulumi.StringOutput)
+}
+
+// Optional. Whether each value needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) StrictMaxEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse) bool { return v.StrictMaxEnabled }).(pulumi.BoolOutput)
+}
+
+// Optional. Whether each value needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput) StrictMinEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse) bool { return v.StrictMinEnabled }).(pulumi.BoolOutput)
+}
+
+// Evaluates whether each column value matches a specified regex.
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectation struct {
+	// A regular expression the column value is expected to match.
+	Regex *string `pulumi:"regex"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleRegexExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs and GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleRegexExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput
+}
+
+// Evaluates whether each column value matches a specified regex.
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs struct {
+	// A regular expression the column value is expected to match.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs, GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtr and GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleRegexExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleRegexExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput)
+}
+
+// Evaluates whether each column value matches a specified regex.
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleRegexExpectation) *GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput)
+}
+
+// A regular expression the column value is expected to match.
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRegexExpectation) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleRegexExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRegexExpectation) GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleRegexExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput)
+}
+
+// A regular expression the column value is expected to match.
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRegexExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Regex
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluates whether each column value matches a specified regex.
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse struct {
+	// A regular expression the column value is expected to match.
+	Regex string `pulumi:"regex"`
+}
+
+// Evaluates whether each column value matches a specified regex.
+type GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput {
+	return o
+}
+
+// A regular expression the column value is expected to match.
+func (o GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput) Regex() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse) string { return v.Regex }).(pulumi.StringOutput)
+}
+
+// A rule captures data quality intent about a data source.
+type GoogleCloudDataplexV1DataQualityRuleResponse struct {
+	// Optional. The unnested column which this rule is evaluated against.
+	Column string `pulumi:"column"`
+	// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+	Dimension string `pulumi:"dimension"`
+	// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+	IgnoreNull bool `pulumi:"ignoreNull"`
+	// ColumnMap rule which evaluates whether each column value is null.
+	NonNullExpectation GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse `pulumi:"nonNullExpectation"`
+	// ColumnMap rule which evaluates whether each column value lies between a specified range.
+	RangeExpectation GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse `pulumi:"rangeExpectation"`
+	// ColumnMap rule which evaluates whether each column value matches a specified regex.
+	RegexExpectation GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse `pulumi:"regexExpectation"`
+	// Table rule which evaluates whether each row passes the specified condition.
+	RowConditionExpectation GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse `pulumi:"rowConditionExpectation"`
+	// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+	SetExpectation GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse `pulumi:"setExpectation"`
+	// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+	StatisticRangeExpectation GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse `pulumi:"statisticRangeExpectation"`
+	// Table rule which evaluates whether the provided expression is true.
+	TableConditionExpectation GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse `pulumi:"tableConditionExpectation"`
+	// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+	Threshold float64 `pulumi:"threshold"`
+	// ColumnAggregate rule which evaluates whether the column has duplicates.
+	UniquenessExpectation GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse `pulumi:"uniquenessExpectation"`
+}
+
+// A rule captures data quality intent about a data source.
+type GoogleCloudDataplexV1DataQualityRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResponseOutput() GoogleCloudDataplexV1DataQualityRuleResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResponseOutput {
+	return o
+}
+
+// Optional. The unnested column which this rule is evaluated against.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Dimension() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) string { return v.Dimension }).(pulumi.StringOutput)
+}
+
+// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) IgnoreNull() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) bool { return v.IgnoreNull }).(pulumi.BoolOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is null.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) NonNullExpectation() GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponse {
+		return v.NonNullExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value lies between a specified range.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) RangeExpectation() GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponse {
+		return v.RangeExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value matches a specified regex.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) RegexExpectation() GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponse {
+		return v.RegexExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput)
+}
+
+// Table rule which evaluates whether each row passes the specified condition.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) RowConditionExpectation() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse {
+		return v.RowConditionExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput)
+}
+
+// ColumnMap rule which evaluates whether each column value is contained by a specified set.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) SetExpectation() GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse {
+		return v.SetExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput)
+}
+
+// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) StatisticRangeExpectation() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse {
+		return v.StatisticRangeExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput)
+}
+
+// Table rule which evaluates whether the provided expression is true.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) TableConditionExpectation() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse {
+		return v.TableConditionExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput)
+}
+
+// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0, 1.0.0 indicates default value (i.e. 1.0).
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) Threshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
+}
+
+// ColumnAggregate rule which evaluates whether the column has duplicates.
+func (o GoogleCloudDataplexV1DataQualityRuleResponseOutput) UniquenessExpectation() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResponse) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse {
+		return v.UniquenessExpectation
+	}).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataQualityRuleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityRuleResponseArrayOutput() GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityRuleResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityRuleResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataQualityRuleResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataQualityRuleResponseOutput)
+}
+
+// DataQualityRuleResult provides a more detailed, per-rule view of the results.
+type GoogleCloudDataplexV1DataQualityRuleResultResponse struct {
+	// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+	EvaluatedCount string `pulumi:"evaluatedCount"`
+	// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+	FailingRowsQuery string `pulumi:"failingRowsQuery"`
+	// The number of rows with null values in the specified column.
+	NullCount string `pulumi:"nullCount"`
+	// The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+	PassRatio float64 `pulumi:"passRatio"`
+	// Whether the rule passed or failed.
+	Passed bool `pulumi:"passed"`
+	// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+	PassedCount string `pulumi:"passedCount"`
+	// The rule specified in the DataQualitySpec, as is.
+	Rule GoogleCloudDataplexV1DataQualityRuleResponse `pulumi:"rule"`
+}
+
+// DataQualityRuleResult provides a more detailed, per-rule view of the results.
+type GoogleCloudDataplexV1DataQualityRuleResultResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResultResponseOutput() GoogleCloudDataplexV1DataQualityRuleResultResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleResultResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResultResponseOutput {
+	return o
+}
+
+// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated count can be configured to either include all rows (default) - with null rows automatically failing rule evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) EvaluatedCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.EvaluatedCount }).(pulumi.StringOutput)
+}
+
+// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) FailingRowsQuery() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.FailingRowsQuery }).(pulumi.StringOutput)
+}
+
+// The number of rows with null values in the specified column.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) NullCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.NullCount }).(pulumi.StringOutput)
+}
+
+// The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) PassRatio() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) float64 { return v.PassRatio }).(pulumi.Float64Output)
+}
+
+// Whether the rule passed or failed.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) Passed() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) bool { return v.Passed }).(pulumi.BoolOutput)
+}
+
+// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) PassedCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) string { return v.PassedCount }).(pulumi.StringOutput)
+}
+
+// The rule specified in the DataQualitySpec, as is.
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseOutput) Rule() GoogleCloudDataplexV1DataQualityRuleResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleResultResponse) GoogleCloudDataplexV1DataQualityRuleResponse {
+		return v.Rule
+	}).(GoogleCloudDataplexV1DataQualityRuleResponseOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDataplexV1DataQualityRuleResultResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput() GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) ToGoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDataplexV1DataQualityRuleResultResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDataplexV1DataQualityRuleResultResponse {
+		return vs[0].([]GoogleCloudDataplexV1DataQualityRuleResultResponse)[vs[1].(int)]
+	}).(GoogleCloudDataplexV1DataQualityRuleResultResponseOutput)
+}
+
+// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression *string `pulumi:"sqlExpression"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs and GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput
+}
+
+// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringPtrInput `pulumi:"sqlExpression"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs, GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtr and GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput)
+}
+
+// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput)
+}
+
+// The SQL expression.
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput)
+}
+
+// The SQL expression.
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse struct {
+	// The SQL expression.
+	SqlExpression string `pulumi:"sqlExpression"`
+}
+
+// Evaluates whether each row passes the specified condition.The SQL expression needs to use BigQuery standard SQL syntax and should produce a boolean value per row as the result.Example: col1 >= 0 AND col2 < 10
+type GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput {
+	return o
+}
+
+// The SQL expression.
+func (o GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput) SqlExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponse) string {
+		return v.SqlExpression
+	}).(pulumi.StringOutput)
+}
+
+// Evaluates whether each column value is contained by a specified set.
+type GoogleCloudDataplexV1DataQualityRuleSetExpectation struct {
+	// Expected values for the column value.
+	Values []string `pulumi:"values"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleSetExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs and GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleSetExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput
+}
+
+// Evaluates whether each column value is contained by a specified set.
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs struct {
+	// Expected values for the column value.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs, GoogleCloudDataplexV1DataQualityRuleSetExpectationPtr and GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleSetExpectationPtrType GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleSetExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleSetExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleSetExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleSetExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleSetExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleSetExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
+}
+
+// Evaluates whether each column value is contained by a specified set.
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleSetExpectation) *GoogleCloudDataplexV1DataQualityRuleSetExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput)
+}
+
+// Expected values for the column value.
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSetExpectation) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleSetExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleSetExpectation) GoogleCloudDataplexV1DataQualityRuleSetExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleSetExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput)
+}
+
+// Expected values for the column value.
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleSetExpectation) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Values
+	}).(pulumi.StringArrayOutput)
+}
+
+// Evaluates whether each column value is contained by a specified set.
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse struct {
+	// Expected values for the column value.
+	Values []string `pulumi:"values"`
+}
+
+// Evaluates whether each column value is contained by a specified set.
+type GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput {
+	return o
+}
+
+// Expected values for the column value.
+func (o GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleSetExpectationResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+// Evaluates whether the column aggregate statistic lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation struct {
+	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	MaxValue *string `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	MinValue  *string                                                                 `pulumi:"minValue"`
+	Statistic *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	StrictMaxEnabled *bool `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	StrictMinEnabled *bool `pulumi:"strictMinEnabled"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs and GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput
+}
+
+// Evaluates whether the column aggregate statistic lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs struct {
+	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	MaxValue pulumi.StringPtrInput `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	MinValue  pulumi.StringPtrInput                                                          `pulumi:"minValue"`
+	Statistic GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrInput `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	StrictMaxEnabled pulumi.BoolPtrInput `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	StrictMinEnabled pulumi.BoolPtrInput `pulumi:"strictMinEnabled"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs, GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtr and GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput)
+}
+
+// Evaluates whether the column aggregate statistic lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput)
+}
+
+// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string { return v.MaxValue }).(pulumi.StringPtrOutput)
+}
+
+// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string { return v.MinValue }).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) Statistic() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
+		return v.Statistic
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
+}
+
+// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool { return v.StrictMaxEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool { return v.StrictMinEnabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput)
+}
+
+// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) MaxValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxValue
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) MinValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinValue
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) Statistic() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic {
+		if v == nil {
+			return nil
+		}
+		return v.Statistic
+	}).(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatisticPtrOutput)
+}
+
+// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) StrictMaxEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMaxEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput) StrictMinEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StrictMinEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Evaluates whether the column aggregate statistic lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse struct {
+	// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	MaxValue string `pulumi:"maxValue"`
+	// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+	MinValue  string `pulumi:"minValue"`
+	Statistic string `pulumi:"statistic"`
+	// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+	StrictMaxEnabled bool `pulumi:"strictMaxEnabled"`
+	// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+	StrictMinEnabled bool `pulumi:"strictMinEnabled"`
+}
+
+// Evaluates whether the column aggregate statistic lies between a specified range.
+type GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput {
+	return o
+}
+
+// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) MaxValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
+		return v.MaxValue
+	}).(pulumi.StringOutput)
+}
+
+// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and max_value need to be provided.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) MinValue() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
+		return v.MinValue
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) Statistic() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) string {
+		return v.Statistic
+	}).(pulumi.StringOutput)
+}
+
+// Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) StrictMaxEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) bool {
+		return v.StrictMaxEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Whether column statistic needs to be strictly greater than ('>') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
+func (o GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput) StrictMinEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponse) bool {
+		return v.StrictMinEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation struct {
+	// The SQL expression.
+	SqlExpression *string `pulumi:"sqlExpression"`
+}
+
+// GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs and GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput
+}
+
+// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs struct {
+	// The SQL expression.
+	SqlExpression pulumi.StringPtrInput `pulumi:"sqlExpression"`
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs, GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtr and GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput)
+}
+
+// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput)
+}
+
+// The SQL expression.
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) *string { return v.SqlExpression }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput)
+}
+
+// The SQL expression.
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput) SqlExpression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SqlExpression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse struct {
+	// The SQL expression.
+	SqlExpression string `pulumi:"sqlExpression"`
+}
+
+// Evaluates whether the provided expression is true.The SQL expression needs to use BigQuery standard SQL syntax and should produce a scalar boolean result.Example: MIN(col1) >= 0
+type GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput {
+	return o
+}
+
+// The SQL expression.
+func (o GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput) SqlExpression() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponse) string {
+		return v.SqlExpression
+	}).(pulumi.StringOutput)
+}
+
+// Evaluates whether the column has duplicates.
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation struct {
+}
+
+// GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs and GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationInput` via:
+//
+//	GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs{...}
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput
+	ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput
+}
+
+// Evaluates whether the column has duplicates.
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs struct {
+}
+
+func (GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput).ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs, GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtr and GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput
+	ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput
+}
+
+type googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs
+
+func GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtr(v *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput {
+	return (*googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrType) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput)
+}
+
+// Evaluates whether the column has duplicates.
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation) *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput) Elem() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation
+		return ret
+	}).(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput)
+}
+
+// Evaluates whether the column has duplicates.
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse struct {
+}
+
+// Evaluates whether the column has duplicates.
+type GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput() GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput) ToGoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput {
+	return o
+}
+
+// DataQualityScan related setting.
+type GoogleCloudDataplexV1DataQualitySpec struct {
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	Rules []GoogleCloudDataplexV1DataQualityRule `pulumi:"rules"`
+}
+
+// GoogleCloudDataplexV1DataQualitySpecInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecArgs and GoogleCloudDataplexV1DataQualitySpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecInput` via:
+//
+//	GoogleCloudDataplexV1DataQualitySpecArgs{...}
+type GoogleCloudDataplexV1DataQualitySpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecOutput() GoogleCloudDataplexV1DataQualitySpecOutput
+	ToGoogleCloudDataplexV1DataQualitySpecOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecOutput
+}
+
+// DataQualityScan related setting.
+type GoogleCloudDataplexV1DataQualitySpecArgs struct {
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	Rules GoogleCloudDataplexV1DataQualityRuleArrayInput `pulumi:"rules"`
+}
+
+func (GoogleCloudDataplexV1DataQualitySpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToGoogleCloudDataplexV1DataQualitySpecOutput() GoogleCloudDataplexV1DataQualitySpecOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToGoogleCloudDataplexV1DataQualitySpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecOutput)
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToGoogleCloudDataplexV1DataQualitySpecPtrOutput() GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataQualitySpecArgs) ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecOutput).ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataQualitySpecPtrInput is an input type that accepts GoogleCloudDataplexV1DataQualitySpecArgs, GoogleCloudDataplexV1DataQualitySpecPtr and GoogleCloudDataplexV1DataQualitySpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataQualitySpecPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataQualitySpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataQualitySpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataQualitySpecPtrOutput() GoogleCloudDataplexV1DataQualitySpecPtrOutput
+	ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataQualitySpecPtrOutput
+}
+
+type googleCloudDataplexV1DataQualitySpecPtrType GoogleCloudDataplexV1DataQualitySpecArgs
+
+func GoogleCloudDataplexV1DataQualitySpecPtr(v *GoogleCloudDataplexV1DataQualitySpecArgs) GoogleCloudDataplexV1DataQualitySpecPtrInput {
+	return (*googleCloudDataplexV1DataQualitySpecPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataQualitySpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpec)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPtrType) ToGoogleCloudDataplexV1DataQualitySpecPtrOutput() GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataQualitySpecPtrType) ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataQualitySpecPtrOutput)
+}
+
+// DataQualityScan related setting.
+type GoogleCloudDataplexV1DataQualitySpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToGoogleCloudDataplexV1DataQualitySpecOutput() GoogleCloudDataplexV1DataQualitySpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToGoogleCloudDataplexV1DataQualitySpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToGoogleCloudDataplexV1DataQualitySpecPtrOutput() GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataQualitySpec) *GoogleCloudDataplexV1DataQualitySpec {
+		return &v
+	}).(GoogleCloudDataplexV1DataQualitySpecPtrOutput)
+}
+
+// The list of rules to evaluate against a data source. At least one rule is required.
+func (o GoogleCloudDataplexV1DataQualitySpecOutput) Rules() GoogleCloudDataplexV1DataQualityRuleArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpec) []GoogleCloudDataplexV1DataQualityRule { return v.Rules }).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
+}
+
+type GoogleCloudDataplexV1DataQualitySpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataQualitySpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPtrOutput() GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) ToGoogleCloudDataplexV1DataQualitySpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Elem() GoogleCloudDataplexV1DataQualitySpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) GoogleCloudDataplexV1DataQualitySpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataQualitySpec
+		return ret
+	}).(GoogleCloudDataplexV1DataQualitySpecOutput)
+}
+
+// The list of rules to evaluate against a data source. At least one rule is required.
+func (o GoogleCloudDataplexV1DataQualitySpecPtrOutput) Rules() GoogleCloudDataplexV1DataQualityRuleArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataQualitySpec) []GoogleCloudDataplexV1DataQualityRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(GoogleCloudDataplexV1DataQualityRuleArrayOutput)
+}
+
+// DataQualityScan related setting.
+type GoogleCloudDataplexV1DataQualitySpecResponse struct {
+	// The list of rules to evaluate against a data source. At least one rule is required.
+	Rules []GoogleCloudDataplexV1DataQualityRuleResponse `pulumi:"rules"`
+}
+
+// DataQualityScan related setting.
+type GoogleCloudDataplexV1DataQualitySpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataQualitySpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecResponseOutput() GoogleCloudDataplexV1DataQualitySpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) ToGoogleCloudDataplexV1DataQualitySpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataQualitySpecResponseOutput {
+	return o
+}
+
+// The list of rules to evaluate against a data source. At least one rule is required.
+func (o GoogleCloudDataplexV1DataQualitySpecResponseOutput) Rules() GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataQualitySpecResponse) []GoogleCloudDataplexV1DataQualityRuleResponse {
+		return v.Rules
+	}).(GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput)
+}
+
+// DataScan execution settings.
+type GoogleCloudDataplexV1DataScanExecutionSpec struct {
+	// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+	Field *string `pulumi:"field"`
+	// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+	Trigger *GoogleCloudDataplexV1Trigger `pulumi:"trigger"`
+}
+
+// GoogleCloudDataplexV1DataScanExecutionSpecInput is an input type that accepts GoogleCloudDataplexV1DataScanExecutionSpecArgs and GoogleCloudDataplexV1DataScanExecutionSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataScanExecutionSpecInput` via:
+//
+//	GoogleCloudDataplexV1DataScanExecutionSpecArgs{...}
+type GoogleCloudDataplexV1DataScanExecutionSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataScanExecutionSpecOutput() GoogleCloudDataplexV1DataScanExecutionSpecOutput
+	ToGoogleCloudDataplexV1DataScanExecutionSpecOutputWithContext(context.Context) GoogleCloudDataplexV1DataScanExecutionSpecOutput
+}
+
+// DataScan execution settings.
+type GoogleCloudDataplexV1DataScanExecutionSpecArgs struct {
+	// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+	Field pulumi.StringPtrInput `pulumi:"field"`
+	// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+	Trigger GoogleCloudDataplexV1TriggerPtrInput `pulumi:"trigger"`
+}
+
+func (GoogleCloudDataplexV1DataScanExecutionSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToGoogleCloudDataplexV1DataScanExecutionSpecOutput() GoogleCloudDataplexV1DataScanExecutionSpecOutput {
+	return i.ToGoogleCloudDataplexV1DataScanExecutionSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToGoogleCloudDataplexV1DataScanExecutionSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataScanExecutionSpecOutput)
+}
+
+func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutput() GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataScanExecutionSpecArgs) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataScanExecutionSpecOutput).ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1DataScanExecutionSpecPtrInput is an input type that accepts GoogleCloudDataplexV1DataScanExecutionSpecArgs, GoogleCloudDataplexV1DataScanExecutionSpecPtr and GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataScanExecutionSpecPtrInput` via:
+//
+//	        GoogleCloudDataplexV1DataScanExecutionSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1DataScanExecutionSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutput() GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput
+	ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(context.Context) GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput
+}
+
+type googleCloudDataplexV1DataScanExecutionSpecPtrType GoogleCloudDataplexV1DataScanExecutionSpecArgs
+
+func GoogleCloudDataplexV1DataScanExecutionSpecPtr(v *GoogleCloudDataplexV1DataScanExecutionSpecArgs) GoogleCloudDataplexV1DataScanExecutionSpecPtrInput {
+	return (*googleCloudDataplexV1DataScanExecutionSpecPtrType)(v)
+}
+
+func (*googleCloudDataplexV1DataScanExecutionSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataScanExecutionSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1DataScanExecutionSpecPtrType) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutput() GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1DataScanExecutionSpecPtrType) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput)
+}
+
+// DataScan execution settings.
+type GoogleCloudDataplexV1DataScanExecutionSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataScanExecutionSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecOutput() GoogleCloudDataplexV1DataScanExecutionSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutput() GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return o.ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1DataScanExecutionSpec) *GoogleCloudDataplexV1DataScanExecutionSpec {
+		return &v
+	}).(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput)
+}
+
+// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionSpec) *string { return v.Field }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+func (o GoogleCloudDataplexV1DataScanExecutionSpecOutput) Trigger() GoogleCloudDataplexV1TriggerPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionSpec) *GoogleCloudDataplexV1Trigger { return v.Trigger }).(GoogleCloudDataplexV1TriggerPtrOutput)
+}
+
+type GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1DataScanExecutionSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutput() GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) Elem() GoogleCloudDataplexV1DataScanExecutionSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataScanExecutionSpec) GoogleCloudDataplexV1DataScanExecutionSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1DataScanExecutionSpec
+		return ret
+	}).(GoogleCloudDataplexV1DataScanExecutionSpecOutput)
+}
+
+// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) Field() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataScanExecutionSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Field
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+func (o GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput) Trigger() GoogleCloudDataplexV1TriggerPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1DataScanExecutionSpec) *GoogleCloudDataplexV1Trigger {
+		if v == nil {
+			return nil
+		}
+		return v.Trigger
+	}).(GoogleCloudDataplexV1TriggerPtrOutput)
+}
+
+// DataScan execution settings.
+type GoogleCloudDataplexV1DataScanExecutionSpecResponse struct {
+	// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+	Field string `pulumi:"field"`
+	// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+	Trigger GoogleCloudDataplexV1TriggerResponse `pulumi:"trigger"`
+}
+
+// DataScan execution settings.
+type GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecResponseOutput() GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) ToGoogleCloudDataplexV1DataScanExecutionSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput {
+	return o
+}
+
+// Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
+func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionSpecResponse) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
+func (o GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput) Trigger() GoogleCloudDataplexV1TriggerResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionSpecResponse) GoogleCloudDataplexV1TriggerResponse {
+		return v.Trigger
+	}).(GoogleCloudDataplexV1TriggerResponseOutput)
+}
+
+// Status of the data scan execution.
+type GoogleCloudDataplexV1DataScanExecutionStatusResponse struct {
+	// The time when the latest DataScanJob ended.
+	LatestJobEndTime string `pulumi:"latestJobEndTime"`
+	// The time when the latest DataScanJob started.
+	LatestJobStartTime string `pulumi:"latestJobStartTime"`
+}
+
+// Status of the data scan execution.
+type GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionStatusResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) ToGoogleCloudDataplexV1DataScanExecutionStatusResponseOutput() GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) ToGoogleCloudDataplexV1DataScanExecutionStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput {
+	return o
+}
+
+// The time when the latest DataScanJob ended.
+func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) LatestJobEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionStatusResponse) string { return v.LatestJobEndTime }).(pulumi.StringOutput)
+}
+
+// The time when the latest DataScanJob started.
+func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) LatestJobStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataScanExecutionStatusResponse) string { return v.LatestJobStartTime }).(pulumi.StringOutput)
+}
+
+// The data source for DataScan.
+type GoogleCloudDataplexV1DataSource struct {
+	// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+	Entity *string `pulumi:"entity"`
+}
+
+// GoogleCloudDataplexV1DataSourceInput is an input type that accepts GoogleCloudDataplexV1DataSourceArgs and GoogleCloudDataplexV1DataSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1DataSourceInput` via:
+//
+//	GoogleCloudDataplexV1DataSourceArgs{...}
+type GoogleCloudDataplexV1DataSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1DataSourceOutput() GoogleCloudDataplexV1DataSourceOutput
+	ToGoogleCloudDataplexV1DataSourceOutputWithContext(context.Context) GoogleCloudDataplexV1DataSourceOutput
+}
+
+// The data source for DataScan.
+type GoogleCloudDataplexV1DataSourceArgs struct {
+	// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+	Entity pulumi.StringPtrInput `pulumi:"entity"`
+}
+
+func (GoogleCloudDataplexV1DataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataSource)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1DataSourceArgs) ToGoogleCloudDataplexV1DataSourceOutput() GoogleCloudDataplexV1DataSourceOutput {
+	return i.ToGoogleCloudDataplexV1DataSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1DataSourceArgs) ToGoogleCloudDataplexV1DataSourceOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataSourceOutput)
+}
+
+// The data source for DataScan.
+type GoogleCloudDataplexV1DataSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataSource)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataSourceOutput) ToGoogleCloudDataplexV1DataSourceOutput() GoogleCloudDataplexV1DataSourceOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataSourceOutput) ToGoogleCloudDataplexV1DataSourceOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataSourceOutput {
+	return o
+}
+
+// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+func (o GoogleCloudDataplexV1DataSourceOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataSource) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+// The data source for DataScan.
+type GoogleCloudDataplexV1DataSourceResponse struct {
+	// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+	Entity string `pulumi:"entity"`
+}
+
+// The data source for DataScan.
+type GoogleCloudDataplexV1DataSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1DataSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1DataSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1DataSourceResponseOutput) ToGoogleCloudDataplexV1DataSourceResponseOutput() GoogleCloudDataplexV1DataSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1DataSourceResponseOutput) ToGoogleCloudDataplexV1DataSourceResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1DataSourceResponseOutput {
+	return o
+}
+
+// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
+func (o GoogleCloudDataplexV1DataSourceResponseOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataSourceResponse) string { return v.Entity }).(pulumi.StringOutput)
 }
 
 // Provides compatibility information for a specific metadata store.
@@ -2494,6 +5919,292 @@ func (o GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput) UpdateTime() pul
 	return o.ApplyT(func(v GoogleCloudDataplexV1LakeMetastoreStatusResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
+// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
+type GoogleCloudDataplexV1ResourceAccessSpec struct {
+	// Optional. The set of principals to be granted owner role on the resource.
+	Owners []string `pulumi:"owners"`
+	// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+	Readers []string `pulumi:"readers"`
+	// Optional. The set of principals to be granted writer role on the resource.
+	Writers []string `pulumi:"writers"`
+}
+
+// GoogleCloudDataplexV1ResourceAccessSpecInput is an input type that accepts GoogleCloudDataplexV1ResourceAccessSpecArgs and GoogleCloudDataplexV1ResourceAccessSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1ResourceAccessSpecInput` via:
+//
+//	GoogleCloudDataplexV1ResourceAccessSpecArgs{...}
+type GoogleCloudDataplexV1ResourceAccessSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1ResourceAccessSpecOutput() GoogleCloudDataplexV1ResourceAccessSpecOutput
+	ToGoogleCloudDataplexV1ResourceAccessSpecOutputWithContext(context.Context) GoogleCloudDataplexV1ResourceAccessSpecOutput
+}
+
+// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
+type GoogleCloudDataplexV1ResourceAccessSpecArgs struct {
+	// Optional. The set of principals to be granted owner role on the resource.
+	Owners pulumi.StringArrayInput `pulumi:"owners"`
+	// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+	Readers pulumi.StringArrayInput `pulumi:"readers"`
+	// Optional. The set of principals to be granted writer role on the resource.
+	Writers pulumi.StringArrayInput `pulumi:"writers"`
+}
+
+func (GoogleCloudDataplexV1ResourceAccessSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1ResourceAccessSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToGoogleCloudDataplexV1ResourceAccessSpecOutput() GoogleCloudDataplexV1ResourceAccessSpecOutput {
+	return i.ToGoogleCloudDataplexV1ResourceAccessSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToGoogleCloudDataplexV1ResourceAccessSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ResourceAccessSpecOutput)
+}
+
+func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutput() GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1ResourceAccessSpecArgs) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ResourceAccessSpecOutput).ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1ResourceAccessSpecPtrInput is an input type that accepts GoogleCloudDataplexV1ResourceAccessSpecArgs, GoogleCloudDataplexV1ResourceAccessSpecPtr and GoogleCloudDataplexV1ResourceAccessSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1ResourceAccessSpecPtrInput` via:
+//
+//	        GoogleCloudDataplexV1ResourceAccessSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1ResourceAccessSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutput() GoogleCloudDataplexV1ResourceAccessSpecPtrOutput
+	ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(context.Context) GoogleCloudDataplexV1ResourceAccessSpecPtrOutput
+}
+
+type googleCloudDataplexV1ResourceAccessSpecPtrType GoogleCloudDataplexV1ResourceAccessSpecArgs
+
+func GoogleCloudDataplexV1ResourceAccessSpecPtr(v *GoogleCloudDataplexV1ResourceAccessSpecArgs) GoogleCloudDataplexV1ResourceAccessSpecPtrInput {
+	return (*googleCloudDataplexV1ResourceAccessSpecPtrType)(v)
+}
+
+func (*googleCloudDataplexV1ResourceAccessSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1ResourceAccessSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1ResourceAccessSpecPtrType) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutput() GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return i.ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1ResourceAccessSpecPtrType) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1ResourceAccessSpecPtrOutput)
+}
+
+// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
+type GoogleCloudDataplexV1ResourceAccessSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1ResourceAccessSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1ResourceAccessSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) ToGoogleCloudDataplexV1ResourceAccessSpecOutput() GoogleCloudDataplexV1ResourceAccessSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) ToGoogleCloudDataplexV1ResourceAccessSpecOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutput() GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return o.ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1ResourceAccessSpec) *GoogleCloudDataplexV1ResourceAccessSpec {
+		return &v
+	}).(GoogleCloudDataplexV1ResourceAccessSpecPtrOutput)
+}
+
+// Optional. The set of principals to be granted owner role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpec) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) Readers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpec) []string { return v.Readers }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The set of principals to be granted writer role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecOutput) Writers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpec) []string { return v.Writers }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudDataplexV1ResourceAccessSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1ResourceAccessSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutput() GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) ToGoogleCloudDataplexV1ResourceAccessSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) Elem() GoogleCloudDataplexV1ResourceAccessSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1ResourceAccessSpec) GoogleCloudDataplexV1ResourceAccessSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1ResourceAccessSpec
+		return ret
+	}).(GoogleCloudDataplexV1ResourceAccessSpecOutput)
+}
+
+// Optional. The set of principals to be granted owner role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1ResourceAccessSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Owners
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) Readers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1ResourceAccessSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Readers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The set of principals to be granted writer role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecPtrOutput) Writers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1ResourceAccessSpec) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Writers
+	}).(pulumi.StringArrayOutput)
+}
+
+// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
+type GoogleCloudDataplexV1ResourceAccessSpecResponse struct {
+	// Optional. The set of principals to be granted owner role on the resource.
+	Owners []string `pulumi:"owners"`
+	// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+	Readers []string `pulumi:"readers"`
+	// Optional. The set of principals to be granted writer role on the resource.
+	Writers []string `pulumi:"writers"`
+}
+
+// ResourceAccessSpec holds the access control configuration to be enforced on the resources, for example, Cloud Storage bucket, BigQuery dataset, BigQuery table.
+type GoogleCloudDataplexV1ResourceAccessSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1ResourceAccessSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) ToGoogleCloudDataplexV1ResourceAccessSpecResponseOutput() GoogleCloudDataplexV1ResourceAccessSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) ToGoogleCloudDataplexV1ResourceAccessSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ResourceAccessSpecResponseOutput {
+	return o
+}
+
+// Optional. The set of principals to be granted owner role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpecResponse) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) Readers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpecResponse) []string { return v.Readers }).(pulumi.StringArrayOutput)
+}
+
+// Optional. The set of principals to be granted writer role on the resource.
+func (o GoogleCloudDataplexV1ResourceAccessSpecResponseOutput) Writers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ResourceAccessSpecResponse) []string { return v.Writers }).(pulumi.StringArrayOutput)
+}
+
+// A data range denoted by a pair of start/end values of a field.
+type GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse struct {
+	// Value that marks the end of the range.
+	End string `pulumi:"end"`
+	// The field that contains values which monotonically increases over time (e.g. a timestamp column).
+	Field string `pulumi:"field"`
+	// Value that marks the start of the range.
+	Start string `pulumi:"start"`
+}
+
+// A data range denoted by a pair of start/end values of a field.
+type GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) ToGoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput() GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) ToGoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput {
+	return o
+}
+
+// Value that marks the end of the range.
+func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse) string { return v.End }).(pulumi.StringOutput)
+}
+
+// The field that contains values which monotonically increases over time (e.g. a timestamp column).
+func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) Field() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse) string { return v.Field }).(pulumi.StringOutput)
+}
+
+// Value that marks the start of the range.
+func (o GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse) string { return v.Start }).(pulumi.StringOutput)
+}
+
+// The data scanned during processing (e.g. in incremental DataScan)
+type GoogleCloudDataplexV1ScannedDataResponse struct {
+	// The range denoted by values of an incremental field
+	IncrementalField GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse `pulumi:"incrementalField"`
+}
+
+// The data scanned during processing (e.g. in incremental DataScan)
+type GoogleCloudDataplexV1ScannedDataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1ScannedDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1ScannedDataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1ScannedDataResponseOutput) ToGoogleCloudDataplexV1ScannedDataResponseOutput() GoogleCloudDataplexV1ScannedDataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1ScannedDataResponseOutput) ToGoogleCloudDataplexV1ScannedDataResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1ScannedDataResponseOutput {
+	return o
+}
+
+// The range denoted by values of an incremental field
+func (o GoogleCloudDataplexV1ScannedDataResponseOutput) IncrementalField() GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1ScannedDataResponse) GoogleCloudDataplexV1ScannedDataIncrementalFieldResponse {
+		return v.IncrementalField
+	}).(GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput)
+}
+
 // Schema information describing the structure and layout of the data.
 type GoogleCloudDataplexV1Schema struct {
 	// Optional. The sequence of fields describing data in table entities. Note: BigQuery SchemaFields are immutable.
@@ -3013,15 +6724,43 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldResponseArrayOutput) Index(i pulum
 	}).(GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput)
 }
 
+// Describes the access mechanism of the data within its storage location.
+type GoogleCloudDataplexV1StorageAccessResponse struct {
+	// Describes the read access mechanism of the data. Not user settable.
+	Read string `pulumi:"read"`
+}
+
+// Describes the access mechanism of the data within its storage location.
+type GoogleCloudDataplexV1StorageAccessResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1StorageAccessResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1StorageAccessResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1StorageAccessResponseOutput) ToGoogleCloudDataplexV1StorageAccessResponseOutput() GoogleCloudDataplexV1StorageAccessResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1StorageAccessResponseOutput) ToGoogleCloudDataplexV1StorageAccessResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageAccessResponseOutput {
+	return o
+}
+
+// Describes the read access mechanism of the data. Not user settable.
+func (o GoogleCloudDataplexV1StorageAccessResponseOutput) Read() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1StorageAccessResponse) string { return v.Read }).(pulumi.StringOutput)
+}
+
 // Describes the format of the data within its storage location.
 type GoogleCloudDataplexV1StorageFormat struct {
 	// Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
 	CompressionFormat *GoogleCloudDataplexV1StorageFormatCompressionFormat `pulumi:"compressionFormat"`
 	// Optional. Additional information about CSV formatted data.
 	Csv *GoogleCloudDataplexV1StorageFormatCsvOptions `pulumi:"csv"`
+	// Optional. Additional information about iceberg tables.
+	Iceberg *GoogleCloudDataplexV1StorageFormatIcebergOptions `pulumi:"iceberg"`
 	// Optional. Additional information about CSV formatted data.
 	Json *GoogleCloudDataplexV1StorageFormatJsonOptions `pulumi:"json"`
-	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 	MimeType string `pulumi:"mimeType"`
 }
 
@@ -3042,9 +6781,11 @@ type GoogleCloudDataplexV1StorageFormatArgs struct {
 	CompressionFormat GoogleCloudDataplexV1StorageFormatCompressionFormatPtrInput `pulumi:"compressionFormat"`
 	// Optional. Additional information about CSV formatted data.
 	Csv GoogleCloudDataplexV1StorageFormatCsvOptionsPtrInput `pulumi:"csv"`
+	// Optional. Additional information about iceberg tables.
+	Iceberg GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrInput `pulumi:"iceberg"`
 	// Optional. Additional information about CSV formatted data.
 	Json GoogleCloudDataplexV1StorageFormatJsonOptionsPtrInput `pulumi:"json"`
-	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 	MimeType pulumi.StringInput `pulumi:"mimeType"`
 }
 
@@ -3087,6 +6828,13 @@ func (o GoogleCloudDataplexV1StorageFormatOutput) Csv() GoogleCloudDataplexV1Sto
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormat) *GoogleCloudDataplexV1StorageFormatCsvOptions { return v.Csv }).(GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput)
 }
 
+// Optional. Additional information about iceberg tables.
+func (o GoogleCloudDataplexV1StorageFormatOutput) Iceberg() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormat) *GoogleCloudDataplexV1StorageFormatIcebergOptions {
+		return v.Iceberg
+	}).(GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput)
+}
+
 // Optional. Additional information about CSV formatted data.
 func (o GoogleCloudDataplexV1StorageFormatOutput) Json() GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormat) *GoogleCloudDataplexV1StorageFormatJsonOptions {
@@ -3094,7 +6842,7 @@ func (o GoogleCloudDataplexV1StorageFormatOutput) Json() GoogleCloudDataplexV1St
 	}).(GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput)
 }
 
-// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 func (o GoogleCloudDataplexV1StorageFormatOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormat) string { return v.MimeType }).(pulumi.StringOutput)
 }
@@ -3343,6 +7091,172 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) Quote() pulu
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptionsResponse) string { return v.Quote }).(pulumi.StringOutput)
 }
 
+// Describes Iceberg data format.
+type GoogleCloudDataplexV1StorageFormatIcebergOptions struct {
+	// Optional. The location of where the iceberg metadata is present, must be within the table path
+	MetadataLocation *string `pulumi:"metadataLocation"`
+}
+
+// GoogleCloudDataplexV1StorageFormatIcebergOptionsInput is an input type that accepts GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs and GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatIcebergOptionsInput` via:
+//
+//	GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs{...}
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput
+	ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutputWithContext(context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput
+}
+
+// Describes Iceberg data format.
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs struct {
+	// Optional. The location of where the iceberg metadata is present, must be within the table path
+	MetadataLocation pulumi.StringPtrInput `pulumi:"metadataLocation"`
+}
+
+func (GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatIcebergOptions)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput {
+	return i.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput)
+}
+
+func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return i.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput).ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs, GoogleCloudDataplexV1StorageFormatIcebergOptionsPtr and GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrInput` via:
+//
+//	        GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput
+	ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput
+}
+
+type googleCloudDataplexV1StorageFormatIcebergOptionsPtrType GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs
+
+func GoogleCloudDataplexV1StorageFormatIcebergOptionsPtr(v *GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrInput {
+	return (*googleCloudDataplexV1StorageFormatIcebergOptionsPtrType)(v)
+}
+
+func (*googleCloudDataplexV1StorageFormatIcebergOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1StorageFormatIcebergOptions)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1StorageFormatIcebergOptionsPtrType) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return i.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1StorageFormatIcebergOptionsPtrType) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput)
+}
+
+// Describes Iceberg data format.
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatIcebergOptions)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return o.ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1StorageFormatIcebergOptions) *GoogleCloudDataplexV1StorageFormatIcebergOptions {
+		return &v
+	}).(GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput)
+}
+
+// Optional. The location of where the iceberg metadata is present, must be within the table path
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput) MetadataLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatIcebergOptions) *string { return v.MetadataLocation }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1StorageFormatIcebergOptions)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) Elem() GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1StorageFormatIcebergOptions) GoogleCloudDataplexV1StorageFormatIcebergOptions {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1StorageFormatIcebergOptions
+		return ret
+	}).(GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput)
+}
+
+// Optional. The location of where the iceberg metadata is present, must be within the table path
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput) MetadataLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1StorageFormatIcebergOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetadataLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes Iceberg data format.
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse struct {
+	// Optional. The location of where the iceberg metadata is present, must be within the table path
+	MetadataLocation string `pulumi:"metadataLocation"`
+}
+
+// Describes Iceberg data format.
+type GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput() GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) ToGoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput {
+	return o
+}
+
+// Optional. The location of where the iceberg metadata is present, must be within the table path
+func (o GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput) MetadataLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse) string { return v.MetadataLocation }).(pulumi.StringOutput)
+}
+
 // Describes JSON data format.
 type GoogleCloudDataplexV1StorageFormatJsonOptions struct {
 	// Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified.
@@ -3517,9 +7431,11 @@ type GoogleCloudDataplexV1StorageFormatResponse struct {
 	Csv GoogleCloudDataplexV1StorageFormatCsvOptionsResponse `pulumi:"csv"`
 	// The data format associated with the stored data, which represents content type values. The value is inferred from mime type.
 	Format string `pulumi:"format"`
+	// Optional. Additional information about iceberg tables.
+	Iceberg GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse `pulumi:"iceberg"`
 	// Optional. Additional information about CSV formatted data.
 	Json GoogleCloudDataplexV1StorageFormatJsonOptionsResponse `pulumi:"json"`
-	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+	// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 	MimeType string `pulumi:"mimeType"`
 }
 
@@ -3555,6 +7471,13 @@ func (o GoogleCloudDataplexV1StorageFormatResponseOutput) Format() pulumi.String
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatResponse) string { return v.Format }).(pulumi.StringOutput)
 }
 
+// Optional. Additional information about iceberg tables.
+func (o GoogleCloudDataplexV1StorageFormatResponseOutput) Iceberg() GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatResponse) GoogleCloudDataplexV1StorageFormatIcebergOptionsResponse {
+		return v.Iceberg
+	}).(GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput)
+}
+
 // Optional. Additional information about CSV formatted data.
 func (o GoogleCloudDataplexV1StorageFormatResponseOutput) Json() GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatResponse) GoogleCloudDataplexV1StorageFormatJsonOptionsResponse {
@@ -3562,7 +7485,7 @@ func (o GoogleCloudDataplexV1StorageFormatResponseOutput) Json() GoogleCloudData
 	}).(GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput)
 }
 
-// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
 func (o GoogleCloudDataplexV1StorageFormatResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
@@ -5255,7 +9178,7 @@ type GoogleCloudDataplexV1TaskTriggerSpec struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Optional. Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
 	MaxRetries *int `pulumi:"maxRetries"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 	Schedule *string `pulumi:"schedule"`
 	// Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
 	StartTime *string `pulumi:"startTime"`
@@ -5280,7 +9203,7 @@ type GoogleCloudDataplexV1TaskTriggerSpecArgs struct {
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Optional. Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 	// Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
@@ -5325,7 +9248,7 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecOutput) MaxRetries() pulumi.IntPtrOu
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskTriggerSpec) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 func (o GoogleCloudDataplexV1TaskTriggerSpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskTriggerSpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -5346,7 +9269,7 @@ type GoogleCloudDataplexV1TaskTriggerSpecResponse struct {
 	Disabled bool `pulumi:"disabled"`
 	// Optional. Number of retry attempts before aborting. Set to zero to never attempt to retry a failed task.
 	MaxRetries int `pulumi:"maxRetries"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 	Schedule string `pulumi:"schedule"`
 	// Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
 	StartTime string `pulumi:"startTime"`
@@ -5379,7 +9302,7 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecResponseOutput) MaxRetries() pulumi.
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskTriggerSpecResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *". This field is required for RECURRING tasks.
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
 func (o GoogleCloudDataplexV1TaskTriggerSpecResponseOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskTriggerSpecResponse) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -5394,6 +9317,508 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecResponseOutput) Type() pulumi.String
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskTriggerSpecResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// DataScan scheduling and trigger settings.
+type GoogleCloudDataplexV1Trigger struct {
+	// The scan runs once via RunDataScan API.
+	OnDemand *GoogleCloudDataplexV1TriggerOnDemand `pulumi:"onDemand"`
+	// The scan is scheduled to run periodically.
+	Schedule *GoogleCloudDataplexV1TriggerSchedule `pulumi:"schedule"`
+}
+
+// GoogleCloudDataplexV1TriggerInput is an input type that accepts GoogleCloudDataplexV1TriggerArgs and GoogleCloudDataplexV1TriggerOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TriggerInput` via:
+//
+//	GoogleCloudDataplexV1TriggerArgs{...}
+type GoogleCloudDataplexV1TriggerInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TriggerOutput() GoogleCloudDataplexV1TriggerOutput
+	ToGoogleCloudDataplexV1TriggerOutputWithContext(context.Context) GoogleCloudDataplexV1TriggerOutput
+}
+
+// DataScan scheduling and trigger settings.
+type GoogleCloudDataplexV1TriggerArgs struct {
+	// The scan runs once via RunDataScan API.
+	OnDemand GoogleCloudDataplexV1TriggerOnDemandPtrInput `pulumi:"onDemand"`
+	// The scan is scheduled to run periodically.
+	Schedule GoogleCloudDataplexV1TriggerSchedulePtrInput `pulumi:"schedule"`
+}
+
+func (GoogleCloudDataplexV1TriggerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1Trigger)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1TriggerArgs) ToGoogleCloudDataplexV1TriggerOutput() GoogleCloudDataplexV1TriggerOutput {
+	return i.ToGoogleCloudDataplexV1TriggerOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TriggerArgs) ToGoogleCloudDataplexV1TriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOutput)
+}
+
+func (i GoogleCloudDataplexV1TriggerArgs) ToGoogleCloudDataplexV1TriggerPtrOutput() GoogleCloudDataplexV1TriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TriggerArgs) ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOutput).ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1TriggerPtrInput is an input type that accepts GoogleCloudDataplexV1TriggerArgs, GoogleCloudDataplexV1TriggerPtr and GoogleCloudDataplexV1TriggerPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TriggerPtrInput` via:
+//
+//	        GoogleCloudDataplexV1TriggerArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1TriggerPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TriggerPtrOutput() GoogleCloudDataplexV1TriggerPtrOutput
+	ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(context.Context) GoogleCloudDataplexV1TriggerPtrOutput
+}
+
+type googleCloudDataplexV1TriggerPtrType GoogleCloudDataplexV1TriggerArgs
+
+func GoogleCloudDataplexV1TriggerPtr(v *GoogleCloudDataplexV1TriggerArgs) GoogleCloudDataplexV1TriggerPtrInput {
+	return (*googleCloudDataplexV1TriggerPtrType)(v)
+}
+
+func (*googleCloudDataplexV1TriggerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1Trigger)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1TriggerPtrType) ToGoogleCloudDataplexV1TriggerPtrOutput() GoogleCloudDataplexV1TriggerPtrOutput {
+	return i.ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1TriggerPtrType) ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerPtrOutput)
+}
+
+// DataScan scheduling and trigger settings.
+type GoogleCloudDataplexV1TriggerOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1Trigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerOutput) ToGoogleCloudDataplexV1TriggerOutput() GoogleCloudDataplexV1TriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOutput) ToGoogleCloudDataplexV1TriggerOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOutput) ToGoogleCloudDataplexV1TriggerPtrOutput() GoogleCloudDataplexV1TriggerPtrOutput {
+	return o.ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1TriggerOutput) ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1Trigger) *GoogleCloudDataplexV1Trigger {
+		return &v
+	}).(GoogleCloudDataplexV1TriggerPtrOutput)
+}
+
+// The scan runs once via RunDataScan API.
+func (o GoogleCloudDataplexV1TriggerOutput) OnDemand() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1Trigger) *GoogleCloudDataplexV1TriggerOnDemand { return v.OnDemand }).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
+}
+
+// The scan is scheduled to run periodically.
+func (o GoogleCloudDataplexV1TriggerOutput) Schedule() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1Trigger) *GoogleCloudDataplexV1TriggerSchedule { return v.Schedule }).(GoogleCloudDataplexV1TriggerSchedulePtrOutput)
+}
+
+type GoogleCloudDataplexV1TriggerPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1Trigger)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerPtrOutput) ToGoogleCloudDataplexV1TriggerPtrOutput() GoogleCloudDataplexV1TriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerPtrOutput) ToGoogleCloudDataplexV1TriggerPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerPtrOutput) Elem() GoogleCloudDataplexV1TriggerOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1Trigger) GoogleCloudDataplexV1Trigger {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1Trigger
+		return ret
+	}).(GoogleCloudDataplexV1TriggerOutput)
+}
+
+// The scan runs once via RunDataScan API.
+func (o GoogleCloudDataplexV1TriggerPtrOutput) OnDemand() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1Trigger) *GoogleCloudDataplexV1TriggerOnDemand {
+		if v == nil {
+			return nil
+		}
+		return v.OnDemand
+	}).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
+}
+
+// The scan is scheduled to run periodically.
+func (o GoogleCloudDataplexV1TriggerPtrOutput) Schedule() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1Trigger) *GoogleCloudDataplexV1TriggerSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(GoogleCloudDataplexV1TriggerSchedulePtrOutput)
+}
+
+// The scan runs once via RunDataScan API.
+type GoogleCloudDataplexV1TriggerOnDemand struct {
+}
+
+// GoogleCloudDataplexV1TriggerOnDemandInput is an input type that accepts GoogleCloudDataplexV1TriggerOnDemandArgs and GoogleCloudDataplexV1TriggerOnDemandOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TriggerOnDemandInput` via:
+//
+//	GoogleCloudDataplexV1TriggerOnDemandArgs{...}
+type GoogleCloudDataplexV1TriggerOnDemandInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TriggerOnDemandOutput() GoogleCloudDataplexV1TriggerOnDemandOutput
+	ToGoogleCloudDataplexV1TriggerOnDemandOutputWithContext(context.Context) GoogleCloudDataplexV1TriggerOnDemandOutput
+}
+
+// The scan runs once via RunDataScan API.
+type GoogleCloudDataplexV1TriggerOnDemandArgs struct {
+}
+
+func (GoogleCloudDataplexV1TriggerOnDemandArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerOnDemand)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToGoogleCloudDataplexV1TriggerOnDemandOutput() GoogleCloudDataplexV1TriggerOnDemandOutput {
+	return i.ToGoogleCloudDataplexV1TriggerOnDemandOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToGoogleCloudDataplexV1TriggerOnDemandOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOnDemandOutput)
+}
+
+func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutput() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return i.ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TriggerOnDemandArgs) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOnDemandOutput).ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1TriggerOnDemandPtrInput is an input type that accepts GoogleCloudDataplexV1TriggerOnDemandArgs, GoogleCloudDataplexV1TriggerOnDemandPtr and GoogleCloudDataplexV1TriggerOnDemandPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TriggerOnDemandPtrInput` via:
+//
+//	        GoogleCloudDataplexV1TriggerOnDemandArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1TriggerOnDemandPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TriggerOnDemandPtrOutput() GoogleCloudDataplexV1TriggerOnDemandPtrOutput
+	ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(context.Context) GoogleCloudDataplexV1TriggerOnDemandPtrOutput
+}
+
+type googleCloudDataplexV1TriggerOnDemandPtrType GoogleCloudDataplexV1TriggerOnDemandArgs
+
+func GoogleCloudDataplexV1TriggerOnDemandPtr(v *GoogleCloudDataplexV1TriggerOnDemandArgs) GoogleCloudDataplexV1TriggerOnDemandPtrInput {
+	return (*googleCloudDataplexV1TriggerOnDemandPtrType)(v)
+}
+
+func (*googleCloudDataplexV1TriggerOnDemandPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1TriggerOnDemand)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1TriggerOnDemandPtrType) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutput() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return i.ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1TriggerOnDemandPtrType) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
+}
+
+// The scan runs once via RunDataScan API.
+type GoogleCloudDataplexV1TriggerOnDemandOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerOnDemandOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerOnDemand)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandOutput) ToGoogleCloudDataplexV1TriggerOnDemandOutput() GoogleCloudDataplexV1TriggerOnDemandOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandOutput) ToGoogleCloudDataplexV1TriggerOnDemandOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandOutput) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutput() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return o.ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandOutput) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TriggerOnDemand) *GoogleCloudDataplexV1TriggerOnDemand {
+		return &v
+	}).(GoogleCloudDataplexV1TriggerOnDemandPtrOutput)
+}
+
+type GoogleCloudDataplexV1TriggerOnDemandPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1TriggerOnDemand)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutput() GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) ToGoogleCloudDataplexV1TriggerOnDemandPtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandPtrOutput) Elem() GoogleCloudDataplexV1TriggerOnDemandOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TriggerOnDemand) GoogleCloudDataplexV1TriggerOnDemand {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1TriggerOnDemand
+		return ret
+	}).(GoogleCloudDataplexV1TriggerOnDemandOutput)
+}
+
+// The scan runs once via RunDataScan API.
+type GoogleCloudDataplexV1TriggerOnDemandResponse struct {
+}
+
+// The scan runs once via RunDataScan API.
+type GoogleCloudDataplexV1TriggerOnDemandResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerOnDemandResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerOnDemandResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandResponseOutput) ToGoogleCloudDataplexV1TriggerOnDemandResponseOutput() GoogleCloudDataplexV1TriggerOnDemandResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerOnDemandResponseOutput) ToGoogleCloudDataplexV1TriggerOnDemandResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerOnDemandResponseOutput {
+	return o
+}
+
+// DataScan scheduling and trigger settings.
+type GoogleCloudDataplexV1TriggerResponse struct {
+	// The scan runs once via RunDataScan API.
+	OnDemand GoogleCloudDataplexV1TriggerOnDemandResponse `pulumi:"onDemand"`
+	// The scan is scheduled to run periodically.
+	Schedule GoogleCloudDataplexV1TriggerScheduleResponse `pulumi:"schedule"`
+}
+
+// DataScan scheduling and trigger settings.
+type GoogleCloudDataplexV1TriggerResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerResponseOutput) ToGoogleCloudDataplexV1TriggerResponseOutput() GoogleCloudDataplexV1TriggerResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerResponseOutput) ToGoogleCloudDataplexV1TriggerResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerResponseOutput {
+	return o
+}
+
+// The scan runs once via RunDataScan API.
+func (o GoogleCloudDataplexV1TriggerResponseOutput) OnDemand() GoogleCloudDataplexV1TriggerOnDemandResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TriggerResponse) GoogleCloudDataplexV1TriggerOnDemandResponse {
+		return v.OnDemand
+	}).(GoogleCloudDataplexV1TriggerOnDemandResponseOutput)
+}
+
+// The scan is scheduled to run periodically.
+func (o GoogleCloudDataplexV1TriggerResponseOutput) Schedule() GoogleCloudDataplexV1TriggerScheduleResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TriggerResponse) GoogleCloudDataplexV1TriggerScheduleResponse {
+		return v.Schedule
+	}).(GoogleCloudDataplexV1TriggerScheduleResponseOutput)
+}
+
+// The scan is scheduled to run periodically.
+type GoogleCloudDataplexV1TriggerSchedule struct {
+	// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+	Cron string `pulumi:"cron"`
+}
+
+// GoogleCloudDataplexV1TriggerScheduleInput is an input type that accepts GoogleCloudDataplexV1TriggerScheduleArgs and GoogleCloudDataplexV1TriggerScheduleOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TriggerScheduleInput` via:
+//
+//	GoogleCloudDataplexV1TriggerScheduleArgs{...}
+type GoogleCloudDataplexV1TriggerScheduleInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TriggerScheduleOutput() GoogleCloudDataplexV1TriggerScheduleOutput
+	ToGoogleCloudDataplexV1TriggerScheduleOutputWithContext(context.Context) GoogleCloudDataplexV1TriggerScheduleOutput
+}
+
+// The scan is scheduled to run periodically.
+type GoogleCloudDataplexV1TriggerScheduleArgs struct {
+	// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+	Cron pulumi.StringInput `pulumi:"cron"`
+}
+
+func (GoogleCloudDataplexV1TriggerScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerSchedule)(nil)).Elem()
+}
+
+func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToGoogleCloudDataplexV1TriggerScheduleOutput() GoogleCloudDataplexV1TriggerScheduleOutput {
+	return i.ToGoogleCloudDataplexV1TriggerScheduleOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToGoogleCloudDataplexV1TriggerScheduleOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerScheduleOutput)
+}
+
+func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToGoogleCloudDataplexV1TriggerSchedulePtrOutput() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return i.ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDataplexV1TriggerScheduleArgs) ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerScheduleOutput).ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDataplexV1TriggerSchedulePtrInput is an input type that accepts GoogleCloudDataplexV1TriggerScheduleArgs, GoogleCloudDataplexV1TriggerSchedulePtr and GoogleCloudDataplexV1TriggerSchedulePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDataplexV1TriggerSchedulePtrInput` via:
+//
+//	        GoogleCloudDataplexV1TriggerScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDataplexV1TriggerSchedulePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDataplexV1TriggerSchedulePtrOutput() GoogleCloudDataplexV1TriggerSchedulePtrOutput
+	ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(context.Context) GoogleCloudDataplexV1TriggerSchedulePtrOutput
+}
+
+type googleCloudDataplexV1TriggerSchedulePtrType GoogleCloudDataplexV1TriggerScheduleArgs
+
+func GoogleCloudDataplexV1TriggerSchedulePtr(v *GoogleCloudDataplexV1TriggerScheduleArgs) GoogleCloudDataplexV1TriggerSchedulePtrInput {
+	return (*googleCloudDataplexV1TriggerSchedulePtrType)(v)
+}
+
+func (*googleCloudDataplexV1TriggerSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1TriggerSchedule)(nil)).Elem()
+}
+
+func (i *googleCloudDataplexV1TriggerSchedulePtrType) ToGoogleCloudDataplexV1TriggerSchedulePtrOutput() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return i.ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDataplexV1TriggerSchedulePtrType) ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1TriggerSchedulePtrOutput)
+}
+
+// The scan is scheduled to run periodically.
+type GoogleCloudDataplexV1TriggerScheduleOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerSchedule)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerScheduleOutput) ToGoogleCloudDataplexV1TriggerScheduleOutput() GoogleCloudDataplexV1TriggerScheduleOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerScheduleOutput) ToGoogleCloudDataplexV1TriggerScheduleOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerScheduleOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerScheduleOutput) ToGoogleCloudDataplexV1TriggerSchedulePtrOutput() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return o.ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDataplexV1TriggerScheduleOutput) ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDataplexV1TriggerSchedule) *GoogleCloudDataplexV1TriggerSchedule {
+		return &v
+	}).(GoogleCloudDataplexV1TriggerSchedulePtrOutput)
+}
+
+// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+func (o GoogleCloudDataplexV1TriggerScheduleOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TriggerSchedule) string { return v.Cron }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDataplexV1TriggerSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDataplexV1TriggerSchedule)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) ToGoogleCloudDataplexV1TriggerSchedulePtrOutput() GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) ToGoogleCloudDataplexV1TriggerSchedulePtrOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerSchedulePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) Elem() GoogleCloudDataplexV1TriggerScheduleOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TriggerSchedule) GoogleCloudDataplexV1TriggerSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDataplexV1TriggerSchedule
+		return ret
+	}).(GoogleCloudDataplexV1TriggerScheduleOutput)
+}
+
+// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+func (o GoogleCloudDataplexV1TriggerSchedulePtrOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDataplexV1TriggerSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Cron
+	}).(pulumi.StringPtrOutput)
+}
+
+// The scan is scheduled to run periodically.
+type GoogleCloudDataplexV1TriggerScheduleResponse struct {
+	// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+	Cron string `pulumi:"cron"`
+}
+
+// The scan is scheduled to run periodically.
+type GoogleCloudDataplexV1TriggerScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDataplexV1TriggerScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDataplexV1TriggerScheduleResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDataplexV1TriggerScheduleResponseOutput) ToGoogleCloudDataplexV1TriggerScheduleResponseOutput() GoogleCloudDataplexV1TriggerScheduleResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDataplexV1TriggerScheduleResponseOutput) ToGoogleCloudDataplexV1TriggerScheduleResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1TriggerScheduleResponseOutput {
+	return o
+}
+
+// Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans.
+func (o GoogleCloudDataplexV1TriggerScheduleResponseOutput) Cron() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1TriggerScheduleResponse) string { return v.Cron }).(pulumi.StringOutput)
+}
+
 // Settings to manage the metadata discovery and publishing in a zone.
 type GoogleCloudDataplexV1ZoneDiscoverySpec struct {
 	// Optional. Configuration for CSV data.
@@ -5406,7 +9831,7 @@ type GoogleCloudDataplexV1ZoneDiscoverySpec struct {
 	IncludePatterns []string `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions *GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 	Schedule *string `pulumi:"schedule"`
 }
 
@@ -5433,7 +9858,7 @@ type GoogleCloudDataplexV1ZoneDiscoverySpecArgs struct {
 	IncludePatterns pulumi.StringArrayInput `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrInput `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
 }
 
@@ -5544,7 +9969,7 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecOutput) JsonOptions() GoogleCloudD
 	}).(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ZoneDiscoverySpec) *string { return v.Schedule }).(pulumi.StringPtrOutput)
 }
@@ -5623,7 +10048,7 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput) JsonOptions() GoogleClo
 	}).(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput) Schedule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1ZoneDiscoverySpec) *string {
 		if v == nil {
@@ -6081,7 +10506,7 @@ type GoogleCloudDataplexV1ZoneDiscoverySpecResponse struct {
 	IncludePatterns []string `pulumi:"includePatterns"`
 	// Optional. Configuration for Json data.
 	JsonOptions GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponse `pulumi:"jsonOptions"`
-	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+	// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 	Schedule string `pulumi:"schedule"`
 }
 
@@ -6129,7 +10554,7 @@ func (o GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput) JsonOptions() Goog
 	}).(GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsResponseOutput)
 }
 
-// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, "CRON_TZ=America/New_York 1 * * * *", or "TZ=America/New_York 1 * * * *".
+// Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running discovery periodically. Successive discovery runs must be scheduled at least 60 minutes apart. The default value is to run discovery every 60 minutes. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.
 func (o GoogleCloudDataplexV1ZoneDiscoverySpecResponseOutput) Schedule() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1ZoneDiscoverySpecResponse) string { return v.Schedule }).(pulumi.StringOutput)
 }
@@ -6975,6 +11400,35 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentNotebookPtrInput)(nil)).Elem(), GoogleCloudDataplexV1ContentNotebookArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentSqlScriptInput)(nil)).Elem(), GoogleCloudDataplexV1ContentSqlScriptArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ContentSqlScriptPtrInput)(nil)).Elem(), GoogleCloudDataplexV1ContentSqlScriptArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataAccessSpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataAccessSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataAccessSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataAccessSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataAttributeBindingPathInput)(nil)).Elem(), GoogleCloudDataplexV1DataAttributeBindingPathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataAttributeBindingPathArrayInput)(nil)).Elem(), GoogleCloudDataplexV1DataAttributeBindingPathArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataProfileSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataProfileSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleArrayInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleNonNullExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleNonNullExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRangeExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRegexExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRegexExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleSetExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataQualitySpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataQualitySpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecInput)(nil)).Elem(), GoogleCloudDataplexV1DataScanExecutionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataScanExecutionSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1DataScanExecutionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1DataSourceInput)(nil)).Elem(), GoogleCloudDataplexV1DataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentInfrastructureSpecInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{})
@@ -6983,6 +11437,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1EnvironmentSessionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1LakeMetastoreInput)(nil)).Elem(), GoogleCloudDataplexV1LakeMetastoreArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1LakeMetastorePtrInput)(nil)).Elem(), GoogleCloudDataplexV1LakeMetastoreArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ResourceAccessSpecInput)(nil)).Elem(), GoogleCloudDataplexV1ResourceAccessSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ResourceAccessSpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1ResourceAccessSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1SchemaInput)(nil)).Elem(), GoogleCloudDataplexV1SchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1SchemaPartitionFieldInput)(nil)).Elem(), GoogleCloudDataplexV1SchemaPartitionFieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1SchemaPartitionFieldArrayInput)(nil)).Elem(), GoogleCloudDataplexV1SchemaPartitionFieldArray{})
@@ -6991,6 +11447,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatCsvOptionsInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatCsvOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatCsvOptionsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatCsvOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatIcebergOptionsInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatJsonOptionsInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatJsonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1StorageFormatJsonOptionsPtrInput)(nil)).Elem(), GoogleCloudDataplexV1StorageFormatJsonOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskExecutionSpecInput)(nil)).Elem(), GoogleCloudDataplexV1TaskExecutionSpecArgs{})
@@ -7007,6 +11465,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskSparkTaskConfigInput)(nil)).Elem(), GoogleCloudDataplexV1TaskSparkTaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput)(nil)).Elem(), GoogleCloudDataplexV1TaskSparkTaskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TaskTriggerSpecInput)(nil)).Elem(), GoogleCloudDataplexV1TaskTriggerSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TriggerInput)(nil)).Elem(), GoogleCloudDataplexV1TriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TriggerPtrInput)(nil)).Elem(), GoogleCloudDataplexV1TriggerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TriggerOnDemandInput)(nil)).Elem(), GoogleCloudDataplexV1TriggerOnDemandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TriggerOnDemandPtrInput)(nil)).Elem(), GoogleCloudDataplexV1TriggerOnDemandArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TriggerScheduleInput)(nil)).Elem(), GoogleCloudDataplexV1TriggerScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1TriggerSchedulePtrInput)(nil)).Elem(), GoogleCloudDataplexV1TriggerScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ZoneDiscoverySpecInput)(nil)).Elem(), GoogleCloudDataplexV1ZoneDiscoverySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ZoneDiscoverySpecPtrInput)(nil)).Elem(), GoogleCloudDataplexV1ZoneDiscoverySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsInput)(nil)).Elem(), GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs{})
@@ -7044,6 +11508,68 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentSqlScriptOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentSqlScriptPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ContentSqlScriptResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAccessSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAccessSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAccessSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataAttributeBindingPathResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileFieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultProfileResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataProfileSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityDimensionResultResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleNonNullExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRangeExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRangeExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRangeExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRegexExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRegexExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRegexExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleResultResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleResultResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleRowConditionExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSetExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSetExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleSetExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleTableConditionExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualityRuleUniquenessExpectationResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataQualitySpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1DataSourceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput{})
@@ -7063,6 +11589,11 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1LakeMetastorePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1LakeMetastoreResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1LakeMetastoreStatusResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1ResourceAccessSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1ResourceAccessSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1ResourceAccessSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1ScannedDataIncrementalFieldResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1ScannedDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaPartitionFieldOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput{})
@@ -7073,10 +11604,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaSchemaFieldResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1SchemaSchemaFieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageAccessResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatCsvOptionsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatIcebergOptionsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatIcebergOptionsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatIcebergOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatJsonOptionsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1StorageFormatJsonOptionsResponseOutput{})
@@ -7104,6 +11639,15 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskSparkTaskConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskTriggerSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1TaskTriggerSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerOnDemandOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerOnDemandPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerOnDemandResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerScheduleOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerSchedulePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDataplexV1TriggerScheduleResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ZoneDiscoverySpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput{})

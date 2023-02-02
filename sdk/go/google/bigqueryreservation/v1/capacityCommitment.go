@@ -21,6 +21,8 @@ type CapacityCommitment struct {
 	CommitmentEndTime pulumi.StringOutput `pulumi:"commitmentEndTime"`
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringOutput `pulumi:"commitmentStartTime"`
+	// Edition of the capacity commitment.
+	Edition pulumi.StringOutput `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrOutput `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// For FAILED commitment plan, provides the reason of failure.
@@ -87,6 +89,8 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 type capacityCommitmentArgs struct {
 	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
 	CapacityCommitmentId *string `pulumi:"capacityCommitmentId"`
+	// Edition of the capacity commitment.
+	Edition *CapacityCommitmentEdition `pulumi:"edition"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg *bool   `pulumi:"enforceSingleAdminProjectPerOrg"`
 	Location                        *string `pulumi:"location"`
@@ -105,6 +109,8 @@ type capacityCommitmentArgs struct {
 type CapacityCommitmentArgs struct {
 	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
 	CapacityCommitmentId pulumi.StringPtrInput
+	// Edition of the capacity commitment.
+	Edition CapacityCommitmentEditionPtrInput
 	// If true, fail the request if another project in the organization has a capacity commitment.
 	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrInput
 	Location                        pulumi.StringPtrInput
@@ -169,6 +175,11 @@ func (o CapacityCommitmentOutput) CommitmentEndTime() pulumi.StringOutput {
 // The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 func (o CapacityCommitmentOutput) CommitmentStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.CommitmentStartTime }).(pulumi.StringOutput)
+}
+
+// Edition of the capacity commitment.
+func (o CapacityCommitmentOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
 // If true, fail the request if another project in the organization has a capacity commitment.

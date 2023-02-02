@@ -14,6 +14,8 @@ import (
 type GoogleCloudContactcenterinsightsV1AnalysisResponse struct {
 	// The result of the analysis, which is populated when the analysis finishes.
 	AnalysisResult GoogleCloudContactcenterinsightsV1AnalysisResultResponse `pulumi:"analysisResult"`
+	// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+	AnnotatorSelector GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse `pulumi:"annotatorSelector"`
 	// The time at which the analysis was created, which occurs when the long-running operation completes.
 	CreateTime string `pulumi:"createTime"`
 	// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
@@ -42,6 +44,13 @@ func (o GoogleCloudContactcenterinsightsV1AnalysisResponseOutput) AnalysisResult
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResponse) GoogleCloudContactcenterinsightsV1AnalysisResultResponse {
 		return v.AnalysisResult
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput)
+}
+
+// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+func (o GoogleCloudContactcenterinsightsV1AnalysisResponseOutput) AnnotatorSelector() GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnalysisResponse) GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse {
+		return v.AnnotatorSelector
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput)
 }
 
 // The time at which the analysis was created, which occurs when the long-running operation completes.
@@ -200,6 +209,388 @@ func (o GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponseOutput) Word
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse) int { return v.WordIndex }).(pulumi.IntOutput)
 }
 
+// Selector of all available annotators and phrase matchers to run.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelector struct {
+	// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+	IssueModels []string `pulumi:"issueModels"`
+	// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+	PhraseMatchers []string `pulumi:"phraseMatchers"`
+	// Whether to run the entity annotator.
+	RunEntityAnnotator *bool `pulumi:"runEntityAnnotator"`
+	// Whether to run the intent annotator.
+	RunIntentAnnotator *bool `pulumi:"runIntentAnnotator"`
+	// Whether to run the interruption annotator.
+	RunInterruptionAnnotator *bool `pulumi:"runInterruptionAnnotator"`
+	// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+	RunIssueModelAnnotator *bool `pulumi:"runIssueModelAnnotator"`
+	// Whether to run the active phrase matcher annotator(s).
+	RunPhraseMatcherAnnotator *bool `pulumi:"runPhraseMatcherAnnotator"`
+	// Whether to run the sentiment annotator.
+	RunSentimentAnnotator *bool `pulumi:"runSentimentAnnotator"`
+	// Whether to run the silence annotator.
+	RunSilenceAnnotator *bool `pulumi:"runSilenceAnnotator"`
+}
+
+// GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput is an input type that accepts GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs and GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput` via:
+//
+//	GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{...}
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput
+}
+
+// Selector of all available annotators and phrase matchers to run.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs struct {
+	// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+	IssueModels pulumi.StringArrayInput `pulumi:"issueModels"`
+	// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+	PhraseMatchers pulumi.StringArrayInput `pulumi:"phraseMatchers"`
+	// Whether to run the entity annotator.
+	RunEntityAnnotator pulumi.BoolPtrInput `pulumi:"runEntityAnnotator"`
+	// Whether to run the intent annotator.
+	RunIntentAnnotator pulumi.BoolPtrInput `pulumi:"runIntentAnnotator"`
+	// Whether to run the interruption annotator.
+	RunInterruptionAnnotator pulumi.BoolPtrInput `pulumi:"runInterruptionAnnotator"`
+	// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+	RunIssueModelAnnotator pulumi.BoolPtrInput `pulumi:"runIssueModelAnnotator"`
+	// Whether to run the active phrase matcher annotator(s).
+	RunPhraseMatcherAnnotator pulumi.BoolPtrInput `pulumi:"runPhraseMatcherAnnotator"`
+	// Whether to run the sentiment annotator.
+	RunSentimentAnnotator pulumi.BoolPtrInput `pulumi:"runSentimentAnnotator"`
+	// Whether to run the silence annotator.
+	RunSilenceAnnotator pulumi.BoolPtrInput `pulumi:"runSilenceAnnotator"`
+}
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelector)(nil)).Elem()
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput)
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput).ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput is an input type that accepts GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs, GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtr and GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput` via:
+//
+//	        GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput
+	ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput
+}
+
+type googleCloudContactcenterinsightsV1AnnotatorSelectorPtrType GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs
+
+func GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtr(v *GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs) GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput {
+	return (*googleCloudContactcenterinsightsV1AnnotatorSelectorPtrType)(v)
+}
+
+func (*googleCloudContactcenterinsightsV1AnnotatorSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1AnnotatorSelector)(nil)).Elem()
+}
+
+func (i *googleCloudContactcenterinsightsV1AnnotatorSelectorPtrType) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return i.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudContactcenterinsightsV1AnnotatorSelectorPtrType) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput)
+}
+
+// Selector of all available annotators and phrase matchers to run.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelector)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return o.ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *GoogleCloudContactcenterinsightsV1AnnotatorSelector {
+		return &v
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput)
+}
+
+// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) IssueModels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) []string { return v.IssueModels }).(pulumi.StringArrayOutput)
+}
+
+// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) PhraseMatchers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) []string { return v.PhraseMatchers }).(pulumi.StringArrayOutput)
+}
+
+// Whether to run the entity annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunEntityAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunEntityAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the intent annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunIntentAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunIntentAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the interruption annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunInterruptionAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunInterruptionAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunIssueModelAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunIssueModelAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the active phrase matcher annotator(s).
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunPhraseMatcherAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunPhraseMatcherAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the sentiment annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunSentimentAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunSentimentAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the silence annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput) RunSilenceAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool { return v.RunSilenceAnnotator }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudContactcenterinsightsV1AnnotatorSelector)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) Elem() GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) GoogleCloudContactcenterinsightsV1AnnotatorSelector {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudContactcenterinsightsV1AnnotatorSelector
+		return ret
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput)
+}
+
+// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) IssueModels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IssueModels
+	}).(pulumi.StringArrayOutput)
+}
+
+// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) PhraseMatchers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PhraseMatchers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether to run the entity annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunEntityAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunEntityAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the intent annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunIntentAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunIntentAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the interruption annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunInterruptionAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunInterruptionAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunIssueModelAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunIssueModelAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the active phrase matcher annotator(s).
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunPhraseMatcherAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunPhraseMatcherAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the sentiment annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunSentimentAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunSentimentAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether to run the silence annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput) RunSilenceAnnotator() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudContactcenterinsightsV1AnnotatorSelector) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RunSilenceAnnotator
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Selector of all available annotators and phrase matchers to run.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse struct {
+	// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+	IssueModels []string `pulumi:"issueModels"`
+	// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+	PhraseMatchers []string `pulumi:"phraseMatchers"`
+	// Whether to run the entity annotator.
+	RunEntityAnnotator bool `pulumi:"runEntityAnnotator"`
+	// Whether to run the intent annotator.
+	RunIntentAnnotator bool `pulumi:"runIntentAnnotator"`
+	// Whether to run the interruption annotator.
+	RunInterruptionAnnotator bool `pulumi:"runInterruptionAnnotator"`
+	// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+	RunIssueModelAnnotator bool `pulumi:"runIssueModelAnnotator"`
+	// Whether to run the active phrase matcher annotator(s).
+	RunPhraseMatcherAnnotator bool `pulumi:"runPhraseMatcherAnnotator"`
+	// Whether to run the sentiment annotator.
+	RunSentimentAnnotator bool `pulumi:"runSentimentAnnotator"`
+	// Whether to run the silence annotator.
+	RunSilenceAnnotator bool `pulumi:"runSilenceAnnotator"`
+}
+
+// Selector of all available annotators and phrase matchers to run.
+type GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput() GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) ToGoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput {
+	return o
+}
+
+// The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) IssueModels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) []string { return v.IssueModels }).(pulumi.StringArrayOutput)
+}
+
+// The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) PhraseMatchers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) []string { return v.PhraseMatchers }).(pulumi.StringArrayOutput)
+}
+
+// Whether to run the entity annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunEntityAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool { return v.RunEntityAnnotator }).(pulumi.BoolOutput)
+}
+
+// Whether to run the intent annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunIntentAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool { return v.RunIntentAnnotator }).(pulumi.BoolOutput)
+}
+
+// Whether to run the interruption annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunInterruptionAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool {
+		return v.RunInterruptionAnnotator
+	}).(pulumi.BoolOutput)
+}
+
+// Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunIssueModelAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool {
+		return v.RunIssueModelAnnotator
+	}).(pulumi.BoolOutput)
+}
+
+// Whether to run the active phrase matcher annotator(s).
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunPhraseMatcherAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool {
+		return v.RunPhraseMatcherAnnotator
+	}).(pulumi.BoolOutput)
+}
+
+// Whether to run the sentiment annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunSentimentAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool {
+		return v.RunSentimentAnnotator
+	}).(pulumi.BoolOutput)
+}
+
+// Whether to run the silence annotator.
+func (o GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput) RunSilenceAnnotator() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse) bool { return v.RunSilenceAnnotator }).(pulumi.BoolOutput)
+}
+
 // The feedback that the customer has about a certain answer in the conversation.
 type GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse struct {
 	// Indicates whether an answer or item was clicked by the human agent.
@@ -321,6 +712,8 @@ type GoogleCloudContactcenterinsightsV1CallAnnotationResponse struct {
 	IntentMatchData GoogleCloudContactcenterinsightsV1IntentMatchDataResponse `pulumi:"intentMatchData"`
 	// Data specifying an interruption.
 	InterruptionData GoogleCloudContactcenterinsightsV1InterruptionDataResponse `pulumi:"interruptionData"`
+	// Data specifying an issue match.
+	IssueMatchData GoogleCloudContactcenterinsightsV1IssueMatchDataResponse `pulumi:"issueMatchData"`
 	// Data specifying a phrase match.
 	PhraseMatchData GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse `pulumi:"phraseMatchData"`
 	// Data specifying sentiment.
@@ -389,6 +782,13 @@ func (o GoogleCloudContactcenterinsightsV1CallAnnotationResponseOutput) Interrup
 	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1CallAnnotationResponse) GoogleCloudContactcenterinsightsV1InterruptionDataResponse {
 		return v.InterruptionData
 	}).(GoogleCloudContactcenterinsightsV1InterruptionDataResponseOutput)
+}
+
+// Data specifying an issue match.
+func (o GoogleCloudContactcenterinsightsV1CallAnnotationResponseOutput) IssueMatchData() GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1CallAnnotationResponse) GoogleCloudContactcenterinsightsV1IssueMatchDataResponse {
+		return v.IssueMatchData
+	}).(GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput)
 }
 
 // Data specifying a phrase match.
@@ -1993,6 +2393,34 @@ func (o GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayOutput) In
 	}).(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput)
 }
 
+// The data for an issue match annotation.
+type GoogleCloudContactcenterinsightsV1IssueMatchDataResponse struct {
+	// Information about the issue's assignment.
+	IssueAssignment GoogleCloudContactcenterinsightsV1IssueAssignmentResponse `pulumi:"issueAssignment"`
+}
+
+// The data for an issue match annotation.
+type GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContactcenterinsightsV1IssueMatchDataResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput() GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput) ToGoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutputWithContext(ctx context.Context) GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput {
+	return o
+}
+
+// Information about the issue's assignment.
+func (o GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput) IssueAssignment() GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput {
+	return o.ApplyT(func(v GoogleCloudContactcenterinsightsV1IssueMatchDataResponse) GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
+		return v.IssueAssignment
+	}).(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput)
+}
+
 // Configs for the input data used to create the issue model.
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig struct {
 	// A filter to reduce the conversations used for training the model to a specific subset.
@@ -3110,6 +3538,8 @@ func (o GoogleCloudContactcenterinsightsV1SmartReplyDataResponseOutput) Reply() 
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationCallMetadataPtrInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContactcenterinsightsV1ConversationDataSourceInput)(nil)).Elem(), GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs{})
@@ -3132,6 +3562,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1AnswerFeedbackResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1CallAnnotationResponseOutput{})
@@ -3168,6 +3601,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1InterruptionDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueAssignmentResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueMatchDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponseOutput{})

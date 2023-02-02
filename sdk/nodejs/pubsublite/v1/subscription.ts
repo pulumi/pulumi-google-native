@@ -41,6 +41,10 @@ export class Subscription extends pulumi.CustomResource {
      * The settings for this subscription's message delivery.
      */
     public readonly deliveryConfig!: pulumi.Output<outputs.pubsublite.v1.DeliveryConfigResponse>;
+    /**
+     * If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+     */
+    public readonly exportConfig!: pulumi.Output<outputs.pubsublite.v1.ExportConfigResponse>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
@@ -75,6 +79,7 @@ export class Subscription extends pulumi.CustomResource {
                 throw new Error("Missing required property 'subscriptionId'");
             }
             resourceInputs["deliveryConfig"] = args ? args.deliveryConfig : undefined;
+            resourceInputs["exportConfig"] = args ? args.exportConfig : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -83,6 +88,7 @@ export class Subscription extends pulumi.CustomResource {
             resourceInputs["topic"] = args ? args.topic : undefined;
         } else {
             resourceInputs["deliveryConfig"] = undefined /*out*/;
+            resourceInputs["exportConfig"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -105,6 +111,10 @@ export interface SubscriptionArgs {
      * The settings for this subscription's message delivery.
      */
     deliveryConfig?: pulumi.Input<inputs.pubsublite.v1.DeliveryConfigArgs>;
+    /**
+     * If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+     */
+    exportConfig?: pulumi.Input<inputs.pubsublite.v1.ExportConfigArgs>;
     location?: pulumi.Input<string>;
     /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}

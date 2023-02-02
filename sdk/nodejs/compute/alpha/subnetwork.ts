@@ -68,9 +68,9 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly enablePrivateV6Access!: pulumi.Output<boolean>;
     /**
-     * The external IPv6 address range that is assigned to this subnetwork.
+     * The external IPv6 address range that is owned by this subnetwork.
      */
-    public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
+    public readonly externalIpv6Prefix!: pulumi.Output<string>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
      */
@@ -190,6 +190,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             resourceInputs["enableL2"] = args ? args.enableL2 : undefined;
             resourceInputs["enablePrivateV6Access"] = args ? args.enablePrivateV6Access : undefined;
+            resourceInputs["externalIpv6Prefix"] = args ? args.externalIpv6Prefix : undefined;
             resourceInputs["flowSampling"] = args ? args.flowSampling : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
@@ -209,7 +210,6 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["stackType"] = args ? args.stackType : undefined;
             resourceInputs["vlans"] = args ? args.vlans : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
-            resourceInputs["externalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["gatewayAddress"] = undefined /*out*/;
             resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
@@ -291,6 +291,10 @@ export interface SubnetworkArgs {
      * @deprecated Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
      */
     enablePrivateV6Access?: pulumi.Input<boolean>;
+    /**
+     * The external IPv6 address range that is owned by this subnetwork.
+     */
+    externalIpv6Prefix?: pulumi.Input<string>;
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
      */

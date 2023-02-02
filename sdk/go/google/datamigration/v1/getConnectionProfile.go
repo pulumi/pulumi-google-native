@@ -43,6 +43,8 @@ type LookupConnectionProfileResult struct {
 	Mysql MySqlConnectionProfileResponse `pulumi:"mysql"`
 	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 	Name string `pulumi:"name"`
+	// An Oracle database connection profile.
+	Oracle OracleConnectionProfileResponse `pulumi:"oracle"`
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfileResponse `pulumi:"postgresql"`
 	// The database provider.
@@ -128,6 +130,11 @@ func (o LookupConnectionProfileResultOutput) Mysql() MySqlConnectionProfileRespo
 // The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
 func (o LookupConnectionProfileResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An Oracle database connection profile.
+func (o LookupConnectionProfileResultOutput) Oracle() OracleConnectionProfileResponseOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) OracleConnectionProfileResponse { return v.Oracle }).(OracleConnectionProfileResponseOutput)
 }
 
 // A PostgreSQL database connection profile.

@@ -14,7 +14,7 @@ import (
 type ExecutionCallLogLevel string
 
 const (
-	// No call logging specified.
+	// No call logging level specified.
 	ExecutionCallLogLevelCallLogLevelUnspecified = ExecutionCallLogLevel("CALL_LOG_LEVEL_UNSPECIFIED")
 	// Log all call steps within workflows, all call returns, and all exceptions raised.
 	ExecutionCallLogLevelLogAllCalls = ExecutionCallLogLevel("LOG_ALL_CALLS")

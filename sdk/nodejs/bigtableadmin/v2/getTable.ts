@@ -37,21 +37,29 @@ export interface GetTableResult {
      */
     readonly clusterStates: {[key: string]: string};
     /**
-     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
     readonly columnFamilies: {[key: string]: string};
+    /**
+     * Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+     */
+    readonly deletionProtection: boolean;
     /**
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */
     readonly granularity: string;
     /**
-     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
      */
     readonly name: string;
     /**
      * If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
      */
     readonly restoreInfo: outputs.bigtableadmin.v2.RestoreInfoResponse;
+    /**
+     * Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+     */
+    readonly stats: outputs.bigtableadmin.v2.TableStatsResponse;
 }
 
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {

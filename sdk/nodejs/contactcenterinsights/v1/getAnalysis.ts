@@ -37,6 +37,10 @@ export interface GetAnalysisResult {
      */
     readonly analysisResult: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResultResponse;
     /**
+     * To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+     */
+    readonly annotatorSelector: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse;
+    /**
      * The time at which the analysis was created, which occurs when the long-running operation completes.
      */
     readonly createTime: string;

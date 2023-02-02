@@ -11,16 +11,147 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AccessKeyCredentialsArgs',
+    'AwsSourceDetailsArgs',
     'ComputeEngineTargetDefaultsArgs',
     'ComputeSchedulingArgs',
     'NetworkInterfaceArgs',
     'SchedulePolicyArgs',
     'SchedulingNodeAffinityArgs',
+    'TagArgs',
     'VmUtilizationInfoArgs',
     'VmUtilizationMetricsArgs',
     'VmwareSourceDetailsArgs',
     'VmwareVmDetailsArgs',
 ]
+
+@pulumi.input_type
+class AccessKeyCredentialsArgs:
+    def __init__(__self__, *,
+                 access_key_id: Optional[pulumi.Input[str]] = None,
+                 secret_access_key: Optional[pulumi.Input[str]] = None):
+        """
+        Message describing AWS Credentials using access key id and secret.
+        :param pulumi.Input[str] access_key_id: AWS access key ID.
+        :param pulumi.Input[str] secret_access_key: Input only. AWS secret access key.
+        """
+        if access_key_id is not None:
+            pulumi.set(__self__, "access_key_id", access_key_id)
+        if secret_access_key is not None:
+            pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        AWS access key ID.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_key_id", value)
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. AWS secret access key.
+        """
+        return pulumi.get(self, "secret_access_key")
+
+    @secret_access_key.setter
+    def secret_access_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "secret_access_key", value)
+
+
+@pulumi.input_type
+class AwsSourceDetailsArgs:
+    def __init__(__self__, *,
+                 access_key_creds: Optional[pulumi.Input['AccessKeyCredentialsArgs']] = None,
+                 aws_region: Optional[pulumi.Input[str]] = None,
+                 inventory_security_group_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 inventory_tag_list: Optional[pulumi.Input[Sequence[pulumi.Input['TagArgs']]]] = None,
+                 migration_resources_user_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        AwsSourceDetails message describes a specific source details for the AWS source type.
+        :param pulumi.Input['AccessKeyCredentialsArgs'] access_key_creds: AWS Credentials using access key id and secret.
+        :param pulumi.Input[str] aws_region: Immutable. The AWS region that the source VMs will be migrated from.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] inventory_security_group_names: AWS security group names to limit the scope of the source inventory.
+        :param pulumi.Input[Sequence[pulumi.Input['TagArgs']]] inventory_tag_list: AWS resource tags to limit the scope of the source inventory.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] migration_resources_user_tags: User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+        """
+        if access_key_creds is not None:
+            pulumi.set(__self__, "access_key_creds", access_key_creds)
+        if aws_region is not None:
+            pulumi.set(__self__, "aws_region", aws_region)
+        if inventory_security_group_names is not None:
+            pulumi.set(__self__, "inventory_security_group_names", inventory_security_group_names)
+        if inventory_tag_list is not None:
+            pulumi.set(__self__, "inventory_tag_list", inventory_tag_list)
+        if migration_resources_user_tags is not None:
+            pulumi.set(__self__, "migration_resources_user_tags", migration_resources_user_tags)
+
+    @property
+    @pulumi.getter(name="accessKeyCreds")
+    def access_key_creds(self) -> Optional[pulumi.Input['AccessKeyCredentialsArgs']]:
+        """
+        AWS Credentials using access key id and secret.
+        """
+        return pulumi.get(self, "access_key_creds")
+
+    @access_key_creds.setter
+    def access_key_creds(self, value: Optional[pulumi.Input['AccessKeyCredentialsArgs']]):
+        pulumi.set(self, "access_key_creds", value)
+
+    @property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The AWS region that the source VMs will be migrated from.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @aws_region.setter
+    def aws_region(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "aws_region", value)
+
+    @property
+    @pulumi.getter(name="inventorySecurityGroupNames")
+    def inventory_security_group_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        AWS security group names to limit the scope of the source inventory.
+        """
+        return pulumi.get(self, "inventory_security_group_names")
+
+    @inventory_security_group_names.setter
+    def inventory_security_group_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "inventory_security_group_names", value)
+
+    @property
+    @pulumi.getter(name="inventoryTagList")
+    def inventory_tag_list(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TagArgs']]]]:
+        """
+        AWS resource tags to limit the scope of the source inventory.
+        """
+        return pulumi.get(self, "inventory_tag_list")
+
+    @inventory_tag_list.setter
+    def inventory_tag_list(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TagArgs']]]]):
+        pulumi.set(self, "inventory_tag_list", value)
+
+    @property
+    @pulumi.getter(name="migrationResourcesUserTags")
+    def migration_resources_user_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+        """
+        return pulumi.get(self, "migration_resources_user_tags")
+
+    @migration_resources_user_tags.setter
+    def migration_resources_user_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "migration_resources_user_tags", value)
+
 
 @pulumi.input_type
 class ComputeEngineTargetDefaultsArgs:
@@ -524,6 +655,46 @@ class SchedulingNodeAffinityArgs:
     @values.setter
     def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "values", value)
+
+
+@pulumi.input_type
+class TagArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Tag is an AWS tag representation.
+        :param pulumi.Input[str] key: Key of tag.
+        :param pulumi.Input[str] value: Value of tag.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Key of tag.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Value of tag.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type

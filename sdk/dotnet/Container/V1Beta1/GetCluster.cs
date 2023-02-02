@@ -156,6 +156,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
+        /// This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         public readonly string ExpireTime;
@@ -398,6 +402,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
 
             string endpoint,
 
+            string etag,
+
             string expireTime,
 
             Outputs.IdentityServiceConfigResponse identityServiceConfig,
@@ -518,6 +524,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             EnableKubernetesAlpha = enableKubernetesAlpha;
             EnableTpu = enableTpu;
             Endpoint = endpoint;
+            Etag = etag;
             ExpireTime = expireTime;
             IdentityServiceConfig = identityServiceConfig;
             InitialClusterVersion = initialClusterVersion;

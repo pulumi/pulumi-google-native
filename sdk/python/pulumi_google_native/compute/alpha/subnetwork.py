@@ -24,6 +24,7 @@ class SubnetworkArgs:
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
                  enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input['SubnetworkIpv6AccessType']] = None,
@@ -50,6 +51,7 @@ class SubnetworkArgs:
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[bool] enable_private_v6_access: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input[str] external_ipv6_prefix: The external IPv6 address range that is owned by this subnetwork.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         :param pulumi.Input['SubnetworkIpv6AccessType'] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
@@ -83,6 +85,8 @@ class SubnetworkArgs:
             pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
         if enable_private_v6_access is not None:
             pulumi.set(__self__, "enable_private_v6_access", enable_private_v6_access)
+        if external_ipv6_prefix is not None:
+            pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if flow_sampling is not None:
             pulumi.set(__self__, "flow_sampling", flow_sampling)
         if ip_cidr_range is not None:
@@ -201,6 +205,18 @@ class SubnetworkArgs:
     @enable_private_v6_access.setter
     def enable_private_v6_access(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_private_v6_access", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external IPv6 address range that is owned by this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
+
+    @external_ipv6_prefix.setter
+    def external_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix", value)
 
     @property
     @pulumi.getter(name="flowSampling")
@@ -415,6 +431,7 @@ class Subnetwork(pulumi.CustomResource):
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
                  enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input['SubnetworkIpv6AccessType']] = None,
@@ -445,6 +462,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
         :param pulumi.Input[bool] enable_l2: Enables Layer2 communication on the subnetwork.
         :param pulumi.Input[bool] enable_private_v6_access: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
+        :param pulumi.Input[str] external_ipv6_prefix: The external IPv6 address range that is owned by this subnetwork.
         :param pulumi.Input[float] flow_sampling: Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         :param pulumi.Input['SubnetworkIpv6AccessType'] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
@@ -493,6 +511,7 @@ class Subnetwork(pulumi.CustomResource):
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
                  enable_l2: Optional[pulumi.Input[bool]] = None,
                  enable_private_v6_access: Optional[pulumi.Input[bool]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  flow_sampling: Optional[pulumi.Input[float]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input['SubnetworkIpv6AccessType']] = None,
@@ -529,6 +548,7 @@ class Subnetwork(pulumi.CustomResource):
                 warnings.warn("""Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""", DeprecationWarning)
                 pulumi.log.warn("""enable_private_v6_access is deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.""")
             __props__.__dict__["enable_private_v6_access"] = enable_private_v6_access
+            __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             __props__.__dict__["flow_sampling"] = flow_sampling
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["ipv6_access_type"] = ipv6_access_type
@@ -550,7 +570,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["vlans"] = vlans
             __props__.__dict__["creation_timestamp"] = None
-            __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
             __props__.__dict__["internal_ipv6_prefix"] = None
@@ -679,7 +698,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> pulumi.Output[str]:
         """
-        The external IPv6 address range that is assigned to this subnetwork.
+        The external IPv6 address range that is owned by this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 

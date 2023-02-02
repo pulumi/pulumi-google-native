@@ -213,6 +213,10 @@ const (
 	WorkloadComplianceRegimeAuRegionsAndUsSupport = WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT")
 	// Assured Workloads for Partners
 	WorkloadComplianceRegimeAssuredWorkloadsForPartners = WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS")
+	// Assured Workloads for Israel Regions
+	WorkloadComplianceRegimeIsrRegions = WorkloadComplianceRegime("ISR_REGIONS")
+	// Assured Workloads for Canada Protected B regime
+	WorkloadComplianceRegimeCaProtectedB = WorkloadComplianceRegime("CA_PROTECTED_B")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {
@@ -372,14 +376,15 @@ func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(WorkloadComplianceRegimePtrOutput)
 }
 
-// Optional. Compliance Regime associated with this workload.
+// Optional. Partner regime associated with this workload.
 type WorkloadPartner string
 
 const (
-	// Unknown partner regime/controls.
 	WorkloadPartnerPartnerUnspecified = WorkloadPartner("PARTNER_UNSPECIFIED")
-	// S3NS regime/controls.
+	// Enum representing S3NS partner.
 	WorkloadPartnerLocalControlsByS3ns = WorkloadPartner("LOCAL_CONTROLS_BY_S3NS")
+	// Enum representing T_SYSTEM partner.
+	WorkloadPartnerSovereignControlsByTSystems = WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS")
 )
 
 func (WorkloadPartner) ElementType() reflect.Type {

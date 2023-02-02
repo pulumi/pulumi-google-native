@@ -10,8 +10,6 @@ import * as utilities from "../../utilities";
 /**
  * Create a integration with a draft version in the specified project.
  * Auto-naming is currently not supported for this resource.
- * Note - this resource's API doesn't support deletion. When deleted, the resource will persist
- * on Google Cloud even though it will be deleted from Pulumi state.
  */
 export class Version extends pulumi.CustomResource {
     /**

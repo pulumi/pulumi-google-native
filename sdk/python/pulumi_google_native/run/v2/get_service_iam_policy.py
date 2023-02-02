@@ -84,7 +84,7 @@ def get_service_iam_policy(location: Optional[str] = None,
                            service_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceIamPolicyResult:
     """
-    Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
+    Gets the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -108,6 +108,6 @@ def get_service_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
                                   service_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
     """
-    Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
+    Gets the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
     """
     ...

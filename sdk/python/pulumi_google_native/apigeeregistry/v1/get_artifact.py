@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetArtifactResult:
-    def __init__(__self__, contents=None, create_time=None, hash=None, mime_type=None, name=None, size_bytes=None, update_time=None):
+    def __init__(__self__, annotations=None, contents=None, create_time=None, hash=None, labels=None, mime_type=None, name=None, size_bytes=None, update_time=None):
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
         if contents and not isinstance(contents, str):
             raise TypeError("Expected argument 'contents' to be a str")
         pulumi.set(__self__, "contents", contents)
@@ -28,6 +31,9 @@ class GetArtifactResult:
         if hash and not isinstance(hash, str):
             raise TypeError("Expected argument 'hash' to be a str")
         pulumi.set(__self__, "hash", hash)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if mime_type and not isinstance(mime_type, str):
             raise TypeError("Expected argument 'mime_type' to be a str")
         pulumi.set(__self__, "mime_type", mime_type)
@@ -40,6 +46,14 @@ class GetArtifactResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter
@@ -64,6 +78,14 @@ class GetArtifactResult:
         A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
         """
         return pulumi.get(self, "hash")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="mimeType")
@@ -104,9 +126,11 @@ class AwaitableGetArtifactResult(GetArtifactResult):
         if False:
             yield self
         return GetArtifactResult(
+            annotations=self.annotations,
             contents=self.contents,
             create_time=self.create_time,
             hash=self.hash,
+            labels=self.labels,
             mime_type=self.mime_type,
             name=self.name,
             size_bytes=self.size_bytes,
@@ -134,9 +158,11 @@ def get_artifact(api_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getArtifact', __args__, opts=opts, typ=GetArtifactResult).value
 
     return AwaitableGetArtifactResult(
+        annotations=__ret__.annotations,
         contents=__ret__.contents,
         create_time=__ret__.create_time,
         hash=__ret__.hash,
+        labels=__ret__.labels,
         mime_type=__ret__.mime_type,
         name=__ret__.name,
         size_bytes=__ret__.size_bytes,

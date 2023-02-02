@@ -10,6 +10,7 @@ __all__ = [
     'ClusterAutoscalingAutoscalingProfile',
     'ClusterUpdateDesiredDatapathProvider',
     'ClusterUpdateDesiredPrivateIpv6GoogleAccess',
+    'ClusterUpdateDesiredStackType',
     'DNSConfigClusterDns',
     'DNSConfigClusterDnsScope',
     'DatabaseEncryptionState',
@@ -29,19 +30,21 @@ __all__ = [
     'NetworkPolicyProvider',
     'NodePoolAutoscalingLocationPolicy',
     'NodeTaintEffect',
+    'PlacementPolicyType',
     'ReleaseChannelChannel',
     'ReservationAffinityConsumeReservationType',
     'SandboxConfigType',
     'StatusConditionCanonicalCode',
     'StatusConditionCode',
     'UpgradeSettingsStrategy',
+    'WindowsNodeConfigOsVersion',
     'WorkloadMetadataConfigMode',
 ]
 
 
 class BinaryAuthorizationEvaluationMode(str, Enum):
     """
-    Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+    Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
     """
     EVALUATION_MODE_UNSPECIFIED = "EVALUATION_MODE_UNSPECIFIED"
     """
@@ -133,6 +136,24 @@ class ClusterUpdateDesiredPrivateIpv6GoogleAccess(str, Enum):
     """
 
 
+class ClusterUpdateDesiredStackType(str, Enum):
+    """
+    The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+    """
+    STACK_TYPE_UNSPECIFIED = "STACK_TYPE_UNSPECIFIED"
+    """
+    Default value, will be defaulted as IPV4 only
+    """
+    IPV4 = "IPV4"
+    """
+    Cluster is IPV4 only
+    """
+    IPV4_IPV6 = "IPV4_IPV6"
+    """
+    Cluster can use both IPv4 and IPv6
+    """
+
+
 class DNSConfigClusterDns(str, Enum):
     """
     cluster_dns indicates which in-cluster DNS provider should be used.
@@ -158,6 +179,10 @@ class DNSConfigClusterDnsScope(str, Enum):
     DNS_SCOPE_UNSPECIFIED = "DNS_SCOPE_UNSPECIFIED"
     """
     Default value, will be inferred as cluster scope.
+    """
+    CLUSTER_SCOPE = "CLUSTER_SCOPE"
+    """
+    DNS records are accessible from within the cluster.
     """
     VPC_SCOPE = "VPC_SCOPE"
     """
@@ -486,6 +511,20 @@ class NodeTaintEffect(str, Enum):
     """
 
 
+class PlacementPolicyType(str, Enum):
+    """
+    The type of placement.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+    """
+    COMPACT = "COMPACT"
+    """
+    COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+    """
+
+
 class ReleaseChannelChannel(str, Enum):
     """
     channel specifies which release channel the cluster is subscribed to.
@@ -658,7 +697,7 @@ class UpgradeSettingsStrategy(str, Enum):
     """
     NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED = "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"
     """
-    Default value.
+    Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
     """
     BLUE_GREEN = "BLUE_GREEN"
     """
@@ -667,6 +706,24 @@ class UpgradeSettingsStrategy(str, Enum):
     SURGE = "SURGE"
     """
     SURGE is the traditional way of upgrade a node pool. max_surge and max_unavailable determines the level of upgrade parallelism.
+    """
+
+
+class WindowsNodeConfigOsVersion(str, Enum):
+    """
+    OSVersion specifies the Windows node config to be used on the node
+    """
+    OS_VERSION_UNSPECIFIED = "OS_VERSION_UNSPECIFIED"
+    """
+    When OSVersion is not specified
+    """
+    OS_VERSION_LTSC2019 = "OS_VERSION_LTSC2019"
+    """
+    LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+    """
+    OS_VERSION_LTSC2022 = "OS_VERSION_LTSC2022"
+    """
+    LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
     """
 
 

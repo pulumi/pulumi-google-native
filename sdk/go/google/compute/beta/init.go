@@ -127,6 +127,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MachineImageIamPolicy{}
 	case "google-native:compute/beta:Network":
 		r = &Network{}
+	case "google-native:compute/beta:NetworkAttachment":
+		r = &NetworkAttachment{}
+	case "google-native:compute/beta:NetworkAttachmentIamBinding":
+		r = &NetworkAttachmentIamBinding{}
+	case "google-native:compute/beta:NetworkAttachmentIamMember":
+		r = &NetworkAttachmentIamMember{}
+	case "google-native:compute/beta:NetworkAttachmentIamPolicy":
+		r = &NetworkAttachmentIamPolicy{}
 	case "google-native:compute/beta:NetworkEdgeSecurityService":
 		r = &NetworkEdgeSecurityService{}
 	case "google-native:compute/beta:NetworkEndpointGroup":

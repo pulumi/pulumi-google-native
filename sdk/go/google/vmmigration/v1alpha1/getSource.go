@@ -27,6 +27,8 @@ type LookupSourceArgs struct {
 }
 
 type LookupSourceResult struct {
+	// AWS type source details.
+	Aws AwsSourceDetailsResponse `pulumi:"aws"`
 	// The create time timestamp.
 	CreateTime string `pulumi:"createTime"`
 	// User-provided description of the source.
@@ -78,6 +80,11 @@ func (o LookupSourceResultOutput) ToLookupSourceResultOutput() LookupSourceResul
 
 func (o LookupSourceResultOutput) ToLookupSourceResultOutputWithContext(ctx context.Context) LookupSourceResultOutput {
 	return o
+}
+
+// AWS type source details.
+func (o LookupSourceResultOutput) Aws() AwsSourceDetailsResponseOutput {
+	return o.ApplyT(func(v LookupSourceResult) AwsSourceDetailsResponse { return v.Aws }).(AwsSourceDetailsResponseOutput)
 }
 
 // The create time timestamp.

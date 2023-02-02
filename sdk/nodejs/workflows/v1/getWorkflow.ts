@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Gets details of a single Workflow.
+ * Gets details of a single workflow.
  */
 export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowResult> {
     if (!opts) {
@@ -28,7 +28,7 @@ export interface GetWorkflowArgs {
 
 export interface GetWorkflowResult {
     /**
-     * The timestamp of when the workflow was created.
+     * The timestamp for when the workflow was created.
      */
     readonly createTime: string;
     /**
@@ -36,7 +36,7 @@ export interface GetWorkflowResult {
      */
     readonly description: string;
     /**
-     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+     * Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -44,7 +44,7 @@ export interface GetWorkflowResult {
      */
     readonly name: string;
     /**
-     * The timestamp that the latest revision of the workflow was created.
+     * The timestamp for the latest revision of the workflow's creation.
      */
     readonly revisionCreateTime: string;
     /**
@@ -64,7 +64,7 @@ export interface GetWorkflowResult {
      */
     readonly state: string;
     /**
-     * The last update timestamp of the workflow.
+     * The timestamp for when the workflow was last updated.
      */
     readonly updateTime: string;
 }

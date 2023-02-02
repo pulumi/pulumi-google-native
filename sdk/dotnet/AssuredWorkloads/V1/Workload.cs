@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Compliance Regime associated with this workload.
+        /// Optional. Partner regime associated with this workload.
         /// </summary>
         [Output("partner")]
         public Output<string> Partner { get; private set; } = null!;
@@ -246,7 +246,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Compliance Regime associated with this workload.
+        /// Optional. Partner regime associated with this workload.
         /// </summary>
         [Input("partner")]
         public Input<Pulumi.GoogleNative.AssuredWorkloads.V1.WorkloadPartner>? Partner { get; set; }

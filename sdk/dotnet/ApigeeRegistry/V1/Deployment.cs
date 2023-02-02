@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> ApiId { get; private set; } = null!;
 
         /// <summary>
-        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         /// </summary>
         [Output("apiSpecRevision")]
         public Output<string> ApiSpecRevision { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Input<string> ApiId { get; set; } = null!;
 
         /// <summary>
-        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
         /// </summary>
         [Input("apiSpecRevision")]
         public Input<string>? ApiSpecRevision { get; set; }

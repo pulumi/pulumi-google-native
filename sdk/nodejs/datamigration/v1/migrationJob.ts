@@ -38,6 +38,10 @@ export class MigrationJob extends pulumi.CustomResource {
     }
 
     /**
+     * The conversion workspace used by the migration.
+     */
+    public readonly conversionWorkspace!: pulumi.Output<outputs.datamigration.v1.ConversionWorkspaceInfoResponse>;
+    /**
      * The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -73,6 +77,10 @@ export class MigrationJob extends pulumi.CustomResource {
      * The error details in case of state FAILED.
      */
     public /*out*/ readonly error!: pulumi.Output<outputs.datamigration.v1.StatusResponse>;
+    /**
+     * This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+     */
+    public readonly filter!: pulumi.Output<string>;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
@@ -151,11 +159,13 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["conversionWorkspace"] = args ? args.conversionWorkspace : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
             resourceInputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["dumpFlags"] = args ? args.dumpFlags : undefined;
             resourceInputs["dumpPath"] = args ? args.dumpPath : undefined;
+            resourceInputs["filter"] = args ? args.filter : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["migrationJobId"] = args ? args.migrationJobId : undefined;
@@ -176,6 +186,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["phase"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["conversionWorkspace"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["destinationDatabase"] = undefined /*out*/;
@@ -185,6 +196,7 @@ export class MigrationJob extends pulumi.CustomResource {
             resourceInputs["duration"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
+            resourceInputs["filter"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["migrationJobId"] = undefined /*out*/;
@@ -213,6 +225,10 @@ export class MigrationJob extends pulumi.CustomResource {
  */
 export interface MigrationJobArgs {
     /**
+     * The conversion workspace used by the migration.
+     */
+    conversionWorkspace?: pulumi.Input<inputs.datamigration.v1.ConversionWorkspaceInfoArgs>;
+    /**
      * The resource name (URI) of the destination connection profile.
      */
     destination: pulumi.Input<string>;
@@ -232,6 +248,10 @@ export interface MigrationJobArgs {
      * The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]). This field and the "dump_flags" field are mutually exclusive.
      */
     dumpPath?: pulumi.Input<string>;
+    /**
+     * This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+     */
+    filter?: pulumi.Input<string>;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */

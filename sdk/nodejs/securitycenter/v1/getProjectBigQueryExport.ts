@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Gets a big query export.
+ * Gets a BigQuery export.
  */
 export function getProjectBigQueryExport(args: GetProjectBigQueryExportArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectBigQueryExportResult> {
     if (!opts) {
@@ -26,7 +26,7 @@ export interface GetProjectBigQueryExportArgs {
 
 export interface GetProjectBigQueryExportResult {
     /**
-     * The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+     * The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
      */
     readonly createTime: string;
     /**
@@ -42,7 +42,7 @@ export interface GetProjectBigQueryExportResult {
      */
     readonly filter: string;
     /**
-     * Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+     * Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
      */
     readonly mostRecentEditor: string;
     /**
@@ -50,11 +50,11 @@ export interface GetProjectBigQueryExportResult {
      */
     readonly name: string;
     /**
-     * The service account that needs permission to create table, upload data to the big query dataset.
+     * The service account that needs permission to create table and upload data to the BigQuery dataset.
      */
     readonly principal: string;
     /**
-     * The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+     * The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
      */
     readonly updateTime: string;
 }

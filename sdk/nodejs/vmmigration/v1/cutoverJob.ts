@@ -88,6 +88,10 @@ export class CutoverJob extends pulumi.CustomResource {
      * The time the state was last updated.
      */
     public /*out*/ readonly stateTime!: pulumi.Output<string>;
+    /**
+     * The cutover steps list representing its progress.
+     */
+    public /*out*/ readonly steps!: pulumi.Output<outputs.vmmigration.v1.CutoverStepResponse[]>;
 
     /**
      * Create a CutoverJob resource with the given unique name, arguments, and options.
@@ -124,6 +128,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
         } else {
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -140,6 +145,7 @@ export class CutoverJob extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["cutoverJobId", "location", "migratingVmId", "project", "sourceId"] };

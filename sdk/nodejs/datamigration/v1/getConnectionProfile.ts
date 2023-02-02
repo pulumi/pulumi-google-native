@@ -63,6 +63,10 @@ export interface GetConnectionProfileResult {
      */
     readonly name: string;
     /**
+     * An Oracle database connection profile.
+     */
+    readonly oracle: outputs.datamigration.v1.OracleConnectionProfileResponse;
+    /**
      * A PostgreSQL database connection profile.
      */
     readonly postgresql: outputs.datamigration.v1.PostgreSqlConnectionProfileResponse;

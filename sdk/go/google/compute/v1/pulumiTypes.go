@@ -843,6 +843,54 @@ func (o AliasIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AliasIpRangeRe
 	}).(AliasIpRangeResponseOutput)
 }
 
+type AllocationResourceStatusResponse struct {
+	SpecificSkuAllocation AllocationResourceStatusSpecificSKUAllocationResponse `pulumi:"specificSkuAllocation"`
+}
+
+type AllocationResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (AllocationResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationResourceStatusResponse)(nil)).Elem()
+}
+
+func (o AllocationResourceStatusResponseOutput) ToAllocationResourceStatusResponseOutput() AllocationResourceStatusResponseOutput {
+	return o
+}
+
+func (o AllocationResourceStatusResponseOutput) ToAllocationResourceStatusResponseOutputWithContext(ctx context.Context) AllocationResourceStatusResponseOutput {
+	return o
+}
+
+func (o AllocationResourceStatusResponseOutput) SpecificSkuAllocation() AllocationResourceStatusSpecificSKUAllocationResponseOutput {
+	return o.ApplyT(func(v AllocationResourceStatusResponse) AllocationResourceStatusSpecificSKUAllocationResponse {
+		return v.SpecificSkuAllocation
+	}).(AllocationResourceStatusSpecificSKUAllocationResponseOutput)
+}
+
+type AllocationResourceStatusSpecificSKUAllocationResponse struct {
+	SourceInstanceTemplateId string `pulumi:"sourceInstanceTemplateId"`
+}
+
+type AllocationResourceStatusSpecificSKUAllocationResponseOutput struct{ *pulumi.OutputState }
+
+func (AllocationResourceStatusSpecificSKUAllocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationResourceStatusSpecificSKUAllocationResponse)(nil)).Elem()
+}
+
+func (o AllocationResourceStatusSpecificSKUAllocationResponseOutput) ToAllocationResourceStatusSpecificSKUAllocationResponseOutput() AllocationResourceStatusSpecificSKUAllocationResponseOutput {
+	return o
+}
+
+func (o AllocationResourceStatusSpecificSKUAllocationResponseOutput) ToAllocationResourceStatusSpecificSKUAllocationResponseOutputWithContext(ctx context.Context) AllocationResourceStatusSpecificSKUAllocationResponseOutput {
+	return o
+}
+
+func (o AllocationResourceStatusSpecificSKUAllocationResponseOutput) SourceInstanceTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationResourceStatusSpecificSKUAllocationResponse) string {
+		return v.SourceInstanceTemplateId
+	}).(pulumi.StringOutput)
+}
+
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk struct {
 	// Specifies the size of the disk in base-2 GB.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
@@ -1296,6 +1344,8 @@ type AllocationSpecificSKUReservation struct {
 	Count *string `pulumi:"count"`
 	// The instance properties for the reservation.
 	InstanceProperties *AllocationSpecificSKUAllocationReservedInstanceProperties `pulumi:"instanceProperties"`
+	// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 }
 
 // AllocationSpecificSKUReservationInput is an input type that accepts AllocationSpecificSKUReservationArgs and AllocationSpecificSKUReservationOutput values.
@@ -1315,6 +1365,8 @@ type AllocationSpecificSKUReservationArgs struct {
 	Count pulumi.StringPtrInput `pulumi:"count"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesPtrInput `pulumi:"instanceProperties"`
+	// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+	SourceInstanceTemplate pulumi.StringPtrInput `pulumi:"sourceInstanceTemplate"`
 }
 
 func (AllocationSpecificSKUReservationArgs) ElementType() reflect.Type {
@@ -1407,6 +1459,11 @@ func (o AllocationSpecificSKUReservationOutput) InstanceProperties() AllocationS
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
+// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+func (o AllocationSpecificSKUReservationOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUReservation) *string { return v.SourceInstanceTemplate }).(pulumi.StringPtrOutput)
+}
+
 type AllocationSpecificSKUReservationPtrOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationPtrOutput) ElementType() reflect.Type {
@@ -1451,6 +1508,16 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
+// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+func (o AllocationSpecificSKUReservationPtrOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AllocationSpecificSKUReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstanceTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationResponse struct {
 	// Indicates how many instances are actually usable currently.
@@ -1461,6 +1528,8 @@ type AllocationSpecificSKUReservationResponse struct {
 	InUseCount string `pulumi:"inUseCount"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponse `pulumi:"instanceProperties"`
+	// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 }
 
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 6
@@ -1498,6 +1567,11 @@ func (o AllocationSpecificSKUReservationResponseOutput) InstanceProperties() All
 	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) AllocationSpecificSKUAllocationReservedInstancePropertiesResponse {
 		return v.InstanceProperties
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput)
+}
+
+// Specifies the instance template to create the reservation. If you use this field, you must exclude the instanceProperties field. This field is optional, and it can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate
+func (o AllocationSpecificSKUReservationResponseOutput) SourceInstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
 }
 
 // An instance-attached disk resource.
@@ -1709,7 +1783,7 @@ type AttachedDiskInitializeParams struct {
 	DiskName *string `pulumi:"diskName"`
 	// Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
-	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType *string `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
@@ -1725,7 +1799,7 @@ type AttachedDiskInitializeParams struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
 	SourceImage *string `pulumi:"sourceImage"`
-	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
 	SourceImageEncryptionKey *CustomerEncryptionKey `pulumi:"sourceImageEncryptionKey"`
 	// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
 	SourceSnapshot *string `pulumi:"sourceSnapshot"`
@@ -1754,7 +1828,7 @@ type AttachedDiskInitializeParamsArgs struct {
 	DiskName pulumi.StringPtrInput `pulumi:"diskName"`
 	// Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
-	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -1770,7 +1844,7 @@ type AttachedDiskInitializeParamsArgs struct {
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
 	SourceImage pulumi.StringPtrInput `pulumi:"sourceImage"`
-	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
 	SourceImageEncryptionKey CustomerEncryptionKeyPtrInput `pulumi:"sourceImageEncryptionKey"`
 	// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
 	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
@@ -1876,7 +1950,7 @@ func (o AttachedDiskInitializeParamsOutput) DiskSizeGb() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 func (o AttachedDiskInitializeParamsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -1918,7 +1992,7 @@ func (o AttachedDiskInitializeParamsOutput) SourceImage() pulumi.StringPtrOutput
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.SourceImage }).(pulumi.StringPtrOutput)
 }
 
-// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
 func (o AttachedDiskInitializeParamsOutput) SourceImageEncryptionKey() CustomerEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *CustomerEncryptionKey { return v.SourceImageEncryptionKey }).(CustomerEncryptionKeyPtrOutput)
 }
@@ -1997,7 +2071,7 @@ func (o AttachedDiskInitializeParamsPtrOutput) DiskSizeGb() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 func (o AttachedDiskInitializeParamsPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) *string {
 		if v == nil {
@@ -2077,7 +2151,7 @@ func (o AttachedDiskInitializeParamsPtrOutput) SourceImage() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
 func (o AttachedDiskInitializeParamsPtrOutput) SourceImageEncryptionKey() CustomerEncryptionKeyPtrOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) *CustomerEncryptionKey {
 		if v == nil {
@@ -2117,7 +2191,7 @@ type AttachedDiskInitializeParamsResponse struct {
 	DiskName string `pulumi:"diskName"`
 	// Specifies the size of the disk in base-2 GB. The size must be at least 10 GB. If you specify a sourceImage, which is required for boot disks, the default size is the size of the sourceImage. If you do not specify a sourceImage, the default disk size is 500 GB.
 	DiskSizeGb string `pulumi:"diskSizeGb"`
-	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+	// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 	DiskType string `pulumi:"diskType"`
 	// Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
@@ -2133,7 +2207,7 @@ type AttachedDiskInitializeParamsResponse struct {
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
 	SourceImage string `pulumi:"sourceImage"`
-	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+	// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
 	SourceImageEncryptionKey CustomerEncryptionKeyResponse `pulumi:"sourceImageEncryptionKey"`
 	// The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
 	SourceSnapshot string `pulumi:"sourceSnapshot"`
@@ -2176,7 +2250,7 @@ func (o AttachedDiskInitializeParamsResponseOutput) DiskSizeGb() pulumi.StringOu
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
 
-// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you define this field, you can provide either the full or partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType Note that for InstanceTemplate, this is the name of the disk type, not URL.
+// Specifies the disk type to use to create the instance. If not specified, the default is pd-standard, specified using the full URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/pd-standard For a full list of acceptable values, see Persistent disk types. If you specify this field when creating a VM, you can provide either the full or partial URL. For example, the following values are valid: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /diskTypes/diskType - projects/project/zones/zone/diskTypes/diskType - zones/zone/diskTypes/diskType If you specify this field when creating or updating an instance template or all-instances configuration, specify the type of the disk, not the URL. For example: pd-standard.
 func (o AttachedDiskInitializeParamsResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -2216,7 +2290,7 @@ func (o AttachedDiskInitializeParamsResponseOutput) SourceImage() pulumi.StringO
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.SourceImage }).(pulumi.StringOutput)
 }
 
-// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
+// The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
 func (o AttachedDiskInitializeParamsResponseOutput) SourceImageEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) CustomerEncryptionKeyResponse {
 		return v.SourceImageEncryptionKey
@@ -4112,7 +4186,7 @@ func (o AutoscalingPolicyScaleInControlResponseOutput) TimeWindowSec() pulumi.In
 type Backend struct {
 	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode *BackendBalancingMode `pulumi:"balancingMode"`
-	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
 	CapacityScaler *float64 `pulumi:"capacityScaler"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -4151,7 +4225,7 @@ type BackendInput interface {
 type BackendArgs struct {
 	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode BackendBalancingModePtrInput `pulumi:"balancingMode"`
-	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
 	CapacityScaler pulumi.Float64PtrInput `pulumi:"capacityScaler"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -4232,7 +4306,7 @@ func (o BackendOutput) BalancingMode() BackendBalancingModePtrOutput {
 	return o.ApplyT(func(v Backend) *BackendBalancingMode { return v.BalancingMode }).(BackendBalancingModePtrOutput)
 }
 
-// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
 func (o BackendOutput) CapacityScaler() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Backend) *float64 { return v.CapacityScaler }).(pulumi.Float64PtrOutput)
 }
@@ -5254,7 +5328,7 @@ func (o BackendBucketCdnPolicyResponseOutput) SignedUrlKeyNames() pulumi.StringA
 type BackendResponse struct {
 	// Specifies how to determine whether the backend of a load balancer can handle additional traffic or is fully loaded. For usage guidelines, see Connection balancing mode. Backends must use compatible balancing modes. For more information, see Supported balancing modes and target capacity settings and Restrictions and guidance for instance groups. Note: Currently, if you use the API to configure incompatible balancing modes, the configuration might be accepted even though it has no impact and is ignored. Specifically, Backend.maxUtilization is ignored when Backend.balancingMode is RATE. In the future, this incompatible combination will be rejected.
 	BalancingMode string `pulumi:"balancingMode"`
-	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+	// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
 	CapacityScaler float64 `pulumi:"capacityScaler"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -5298,7 +5372,7 @@ func (o BackendResponseOutput) BalancingMode() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendResponse) string { return v.BalancingMode }).(pulumi.StringOutput)
 }
 
-// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service.
+// A multiplier applied to the backend's target capacity of its balancing mode. The default value is 1, which means the group serves up to 100% of its configured capacity (depending on balancingMode). A setting of 0 means the group is completely drained, offering 0% of its available capacity. The valid ranges are 0.0 and [0.1,1.0]. You cannot configure a setting larger than 0 and smaller than 0.1. You cannot configure a setting of 0 when there is only one backend attached to the backend service. Not available with backends that don't support using a balancingMode. This includes backends such as global internet NEGs, regional serverless NEGs, and PSC NEGs.
 func (o BackendResponseOutput) CapacityScaler() pulumi.Float64Output {
 	return o.ApplyT(func(v BackendResponse) float64 { return v.CapacityScaler }).(pulumi.Float64Output)
 }
@@ -6926,7 +7000,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigArrayOutput) Index(i pulu
 type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy struct {
 	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
 	Data *string `pulumi:"data"`
-	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	// Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
 	Name *string `pulumi:"name"`
 }
 
@@ -6945,7 +7019,7 @@ type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyInput interface 
 type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs struct {
 	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
 	Data pulumi.StringPtrInput `pulumi:"data"`
-	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	// Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -7032,7 +7106,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) Data(
 	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
-// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+// Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
 func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -7071,7 +7145,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Da
 	}).(pulumi.StringPtrOutput)
 }
 
-// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+// Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
 func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicy) *string {
 		if v == nil {
@@ -7085,7 +7159,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyPtrOutput) Na
 type BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse struct {
 	// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
 	Data string `pulumi:"data"`
-	// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+	// Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
 	Name string `pulumi:"name"`
 }
 
@@ -7109,14 +7183,14 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutpu
 	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse) string { return v.Data }).(pulumi.StringOutput)
 }
 
-// Identifies the custom policy. The value should match the type the custom implementation is registered with on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (e.g. myorg.CustomLbPolicy). The maximum length is 256 characters. Note that specifying the same custom policy more than once for a backend is not a valid configuration and will be rejected.
+// Identifies the custom policy. The value should match the name of a custom implementation registered on the gRPC clients. It should follow protocol buffer message naming conventions and include the full path (for example, myorg.CustomLbPolicy). The maximum length is 256 characters. Do not specify the same custom policy more than once for a backend. If you do, the configuration is rejected. For an example of how to use this field, see Use a custom policy.
 func (o BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The configuration for a built-in load balancing policy.
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicy struct {
-	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 	Name *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName `pulumi:"name"`
 }
 
@@ -7133,7 +7207,7 @@ type BackendServiceLocalityLoadBalancingPolicyConfigPolicyInput interface {
 
 // The configuration for a built-in load balancing policy.
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicyArgs struct {
-	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 	Name BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput `pulumi:"name"`
 }
 
@@ -7215,7 +7289,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) ToBackendSe
 	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput)
 }
 
-// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput) Name() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
 	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
 		return v.Name
@@ -7246,7 +7320,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Elem() B
 	}).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyOutput)
 }
 
-// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Name() BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
 	return o.ApplyT(func(v *BackendServiceLocalityLoadBalancingPolicyConfigPolicy) *BackendServiceLocalityLoadBalancingPolicyConfigPolicyName {
 		if v == nil {
@@ -7258,7 +7332,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyPtrOutput) Name() B
 
 // The configuration for a built-in load balancing policy.
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse struct {
-	// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+	// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 	Name string `pulumi:"name"`
 }
 
@@ -7277,7 +7351,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) ToB
 	return o
 }
 
-// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendServiceLocalityLoadBalancingPolicyConfigPolicyResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7339,6 +7413,10 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigResponseArrayOutput) Inde
 type BackendServiceLogConfig struct {
 	// Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
 	Enable *bool `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+	OptionalFields []string `pulumi:"optionalFields"`
+	// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+	OptionalMode *BackendServiceLogConfigOptionalMode `pulumi:"optionalMode"`
 	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 	SampleRate *float64 `pulumi:"sampleRate"`
 }
@@ -7358,6 +7436,10 @@ type BackendServiceLogConfigInput interface {
 type BackendServiceLogConfigArgs struct {
 	// Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
 	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+	OptionalFields pulumi.StringArrayInput `pulumi:"optionalFields"`
+	// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+	OptionalMode BackendServiceLogConfigOptionalModePtrInput `pulumi:"optionalMode"`
 	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 	SampleRate pulumi.Float64PtrInput `pulumi:"sampleRate"`
 }
@@ -7445,6 +7527,16 @@ func (o BackendServiceLogConfigOutput) Enable() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+func (o BackendServiceLogConfigOutput) OptionalFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackendServiceLogConfig) []string { return v.OptionalFields }).(pulumi.StringArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+func (o BackendServiceLogConfigOutput) OptionalMode() BackendServiceLogConfigOptionalModePtrOutput {
+	return o.ApplyT(func(v BackendServiceLogConfig) *BackendServiceLogConfigOptionalMode { return v.OptionalMode }).(BackendServiceLogConfigOptionalModePtrOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 func (o BackendServiceLogConfigOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendServiceLogConfig) *float64 { return v.SampleRate }).(pulumi.Float64PtrOutput)
@@ -7484,6 +7576,26 @@ func (o BackendServiceLogConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+func (o BackendServiceLogConfigPtrOutput) OptionalFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BackendServiceLogConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OptionalFields
+	}).(pulumi.StringArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+func (o BackendServiceLogConfigPtrOutput) OptionalMode() BackendServiceLogConfigOptionalModePtrOutput {
+	return o.ApplyT(func(v *BackendServiceLogConfig) *BackendServiceLogConfigOptionalMode {
+		if v == nil {
+			return nil
+		}
+		return v.OptionalMode
+	}).(BackendServiceLogConfigOptionalModePtrOutput)
+}
+
 // This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BackendServiceLogConfig) *float64 {
@@ -7498,6 +7610,10 @@ func (o BackendServiceLogConfigPtrOutput) SampleRate() pulumi.Float64PtrOutput {
 type BackendServiceLogConfigResponse struct {
 	// Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
 	Enable bool `pulumi:"enable"`
+	// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+	OptionalFields []string `pulumi:"optionalFields"`
+	// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+	OptionalMode string `pulumi:"optionalMode"`
 	// This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
 	SampleRate float64 `pulumi:"sampleRate"`
 }
@@ -7520,6 +7636,16 @@ func (o BackendServiceLogConfigResponseOutput) ToBackendServiceLogConfigResponse
 // Denotes whether to enable logging for the load balancer traffic served by this backend service. The default value is false.
 func (o BackendServiceLogConfigResponseOutput) Enable() pulumi.BoolOutput {
 	return o.ApplyT(func(v BackendServiceLogConfigResponse) bool { return v.Enable }).(pulumi.BoolOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service and "logConfig.optionalMode" was set to CUSTOM. Contains a list of optional fields you want to include in the logs. For example: serverInstance, serverGkeDetails.cluster, serverGkeDetails.pod.podNamespace
+func (o BackendServiceLogConfigResponseOutput) OptionalFields() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackendServiceLogConfigResponse) []string { return v.OptionalFields }).(pulumi.StringArrayOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+func (o BackendServiceLogConfigResponseOutput) OptionalMode() pulumi.StringOutput {
+	return o.ApplyT(func(v BackendServiceLogConfigResponse) string { return v.OptionalMode }).(pulumi.StringOutput)
 }
 
 // This field can only be specified if logging is enabled for this backend service. The value of the field must be in [0, 1]. This configures the sampling rate of requests to the load balancer where 1.0 means all logged requests are reported and 0.0 means no logged requests are reported. The default value is 1.0.
@@ -12542,7 +12668,7 @@ func (o FirewallPolicyAssociationResponseArrayOutput) Index(i pulumi.IntInput) F
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type FirewallPolicyRule struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
 	Action *string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
@@ -12579,7 +12705,7 @@ type FirewallPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type FirewallPolicyRuleArgs struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -12655,7 +12781,7 @@ func (o FirewallPolicyRuleOutput) ToFirewallPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
 func (o FirewallPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -13137,7 +13263,7 @@ func (o FirewallPolicyRuleMatcherResponseOutput) SrcSecureTags() FirewallPolicyR
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type FirewallPolicyRuleResponse struct {
-	// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description string `pulumi:"description"`
@@ -13180,7 +13306,7 @@ func (o FirewallPolicyRuleResponseOutput) ToFirewallPolicyRuleResponseOutputWith
 	return o
 }
 
-// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
+// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny" and "goto_next".
 func (o FirewallPolicyRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -23398,6 +23524,80 @@ func (o NamedPortResponseArrayOutput) Index(i pulumi.IntInput) NamedPortResponse
 	}).(NamedPortResponseOutput)
 }
 
+// [Output Only] A connection connected to this network attachment.
+type NetworkAttachmentConnectedEndpointResponse struct {
+	// The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+	IpAddress string `pulumi:"ipAddress"`
+	// The project id or number of the interface to which the IP was assigned.
+	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
+	// Alias IP ranges from the same subnetwork
+	SecondaryIpCidrRanges []string `pulumi:"secondaryIpCidrRanges"`
+	// The status of a connected endpoint to this network attachment.
+	Status string `pulumi:"status"`
+	// The subnetwork used to assign the IP to the producer instance network interface.
+	Subnetwork string `pulumi:"subnetwork"`
+}
+
+// [Output Only] A connection connected to this network attachment.
+type NetworkAttachmentConnectedEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkAttachmentConnectedEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachmentConnectedEndpointResponse)(nil)).Elem()
+}
+
+func (o NetworkAttachmentConnectedEndpointResponseOutput) ToNetworkAttachmentConnectedEndpointResponseOutput() NetworkAttachmentConnectedEndpointResponseOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectedEndpointResponseOutput) ToNetworkAttachmentConnectedEndpointResponseOutputWithContext(ctx context.Context) NetworkAttachmentConnectedEndpointResponseOutput {
+	return o
+}
+
+// The IP address assigned to the producer instance network interface. This value will be a range in case of Serverless.
+func (o NetworkAttachmentConnectedEndpointResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The project id or number of the interface to which the IP was assigned.
+func (o NetworkAttachmentConnectedEndpointResponseOutput) ProjectIdOrNum() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.ProjectIdOrNum }).(pulumi.StringOutput)
+}
+
+// Alias IP ranges from the same subnetwork
+func (o NetworkAttachmentConnectedEndpointResponseOutput) SecondaryIpCidrRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) []string { return v.SecondaryIpCidrRanges }).(pulumi.StringArrayOutput)
+}
+
+// The status of a connected endpoint to this network attachment.
+func (o NetworkAttachmentConnectedEndpointResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// The subnetwork used to assign the IP to the producer instance network interface.
+func (o NetworkAttachmentConnectedEndpointResponseOutput) Subnetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAttachmentConnectedEndpointResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
+}
+
+type NetworkAttachmentConnectedEndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAttachmentConnectedEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAttachmentConnectedEndpointResponse)(nil)).Elem()
+}
+
+func (o NetworkAttachmentConnectedEndpointResponseArrayOutput) ToNetworkAttachmentConnectedEndpointResponseArrayOutput() NetworkAttachmentConnectedEndpointResponseArrayOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectedEndpointResponseArrayOutput) ToNetworkAttachmentConnectedEndpointResponseArrayOutputWithContext(ctx context.Context) NetworkAttachmentConnectedEndpointResponseArrayOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectedEndpointResponseArrayOutput) Index(i pulumi.IntInput) NetworkAttachmentConnectedEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAttachmentConnectedEndpointResponse {
+		return vs[0].([]NetworkAttachmentConnectedEndpointResponse)[vs[1].(int)]
+	}).(NetworkAttachmentConnectedEndpointResponseOutput)
+}
+
 // Configuration for an App Engine network endpoint group (NEG). The service is optional, may be provided explicitly or in the URL mask. The version is optional and can only be provided explicitly or in the URL mask when service is present. Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupAppEngine struct {
 	// Optional serving service. The service name is case-sensitive and must be 1-63 characters long. Example value: "default", "my-service".
@@ -24201,6 +24401,8 @@ type NetworkInterface struct {
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network *string `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment *string `pulumi:"networkAttachment"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP *string `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -24238,6 +24440,8 @@ type NetworkInterfaceArgs struct {
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment pulumi.StringPtrInput `pulumi:"networkAttachment"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP pulumi.StringPtrInput `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -24332,6 +24536,11 @@ func (o NetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+func (o NetworkInterfaceOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkInterface) *string { return v.NetworkAttachment }).(pulumi.StringPtrOutput)
+}
+
 // An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 func (o NetworkInterfaceOutput) NetworkIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.NetworkIP }).(pulumi.StringPtrOutput)
@@ -24399,6 +24608,8 @@ type NetworkInterfaceResponse struct {
 	Name string `pulumi:"name"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network string `pulumi:"network"`
+	// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+	NetworkAttachment string `pulumi:"networkAttachment"`
 	// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
 	NetworkIP string `pulumi:"networkIP"`
 	// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -24474,6 +24685,11 @@ func (o NetworkInterfaceResponseOutput) Name() pulumi.StringOutput {
 // URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 func (o NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+func (o NetworkInterfaceResponseOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.NetworkAttachment }).(pulumi.StringOutput)
 }
 
 // An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
@@ -25556,7 +25772,7 @@ type NotificationEndpointGrpcSettings struct {
 	Endpoint *string `pulumi:"endpoint"`
 	// Optional. If specified, this field is used to populate the "name" field in gRPC requests.
 	PayloadName *string `pulumi:"payloadName"`
-	// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+	// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
 	ResendInterval *Duration `pulumi:"resendInterval"`
 	// How much time (in seconds) is spent attempting notification retries until a successful response is received. Default is 30s. Limit is 20m (1200s). Must be a positive number.
 	RetryDurationSec *int `pulumi:"retryDurationSec"`
@@ -25581,7 +25797,7 @@ type NotificationEndpointGrpcSettingsArgs struct {
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
 	// Optional. If specified, this field is used to populate the "name" field in gRPC requests.
 	PayloadName pulumi.StringPtrInput `pulumi:"payloadName"`
-	// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+	// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
 	ResendInterval DurationPtrInput `pulumi:"resendInterval"`
 	// How much time (in seconds) is spent attempting notification retries until a successful response is received. Default is 30s. Limit is 20m (1200s). Must be a positive number.
 	RetryDurationSec pulumi.IntPtrInput `pulumi:"retryDurationSec"`
@@ -25680,7 +25896,7 @@ func (o NotificationEndpointGrpcSettingsOutput) PayloadName() pulumi.StringPtrOu
 	return o.ApplyT(func(v NotificationEndpointGrpcSettings) *string { return v.PayloadName }).(pulumi.StringPtrOutput)
 }
 
-// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
 func (o NotificationEndpointGrpcSettingsOutput) ResendInterval() DurationPtrOutput {
 	return o.ApplyT(func(v NotificationEndpointGrpcSettings) *Duration { return v.ResendInterval }).(DurationPtrOutput)
 }
@@ -25744,7 +25960,7 @@ func (o NotificationEndpointGrpcSettingsPtrOutput) PayloadName() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
 func (o NotificationEndpointGrpcSettingsPtrOutput) ResendInterval() DurationPtrOutput {
 	return o.ApplyT(func(v *NotificationEndpointGrpcSettings) *Duration {
 		if v == nil {
@@ -25772,7 +25988,7 @@ type NotificationEndpointGrpcSettingsResponse struct {
 	Endpoint string `pulumi:"endpoint"`
 	// Optional. If specified, this field is used to populate the "name" field in gRPC requests.
 	PayloadName string `pulumi:"payloadName"`
-	// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+	// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
 	ResendInterval DurationResponse `pulumi:"resendInterval"`
 	// How much time (in seconds) is spent attempting notification retries until a successful response is received. Default is 30s. Limit is 20m (1200s). Must be a positive number.
 	RetryDurationSec int `pulumi:"retryDurationSec"`
@@ -25808,7 +26024,7 @@ func (o NotificationEndpointGrpcSettingsResponseOutput) PayloadName() pulumi.Str
 	return o.ApplyT(func(v NotificationEndpointGrpcSettingsResponse) string { return v.PayloadName }).(pulumi.StringOutput)
 }
 
-// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed.
+// Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
 func (o NotificationEndpointGrpcSettingsResponseOutput) ResendInterval() DurationResponseOutput {
 	return o.ApplyT(func(v NotificationEndpointGrpcSettingsResponse) DurationResponse { return v.ResendInterval }).(DurationResponseOutput)
 }
@@ -28343,7 +28559,7 @@ type ReservationType struct {
 	Description *string `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
@@ -28370,7 +28586,7 @@ type ReservationTypeArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsPtrInput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput `pulumi:"specificReservation"`
@@ -28442,7 +28658,7 @@ func (o ReservationTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o ReservationTypeOutput) ShareSettings() ShareSettingsPtrOutput {
 	return o.ApplyT(func(v ReservationType) *ShareSettings { return v.ShareSettings }).(ShareSettingsPtrOutput)
 }
@@ -28714,11 +28930,13 @@ type ReservationResponse struct {
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponse `pulumi:"specificReservation"`
@@ -28770,6 +28988,11 @@ func (o ReservationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Status information for Reservation resource.
+func (o ReservationResponseOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v ReservationResponse) AllocationResourceStatusResponse { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o ReservationResponseOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v ReservationResponse) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -28780,7 +29003,7 @@ func (o ReservationResponseOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o ReservationResponseOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v ReservationResponse) ShareSettingsResponse { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }
@@ -28831,7 +29054,7 @@ type ResourceCommitment struct {
 	AcceleratorType *string `pulumi:"acceleratorType"`
 	// The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
 	Amount *string `pulumi:"amount"`
-	// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+	// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 	Type *ResourceCommitmentType `pulumi:"type"`
 }
 
@@ -28852,7 +29075,7 @@ type ResourceCommitmentArgs struct {
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
 	// The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
 	Amount pulumi.StringPtrInput `pulumi:"amount"`
-	// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+	// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 	Type ResourceCommitmentTypePtrInput `pulumi:"type"`
 }
 
@@ -28918,7 +29141,7 @@ func (o ResourceCommitmentOutput) Amount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourceCommitment) *string { return v.Amount }).(pulumi.StringPtrOutput)
 }
 
-// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 func (o ResourceCommitmentOutput) Type() ResourceCommitmentTypePtrOutput {
 	return o.ApplyT(func(v ResourceCommitment) *ResourceCommitmentType { return v.Type }).(ResourceCommitmentTypePtrOutput)
 }
@@ -28949,7 +29172,7 @@ type ResourceCommitmentResponse struct {
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The amount of the resource purchased (in a type-dependent unit, such as bytes). For vCPUs, this can just be an integer. For memory, this must be provided in MB. Memory must be a multiple of 256 MB, with up to 6.5GB of memory per every vCPU.
 	Amount string `pulumi:"amount"`
-	// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+	// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 	Type string `pulumi:"type"`
 }
 
@@ -28978,7 +29201,7 @@ func (o ResourceCommitmentResponseOutput) Amount() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceCommitmentResponse) string { return v.Amount }).(pulumi.StringOutput)
 }
 
-// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 func (o ResourceCommitmentResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceCommitmentResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -36588,7 +36811,7 @@ func (o SecurityPolicyRecaptchaOptionsConfigResponseOutput) RedirectSiteKey() pu
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRule struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action *string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
@@ -36619,7 +36842,7 @@ type SecurityPolicyRuleInput interface {
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleArgs struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action pulumi.StringPtrInput `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -36689,7 +36912,7 @@ func (o SecurityPolicyRuleOutput) ToSecurityPolicyRuleOutputWithContext(ctx cont
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
@@ -37457,11 +37680,11 @@ type SecurityPolicyRuleRateLimitOptions struct {
 	BanThreshold *SecurityPolicyRuleRateLimitOptionsThreshold `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction *string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey *SecurityPolicyRuleRateLimitOptionsEnforceOnKey `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName *string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
 	ExceedAction *string `pulumi:"exceedAction"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions *SecurityPolicyRuleRedirectOptions `pulumi:"exceedRedirectOptions"`
@@ -37487,11 +37710,11 @@ type SecurityPolicyRuleRateLimitOptionsArgs struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdPtrInput `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction pulumi.StringPtrInput `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName pulumi.StringPtrInput `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
 	ExceedAction pulumi.StringPtrInput `pulumi:"exceedAction"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsPtrInput `pulumi:"exceedRedirectOptions"`
@@ -37593,7 +37816,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) ConformAction() pulumi.StringP
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ConformAction }).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		return v.EnforceOnKey
@@ -37605,7 +37828,7 @@ func (o SecurityPolicyRuleRateLimitOptionsOutput) EnforceOnKeyName() pulumi.Stri
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.EnforceOnKeyName }).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
 func (o SecurityPolicyRuleRateLimitOptionsOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptions) *string { return v.ExceedAction }).(pulumi.StringPtrOutput)
 }
@@ -37678,7 +37901,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ConformAction() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKey() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *SecurityPolicyRuleRateLimitOptionsEnforceOnKey {
 		if v == nil {
@@ -37698,7 +37921,7 @@ func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) EnforceOnKeyName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
 func (o SecurityPolicyRuleRateLimitOptionsPtrOutput) ExceedAction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyRuleRateLimitOptions) *string {
 		if v == nil {
@@ -37735,11 +37958,11 @@ type SecurityPolicyRuleRateLimitOptionsResponse struct {
 	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
 	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
 	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 	EnforceOnKey string `pulumi:"enforceOnKey"`
 	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
 	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
 	ExceedAction string `pulumi:"exceedAction"`
 	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
 	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
@@ -37778,7 +38001,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
 }
@@ -37788,7 +38011,7 @@ func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pul
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
 }
 
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are "deny(status)", where valid values for status are 403, 404, 429, and 502, and "redirect" where the redirect parameters come from exceedRedirectOptions below.
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
 func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
 }
@@ -38183,7 +38406,7 @@ func (o SecurityPolicyRuleRedirectOptionsResponseOutput) Type() pulumi.StringOut
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
 type SecurityPolicyRuleResponse struct {
-	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+	// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 	Action string `pulumi:"action"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
@@ -38218,7 +38441,7 @@ func (o SecurityPolicyRuleResponseOutput) ToSecurityPolicyRuleResponseOutputWith
 	return o
 }
 
-// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
+// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for `STATUS` are 403, 404, and 502. - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this.
 func (o SecurityPolicyRuleResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -38857,6 +39080,8 @@ func (o ServiceAttachmentConnectedEndpointResponseArrayOutput) Index(i pulumi.In
 type ServiceAttachmentConsumerProjectLimit struct {
 	// The value of the limit to set.
 	ConnectionLimit *int `pulumi:"connectionLimit"`
+	// The network URL for the network to set the limit for.
+	NetworkUrl *string `pulumi:"networkUrl"`
 	// The project id or number for the project to set the limit for.
 	ProjectIdOrNum *string `pulumi:"projectIdOrNum"`
 }
@@ -38875,6 +39100,8 @@ type ServiceAttachmentConsumerProjectLimitInput interface {
 type ServiceAttachmentConsumerProjectLimitArgs struct {
 	// The value of the limit to set.
 	ConnectionLimit pulumi.IntPtrInput `pulumi:"connectionLimit"`
+	// The network URL for the network to set the limit for.
+	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
 	// The project id or number for the project to set the limit for.
 	ProjectIdOrNum pulumi.StringPtrInput `pulumi:"projectIdOrNum"`
 }
@@ -38935,6 +39162,11 @@ func (o ServiceAttachmentConsumerProjectLimitOutput) ConnectionLimit() pulumi.In
 	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimit) *int { return v.ConnectionLimit }).(pulumi.IntPtrOutput)
 }
 
+// The network URL for the network to set the limit for.
+func (o ServiceAttachmentConsumerProjectLimitOutput) NetworkUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimit) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
+}
+
 // The project id or number for the project to set the limit for.
 func (o ServiceAttachmentConsumerProjectLimitOutput) ProjectIdOrNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimit) *string { return v.ProjectIdOrNum }).(pulumi.StringPtrOutput)
@@ -38963,6 +39195,8 @@ func (o ServiceAttachmentConsumerProjectLimitArrayOutput) Index(i pulumi.IntInpu
 type ServiceAttachmentConsumerProjectLimitResponse struct {
 	// The value of the limit to set.
 	ConnectionLimit int `pulumi:"connectionLimit"`
+	// The network URL for the network to set the limit for.
+	NetworkUrl string `pulumi:"networkUrl"`
 	// The project id or number for the project to set the limit for.
 	ProjectIdOrNum string `pulumi:"projectIdOrNum"`
 }
@@ -38984,6 +39218,11 @@ func (o ServiceAttachmentConsumerProjectLimitResponseOutput) ToServiceAttachment
 // The value of the limit to set.
 func (o ServiceAttachmentConsumerProjectLimitResponseOutput) ConnectionLimit() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimitResponse) int { return v.ConnectionLimit }).(pulumi.IntOutput)
+}
+
+// The network URL for the network to set the limit for.
+func (o ServiceAttachmentConsumerProjectLimitResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerProjectLimitResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
 }
 
 // The project id or number for the project to set the limit for.
@@ -39746,7 +39985,7 @@ func (o SourceDiskEncryptionKeyResponseArrayOutput) Index(i pulumi.IntInput) Sou
 
 // A specification of the parameters to use when creating the instance template from a source instance.
 type SourceInstanceParams struct {
-	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 	DiskConfigs []DiskInstantiationConfig `pulumi:"diskConfigs"`
 }
 
@@ -39763,7 +40002,7 @@ type SourceInstanceParamsInput interface {
 
 // A specification of the parameters to use when creating the instance template from a source instance.
 type SourceInstanceParamsArgs struct {
-	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 	DiskConfigs DiskInstantiationConfigArrayInput `pulumi:"diskConfigs"`
 }
 
@@ -39845,7 +40084,7 @@ func (o SourceInstanceParamsOutput) ToSourceInstanceParamsPtrOutputWithContext(c
 	}).(SourceInstanceParamsPtrOutput)
 }
 
-// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 func (o SourceInstanceParamsOutput) DiskConfigs() DiskInstantiationConfigArrayOutput {
 	return o.ApplyT(func(v SourceInstanceParams) []DiskInstantiationConfig { return v.DiskConfigs }).(DiskInstantiationConfigArrayOutput)
 }
@@ -39874,7 +40113,7 @@ func (o SourceInstanceParamsPtrOutput) Elem() SourceInstanceParamsOutput {
 	}).(SourceInstanceParamsOutput)
 }
 
-// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 func (o SourceInstanceParamsPtrOutput) DiskConfigs() DiskInstantiationConfigArrayOutput {
 	return o.ApplyT(func(v *SourceInstanceParams) []DiskInstantiationConfig {
 		if v == nil {
@@ -39886,7 +40125,7 @@ func (o SourceInstanceParamsPtrOutput) DiskConfigs() DiskInstantiationConfigArra
 
 // A specification of the parameters to use when creating the instance template from a source instance.
 type SourceInstanceParamsResponse struct {
-	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+	// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 	DiskConfigs []DiskInstantiationConfigResponse `pulumi:"diskConfigs"`
 }
 
@@ -39905,7 +40144,7 @@ func (o SourceInstanceParamsResponseOutput) ToSourceInstanceParamsResponseOutput
 	return o
 }
 
-// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
 func (o SourceInstanceParamsResponseOutput) DiskConfigs() DiskInstantiationConfigResponseArrayOutput {
 	return o.ApplyT(func(v SourceInstanceParamsResponse) []DiskInstantiationConfigResponse { return v.DiskConfigs }).(DiskInstantiationConfigResponseArrayOutput)
 }
@@ -43266,6 +43505,8 @@ func init() {
 	pulumi.RegisterOutputType(AliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AliasIpRangeResponseOutput{})
 	pulumi.RegisterOutputType(AliasIpRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(AllocationResourceStatusResponseOutput{})
+	pulumi.RegisterOutputType(AllocationResourceStatusSpecificSKUAllocationResponseOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArrayOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseOutput{})
@@ -43616,6 +43857,8 @@ func init() {
 	pulumi.RegisterOutputType(NamedPortArrayOutput{})
 	pulumi.RegisterOutputType(NamedPortResponseOutput{})
 	pulumi.RegisterOutputType(NamedPortResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAttachmentConnectedEndpointResponseOutput{})
+	pulumi.RegisterOutputType(NetworkAttachmentConnectedEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupAppEngineOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupAppEnginePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupAppEngineResponseOutput{})

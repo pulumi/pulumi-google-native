@@ -30,8 +30,10 @@ type Version struct {
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name.
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+	PrimarySpec pulumi.StringOutput `pulumi:"primarySpec"`
+	Project     pulumi.StringOutput `pulumi:"project"`
 	// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
 	State pulumi.StringOutput `pulumi:"state"`
 	// Last update timestamp.
@@ -103,8 +105,10 @@ type versionArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Resource name.
-	Name    *string `pulumi:"name"`
-	Project *string `pulumi:"project"`
+	Name *string `pulumi:"name"`
+	// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+	PrimarySpec *string `pulumi:"primarySpec"`
+	Project     *string `pulumi:"project"`
 	// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
 	State *string `pulumi:"state"`
 }
@@ -124,8 +128,10 @@ type VersionArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Resource name.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+	PrimarySpec pulumi.StringPtrInput
+	Project     pulumi.StringPtrInput
 	// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
 	State pulumi.StringPtrInput
 }
@@ -208,6 +214,11 @@ func (o VersionOutput) Location() pulumi.StringOutput {
 // Resource name.
 func (o VersionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+func (o VersionOutput) PrimarySpec() pulumi.StringOutput {
+	return o.ApplyT(func(v *Version) pulumi.StringOutput { return v.PrimarySpec }).(pulumi.StringOutput)
 }
 
 func (o VersionOutput) Project() pulumi.StringOutput {

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        [Output("aggregateReservation")]
+        public Output<Outputs.AllocationAggregateReservationResponse> AggregateReservation { get; private set; } = null!;
+
+        /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         [Output("commitment")]
@@ -85,7 +91,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         [Output("shareSettings")]
         public Output<Outputs.ShareSettingsResponse> ShareSettings { get; private set; } = null!;
@@ -162,6 +168,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        [Input("aggregateReservation")]
+        public Input<Inputs.AllocationAggregateReservationArgs>? AggregateReservation { get; set; }
+
+        /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
         /// </summary>
         [Input("description")]
@@ -195,7 +207,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         [Input("shareSettings")]
         public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }

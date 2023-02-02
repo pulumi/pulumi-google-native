@@ -44,6 +44,8 @@ type CutoverJob struct {
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime pulumi.StringOutput `pulumi:"stateTime"`
+	// The cutover steps list representing its progress.
+	Steps CutoverStepResponseArrayOutput `pulumi:"steps"`
 }
 
 // NewCutoverJob registers a new resource with the given unique name, arguments, and options.
@@ -230,6 +232,11 @@ func (o CutoverJobOutput) StateMessage() pulumi.StringOutput {
 // The time the state was last updated.
 func (o CutoverJobOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CutoverJob) pulumi.StringOutput { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The cutover steps list representing its progress.
+func (o CutoverJobOutput) Steps() CutoverStepResponseArrayOutput {
+	return o.ApplyT(func(v *CutoverJob) CutoverStepResponseArrayOutput { return v.Steps }).(CutoverStepResponseArrayOutput)
 }
 
 func init() {

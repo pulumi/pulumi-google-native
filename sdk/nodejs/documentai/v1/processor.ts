@@ -66,7 +66,7 @@ export class Processor extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+     * The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
      */
     public readonly type!: pulumi.Output<string>;
 
@@ -133,7 +133,7 @@ export interface ProcessorArgs {
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+     * The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
      */
     type?: pulumi.Input<string>;
 }

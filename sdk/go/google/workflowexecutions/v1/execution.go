@@ -22,11 +22,15 @@ type Execution struct {
 	Argument pulumi.StringOutput `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel pulumi.StringOutput `pulumi:"callLogLevel"`
+	// Measures the duration of the execution.
+	Duration pulumi.StringOutput `pulumi:"duration"`
 	// Marks the end of execution, successful or not.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
-	Error    ErrorResponseOutput `pulumi:"error"`
-	Location pulumi.StringOutput `pulumi:"location"`
+	Error ErrorResponseOutput `pulumi:"error"`
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -95,9 +99,11 @@ type executionArgs struct {
 	Argument *string `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel *ExecutionCallLogLevel `pulumi:"callLogLevel"`
-	Location     *string                `pulumi:"location"`
-	Project      *string                `pulumi:"project"`
-	WorkflowId   string                 `pulumi:"workflowId"`
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels     map[string]string `pulumi:"labels"`
+	Location   *string           `pulumi:"location"`
+	Project    *string           `pulumi:"project"`
+	WorkflowId string            `pulumi:"workflowId"`
 }
 
 // The set of arguments for constructing a Execution resource.
@@ -106,9 +112,11 @@ type ExecutionArgs struct {
 	Argument pulumi.StringPtrInput
 	// The call logging level associated to this execution.
 	CallLogLevel ExecutionCallLogLevelPtrInput
-	Location     pulumi.StringPtrInput
-	Project      pulumi.StringPtrInput
-	WorkflowId   pulumi.StringInput
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels     pulumi.StringMapInput
+	Location   pulumi.StringPtrInput
+	Project    pulumi.StringPtrInput
+	WorkflowId pulumi.StringInput
 }
 
 func (ExecutionArgs) ElementType() reflect.Type {
@@ -158,6 +166,11 @@ func (o ExecutionOutput) CallLogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.CallLogLevel }).(pulumi.StringOutput)
 }
 
+// Measures the duration of the execution.
+func (o ExecutionOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.Duration }).(pulumi.StringOutput)
+}
+
 // Marks the end of execution, successful or not.
 func (o ExecutionOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.EndTime }).(pulumi.StringOutput)
@@ -166,6 +179,11 @@ func (o ExecutionOutput) EndTime() pulumi.StringOutput {
 // The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
 func (o ExecutionOutput) Error() ErrorResponseOutput {
 	return o.ApplyT(func(v *Execution) ErrorResponseOutput { return v.Error }).(ErrorResponseOutput)
+}
+
+// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+func (o ExecutionOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Execution) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ExecutionOutput) Location() pulumi.StringOutput {

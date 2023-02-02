@@ -549,9 +549,29 @@ export const BackendServiceLocalityLoadBalancingPolicyConfigPolicyName = {
 } as const;
 
 /**
- * The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+ * The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
  */
 export type BackendServiceLocalityLoadBalancingPolicyConfigPolicyName = (typeof BackendServiceLocalityLoadBalancingPolicyConfigPolicyName)[keyof typeof BackendServiceLocalityLoadBalancingPolicyConfigPolicyName];
+
+export const BackendServiceLogConfigOptionalMode = {
+    /**
+     * A subset of optional fields.
+     */
+    Custom: "CUSTOM",
+    /**
+     * None optional fields.
+     */
+    ExcludeAllOptional: "EXCLUDE_ALL_OPTIONAL",
+    /**
+     * All optional fields.
+     */
+    IncludeAllOptional: "INCLUDE_ALL_OPTIONAL",
+} as const;
+
+/**
+ * This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+ */
+export type BackendServiceLogConfigOptionalMode = (typeof BackendServiceLogConfigOptionalMode)[keyof typeof BackendServiceLogConfigOptionalMode];
 
 export const BackendServiceProtocol = {
     /**
@@ -1232,6 +1252,7 @@ export const GuestOsFeatureType = {
     MultiIpSubnet: "MULTI_IP_SUBNET",
     SecureBoot: "SECURE_BOOT",
     SevCapable: "SEV_CAPABLE",
+    SevSnpCapable: "SEV_SNP_CAPABLE",
     UefiCompatible: "UEFI_COMPATIBLE",
     VirtioScsiMultiqueue: "VIRTIO_SCSI_MULTIQUEUE",
     Windows: "WINDOWS",
@@ -1816,6 +1837,14 @@ export const MetadataFilterFilterMatchCriteria = {
  */
 export type MetadataFilterFilterMatchCriteria = (typeof MetadataFilterFilterMatchCriteria)[keyof typeof MetadataFilterFilterMatchCriteria];
 
+export const NetworkAttachmentConnectionPreference = {
+    AcceptAutomatic: "ACCEPT_AUTOMATIC",
+    AcceptManual: "ACCEPT_MANUAL",
+    Invalid: "INVALID",
+} as const;
+
+export type NetworkAttachmentConnectionPreference = (typeof NetworkAttachmentConnectionPreference)[keyof typeof NetworkAttachmentConnectionPreference];
+
 export const NetworkEndpointGroupNetworkEndpointType = {
     /**
      * The network endpoint is represented by an IP address.
@@ -2268,7 +2297,7 @@ export const RegionHealthCheckServiceHealthStatusAggregationPolicy = {
 } as const;
 
 /**
- * Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+ * Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
  */
 export type RegionHealthCheckServiceHealthStatusAggregationPolicy = (typeof RegionHealthCheckServiceHealthStatusAggregationPolicy)[keyof typeof RegionHealthCheckServiceHealthStatusAggregationPolicy];
 
@@ -2471,7 +2500,7 @@ export const ResourceCommitmentType = {
 } as const;
 
 /**
- * Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+ * Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
  */
 export type ResourceCommitmentType = (typeof ResourceCommitmentType)[keyof typeof ResourceCommitmentType];
 
@@ -2843,7 +2872,7 @@ export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
 } as const;
 
 /**
- * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+ * Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
  */
 export type SecurityPolicyRuleRateLimitOptionsEnforceOnKey = (typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey)[keyof typeof SecurityPolicyRuleRateLimitOptionsEnforceOnKey];
 

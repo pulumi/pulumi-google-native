@@ -29,6 +29,8 @@ type LookupMigratingVmArgs struct {
 }
 
 type LookupMigratingVmResult struct {
+	// Details of the VM from an AWS source.
+	AwsSourceVmDetails AwsSourceVmDetailsResponse `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponse `pulumi:"computeEngineTargetDefaults"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -37,7 +39,7 @@ type LookupMigratingVmResult struct {
 	ComputeEngineVmDefaults TargetVMDetailsResponse `pulumi:"computeEngineVmDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
 	CreateTime string `pulumi:"createTime"`
-	// The percentage progress of the current running replication cycle.
+	// Details of the current running replication cycle.
 	CurrentSyncInfo ReplicationCycleResponse `pulumi:"currentSyncInfo"`
 	// The description attached to the migrating VM by the user.
 	Description string `pulumi:"description"`
@@ -65,9 +67,9 @@ type LookupMigratingVmResult struct {
 	State string `pulumi:"state"`
 	// The last time the migrating VM state was updated.
 	StateTime string `pulumi:"stateTime"`
-	// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	//
-	// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+	// Deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 	TargetDefaults TargetVMDetailsResponse `pulumi:"targetDefaults"`
 	// The last time the migrating VM resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -112,6 +114,11 @@ func (o LookupMigratingVmResultOutput) ToLookupMigratingVmResultOutputWithContex
 	return o
 }
 
+// Details of the VM from an AWS source.
+func (o LookupMigratingVmResultOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) AwsSourceVmDetailsResponse { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
+}
+
 // Details of the target VM in Compute Engine.
 func (o LookupMigratingVmResultOutput) ComputeEngineTargetDefaults() ComputeEngineTargetDefaultsResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) ComputeEngineTargetDefaultsResponse {
@@ -131,7 +138,7 @@ func (o LookupMigratingVmResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The percentage progress of the current running replication cycle.
+// Details of the current running replication cycle.
 func (o LookupMigratingVmResultOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) ReplicationCycleResponse { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
 }
@@ -201,9 +208,9 @@ func (o LookupMigratingVmResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) string { return v.StateTime }).(pulumi.StringOutput)
 }
 
-// The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+// The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 //
-// Deprecated: The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+// Deprecated: The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
 func (o LookupMigratingVmResultOutput) TargetDefaults() TargetVMDetailsResponseOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) TargetVMDetailsResponse { return v.TargetDefaults }).(TargetVMDetailsResponseOutput)
 }

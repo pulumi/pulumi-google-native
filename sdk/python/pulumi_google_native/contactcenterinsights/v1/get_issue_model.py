@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetIssueModelResult:
-    def __init__(__self__, create_time=None, display_name=None, input_data_config=None, name=None, state=None, training_stats=None, update_time=None):
+    def __init__(__self__, create_time=None, display_name=None, input_data_config=None, issue_count=None, name=None, state=None, training_stats=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -29,6 +29,9 @@ class GetIssueModelResult:
         if input_data_config and not isinstance(input_data_config, dict):
             raise TypeError("Expected argument 'input_data_config' to be a dict")
         pulumi.set(__self__, "input_data_config", input_data_config)
+        if issue_count and not isinstance(issue_count, str):
+            raise TypeError("Expected argument 'issue_count' to be a str")
+        pulumi.set(__self__, "issue_count", issue_count)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -65,6 +68,14 @@ class GetIssueModelResult:
         Configs for the input data that used to create the issue model.
         """
         return pulumi.get(self, "input_data_config")
+
+    @property
+    @pulumi.getter(name="issueCount")
+    def issue_count(self) -> str:
+        """
+        Number of issues in this issue model.
+        """
+        return pulumi.get(self, "issue_count")
 
     @property
     @pulumi.getter
@@ -108,6 +119,7 @@ class AwaitableGetIssueModelResult(GetIssueModelResult):
             create_time=self.create_time,
             display_name=self.display_name,
             input_data_config=self.input_data_config,
+            issue_count=self.issue_count,
             name=self.name,
             state=self.state,
             training_stats=self.training_stats,
@@ -132,6 +144,7 @@ def get_issue_model(issue_model_id: Optional[str] = None,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,
         input_data_config=__ret__.input_data_config,
+        issue_count=__ret__.issue_count,
         name=__ret__.name,
         state=__ret__.state,
         training_stats=__ret__.training_stats,

@@ -1608,6 +1608,39 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecResponseOutput) GroupedEntry() pul
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TableSpecResponse) string { return v.GroupedEntry }).(pulumi.StringOutput)
 }
 
+// The source system of the Taxonomy.
+type GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse struct {
+	// P4SA Identity of the service.
+	Identity string `pulumi:"identity"`
+	// The GCP service name.
+	Name string `pulumi:"name"`
+}
+
+// The source system of the Taxonomy.
+type GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput) ToGoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput() GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput) ToGoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput {
+	return o
+}
+
+// P4SA Identity of the service.
+func (o GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput) Identity() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse) string { return v.Identity }).(pulumi.StringOutput)
+}
+
+// The GCP service name.
+func (o GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // The set of all usage signals that we store in Data Catalog.
 type GoogleCloudDatacatalogV1beta1UsageSignalResponse struct {
 	// The timestamp of the end of the usage statistics duration.
@@ -1838,6 +1871,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput{})

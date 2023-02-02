@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
     }
 
     /// <summary>
-    /// The state of the accelerator
+    /// The state of the accelerator.
     /// </summary>
     [EnumType]
     public readonly struct AcceleratorState : IEquatable<AcceleratorState>
@@ -66,19 +66,19 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         }
 
         /// <summary>
-        /// Default value, do not use
+        /// Default value, do not use.
         /// </summary>
         public static AcceleratorState StateUnspecified { get; } = new AcceleratorState("STATE_UNSPECIFIED");
         /// <summary>
-        /// Indicates that the accelerator is enabled and available to use
+        /// Indicates that the accelerator is enabled and available to use.
         /// </summary>
         public static AcceleratorState Enabled { get; } = new AcceleratorState("ENABLED");
         /// <summary>
-        /// Indicates that the accelerator is disabled and not available to use
+        /// Indicates that the accelerator is disabled and not available to use.
         /// </summary>
         public static AcceleratorState Disabled { get; } = new AcceleratorState("DISABLED");
         /// <summary>
-        /// Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state
+        /// Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
         /// </summary>
         public static AcceleratorState Unknown { get; } = new AcceleratorState("UNKNOWN");
 

@@ -39,7 +39,7 @@ type LookupFirewallPolicyResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// [Output only] Type of the resource. Always compute#firewallPolicyfor firewall policies
 	Kind string `pulumi:"kind"`
-	// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by GCP which uniquely identifies the Organization Firewall Policy.
+	// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 	Name string `pulumi:"name"`
 	// The parent of the firewall policy. This field is not applicable to network firewall policies.
 	Parent string `pulumi:"parent"`
@@ -124,7 +124,7 @@ func (o LookupFirewallPolicyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyResult) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by GCP which uniquely identifies the Organization Firewall Policy.
+// Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
 func (o LookupFirewallPolicyResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallPolicyResult) string { return v.Name }).(pulumi.StringOutput)
 }

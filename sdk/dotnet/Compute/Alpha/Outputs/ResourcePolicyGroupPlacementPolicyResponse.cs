@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Locality;
         /// <summary>
+        /// Specifies the number of max logical switches.
+        /// </summary>
+        public readonly int MaxDistance;
+        /// <summary>
         /// Scope specifies the availability domain to which the VMs should be spread.
         /// </summary>
         public readonly string Scope;
@@ -36,6 +40,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Specifies instances to hosts placement relationship
         /// </summary>
         public readonly string Style;
+        /// <summary>
+        /// Specifies the shape of the TPU slice
+        /// </summary>
+        public readonly string TpuTopology;
         /// <summary>
         /// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
         /// </summary>
@@ -49,17 +57,23 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string locality,
 
+            int maxDistance,
+
             string scope,
 
             string style,
+
+            string tpuTopology,
 
             int vmCount)
         {
             AvailabilityDomainCount = availabilityDomainCount;
             Collocation = collocation;
             Locality = locality;
+            MaxDistance = maxDistance;
             Scope = scope;
             Style = style;
+            TpuTopology = tpuTopology;
             VmCount = vmCount;
         }
     }

@@ -10,6 +10,217 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Message describing AWS Credentials using access key id and secret.
+type AccessKeyCredentials struct {
+	// AWS access key ID.
+	AccessKeyId *string `pulumi:"accessKeyId"`
+	// Input only. AWS secret access key.
+	SecretAccessKey *string `pulumi:"secretAccessKey"`
+}
+
+// AccessKeyCredentialsInput is an input type that accepts AccessKeyCredentialsArgs and AccessKeyCredentialsOutput values.
+// You can construct a concrete instance of `AccessKeyCredentialsInput` via:
+//
+//	AccessKeyCredentialsArgs{...}
+type AccessKeyCredentialsInput interface {
+	pulumi.Input
+
+	ToAccessKeyCredentialsOutput() AccessKeyCredentialsOutput
+	ToAccessKeyCredentialsOutputWithContext(context.Context) AccessKeyCredentialsOutput
+}
+
+// Message describing AWS Credentials using access key id and secret.
+type AccessKeyCredentialsArgs struct {
+	// AWS access key ID.
+	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
+	// Input only. AWS secret access key.
+	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+}
+
+func (AccessKeyCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyCredentials)(nil)).Elem()
+}
+
+func (i AccessKeyCredentialsArgs) ToAccessKeyCredentialsOutput() AccessKeyCredentialsOutput {
+	return i.ToAccessKeyCredentialsOutputWithContext(context.Background())
+}
+
+func (i AccessKeyCredentialsArgs) ToAccessKeyCredentialsOutputWithContext(ctx context.Context) AccessKeyCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyCredentialsOutput)
+}
+
+func (i AccessKeyCredentialsArgs) ToAccessKeyCredentialsPtrOutput() AccessKeyCredentialsPtrOutput {
+	return i.ToAccessKeyCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i AccessKeyCredentialsArgs) ToAccessKeyCredentialsPtrOutputWithContext(ctx context.Context) AccessKeyCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyCredentialsOutput).ToAccessKeyCredentialsPtrOutputWithContext(ctx)
+}
+
+// AccessKeyCredentialsPtrInput is an input type that accepts AccessKeyCredentialsArgs, AccessKeyCredentialsPtr and AccessKeyCredentialsPtrOutput values.
+// You can construct a concrete instance of `AccessKeyCredentialsPtrInput` via:
+//
+//	        AccessKeyCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessKeyCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToAccessKeyCredentialsPtrOutput() AccessKeyCredentialsPtrOutput
+	ToAccessKeyCredentialsPtrOutputWithContext(context.Context) AccessKeyCredentialsPtrOutput
+}
+
+type accessKeyCredentialsPtrType AccessKeyCredentialsArgs
+
+func AccessKeyCredentialsPtr(v *AccessKeyCredentialsArgs) AccessKeyCredentialsPtrInput {
+	return (*accessKeyCredentialsPtrType)(v)
+}
+
+func (*accessKeyCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKeyCredentials)(nil)).Elem()
+}
+
+func (i *accessKeyCredentialsPtrType) ToAccessKeyCredentialsPtrOutput() AccessKeyCredentialsPtrOutput {
+	return i.ToAccessKeyCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessKeyCredentialsPtrType) ToAccessKeyCredentialsPtrOutputWithContext(ctx context.Context) AccessKeyCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessKeyCredentialsPtrOutput)
+}
+
+// Message describing AWS Credentials using access key id and secret.
+type AccessKeyCredentialsOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyCredentials)(nil)).Elem()
+}
+
+func (o AccessKeyCredentialsOutput) ToAccessKeyCredentialsOutput() AccessKeyCredentialsOutput {
+	return o
+}
+
+func (o AccessKeyCredentialsOutput) ToAccessKeyCredentialsOutputWithContext(ctx context.Context) AccessKeyCredentialsOutput {
+	return o
+}
+
+func (o AccessKeyCredentialsOutput) ToAccessKeyCredentialsPtrOutput() AccessKeyCredentialsPtrOutput {
+	return o.ToAccessKeyCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessKeyCredentialsOutput) ToAccessKeyCredentialsPtrOutputWithContext(ctx context.Context) AccessKeyCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessKeyCredentials) *AccessKeyCredentials {
+		return &v
+	}).(AccessKeyCredentialsPtrOutput)
+}
+
+// AWS access key ID.
+func (o AccessKeyCredentialsOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyCredentials) *string { return v.AccessKeyId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. AWS secret access key.
+func (o AccessKeyCredentialsOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyCredentials) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
+}
+
+type AccessKeyCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessKeyCredentials)(nil)).Elem()
+}
+
+func (o AccessKeyCredentialsPtrOutput) ToAccessKeyCredentialsPtrOutput() AccessKeyCredentialsPtrOutput {
+	return o
+}
+
+func (o AccessKeyCredentialsPtrOutput) ToAccessKeyCredentialsPtrOutputWithContext(ctx context.Context) AccessKeyCredentialsPtrOutput {
+	return o
+}
+
+func (o AccessKeyCredentialsPtrOutput) Elem() AccessKeyCredentialsOutput {
+	return o.ApplyT(func(v *AccessKeyCredentials) AccessKeyCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret AccessKeyCredentials
+		return ret
+	}).(AccessKeyCredentialsOutput)
+}
+
+// AWS access key ID.
+func (o AccessKeyCredentialsPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. AWS secret access key.
+func (o AccessKeyCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SecretAccessKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Message describing AWS Credentials using access key id and secret.
+type AccessKeyCredentialsResponse struct {
+	// AWS access key ID.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// Input only. AWS secret access key.
+	SecretAccessKey string `pulumi:"secretAccessKey"`
+}
+
+// Message describing AWS Credentials using access key id and secret.
+type AccessKeyCredentialsResponseOutput struct{ *pulumi.OutputState }
+
+func (AccessKeyCredentialsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessKeyCredentialsResponse)(nil)).Elem()
+}
+
+func (o AccessKeyCredentialsResponseOutput) ToAccessKeyCredentialsResponseOutput() AccessKeyCredentialsResponseOutput {
+	return o
+}
+
+func (o AccessKeyCredentialsResponseOutput) ToAccessKeyCredentialsResponseOutputWithContext(ctx context.Context) AccessKeyCredentialsResponseOutput {
+	return o
+}
+
+// AWS access key ID.
+func (o AccessKeyCredentialsResponseOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyCredentialsResponse) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// Input only. AWS secret access key.
+func (o AccessKeyCredentialsResponseOutput) SecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyCredentialsResponse) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+// AdaptingOSStep contains specific step details.
+type AdaptingOSStepResponse struct {
+}
+
+// AdaptingOSStep contains specific step details.
+type AdaptingOSStepResponseOutput struct{ *pulumi.OutputState }
+
+func (AdaptingOSStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdaptingOSStepResponse)(nil)).Elem()
+}
+
+func (o AdaptingOSStepResponseOutput) ToAdaptingOSStepResponseOutput() AdaptingOSStepResponseOutput {
+	return o
+}
+
+func (o AdaptingOSStepResponseOutput) ToAdaptingOSStepResponseOutputWithContext(ctx context.Context) AdaptingOSStepResponseOutput {
+	return o
+}
+
 // Describes an appliance version.
 type ApplianceVersionResponse struct {
 	// Determine whether it's critical to upgrade the appliance to this version.
@@ -123,6 +334,330 @@ func (o AvailableUpdatesResponseOutput) NewDeployableAppliance() ApplianceVersio
 	return o.ApplyT(func(v AvailableUpdatesResponse) ApplianceVersionResponse { return v.NewDeployableAppliance }).(ApplianceVersionResponseOutput)
 }
 
+// AwsSourceDetails message describes a specific source details for the AWS source type.
+type AwsSourceDetails struct {
+	// AWS Credentials using access key id and secret.
+	AccessKeyCreds *AccessKeyCredentials `pulumi:"accessKeyCreds"`
+	// Immutable. The AWS region that the source VMs will be migrated from.
+	AwsRegion *string `pulumi:"awsRegion"`
+	// AWS security group names to limit the scope of the source inventory.
+	InventorySecurityGroupNames []string `pulumi:"inventorySecurityGroupNames"`
+	// AWS resource tags to limit the scope of the source inventory.
+	InventoryTagList []Tag `pulumi:"inventoryTagList"`
+	// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+	MigrationResourcesUserTags map[string]string `pulumi:"migrationResourcesUserTags"`
+}
+
+// AwsSourceDetailsInput is an input type that accepts AwsSourceDetailsArgs and AwsSourceDetailsOutput values.
+// You can construct a concrete instance of `AwsSourceDetailsInput` via:
+//
+//	AwsSourceDetailsArgs{...}
+type AwsSourceDetailsInput interface {
+	pulumi.Input
+
+	ToAwsSourceDetailsOutput() AwsSourceDetailsOutput
+	ToAwsSourceDetailsOutputWithContext(context.Context) AwsSourceDetailsOutput
+}
+
+// AwsSourceDetails message describes a specific source details for the AWS source type.
+type AwsSourceDetailsArgs struct {
+	// AWS Credentials using access key id and secret.
+	AccessKeyCreds AccessKeyCredentialsPtrInput `pulumi:"accessKeyCreds"`
+	// Immutable. The AWS region that the source VMs will be migrated from.
+	AwsRegion pulumi.StringPtrInput `pulumi:"awsRegion"`
+	// AWS security group names to limit the scope of the source inventory.
+	InventorySecurityGroupNames pulumi.StringArrayInput `pulumi:"inventorySecurityGroupNames"`
+	// AWS resource tags to limit the scope of the source inventory.
+	InventoryTagList TagArrayInput `pulumi:"inventoryTagList"`
+	// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+	MigrationResourcesUserTags pulumi.StringMapInput `pulumi:"migrationResourcesUserTags"`
+}
+
+func (AwsSourceDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSourceDetails)(nil)).Elem()
+}
+
+func (i AwsSourceDetailsArgs) ToAwsSourceDetailsOutput() AwsSourceDetailsOutput {
+	return i.ToAwsSourceDetailsOutputWithContext(context.Background())
+}
+
+func (i AwsSourceDetailsArgs) ToAwsSourceDetailsOutputWithContext(ctx context.Context) AwsSourceDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSourceDetailsOutput)
+}
+
+func (i AwsSourceDetailsArgs) ToAwsSourceDetailsPtrOutput() AwsSourceDetailsPtrOutput {
+	return i.ToAwsSourceDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i AwsSourceDetailsArgs) ToAwsSourceDetailsPtrOutputWithContext(ctx context.Context) AwsSourceDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSourceDetailsOutput).ToAwsSourceDetailsPtrOutputWithContext(ctx)
+}
+
+// AwsSourceDetailsPtrInput is an input type that accepts AwsSourceDetailsArgs, AwsSourceDetailsPtr and AwsSourceDetailsPtrOutput values.
+// You can construct a concrete instance of `AwsSourceDetailsPtrInput` via:
+//
+//	        AwsSourceDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AwsSourceDetailsPtrInput interface {
+	pulumi.Input
+
+	ToAwsSourceDetailsPtrOutput() AwsSourceDetailsPtrOutput
+	ToAwsSourceDetailsPtrOutputWithContext(context.Context) AwsSourceDetailsPtrOutput
+}
+
+type awsSourceDetailsPtrType AwsSourceDetailsArgs
+
+func AwsSourceDetailsPtr(v *AwsSourceDetailsArgs) AwsSourceDetailsPtrInput {
+	return (*awsSourceDetailsPtrType)(v)
+}
+
+func (*awsSourceDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSourceDetails)(nil)).Elem()
+}
+
+func (i *awsSourceDetailsPtrType) ToAwsSourceDetailsPtrOutput() AwsSourceDetailsPtrOutput {
+	return i.ToAwsSourceDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *awsSourceDetailsPtrType) ToAwsSourceDetailsPtrOutputWithContext(ctx context.Context) AwsSourceDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AwsSourceDetailsPtrOutput)
+}
+
+// AwsSourceDetails message describes a specific source details for the AWS source type.
+type AwsSourceDetailsOutput struct{ *pulumi.OutputState }
+
+func (AwsSourceDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSourceDetails)(nil)).Elem()
+}
+
+func (o AwsSourceDetailsOutput) ToAwsSourceDetailsOutput() AwsSourceDetailsOutput {
+	return o
+}
+
+func (o AwsSourceDetailsOutput) ToAwsSourceDetailsOutputWithContext(ctx context.Context) AwsSourceDetailsOutput {
+	return o
+}
+
+func (o AwsSourceDetailsOutput) ToAwsSourceDetailsPtrOutput() AwsSourceDetailsPtrOutput {
+	return o.ToAwsSourceDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o AwsSourceDetailsOutput) ToAwsSourceDetailsPtrOutputWithContext(ctx context.Context) AwsSourceDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AwsSourceDetails) *AwsSourceDetails {
+		return &v
+	}).(AwsSourceDetailsPtrOutput)
+}
+
+// AWS Credentials using access key id and secret.
+func (o AwsSourceDetailsOutput) AccessKeyCreds() AccessKeyCredentialsPtrOutput {
+	return o.ApplyT(func(v AwsSourceDetails) *AccessKeyCredentials { return v.AccessKeyCreds }).(AccessKeyCredentialsPtrOutput)
+}
+
+// Immutable. The AWS region that the source VMs will be migrated from.
+func (o AwsSourceDetailsOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsSourceDetails) *string { return v.AwsRegion }).(pulumi.StringPtrOutput)
+}
+
+// AWS security group names to limit the scope of the source inventory.
+func (o AwsSourceDetailsOutput) InventorySecurityGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsSourceDetails) []string { return v.InventorySecurityGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// AWS resource tags to limit the scope of the source inventory.
+func (o AwsSourceDetailsOutput) InventoryTagList() TagArrayOutput {
+	return o.ApplyT(func(v AwsSourceDetails) []Tag { return v.InventoryTagList }).(TagArrayOutput)
+}
+
+// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+func (o AwsSourceDetailsOutput) MigrationResourcesUserTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AwsSourceDetails) map[string]string { return v.MigrationResourcesUserTags }).(pulumi.StringMapOutput)
+}
+
+type AwsSourceDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (AwsSourceDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AwsSourceDetails)(nil)).Elem()
+}
+
+func (o AwsSourceDetailsPtrOutput) ToAwsSourceDetailsPtrOutput() AwsSourceDetailsPtrOutput {
+	return o
+}
+
+func (o AwsSourceDetailsPtrOutput) ToAwsSourceDetailsPtrOutputWithContext(ctx context.Context) AwsSourceDetailsPtrOutput {
+	return o
+}
+
+func (o AwsSourceDetailsPtrOutput) Elem() AwsSourceDetailsOutput {
+	return o.ApplyT(func(v *AwsSourceDetails) AwsSourceDetails {
+		if v != nil {
+			return *v
+		}
+		var ret AwsSourceDetails
+		return ret
+	}).(AwsSourceDetailsOutput)
+}
+
+// AWS Credentials using access key id and secret.
+func (o AwsSourceDetailsPtrOutput) AccessKeyCreds() AccessKeyCredentialsPtrOutput {
+	return o.ApplyT(func(v *AwsSourceDetails) *AccessKeyCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKeyCreds
+	}).(AccessKeyCredentialsPtrOutput)
+}
+
+// Immutable. The AWS region that the source VMs will be migrated from.
+func (o AwsSourceDetailsPtrOutput) AwsRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsSourceDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AwsRegion
+	}).(pulumi.StringPtrOutput)
+}
+
+// AWS security group names to limit the scope of the source inventory.
+func (o AwsSourceDetailsPtrOutput) InventorySecurityGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AwsSourceDetails) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InventorySecurityGroupNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// AWS resource tags to limit the scope of the source inventory.
+func (o AwsSourceDetailsPtrOutput) InventoryTagList() TagArrayOutput {
+	return o.ApplyT(func(v *AwsSourceDetails) []Tag {
+		if v == nil {
+			return nil
+		}
+		return v.InventoryTagList
+	}).(TagArrayOutput)
+}
+
+// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+func (o AwsSourceDetailsPtrOutput) MigrationResourcesUserTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AwsSourceDetails) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.MigrationResourcesUserTags
+	}).(pulumi.StringMapOutput)
+}
+
+// AwsSourceDetails message describes a specific source details for the AWS source type.
+type AwsSourceDetailsResponse struct {
+	// AWS Credentials using access key id and secret.
+	AccessKeyCreds AccessKeyCredentialsResponse `pulumi:"accessKeyCreds"`
+	// Immutable. The AWS region that the source VMs will be migrated from.
+	AwsRegion string `pulumi:"awsRegion"`
+	// Provides details on the state of the Source in case of an error.
+	Error StatusResponse `pulumi:"error"`
+	// AWS security group names to limit the scope of the source inventory.
+	InventorySecurityGroupNames []string `pulumi:"inventorySecurityGroupNames"`
+	// AWS resource tags to limit the scope of the source inventory.
+	InventoryTagList []TagResponse `pulumi:"inventoryTagList"`
+	// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+	MigrationResourcesUserTags map[string]string `pulumi:"migrationResourcesUserTags"`
+	// The source's public IP. All communication initiated by this source will originate from this IP.
+	PublicIp string `pulumi:"publicIp"`
+	// State of the source as determined by the health check.
+	State string `pulumi:"state"`
+}
+
+// AwsSourceDetails message describes a specific source details for the AWS source type.
+type AwsSourceDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsSourceDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSourceDetailsResponse)(nil)).Elem()
+}
+
+func (o AwsSourceDetailsResponseOutput) ToAwsSourceDetailsResponseOutput() AwsSourceDetailsResponseOutput {
+	return o
+}
+
+func (o AwsSourceDetailsResponseOutput) ToAwsSourceDetailsResponseOutputWithContext(ctx context.Context) AwsSourceDetailsResponseOutput {
+	return o
+}
+
+// AWS Credentials using access key id and secret.
+func (o AwsSourceDetailsResponseOutput) AccessKeyCreds() AccessKeyCredentialsResponseOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) AccessKeyCredentialsResponse { return v.AccessKeyCreds }).(AccessKeyCredentialsResponseOutput)
+}
+
+// Immutable. The AWS region that the source VMs will be migrated from.
+func (o AwsSourceDetailsResponseOutput) AwsRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) string { return v.AwsRegion }).(pulumi.StringOutput)
+}
+
+// Provides details on the state of the Source in case of an error.
+func (o AwsSourceDetailsResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// AWS security group names to limit the scope of the source inventory.
+func (o AwsSourceDetailsResponseOutput) InventorySecurityGroupNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) []string { return v.InventorySecurityGroupNames }).(pulumi.StringArrayOutput)
+}
+
+// AWS resource tags to limit the scope of the source inventory.
+func (o AwsSourceDetailsResponseOutput) InventoryTagList() TagResponseArrayOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) []TagResponse { return v.InventoryTagList }).(TagResponseArrayOutput)
+}
+
+// User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+func (o AwsSourceDetailsResponseOutput) MigrationResourcesUserTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) map[string]string { return v.MigrationResourcesUserTags }).(pulumi.StringMapOutput)
+}
+
+// The source's public IP. All communication initiated by this source will originate from this IP.
+func (o AwsSourceDetailsResponseOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+// State of the source as determined by the health check.
+func (o AwsSourceDetailsResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceDetailsResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Represent the source AWS VM details.
+type AwsSourceVmDetailsResponse struct {
+	// The total size of the disks being migrated in bytes.
+	CommittedStorageBytes string `pulumi:"committedStorageBytes"`
+	// The firmware type of the source VM.
+	Firmware string `pulumi:"firmware"`
+}
+
+// Represent the source AWS VM details.
+type AwsSourceVmDetailsResponseOutput struct{ *pulumi.OutputState }
+
+func (AwsSourceVmDetailsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AwsSourceVmDetailsResponse)(nil)).Elem()
+}
+
+func (o AwsSourceVmDetailsResponseOutput) ToAwsSourceVmDetailsResponseOutput() AwsSourceVmDetailsResponseOutput {
+	return o
+}
+
+func (o AwsSourceVmDetailsResponseOutput) ToAwsSourceVmDetailsResponseOutputWithContext(ctx context.Context) AwsSourceVmDetailsResponseOutput {
+	return o
+}
+
+// The total size of the disks being migrated in bytes.
+func (o AwsSourceVmDetailsResponseOutput) CommittedStorageBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceVmDetailsResponse) string { return v.CommittedStorageBytes }).(pulumi.StringOutput)
+}
+
+// The firmware type of the source VM.
+func (o AwsSourceVmDetailsResponseOutput) Firmware() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsSourceVmDetailsResponse) string { return v.Firmware }).(pulumi.StringOutput)
+}
+
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
 type CloneJobResponse struct {
 	// Details of the target VM in Compute Engine.
@@ -139,6 +674,8 @@ type CloneJobResponse struct {
 	State string `pulumi:"state"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The clone steps list representing its progress.
+	Steps []CloneStepResponse `pulumi:"steps"`
 }
 
 // CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -191,6 +728,11 @@ func (o CloneJobResponseOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CloneJobResponse) string { return v.StateTime }).(pulumi.StringOutput)
 }
 
+// The clone steps list representing its progress.
+func (o CloneJobResponseOutput) Steps() CloneStepResponseArrayOutput {
+	return o.ApplyT(func(v CloneJobResponse) []CloneStepResponse { return v.Steps }).(CloneStepResponseArrayOutput)
+}
+
 type CloneJobResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (CloneJobResponseArrayOutput) ElementType() reflect.Type {
@@ -209,6 +751,80 @@ func (o CloneJobResponseArrayOutput) Index(i pulumi.IntInput) CloneJobResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloneJobResponse {
 		return vs[0].([]CloneJobResponse)[vs[1].(int)]
 	}).(CloneJobResponseOutput)
+}
+
+// CloneStep holds information about the clone step progress.
+type CloneStepResponse struct {
+	// Adapting OS step.
+	AdaptingOs AdaptingOSStepResponse `pulumi:"adaptingOs"`
+	// The time the step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Instantiating migrated VM step.
+	InstantiatingMigratedVm InstantiatingMigratedVMStepResponse `pulumi:"instantiatingMigratedVm"`
+	// Preparing VM disks step.
+	PreparingVmDisks PreparingVMDisksStepResponse `pulumi:"preparingVmDisks"`
+	// The time the step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// CloneStep holds information about the clone step progress.
+type CloneStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CloneStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloneStepResponse)(nil)).Elem()
+}
+
+func (o CloneStepResponseOutput) ToCloneStepResponseOutput() CloneStepResponseOutput {
+	return o
+}
+
+func (o CloneStepResponseOutput) ToCloneStepResponseOutputWithContext(ctx context.Context) CloneStepResponseOutput {
+	return o
+}
+
+// Adapting OS step.
+func (o CloneStepResponseOutput) AdaptingOs() AdaptingOSStepResponseOutput {
+	return o.ApplyT(func(v CloneStepResponse) AdaptingOSStepResponse { return v.AdaptingOs }).(AdaptingOSStepResponseOutput)
+}
+
+// The time the step has ended.
+func (o CloneStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Instantiating migrated VM step.
+func (o CloneStepResponseOutput) InstantiatingMigratedVm() InstantiatingMigratedVMStepResponseOutput {
+	return o.ApplyT(func(v CloneStepResponse) InstantiatingMigratedVMStepResponse { return v.InstantiatingMigratedVm }).(InstantiatingMigratedVMStepResponseOutput)
+}
+
+// Preparing VM disks step.
+func (o CloneStepResponseOutput) PreparingVmDisks() PreparingVMDisksStepResponseOutput {
+	return o.ApplyT(func(v CloneStepResponse) PreparingVMDisksStepResponse { return v.PreparingVmDisks }).(PreparingVMDisksStepResponseOutput)
+}
+
+// The time the step has started.
+func (o CloneStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CloneStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type CloneStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CloneStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CloneStepResponse)(nil)).Elem()
+}
+
+func (o CloneStepResponseArrayOutput) ToCloneStepResponseArrayOutput() CloneStepResponseArrayOutput {
+	return o
+}
+
+func (o CloneStepResponseArrayOutput) ToCloneStepResponseArrayOutputWithContext(ctx context.Context) CloneStepResponseArrayOutput {
+	return o
+}
+
+func (o CloneStepResponseArrayOutput) Index(i pulumi.IntInput) CloneStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CloneStepResponse {
+		return vs[0].([]CloneStepResponse)[vs[1].(int)]
+	}).(CloneStepResponseOutput)
 }
 
 // ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
@@ -809,7 +1425,7 @@ type ComputeEngineTargetDetailsResponse struct {
 	NetworkInterfaces []NetworkInterfaceResponse `pulumi:"networkInterfaces"`
 	// A map of network tags to associate with the VM.
 	NetworkTags []string `pulumi:"networkTags"`
-	// The GCP target project ID or project name.
+	// The Google Cloud target project ID or project name.
 	Project string `pulumi:"project"`
 	// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
 	SecureBoot bool `pulumi:"secureBoot"`
@@ -901,7 +1517,7 @@ func (o ComputeEngineTargetDetailsResponseOutput) NetworkTags() pulumi.StringArr
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) []string { return v.NetworkTags }).(pulumi.StringArrayOutput)
 }
 
-// The GCP target project ID or project name.
+// The Google Cloud target project ID or project name.
 func (o ComputeEngineTargetDetailsResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeEngineTargetDetailsResponse) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -1190,6 +1806,8 @@ type CutoverJobResponse struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The cutover steps list representing its progress.
+	Steps []CutoverStepResponse `pulumi:"steps"`
 }
 
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
@@ -1252,6 +1870,11 @@ func (o CutoverJobResponseOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v CutoverJobResponse) string { return v.StateTime }).(pulumi.StringOutput)
 }
 
+// The cutover steps list representing its progress.
+func (o CutoverJobResponseOutput) Steps() CutoverStepResponseArrayOutput {
+	return o.ApplyT(func(v CutoverJobResponse) []CutoverStepResponse { return v.Steps }).(CutoverStepResponseArrayOutput)
+}
+
 type CutoverJobResponseArrayOutput struct{ *pulumi.OutputState }
 
 func (CutoverJobResponseArrayOutput) ElementType() reflect.Type {
@@ -1270,6 +1893,206 @@ func (o CutoverJobResponseArrayOutput) Index(i pulumi.IntInput) CutoverJobRespon
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CutoverJobResponse {
 		return vs[0].([]CutoverJobResponse)[vs[1].(int)]
 	}).(CutoverJobResponseOutput)
+}
+
+// CutoverStep holds information about the cutover step progress.
+type CutoverStepResponse struct {
+	// The time the step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Final sync step.
+	FinalSync ReplicationCycleResponse `pulumi:"finalSync"`
+	// Instantiating migrated VM step.
+	InstantiatingMigratedVm InstantiatingMigratedVMStepResponse `pulumi:"instantiatingMigratedVm"`
+	// Preparing VM disks step.
+	PreparingVmDisks PreparingVMDisksStepResponse `pulumi:"preparingVmDisks"`
+	// A replication cycle prior cutover step.
+	PreviousReplicationCycle ReplicationCycleResponse `pulumi:"previousReplicationCycle"`
+	// Shutting down VM step.
+	ShuttingDownSourceVm ShuttingDownSourceVMStepResponse `pulumi:"shuttingDownSourceVm"`
+	// The time the step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// CutoverStep holds information about the cutover step progress.
+type CutoverStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CutoverStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CutoverStepResponse)(nil)).Elem()
+}
+
+func (o CutoverStepResponseOutput) ToCutoverStepResponseOutput() CutoverStepResponseOutput {
+	return o
+}
+
+func (o CutoverStepResponseOutput) ToCutoverStepResponseOutputWithContext(ctx context.Context) CutoverStepResponseOutput {
+	return o
+}
+
+// The time the step has ended.
+func (o CutoverStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Final sync step.
+func (o CutoverStepResponseOutput) FinalSync() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) ReplicationCycleResponse { return v.FinalSync }).(ReplicationCycleResponseOutput)
+}
+
+// Instantiating migrated VM step.
+func (o CutoverStepResponseOutput) InstantiatingMigratedVm() InstantiatingMigratedVMStepResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) InstantiatingMigratedVMStepResponse { return v.InstantiatingMigratedVm }).(InstantiatingMigratedVMStepResponseOutput)
+}
+
+// Preparing VM disks step.
+func (o CutoverStepResponseOutput) PreparingVmDisks() PreparingVMDisksStepResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) PreparingVMDisksStepResponse { return v.PreparingVmDisks }).(PreparingVMDisksStepResponseOutput)
+}
+
+// A replication cycle prior cutover step.
+func (o CutoverStepResponseOutput) PreviousReplicationCycle() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) ReplicationCycleResponse { return v.PreviousReplicationCycle }).(ReplicationCycleResponseOutput)
+}
+
+// Shutting down VM step.
+func (o CutoverStepResponseOutput) ShuttingDownSourceVm() ShuttingDownSourceVMStepResponseOutput {
+	return o.ApplyT(func(v CutoverStepResponse) ShuttingDownSourceVMStepResponse { return v.ShuttingDownSourceVm }).(ShuttingDownSourceVMStepResponseOutput)
+}
+
+// The time the step has started.
+func (o CutoverStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type CutoverStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CutoverStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CutoverStepResponse)(nil)).Elem()
+}
+
+func (o CutoverStepResponseArrayOutput) ToCutoverStepResponseArrayOutput() CutoverStepResponseArrayOutput {
+	return o
+}
+
+func (o CutoverStepResponseArrayOutput) ToCutoverStepResponseArrayOutputWithContext(ctx context.Context) CutoverStepResponseArrayOutput {
+	return o
+}
+
+func (o CutoverStepResponseArrayOutput) Index(i pulumi.IntInput) CutoverStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CutoverStepResponse {
+		return vs[0].([]CutoverStepResponse)[vs[1].(int)]
+	}).(CutoverStepResponseOutput)
+}
+
+// CycleStep holds information about a step progress.
+type CycleStepResponse struct {
+	// The time the cycle step has ended.
+	EndTime string `pulumi:"endTime"`
+	// Initializing replication step.
+	InitializingReplication InitializingReplicationStepResponse `pulumi:"initializingReplication"`
+	// Post processing step.
+	PostProcessing PostProcessingStepResponse `pulumi:"postProcessing"`
+	// Replicating step.
+	Replicating ReplicatingStepResponse `pulumi:"replicating"`
+	// The time the cycle step has started.
+	StartTime string `pulumi:"startTime"`
+}
+
+// CycleStep holds information about a step progress.
+type CycleStepResponseOutput struct{ *pulumi.OutputState }
+
+func (CycleStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CycleStepResponse)(nil)).Elem()
+}
+
+func (o CycleStepResponseOutput) ToCycleStepResponseOutput() CycleStepResponseOutput {
+	return o
+}
+
+func (o CycleStepResponseOutput) ToCycleStepResponseOutputWithContext(ctx context.Context) CycleStepResponseOutput {
+	return o
+}
+
+// The time the cycle step has ended.
+func (o CycleStepResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CycleStepResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Initializing replication step.
+func (o CycleStepResponseOutput) InitializingReplication() InitializingReplicationStepResponseOutput {
+	return o.ApplyT(func(v CycleStepResponse) InitializingReplicationStepResponse { return v.InitializingReplication }).(InitializingReplicationStepResponseOutput)
+}
+
+// Post processing step.
+func (o CycleStepResponseOutput) PostProcessing() PostProcessingStepResponseOutput {
+	return o.ApplyT(func(v CycleStepResponse) PostProcessingStepResponse { return v.PostProcessing }).(PostProcessingStepResponseOutput)
+}
+
+// Replicating step.
+func (o CycleStepResponseOutput) Replicating() ReplicatingStepResponseOutput {
+	return o.ApplyT(func(v CycleStepResponse) ReplicatingStepResponse { return v.Replicating }).(ReplicatingStepResponseOutput)
+}
+
+// The time the cycle step has started.
+func (o CycleStepResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v CycleStepResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type CycleStepResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CycleStepResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CycleStepResponse)(nil)).Elem()
+}
+
+func (o CycleStepResponseArrayOutput) ToCycleStepResponseArrayOutput() CycleStepResponseArrayOutput {
+	return o
+}
+
+func (o CycleStepResponseArrayOutput) ToCycleStepResponseArrayOutputWithContext(ctx context.Context) CycleStepResponseArrayOutput {
+	return o
+}
+
+func (o CycleStepResponseArrayOutput) Index(i pulumi.IntInput) CycleStepResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CycleStepResponse {
+		return vs[0].([]CycleStepResponse)[vs[1].(int)]
+	}).(CycleStepResponseOutput)
+}
+
+// InitializingReplicationStep contains specific step details.
+type InitializingReplicationStepResponse struct {
+}
+
+// InitializingReplicationStep contains specific step details.
+type InitializingReplicationStepResponseOutput struct{ *pulumi.OutputState }
+
+func (InitializingReplicationStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InitializingReplicationStepResponse)(nil)).Elem()
+}
+
+func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutput() InitializingReplicationStepResponseOutput {
+	return o
+}
+
+func (o InitializingReplicationStepResponseOutput) ToInitializingReplicationStepResponseOutputWithContext(ctx context.Context) InitializingReplicationStepResponseOutput {
+	return o
+}
+
+// InstantiatingMigratedVMStep contains specific step details.
+type InstantiatingMigratedVMStepResponse struct {
+}
+
+// InstantiatingMigratedVMStep contains specific step details.
+type InstantiatingMigratedVMStepResponseOutput struct{ *pulumi.OutputState }
+
+func (InstantiatingMigratedVMStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstantiatingMigratedVMStepResponse)(nil)).Elem()
+}
+
+func (o InstantiatingMigratedVMStepResponseOutput) ToInstantiatingMigratedVMStepResponseOutput() InstantiatingMigratedVMStepResponseOutput {
+	return o
+}
+
+func (o InstantiatingMigratedVMStepResponseOutput) ToInstantiatingMigratedVMStepResponseOutputWithContext(ctx context.Context) InstantiatingMigratedVMStepResponseOutput {
+	return o
 }
 
 // NetworkInterface represents a NIC of a VM.
@@ -1466,12 +2289,111 @@ func (o NetworkInterfaceResponseArrayOutput) Index(i pulumi.IntInput) NetworkInt
 	}).(NetworkInterfaceResponseOutput)
 }
 
+// PostProcessingStep contains specific step details.
+type PostProcessingStepResponse struct {
+}
+
+// PostProcessingStep contains specific step details.
+type PostProcessingStepResponseOutput struct{ *pulumi.OutputState }
+
+func (PostProcessingStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostProcessingStepResponse)(nil)).Elem()
+}
+
+func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutput() PostProcessingStepResponseOutput {
+	return o
+}
+
+func (o PostProcessingStepResponseOutput) ToPostProcessingStepResponseOutputWithContext(ctx context.Context) PostProcessingStepResponseOutput {
+	return o
+}
+
+// PreparingVMDisksStep contains specific step details.
+type PreparingVMDisksStepResponse struct {
+}
+
+// PreparingVMDisksStep contains specific step details.
+type PreparingVMDisksStepResponseOutput struct{ *pulumi.OutputState }
+
+func (PreparingVMDisksStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PreparingVMDisksStepResponse)(nil)).Elem()
+}
+
+func (o PreparingVMDisksStepResponseOutput) ToPreparingVMDisksStepResponseOutput() PreparingVMDisksStepResponseOutput {
+	return o
+}
+
+func (o PreparingVMDisksStepResponseOutput) ToPreparingVMDisksStepResponseOutputWithContext(ctx context.Context) PreparingVMDisksStepResponseOutput {
+	return o
+}
+
+// ReplicatingStep contains specific step details.
+type ReplicatingStepResponse struct {
+	// The source disks replication rate for the last 30 minutes in bytes per second.
+	LastThirtyMinutesAverageBytesPerSecond string `pulumi:"lastThirtyMinutesAverageBytesPerSecond"`
+	// The source disks replication rate for the last 2 minutes in bytes per second.
+	LastTwoMinutesAverageBytesPerSecond string `pulumi:"lastTwoMinutesAverageBytesPerSecond"`
+	// Replicated bytes in the step.
+	ReplicatedBytes string `pulumi:"replicatedBytes"`
+	// Total bytes to be handled in the step.
+	TotalBytes string `pulumi:"totalBytes"`
+}
+
+// ReplicatingStep contains specific step details.
+type ReplicatingStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ReplicatingStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReplicatingStepResponse)(nil)).Elem()
+}
+
+func (o ReplicatingStepResponseOutput) ToReplicatingStepResponseOutput() ReplicatingStepResponseOutput {
+	return o
+}
+
+func (o ReplicatingStepResponseOutput) ToReplicatingStepResponseOutputWithContext(ctx context.Context) ReplicatingStepResponseOutput {
+	return o
+}
+
+// The source disks replication rate for the last 30 minutes in bytes per second.
+func (o ReplicatingStepResponseOutput) LastThirtyMinutesAverageBytesPerSecond() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.LastThirtyMinutesAverageBytesPerSecond }).(pulumi.StringOutput)
+}
+
+// The source disks replication rate for the last 2 minutes in bytes per second.
+func (o ReplicatingStepResponseOutput) LastTwoMinutesAverageBytesPerSecond() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.LastTwoMinutesAverageBytesPerSecond }).(pulumi.StringOutput)
+}
+
+// Replicated bytes in the step.
+func (o ReplicatingStepResponseOutput) ReplicatedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.ReplicatedBytes }).(pulumi.StringOutput)
+}
+
+// Total bytes to be handled in the step.
+func (o ReplicatingStepResponseOutput) TotalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicatingStepResponse) string { return v.TotalBytes }).(pulumi.StringOutput)
+}
+
 // ReplicationCycle contains information about the current replication cycle status.
 type ReplicationCycleResponse struct {
-	// The current progress in percentage of this cycle.
+	// The cycle's ordinal number.
+	CycleNumber int `pulumi:"cycleNumber"`
+	// The time the replication cycle has ended.
+	EndTime string `pulumi:"endTime"`
+	// Provides details on the state of the cycle in case of an error.
+	Error StatusResponse `pulumi:"error"`
+	// The identifier of the ReplicationCycle.
+	Name string `pulumi:"name"`
+	// The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
 	ProgressPercent int `pulumi:"progressPercent"`
 	// The time the replication cycle has started.
 	StartTime string `pulumi:"startTime"`
+	// State of the ReplicationCycle.
+	State string `pulumi:"state"`
+	// The cycle's steps list representing its progress.
+	Steps []CycleStepResponse `pulumi:"steps"`
+	// The accumulated duration the replication cycle was paused.
+	TotalPauseDuration string `pulumi:"totalPauseDuration"`
 }
 
 // ReplicationCycle contains information about the current replication cycle status.
@@ -1489,7 +2411,27 @@ func (o ReplicationCycleResponseOutput) ToReplicationCycleResponseOutputWithCont
 	return o
 }
 
-// The current progress in percentage of this cycle.
+// The cycle's ordinal number.
+func (o ReplicationCycleResponseOutput) CycleNumber() pulumi.IntOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) int { return v.CycleNumber }).(pulumi.IntOutput)
+}
+
+// The time the replication cycle has ended.
+func (o ReplicationCycleResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Provides details on the state of the cycle in case of an error.
+func (o ReplicationCycleResponseOutput) Error() StatusResponseOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) StatusResponse { return v.Error }).(StatusResponseOutput)
+}
+
+// The identifier of the ReplicationCycle.
+func (o ReplicationCycleResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
 func (o ReplicationCycleResponseOutput) ProgressPercent() pulumi.IntOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) int { return v.ProgressPercent }).(pulumi.IntOutput)
 }
@@ -1497,6 +2439,21 @@ func (o ReplicationCycleResponseOutput) ProgressPercent() pulumi.IntOutput {
 // The time the replication cycle has started.
 func (o ReplicationCycleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+// State of the ReplicationCycle.
+func (o ReplicationCycleResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The cycle's steps list representing its progress.
+func (o ReplicationCycleResponseOutput) Steps() CycleStepResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) []CycleStepResponse { return v.Steps }).(CycleStepResponseArrayOutput)
+}
+
+// The accumulated duration the replication cycle was paused.
+func (o ReplicationCycleResponseOutput) TotalPauseDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.TotalPauseDuration }).(pulumi.StringOutput)
 }
 
 // ReplicationSync contain information about the last replica sync to the cloud.
@@ -1895,6 +2852,25 @@ func (o SchedulingNodeAffinityResponseArrayOutput) Index(i pulumi.IntInput) Sche
 	}).(SchedulingNodeAffinityResponseOutput)
 }
 
+// ShuttingDownSourceVMStep contains specific step details.
+type ShuttingDownSourceVMStepResponse struct {
+}
+
+// ShuttingDownSourceVMStep contains specific step details.
+type ShuttingDownSourceVMStepResponseOutput struct{ *pulumi.OutputState }
+
+func (ShuttingDownSourceVMStepResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShuttingDownSourceVMStepResponse)(nil)).Elem()
+}
+
+func (o ShuttingDownSourceVMStepResponseOutput) ToShuttingDownSourceVMStepResponseOutput() ShuttingDownSourceVMStepResponseOutput {
+	return o
+}
+
+func (o ShuttingDownSourceVMStepResponseOutput) ToShuttingDownSourceVMStepResponseOutputWithContext(ctx context.Context) ShuttingDownSourceVMStepResponseOutput {
+	return o
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -1933,6 +2909,168 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Tag is an AWS tag representation.
+type Tag struct {
+	// Key of tag.
+	Key *string `pulumi:"key"`
+	// Value of tag.
+	Value *string `pulumi:"value"`
+}
+
+// TagInput is an input type that accepts TagArgs and TagOutput values.
+// You can construct a concrete instance of `TagInput` via:
+//
+//	TagArgs{...}
+type TagInput interface {
+	pulumi.Input
+
+	ToTagOutput() TagOutput
+	ToTagOutputWithContext(context.Context) TagOutput
+}
+
+// Tag is an AWS tag representation.
+type TagArgs struct {
+	// Key of tag.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// Value of tag.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (TagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tag)(nil)).Elem()
+}
+
+func (i TagArgs) ToTagOutput() TagOutput {
+	return i.ToTagOutputWithContext(context.Background())
+}
+
+func (i TagArgs) ToTagOutputWithContext(ctx context.Context) TagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagOutput)
+}
+
+// TagArrayInput is an input type that accepts TagArray and TagArrayOutput values.
+// You can construct a concrete instance of `TagArrayInput` via:
+//
+//	TagArray{ TagArgs{...} }
+type TagArrayInput interface {
+	pulumi.Input
+
+	ToTagArrayOutput() TagArrayOutput
+	ToTagArrayOutputWithContext(context.Context) TagArrayOutput
+}
+
+type TagArray []TagInput
+
+func (TagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Tag)(nil)).Elem()
+}
+
+func (i TagArray) ToTagArrayOutput() TagArrayOutput {
+	return i.ToTagArrayOutputWithContext(context.Background())
+}
+
+func (i TagArray) ToTagArrayOutputWithContext(ctx context.Context) TagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TagArrayOutput)
+}
+
+// Tag is an AWS tag representation.
+type TagOutput struct{ *pulumi.OutputState }
+
+func (TagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Tag)(nil)).Elem()
+}
+
+func (o TagOutput) ToTagOutput() TagOutput {
+	return o
+}
+
+func (o TagOutput) ToTagOutputWithContext(ctx context.Context) TagOutput {
+	return o
+}
+
+// Key of tag.
+func (o TagOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Tag) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// Value of tag.
+func (o TagOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Tag) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type TagArrayOutput struct{ *pulumi.OutputState }
+
+func (TagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Tag)(nil)).Elem()
+}
+
+func (o TagArrayOutput) ToTagArrayOutput() TagArrayOutput {
+	return o
+}
+
+func (o TagArrayOutput) ToTagArrayOutputWithContext(ctx context.Context) TagArrayOutput {
+	return o
+}
+
+func (o TagArrayOutput) Index(i pulumi.IntInput) TagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Tag {
+		return vs[0].([]Tag)[vs[1].(int)]
+	}).(TagOutput)
+}
+
+// Tag is an AWS tag representation.
+type TagResponse struct {
+	// Key of tag.
+	Key string `pulumi:"key"`
+	// Value of tag.
+	Value string `pulumi:"value"`
+}
+
+// Tag is an AWS tag representation.
+type TagResponseOutput struct{ *pulumi.OutputState }
+
+func (TagResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TagResponse)(nil)).Elem()
+}
+
+func (o TagResponseOutput) ToTagResponseOutput() TagResponseOutput {
+	return o
+}
+
+func (o TagResponseOutput) ToTagResponseOutputWithContext(ctx context.Context) TagResponseOutput {
+	return o
+}
+
+// Key of tag.
+func (o TagResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v TagResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Value of tag.
+func (o TagResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v TagResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type TagResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (TagResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TagResponse)(nil)).Elem()
+}
+
+func (o TagResponseArrayOutput) ToTagResponseArrayOutput() TagResponseArrayOutput {
+	return o
+}
+
+func (o TagResponseArrayOutput) ToTagResponseArrayOutputWithContext(ctx context.Context) TagResponseArrayOutput {
+	return o
+}
+
+func (o TagResponseArrayOutput) Index(i pulumi.IntInput) TagResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TagResponse {
+		return vs[0].([]TagResponse)[vs[1].(int)]
+	}).(TagResponseOutput)
 }
 
 // UpgradeStatus contains information about upgradeAppliance operation.
@@ -3193,6 +4331,10 @@ func (o VmwareVmDetailsResponseOutput) VmId() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeyCredentialsInput)(nil)).Elem(), AccessKeyCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessKeyCredentialsPtrInput)(nil)).Elem(), AccessKeyCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSourceDetailsInput)(nil)).Elem(), AwsSourceDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AwsSourceDetailsPtrInput)(nil)).Elem(), AwsSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeEngineTargetDefaultsPtrInput)(nil)).Elem(), ComputeEngineTargetDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeSchedulingInput)(nil)).Elem(), ComputeSchedulingArgs{})
@@ -3203,6 +4345,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulePolicyPtrInput)(nil)).Elem(), SchedulePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityInput)(nil)).Elem(), SchedulingNodeAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingNodeAffinityArrayInput)(nil)).Elem(), SchedulingNodeAffinityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagInput)(nil)).Elem(), TagArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TagArrayInput)(nil)).Elem(), TagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoInput)(nil)).Elem(), VmUtilizationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationInfoArrayInput)(nil)).Elem(), VmUtilizationInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmUtilizationMetricsInput)(nil)).Elem(), VmUtilizationMetricsArgs{})
@@ -3211,11 +4355,21 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareSourceDetailsPtrInput)(nil)).Elem(), VmwareSourceDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsInput)(nil)).Elem(), VmwareVmDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VmwareVmDetailsPtrInput)(nil)).Elem(), VmwareVmDetailsArgs{})
+	pulumi.RegisterOutputType(AccessKeyCredentialsOutput{})
+	pulumi.RegisterOutputType(AccessKeyCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(AccessKeyCredentialsResponseOutput{})
+	pulumi.RegisterOutputType(AdaptingOSStepResponseOutput{})
 	pulumi.RegisterOutputType(ApplianceVersionResponseOutput{})
 	pulumi.RegisterOutputType(AppliedLicenseResponseOutput{})
 	pulumi.RegisterOutputType(AvailableUpdatesResponseOutput{})
+	pulumi.RegisterOutputType(AwsSourceDetailsOutput{})
+	pulumi.RegisterOutputType(AwsSourceDetailsPtrOutput{})
+	pulumi.RegisterOutputType(AwsSourceDetailsResponseOutput{})
+	pulumi.RegisterOutputType(AwsSourceVmDetailsResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseOutput{})
 	pulumi.RegisterOutputType(CloneJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(CloneStepResponseOutput{})
+	pulumi.RegisterOutputType(CloneStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(ComputeEngineTargetDefaultsResponseOutput{})
@@ -3225,10 +4379,19 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
+	pulumi.RegisterOutputType(CutoverStepResponseOutput{})
+	pulumi.RegisterOutputType(CutoverStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(CycleStepResponseOutput{})
+	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
+	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
+	pulumi.RegisterOutputType(InstantiatingMigratedVMStepResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseArrayOutput{})
+	pulumi.RegisterOutputType(PostProcessingStepResponseOutput{})
+	pulumi.RegisterOutputType(PreparingVMDisksStepResponseOutput{})
+	pulumi.RegisterOutputType(ReplicatingStepResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationCycleResponseOutput{})
 	pulumi.RegisterOutputType(ReplicationSyncResponseOutput{})
 	pulumi.RegisterOutputType(SchedulePolicyOutput{})
@@ -3238,7 +4401,12 @@ func init() {
 	pulumi.RegisterOutputType(SchedulingNodeAffinityArrayOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseOutput{})
 	pulumi.RegisterOutputType(SchedulingNodeAffinityResponseArrayOutput{})
+	pulumi.RegisterOutputType(ShuttingDownSourceVMStepResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(TagOutput{})
+	pulumi.RegisterOutputType(TagArrayOutput{})
+	pulumi.RegisterOutputType(TagResponseOutput{})
+	pulumi.RegisterOutputType(TagResponseArrayOutput{})
 	pulumi.RegisterOutputType(UpgradeStatusResponseOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoOutput{})
 	pulumi.RegisterOutputType(VmUtilizationInfoArrayOutput{})

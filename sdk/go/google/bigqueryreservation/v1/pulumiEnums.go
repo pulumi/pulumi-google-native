@@ -10,6 +10,173 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Edition of the capacity commitment.
+type CapacityCommitmentEdition string
+
+const (
+	// Default value, only for legacy reservations and capacity commitments.
+	CapacityCommitmentEditionEditionUnspecified = CapacityCommitmentEdition("EDITION_UNSPECIFIED")
+	// Enterprise edition.
+	CapacityCommitmentEditionEnterprise = CapacityCommitmentEdition("ENTERPRISE")
+)
+
+func (CapacityCommitmentEdition) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityCommitmentEdition)(nil)).Elem()
+}
+
+func (e CapacityCommitmentEdition) ToCapacityCommitmentEditionOutput() CapacityCommitmentEditionOutput {
+	return pulumi.ToOutput(e).(CapacityCommitmentEditionOutput)
+}
+
+func (e CapacityCommitmentEdition) ToCapacityCommitmentEditionOutputWithContext(ctx context.Context) CapacityCommitmentEditionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CapacityCommitmentEditionOutput)
+}
+
+func (e CapacityCommitmentEdition) ToCapacityCommitmentEditionPtrOutput() CapacityCommitmentEditionPtrOutput {
+	return e.ToCapacityCommitmentEditionPtrOutputWithContext(context.Background())
+}
+
+func (e CapacityCommitmentEdition) ToCapacityCommitmentEditionPtrOutputWithContext(ctx context.Context) CapacityCommitmentEditionPtrOutput {
+	return CapacityCommitmentEdition(e).ToCapacityCommitmentEditionOutputWithContext(ctx).ToCapacityCommitmentEditionPtrOutputWithContext(ctx)
+}
+
+func (e CapacityCommitmentEdition) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CapacityCommitmentEdition) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CapacityCommitmentEdition) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CapacityCommitmentEdition) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CapacityCommitmentEditionOutput struct{ *pulumi.OutputState }
+
+func (CapacityCommitmentEditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CapacityCommitmentEdition)(nil)).Elem()
+}
+
+func (o CapacityCommitmentEditionOutput) ToCapacityCommitmentEditionOutput() CapacityCommitmentEditionOutput {
+	return o
+}
+
+func (o CapacityCommitmentEditionOutput) ToCapacityCommitmentEditionOutputWithContext(ctx context.Context) CapacityCommitmentEditionOutput {
+	return o
+}
+
+func (o CapacityCommitmentEditionOutput) ToCapacityCommitmentEditionPtrOutput() CapacityCommitmentEditionPtrOutput {
+	return o.ToCapacityCommitmentEditionPtrOutputWithContext(context.Background())
+}
+
+func (o CapacityCommitmentEditionOutput) ToCapacityCommitmentEditionPtrOutputWithContext(ctx context.Context) CapacityCommitmentEditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CapacityCommitmentEdition) *CapacityCommitmentEdition {
+		return &v
+	}).(CapacityCommitmentEditionPtrOutput)
+}
+
+func (o CapacityCommitmentEditionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CapacityCommitmentEditionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CapacityCommitmentEdition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CapacityCommitmentEditionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CapacityCommitmentEditionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CapacityCommitmentEdition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CapacityCommitmentEditionPtrOutput struct{ *pulumi.OutputState }
+
+func (CapacityCommitmentEditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CapacityCommitmentEdition)(nil)).Elem()
+}
+
+func (o CapacityCommitmentEditionPtrOutput) ToCapacityCommitmentEditionPtrOutput() CapacityCommitmentEditionPtrOutput {
+	return o
+}
+
+func (o CapacityCommitmentEditionPtrOutput) ToCapacityCommitmentEditionPtrOutputWithContext(ctx context.Context) CapacityCommitmentEditionPtrOutput {
+	return o
+}
+
+func (o CapacityCommitmentEditionPtrOutput) Elem() CapacityCommitmentEditionOutput {
+	return o.ApplyT(func(v *CapacityCommitmentEdition) CapacityCommitmentEdition {
+		if v != nil {
+			return *v
+		}
+		var ret CapacityCommitmentEdition
+		return ret
+	}).(CapacityCommitmentEditionOutput)
+}
+
+func (o CapacityCommitmentEditionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CapacityCommitmentEditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CapacityCommitmentEdition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CapacityCommitmentEditionInput is an input type that accepts CapacityCommitmentEditionArgs and CapacityCommitmentEditionOutput values.
+// You can construct a concrete instance of `CapacityCommitmentEditionInput` via:
+//
+//	CapacityCommitmentEditionArgs{...}
+type CapacityCommitmentEditionInput interface {
+	pulumi.Input
+
+	ToCapacityCommitmentEditionOutput() CapacityCommitmentEditionOutput
+	ToCapacityCommitmentEditionOutputWithContext(context.Context) CapacityCommitmentEditionOutput
+}
+
+var capacityCommitmentEditionPtrType = reflect.TypeOf((**CapacityCommitmentEdition)(nil)).Elem()
+
+type CapacityCommitmentEditionPtrInput interface {
+	pulumi.Input
+
+	ToCapacityCommitmentEditionPtrOutput() CapacityCommitmentEditionPtrOutput
+	ToCapacityCommitmentEditionPtrOutputWithContext(context.Context) CapacityCommitmentEditionPtrOutput
+}
+
+type capacityCommitmentEditionPtr string
+
+func CapacityCommitmentEditionPtr(v string) CapacityCommitmentEditionPtrInput {
+	return (*capacityCommitmentEditionPtr)(&v)
+}
+
+func (*capacityCommitmentEditionPtr) ElementType() reflect.Type {
+	return capacityCommitmentEditionPtrType
+}
+
+func (in *capacityCommitmentEditionPtr) ToCapacityCommitmentEditionPtrOutput() CapacityCommitmentEditionPtrOutput {
+	return pulumi.ToOutput(in).(CapacityCommitmentEditionPtrOutput)
+}
+
+func (in *capacityCommitmentEditionPtr) ToCapacityCommitmentEditionPtrOutputWithContext(ctx context.Context) CapacityCommitmentEditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentEditionPtrOutput)
+}
+
 // Capacity commitment commitment plan.
 type CapacityCommitmentPlan string
 
@@ -24,6 +191,8 @@ const (
 	CapacityCommitmentPlanMonthly = CapacityCommitmentPlan("MONTHLY")
 	// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
 	CapacityCommitmentPlanAnnual = CapacityCommitmentPlan("ANNUAL")
+	// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+	CapacityCommitmentPlanNone = CapacityCommitmentPlan("NONE")
 )
 
 func (CapacityCommitmentPlan) ElementType() reflect.Type {
@@ -197,6 +366,8 @@ const (
 	CapacityCommitmentRenewalPlanMonthly = CapacityCommitmentRenewalPlan("MONTHLY")
 	// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
 	CapacityCommitmentRenewalPlanAnnual = CapacityCommitmentRenewalPlan("ANNUAL")
+	// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+	CapacityCommitmentRenewalPlanNone = CapacityCommitmentRenewalPlan("NONE")
 )
 
 func (CapacityCommitmentRenewalPlan) ElementType() reflect.Type {
@@ -356,13 +527,188 @@ func (in *capacityCommitmentRenewalPlanPtr) ToCapacityCommitmentRenewalPlanPtrOu
 	return pulumi.ToOutputWithContext(ctx, in).(CapacityCommitmentRenewalPlanPtrOutput)
 }
 
+// Edition of the reservation.
+type ReservationEdition string
+
+const (
+	// Default value, only for legacy reservations and capacity commitments.
+	ReservationEditionEditionUnspecified = ReservationEdition("EDITION_UNSPECIFIED")
+	// Enterprise edition.
+	ReservationEditionEnterprise = ReservationEdition("ENTERPRISE")
+)
+
+func (ReservationEdition) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationEdition)(nil)).Elem()
+}
+
+func (e ReservationEdition) ToReservationEditionOutput() ReservationEditionOutput {
+	return pulumi.ToOutput(e).(ReservationEditionOutput)
+}
+
+func (e ReservationEdition) ToReservationEditionOutputWithContext(ctx context.Context) ReservationEditionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ReservationEditionOutput)
+}
+
+func (e ReservationEdition) ToReservationEditionPtrOutput() ReservationEditionPtrOutput {
+	return e.ToReservationEditionPtrOutputWithContext(context.Background())
+}
+
+func (e ReservationEdition) ToReservationEditionPtrOutputWithContext(ctx context.Context) ReservationEditionPtrOutput {
+	return ReservationEdition(e).ToReservationEditionOutputWithContext(ctx).ToReservationEditionPtrOutputWithContext(ctx)
+}
+
+func (e ReservationEdition) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ReservationEdition) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ReservationEdition) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ReservationEdition) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ReservationEditionOutput struct{ *pulumi.OutputState }
+
+func (ReservationEditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationEdition)(nil)).Elem()
+}
+
+func (o ReservationEditionOutput) ToReservationEditionOutput() ReservationEditionOutput {
+	return o
+}
+
+func (o ReservationEditionOutput) ToReservationEditionOutputWithContext(ctx context.Context) ReservationEditionOutput {
+	return o
+}
+
+func (o ReservationEditionOutput) ToReservationEditionPtrOutput() ReservationEditionPtrOutput {
+	return o.ToReservationEditionPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationEditionOutput) ToReservationEditionPtrOutputWithContext(ctx context.Context) ReservationEditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationEdition) *ReservationEdition {
+		return &v
+	}).(ReservationEditionPtrOutput)
+}
+
+func (o ReservationEditionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ReservationEditionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReservationEdition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ReservationEditionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationEditionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReservationEdition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReservationEditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationEditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ReservationEdition)(nil)).Elem()
+}
+
+func (o ReservationEditionPtrOutput) ToReservationEditionPtrOutput() ReservationEditionPtrOutput {
+	return o
+}
+
+func (o ReservationEditionPtrOutput) ToReservationEditionPtrOutputWithContext(ctx context.Context) ReservationEditionPtrOutput {
+	return o
+}
+
+func (o ReservationEditionPtrOutput) Elem() ReservationEditionOutput {
+	return o.ApplyT(func(v *ReservationEdition) ReservationEdition {
+		if v != nil {
+			return *v
+		}
+		var ret ReservationEdition
+		return ret
+	}).(ReservationEditionOutput)
+}
+
+func (o ReservationEditionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationEditionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ReservationEdition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ReservationEditionInput is an input type that accepts ReservationEditionArgs and ReservationEditionOutput values.
+// You can construct a concrete instance of `ReservationEditionInput` via:
+//
+//	ReservationEditionArgs{...}
+type ReservationEditionInput interface {
+	pulumi.Input
+
+	ToReservationEditionOutput() ReservationEditionOutput
+	ToReservationEditionOutputWithContext(context.Context) ReservationEditionOutput
+}
+
+var reservationEditionPtrType = reflect.TypeOf((**ReservationEdition)(nil)).Elem()
+
+type ReservationEditionPtrInput interface {
+	pulumi.Input
+
+	ToReservationEditionPtrOutput() ReservationEditionPtrOutput
+	ToReservationEditionPtrOutputWithContext(context.Context) ReservationEditionPtrOutput
+}
+
+type reservationEditionPtr string
+
+func ReservationEditionPtr(v string) ReservationEditionPtrInput {
+	return (*reservationEditionPtr)(&v)
+}
+
+func (*reservationEditionPtr) ElementType() reflect.Type {
+	return reservationEditionPtrType
+}
+
+func (in *reservationEditionPtr) ToReservationEditionPtrOutput() ReservationEditionPtrOutput {
+	return pulumi.ToOutput(in).(ReservationEditionPtrOutput)
+}
+
+func (in *reservationEditionPtr) ToReservationEditionPtrOutputWithContext(ctx context.Context) ReservationEditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ReservationEditionPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentEditionInput)(nil)).Elem(), CapacityCommitmentEdition("EDITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentEditionPtrInput)(nil)).Elem(), CapacityCommitmentEdition("EDITION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentPlanInput)(nil)).Elem(), CapacityCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentPlanPtrInput)(nil)).Elem(), CapacityCommitmentPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentRenewalPlanInput)(nil)).Elem(), CapacityCommitmentRenewalPlan("COMMITMENT_PLAN_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CapacityCommitmentRenewalPlanPtrInput)(nil)).Elem(), CapacityCommitmentRenewalPlan("COMMITMENT_PLAN_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationEditionInput)(nil)).Elem(), ReservationEdition("EDITION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ReservationEditionPtrInput)(nil)).Elem(), ReservationEdition("EDITION_UNSPECIFIED"))
+	pulumi.RegisterOutputType(CapacityCommitmentEditionOutput{})
+	pulumi.RegisterOutputType(CapacityCommitmentEditionPtrOutput{})
 	pulumi.RegisterOutputType(CapacityCommitmentPlanOutput{})
 	pulumi.RegisterOutputType(CapacityCommitmentPlanPtrOutput{})
 	pulumi.RegisterOutputType(CapacityCommitmentRenewalPlanOutput{})
 	pulumi.RegisterOutputType(CapacityCommitmentRenewalPlanPtrOutput{})
+	pulumi.RegisterOutputType(ReservationEditionOutput{})
+	pulumi.RegisterOutputType(ReservationEditionPtrOutput{})
 }

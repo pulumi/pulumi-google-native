@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<bool> EnableFlowLogs { get; private set; } = null!;
 
         /// <summary>
-        /// The external IPv6 address range that is assigned to this subnetwork.
+        /// The external IPv6 address range that is owned by this subnetwork.
         /// </summary>
         [Output("externalIpv6Prefix")]
         public Output<string> ExternalIpv6Prefix { get; private set; } = null!;
@@ -220,6 +220,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("enableFlowLogs")]
         public Input<bool>? EnableFlowLogs { get; set; }
+
+        /// <summary>
+        /// The external IPv6 address range that is owned by this subnetwork.
+        /// </summary>
+        [Input("externalIpv6Prefix")]
+        public Input<string>? ExternalIpv6Prefix { get; set; }
 
         /// <summary>
         /// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.

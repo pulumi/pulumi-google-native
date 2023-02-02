@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Optional. Compliance Regime associated with this workload.
+        /// Optional. Partner regime associated with this workload.
         /// </summary>
         public readonly string Partner;
         /// <summary>

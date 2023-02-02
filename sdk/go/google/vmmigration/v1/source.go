@@ -16,6 +16,8 @@ import (
 type Source struct {
 	pulumi.CustomResourceState
 
+	// AWS type source details.
+	Aws AwsSourceDetailsResponseOutput `pulumi:"aws"`
 	// The create time timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// User-provided description of the source.
@@ -84,6 +86,8 @@ func (SourceState) ElementType() reflect.Type {
 }
 
 type sourceArgs struct {
+	// AWS type source details.
+	Aws *AwsSourceDetails `pulumi:"aws"`
 	// User-provided description of the source.
 	Description *string `pulumi:"description"`
 	// The labels of the source.
@@ -100,6 +104,8 @@ type sourceArgs struct {
 
 // The set of arguments for constructing a Source resource.
 type SourceArgs struct {
+	// AWS type source details.
+	Aws AwsSourceDetailsPtrInput
 	// User-provided description of the source.
 	Description pulumi.StringPtrInput
 	// The labels of the source.
@@ -149,6 +155,11 @@ func (o SourceOutput) ToSourceOutput() SourceOutput {
 
 func (o SourceOutput) ToSourceOutputWithContext(ctx context.Context) SourceOutput {
 	return o
+}
+
+// AWS type source details.
+func (o SourceOutput) Aws() AwsSourceDetailsResponseOutput {
+	return o.ApplyT(func(v *Source) AwsSourceDetailsResponseOutput { return v.Aws }).(AwsSourceDetailsResponseOutput)
 }
 
 // The create time timestamp.

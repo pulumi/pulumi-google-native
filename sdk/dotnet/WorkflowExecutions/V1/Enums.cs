@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         }
 
         /// <summary>
-        /// No call logging specified.
+        /// No call logging level specified.
         /// </summary>
         public static ExecutionCallLogLevel CallLogLevelUnspecified { get; } = new ExecutionCallLogLevel("CALL_LOG_LEVEL_UNSPECIFIED");
         /// <summary>

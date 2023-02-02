@@ -112,6 +112,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         public readonly bool EnableStackdriverMonitoring;
         /// <summary>
+        /// Option to enable zone separation.
+        /// </summary>
+        public readonly bool EnableZoneSeparation;
+        /// <summary>
         /// Option to enable and pass metadata for event publishing.
         /// </summary>
         public readonly Outputs.EventPublishConfigResponse EventPublishConfig;
@@ -206,6 +210,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
 
             bool enableStackdriverMonitoring,
 
+            bool enableZoneSeparation,
+
             Outputs.EventPublishConfigResponse eventPublishConfig,
 
             string gcsBucket,
@@ -252,6 +258,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
             EnableRbac = enableRbac;
             EnableStackdriverLogging = enableStackdriverLogging;
             EnableStackdriverMonitoring = enableStackdriverMonitoring;
+            EnableZoneSeparation = enableZoneSeparation;
             EventPublishConfig = eventPublishConfig;
             GcsBucket = gcsBucket;
             Labels = labels;

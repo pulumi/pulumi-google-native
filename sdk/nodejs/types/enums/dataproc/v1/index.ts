@@ -104,12 +104,29 @@ export const MetricMetricSource = {
      * Hiveserver2 metric source.
      */
     Hiveserver2: "HIVESERVER2",
+    /**
+     * hivemetastore metric source
+     */
+    Hivemetastore: "HIVEMETASTORE",
 } as const;
 
 /**
  * Required. Default metrics are collected unless metricOverrides are specified for the metric source (see Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for more information).
  */
 export type MetricMetricSource = (typeof MetricMetricSource)[keyof typeof MetricMetricSource];
+
+export const NodeGroupRolesItem = {
+    /**
+     * Required unspecified role.
+     */
+    RoleUnspecified: "ROLE_UNSPECIFIED",
+    /**
+     * Job drivers run on the node pool.
+     */
+    Driver: "DRIVER",
+} as const;
+
+export type NodeGroupRolesItem = (typeof NodeGroupRolesItem)[keyof typeof NodeGroupRolesItem];
 
 export const ReservationAffinityConsumeReservationType = {
     TypeUnspecified: "TYPE_UNSPECIFIED",
@@ -169,6 +186,10 @@ export const SoftwareConfigOptionalComponentsItem = {
      * The Presto query engine.
      */
     Presto: "PRESTO",
+    /**
+     * The Trino query engine.
+     */
+    Trino: "TRINO",
     /**
      * The Ranger service.
      */

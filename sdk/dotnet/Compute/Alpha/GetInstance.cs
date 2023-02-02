@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string Hostname;
         /// <summary>
-        /// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        /// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse InstanceEncryptionKey;
         /// <summary>
@@ -217,6 +217,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         /// </summary>
         public readonly ImmutableArray<Outputs.ServiceAccountResponse> ServiceAccounts;
+        /// <summary>
+        /// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ServiceIntegrationSpecs;
         public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
         public readonly Outputs.ShieldedInstanceIntegrityPolicyResponse ShieldedInstanceIntegrityPolicy;
         /// <summary>
@@ -342,6 +346,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableArray<Outputs.ServiceAccountResponse> serviceAccounts,
 
+            ImmutableDictionary<string, string> serviceIntegrationSpecs,
+
             Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
 
             Outputs.ShieldedInstanceIntegrityPolicyResponse shieldedInstanceIntegrityPolicy,
@@ -406,6 +412,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             ServiceAccounts = serviceAccounts;
+            ServiceIntegrationSpecs = serviceIntegrationSpecs;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             ShieldedInstanceIntegrityPolicy = shieldedInstanceIntegrityPolicy;
             ShieldedVmConfig = shieldedVmConfig;

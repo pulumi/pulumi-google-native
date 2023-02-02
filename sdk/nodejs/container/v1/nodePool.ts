@@ -51,6 +51,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly config!: pulumi.Output<outputs.container.v1.NodeConfigResponse>;
     /**
+     * This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
     public readonly initialNodeCount!: pulumi.Output<number>;
@@ -80,6 +84,10 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.container.v1.NodeNetworkConfigResponse>;
     /**
+     * Specifies the node placement policy.
+     */
+    public readonly placementPolicy!: pulumi.Output<outputs.container.v1.PlacementPolicyResponse>;
+    /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     public /*out*/ readonly podIpv4CidrSize!: pulumi.Output<number>;
@@ -107,7 +115,7 @@ export class NodePool extends pulumi.CustomResource {
      */
     public readonly upgradeSettings!: pulumi.Output<outputs.container.v1.UpgradeSettingsResponse>;
     /**
-     * The version of the Kubernetes of this node.
+     * The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -129,6 +137,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["conditions"] = args ? args.conditions : undefined;
             resourceInputs["config"] = args ? args.config : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["locations"] = args ? args.locations : undefined;
@@ -137,6 +146,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
+            resourceInputs["placementPolicy"] = args ? args.placementPolicy : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
@@ -152,6 +162,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["clusterId"] = undefined /*out*/;
             resourceInputs["conditions"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["initialNodeCount"] = undefined /*out*/;
             resourceInputs["instanceGroupUrls"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -160,6 +171,7 @@ export class NodePool extends pulumi.CustomResource {
             resourceInputs["maxPodsConstraint"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkConfig"] = undefined /*out*/;
+            resourceInputs["placementPolicy"] = undefined /*out*/;
             resourceInputs["podIpv4CidrSize"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -199,6 +211,10 @@ export interface NodePoolArgs {
      */
     config?: pulumi.Input<inputs.container.v1.NodeConfigArgs>;
     /**
+     * This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
+    /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
     initialNodeCount?: pulumi.Input<number>;
@@ -228,6 +244,10 @@ export interface NodePoolArgs {
      */
     parent?: pulumi.Input<string>;
     /**
+     * Specifies the node placement policy.
+     */
+    placementPolicy?: pulumi.Input<inputs.container.v1.PlacementPolicyArgs>;
+    /**
      * Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
      *
      * @deprecated Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field.
@@ -238,7 +258,7 @@ export interface NodePoolArgs {
      */
     upgradeSettings?: pulumi.Input<inputs.container.v1.UpgradeSettingsArgs>;
     /**
-     * The version of the Kubernetes of this node.
+     * The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
      */
     version?: pulumi.Input<string>;
     /**

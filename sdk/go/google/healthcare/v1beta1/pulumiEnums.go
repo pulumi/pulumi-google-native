@@ -3088,6 +3088,179 @@ func (in *textConfigProfileTypePtr) ToTextConfigProfileTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(TextConfigProfileTypePtrOutput)
 }
 
+// Type of partitioning.
+type TimePartitioningType string
+
+const (
+	// Default unknown time.
+	TimePartitioningTypePartitionTypeUnspecified = TimePartitioningType("PARTITION_TYPE_UNSPECIFIED")
+	// Data partitioned by hour.
+	TimePartitioningTypeHour = TimePartitioningType("HOUR")
+	// Data partitioned by day.
+	TimePartitioningTypeDay = TimePartitioningType("DAY")
+	// Data partitioned by month.
+	TimePartitioningTypeMonth = TimePartitioningType("MONTH")
+	// Data partitioned by year.
+	TimePartitioningTypeYear = TimePartitioningType("YEAR")
+)
+
+func (TimePartitioningType) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimePartitioningType)(nil)).Elem()
+}
+
+func (e TimePartitioningType) ToTimePartitioningTypeOutput() TimePartitioningTypeOutput {
+	return pulumi.ToOutput(e).(TimePartitioningTypeOutput)
+}
+
+func (e TimePartitioningType) ToTimePartitioningTypeOutputWithContext(ctx context.Context) TimePartitioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TimePartitioningTypeOutput)
+}
+
+func (e TimePartitioningType) ToTimePartitioningTypePtrOutput() TimePartitioningTypePtrOutput {
+	return e.ToTimePartitioningTypePtrOutputWithContext(context.Background())
+}
+
+func (e TimePartitioningType) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
+	return TimePartitioningType(e).ToTimePartitioningTypeOutputWithContext(ctx).ToTimePartitioningTypePtrOutputWithContext(ctx)
+}
+
+func (e TimePartitioningType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TimePartitioningType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TimePartitioningType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TimePartitioningType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TimePartitioningTypeOutput struct{ *pulumi.OutputState }
+
+func (TimePartitioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimePartitioningType)(nil)).Elem()
+}
+
+func (o TimePartitioningTypeOutput) ToTimePartitioningTypeOutput() TimePartitioningTypeOutput {
+	return o
+}
+
+func (o TimePartitioningTypeOutput) ToTimePartitioningTypeOutputWithContext(ctx context.Context) TimePartitioningTypeOutput {
+	return o
+}
+
+func (o TimePartitioningTypeOutput) ToTimePartitioningTypePtrOutput() TimePartitioningTypePtrOutput {
+	return o.ToTimePartitioningTypePtrOutputWithContext(context.Background())
+}
+
+func (o TimePartitioningTypeOutput) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimePartitioningType) *TimePartitioningType {
+		return &v
+	}).(TimePartitioningTypePtrOutput)
+}
+
+func (o TimePartitioningTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TimePartitioningTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TimePartitioningType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TimePartitioningTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TimePartitioningTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TimePartitioningType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TimePartitioningTypePtrOutput struct{ *pulumi.OutputState }
+
+func (TimePartitioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimePartitioningType)(nil)).Elem()
+}
+
+func (o TimePartitioningTypePtrOutput) ToTimePartitioningTypePtrOutput() TimePartitioningTypePtrOutput {
+	return o
+}
+
+func (o TimePartitioningTypePtrOutput) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
+	return o
+}
+
+func (o TimePartitioningTypePtrOutput) Elem() TimePartitioningTypeOutput {
+	return o.ApplyT(func(v *TimePartitioningType) TimePartitioningType {
+		if v != nil {
+			return *v
+		}
+		var ret TimePartitioningType
+		return ret
+	}).(TimePartitioningTypeOutput)
+}
+
+func (o TimePartitioningTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TimePartitioningTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TimePartitioningType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TimePartitioningTypeInput is an input type that accepts TimePartitioningTypeArgs and TimePartitioningTypeOutput values.
+// You can construct a concrete instance of `TimePartitioningTypeInput` via:
+//
+//	TimePartitioningTypeArgs{...}
+type TimePartitioningTypeInput interface {
+	pulumi.Input
+
+	ToTimePartitioningTypeOutput() TimePartitioningTypeOutput
+	ToTimePartitioningTypeOutputWithContext(context.Context) TimePartitioningTypeOutput
+}
+
+var timePartitioningTypePtrType = reflect.TypeOf((**TimePartitioningType)(nil)).Elem()
+
+type TimePartitioningTypePtrInput interface {
+	pulumi.Input
+
+	ToTimePartitioningTypePtrOutput() TimePartitioningTypePtrOutput
+	ToTimePartitioningTypePtrOutputWithContext(context.Context) TimePartitioningTypePtrOutput
+}
+
+type timePartitioningTypePtr string
+
+func TimePartitioningTypePtr(v string) TimePartitioningTypePtrInput {
+	return (*timePartitioningTypePtr)(&v)
+}
+
+func (*timePartitioningTypePtr) ElementType() reflect.Type {
+	return timePartitioningTypePtrType
+}
+
+func (in *timePartitioningTypePtr) ToTimePartitioningTypePtrOutput() TimePartitioningTypePtrOutput {
+	return pulumi.ToOutput(in).(TimePartitioningTypePtrOutput)
+}
+
+func (in *timePartitioningTypePtr) ToTimePartitioningTypePtrOutputWithContext(ctx context.Context) TimePartitioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TimePartitioningTypePtrOutput)
+}
+
 // If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
 type TypePrimitive string
 
@@ -3296,6 +3469,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchemaPackageUnexpectedSegmentHandlingPtrInput)(nil)).Elem(), SchemaPackageUnexpectedSegmentHandling("UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigProfileTypeInput)(nil)).Elem(), TextConfigProfileType("PROFILE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TextConfigProfileTypePtrInput)(nil)).Elem(), TextConfigProfileType("PROFILE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningTypeInput)(nil)).Elem(), TimePartitioningType("PARTITION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TimePartitioningTypePtrInput)(nil)).Elem(), TimePartitioningType("PARTITION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypePrimitiveInput)(nil)).Elem(), TypePrimitive("PRIMITIVE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TypePrimitivePtrInput)(nil)).Elem(), TypePrimitive("PRIMITIVE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AttributeDefinitionCategoryOutput{})
@@ -3334,6 +3509,8 @@ func init() {
 	pulumi.RegisterOutputType(SchemaPackageUnexpectedSegmentHandlingPtrOutput{})
 	pulumi.RegisterOutputType(TextConfigProfileTypeOutput{})
 	pulumi.RegisterOutputType(TextConfigProfileTypePtrOutput{})
+	pulumi.RegisterOutputType(TimePartitioningTypeOutput{})
+	pulumi.RegisterOutputType(TimePartitioningTypePtrOutput{})
 	pulumi.RegisterOutputType(TypePrimitiveOutput{})
 	pulumi.RegisterOutputType(TypePrimitivePtrOutput{})
 }

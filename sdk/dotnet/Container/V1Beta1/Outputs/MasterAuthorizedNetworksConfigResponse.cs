@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// Whether or not master authorized networks is enabled.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Whether master is accessbile via Google Compute Engine Public IP addresses.
+        /// </summary>
+        public readonly bool GcpPublicCidrsAccessEnabled;
 
         [OutputConstructor]
         private MasterAuthorizedNetworksConfigResponse(
             ImmutableArray<Outputs.CidrBlockResponse> cidrBlocks,
 
-            bool enabled)
+            bool enabled,
+
+            bool gcpPublicCidrsAccessEnabled)
         {
             CidrBlocks = cidrBlocks;
             Enabled = enabled;
+            GcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
         }
     }
 }

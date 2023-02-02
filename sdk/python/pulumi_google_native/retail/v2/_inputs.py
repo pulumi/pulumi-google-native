@@ -82,7 +82,7 @@ class GoogleCloudRetailV2ColorInfoArgs:
         """
         The color information of a Product.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] color_families: The standard color families. Strongly recommended to use the following standard color groups: "Red", "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown", "White", "Gray", "Black" and "Mixed". Normally it is expected to have only 1 color family. May consider using single "Mixed" instead of multiple values. A maximum of 5 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] colors: The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] colors: The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 75 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
         """
         if color_families is not None:
             pulumi.set(__self__, "color_families", color_families)
@@ -105,7 +105,7 @@ class GoogleCloudRetailV2ColorInfoArgs:
     @pulumi.getter
     def colors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 25 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
+        The color display names, which may be different from standard color family names, such as the color aliases used in the website frontend. Normally it is expected to have only 1 color. May consider using single "Mixed" instead of multiple values. A maximum of 75 colors are allowed. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
         """
         return pulumi.get(self, "colors")
 
@@ -798,7 +798,7 @@ class GoogleCloudRetailV2RuleTwowaySynonymsActionArgs:
     def __init__(__self__, *,
                  synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+        Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
         """
         if synonyms is not None:

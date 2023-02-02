@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly int PolicyTagCount;
         /// <summary>
+        /// Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1TaxonomyServiceResponse Service;
+        /// <summary>
         /// Creation and modification timestamps of this taxonomy.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse TaxonomyTimestamps;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             int policyTagCount,
 
+            Outputs.GoogleCloudDatacatalogV1TaxonomyServiceResponse service,
+
             Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse taxonomyTimestamps)
         {
             ActivatedPolicyTypes = activatedPolicyTypes;
@@ -107,6 +113,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             DisplayName = displayName;
             Name = name;
             PolicyTagCount = policyTagCount;
+            Service = service;
             TaxonomyTimestamps = taxonomyTimestamps;
         }
     }

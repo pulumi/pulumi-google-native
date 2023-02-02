@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigrationJobResult:
-    def __init__(__self__, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+    def __init__(__self__, conversion_workspace=None, create_time=None, destination=None, destination_database=None, display_name=None, dump_flags=None, dump_path=None, duration=None, end_time=None, error=None, filter=None, labels=None, name=None, phase=None, reverse_ssh_connectivity=None, source=None, source_database=None, state=None, static_ip_connectivity=None, type=None, update_time=None, vpc_peering_connectivity=None):
+        if conversion_workspace and not isinstance(conversion_workspace, dict):
+            raise TypeError("Expected argument 'conversion_workspace' to be a dict")
+        pulumi.set(__self__, "conversion_workspace", conversion_workspace)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -47,6 +50,9 @@ class GetMigrationJobResult:
         if error and not isinstance(error, dict):
             raise TypeError("Expected argument 'error' to be a dict")
         pulumi.set(__self__, "error", error)
+        if filter and not isinstance(filter, str):
+            raise TypeError("Expected argument 'filter' to be a str")
+        pulumi.set(__self__, "filter", filter)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -80,6 +86,14 @@ class GetMigrationJobResult:
         if vpc_peering_connectivity and not isinstance(vpc_peering_connectivity, dict):
             raise TypeError("Expected argument 'vpc_peering_connectivity' to be a dict")
         pulumi.set(__self__, "vpc_peering_connectivity", vpc_peering_connectivity)
+
+    @property
+    @pulumi.getter(name="conversionWorkspace")
+    def conversion_workspace(self) -> 'outputs.ConversionWorkspaceInfoResponse':
+        """
+        The conversion workspace used by the migration.
+        """
+        return pulumi.get(self, "conversion_workspace")
 
     @property
     @pulumi.getter(name="createTime")
@@ -152,6 +166,14 @@ class GetMigrationJobResult:
         The error details in case of state FAILED.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+        """
+        return pulumi.get(self, "filter")
 
     @property
     @pulumi.getter
@@ -248,6 +270,7 @@ class AwaitableGetMigrationJobResult(GetMigrationJobResult):
         if False:
             yield self
         return GetMigrationJobResult(
+            conversion_workspace=self.conversion_workspace,
             create_time=self.create_time,
             destination=self.destination,
             destination_database=self.destination_database,
@@ -257,6 +280,7 @@ class AwaitableGetMigrationJobResult(GetMigrationJobResult):
             duration=self.duration,
             end_time=self.end_time,
             error=self.error,
+            filter=self.filter,
             labels=self.labels,
             name=self.name,
             phase=self.phase,
@@ -285,6 +309,7 @@ def get_migration_job(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datamigration/v1:getMigrationJob', __args__, opts=opts, typ=GetMigrationJobResult).value
 
     return AwaitableGetMigrationJobResult(
+        conversion_workspace=__ret__.conversion_workspace,
         create_time=__ret__.create_time,
         destination=__ret__.destination,
         destination_database=__ret__.destination_database,
@@ -294,6 +319,7 @@ def get_migration_job(location: Optional[str] = None,
         duration=__ret__.duration,
         end_time=__ret__.end_time,
         error=__ret__.error,
+        filter=__ret__.filter,
         labels=__ret__.labels,
         name=__ret__.name,
         phase=__ret__.phase,

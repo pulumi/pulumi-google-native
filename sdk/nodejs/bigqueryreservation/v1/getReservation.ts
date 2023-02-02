@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -28,6 +31,10 @@ export interface GetReservationArgs {
 
 export interface GetReservationResult {
     /**
+     * The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+     */
+    readonly autoscale: outputs.bigqueryreservation.v1.AutoscaleResponse;
+    /**
      * Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
      */
     readonly concurrency: string;
@@ -35,6 +42,10 @@ export interface GetReservationResult {
      * Creation time of the reservation.
      */
     readonly creationTime: string;
+    /**
+     * Edition of the reservation.
+     */
+    readonly edition: string;
     /**
      * If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
      */

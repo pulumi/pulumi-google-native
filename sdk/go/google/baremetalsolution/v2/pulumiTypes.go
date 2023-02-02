@@ -2992,8 +2992,12 @@ type Volume struct {
 	SnapshotSchedulePolicy *string `pulumi:"snapshotSchedulePolicy"`
 	// The state of this storage volume.
 	State *VolumeState `pulumi:"state"`
+	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+	StorageAggregatePool *string `pulumi:"storageAggregatePool"`
 	// The storage type for this volume.
 	StorageType *VolumeStorageType `pulumi:"storageType"`
+	// The workload profile for the volume.
+	WorkloadProfile *VolumeWorkloadProfile `pulumi:"workloadProfile"`
 }
 
 // VolumeInput is an input type that accepts VolumeArgs and VolumeOutput values.
@@ -3043,8 +3047,12 @@ type VolumeArgs struct {
 	SnapshotSchedulePolicy pulumi.StringPtrInput `pulumi:"snapshotSchedulePolicy"`
 	// The state of this storage volume.
 	State VolumeStatePtrInput `pulumi:"state"`
+	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+	StorageAggregatePool pulumi.StringPtrInput `pulumi:"storageAggregatePool"`
 	// The storage type for this volume.
 	StorageType VolumeStorageTypePtrInput `pulumi:"storageType"`
+	// The workload profile for the volume.
+	WorkloadProfile VolumeWorkloadProfilePtrInput `pulumi:"workloadProfile"`
 }
 
 func (VolumeArgs) ElementType() reflect.Type {
@@ -3184,9 +3192,19 @@ func (o VolumeOutput) State() VolumeStatePtrOutput {
 	return o.ApplyT(func(v Volume) *VolumeState { return v.State }).(VolumeStatePtrOutput)
 }
 
+// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+func (o VolumeOutput) StorageAggregatePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Volume) *string { return v.StorageAggregatePool }).(pulumi.StringPtrOutput)
+}
+
 // The storage type for this volume.
 func (o VolumeOutput) StorageType() VolumeStorageTypePtrOutput {
 	return o.ApplyT(func(v Volume) *VolumeStorageType { return v.StorageType }).(VolumeStorageTypePtrOutput)
+}
+
+// The workload profile for the volume.
+func (o VolumeOutput) WorkloadProfile() VolumeWorkloadProfilePtrOutput {
+	return o.ApplyT(func(v Volume) *VolumeWorkloadProfile { return v.WorkloadProfile }).(VolumeWorkloadProfilePtrOutput)
 }
 
 type VolumeArrayOutput struct{ *pulumi.OutputState }
@@ -3229,6 +3247,8 @@ type VolumeConfig struct {
 	SizeGb *int `pulumi:"sizeGb"`
 	// Whether snapshots should be enabled.
 	SnapshotsEnabled *bool `pulumi:"snapshotsEnabled"`
+	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+	StorageAggregatePool *string `pulumi:"storageAggregatePool"`
 	// The type of this Volume.
 	Type *VolumeConfigType `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -3266,6 +3286,8 @@ type VolumeConfigArgs struct {
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
 	// Whether snapshots should be enabled.
 	SnapshotsEnabled pulumi.BoolPtrInput `pulumi:"snapshotsEnabled"`
+	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+	StorageAggregatePool pulumi.StringPtrInput `pulumi:"storageAggregatePool"`
 	// The type of this Volume.
 	Type VolumeConfigTypePtrInput `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -3369,6 +3391,11 @@ func (o VolumeConfigOutput) SnapshotsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *bool { return v.SnapshotsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+func (o VolumeConfigOutput) StorageAggregatePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VolumeConfig) *string { return v.StorageAggregatePool }).(pulumi.StringPtrOutput)
+}
+
 // The type of this Volume.
 func (o VolumeConfigOutput) Type() VolumeConfigTypePtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *VolumeConfigType { return v.Type }).(VolumeConfigTypePtrOutput)
@@ -3419,6 +3446,8 @@ type VolumeConfigResponse struct {
 	SizeGb int `pulumi:"sizeGb"`
 	// Whether snapshots should be enabled.
 	SnapshotsEnabled bool `pulumi:"snapshotsEnabled"`
+	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+	StorageAggregatePool string `pulumi:"storageAggregatePool"`
 	// The type of this Volume.
 	Type string `pulumi:"type"`
 	// User note field, it can be used by customers to add additional information for the BMS Ops team .
@@ -3483,6 +3512,11 @@ func (o VolumeConfigResponseOutput) SizeGb() pulumi.IntOutput {
 // Whether snapshots should be enabled.
 func (o VolumeConfigResponseOutput) SnapshotsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) bool { return v.SnapshotsEnabled }).(pulumi.BoolOutput)
+}
+
+// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+func (o VolumeConfigResponseOutput) StorageAggregatePool() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeConfigResponse) string { return v.StorageAggregatePool }).(pulumi.StringOutput)
 }
 
 // The type of this Volume.
@@ -3555,8 +3589,12 @@ type VolumeResponse struct {
 	SnapshotSchedulePolicy string `pulumi:"snapshotSchedulePolicy"`
 	// The state of this storage volume.
 	State string `pulumi:"state"`
+	// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+	StorageAggregatePool string `pulumi:"storageAggregatePool"`
 	// The storage type for this volume.
 	StorageType string `pulumi:"storageType"`
+	// The workload profile for the volume.
+	WorkloadProfile string `pulumi:"workloadProfile"`
 }
 
 // A storage volume.
@@ -3669,9 +3707,19 @@ func (o VolumeResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.State }).(pulumi.StringOutput)
 }
 
+// Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+func (o VolumeResponseOutput) StorageAggregatePool() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.StorageAggregatePool }).(pulumi.StringOutput)
+}
+
 // The storage type for this volume.
 func (o VolumeResponseOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.StorageType }).(pulumi.StringOutput)
+}
+
+// The workload profile for the volume.
+func (o VolumeResponseOutput) WorkloadProfile() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.WorkloadProfile }).(pulumi.StringOutput)
 }
 
 type VolumeResponseArrayOutput struct{ *pulumi.OutputState }

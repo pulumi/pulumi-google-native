@@ -18,6 +18,7 @@ __all__ = [
     'AzureCredentialsArgs',
     'BandwidthLimitArgs',
     'DateArgs',
+    'EventStreamArgs',
     'GcsDataArgs',
     'HttpDataArgs',
     'LoggingConfigArgs',
@@ -398,6 +399,61 @@ class DateArgs:
     @year.setter
     def year(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "year", value)
+
+
+@pulumi.input_type
+class EventStreamArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 event_stream_expiration_time: Optional[pulumi.Input[str]] = None,
+                 event_stream_start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files.
+        :param pulumi.Input[str] name: Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        :param pulumi.Input[str] event_stream_expiration_time: Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+        :param pulumi.Input[str] event_stream_start_time: Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+        """
+        pulumi.set(__self__, "name", name)
+        if event_stream_expiration_time is not None:
+            pulumi.set(__self__, "event_stream_expiration_time", event_stream_expiration_time)
+        if event_stream_start_time is not None:
+            pulumi.set(__self__, "event_stream_start_time", event_stream_start_time)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="eventStreamExpirationTime")
+    def event_stream_expiration_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the data and time at which Storage Transfer Service stops listening for events from this stream. After this time, any transfers in progress will complete, but no new transfers are initiated.
+        """
+        return pulumi.get(self, "event_stream_expiration_time")
+
+    @event_stream_expiration_time.setter
+    def event_stream_expiration_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_stream_expiration_time", value)
+
+    @property
+    @pulumi.getter(name="eventStreamStartTime")
+    def event_stream_start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If no start time is specified or start time is in the past, Storage Transfer Service starts listening immediately.
+        """
+        return pulumi.get(self, "event_stream_start_time")
+
+    @event_stream_start_time.setter
+    def event_stream_start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_stream_start_time", value)
 
 
 @pulumi.input_type

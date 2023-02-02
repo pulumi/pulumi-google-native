@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Artifact")]
     public partial class Artifact : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
 
@@ -41,6 +47,12 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         [Output("hash")]
         public Output<string> Hash { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -132,6 +144,18 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 
     public sealed class ArtifactArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
 
@@ -146,6 +170,18 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         [Input("contents")]
         public Input<string>? Contents { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

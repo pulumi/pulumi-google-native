@@ -208,7 +208,7 @@ class ConsumerResponse(dict):
         """
         Contains information of the customer's network configurations.
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
-        :param str subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        :param str subnetwork: Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -225,7 +225,7 @@ class ConsumerResponse(dict):
     @pulumi.getter
     def subnetwork(self) -> str:
         """
-        Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
+        Immutable. The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
         """
         return pulumi.get(self, "subnetwork")
 
@@ -1322,12 +1322,16 @@ class TelemetryConfigResponse(dict):
                  log_format: str):
         """
         Telemetry Configuration for the Dataproc Metastore service.
+        :param str log_format: The output format of the Dataproc Metastore service's logs.
         """
         pulumi.set(__self__, "log_format", log_format)
 
     @property
     @pulumi.getter(name="logFormat")
     def log_format(self) -> str:
+        """
+        The output format of the Dataproc Metastore service's logs.
+        """
         return pulumi.get(self, "log_format")
 
 

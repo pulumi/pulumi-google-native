@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly int ConnectionLimit;
         /// <summary>
+        /// The network URL for the network to set the limit for.
+        /// </summary>
+        public readonly string NetworkUrl;
+        /// <summary>
         /// The project id or number for the project to set the limit for.
         /// </summary>
         public readonly string ProjectIdOrNum;
@@ -26,9 +30,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         private ServiceAttachmentConsumerProjectLimitResponse(
             int connectionLimit,
 
+            string networkUrl,
+
             string projectIdOrNum)
         {
             ConnectionLimit = connectionLimit;
+            NetworkUrl = networkUrl;
             ProjectIdOrNum = projectIdOrNum;
         }
     }

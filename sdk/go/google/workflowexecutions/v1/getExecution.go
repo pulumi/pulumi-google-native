@@ -33,10 +33,14 @@ type LookupExecutionResult struct {
 	Argument string `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel string `pulumi:"callLogLevel"`
+	// Measures the duration of the execution.
+	Duration string `pulumi:"duration"`
 	// Marks the end of execution, successful or not.
 	EndTime string `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
 	Error ErrorResponse `pulumi:"error"`
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
 	Name string `pulumi:"name"`
 	// Output of the execution represented as a JSON string. The value can only be present if the execution's state is `SUCCEEDED`.
@@ -100,6 +104,11 @@ func (o LookupExecutionResultOutput) CallLogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExecutionResult) string { return v.CallLogLevel }).(pulumi.StringOutput)
 }
 
+// Measures the duration of the execution.
+func (o LookupExecutionResultOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupExecutionResult) string { return v.Duration }).(pulumi.StringOutput)
+}
+
 // Marks the end of execution, successful or not.
 func (o LookupExecutionResultOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExecutionResult) string { return v.EndTime }).(pulumi.StringOutput)
@@ -108,6 +117,11 @@ func (o LookupExecutionResultOutput) EndTime() pulumi.StringOutput {
 // The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
 func (o LookupExecutionResultOutput) Error() ErrorResponseOutput {
 	return o.ApplyT(func(v LookupExecutionResult) ErrorResponse { return v.Error }).(ErrorResponseOutput)
+}
+
+// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+func (o LookupExecutionResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupExecutionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}

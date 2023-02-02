@@ -27,6 +27,7 @@ __all__ = [
     'RestoreInfoResponse',
     'SingleClusterRoutingResponse',
     'StatusResponse',
+    'TableStatsResponse',
 ]
 
 @pulumi.output_type
@@ -803,5 +804,83 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class TableStatsResponse(dict):
+    """
+    Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "averageCellsPerColumn":
+            suggest = "average_cells_per_column"
+        elif key == "averageColumnsPerRow":
+            suggest = "average_columns_per_row"
+        elif key == "logicalDataBytes":
+            suggest = "logical_data_bytes"
+        elif key == "rowCount":
+            suggest = "row_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 average_cells_per_column: float,
+                 average_columns_per_row: float,
+                 logical_data_bytes: str,
+                 row_count: str):
+        """
+        Approximate statistics related to a table. These statistics are calculated infrequently, while simultaneously, data in the table can change rapidly. Thus the values reported here (e.g. row count) are very likely out-of date, even the instant they are received in this API. Thus, only treat these values as approximate. IMPORTANT: Everything below is approximate, unless otherwise specified.
+        :param float average_cells_per_column: How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+        :param float average_columns_per_row: How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+        :param str logical_data_bytes: This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+        :param str row_count: How many rows are in the table.
+        """
+        pulumi.set(__self__, "average_cells_per_column", average_cells_per_column)
+        pulumi.set(__self__, "average_columns_per_row", average_columns_per_row)
+        pulumi.set(__self__, "logical_data_bytes", logical_data_bytes)
+        pulumi.set(__self__, "row_count", row_count)
+
+    @property
+    @pulumi.getter(name="averageCellsPerColumn")
+    def average_cells_per_column(self) -> float:
+        """
+        How many cells are present per column (column family, column qualifier) combinations, averaged over all columns in all rows in the table. e.g. A table with 2 rows: * A row with 3 cells in "family:col" and 1 cell in "other:col" (4 cells / 2 columns) * A row with 1 cell in "family:col", 7 cells in "family:other_col", and 7 cells in "other:data" (15 cells / 3 columns) would report (4 + 15)/(2 + 3) = 3.8 in this field.
+        """
+        return pulumi.get(self, "average_cells_per_column")
+
+    @property
+    @pulumi.getter(name="averageColumnsPerRow")
+    def average_columns_per_row(self) -> float:
+        """
+        How many (column family, column qualifier) combinations are present per row in the table, averaged over all rows in the table. e.g. A table with 2 rows: * A row with cells in "family:col" and "other:col" (2 distinct columns) * A row with cells in "family:col", "family:other_col", and "other:data" (3 distinct columns) would report (2 + 3)/2 = 2.5 in this field.
+        """
+        return pulumi.get(self, "average_columns_per_row")
+
+    @property
+    @pulumi.getter(name="logicalDataBytes")
+    def logical_data_bytes(self) -> str:
+        """
+        This is roughly how many bytes would be needed to read the entire table (e.g. by streaming all contents out).
+        """
+        return pulumi.get(self, "logical_data_bytes")
+
+    @property
+    @pulumi.getter(name="rowCount")
+    def row_count(self) -> str:
+        """
+        How many rows are in the table.
+        """
+        return pulumi.get(self, "row_count")
 
 

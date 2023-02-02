@@ -144,7 +144,7 @@ export const ServingConfigDiversityType = {
 } as const;
 
 /**
- * What kind of diversity to use - data driven or rule based.
+ * What kind of diversity to use - data driven or rule based. If unset, the server behavior defaults to RULE_BASED_DIVERSITY.
  */
 export type ServingConfigDiversityType = (typeof ServingConfigDiversityType)[keyof typeof ServingConfigDiversityType];
 

@@ -1420,6 +1420,8 @@ class PubSubIODetailsArgs:
 @pulumi.input_type
 class RuntimeEnvironmentArgs:
     def __init__(__self__, *,
+                 temp_location: pulumi.Input[str],
+                 worker_region: pulumi.Input[str],
                  additional_experiments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  additional_user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  bypass_temp_dir_validation: Optional[pulumi.Input[bool]] = None,
@@ -1432,29 +1434,29 @@ class RuntimeEnvironmentArgs:
                  num_workers: Optional[pulumi.Input[int]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
-                 temp_location: Optional[pulumi.Input[str]] = None,
-                 worker_region: Optional[pulumi.Input[str]] = None,
                  worker_zone: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The environment values to set at runtime.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Additional experiment flags for the job, specified with the `--experiments` option.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_user_labels: Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
-        :param pulumi.Input[bool] bypass_temp_dir_validation: Whether to bypass the safety checks for the job's temporary directory. Use with caution.
-        :param pulumi.Input[bool] enable_streaming_engine: Whether to enable Streaming Engine for the job.
-        :param pulumi.Input['RuntimeEnvironmentIpConfiguration'] ip_configuration: Configuration for VM IPs.
-        :param pulumi.Input[str] kms_key_name: Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
-        :param pulumi.Input[str] machine_type: The machine type to use for the job. Defaults to the value from the template if not specified.
-        :param pulumi.Input[int] max_workers: The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
-        :param pulumi.Input[str] network: Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
-        :param pulumi.Input[int] num_workers: The initial number of Google Compute Engine instances for the job.
-        :param pulumi.Input[str] service_account_email: The email address of the service account to run the job as.
-        :param pulumi.Input[str] subnetwork: Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
         :param pulumi.Input[str] temp_location: The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
         :param pulumi.Input[str] worker_region: The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-        :param pulumi.Input[str] worker_zone: The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
-        :param pulumi.Input[str] zone: The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_experiments: Optional. Additional experiment flags for the job, specified with the `--experiments` option.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] additional_user_labels: Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+        :param pulumi.Input[bool] bypass_temp_dir_validation: Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+        :param pulumi.Input[bool] enable_streaming_engine: Optional. Whether to enable Streaming Engine for the job.
+        :param pulumi.Input['RuntimeEnvironmentIpConfiguration'] ip_configuration: Optional. Configuration for VM IPs.
+        :param pulumi.Input[str] kms_key_name: Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+        :param pulumi.Input[str] machine_type: Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
+        :param pulumi.Input[int] max_workers: Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
+        :param pulumi.Input[str] network: Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        :param pulumi.Input[int] num_workers: Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
+        :param pulumi.Input[str] service_account_email: Optional. The email address of the service account to run the job as.
+        :param pulumi.Input[str] subnetwork: Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+        :param pulumi.Input[str] worker_zone: Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        :param pulumi.Input[str] zone: Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
         """
+        pulumi.set(__self__, "temp_location", temp_location)
+        pulumi.set(__self__, "worker_region", worker_region)
         if additional_experiments is not None:
             pulumi.set(__self__, "additional_experiments", additional_experiments)
         if additional_user_labels is not None:
@@ -1479,20 +1481,40 @@ class RuntimeEnvironmentArgs:
             pulumi.set(__self__, "service_account_email", service_account_email)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
-        if temp_location is not None:
-            pulumi.set(__self__, "temp_location", temp_location)
-        if worker_region is not None:
-            pulumi.set(__self__, "worker_region", worker_region)
         if worker_zone is not None:
             pulumi.set(__self__, "worker_zone", worker_zone)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
     @property
+    @pulumi.getter(name="tempLocation")
+    def temp_location(self) -> pulumi.Input[str]:
+        """
+        The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        """
+        return pulumi.get(self, "temp_location")
+
+    @temp_location.setter
+    def temp_location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "temp_location", value)
+
+    @property
+    @pulumi.getter(name="workerRegion")
+    def worker_region(self) -> pulumi.Input[str]:
+        """
+        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
+        """
+        return pulumi.get(self, "worker_region")
+
+    @worker_region.setter
+    def worker_region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "worker_region", value)
+
+    @property
     @pulumi.getter(name="additionalExperiments")
     def additional_experiments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Additional experiment flags for the job, specified with the `--experiments` option.
+        Optional. Additional experiment flags for the job, specified with the `--experiments` option.
         """
         return pulumi.get(self, "additional_experiments")
 
@@ -1504,7 +1526,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="additionalUserLabels")
     def additional_user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+        Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
         """
         return pulumi.get(self, "additional_user_labels")
 
@@ -1516,7 +1538,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="bypassTempDirValidation")
     def bypass_temp_dir_validation(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+        Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
         """
         return pulumi.get(self, "bypass_temp_dir_validation")
 
@@ -1528,7 +1550,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="enableStreamingEngine")
     def enable_streaming_engine(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to enable Streaming Engine for the job.
+        Optional. Whether to enable Streaming Engine for the job.
         """
         return pulumi.get(self, "enable_streaming_engine")
 
@@ -1540,7 +1562,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="ipConfiguration")
     def ip_configuration(self) -> Optional[pulumi.Input['RuntimeEnvironmentIpConfiguration']]:
         """
-        Configuration for VM IPs.
+        Optional. Configuration for VM IPs.
         """
         return pulumi.get(self, "ip_configuration")
 
@@ -1552,7 +1574,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+        Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
         """
         return pulumi.get(self, "kms_key_name")
 
@@ -1564,7 +1586,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The machine type to use for the job. Defaults to the value from the template if not specified.
+        Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
         """
         return pulumi.get(self, "machine_type")
 
@@ -1576,7 +1598,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="maxWorkers")
     def max_workers(self) -> Optional[pulumi.Input[int]]:
         """
-        The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+        Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
         """
         return pulumi.get(self, "max_workers")
 
@@ -1588,7 +1610,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+        Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
         """
         return pulumi.get(self, "network")
 
@@ -1600,7 +1622,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="numWorkers")
     def num_workers(self) -> Optional[pulumi.Input[int]]:
         """
-        The initial number of Google Compute Engine instances for the job.
+        Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
         """
         return pulumi.get(self, "num_workers")
 
@@ -1612,7 +1634,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter(name="serviceAccountEmail")
     def service_account_email(self) -> Optional[pulumi.Input[str]]:
         """
-        The email address of the service account to run the job as.
+        Optional. The email address of the service account to run the job as.
         """
         return pulumi.get(self, "service_account_email")
 
@@ -1624,7 +1646,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+        Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
         """
         return pulumi.get(self, "subnetwork")
 
@@ -1633,34 +1655,10 @@ class RuntimeEnvironmentArgs:
         pulumi.set(self, "subnetwork", value)
 
     @property
-    @pulumi.getter(name="tempLocation")
-    def temp_location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-        """
-        return pulumi.get(self, "temp_location")
-
-    @temp_location.setter
-    def temp_location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "temp_location", value)
-
-    @property
-    @pulumi.getter(name="workerRegion")
-    def worker_region(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-        """
-        return pulumi.get(self, "worker_region")
-
-    @worker_region.setter
-    def worker_region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "worker_region", value)
-
-    @property
     @pulumi.getter(name="workerZone")
     def worker_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+        Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
         """
         return pulumi.get(self, "worker_zone")
 
@@ -1672,7 +1670,7 @@ class RuntimeEnvironmentArgs:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+        Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
         """
         return pulumi.get(self, "zone")
 

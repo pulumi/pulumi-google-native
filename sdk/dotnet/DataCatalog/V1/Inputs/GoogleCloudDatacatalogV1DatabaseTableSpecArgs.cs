@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Spec what aplies to tables that are actually views. Not set for "real" tables.
+        /// </summary>
+        [Input("databaseViewSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs>? DatabaseViewSpec { get; set; }
+
+        /// <summary>
         /// Type of this table.
         /// </summary>
         [Input("type")]

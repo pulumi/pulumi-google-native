@@ -27,7 +27,7 @@ class ProcessorArgs:
         :param pulumi.Input[str] default_processor_version: The default processor version.
         :param pulumi.Input[str] display_name: The display name of the processor.
         :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
-        :param pulumi.Input[str] type: The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        :param pulumi.Input[str] type: The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -114,7 +114,7 @@ class ProcessorArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         """
         return pulumi.get(self, "type")
 
@@ -146,7 +146,7 @@ class Processor(pulumi.CustomResource):
         :param pulumi.Input[str] default_processor_version: The default processor version.
         :param pulumi.Input[str] display_name: The display name of the processor.
         :param pulumi.Input[str] kms_key_name: The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.
-        :param pulumi.Input[str] type: The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        :param pulumi.Input[str] type: The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         """
         ...
     @overload
@@ -305,7 +305,7 @@ class Processor(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The processor type, e.g., OCR_PROCESSOR, INVOICE_PROCESSOR, etc. To get a list of processors types, see FetchProcessorTypes.
+        The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see FetchProcessorTypes.
         """
         return pulumi.get(self, "type")
 

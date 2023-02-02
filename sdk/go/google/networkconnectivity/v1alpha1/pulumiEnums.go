@@ -181,9 +181,574 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+type InternalRangeOverlapsItem string
+
+const (
+	// No overlap overrides.
+	InternalRangeOverlapsItemOverlapUnspecified = InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED")
+	// Allow creation of static routes more specific than the current internal range.
+	InternalRangeOverlapsItemOverlapRouteRange = InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE")
+)
+
+func (InternalRangeOverlapsItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeOverlapsItem)(nil)).Elem()
+}
+
+func (e InternalRangeOverlapsItem) ToInternalRangeOverlapsItemOutput() InternalRangeOverlapsItemOutput {
+	return pulumi.ToOutput(e).(InternalRangeOverlapsItemOutput)
+}
+
+func (e InternalRangeOverlapsItem) ToInternalRangeOverlapsItemOutputWithContext(ctx context.Context) InternalRangeOverlapsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InternalRangeOverlapsItemOutput)
+}
+
+func (e InternalRangeOverlapsItem) ToInternalRangeOverlapsItemPtrOutput() InternalRangeOverlapsItemPtrOutput {
+	return e.ToInternalRangeOverlapsItemPtrOutputWithContext(context.Background())
+}
+
+func (e InternalRangeOverlapsItem) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
+	return InternalRangeOverlapsItem(e).ToInternalRangeOverlapsItemOutputWithContext(ctx).ToInternalRangeOverlapsItemPtrOutputWithContext(ctx)
+}
+
+func (e InternalRangeOverlapsItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InternalRangeOverlapsItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InternalRangeOverlapsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InternalRangeOverlapsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InternalRangeOverlapsItemOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeOverlapsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeOverlapsItem)(nil)).Elem()
+}
+
+func (o InternalRangeOverlapsItemOutput) ToInternalRangeOverlapsItemOutput() InternalRangeOverlapsItemOutput {
+	return o
+}
+
+func (o InternalRangeOverlapsItemOutput) ToInternalRangeOverlapsItemOutputWithContext(ctx context.Context) InternalRangeOverlapsItemOutput {
+	return o
+}
+
+func (o InternalRangeOverlapsItemOutput) ToInternalRangeOverlapsItemPtrOutput() InternalRangeOverlapsItemPtrOutput {
+	return o.ToInternalRangeOverlapsItemPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeOverlapsItemOutput) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalRangeOverlapsItem) *InternalRangeOverlapsItem {
+		return &v
+	}).(InternalRangeOverlapsItemPtrOutput)
+}
+
+func (o InternalRangeOverlapsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InternalRangeOverlapsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalRangeOverlapsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InternalRangeOverlapsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeOverlapsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalRangeOverlapsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InternalRangeOverlapsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeOverlapsItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangeOverlapsItem)(nil)).Elem()
+}
+
+func (o InternalRangeOverlapsItemPtrOutput) ToInternalRangeOverlapsItemPtrOutput() InternalRangeOverlapsItemPtrOutput {
+	return o
+}
+
+func (o InternalRangeOverlapsItemPtrOutput) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
+	return o
+}
+
+func (o InternalRangeOverlapsItemPtrOutput) Elem() InternalRangeOverlapsItemOutput {
+	return o.ApplyT(func(v *InternalRangeOverlapsItem) InternalRangeOverlapsItem {
+		if v != nil {
+			return *v
+		}
+		var ret InternalRangeOverlapsItem
+		return ret
+	}).(InternalRangeOverlapsItemOutput)
+}
+
+func (o InternalRangeOverlapsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeOverlapsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InternalRangeOverlapsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InternalRangeOverlapsItemInput is an input type that accepts InternalRangeOverlapsItemArgs and InternalRangeOverlapsItemOutput values.
+// You can construct a concrete instance of `InternalRangeOverlapsItemInput` via:
+//
+//	InternalRangeOverlapsItemArgs{...}
+type InternalRangeOverlapsItemInput interface {
+	pulumi.Input
+
+	ToInternalRangeOverlapsItemOutput() InternalRangeOverlapsItemOutput
+	ToInternalRangeOverlapsItemOutputWithContext(context.Context) InternalRangeOverlapsItemOutput
+}
+
+var internalRangeOverlapsItemPtrType = reflect.TypeOf((**InternalRangeOverlapsItem)(nil)).Elem()
+
+type InternalRangeOverlapsItemPtrInput interface {
+	pulumi.Input
+
+	ToInternalRangeOverlapsItemPtrOutput() InternalRangeOverlapsItemPtrOutput
+	ToInternalRangeOverlapsItemPtrOutputWithContext(context.Context) InternalRangeOverlapsItemPtrOutput
+}
+
+type internalRangeOverlapsItemPtr string
+
+func InternalRangeOverlapsItemPtr(v string) InternalRangeOverlapsItemPtrInput {
+	return (*internalRangeOverlapsItemPtr)(&v)
+}
+
+func (*internalRangeOverlapsItemPtr) ElementType() reflect.Type {
+	return internalRangeOverlapsItemPtrType
+}
+
+func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutput() InternalRangeOverlapsItemPtrOutput {
+	return pulumi.ToOutput(in).(InternalRangeOverlapsItemPtrOutput)
+}
+
+func (in *internalRangeOverlapsItemPtr) ToInternalRangeOverlapsItemPtrOutputWithContext(ctx context.Context) InternalRangeOverlapsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeOverlapsItemPtrOutput)
+}
+
+// InternalRangeOverlapsItemArrayInput is an input type that accepts InternalRangeOverlapsItemArray and InternalRangeOverlapsItemArrayOutput values.
+// You can construct a concrete instance of `InternalRangeOverlapsItemArrayInput` via:
+//
+//	InternalRangeOverlapsItemArray{ InternalRangeOverlapsItemArgs{...} }
+type InternalRangeOverlapsItemArrayInput interface {
+	pulumi.Input
+
+	ToInternalRangeOverlapsItemArrayOutput() InternalRangeOverlapsItemArrayOutput
+	ToInternalRangeOverlapsItemArrayOutputWithContext(context.Context) InternalRangeOverlapsItemArrayOutput
+}
+
+type InternalRangeOverlapsItemArray []InternalRangeOverlapsItem
+
+func (InternalRangeOverlapsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InternalRangeOverlapsItem)(nil)).Elem()
+}
+
+func (i InternalRangeOverlapsItemArray) ToInternalRangeOverlapsItemArrayOutput() InternalRangeOverlapsItemArrayOutput {
+	return i.ToInternalRangeOverlapsItemArrayOutputWithContext(context.Background())
+}
+
+func (i InternalRangeOverlapsItemArray) ToInternalRangeOverlapsItemArrayOutputWithContext(ctx context.Context) InternalRangeOverlapsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InternalRangeOverlapsItemArrayOutput)
+}
+
+type InternalRangeOverlapsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeOverlapsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InternalRangeOverlapsItem)(nil)).Elem()
+}
+
+func (o InternalRangeOverlapsItemArrayOutput) ToInternalRangeOverlapsItemArrayOutput() InternalRangeOverlapsItemArrayOutput {
+	return o
+}
+
+func (o InternalRangeOverlapsItemArrayOutput) ToInternalRangeOverlapsItemArrayOutputWithContext(ctx context.Context) InternalRangeOverlapsItemArrayOutput {
+	return o
+}
+
+func (o InternalRangeOverlapsItemArrayOutput) Index(i pulumi.IntInput) InternalRangeOverlapsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InternalRangeOverlapsItem {
+		return vs[0].([]InternalRangeOverlapsItem)[vs[1].(int)]
+	}).(InternalRangeOverlapsItemOutput)
+}
+
+// The type of peering set for this internal range.
+type InternalRangePeering string
+
+const (
+	// If Peering is left unspecified in CreateInternalRange or UpdateInternalRange, it will be defaulted to FOR_SELF.
+	InternalRangePeeringPeeringUnspecified = InternalRangePeering("PEERING_UNSPECIFIED")
+	// This is the default behavior and represents the case that this internal range is intended to be used in the VPC in which it is created and is accessible from its peers. This implies that peers or peers-of-peers cannot use this range.
+	InternalRangePeeringForSelf = InternalRangePeering("FOR_SELF")
+	// This behavior can be set when the internal range is being reserved for usage by the peers. This means that no resource within the VPC in which it is being created can use this to associate with a VPC resource, but one of the peers can. This represents donating a range for peers to use.
+	InternalRangePeeringForPeer = InternalRangePeering("FOR_PEER")
+	// This behavior can be set when the internal range is being reserved for usage by the VPC in which it is created but not shared with the peers. In a sense it is local to the VPC. This can be used to create internal ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or for Interconnect routes that are not shared with peers. This also implies that peers cannot use this range in a way that is visible to this VPC, but can re-use this range as long as it is NOT_SHARED from the peer VPC, too.
+	InternalRangePeeringNotShared = InternalRangePeering("NOT_SHARED")
+)
+
+func (InternalRangePeering) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangePeering)(nil)).Elem()
+}
+
+func (e InternalRangePeering) ToInternalRangePeeringOutput() InternalRangePeeringOutput {
+	return pulumi.ToOutput(e).(InternalRangePeeringOutput)
+}
+
+func (e InternalRangePeering) ToInternalRangePeeringOutputWithContext(ctx context.Context) InternalRangePeeringOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InternalRangePeeringOutput)
+}
+
+func (e InternalRangePeering) ToInternalRangePeeringPtrOutput() InternalRangePeeringPtrOutput {
+	return e.ToInternalRangePeeringPtrOutputWithContext(context.Background())
+}
+
+func (e InternalRangePeering) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
+	return InternalRangePeering(e).ToInternalRangePeeringOutputWithContext(ctx).ToInternalRangePeeringPtrOutputWithContext(ctx)
+}
+
+func (e InternalRangePeering) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InternalRangePeering) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InternalRangePeering) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InternalRangePeering) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InternalRangePeeringOutput struct{ *pulumi.OutputState }
+
+func (InternalRangePeeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangePeering)(nil)).Elem()
+}
+
+func (o InternalRangePeeringOutput) ToInternalRangePeeringOutput() InternalRangePeeringOutput {
+	return o
+}
+
+func (o InternalRangePeeringOutput) ToInternalRangePeeringOutputWithContext(ctx context.Context) InternalRangePeeringOutput {
+	return o
+}
+
+func (o InternalRangePeeringOutput) ToInternalRangePeeringPtrOutput() InternalRangePeeringPtrOutput {
+	return o.ToInternalRangePeeringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangePeeringOutput) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalRangePeering) *InternalRangePeering {
+		return &v
+	}).(InternalRangePeeringPtrOutput)
+}
+
+func (o InternalRangePeeringOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InternalRangePeeringOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalRangePeering) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InternalRangePeeringOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangePeeringOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalRangePeering) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InternalRangePeeringPtrOutput struct{ *pulumi.OutputState }
+
+func (InternalRangePeeringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangePeering)(nil)).Elem()
+}
+
+func (o InternalRangePeeringPtrOutput) ToInternalRangePeeringPtrOutput() InternalRangePeeringPtrOutput {
+	return o
+}
+
+func (o InternalRangePeeringPtrOutput) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
+	return o
+}
+
+func (o InternalRangePeeringPtrOutput) Elem() InternalRangePeeringOutput {
+	return o.ApplyT(func(v *InternalRangePeering) InternalRangePeering {
+		if v != nil {
+			return *v
+		}
+		var ret InternalRangePeering
+		return ret
+	}).(InternalRangePeeringOutput)
+}
+
+func (o InternalRangePeeringPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangePeeringPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InternalRangePeering) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InternalRangePeeringInput is an input type that accepts InternalRangePeeringArgs and InternalRangePeeringOutput values.
+// You can construct a concrete instance of `InternalRangePeeringInput` via:
+//
+//	InternalRangePeeringArgs{...}
+type InternalRangePeeringInput interface {
+	pulumi.Input
+
+	ToInternalRangePeeringOutput() InternalRangePeeringOutput
+	ToInternalRangePeeringOutputWithContext(context.Context) InternalRangePeeringOutput
+}
+
+var internalRangePeeringPtrType = reflect.TypeOf((**InternalRangePeering)(nil)).Elem()
+
+type InternalRangePeeringPtrInput interface {
+	pulumi.Input
+
+	ToInternalRangePeeringPtrOutput() InternalRangePeeringPtrOutput
+	ToInternalRangePeeringPtrOutputWithContext(context.Context) InternalRangePeeringPtrOutput
+}
+
+type internalRangePeeringPtr string
+
+func InternalRangePeeringPtr(v string) InternalRangePeeringPtrInput {
+	return (*internalRangePeeringPtr)(&v)
+}
+
+func (*internalRangePeeringPtr) ElementType() reflect.Type {
+	return internalRangePeeringPtrType
+}
+
+func (in *internalRangePeeringPtr) ToInternalRangePeeringPtrOutput() InternalRangePeeringPtrOutput {
+	return pulumi.ToOutput(in).(InternalRangePeeringPtrOutput)
+}
+
+func (in *internalRangePeeringPtr) ToInternalRangePeeringPtrOutputWithContext(ctx context.Context) InternalRangePeeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InternalRangePeeringPtrOutput)
+}
+
+// The type of usage set for this internal range.
+type InternalRangeUsage string
+
+const (
+	// Unspecified usage is allowed in calls which identify the resource by other fields and do not need Usage set to complete. These are, i.e.: GetInternalRange and DeleteInternalRange. Usage needs to be specified explicitly in CreateInternalRange or UpdateInternalRange calls.
+	InternalRangeUsageUsageUnspecified = InternalRangeUsage("USAGE_UNSPECIFIED")
+	// A VPC resource can use the reserved CIDR block by associating it with the internal range resource if usage is set to FOR_VPC.
+	InternalRangeUsageForVpc = InternalRangeUsage("FOR_VPC")
+	// Ranges created with EXTERNAL_TO_VPC cannot be associated with VPC resources and are meant to block out address ranges for various use cases such as usage on-premises, with dynamic route announcements via Interconnect.
+	InternalRangeUsageExternalToVpc = InternalRangeUsage("EXTERNAL_TO_VPC")
+)
+
+func (InternalRangeUsage) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeUsage)(nil)).Elem()
+}
+
+func (e InternalRangeUsage) ToInternalRangeUsageOutput() InternalRangeUsageOutput {
+	return pulumi.ToOutput(e).(InternalRangeUsageOutput)
+}
+
+func (e InternalRangeUsage) ToInternalRangeUsageOutputWithContext(ctx context.Context) InternalRangeUsageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InternalRangeUsageOutput)
+}
+
+func (e InternalRangeUsage) ToInternalRangeUsagePtrOutput() InternalRangeUsagePtrOutput {
+	return e.ToInternalRangeUsagePtrOutputWithContext(context.Background())
+}
+
+func (e InternalRangeUsage) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
+	return InternalRangeUsage(e).ToInternalRangeUsageOutputWithContext(ctx).ToInternalRangeUsagePtrOutputWithContext(ctx)
+}
+
+func (e InternalRangeUsage) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InternalRangeUsage) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e InternalRangeUsage) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e InternalRangeUsage) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InternalRangeUsageOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeUsageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalRangeUsage)(nil)).Elem()
+}
+
+func (o InternalRangeUsageOutput) ToInternalRangeUsageOutput() InternalRangeUsageOutput {
+	return o
+}
+
+func (o InternalRangeUsageOutput) ToInternalRangeUsageOutputWithContext(ctx context.Context) InternalRangeUsageOutput {
+	return o
+}
+
+func (o InternalRangeUsageOutput) ToInternalRangeUsagePtrOutput() InternalRangeUsagePtrOutput {
+	return o.ToInternalRangeUsagePtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeUsageOutput) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalRangeUsage) *InternalRangeUsage {
+		return &v
+	}).(InternalRangeUsagePtrOutput)
+}
+
+func (o InternalRangeUsageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InternalRangeUsageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalRangeUsage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InternalRangeUsageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeUsageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalRangeUsage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InternalRangeUsagePtrOutput struct{ *pulumi.OutputState }
+
+func (InternalRangeUsagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InternalRangeUsage)(nil)).Elem()
+}
+
+func (o InternalRangeUsagePtrOutput) ToInternalRangeUsagePtrOutput() InternalRangeUsagePtrOutput {
+	return o
+}
+
+func (o InternalRangeUsagePtrOutput) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
+	return o
+}
+
+func (o InternalRangeUsagePtrOutput) Elem() InternalRangeUsageOutput {
+	return o.ApplyT(func(v *InternalRangeUsage) InternalRangeUsage {
+		if v != nil {
+			return *v
+		}
+		var ret InternalRangeUsage
+		return ret
+	}).(InternalRangeUsageOutput)
+}
+
+func (o InternalRangeUsagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalRangeUsagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InternalRangeUsage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// InternalRangeUsageInput is an input type that accepts InternalRangeUsageArgs and InternalRangeUsageOutput values.
+// You can construct a concrete instance of `InternalRangeUsageInput` via:
+//
+//	InternalRangeUsageArgs{...}
+type InternalRangeUsageInput interface {
+	pulumi.Input
+
+	ToInternalRangeUsageOutput() InternalRangeUsageOutput
+	ToInternalRangeUsageOutputWithContext(context.Context) InternalRangeUsageOutput
+}
+
+var internalRangeUsagePtrType = reflect.TypeOf((**InternalRangeUsage)(nil)).Elem()
+
+type InternalRangeUsagePtrInput interface {
+	pulumi.Input
+
+	ToInternalRangeUsagePtrOutput() InternalRangeUsagePtrOutput
+	ToInternalRangeUsagePtrOutputWithContext(context.Context) InternalRangeUsagePtrOutput
+}
+
+type internalRangeUsagePtr string
+
+func InternalRangeUsagePtr(v string) InternalRangeUsagePtrInput {
+	return (*internalRangeUsagePtr)(&v)
+}
+
+func (*internalRangeUsagePtr) ElementType() reflect.Type {
+	return internalRangeUsagePtrType
+}
+
+func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutput() InternalRangeUsagePtrOutput {
+	return pulumi.ToOutput(in).(InternalRangeUsagePtrOutput)
+}
+
+func (in *internalRangeUsagePtr) ToInternalRangeUsagePtrOutputWithContext(ctx context.Context) InternalRangeUsagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InternalRangeUsagePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeOverlapsItemInput)(nil)).Elem(), InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeOverlapsItemPtrInput)(nil)).Elem(), InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeOverlapsItemArrayInput)(nil)).Elem(), InternalRangeOverlapsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangePeeringInput)(nil)).Elem(), InternalRangePeering("PEERING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangePeeringPtrInput)(nil)).Elem(), InternalRangePeering("PEERING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeUsageInput)(nil)).Elem(), InternalRangeUsage("USAGE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*InternalRangeUsagePtrInput)(nil)).Elem(), InternalRangeUsage("USAGE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(InternalRangeOverlapsItemOutput{})
+	pulumi.RegisterOutputType(InternalRangeOverlapsItemPtrOutput{})
+	pulumi.RegisterOutputType(InternalRangeOverlapsItemArrayOutput{})
+	pulumi.RegisterOutputType(InternalRangePeeringOutput{})
+	pulumi.RegisterOutputType(InternalRangePeeringPtrOutput{})
+	pulumi.RegisterOutputType(InternalRangeUsageOutput{})
+	pulumi.RegisterOutputType(InternalRangeUsagePtrOutput{})
 }

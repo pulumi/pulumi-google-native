@@ -28,13 +28,19 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<Inputs.GoogleCloudDataplexV1StorageFormatCsvOptionsArgs>? Csv { get; set; }
 
         /// <summary>
+        /// Optional. Additional information about iceberg tables.
+        /// </summary>
+        [Input("iceberg")]
+        public Input<Inputs.GoogleCloudDataplexV1StorageFormatIcebergOptionsArgs>? Iceberg { get; set; }
+
+        /// <summary>
         /// Optional. Additional information about CSV formatted data.
         /// </summary>
         [Input("json")]
         public Input<Inputs.GoogleCloudDataplexV1StorageFormatJsonOptionsArgs>? Json { get; set; }
 
         /// <summary>
-        /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
+        /// The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
         /// </summary>
         [Input("mimeType", required: true)]
         public Input<string> MimeType { get; set; } = null!;

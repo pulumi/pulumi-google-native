@@ -1470,7 +1470,7 @@ type OSPolicyResourceExecResourceExec struct {
 	Interpreter OSPolicyResourceExecResourceExecInterpreter `pulumi:"interpreter"`
 	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
 	OutputFilePath *string `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to 32KiB.
 	Script *string `pulumi:"script"`
 }
 
@@ -1495,7 +1495,7 @@ type OSPolicyResourceExecResourceExecArgs struct {
 	Interpreter OSPolicyResourceExecResourceExecInterpreterInput `pulumi:"interpreter"`
 	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
 	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to 32KiB.
 	Script pulumi.StringPtrInput `pulumi:"script"`
 }
 
@@ -1599,7 +1599,7 @@ func (o OSPolicyResourceExecResourceExecOutput) OutputFilePath() pulumi.StringPt
 	return o.ApplyT(func(v OSPolicyResourceExecResourceExec) *string { return v.OutputFilePath }).(pulumi.StringPtrOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to 32KiB.
 func (o OSPolicyResourceExecResourceExecOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSPolicyResourceExecResourceExec) *string { return v.Script }).(pulumi.StringPtrOutput)
 }
@@ -1668,7 +1668,7 @@ func (o OSPolicyResourceExecResourceExecPtrOutput) OutputFilePath() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to 32KiB.
 func (o OSPolicyResourceExecResourceExecPtrOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSPolicyResourceExecResourceExec) *string {
 		if v == nil {
@@ -1688,7 +1688,7 @@ type OSPolicyResourceExecResourceExecResponse struct {
 	Interpreter string `pulumi:"interpreter"`
 	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
 	OutputFilePath string `pulumi:"outputFilePath"`
-	// An inline script. The size of the script is limited to 1024 characters.
+	// An inline script. The size of the script is limited to 32KiB.
 	Script string `pulumi:"script"`
 }
 
@@ -1727,7 +1727,7 @@ func (o OSPolicyResourceExecResourceExecResponseOutput) OutputFilePath() pulumi.
 	return o.ApplyT(func(v OSPolicyResourceExecResourceExecResponse) string { return v.OutputFilePath }).(pulumi.StringOutput)
 }
 
-// An inline script. The size of the script is limited to 1024 characters.
+// An inline script. The size of the script is limited to 32KiB.
 func (o OSPolicyResourceExecResourceExecResponseOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceExecResourceExecResponse) string { return v.Script }).(pulumi.StringOutput)
 }
@@ -2378,7 +2378,7 @@ func (o OSPolicyResourceFileRemoteResponseOutput) Uri() pulumi.StringOutput {
 
 // A resource that manages the state of a file.
 type OSPolicyResourceFileResource struct {
-	// A a file with this content. The size of the content is limited to 1024 characters.
+	// A a file with this content. The size of the content is limited to 32KiB.
 	Content *string `pulumi:"content"`
 	// A remote or local source.
 	File *OSPolicyResourceFile `pulumi:"file"`
@@ -2403,7 +2403,7 @@ type OSPolicyResourceFileResourceInput interface {
 
 // A resource that manages the state of a file.
 type OSPolicyResourceFileResourceArgs struct {
-	// A a file with this content. The size of the content is limited to 1024 characters.
+	// A a file with this content. The size of the content is limited to 32KiB.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// A remote or local source.
 	File OSPolicyResourceFilePtrInput `pulumi:"file"`
@@ -2493,7 +2493,7 @@ func (o OSPolicyResourceFileResourceOutput) ToOSPolicyResourceFileResourcePtrOut
 	}).(OSPolicyResourceFileResourcePtrOutput)
 }
 
-// A a file with this content. The size of the content is limited to 1024 characters.
+// A a file with this content. The size of the content is limited to 32KiB.
 func (o OSPolicyResourceFileResourceOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OSPolicyResourceFileResource) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -2542,7 +2542,7 @@ func (o OSPolicyResourceFileResourcePtrOutput) Elem() OSPolicyResourceFileResour
 	}).(OSPolicyResourceFileResourceOutput)
 }
 
-// A a file with this content. The size of the content is limited to 1024 characters.
+// A a file with this content. The size of the content is limited to 32KiB.
 func (o OSPolicyResourceFileResourcePtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OSPolicyResourceFileResource) *string {
 		if v == nil {
@@ -2594,7 +2594,7 @@ func (o OSPolicyResourceFileResourcePtrOutput) State() OSPolicyResourceFileResou
 
 // A resource that manages the state of a file.
 type OSPolicyResourceFileResourceResponse struct {
-	// A a file with this content. The size of the content is limited to 1024 characters.
+	// A a file with this content. The size of the content is limited to 32KiB.
 	Content string `pulumi:"content"`
 	// A remote or local source.
 	File OSPolicyResourceFileResponse `pulumi:"file"`
@@ -2621,7 +2621,7 @@ func (o OSPolicyResourceFileResourceResponseOutput) ToOSPolicyResourceFileResour
 	return o
 }
 
-// A a file with this content. The size of the content is limited to 1024 characters.
+// A a file with this content. The size of the content is limited to 32KiB.
 func (o OSPolicyResourceFileResourceResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v OSPolicyResourceFileResourceResponse) string { return v.Content }).(pulumi.StringOutput)
 }

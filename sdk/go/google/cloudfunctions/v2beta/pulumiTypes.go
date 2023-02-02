@@ -2557,10 +2557,12 @@ func (o SecretVolumeResponseArrayOutput) Index(i pulumi.IntInput) SecretVolumeRe
 	}).(SecretVolumeResponseOutput)
 }
 
-// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
 type ServiceConfig struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 	AllTrafficOnLatestRevision *bool `pulumi:"allTrafficOnLatestRevision"`
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+	AvailableCpu *string `pulumi:"availableCpu"`
 	// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 	AvailableMemory *string `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
@@ -2569,13 +2571,15 @@ type ServiceConfig struct {
 	IngressSettings *ServiceConfigIngressSettings `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
 	// Secret environment variables configuration.
 	SecretEnvironmentVariables []SecretEnvVar `pulumi:"secretEnvironmentVariables"`
 	// Secret volumes configuration.
 	SecretVolumes []SecretVolume `pulumi:"secretVolumes"`
-	// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+	// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
 	SecurityLevel *ServiceConfigSecurityLevel `pulumi:"securityLevel"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
@@ -2598,10 +2602,12 @@ type ServiceConfigInput interface {
 	ToServiceConfigOutputWithContext(context.Context) ServiceConfigOutput
 }
 
-// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
 type ServiceConfigArgs struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 	AllTrafficOnLatestRevision pulumi.BoolPtrInput `pulumi:"allTrafficOnLatestRevision"`
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+	AvailableCpu pulumi.StringPtrInput `pulumi:"availableCpu"`
 	// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 	AvailableMemory pulumi.StringPtrInput `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
@@ -2610,13 +2616,15 @@ type ServiceConfigArgs struct {
 	IngressSettings ServiceConfigIngressSettingsPtrInput `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
 	// Secret environment variables configuration.
 	SecretEnvironmentVariables SecretEnvVarArrayInput `pulumi:"secretEnvironmentVariables"`
 	// Secret volumes configuration.
 	SecretVolumes SecretVolumeArrayInput `pulumi:"secretVolumes"`
-	// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+	// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
 	SecurityLevel ServiceConfigSecurityLevelPtrInput `pulumi:"securityLevel"`
 	// The email of the service's service account. If empty, defaults to `{project_number}-compute@developer.gserviceaccount.com`.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
@@ -2681,7 +2689,7 @@ func (i *serviceConfigPtrType) ToServiceConfigPtrOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceConfigPtrOutput)
 }
 
-// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
 type ServiceConfigOutput struct{ *pulumi.OutputState }
 
 func (ServiceConfigOutput) ElementType() reflect.Type {
@@ -2711,6 +2719,11 @@ func (o ServiceConfigOutput) AllTrafficOnLatestRevision() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolPtrOutput)
 }
 
+// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+func (o ServiceConfigOutput) AvailableCpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceConfig) *string { return v.AvailableCpu }).(pulumi.StringPtrOutput)
+}
+
 // The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 func (o ServiceConfigOutput) AvailableMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *string { return v.AvailableMemory }).(pulumi.StringPtrOutput)
@@ -2731,6 +2744,11 @@ func (o ServiceConfigOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
 
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+func (o ServiceConfigOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ServiceConfig) *int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntPtrOutput)
+}
+
 // The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 func (o ServiceConfigOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *int { return v.MinInstanceCount }).(pulumi.IntPtrOutput)
@@ -2746,7 +2764,7 @@ func (o ServiceConfigOutput) SecretVolumes() SecretVolumeArrayOutput {
 	return o.ApplyT(func(v ServiceConfig) []SecretVolume { return v.SecretVolumes }).(SecretVolumeArrayOutput)
 }
 
-// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
 func (o ServiceConfigOutput) SecurityLevel() ServiceConfigSecurityLevelPtrOutput {
 	return o.ApplyT(func(v ServiceConfig) *ServiceConfigSecurityLevel { return v.SecurityLevel }).(ServiceConfigSecurityLevelPtrOutput)
 }
@@ -2805,6 +2823,16 @@ func (o ServiceConfigPtrOutput) AllTrafficOnLatestRevision() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+func (o ServiceConfigPtrOutput) AvailableCpu() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AvailableCpu
+	}).(pulumi.StringPtrOutput)
+}
+
 // The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 func (o ServiceConfigPtrOutput) AvailableMemory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *string {
@@ -2845,6 +2873,16 @@ func (o ServiceConfigPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+func (o ServiceConfigPtrOutput) MaxInstanceRequestConcurrency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxInstanceRequestConcurrency
+	}).(pulumi.IntPtrOutput)
+}
+
 // The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 func (o ServiceConfigPtrOutput) MinInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *int {
@@ -2875,7 +2913,7 @@ func (o ServiceConfigPtrOutput) SecretVolumes() SecretVolumeArrayOutput {
 	}).(SecretVolumeArrayOutput)
 }
 
-// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
 func (o ServiceConfigPtrOutput) SecurityLevel() ServiceConfigSecurityLevelPtrOutput {
 	return o.ApplyT(func(v *ServiceConfig) *ServiceConfigSecurityLevel {
 		if v == nil {
@@ -2925,10 +2963,12 @@ func (o ServiceConfigPtrOutput) VpcConnectorEgressSettings() ServiceConfigVpcCon
 	}).(ServiceConfigVpcConnectorEgressSettingsPtrOutput)
 }
 
-// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
 type ServiceConfigResponse struct {
 	// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 	AllTrafficOnLatestRevision bool `pulumi:"allTrafficOnLatestRevision"`
+	// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+	AvailableCpu string `pulumi:"availableCpu"`
 	// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
 	AvailableMemory string `pulumi:"availableMemory"`
 	// Environment variables that shall be available during function execution.
@@ -2937,6 +2977,8 @@ type ServiceConfigResponse struct {
 	IngressSettings string `pulumi:"ingressSettings"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstanceCount int `pulumi:"maxInstanceCount"`
+	// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
 	// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 	// The name of service revision.
@@ -2945,7 +2987,7 @@ type ServiceConfigResponse struct {
 	SecretEnvironmentVariables []SecretEnvVarResponse `pulumi:"secretEnvironmentVariables"`
 	// Secret volumes configuration.
 	SecretVolumes []SecretVolumeResponse `pulumi:"secretVolumes"`
-	// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+	// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
 	SecurityLevel string `pulumi:"securityLevel"`
 	// Name of the service associated with a Function. The format of this field is `projects/{project}/locations/{region}/services/{service}`
 	Service string `pulumi:"service"`
@@ -2961,7 +3003,7 @@ type ServiceConfigResponse struct {
 	VpcConnectorEgressSettings string `pulumi:"vpcConnectorEgressSettings"`
 }
 
-// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
 type ServiceConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (ServiceConfigResponseOutput) ElementType() reflect.Type {
@@ -2979,6 +3021,11 @@ func (o ServiceConfigResponseOutput) ToServiceConfigResponseOutputWithContext(ct
 // Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
 func (o ServiceConfigResponseOutput) AllTrafficOnLatestRevision() pulumi.BoolOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) bool { return v.AllTrafficOnLatestRevision }).(pulumi.BoolOutput)
+}
+
+// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+func (o ServiceConfigResponseOutput) AvailableCpu() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceConfigResponse) string { return v.AvailableCpu }).(pulumi.StringOutput)
 }
 
 // The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
@@ -3001,6 +3048,11 @@ func (o ServiceConfigResponseOutput) MaxInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
 }
 
+// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+func (o ServiceConfigResponseOutput) MaxInstanceRequestConcurrency() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceConfigResponse) int { return v.MaxInstanceRequestConcurrency }).(pulumi.IntOutput)
+}
+
 // The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
 func (o ServiceConfigResponseOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) int { return v.MinInstanceCount }).(pulumi.IntOutput)
@@ -3021,7 +3073,7 @@ func (o ServiceConfigResponseOutput) SecretVolumes() SecretVolumeResponseArrayOu
 	return o.ApplyT(func(v ServiceConfigResponse) []SecretVolumeResponse { return v.SecretVolumes }).(SecretVolumeResponseArrayOutput)
 }
 
-// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
 func (o ServiceConfigResponseOutput) SecurityLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceConfigResponse) string { return v.SecurityLevel }).(pulumi.StringOutput)
 }

@@ -3238,7 +3238,7 @@ type GoogleCloudContentwarehouseV1PropertyDefinition struct {
 	IntegerTypeOptions *GoogleCloudContentwarehouseV1IntegerTypeOptions `pulumi:"integerTypeOptions"`
 	// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
 	IsFilterable *bool `pulumi:"isFilterable"`
-	// Whether the property is user supplied metadata.
+	// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
 	IsMetadata *bool `pulumi:"isMetadata"`
 	// Whether the property can have multiple values.
 	IsRepeatable *bool `pulumi:"isRepeatable"`
@@ -3252,6 +3252,8 @@ type GoogleCloudContentwarehouseV1PropertyDefinition struct {
 	Name string `pulumi:"name"`
 	// Nested structured data property.
 	PropertyTypeOptions *GoogleCloudContentwarehouseV1PropertyTypeOptions `pulumi:"propertyTypeOptions"`
+	// The retrieval importance of the property during search.
+	RetrievalImportance *GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance `pulumi:"retrievalImportance"`
 	// Text/string property.
 	TextTypeOptions *GoogleCloudContentwarehouseV1TextTypeOptions `pulumi:"textTypeOptions"`
 	// Timestamp property. It is not supported by CMEK compliant deployment.
@@ -3283,7 +3285,7 @@ type GoogleCloudContentwarehouseV1PropertyDefinitionArgs struct {
 	IntegerTypeOptions GoogleCloudContentwarehouseV1IntegerTypeOptionsPtrInput `pulumi:"integerTypeOptions"`
 	// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
 	IsFilterable pulumi.BoolPtrInput `pulumi:"isFilterable"`
-	// Whether the property is user supplied metadata.
+	// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
 	IsMetadata pulumi.BoolPtrInput `pulumi:"isMetadata"`
 	// Whether the property can have multiple values.
 	IsRepeatable pulumi.BoolPtrInput `pulumi:"isRepeatable"`
@@ -3297,6 +3299,8 @@ type GoogleCloudContentwarehouseV1PropertyDefinitionArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// Nested structured data property.
 	PropertyTypeOptions GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrInput `pulumi:"propertyTypeOptions"`
+	// The retrieval importance of the property during search.
+	RetrievalImportance GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrInput `pulumi:"retrievalImportance"`
 	// Text/string property.
 	TextTypeOptions GoogleCloudContentwarehouseV1TextTypeOptionsPtrInput `pulumi:"textTypeOptions"`
 	// Timestamp property. It is not supported by CMEK compliant deployment.
@@ -3393,7 +3397,7 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) IsFilterable() pu
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinition) *bool { return v.IsFilterable }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the property is user supplied metadata.
+// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) IsMetadata() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinition) *bool { return v.IsMetadata }).(pulumi.BoolPtrOutput)
 }
@@ -3430,6 +3434,13 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) PropertyTypeOptio
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinition) *GoogleCloudContentwarehouseV1PropertyTypeOptions {
 		return v.PropertyTypeOptions
 	}).(GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrOutput)
+}
+
+// The retrieval importance of the property during search.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) RetrievalImportance() GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinition) *GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance {
+		return v.RetrievalImportance
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
 }
 
 // Text/string property.
@@ -3480,7 +3491,7 @@ type GoogleCloudContentwarehouseV1PropertyDefinitionResponse struct {
 	IntegerTypeOptions GoogleCloudContentwarehouseV1IntegerTypeOptionsResponse `pulumi:"integerTypeOptions"`
 	// Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
 	IsFilterable bool `pulumi:"isFilterable"`
-	// Whether the property is user supplied metadata.
+	// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
 	IsMetadata bool `pulumi:"isMetadata"`
 	// Whether the property can have multiple values.
 	IsRepeatable bool `pulumi:"isRepeatable"`
@@ -3494,6 +3505,8 @@ type GoogleCloudContentwarehouseV1PropertyDefinitionResponse struct {
 	Name string `pulumi:"name"`
 	// Nested structured data property.
 	PropertyTypeOptions GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse `pulumi:"propertyTypeOptions"`
+	// The retrieval importance of the property during search.
+	RetrievalImportance string `pulumi:"retrievalImportance"`
 	// Text/string property.
 	TextTypeOptions GoogleCloudContentwarehouseV1TextTypeOptionsResponse `pulumi:"textTypeOptions"`
 	// Timestamp property. It is not supported by CMEK compliant deployment.
@@ -3553,7 +3566,7 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) IsFiltera
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) bool { return v.IsFilterable }).(pulumi.BoolOutput)
 }
 
-// Whether the property is user supplied metadata.
+// Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) IsMetadata() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) bool { return v.IsMetadata }).(pulumi.BoolOutput)
 }
@@ -3590,6 +3603,11 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) PropertyT
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse {
 		return v.PropertyTypeOptions
 	}).(GoogleCloudContentwarehouseV1PropertyTypeOptionsResponseOutput)
+}
+
+// The retrieval importance of the property during search.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) RetrievalImportance() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) string { return v.RetrievalImportance }).(pulumi.StringOutput)
 }
 
 // Text/string property.
@@ -5588,6 +5606,7 @@ type GoogleCloudContentwarehouseV1UpdateOptions struct {
 	UpdateType *GoogleCloudContentwarehouseV1UpdateOptionsUpdateType `pulumi:"updateType"`
 }
 
+// The user information.
 type GoogleCloudContentwarehouseV1UserInfo struct {
 	// The unique group identifications which the user is belong to. The format is "group:yyyy@example.com";
 	GroupIds []string `pulumi:"groupIds"`
@@ -5606,6 +5625,7 @@ type GoogleCloudContentwarehouseV1UserInfoInput interface {
 	ToGoogleCloudContentwarehouseV1UserInfoOutputWithContext(context.Context) GoogleCloudContentwarehouseV1UserInfoOutput
 }
 
+// The user information.
 type GoogleCloudContentwarehouseV1UserInfoArgs struct {
 	// The unique group identifications which the user is belong to. The format is "group:yyyy@example.com";
 	GroupIds pulumi.StringArrayInput `pulumi:"groupIds"`
@@ -5666,6 +5686,7 @@ func (i *googleCloudContentwarehouseV1UserInfoPtrType) ToGoogleCloudContentwareh
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1UserInfoPtrOutput)
 }
 
+// The user information.
 type GoogleCloudContentwarehouseV1UserInfoOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudContentwarehouseV1UserInfoOutput) ElementType() reflect.Type {
@@ -5746,11 +5767,11 @@ func (o GoogleCloudContentwarehouseV1UserInfoPtrOutput) Id() pulumi.StringPtrOut
 
 // Encodes the detailed information of a barcode.
 type GoogleCloudDocumentaiV1Barcode struct {
-	// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+	// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 	Format *string `pulumi:"format"`
-	// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+	// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
 	RawValue *string `pulumi:"rawValue"`
-	// Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+	// Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
 	ValueFormat *string `pulumi:"valueFormat"`
 }
 
@@ -5767,11 +5788,11 @@ type GoogleCloudDocumentaiV1BarcodeInput interface {
 
 // Encodes the detailed information of a barcode.
 type GoogleCloudDocumentaiV1BarcodeArgs struct {
-	// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+	// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 	Format pulumi.StringPtrInput `pulumi:"format"`
-	// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+	// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
 	RawValue pulumi.StringPtrInput `pulumi:"rawValue"`
-	// Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+	// Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
 	ValueFormat pulumi.StringPtrInput `pulumi:"valueFormat"`
 }
 
@@ -5853,17 +5874,17 @@ func (o GoogleCloudDocumentaiV1BarcodeOutput) ToGoogleCloudDocumentaiV1BarcodePt
 	}).(GoogleCloudDocumentaiV1BarcodePtrOutput)
 }
 
-// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 func (o GoogleCloudDocumentaiV1BarcodeOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Barcode) *string { return v.Format }).(pulumi.StringPtrOutput)
 }
 
-// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
 func (o GoogleCloudDocumentaiV1BarcodeOutput) RawValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Barcode) *string { return v.RawValue }).(pulumi.StringPtrOutput)
 }
 
-// Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+// Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
 func (o GoogleCloudDocumentaiV1BarcodeOutput) ValueFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Barcode) *string { return v.ValueFormat }).(pulumi.StringPtrOutput)
 }
@@ -5892,7 +5913,7 @@ func (o GoogleCloudDocumentaiV1BarcodePtrOutput) Elem() GoogleCloudDocumentaiV1B
 	}).(GoogleCloudDocumentaiV1BarcodeOutput)
 }
 
-// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 func (o GoogleCloudDocumentaiV1BarcodePtrOutput) Format() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Barcode) *string {
 		if v == nil {
@@ -5902,7 +5923,7 @@ func (o GoogleCloudDocumentaiV1BarcodePtrOutput) Format() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
 func (o GoogleCloudDocumentaiV1BarcodePtrOutput) RawValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Barcode) *string {
 		if v == nil {
@@ -5912,7 +5933,7 @@ func (o GoogleCloudDocumentaiV1BarcodePtrOutput) RawValue() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+// Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
 func (o GoogleCloudDocumentaiV1BarcodePtrOutput) ValueFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Barcode) *string {
 		if v == nil {
@@ -5924,11 +5945,11 @@ func (o GoogleCloudDocumentaiV1BarcodePtrOutput) ValueFormat() pulumi.StringPtrO
 
 // Encodes the detailed information of a barcode.
 type GoogleCloudDocumentaiV1BarcodeResponse struct {
-	// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+	// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 	Format string `pulumi:"format"`
-	// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+	// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
 	RawValue string `pulumi:"rawValue"`
-	// Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+	// Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
 	ValueFormat string `pulumi:"valueFormat"`
 }
 
@@ -5947,17 +5968,17 @@ func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) ToGoogleCloudDocumentaiV1B
 	return o
 }
 
-// Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+// Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
 func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1BarcodeResponse) string { return v.Format }).(pulumi.StringOutput)
 }
 
-// Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+// Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
 func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) RawValue() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1BarcodeResponse) string { return v.RawValue }).(pulumi.StringOutput)
 }
 
-// Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+// Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
 func (o GoogleCloudDocumentaiV1BarcodeResponseOutput) ValueFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1BarcodeResponse) string { return v.ValueFormat }).(pulumi.StringOutput)
 }
@@ -6180,9 +6201,9 @@ type GoogleCloudDocumentaiV1Document struct {
 	ShardInfo *GoogleCloudDocumentaiV1DocumentShardInfo `pulumi:"shardInfo"`
 	// Optional. UTF-8 encoded text in reading order from the document.
 	Text *string `pulumi:"text"`
-	// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+	// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
 	TextChanges []GoogleCloudDocumentaiV1DocumentTextChange `pulumi:"textChanges"`
-	// Placeholder. Styles for the Document.text.
+	// Styles for the Document.text.
 	TextStyles []GoogleCloudDocumentaiV1DocumentStyle `pulumi:"textStyles"`
 	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
 	Uri *string `pulumi:"uri"`
@@ -6219,9 +6240,9 @@ type GoogleCloudDocumentaiV1DocumentArgs struct {
 	ShardInfo GoogleCloudDocumentaiV1DocumentShardInfoPtrInput `pulumi:"shardInfo"`
 	// Optional. UTF-8 encoded text in reading order from the document.
 	Text pulumi.StringPtrInput `pulumi:"text"`
-	// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+	// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
 	TextChanges GoogleCloudDocumentaiV1DocumentTextChangeArrayInput `pulumi:"textChanges"`
-	// Placeholder. Styles for the Document.text.
+	// Styles for the Document.text.
 	TextStyles GoogleCloudDocumentaiV1DocumentStyleArrayInput `pulumi:"textStyles"`
 	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
 	Uri pulumi.StringPtrInput `pulumi:"uri"`
@@ -6352,14 +6373,14 @@ func (o GoogleCloudDocumentaiV1DocumentOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
 
-// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
 func (o GoogleCloudDocumentaiV1DocumentOutput) TextChanges() GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) []GoogleCloudDocumentaiV1DocumentTextChange {
 		return v.TextChanges
 	}).(GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput)
 }
 
-// Placeholder. Styles for the Document.text.
+// Styles for the Document.text.
 func (o GoogleCloudDocumentaiV1DocumentOutput) TextStyles() GoogleCloudDocumentaiV1DocumentStyleArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1Document) []GoogleCloudDocumentaiV1DocumentStyle { return v.TextStyles }).(GoogleCloudDocumentaiV1DocumentStyleArrayOutput)
 }
@@ -6483,7 +6504,7 @@ func (o GoogleCloudDocumentaiV1DocumentPtrOutput) Text() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
 func (o GoogleCloudDocumentaiV1DocumentPtrOutput) TextChanges() GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Document) []GoogleCloudDocumentaiV1DocumentTextChange {
 		if v == nil {
@@ -6493,7 +6514,7 @@ func (o GoogleCloudDocumentaiV1DocumentPtrOutput) TextChanges() GoogleCloudDocum
 	}).(GoogleCloudDocumentaiV1DocumentTextChangeArrayOutput)
 }
 
-// Placeholder. Styles for the Document.text.
+// Styles for the Document.text.
 func (o GoogleCloudDocumentaiV1DocumentPtrOutput) TextStyles() GoogleCloudDocumentaiV1DocumentStyleArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1Document) []GoogleCloudDocumentaiV1DocumentStyle {
 		if v == nil {
@@ -6515,7 +6536,7 @@ func (o GoogleCloudDocumentaiV1DocumentPtrOutput) Uri() pulumi.StringPtrOutput {
 
 // An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity type, such as a person, an organization, or location.
 type GoogleCloudDocumentaiV1DocumentEntity struct {
-	// Optional. Confidence of detected Schema entity. Range [0, 1].
+	// Optional. Confidence of detected Schema entity. Range `[0, 1]`.
 	Confidence *float64 `pulumi:"confidence"`
 	// Optional. Canonical id. This will be a unique value in the entity list for this document.
 	Id *string `pulumi:"id"`
@@ -6554,7 +6575,7 @@ type GoogleCloudDocumentaiV1DocumentEntityInput interface {
 
 // An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity type, such as a person, an organization, or location.
 type GoogleCloudDocumentaiV1DocumentEntityArgs struct {
-	// Optional. Confidence of detected Schema entity. Range [0, 1].
+	// Optional. Confidence of detected Schema entity. Range `[0, 1]`.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
 	// Optional. Canonical id. This will be a unique value in the entity list for this document.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -6632,7 +6653,7 @@ func (o GoogleCloudDocumentaiV1DocumentEntityOutput) ToGoogleCloudDocumentaiV1Do
 	return o
 }
 
-// Optional. Confidence of detected Schema entity. Range [0, 1].
+// Optional. Confidence of detected Schema entity. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentEntityOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntity) *float64 { return v.Confidence }).(pulumi.Float64PtrOutput)
 }
@@ -6735,7 +6756,7 @@ type GoogleCloudDocumentaiV1DocumentEntityNormalizedValue struct {
 	IntegerValue *int `pulumi:"integerValue"`
 	// Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
 	MoneyValue *GoogleTypeMoney `pulumi:"moneyValue"`
-	// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+	// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
 	Text *string `pulumi:"text"`
 }
 
@@ -6766,7 +6787,7 @@ type GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs struct {
 	IntegerValue pulumi.IntPtrInput `pulumi:"integerValue"`
 	// Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
 	MoneyValue GoogleTypeMoneyPtrInput `pulumi:"moneyValue"`
-	// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+	// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
 	Text pulumi.StringPtrInput `pulumi:"text"`
 }
 
@@ -6887,7 +6908,7 @@ func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput) MoneyValue()
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntityNormalizedValue) *GoogleTypeMoney { return v.MoneyValue }).(GoogleTypeMoneyPtrOutput)
 }
 
-// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
 func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntityNormalizedValue) *string { return v.Text }).(pulumi.StringPtrOutput)
 }
@@ -6986,7 +7007,7 @@ func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput) MoneyValu
 	}).(GoogleTypeMoneyPtrOutput)
 }
 
-// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
 func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValuePtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentEntityNormalizedValue) *string {
 		if v == nil {
@@ -7012,7 +7033,7 @@ type GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse struct {
 	IntegerValue int `pulumi:"integerValue"`
 	// Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
 	MoneyValue GoogleTypeMoneyResponse `pulumi:"moneyValue"`
-	// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+	// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
 	Text string `pulumi:"text"`
 }
 
@@ -7074,7 +7095,7 @@ func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponseOutput) Mone
 	}).(GoogleTypeMoneyResponseOutput)
 }
 
-// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+// Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
 func (o GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntityNormalizedValueResponse) string { return v.Text }).(pulumi.StringOutput)
 }
@@ -7259,7 +7280,7 @@ func (o GoogleCloudDocumentaiV1DocumentEntityRelationResponseArrayOutput) Index(
 
 // An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity type, such as a person, an organization, or location.
 type GoogleCloudDocumentaiV1DocumentEntityResponse struct {
-	// Optional. Confidence of detected Schema entity. Range [0, 1].
+	// Optional. Confidence of detected Schema entity. Range `[0, 1]`.
 	Confidence float64 `pulumi:"confidence"`
 	// Optional. Deprecated. Use `id` field instead.
 	//
@@ -7298,7 +7319,7 @@ func (o GoogleCloudDocumentaiV1DocumentEntityResponseOutput) ToGoogleCloudDocume
 	return o
 }
 
-// Optional. Confidence of detected Schema entity. Range [0, 1].
+// Optional. Confidence of detected Schema entity. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentEntityResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentEntityResponse) float64 { return v.Confidence }).(pulumi.Float64Output)
 }
@@ -7798,7 +7819,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPtrOutput) PageRefs() GoogleClo
 type GoogleCloudDocumentaiV1DocumentPageAnchorPageRef struct {
 	// Optional. Identifies the bounding polygon of a layout element on the page.
 	BoundingPoly *GoogleCloudDocumentaiV1BoundingPoly `pulumi:"boundingPoly"`
-	// Optional. Confidence of detected page element, if applicable. Range [0, 1].
+	// Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
 	Confidence *float64 `pulumi:"confidence"`
 	// Optional. Deprecated. Use PageRef.bounding_poly instead.
 	//
@@ -7806,7 +7827,7 @@ type GoogleCloudDocumentaiV1DocumentPageAnchorPageRef struct {
 	LayoutId *string `pulumi:"layoutId"`
 	// Optional. The type of the layout element that is being referenced if any.
 	LayoutType *GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType `pulumi:"layoutType"`
-	// Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+	// Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 	Page string `pulumi:"page"`
 }
 
@@ -7825,7 +7846,7 @@ type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefInput interface {
 type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs struct {
 	// Optional. Identifies the bounding polygon of a layout element on the page.
 	BoundingPoly GoogleCloudDocumentaiV1BoundingPolyPtrInput `pulumi:"boundingPoly"`
-	// Optional. Confidence of detected page element, if applicable. Range [0, 1].
+	// Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
 	// Optional. Deprecated. Use PageRef.bounding_poly instead.
 	//
@@ -7833,7 +7854,7 @@ type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs struct {
 	LayoutId pulumi.StringPtrInput `pulumi:"layoutId"`
 	// Optional. The type of the layout element that is being referenced if any.
 	LayoutType GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrInput `pulumi:"layoutType"`
-	// Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+	// Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 	Page pulumi.StringInput `pulumi:"page"`
 }
 
@@ -7896,7 +7917,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) BoundingPoly() G
 	}).(GoogleCloudDocumentaiV1BoundingPolyPtrOutput)
 }
 
-// Optional. Confidence of detected page element, if applicable. Range [0, 1].
+// Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageAnchorPageRef) *float64 { return v.Confidence }).(pulumi.Float64PtrOutput)
 }
@@ -7915,7 +7936,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) LayoutType() Goo
 	}).(GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutTypePtrOutput)
 }
 
-// Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+// Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefOutput) Page() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageAnchorPageRef) string { return v.Page }).(pulumi.StringOutput)
 }
@@ -7944,7 +7965,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArrayOutput) Index(i pul
 type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse struct {
 	// Optional. Identifies the bounding polygon of a layout element on the page.
 	BoundingPoly GoogleCloudDocumentaiV1BoundingPolyResponse `pulumi:"boundingPoly"`
-	// Optional. Confidence of detected page element, if applicable. Range [0, 1].
+	// Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
 	Confidence float64 `pulumi:"confidence"`
 	// Optional. Deprecated. Use PageRef.bounding_poly instead.
 	//
@@ -7952,7 +7973,7 @@ type GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse struct {
 	LayoutId string `pulumi:"layoutId"`
 	// Optional. The type of the layout element that is being referenced if any.
 	LayoutType string `pulumi:"layoutType"`
-	// Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+	// Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 	Page string `pulumi:"page"`
 }
 
@@ -7978,7 +7999,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) Bounding
 	}).(GoogleCloudDocumentaiV1BoundingPolyResponseOutput)
 }
 
-// Optional. Confidence of detected page element, if applicable. Range [0, 1].
+// Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse) float64 { return v.Confidence }).(pulumi.Float64Output)
 }
@@ -7995,7 +8016,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) LayoutTy
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse) string { return v.LayoutType }).(pulumi.StringOutput)
 }
 
-// Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+// Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
 func (o GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponseOutput) Page() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse) string { return v.Page }).(pulumi.StringOutput)
 }
@@ -8410,9 +8431,9 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedBarcodeResponseArrayOutput) I
 
 // Detected language for a structural component.
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguage struct {
-	// Confidence of detected language. Range [0, 1].
+	// Confidence of detected language. Range `[0, 1]`.
 	Confidence *float64 `pulumi:"confidence"`
-	// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode *string `pulumi:"languageCode"`
 }
 
@@ -8429,9 +8450,9 @@ type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageInput interface {
 
 // Detected language for a structural component.
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs struct {
-	// Confidence of detected language. Range [0, 1].
+	// Confidence of detected language. Range `[0, 1]`.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
-	// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 }
 
@@ -8487,12 +8508,12 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) ToGoogleCloud
 	return o
 }
 
-// Confidence of detected language. Range [0, 1].
+// Confidence of detected language. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguage) *float64 { return v.Confidence }).(pulumi.Float64PtrOutput)
 }
 
-// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguage) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
 }
@@ -8519,9 +8540,9 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput) Index(i 
 
 // Detected language for a structural component.
 type GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse struct {
-	// Confidence of detected language. Range [0, 1].
+	// Confidence of detected language. Range `[0, 1]`.
 	Confidence float64 `pulumi:"confidence"`
-	// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -8540,12 +8561,12 @@ func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) ToGoo
 	return o
 }
 
-// Confidence of detected language. Range [0, 1].
+// Confidence of detected language. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse) float64 { return v.Confidence }).(pulumi.Float64Output)
 }
 
-// The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 func (o GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -8804,7 +8825,7 @@ type GoogleCloudDocumentaiV1DocumentPageFormField struct {
 	Provenance *GoogleCloudDocumentaiV1DocumentProvenance `pulumi:"provenance"`
 	// A list of detected languages for value together with confidence.
 	ValueDetectedLanguages []GoogleCloudDocumentaiV1DocumentPageDetectedLanguage `pulumi:"valueDetectedLanguages"`
-	// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+	// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -8835,7 +8856,7 @@ type GoogleCloudDocumentaiV1DocumentPageFormFieldArgs struct {
 	Provenance GoogleCloudDocumentaiV1DocumentProvenancePtrInput `pulumi:"provenance"`
 	// A list of detected languages for value together with confidence.
 	ValueDetectedLanguages GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayInput `pulumi:"valueDetectedLanguages"`
-	// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+	// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -8936,7 +8957,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageFormFieldOutput) ValueDetectedLanguag
 	}).(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArrayOutput)
 }
 
-// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
 func (o GoogleCloudDocumentaiV1DocumentPageFormFieldOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageFormField) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -8977,7 +8998,7 @@ type GoogleCloudDocumentaiV1DocumentPageFormFieldResponse struct {
 	Provenance GoogleCloudDocumentaiV1DocumentProvenanceResponse `pulumi:"provenance"`
 	// A list of detected languages for value together with confidence.
 	ValueDetectedLanguages []GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponse `pulumi:"valueDetectedLanguages"`
-	// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+	// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
 	ValueType string `pulumi:"valueType"`
 }
 
@@ -9041,7 +9062,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput) ValueDetecte
 	}).(GoogleCloudDocumentaiV1DocumentPageDetectedLanguageResponseArrayOutput)
 }
 
-// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+// If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
 func (o GoogleCloudDocumentaiV1DocumentPageFormFieldResponseOutput) ValueType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageFormFieldResponse) string { return v.ValueType }).(pulumi.StringOutput)
 }
@@ -9267,7 +9288,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImagePtrOutput) Width() pulumi.IntPtr
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScores struct {
 	// A list of detected defects.
 	DetectedDefects []GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect `pulumi:"detectedDefects"`
-	// The overall quality score. Range [0, 1] where 1 is perfect quality.
+	// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
 	QualityScore *float64 `pulumi:"qualityScore"`
 }
 
@@ -9286,7 +9307,7 @@ type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresInput interface {
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs struct {
 	// A list of detected defects.
 	DetectedDefects GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayInput `pulumi:"detectedDefects"`
-	// The overall quality score. Range [0, 1] where 1 is perfect quality.
+	// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
 	QualityScore pulumi.Float64PtrInput `pulumi:"qualityScore"`
 }
 
@@ -9375,7 +9396,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) DetectedDef
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput)
 }
 
-// The overall quality score. Range [0, 1] where 1 is perfect quality.
+// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresOutput) QualityScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScores) *float64 { return v.QualityScore }).(pulumi.Float64PtrOutput)
 }
@@ -9414,7 +9435,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) Detected
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArrayOutput)
 }
 
-// The overall quality score. Range [0, 1] where 1 is perfect quality.
+// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) QualityScore() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageImageQualityScores) *float64 {
 		if v == nil {
@@ -9426,9 +9447,9 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresPtrOutput) QualityS
 
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect struct {
-	// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+	// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
 	Confidence *float64 `pulumi:"confidence"`
-	// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+	// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 	Type *string `pulumi:"type"`
 }
 
@@ -9445,9 +9466,9 @@ type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectInput in
 
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs struct {
-	// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+	// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
-	// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+	// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -9503,14 +9524,14 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutpu
 	return o
 }
 
-// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect) *float64 {
 		return v.Confidence
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -9537,9 +9558,9 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArray
 
 // Image Quality Defects
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse struct {
-	// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+	// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
 	Confidence float64 `pulumi:"confidence"`
-	// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+	// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 	Type string `pulumi:"type"`
 }
 
@@ -9558,14 +9579,14 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespo
 	return o
 }
 
-// Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse) float64 {
 		return v.Confidence
 	}).(pulumi.Float64Output)
 }
 
-// Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+// Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse) string {
 		return v.Type
@@ -9596,7 +9617,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectRespo
 type GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse struct {
 	// A list of detected defects.
 	DetectedDefects []GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponse `pulumi:"detectedDefects"`
-	// The overall quality score. Range [0, 1] where 1 is perfect quality.
+	// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
 	QualityScore float64 `pulumi:"qualityScore"`
 }
 
@@ -9622,7 +9643,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) Det
 	}).(GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectResponseArrayOutput)
 }
 
-// The overall quality score. Range [0, 1] where 1 is perfect quality.
+// The overall quality score. Range `[0, 1]` where 1 is perfect quality.
 func (o GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponseOutput) QualityScore() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageImageQualityScoresResponse) float64 { return v.QualityScore }).(pulumi.Float64Output)
 }
@@ -9678,7 +9699,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageImageResponseOutput) Width() pulumi.I
 type GoogleCloudDocumentaiV1DocumentPageLayout struct {
 	// The bounding polygon for the Layout.
 	BoundingPoly *GoogleCloudDocumentaiV1BoundingPoly `pulumi:"boundingPoly"`
-	// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+	// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
 	Confidence *float64 `pulumi:"confidence"`
 	// Detected orientation for the Layout.
 	Orientation *GoogleCloudDocumentaiV1DocumentPageLayoutOrientation `pulumi:"orientation"`
@@ -9701,7 +9722,7 @@ type GoogleCloudDocumentaiV1DocumentPageLayoutInput interface {
 type GoogleCloudDocumentaiV1DocumentPageLayoutArgs struct {
 	// The bounding polygon for the Layout.
 	BoundingPoly GoogleCloudDocumentaiV1BoundingPolyPtrInput `pulumi:"boundingPoly"`
-	// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+	// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
 	Confidence pulumi.Float64PtrInput `pulumi:"confidence"`
 	// Detected orientation for the Layout.
 	Orientation GoogleCloudDocumentaiV1DocumentPageLayoutOrientationPtrInput `pulumi:"orientation"`
@@ -9794,7 +9815,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutOutput) BoundingPoly() GoogleCl
 	}).(GoogleCloudDocumentaiV1BoundingPolyPtrOutput)
 }
 
-// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageLayout) *float64 { return v.Confidence }).(pulumi.Float64PtrOutput)
 }
@@ -9847,7 +9868,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) BoundingPoly() Googl
 	}).(GoogleCloudDocumentaiV1BoundingPolyPtrOutput)
 }
 
-// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) Confidence() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDocumentaiV1DocumentPageLayout) *float64 {
 		if v == nil {
@@ -9881,7 +9902,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutPtrOutput) TextAnchor() GoogleC
 type GoogleCloudDocumentaiV1DocumentPageLayoutResponse struct {
 	// The bounding polygon for the Layout.
 	BoundingPoly GoogleCloudDocumentaiV1BoundingPolyResponse `pulumi:"boundingPoly"`
-	// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+	// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
 	Confidence float64 `pulumi:"confidence"`
 	// Detected orientation for the Layout.
 	Orientation string `pulumi:"orientation"`
@@ -9911,7 +9932,7 @@ func (o GoogleCloudDocumentaiV1DocumentPageLayoutResponseOutput) BoundingPoly() 
 	}).(GoogleCloudDocumentaiV1BoundingPolyResponseOutput)
 }
 
-// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+// Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
 func (o GoogleCloudDocumentaiV1DocumentPageLayoutResponseOutput) Confidence() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentPageLayoutResponse) float64 { return v.Confidence }).(pulumi.Float64Output)
 }
@@ -12507,9 +12528,9 @@ type GoogleCloudDocumentaiV1DocumentResponse struct {
 	ShardInfo GoogleCloudDocumentaiV1DocumentShardInfoResponse `pulumi:"shardInfo"`
 	// Optional. UTF-8 encoded text in reading order from the document.
 	Text string `pulumi:"text"`
-	// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+	// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
 	TextChanges []GoogleCloudDocumentaiV1DocumentTextChangeResponse `pulumi:"textChanges"`
-	// Placeholder. Styles for the Document.text.
+	// Styles for the Document.text.
 	TextStyles []GoogleCloudDocumentaiV1DocumentStyleResponse `pulumi:"textStyles"`
 	// Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
 	Uri string `pulumi:"uri"`
@@ -12585,14 +12606,14 @@ func (o GoogleCloudDocumentaiV1DocumentResponseOutput) Text() pulumi.StringOutpu
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentResponse) string { return v.Text }).(pulumi.StringOutput)
 }
 
-// Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+// Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
 func (o GoogleCloudDocumentaiV1DocumentResponseOutput) TextChanges() GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentResponse) []GoogleCloudDocumentaiV1DocumentTextChangeResponse {
 		return v.TextChanges
 	}).(GoogleCloudDocumentaiV1DocumentTextChangeResponseArrayOutput)
 }
 
-// Placeholder. Styles for the Document.text.
+// Styles for the Document.text.
 func (o GoogleCloudDocumentaiV1DocumentResponseOutput) TextStyles() GoogleCloudDocumentaiV1DocumentStyleResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentResponse) []GoogleCloudDocumentaiV1DocumentStyleResponse {
 		return v.TextStyles
@@ -13259,7 +13280,7 @@ type GoogleCloudDocumentaiV1DocumentStyle struct {
 	BackgroundColor *GoogleTypeColor `pulumi:"backgroundColor"`
 	// Text color.
 	Color *GoogleTypeColor `pulumi:"color"`
-	// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+	// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
 	FontFamily *string `pulumi:"fontFamily"`
 	// Font size.
 	FontSize *GoogleCloudDocumentaiV1DocumentStyleFontSize `pulumi:"fontSize"`
@@ -13290,7 +13311,7 @@ type GoogleCloudDocumentaiV1DocumentStyleArgs struct {
 	BackgroundColor GoogleTypeColorPtrInput `pulumi:"backgroundColor"`
 	// Text color.
 	Color GoogleTypeColorPtrInput `pulumi:"color"`
-	// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+	// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
 	FontFamily pulumi.StringPtrInput `pulumi:"fontFamily"`
 	// Font size.
 	FontSize GoogleCloudDocumentaiV1DocumentStyleFontSizePtrInput `pulumi:"fontSize"`
@@ -13366,7 +13387,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleOutput) Color() GoogleTypeColorPtrOu
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyle) *GoogleTypeColor { return v.Color }).(GoogleTypeColorPtrOutput)
 }
 
-// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
 func (o GoogleCloudDocumentaiV1DocumentStyleOutput) FontFamily() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyle) *string { return v.FontFamily }).(pulumi.StringPtrOutput)
 }
@@ -13618,7 +13639,7 @@ type GoogleCloudDocumentaiV1DocumentStyleResponse struct {
 	BackgroundColor GoogleTypeColorResponse `pulumi:"backgroundColor"`
 	// Text color.
 	Color GoogleTypeColorResponse `pulumi:"color"`
-	// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+	// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
 	FontFamily string `pulumi:"fontFamily"`
 	// Font size.
 	FontSize GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse `pulumi:"fontSize"`
@@ -13657,7 +13678,7 @@ func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) Color() GoogleTypeCo
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleResponse) GoogleTypeColorResponse { return v.Color }).(GoogleTypeColorResponseOutput)
 }
 
-// Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+// Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
 func (o GoogleCloudDocumentaiV1DocumentStyleResponseOutput) FontFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentStyleResponse) string { return v.FontFamily }).(pulumi.StringOutput)
 }

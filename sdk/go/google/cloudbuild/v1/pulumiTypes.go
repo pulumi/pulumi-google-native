@@ -1242,7 +1242,7 @@ type BuildType struct {
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a `Build`. These are not docker tags.
 	Tags []string `pulumi:"tags"`
-	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout *string `pulumi:"timeout"`
 }
 
@@ -1283,7 +1283,7 @@ type BuildTypeArgs struct {
 	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
 	// Tags for annotation of a `Build`. These are not docker tags.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 }
 
@@ -1425,7 +1425,7 @@ func (o BuildTypeOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildType) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 func (o BuildTypeOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildType) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
@@ -1574,7 +1574,7 @@ func (o BuildTypePtrOutput) Tags() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 func (o BuildTypePtrOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildType) *string {
 		if v == nil {
@@ -1626,7 +1626,7 @@ func (o BuildApprovalResponseOutput) State() pulumi.StringOutput {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptions struct {
-	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
 	DynamicSubstitutions *bool `pulumi:"dynamicSubstitutions"`
@@ -1667,7 +1667,7 @@ type BuildOptionsInput interface {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptionsArgs struct {
-	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
 	DynamicSubstitutions pulumi.BoolPtrInput `pulumi:"dynamicSubstitutions"`
@@ -1773,7 +1773,7 @@ func (o BuildOptionsOutput) ToBuildOptionsPtrOutputWithContext(ctx context.Conte
 	}).(BuildOptionsPtrOutput)
 }
 
-// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 func (o BuildOptionsOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildOptions) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
 }
@@ -1862,7 +1862,7 @@ func (o BuildOptionsPtrOutput) Elem() BuildOptionsOutput {
 	}).(BuildOptionsOutput)
 }
 
-// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 func (o BuildOptionsPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildOptions) *string {
 		if v == nil {
@@ -1994,7 +1994,7 @@ func (o BuildOptionsPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptionsResponse struct {
-	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
 	DynamicSubstitutions bool `pulumi:"dynamicSubstitutions"`
@@ -2037,7 +2037,7 @@ func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutputWithContext(ctx 
 	return o
 }
 
-// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 1000GB; builds that request more than the maximum are rejected with an error.
+// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 func (o BuildOptionsResponseOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildOptionsResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
@@ -2154,7 +2154,7 @@ type BuildResponse struct {
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a `Build`. These are not docker tags.
 	Tags []string `pulumi:"tags"`
-	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+	// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 	Timeout string `pulumi:"timeout"`
 	// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps. * PUSH: time to push all artifacts including docker images and non docker artifacts. * FETCHSOURCE: time to fetch source. * SETUPBUILD: time to set up build. If the build does not specify source or images, these keys will not be included.
 	Timing map[string]string `pulumi:"timing"`
@@ -2302,7 +2302,7 @@ func (o BuildResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+// Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
 func (o BuildResponseOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.Timeout }).(pulumi.StringOutput)
 }
@@ -3441,7 +3441,7 @@ func (o GitHubEnterpriseSecretsResponseOutput) WebhookSecretVersionName() pulumi
 
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfig struct {
-	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 	EnterpriseConfigResourceName *string `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId *string `pulumi:"installationId"`
@@ -3468,7 +3468,7 @@ type GitHubEventsConfigInput interface {
 
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigArgs struct {
-	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 	EnterpriseConfigResourceName pulumi.StringPtrInput `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId pulumi.StringPtrInput `pulumi:"installationId"`
@@ -3560,7 +3560,7 @@ func (o GitHubEventsConfigOutput) ToGitHubEventsConfigPtrOutputWithContext(ctx c
 	}).(GitHubEventsConfigPtrOutput)
 }
 
-// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 func (o GitHubEventsConfigOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GitHubEventsConfig) *string { return v.EnterpriseConfigResourceName }).(pulumi.StringPtrOutput)
 }
@@ -3614,7 +3614,7 @@ func (o GitHubEventsConfigPtrOutput) Elem() GitHubEventsConfigOutput {
 	}).(GitHubEventsConfigOutput)
 }
 
-// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 func (o GitHubEventsConfigPtrOutput) EnterpriseConfigResourceName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GitHubEventsConfig) *string {
 		if v == nil {
@@ -3676,7 +3676,7 @@ func (o GitHubEventsConfigPtrOutput) Push() PushFilterPtrOutput {
 
 // GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
 type GitHubEventsConfigResponse struct {
-	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+	// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 	EnterpriseConfigResourceName string `pulumi:"enterpriseConfigResourceName"`
 	// The installationID that emits the GitHub event.
 	InstallationId string `pulumi:"installationId"`
@@ -3705,7 +3705,7 @@ func (o GitHubEventsConfigResponseOutput) ToGitHubEventsConfigResponseOutputWith
 	return o
 }
 
-// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
 func (o GitHubEventsConfigResponseOutput) EnterpriseConfigResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GitHubEventsConfigResponse) string { return v.EnterpriseConfigResourceName }).(pulumi.StringOutput)
 }
@@ -5248,6 +5248,8 @@ type NetworkConfig struct {
 	EgressOption *NetworkConfigEgressOption `pulumi:"egressOption"`
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork string `pulumi:"peeredNetwork"`
+	// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange *string `pulumi:"peeredNetworkIpRange"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -5267,6 +5269,8 @@ type NetworkConfigArgs struct {
 	EgressOption NetworkConfigEgressOptionPtrInput `pulumi:"egressOption"`
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
+	// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange pulumi.StringPtrInput `pulumi:"peeredNetworkIpRange"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -5357,6 +5361,11 @@ func (o NetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
 }
 
+// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+func (o NetworkConfigOutput) PeeredNetworkIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *string { return v.PeeredNetworkIpRange }).(pulumi.StringPtrOutput)
+}
+
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -5401,12 +5410,24 @@ func (o NetworkConfigPtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+func (o NetworkConfigPtrOutput) PeeredNetworkIpRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeeredNetworkIpRange
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the network configuration for the pool.
 type NetworkConfigResponse struct {
 	// Option to configure network egress for the workers.
 	EgressOption string `pulumi:"egressOption"`
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 	PeeredNetwork string `pulumi:"peeredNetwork"`
+	// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+	PeeredNetworkIpRange string `pulumi:"peeredNetworkIpRange"`
 }
 
 // Defines the network configuration for the pool.
@@ -5432,6 +5453,11 @@ func (o NetworkConfigResponseOutput) EgressOption() pulumi.StringOutput {
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/build/docs/private-pools/set-up-private-pool-environment)
 func (o NetworkConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
+}
+
+// Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
+func (o NetworkConfigResponseOutput) PeeredNetworkIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetworkIpRange }).(pulumi.StringOutput)
 }
 
 // Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
@@ -6961,6 +6987,231 @@ func (o RepoSourceResponseOutput) Substitutions() pulumi.StringMapOutput {
 // Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 func (o RepoSourceResponseOutput) TagName() pulumi.StringOutput {
 	return o.ApplyT(func(v RepoSourceResponse) string { return v.TagName }).(pulumi.StringOutput)
+}
+
+// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+type RepositoryEventConfig struct {
+	// Filter to match changes in pull requests.
+	PullRequest *PullRequestFilter `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push *PushFilter `pulumi:"push"`
+	// The resource name of the Repo API resource.
+	Repository *string `pulumi:"repository"`
+}
+
+// RepositoryEventConfigInput is an input type that accepts RepositoryEventConfigArgs and RepositoryEventConfigOutput values.
+// You can construct a concrete instance of `RepositoryEventConfigInput` via:
+//
+//	RepositoryEventConfigArgs{...}
+type RepositoryEventConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryEventConfigOutput() RepositoryEventConfigOutput
+	ToRepositoryEventConfigOutputWithContext(context.Context) RepositoryEventConfigOutput
+}
+
+// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+type RepositoryEventConfigArgs struct {
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterPtrInput `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterPtrInput `pulumi:"push"`
+	// The resource name of the Repo API resource.
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (RepositoryEventConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryEventConfig)(nil)).Elem()
+}
+
+func (i RepositoryEventConfigArgs) ToRepositoryEventConfigOutput() RepositoryEventConfigOutput {
+	return i.ToRepositoryEventConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryEventConfigArgs) ToRepositoryEventConfigOutputWithContext(ctx context.Context) RepositoryEventConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryEventConfigOutput)
+}
+
+func (i RepositoryEventConfigArgs) ToRepositoryEventConfigPtrOutput() RepositoryEventConfigPtrOutput {
+	return i.ToRepositoryEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryEventConfigArgs) ToRepositoryEventConfigPtrOutputWithContext(ctx context.Context) RepositoryEventConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryEventConfigOutput).ToRepositoryEventConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryEventConfigPtrInput is an input type that accepts RepositoryEventConfigArgs, RepositoryEventConfigPtr and RepositoryEventConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryEventConfigPtrInput` via:
+//
+//	        RepositoryEventConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryEventConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryEventConfigPtrOutput() RepositoryEventConfigPtrOutput
+	ToRepositoryEventConfigPtrOutputWithContext(context.Context) RepositoryEventConfigPtrOutput
+}
+
+type repositoryEventConfigPtrType RepositoryEventConfigArgs
+
+func RepositoryEventConfigPtr(v *RepositoryEventConfigArgs) RepositoryEventConfigPtrInput {
+	return (*repositoryEventConfigPtrType)(v)
+}
+
+func (*repositoryEventConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryEventConfig)(nil)).Elem()
+}
+
+func (i *repositoryEventConfigPtrType) ToRepositoryEventConfigPtrOutput() RepositoryEventConfigPtrOutput {
+	return i.ToRepositoryEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryEventConfigPtrType) ToRepositoryEventConfigPtrOutputWithContext(ctx context.Context) RepositoryEventConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryEventConfigPtrOutput)
+}
+
+// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+type RepositoryEventConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryEventConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryEventConfig)(nil)).Elem()
+}
+
+func (o RepositoryEventConfigOutput) ToRepositoryEventConfigOutput() RepositoryEventConfigOutput {
+	return o
+}
+
+func (o RepositoryEventConfigOutput) ToRepositoryEventConfigOutputWithContext(ctx context.Context) RepositoryEventConfigOutput {
+	return o
+}
+
+func (o RepositoryEventConfigOutput) ToRepositoryEventConfigPtrOutput() RepositoryEventConfigPtrOutput {
+	return o.ToRepositoryEventConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryEventConfigOutput) ToRepositoryEventConfigPtrOutputWithContext(ctx context.Context) RepositoryEventConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryEventConfig) *RepositoryEventConfig {
+		return &v
+	}).(RepositoryEventConfigPtrOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o RepositoryEventConfigOutput) PullRequest() PullRequestFilterPtrOutput {
+	return o.ApplyT(func(v RepositoryEventConfig) *PullRequestFilter { return v.PullRequest }).(PullRequestFilterPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o RepositoryEventConfigOutput) Push() PushFilterPtrOutput {
+	return o.ApplyT(func(v RepositoryEventConfig) *PushFilter { return v.Push }).(PushFilterPtrOutput)
+}
+
+// The resource name of the Repo API resource.
+func (o RepositoryEventConfigOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryEventConfig) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryEventConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryEventConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryEventConfig)(nil)).Elem()
+}
+
+func (o RepositoryEventConfigPtrOutput) ToRepositoryEventConfigPtrOutput() RepositoryEventConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryEventConfigPtrOutput) ToRepositoryEventConfigPtrOutputWithContext(ctx context.Context) RepositoryEventConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryEventConfigPtrOutput) Elem() RepositoryEventConfigOutput {
+	return o.ApplyT(func(v *RepositoryEventConfig) RepositoryEventConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryEventConfig
+		return ret
+	}).(RepositoryEventConfigOutput)
+}
+
+// Filter to match changes in pull requests.
+func (o RepositoryEventConfigPtrOutput) PullRequest() PullRequestFilterPtrOutput {
+	return o.ApplyT(func(v *RepositoryEventConfig) *PullRequestFilter {
+		if v == nil {
+			return nil
+		}
+		return v.PullRequest
+	}).(PullRequestFilterPtrOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o RepositoryEventConfigPtrOutput) Push() PushFilterPtrOutput {
+	return o.ApplyT(func(v *RepositoryEventConfig) *PushFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Push
+	}).(PushFilterPtrOutput)
+}
+
+// The resource name of the Repo API resource.
+func (o RepositoryEventConfigPtrOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryEventConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repository
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+type RepositoryEventConfigResponse struct {
+	// Filter to match changes in pull requests.
+	PullRequest PullRequestFilterResponse `pulumi:"pullRequest"`
+	// Filter to match changes in refs like branches, tags.
+	Push PushFilterResponse `pulumi:"push"`
+	// The resource name of the Repo API resource.
+	Repository string `pulumi:"repository"`
+	// The type of the SCM vendor the repository points to.
+	RepositoryType string `pulumi:"repositoryType"`
+}
+
+// The configuration of a trigger that creates a build whenever an event from Repo API is received.
+type RepositoryEventConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RepositoryEventConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryEventConfigResponse)(nil)).Elem()
+}
+
+func (o RepositoryEventConfigResponseOutput) ToRepositoryEventConfigResponseOutput() RepositoryEventConfigResponseOutput {
+	return o
+}
+
+func (o RepositoryEventConfigResponseOutput) ToRepositoryEventConfigResponseOutputWithContext(ctx context.Context) RepositoryEventConfigResponseOutput {
+	return o
+}
+
+// Filter to match changes in pull requests.
+func (o RepositoryEventConfigResponseOutput) PullRequest() PullRequestFilterResponseOutput {
+	return o.ApplyT(func(v RepositoryEventConfigResponse) PullRequestFilterResponse { return v.PullRequest }).(PullRequestFilterResponseOutput)
+}
+
+// Filter to match changes in refs like branches, tags.
+func (o RepositoryEventConfigResponseOutput) Push() PushFilterResponseOutput {
+	return o.ApplyT(func(v RepositoryEventConfigResponse) PushFilterResponse { return v.Push }).(PushFilterResponseOutput)
+}
+
+// The resource name of the Repo API resource.
+func (o RepositoryEventConfigResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryEventConfigResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+// The type of the SCM vendor the repository points to.
+func (o RepositoryEventConfigResponseOutput) RepositoryType() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryEventConfigResponse) string { return v.RepositoryType }).(pulumi.StringOutput)
 }
 
 // Artifacts created by the build pipeline.
@@ -8983,7 +9234,7 @@ func (o WebhookConfigResponseOutput) State() pulumi.StringOutput {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfig struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType *string `pulumi:"machineType"`
@@ -9002,7 +9253,7 @@ type WorkerConfigInput interface {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigArgs struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
@@ -9086,7 +9337,7 @@ func (o WorkerConfigOutput) ToWorkerConfigPtrOutputWithContext(ctx context.Conte
 	}).(WorkerConfigPtrOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WorkerConfig) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
 }
@@ -9120,7 +9371,7 @@ func (o WorkerConfigPtrOutput) Elem() WorkerConfigOutput {
 	}).(WorkerConfigOutput)
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WorkerConfig) *string {
 		if v == nil {
@@ -9142,7 +9393,7 @@ func (o WorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 
 // Defines the configuration to be used for creating workers in the pool.
 type WorkerConfigResponse struct {
-	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+	// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). If left blank, Cloud Build will use a sensible default.
 	MachineType string `pulumi:"machineType"`
@@ -9163,7 +9414,7 @@ func (o WorkerConfigResponseOutput) ToWorkerConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+// Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/build/docs/private-pools/worker-pool-config-file-schema). Specify a value of up to 2000. If `0` is specified, Cloud Build will use a standard disk size.
 func (o WorkerConfigResponseOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v WorkerConfigResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
@@ -9224,6 +9475,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PythonPackageArrayInput)(nil)).Elem(), PythonPackageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourceInput)(nil)).Elem(), RepoSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepoSourcePtrInput)(nil)).Elem(), RepoSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryEventConfigInput)(nil)).Elem(), RepositoryEventConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryEventConfigPtrInput)(nil)).Elem(), RepositoryEventConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretArrayInput)(nil)).Elem(), SecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretManagerSecretInput)(nil)).Elem(), SecretManagerSecretArgs{})
@@ -9337,6 +9590,9 @@ func init() {
 	pulumi.RegisterOutputType(RepoSourceOutput{})
 	pulumi.RegisterOutputType(RepoSourcePtrOutput{})
 	pulumi.RegisterOutputType(RepoSourceResponseOutput{})
+	pulumi.RegisterOutputType(RepositoryEventConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryEventConfigPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryEventConfigResponseOutput{})
 	pulumi.RegisterOutputType(ResultsResponseOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretArrayOutput{})

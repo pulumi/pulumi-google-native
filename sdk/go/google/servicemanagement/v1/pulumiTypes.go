@@ -1519,6 +1519,10 @@ type BackendRule struct {
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience *string `pulumi:"jwtAudience"`
+	// Deprecated, do not use.
+	//
+	// Deprecated: Deprecated, do not use.
+	MinDeadline *float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline *float64                    `pulumi:"operationDeadline"`
 	PathTranslation   *BackendRulePathTranslation `pulumi:"pathTranslation"`
@@ -1549,6 +1553,10 @@ type BackendRuleArgs struct {
 	DisableAuth pulumi.BoolPtrInput `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience pulumi.StringPtrInput `pulumi:"jwtAudience"`
+	// Deprecated, do not use.
+	//
+	// Deprecated: Deprecated, do not use.
+	MinDeadline pulumi.Float64PtrInput `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline pulumi.Float64PtrInput             `pulumi:"operationDeadline"`
 	PathTranslation   BackendRulePathTranslationPtrInput `pulumi:"pathTranslation"`
@@ -1630,6 +1638,13 @@ func (o BackendRuleOutput) JwtAudience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendRule) *string { return v.JwtAudience }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated, do not use.
+//
+// Deprecated: Deprecated, do not use.
+func (o BackendRuleOutput) MinDeadline() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BackendRule) *float64 { return v.MinDeadline }).(pulumi.Float64PtrOutput)
+}
+
 // The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 func (o BackendRuleOutput) OperationDeadline() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendRule) *float64 { return v.OperationDeadline }).(pulumi.Float64PtrOutput)
@@ -1679,6 +1694,10 @@ type BackendRuleResponse struct {
 	DisableAuth bool `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience string `pulumi:"jwtAudience"`
+	// Deprecated, do not use.
+	//
+	// Deprecated: Deprecated, do not use.
+	MinDeadline float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline float64 `pulumi:"operationDeadline"`
 	PathTranslation   string  `pulumi:"pathTranslation"`
@@ -1721,6 +1740,13 @@ func (o BackendRuleResponseOutput) DisableAuth() pulumi.BoolOutput {
 // The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 func (o BackendRuleResponseOutput) JwtAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendRuleResponse) string { return v.JwtAudience }).(pulumi.StringOutput)
+}
+
+// Deprecated, do not use.
+//
+// Deprecated: Deprecated, do not use.
+func (o BackendRuleResponseOutput) MinDeadline() pulumi.Float64Output {
+	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.MinDeadline }).(pulumi.Float64Output)
 }
 
 // The number of seconds to wait for the completion of a long running operation. The default is no deadline.
@@ -2094,7 +2120,7 @@ func (o BillingResponseOutput) ConsumerDestinations() BillingDestinationResponse
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -2115,7 +2141,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -2178,7 +2204,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -2212,7 +2238,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -2238,7 +2264,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -2266,6 +2292,504 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Details about how and where to publish client libraries.
+type ClientLibrarySettings struct {
+	// Settings for C++ client libraries.
+	CppSettings *CppSettings `pulumi:"cppSettings"`
+	// Settings for .NET client libraries.
+	DotnetSettings *DotnetSettings `pulumi:"dotnetSettings"`
+	// Settings for Go client libraries.
+	GoSettings *GoSettings `pulumi:"goSettings"`
+	// Settings for legacy Java features, supported in the Service YAML.
+	JavaSettings *JavaSettings `pulumi:"javaSettings"`
+	// Launch stage of this version of the API.
+	LaunchStage *ClientLibrarySettingsLaunchStage `pulumi:"launchStage"`
+	// Settings for Node client libraries.
+	NodeSettings *NodeSettings `pulumi:"nodeSettings"`
+	// Settings for PHP client libraries.
+	PhpSettings *PhpSettings `pulumi:"phpSettings"`
+	// Settings for Python client libraries.
+	PythonSettings *PythonSettings `pulumi:"pythonSettings"`
+	// When using transport=rest, the client request will encode enums as numbers rather than strings.
+	RestNumericEnums *bool `pulumi:"restNumericEnums"`
+	// Settings for Ruby client libraries.
+	RubySettings *RubySettings `pulumi:"rubySettings"`
+	// Version of the API to apply these settings to.
+	Version *string `pulumi:"version"`
+}
+
+// ClientLibrarySettingsInput is an input type that accepts ClientLibrarySettingsArgs and ClientLibrarySettingsOutput values.
+// You can construct a concrete instance of `ClientLibrarySettingsInput` via:
+//
+//	ClientLibrarySettingsArgs{...}
+type ClientLibrarySettingsInput interface {
+	pulumi.Input
+
+	ToClientLibrarySettingsOutput() ClientLibrarySettingsOutput
+	ToClientLibrarySettingsOutputWithContext(context.Context) ClientLibrarySettingsOutput
+}
+
+// Details about how and where to publish client libraries.
+type ClientLibrarySettingsArgs struct {
+	// Settings for C++ client libraries.
+	CppSettings CppSettingsPtrInput `pulumi:"cppSettings"`
+	// Settings for .NET client libraries.
+	DotnetSettings DotnetSettingsPtrInput `pulumi:"dotnetSettings"`
+	// Settings for Go client libraries.
+	GoSettings GoSettingsPtrInput `pulumi:"goSettings"`
+	// Settings for legacy Java features, supported in the Service YAML.
+	JavaSettings JavaSettingsPtrInput `pulumi:"javaSettings"`
+	// Launch stage of this version of the API.
+	LaunchStage ClientLibrarySettingsLaunchStagePtrInput `pulumi:"launchStage"`
+	// Settings for Node client libraries.
+	NodeSettings NodeSettingsPtrInput `pulumi:"nodeSettings"`
+	// Settings for PHP client libraries.
+	PhpSettings PhpSettingsPtrInput `pulumi:"phpSettings"`
+	// Settings for Python client libraries.
+	PythonSettings PythonSettingsPtrInput `pulumi:"pythonSettings"`
+	// When using transport=rest, the client request will encode enums as numbers rather than strings.
+	RestNumericEnums pulumi.BoolPtrInput `pulumi:"restNumericEnums"`
+	// Settings for Ruby client libraries.
+	RubySettings RubySettingsPtrInput `pulumi:"rubySettings"`
+	// Version of the API to apply these settings to.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ClientLibrarySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientLibrarySettings)(nil)).Elem()
+}
+
+func (i ClientLibrarySettingsArgs) ToClientLibrarySettingsOutput() ClientLibrarySettingsOutput {
+	return i.ToClientLibrarySettingsOutputWithContext(context.Background())
+}
+
+func (i ClientLibrarySettingsArgs) ToClientLibrarySettingsOutputWithContext(ctx context.Context) ClientLibrarySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientLibrarySettingsOutput)
+}
+
+// ClientLibrarySettingsArrayInput is an input type that accepts ClientLibrarySettingsArray and ClientLibrarySettingsArrayOutput values.
+// You can construct a concrete instance of `ClientLibrarySettingsArrayInput` via:
+//
+//	ClientLibrarySettingsArray{ ClientLibrarySettingsArgs{...} }
+type ClientLibrarySettingsArrayInput interface {
+	pulumi.Input
+
+	ToClientLibrarySettingsArrayOutput() ClientLibrarySettingsArrayOutput
+	ToClientLibrarySettingsArrayOutputWithContext(context.Context) ClientLibrarySettingsArrayOutput
+}
+
+type ClientLibrarySettingsArray []ClientLibrarySettingsInput
+
+func (ClientLibrarySettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientLibrarySettings)(nil)).Elem()
+}
+
+func (i ClientLibrarySettingsArray) ToClientLibrarySettingsArrayOutput() ClientLibrarySettingsArrayOutput {
+	return i.ToClientLibrarySettingsArrayOutputWithContext(context.Background())
+}
+
+func (i ClientLibrarySettingsArray) ToClientLibrarySettingsArrayOutputWithContext(ctx context.Context) ClientLibrarySettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClientLibrarySettingsArrayOutput)
+}
+
+// Details about how and where to publish client libraries.
+type ClientLibrarySettingsOutput struct{ *pulumi.OutputState }
+
+func (ClientLibrarySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientLibrarySettings)(nil)).Elem()
+}
+
+func (o ClientLibrarySettingsOutput) ToClientLibrarySettingsOutput() ClientLibrarySettingsOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsOutput) ToClientLibrarySettingsOutputWithContext(ctx context.Context) ClientLibrarySettingsOutput {
+	return o
+}
+
+// Settings for C++ client libraries.
+func (o ClientLibrarySettingsOutput) CppSettings() CppSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *CppSettings { return v.CppSettings }).(CppSettingsPtrOutput)
+}
+
+// Settings for .NET client libraries.
+func (o ClientLibrarySettingsOutput) DotnetSettings() DotnetSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *DotnetSettings { return v.DotnetSettings }).(DotnetSettingsPtrOutput)
+}
+
+// Settings for Go client libraries.
+func (o ClientLibrarySettingsOutput) GoSettings() GoSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *GoSettings { return v.GoSettings }).(GoSettingsPtrOutput)
+}
+
+// Settings for legacy Java features, supported in the Service YAML.
+func (o ClientLibrarySettingsOutput) JavaSettings() JavaSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *JavaSettings { return v.JavaSettings }).(JavaSettingsPtrOutput)
+}
+
+// Launch stage of this version of the API.
+func (o ClientLibrarySettingsOutput) LaunchStage() ClientLibrarySettingsLaunchStagePtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *ClientLibrarySettingsLaunchStage { return v.LaunchStage }).(ClientLibrarySettingsLaunchStagePtrOutput)
+}
+
+// Settings for Node client libraries.
+func (o ClientLibrarySettingsOutput) NodeSettings() NodeSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *NodeSettings { return v.NodeSettings }).(NodeSettingsPtrOutput)
+}
+
+// Settings for PHP client libraries.
+func (o ClientLibrarySettingsOutput) PhpSettings() PhpSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *PhpSettings { return v.PhpSettings }).(PhpSettingsPtrOutput)
+}
+
+// Settings for Python client libraries.
+func (o ClientLibrarySettingsOutput) PythonSettings() PythonSettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *PythonSettings { return v.PythonSettings }).(PythonSettingsPtrOutput)
+}
+
+// When using transport=rest, the client request will encode enums as numbers rather than strings.
+func (o ClientLibrarySettingsOutput) RestNumericEnums() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *bool { return v.RestNumericEnums }).(pulumi.BoolPtrOutput)
+}
+
+// Settings for Ruby client libraries.
+func (o ClientLibrarySettingsOutput) RubySettings() RubySettingsPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *RubySettings { return v.RubySettings }).(RubySettingsPtrOutput)
+}
+
+// Version of the API to apply these settings to.
+func (o ClientLibrarySettingsOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClientLibrarySettings) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ClientLibrarySettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientLibrarySettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientLibrarySettings)(nil)).Elem()
+}
+
+func (o ClientLibrarySettingsArrayOutput) ToClientLibrarySettingsArrayOutput() ClientLibrarySettingsArrayOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsArrayOutput) ToClientLibrarySettingsArrayOutputWithContext(ctx context.Context) ClientLibrarySettingsArrayOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsArrayOutput) Index(i pulumi.IntInput) ClientLibrarySettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientLibrarySettings {
+		return vs[0].([]ClientLibrarySettings)[vs[1].(int)]
+	}).(ClientLibrarySettingsOutput)
+}
+
+// Details about how and where to publish client libraries.
+type ClientLibrarySettingsResponse struct {
+	// Settings for C++ client libraries.
+	CppSettings CppSettingsResponse `pulumi:"cppSettings"`
+	// Settings for .NET client libraries.
+	DotnetSettings DotnetSettingsResponse `pulumi:"dotnetSettings"`
+	// Settings for Go client libraries.
+	GoSettings GoSettingsResponse `pulumi:"goSettings"`
+	// Settings for legacy Java features, supported in the Service YAML.
+	JavaSettings JavaSettingsResponse `pulumi:"javaSettings"`
+	// Launch stage of this version of the API.
+	LaunchStage string `pulumi:"launchStage"`
+	// Settings for Node client libraries.
+	NodeSettings NodeSettingsResponse `pulumi:"nodeSettings"`
+	// Settings for PHP client libraries.
+	PhpSettings PhpSettingsResponse `pulumi:"phpSettings"`
+	// Settings for Python client libraries.
+	PythonSettings PythonSettingsResponse `pulumi:"pythonSettings"`
+	// When using transport=rest, the client request will encode enums as numbers rather than strings.
+	RestNumericEnums bool `pulumi:"restNumericEnums"`
+	// Settings for Ruby client libraries.
+	RubySettings RubySettingsResponse `pulumi:"rubySettings"`
+	// Version of the API to apply these settings to.
+	Version string `pulumi:"version"`
+}
+
+// Details about how and where to publish client libraries.
+type ClientLibrarySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ClientLibrarySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClientLibrarySettingsResponse)(nil)).Elem()
+}
+
+func (o ClientLibrarySettingsResponseOutput) ToClientLibrarySettingsResponseOutput() ClientLibrarySettingsResponseOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsResponseOutput) ToClientLibrarySettingsResponseOutputWithContext(ctx context.Context) ClientLibrarySettingsResponseOutput {
+	return o
+}
+
+// Settings for C++ client libraries.
+func (o ClientLibrarySettingsResponseOutput) CppSettings() CppSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) CppSettingsResponse { return v.CppSettings }).(CppSettingsResponseOutput)
+}
+
+// Settings for .NET client libraries.
+func (o ClientLibrarySettingsResponseOutput) DotnetSettings() DotnetSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) DotnetSettingsResponse { return v.DotnetSettings }).(DotnetSettingsResponseOutput)
+}
+
+// Settings for Go client libraries.
+func (o ClientLibrarySettingsResponseOutput) GoSettings() GoSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) GoSettingsResponse { return v.GoSettings }).(GoSettingsResponseOutput)
+}
+
+// Settings for legacy Java features, supported in the Service YAML.
+func (o ClientLibrarySettingsResponseOutput) JavaSettings() JavaSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) JavaSettingsResponse { return v.JavaSettings }).(JavaSettingsResponseOutput)
+}
+
+// Launch stage of this version of the API.
+func (o ClientLibrarySettingsResponseOutput) LaunchStage() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) string { return v.LaunchStage }).(pulumi.StringOutput)
+}
+
+// Settings for Node client libraries.
+func (o ClientLibrarySettingsResponseOutput) NodeSettings() NodeSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) NodeSettingsResponse { return v.NodeSettings }).(NodeSettingsResponseOutput)
+}
+
+// Settings for PHP client libraries.
+func (o ClientLibrarySettingsResponseOutput) PhpSettings() PhpSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) PhpSettingsResponse { return v.PhpSettings }).(PhpSettingsResponseOutput)
+}
+
+// Settings for Python client libraries.
+func (o ClientLibrarySettingsResponseOutput) PythonSettings() PythonSettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) PythonSettingsResponse { return v.PythonSettings }).(PythonSettingsResponseOutput)
+}
+
+// When using transport=rest, the client request will encode enums as numbers rather than strings.
+func (o ClientLibrarySettingsResponseOutput) RestNumericEnums() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) bool { return v.RestNumericEnums }).(pulumi.BoolOutput)
+}
+
+// Settings for Ruby client libraries.
+func (o ClientLibrarySettingsResponseOutput) RubySettings() RubySettingsResponseOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) RubySettingsResponse { return v.RubySettings }).(RubySettingsResponseOutput)
+}
+
+// Version of the API to apply these settings to.
+func (o ClientLibrarySettingsResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientLibrarySettingsResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ClientLibrarySettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ClientLibrarySettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClientLibrarySettingsResponse)(nil)).Elem()
+}
+
+func (o ClientLibrarySettingsResponseArrayOutput) ToClientLibrarySettingsResponseArrayOutput() ClientLibrarySettingsResponseArrayOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsResponseArrayOutput) ToClientLibrarySettingsResponseArrayOutputWithContext(ctx context.Context) ClientLibrarySettingsResponseArrayOutput {
+	return o
+}
+
+func (o ClientLibrarySettingsResponseArrayOutput) Index(i pulumi.IntInput) ClientLibrarySettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClientLibrarySettingsResponse {
+		return vs[0].([]ClientLibrarySettingsResponse)[vs[1].(int)]
+	}).(ClientLibrarySettingsResponseOutput)
+}
+
+// Required information for every language.
+type CommonLanguageSettings struct {
+	// The destination where API teams want this client library to be published.
+	Destinations []CommonLanguageSettingsDestinationsItem `pulumi:"destinations"`
+	// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+	ReferenceDocsUri *string `pulumi:"referenceDocsUri"`
+}
+
+// CommonLanguageSettingsInput is an input type that accepts CommonLanguageSettingsArgs and CommonLanguageSettingsOutput values.
+// You can construct a concrete instance of `CommonLanguageSettingsInput` via:
+//
+//	CommonLanguageSettingsArgs{...}
+type CommonLanguageSettingsInput interface {
+	pulumi.Input
+
+	ToCommonLanguageSettingsOutput() CommonLanguageSettingsOutput
+	ToCommonLanguageSettingsOutputWithContext(context.Context) CommonLanguageSettingsOutput
+}
+
+// Required information for every language.
+type CommonLanguageSettingsArgs struct {
+	// The destination where API teams want this client library to be published.
+	Destinations CommonLanguageSettingsDestinationsItemArrayInput `pulumi:"destinations"`
+	// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+	ReferenceDocsUri pulumi.StringPtrInput `pulumi:"referenceDocsUri"`
+}
+
+func (CommonLanguageSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonLanguageSettings)(nil)).Elem()
+}
+
+func (i CommonLanguageSettingsArgs) ToCommonLanguageSettingsOutput() CommonLanguageSettingsOutput {
+	return i.ToCommonLanguageSettingsOutputWithContext(context.Background())
+}
+
+func (i CommonLanguageSettingsArgs) ToCommonLanguageSettingsOutputWithContext(ctx context.Context) CommonLanguageSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonLanguageSettingsOutput)
+}
+
+func (i CommonLanguageSettingsArgs) ToCommonLanguageSettingsPtrOutput() CommonLanguageSettingsPtrOutput {
+	return i.ToCommonLanguageSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CommonLanguageSettingsArgs) ToCommonLanguageSettingsPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonLanguageSettingsOutput).ToCommonLanguageSettingsPtrOutputWithContext(ctx)
+}
+
+// CommonLanguageSettingsPtrInput is an input type that accepts CommonLanguageSettingsArgs, CommonLanguageSettingsPtr and CommonLanguageSettingsPtrOutput values.
+// You can construct a concrete instance of `CommonLanguageSettingsPtrInput` via:
+//
+//	        CommonLanguageSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommonLanguageSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCommonLanguageSettingsPtrOutput() CommonLanguageSettingsPtrOutput
+	ToCommonLanguageSettingsPtrOutputWithContext(context.Context) CommonLanguageSettingsPtrOutput
+}
+
+type commonLanguageSettingsPtrType CommonLanguageSettingsArgs
+
+func CommonLanguageSettingsPtr(v *CommonLanguageSettingsArgs) CommonLanguageSettingsPtrInput {
+	return (*commonLanguageSettingsPtrType)(v)
+}
+
+func (*commonLanguageSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonLanguageSettings)(nil)).Elem()
+}
+
+func (i *commonLanguageSettingsPtrType) ToCommonLanguageSettingsPtrOutput() CommonLanguageSettingsPtrOutput {
+	return i.ToCommonLanguageSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *commonLanguageSettingsPtrType) ToCommonLanguageSettingsPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonLanguageSettingsPtrOutput)
+}
+
+// Required information for every language.
+type CommonLanguageSettingsOutput struct{ *pulumi.OutputState }
+
+func (CommonLanguageSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonLanguageSettings)(nil)).Elem()
+}
+
+func (o CommonLanguageSettingsOutput) ToCommonLanguageSettingsOutput() CommonLanguageSettingsOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsOutput) ToCommonLanguageSettingsOutputWithContext(ctx context.Context) CommonLanguageSettingsOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsOutput) ToCommonLanguageSettingsPtrOutput() CommonLanguageSettingsPtrOutput {
+	return o.ToCommonLanguageSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CommonLanguageSettingsOutput) ToCommonLanguageSettingsPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonLanguageSettings) *CommonLanguageSettings {
+		return &v
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// The destination where API teams want this client library to be published.
+func (o CommonLanguageSettingsOutput) Destinations() CommonLanguageSettingsDestinationsItemArrayOutput {
+	return o.ApplyT(func(v CommonLanguageSettings) []CommonLanguageSettingsDestinationsItem { return v.Destinations }).(CommonLanguageSettingsDestinationsItemArrayOutput)
+}
+
+// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+func (o CommonLanguageSettingsOutput) ReferenceDocsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CommonLanguageSettings) *string { return v.ReferenceDocsUri }).(pulumi.StringPtrOutput)
+}
+
+type CommonLanguageSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonLanguageSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonLanguageSettings)(nil)).Elem()
+}
+
+func (o CommonLanguageSettingsPtrOutput) ToCommonLanguageSettingsPtrOutput() CommonLanguageSettingsPtrOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsPtrOutput) ToCommonLanguageSettingsPtrOutputWithContext(ctx context.Context) CommonLanguageSettingsPtrOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsPtrOutput) Elem() CommonLanguageSettingsOutput {
+	return o.ApplyT(func(v *CommonLanguageSettings) CommonLanguageSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CommonLanguageSettings
+		return ret
+	}).(CommonLanguageSettingsOutput)
+}
+
+// The destination where API teams want this client library to be published.
+func (o CommonLanguageSettingsPtrOutput) Destinations() CommonLanguageSettingsDestinationsItemArrayOutput {
+	return o.ApplyT(func(v *CommonLanguageSettings) []CommonLanguageSettingsDestinationsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Destinations
+	}).(CommonLanguageSettingsDestinationsItemArrayOutput)
+}
+
+// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+func (o CommonLanguageSettingsPtrOutput) ReferenceDocsUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CommonLanguageSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceDocsUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required information for every language.
+type CommonLanguageSettingsResponse struct {
+	// The destination where API teams want this client library to be published.
+	Destinations []string `pulumi:"destinations"`
+	// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+	ReferenceDocsUri string `pulumi:"referenceDocsUri"`
+}
+
+// Required information for every language.
+type CommonLanguageSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonLanguageSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonLanguageSettingsResponse)(nil)).Elem()
+}
+
+func (o CommonLanguageSettingsResponseOutput) ToCommonLanguageSettingsResponseOutput() CommonLanguageSettingsResponseOutput {
+	return o
+}
+
+func (o CommonLanguageSettingsResponseOutput) ToCommonLanguageSettingsResponseOutputWithContext(ctx context.Context) CommonLanguageSettingsResponseOutput {
+	return o
+}
+
+// The destination where API teams want this client library to be published.
+func (o CommonLanguageSettingsResponseOutput) Destinations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CommonLanguageSettingsResponse) []string { return v.Destinations }).(pulumi.StringArrayOutput)
+}
+
+// Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+func (o CommonLanguageSettingsResponseOutput) ReferenceDocsUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CommonLanguageSettingsResponse) string { return v.ReferenceDocsUri }).(pulumi.StringOutput)
 }
 
 // `Context` defines which contexts an API requests. Example: context: rules: - selector: "*" requested: - google.rpc.context.ProjectContext - google.rpc.context.OriginContext The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and `google.rpc.context.OriginContext`. Available context types are defined in package `google.rpc.context`. This also provides mechanism to allowlist any protobuf message extension that can be sent in grpc metadata using “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can appear in grpc metadata as follows in your yaml file: Example: context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: - google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension You can also specify extension ID instead of fully qualified extension name here.
@@ -2644,7 +3168,7 @@ func (o ContextRuleResponseArrayOutput) Index(i pulumi.IntInput) ContextRuleResp
 	}).(ContextRuleResponseOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 type Control struct {
 	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment *string `pulumi:"environment"`
@@ -2661,7 +3185,7 @@ type ControlInput interface {
 	ToControlOutputWithContext(context.Context) ControlOutput
 }
 
-// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 type ControlArgs struct {
 	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment pulumi.StringPtrInput `pulumi:"environment"`
@@ -2720,7 +3244,7 @@ func (i *controlPtrType) ToControlPtrOutputWithContext(ctx context.Context) Cont
 	return pulumi.ToOutputWithContext(ctx, i).(ControlPtrOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 type ControlOutput struct{ *pulumi.OutputState }
 
 func (ControlOutput) ElementType() reflect.Type {
@@ -2784,13 +3308,13 @@ func (o ControlPtrOutput) Environment() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 type ControlResponse struct {
 	// The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 	Environment string `pulumi:"environment"`
 }
 
-// Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+// Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
 type ControlResponseOutput struct{ *pulumi.OutputState }
 
 func (ControlResponseOutput) ElementType() reflect.Type {
@@ -2808,6 +3332,172 @@ func (o ControlResponseOutput) ToControlResponseOutputWithContext(ctx context.Co
 // The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
 func (o ControlResponseOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v ControlResponse) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// Settings for C++ client libraries.
+type CppSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// CppSettingsInput is an input type that accepts CppSettingsArgs and CppSettingsOutput values.
+// You can construct a concrete instance of `CppSettingsInput` via:
+//
+//	CppSettingsArgs{...}
+type CppSettingsInput interface {
+	pulumi.Input
+
+	ToCppSettingsOutput() CppSettingsOutput
+	ToCppSettingsOutputWithContext(context.Context) CppSettingsOutput
+}
+
+// Settings for C++ client libraries.
+type CppSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (CppSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CppSettings)(nil)).Elem()
+}
+
+func (i CppSettingsArgs) ToCppSettingsOutput() CppSettingsOutput {
+	return i.ToCppSettingsOutputWithContext(context.Background())
+}
+
+func (i CppSettingsArgs) ToCppSettingsOutputWithContext(ctx context.Context) CppSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CppSettingsOutput)
+}
+
+func (i CppSettingsArgs) ToCppSettingsPtrOutput() CppSettingsPtrOutput {
+	return i.ToCppSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i CppSettingsArgs) ToCppSettingsPtrOutputWithContext(ctx context.Context) CppSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CppSettingsOutput).ToCppSettingsPtrOutputWithContext(ctx)
+}
+
+// CppSettingsPtrInput is an input type that accepts CppSettingsArgs, CppSettingsPtr and CppSettingsPtrOutput values.
+// You can construct a concrete instance of `CppSettingsPtrInput` via:
+//
+//	        CppSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CppSettingsPtrInput interface {
+	pulumi.Input
+
+	ToCppSettingsPtrOutput() CppSettingsPtrOutput
+	ToCppSettingsPtrOutputWithContext(context.Context) CppSettingsPtrOutput
+}
+
+type cppSettingsPtrType CppSettingsArgs
+
+func CppSettingsPtr(v *CppSettingsArgs) CppSettingsPtrInput {
+	return (*cppSettingsPtrType)(v)
+}
+
+func (*cppSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CppSettings)(nil)).Elem()
+}
+
+func (i *cppSettingsPtrType) ToCppSettingsPtrOutput() CppSettingsPtrOutput {
+	return i.ToCppSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *cppSettingsPtrType) ToCppSettingsPtrOutputWithContext(ctx context.Context) CppSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CppSettingsPtrOutput)
+}
+
+// Settings for C++ client libraries.
+type CppSettingsOutput struct{ *pulumi.OutputState }
+
+func (CppSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CppSettings)(nil)).Elem()
+}
+
+func (o CppSettingsOutput) ToCppSettingsOutput() CppSettingsOutput {
+	return o
+}
+
+func (o CppSettingsOutput) ToCppSettingsOutputWithContext(ctx context.Context) CppSettingsOutput {
+	return o
+}
+
+func (o CppSettingsOutput) ToCppSettingsPtrOutput() CppSettingsPtrOutput {
+	return o.ToCppSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o CppSettingsOutput) ToCppSettingsPtrOutputWithContext(ctx context.Context) CppSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CppSettings) *CppSettings {
+		return &v
+	}).(CppSettingsPtrOutput)
+}
+
+// Some settings.
+func (o CppSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v CppSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type CppSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (CppSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CppSettings)(nil)).Elem()
+}
+
+func (o CppSettingsPtrOutput) ToCppSettingsPtrOutput() CppSettingsPtrOutput {
+	return o
+}
+
+func (o CppSettingsPtrOutput) ToCppSettingsPtrOutputWithContext(ctx context.Context) CppSettingsPtrOutput {
+	return o
+}
+
+func (o CppSettingsPtrOutput) Elem() CppSettingsOutput {
+	return o.ApplyT(func(v *CppSettings) CppSettings {
+		if v != nil {
+			return *v
+		}
+		var ret CppSettings
+		return ret
+	}).(CppSettingsOutput)
+}
+
+// Some settings.
+func (o CppSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *CppSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for C++ client libraries.
+type CppSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for C++ client libraries.
+type CppSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (CppSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CppSettingsResponse)(nil)).Elem()
+}
+
+func (o CppSettingsResponseOutput) ToCppSettingsResponseOutput() CppSettingsResponseOutput {
+	return o
+}
+
+func (o CppSettingsResponseOutput) ToCppSettingsResponseOutputWithContext(ctx context.Context) CppSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o CppSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v CppSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
 }
 
 // Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
@@ -3970,8 +4660,178 @@ func (o DocumentationRuleResponseArrayOutput) Index(i pulumi.IntInput) Documenta
 	}).(DocumentationRuleResponseOutput)
 }
 
+// Settings for Dotnet client libraries.
+type DotnetSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// DotnetSettingsInput is an input type that accepts DotnetSettingsArgs and DotnetSettingsOutput values.
+// You can construct a concrete instance of `DotnetSettingsInput` via:
+//
+//	DotnetSettingsArgs{...}
+type DotnetSettingsInput interface {
+	pulumi.Input
+
+	ToDotnetSettingsOutput() DotnetSettingsOutput
+	ToDotnetSettingsOutputWithContext(context.Context) DotnetSettingsOutput
+}
+
+// Settings for Dotnet client libraries.
+type DotnetSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (DotnetSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotnetSettings)(nil)).Elem()
+}
+
+func (i DotnetSettingsArgs) ToDotnetSettingsOutput() DotnetSettingsOutput {
+	return i.ToDotnetSettingsOutputWithContext(context.Background())
+}
+
+func (i DotnetSettingsArgs) ToDotnetSettingsOutputWithContext(ctx context.Context) DotnetSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotnetSettingsOutput)
+}
+
+func (i DotnetSettingsArgs) ToDotnetSettingsPtrOutput() DotnetSettingsPtrOutput {
+	return i.ToDotnetSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DotnetSettingsArgs) ToDotnetSettingsPtrOutputWithContext(ctx context.Context) DotnetSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotnetSettingsOutput).ToDotnetSettingsPtrOutputWithContext(ctx)
+}
+
+// DotnetSettingsPtrInput is an input type that accepts DotnetSettingsArgs, DotnetSettingsPtr and DotnetSettingsPtrOutput values.
+// You can construct a concrete instance of `DotnetSettingsPtrInput` via:
+//
+//	        DotnetSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DotnetSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDotnetSettingsPtrOutput() DotnetSettingsPtrOutput
+	ToDotnetSettingsPtrOutputWithContext(context.Context) DotnetSettingsPtrOutput
+}
+
+type dotnetSettingsPtrType DotnetSettingsArgs
+
+func DotnetSettingsPtr(v *DotnetSettingsArgs) DotnetSettingsPtrInput {
+	return (*dotnetSettingsPtrType)(v)
+}
+
+func (*dotnetSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DotnetSettings)(nil)).Elem()
+}
+
+func (i *dotnetSettingsPtrType) ToDotnetSettingsPtrOutput() DotnetSettingsPtrOutput {
+	return i.ToDotnetSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dotnetSettingsPtrType) ToDotnetSettingsPtrOutputWithContext(ctx context.Context) DotnetSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DotnetSettingsPtrOutput)
+}
+
+// Settings for Dotnet client libraries.
+type DotnetSettingsOutput struct{ *pulumi.OutputState }
+
+func (DotnetSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotnetSettings)(nil)).Elem()
+}
+
+func (o DotnetSettingsOutput) ToDotnetSettingsOutput() DotnetSettingsOutput {
+	return o
+}
+
+func (o DotnetSettingsOutput) ToDotnetSettingsOutputWithContext(ctx context.Context) DotnetSettingsOutput {
+	return o
+}
+
+func (o DotnetSettingsOutput) ToDotnetSettingsPtrOutput() DotnetSettingsPtrOutput {
+	return o.ToDotnetSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DotnetSettingsOutput) ToDotnetSettingsPtrOutputWithContext(ctx context.Context) DotnetSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DotnetSettings) *DotnetSettings {
+		return &v
+	}).(DotnetSettingsPtrOutput)
+}
+
+// Some settings.
+func (o DotnetSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v DotnetSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type DotnetSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DotnetSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DotnetSettings)(nil)).Elem()
+}
+
+func (o DotnetSettingsPtrOutput) ToDotnetSettingsPtrOutput() DotnetSettingsPtrOutput {
+	return o
+}
+
+func (o DotnetSettingsPtrOutput) ToDotnetSettingsPtrOutputWithContext(ctx context.Context) DotnetSettingsPtrOutput {
+	return o
+}
+
+func (o DotnetSettingsPtrOutput) Elem() DotnetSettingsOutput {
+	return o.ApplyT(func(v *DotnetSettings) DotnetSettings {
+		if v != nil {
+			return *v
+		}
+		var ret DotnetSettings
+		return ret
+	}).(DotnetSettingsOutput)
+}
+
+// Some settings.
+func (o DotnetSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *DotnetSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for Dotnet client libraries.
+type DotnetSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for Dotnet client libraries.
+type DotnetSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DotnetSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DotnetSettingsResponse)(nil)).Elem()
+}
+
+func (o DotnetSettingsResponseOutput) ToDotnetSettingsResponseOutput() DotnetSettingsResponseOutput {
+	return o
+}
+
+func (o DotnetSettingsResponseOutput) ToDotnetSettingsResponseOutputWithContext(ctx context.Context) DotnetSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o DotnetSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v DotnetSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
 // `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type Endpoint struct {
+	// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	//
+	// Deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	Aliases []string `pulumi:"aliases"`
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors *bool `pulumi:"allowCors"`
 	// The canonical name of this endpoint.
@@ -3993,6 +4853,10 @@ type EndpointInput interface {
 
 // `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointArgs struct {
+	// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	//
+	// Deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	Aliases pulumi.StringArrayInput `pulumi:"aliases"`
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors pulumi.BoolPtrInput `pulumi:"allowCors"`
 	// The canonical name of this endpoint.
@@ -4053,6 +4917,13 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
+// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+//
+// Deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+func (o EndpointOutput) Aliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Endpoint) []string { return v.Aliases }).(pulumi.StringArrayOutput)
+}
+
 // Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 func (o EndpointOutput) AllowCors() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Endpoint) *bool { return v.AllowCors }).(pulumi.BoolPtrOutput)
@@ -4090,6 +4961,10 @@ func (o EndpointArrayOutput) Index(i pulumi.IntInput) EndpointOutput {
 
 // `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointResponse struct {
+	// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	//
+	// Deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+	Aliases []string `pulumi:"aliases"`
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors bool `pulumi:"allowCors"`
 	// The canonical name of this endpoint.
@@ -4111,6 +4986,13 @@ func (o EndpointResponseOutput) ToEndpointResponseOutput() EndpointResponseOutpu
 
 func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.Context) EndpointResponseOutput {
 	return o
+}
+
+// Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+//
+// Deprecated: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+func (o EndpointResponseOutput) Aliases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v EndpointResponse) []string { return v.Aliases }).(pulumi.StringArrayOutput)
 }
 
 // Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
@@ -5070,6 +5952,172 @@ func (o FieldResponseArrayOutput) Index(i pulumi.IntInput) FieldResponseOutput {
 	}).(FieldResponseOutput)
 }
 
+// Settings for Go client libraries.
+type GoSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// GoSettingsInput is an input type that accepts GoSettingsArgs and GoSettingsOutput values.
+// You can construct a concrete instance of `GoSettingsInput` via:
+//
+//	GoSettingsArgs{...}
+type GoSettingsInput interface {
+	pulumi.Input
+
+	ToGoSettingsOutput() GoSettingsOutput
+	ToGoSettingsOutputWithContext(context.Context) GoSettingsOutput
+}
+
+// Settings for Go client libraries.
+type GoSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (GoSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoSettings)(nil)).Elem()
+}
+
+func (i GoSettingsArgs) ToGoSettingsOutput() GoSettingsOutput {
+	return i.ToGoSettingsOutputWithContext(context.Background())
+}
+
+func (i GoSettingsArgs) ToGoSettingsOutputWithContext(ctx context.Context) GoSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoSettingsOutput)
+}
+
+func (i GoSettingsArgs) ToGoSettingsPtrOutput() GoSettingsPtrOutput {
+	return i.ToGoSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoSettingsArgs) ToGoSettingsPtrOutputWithContext(ctx context.Context) GoSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoSettingsOutput).ToGoSettingsPtrOutputWithContext(ctx)
+}
+
+// GoSettingsPtrInput is an input type that accepts GoSettingsArgs, GoSettingsPtr and GoSettingsPtrOutput values.
+// You can construct a concrete instance of `GoSettingsPtrInput` via:
+//
+//	        GoSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoSettingsPtrOutput() GoSettingsPtrOutput
+	ToGoSettingsPtrOutputWithContext(context.Context) GoSettingsPtrOutput
+}
+
+type goSettingsPtrType GoSettingsArgs
+
+func GoSettingsPtr(v *GoSettingsArgs) GoSettingsPtrInput {
+	return (*goSettingsPtrType)(v)
+}
+
+func (*goSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoSettings)(nil)).Elem()
+}
+
+func (i *goSettingsPtrType) ToGoSettingsPtrOutput() GoSettingsPtrOutput {
+	return i.ToGoSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *goSettingsPtrType) ToGoSettingsPtrOutputWithContext(ctx context.Context) GoSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoSettingsPtrOutput)
+}
+
+// Settings for Go client libraries.
+type GoSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoSettings)(nil)).Elem()
+}
+
+func (o GoSettingsOutput) ToGoSettingsOutput() GoSettingsOutput {
+	return o
+}
+
+func (o GoSettingsOutput) ToGoSettingsOutputWithContext(ctx context.Context) GoSettingsOutput {
+	return o
+}
+
+func (o GoSettingsOutput) ToGoSettingsPtrOutput() GoSettingsPtrOutput {
+	return o.ToGoSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoSettingsOutput) ToGoSettingsPtrOutputWithContext(ctx context.Context) GoSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoSettings) *GoSettings {
+		return &v
+	}).(GoSettingsPtrOutput)
+}
+
+// Some settings.
+func (o GoSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v GoSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type GoSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoSettings)(nil)).Elem()
+}
+
+func (o GoSettingsPtrOutput) ToGoSettingsPtrOutput() GoSettingsPtrOutput {
+	return o
+}
+
+func (o GoSettingsPtrOutput) ToGoSettingsPtrOutputWithContext(ctx context.Context) GoSettingsPtrOutput {
+	return o
+}
+
+func (o GoSettingsPtrOutput) Elem() GoSettingsOutput {
+	return o.ApplyT(func(v *GoSettings) GoSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoSettings
+		return ret
+	}).(GoSettingsOutput)
+}
+
+// Some settings.
+func (o GoSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *GoSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for Go client libraries.
+type GoSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for Go client libraries.
+type GoSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoSettingsResponse)(nil)).Elem()
+}
+
+func (o GoSettingsResponseOutput) ToGoSettingsResponseOutput() GoSettingsResponseOutput {
+	return o
+}
+
+func (o GoSettingsResponseOutput) ToGoSettingsResponseOutputWithContext(ctx context.Context) GoSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o GoSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v GoSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
 // Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
 type Http struct {
 	// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
@@ -5550,6 +6598,224 @@ func (o HttpRuleResponseArrayOutput) Index(i pulumi.IntInput) HttpRuleResponseOu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HttpRuleResponse {
 		return vs[0].([]HttpRuleResponse)[vs[1].(int)]
 	}).(HttpRuleResponseOutput)
+}
+
+// Settings for Java client libraries.
+type JavaSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+	// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+	LibraryPackage *string `pulumi:"libraryPackage"`
+	// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+	ServiceClassNames map[string]string `pulumi:"serviceClassNames"`
+}
+
+// JavaSettingsInput is an input type that accepts JavaSettingsArgs and JavaSettingsOutput values.
+// You can construct a concrete instance of `JavaSettingsInput` via:
+//
+//	JavaSettingsArgs{...}
+type JavaSettingsInput interface {
+	pulumi.Input
+
+	ToJavaSettingsOutput() JavaSettingsOutput
+	ToJavaSettingsOutputWithContext(context.Context) JavaSettingsOutput
+}
+
+// Settings for Java client libraries.
+type JavaSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+	// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+	LibraryPackage pulumi.StringPtrInput `pulumi:"libraryPackage"`
+	// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+	ServiceClassNames pulumi.StringMapInput `pulumi:"serviceClassNames"`
+}
+
+func (JavaSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaSettings)(nil)).Elem()
+}
+
+func (i JavaSettingsArgs) ToJavaSettingsOutput() JavaSettingsOutput {
+	return i.ToJavaSettingsOutputWithContext(context.Background())
+}
+
+func (i JavaSettingsArgs) ToJavaSettingsOutputWithContext(ctx context.Context) JavaSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaSettingsOutput)
+}
+
+func (i JavaSettingsArgs) ToJavaSettingsPtrOutput() JavaSettingsPtrOutput {
+	return i.ToJavaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i JavaSettingsArgs) ToJavaSettingsPtrOutputWithContext(ctx context.Context) JavaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaSettingsOutput).ToJavaSettingsPtrOutputWithContext(ctx)
+}
+
+// JavaSettingsPtrInput is an input type that accepts JavaSettingsArgs, JavaSettingsPtr and JavaSettingsPtrOutput values.
+// You can construct a concrete instance of `JavaSettingsPtrInput` via:
+//
+//	        JavaSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type JavaSettingsPtrInput interface {
+	pulumi.Input
+
+	ToJavaSettingsPtrOutput() JavaSettingsPtrOutput
+	ToJavaSettingsPtrOutputWithContext(context.Context) JavaSettingsPtrOutput
+}
+
+type javaSettingsPtrType JavaSettingsArgs
+
+func JavaSettingsPtr(v *JavaSettingsArgs) JavaSettingsPtrInput {
+	return (*javaSettingsPtrType)(v)
+}
+
+func (*javaSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaSettings)(nil)).Elem()
+}
+
+func (i *javaSettingsPtrType) ToJavaSettingsPtrOutput() JavaSettingsPtrOutput {
+	return i.ToJavaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *javaSettingsPtrType) ToJavaSettingsPtrOutputWithContext(ctx context.Context) JavaSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JavaSettingsPtrOutput)
+}
+
+// Settings for Java client libraries.
+type JavaSettingsOutput struct{ *pulumi.OutputState }
+
+func (JavaSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaSettings)(nil)).Elem()
+}
+
+func (o JavaSettingsOutput) ToJavaSettingsOutput() JavaSettingsOutput {
+	return o
+}
+
+func (o JavaSettingsOutput) ToJavaSettingsOutputWithContext(ctx context.Context) JavaSettingsOutput {
+	return o
+}
+
+func (o JavaSettingsOutput) ToJavaSettingsPtrOutput() JavaSettingsPtrOutput {
+	return o.ToJavaSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o JavaSettingsOutput) ToJavaSettingsPtrOutputWithContext(ctx context.Context) JavaSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JavaSettings) *JavaSettings {
+		return &v
+	}).(JavaSettingsPtrOutput)
+}
+
+// Some settings.
+func (o JavaSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v JavaSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+func (o JavaSettingsOutput) LibraryPackage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JavaSettings) *string { return v.LibraryPackage }).(pulumi.StringPtrOutput)
+}
+
+// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+func (o JavaSettingsOutput) ServiceClassNames() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JavaSettings) map[string]string { return v.ServiceClassNames }).(pulumi.StringMapOutput)
+}
+
+type JavaSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (JavaSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JavaSettings)(nil)).Elem()
+}
+
+func (o JavaSettingsPtrOutput) ToJavaSettingsPtrOutput() JavaSettingsPtrOutput {
+	return o
+}
+
+func (o JavaSettingsPtrOutput) ToJavaSettingsPtrOutputWithContext(ctx context.Context) JavaSettingsPtrOutput {
+	return o
+}
+
+func (o JavaSettingsPtrOutput) Elem() JavaSettingsOutput {
+	return o.ApplyT(func(v *JavaSettings) JavaSettings {
+		if v != nil {
+			return *v
+		}
+		var ret JavaSettings
+		return ret
+	}).(JavaSettingsOutput)
+}
+
+// Some settings.
+func (o JavaSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *JavaSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+func (o JavaSettingsPtrOutput) LibraryPackage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JavaSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LibraryPackage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+func (o JavaSettingsPtrOutput) ServiceClassNames() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JavaSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceClassNames
+	}).(pulumi.StringMapOutput)
+}
+
+// Settings for Java client libraries.
+type JavaSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+	// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+	LibraryPackage string `pulumi:"libraryPackage"`
+	// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+	ServiceClassNames map[string]string `pulumi:"serviceClassNames"`
+}
+
+// Settings for Java client libraries.
+type JavaSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (JavaSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JavaSettingsResponse)(nil)).Elem()
+}
+
+func (o JavaSettingsResponseOutput) ToJavaSettingsResponseOutput() JavaSettingsResponseOutput {
+	return o
+}
+
+func (o JavaSettingsResponseOutput) ToJavaSettingsResponseOutputWithContext(ctx context.Context) JavaSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o JavaSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v JavaSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
+// The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+func (o JavaSettingsResponseOutput) LibraryPackage() pulumi.StringOutput {
+	return o.ApplyT(func(v JavaSettingsResponse) string { return v.LibraryPackage }).(pulumi.StringOutput)
+}
+
+// Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+func (o JavaSettingsResponseOutput) ServiceClassNames() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JavaSettingsResponse) map[string]string { return v.ServiceClassNames }).(pulumi.StringMapOutput)
 }
 
 // Specifies a location to extract JWT from an API request.
@@ -6472,6 +7738,250 @@ func (o LoggingResponseOutput) ProducerDestinations() LoggingDestinationResponse
 	return o.ApplyT(func(v LoggingResponse) []LoggingDestinationResponse { return v.ProducerDestinations }).(LoggingDestinationResponseArrayOutput)
 }
 
+// Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+type LongRunning struct {
+	// Initial delay after which the first poll request will be made. Default value: 5 seconds.
+	InitialPollDelay *string `pulumi:"initialPollDelay"`
+	// Maximum time between two subsequent poll requests. Default value: 45 seconds.
+	MaxPollDelay *string `pulumi:"maxPollDelay"`
+	// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+	PollDelayMultiplier *float64 `pulumi:"pollDelayMultiplier"`
+	// Total polling timeout. Default value: 5 minutes.
+	TotalPollTimeout *string `pulumi:"totalPollTimeout"`
+}
+
+// LongRunningInput is an input type that accepts LongRunningArgs and LongRunningOutput values.
+// You can construct a concrete instance of `LongRunningInput` via:
+//
+//	LongRunningArgs{...}
+type LongRunningInput interface {
+	pulumi.Input
+
+	ToLongRunningOutput() LongRunningOutput
+	ToLongRunningOutputWithContext(context.Context) LongRunningOutput
+}
+
+// Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+type LongRunningArgs struct {
+	// Initial delay after which the first poll request will be made. Default value: 5 seconds.
+	InitialPollDelay pulumi.StringPtrInput `pulumi:"initialPollDelay"`
+	// Maximum time between two subsequent poll requests. Default value: 45 seconds.
+	MaxPollDelay pulumi.StringPtrInput `pulumi:"maxPollDelay"`
+	// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+	PollDelayMultiplier pulumi.Float64PtrInput `pulumi:"pollDelayMultiplier"`
+	// Total polling timeout. Default value: 5 minutes.
+	TotalPollTimeout pulumi.StringPtrInput `pulumi:"totalPollTimeout"`
+}
+
+func (LongRunningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LongRunning)(nil)).Elem()
+}
+
+func (i LongRunningArgs) ToLongRunningOutput() LongRunningOutput {
+	return i.ToLongRunningOutputWithContext(context.Background())
+}
+
+func (i LongRunningArgs) ToLongRunningOutputWithContext(ctx context.Context) LongRunningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LongRunningOutput)
+}
+
+func (i LongRunningArgs) ToLongRunningPtrOutput() LongRunningPtrOutput {
+	return i.ToLongRunningPtrOutputWithContext(context.Background())
+}
+
+func (i LongRunningArgs) ToLongRunningPtrOutputWithContext(ctx context.Context) LongRunningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LongRunningOutput).ToLongRunningPtrOutputWithContext(ctx)
+}
+
+// LongRunningPtrInput is an input type that accepts LongRunningArgs, LongRunningPtr and LongRunningPtrOutput values.
+// You can construct a concrete instance of `LongRunningPtrInput` via:
+//
+//	        LongRunningArgs{...}
+//
+//	or:
+//
+//	        nil
+type LongRunningPtrInput interface {
+	pulumi.Input
+
+	ToLongRunningPtrOutput() LongRunningPtrOutput
+	ToLongRunningPtrOutputWithContext(context.Context) LongRunningPtrOutput
+}
+
+type longRunningPtrType LongRunningArgs
+
+func LongRunningPtr(v *LongRunningArgs) LongRunningPtrInput {
+	return (*longRunningPtrType)(v)
+}
+
+func (*longRunningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LongRunning)(nil)).Elem()
+}
+
+func (i *longRunningPtrType) ToLongRunningPtrOutput() LongRunningPtrOutput {
+	return i.ToLongRunningPtrOutputWithContext(context.Background())
+}
+
+func (i *longRunningPtrType) ToLongRunningPtrOutputWithContext(ctx context.Context) LongRunningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LongRunningPtrOutput)
+}
+
+// Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+type LongRunningOutput struct{ *pulumi.OutputState }
+
+func (LongRunningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LongRunning)(nil)).Elem()
+}
+
+func (o LongRunningOutput) ToLongRunningOutput() LongRunningOutput {
+	return o
+}
+
+func (o LongRunningOutput) ToLongRunningOutputWithContext(ctx context.Context) LongRunningOutput {
+	return o
+}
+
+func (o LongRunningOutput) ToLongRunningPtrOutput() LongRunningPtrOutput {
+	return o.ToLongRunningPtrOutputWithContext(context.Background())
+}
+
+func (o LongRunningOutput) ToLongRunningPtrOutputWithContext(ctx context.Context) LongRunningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LongRunning) *LongRunning {
+		return &v
+	}).(LongRunningPtrOutput)
+}
+
+// Initial delay after which the first poll request will be made. Default value: 5 seconds.
+func (o LongRunningOutput) InitialPollDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LongRunning) *string { return v.InitialPollDelay }).(pulumi.StringPtrOutput)
+}
+
+// Maximum time between two subsequent poll requests. Default value: 45 seconds.
+func (o LongRunningOutput) MaxPollDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LongRunning) *string { return v.MaxPollDelay }).(pulumi.StringPtrOutput)
+}
+
+// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+func (o LongRunningOutput) PollDelayMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v LongRunning) *float64 { return v.PollDelayMultiplier }).(pulumi.Float64PtrOutput)
+}
+
+// Total polling timeout. Default value: 5 minutes.
+func (o LongRunningOutput) TotalPollTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LongRunning) *string { return v.TotalPollTimeout }).(pulumi.StringPtrOutput)
+}
+
+type LongRunningPtrOutput struct{ *pulumi.OutputState }
+
+func (LongRunningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LongRunning)(nil)).Elem()
+}
+
+func (o LongRunningPtrOutput) ToLongRunningPtrOutput() LongRunningPtrOutput {
+	return o
+}
+
+func (o LongRunningPtrOutput) ToLongRunningPtrOutputWithContext(ctx context.Context) LongRunningPtrOutput {
+	return o
+}
+
+func (o LongRunningPtrOutput) Elem() LongRunningOutput {
+	return o.ApplyT(func(v *LongRunning) LongRunning {
+		if v != nil {
+			return *v
+		}
+		var ret LongRunning
+		return ret
+	}).(LongRunningOutput)
+}
+
+// Initial delay after which the first poll request will be made. Default value: 5 seconds.
+func (o LongRunningPtrOutput) InitialPollDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LongRunning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InitialPollDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maximum time between two subsequent poll requests. Default value: 45 seconds.
+func (o LongRunningPtrOutput) MaxPollDelay() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LongRunning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPollDelay
+	}).(pulumi.StringPtrOutput)
+}
+
+// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+func (o LongRunningPtrOutput) PollDelayMultiplier() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *LongRunning) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.PollDelayMultiplier
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Total polling timeout. Default value: 5 minutes.
+func (o LongRunningPtrOutput) TotalPollTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LongRunning) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TotalPollTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+type LongRunningResponse struct {
+	// Initial delay after which the first poll request will be made. Default value: 5 seconds.
+	InitialPollDelay string `pulumi:"initialPollDelay"`
+	// Maximum time between two subsequent poll requests. Default value: 45 seconds.
+	MaxPollDelay string `pulumi:"maxPollDelay"`
+	// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+	PollDelayMultiplier float64 `pulumi:"pollDelayMultiplier"`
+	// Total polling timeout. Default value: 5 minutes.
+	TotalPollTimeout string `pulumi:"totalPollTimeout"`
+}
+
+// Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+type LongRunningResponseOutput struct{ *pulumi.OutputState }
+
+func (LongRunningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LongRunningResponse)(nil)).Elem()
+}
+
+func (o LongRunningResponseOutput) ToLongRunningResponseOutput() LongRunningResponseOutput {
+	return o
+}
+
+func (o LongRunningResponseOutput) ToLongRunningResponseOutputWithContext(ctx context.Context) LongRunningResponseOutput {
+	return o
+}
+
+// Initial delay after which the first poll request will be made. Default value: 5 seconds.
+func (o LongRunningResponseOutput) InitialPollDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v LongRunningResponse) string { return v.InitialPollDelay }).(pulumi.StringOutput)
+}
+
+// Maximum time between two subsequent poll requests. Default value: 45 seconds.
+func (o LongRunningResponseOutput) MaxPollDelay() pulumi.StringOutput {
+	return o.ApplyT(func(v LongRunningResponse) string { return v.MaxPollDelay }).(pulumi.StringOutput)
+}
+
+// Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+func (o LongRunningResponseOutput) PollDelayMultiplier() pulumi.Float64Output {
+	return o.ApplyT(func(v LongRunningResponse) float64 { return v.PollDelayMultiplier }).(pulumi.Float64Output)
+}
+
+// Total polling timeout. Default value: 5 minutes.
+func (o LongRunningResponseOutput) TotalPollTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v LongRunningResponse) string { return v.TotalPollTimeout }).(pulumi.StringOutput)
+}
+
 // Method represents a method of an API interface.
 type Method struct {
 	// The simple name of this method.
@@ -6712,6 +8222,168 @@ func (o MethodResponseArrayOutput) Index(i pulumi.IntInput) MethodResponseOutput
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodResponse {
 		return vs[0].([]MethodResponse)[vs[1].(int)]
 	}).(MethodResponseOutput)
+}
+
+// Describes the generator configuration for a method.
+type MethodSettings struct {
+	// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+	LongRunning *LongRunning `pulumi:"longRunning"`
+	// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+	Selector *string `pulumi:"selector"`
+}
+
+// MethodSettingsInput is an input type that accepts MethodSettingsArgs and MethodSettingsOutput values.
+// You can construct a concrete instance of `MethodSettingsInput` via:
+//
+//	MethodSettingsArgs{...}
+type MethodSettingsInput interface {
+	pulumi.Input
+
+	ToMethodSettingsOutput() MethodSettingsOutput
+	ToMethodSettingsOutputWithContext(context.Context) MethodSettingsOutput
+}
+
+// Describes the generator configuration for a method.
+type MethodSettingsArgs struct {
+	// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+	LongRunning LongRunningPtrInput `pulumi:"longRunning"`
+	// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+	Selector pulumi.StringPtrInput `pulumi:"selector"`
+}
+
+func (MethodSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettings)(nil)).Elem()
+}
+
+func (i MethodSettingsArgs) ToMethodSettingsOutput() MethodSettingsOutput {
+	return i.ToMethodSettingsOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsArgs) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsOutput)
+}
+
+// MethodSettingsArrayInput is an input type that accepts MethodSettingsArray and MethodSettingsArrayOutput values.
+// You can construct a concrete instance of `MethodSettingsArrayInput` via:
+//
+//	MethodSettingsArray{ MethodSettingsArgs{...} }
+type MethodSettingsArrayInput interface {
+	pulumi.Input
+
+	ToMethodSettingsArrayOutput() MethodSettingsArrayOutput
+	ToMethodSettingsArrayOutputWithContext(context.Context) MethodSettingsArrayOutput
+}
+
+type MethodSettingsArray []MethodSettingsInput
+
+func (MethodSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodSettings)(nil)).Elem()
+}
+
+func (i MethodSettingsArray) ToMethodSettingsArrayOutput() MethodSettingsArrayOutput {
+	return i.ToMethodSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i MethodSettingsArray) ToMethodSettingsArrayOutputWithContext(ctx context.Context) MethodSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MethodSettingsArrayOutput)
+}
+
+// Describes the generator configuration for a method.
+type MethodSettingsOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettings)(nil)).Elem()
+}
+
+func (o MethodSettingsOutput) ToMethodSettingsOutput() MethodSettingsOutput {
+	return o
+}
+
+func (o MethodSettingsOutput) ToMethodSettingsOutputWithContext(ctx context.Context) MethodSettingsOutput {
+	return o
+}
+
+// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+func (o MethodSettingsOutput) LongRunning() LongRunningPtrOutput {
+	return o.ApplyT(func(v MethodSettings) *LongRunning { return v.LongRunning }).(LongRunningPtrOutput)
+}
+
+// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+func (o MethodSettingsOutput) Selector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MethodSettings) *string { return v.Selector }).(pulumi.StringPtrOutput)
+}
+
+type MethodSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodSettings)(nil)).Elem()
+}
+
+func (o MethodSettingsArrayOutput) ToMethodSettingsArrayOutput() MethodSettingsArrayOutput {
+	return o
+}
+
+func (o MethodSettingsArrayOutput) ToMethodSettingsArrayOutputWithContext(ctx context.Context) MethodSettingsArrayOutput {
+	return o
+}
+
+func (o MethodSettingsArrayOutput) Index(i pulumi.IntInput) MethodSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodSettings {
+		return vs[0].([]MethodSettings)[vs[1].(int)]
+	}).(MethodSettingsOutput)
+}
+
+// Describes the generator configuration for a method.
+type MethodSettingsResponse struct {
+	// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+	LongRunning LongRunningResponse `pulumi:"longRunning"`
+	// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+	Selector string `pulumi:"selector"`
+}
+
+// Describes the generator configuration for a method.
+type MethodSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MethodSettingsResponse)(nil)).Elem()
+}
+
+func (o MethodSettingsResponseOutput) ToMethodSettingsResponseOutput() MethodSettingsResponseOutput {
+	return o
+}
+
+func (o MethodSettingsResponseOutput) ToMethodSettingsResponseOutputWithContext(ctx context.Context) MethodSettingsResponseOutput {
+	return o
+}
+
+// Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+func (o MethodSettingsResponseOutput) LongRunning() LongRunningResponseOutput {
+	return o.ApplyT(func(v MethodSettingsResponse) LongRunningResponse { return v.LongRunning }).(LongRunningResponseOutput)
+}
+
+// The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+func (o MethodSettingsResponseOutput) Selector() pulumi.StringOutput {
+	return o.ApplyT(func(v MethodSettingsResponse) string { return v.Selector }).(pulumi.StringOutput)
+}
+
+type MethodSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MethodSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MethodSettingsResponse)(nil)).Elem()
+}
+
+func (o MethodSettingsResponseArrayOutput) ToMethodSettingsResponseArrayOutput() MethodSettingsResponseArrayOutput {
+	return o
+}
+
+func (o MethodSettingsResponseArrayOutput) ToMethodSettingsResponseArrayOutputWithContext(ctx context.Context) MethodSettingsResponseArrayOutput {
+	return o
+}
+
+func (o MethodSettingsResponseArrayOutput) Index(i pulumi.IntInput) MethodSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MethodSettingsResponse {
+		return vs[0].([]MethodSettingsResponse)[vs[1].(int)]
+	}).(MethodSettingsResponseOutput)
 }
 
 // Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
@@ -8154,6 +9826,172 @@ func (o MonitoringResponseOutput) ProducerDestinations() MonitoringDestinationRe
 	return o.ApplyT(func(v MonitoringResponse) []MonitoringDestinationResponse { return v.ProducerDestinations }).(MonitoringDestinationResponseArrayOutput)
 }
 
+// Settings for Node client libraries.
+type NodeSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// NodeSettingsInput is an input type that accepts NodeSettingsArgs and NodeSettingsOutput values.
+// You can construct a concrete instance of `NodeSettingsInput` via:
+//
+//	NodeSettingsArgs{...}
+type NodeSettingsInput interface {
+	pulumi.Input
+
+	ToNodeSettingsOutput() NodeSettingsOutput
+	ToNodeSettingsOutputWithContext(context.Context) NodeSettingsOutput
+}
+
+// Settings for Node client libraries.
+type NodeSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (NodeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSettings)(nil)).Elem()
+}
+
+func (i NodeSettingsArgs) ToNodeSettingsOutput() NodeSettingsOutput {
+	return i.ToNodeSettingsOutputWithContext(context.Background())
+}
+
+func (i NodeSettingsArgs) ToNodeSettingsOutputWithContext(ctx context.Context) NodeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeSettingsOutput)
+}
+
+func (i NodeSettingsArgs) ToNodeSettingsPtrOutput() NodeSettingsPtrOutput {
+	return i.ToNodeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i NodeSettingsArgs) ToNodeSettingsPtrOutputWithContext(ctx context.Context) NodeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeSettingsOutput).ToNodeSettingsPtrOutputWithContext(ctx)
+}
+
+// NodeSettingsPtrInput is an input type that accepts NodeSettingsArgs, NodeSettingsPtr and NodeSettingsPtrOutput values.
+// You can construct a concrete instance of `NodeSettingsPtrInput` via:
+//
+//	        NodeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToNodeSettingsPtrOutput() NodeSettingsPtrOutput
+	ToNodeSettingsPtrOutputWithContext(context.Context) NodeSettingsPtrOutput
+}
+
+type nodeSettingsPtrType NodeSettingsArgs
+
+func NodeSettingsPtr(v *NodeSettingsArgs) NodeSettingsPtrInput {
+	return (*nodeSettingsPtrType)(v)
+}
+
+func (*nodeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeSettings)(nil)).Elem()
+}
+
+func (i *nodeSettingsPtrType) ToNodeSettingsPtrOutput() NodeSettingsPtrOutput {
+	return i.ToNodeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeSettingsPtrType) ToNodeSettingsPtrOutputWithContext(ctx context.Context) NodeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeSettingsPtrOutput)
+}
+
+// Settings for Node client libraries.
+type NodeSettingsOutput struct{ *pulumi.OutputState }
+
+func (NodeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSettings)(nil)).Elem()
+}
+
+func (o NodeSettingsOutput) ToNodeSettingsOutput() NodeSettingsOutput {
+	return o
+}
+
+func (o NodeSettingsOutput) ToNodeSettingsOutputWithContext(ctx context.Context) NodeSettingsOutput {
+	return o
+}
+
+func (o NodeSettingsOutput) ToNodeSettingsPtrOutput() NodeSettingsPtrOutput {
+	return o.ToNodeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o NodeSettingsOutput) ToNodeSettingsPtrOutputWithContext(ctx context.Context) NodeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeSettings) *NodeSettings {
+		return &v
+	}).(NodeSettingsPtrOutput)
+}
+
+// Some settings.
+func (o NodeSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v NodeSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type NodeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeSettings)(nil)).Elem()
+}
+
+func (o NodeSettingsPtrOutput) ToNodeSettingsPtrOutput() NodeSettingsPtrOutput {
+	return o
+}
+
+func (o NodeSettingsPtrOutput) ToNodeSettingsPtrOutputWithContext(ctx context.Context) NodeSettingsPtrOutput {
+	return o
+}
+
+func (o NodeSettingsPtrOutput) Elem() NodeSettingsOutput {
+	return o.ApplyT(func(v *NodeSettings) NodeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret NodeSettings
+		return ret
+	}).(NodeSettingsOutput)
+}
+
+// Some settings.
+func (o NodeSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *NodeSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for Node client libraries.
+type NodeSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for Node client libraries.
+type NodeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeSettingsResponse)(nil)).Elem()
+}
+
+func (o NodeSettingsResponseOutput) ToNodeSettingsResponseOutput() NodeSettingsResponseOutput {
+	return o
+}
+
+func (o NodeSettingsResponseOutput) ToNodeSettingsResponseOutputWithContext(ctx context.Context) NodeSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o NodeSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v NodeSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
 // OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
 type OAuthRequirements struct {
 	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
@@ -8660,6 +10498,712 @@ func (o PageResponseArrayOutput) Index(i pulumi.IntInput) PageResponseOutput {
 	}).(PageResponseOutput)
 }
 
+// Settings for Php client libraries.
+type PhpSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// PhpSettingsInput is an input type that accepts PhpSettingsArgs and PhpSettingsOutput values.
+// You can construct a concrete instance of `PhpSettingsInput` via:
+//
+//	PhpSettingsArgs{...}
+type PhpSettingsInput interface {
+	pulumi.Input
+
+	ToPhpSettingsOutput() PhpSettingsOutput
+	ToPhpSettingsOutputWithContext(context.Context) PhpSettingsOutput
+}
+
+// Settings for Php client libraries.
+type PhpSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (PhpSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpSettings)(nil)).Elem()
+}
+
+func (i PhpSettingsArgs) ToPhpSettingsOutput() PhpSettingsOutput {
+	return i.ToPhpSettingsOutputWithContext(context.Background())
+}
+
+func (i PhpSettingsArgs) ToPhpSettingsOutputWithContext(ctx context.Context) PhpSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpSettingsOutput)
+}
+
+func (i PhpSettingsArgs) ToPhpSettingsPtrOutput() PhpSettingsPtrOutput {
+	return i.ToPhpSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PhpSettingsArgs) ToPhpSettingsPtrOutputWithContext(ctx context.Context) PhpSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpSettingsOutput).ToPhpSettingsPtrOutputWithContext(ctx)
+}
+
+// PhpSettingsPtrInput is an input type that accepts PhpSettingsArgs, PhpSettingsPtr and PhpSettingsPtrOutput values.
+// You can construct a concrete instance of `PhpSettingsPtrInput` via:
+//
+//	        PhpSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PhpSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPhpSettingsPtrOutput() PhpSettingsPtrOutput
+	ToPhpSettingsPtrOutputWithContext(context.Context) PhpSettingsPtrOutput
+}
+
+type phpSettingsPtrType PhpSettingsArgs
+
+func PhpSettingsPtr(v *PhpSettingsArgs) PhpSettingsPtrInput {
+	return (*phpSettingsPtrType)(v)
+}
+
+func (*phpSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhpSettings)(nil)).Elem()
+}
+
+func (i *phpSettingsPtrType) ToPhpSettingsPtrOutput() PhpSettingsPtrOutput {
+	return i.ToPhpSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *phpSettingsPtrType) ToPhpSettingsPtrOutputWithContext(ctx context.Context) PhpSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhpSettingsPtrOutput)
+}
+
+// Settings for Php client libraries.
+type PhpSettingsOutput struct{ *pulumi.OutputState }
+
+func (PhpSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpSettings)(nil)).Elem()
+}
+
+func (o PhpSettingsOutput) ToPhpSettingsOutput() PhpSettingsOutput {
+	return o
+}
+
+func (o PhpSettingsOutput) ToPhpSettingsOutputWithContext(ctx context.Context) PhpSettingsOutput {
+	return o
+}
+
+func (o PhpSettingsOutput) ToPhpSettingsPtrOutput() PhpSettingsPtrOutput {
+	return o.ToPhpSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PhpSettingsOutput) ToPhpSettingsPtrOutputWithContext(ctx context.Context) PhpSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PhpSettings) *PhpSettings {
+		return &v
+	}).(PhpSettingsPtrOutput)
+}
+
+// Some settings.
+func (o PhpSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v PhpSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type PhpSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PhpSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PhpSettings)(nil)).Elem()
+}
+
+func (o PhpSettingsPtrOutput) ToPhpSettingsPtrOutput() PhpSettingsPtrOutput {
+	return o
+}
+
+func (o PhpSettingsPtrOutput) ToPhpSettingsPtrOutputWithContext(ctx context.Context) PhpSettingsPtrOutput {
+	return o
+}
+
+func (o PhpSettingsPtrOutput) Elem() PhpSettingsOutput {
+	return o.ApplyT(func(v *PhpSettings) PhpSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PhpSettings
+		return ret
+	}).(PhpSettingsOutput)
+}
+
+// Some settings.
+func (o PhpSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *PhpSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for Php client libraries.
+type PhpSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for Php client libraries.
+type PhpSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PhpSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhpSettingsResponse)(nil)).Elem()
+}
+
+func (o PhpSettingsResponseOutput) ToPhpSettingsResponseOutput() PhpSettingsResponseOutput {
+	return o
+}
+
+func (o PhpSettingsResponseOutput) ToPhpSettingsResponseOutputWithContext(ctx context.Context) PhpSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o PhpSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v PhpSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
+// This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+type Publishing struct {
+	// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+	ApiShortName *string `pulumi:"apiShortName"`
+	// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+	CodeownerGithubTeams []string `pulumi:"codeownerGithubTeams"`
+	// A prefix used in sample code when demarking regions to be included in documentation.
+	DocTagPrefix *string `pulumi:"docTagPrefix"`
+	// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+	DocumentationUri *string `pulumi:"documentationUri"`
+	// GitHub label to apply to issues and pull requests opened for this API.
+	GithubLabel *string `pulumi:"githubLabel"`
+	// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+	LibrarySettings []ClientLibrarySettings `pulumi:"librarySettings"`
+	// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+	MethodSettings []MethodSettings `pulumi:"methodSettings"`
+	// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+	NewIssueUri *string `pulumi:"newIssueUri"`
+	// For whom the client library is being published.
+	Organization *PublishingOrganization `pulumi:"organization"`
+}
+
+// PublishingInput is an input type that accepts PublishingArgs and PublishingOutput values.
+// You can construct a concrete instance of `PublishingInput` via:
+//
+//	PublishingArgs{...}
+type PublishingInput interface {
+	pulumi.Input
+
+	ToPublishingOutput() PublishingOutput
+	ToPublishingOutputWithContext(context.Context) PublishingOutput
+}
+
+// This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+type PublishingArgs struct {
+	// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+	ApiShortName pulumi.StringPtrInput `pulumi:"apiShortName"`
+	// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+	CodeownerGithubTeams pulumi.StringArrayInput `pulumi:"codeownerGithubTeams"`
+	// A prefix used in sample code when demarking regions to be included in documentation.
+	DocTagPrefix pulumi.StringPtrInput `pulumi:"docTagPrefix"`
+	// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+	DocumentationUri pulumi.StringPtrInput `pulumi:"documentationUri"`
+	// GitHub label to apply to issues and pull requests opened for this API.
+	GithubLabel pulumi.StringPtrInput `pulumi:"githubLabel"`
+	// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+	LibrarySettings ClientLibrarySettingsArrayInput `pulumi:"librarySettings"`
+	// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+	MethodSettings MethodSettingsArrayInput `pulumi:"methodSettings"`
+	// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+	NewIssueUri pulumi.StringPtrInput `pulumi:"newIssueUri"`
+	// For whom the client library is being published.
+	Organization PublishingOrganizationPtrInput `pulumi:"organization"`
+}
+
+func (PublishingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Publishing)(nil)).Elem()
+}
+
+func (i PublishingArgs) ToPublishingOutput() PublishingOutput {
+	return i.ToPublishingOutputWithContext(context.Background())
+}
+
+func (i PublishingArgs) ToPublishingOutputWithContext(ctx context.Context) PublishingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublishingOutput)
+}
+
+func (i PublishingArgs) ToPublishingPtrOutput() PublishingPtrOutput {
+	return i.ToPublishingPtrOutputWithContext(context.Background())
+}
+
+func (i PublishingArgs) ToPublishingPtrOutputWithContext(ctx context.Context) PublishingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublishingOutput).ToPublishingPtrOutputWithContext(ctx)
+}
+
+// PublishingPtrInput is an input type that accepts PublishingArgs, PublishingPtr and PublishingPtrOutput values.
+// You can construct a concrete instance of `PublishingPtrInput` via:
+//
+//	        PublishingArgs{...}
+//
+//	or:
+//
+//	        nil
+type PublishingPtrInput interface {
+	pulumi.Input
+
+	ToPublishingPtrOutput() PublishingPtrOutput
+	ToPublishingPtrOutputWithContext(context.Context) PublishingPtrOutput
+}
+
+type publishingPtrType PublishingArgs
+
+func PublishingPtr(v *PublishingArgs) PublishingPtrInput {
+	return (*publishingPtrType)(v)
+}
+
+func (*publishingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Publishing)(nil)).Elem()
+}
+
+func (i *publishingPtrType) ToPublishingPtrOutput() PublishingPtrOutput {
+	return i.ToPublishingPtrOutputWithContext(context.Background())
+}
+
+func (i *publishingPtrType) ToPublishingPtrOutputWithContext(ctx context.Context) PublishingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PublishingPtrOutput)
+}
+
+// This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+type PublishingOutput struct{ *pulumi.OutputState }
+
+func (PublishingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Publishing)(nil)).Elem()
+}
+
+func (o PublishingOutput) ToPublishingOutput() PublishingOutput {
+	return o
+}
+
+func (o PublishingOutput) ToPublishingOutputWithContext(ctx context.Context) PublishingOutput {
+	return o
+}
+
+func (o PublishingOutput) ToPublishingPtrOutput() PublishingPtrOutput {
+	return o.ToPublishingPtrOutputWithContext(context.Background())
+}
+
+func (o PublishingOutput) ToPublishingPtrOutputWithContext(ctx context.Context) PublishingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Publishing) *Publishing {
+		return &v
+	}).(PublishingPtrOutput)
+}
+
+// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+func (o PublishingOutput) ApiShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publishing) *string { return v.ApiShortName }).(pulumi.StringPtrOutput)
+}
+
+// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+func (o PublishingOutput) CodeownerGithubTeams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Publishing) []string { return v.CodeownerGithubTeams }).(pulumi.StringArrayOutput)
+}
+
+// A prefix used in sample code when demarking regions to be included in documentation.
+func (o PublishingOutput) DocTagPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publishing) *string { return v.DocTagPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+func (o PublishingOutput) DocumentationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publishing) *string { return v.DocumentationUri }).(pulumi.StringPtrOutput)
+}
+
+// GitHub label to apply to issues and pull requests opened for this API.
+func (o PublishingOutput) GithubLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publishing) *string { return v.GithubLabel }).(pulumi.StringPtrOutput)
+}
+
+// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+func (o PublishingOutput) LibrarySettings() ClientLibrarySettingsArrayOutput {
+	return o.ApplyT(func(v Publishing) []ClientLibrarySettings { return v.LibrarySettings }).(ClientLibrarySettingsArrayOutput)
+}
+
+// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+func (o PublishingOutput) MethodSettings() MethodSettingsArrayOutput {
+	return o.ApplyT(func(v Publishing) []MethodSettings { return v.MethodSettings }).(MethodSettingsArrayOutput)
+}
+
+// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+func (o PublishingOutput) NewIssueUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Publishing) *string { return v.NewIssueUri }).(pulumi.StringPtrOutput)
+}
+
+// For whom the client library is being published.
+func (o PublishingOutput) Organization() PublishingOrganizationPtrOutput {
+	return o.ApplyT(func(v Publishing) *PublishingOrganization { return v.Organization }).(PublishingOrganizationPtrOutput)
+}
+
+type PublishingPtrOutput struct{ *pulumi.OutputState }
+
+func (PublishingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Publishing)(nil)).Elem()
+}
+
+func (o PublishingPtrOutput) ToPublishingPtrOutput() PublishingPtrOutput {
+	return o
+}
+
+func (o PublishingPtrOutput) ToPublishingPtrOutputWithContext(ctx context.Context) PublishingPtrOutput {
+	return o
+}
+
+func (o PublishingPtrOutput) Elem() PublishingOutput {
+	return o.ApplyT(func(v *Publishing) Publishing {
+		if v != nil {
+			return *v
+		}
+		var ret Publishing
+		return ret
+	}).(PublishingOutput)
+}
+
+// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+func (o PublishingPtrOutput) ApiShortName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publishing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ApiShortName
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+func (o PublishingPtrOutput) CodeownerGithubTeams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Publishing) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CodeownerGithubTeams
+	}).(pulumi.StringArrayOutput)
+}
+
+// A prefix used in sample code when demarking regions to be included in documentation.
+func (o PublishingPtrOutput) DocTagPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publishing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocTagPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+func (o PublishingPtrOutput) DocumentationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publishing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DocumentationUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// GitHub label to apply to issues and pull requests opened for this API.
+func (o PublishingPtrOutput) GithubLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publishing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GithubLabel
+	}).(pulumi.StringPtrOutput)
+}
+
+// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+func (o PublishingPtrOutput) LibrarySettings() ClientLibrarySettingsArrayOutput {
+	return o.ApplyT(func(v *Publishing) []ClientLibrarySettings {
+		if v == nil {
+			return nil
+		}
+		return v.LibrarySettings
+	}).(ClientLibrarySettingsArrayOutput)
+}
+
+// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+func (o PublishingPtrOutput) MethodSettings() MethodSettingsArrayOutput {
+	return o.ApplyT(func(v *Publishing) []MethodSettings {
+		if v == nil {
+			return nil
+		}
+		return v.MethodSettings
+	}).(MethodSettingsArrayOutput)
+}
+
+// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+func (o PublishingPtrOutput) NewIssueUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Publishing) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NewIssueUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// For whom the client library is being published.
+func (o PublishingPtrOutput) Organization() PublishingOrganizationPtrOutput {
+	return o.ApplyT(func(v *Publishing) *PublishingOrganization {
+		if v == nil {
+			return nil
+		}
+		return v.Organization
+	}).(PublishingOrganizationPtrOutput)
+}
+
+// This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+type PublishingResponse struct {
+	// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+	ApiShortName string `pulumi:"apiShortName"`
+	// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+	CodeownerGithubTeams []string `pulumi:"codeownerGithubTeams"`
+	// A prefix used in sample code when demarking regions to be included in documentation.
+	DocTagPrefix string `pulumi:"docTagPrefix"`
+	// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+	DocumentationUri string `pulumi:"documentationUri"`
+	// GitHub label to apply to issues and pull requests opened for this API.
+	GithubLabel string `pulumi:"githubLabel"`
+	// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+	LibrarySettings []ClientLibrarySettingsResponse `pulumi:"librarySettings"`
+	// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+	MethodSettings []MethodSettingsResponse `pulumi:"methodSettings"`
+	// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+	NewIssueUri string `pulumi:"newIssueUri"`
+	// For whom the client library is being published.
+	Organization string `pulumi:"organization"`
+}
+
+// This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+type PublishingResponseOutput struct{ *pulumi.OutputState }
+
+func (PublishingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublishingResponse)(nil)).Elem()
+}
+
+func (o PublishingResponseOutput) ToPublishingResponseOutput() PublishingResponseOutput {
+	return o
+}
+
+func (o PublishingResponseOutput) ToPublishingResponseOutputWithContext(ctx context.Context) PublishingResponseOutput {
+	return o
+}
+
+// Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+func (o PublishingResponseOutput) ApiShortName() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingResponse) string { return v.ApiShortName }).(pulumi.StringOutput)
+}
+
+// GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+func (o PublishingResponseOutput) CodeownerGithubTeams() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PublishingResponse) []string { return v.CodeownerGithubTeams }).(pulumi.StringArrayOutput)
+}
+
+// A prefix used in sample code when demarking regions to be included in documentation.
+func (o PublishingResponseOutput) DocTagPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingResponse) string { return v.DocTagPrefix }).(pulumi.StringOutput)
+}
+
+// Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+func (o PublishingResponseOutput) DocumentationUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingResponse) string { return v.DocumentationUri }).(pulumi.StringOutput)
+}
+
+// GitHub label to apply to issues and pull requests opened for this API.
+func (o PublishingResponseOutput) GithubLabel() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingResponse) string { return v.GithubLabel }).(pulumi.StringOutput)
+}
+
+// Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+func (o PublishingResponseOutput) LibrarySettings() ClientLibrarySettingsResponseArrayOutput {
+	return o.ApplyT(func(v PublishingResponse) []ClientLibrarySettingsResponse { return v.LibrarySettings }).(ClientLibrarySettingsResponseArrayOutput)
+}
+
+// A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+func (o PublishingResponseOutput) MethodSettings() MethodSettingsResponseArrayOutput {
+	return o.ApplyT(func(v PublishingResponse) []MethodSettingsResponse { return v.MethodSettings }).(MethodSettingsResponseArrayOutput)
+}
+
+// Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+func (o PublishingResponseOutput) NewIssueUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingResponse) string { return v.NewIssueUri }).(pulumi.StringOutput)
+}
+
+// For whom the client library is being published.
+func (o PublishingResponseOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v PublishingResponse) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// Settings for Python client libraries.
+type PythonSettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// PythonSettingsInput is an input type that accepts PythonSettingsArgs and PythonSettingsOutput values.
+// You can construct a concrete instance of `PythonSettingsInput` via:
+//
+//	PythonSettingsArgs{...}
+type PythonSettingsInput interface {
+	pulumi.Input
+
+	ToPythonSettingsOutput() PythonSettingsOutput
+	ToPythonSettingsOutputWithContext(context.Context) PythonSettingsOutput
+}
+
+// Settings for Python client libraries.
+type PythonSettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (PythonSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonSettings)(nil)).Elem()
+}
+
+func (i PythonSettingsArgs) ToPythonSettingsOutput() PythonSettingsOutput {
+	return i.ToPythonSettingsOutputWithContext(context.Background())
+}
+
+func (i PythonSettingsArgs) ToPythonSettingsOutputWithContext(ctx context.Context) PythonSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonSettingsOutput)
+}
+
+func (i PythonSettingsArgs) ToPythonSettingsPtrOutput() PythonSettingsPtrOutput {
+	return i.ToPythonSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PythonSettingsArgs) ToPythonSettingsPtrOutputWithContext(ctx context.Context) PythonSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonSettingsOutput).ToPythonSettingsPtrOutputWithContext(ctx)
+}
+
+// PythonSettingsPtrInput is an input type that accepts PythonSettingsArgs, PythonSettingsPtr and PythonSettingsPtrOutput values.
+// You can construct a concrete instance of `PythonSettingsPtrInput` via:
+//
+//	        PythonSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PythonSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPythonSettingsPtrOutput() PythonSettingsPtrOutput
+	ToPythonSettingsPtrOutputWithContext(context.Context) PythonSettingsPtrOutput
+}
+
+type pythonSettingsPtrType PythonSettingsArgs
+
+func PythonSettingsPtr(v *PythonSettingsArgs) PythonSettingsPtrInput {
+	return (*pythonSettingsPtrType)(v)
+}
+
+func (*pythonSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PythonSettings)(nil)).Elem()
+}
+
+func (i *pythonSettingsPtrType) ToPythonSettingsPtrOutput() PythonSettingsPtrOutput {
+	return i.ToPythonSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *pythonSettingsPtrType) ToPythonSettingsPtrOutputWithContext(ctx context.Context) PythonSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonSettingsPtrOutput)
+}
+
+// Settings for Python client libraries.
+type PythonSettingsOutput struct{ *pulumi.OutputState }
+
+func (PythonSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonSettings)(nil)).Elem()
+}
+
+func (o PythonSettingsOutput) ToPythonSettingsOutput() PythonSettingsOutput {
+	return o
+}
+
+func (o PythonSettingsOutput) ToPythonSettingsOutputWithContext(ctx context.Context) PythonSettingsOutput {
+	return o
+}
+
+func (o PythonSettingsOutput) ToPythonSettingsPtrOutput() PythonSettingsPtrOutput {
+	return o.ToPythonSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PythonSettingsOutput) ToPythonSettingsPtrOutputWithContext(ctx context.Context) PythonSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PythonSettings) *PythonSettings {
+		return &v
+	}).(PythonSettingsPtrOutput)
+}
+
+// Some settings.
+func (o PythonSettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v PythonSettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type PythonSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PythonSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PythonSettings)(nil)).Elem()
+}
+
+func (o PythonSettingsPtrOutput) ToPythonSettingsPtrOutput() PythonSettingsPtrOutput {
+	return o
+}
+
+func (o PythonSettingsPtrOutput) ToPythonSettingsPtrOutputWithContext(ctx context.Context) PythonSettingsPtrOutput {
+	return o
+}
+
+func (o PythonSettingsPtrOutput) Elem() PythonSettingsOutput {
+	return o.ApplyT(func(v *PythonSettings) PythonSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PythonSettings
+		return ret
+	}).(PythonSettingsOutput)
+}
+
+// Some settings.
+func (o PythonSettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *PythonSettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for Python client libraries.
+type PythonSettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for Python client libraries.
+type PythonSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PythonSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonSettingsResponse)(nil)).Elem()
+}
+
+func (o PythonSettingsResponseOutput) ToPythonSettingsResponseOutput() PythonSettingsResponseOutput {
+	return o
+}
+
+func (o PythonSettingsResponseOutput) ToPythonSettingsResponseOutputWithContext(ctx context.Context) PythonSettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o PythonSettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v PythonSettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
+}
+
 // Quota configuration helps to achieve fairness and budgeting in service usage. The metric based quota configuration works this way: - The service configuration defines a set of metrics. - For API calls, the quota.metric_rules maps methods to metrics with corresponding costs. - The quota.limits defines limits on the metrics, which will be used for quota checks at runtime. An example quota configuration in yaml format: quota: limits: - name: apiWriteQpsPerProject metric: library.googleapis.com/write_calls unit: "1/min/{project}" # rate limit for consumer projects values: STANDARD: 10000 (The metric rules bind all methods to the read_calls metric, except for the UpdateBook and DeleteBook methods. These two methods are mapped to the write_calls metric, with the UpdateBook method consuming at twice rate as the DeleteBook method.) metric_rules: - selector: "*" metric_costs: library.googleapis.com/read_calls: 1 - selector: google.example.library.v1.LibraryService.UpdateBook metric_costs: library.googleapis.com/write_calls: 2 - selector: google.example.library.v1.LibraryService.DeleteBook metric_costs: library.googleapis.com/write_calls: 1 Corresponding Metric definition: metrics: - name: library.googleapis.com/read_calls display_name: Read requests metric_kind: DELTA value_type: INT64 - name: library.googleapis.com/write_calls display_name: Write requests metric_kind: DELTA value_type: INT64
 type Quota struct {
 	// List of QuotaLimit definitions for the service.
@@ -9140,6 +11684,172 @@ func (o QuotaResponseOutput) Limits() QuotaLimitResponseArrayOutput {
 // List of MetricRule definitions, each one mapping a selected method to one or more metrics.
 func (o QuotaResponseOutput) MetricRules() MetricRuleResponseArrayOutput {
 	return o.ApplyT(func(v QuotaResponse) []MetricRuleResponse { return v.MetricRules }).(MetricRuleResponseArrayOutput)
+}
+
+// Settings for Ruby client libraries.
+type RubySettings struct {
+	// Some settings.
+	Common *CommonLanguageSettings `pulumi:"common"`
+}
+
+// RubySettingsInput is an input type that accepts RubySettingsArgs and RubySettingsOutput values.
+// You can construct a concrete instance of `RubySettingsInput` via:
+//
+//	RubySettingsArgs{...}
+type RubySettingsInput interface {
+	pulumi.Input
+
+	ToRubySettingsOutput() RubySettingsOutput
+	ToRubySettingsOutputWithContext(context.Context) RubySettingsOutput
+}
+
+// Settings for Ruby client libraries.
+type RubySettingsArgs struct {
+	// Some settings.
+	Common CommonLanguageSettingsPtrInput `pulumi:"common"`
+}
+
+func (RubySettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RubySettings)(nil)).Elem()
+}
+
+func (i RubySettingsArgs) ToRubySettingsOutput() RubySettingsOutput {
+	return i.ToRubySettingsOutputWithContext(context.Background())
+}
+
+func (i RubySettingsArgs) ToRubySettingsOutputWithContext(ctx context.Context) RubySettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RubySettingsOutput)
+}
+
+func (i RubySettingsArgs) ToRubySettingsPtrOutput() RubySettingsPtrOutput {
+	return i.ToRubySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i RubySettingsArgs) ToRubySettingsPtrOutputWithContext(ctx context.Context) RubySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RubySettingsOutput).ToRubySettingsPtrOutputWithContext(ctx)
+}
+
+// RubySettingsPtrInput is an input type that accepts RubySettingsArgs, RubySettingsPtr and RubySettingsPtrOutput values.
+// You can construct a concrete instance of `RubySettingsPtrInput` via:
+//
+//	        RubySettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RubySettingsPtrInput interface {
+	pulumi.Input
+
+	ToRubySettingsPtrOutput() RubySettingsPtrOutput
+	ToRubySettingsPtrOutputWithContext(context.Context) RubySettingsPtrOutput
+}
+
+type rubySettingsPtrType RubySettingsArgs
+
+func RubySettingsPtr(v *RubySettingsArgs) RubySettingsPtrInput {
+	return (*rubySettingsPtrType)(v)
+}
+
+func (*rubySettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RubySettings)(nil)).Elem()
+}
+
+func (i *rubySettingsPtrType) ToRubySettingsPtrOutput() RubySettingsPtrOutput {
+	return i.ToRubySettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *rubySettingsPtrType) ToRubySettingsPtrOutputWithContext(ctx context.Context) RubySettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RubySettingsPtrOutput)
+}
+
+// Settings for Ruby client libraries.
+type RubySettingsOutput struct{ *pulumi.OutputState }
+
+func (RubySettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RubySettings)(nil)).Elem()
+}
+
+func (o RubySettingsOutput) ToRubySettingsOutput() RubySettingsOutput {
+	return o
+}
+
+func (o RubySettingsOutput) ToRubySettingsOutputWithContext(ctx context.Context) RubySettingsOutput {
+	return o
+}
+
+func (o RubySettingsOutput) ToRubySettingsPtrOutput() RubySettingsPtrOutput {
+	return o.ToRubySettingsPtrOutputWithContext(context.Background())
+}
+
+func (o RubySettingsOutput) ToRubySettingsPtrOutputWithContext(ctx context.Context) RubySettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RubySettings) *RubySettings {
+		return &v
+	}).(RubySettingsPtrOutput)
+}
+
+// Some settings.
+func (o RubySettingsOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v RubySettings) *CommonLanguageSettings { return v.Common }).(CommonLanguageSettingsPtrOutput)
+}
+
+type RubySettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (RubySettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RubySettings)(nil)).Elem()
+}
+
+func (o RubySettingsPtrOutput) ToRubySettingsPtrOutput() RubySettingsPtrOutput {
+	return o
+}
+
+func (o RubySettingsPtrOutput) ToRubySettingsPtrOutputWithContext(ctx context.Context) RubySettingsPtrOutput {
+	return o
+}
+
+func (o RubySettingsPtrOutput) Elem() RubySettingsOutput {
+	return o.ApplyT(func(v *RubySettings) RubySettings {
+		if v != nil {
+			return *v
+		}
+		var ret RubySettings
+		return ret
+	}).(RubySettingsOutput)
+}
+
+// Some settings.
+func (o RubySettingsPtrOutput) Common() CommonLanguageSettingsPtrOutput {
+	return o.ApplyT(func(v *RubySettings) *CommonLanguageSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Common
+	}).(CommonLanguageSettingsPtrOutput)
+}
+
+// Settings for Ruby client libraries.
+type RubySettingsResponse struct {
+	// Some settings.
+	Common CommonLanguageSettingsResponse `pulumi:"common"`
+}
+
+// Settings for Ruby client libraries.
+type RubySettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (RubySettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RubySettingsResponse)(nil)).Elem()
+}
+
+func (o RubySettingsResponseOutput) ToRubySettingsResponseOutput() RubySettingsResponseOutput {
+	return o
+}
+
+func (o RubySettingsResponseOutput) ToRubySettingsResponseOutputWithContext(ctx context.Context) RubySettingsResponseOutput {
+	return o
+}
+
+// Some settings.
+func (o RubySettingsResponseOutput) Common() CommonLanguageSettingsResponseOutput {
+	return o.ApplyT(func(v RubySettingsResponse) CommonLanguageSettingsResponse { return v.Common }).(CommonLanguageSettingsResponseOutput)
 }
 
 // `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
@@ -10653,12 +13363,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BillingDestinationArrayInput)(nil)).Elem(), BillingDestinationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientLibrarySettingsInput)(nil)).Elem(), ClientLibrarySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClientLibrarySettingsArrayInput)(nil)).Elem(), ClientLibrarySettingsArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonLanguageSettingsInput)(nil)).Elem(), CommonLanguageSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonLanguageSettingsPtrInput)(nil)).Elem(), CommonLanguageSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContextInput)(nil)).Elem(), ContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContextPtrInput)(nil)).Elem(), ContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContextRuleInput)(nil)).Elem(), ContextRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContextRuleArrayInput)(nil)).Elem(), ContextRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlInput)(nil)).Elem(), ControlArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlPtrInput)(nil)).Elem(), ControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CppSettingsInput)(nil)).Elem(), CppSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CppSettingsPtrInput)(nil)).Elem(), CppSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorInput)(nil)).Elem(), CustomErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorPtrInput)(nil)).Elem(), CustomErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorRuleInput)(nil)).Elem(), CustomErrorRuleArgs{})
@@ -10671,6 +13387,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationPtrInput)(nil)).Elem(), DocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationRuleInput)(nil)).Elem(), DocumentationRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationRuleArrayInput)(nil)).Elem(), DocumentationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DotnetSettingsInput)(nil)).Elem(), DotnetSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DotnetSettingsPtrInput)(nil)).Elem(), DotnetSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInput)(nil)).Elem(), EndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointArrayInput)(nil)).Elem(), EndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnumInput)(nil)).Elem(), EnumArgs{})
@@ -10681,10 +13399,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldInput)(nil)).Elem(), FieldArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FieldArrayInput)(nil)).Elem(), FieldArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoSettingsInput)(nil)).Elem(), GoSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoSettingsPtrInput)(nil)).Elem(), GoSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpInput)(nil)).Elem(), HttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpPtrInput)(nil)).Elem(), HttpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRuleInput)(nil)).Elem(), HttpRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRuleArrayInput)(nil)).Elem(), HttpRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JavaSettingsInput)(nil)).Elem(), JavaSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*JavaSettingsPtrInput)(nil)).Elem(), JavaSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtLocationInput)(nil)).Elem(), JwtLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtLocationArrayInput)(nil)).Elem(), JwtLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LabelDescriptorInput)(nil)).Elem(), LabelDescriptorArgs{})
@@ -10695,8 +13417,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingPtrInput)(nil)).Elem(), LoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingDestinationInput)(nil)).Elem(), LoggingDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingDestinationArrayInput)(nil)).Elem(), LoggingDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LongRunningInput)(nil)).Elem(), LongRunningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LongRunningPtrInput)(nil)).Elem(), LongRunningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodInput)(nil)).Elem(), MethodArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MethodArrayInput)(nil)).Elem(), MethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MethodSettingsInput)(nil)).Elem(), MethodSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MethodSettingsArrayInput)(nil)).Elem(), MethodSettingsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorInput)(nil)).Elem(), MetricDescriptorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorArrayInput)(nil)).Elem(), MetricDescriptorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricDescriptorMetadataInput)(nil)).Elem(), MetricDescriptorMetadataArgs{})
@@ -10711,16 +13437,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringPtrInput)(nil)).Elem(), MonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringDestinationInput)(nil)).Elem(), MonitoringDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringDestinationArrayInput)(nil)).Elem(), MonitoringDestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeSettingsInput)(nil)).Elem(), NodeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeSettingsPtrInput)(nil)).Elem(), NodeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthRequirementsInput)(nil)).Elem(), OAuthRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthRequirementsPtrInput)(nil)).Elem(), OAuthRequirementsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionInput)(nil)).Elem(), OptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OptionArrayInput)(nil)).Elem(), OptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PageInput)(nil)).Elem(), PageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PageArrayInput)(nil)).Elem(), PageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhpSettingsInput)(nil)).Elem(), PhpSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhpSettingsPtrInput)(nil)).Elem(), PhpSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingInput)(nil)).Elem(), PublishingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PublishingPtrInput)(nil)).Elem(), PublishingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PythonSettingsInput)(nil)).Elem(), PythonSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PythonSettingsPtrInput)(nil)).Elem(), PythonSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaInput)(nil)).Elem(), QuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaPtrInput)(nil)).Elem(), QuotaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaLimitInput)(nil)).Elem(), QuotaLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QuotaLimitArrayInput)(nil)).Elem(), QuotaLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RubySettingsInput)(nil)).Elem(), RubySettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RubySettingsPtrInput)(nil)).Elem(), RubySettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextInput)(nil)).Elem(), SourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceContextPtrInput)(nil)).Elem(), SourceContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SystemParameterInput)(nil)).Elem(), SystemParameterArgs{})
@@ -10782,6 +13518,13 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ClientLibrarySettingsOutput{})
+	pulumi.RegisterOutputType(ClientLibrarySettingsArrayOutput{})
+	pulumi.RegisterOutputType(ClientLibrarySettingsResponseOutput{})
+	pulumi.RegisterOutputType(ClientLibrarySettingsResponseArrayOutput{})
+	pulumi.RegisterOutputType(CommonLanguageSettingsOutput{})
+	pulumi.RegisterOutputType(CommonLanguageSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CommonLanguageSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ContextOutput{})
 	pulumi.RegisterOutputType(ContextPtrOutput{})
 	pulumi.RegisterOutputType(ContextResponseOutput{})
@@ -10792,6 +13535,9 @@ func init() {
 	pulumi.RegisterOutputType(ControlOutput{})
 	pulumi.RegisterOutputType(ControlPtrOutput{})
 	pulumi.RegisterOutputType(ControlResponseOutput{})
+	pulumi.RegisterOutputType(CppSettingsOutput{})
+	pulumi.RegisterOutputType(CppSettingsPtrOutput{})
+	pulumi.RegisterOutputType(CppSettingsResponseOutput{})
 	pulumi.RegisterOutputType(CustomErrorOutput{})
 	pulumi.RegisterOutputType(CustomErrorPtrOutput{})
 	pulumi.RegisterOutputType(CustomErrorResponseOutput{})
@@ -10812,6 +13558,9 @@ func init() {
 	pulumi.RegisterOutputType(DocumentationRuleArrayOutput{})
 	pulumi.RegisterOutputType(DocumentationRuleResponseOutput{})
 	pulumi.RegisterOutputType(DocumentationRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(DotnetSettingsOutput{})
+	pulumi.RegisterOutputType(DotnetSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DotnetSettingsResponseOutput{})
 	pulumi.RegisterOutputType(EndpointOutput{})
 	pulumi.RegisterOutputType(EndpointArrayOutput{})
 	pulumi.RegisterOutputType(EndpointResponseOutput{})
@@ -10831,6 +13580,9 @@ func init() {
 	pulumi.RegisterOutputType(FieldArrayOutput{})
 	pulumi.RegisterOutputType(FieldResponseOutput{})
 	pulumi.RegisterOutputType(FieldResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoSettingsOutput{})
+	pulumi.RegisterOutputType(GoSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoSettingsResponseOutput{})
 	pulumi.RegisterOutputType(HttpOutput{})
 	pulumi.RegisterOutputType(HttpPtrOutput{})
 	pulumi.RegisterOutputType(HttpResponseOutput{})
@@ -10838,6 +13590,9 @@ func init() {
 	pulumi.RegisterOutputType(HttpRuleArrayOutput{})
 	pulumi.RegisterOutputType(HttpRuleResponseOutput{})
 	pulumi.RegisterOutputType(HttpRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(JavaSettingsOutput{})
+	pulumi.RegisterOutputType(JavaSettingsPtrOutput{})
+	pulumi.RegisterOutputType(JavaSettingsResponseOutput{})
 	pulumi.RegisterOutputType(JwtLocationOutput{})
 	pulumi.RegisterOutputType(JwtLocationArrayOutput{})
 	pulumi.RegisterOutputType(JwtLocationResponseOutput{})
@@ -10857,10 +13612,17 @@ func init() {
 	pulumi.RegisterOutputType(LoggingDestinationResponseOutput{})
 	pulumi.RegisterOutputType(LoggingDestinationResponseArrayOutput{})
 	pulumi.RegisterOutputType(LoggingResponseOutput{})
+	pulumi.RegisterOutputType(LongRunningOutput{})
+	pulumi.RegisterOutputType(LongRunningPtrOutput{})
+	pulumi.RegisterOutputType(LongRunningResponseOutput{})
 	pulumi.RegisterOutputType(MethodOutput{})
 	pulumi.RegisterOutputType(MethodArrayOutput{})
 	pulumi.RegisterOutputType(MethodResponseOutput{})
 	pulumi.RegisterOutputType(MethodResponseArrayOutput{})
+	pulumi.RegisterOutputType(MethodSettingsOutput{})
+	pulumi.RegisterOutputType(MethodSettingsArrayOutput{})
+	pulumi.RegisterOutputType(MethodSettingsResponseOutput{})
+	pulumi.RegisterOutputType(MethodSettingsResponseArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorArrayOutput{})
 	pulumi.RegisterOutputType(MetricDescriptorMetadataOutput{})
@@ -10887,6 +13649,9 @@ func init() {
 	pulumi.RegisterOutputType(MonitoringDestinationResponseOutput{})
 	pulumi.RegisterOutputType(MonitoringDestinationResponseArrayOutput{})
 	pulumi.RegisterOutputType(MonitoringResponseOutput{})
+	pulumi.RegisterOutputType(NodeSettingsOutput{})
+	pulumi.RegisterOutputType(NodeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(NodeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(OAuthRequirementsOutput{})
 	pulumi.RegisterOutputType(OAuthRequirementsPtrOutput{})
 	pulumi.RegisterOutputType(OAuthRequirementsResponseOutput{})
@@ -10898,6 +13663,15 @@ func init() {
 	pulumi.RegisterOutputType(PageArrayOutput{})
 	pulumi.RegisterOutputType(PageResponseOutput{})
 	pulumi.RegisterOutputType(PageResponseArrayOutput{})
+	pulumi.RegisterOutputType(PhpSettingsOutput{})
+	pulumi.RegisterOutputType(PhpSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PhpSettingsResponseOutput{})
+	pulumi.RegisterOutputType(PublishingOutput{})
+	pulumi.RegisterOutputType(PublishingPtrOutput{})
+	pulumi.RegisterOutputType(PublishingResponseOutput{})
+	pulumi.RegisterOutputType(PythonSettingsOutput{})
+	pulumi.RegisterOutputType(PythonSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PythonSettingsResponseOutput{})
 	pulumi.RegisterOutputType(QuotaOutput{})
 	pulumi.RegisterOutputType(QuotaPtrOutput{})
 	pulumi.RegisterOutputType(QuotaLimitOutput{})
@@ -10905,6 +13679,9 @@ func init() {
 	pulumi.RegisterOutputType(QuotaLimitResponseOutput{})
 	pulumi.RegisterOutputType(QuotaLimitResponseArrayOutput{})
 	pulumi.RegisterOutputType(QuotaResponseOutput{})
+	pulumi.RegisterOutputType(RubySettingsOutput{})
+	pulumi.RegisterOutputType(RubySettingsPtrOutput{})
+	pulumi.RegisterOutputType(RubySettingsResponseOutput{})
 	pulumi.RegisterOutputType(SourceContextOutput{})
 	pulumi.RegisterOutputType(SourceContextPtrOutput{})
 	pulumi.RegisterOutputType(SourceContextResponseOutput{})

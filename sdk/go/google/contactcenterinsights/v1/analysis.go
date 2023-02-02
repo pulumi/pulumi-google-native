@@ -17,7 +17,9 @@ type Analysis struct {
 
 	// The result of the analysis, which is populated when the analysis finishes.
 	AnalysisResult GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput `pulumi:"analysisResult"`
-	ConversationId pulumi.StringOutput                                            `pulumi:"conversationId"`
+	// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+	AnnotatorSelector GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput `pulumi:"annotatorSelector"`
+	ConversationId    pulumi.StringOutput                                               `pulumi:"conversationId"`
 	// The time at which the analysis was created, which occurs when the long-running operation completes.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	Location   pulumi.StringOutput `pulumi:"location"`
@@ -76,8 +78,10 @@ func (AnalysisState) ElementType() reflect.Type {
 }
 
 type analysisArgs struct {
-	ConversationId string  `pulumi:"conversationId"`
-	Location       *string `pulumi:"location"`
+	// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+	AnnotatorSelector *GoogleCloudContactcenterinsightsV1AnnotatorSelector `pulumi:"annotatorSelector"`
+	ConversationId    string                                               `pulumi:"conversationId"`
+	Location          *string                                              `pulumi:"location"`
 	// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -85,8 +89,10 @@ type analysisArgs struct {
 
 // The set of arguments for constructing a Analysis resource.
 type AnalysisArgs struct {
-	ConversationId pulumi.StringInput
-	Location       pulumi.StringPtrInput
+	// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+	AnnotatorSelector GoogleCloudContactcenterinsightsV1AnnotatorSelectorPtrInput
+	ConversationId    pulumi.StringInput
+	Location          pulumi.StringPtrInput
 	// Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -134,6 +140,13 @@ func (o AnalysisOutput) AnalysisResult() GoogleCloudContactcenterinsightsV1Analy
 	return o.ApplyT(func(v *Analysis) GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput {
 		return v.AnalysisResult
 	}).(GoogleCloudContactcenterinsightsV1AnalysisResultResponseOutput)
+}
+
+// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+func (o AnalysisOutput) AnnotatorSelector() GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput {
+	return o.ApplyT(func(v *Analysis) GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput {
+		return v.AnnotatorSelector
+	}).(GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponseOutput)
 }
 
 func (o AnalysisOutput) ConversationId() pulumi.StringOutput {

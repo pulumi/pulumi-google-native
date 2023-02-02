@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class InstanceGroupManagerInstanceLifecyclePolicyResponse
     {
         /// <summary>
+        /// Defines behaviour for all instance or failures
+        /// </summary>
+        public readonly string DefaultActionOnFailure;
+        /// <summary>
         /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
         /// </summary>
         public readonly string ForceUpdateOnRepair;
@@ -24,10 +28,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
         [OutputConstructor]
         private InstanceGroupManagerInstanceLifecyclePolicyResponse(
+            string defaultActionOnFailure,
+
             string forceUpdateOnRepair,
 
             Outputs.InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse metadataBasedReadinessSignal)
         {
+            DefaultActionOnFailure = defaultActionOnFailure;
             ForceUpdateOnRepair = forceUpdateOnRepair;
             MetadataBasedReadinessSignal = metadataBasedReadinessSignal;
         }

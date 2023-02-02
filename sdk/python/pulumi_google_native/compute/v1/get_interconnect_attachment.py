@@ -395,7 +395,7 @@ class GetInterconnectAttachmentResult:
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> int:
         """
-        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+        The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
         """
         return pulumi.get(self, "vlan_tag8021q")
 

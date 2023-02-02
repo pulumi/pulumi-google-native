@@ -30,12 +30,16 @@ type LookupArtifactArgs struct {
 }
 
 type LookupArtifactResult struct {
+	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+	Annotations map[string]string `pulumi:"annotations"`
 	// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
 	Contents string `pulumi:"contents"`
 	// Creation timestamp.
 	CreateTime string `pulumi:"createTime"`
 	// A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
 	Hash string `pulumi:"hash"`
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+	Labels map[string]string `pulumi:"labels"`
 	// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 	MimeType string `pulumi:"mimeType"`
 	// Resource name.
@@ -86,6 +90,11 @@ func (o LookupArtifactResultOutput) ToLookupArtifactResultOutputWithContext(ctx 
 	return o
 }
 
+// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+func (o LookupArtifactResultOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupArtifactResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 // Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
 func (o LookupArtifactResultOutput) Contents() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactResult) string { return v.Contents }).(pulumi.StringOutput)
@@ -99,6 +108,11 @@ func (o LookupArtifactResultOutput) CreateTime() pulumi.StringOutput {
 // A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
 func (o LookupArtifactResultOutput) Hash() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupArtifactResult) string { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+func (o LookupArtifactResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupArtifactResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").

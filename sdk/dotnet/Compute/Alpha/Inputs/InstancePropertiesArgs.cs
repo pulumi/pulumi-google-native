@@ -192,6 +192,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _serviceAccounts = value;
         }
 
+        [Input("serviceIntegrationSpecs")]
+        private InputMap<string>? _serviceIntegrationSpecs;
+
+        /// <summary>
+        /// Mapping of user defined keys to ServiceIntegrationSpec.
+        /// </summary>
+        public InputMap<string> ServiceIntegrationSpecs
+        {
+            get => _serviceIntegrationSpecs ?? (_serviceIntegrationSpecs = new InputMap<string>());
+            set => _serviceIntegrationSpecs = value;
+        }
+
         /// <summary>
         /// Note that for MachineImage, this is not supported yet.
         /// </summary>

@@ -12,8 +12,6 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
     /// <summary>
     /// Create a integration with a draft version in the specified project.
     /// Auto-naming is currently not supported for this resource.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:integrations/v1alpha:Version")]
     public partial class Version : global::Pulumi.CustomResource

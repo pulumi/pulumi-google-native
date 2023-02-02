@@ -107,6 +107,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The qualified name of the QueuedResource that requested this Node.
+        /// </summary>
+        [Output("queuedResource")]
+        public Output<string> QueuedResource { get; private set; } = null!;
+
+        /// <summary>
         /// Idempotent request UUID.
         /// </summary>
         [Output("requestId")]

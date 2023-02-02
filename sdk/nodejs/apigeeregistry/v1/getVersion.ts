@@ -54,6 +54,10 @@ export interface GetVersionResult {
      */
     readonly name: string;
     /**
+     * The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+     */
+    readonly primarySpec: string;
+    /**
      * A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
      */
     readonly state: string;

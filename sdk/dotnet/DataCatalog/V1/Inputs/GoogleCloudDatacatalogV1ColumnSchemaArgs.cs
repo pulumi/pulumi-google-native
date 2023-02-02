@@ -22,16 +22,46 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public Input<string> Column { get; set; } = null!;
 
         /// <summary>
+        /// Optional. Default value for the column.
+        /// </summary>
+        [Input("defaultValue")]
+        public Input<string>? DefaultValue { get; set; }
+
+        /// <summary>
         /// Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        /// </summary>
+        [Input("gcRule")]
+        public Input<string>? GcRule { get; set; }
+
+        /// <summary>
+        /// Optional. Most important inclusion of this column.
+        /// </summary>
+        [Input("highestIndexingType")]
+        public Input<Pulumi.GoogleNative.DataCatalog.V1.GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType>? HighestIndexingType { get; set; }
+
+        /// <summary>
+        /// Looker specific column info of this column.
+        /// </summary>
+        [Input("lookerColumnSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs>? LookerColumnSpec { get; set; }
+
+        /// <summary>
         /// Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
         /// </summary>
         [Input("mode")]
         public Input<string>? Mode { get; set; }
+
+        /// <summary>
+        /// Optional. Ordinal position
+        /// </summary>
+        [Input("ordinalPosition")]
+        public Input<int>? OrdinalPosition { get; set; }
 
         [Input("subcolumns")]
         private InputList<Inputs.GoogleCloudDatacatalogV1ColumnSchemaArgs>? _subcolumns;

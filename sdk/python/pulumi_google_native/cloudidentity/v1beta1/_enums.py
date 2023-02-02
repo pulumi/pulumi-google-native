@@ -5,10 +5,38 @@
 from enum import Enum
 
 __all__ = [
+    'DeviceClientTypesItem',
     'DynamicGroupQueryResourceType',
     'InboundSsoAssignmentSsoMode',
     'SignInBehaviorRedirectCondition',
 ]
+
+
+class DeviceClientTypesItem(str, Enum):
+    CLIENT_TYPE_UNSPECIFIED = "CLIENT_TYPE_UNSPECIFIED"
+    """
+    Default value
+    """
+    DRIVE_FS = "DRIVE_FS"
+    """
+    Managed by DriveFS
+    """
+    FUNDAMENTAL = "FUNDAMENTAL"
+    """
+    Management type for every secure device
+    """
+    ENDPOINT_VERIFICATION = "ENDPOINT_VERIFICATION"
+    """
+    Managed by Endpoint Verification
+    """
+    WINDOWS_ADVANCED = "WINDOWS_ADVANCED"
+    """
+    Managed by Windows
+    """
+    GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS = "GOOGLE_CREDENTIALS_PROVIDER_FOR_WINDOWS"
+    """
+    Managed by Google credential provider for windows
+    """
 
 
 class DynamicGroupQueryResourceType(str, Enum):

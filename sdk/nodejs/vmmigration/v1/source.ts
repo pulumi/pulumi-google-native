@@ -39,6 +39,10 @@ export class Source extends pulumi.CustomResource {
     }
 
     /**
+     * AWS type source details.
+     */
+    public readonly aws!: pulumi.Output<outputs.vmmigration.v1.AwsSourceDetailsResponse>;
+    /**
      * The create time timestamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -87,6 +91,7 @@ export class Source extends pulumi.CustomResource {
             if ((!args || args.sourceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sourceId'");
             }
+            resourceInputs["aws"] = args ? args.aws : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -98,6 +103,7 @@ export class Source extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["aws"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -120,6 +126,10 @@ export class Source extends pulumi.CustomResource {
  * The set of arguments for constructing a Source resource.
  */
 export interface SourceArgs {
+    /**
+     * AWS type source details.
+     */
+    aws?: pulumi.Input<inputs.vmmigration.v1.AwsSourceDetailsArgs>;
     /**
      * User-provided description of the source.
      */

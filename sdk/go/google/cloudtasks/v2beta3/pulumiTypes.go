@@ -1140,6 +1140,344 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Defines a header message. A header can have a key and a value.
+type Header struct {
+	// The Key of the header.
+	Key *string `pulumi:"key"`
+	// The Value of the header.
+	Value *string `pulumi:"value"`
+}
+
+// HeaderInput is an input type that accepts HeaderArgs and HeaderOutput values.
+// You can construct a concrete instance of `HeaderInput` via:
+//
+//	HeaderArgs{...}
+type HeaderInput interface {
+	pulumi.Input
+
+	ToHeaderOutput() HeaderOutput
+	ToHeaderOutputWithContext(context.Context) HeaderOutput
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderArgs struct {
+	// The Key of the header.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The Value of the header.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (HeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (i HeaderArgs) ToHeaderOutput() HeaderOutput {
+	return i.ToHeaderOutputWithContext(context.Background())
+}
+
+func (i HeaderArgs) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput)
+}
+
+func (i HeaderArgs) ToHeaderPtrOutput() HeaderPtrOutput {
+	return i.ToHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i HeaderArgs) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput).ToHeaderPtrOutputWithContext(ctx)
+}
+
+// HeaderPtrInput is an input type that accepts HeaderArgs, HeaderPtr and HeaderPtrOutput values.
+// You can construct a concrete instance of `HeaderPtrInput` via:
+//
+//	        HeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type HeaderPtrInput interface {
+	pulumi.Input
+
+	ToHeaderPtrOutput() HeaderPtrOutput
+	ToHeaderPtrOutputWithContext(context.Context) HeaderPtrOutput
+}
+
+type headerPtrType HeaderArgs
+
+func HeaderPtr(v *HeaderArgs) HeaderPtrInput {
+	return (*headerPtrType)(v)
+}
+
+func (*headerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Header)(nil)).Elem()
+}
+
+func (i *headerPtrType) ToHeaderPtrOutput() HeaderPtrOutput {
+	return i.ToHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *headerPtrType) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderPtrOutput)
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderOutput struct{ *pulumi.OutputState }
+
+func (HeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (o HeaderOutput) ToHeaderOutput() HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToHeaderPtrOutput() HeaderPtrOutput {
+	return o.ToHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o HeaderOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Header) *Header {
+		return &v
+	}).(HeaderPtrOutput)
+}
+
+// The Key of the header.
+func (o HeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// The Value of the header.
+func (o HeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type HeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (HeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Header)(nil)).Elem()
+}
+
+func (o HeaderPtrOutput) ToHeaderPtrOutput() HeaderPtrOutput {
+	return o
+}
+
+func (o HeaderPtrOutput) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrOutput {
+	return o
+}
+
+func (o HeaderPtrOutput) Elem() HeaderOutput {
+	return o.ApplyT(func(v *Header) Header {
+		if v != nil {
+			return *v
+		}
+		var ret Header
+		return ret
+	}).(HeaderOutput)
+}
+
+// The Key of the header.
+func (o HeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Header) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Value of the header.
+func (o HeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Header) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+// Wraps the Header object.
+type HeaderOverride struct {
+	// header embodying a key and a value.
+	Header *Header `pulumi:"header"`
+}
+
+// HeaderOverrideInput is an input type that accepts HeaderOverrideArgs and HeaderOverrideOutput values.
+// You can construct a concrete instance of `HeaderOverrideInput` via:
+//
+//	HeaderOverrideArgs{...}
+type HeaderOverrideInput interface {
+	pulumi.Input
+
+	ToHeaderOverrideOutput() HeaderOverrideOutput
+	ToHeaderOverrideOutputWithContext(context.Context) HeaderOverrideOutput
+}
+
+// Wraps the Header object.
+type HeaderOverrideArgs struct {
+	// header embodying a key and a value.
+	Header HeaderPtrInput `pulumi:"header"`
+}
+
+func (HeaderOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderOverride)(nil)).Elem()
+}
+
+func (i HeaderOverrideArgs) ToHeaderOverrideOutput() HeaderOverrideOutput {
+	return i.ToHeaderOverrideOutputWithContext(context.Background())
+}
+
+func (i HeaderOverrideArgs) ToHeaderOverrideOutputWithContext(ctx context.Context) HeaderOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOverrideOutput)
+}
+
+// HeaderOverrideArrayInput is an input type that accepts HeaderOverrideArray and HeaderOverrideArrayOutput values.
+// You can construct a concrete instance of `HeaderOverrideArrayInput` via:
+//
+//	HeaderOverrideArray{ HeaderOverrideArgs{...} }
+type HeaderOverrideArrayInput interface {
+	pulumi.Input
+
+	ToHeaderOverrideArrayOutput() HeaderOverrideArrayOutput
+	ToHeaderOverrideArrayOutputWithContext(context.Context) HeaderOverrideArrayOutput
+}
+
+type HeaderOverrideArray []HeaderOverrideInput
+
+func (HeaderOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderOverride)(nil)).Elem()
+}
+
+func (i HeaderOverrideArray) ToHeaderOverrideArrayOutput() HeaderOverrideArrayOutput {
+	return i.ToHeaderOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i HeaderOverrideArray) ToHeaderOverrideArrayOutputWithContext(ctx context.Context) HeaderOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOverrideArrayOutput)
+}
+
+// Wraps the Header object.
+type HeaderOverrideOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderOverride)(nil)).Elem()
+}
+
+func (o HeaderOverrideOutput) ToHeaderOverrideOutput() HeaderOverrideOutput {
+	return o
+}
+
+func (o HeaderOverrideOutput) ToHeaderOverrideOutputWithContext(ctx context.Context) HeaderOverrideOutput {
+	return o
+}
+
+// header embodying a key and a value.
+func (o HeaderOverrideOutput) Header() HeaderPtrOutput {
+	return o.ApplyT(func(v HeaderOverride) *Header { return v.Header }).(HeaderPtrOutput)
+}
+
+type HeaderOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderOverride)(nil)).Elem()
+}
+
+func (o HeaderOverrideArrayOutput) ToHeaderOverrideArrayOutput() HeaderOverrideArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideArrayOutput) ToHeaderOverrideArrayOutputWithContext(ctx context.Context) HeaderOverrideArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideArrayOutput) Index(i pulumi.IntInput) HeaderOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderOverride {
+		return vs[0].([]HeaderOverride)[vs[1].(int)]
+	}).(HeaderOverrideOutput)
+}
+
+// Wraps the Header object.
+type HeaderOverrideResponse struct {
+	// header embodying a key and a value.
+	Header HeaderResponse `pulumi:"header"`
+}
+
+// Wraps the Header object.
+type HeaderOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderOverrideResponse)(nil)).Elem()
+}
+
+func (o HeaderOverrideResponseOutput) ToHeaderOverrideResponseOutput() HeaderOverrideResponseOutput {
+	return o
+}
+
+func (o HeaderOverrideResponseOutput) ToHeaderOverrideResponseOutputWithContext(ctx context.Context) HeaderOverrideResponseOutput {
+	return o
+}
+
+// header embodying a key and a value.
+func (o HeaderOverrideResponseOutput) Header() HeaderResponseOutput {
+	return o.ApplyT(func(v HeaderOverrideResponse) HeaderResponse { return v.Header }).(HeaderResponseOutput)
+}
+
+type HeaderOverrideResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderOverrideResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]HeaderOverrideResponse)(nil)).Elem()
+}
+
+func (o HeaderOverrideResponseArrayOutput) ToHeaderOverrideResponseArrayOutput() HeaderOverrideResponseArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideResponseArrayOutput) ToHeaderOverrideResponseArrayOutputWithContext(ctx context.Context) HeaderOverrideResponseArrayOutput {
+	return o
+}
+
+func (o HeaderOverrideResponseArrayOutput) Index(i pulumi.IntInput) HeaderOverrideResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HeaderOverrideResponse {
+		return vs[0].([]HeaderOverrideResponse)[vs[1].(int)]
+	}).(HeaderOverrideResponseOutput)
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderResponse struct {
+	// The Key of the header.
+	Key string `pulumi:"key"`
+	// The Value of the header.
+	Value string `pulumi:"value"`
+}
+
+// Defines a header message. A header can have a key and a value.
+type HeaderResponseOutput struct{ *pulumi.OutputState }
+
+func (HeaderResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HeaderResponse)(nil)).Elem()
+}
+
+func (o HeaderResponseOutput) ToHeaderResponseOutput() HeaderResponseOutput {
+	return o
+}
+
+func (o HeaderResponseOutput) ToHeaderResponseOutputWithContext(ctx context.Context) HeaderResponseOutput {
+	return o
+}
+
+// The Key of the header.
+func (o HeaderResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v HeaderResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The Value of the header.
+func (o HeaderResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v HeaderResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
 // HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
 type HttpRequest struct {
 	// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
@@ -1434,6 +1772,224 @@ func (o HttpRequestResponseOutput) OidcToken() OidcTokenResponseOutput {
 // The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 func (o HttpRequestResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRequestResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTarget struct {
+	// HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	HeaderOverrides []HeaderOverride `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+	HttpMethod *HttpTargetHttpMethod `pulumi:"httpMethod"`
+	// URI override. When specified, modifies the execution URI for all the tasks in the queue.
+	UriOverride *UriOverride `pulumi:"uriOverride"`
+}
+
+// HttpTargetInput is an input type that accepts HttpTargetArgs and HttpTargetOutput values.
+// You can construct a concrete instance of `HttpTargetInput` via:
+//
+//	HttpTargetArgs{...}
+type HttpTargetInput interface {
+	pulumi.Input
+
+	ToHttpTargetOutput() HttpTargetOutput
+	ToHttpTargetOutputWithContext(context.Context) HttpTargetOutput
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetArgs struct {
+	// HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	HeaderOverrides HeaderOverrideArrayInput `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+	HttpMethod HttpTargetHttpMethodPtrInput `pulumi:"httpMethod"`
+	// URI override. When specified, modifies the execution URI for all the tasks in the queue.
+	UriOverride UriOverridePtrInput `pulumi:"uriOverride"`
+}
+
+func (HttpTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpTarget)(nil)).Elem()
+}
+
+func (i HttpTargetArgs) ToHttpTargetOutput() HttpTargetOutput {
+	return i.ToHttpTargetOutputWithContext(context.Background())
+}
+
+func (i HttpTargetArgs) ToHttpTargetOutputWithContext(ctx context.Context) HttpTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetOutput)
+}
+
+func (i HttpTargetArgs) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return i.ToHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i HttpTargetArgs) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetOutput).ToHttpTargetPtrOutputWithContext(ctx)
+}
+
+// HttpTargetPtrInput is an input type that accepts HttpTargetArgs, HttpTargetPtr and HttpTargetPtrOutput values.
+// You can construct a concrete instance of `HttpTargetPtrInput` via:
+//
+//	        HttpTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type HttpTargetPtrInput interface {
+	pulumi.Input
+
+	ToHttpTargetPtrOutput() HttpTargetPtrOutput
+	ToHttpTargetPtrOutputWithContext(context.Context) HttpTargetPtrOutput
+}
+
+type httpTargetPtrType HttpTargetArgs
+
+func HttpTargetPtr(v *HttpTargetArgs) HttpTargetPtrInput {
+	return (*httpTargetPtrType)(v)
+}
+
+func (*httpTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpTarget)(nil)).Elem()
+}
+
+func (i *httpTargetPtrType) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return i.ToHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *httpTargetPtrType) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HttpTargetPtrOutput)
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetOutput struct{ *pulumi.OutputState }
+
+func (HttpTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpTarget)(nil)).Elem()
+}
+
+func (o HttpTargetOutput) ToHttpTargetOutput() HttpTargetOutput {
+	return o
+}
+
+func (o HttpTargetOutput) ToHttpTargetOutputWithContext(ctx context.Context) HttpTargetOutput {
+	return o
+}
+
+func (o HttpTargetOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return o.ToHttpTargetPtrOutputWithContext(context.Background())
+}
+
+func (o HttpTargetOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpTarget) *HttpTarget {
+		return &v
+	}).(HttpTargetPtrOutput)
+}
+
+// HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+func (o HttpTargetOutput) HeaderOverrides() HeaderOverrideArrayOutput {
+	return o.ApplyT(func(v HttpTarget) []HeaderOverride { return v.HeaderOverrides }).(HeaderOverrideArrayOutput)
+}
+
+// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+func (o HttpTargetOutput) HttpMethod() HttpTargetHttpMethodPtrOutput {
+	return o.ApplyT(func(v HttpTarget) *HttpTargetHttpMethod { return v.HttpMethod }).(HttpTargetHttpMethodPtrOutput)
+}
+
+// URI override. When specified, modifies the execution URI for all the tasks in the queue.
+func (o HttpTargetOutput) UriOverride() UriOverridePtrOutput {
+	return o.ApplyT(func(v HttpTarget) *UriOverride { return v.UriOverride }).(UriOverridePtrOutput)
+}
+
+type HttpTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HttpTarget)(nil)).Elem()
+}
+
+func (o HttpTargetPtrOutput) ToHttpTargetPtrOutput() HttpTargetPtrOutput {
+	return o
+}
+
+func (o HttpTargetPtrOutput) ToHttpTargetPtrOutputWithContext(ctx context.Context) HttpTargetPtrOutput {
+	return o
+}
+
+func (o HttpTargetPtrOutput) Elem() HttpTargetOutput {
+	return o.ApplyT(func(v *HttpTarget) HttpTarget {
+		if v != nil {
+			return *v
+		}
+		var ret HttpTarget
+		return ret
+	}).(HttpTargetOutput)
+}
+
+// HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+func (o HttpTargetPtrOutput) HeaderOverrides() HeaderOverrideArrayOutput {
+	return o.ApplyT(func(v *HttpTarget) []HeaderOverride {
+		if v == nil {
+			return nil
+		}
+		return v.HeaderOverrides
+	}).(HeaderOverrideArrayOutput)
+}
+
+// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+func (o HttpTargetPtrOutput) HttpMethod() HttpTargetHttpMethodPtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *HttpTargetHttpMethod {
+		if v == nil {
+			return nil
+		}
+		return v.HttpMethod
+	}).(HttpTargetHttpMethodPtrOutput)
+}
+
+// URI override. When specified, modifies the execution URI for all the tasks in the queue.
+func (o HttpTargetPtrOutput) UriOverride() UriOverridePtrOutput {
+	return o.ApplyT(func(v *HttpTarget) *UriOverride {
+		if v == nil {
+			return nil
+		}
+		return v.UriOverride
+	}).(UriOverridePtrOutput)
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetResponse struct {
+	// HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+	HeaderOverrides []HeaderOverrideResponse `pulumi:"headerOverrides"`
+	// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+	HttpMethod string `pulumi:"httpMethod"`
+	// URI override. When specified, modifies the execution URI for all the tasks in the queue.
+	UriOverride UriOverrideResponse `pulumi:"uriOverride"`
+}
+
+// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
+type HttpTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (HttpTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpTargetResponse)(nil)).Elem()
+}
+
+func (o HttpTargetResponseOutput) ToHttpTargetResponseOutput() HttpTargetResponseOutput {
+	return o
+}
+
+func (o HttpTargetResponseOutput) ToHttpTargetResponseOutputWithContext(ctx context.Context) HttpTargetResponseOutput {
+	return o
+}
+
+// HTTP target headers. This map contains the header field names and values. Headers will be set when running the CreateTask and/or BufferTask. These headers represent a subset of the headers that will be configured for the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Several predefined headers, prefixed with "X-Google-Cloud-Tasks-", can be used to define properties of the task. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example,`Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. The default value is set to "application/json"` . * User-Agent: This will be set to  `"Google-Cloud-Tasks"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+func (o HttpTargetResponseOutput) HeaderOverrides() HeaderOverrideResponseArrayOutput {
+	return o.ApplyT(func(v HttpTargetResponse) []HeaderOverrideResponse { return v.HeaderOverrides }).(HeaderOverrideResponseArrayOutput)
+}
+
+// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+func (o HttpTargetResponseOutput) HttpMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpTargetResponse) string { return v.HttpMethod }).(pulumi.StringOutput)
+}
+
+// URI override. When specified, modifies the execution URI for all the tasks in the queue.
+func (o HttpTargetResponseOutput) UriOverride() UriOverrideResponseOutput {
+	return o.ApplyT(func(v HttpTargetResponse) UriOverrideResponse { return v.UriOverride }).(UriOverrideResponseOutput)
 }
 
 // Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
@@ -1820,6 +2376,172 @@ func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverride struct {
+	// The URI path (e.g., a/b/c). Default is Empty string.
+	Path *string `pulumi:"path"`
+}
+
+// PathOverrideInput is an input type that accepts PathOverrideArgs and PathOverrideOutput values.
+// You can construct a concrete instance of `PathOverrideInput` via:
+//
+//	PathOverrideArgs{...}
+type PathOverrideInput interface {
+	pulumi.Input
+
+	ToPathOverrideOutput() PathOverrideOutput
+	ToPathOverrideOutputWithContext(context.Context) PathOverrideOutput
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideArgs struct {
+	// The URI path (e.g., a/b/c). Default is Empty string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (PathOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PathOverride)(nil)).Elem()
+}
+
+func (i PathOverrideArgs) ToPathOverrideOutput() PathOverrideOutput {
+	return i.ToPathOverrideOutputWithContext(context.Background())
+}
+
+func (i PathOverrideArgs) ToPathOverrideOutputWithContext(ctx context.Context) PathOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PathOverrideOutput)
+}
+
+func (i PathOverrideArgs) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return i.ToPathOverridePtrOutputWithContext(context.Background())
+}
+
+func (i PathOverrideArgs) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PathOverrideOutput).ToPathOverridePtrOutputWithContext(ctx)
+}
+
+// PathOverridePtrInput is an input type that accepts PathOverrideArgs, PathOverridePtr and PathOverridePtrOutput values.
+// You can construct a concrete instance of `PathOverridePtrInput` via:
+//
+//	        PathOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type PathOverridePtrInput interface {
+	pulumi.Input
+
+	ToPathOverridePtrOutput() PathOverridePtrOutput
+	ToPathOverridePtrOutputWithContext(context.Context) PathOverridePtrOutput
+}
+
+type pathOverridePtrType PathOverrideArgs
+
+func PathOverridePtr(v *PathOverrideArgs) PathOverridePtrInput {
+	return (*pathOverridePtrType)(v)
+}
+
+func (*pathOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PathOverride)(nil)).Elem()
+}
+
+func (i *pathOverridePtrType) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return i.ToPathOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *pathOverridePtrType) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PathOverridePtrOutput)
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideOutput struct{ *pulumi.OutputState }
+
+func (PathOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PathOverride)(nil)).Elem()
+}
+
+func (o PathOverrideOutput) ToPathOverrideOutput() PathOverrideOutput {
+	return o
+}
+
+func (o PathOverrideOutput) ToPathOverrideOutputWithContext(ctx context.Context) PathOverrideOutput {
+	return o
+}
+
+func (o PathOverrideOutput) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return o.ToPathOverridePtrOutputWithContext(context.Background())
+}
+
+func (o PathOverrideOutput) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PathOverride) *PathOverride {
+		return &v
+	}).(PathOverridePtrOutput)
+}
+
+// The URI path (e.g., a/b/c). Default is Empty string.
+func (o PathOverrideOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PathOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type PathOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (PathOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PathOverride)(nil)).Elem()
+}
+
+func (o PathOverridePtrOutput) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return o
+}
+
+func (o PathOverridePtrOutput) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return o
+}
+
+func (o PathOverridePtrOutput) Elem() PathOverrideOutput {
+	return o.ApplyT(func(v *PathOverride) PathOverride {
+		if v != nil {
+			return *v
+		}
+		var ret PathOverride
+		return ret
+	}).(PathOverrideOutput)
+}
+
+// The URI path (e.g., a/b/c). Default is Empty string.
+func (o PathOverridePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PathOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideResponse struct {
+	// The URI path (e.g., a/b/c). Default is Empty string.
+	Path string `pulumi:"path"`
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (PathOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PathOverrideResponse)(nil)).Elem()
+}
+
+func (o PathOverrideResponseOutput) ToPathOverrideResponseOutput() PathOverrideResponseOutput {
+	return o
+}
+
+func (o PathOverrideResponseOutput) ToPathOverrideResponseOutputWithContext(ctx context.Context) PathOverrideResponseOutput {
+	return o
+}
+
+// The URI path (e.g., a/b/c). Default is Empty string.
+func (o PathOverrideResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PathOverrideResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
 // Pull Message. This proto can only be used for tasks in a queue which has PULL type. It currently exists for backwards compatibility with the App Engine Task Queue SDK. This message type maybe returned with methods list and get, when the response view is FULL.
 type PullMessage struct {
 	// A data payload consumed by the worker to execute the task.
@@ -2010,6 +2732,172 @@ func (o PullMessageResponseOutput) Payload() pulumi.StringOutput {
 // The tasks's tag. The tag is less than 500 characters. SDK compatibility: Although the SDK allows tags to be either string or [bytes](https://cloud.google.com/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be empty when the task is returned by Cloud Tasks.
 func (o PullMessageResponseOutput) Tag() pulumi.StringOutput {
 	return o.ApplyT(func(v PullMessageResponse) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverride struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+	QueryParams *string `pulumi:"queryParams"`
+}
+
+// QueryOverrideInput is an input type that accepts QueryOverrideArgs and QueryOverrideOutput values.
+// You can construct a concrete instance of `QueryOverrideInput` via:
+//
+//	QueryOverrideArgs{...}
+type QueryOverrideInput interface {
+	pulumi.Input
+
+	ToQueryOverrideOutput() QueryOverrideOutput
+	ToQueryOverrideOutputWithContext(context.Context) QueryOverrideOutput
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideArgs struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+	QueryParams pulumi.StringPtrInput `pulumi:"queryParams"`
+}
+
+func (QueryOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryOverride)(nil)).Elem()
+}
+
+func (i QueryOverrideArgs) ToQueryOverrideOutput() QueryOverrideOutput {
+	return i.ToQueryOverrideOutputWithContext(context.Background())
+}
+
+func (i QueryOverrideArgs) ToQueryOverrideOutputWithContext(ctx context.Context) QueryOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryOverrideOutput)
+}
+
+func (i QueryOverrideArgs) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return i.ToQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (i QueryOverrideArgs) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryOverrideOutput).ToQueryOverridePtrOutputWithContext(ctx)
+}
+
+// QueryOverridePtrInput is an input type that accepts QueryOverrideArgs, QueryOverridePtr and QueryOverridePtrOutput values.
+// You can construct a concrete instance of `QueryOverridePtrInput` via:
+//
+//	        QueryOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueryOverridePtrInput interface {
+	pulumi.Input
+
+	ToQueryOverridePtrOutput() QueryOverridePtrOutput
+	ToQueryOverridePtrOutputWithContext(context.Context) QueryOverridePtrOutput
+}
+
+type queryOverridePtrType QueryOverrideArgs
+
+func QueryOverridePtr(v *QueryOverrideArgs) QueryOverridePtrInput {
+	return (*queryOverridePtrType)(v)
+}
+
+func (*queryOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryOverride)(nil)).Elem()
+}
+
+func (i *queryOverridePtrType) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return i.ToQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *queryOverridePtrType) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryOverridePtrOutput)
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideOutput struct{ *pulumi.OutputState }
+
+func (QueryOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryOverride)(nil)).Elem()
+}
+
+func (o QueryOverrideOutput) ToQueryOverrideOutput() QueryOverrideOutput {
+	return o
+}
+
+func (o QueryOverrideOutput) ToQueryOverrideOutputWithContext(ctx context.Context) QueryOverrideOutput {
+	return o
+}
+
+func (o QueryOverrideOutput) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return o.ToQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (o QueryOverrideOutput) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryOverride) *QueryOverride {
+		return &v
+	}).(QueryOverridePtrOutput)
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+func (o QueryOverrideOutput) QueryParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueryOverride) *string { return v.QueryParams }).(pulumi.StringPtrOutput)
+}
+
+type QueryOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryOverride)(nil)).Elem()
+}
+
+func (o QueryOverridePtrOutput) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return o
+}
+
+func (o QueryOverridePtrOutput) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return o
+}
+
+func (o QueryOverridePtrOutput) Elem() QueryOverrideOutput {
+	return o.ApplyT(func(v *QueryOverride) QueryOverride {
+		if v != nil {
+			return *v
+		}
+		var ret QueryOverride
+		return ret
+	}).(QueryOverrideOutput)
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+func (o QueryOverridePtrOutput) QueryParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParams
+	}).(pulumi.StringPtrOutput)
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideResponse struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+	QueryParams string `pulumi:"queryParams"`
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (QueryOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryOverrideResponse)(nil)).Elem()
+}
+
+func (o QueryOverrideResponseOutput) ToQueryOverrideResponseOutput() QueryOverrideResponseOutput {
+	return o
+}
+
+func (o QueryOverrideResponseOutput) ToQueryOverrideResponseOutputWithContext(ctx context.Context) QueryOverrideResponseOutput {
+	return o
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+func (o QueryOverrideResponseOutput) QueryParams() pulumi.StringOutput {
+	return o.ApplyT(func(v QueryOverrideResponse) string { return v.QueryParams }).(pulumi.StringOutput)
 }
 
 // Statistics for a queue.
@@ -2760,6 +3648,302 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverride struct {
+	// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+	Host *string `pulumi:"host"`
+	// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+	PathOverride *PathOverride `pulumi:"pathOverride"`
+	// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+	Port *string `pulumi:"port"`
+	// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	QueryOverride *QueryOverride `pulumi:"queryOverride"`
+	// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+	Scheme *UriOverrideScheme `pulumi:"scheme"`
+	// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+	UriOverrideEnforceMode *UriOverrideUriOverrideEnforceMode `pulumi:"uriOverrideEnforceMode"`
+}
+
+// UriOverrideInput is an input type that accepts UriOverrideArgs and UriOverrideOutput values.
+// You can construct a concrete instance of `UriOverrideInput` via:
+//
+//	UriOverrideArgs{...}
+type UriOverrideInput interface {
+	pulumi.Input
+
+	ToUriOverrideOutput() UriOverrideOutput
+	ToUriOverrideOutputWithContext(context.Context) UriOverrideOutput
+}
+
+// URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideArgs struct {
+	// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+	PathOverride PathOverridePtrInput `pulumi:"pathOverride"`
+	// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	QueryOverride QueryOverridePtrInput `pulumi:"queryOverride"`
+	// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+	Scheme UriOverrideSchemePtrInput `pulumi:"scheme"`
+	// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+	UriOverrideEnforceMode UriOverrideUriOverrideEnforceModePtrInput `pulumi:"uriOverrideEnforceMode"`
+}
+
+func (UriOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverride)(nil)).Elem()
+}
+
+func (i UriOverrideArgs) ToUriOverrideOutput() UriOverrideOutput {
+	return i.ToUriOverrideOutputWithContext(context.Background())
+}
+
+func (i UriOverrideArgs) ToUriOverrideOutputWithContext(ctx context.Context) UriOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriOverrideOutput)
+}
+
+func (i UriOverrideArgs) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return i.ToUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (i UriOverrideArgs) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriOverrideOutput).ToUriOverridePtrOutputWithContext(ctx)
+}
+
+// UriOverridePtrInput is an input type that accepts UriOverrideArgs, UriOverridePtr and UriOverridePtrOutput values.
+// You can construct a concrete instance of `UriOverridePtrInput` via:
+//
+//	        UriOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type UriOverridePtrInput interface {
+	pulumi.Input
+
+	ToUriOverridePtrOutput() UriOverridePtrOutput
+	ToUriOverridePtrOutputWithContext(context.Context) UriOverridePtrOutput
+}
+
+type uriOverridePtrType UriOverrideArgs
+
+func UriOverridePtr(v *UriOverrideArgs) UriOverridePtrInput {
+	return (*uriOverridePtrType)(v)
+}
+
+func (*uriOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UriOverride)(nil)).Elem()
+}
+
+func (i *uriOverridePtrType) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return i.ToUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *uriOverridePtrType) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UriOverridePtrOutput)
+}
+
+// URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideOutput struct{ *pulumi.OutputState }
+
+func (UriOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverride)(nil)).Elem()
+}
+
+func (o UriOverrideOutput) ToUriOverrideOutput() UriOverrideOutput {
+	return o
+}
+
+func (o UriOverrideOutput) ToUriOverrideOutputWithContext(ctx context.Context) UriOverrideOutput {
+	return o
+}
+
+func (o UriOverrideOutput) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return o.ToUriOverridePtrOutputWithContext(context.Background())
+}
+
+func (o UriOverrideOutput) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UriOverride) *UriOverride {
+		return &v
+	}).(UriOverridePtrOutput)
+}
+
+// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+func (o UriOverrideOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+func (o UriOverrideOutput) PathOverride() PathOverridePtrOutput {
+	return o.ApplyT(func(v UriOverride) *PathOverride { return v.PathOverride }).(PathOverridePtrOutput)
+}
+
+// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+func (o UriOverrideOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UriOverride) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+func (o UriOverrideOutput) QueryOverride() QueryOverridePtrOutput {
+	return o.ApplyT(func(v UriOverride) *QueryOverride { return v.QueryOverride }).(QueryOverridePtrOutput)
+}
+
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+func (o UriOverrideOutput) Scheme() UriOverrideSchemePtrOutput {
+	return o.ApplyT(func(v UriOverride) *UriOverrideScheme { return v.Scheme }).(UriOverrideSchemePtrOutput)
+}
+
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+func (o UriOverrideOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnforceModePtrOutput {
+	return o.ApplyT(func(v UriOverride) *UriOverrideUriOverrideEnforceMode { return v.UriOverrideEnforceMode }).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
+type UriOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (UriOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UriOverride)(nil)).Elem()
+}
+
+func (o UriOverridePtrOutput) ToUriOverridePtrOutput() UriOverridePtrOutput {
+	return o
+}
+
+func (o UriOverridePtrOutput) ToUriOverridePtrOutputWithContext(ctx context.Context) UriOverridePtrOutput {
+	return o
+}
+
+func (o UriOverridePtrOutput) Elem() UriOverrideOutput {
+	return o.ApplyT(func(v *UriOverride) UriOverride {
+		if v != nil {
+			return *v
+		}
+		var ret UriOverride
+		return ret
+	}).(UriOverrideOutput)
+}
+
+// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+func (o UriOverridePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+func (o UriOverridePtrOutput) PathOverride() PathOverridePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *PathOverride {
+		if v == nil {
+			return nil
+		}
+		return v.PathOverride
+	}).(PathOverridePtrOutput)
+}
+
+// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+func (o UriOverridePtrOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UriOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+func (o UriOverridePtrOutput) QueryOverride() QueryOverridePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *QueryOverride {
+		if v == nil {
+			return nil
+		}
+		return v.QueryOverride
+	}).(QueryOverridePtrOutput)
+}
+
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+func (o UriOverridePtrOutput) Scheme() UriOverrideSchemePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *UriOverrideScheme {
+		if v == nil {
+			return nil
+		}
+		return v.Scheme
+	}).(UriOverrideSchemePtrOutput)
+}
+
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+func (o UriOverridePtrOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnforceModePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *UriOverrideUriOverrideEnforceMode {
+		if v == nil {
+			return nil
+		}
+		return v.UriOverrideEnforceMode
+	}).(UriOverrideUriOverrideEnforceModePtrOutput)
+}
+
+// URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideResponse struct {
+	// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+	Host string `pulumi:"host"`
+	// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+	PathOverride PathOverrideResponse `pulumi:"pathOverride"`
+	// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+	Port string `pulumi:"port"`
+	// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	QueryOverride QueryOverrideResponse `pulumi:"queryOverride"`
+	// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+	Scheme string `pulumi:"scheme"`
+	// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+	UriOverrideEnforceMode string `pulumi:"uriOverrideEnforceMode"`
+}
+
+// URI Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
+type UriOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (UriOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UriOverrideResponse)(nil)).Elem()
+}
+
+func (o UriOverrideResponseOutput) ToUriOverrideResponseOutput() UriOverrideResponseOutput {
+	return o
+}
+
+func (o UriOverrideResponseOutput) ToUriOverrideResponseOutputWithContext(ctx context.Context) UriOverrideResponseOutput {
+	return o
+}
+
+// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
+func (o UriOverrideResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+func (o UriOverrideResponseOutput) PathOverride() PathOverrideResponseOutput {
+	return o.ApplyT(func(v UriOverrideResponse) PathOverrideResponse { return v.PathOverride }).(PathOverrideResponseOutput)
+}
+
+// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
+func (o UriOverrideResponseOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+func (o UriOverrideResponseOutput) QueryOverride() QueryOverrideResponseOutput {
+	return o.ApplyT(func(v UriOverrideResponse) QueryOverrideResponse { return v.QueryOverride }).(QueryOverrideResponseOutput)
+}
+
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+func (o UriOverrideResponseOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.Scheme }).(pulumi.StringOutput)
+}
+
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+func (o UriOverrideResponseOutput) UriOverrideEnforceMode() pulumi.StringOutput {
+	return o.ApplyT(func(v UriOverrideResponse) string { return v.UriOverrideEnforceMode }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpQueueInput)(nil)).Elem(), AppEngineHttpQueueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineHttpQueuePtrInput)(nil)).Elem(), AppEngineHttpQueueArgs{})
@@ -2771,20 +3955,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderInput)(nil)).Elem(), HeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderPtrInput)(nil)).Elem(), HeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderOverrideInput)(nil)).Elem(), HeaderOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderOverrideArrayInput)(nil)).Elem(), HeaderOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestInput)(nil)).Elem(), HttpRequestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HttpRequestPtrInput)(nil)).Elem(), HttpRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetInput)(nil)).Elem(), HttpTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HttpTargetPtrInput)(nil)).Elem(), HttpTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenInput)(nil)).Elem(), OAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenPtrInput)(nil)).Elem(), OAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathOverrideInput)(nil)).Elem(), PathOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathOverridePtrInput)(nil)).Elem(), PathOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessageInput)(nil)).Elem(), PullMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessagePtrInput)(nil)).Elem(), PullMessageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryOverrideInput)(nil)).Elem(), QueryOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryOverridePtrInput)(nil)).Elem(), QueryOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsInput)(nil)).Elem(), RateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsPtrInput)(nil)).Elem(), RateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigInput)(nil)).Elem(), RetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigPtrInput)(nil)).Elem(), RetryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackdriverLoggingConfigInput)(nil)).Elem(), StackdriverLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StackdriverLoggingConfigPtrInput)(nil)).Elem(), StackdriverLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UriOverrideInput)(nil)).Elem(), UriOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UriOverridePtrInput)(nil)).Elem(), UriOverrideArgs{})
 	pulumi.RegisterOutputType(AppEngineHttpQueueOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpQueuePtrOutput{})
 	pulumi.RegisterOutputType(AppEngineHttpQueueResponseOutput{})
@@ -2802,18 +3998,34 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(HeaderOutput{})
+	pulumi.RegisterOutputType(HeaderPtrOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideArrayOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideResponseOutput{})
+	pulumi.RegisterOutputType(HeaderOverrideResponseArrayOutput{})
+	pulumi.RegisterOutputType(HeaderResponseOutput{})
 	pulumi.RegisterOutputType(HttpRequestOutput{})
 	pulumi.RegisterOutputType(HttpRequestPtrOutput{})
 	pulumi.RegisterOutputType(HttpRequestResponseOutput{})
+	pulumi.RegisterOutputType(HttpTargetOutput{})
+	pulumi.RegisterOutputType(HttpTargetPtrOutput{})
+	pulumi.RegisterOutputType(HttpTargetResponseOutput{})
 	pulumi.RegisterOutputType(OAuthTokenOutput{})
 	pulumi.RegisterOutputType(OAuthTokenPtrOutput{})
 	pulumi.RegisterOutputType(OAuthTokenResponseOutput{})
 	pulumi.RegisterOutputType(OidcTokenOutput{})
 	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
+	pulumi.RegisterOutputType(PathOverrideOutput{})
+	pulumi.RegisterOutputType(PathOverridePtrOutput{})
+	pulumi.RegisterOutputType(PathOverrideResponseOutput{})
 	pulumi.RegisterOutputType(PullMessageOutput{})
 	pulumi.RegisterOutputType(PullMessagePtrOutput{})
 	pulumi.RegisterOutputType(PullMessageResponseOutput{})
+	pulumi.RegisterOutputType(QueryOverrideOutput{})
+	pulumi.RegisterOutputType(QueryOverridePtrOutput{})
+	pulumi.RegisterOutputType(QueryOverrideResponseOutput{})
 	pulumi.RegisterOutputType(QueueStatsResponseOutput{})
 	pulumi.RegisterOutputType(RateLimitsOutput{})
 	pulumi.RegisterOutputType(RateLimitsPtrOutput{})
@@ -2825,4 +4037,7 @@ func init() {
 	pulumi.RegisterOutputType(StackdriverLoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(StackdriverLoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(UriOverrideOutput{})
+	pulumi.RegisterOutputType(UriOverridePtrOutput{})
+	pulumi.RegisterOutputType(UriOverrideResponseOutput{})
 }

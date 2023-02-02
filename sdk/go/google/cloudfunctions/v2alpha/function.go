@@ -18,7 +18,7 @@ type Function struct {
 	BuildConfig BuildConfigResponseOutput `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Describe whether the function is gen1 or gen2.
+	// Describe whether the function is 1st Gen or 2nd Gen.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger EventTriggerResponseOutput `pulumi:"eventTrigger"`
@@ -88,7 +88,7 @@ type functionArgs struct {
 	BuildConfig *BuildConfig `pulumi:"buildConfig"`
 	// User-provided description of a function.
 	Description *string `pulumi:"description"`
-	// Describe whether the function is gen1 or gen2.
+	// Describe whether the function is 1st Gen or 2nd Gen.
 	Environment *FunctionEnvironment `pulumi:"environment"`
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger *EventTrigger `pulumi:"eventTrigger"`
@@ -110,7 +110,7 @@ type FunctionArgs struct {
 	BuildConfig BuildConfigPtrInput
 	// User-provided description of a function.
 	Description pulumi.StringPtrInput
-	// Describe whether the function is gen1 or gen2.
+	// Describe whether the function is 1st Gen or 2nd Gen.
 	Environment FunctionEnvironmentPtrInput
 	// An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
 	EventTrigger EventTriggerPtrInput
@@ -173,7 +173,7 @@ func (o FunctionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Describe whether the function is gen1 or gen2.
+// Describe whether the function is 1st Gen or 2nd Gen.
 func (o FunctionOutput) Environment() pulumi.StringOutput {
 	return o.ApplyT(func(v *Function) pulumi.StringOutput { return v.Environment }).(pulumi.StringOutput)
 }

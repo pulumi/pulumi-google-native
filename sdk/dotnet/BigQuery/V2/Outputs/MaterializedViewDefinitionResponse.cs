@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class MaterializedViewDefinitionResponse
     {
         /// <summary>
+        /// [Optional] Allow non incremental materialized view definition. The default value is "false".
+        /// </summary>
+        public readonly bool AllowNonIncrementalDefinition;
+        /// <summary>
         /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
         /// </summary>
         public readonly bool EnableRefresh;
@@ -36,6 +40,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
         [OutputConstructor]
         private MaterializedViewDefinitionResponse(
+            bool allowNonIncrementalDefinition,
+
             bool enableRefresh,
 
             string lastRefreshTime,
@@ -46,6 +52,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string refreshIntervalMs)
         {
+            AllowNonIncrementalDefinition = allowNonIncrementalDefinition;
             EnableRefresh = enableRefresh;
             LastRefreshTime = lastRefreshTime;
             MaxStaleness = maxStaleness;

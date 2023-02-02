@@ -587,6 +587,8 @@ const (
 	MetricMetricSourceSparkHistoryServer = MetricMetricSource("SPARK_HISTORY_SERVER")
 	// Hiveserver2 metric source.
 	MetricMetricSourceHiveserver2 = MetricMetricSource("HIVESERVER2")
+	// hivemetastore metric source
+	MetricMetricSourceHivemetastore = MetricMetricSource("HIVEMETASTORE")
 )
 
 func (MetricMetricSource) ElementType() reflect.Type {
@@ -744,6 +746,217 @@ func (in *metricMetricSourcePtr) ToMetricMetricSourcePtrOutput() MetricMetricSou
 
 func (in *metricMetricSourcePtr) ToMetricMetricSourcePtrOutputWithContext(ctx context.Context) MetricMetricSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MetricMetricSourcePtrOutput)
+}
+
+type NodeGroupRolesItem string
+
+const (
+	// Required unspecified role.
+	NodeGroupRolesItemRoleUnspecified = NodeGroupRolesItem("ROLE_UNSPECIFIED")
+	// Job drivers run on the node pool.
+	NodeGroupRolesItemDriver = NodeGroupRolesItem("DRIVER")
+)
+
+func (NodeGroupRolesItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupRolesItem)(nil)).Elem()
+}
+
+func (e NodeGroupRolesItem) ToNodeGroupRolesItemOutput() NodeGroupRolesItemOutput {
+	return pulumi.ToOutput(e).(NodeGroupRolesItemOutput)
+}
+
+func (e NodeGroupRolesItem) ToNodeGroupRolesItemOutputWithContext(ctx context.Context) NodeGroupRolesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NodeGroupRolesItemOutput)
+}
+
+func (e NodeGroupRolesItem) ToNodeGroupRolesItemPtrOutput() NodeGroupRolesItemPtrOutput {
+	return e.ToNodeGroupRolesItemPtrOutputWithContext(context.Background())
+}
+
+func (e NodeGroupRolesItem) ToNodeGroupRolesItemPtrOutputWithContext(ctx context.Context) NodeGroupRolesItemPtrOutput {
+	return NodeGroupRolesItem(e).ToNodeGroupRolesItemOutputWithContext(ctx).ToNodeGroupRolesItemPtrOutputWithContext(ctx)
+}
+
+func (e NodeGroupRolesItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeGroupRolesItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NodeGroupRolesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NodeGroupRolesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NodeGroupRolesItemOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupRolesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeGroupRolesItem)(nil)).Elem()
+}
+
+func (o NodeGroupRolesItemOutput) ToNodeGroupRolesItemOutput() NodeGroupRolesItemOutput {
+	return o
+}
+
+func (o NodeGroupRolesItemOutput) ToNodeGroupRolesItemOutputWithContext(ctx context.Context) NodeGroupRolesItemOutput {
+	return o
+}
+
+func (o NodeGroupRolesItemOutput) ToNodeGroupRolesItemPtrOutput() NodeGroupRolesItemPtrOutput {
+	return o.ToNodeGroupRolesItemPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupRolesItemOutput) ToNodeGroupRolesItemPtrOutputWithContext(ctx context.Context) NodeGroupRolesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeGroupRolesItem) *NodeGroupRolesItem {
+		return &v
+	}).(NodeGroupRolesItemPtrOutput)
+}
+
+func (o NodeGroupRolesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NodeGroupRolesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeGroupRolesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NodeGroupRolesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupRolesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NodeGroupRolesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NodeGroupRolesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupRolesItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeGroupRolesItem)(nil)).Elem()
+}
+
+func (o NodeGroupRolesItemPtrOutput) ToNodeGroupRolesItemPtrOutput() NodeGroupRolesItemPtrOutput {
+	return o
+}
+
+func (o NodeGroupRolesItemPtrOutput) ToNodeGroupRolesItemPtrOutputWithContext(ctx context.Context) NodeGroupRolesItemPtrOutput {
+	return o
+}
+
+func (o NodeGroupRolesItemPtrOutput) Elem() NodeGroupRolesItemOutput {
+	return o.ApplyT(func(v *NodeGroupRolesItem) NodeGroupRolesItem {
+		if v != nil {
+			return *v
+		}
+		var ret NodeGroupRolesItem
+		return ret
+	}).(NodeGroupRolesItemOutput)
+}
+
+func (o NodeGroupRolesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NodeGroupRolesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NodeGroupRolesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NodeGroupRolesItemInput is an input type that accepts NodeGroupRolesItemArgs and NodeGroupRolesItemOutput values.
+// You can construct a concrete instance of `NodeGroupRolesItemInput` via:
+//
+//	NodeGroupRolesItemArgs{...}
+type NodeGroupRolesItemInput interface {
+	pulumi.Input
+
+	ToNodeGroupRolesItemOutput() NodeGroupRolesItemOutput
+	ToNodeGroupRolesItemOutputWithContext(context.Context) NodeGroupRolesItemOutput
+}
+
+var nodeGroupRolesItemPtrType = reflect.TypeOf((**NodeGroupRolesItem)(nil)).Elem()
+
+type NodeGroupRolesItemPtrInput interface {
+	pulumi.Input
+
+	ToNodeGroupRolesItemPtrOutput() NodeGroupRolesItemPtrOutput
+	ToNodeGroupRolesItemPtrOutputWithContext(context.Context) NodeGroupRolesItemPtrOutput
+}
+
+type nodeGroupRolesItemPtr string
+
+func NodeGroupRolesItemPtr(v string) NodeGroupRolesItemPtrInput {
+	return (*nodeGroupRolesItemPtr)(&v)
+}
+
+func (*nodeGroupRolesItemPtr) ElementType() reflect.Type {
+	return nodeGroupRolesItemPtrType
+}
+
+func (in *nodeGroupRolesItemPtr) ToNodeGroupRolesItemPtrOutput() NodeGroupRolesItemPtrOutput {
+	return pulumi.ToOutput(in).(NodeGroupRolesItemPtrOutput)
+}
+
+func (in *nodeGroupRolesItemPtr) ToNodeGroupRolesItemPtrOutputWithContext(ctx context.Context) NodeGroupRolesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NodeGroupRolesItemPtrOutput)
+}
+
+// NodeGroupRolesItemArrayInput is an input type that accepts NodeGroupRolesItemArray and NodeGroupRolesItemArrayOutput values.
+// You can construct a concrete instance of `NodeGroupRolesItemArrayInput` via:
+//
+//	NodeGroupRolesItemArray{ NodeGroupRolesItemArgs{...} }
+type NodeGroupRolesItemArrayInput interface {
+	pulumi.Input
+
+	ToNodeGroupRolesItemArrayOutput() NodeGroupRolesItemArrayOutput
+	ToNodeGroupRolesItemArrayOutputWithContext(context.Context) NodeGroupRolesItemArrayOutput
+}
+
+type NodeGroupRolesItemArray []NodeGroupRolesItem
+
+func (NodeGroupRolesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupRolesItem)(nil)).Elem()
+}
+
+func (i NodeGroupRolesItemArray) ToNodeGroupRolesItemArrayOutput() NodeGroupRolesItemArrayOutput {
+	return i.ToNodeGroupRolesItemArrayOutputWithContext(context.Background())
+}
+
+func (i NodeGroupRolesItemArray) ToNodeGroupRolesItemArrayOutputWithContext(ctx context.Context) NodeGroupRolesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeGroupRolesItemArrayOutput)
+}
+
+type NodeGroupRolesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (NodeGroupRolesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NodeGroupRolesItem)(nil)).Elem()
+}
+
+func (o NodeGroupRolesItemArrayOutput) ToNodeGroupRolesItemArrayOutput() NodeGroupRolesItemArrayOutput {
+	return o
+}
+
+func (o NodeGroupRolesItemArrayOutput) ToNodeGroupRolesItemArrayOutputWithContext(ctx context.Context) NodeGroupRolesItemArrayOutput {
+	return o
+}
+
+func (o NodeGroupRolesItemArrayOutput) Index(i pulumi.IntInput) NodeGroupRolesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodeGroupRolesItem {
+		return vs[0].([]NodeGroupRolesItem)[vs[1].(int)]
+	}).(NodeGroupRolesItemOutput)
 }
 
 // Optional. Type of reservation to consume
@@ -937,6 +1150,8 @@ const (
 	SoftwareConfigOptionalComponentsItemJupyter = SoftwareConfigOptionalComponentsItem("JUPYTER")
 	// The Presto query engine.
 	SoftwareConfigOptionalComponentsItemPresto = SoftwareConfigOptionalComponentsItem("PRESTO")
+	// The Trino query engine.
+	SoftwareConfigOptionalComponentsItemTrino = SoftwareConfigOptionalComponentsItem("TRINO")
 	// The Ranger service.
 	SoftwareConfigOptionalComponentsItemRanger = SoftwareConfigOptionalComponentsItem("RANGER")
 	// The Solr service.
@@ -1159,6 +1374,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceGroupConfigPreemptibilityPtrInput)(nil)).Elem(), InstanceGroupConfigPreemptibility("PREEMPTIBILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourceInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetricMetricSourcePtrInput)(nil)).Elem(), MetricMetricSource("METRIC_SOURCE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupRolesItemInput)(nil)).Elem(), NodeGroupRolesItem("ROLE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupRolesItemPtrInput)(nil)).Elem(), NodeGroupRolesItem("ROLE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeGroupRolesItemArrayInput)(nil)).Elem(), NodeGroupRolesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigOptionalComponentsItemInput)(nil)).Elem(), SoftwareConfigOptionalComponentsItem("COMPONENT_UNSPECIFIED"))
@@ -1173,6 +1391,9 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityPtrOutput{})
 	pulumi.RegisterOutputType(MetricMetricSourceOutput{})
 	pulumi.RegisterOutputType(MetricMetricSourcePtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupRolesItemOutput{})
+	pulumi.RegisterOutputType(NodeGroupRolesItemPtrOutput{})
+	pulumi.RegisterOutputType(NodeGroupRolesItemArrayOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigOptionalComponentsItemOutput{})

@@ -27,6 +27,7 @@ __all__ = [
     'EntrypointArgs',
     'ErrorHandlerArgs',
     'FeatureSettingsArgs',
+    'FlexibleRuntimeSettingsArgs',
     'HealthCheckArgs',
     'IdentityAwareProxyArgs',
     'LibraryArgs',
@@ -1038,6 +1039,46 @@ class FeatureSettingsArgs:
     @use_container_optimized_os.setter
     def use_container_optimized_os(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_container_optimized_os", value)
+
+
+@pulumi.input_type
+class FlexibleRuntimeSettingsArgs:
+    def __init__(__self__, *,
+                 operating_system: Optional[pulumi.Input[str]] = None,
+                 runtime_version: Optional[pulumi.Input[str]] = None):
+        """
+        Runtime settings for the App Engine flexible environment.
+        :param pulumi.Input[str] operating_system: The operating system of the application runtime.
+        :param pulumi.Input[str] runtime_version: The runtime version of an App Engine flexible application.
+        """
+        if operating_system is not None:
+            pulumi.set(__self__, "operating_system", operating_system)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> Optional[pulumi.Input[str]]:
+        """
+        The operating system of the application runtime.
+        """
+        return pulumi.get(self, "operating_system")
+
+    @operating_system.setter
+    def operating_system(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operating_system", value)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The runtime version of an App Engine flexible application.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "runtime_version", value)
 
 
 @pulumi.input_type

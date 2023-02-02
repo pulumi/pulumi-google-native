@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        public readonly string NetworkAttachment;
+        /// <summary>
         /// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         /// </summary>
         public readonly string NetworkIP;
@@ -64,6 +68,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         /// </summary>
         public readonly string NicType;
+        /// <summary>
+        /// Name of the parent network interface of a VLAN based nic. If this field is specified, vlan must be set.
+        /// </summary>
+        public readonly string ParentNicName;
         /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
         /// </summary>
@@ -80,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         /// </summary>
         public readonly string Subnetwork;
+        /// <summary>
+        /// VLAN tag of a VLAN based network interface, must be in range from 2 to 4094 inclusively. This field is mandatory if the parent network interface name is set.
+        /// </summary>
+        public readonly int Vlan;
 
         [OutputConstructor]
         private NetworkInterfaceResponse(
@@ -103,9 +115,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string network,
 
+            string networkAttachment,
+
             string networkIP,
 
             string nicType,
+
+            string parentNicName,
 
             int queueCount,
 
@@ -113,7 +129,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             ImmutableArray<Outputs.NetworkInterfaceSubInterfaceResponse> subinterfaces,
 
-            string subnetwork)
+            string subnetwork,
+
+            int vlan)
         {
             AccessConfigs = accessConfigs;
             AliasIpRanges = aliasIpRanges;
@@ -125,12 +143,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Kind = kind;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIP = networkIP;
             NicType = nicType;
+            ParentNicName = parentNicName;
             QueueCount = queueCount;
             StackType = stackType;
             Subinterfaces = subinterfaces;
             Subnetwork = subnetwork;
+            Vlan = vlan;
         }
     }
 }

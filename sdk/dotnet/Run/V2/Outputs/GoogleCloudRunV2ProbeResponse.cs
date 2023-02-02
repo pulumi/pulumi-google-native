@@ -21,7 +21,11 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly int FailureThreshold;
         /// <summary>
-        /// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+        /// </summary>
+        public readonly Outputs.GoogleCloudRunV2GRPCActionResponse Grpc;
+        /// <summary>
+        /// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2HTTPGetActionResponse HttpGet;
         /// <summary>
@@ -33,7 +37,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly int PeriodSeconds;
         /// <summary>
-        /// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+        /// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
         /// </summary>
         public readonly Outputs.GoogleCloudRunV2TCPSocketActionResponse TcpSocket;
         /// <summary>
@@ -44,6 +48,8 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         [OutputConstructor]
         private GoogleCloudRunV2ProbeResponse(
             int failureThreshold,
+
+            Outputs.GoogleCloudRunV2GRPCActionResponse grpc,
 
             Outputs.GoogleCloudRunV2HTTPGetActionResponse httpGet,
 
@@ -56,6 +62,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
             int timeoutSeconds)
         {
             FailureThreshold = failureThreshold;
+            Grpc = grpc;
             HttpGet = httpGet;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;

@@ -22,6 +22,7 @@ class TenantArgs:
                  client: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 email_privacy_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']] = None,
                  enable_anonymous_user: Optional[pulumi.Input[bool]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  inheritance: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] = None,
@@ -37,6 +38,7 @@ class TenantArgs:
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs'] client: Options related to how clients making requests on behalf of a project should be configured.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
         :param pulumi.Input[str] display_name: Display name of the tenant.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs'] email_privacy_config: Configuration for settings related to email privacy and public visibility.
         :param pulumi.Input[bool] enable_anonymous_user: Whether to enable anonymous user authentication.
         :param pulumi.Input[bool] enable_email_link_signin: Whether to enable email link user authentication.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs'] inheritance: Specify the settings that the tenant could inherit.
@@ -55,6 +57,8 @@ class TenantArgs:
             pulumi.set(__self__, "disable_auth", disable_auth)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if email_privacy_config is not None:
+            pulumi.set(__self__, "email_privacy_config", email_privacy_config)
         if enable_anonymous_user is not None:
             pulumi.set(__self__, "enable_anonymous_user", enable_anonymous_user)
         if enable_email_link_signin is not None:
@@ -131,6 +135,18 @@ class TenantArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="emailPrivacyConfig")
+    def email_privacy_config(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']]:
+        """
+        Configuration for settings related to email privacy and public visibility.
+        """
+        return pulumi.get(self, "email_privacy_config")
+
+    @email_privacy_config.setter
+    def email_privacy_config(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']]):
+        pulumi.set(self, "email_privacy_config", value)
 
     @property
     @pulumi.getter(name="enableAnonymousUser")
@@ -236,6 +252,7 @@ class Tenant(pulumi.CustomResource):
                  client: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 email_privacy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']]] = None,
                  enable_anonymous_user: Optional[pulumi.Input[bool]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
@@ -256,6 +273,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']] client: Options related to how clients making requests on behalf of a project should be configured.
         :param pulumi.Input[bool] disable_auth: Whether authentication is disabled for the tenant. If true, the users under the disabled tenant are not allowed to sign-in. Admins of the disabled tenant are not able to manage its users.
         :param pulumi.Input[str] display_name: Display name of the tenant.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']] email_privacy_config: Configuration for settings related to email privacy and public visibility.
         :param pulumi.Input[bool] enable_anonymous_user: Whether to enable anonymous user authentication.
         :param pulumi.Input[bool] enable_email_link_signin: Whether to enable email link user authentication.
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] inheritance: Specify the settings that the tenant could inherit.
@@ -294,6 +312,7 @@ class Tenant(pulumi.CustomResource):
                  client: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfigArgs']]] = None,
                  disable_auth: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 email_privacy_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs']]] = None,
                  enable_anonymous_user: Optional[pulumi.Input[bool]] = None,
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
@@ -316,6 +335,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["client"] = client
             __props__.__dict__["disable_auth"] = disable_auth
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["email_privacy_config"] = email_privacy_config
             __props__.__dict__["enable_anonymous_user"] = enable_anonymous_user
             __props__.__dict__["enable_email_link_signin"] = enable_email_link_signin
             __props__.__dict__["inheritance"] = inheritance
@@ -355,6 +375,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["client"] = None
         __props__.__dict__["disable_auth"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["email_privacy_config"] = None
         __props__.__dict__["enable_anonymous_user"] = None
         __props__.__dict__["enable_email_link_signin"] = None
         __props__.__dict__["hash_config"] = None
@@ -406,6 +427,14 @@ class Tenant(pulumi.CustomResource):
         Display name of the tenant.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="emailPrivacyConfig")
+    def email_privacy_config(self) -> pulumi.Output['outputs.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse']:
+        """
+        Configuration for settings related to email privacy and public visibility.
+        """
+        return pulumi.get(self, "email_privacy_config")
 
     @property
     @pulumi.getter(name="enableAnonymousUser")

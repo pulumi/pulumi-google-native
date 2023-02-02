@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly bool EnableL4ilbSubsetting;
         /// <summary>
+        /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
+        /// </summary>
+        public readonly Outputs.GatewayAPIConfigResponse GatewayApiConfig;
+        /// <summary>
         /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
         public readonly string Network;
@@ -65,6 +69,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             bool enableL4ilbSubsetting,
 
+            Outputs.GatewayAPIConfigResponse gatewayApiConfig,
+
             string network,
 
             string privateIpv6GoogleAccess,
@@ -78,6 +84,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             DnsConfig = dnsConfig;
             EnableIntraNodeVisibility = enableIntraNodeVisibility;
             EnableL4ilbSubsetting = enableL4ilbSubsetting;
+            GatewayApiConfig = gatewayApiConfig;
             Network = network;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             ServiceExternalIpsConfig = serviceExternalIpsConfig;

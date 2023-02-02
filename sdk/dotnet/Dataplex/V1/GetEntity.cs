@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     public sealed class GetEntityResult
     {
         /// <summary>
+        /// Identifies the access mechanism to the entity. Not user settable.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDataplexV1StorageAccessResponse Access;
+        /// <summary>
         /// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
         /// </summary>
         public readonly string Asset;
@@ -138,12 +142,18 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// </summary>
         public readonly string Type;
         /// <summary>
+        /// System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+        /// </summary>
+        public readonly string Uid;
+        /// <summary>
         /// The time when the entity was last updated.
         /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetEntityResult(
+            Outputs.GoogleCloudDataplexV1StorageAccessResponse access,
+
             string asset,
 
             string catalogEntry,
@@ -172,8 +182,11 @@ namespace Pulumi.GoogleNative.Dataplex.V1
 
             string type,
 
+            string uid,
+
             string updateTime)
         {
+            Access = access;
             Asset = asset;
             CatalogEntry = catalogEntry;
             Compatibility = compatibility;
@@ -188,6 +201,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
             Schema = schema;
             System = system;
             Type = type;
+            Uid = uid;
             UpdateTime = updateTime;
         }
     }

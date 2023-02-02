@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         [Output("analysisResult")]
         public Output<Outputs.GoogleCloudContactcenterinsightsV1AnalysisResultResponse> AnalysisResult { get; private set; } = null!;
 
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        /// </summary>
+        [Output("annotatorSelector")]
+        public Output<Outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse> AnnotatorSelector { get; private set; } = null!;
+
         [Output("conversationId")]
         public Output<string> ConversationId { get; private set; } = null!;
 
@@ -99,6 +105,12 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
 
     public sealed class AnalysisArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        /// </summary>
+        [Input("annotatorSelector")]
+        public Input<Inputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs>? AnnotatorSelector { get; set; }
+
         [Input("conversationId", required: true)]
         public Input<string> ConversationId { get; set; } = null!;
 

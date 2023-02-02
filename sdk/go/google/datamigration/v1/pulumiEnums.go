@@ -350,6 +350,175 @@ func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolic
 	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsActivationPolicyPtrOutput)
 }
 
+// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+type CloudSqlSettingsAvailabilityType string
+
+const (
+	// This is an unknown Availability type.
+	CloudSqlSettingsAvailabilityTypeSqlAvailabilityTypeUnspecified = CloudSqlSettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED")
+	// Zonal availablility instance.
+	CloudSqlSettingsAvailabilityTypeZonal = CloudSqlSettingsAvailabilityType("ZONAL")
+	// Regional availability instance.
+	CloudSqlSettingsAvailabilityTypeRegional = CloudSqlSettingsAvailabilityType("REGIONAL")
+)
+
+func (CloudSqlSettingsAvailabilityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsAvailabilityType)(nil)).Elem()
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToCloudSqlSettingsAvailabilityTypeOutput() CloudSqlSettingsAvailabilityTypeOutput {
+	return pulumi.ToOutput(e).(CloudSqlSettingsAvailabilityTypeOutput)
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToCloudSqlSettingsAvailabilityTypeOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CloudSqlSettingsAvailabilityTypeOutput)
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToCloudSqlSettingsAvailabilityTypePtrOutput() CloudSqlSettingsAvailabilityTypePtrOutput {
+	return e.ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypePtrOutput {
+	return CloudSqlSettingsAvailabilityType(e).ToCloudSqlSettingsAvailabilityTypeOutputWithContext(ctx).ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx)
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsAvailabilityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type CloudSqlSettingsAvailabilityTypeOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsAvailabilityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsAvailabilityType)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToCloudSqlSettingsAvailabilityTypeOutput() CloudSqlSettingsAvailabilityTypeOutput {
+	return o
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToCloudSqlSettingsAvailabilityTypeOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypeOutput {
+	return o
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToCloudSqlSettingsAvailabilityTypePtrOutput() CloudSqlSettingsAvailabilityTypePtrOutput {
+	return o.ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsAvailabilityType) *CloudSqlSettingsAvailabilityType {
+		return &v
+	}).(CloudSqlSettingsAvailabilityTypePtrOutput)
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsAvailabilityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsAvailabilityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsAvailabilityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudSqlSettingsAvailabilityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsAvailabilityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudSqlSettingsAvailabilityType)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToCloudSqlSettingsAvailabilityTypePtrOutput() CloudSqlSettingsAvailabilityTypePtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypePtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsAvailabilityTypePtrOutput) Elem() CloudSqlSettingsAvailabilityTypeOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsAvailabilityType) CloudSqlSettingsAvailabilityType {
+		if v != nil {
+			return *v
+		}
+		var ret CloudSqlSettingsAvailabilityType
+		return ret
+	}).(CloudSqlSettingsAvailabilityTypeOutput)
+}
+
+func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsAvailabilityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CloudSqlSettingsAvailabilityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// CloudSqlSettingsAvailabilityTypeInput is an input type that accepts CloudSqlSettingsAvailabilityTypeArgs and CloudSqlSettingsAvailabilityTypeOutput values.
+// You can construct a concrete instance of `CloudSqlSettingsAvailabilityTypeInput` via:
+//
+//	CloudSqlSettingsAvailabilityTypeArgs{...}
+type CloudSqlSettingsAvailabilityTypeInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsAvailabilityTypeOutput() CloudSqlSettingsAvailabilityTypeOutput
+	ToCloudSqlSettingsAvailabilityTypeOutputWithContext(context.Context) CloudSqlSettingsAvailabilityTypeOutput
+}
+
+var cloudSqlSettingsAvailabilityTypePtrType = reflect.TypeOf((**CloudSqlSettingsAvailabilityType)(nil)).Elem()
+
+type CloudSqlSettingsAvailabilityTypePtrInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsAvailabilityTypePtrOutput() CloudSqlSettingsAvailabilityTypePtrOutput
+	ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(context.Context) CloudSqlSettingsAvailabilityTypePtrOutput
+}
+
+type cloudSqlSettingsAvailabilityTypePtr string
+
+func CloudSqlSettingsAvailabilityTypePtr(v string) CloudSqlSettingsAvailabilityTypePtrInput {
+	return (*cloudSqlSettingsAvailabilityTypePtr)(&v)
+}
+
+func (*cloudSqlSettingsAvailabilityTypePtr) ElementType() reflect.Type {
+	return cloudSqlSettingsAvailabilityTypePtrType
+}
+
+func (in *cloudSqlSettingsAvailabilityTypePtr) ToCloudSqlSettingsAvailabilityTypePtrOutput() CloudSqlSettingsAvailabilityTypePtrOutput {
+	return pulumi.ToOutput(in).(CloudSqlSettingsAvailabilityTypePtrOutput)
+}
+
+func (in *cloudSqlSettingsAvailabilityTypePtr) ToCloudSqlSettingsAvailabilityTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsAvailabilityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsAvailabilityTypePtrOutput)
+}
+
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
 type CloudSqlSettingsDataDiskType string
 
@@ -1054,6 +1223,177 @@ func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileStateEnumPtrOutput)
 }
 
+// Required. Engine Type.
+type DatabaseEngineInfoEngine string
+
+const (
+	// The source database engine of the migration job is unknown.
+	DatabaseEngineInfoEngineDatabaseEngineUnspecified = DatabaseEngineInfoEngine("DATABASE_ENGINE_UNSPECIFIED")
+	// The source engine is MySQL.
+	DatabaseEngineInfoEngineMysql = DatabaseEngineInfoEngine("MYSQL")
+	// The source engine is PostgreSQL.
+	DatabaseEngineInfoEnginePostgresql = DatabaseEngineInfoEngine("POSTGRESQL")
+	// The source engine is Oracle
+	DatabaseEngineInfoEngineOracle = DatabaseEngineInfoEngine("ORACLE")
+)
+
+func (DatabaseEngineInfoEngine) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEngineInfoEngine)(nil)).Elem()
+}
+
+func (e DatabaseEngineInfoEngine) ToDatabaseEngineInfoEngineOutput() DatabaseEngineInfoEngineOutput {
+	return pulumi.ToOutput(e).(DatabaseEngineInfoEngineOutput)
+}
+
+func (e DatabaseEngineInfoEngine) ToDatabaseEngineInfoEngineOutputWithContext(ctx context.Context) DatabaseEngineInfoEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseEngineInfoEngineOutput)
+}
+
+func (e DatabaseEngineInfoEngine) ToDatabaseEngineInfoEnginePtrOutput() DatabaseEngineInfoEnginePtrOutput {
+	return e.ToDatabaseEngineInfoEnginePtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseEngineInfoEngine) ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx context.Context) DatabaseEngineInfoEnginePtrOutput {
+	return DatabaseEngineInfoEngine(e).ToDatabaseEngineInfoEngineOutputWithContext(ctx).ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx)
+}
+
+func (e DatabaseEngineInfoEngine) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseEngineInfoEngine) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DatabaseEngineInfoEngine) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseEngineInfoEngine) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DatabaseEngineInfoEngineOutput struct{ *pulumi.OutputState }
+
+func (DatabaseEngineInfoEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseEngineInfoEngine)(nil)).Elem()
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToDatabaseEngineInfoEngineOutput() DatabaseEngineInfoEngineOutput {
+	return o
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToDatabaseEngineInfoEngineOutputWithContext(ctx context.Context) DatabaseEngineInfoEngineOutput {
+	return o
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToDatabaseEngineInfoEnginePtrOutput() DatabaseEngineInfoEnginePtrOutput {
+	return o.ToDatabaseEngineInfoEnginePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx context.Context) DatabaseEngineInfoEnginePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseEngineInfoEngine) *DatabaseEngineInfoEngine {
+		return &v
+	}).(DatabaseEngineInfoEnginePtrOutput)
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseEngineInfoEngine) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseEngineInfoEngineOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseEngineInfoEngine) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseEngineInfoEnginePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseEngineInfoEnginePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseEngineInfoEngine)(nil)).Elem()
+}
+
+func (o DatabaseEngineInfoEnginePtrOutput) ToDatabaseEngineInfoEnginePtrOutput() DatabaseEngineInfoEnginePtrOutput {
+	return o
+}
+
+func (o DatabaseEngineInfoEnginePtrOutput) ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx context.Context) DatabaseEngineInfoEnginePtrOutput {
+	return o
+}
+
+func (o DatabaseEngineInfoEnginePtrOutput) Elem() DatabaseEngineInfoEngineOutput {
+	return o.ApplyT(func(v *DatabaseEngineInfoEngine) DatabaseEngineInfoEngine {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseEngineInfoEngine
+		return ret
+	}).(DatabaseEngineInfoEngineOutput)
+}
+
+func (o DatabaseEngineInfoEnginePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseEngineInfoEnginePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseEngineInfoEngine) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// DatabaseEngineInfoEngineInput is an input type that accepts DatabaseEngineInfoEngineArgs and DatabaseEngineInfoEngineOutput values.
+// You can construct a concrete instance of `DatabaseEngineInfoEngineInput` via:
+//
+//	DatabaseEngineInfoEngineArgs{...}
+type DatabaseEngineInfoEngineInput interface {
+	pulumi.Input
+
+	ToDatabaseEngineInfoEngineOutput() DatabaseEngineInfoEngineOutput
+	ToDatabaseEngineInfoEngineOutputWithContext(context.Context) DatabaseEngineInfoEngineOutput
+}
+
+var databaseEngineInfoEnginePtrType = reflect.TypeOf((**DatabaseEngineInfoEngine)(nil)).Elem()
+
+type DatabaseEngineInfoEnginePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseEngineInfoEnginePtrOutput() DatabaseEngineInfoEnginePtrOutput
+	ToDatabaseEngineInfoEnginePtrOutputWithContext(context.Context) DatabaseEngineInfoEnginePtrOutput
+}
+
+type databaseEngineInfoEnginePtr string
+
+func DatabaseEngineInfoEnginePtr(v string) DatabaseEngineInfoEnginePtrInput {
+	return (*databaseEngineInfoEnginePtr)(&v)
+}
+
+func (*databaseEngineInfoEnginePtr) ElementType() reflect.Type {
+	return databaseEngineInfoEnginePtrType
+}
+
+func (in *databaseEngineInfoEnginePtr) ToDatabaseEngineInfoEnginePtrOutput() DatabaseEngineInfoEnginePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseEngineInfoEnginePtrOutput)
+}
+
+func (in *databaseEngineInfoEnginePtr) ToDatabaseEngineInfoEnginePtrOutputWithContext(ctx context.Context) DatabaseEngineInfoEnginePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseEngineInfoEnginePtrOutput)
+}
+
 // The database engine.
 type DatabaseTypeEngine string
 
@@ -1064,6 +1404,8 @@ const (
 	DatabaseTypeEngineMysql = DatabaseTypeEngine("MYSQL")
 	// The source engine is PostgreSQL.
 	DatabaseTypeEnginePostgresql = DatabaseTypeEngine("POSTGRESQL")
+	// The source engine is Oracle
+	DatabaseTypeEngineOracle = DatabaseTypeEngine("ORACLE")
 )
 
 func (DatabaseTypeEngine) ElementType() reflect.Type {
@@ -1765,6 +2107,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsActivationPolicyInput)(nil)).Elem(), CloudSqlSettingsActivationPolicy("SQL_ACTIVATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsActivationPolicyPtrInput)(nil)).Elem(), CloudSqlSettingsActivationPolicy("SQL_ACTIVATION_POLICY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsAvailabilityTypeInput)(nil)).Elem(), CloudSqlSettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsAvailabilityTypePtrInput)(nil)).Elem(), CloudSqlSettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsDataDiskTypeInput)(nil)).Elem(), CloudSqlSettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsDataDiskTypePtrInput)(nil)).Elem(), CloudSqlSettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudSqlSettingsDatabaseVersionInput)(nil)).Elem(), CloudSqlSettingsDatabaseVersion("SQL_DATABASE_VERSION_UNSPECIFIED"))
@@ -1773,6 +2117,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileProviderPtrInput)(nil)).Elem(), ConnectionProfileProvider("DATABASE_PROVIDER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStateEnumInput)(nil)).Elem(), ConnectionProfileStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ConnectionProfileStateEnumPtrInput)(nil)).Elem(), ConnectionProfileStateEnum("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEngineInfoEngineInput)(nil)).Elem(), DatabaseEngineInfoEngine("DATABASE_ENGINE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseEngineInfoEnginePtrInput)(nil)).Elem(), DatabaseEngineInfoEngine("DATABASE_ENGINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeEngineInput)(nil)).Elem(), DatabaseTypeEngine("DATABASE_ENGINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeEnginePtrInput)(nil)).Elem(), DatabaseTypeEngine("DATABASE_ENGINE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseTypeProviderInput)(nil)).Elem(), DatabaseTypeProvider("DATABASE_PROVIDER_UNSPECIFIED"))
@@ -1785,6 +2131,8 @@ func init() {
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsActivationPolicyOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsActivationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsAvailabilityTypeOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsAvailabilityTypePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsDataDiskTypeOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsDataDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(CloudSqlSettingsDatabaseVersionOutput{})
@@ -1793,6 +2141,8 @@ func init() {
 	pulumi.RegisterOutputType(ConnectionProfileProviderPtrOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileStateEnumOutput{})
 	pulumi.RegisterOutputType(ConnectionProfileStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseEngineInfoEngineOutput{})
+	pulumi.RegisterOutputType(DatabaseEngineInfoEnginePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeEngineOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeEnginePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseTypeProviderOutput{})

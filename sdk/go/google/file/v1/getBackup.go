@@ -35,6 +35,8 @@ type LookupBackupResult struct {
 	Description string `pulumi:"description"`
 	// Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 	DownloadBytes string `pulumi:"downloadBytes"`
+	// Immutable. KMS key name used for data encryption.
+	KmsKey string `pulumi:"kmsKey"`
 	// Resource labels to represent user provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`.
@@ -108,6 +110,11 @@ func (o LookupBackupResultOutput) Description() pulumi.StringOutput {
 // Amount of bytes that will be downloaded if the backup is restored. This may be different than storage bytes, since sequential backups of the same disk will share storage.
 func (o LookupBackupResultOutput) DownloadBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.DownloadBytes }).(pulumi.StringOutput)
+}
+
+// Immutable. KMS key name used for data encryption.
+func (o LookupBackupResultOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupResult) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
 // Resource labels to represent user provided metadata.

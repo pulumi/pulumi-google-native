@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Get the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
+ * Gets the IAM Access Control policy currently in effect for the given Job. This result does not include any inherited policies.
  */
 export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetJobIamPolicyResult> {
     if (!opts) {

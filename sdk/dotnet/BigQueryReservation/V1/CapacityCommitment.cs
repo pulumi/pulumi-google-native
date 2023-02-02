@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public Output<string> CommitmentStartTime { get; private set; } = null!;
 
         /// <summary>
+        /// Edition of the capacity commitment.
+        /// </summary>
+        [Output("edition")]
+        public Output<string> Edition { get; private set; } = null!;
+
+        /// <summary>
         /// If true, fail the request if another project in the organization has a capacity commitment.
         /// </summary>
         [Output("enforceSingleAdminProjectPerOrg")]
@@ -143,6 +149,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         [Input("capacityCommitmentId")]
         public Input<string>? CapacityCommitmentId { get; set; }
+
+        /// <summary>
+        /// Edition of the capacity commitment.
+        /// </summary>
+        [Input("edition")]
+        public Input<Pulumi.GoogleNative.BigQueryReservation.V1.CapacityCommitmentEdition>? Edition { get; set; }
 
         /// <summary>
         /// If true, fail the request if another project in the organization has a capacity commitment.

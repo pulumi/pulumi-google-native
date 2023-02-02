@@ -12,26 +12,104 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AccessKeyCredentialsResponse',
+    'AdaptingOSStepResponse',
     'ApplianceVersionResponse',
     'AppliedLicenseResponse',
     'AvailableUpdatesResponse',
+    'AwsSourceDetailsResponse',
+    'AwsSourceVmDetailsResponse',
     'CloneJobResponse',
+    'CloneStepResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
     'ComputeSchedulingResponse',
     'CutoverJobResponse',
+    'CutoverStepResponse',
+    'CycleStepResponse',
+    'InitializingReplicationStepResponse',
+    'InstantiatingMigratedVMStepResponse',
     'NetworkInterfaceResponse',
+    'PostProcessingStepResponse',
+    'PreparingVMDisksStepResponse',
+    'ReplicatingStepResponse',
     'ReplicationCycleResponse',
     'ReplicationSyncResponse',
     'SchedulePolicyResponse',
     'SchedulingNodeAffinityResponse',
+    'ShuttingDownSourceVMStepResponse',
     'StatusResponse',
+    'TagResponse',
     'UpgradeStatusResponse',
     'VmUtilizationInfoResponse',
     'VmUtilizationMetricsResponse',
     'VmwareSourceDetailsResponse',
     'VmwareVmDetailsResponse',
 ]
+
+@pulumi.output_type
+class AccessKeyCredentialsResponse(dict):
+    """
+    Message describing AWS Credentials using access key id and secret.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessKeyCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessKeyCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessKeyCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: str,
+                 secret_access_key: str):
+        """
+        Message describing AWS Credentials using access key id and secret.
+        :param str access_key_id: AWS access key ID.
+        :param str secret_access_key: Input only. AWS secret access key.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> str:
+        """
+        AWS access key ID.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> str:
+        """
+        Input only. AWS secret access key.
+        """
+        return pulumi.get(self, "secret_access_key")
+
+
+@pulumi.output_type
+class AdaptingOSStepResponse(dict):
+    """
+    AdaptingOSStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        AdaptingOSStep contains specific step details.
+        """
+        pass
+
 
 @pulumi.output_type
 class ApplianceVersionResponse(dict):
@@ -208,6 +286,182 @@ class AvailableUpdatesResponse(dict):
 
 
 @pulumi.output_type
+class AwsSourceDetailsResponse(dict):
+    """
+    AwsSourceDetails message describes a specific source details for the AWS source type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyCreds":
+            suggest = "access_key_creds"
+        elif key == "awsRegion":
+            suggest = "aws_region"
+        elif key == "inventorySecurityGroupNames":
+            suggest = "inventory_security_group_names"
+        elif key == "inventoryTagList":
+            suggest = "inventory_tag_list"
+        elif key == "migrationResourcesUserTags":
+            suggest = "migration_resources_user_tags"
+        elif key == "publicIp":
+            suggest = "public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSourceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSourceDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSourceDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_creds: 'outputs.AccessKeyCredentialsResponse',
+                 aws_region: str,
+                 error: 'outputs.StatusResponse',
+                 inventory_security_group_names: Sequence[str],
+                 inventory_tag_list: Sequence['outputs.TagResponse'],
+                 migration_resources_user_tags: Mapping[str, str],
+                 public_ip: str,
+                 state: str):
+        """
+        AwsSourceDetails message describes a specific source details for the AWS source type.
+        :param 'AccessKeyCredentialsResponse' access_key_creds: AWS Credentials using access key id and secret.
+        :param str aws_region: Immutable. The AWS region that the source VMs will be migrated from.
+        :param 'StatusResponse' error: Provides details on the state of the Source in case of an error.
+        :param Sequence[str] inventory_security_group_names: AWS security group names to limit the scope of the source inventory.
+        :param Sequence['TagResponse'] inventory_tag_list: AWS resource tags to limit the scope of the source inventory.
+        :param Mapping[str, str] migration_resources_user_tags: User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+        :param str public_ip: The source's public IP. All communication initiated by this source will originate from this IP.
+        :param str state: State of the source as determined by the health check.
+        """
+        pulumi.set(__self__, "access_key_creds", access_key_creds)
+        pulumi.set(__self__, "aws_region", aws_region)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "inventory_security_group_names", inventory_security_group_names)
+        pulumi.set(__self__, "inventory_tag_list", inventory_tag_list)
+        pulumi.set(__self__, "migration_resources_user_tags", migration_resources_user_tags)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="accessKeyCreds")
+    def access_key_creds(self) -> 'outputs.AccessKeyCredentialsResponse':
+        """
+        AWS Credentials using access key id and secret.
+        """
+        return pulumi.get(self, "access_key_creds")
+
+    @property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> str:
+        """
+        Immutable. The AWS region that the source VMs will be migrated from.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the Source in case of an error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="inventorySecurityGroupNames")
+    def inventory_security_group_names(self) -> Sequence[str]:
+        """
+        AWS security group names to limit the scope of the source inventory.
+        """
+        return pulumi.get(self, "inventory_security_group_names")
+
+    @property
+    @pulumi.getter(name="inventoryTagList")
+    def inventory_tag_list(self) -> Sequence['outputs.TagResponse']:
+        """
+        AWS resource tags to limit the scope of the source inventory.
+        """
+        return pulumi.get(self, "inventory_tag_list")
+
+    @property
+    @pulumi.getter(name="migrationResourcesUserTags")
+    def migration_resources_user_tags(self) -> Mapping[str, str]:
+        """
+        User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+        """
+        return pulumi.get(self, "migration_resources_user_tags")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The source's public IP. All communication initiated by this source will originate from this IP.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the source as determined by the health check.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AwsSourceVmDetailsResponse(dict):
+    """
+    Represent the source AWS VM details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "committedStorageBytes":
+            suggest = "committed_storage_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSourceVmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSourceVmDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSourceVmDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 committed_storage_bytes: str,
+                 firmware: str):
+        """
+        Represent the source AWS VM details.
+        :param str committed_storage_bytes: The total size of the disks being migrated in bytes.
+        :param str firmware: The firmware type of the source VM.
+        """
+        pulumi.set(__self__, "committed_storage_bytes", committed_storage_bytes)
+        pulumi.set(__self__, "firmware", firmware)
+
+    @property
+    @pulumi.getter(name="committedStorageBytes")
+    def committed_storage_bytes(self) -> str:
+        """
+        The total size of the disks being migrated in bytes.
+        """
+        return pulumi.get(self, "committed_storage_bytes")
+
+    @property
+    @pulumi.getter
+    def firmware(self) -> str:
+        """
+        The firmware type of the source VM.
+        """
+        return pulumi.get(self, "firmware")
+
+
+@pulumi.output_type
 class CloneJobResponse(dict):
     """
     CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
@@ -242,7 +496,8 @@ class CloneJobResponse(dict):
                  error: 'outputs.StatusResponse',
                  name: str,
                  state: str,
-                 state_time: str):
+                 state_time: str,
+                 steps: Sequence['outputs.CloneStepResponse']):
         """
         CloneJob describes the process of creating a clone of a MigratingVM to the requested target based on the latest successful uploaded snapshots. While the migration cycles of a MigratingVm take place, it is possible to verify the uploaded VM can be started in the cloud, by creating a clone. The clone can be created without any downtime, and it is created using the latest snapshots which are already in the cloud. The cloneJob is only responsible for its work, not its products, which means once it is finished, it will never touch the instance it created. It will only delete it in case of the CloneJob being cancelled or upon failure to clone.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
@@ -252,6 +507,7 @@ class CloneJobResponse(dict):
         :param str name: The name of the clone.
         :param str state: State of the clone job.
         :param str state_time: The time the state was last updated.
+        :param Sequence['CloneStepResponse'] steps: The clone steps list representing its progress.
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "create_time", create_time)
@@ -260,6 +516,7 @@ class CloneJobResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_time", state_time)
+        pulumi.set(__self__, "steps", steps)
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -316,6 +573,105 @@ class CloneJobResponse(dict):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CloneStepResponse']:
+        """
+        The clone steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class CloneStepResponse(dict):
+    """
+    CloneStep holds information about the clone step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adaptingOs":
+            suggest = "adapting_os"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "instantiatingMigratedVm":
+            suggest = "instantiating_migrated_vm"
+        elif key == "preparingVmDisks":
+            suggest = "preparing_vm_disks"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloneStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloneStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloneStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 adapting_os: 'outputs.AdaptingOSStepResponse',
+                 end_time: str,
+                 instantiating_migrated_vm: 'outputs.InstantiatingMigratedVMStepResponse',
+                 preparing_vm_disks: 'outputs.PreparingVMDisksStepResponse',
+                 start_time: str):
+        """
+        CloneStep holds information about the clone step progress.
+        :param 'AdaptingOSStepResponse' adapting_os: Adapting OS step.
+        :param str end_time: The time the step has ended.
+        :param 'InstantiatingMigratedVMStepResponse' instantiating_migrated_vm: Instantiating migrated VM step.
+        :param 'PreparingVMDisksStepResponse' preparing_vm_disks: Preparing VM disks step.
+        :param str start_time: The time the step has started.
+        """
+        pulumi.set(__self__, "adapting_os", adapting_os)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "instantiating_migrated_vm", instantiating_migrated_vm)
+        pulumi.set(__self__, "preparing_vm_disks", preparing_vm_disks)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="adaptingOs")
+    def adapting_os(self) -> 'outputs.AdaptingOSStepResponse':
+        """
+        Adapting OS step.
+        """
+        return pulumi.get(self, "adapting_os")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="instantiatingMigratedVm")
+    def instantiating_migrated_vm(self) -> 'outputs.InstantiatingMigratedVMStepResponse':
+        """
+        Instantiating migrated VM step.
+        """
+        return pulumi.get(self, "instantiating_migrated_vm")
+
+    @property
+    @pulumi.getter(name="preparingVmDisks")
+    def preparing_vm_disks(self) -> 'outputs.PreparingVMDisksStepResponse':
+        """
+        Preparing VM disks step.
+        """
+        return pulumi.get(self, "preparing_vm_disks")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the step has started.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type
@@ -650,7 +1006,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         :param Mapping[str, str] metadata: The metadata key/value pairs to assign to the VM.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: List of NICs connected to this VM.
         :param Sequence[str] network_tags: A map of network tags to associate with the VM.
-        :param str project: The GCP target project ID or project name.
+        :param str project: The Google Cloud target project ID or project name.
         :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
         :param str service_account: The service account to associate the VM with.
         :param str vm_name: The name of the VM to create.
@@ -783,7 +1139,7 @@ class ComputeEngineTargetDetailsResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        The GCP target project ID or project name.
+        The Google Cloud target project ID or project name.
         """
         return pulumi.get(self, "project")
 
@@ -939,7 +1295,8 @@ class CutoverJobResponse(dict):
                  progress_percent: int,
                  state: str,
                  state_message: str,
-                 state_time: str):
+                 state_time: str,
+                 steps: Sequence['outputs.CutoverStepResponse']):
         """
         CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
         :param 'ComputeEngineTargetDetailsResponse' compute_engine_target_details: Details of the target VM in Compute Engine.
@@ -951,6 +1308,7 @@ class CutoverJobResponse(dict):
         :param str state: State of the cutover job.
         :param str state_message: A message providing possible extra details about the current state.
         :param str state_time: The time the state was last updated.
+        :param Sequence['CutoverStepResponse'] steps: The cutover steps list representing its progress.
         """
         pulumi.set(__self__, "compute_engine_target_details", compute_engine_target_details)
         pulumi.set(__self__, "create_time", create_time)
@@ -961,6 +1319,7 @@ class CutoverJobResponse(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "state_message", state_message)
         pulumi.set(__self__, "state_time", state_time)
+        pulumi.set(__self__, "steps", steps)
 
     @property
     @pulumi.getter(name="computeEngineTargetDetails")
@@ -1033,6 +1392,244 @@ class CutoverJobResponse(dict):
         The time the state was last updated.
         """
         return pulumi.get(self, "state_time")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CutoverStepResponse']:
+        """
+        The cutover steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class CutoverStepResponse(dict):
+    """
+    CutoverStep holds information about the cutover step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "finalSync":
+            suggest = "final_sync"
+        elif key == "instantiatingMigratedVm":
+            suggest = "instantiating_migrated_vm"
+        elif key == "preparingVmDisks":
+            suggest = "preparing_vm_disks"
+        elif key == "previousReplicationCycle":
+            suggest = "previous_replication_cycle"
+        elif key == "shuttingDownSourceVm":
+            suggest = "shutting_down_source_vm"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CutoverStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CutoverStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CutoverStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 final_sync: 'outputs.ReplicationCycleResponse',
+                 instantiating_migrated_vm: 'outputs.InstantiatingMigratedVMStepResponse',
+                 preparing_vm_disks: 'outputs.PreparingVMDisksStepResponse',
+                 previous_replication_cycle: 'outputs.ReplicationCycleResponse',
+                 shutting_down_source_vm: 'outputs.ShuttingDownSourceVMStepResponse',
+                 start_time: str):
+        """
+        CutoverStep holds information about the cutover step progress.
+        :param str end_time: The time the step has ended.
+        :param 'ReplicationCycleResponse' final_sync: Final sync step.
+        :param 'InstantiatingMigratedVMStepResponse' instantiating_migrated_vm: Instantiating migrated VM step.
+        :param 'PreparingVMDisksStepResponse' preparing_vm_disks: Preparing VM disks step.
+        :param 'ReplicationCycleResponse' previous_replication_cycle: A replication cycle prior cutover step.
+        :param 'ShuttingDownSourceVMStepResponse' shutting_down_source_vm: Shutting down VM step.
+        :param str start_time: The time the step has started.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "final_sync", final_sync)
+        pulumi.set(__self__, "instantiating_migrated_vm", instantiating_migrated_vm)
+        pulumi.set(__self__, "preparing_vm_disks", preparing_vm_disks)
+        pulumi.set(__self__, "previous_replication_cycle", previous_replication_cycle)
+        pulumi.set(__self__, "shutting_down_source_vm", shutting_down_source_vm)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="finalSync")
+    def final_sync(self) -> 'outputs.ReplicationCycleResponse':
+        """
+        Final sync step.
+        """
+        return pulumi.get(self, "final_sync")
+
+    @property
+    @pulumi.getter(name="instantiatingMigratedVm")
+    def instantiating_migrated_vm(self) -> 'outputs.InstantiatingMigratedVMStepResponse':
+        """
+        Instantiating migrated VM step.
+        """
+        return pulumi.get(self, "instantiating_migrated_vm")
+
+    @property
+    @pulumi.getter(name="preparingVmDisks")
+    def preparing_vm_disks(self) -> 'outputs.PreparingVMDisksStepResponse':
+        """
+        Preparing VM disks step.
+        """
+        return pulumi.get(self, "preparing_vm_disks")
+
+    @property
+    @pulumi.getter(name="previousReplicationCycle")
+    def previous_replication_cycle(self) -> 'outputs.ReplicationCycleResponse':
+        """
+        A replication cycle prior cutover step.
+        """
+        return pulumi.get(self, "previous_replication_cycle")
+
+    @property
+    @pulumi.getter(name="shuttingDownSourceVm")
+    def shutting_down_source_vm(self) -> 'outputs.ShuttingDownSourceVMStepResponse':
+        """
+        Shutting down VM step.
+        """
+        return pulumi.get(self, "shutting_down_source_vm")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the step has started.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class CycleStepResponse(dict):
+    """
+    CycleStep holds information about a step progress.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "initializingReplication":
+            suggest = "initializing_replication"
+        elif key == "postProcessing":
+            suggest = "post_processing"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CycleStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CycleStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CycleStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 initializing_replication: 'outputs.InitializingReplicationStepResponse',
+                 post_processing: 'outputs.PostProcessingStepResponse',
+                 replicating: 'outputs.ReplicatingStepResponse',
+                 start_time: str):
+        """
+        CycleStep holds information about a step progress.
+        :param str end_time: The time the cycle step has ended.
+        :param 'InitializingReplicationStepResponse' initializing_replication: Initializing replication step.
+        :param 'PostProcessingStepResponse' post_processing: Post processing step.
+        :param 'ReplicatingStepResponse' replicating: Replicating step.
+        :param str start_time: The time the cycle step has started.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "initializing_replication", initializing_replication)
+        pulumi.set(__self__, "post_processing", post_processing)
+        pulumi.set(__self__, "replicating", replicating)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the cycle step has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="initializingReplication")
+    def initializing_replication(self) -> 'outputs.InitializingReplicationStepResponse':
+        """
+        Initializing replication step.
+        """
+        return pulumi.get(self, "initializing_replication")
+
+    @property
+    @pulumi.getter(name="postProcessing")
+    def post_processing(self) -> 'outputs.PostProcessingStepResponse':
+        """
+        Post processing step.
+        """
+        return pulumi.get(self, "post_processing")
+
+    @property
+    @pulumi.getter
+    def replicating(self) -> 'outputs.ReplicatingStepResponse':
+        """
+        Replicating step.
+        """
+        return pulumi.get(self, "replicating")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        The time the cycle step has started.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class InitializingReplicationStepResponse(dict):
+    """
+    InitializingReplicationStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        InitializingReplicationStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
+class InstantiatingMigratedVMStepResponse(dict):
+    """
+    InstantiatingMigratedVMStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        InstantiatingMigratedVMStep contains specific step details.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1110,6 +1707,108 @@ class NetworkInterfaceResponse(dict):
 
 
 @pulumi.output_type
+class PostProcessingStepResponse(dict):
+    """
+    PostProcessingStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        PostProcessingStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
+class PreparingVMDisksStepResponse(dict):
+    """
+    PreparingVMDisksStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        PreparingVMDisksStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
+class ReplicatingStepResponse(dict):
+    """
+    ReplicatingStep contains specific step details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastThirtyMinutesAverageBytesPerSecond":
+            suggest = "last_thirty_minutes_average_bytes_per_second"
+        elif key == "lastTwoMinutesAverageBytesPerSecond":
+            suggest = "last_two_minutes_average_bytes_per_second"
+        elif key == "replicatedBytes":
+            suggest = "replicated_bytes"
+        elif key == "totalBytes":
+            suggest = "total_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReplicatingStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReplicatingStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReplicatingStepResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_thirty_minutes_average_bytes_per_second: str,
+                 last_two_minutes_average_bytes_per_second: str,
+                 replicated_bytes: str,
+                 total_bytes: str):
+        """
+        ReplicatingStep contains specific step details.
+        :param str last_thirty_minutes_average_bytes_per_second: The source disks replication rate for the last 30 minutes in bytes per second.
+        :param str last_two_minutes_average_bytes_per_second: The source disks replication rate for the last 2 minutes in bytes per second.
+        :param str replicated_bytes: Replicated bytes in the step.
+        :param str total_bytes: Total bytes to be handled in the step.
+        """
+        pulumi.set(__self__, "last_thirty_minutes_average_bytes_per_second", last_thirty_minutes_average_bytes_per_second)
+        pulumi.set(__self__, "last_two_minutes_average_bytes_per_second", last_two_minutes_average_bytes_per_second)
+        pulumi.set(__self__, "replicated_bytes", replicated_bytes)
+        pulumi.set(__self__, "total_bytes", total_bytes)
+
+    @property
+    @pulumi.getter(name="lastThirtyMinutesAverageBytesPerSecond")
+    def last_thirty_minutes_average_bytes_per_second(self) -> str:
+        """
+        The source disks replication rate for the last 30 minutes in bytes per second.
+        """
+        return pulumi.get(self, "last_thirty_minutes_average_bytes_per_second")
+
+    @property
+    @pulumi.getter(name="lastTwoMinutesAverageBytesPerSecond")
+    def last_two_minutes_average_bytes_per_second(self) -> str:
+        """
+        The source disks replication rate for the last 2 minutes in bytes per second.
+        """
+        return pulumi.get(self, "last_two_minutes_average_bytes_per_second")
+
+    @property
+    @pulumi.getter(name="replicatedBytes")
+    def replicated_bytes(self) -> str:
+        """
+        Replicated bytes in the step.
+        """
+        return pulumi.get(self, "replicated_bytes")
+
+    @property
+    @pulumi.getter(name="totalBytes")
+    def total_bytes(self) -> str:
+        """
+        Total bytes to be handled in the step.
+        """
+        return pulumi.get(self, "total_bytes")
+
+
+@pulumi.output_type
 class ReplicationCycleResponse(dict):
     """
     ReplicationCycle contains information about the current replication cycle status.
@@ -1117,10 +1816,16 @@ class ReplicationCycleResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "progressPercent":
+        if key == "cycleNumber":
+            suggest = "cycle_number"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "progressPercent":
             suggest = "progress_percent"
         elif key == "startTime":
             suggest = "start_time"
+        elif key == "totalPauseDuration":
+            suggest = "total_pause_duration"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ReplicationCycleResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1134,21 +1839,74 @@ class ReplicationCycleResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cycle_number: int,
+                 end_time: str,
+                 error: 'outputs.StatusResponse',
+                 name: str,
                  progress_percent: int,
-                 start_time: str):
+                 start_time: str,
+                 state: str,
+                 steps: Sequence['outputs.CycleStepResponse'],
+                 total_pause_duration: str):
         """
         ReplicationCycle contains information about the current replication cycle status.
-        :param int progress_percent: The current progress in percentage of this cycle.
+        :param int cycle_number: The cycle's ordinal number.
+        :param str end_time: The time the replication cycle has ended.
+        :param 'StatusResponse' error: Provides details on the state of the cycle in case of an error.
+        :param str name: The identifier of the ReplicationCycle.
+        :param int progress_percent: The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
         :param str start_time: The time the replication cycle has started.
+        :param str state: State of the ReplicationCycle.
+        :param Sequence['CycleStepResponse'] steps: The cycle's steps list representing its progress.
+        :param str total_pause_duration: The accumulated duration the replication cycle was paused.
         """
+        pulumi.set(__self__, "cycle_number", cycle_number)
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "progress_percent", progress_percent)
         pulumi.set(__self__, "start_time", start_time)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "steps", steps)
+        pulumi.set(__self__, "total_pause_duration", total_pause_duration)
+
+    @property
+    @pulumi.getter(name="cycleNumber")
+    def cycle_number(self) -> int:
+        """
+        The cycle's ordinal number.
+        """
+        return pulumi.get(self, "cycle_number")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time the replication cycle has ended.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the cycle in case of an error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The identifier of the ReplicationCycle.
+        """
+        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="progressPercent")
     def progress_percent(self) -> int:
         """
-        The current progress in percentage of this cycle.
+        The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
         """
         return pulumi.get(self, "progress_percent")
 
@@ -1159,6 +1917,30 @@ class ReplicationCycleResponse(dict):
         The time the replication cycle has started.
         """
         return pulumi.get(self, "start_time")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the ReplicationCycle.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Sequence['outputs.CycleStepResponse']:
+        """
+        The cycle's steps list representing its progress.
+        """
+        return pulumi.get(self, "steps")
+
+    @property
+    @pulumi.getter(name="totalPauseDuration")
+    def total_pause_duration(self) -> str:
+        """
+        The accumulated duration the replication cycle was paused.
+        """
+        return pulumi.get(self, "total_pause_duration")
 
 
 @pulumi.output_type
@@ -1297,6 +2079,18 @@ class SchedulingNodeAffinityResponse(dict):
 
 
 @pulumi.output_type
+class ShuttingDownSourceVMStepResponse(dict):
+    """
+    ShuttingDownSourceVMStep contains specific step details.
+    """
+    def __init__(__self__):
+        """
+        ShuttingDownSourceVMStep contains specific step details.
+        """
+        pass
+
+
+@pulumi.output_type
 class StatusResponse(dict):
     """
     The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -1338,6 +2132,39 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class TagResponse(dict):
+    """
+    Tag is an AWS tag representation.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        Tag is an AWS tag representation.
+        :param str key: Key of tag.
+        :param str value: Value of tag.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of tag.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of tag.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

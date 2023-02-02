@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetInterconnect
     {
         /// <summary>
-        /// Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+        /// Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
         /// </summary>
         public static Task<GetInterconnectResult> InvokeAsync(GetInterconnectArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterconnectResult>("google-native:compute/v1:getInterconnect", args ?? new GetInterconnectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+        /// Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
         /// </summary>
         public static Output<GetInterconnectResult> Invoke(GetInterconnectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInterconnectResult>("google-native:compute/v1:getInterconnect", args ?? new GetInterconnectInvokeArgs(), options.WithDefaults());
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+        /// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         /// </summary>
         public readonly string NocContactEmail;
         /// <summary>

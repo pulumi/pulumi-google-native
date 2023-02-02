@@ -129,7 +129,7 @@ class GetRoutineResult:
     @pulumi.getter
     def language(self) -> str:
         """
-        Optional. Defaults to "SQL".
+        Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         """
         return pulumi.get(self, "language")
 
@@ -153,7 +153,7 @@ class GetRoutineResult:
     @pulumi.getter(name="returnTableType")
     def return_table_type(self) -> 'outputs.StandardSqlTableTypeResponse':
         """
-        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         """
         return pulumi.get(self, "return_table_type")
 

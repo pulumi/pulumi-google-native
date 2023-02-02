@@ -71,7 +71,7 @@ class GetViewResult:
     @pulumi.getter
     def value(self) -> str:
         """
-        String with specific view properties.
+        String with specific view properties, must be non-empty.
         """
         return pulumi.get(self, "value")
 

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     public sealed class FacetOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+        /// </summary>
+        [Input("integerFacetingOptions")]
+        public Input<Inputs.IntegerFacetingOptionsArgs>? IntegerFacetingOptions { get; set; }
+
+        /// <summary>
         /// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
         /// </summary>
         [Input("numFacetBuckets")]

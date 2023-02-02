@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTransferJobResult:
-    def __init__(__self__, creation_time=None, deletion_time=None, description=None, last_modification_time=None, latest_operation_name=None, logging_config=None, name=None, notification_config=None, project=None, schedule=None, status=None, transfer_spec=None):
+    def __init__(__self__, creation_time=None, deletion_time=None, description=None, event_stream=None, last_modification_time=None, latest_operation_name=None, logging_config=None, name=None, notification_config=None, project=None, schedule=None, status=None, transfer_spec=None):
         if creation_time and not isinstance(creation_time, str):
             raise TypeError("Expected argument 'creation_time' to be a str")
         pulumi.set(__self__, "creation_time", creation_time)
@@ -29,6 +29,9 @@ class GetTransferJobResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if event_stream and not isinstance(event_stream, dict):
+            raise TypeError("Expected argument 'event_stream' to be a dict")
+        pulumi.set(__self__, "event_stream", event_stream)
         if last_modification_time and not isinstance(last_modification_time, str):
             raise TypeError("Expected argument 'last_modification_time' to be a str")
         pulumi.set(__self__, "last_modification_time", last_modification_time)
@@ -80,6 +83,14 @@ class GetTransferJobResult:
         A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="eventStream")
+    def event_stream(self) -> 'outputs.EventStreamResponse':
+        """
+        Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        """
+        return pulumi.get(self, "event_stream")
 
     @property
     @pulumi.getter(name="lastModificationTime")
@@ -163,6 +174,7 @@ class AwaitableGetTransferJobResult(GetTransferJobResult):
             creation_time=self.creation_time,
             deletion_time=self.deletion_time,
             description=self.description,
+            event_stream=self.event_stream,
             last_modification_time=self.last_modification_time,
             latest_operation_name=self.latest_operation_name,
             logging_config=self.logging_config,
@@ -190,6 +202,7 @@ def get_transfer_job(project_id: Optional[str] = None,
         creation_time=__ret__.creation_time,
         deletion_time=__ret__.deletion_time,
         description=__ret__.description,
+        event_stream=__ret__.event_stream,
         last_modification_time=__ret__.last_modification_time,
         latest_operation_name=__ret__.latest_operation_name,
         logging_config=__ret__.logging_config,

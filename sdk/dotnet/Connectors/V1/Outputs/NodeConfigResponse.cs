@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Outputs
 {
 
     /// <summary>
-    /// Configuration for the connection.
+    /// Node configuration for the connection.
     /// </summary>
     [OutputType]
     public sealed class NodeConfigResponse

@@ -23,10 +23,42 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dataplex/v1:Asset":
 		r = &Asset{}
+	case "google-native:dataplex/v1:Attribute":
+		r = &Attribute{}
 	case "google-native:dataplex/v1:Content":
 		r = &Content{}
 	case "google-native:dataplex/v1:Contentitem":
 		r = &Contentitem{}
+	case "google-native:dataplex/v1:DataAttributeBinding":
+		r = &DataAttributeBinding{}
+	case "google-native:dataplex/v1:DataAttributeBindingIamBinding":
+		r = &DataAttributeBindingIamBinding{}
+	case "google-native:dataplex/v1:DataAttributeBindingIamMember":
+		r = &DataAttributeBindingIamMember{}
+	case "google-native:dataplex/v1:DataAttributeBindingIamPolicy":
+		r = &DataAttributeBindingIamPolicy{}
+	case "google-native:dataplex/v1:DataScan":
+		r = &DataScan{}
+	case "google-native:dataplex/v1:DataScanIamBinding":
+		r = &DataScanIamBinding{}
+	case "google-native:dataplex/v1:DataScanIamMember":
+		r = &DataScanIamMember{}
+	case "google-native:dataplex/v1:DataScanIamPolicy":
+		r = &DataScanIamPolicy{}
+	case "google-native:dataplex/v1:DataTaxonomy":
+		r = &DataTaxonomy{}
+	case "google-native:dataplex/v1:DataTaxonomyAttributeIamBinding":
+		r = &DataTaxonomyAttributeIamBinding{}
+	case "google-native:dataplex/v1:DataTaxonomyAttributeIamMember":
+		r = &DataTaxonomyAttributeIamMember{}
+	case "google-native:dataplex/v1:DataTaxonomyAttributeIamPolicy":
+		r = &DataTaxonomyAttributeIamPolicy{}
+	case "google-native:dataplex/v1:DataTaxonomyIamBinding":
+		r = &DataTaxonomyIamBinding{}
+	case "google-native:dataplex/v1:DataTaxonomyIamMember":
+		r = &DataTaxonomyIamMember{}
+	case "google-native:dataplex/v1:DataTaxonomyIamPolicy":
+		r = &DataTaxonomyIamPolicy{}
 	case "google-native:dataplex/v1:Entity":
 		r = &Entity{}
 	case "google-native:dataplex/v1:Environment":

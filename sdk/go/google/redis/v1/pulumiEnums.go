@@ -1078,7 +1078,7 @@ const (
 	PersistenceConfigRdbSnapshotPeriodSixHours = PersistenceConfigRdbSnapshotPeriod("SIX_HOURS")
 	// Snapshot every 12 hours.
 	PersistenceConfigRdbSnapshotPeriodTwelveHours = PersistenceConfigRdbSnapshotPeriod("TWELVE_HOURS")
-	// Snapshot every 24 horus.
+	// Snapshot every 24 hours.
 	PersistenceConfigRdbSnapshotPeriodTwentyFourHours = PersistenceConfigRdbSnapshotPeriod("TWENTY_FOUR_HOURS")
 )
 

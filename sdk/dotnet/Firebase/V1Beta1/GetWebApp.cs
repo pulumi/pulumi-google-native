@@ -74,6 +74,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
         /// </summary>
         public readonly string Name;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
             string displayName,
 
+            string etag,
+
             string name,
 
             string project,
@@ -112,6 +118,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
             AppId = appId;
             AppUrls = appUrls;
             DisplayName = displayName;
+            Etag = etag;
             Name = name;
             Project = project;
             State = state;

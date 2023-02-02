@@ -53,6 +53,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        /// </summary>
+        [Output("service")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1TaxonomyServiceResponse> Service { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamps about this taxonomy. Only create_time and update_time are used.
         /// </summary>
         [Output("taxonomyTimestamps")]

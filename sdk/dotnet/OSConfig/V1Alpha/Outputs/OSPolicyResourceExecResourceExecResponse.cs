@@ -33,7 +33,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Outputs
         /// </summary>
         public readonly string OutputFilePath;
         /// <summary>
-        /// An inline script. The size of the script is limited to 1024 characters.
+        /// An inline script. The size of the script is limited to 32KiB.
         /// </summary>
         public readonly string Script;
 

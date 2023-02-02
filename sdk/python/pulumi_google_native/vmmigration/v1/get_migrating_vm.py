@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None):
+    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, update_time=None):
+        if aws_source_vm_details and not isinstance(aws_source_vm_details, dict):
+            raise TypeError("Expected argument 'aws_source_vm_details' to be a dict")
+        pulumi.set(__self__, "aws_source_vm_details", aws_source_vm_details)
         if compute_engine_target_defaults and not isinstance(compute_engine_target_defaults, dict):
             raise TypeError("Expected argument 'compute_engine_target_defaults' to be a dict")
         pulumi.set(__self__, "compute_engine_target_defaults", compute_engine_target_defaults)
@@ -73,6 +76,14 @@ class GetMigratingVmResult:
         pulumi.set(__self__, "update_time", update_time)
 
     @property
+    @pulumi.getter(name="awsSourceVmDetails")
+    def aws_source_vm_details(self) -> 'outputs.AwsSourceVmDetailsResponse':
+        """
+        Details of the VM from an AWS source.
+        """
+        return pulumi.get(self, "aws_source_vm_details")
+
+    @property
     @pulumi.getter(name="computeEngineTargetDefaults")
     def compute_engine_target_defaults(self) -> 'outputs.ComputeEngineTargetDefaultsResponse':
         """
@@ -92,7 +103,7 @@ class GetMigratingVmResult:
     @pulumi.getter(name="currentSyncInfo")
     def current_sync_info(self) -> 'outputs.ReplicationCycleResponse':
         """
-        The percentage progress of the current running replication cycle.
+        Details of the current running replication cycle.
         """
         return pulumi.get(self, "current_sync_info")
 
@@ -215,6 +226,7 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
         if False:
             yield self
         return GetMigratingVmResult(
+            aws_source_vm_details=self.aws_source_vm_details,
             compute_engine_target_defaults=self.compute_engine_target_defaults,
             create_time=self.create_time,
             current_sync_info=self.current_sync_info,
@@ -253,6 +265,7 @@ def get_migrating_vm(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getMigratingVm', __args__, opts=opts, typ=GetMigratingVmResult).value
 
     return AwaitableGetMigratingVmResult(
+        aws_source_vm_details=__ret__.aws_source_vm_details,
         compute_engine_target_defaults=__ret__.compute_engine_target_defaults,
         create_time=__ret__.create_time,
         current_sync_info=__ret__.current_sync_info,

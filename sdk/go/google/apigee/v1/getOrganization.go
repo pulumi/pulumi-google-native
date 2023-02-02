@@ -27,9 +27,9 @@ type LookupOrganizationArgs struct {
 type LookupOrganizationResult struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponse `pulumi:"addonsConfig"`
-	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	//
-	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion string `pulumi:"analyticsRegion"`
 	// Apigee Project ID associated with the organization. Use this project to allowlist Apigee in the Service Attachment when using private service connect with Apigee.
 	ApigeeProjectId string `pulumi:"apigeeProjectId"`
@@ -117,9 +117,9 @@ func (o LookupOrganizationResultOutput) AddonsConfig() GoogleCloudApigeeV1Addons
 	return o.ApplyT(func(v LookupOrganizationResult) GoogleCloudApigeeV1AddonsConfigResponse { return v.AddonsConfig }).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
 }
 
-// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 //
-// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// Deprecated: Required. DEPRECATED: This field will be deprecated once Apigee supports DRZ. Primary Google Cloud region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 func (o LookupOrganizationResultOutput) AnalyticsRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOrganizationResult) string { return v.AnalyticsRegion }).(pulumi.StringOutput)
 }

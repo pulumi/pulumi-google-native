@@ -31,8 +31,9 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         private InputMap<string>? _environments;
 
         /// <summary>
-        /// Environment variables to set before running the Task. You can set up to 100 environments.
+        /// Deprecated: please use environment(non-plural) instead.
         /// </summary>
+        [Obsolete(@"Deprecated: please use environment(non-plural) instead.")]
         public InputMap<string> Environments
         {
             get => _environments ?? (_environments = new InputMap<string>());

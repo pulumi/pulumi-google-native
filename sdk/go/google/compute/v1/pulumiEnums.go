@@ -4573,7 +4573,7 @@ func (in *backendServiceLocalityLbPolicyPtr) ToBackendServiceLocalityLbPolicyPtr
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLbPolicyPtrOutput)
 }
 
-// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicyName string
 
 const (
@@ -4747,6 +4747,175 @@ func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBacken
 
 func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutputWithContext(ctx context.Context) BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
+}
+
+// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+type BackendServiceLogConfigOptionalMode string
+
+const (
+	// A subset of optional fields.
+	BackendServiceLogConfigOptionalModeCustom = BackendServiceLogConfigOptionalMode("CUSTOM")
+	// None optional fields.
+	BackendServiceLogConfigOptionalModeExcludeAllOptional = BackendServiceLogConfigOptionalMode("EXCLUDE_ALL_OPTIONAL")
+	// All optional fields.
+	BackendServiceLogConfigOptionalModeIncludeAllOptional = BackendServiceLogConfigOptionalMode("INCLUDE_ALL_OPTIONAL")
+)
+
+func (BackendServiceLogConfigOptionalMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigOptionalMode)(nil)).Elem()
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToBackendServiceLogConfigOptionalModeOutput() BackendServiceLogConfigOptionalModeOutput {
+	return pulumi.ToOutput(e).(BackendServiceLogConfigOptionalModeOutput)
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToBackendServiceLogConfigOptionalModeOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendServiceLogConfigOptionalModeOutput)
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToBackendServiceLogConfigOptionalModePtrOutput() BackendServiceLogConfigOptionalModePtrOutput {
+	return e.ToBackendServiceLogConfigOptionalModePtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
+	return BackendServiceLogConfigOptionalMode(e).ToBackendServiceLogConfigOptionalModeOutputWithContext(ctx).ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx)
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceLogConfigOptionalMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendServiceLogConfigOptionalModeOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigOptionalModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigOptionalMode)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToBackendServiceLogConfigOptionalModeOutput() BackendServiceLogConfigOptionalModeOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToBackendServiceLogConfigOptionalModeOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModeOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToBackendServiceLogConfigOptionalModePtrOutput() BackendServiceLogConfigOptionalModePtrOutput {
+	return o.ToBackendServiceLogConfigOptionalModePtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLogConfigOptionalMode) *BackendServiceLogConfigOptionalMode {
+		return &v
+	}).(BackendServiceLogConfigOptionalModePtrOutput)
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceLogConfigOptionalMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceLogConfigOptionalMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceLogConfigOptionalModePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigOptionalModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLogConfigOptionalMode)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigOptionalModePtrOutput) ToBackendServiceLogConfigOptionalModePtrOutput() BackendServiceLogConfigOptionalModePtrOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalModePtrOutput) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalModePtrOutput) Elem() BackendServiceLogConfigOptionalModeOutput {
+	return o.ApplyT(func(v *BackendServiceLogConfigOptionalMode) BackendServiceLogConfigOptionalMode {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLogConfigOptionalMode
+		return ret
+	}).(BackendServiceLogConfigOptionalModeOutput)
+}
+
+func (o BackendServiceLogConfigOptionalModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendServiceLogConfigOptionalMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendServiceLogConfigOptionalModeInput is an input type that accepts BackendServiceLogConfigOptionalModeArgs and BackendServiceLogConfigOptionalModeOutput values.
+// You can construct a concrete instance of `BackendServiceLogConfigOptionalModeInput` via:
+//
+//	BackendServiceLogConfigOptionalModeArgs{...}
+type BackendServiceLogConfigOptionalModeInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigOptionalModeOutput() BackendServiceLogConfigOptionalModeOutput
+	ToBackendServiceLogConfigOptionalModeOutputWithContext(context.Context) BackendServiceLogConfigOptionalModeOutput
+}
+
+var backendServiceLogConfigOptionalModePtrType = reflect.TypeOf((**BackendServiceLogConfigOptionalMode)(nil)).Elem()
+
+type BackendServiceLogConfigOptionalModePtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigOptionalModePtrOutput() BackendServiceLogConfigOptionalModePtrOutput
+	ToBackendServiceLogConfigOptionalModePtrOutputWithContext(context.Context) BackendServiceLogConfigOptionalModePtrOutput
+}
+
+type backendServiceLogConfigOptionalModePtr string
+
+func BackendServiceLogConfigOptionalModePtr(v string) BackendServiceLogConfigOptionalModePtrInput {
+	return (*backendServiceLogConfigOptionalModePtr)(&v)
+}
+
+func (*backendServiceLogConfigOptionalModePtr) ElementType() reflect.Type {
+	return backendServiceLogConfigOptionalModePtrType
+}
+
+func (in *backendServiceLogConfigOptionalModePtr) ToBackendServiceLogConfigOptionalModePtrOutput() BackendServiceLogConfigOptionalModePtrOutput {
+	return pulumi.ToOutput(in).(BackendServiceLogConfigOptionalModePtrOutput)
+}
+
+func (in *backendServiceLogConfigOptionalModePtr) ToBackendServiceLogConfigOptionalModePtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLogConfigOptionalModePtrOutput)
 }
 
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
@@ -10050,6 +10219,7 @@ const (
 	GuestOsFeatureTypeMultiIpSubnet          = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot             = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable             = GuestOsFeatureType("SEV_CAPABLE")
+	GuestOsFeatureTypeSevSnpCapable          = GuestOsFeatureType("SEV_SNP_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible         = GuestOsFeatureType("UEFI_COMPATIBLE")
 	GuestOsFeatureTypeVirtioScsiMultiqueue   = GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE")
 	GuestOsFeatureTypeWindows                = GuestOsFeatureType("WINDOWS")
@@ -15437,6 +15607,171 @@ func (in *metadataFilterFilterMatchCriteriaPtr) ToMetadataFilterFilterMatchCrite
 	return pulumi.ToOutputWithContext(ctx, in).(MetadataFilterFilterMatchCriteriaPtrOutput)
 }
 
+type NetworkAttachmentConnectionPreference string
+
+const (
+	NetworkAttachmentConnectionPreferenceAcceptAutomatic = NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC")
+	NetworkAttachmentConnectionPreferenceAcceptManual    = NetworkAttachmentConnectionPreference("ACCEPT_MANUAL")
+	NetworkAttachmentConnectionPreferenceInvalid         = NetworkAttachmentConnectionPreference("INVALID")
+)
+
+func (NetworkAttachmentConnectionPreference) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachmentConnectionPreference)(nil)).Elem()
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferenceOutput() NetworkAttachmentConnectionPreferenceOutput {
+	return pulumi.ToOutput(e).(NetworkAttachmentConnectionPreferenceOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferenceOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkAttachmentConnectionPreferenceOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return e.ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return NetworkAttachmentConnectionPreference(e).ToNetworkAttachmentConnectionPreferenceOutputWithContext(ctx).ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkAttachmentConnectionPreferenceOutput struct{ *pulumi.OutputState }
+
+func (NetworkAttachmentConnectionPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachmentConnectionPreference)(nil)).Elem()
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferenceOutput() NetworkAttachmentConnectionPreferenceOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferenceOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferenceOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return o.ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAttachmentConnectionPreference) *NetworkAttachmentConnectionPreference {
+		return &v
+	}).(NetworkAttachmentConnectionPreferencePtrOutput)
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkAttachmentConnectionPreference) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkAttachmentConnectionPreference) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkAttachmentConnectionPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAttachmentConnectionPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAttachmentConnectionPreference)(nil)).Elem()
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) Elem() NetworkAttachmentConnectionPreferenceOutput {
+	return o.ApplyT(func(v *NetworkAttachmentConnectionPreference) NetworkAttachmentConnectionPreference {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAttachmentConnectionPreference
+		return ret
+	}).(NetworkAttachmentConnectionPreferenceOutput)
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkAttachmentConnectionPreference) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkAttachmentConnectionPreferenceInput is an input type that accepts NetworkAttachmentConnectionPreferenceArgs and NetworkAttachmentConnectionPreferenceOutput values.
+// You can construct a concrete instance of `NetworkAttachmentConnectionPreferenceInput` via:
+//
+//	NetworkAttachmentConnectionPreferenceArgs{...}
+type NetworkAttachmentConnectionPreferenceInput interface {
+	pulumi.Input
+
+	ToNetworkAttachmentConnectionPreferenceOutput() NetworkAttachmentConnectionPreferenceOutput
+	ToNetworkAttachmentConnectionPreferenceOutputWithContext(context.Context) NetworkAttachmentConnectionPreferenceOutput
+}
+
+var networkAttachmentConnectionPreferencePtrType = reflect.TypeOf((**NetworkAttachmentConnectionPreference)(nil)).Elem()
+
+type NetworkAttachmentConnectionPreferencePtrInput interface {
+	pulumi.Input
+
+	ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput
+	ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(context.Context) NetworkAttachmentConnectionPreferencePtrOutput
+}
+
+type networkAttachmentConnectionPreferencePtr string
+
+func NetworkAttachmentConnectionPreferencePtr(v string) NetworkAttachmentConnectionPreferencePtrInput {
+	return (*networkAttachmentConnectionPreferencePtr)(&v)
+}
+
+func (*networkAttachmentConnectionPreferencePtr) ElementType() reflect.Type {
+	return networkAttachmentConnectionPreferencePtrType
+}
+
+func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return pulumi.ToOutput(in).(NetworkAttachmentConnectionPreferencePtrOutput)
+}
+
+func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkAttachmentConnectionPreferencePtrOutput)
+}
+
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 type NetworkEndpointGroupNetworkEndpointType string
 
@@ -19018,7 +19353,7 @@ func (in *regionDiskArchitecturePtr) ToRegionDiskArchitecturePtrOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, in).(RegionDiskArchitecturePtrOutput)
 }
 
-// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
 type RegionHealthCheckServiceHealthStatusAggregationPolicy string
 
 const (
@@ -20877,7 +21212,7 @@ func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityCon
 	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
-// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
 type ResourceCommitmentType string
 
 const (
@@ -25557,7 +25892,7 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
 const (
@@ -29981,6 +30316,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLbPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLbPolicy("INVALID_LB_POLICY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigOptionalModeInput)(nil)).Elem(), BackendServiceLogConfigOptionalMode("CUSTOM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigOptionalModePtrInput)(nil)).Elem(), BackendServiceLogConfigOptionalMode("CUSTOM"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolInput)(nil)).Elem(), BackendServiceProtocol("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolPtrInput)(nil)).Elem(), BackendServiceProtocol("GRPC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSessionAffinityInput)(nil)).Elem(), BackendServiceSessionAffinity("CLIENT_IP"))
@@ -30107,6 +30444,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LogConfigDataAccessOptionsLogModePtrInput)(nil)).Elem(), LogConfigDataAccessOptionsLogMode("LOG_FAIL_CLOSED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterFilterMatchCriteriaInput)(nil)).Elem(), MetadataFilterFilterMatchCriteria("MATCH_ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterFilterMatchCriteriaPtrInput)(nil)).Elem(), MetadataFilterFilterMatchCriteria("MATCH_ALL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferenceInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferencePtrInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceNicTypeInput)(nil)).Elem(), NetworkInterfaceNicType("GVNIC"))
@@ -30337,6 +30676,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceLocalityLbPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput{})
 	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigOptionalModeOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigOptionalModePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceProtocolOutput{})
 	pulumi.RegisterOutputType(BackendServiceProtocolPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceSessionAffinityOutput{})
@@ -30463,6 +30804,8 @@ func init() {
 	pulumi.RegisterOutputType(LogConfigDataAccessOptionsLogModePtrOutput{})
 	pulumi.RegisterOutputType(MetadataFilterFilterMatchCriteriaOutput{})
 	pulumi.RegisterOutputType(MetadataFilterFilterMatchCriteriaPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferenceOutput{})
+	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferencePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceNicTypeOutput{})

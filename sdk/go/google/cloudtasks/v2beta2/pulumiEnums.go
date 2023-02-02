@@ -716,7 +716,7 @@ func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(TaskResponseViewPtrOutput)
 }
 
-// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 type UriOverrideScheme string
 
 const (
@@ -885,7 +885,7 @@ func (in *uriOverrideSchemePtr) ToUriOverrideSchemePtrOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, in).(UriOverrideSchemePtrOutput)
 }
 
-// Uri Override Enforce Mode Determines the Target UriOverride mode.
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 type UriOverrideUriOverrideEnforceMode string
 
 const (

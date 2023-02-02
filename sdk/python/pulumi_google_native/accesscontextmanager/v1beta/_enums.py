@@ -105,7 +105,7 @@ class ServicePerimeterPerimeterType(str, Enum):
     """
     PERIMETER_TYPE_REGULAR = "PERIMETER_TYPE_REGULAR"
     """
-    Regular Perimeter.
+    Regular Perimeter. When no value is specified, the perimeter uses this type.
     """
     PERIMETER_TYPE_BRIDGE = "PERIMETER_TYPE_BRIDGE"
     """

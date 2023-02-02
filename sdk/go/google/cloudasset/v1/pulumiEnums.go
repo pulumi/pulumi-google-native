@@ -20,9 +20,9 @@ const (
 	FeedContentTypeResource = FeedContentType("RESOURCE")
 	// The actual IAM policy set on a resource.
 	FeedContentTypeIamPolicy = FeedContentType("IAM_POLICY")
-	// The Cloud Organization Policy set on an asset.
+	// The organization policy set on an asset.
 	FeedContentTypeOrgPolicy = FeedContentType("ORG_POLICY")
-	// The Cloud Access context manager Policy set on an asset.
+	// The Access Context Manager policy set on an asset.
 	FeedContentTypeAccessPolicy = FeedContentType("ACCESS_POLICY")
 	// The runtime OS Inventory information.
 	FeedContentTypeOsInventory = FeedContentType("OS_INVENTORY")

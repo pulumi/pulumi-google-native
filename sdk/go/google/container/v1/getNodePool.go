@@ -36,6 +36,8 @@ type LookupNodePoolResult struct {
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
 	// The node configuration of the pool.
 	Config NodeConfigResponse `pulumi:"config"`
+	// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+	Etag string `pulumi:"etag"`
 	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 	InitialNodeCount int `pulumi:"initialNodeCount"`
 	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
@@ -50,6 +52,8 @@ type LookupNodePoolResult struct {
 	Name string `pulumi:"name"`
 	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
 	NetworkConfig NodeNetworkConfigResponse `pulumi:"networkConfig"`
+	// Specifies the node placement policy.
+	PlacementPolicy PlacementPolicyResponse `pulumi:"placementPolicy"`
 	// [Output only] The pod CIDR block size per node in this node pool.
 	PodIpv4CidrSize int `pulumi:"podIpv4CidrSize"`
 	// [Output only] Server-defined URL for the resource.
@@ -64,7 +68,7 @@ type LookupNodePoolResult struct {
 	UpdateInfo UpdateInfoResponse `pulumi:"updateInfo"`
 	// Upgrade settings control disruption and speed of the upgrade.
 	UpgradeSettings UpgradeSettingsResponse `pulumi:"upgradeSettings"`
-	// The version of the Kubernetes of this node.
+	// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 	Version string `pulumi:"version"`
 }
 
@@ -123,6 +127,11 @@ func (o LookupNodePoolResultOutput) Config() NodeConfigResponseOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) NodeConfigResponse { return v.Config }).(NodeConfigResponseOutput)
 }
 
+// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+func (o LookupNodePoolResultOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
 // The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
 func (o LookupNodePoolResultOutput) InitialNodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.InitialNodeCount }).(pulumi.IntOutput)
@@ -158,6 +167,11 @@ func (o LookupNodePoolResultOutput) NetworkConfig() NodeNetworkConfigResponseOut
 	return o.ApplyT(func(v LookupNodePoolResult) NodeNetworkConfigResponse { return v.NetworkConfig }).(NodeNetworkConfigResponseOutput)
 }
 
+// Specifies the node placement policy.
+func (o LookupNodePoolResultOutput) PlacementPolicy() PlacementPolicyResponseOutput {
+	return o.ApplyT(func(v LookupNodePoolResult) PlacementPolicyResponse { return v.PlacementPolicy }).(PlacementPolicyResponseOutput)
+}
+
 // [Output only] The pod CIDR block size per node in this node pool.
 func (o LookupNodePoolResultOutput) PodIpv4CidrSize() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) int { return v.PodIpv4CidrSize }).(pulumi.IntOutput)
@@ -190,7 +204,7 @@ func (o LookupNodePoolResultOutput) UpgradeSettings() UpgradeSettingsResponseOut
 	return o.ApplyT(func(v LookupNodePoolResult) UpgradeSettingsResponse { return v.UpgradeSettings }).(UpgradeSettingsResponseOutput)
 }
 
-// The version of the Kubernetes of this node.
+// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
 func (o LookupNodePoolResultOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodePoolResult) string { return v.Version }).(pulumi.StringOutput)
 }

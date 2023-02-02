@@ -22,6 +22,8 @@ type PrivateConnection struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// In case of error, the details of the error in a user-friendly format.
 	Error ErrorResponseOutput `pulumi:"error"`
+	// Optional. If set to true, will skip validations.
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Labels.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -93,6 +95,8 @@ func (PrivateConnectionState) ElementType() reflect.Type {
 type privateConnectionArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
+	// Optional. If set to true, will skip validations.
+	Force *bool `pulumi:"force"`
 	// Labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -109,6 +113,8 @@ type privateConnectionArgs struct {
 type PrivateConnectionArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
+	// Optional. If set to true, will skip validations.
+	Force pulumi.BoolPtrInput
 	// Labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -171,6 +177,11 @@ func (o PrivateConnectionOutput) DisplayName() pulumi.StringOutput {
 // In case of error, the details of the error in a user-friendly format.
 func (o PrivateConnectionOutput) Error() ErrorResponseOutput {
 	return o.ApplyT(func(v *PrivateConnection) ErrorResponseOutput { return v.Error }).(ErrorResponseOutput)
+}
+
+// Optional. If set to true, will skip validations.
+func (o PrivateConnectionOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrivateConnection) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
 // Labels.

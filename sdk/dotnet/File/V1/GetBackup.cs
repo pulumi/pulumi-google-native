@@ -80,6 +80,10 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         public readonly string DownloadBytes;
         /// <summary>
+        /// Immutable. KMS key name used for data encryption.
+        /// </summary>
+        public readonly string KmsKey;
+        /// <summary>
         /// Resource labels to represent user provided metadata.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -122,6 +126,8 @@ namespace Pulumi.GoogleNative.File.V1
 
             string downloadBytes,
 
+            string kmsKey,
+
             ImmutableDictionary<string, string> labels,
 
             string name,
@@ -142,6 +148,7 @@ namespace Pulumi.GoogleNative.File.V1
             CreateTime = createTime;
             Description = description;
             DownloadBytes = downloadBytes;
+            KmsKey = kmsKey;
             Labels = labels;
             Name = name;
             SatisfiesPzs = satisfiesPzs;

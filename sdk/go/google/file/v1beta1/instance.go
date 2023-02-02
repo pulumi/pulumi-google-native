@@ -46,6 +46,8 @@ type Instance struct {
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
 	Project  pulumi.StringOutput              `pulumi:"project"`
+	// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The instance state.
@@ -126,6 +128,8 @@ type instanceArgs struct {
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfig `pulumi:"networks"`
 	Project  *string         `pulumi:"project"`
+	// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+	Protocol *InstanceProtocol `pulumi:"protocol"`
 	// The service tier of the instance.
 	Tier *InstanceTier `pulumi:"tier"`
 }
@@ -152,6 +156,8 @@ type InstanceArgs struct {
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigArrayInput
 	Project  pulumi.StringPtrInput
+	// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+	Protocol InstanceProtocolPtrInput
 	// The service tier of the instance.
 	Tier InstanceTierPtrInput
 }
@@ -269,6 +275,11 @@ func (o InstanceOutput) Networks() NetworkConfigResponseArrayOutput {
 
 func (o InstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+func (o InstanceOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.

@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
+
+        /// <summary>
         /// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         /// </summary>
         [Input("networkIP")]

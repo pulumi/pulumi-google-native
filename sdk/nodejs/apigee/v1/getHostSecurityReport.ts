@@ -73,7 +73,7 @@ export interface GetHostSecurityReportResult {
      */
     readonly self: string;
     /**
-     * Query state could be "enqueued", "running", "completed", "failed".
+     * Query state could be "enqueued", "running", "completed", "expired" and "failed".
      */
     readonly state: string;
     /**

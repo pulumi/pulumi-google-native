@@ -39,6 +39,10 @@ export class MigratingVm extends pulumi.CustomResource {
     }
 
     /**
+     * Details of the VM from an AWS source.
+     */
+    public /*out*/ readonly awsSourceVmDetails!: pulumi.Output<outputs.vmmigration.v1alpha1.AwsSourceVmDetailsResponse>;
+    /**
      * Details of the target VM in Compute Engine.
      */
     public readonly computeEngineTargetDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.ComputeEngineTargetDefaultsResponse>;
@@ -53,7 +57,7 @@ export class MigratingVm extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * The percentage progress of the current running replication cycle.
+     * Details of the current running replication cycle.
      */
     public /*out*/ readonly currentSyncInfo!: pulumi.Output<outputs.vmmigration.v1alpha1.ReplicationCycleResponse>;
     /**
@@ -120,9 +124,9 @@ export class MigratingVm extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateTime!: pulumi.Output<string>;
     /**
-     * The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     * The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
      *
-     * @deprecated The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     * @deprecated The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
      */
     public readonly targetDefaults!: pulumi.Output<outputs.vmmigration.v1alpha1.TargetVMDetailsResponse>;
     /**
@@ -160,6 +164,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["sourceId"] = args ? args.sourceId : undefined;
             resourceInputs["sourceVmId"] = args ? args.sourceVmId : undefined;
             resourceInputs["targetDefaults"] = args ? args.targetDefaults : undefined;
+            resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["currentSyncInfo"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
@@ -172,6 +177,7 @@ export class MigratingVm extends pulumi.CustomResource {
             resourceInputs["stateTime"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["awsSourceVmDetails"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDefaults"] = undefined /*out*/;
             resourceInputs["computeEngineVmDefaults"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -250,9 +256,9 @@ export interface MigratingVmArgs {
      */
     sourceVmId?: pulumi.Input<string>;
     /**
-     * The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     * The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
      *
-     * @deprecated The default configuration of the target VM that will be created in GCP as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
+     * @deprecated The default configuration of the target VM that will be created in Google Cloud as a result of the migration. Deprecated: Use compute_engine_target_defaults instead.
      */
     targetDefaults?: pulumi.Input<inputs.vmmigration.v1alpha1.TargetVMDetailsArgs>;
 }

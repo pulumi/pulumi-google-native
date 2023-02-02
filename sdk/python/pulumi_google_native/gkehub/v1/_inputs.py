@@ -18,6 +18,7 @@ __all__ = [
     'AuthorityArgs',
     'BindingArgs',
     'CommonFeatureSpecArgs',
+    'CommonFleetDefaultMemberConfigSpecArgs',
     'EdgeClusterArgs',
     'ExprArgs',
     'FleetObservabilityFeatureSpecArgs',
@@ -293,6 +294,15 @@ class CommonFeatureSpecArgs:
     @multiclusteringress.setter
     def multiclusteringress(self, value: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']]):
         pulumi.set(self, "multiclusteringress", value)
+
+
+@pulumi.input_type
+class CommonFleetDefaultMemberConfigSpecArgs:
+    def __init__(__self__):
+        """
+        CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+        """
+        pass
 
 
 @pulumi.input_type

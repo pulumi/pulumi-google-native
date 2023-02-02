@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<string>? Amount { get; set; }
 
         /// <summary>
-        /// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+        /// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.ResourceCommitmentType>? Type { get; set; }

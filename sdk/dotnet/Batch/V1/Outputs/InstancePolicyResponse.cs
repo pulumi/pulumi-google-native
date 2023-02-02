@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AcceleratorResponse> Accelerators;
         /// <summary>
+        /// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+        /// </summary>
+        public readonly Outputs.DiskResponse BootDisk;
+        /// <summary>
         /// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
         /// </summary>
         public readonly ImmutableArray<Outputs.AttachedDiskResponse> Disks;
@@ -41,6 +45,8 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         private InstancePolicyResponse(
             ImmutableArray<Outputs.AcceleratorResponse> accelerators,
 
+            Outputs.DiskResponse bootDisk,
+
             ImmutableArray<Outputs.AttachedDiskResponse> disks,
 
             string machineType,
@@ -50,6 +56,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
             string provisioningModel)
         {
             Accelerators = accelerators;
+            BootDisk = bootDisk;
             Disks = disks;
             MachineType = machineType;
             MinCpuPlatform = minCpuPlatform;

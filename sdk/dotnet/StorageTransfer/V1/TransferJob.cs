@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        /// </summary>
+        [Output("eventStream")]
+        public Output<Outputs.EventStreamResponse> EventStream { get; private set; } = null!;
+
+        /// <summary>
         /// The time that the transfer job was last modified.
         /// </summary>
         [Output("lastModificationTime")]
@@ -137,6 +143,12 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Specifies the event stream for the transfer job for event-driven transfers. When EventStream is specified, the Schedule fields are ignored.
+        /// </summary>
+        [Input("eventStream")]
+        public Input<Inputs.EventStreamArgs>? EventStream { get; set; }
 
         /// <summary>
         /// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation has been created for this JobConfig.

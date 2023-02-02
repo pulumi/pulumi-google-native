@@ -526,6 +526,8 @@ const (
 	DatasetAccessEntryTargetTypesItemTargetTypeUnspecified = DatasetAccessEntryTargetTypesItem("TARGET_TYPE_UNSPECIFIED")
 	// This entry applies to views in the dataset.
 	DatasetAccessEntryTargetTypesItemViews = DatasetAccessEntryTargetTypesItem("VIEWS")
+	// This entry applies to routines in the dataset.
+	DatasetAccessEntryTargetTypesItemRoutines = DatasetAccessEntryTargetTypesItem("ROUTINES")
 )
 
 func (DatasetAccessEntryTargetTypesItem) ElementType() reflect.Type {
@@ -899,7 +901,7 @@ func (in *routineDeterminismLevelPtr) ToRoutineDeterminismLevelPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineDeterminismLevelPtrOutput)
 }
 
-// Optional. Defaults to "SQL".
+// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
 type RoutineLanguage string
 
 const (

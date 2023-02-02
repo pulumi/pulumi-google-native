@@ -18,6 +18,7 @@ __all__ = [
     'DataProviderArgs',
     'ExprArgs',
     'PublisherArgs',
+    'RestrictedExportConfigArgs',
 ]
 
 @pulumi.input_type
@@ -330,5 +331,45 @@ class PublisherArgs:
     @primary_contact.setter
     def primary_contact(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary_contact", value)
+
+
+@pulumi.input_type
+class RestrictedExportConfigArgs:
+    def __init__(__self__, *,
+                 restrict_direct_table_access: Optional[pulumi.Input[bool]] = None,
+                 restrict_query_result: Optional[pulumi.Input[bool]] = None):
+        """
+        Restricted export config, used to configure restricted export on linked dataset.
+        :param pulumi.Input[bool] restrict_direct_table_access: If true, restrict direct table access(read api/tabledata.list) on linked table.
+        :param pulumi.Input[bool] restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        if restrict_direct_table_access is not None:
+            pulumi.set(__self__, "restrict_direct_table_access", restrict_direct_table_access)
+        if restrict_query_result is not None:
+            pulumi.set(__self__, "restrict_query_result", restrict_query_result)
+
+    @property
+    @pulumi.getter(name="restrictDirectTableAccess")
+    def restrict_direct_table_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, restrict direct table access(read api/tabledata.list) on linked table.
+        """
+        return pulumi.get(self, "restrict_direct_table_access")
+
+    @restrict_direct_table_access.setter
+    def restrict_direct_table_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_direct_table_access", value)
+
+    @property
+    @pulumi.getter(name="restrictQueryResult")
+    def restrict_query_result(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        return pulumi.get(self, "restrict_query_result")
+
+    @restrict_query_result.setter
+    def restrict_query_result(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_query_result", value)
 
 

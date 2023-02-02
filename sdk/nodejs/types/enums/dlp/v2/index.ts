@@ -201,17 +201,23 @@ export const GooglePrivacyDlpV2CustomInfoTypeLikelihood = {
      */
     LikelihoodUnspecified: "LIKELIHOOD_UNSPECIFIED",
     /**
-     * Few matching elements.
+     * Highest chance of a false positive.
      */
     VeryUnlikely: "VERY_UNLIKELY",
+    /**
+     * High chance of a false positive.
+     */
     Unlikely: "UNLIKELY",
     /**
-     * Some matching elements.
+     * Some matching signals. The default value.
      */
     Possible: "POSSIBLE",
+    /**
+     * Low chance of a false positive.
+     */
     Likely: "LIKELY",
     /**
-     * Many matching elements.
+     * Confidence level is high. Lowest chance of a false positive.
      */
     VeryLikely: "VERY_LIKELY",
 } as const;
@@ -333,17 +339,23 @@ export const GooglePrivacyDlpV2InspectConfigMinLikelihood = {
      */
     LikelihoodUnspecified: "LIKELIHOOD_UNSPECIFIED",
     /**
-     * Few matching elements.
+     * Highest chance of a false positive.
      */
     VeryUnlikely: "VERY_UNLIKELY",
+    /**
+     * High chance of a false positive.
+     */
     Unlikely: "UNLIKELY",
     /**
-     * Some matching elements.
+     * Some matching signals. The default value.
      */
     Possible: "POSSIBLE",
+    /**
+     * Low chance of a false positive.
+     */
     Likely: "LIKELY",
     /**
-     * Many matching elements.
+     * Confidence level is high. Lowest chance of a false positive.
      */
     VeryLikely: "VERY_LIKELY",
 } as const;
@@ -359,17 +371,23 @@ export const GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood = {
      */
     LikelihoodUnspecified: "LIKELIHOOD_UNSPECIFIED",
     /**
-     * Few matching elements.
+     * Highest chance of a false positive.
      */
     VeryUnlikely: "VERY_UNLIKELY",
+    /**
+     * High chance of a false positive.
+     */
     Unlikely: "UNLIKELY",
     /**
-     * Some matching elements.
+     * Some matching signals. The default value.
      */
     Possible: "POSSIBLE",
+    /**
+     * Low chance of a false positive.
+     */
     Likely: "LIKELY",
     /**
-     * Many matching elements.
+     * Confidence level is high. Lowest chance of a false positive.
      */
     VeryLikely: "VERY_LIKELY",
 } as const;

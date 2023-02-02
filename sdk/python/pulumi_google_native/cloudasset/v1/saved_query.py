@@ -25,7 +25,7 @@ class SavedQueryArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SavedQuery resource.
-        :param pulumi.Input[str] saved_query_id: Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+        :param pulumi.Input[str] saved_query_id: Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
         :param pulumi.Input['QueryContentArgs'] content: The query content.
         :param pulumi.Input[str] description: The description of this saved query. This value should be fewer than 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters.
@@ -47,7 +47,7 @@ class SavedQueryArgs:
     @pulumi.getter(name="savedQueryId")
     def saved_query_id(self) -> pulumi.Input[str]:
         """
-        Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+        Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
         """
         return pulumi.get(self, "saved_query_id")
 
@@ -145,7 +145,7 @@ class SavedQuery(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of this saved query. This value should be fewer than 255 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels applied on the resource. This value should not contain more than 10 entries. The key and value of each entry must be non-empty and fewer than 64 characters.
         :param pulumi.Input[str] name: The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
-        :param pulumi.Input[str] saved_query_id: Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+        :param pulumi.Input[str] saved_query_id: Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
         """
         ...
     @overload
@@ -310,7 +310,7 @@ class SavedQuery(pulumi.CustomResource):
     @pulumi.getter(name="savedQueryId")
     def saved_query_id(self) -> pulumi.Output[str]:
         """
-        Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
+        Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored.
         """
         return pulumi.get(self, "saved_query_id")
 

@@ -11,14 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a big query export.
+// Creates a BigQuery export.
 // Auto-naming is currently not supported for this resource.
 type FolderBigQueryExport struct {
 	pulumi.CustomResourceState
 
 	// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
 	BigQueryExportId pulumi.StringOutput `pulumi:"bigQueryExportId"`
-	// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+	// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The dataset to write findings' updates to. Its format is "projects/[project_id]/datasets/[bigquery_dataset_id]". BigQuery Dataset unique ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_).
 	Dataset pulumi.StringOutput `pulumi:"dataset"`
@@ -27,13 +27,13 @@ type FolderBigQueryExport struct {
 	// Expression that defines the filter to apply across create/update events of findings. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
 	Filter   pulumi.StringOutput `pulumi:"filter"`
 	FolderId pulumi.StringOutput `pulumi:"folderId"`
-	// Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+	// Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
 	MostRecentEditor pulumi.StringOutput `pulumi:"mostRecentEditor"`
 	// The relative resource name of this export. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name. Example format: "organizations/{organization_id}/bigQueryExports/{export_id}" Example format: "folders/{folder_id}/bigQueryExports/{export_id}" Example format: "projects/{project_id}/bigQueryExports/{export_id}" This field is provided in responses, and is ignored when provided in create requests.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The service account that needs permission to create table, upload data to the big query dataset.
+	// The service account that needs permission to create table and upload data to the BigQuery dataset.
 	Principal pulumi.StringOutput `pulumi:"principal"`
-	// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+	// The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -157,7 +157,7 @@ func (o FolderBigQueryExportOutput) BigQueryExportId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.BigQueryExportId }).(pulumi.StringOutput)
 }
 
-// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
 func (o FolderBigQueryExportOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -181,7 +181,7 @@ func (o FolderBigQueryExportOutput) FolderId() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.FolderId }).(pulumi.StringOutput)
 }
 
-// Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+// Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
 func (o FolderBigQueryExportOutput) MostRecentEditor() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.MostRecentEditor }).(pulumi.StringOutput)
 }
@@ -191,12 +191,12 @@ func (o FolderBigQueryExportOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The service account that needs permission to create table, upload data to the big query dataset.
+// The service account that needs permission to create table and upload data to the BigQuery dataset.
 func (o FolderBigQueryExportOutput) Principal() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.Principal }).(pulumi.StringOutput)
 }
 
-// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+// The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
 func (o FolderBigQueryExportOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *FolderBigQueryExport) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

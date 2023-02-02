@@ -51,7 +51,7 @@ export class DatacenterConnector extends pulumi.CustomResource {
      */
     public /*out*/ readonly availableVersions!: pulumi.Output<outputs.vmmigration.v1alpha1.AvailableUpdatesResponse>;
     /**
-     * The communication channel between the datacenter connector and GCP.
+     * The communication channel between the datacenter connector and Google Cloud.
      */
     public /*out*/ readonly bucket!: pulumi.Output<string>;
     /**

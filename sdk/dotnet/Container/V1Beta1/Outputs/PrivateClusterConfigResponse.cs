@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string PrivateEndpoint;
         /// <summary>
+        /// Subnet to provision the master's private endpoint during cluster creation. Specified in projects/*/regions/*/subnetworks/* format.
+        /// </summary>
+        public readonly string PrivateEndpointSubnetwork;
+        /// <summary>
         /// The external IP address of this cluster's master endpoint.
         /// </summary>
         public readonly string PublicEndpoint;
@@ -59,6 +63,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string privateEndpoint,
 
+            string privateEndpointSubnetwork,
+
             string publicEndpoint)
         {
             EnablePrivateEndpoint = enablePrivateEndpoint;
@@ -67,6 +73,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             MasterIpv4CidrBlock = masterIpv4CidrBlock;
             PeeringName = peeringName;
             PrivateEndpoint = privateEndpoint;
+            PrivateEndpointSubnetwork = privateEndpointSubnetwork;
             PublicEndpoint = publicEndpoint;
         }
     }

@@ -24,7 +24,7 @@ type View struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The most recent time at which the view was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// String with specific view properties.
+	// String with specific view properties, must be non-empty.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -78,7 +78,7 @@ type viewArgs struct {
 	// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// String with specific view properties.
+	// String with specific view properties, must be non-empty.
 	Value *string `pulumi:"value"`
 }
 
@@ -90,7 +90,7 @@ type ViewArgs struct {
 	// Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// String with specific view properties.
+	// String with specific view properties, must be non-empty.
 	Value pulumi.StringPtrInput
 }
 
@@ -159,7 +159,7 @@ func (o ViewOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// String with specific view properties.
+// String with specific view properties, must be non-empty.
 func (o ViewOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *View) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

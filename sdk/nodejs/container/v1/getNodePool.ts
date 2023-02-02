@@ -49,6 +49,10 @@ export interface GetNodePoolResult {
      */
     readonly config: outputs.container.v1.NodeConfigResponse;
     /**
+     * This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    readonly etag: string;
+    /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
     readonly initialNodeCount: number;
@@ -77,6 +81,10 @@ export interface GetNodePoolResult {
      */
     readonly networkConfig: outputs.container.v1.NodeNetworkConfigResponse;
     /**
+     * Specifies the node placement policy.
+     */
+    readonly placementPolicy: outputs.container.v1.PlacementPolicyResponse;
+    /**
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize: number;
@@ -103,7 +111,7 @@ export interface GetNodePoolResult {
      */
     readonly upgradeSettings: outputs.container.v1.UpgradeSettingsResponse;
     /**
-     * The version of the Kubernetes of this node.
+     * The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
      */
     readonly version: string;
 }

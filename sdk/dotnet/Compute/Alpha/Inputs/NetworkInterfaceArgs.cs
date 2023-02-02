@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        [Input("networkAttachment")]
+        public Input<string>? NetworkAttachment { get; set; }
+
+        /// <summary>
         /// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         /// </summary>
         [Input("networkIP")]
@@ -80,6 +86,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("nicType")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkInterfaceNicType>? NicType { get; set; }
+
+        /// <summary>
+        /// Name of the parent network interface of a VLAN based nic. If this field is specified, vlan must be set.
+        /// </summary>
+        [Input("parentNicName")]
+        public Input<string>? ParentNicName { get; set; }
 
         /// <summary>
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
@@ -110,6 +122,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }
+
+        /// <summary>
+        /// VLAN tag of a VLAN based network interface, must be in range from 2 to 4094 inclusively. This field is mandatory if the parent network interface name is set.
+        /// </summary>
+        [Input("vlan")]
+        public Input<int>? Vlan { get; set; }
 
         public NetworkInterfaceArgs()
         {

@@ -202,7 +202,7 @@ func (o GoogleCloudRunV2BinaryAuthorizationResponseOutput) UseDefault() pulumi.B
 	return o.ApplyT(func(v GoogleCloudRunV2BinaryAuthorizationResponse) bool { return v.UseDefault }).(pulumi.BoolOutput)
 }
 
-// Represents a specific Cloud SQL instance.
+// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 type GoogleCloudRunV2CloudSqlInstance struct {
 	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances []string `pulumi:"instances"`
@@ -219,7 +219,7 @@ type GoogleCloudRunV2CloudSqlInstanceInput interface {
 	ToGoogleCloudRunV2CloudSqlInstanceOutputWithContext(context.Context) GoogleCloudRunV2CloudSqlInstanceOutput
 }
 
-// Represents a specific Cloud SQL instance.
+// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 type GoogleCloudRunV2CloudSqlInstanceArgs struct {
 	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances pulumi.StringArrayInput `pulumi:"instances"`
@@ -278,7 +278,7 @@ func (i *googleCloudRunV2CloudSqlInstancePtrType) ToGoogleCloudRunV2CloudSqlInst
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2CloudSqlInstancePtrOutput)
 }
 
-// Represents a specific Cloud SQL instance.
+// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 type GoogleCloudRunV2CloudSqlInstanceOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2CloudSqlInstanceOutput) ElementType() reflect.Type {
@@ -342,13 +342,13 @@ func (o GoogleCloudRunV2CloudSqlInstancePtrOutput) Instances() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Represents a specific Cloud SQL instance.
+// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 type GoogleCloudRunV2CloudSqlInstanceResponse struct {
 	// The Cloud SQL instance connection names, as can be found in https://console.cloud.google.com/sql/instances. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. Format: {project}:{location}:{instance}
 	Instances []string `pulumi:"instances"`
 }
 
-// Represents a specific Cloud SQL instance.
+// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 type GoogleCloudRunV2CloudSqlInstanceResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2CloudSqlInstanceResponseOutput) ElementType() reflect.Type {
@@ -471,11 +471,11 @@ type GoogleCloudRunV2Container struct {
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVar `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe *GoogleCloudRunV2Probe `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL.
+	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name *string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []GoogleCloudRunV2ContainerPort `pulumi:"ports"`
@@ -508,11 +508,11 @@ type GoogleCloudRunV2ContainerArgs struct {
 	Command pulumi.StringArrayInput `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env GoogleCloudRunV2EnvVarArrayInput `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image pulumi.StringInput `pulumi:"image"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe GoogleCloudRunV2ProbePtrInput `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL.
+	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports GoogleCloudRunV2ContainerPortArrayInput `pulumi:"ports"`
@@ -593,7 +593,7 @@ func (o GoogleCloudRunV2ContainerOutput) Env() GoogleCloudRunV2EnvVarArrayOutput
 	return o.ApplyT(func(v GoogleCloudRunV2Container) []GoogleCloudRunV2EnvVar { return v.Env }).(GoogleCloudRunV2EnvVarArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o GoogleCloudRunV2ContainerOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -603,7 +603,7 @@ func (o GoogleCloudRunV2ContainerOutput) LivenessProbe() GoogleCloudRunV2ProbePt
 	return o.ApplyT(func(v GoogleCloudRunV2Container) *GoogleCloudRunV2Probe { return v.LivenessProbe }).(GoogleCloudRunV2ProbePtrOutput)
 }
 
-// Name of the container specified as a DNS_LABEL.
+// Name of the container specified as a DNS_LABEL (RFC 1123).
 func (o GoogleCloudRunV2ContainerOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Container) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -823,11 +823,11 @@ type GoogleCloudRunV2ContainerResponse struct {
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []GoogleCloudRunV2EnvVarResponse `pulumi:"env"`
-	// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+	// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 	Image string `pulumi:"image"`
 	// Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	LivenessProbe GoogleCloudRunV2ProbeResponse `pulumi:"livenessProbe"`
-	// Name of the container specified as a DNS_LABEL.
+	// Name of the container specified as a DNS_LABEL (RFC 1123).
 	Name string `pulumi:"name"`
 	// List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
 	Ports []GoogleCloudRunV2ContainerPortResponse `pulumi:"ports"`
@@ -871,7 +871,7 @@ func (o GoogleCloudRunV2ContainerResponseOutput) Env() GoogleCloudRunV2EnvVarRes
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) []GoogleCloudRunV2EnvVarResponse { return v.Env }).(GoogleCloudRunV2EnvVarResponseArrayOutput)
 }
 
-// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
 func (o GoogleCloudRunV2ContainerResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -881,7 +881,7 @@ func (o GoogleCloudRunV2ContainerResponseOutput) LivenessProbe() GoogleCloudRunV
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) GoogleCloudRunV2ProbeResponse { return v.LivenessProbe }).(GoogleCloudRunV2ProbeResponseOutput)
 }
 
-// Name of the container specified as a DNS_LABEL.
+// Name of the container specified as a DNS_LABEL (RFC 1123).
 func (o GoogleCloudRunV2ContainerResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ContainerResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1321,9 +1321,9 @@ func (o GoogleCloudRunV2ExecutionReferenceResponseOutput) Name() pulumi.StringOu
 
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplate struct {
-	// KRM-style annotations for the resource.
+	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Annotations map[string]string `pulumi:"annotations"`
-	// KRM-style labels for the resource.
+	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
@@ -1346,9 +1346,9 @@ type GoogleCloudRunV2ExecutionTemplateInput interface {
 
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplateArgs struct {
-	// KRM-style annotations for the resource.
+	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
-	// KRM-style labels for the resource.
+	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
@@ -1385,12 +1385,12 @@ func (o GoogleCloudRunV2ExecutionTemplateOutput) ToGoogleCloudRunV2ExecutionTemp
 	return o
 }
 
-// KRM-style annotations for the resource.
+// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GoogleCloudRunV2ExecutionTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// KRM-style labels for the resource.
+// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GoogleCloudRunV2ExecutionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1412,9 +1412,9 @@ func (o GoogleCloudRunV2ExecutionTemplateOutput) Template() GoogleCloudRunV2Task
 
 // ExecutionTemplate describes the data an execution should have when created from a template.
 type GoogleCloudRunV2ExecutionTemplateResponse struct {
-	// KRM-style annotations for the resource.
+	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Annotations map[string]string `pulumi:"annotations"`
-	// KRM-style labels for the resource.
+	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism int `pulumi:"parallelism"`
@@ -1439,12 +1439,12 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) ToGoogleCloudRunV2Execu
 	return o
 }
 
-// KRM-style annotations for the resource.
+// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// KRM-style labels for the resource.
+// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate.
 func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -1464,6 +1464,198 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Template() GoogleCloudR
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) GoogleCloudRunV2TaskTemplateResponse {
 		return v.Template
 	}).(GoogleCloudRunV2TaskTemplateResponseOutput)
+}
+
+// GRPCAction describes an action involving a GRPC port.
+type GoogleCloudRunV2GRPCAction struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+	Port *int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service *string `pulumi:"service"`
+}
+
+// GoogleCloudRunV2GRPCActionInput is an input type that accepts GoogleCloudRunV2GRPCActionArgs and GoogleCloudRunV2GRPCActionOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2GRPCActionInput` via:
+//
+//	GoogleCloudRunV2GRPCActionArgs{...}
+type GoogleCloudRunV2GRPCActionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2GRPCActionOutput() GoogleCloudRunV2GRPCActionOutput
+	ToGoogleCloudRunV2GRPCActionOutputWithContext(context.Context) GoogleCloudRunV2GRPCActionOutput
+}
+
+// GRPCAction describes an action involving a GRPC port.
+type GoogleCloudRunV2GRPCActionArgs struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service pulumi.StringPtrInput `pulumi:"service"`
+}
+
+func (GoogleCloudRunV2GRPCActionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2GRPCAction)(nil)).Elem()
+}
+
+func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionOutput() GoogleCloudRunV2GRPCActionOutput {
+	return i.ToGoogleCloudRunV2GRPCActionOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionOutput)
+}
+
+func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
+	return i.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRunV2GRPCActionArgs) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionOutput).ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRunV2GRPCActionPtrInput is an input type that accepts GoogleCloudRunV2GRPCActionArgs, GoogleCloudRunV2GRPCActionPtr and GoogleCloudRunV2GRPCActionPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRunV2GRPCActionPtrInput` via:
+//
+//	        GoogleCloudRunV2GRPCActionArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRunV2GRPCActionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput
+	ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Context) GoogleCloudRunV2GRPCActionPtrOutput
+}
+
+type googleCloudRunV2GRPCActionPtrType GoogleCloudRunV2GRPCActionArgs
+
+func GoogleCloudRunV2GRPCActionPtr(v *GoogleCloudRunV2GRPCActionArgs) GoogleCloudRunV2GRPCActionPtrInput {
+	return (*googleCloudRunV2GRPCActionPtrType)(v)
+}
+
+func (*googleCloudRunV2GRPCActionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2GRPCAction)(nil)).Elem()
+}
+
+func (i *googleCloudRunV2GRPCActionPtrType) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
+	return i.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRunV2GRPCActionPtrType) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRunV2GRPCActionPtrOutput)
+}
+
+// GRPCAction describes an action involving a GRPC port.
+type GoogleCloudRunV2GRPCActionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2GRPCActionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2GRPCAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionOutput() GoogleCloudRunV2GRPCActionOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
+	return o.ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRunV2GRPCAction) *GoogleCloudRunV2GRPCAction {
+		return &v
+	}).(GoogleCloudRunV2GRPCActionPtrOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+func (o GoogleCloudRunV2GRPCActionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GoogleCloudRunV2GRPCActionOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *string { return v.Service }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRunV2GRPCActionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2GRPCActionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRunV2GRPCAction)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2GRPCActionPtrOutput) ToGoogleCloudRunV2GRPCActionPtrOutput() GoogleCloudRunV2GRPCActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GRPCActionPtrOutput) ToGoogleCloudRunV2GRPCActionPtrOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GRPCActionPtrOutput) Elem() GoogleCloudRunV2GRPCActionOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) GoogleCloudRunV2GRPCAction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRunV2GRPCAction
+		return ret
+	}).(GoogleCloudRunV2GRPCActionOutput)
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+func (o GoogleCloudRunV2GRPCActionPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GoogleCloudRunV2GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// GRPCAction describes an action involving a GRPC port.
+type GoogleCloudRunV2GRPCActionResponse struct {
+	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+	Port int `pulumi:"port"`
+	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+	Service string `pulumi:"service"`
+}
+
+// GRPCAction describes an action involving a GRPC port.
+type GoogleCloudRunV2GRPCActionResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRunV2GRPCActionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRunV2GRPCActionResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRunV2GRPCActionResponseOutput) ToGoogleCloudRunV2GRPCActionResponseOutput() GoogleCloudRunV2GRPCActionResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRunV2GRPCActionResponseOutput) ToGoogleCloudRunV2GRPCActionResponseOutputWithContext(ctx context.Context) GoogleCloudRunV2GRPCActionResponseOutput {
+	return o
+}
+
+// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+func (o GoogleCloudRunV2GRPCActionResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
+func (o GoogleCloudRunV2GRPCActionResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) string { return v.Service }).(pulumi.StringOutput)
 }
 
 // HTTPGetAction describes an action based on HTTP Get requests.
@@ -1826,13 +2018,15 @@ func (o GoogleCloudRunV2HTTPHeaderResponseArrayOutput) Index(i pulumi.IntInput) 
 type GoogleCloudRunV2Probe struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold *int `pulumi:"failureThreshold"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpc *GoogleCloudRunV2GRPCAction `pulumi:"grpc"`
+	// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	HttpGet *GoogleCloudRunV2HTTPGetAction `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds *int `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	TcpSocket *GoogleCloudRunV2TCPSocketAction `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
@@ -1853,13 +2047,15 @@ type GoogleCloudRunV2ProbeInput interface {
 type GoogleCloudRunV2ProbeArgs struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold pulumi.IntPtrInput `pulumi:"failureThreshold"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpc GoogleCloudRunV2GRPCActionPtrInput `pulumi:"grpc"`
+	// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	HttpGet GoogleCloudRunV2HTTPGetActionPtrInput `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	TcpSocket GoogleCloudRunV2TCPSocketActionPtrInput `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
@@ -1948,7 +2144,12 @@ func (o GoogleCloudRunV2ProbeOutput) FailureThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *int { return v.FailureThreshold }).(pulumi.IntPtrOutput)
 }
 
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GoogleCloudRunV2ProbeOutput) Grpc() GoogleCloudRunV2GRPCActionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2GRPCAction { return v.Grpc }).(GoogleCloudRunV2GRPCActionPtrOutput)
+}
+
+// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 func (o GoogleCloudRunV2ProbeOutput) HttpGet() GoogleCloudRunV2HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2HTTPGetAction { return v.HttpGet }).(GoogleCloudRunV2HTTPGetActionPtrOutput)
 }
@@ -1963,7 +2164,7 @@ func (o GoogleCloudRunV2ProbeOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 func (o GoogleCloudRunV2ProbeOutput) TcpSocket() GoogleCloudRunV2TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2Probe) *GoogleCloudRunV2TCPSocketAction { return v.TcpSocket }).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
@@ -2007,7 +2208,17 @@ func (o GoogleCloudRunV2ProbePtrOutput) FailureThreshold() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GoogleCloudRunV2ProbePtrOutput) Grpc() GoogleCloudRunV2GRPCActionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *GoogleCloudRunV2GRPCAction {
+		if v == nil {
+			return nil
+		}
+		return v.Grpc
+	}).(GoogleCloudRunV2GRPCActionPtrOutput)
+}
+
+// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 func (o GoogleCloudRunV2ProbePtrOutput) HttpGet() GoogleCloudRunV2HTTPGetActionPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *GoogleCloudRunV2HTTPGetAction {
 		if v == nil {
@@ -2037,7 +2248,7 @@ func (o GoogleCloudRunV2ProbePtrOutput) PeriodSeconds() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 func (o GoogleCloudRunV2ProbePtrOutput) TcpSocket() GoogleCloudRunV2TCPSocketActionPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2Probe) *GoogleCloudRunV2TCPSocketAction {
 		if v == nil {
@@ -2061,13 +2272,15 @@ func (o GoogleCloudRunV2ProbePtrOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 type GoogleCloudRunV2ProbeResponse struct {
 	// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
 	FailureThreshold int `pulumi:"failureThreshold"`
-	// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+	// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+	Grpc GoogleCloudRunV2GRPCActionResponse `pulumi:"grpc"`
+	// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	HttpGet GoogleCloudRunV2HTTPGetActionResponse `pulumi:"httpGet"`
 	// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	InitialDelaySeconds int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
 	PeriodSeconds int `pulumi:"periodSeconds"`
-	// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+	// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 	TcpSocket GoogleCloudRunV2TCPSocketActionResponse `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds int `pulumi:"timeoutSeconds"`
@@ -2093,7 +2306,12 @@ func (o GoogleCloudRunV2ProbeResponseOutput) FailureThreshold() pulumi.IntOutput
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.FailureThreshold }).(pulumi.IntOutput)
 }
 
-// HTTPGet specifies the http request to perform. Exactly one of HTTPGet or TCPSocket must be specified.
+// GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+func (o GoogleCloudRunV2ProbeResponseOutput) Grpc() GoogleCloudRunV2GRPCActionResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2GRPCActionResponse { return v.Grpc }).(GoogleCloudRunV2GRPCActionResponseOutput)
+}
+
+// HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 func (o GoogleCloudRunV2ProbeResponseOutput) HttpGet() GoogleCloudRunV2HTTPGetActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2HTTPGetActionResponse { return v.HttpGet }).(GoogleCloudRunV2HTTPGetActionResponseOutput)
 }
@@ -2108,7 +2326,7 @@ func (o GoogleCloudRunV2ProbeResponseOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) int { return v.PeriodSeconds }).(pulumi.IntOutput)
 }
 
-// TCPSocket specifies an action involving a TCP port. Exactly one of HTTPGet or TCPSocket must be specified.
+// TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
 func (o GoogleCloudRunV2ProbeResponseOutput) TcpSocket() GoogleCloudRunV2TCPSocketActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ProbeResponse) GoogleCloudRunV2TCPSocketActionResponse { return v.TcpSocket }).(GoogleCloudRunV2TCPSocketActionResponseOutput)
 }
@@ -2122,7 +2340,7 @@ func (o GoogleCloudRunV2ProbeResponseOutput) TimeoutSeconds() pulumi.IntOutput {
 type GoogleCloudRunV2ResourceRequirements struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle *bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -2141,7 +2359,7 @@ type GoogleCloudRunV2ResourceRequirementsInput interface {
 type GoogleCloudRunV2ResourceRequirementsArgs struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle pulumi.BoolPtrInput `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits pulumi.StringMapInput `pulumi:"limits"`
 }
 
@@ -2228,7 +2446,7 @@ func (o GoogleCloudRunV2ResourceRequirementsOutput) CpuIdle() pulumi.BoolPtrOutp
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) *bool { return v.CpuIdle }).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GoogleCloudRunV2ResourceRequirementsOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirements) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -2267,7 +2485,7 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) CpuIdle() pulumi.BoolPtrO
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2ResourceRequirements) map[string]string {
 		if v == nil {
@@ -2281,7 +2499,7 @@ func (o GoogleCloudRunV2ResourceRequirementsPtrOutput) Limits() pulumi.StringMap
 type GoogleCloudRunV2ResourceRequirementsResponse struct {
 	// Determines whether CPU should be throttled or not outside of requests.
 	CpuIdle bool `pulumi:"cpuIdle"`
-	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+	// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 	Limits map[string]string `pulumi:"limits"`
 }
 
@@ -2305,7 +2523,7 @@ func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) CpuIdle() pulumi.Boo
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) bool { return v.CpuIdle }).(pulumi.BoolOutput)
 }
 
-// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', and '4'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+// Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
 func (o GoogleCloudRunV2ResourceRequirementsResponseOutput) Limits() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ResourceRequirementsResponse) map[string]string { return v.Limits }).(pulumi.StringMapOutput)
 }
@@ -2504,7 +2722,7 @@ func (o GoogleCloudRunV2RevisionScalingResponseOutput) MinInstanceCount() pulumi
 
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplate struct {
-	// KRM-style annotations for the resource.
+	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers []GoogleCloudRunV2Container `pulumi:"containers"`
@@ -2512,7 +2730,7 @@ type GoogleCloudRunV2RevisionTemplate struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment *GoogleCloudRunV2RevisionTemplateExecutionEnvironment `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource.
+	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency *int `pulumi:"maxInstanceRequestConcurrency"`
@@ -2543,7 +2761,7 @@ type GoogleCloudRunV2RevisionTemplateInput interface {
 
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplateArgs struct {
-	// KRM-style annotations for the resource.
+	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers GoogleCloudRunV2ContainerArrayInput `pulumi:"containers"`
@@ -2551,7 +2769,7 @@ type GoogleCloudRunV2RevisionTemplateArgs struct {
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrInput `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource.
+	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency pulumi.IntPtrInput `pulumi:"maxInstanceRequestConcurrency"`
@@ -2596,7 +2814,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ToGoogleCloudRunV2RevisionTempla
 	return o
 }
 
-// KRM-style annotations for the resource.
+// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2618,7 +2836,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) ExecutionEnvironment() GoogleClo
 	}).(GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput)
 }
 
-// KRM-style labels for the resource.
+// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplate) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2660,7 +2878,7 @@ func (o GoogleCloudRunV2RevisionTemplateOutput) VpcAccess() GoogleCloudRunV2VpcA
 
 // RevisionTemplate describes the data a revision should have when created from a template.
 type GoogleCloudRunV2RevisionTemplateResponse struct {
-	// KRM-style annotations for the resource.
+	// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
 	Annotations map[string]string `pulumi:"annotations"`
 	// Holds the single container that defines the unit of execution for this Revision.
 	Containers []GoogleCloudRunV2ContainerResponse `pulumi:"containers"`
@@ -2668,7 +2886,7 @@ type GoogleCloudRunV2RevisionTemplateResponse struct {
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// The sandbox environment to host this Revision.
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
-	// KRM-style labels for the resource.
+	// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 	Labels map[string]string `pulumi:"labels"`
 	// Sets the maximum number of requests that each serving instance can receive.
 	MaxInstanceRequestConcurrency int `pulumi:"maxInstanceRequestConcurrency"`
@@ -2701,7 +2919,7 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ToGoogleCloudRunV2Revisi
 	return o
 }
 
-// KRM-style annotations for the resource.
+// KRM-style annotations for the resource. Cloud Run API v2 does not support annotations with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system annotations in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
@@ -2723,7 +2941,7 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) ExecutionEnvironment() p
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
-// KRM-style labels for the resource.
+// KRM-style labels for the resource. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 RevisionTemplate.
 func (o GoogleCloudRunV2RevisionTemplateResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2RevisionTemplateResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -2769,7 +2987,7 @@ func (o GoogleCloudRunV2RevisionTemplateResponseOutput) VpcAccess() GoogleCloudR
 type GoogleCloudRunV2SecretKeySelector struct {
 	// The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
 	Secret string `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 	Version *string `pulumi:"version"`
 }
 
@@ -2788,7 +3006,7 @@ type GoogleCloudRunV2SecretKeySelectorInput interface {
 type GoogleCloudRunV2SecretKeySelectorArgs struct {
 	// The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
 	Secret pulumi.StringInput `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -2875,7 +3093,7 @@ func (o GoogleCloudRunV2SecretKeySelectorOutput) Secret() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretKeySelector) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 func (o GoogleCloudRunV2SecretKeySelectorOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretKeySelector) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -2914,7 +3132,7 @@ func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) Secret() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2SecretKeySelector) *string {
 		if v == nil {
@@ -2928,7 +3146,7 @@ func (o GoogleCloudRunV2SecretKeySelectorPtrOutput) Version() pulumi.StringPtrOu
 type GoogleCloudRunV2SecretKeySelectorResponse struct {
 	// The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
 	Secret string `pulumi:"secret"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 	Version string `pulumi:"version"`
 }
 
@@ -2952,7 +3170,7 @@ func (o GoogleCloudRunV2SecretKeySelectorResponseOutput) Secret() pulumi.StringO
 	return o.ApplyT(func(v GoogleCloudRunV2SecretKeySelectorResponse) string { return v.Secret }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
 func (o GoogleCloudRunV2SecretKeySelectorResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2SecretKeySelectorResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -3812,7 +4030,7 @@ type GoogleCloudRunV2VersionToPath struct {
 	Mode *int `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path string `pulumi:"path"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
 	Version *string `pulumi:"version"`
 }
 
@@ -3833,7 +4051,7 @@ type GoogleCloudRunV2VersionToPathArgs struct {
 	Mode pulumi.IntPtrInput `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path pulumi.StringInput `pulumi:"path"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -3899,7 +4117,7 @@ func (o GoogleCloudRunV2VersionToPathOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VersionToPath) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
 func (o GoogleCloudRunV2VersionToPathOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VersionToPath) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -3930,7 +4148,7 @@ type GoogleCloudRunV2VersionToPathResponse struct {
 	Mode int `pulumi:"mode"`
 	// The relative path of the secret in the container.
 	Path string `pulumi:"path"`
-	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+	// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
 	Version string `pulumi:"version"`
 }
 
@@ -3959,7 +4177,7 @@ func (o GoogleCloudRunV2VersionToPathResponseOutput) Path() pulumi.StringOutput 
 	return o.ApplyT(func(v GoogleCloudRunV2VersionToPathResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
 func (o GoogleCloudRunV2VersionToPathResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VersionToPathResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -4328,7 +4546,7 @@ func (o GoogleCloudRunV2VolumeResponseArrayOutput) Index(i pulumi.IntInput) Goog
 
 // VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
 type GoogleCloudRunV2VpcAccess struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector *string `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	Egress *GoogleCloudRunV2VpcAccessEgress `pulumi:"egress"`
@@ -4347,7 +4565,7 @@ type GoogleCloudRunV2VpcAccessInput interface {
 
 // VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
 type GoogleCloudRunV2VpcAccessArgs struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector pulumi.StringPtrInput `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	Egress GoogleCloudRunV2VpcAccessEgressPtrInput `pulumi:"egress"`
@@ -4431,7 +4649,7 @@ func (o GoogleCloudRunV2VpcAccessOutput) ToGoogleCloudRunV2VpcAccessPtrOutputWit
 	}).(GoogleCloudRunV2VpcAccessPtrOutput)
 }
 
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 func (o GoogleCloudRunV2VpcAccessOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccess) *string { return v.Connector }).(pulumi.StringPtrOutput)
 }
@@ -4465,7 +4683,7 @@ func (o GoogleCloudRunV2VpcAccessPtrOutput) Elem() GoogleCloudRunV2VpcAccessOutp
 	}).(GoogleCloudRunV2VpcAccessOutput)
 }
 
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 func (o GoogleCloudRunV2VpcAccessPtrOutput) Connector() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2VpcAccess) *string {
 		if v == nil {
@@ -4487,7 +4705,7 @@ func (o GoogleCloudRunV2VpcAccessPtrOutput) Egress() GoogleCloudRunV2VpcAccessEg
 
 // VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
 type GoogleCloudRunV2VpcAccessResponse struct {
-	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+	// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 	Connector string `pulumi:"connector"`
 	// Traffic VPC egress settings.
 	Egress string `pulumi:"egress"`
@@ -4508,7 +4726,7 @@ func (o GoogleCloudRunV2VpcAccessResponseOutput) ToGoogleCloudRunV2VpcAccessResp
 	return o
 }
 
-// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
 func (o GoogleCloudRunV2VpcAccessResponseOutput) Connector() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2VpcAccessResponse) string { return v.Connector }).(pulumi.StringOutput)
 }
@@ -5278,6 +5496,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourceInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2EnvVarSourcePtrInput)(nil)).Elem(), GoogleCloudRunV2EnvVarSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2ExecutionTemplateInput)(nil)).Elem(), GoogleCloudRunV2ExecutionTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GRPCActionInput)(nil)).Elem(), GoogleCloudRunV2GRPCActionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2GRPCActionPtrInput)(nil)).Elem(), GoogleCloudRunV2GRPCActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPGetActionPtrInput)(nil)).Elem(), GoogleCloudRunV2HTTPGetActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRunV2HTTPHeaderInput)(nil)).Elem(), GoogleCloudRunV2HTTPHeaderArgs{})
@@ -5340,6 +5560,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionReferenceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2ExecutionTemplateResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRunV2GRPCActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPGetActionOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPGetActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRunV2HTTPGetActionResponseOutput{})

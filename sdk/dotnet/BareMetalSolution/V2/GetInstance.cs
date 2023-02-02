@@ -127,6 +127,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
         /// </summary>
         public readonly ImmutableArray<Outputs.VolumeResponse> Volumes;
+        /// <summary>
+        /// The workload profile for the instance.
+        /// </summary>
+        public readonly string WorkloadProfile;
 
         [OutputConstructor]
         private GetInstanceResult(
@@ -160,7 +164,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
 
             string updateTime,
 
-            ImmutableArray<Outputs.VolumeResponse> volumes)
+            ImmutableArray<Outputs.VolumeResponse> volumes,
+
+            string workloadProfile)
         {
             CreateTime = createTime;
             HyperthreadingEnabled = hyperthreadingEnabled;
@@ -178,6 +184,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             State = state;
             UpdateTime = updateTime;
             Volumes = volumes;
+            WorkloadProfile = workloadProfile;
         }
     }
 }

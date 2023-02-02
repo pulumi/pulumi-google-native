@@ -98,7 +98,7 @@ export type OsConstraintOsType = (typeof OsConstraintOsType)[keyof typeof OsCons
 
 export const ServicePerimeterPerimeterType = {
     /**
-     * Regular Perimeter.
+     * Regular Perimeter. When no value is specified, the perimeter uses this type.
      */
     PerimeterTypeRegular: "PERIMETER_TYPE_REGULAR",
     /**

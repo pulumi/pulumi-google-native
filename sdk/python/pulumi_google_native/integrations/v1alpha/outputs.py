@@ -109,7 +109,7 @@ __all__ = [
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoAttributesResponse(dict):
     """
-    Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+    Attributes are additional options that can be associated with each event property. For more information, see
     """
     @staticmethod
     def __key_warning(key: str):
@@ -147,12 +147,12 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
                  searchable: str,
                  task_visibility: Sequence[str]):
         """
-        Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+        Attributes are additional options that can be associated with each event property. For more information, see
         :param str data_type: Things like URL, Email, Currency, Timestamp (rather than string, int64...)
         :param 'EnterpriseCrmEventbusProtoValueTypeResponse' default_value: Used to define defaults.
         :param bool is_required: Required for event execution. The validation will be done by the event bus when the event is triggered.
         :param bool is_searchable: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
-        :param 'EnterpriseCrmEventbusProtoLogSettingsResponse' log_settings: See go/integration-platform/analytics/logging_task.md for details.
+        :param 'EnterpriseCrmEventbusProtoLogSettingsResponse' log_settings: See
         :param Sequence[str] task_visibility: List of tasks that can view this property, if empty then all.
         """
         pulumi.set(__self__, "data_type", data_type)
@@ -199,7 +199,7 @@ class EnterpriseCrmEventbusProtoAttributesResponse(dict):
     @pulumi.getter(name="logSettings")
     def log_settings(self) -> 'outputs.EnterpriseCrmEventbusProtoLogSettingsResponse':
         """
-        See go/integration-platform/analytics/logging_task.md for details.
+        See
         """
         return pulumi.get(self, "log_settings")
 
@@ -264,13 +264,13 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse(dict):
     """
-    The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+    The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
     """
     def __init__(__self__, *,
                  absolute: str,
                  percentage: int):
         """
-        The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+        The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
         """
         pulumi.set(__self__, "absolute", absolute)
         pulumi.set(__self__, "percentage", percentage)
@@ -543,12 +543,12 @@ class EnterpriseCrmEventbusProtoDoubleParameterArrayResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoEventBusPropertiesResponse(dict):
     """
-    LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+    LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
     """
     def __init__(__self__, *,
                  properties: Sequence['outputs.EnterpriseCrmEventbusProtoPropertyEntryResponse']):
         """
-        LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+        LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
         :param Sequence['EnterpriseCrmEventbusProtoPropertyEntryResponse'] properties: An unordered list of property entries.
         """
         pulumi.set(__self__, "properties", properties)
@@ -565,12 +565,12 @@ class EnterpriseCrmEventbusProtoEventBusPropertiesResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoEventParametersResponse(dict):
     """
-    LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+    LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
     """
     def __init__(__self__, *,
                  parameters: Sequence['outputs.EnterpriseCrmEventbusProtoParameterEntryResponse']):
         """
-        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
         :param Sequence['EnterpriseCrmEventbusProtoParameterEntryResponse'] parameters: Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
         """
         pulumi.set(__self__, "parameters", parameters)
@@ -693,7 +693,7 @@ class EnterpriseCrmEventbusProtoIntParameterArrayResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoLogSettingsResponse(dict):
     """
-    The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+    The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -727,7 +727,7 @@ class EnterpriseCrmEventbusProtoLogSettingsResponse(dict):
                  seed_scope: str,
                  shortening_limits: 'outputs.EnterpriseCrmLoggingGwsFieldLimitsResponse'):
         """
-        The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+        The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
         :param str log_field_name: The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
         :param 'EnterpriseCrmLoggingGwsSanitizeOptionsResponse' sanitize_options: Contains the scrubbing options, such as whether to scrub, obfuscate, etc.
         :param 'EnterpriseCrmLoggingGwsFieldLimitsResponse' shortening_limits: Contains the field limits for shortening, such as max string length and max array length.
@@ -1598,7 +1598,7 @@ class EnterpriseCrmEventbusProtoSuccessPolicyResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoTaskAlertConfigResponse(dict):
     """
-    Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+    Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1656,7 +1656,7 @@ class EnterpriseCrmEventbusProtoTaskAlertConfigResponse(dict):
                  threshold_value: 'outputs.EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse',
                  warning_enum_list: 'outputs.EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse'):
         """
-        Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+        Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
         :param str aggregation_period: The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
         :param bool alert_disabled: Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this workflow alert.
         :param str alert_name: A name to identify this alert. This will be displayed in the alert subject. If set, this name should be unique in within the scope of the containing workflow.
@@ -1825,7 +1825,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataAdminResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoTaskMetadataResponse(dict):
     """
-    TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+    TaskMetadata are attributes that are associated to every common Task we have.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1896,7 +1896,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse(dict):
                  system: str,
                  tags: Sequence[str]):
         """
-        TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+        TaskMetadata are attributes that are associated to every common Task we have.
         :param str active_task_name: The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
         :param str code_search_link: The Code Search link to the Task Java file.
         :param str default_json_validation_option: Controls whether JSON workflow parameters are validated against provided schemas before and/or after this task's execution.
@@ -1909,7 +1909,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse(dict):
         :param str external_doc_link: Doc link for external-facing documentation (separate from g3doc).
         :param str external_doc_markdown: DEPRECATED: Use external_doc_html.
         :param str g3_doc_link: URL to the associated G3 Doc for the task if available
-        :param str icon_link: URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+        :param str icon_link: URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
         :param bool is_deprecated: The deprecation status of the current task. Default value is false;
         :param str name: The actual class name or the annotated name of the task. Task Author should initialize this field with value from the getName() method of the Task class.
         :param str standalone_external_doc_html: External-facing documention for standalone IP in pantheon embedded in the RHP for this task. Non null only if different from external_doc_html
@@ -2054,7 +2054,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse(dict):
     @pulumi.getter(name="iconLink")
     def icon_link(self) -> str:
         """
-        URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+        URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
         """
         return pulumi.get(self, "icon_link")
 
@@ -2107,7 +2107,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoTaskUiConfigResponse(dict):
     """
-    Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+    Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2129,7 +2129,7 @@ class EnterpriseCrmEventbusProtoTaskUiConfigResponse(dict):
     def __init__(__self__, *,
                  task_ui_module_configs: Sequence['outputs.EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse']):
         """
-        Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+        Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
         :param Sequence['EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse'] task_ui_module_configs: Configurations of included config modules.
         """
         pulumi.set(__self__, "task_ui_module_configs", task_ui_module_configs)
@@ -2461,7 +2461,7 @@ class EnterpriseCrmEventbusProtoValueTypeResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse(dict):
     """
-    Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+    Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2519,7 +2519,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse(dict):
                  threshold_value: 'outputs.EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse',
                  warning_enum_list: 'outputs.EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse'):
         """
-        Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+        Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
         :param str aggregation_period: For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
         :param bool alert_disabled: Set to false by default. When set to true, the metrics are not aggregated or pushed to Monarch for this workflow alert.
         :param str alert_name: A name to identify this alert. This will be displayed in the alert subject. If set, this name should be unique within the scope of the workflow.
@@ -2529,7 +2529,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse(dict):
         :param bool only_final_attempt: For either events or tasks, depending on the type of alert, count only final attempts, not retries.
         :param str playbook_url: Link to a playbook for resolving the issue that triggered this alert.
         :param str threshold_type: The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
-        :param 'EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse' threshold_value: The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+        :param 'EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse' threshold_value: The metric value, above or below which the alert should be triggered.
         """
         pulumi.set(__self__, "aggregation_period", aggregation_period)
         pulumi.set(__self__, "alert_disabled", alert_disabled)
@@ -2631,7 +2631,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse(dict):
     @pulumi.getter(name="thresholdValue")
     def threshold_value(self) -> 'outputs.EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse':
         """
-        The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+        The metric value, above or below which the alert should be triggered.
         """
         return pulumi.get(self, "threshold_value")
 
@@ -2909,12 +2909,12 @@ class EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmFrontendsEventbusProtoEventParametersResponse(dict):
     """
-    LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+    LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
     """
     def __init__(__self__, *,
                  parameters: Sequence['outputs.EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse']):
         """
-        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+        LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
         :param Sequence['EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse'] parameters: Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
         """
         pulumi.set(__self__, "parameters", parameters)
@@ -3489,7 +3489,7 @@ class EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponse(dict):
 @pulumi.output_type
 class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse(dict):
     """
-    The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+    The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -3576,7 +3576,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse(dict):
                  task_template_name: str,
                  task_type: str):
         """
-        The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+        The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
         :param Sequence['EnterpriseCrmEventbusProtoTaskAlertConfigResponse'] alert_configs: Alert configurations on error rate, warning rate, number of runs, durations, etc.
         :param str create_time: Auto-generated.
         :param str creator_email: The creator's email address. Auto-generated from the user's email.
@@ -3600,7 +3600,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse(dict):
         :param str task_execution_strategy: The policy dictating the execution strategy of this task.
         :param str task_name: The name for the task.
         :param str task_number: REQUIRED: the identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_number`).
-        :param str task_spec: A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+        :param str task_spec: A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
         :param str task_template_name: Used to define task-template name if task is of type task-template
         :param str task_type: Defines the type of the task
         """
@@ -3819,7 +3819,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse(dict):
     @pulumi.getter(name="taskSpec")
     def task_spec(self) -> str:
         """
-        A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+        A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
         """
         return pulumi.get(self, "task_spec")
 
@@ -4185,7 +4185,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
         :param str data_type: The data type of the parameter.
         :param 'EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse' default_value: Default values for the defined keys. Each value can either be string, int, double or any proto message or a serialized object.
         :param str in_out_type: Specifies the input/output type for the parameter.
-        :param bool is_transient: Whether this parameter is a transient parameter. go/ip-transient-parameters
+        :param bool is_transient: Whether this parameter is a transient parameter.
         :param str json_schema: This schema will be used to validate runtime JSON-typed values of this parameter.
         :param str key: Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the workflow definition.
         :param str name: The name (without prefix) to be displayed in the UI for this parameter. E.g. if the key is "foo.bar.myName", then the name would be "myName".
@@ -4251,7 +4251,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse(dict):
     @pulumi.getter(name="isTransient")
     def is_transient(self) -> bool:
         """
-        Whether this parameter is a transient parameter. go/ip-transient-parameters
+        Whether this parameter is a transient parameter.
         """
         return pulumi.get(self, "is_transient")
 

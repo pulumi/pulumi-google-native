@@ -365,17 +365,23 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2CustomInfoTypeLikelihood LikelihoodUnspecified { get; } = new GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELIHOOD_UNSPECIFIED");
         /// <summary>
-        /// Few matching elements.
+        /// Highest chance of a false positive.
         /// </summary>
         public static GooglePrivacyDlpV2CustomInfoTypeLikelihood VeryUnlikely { get; } = new GooglePrivacyDlpV2CustomInfoTypeLikelihood("VERY_UNLIKELY");
+        /// <summary>
+        /// High chance of a false positive.
+        /// </summary>
         public static GooglePrivacyDlpV2CustomInfoTypeLikelihood Unlikely { get; } = new GooglePrivacyDlpV2CustomInfoTypeLikelihood("UNLIKELY");
         /// <summary>
-        /// Some matching elements.
+        /// Some matching signals. The default value.
         /// </summary>
         public static GooglePrivacyDlpV2CustomInfoTypeLikelihood Possible { get; } = new GooglePrivacyDlpV2CustomInfoTypeLikelihood("POSSIBLE");
+        /// <summary>
+        /// Low chance of a false positive.
+        /// </summary>
         public static GooglePrivacyDlpV2CustomInfoTypeLikelihood Likely { get; } = new GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELY");
         /// <summary>
-        /// Many matching elements.
+        /// Confidence level is high. Lowest chance of a false positive.
         /// </summary>
         public static GooglePrivacyDlpV2CustomInfoTypeLikelihood VeryLikely { get; } = new GooglePrivacyDlpV2CustomInfoTypeLikelihood("VERY_LIKELY");
 
@@ -602,17 +608,23 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2InspectConfigMinLikelihood LikelihoodUnspecified { get; } = new GooglePrivacyDlpV2InspectConfigMinLikelihood("LIKELIHOOD_UNSPECIFIED");
         /// <summary>
-        /// Few matching elements.
+        /// Highest chance of a false positive.
         /// </summary>
         public static GooglePrivacyDlpV2InspectConfigMinLikelihood VeryUnlikely { get; } = new GooglePrivacyDlpV2InspectConfigMinLikelihood("VERY_UNLIKELY");
+        /// <summary>
+        /// High chance of a false positive.
+        /// </summary>
         public static GooglePrivacyDlpV2InspectConfigMinLikelihood Unlikely { get; } = new GooglePrivacyDlpV2InspectConfigMinLikelihood("UNLIKELY");
         /// <summary>
-        /// Some matching elements.
+        /// Some matching signals. The default value.
         /// </summary>
         public static GooglePrivacyDlpV2InspectConfigMinLikelihood Possible { get; } = new GooglePrivacyDlpV2InspectConfigMinLikelihood("POSSIBLE");
+        /// <summary>
+        /// Low chance of a false positive.
+        /// </summary>
         public static GooglePrivacyDlpV2InspectConfigMinLikelihood Likely { get; } = new GooglePrivacyDlpV2InspectConfigMinLikelihood("LIKELY");
         /// <summary>
-        /// Many matching elements.
+        /// Confidence level is high. Lowest chance of a false positive.
         /// </summary>
         public static GooglePrivacyDlpV2InspectConfigMinLikelihood VeryLikely { get; } = new GooglePrivacyDlpV2InspectConfigMinLikelihood("VERY_LIKELY");
 
@@ -649,17 +661,23 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood LikelihoodUnspecified { get; } = new GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELIHOOD_UNSPECIFIED");
         /// <summary>
-        /// Few matching elements.
+        /// Highest chance of a false positive.
         /// </summary>
         public static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood VeryUnlikely { get; } = new GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("VERY_UNLIKELY");
+        /// <summary>
+        /// High chance of a false positive.
+        /// </summary>
         public static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood Unlikely { get; } = new GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("UNLIKELY");
         /// <summary>
-        /// Some matching elements.
+        /// Some matching signals. The default value.
         /// </summary>
         public static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood Possible { get; } = new GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("POSSIBLE");
+        /// <summary>
+        /// Low chance of a false positive.
+        /// </summary>
         public static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood Likely { get; } = new GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("LIKELY");
         /// <summary>
-        /// Many matching elements.
+        /// Confidence level is high. Lowest chance of a false positive.
         /// </summary>
         public static GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood VeryLikely { get; } = new GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood("VERY_LIKELY");
 

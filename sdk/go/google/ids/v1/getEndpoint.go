@@ -45,6 +45,8 @@ type LookupEndpointResult struct {
 	Severity string `pulumi:"severity"`
 	// Current state of the endpoint.
 	State string `pulumi:"state"`
+	// List of threat IDs to be excepted from generating alerts.
+	ThreatExceptions []string `pulumi:"threatExceptions"`
 	// Whether the endpoint should report traffic logs in addition to threat logs.
 	TrafficLogs bool `pulumi:"trafficLogs"`
 	// The update time timestamp.
@@ -131,6 +133,11 @@ func (o LookupEndpointResultOutput) Severity() pulumi.StringOutput {
 // Current state of the endpoint.
 func (o LookupEndpointResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEndpointResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// List of threat IDs to be excepted from generating alerts.
+func (o LookupEndpointResultOutput) ThreatExceptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupEndpointResult) []string { return v.ThreatExceptions }).(pulumi.StringArrayOutput)
 }
 
 // Whether the endpoint should report traffic logs in addition to threat logs.

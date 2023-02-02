@@ -102,6 +102,22 @@ export const GoogleFirestoreAdminV1IndexFieldOrder = {
  */
 export type GoogleFirestoreAdminV1IndexFieldOrder = (typeof GoogleFirestoreAdminV1IndexFieldOrder)[keyof typeof GoogleFirestoreAdminV1IndexFieldOrder];
 
+export const IndexApiScope = {
+    /**
+     * The index can be used by both Firestore Native and Firestore in Datastore Mode query API. This is the default.
+     */
+    AnyApi: "ANY_API",
+    /**
+     * The index can only be used by the Firestore in Datastore Mode query API.
+     */
+    DatastoreModeApi: "DATASTORE_MODE_API",
+} as const;
+
+/**
+ * The API scope supported by this index.
+ */
+export type IndexApiScope = (typeof IndexApiScope)[keyof typeof IndexApiScope];
+
 export const IndexQueryScope = {
     /**
      * The query scope is unspecified. Not a valid option.
@@ -115,6 +131,10 @@ export const IndexQueryScope = {
      * Indexes with a collection group query scope specified allow queries against all collections that has the collection id specified by the index.
      */
     CollectionGroup: "COLLECTION_GROUP",
+    /**
+     * Include all the collections's ancestor in the index. Only available for Datastore Mode databases.
+     */
+    CollectionRecursive: "COLLECTION_RECURSIVE",
 } as const;
 
 /**

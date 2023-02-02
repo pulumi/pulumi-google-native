@@ -19,18 +19,22 @@ class ExecutionArgs:
                  workflow_id: pulumi.Input[str],
                  argument: Optional[pulumi.Input[str]] = None,
                  call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Execution resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\\"firstName\\":\\"FIRST\\",\\"lastName\\":\\"LAST\\"}"}'`
         :param pulumi.Input['ExecutionCallLogLevel'] call_log_level: The call logging level associated to this execution.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
         """
         pulumi.set(__self__, "workflow_id", workflow_id)
         if argument is not None:
             pulumi.set(__self__, "argument", argument)
         if call_log_level is not None:
             pulumi.set(__self__, "call_log_level", call_log_level)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -71,6 +75,18 @@ class ExecutionArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "location")
 
@@ -95,6 +111,7 @@ class Execution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
                  call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
@@ -109,6 +126,7 @@ class Execution(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\\"firstName\\":\\"FIRST\\",\\"lastName\\":\\"LAST\\"}"}'`
         :param pulumi.Input['ExecutionCallLogLevel'] call_log_level: The call logging level associated to this execution.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
         """
         ...
     @overload
@@ -139,6 +157,7 @@ class Execution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
                  call_log_level: Optional[pulumi.Input['ExecutionCallLogLevel']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  workflow_id: Optional[pulumi.Input[str]] = None,
@@ -153,11 +172,13 @@ class Execution(pulumi.CustomResource):
 
             __props__.__dict__["argument"] = argument
             __props__.__dict__["call_log_level"] = call_log_level
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             if workflow_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflow_id'")
             __props__.__dict__["workflow_id"] = workflow_id
+            __props__.__dict__["duration"] = None
             __props__.__dict__["end_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["name"] = None
@@ -192,8 +213,10 @@ class Execution(pulumi.CustomResource):
 
         __props__.__dict__["argument"] = None
         __props__.__dict__["call_log_level"] = None
+        __props__.__dict__["duration"] = None
         __props__.__dict__["end_time"] = None
         __props__.__dict__["error"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -222,6 +245,14 @@ class Execution(pulumi.CustomResource):
         return pulumi.get(self, "call_log_level")
 
     @property
+    @pulumi.getter
+    def duration(self) -> pulumi.Output[str]:
+        """
+        Measures the duration of the execution.
+        """
+        return pulumi.get(self, "duration")
+
+    @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> pulumi.Output[str]:
         """
@@ -236,6 +267,14 @@ class Execution(pulumi.CustomResource):
         The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
         """
         return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

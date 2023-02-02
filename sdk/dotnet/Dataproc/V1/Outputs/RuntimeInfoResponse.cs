@@ -17,9 +17,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class RuntimeInfoResponse
     {
         /// <summary>
-        /// Approximate workload resource usage calculated after workload finishes.
+        /// Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
         /// </summary>
         public readonly Outputs.UsageMetricsResponse ApproximateUsage;
+        /// <summary>
+        /// Snapshot of current workload resource usage.
+        /// </summary>
+        public readonly Outputs.UsageSnapshotResponse CurrentUsage;
         /// <summary>
         /// A URI pointing to the location of the diagnostics tarball.
         /// </summary>
@@ -37,6 +41,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         private RuntimeInfoResponse(
             Outputs.UsageMetricsResponse approximateUsage,
 
+            Outputs.UsageSnapshotResponse currentUsage,
+
             string diagnosticOutputUri,
 
             ImmutableDictionary<string, string> endpoints,
@@ -44,6 +50,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
             string outputUri)
         {
             ApproximateUsage = approximateUsage;
+            CurrentUsage = currentUsage;
             DiagnosticOutputUri = diagnosticOutputUri;
             Endpoints = endpoints;
             OutputUri = outputUri;

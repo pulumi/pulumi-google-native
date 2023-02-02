@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
     public sealed class TimeSeriesTableResponse
     {
         /// <summary>
+        /// Optional. The list of the persistent column settings for the table.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ColumnSettingsResponse> ColumnSettings;
+        /// <summary>
         /// The data displayed in this table.
         /// </summary>
         public readonly ImmutableArray<Outputs.TableDataSetResponse> DataSets;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
         [OutputConstructor]
         private TimeSeriesTableResponse(
+            ImmutableArray<Outputs.ColumnSettingsResponse> columnSettings,
+
             ImmutableArray<Outputs.TableDataSetResponse> dataSets,
 
             string metricVisualization)
         {
+            ColumnSettings = columnSettings;
             DataSets = dataSets;
             MetricVisualization = metricVisualization;
         }

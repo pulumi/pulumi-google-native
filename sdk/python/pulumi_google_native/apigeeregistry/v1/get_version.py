@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, annotations=None, create_time=None, description=None, display_name=None, labels=None, name=None, state=None, update_time=None):
+    def __init__(__self__, annotations=None, create_time=None, description=None, display_name=None, labels=None, name=None, primary_spec=None, state=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -37,6 +37,9 @@ class GetVersionResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if primary_spec and not isinstance(primary_spec, str):
+            raise TypeError("Expected argument 'primary_spec' to be a str")
+        pulumi.set(__self__, "primary_spec", primary_spec)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -93,6 +96,14 @@ class GetVersionResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="primarySpec")
+    def primary_spec(self) -> str:
+        """
+        The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        """
+        return pulumi.get(self, "primary_spec")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -121,6 +132,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             display_name=self.display_name,
             labels=self.labels,
             name=self.name,
+            primary_spec=self.primary_spec,
             state=self.state,
             update_time=self.update_time)
 
@@ -148,6 +160,7 @@ def get_version(api_id: Optional[str] = None,
         display_name=__ret__.display_name,
         labels=__ret__.labels,
         name=__ret__.name,
+        primary_spec=__ret__.primary_spec,
         state=__ret__.state,
         update_time=__ret__.update_time)
 

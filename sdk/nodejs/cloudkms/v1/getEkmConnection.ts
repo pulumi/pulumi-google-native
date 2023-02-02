@@ -35,7 +35,7 @@ export interface GetEkmConnectionResult {
      */
     readonly createTime: string;
     /**
-     * Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     * Optional. Etag of the currently stored EkmConnection.
      */
     readonly etag: string;
     /**

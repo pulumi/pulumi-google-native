@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.AuthorizationConfigResponse AuthorizationConfig;
         /// <summary>
+        /// The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends.
+        /// </summary>
+        public readonly Outputs.AWSV4SignatureResponse AwsV4Authentication;
+        /// <summary>
         /// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         /// </summary>
         public readonly string ClientTlsPolicy;
@@ -49,6 +53,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.AuthorizationConfigResponse authorizationConfig,
 
+            Outputs.AWSV4SignatureResponse awsV4Authentication,
+
             string clientTlsPolicy,
 
             Outputs.ClientTlsSettingsResponse clientTlsSettings,
@@ -58,6 +64,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Authentication = authentication;
             AuthenticationPolicy = authenticationPolicy;
             AuthorizationConfig = authorizationConfig;
+            AwsV4Authentication = awsV4Authentication;
             ClientTlsPolicy = clientTlsPolicy;
             ClientTlsSettings = clientTlsSettings;
             SubjectAltNames = subjectAltNames;

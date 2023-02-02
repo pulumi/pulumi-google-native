@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+// Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
 func LookupInterconnect(ctx *pulumi.Context, args *LookupInterconnectArgs, opts ...pulumi.InvokeOption) (*LookupInterconnectResult, error) {
 	var rv LookupInterconnectResult
 	err := ctx.Invoke("google-native:compute/v1:getInterconnect", args, &rv, opts...)
@@ -54,7 +54,7 @@ type LookupInterconnectResult struct {
 	Location string `pulumi:"location"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
-	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
 	NocContactEmail string `pulumi:"nocContactEmail"`
 	// The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus string `pulumi:"operationalStatus"`
@@ -178,7 +178,7 @@ func (o LookupInterconnectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
 func (o LookupInterconnectResultOutput) NocContactEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInterconnectResult) string { return v.NocContactEmail }).(pulumi.StringOutput)
 }

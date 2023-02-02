@@ -23,7 +23,7 @@ type DnsAuthorization struct {
 	DnsAuthorizationId pulumi.StringOutput `pulumi:"dnsAuthorizationId"`
 	// DNS Resource Record that needs to be added to DNS configuration.
 	DnsResourceRecord DnsResourceRecordResponseOutput `pulumi:"dnsResourceRecord"`
-	// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+	// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Set of labels associated with a DnsAuthorization.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
@@ -90,7 +90,7 @@ type dnsAuthorizationArgs struct {
 	Description *string `pulumi:"description"`
 	// Required. A user-provided name of the dns authorization.
 	DnsAuthorizationId string `pulumi:"dnsAuthorizationId"`
-	// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+	// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
 	Domain string `pulumi:"domain"`
 	// Set of labels associated with a DnsAuthorization.
 	Labels   map[string]string `pulumi:"labels"`
@@ -106,7 +106,7 @@ type DnsAuthorizationArgs struct {
 	Description pulumi.StringPtrInput
 	// Required. A user-provided name of the dns authorization.
 	DnsAuthorizationId pulumi.StringInput
-	// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+	// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
 	Domain pulumi.StringInput
 	// Set of labels associated with a DnsAuthorization.
 	Labels   pulumi.StringMapInput
@@ -173,7 +173,7 @@ func (o DnsAuthorizationOutput) DnsResourceRecord() DnsResourceRecordResponseOut
 	return o.ApplyT(func(v *DnsAuthorization) DnsResourceRecordResponseOutput { return v.DnsResourceRecord }).(DnsResourceRecordResponseOutput)
 }
 
-// Immutable. A domain which is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
+// Immutable. A domain that is being authorized. A DnsAuthorization resource covers a single domain and its wildcard, e.g. authorization for `example.com` can be used to issue certificates for `example.com` and `*.example.com`.
 func (o DnsAuthorizationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsAuthorization) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }

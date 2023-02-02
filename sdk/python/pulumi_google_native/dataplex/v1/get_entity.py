@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntityResult:
-    def __init__(__self__, asset=None, catalog_entry=None, compatibility=None, create_time=None, data_path=None, data_path_pattern=None, description=None, display_name=None, etag=None, format=None, name=None, schema=None, system=None, type=None, update_time=None):
+    def __init__(__self__, access=None, asset=None, catalog_entry=None, compatibility=None, create_time=None, data_path=None, data_path_pattern=None, description=None, display_name=None, etag=None, format=None, name=None, schema=None, system=None, type=None, uid=None, update_time=None):
+        if access and not isinstance(access, dict):
+            raise TypeError("Expected argument 'access' to be a dict")
+        pulumi.set(__self__, "access", access)
         if asset and not isinstance(asset, str):
             raise TypeError("Expected argument 'asset' to be a str")
         pulumi.set(__self__, "asset", asset)
@@ -62,9 +65,20 @@ class GetEntityResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def access(self) -> 'outputs.GoogleCloudDataplexV1StorageAccessResponse':
+        """
+        Identifies the access mechanism to the entity. Not user settable.
+        """
+        return pulumi.get(self, "access")
 
     @property
     @pulumi.getter
@@ -179,6 +193,14 @@ class GetEntityResult:
         return pulumi.get(self, "type")
 
     @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -193,6 +215,7 @@ class AwaitableGetEntityResult(GetEntityResult):
         if False:
             yield self
         return GetEntityResult(
+            access=self.access,
             asset=self.asset,
             catalog_entry=self.catalog_entry,
             compatibility=self.compatibility,
@@ -207,6 +230,7 @@ class AwaitableGetEntityResult(GetEntityResult):
             schema=self.schema,
             system=self.system,
             type=self.type,
+            uid=self.uid,
             update_time=self.update_time)
 
 
@@ -231,6 +255,7 @@ def get_entity(entity_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dataplex/v1:getEntity', __args__, opts=opts, typ=GetEntityResult).value
 
     return AwaitableGetEntityResult(
+        access=__ret__.access,
         asset=__ret__.asset,
         catalog_entry=__ret__.catalog_entry,
         compatibility=__ret__.compatibility,
@@ -245,6 +270,7 @@ def get_entity(entity_id: Optional[str] = None,
         schema=__ret__.schema,
         system=__ret__.system,
         type=__ret__.type,
+        uid=__ret__.uid,
         update_time=__ret__.update_time)
 
 

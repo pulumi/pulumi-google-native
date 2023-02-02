@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
+// Gets the IAM Access Control policy currently in effect for the given Cloud Run Service. This result does not include any inherited policies.
 func LookupServiceIamPolicy(ctx *pulumi.Context, args *LookupServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupServiceIamPolicyResult, error) {
 	var rv LookupServiceIamPolicyResult
 	err := ctx.Invoke("google-native:run/v2:getServiceIamPolicy", args, &rv, opts...)

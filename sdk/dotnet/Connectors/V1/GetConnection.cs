@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Optional. Configuration for the connection.
+        /// Optional. Node configuration for the connection.
         /// </summary>
         public readonly Outputs.NodeConfigResponse NodeConfig;
         /// <summary>

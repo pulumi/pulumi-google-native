@@ -2756,7 +2756,7 @@ func (o IngressPolicyResponseArrayOutput) Index(i pulumi.IntInput) IngressPolicy
 type IngressSource struct {
 	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
 }
 
@@ -2775,7 +2775,7 @@ type IngressSourceInput interface {
 type IngressSourceArgs struct {
 	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
@@ -2836,7 +2836,7 @@ func (o IngressSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IngressSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
 
-// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 func (o IngressSourceOutput) Resource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IngressSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
 }
@@ -2865,7 +2865,7 @@ func (o IngressSourceArrayOutput) Index(i pulumi.IntInput) IngressSourceOutput {
 type IngressSourceResponse struct {
 	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel string `pulumi:"accessLevel"`
-	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource string `pulumi:"resource"`
 }
 
@@ -2889,7 +2889,7 @@ func (o IngressSourceResponseOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v IngressSourceResponse) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
 
-// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
+// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 func (o IngressSourceResponseOutput) Resource() pulumi.StringOutput {
 	return o.ApplyT(func(v IngressSourceResponse) string { return v.Resource }).(pulumi.StringOutput)
 }
@@ -3454,7 +3454,7 @@ type ServicePerimeterConfig struct {
 	EgressPolicies []EgressPolicy `pulumi:"egressPolicies"`
 	// List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge.
 	IngressPolicies []IngressPolicy `pulumi:"ingressPolicies"`
-	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
 	Resources []string `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices []string `pulumi:"restrictedServices"`
@@ -3481,7 +3481,7 @@ type ServicePerimeterConfigArgs struct {
 	EgressPolicies EgressPolicyArrayInput `pulumi:"egressPolicies"`
 	// List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge.
 	IngressPolicies IngressPolicyArrayInput `pulumi:"ingressPolicies"`
-	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices pulumi.StringArrayInput `pulumi:"restrictedServices"`
@@ -3582,7 +3582,7 @@ func (o ServicePerimeterConfigOutput) IngressPolicies() IngressPolicyArrayOutput
 	return o.ApplyT(func(v ServicePerimeterConfig) []IngressPolicy { return v.IngressPolicies }).(IngressPolicyArrayOutput)
 }
 
-// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
 func (o ServicePerimeterConfigOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterConfig) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -3651,7 +3651,7 @@ func (o ServicePerimeterConfigPtrOutput) IngressPolicies() IngressPolicyArrayOut
 	}).(IngressPolicyArrayOutput)
 }
 
-// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
 func (o ServicePerimeterConfigPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterConfig) []string {
 		if v == nil {
@@ -3689,7 +3689,7 @@ type ServicePerimeterConfigResponse struct {
 	EgressPolicies []EgressPolicyResponse `pulumi:"egressPolicies"`
 	// List of IngressPolicies to apply to the perimeter. A perimeter may have multiple IngressPolicies, each of which is evaluated separately. Access is granted if any Ingress Policy grants it. Must be empty for a perimeter bridge.
 	IngressPolicies []IngressPolicyResponse `pulumi:"ingressPolicies"`
-	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+	// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
 	Resources []string `pulumi:"resources"`
 	// Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
 	RestrictedServices []string `pulumi:"restrictedServices"`
@@ -3727,7 +3727,7 @@ func (o ServicePerimeterConfigResponseOutput) IngressPolicies() IngressPolicyRes
 	return o.ApplyT(func(v ServicePerimeterConfigResponse) []IngressPolicyResponse { return v.IngressPolicies }).(IngressPolicyResponseArrayOutput)
 }
 
-// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
 func (o ServicePerimeterConfigResponseOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterConfigResponse) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }

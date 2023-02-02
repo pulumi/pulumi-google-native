@@ -148,6 +148,10 @@ export const GitFileSourceRepoType = {
      * A Bitbucket Server-hosted repo.
      */
     BitbucketServer: "BITBUCKET_SERVER",
+    /**
+     * A GitLab-hosted repo.
+     */
+    Gitlab: "GITLAB",
 } as const;
 
 /**
@@ -172,6 +176,10 @@ export const GitRepoSourceRepoType = {
      * A Bitbucket Server-hosted repo.
      */
     BitbucketServer: "BITBUCKET_SERVER",
+    /**
+     * A GitLab-hosted repo.
+     */
+    Gitlab: "GITLAB",
 } as const;
 
 /**

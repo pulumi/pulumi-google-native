@@ -7,10 +7,12 @@ from enum import Enum
 __all__ = [
     'AuditLogConfigLogType',
     'CloudSqlSettingsActivationPolicy',
+    'CloudSqlSettingsAvailabilityType',
     'CloudSqlSettingsDataDiskType',
     'CloudSqlSettingsDatabaseVersion',
     'ConnectionProfileProvider',
     'ConnectionProfileState',
+    'DatabaseEngineInfoEngine',
     'DatabaseTypeEngine',
     'DatabaseTypeProvider',
     'MigrationJobState',
@@ -55,6 +57,24 @@ class CloudSqlSettingsActivationPolicy(str, Enum):
     NEVER = "NEVER"
     """
     The instance should never spin up.
+    """
+
+
+class CloudSqlSettingsAvailabilityType(str, Enum):
+    """
+    Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+    """
+    SQL_AVAILABILITY_TYPE_UNSPECIFIED = "SQL_AVAILABILITY_TYPE_UNSPECIFIED"
+    """
+    This is an unknown Availability type.
+    """
+    ZONAL = "ZONAL"
+    """
+    Zonal availablility instance.
+    """
+    REGIONAL = "REGIONAL"
+    """
+    Regional availability instance.
     """
 
 
@@ -186,6 +206,28 @@ class ConnectionProfileState(str, Enum):
     """
 
 
+class DatabaseEngineInfoEngine(str, Enum):
+    """
+    Required. Engine Type.
+    """
+    DATABASE_ENGINE_UNSPECIFIED = "DATABASE_ENGINE_UNSPECIFIED"
+    """
+    The source database engine of the migration job is unknown.
+    """
+    MYSQL = "MYSQL"
+    """
+    The source engine is MySQL.
+    """
+    POSTGRESQL = "POSTGRESQL"
+    """
+    The source engine is PostgreSQL.
+    """
+    ORACLE = "ORACLE"
+    """
+    The source engine is Oracle
+    """
+
+
 class DatabaseTypeEngine(str, Enum):
     """
     The database engine.
@@ -201,6 +243,10 @@ class DatabaseTypeEngine(str, Enum):
     POSTGRESQL = "POSTGRESQL"
     """
     The source engine is PostgreSQL.
+    """
+    ORACLE = "ORACLE"
+    """
+    The source engine is Oracle
     """
 
 

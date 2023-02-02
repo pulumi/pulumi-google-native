@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetAnalysisResult:
-    def __init__(__self__, analysis_result=None, create_time=None, name=None, request_time=None):
+    def __init__(__self__, analysis_result=None, annotator_selector=None, create_time=None, name=None, request_time=None):
         if analysis_result and not isinstance(analysis_result, dict):
             raise TypeError("Expected argument 'analysis_result' to be a dict")
         pulumi.set(__self__, "analysis_result", analysis_result)
+        if annotator_selector and not isinstance(annotator_selector, dict):
+            raise TypeError("Expected argument 'annotator_selector' to be a dict")
+        pulumi.set(__self__, "annotator_selector", annotator_selector)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -40,6 +43,14 @@ class GetAnalysisResult:
         The result of the analysis, which is populated when the analysis finishes.
         """
         return pulumi.get(self, "analysis_result")
+
+    @property
+    @pulumi.getter(name="annotatorSelector")
+    def annotator_selector(self) -> 'outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse':
+        """
+        To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        """
+        return pulumi.get(self, "annotator_selector")
 
     @property
     @pulumi.getter(name="createTime")
@@ -73,6 +84,7 @@ class AwaitableGetAnalysisResult(GetAnalysisResult):
             yield self
         return GetAnalysisResult(
             analysis_result=self.analysis_result,
+            annotator_selector=self.annotator_selector,
             create_time=self.create_time,
             name=self.name,
             request_time=self.request_time)
@@ -96,6 +108,7 @@ def get_analysis(analysis_id: Optional[str] = None,
 
     return AwaitableGetAnalysisResult(
         analysis_result=__ret__.analysis_result,
+        annotator_selector=__ret__.annotator_selector,
         create_time=__ret__.create_time,
         name=__ret__.name,
         request_time=__ret__.request_time)

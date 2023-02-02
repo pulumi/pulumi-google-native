@@ -19,6 +19,7 @@ class SubscriptionArgs:
     def __init__(__self__, *,
                  subscription_id: pulumi.Input[str],
                  delivery_config: Optional[pulumi.Input['DeliveryConfigArgs']] = None,
+                 export_config: Optional[pulumi.Input['ExportConfigArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class SubscriptionArgs:
         The set of arguments for constructing a Subscription resource.
         :param pulumi.Input[str] subscription_id: Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
         :param pulumi.Input['DeliveryConfigArgs'] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input['ExportConfigArgs'] export_config: If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         :param pulumi.Input[bool] skip_backlog: If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
         :param pulumi.Input[str] topic: The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
@@ -35,6 +37,8 @@ class SubscriptionArgs:
         pulumi.set(__self__, "subscription_id", subscription_id)
         if delivery_config is not None:
             pulumi.set(__self__, "delivery_config", delivery_config)
+        if export_config is not None:
+            pulumi.set(__self__, "export_config", export_config)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
@@ -69,6 +73,18 @@ class SubscriptionArgs:
     @delivery_config.setter
     def delivery_config(self, value: Optional[pulumi.Input['DeliveryConfigArgs']]):
         pulumi.set(self, "delivery_config", value)
+
+    @property
+    @pulumi.getter(name="exportConfig")
+    def export_config(self) -> Optional[pulumi.Input['ExportConfigArgs']]:
+        """
+        If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        """
+        return pulumi.get(self, "export_config")
+
+    @export_config.setter
+    def export_config(self, value: Optional[pulumi.Input['ExportConfigArgs']]):
+        pulumi.set(self, "export_config", value)
 
     @property
     @pulumi.getter
@@ -131,6 +147,7 @@ class Subscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
+                 export_config: Optional[pulumi.Input[pulumi.InputType['ExportConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -144,6 +161,7 @@ class Subscription(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['DeliveryConfigArgs']] delivery_config: The settings for this subscription's message delivery.
+        :param pulumi.Input[pulumi.InputType['ExportConfigArgs']] export_config: If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         :param pulumi.Input[bool] skip_backlog: If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
         :param pulumi.Input[str] subscription_id: Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
@@ -174,6 +192,7 @@ class Subscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
+                 export_config: Optional[pulumi.Input[pulumi.InputType['ExportConfigArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -190,6 +209,7 @@ class Subscription(pulumi.CustomResource):
             __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
             __props__.__dict__["delivery_config"] = delivery_config
+            __props__.__dict__["export_config"] = export_config
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -223,6 +243,7 @@ class Subscription(pulumi.CustomResource):
         __props__ = SubscriptionArgs.__new__(SubscriptionArgs)
 
         __props__.__dict__["delivery_config"] = None
+        __props__.__dict__["export_config"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
@@ -238,6 +259,14 @@ class Subscription(pulumi.CustomResource):
         The settings for this subscription's message delivery.
         """
         return pulumi.get(self, "delivery_config")
+
+    @property
+    @pulumi.getter(name="exportConfig")
+    def export_config(self) -> pulumi.Output['outputs.ExportConfigResponse']:
+        """
+        If present, messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a destination.
+        """
+        return pulumi.get(self, "export_config")
 
     @property
     @pulumi.getter

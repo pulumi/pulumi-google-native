@@ -579,6 +579,8 @@ func (o DateResponseOutput) Year() pulumi.IntOutput {
 
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptions struct {
+	// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+	IntegerFacetingOptions *IntegerFacetingOptions `pulumi:"integerFacetingOptions"`
 	// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
 	NumFacetBuckets *int `pulumi:"numFacetBuckets"`
 	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
@@ -602,6 +604,8 @@ type FacetOptionsInput interface {
 
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptionsArgs struct {
+	// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+	IntegerFacetingOptions IntegerFacetingOptionsPtrInput `pulumi:"integerFacetingOptions"`
 	// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
 	NumFacetBuckets pulumi.IntPtrInput `pulumi:"numFacetBuckets"`
 	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
@@ -664,6 +668,11 @@ func (o FacetOptionsOutput) ToFacetOptionsOutputWithContext(ctx context.Context)
 	return o
 }
 
+// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+func (o FacetOptionsOutput) IntegerFacetingOptions() IntegerFacetingOptionsPtrOutput {
+	return o.ApplyT(func(v FacetOptions) *IntegerFacetingOptions { return v.IntegerFacetingOptions }).(IntegerFacetingOptionsPtrOutput)
+}
+
 // Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
 func (o FacetOptionsOutput) NumFacetBuckets() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v FacetOptions) *int { return v.NumFacetBuckets }).(pulumi.IntPtrOutput)
@@ -706,6 +715,8 @@ func (o FacetOptionsArrayOutput) Index(i pulumi.IntInput) FacetOptionsOutput {
 
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptionsResponse struct {
+	// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+	IntegerFacetingOptions IntegerFacetingOptionsResponse `pulumi:"integerFacetingOptions"`
 	// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
 	NumFacetBuckets int `pulumi:"numFacetBuckets"`
 	// If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
@@ -729,6 +740,11 @@ func (o FacetOptionsResponseOutput) ToFacetOptionsResponseOutput() FacetOptionsR
 
 func (o FacetOptionsResponseOutput) ToFacetOptionsResponseOutputWithContext(ctx context.Context) FacetOptionsResponseOutput {
 	return o
+}
+
+// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+func (o FacetOptionsResponseOutput) IntegerFacetingOptions() IntegerFacetingOptionsResponseOutput {
+	return o.ApplyT(func(v FacetOptionsResponse) IntegerFacetingOptionsResponse { return v.IntegerFacetingOptions }).(IntegerFacetingOptionsResponseOutput)
 }
 
 // Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
@@ -1349,6 +1365,172 @@ func (o GSuitePrincipalResponseArrayOutput) Index(i pulumi.IntInput) GSuitePrinc
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GSuitePrincipalResponse {
 		return vs[0].([]GSuitePrincipalResponse)[vs[1].(int)]
 	}).(GSuitePrincipalResponseOutput)
+}
+
+// Used to specify integer faceting options.
+type IntegerFacetingOptions struct {
+	// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+	IntegerBuckets []string `pulumi:"integerBuckets"`
+}
+
+// IntegerFacetingOptionsInput is an input type that accepts IntegerFacetingOptionsArgs and IntegerFacetingOptionsOutput values.
+// You can construct a concrete instance of `IntegerFacetingOptionsInput` via:
+//
+//	IntegerFacetingOptionsArgs{...}
+type IntegerFacetingOptionsInput interface {
+	pulumi.Input
+
+	ToIntegerFacetingOptionsOutput() IntegerFacetingOptionsOutput
+	ToIntegerFacetingOptionsOutputWithContext(context.Context) IntegerFacetingOptionsOutput
+}
+
+// Used to specify integer faceting options.
+type IntegerFacetingOptionsArgs struct {
+	// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+	IntegerBuckets pulumi.StringArrayInput `pulumi:"integerBuckets"`
+}
+
+func (IntegerFacetingOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegerFacetingOptions)(nil)).Elem()
+}
+
+func (i IntegerFacetingOptionsArgs) ToIntegerFacetingOptionsOutput() IntegerFacetingOptionsOutput {
+	return i.ToIntegerFacetingOptionsOutputWithContext(context.Background())
+}
+
+func (i IntegerFacetingOptionsArgs) ToIntegerFacetingOptionsOutputWithContext(ctx context.Context) IntegerFacetingOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegerFacetingOptionsOutput)
+}
+
+func (i IntegerFacetingOptionsArgs) ToIntegerFacetingOptionsPtrOutput() IntegerFacetingOptionsPtrOutput {
+	return i.ToIntegerFacetingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i IntegerFacetingOptionsArgs) ToIntegerFacetingOptionsPtrOutputWithContext(ctx context.Context) IntegerFacetingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegerFacetingOptionsOutput).ToIntegerFacetingOptionsPtrOutputWithContext(ctx)
+}
+
+// IntegerFacetingOptionsPtrInput is an input type that accepts IntegerFacetingOptionsArgs, IntegerFacetingOptionsPtr and IntegerFacetingOptionsPtrOutput values.
+// You can construct a concrete instance of `IntegerFacetingOptionsPtrInput` via:
+//
+//	        IntegerFacetingOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type IntegerFacetingOptionsPtrInput interface {
+	pulumi.Input
+
+	ToIntegerFacetingOptionsPtrOutput() IntegerFacetingOptionsPtrOutput
+	ToIntegerFacetingOptionsPtrOutputWithContext(context.Context) IntegerFacetingOptionsPtrOutput
+}
+
+type integerFacetingOptionsPtrType IntegerFacetingOptionsArgs
+
+func IntegerFacetingOptionsPtr(v *IntegerFacetingOptionsArgs) IntegerFacetingOptionsPtrInput {
+	return (*integerFacetingOptionsPtrType)(v)
+}
+
+func (*integerFacetingOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegerFacetingOptions)(nil)).Elem()
+}
+
+func (i *integerFacetingOptionsPtrType) ToIntegerFacetingOptionsPtrOutput() IntegerFacetingOptionsPtrOutput {
+	return i.ToIntegerFacetingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *integerFacetingOptionsPtrType) ToIntegerFacetingOptionsPtrOutputWithContext(ctx context.Context) IntegerFacetingOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IntegerFacetingOptionsPtrOutput)
+}
+
+// Used to specify integer faceting options.
+type IntegerFacetingOptionsOutput struct{ *pulumi.OutputState }
+
+func (IntegerFacetingOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegerFacetingOptions)(nil)).Elem()
+}
+
+func (o IntegerFacetingOptionsOutput) ToIntegerFacetingOptionsOutput() IntegerFacetingOptionsOutput {
+	return o
+}
+
+func (o IntegerFacetingOptionsOutput) ToIntegerFacetingOptionsOutputWithContext(ctx context.Context) IntegerFacetingOptionsOutput {
+	return o
+}
+
+func (o IntegerFacetingOptionsOutput) ToIntegerFacetingOptionsPtrOutput() IntegerFacetingOptionsPtrOutput {
+	return o.ToIntegerFacetingOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o IntegerFacetingOptionsOutput) ToIntegerFacetingOptionsPtrOutputWithContext(ctx context.Context) IntegerFacetingOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IntegerFacetingOptions) *IntegerFacetingOptions {
+		return &v
+	}).(IntegerFacetingOptionsPtrOutput)
+}
+
+// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+func (o IntegerFacetingOptionsOutput) IntegerBuckets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegerFacetingOptions) []string { return v.IntegerBuckets }).(pulumi.StringArrayOutput)
+}
+
+type IntegerFacetingOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (IntegerFacetingOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IntegerFacetingOptions)(nil)).Elem()
+}
+
+func (o IntegerFacetingOptionsPtrOutput) ToIntegerFacetingOptionsPtrOutput() IntegerFacetingOptionsPtrOutput {
+	return o
+}
+
+func (o IntegerFacetingOptionsPtrOutput) ToIntegerFacetingOptionsPtrOutputWithContext(ctx context.Context) IntegerFacetingOptionsPtrOutput {
+	return o
+}
+
+func (o IntegerFacetingOptionsPtrOutput) Elem() IntegerFacetingOptionsOutput {
+	return o.ApplyT(func(v *IntegerFacetingOptions) IntegerFacetingOptions {
+		if v != nil {
+			return *v
+		}
+		var ret IntegerFacetingOptions
+		return ret
+	}).(IntegerFacetingOptionsOutput)
+}
+
+// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+func (o IntegerFacetingOptionsPtrOutput) IntegerBuckets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *IntegerFacetingOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegerBuckets
+	}).(pulumi.StringArrayOutput)
+}
+
+// Used to specify integer faceting options.
+type IntegerFacetingOptionsResponse struct {
+	// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+	IntegerBuckets []string `pulumi:"integerBuckets"`
+}
+
+// Used to specify integer faceting options.
+type IntegerFacetingOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (IntegerFacetingOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IntegerFacetingOptionsResponse)(nil)).Elem()
+}
+
+func (o IntegerFacetingOptionsResponseOutput) ToIntegerFacetingOptionsResponseOutput() IntegerFacetingOptionsResponseOutput {
+	return o
+}
+
+func (o IntegerFacetingOptionsResponseOutput) ToIntegerFacetingOptionsResponseOutputWithContext(ctx context.Context) IntegerFacetingOptionsResponseOutput {
+	return o
+}
+
+// Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+func (o IntegerFacetingOptionsResponseOutput) IntegerBuckets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v IntegerFacetingOptionsResponse) []string { return v.IntegerBuckets }).(pulumi.StringArrayOutput)
 }
 
 // Default options to interpret user query.
@@ -3113,6 +3295,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FilterOptionsArrayInput)(nil)).Elem(), FilterOptionsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GSuitePrincipalInput)(nil)).Elem(), GSuitePrincipalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GSuitePrincipalArrayInput)(nil)).Elem(), GSuitePrincipalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegerFacetingOptionsInput)(nil)).Elem(), IntegerFacetingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IntegerFacetingOptionsPtrInput)(nil)).Elem(), IntegerFacetingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryInterpretationConfigInput)(nil)).Elem(), QueryInterpretationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*QueryInterpretationConfigPtrInput)(nil)).Elem(), QueryInterpretationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScoringConfigInput)(nil)).Elem(), ScoringConfigArgs{})
@@ -3158,6 +3342,9 @@ func init() {
 	pulumi.RegisterOutputType(GSuitePrincipalArrayOutput{})
 	pulumi.RegisterOutputType(GSuitePrincipalResponseOutput{})
 	pulumi.RegisterOutputType(GSuitePrincipalResponseArrayOutput{})
+	pulumi.RegisterOutputType(IntegerFacetingOptionsOutput{})
+	pulumi.RegisterOutputType(IntegerFacetingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(IntegerFacetingOptionsResponseOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigPtrOutput{})
 	pulumi.RegisterOutputType(QueryInterpretationConfigResponseOutput{})

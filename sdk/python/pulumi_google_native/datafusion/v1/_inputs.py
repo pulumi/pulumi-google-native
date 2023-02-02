@@ -30,7 +30,7 @@ class AcceleratorArgs:
         """
         Identifies Data Fusion accelerators for an instance.
         :param pulumi.Input['AcceleratorAcceleratorType'] accelerator_type: The type of an accelator for a CDF instance.
-        :param pulumi.Input['AcceleratorState'] state: The state of the accelerator
+        :param pulumi.Input['AcceleratorState'] state: The state of the accelerator.
         """
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -53,7 +53,7 @@ class AcceleratorArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['AcceleratorState']]:
         """
-        The state of the accelerator
+        The state of the accelerator.
         """
         return pulumi.get(self, "state")
 

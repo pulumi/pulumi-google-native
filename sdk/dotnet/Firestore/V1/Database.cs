@@ -11,8 +11,6 @@ namespace Pulumi.GoogleNative.Firestore.V1
 {
     /// <summary>
     /// Create a database.
-    /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
-    /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:firestore/v1:Database")]
     public partial class Database : global::Pulumi.CustomResource

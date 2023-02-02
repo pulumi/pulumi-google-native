@@ -14,6 +14,7 @@ from ._enums import *
 __all__ = [
     'AllowedIpRangeResponse',
     'CidrBlockResponse',
+    'CloudDataLineageIntegrationResponse',
     'DatabaseConfigResponse',
     'EncryptionConfigResponse',
     'EnvironmentConfigResponse',
@@ -24,8 +25,11 @@ __all__ = [
     'NodeConfigResponse',
     'PrivateClusterConfigResponse',
     'PrivateEnvironmentConfigResponse',
+    'RecoveryConfigResponse',
+    'ScheduledSnapshotsConfigResponse',
     'SchedulerResourceResponse',
     'SoftwareConfigResponse',
+    'TriggererResourceResponse',
     'WebServerConfigResponse',
     'WebServerNetworkAccessControlResponse',
     'WebServerResourceResponse',
@@ -116,6 +120,28 @@ class CidrBlockResponse(dict):
         User-defined name that identifies the CIDR block.
         """
         return pulumi.get(self, "display_name")
+
+
+@pulumi.output_type
+class CloudDataLineageIntegrationResponse(dict):
+    """
+    Configuration for Cloud Data Lineage integration.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for Cloud Data Lineage integration.
+        :param bool enabled: Optional. Whether or not Cloud Data Lineage integration is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. Whether or not Cloud Data Lineage integration is enabled.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -226,6 +252,8 @@ class EnvironmentConfigResponse(dict):
             suggest = "node_count"
         elif key == "privateEnvironmentConfig":
             suggest = "private_environment_config"
+        elif key == "recoveryConfig":
+            suggest = "recovery_config"
         elif key == "softwareConfig":
             suggest = "software_config"
         elif key == "webServerConfig":
@@ -258,6 +286,7 @@ class EnvironmentConfigResponse(dict):
                  node_config: 'outputs.NodeConfigResponse',
                  node_count: int,
                  private_environment_config: 'outputs.PrivateEnvironmentConfigResponse',
+                 recovery_config: 'outputs.RecoveryConfigResponse',
                  software_config: 'outputs.SoftwareConfigResponse',
                  web_server_config: 'outputs.WebServerConfigResponse',
                  web_server_network_access_control: 'outputs.WebServerNetworkAccessControlResponse',
@@ -275,6 +304,7 @@ class EnvironmentConfigResponse(dict):
         :param 'NodeConfigResponse' node_config: The configuration used for the Kubernetes Engine cluster.
         :param int node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'PrivateEnvironmentConfigResponse' private_environment_config: The configuration used for the Private IP Cloud Composer environment.
+        :param 'RecoveryConfigResponse' recovery_config: Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param 'SoftwareConfigResponse' software_config: The configuration settings for software inside the environment.
         :param 'WebServerConfigResponse' web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param 'WebServerNetworkAccessControlResponse' web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -291,6 +321,7 @@ class EnvironmentConfigResponse(dict):
         pulumi.set(__self__, "node_config", node_config)
         pulumi.set(__self__, "node_count", node_count)
         pulumi.set(__self__, "private_environment_config", private_environment_config)
+        pulumi.set(__self__, "recovery_config", recovery_config)
         pulumi.set(__self__, "software_config", software_config)
         pulumi.set(__self__, "web_server_config", web_server_config)
         pulumi.set(__self__, "web_server_network_access_control", web_server_network_access_control)
@@ -383,6 +414,14 @@ class EnvironmentConfigResponse(dict):
         The configuration used for the Private IP Cloud Composer environment.
         """
         return pulumi.get(self, "private_environment_config")
+
+    @property
+    @pulumi.getter(name="recoveryConfig")
+    def recovery_config(self) -> 'outputs.RecoveryConfigResponse':
+        """
+        Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "recovery_config")
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -718,7 +757,7 @@ class NodeConfigResponse(dict):
         :param Sequence[str] oauth_scopes: Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param str service_account: Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
         :param str subnetwork: Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
-        :param Sequence[str] tags: Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param Sequence[str] tags: Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
         """
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "enable_ip_masq_agent", enable_ip_masq_agent)
@@ -816,7 +855,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter
     def tags(self) -> Sequence[str]:
         """
-        Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
         """
         return pulumi.get(self, "tags")
 
@@ -1043,6 +1082,121 @@ class PrivateEnvironmentConfigResponse(dict):
 
 
 @pulumi.output_type
+class RecoveryConfigResponse(dict):
+    """
+    The Recovery settings of an environment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scheduledSnapshotsConfig":
+            suggest = "scheduled_snapshots_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecoveryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecoveryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecoveryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scheduled_snapshots_config: 'outputs.ScheduledSnapshotsConfigResponse'):
+        """
+        The Recovery settings of an environment.
+        :param 'ScheduledSnapshotsConfigResponse' scheduled_snapshots_config: Optional. The configuration for scheduled snapshot creation mechanism.
+        """
+        pulumi.set(__self__, "scheduled_snapshots_config", scheduled_snapshots_config)
+
+    @property
+    @pulumi.getter(name="scheduledSnapshotsConfig")
+    def scheduled_snapshots_config(self) -> 'outputs.ScheduledSnapshotsConfigResponse':
+        """
+        Optional. The configuration for scheduled snapshot creation mechanism.
+        """
+        return pulumi.get(self, "scheduled_snapshots_config")
+
+
+@pulumi.output_type
+class ScheduledSnapshotsConfigResponse(dict):
+    """
+    The configuration for scheduled snapshot creation mechanism.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "snapshotCreationSchedule":
+            suggest = "snapshot_creation_schedule"
+        elif key == "snapshotLocation":
+            suggest = "snapshot_location"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduledSnapshotsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduledSnapshotsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduledSnapshotsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: bool,
+                 snapshot_creation_schedule: str,
+                 snapshot_location: str,
+                 time_zone: str):
+        """
+        The configuration for scheduled snapshot creation mechanism.
+        :param bool enabled: Optional. Whether scheduled snapshots creation is enabled.
+        :param str snapshot_creation_schedule: Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+        :param str snapshot_location: Optional. The Cloud Storage location for storing automatically created snapshots.
+        :param str time_zone: Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "snapshot_creation_schedule", snapshot_creation_schedule)
+        pulumi.set(__self__, "snapshot_location", snapshot_location)
+        pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. Whether scheduled snapshots creation is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="snapshotCreationSchedule")
+    def snapshot_creation_schedule(self) -> str:
+        """
+        Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+        """
+        return pulumi.get(self, "snapshot_creation_schedule")
+
+    @property
+    @pulumi.getter(name="snapshotLocation")
+    def snapshot_location(self) -> str:
+        """
+        Optional. The Cloud Storage location for storing automatically created snapshots.
+        """
+        return pulumi.get(self, "snapshot_location")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+        """
+        return pulumi.get(self, "time_zone")
+
+
+@pulumi.output_type
 class SchedulerResourceResponse(dict):
     """
     Configuration for resources used by Airflow schedulers.
@@ -1126,6 +1280,8 @@ class SoftwareConfigResponse(dict):
         suggest = None
         if key == "airflowConfigOverrides":
             suggest = "airflow_config_overrides"
+        elif key == "cloudDataLineageIntegration":
+            suggest = "cloud_data_lineage_integration"
         elif key == "envVariables":
             suggest = "env_variables"
         elif key == "imageVersion":
@@ -1150,6 +1306,7 @@ class SoftwareConfigResponse(dict):
 
     def __init__(__self__, *,
                  airflow_config_overrides: Mapping[str, str],
+                 cloud_data_lineage_integration: 'outputs.CloudDataLineageIntegrationResponse',
                  env_variables: Mapping[str, str],
                  image_version: str,
                  pypi_packages: Mapping[str, str],
@@ -1158,6 +1315,7 @@ class SoftwareConfigResponse(dict):
         """
         Specifies the selection and configuration of software inside the environment.
         :param Mapping[str, str] airflow_config_overrides: Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
+        :param 'CloudDataLineageIntegrationResponse' cloud_data_lineage_integration: Optional. The configuration for Cloud Data Lineage integration.
         :param Mapping[str, str] env_variables: Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
         :param str image_version: The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\\.[0-9]+\\.[0-9]+(-preview\\.[0-9]+)?)?|latest)-airflow-([0-9]+(\\.[0-9]+(\\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
         :param Mapping[str, str] pypi_packages: Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
@@ -1165,6 +1323,7 @@ class SoftwareConfigResponse(dict):
         :param int scheduler_count: Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
         """
         pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
+        pulumi.set(__self__, "cloud_data_lineage_integration", cloud_data_lineage_integration)
         pulumi.set(__self__, "env_variables", env_variables)
         pulumi.set(__self__, "image_version", image_version)
         pulumi.set(__self__, "pypi_packages", pypi_packages)
@@ -1178,6 +1337,14 @@ class SoftwareConfigResponse(dict):
         Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
         """
         return pulumi.get(self, "airflow_config_overrides")
+
+    @property
+    @pulumi.getter(name="cloudDataLineageIntegration")
+    def cloud_data_lineage_integration(self) -> 'outputs.CloudDataLineageIntegrationResponse':
+        """
+        Optional. The configuration for Cloud Data Lineage integration.
+        """
+        return pulumi.get(self, "cloud_data_lineage_integration")
 
     @property
     @pulumi.getter(name="envVariables")
@@ -1218,6 +1385,67 @@ class SoftwareConfigResponse(dict):
         Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
         """
         return pulumi.get(self, "scheduler_count")
+
+
+@pulumi.output_type
+class TriggererResourceResponse(dict):
+    """
+    Configuration for resources used by Airflow triggerers.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryGb":
+            suggest = "memory_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggererResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggererResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggererResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 count: int,
+                 cpu: float,
+                 memory_gb: float):
+        """
+        Configuration for resources used by Airflow triggerers.
+        :param int count: Optional. The number of triggerers.
+        :param float cpu: Optional. CPU request and limit for a single Airflow triggerer replica.
+        :param float memory_gb: Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        """
+        Optional. The number of triggerers.
+        """
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        """
+        Optional. CPU request and limit for a single Airflow triggerer replica.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        """
+        Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+        """
+        return pulumi.get(self, "memory_gb")
 
 
 @pulumi.output_type
@@ -1474,15 +1702,18 @@ class WorkloadsConfigResponse(dict):
 
     def __init__(__self__, *,
                  scheduler: 'outputs.SchedulerResourceResponse',
+                 triggerer: 'outputs.TriggererResourceResponse',
                  web_server: 'outputs.WebServerResourceResponse',
                  worker: 'outputs.WorkerResourceResponse'):
         """
         The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param 'SchedulerResourceResponse' scheduler: Optional. Resources used by Airflow schedulers.
+        :param 'TriggererResourceResponse' triggerer: Optional. Resources used by Airflow triggerers.
         :param 'WebServerResourceResponse' web_server: Optional. Resources used by Airflow web server.
         :param 'WorkerResourceResponse' worker: Optional. Resources used by Airflow workers.
         """
         pulumi.set(__self__, "scheduler", scheduler)
+        pulumi.set(__self__, "triggerer", triggerer)
         pulumi.set(__self__, "web_server", web_server)
         pulumi.set(__self__, "worker", worker)
 
@@ -1493,6 +1724,14 @@ class WorkloadsConfigResponse(dict):
         Optional. Resources used by Airflow schedulers.
         """
         return pulumi.get(self, "scheduler")
+
+    @property
+    @pulumi.getter
+    def triggerer(self) -> 'outputs.TriggererResourceResponse':
+        """
+        Optional. Resources used by Airflow triggerers.
+        """
+        return pulumi.get(self, "triggerer")
 
     @property
     @pulumi.getter(name="webServer")

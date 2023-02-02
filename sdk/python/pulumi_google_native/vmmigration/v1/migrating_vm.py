@@ -276,6 +276,7 @@ class MigratingVm(pulumi.CustomResource):
                 raise TypeError("Missing required property 'source_id'")
             __props__.__dict__["source_id"] = source_id
             __props__.__dict__["source_vm_id"] = source_vm_id
+            __props__.__dict__["aws_source_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
             __props__.__dict__["error"] = None
@@ -311,6 +312,7 @@ class MigratingVm(pulumi.CustomResource):
 
         __props__ = MigratingVmArgs.__new__(MigratingVmArgs)
 
+        __props__.__dict__["aws_source_vm_details"] = None
         __props__.__dict__["compute_engine_target_defaults"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_sync_info"] = None
@@ -336,6 +338,14 @@ class MigratingVm(pulumi.CustomResource):
         return MigratingVm(resource_name, opts=opts, __props__=__props__)
 
     @property
+    @pulumi.getter(name="awsSourceVmDetails")
+    def aws_source_vm_details(self) -> pulumi.Output['outputs.AwsSourceVmDetailsResponse']:
+        """
+        Details of the VM from an AWS source.
+        """
+        return pulumi.get(self, "aws_source_vm_details")
+
+    @property
     @pulumi.getter(name="computeEngineTargetDefaults")
     def compute_engine_target_defaults(self) -> pulumi.Output['outputs.ComputeEngineTargetDefaultsResponse']:
         """
@@ -355,7 +365,7 @@ class MigratingVm(pulumi.CustomResource):
     @pulumi.getter(name="currentSyncInfo")
     def current_sync_info(self) -> pulumi.Output['outputs.ReplicationCycleResponse']:
         """
-        The percentage progress of the current running replication cycle.
+        Details of the current running replication cycle.
         """
         return pulumi.get(self, "current_sync_info")
 

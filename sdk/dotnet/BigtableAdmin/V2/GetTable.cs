@@ -74,21 +74,29 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClusterStates;
         /// <summary>
-        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+        /// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         public readonly ImmutableDictionary<string, string> ColumnFamilies;
+        /// <summary>
+        /// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+        /// </summary>
+        public readonly bool DeletionProtection;
         /// <summary>
         /// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
         /// </summary>
         public readonly string Granularity;
         /// <summary>
-        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+        /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
         /// </summary>
         public readonly string Name;
         /// <summary>
         /// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
         /// </summary>
         public readonly Outputs.RestoreInfoResponse RestoreInfo;
+        /// <summary>
+        /// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+        /// </summary>
+        public readonly Outputs.TableStatsResponse Stats;
 
         [OutputConstructor]
         private GetTableResult(
@@ -96,17 +104,23 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
             ImmutableDictionary<string, string> columnFamilies,
 
+            bool deletionProtection,
+
             string granularity,
 
             string name,
 
-            Outputs.RestoreInfoResponse restoreInfo)
+            Outputs.RestoreInfoResponse restoreInfo,
+
+            Outputs.TableStatsResponse stats)
         {
             ClusterStates = clusterStates;
             ColumnFamilies = columnFamilies;
+            DeletionProtection = deletionProtection;
             Granularity = granularity;
             Name = name;
             RestoreInfo = restoreInfo;
+            Stats = stats;
         }
     }
 }

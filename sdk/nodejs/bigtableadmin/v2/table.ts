@@ -42,16 +42,20 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly clusterStates!: pulumi.Output<{[key: string]: string}>;
     /**
-     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
     public readonly columnFamilies!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+     */
+    public readonly deletionProtection!: pulumi.Output<boolean>;
     /**
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */
     public readonly granularity!: pulumi.Output<string>;
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -59,6 +63,10 @@ export class Table extends pulumi.CustomResource {
      * If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
      */
     public /*out*/ readonly restoreInfo!: pulumi.Output<outputs.bigtableadmin.v2.RestoreInfoResponse>;
+    /**
+     * Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+     */
+    public readonly stats!: pulumi.Output<outputs.bigtableadmin.v2.TableStatsResponse>;
 
     /**
      * Create a Table resource with the given unique name, arguments, and options.
@@ -78,22 +86,26 @@ export class Table extends pulumi.CustomResource {
                 throw new Error("Missing required property 'tableId'");
             }
             resourceInputs["columnFamilies"] = args ? args.columnFamilies : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["granularity"] = args ? args.granularity : undefined;
             resourceInputs["initialSplits"] = args ? args.initialSplits : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["stats"] = args ? args.stats : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
             resourceInputs["clusterStates"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
         } else {
             resourceInputs["clusterStates"] = undefined /*out*/;
             resourceInputs["columnFamilies"] = undefined /*out*/;
+            resourceInputs["deletionProtection"] = undefined /*out*/;
             resourceInputs["granularity"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["restoreInfo"] = undefined /*out*/;
+            resourceInputs["stats"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["instanceId", "project"] };
@@ -107,9 +119,13 @@ export class Table extends pulumi.CustomResource {
  */
 export interface TableArgs {
     /**
-     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+     * The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
      */
     columnFamilies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+     */
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
      */
@@ -120,10 +136,14 @@ export interface TableArgs {
     initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.SplitArgs>[]>;
     instanceId: pulumi.Input<string>;
     /**
-     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+     * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+     */
+    stats?: pulumi.Input<inputs.bigtableadmin.v2.TableStatsArgs>;
     /**
      * The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */

@@ -28,6 +28,7 @@ __all__ = [
     'InstancePolicyOrTemplateArgs',
     'InstancePolicyArgs',
     'JobNotificationArgs',
+    'KMSEnvMapArgs',
     'LifecyclePolicyArgs',
     'LocationPolicyArgs',
     'LogsPolicyArgs',
@@ -500,8 +501,8 @@ class ContainerArgs:
         :param pulumi.Input[str] entrypoint: Overrides the `ENTRYPOINT` specified in the container.
         :param pulumi.Input[str] image_uri: The URI to pull the container image from.
         :param pulumi.Input[str] options: Arbitrary additional options to include in the "docker run" command when running this container, e.g. "--network host".
-        :param pulumi.Input[str] password: Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
-        :param pulumi.Input[str] username: Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+        :param pulumi.Input[str] password: Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
+        :param pulumi.Input[str] username: Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] volumes: Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
         """
         if block_external_network is not None:
@@ -585,7 +586,7 @@ class ContainerArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional password for logging in to a docker registry. If password matches "projects/*/secrets/*/versions/*" then Batch will read the password from the Secret Manager;
+        Optional password for logging in to a docker registry. If password matches `projects/*/secrets/*/versions/*` then Batch will read the password from the Secret Manager;
         """
         return pulumi.get(self, "password")
 
@@ -597,7 +598,7 @@ class ContainerArgs:
     @pulumi.getter
     def username(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional username for logging in to a docker registry. If username matches "projects/*/secrets/*/versions/*" then Batch will read the username from the Secret Manager.
+        Optional username for logging in to a docker registry. If username matches `projects/*/secrets/*/versions/*` then Batch will read the username from the Secret Manager.
         """
         return pulumi.get(self, "username")
 
@@ -629,10 +630,10 @@ class DiskArgs:
         """
         A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
         :param pulumi.Input[str] disk_interface: Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
-        :param pulumi.Input[str] image: Name of a public or custom image used as the data source.
-        :param pulumi.Input[str] size_gb: Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+        :param pulumi.Input[str] image: Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+        :param pulumi.Input[str] size_gb: Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
         :param pulumi.Input[str] snapshot: Name of a snapshot used as the data source.
-        :param pulumi.Input[str] type: Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+        :param pulumi.Input[str] type: Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
         """
         if disk_interface is not None:
             pulumi.set(__self__, "disk_interface", disk_interface)
@@ -661,7 +662,7 @@ class DiskArgs:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of a public or custom image used as the data source.
+        Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
         """
         return pulumi.get(self, "image")
 
@@ -673,7 +674,7 @@ class DiskArgs:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[pulumi.Input[str]]:
         """
-        Disk size in GB. This field is ignored if `data_source` is `disk` or `image`. If `type` is `local-ssd`, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB.
+        Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
         """
         return pulumi.get(self, "size_gb")
 
@@ -697,7 +698,7 @@ class DiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Disk type as shown in `gcloud compute disk-types list` For example, "pd-ssd", "pd-standard", "pd-balanced", "local-ssd".
+        Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
         """
         return pulumi.get(self, "type")
 
@@ -709,13 +710,45 @@ class DiskArgs:
 @pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
+                 encrypted_variables: Optional[pulumi.Input['KMSEnvMapArgs']] = None,
+                 secret_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         An Environment describes a collection of environment variables to set when executing Tasks.
+        :param pulumi.Input['KMSEnvMapArgs'] encrypted_variables: An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] secret_variables: A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] variables: A map of environment variable names to values.
         """
+        if encrypted_variables is not None:
+            pulumi.set(__self__, "encrypted_variables", encrypted_variables)
+        if secret_variables is not None:
+            pulumi.set(__self__, "secret_variables", secret_variables)
         if variables is not None:
             pulumi.set(__self__, "variables", variables)
+
+    @property
+    @pulumi.getter(name="encryptedVariables")
+    def encrypted_variables(self) -> Optional[pulumi.Input['KMSEnvMapArgs']]:
+        """
+        An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their values.
+        """
+        return pulumi.get(self, "encrypted_variables")
+
+    @encrypted_variables.setter
+    def encrypted_variables(self, value: Optional[pulumi.Input['KMSEnvMapArgs']]):
+        pulumi.set(self, "encrypted_variables", value)
+
+    @property
+    @pulumi.getter(name="secretVariables")
+    def secret_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to set the value of each environment variable.
+        """
+        return pulumi.get(self, "secret_variables")
+
+    @secret_variables.setter
+    def secret_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "secret_variables", value)
 
     @property
     @pulumi.getter
@@ -886,6 +919,7 @@ class InstancePolicyOrTemplateArgs:
 class InstancePolicyArgs:
     def __init__(__self__, *,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
+                 boot_disk: Optional[pulumi.Input['DiskArgs']] = None,
                  disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -893,6 +927,7 @@ class InstancePolicyArgs:
         """
         InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]] accelerators: The accelerators attached to each VM instance.
+        :param pulumi.Input['DiskArgs'] boot_disk: Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
         :param pulumi.Input[str] machine_type: The Compute Engine machine type.
         :param pulumi.Input[str] min_cpu_platform: The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
@@ -900,6 +935,8 @@ class InstancePolicyArgs:
         """
         if accelerators is not None:
             pulumi.set(__self__, "accelerators", accelerators)
+        if boot_disk is not None:
+            pulumi.set(__self__, "boot_disk", boot_disk)
         if disks is not None:
             pulumi.set(__self__, "disks", disks)
         if machine_type is not None:
@@ -920,6 +957,18 @@ class InstancePolicyArgs:
     @accelerators.setter
     def accelerators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]]):
         pulumi.set(self, "accelerators", value)
+
+    @property
+    @pulumi.getter(name="bootDisk")
+    def boot_disk(self) -> Optional[pulumi.Input['DiskArgs']]:
+        """
+        Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+        """
+        return pulumi.get(self, "boot_disk")
+
+    @boot_disk.setter
+    def boot_disk(self, value: Optional[pulumi.Input['DiskArgs']]):
+        pulumi.set(self, "boot_disk", value)
 
     @property
     @pulumi.getter
@@ -1008,6 +1057,45 @@ class JobNotificationArgs:
     @pubsub_topic.setter
     def pubsub_topic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pubsub_topic", value)
+
+
+@pulumi.input_type
+class KMSEnvMapArgs:
+    def __init__(__self__, *,
+                 cipher_text: Optional[pulumi.Input[str]] = None,
+                 key_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cipher_text: The value of the cipherText response from the `encrypt` method.
+        :param pulumi.Input[str] key_name: The name of the KMS key that will be used to decrypt the cipher text.
+        """
+        if cipher_text is not None:
+            pulumi.set(__self__, "cipher_text", cipher_text)
+        if key_name is not None:
+            pulumi.set(__self__, "key_name", key_name)
+
+    @property
+    @pulumi.getter(name="cipherText")
+    def cipher_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the cipherText response from the `encrypt` method.
+        """
+        return pulumi.get(self, "cipher_text")
+
+    @cipher_text.setter
+    def cipher_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cipher_text", value)
+
+    @property
+    @pulumi.getter(name="keyName")
+    def key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the KMS key that will be used to decrypt the cipher text.
+        """
+        return pulumi.get(self, "key_name")
+
+    @key_name.setter
+    def key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_name", value)
 
 
 @pulumi.input_type
@@ -1217,9 +1305,9 @@ class NetworkInterfaceArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         A network interface.
-        :param pulumi.Input[str] network: The URL of the network resource.
+        :param pulumi.Input[str] network: The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
         :param pulumi.Input[bool] no_external_ip_address: Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
-        :param pulumi.Input[str] subnetwork: The URL of the Subnetwork resource.
+        :param pulumi.Input[str] subnetwork: The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
         """
         if network is not None:
             pulumi.set(__self__, "network", network)
@@ -1232,7 +1320,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the network resource.
+        The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
         """
         return pulumi.get(self, "network")
 
@@ -1256,7 +1344,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the Subnetwork resource.
+        The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
         """
         return pulumi.get(self, "subnetwork")
 
@@ -1468,13 +1556,17 @@ class ScriptArgs:
 @pulumi.input_type
 class ServiceAccountArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None):
+                 email: Optional[pulumi.Input[str]] = None,
+                 scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Carries information about a Google Cloud service account.
         :param pulumi.Input[str] email: Email address of the service account. If not specified, the default Compute Engine service account for the project will be used. If instance template is being used, the service account has to be specified in the instance template and it has to match the email field here.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
         """
         if email is not None:
             pulumi.set(__self__, "email", email)
+        if scopes is not None:
+            pulumi.set(__self__, "scopes", scopes)
 
     @property
     @pulumi.getter
@@ -1487,6 +1579,18 @@ class ServiceAccountArgs:
     @email.setter
     def email(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter
+    def scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        """
+        return pulumi.get(self, "scopes")
+
+    @scopes.setter
+    def scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scopes", value)
 
 
 @pulumi.input_type
@@ -1623,7 +1727,7 @@ class TaskSpecArgs:
         Spec of a task
         :param pulumi.Input['ComputeResourceArgs'] compute_resource: ComputeResource requirements.
         :param pulumi.Input['EnvironmentArgs'] environment: Environment variables to set before running the Task.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environments: Environment variables to set before running the Task. You can set up to 100 environments.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environments: Deprecated: please use environment(non-plural) instead.
         :param pulumi.Input[Sequence[pulumi.Input['LifecyclePolicyArgs']]] lifecycle_policies: Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
         :param pulumi.Input[int] max_retry_count: Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
         :param pulumi.Input[str] max_run_duration: Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
@@ -1634,6 +1738,9 @@ class TaskSpecArgs:
             pulumi.set(__self__, "compute_resource", compute_resource)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
+        if environments is not None:
+            warnings.warn("""Deprecated: please use environment(non-plural) instead.""", DeprecationWarning)
+            pulumi.log.warn("""environments is deprecated: Deprecated: please use environment(non-plural) instead.""")
         if environments is not None:
             pulumi.set(__self__, "environments", environments)
         if lifecycle_policies is not None:
@@ -1675,7 +1782,7 @@ class TaskSpecArgs:
     @pulumi.getter
     def environments(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Environment variables to set before running the Task. You can set up to 100 environments.
+        Deprecated: please use environment(non-plural) instead.
         """
         return pulumi.get(self, "environments")
 

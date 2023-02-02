@@ -21,6 +21,7 @@ __all__ = [
     'BindingResponse',
     'CommonFeatureSpecResponse',
     'CommonFeatureStateResponse',
+    'CommonFleetDefaultMemberConfigSpecResponse',
     'EdgeClusterResponse',
     'ExprResponse',
     'FeatureResourceStateResponse',
@@ -438,6 +439,18 @@ class CommonFeatureStateResponse(dict):
         The "running state" of the Feature in this Hub.
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class CommonFleetDefaultMemberConfigSpecResponse(dict):
+    """
+    CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+    """
+    def __init__(__self__):
+        """
+        CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+        """
+        pass
 
 
 @pulumi.output_type

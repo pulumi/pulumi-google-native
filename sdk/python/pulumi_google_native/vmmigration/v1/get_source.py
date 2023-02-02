@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetSourceResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, update_time=None, vmware=None):
+    def __init__(__self__, aws=None, create_time=None, description=None, labels=None, name=None, update_time=None, vmware=None):
+        if aws and not isinstance(aws, dict):
+            raise TypeError("Expected argument 'aws' to be a dict")
+        pulumi.set(__self__, "aws", aws)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,6 +41,14 @@ class GetSourceResult:
         if vmware and not isinstance(vmware, dict):
             raise TypeError("Expected argument 'vmware' to be a dict")
         pulumi.set(__self__, "vmware", vmware)
+
+    @property
+    @pulumi.getter
+    def aws(self) -> 'outputs.AwsSourceDetailsResponse':
+        """
+        AWS type source details.
+        """
+        return pulumi.get(self, "aws")
 
     @property
     @pulumi.getter(name="createTime")
@@ -94,6 +105,7 @@ class AwaitableGetSourceResult(GetSourceResult):
         if False:
             yield self
         return GetSourceResult(
+            aws=self.aws,
             create_time=self.create_time,
             description=self.description,
             labels=self.labels,
@@ -117,6 +129,7 @@ def get_source(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:vmmigration/v1:getSource', __args__, opts=opts, typ=GetSourceResult).value
 
     return AwaitableGetSourceResult(
+        aws=__ret__.aws,
         create_time=__ret__.create_time,
         description=__ret__.description,
         labels=__ret__.labels,

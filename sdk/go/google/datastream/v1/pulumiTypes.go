@@ -6553,6 +6553,7 @@ func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutp
 
 // A single target dataset to which all data will be streamed.
 type SingleTargetDataset struct {
+	// The dataset ID of the target dataset.
 	DatasetId *string `pulumi:"datasetId"`
 }
 
@@ -6569,6 +6570,7 @@ type SingleTargetDatasetInput interface {
 
 // A single target dataset to which all data will be streamed.
 type SingleTargetDatasetArgs struct {
+	// The dataset ID of the target dataset.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 }
 
@@ -6650,6 +6652,7 @@ func (o SingleTargetDatasetOutput) ToSingleTargetDatasetPtrOutputWithContext(ctx
 	}).(SingleTargetDatasetPtrOutput)
 }
 
+// The dataset ID of the target dataset.
 func (o SingleTargetDatasetOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SingleTargetDataset) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
 }
@@ -6678,6 +6681,7 @@ func (o SingleTargetDatasetPtrOutput) Elem() SingleTargetDatasetOutput {
 	}).(SingleTargetDatasetOutput)
 }
 
+// The dataset ID of the target dataset.
 func (o SingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SingleTargetDataset) *string {
 		if v == nil {
@@ -6689,6 +6693,7 @@ func (o SingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
 
 // A single target dataset to which all data will be streamed.
 type SingleTargetDatasetResponse struct {
+	// The dataset ID of the target dataset.
 	DatasetId string `pulumi:"datasetId"`
 }
 
@@ -6707,6 +6712,7 @@ func (o SingleTargetDatasetResponseOutput) ToSingleTargetDatasetResponseOutputWi
 	return o
 }
 
+// The dataset ID of the target dataset.
 func (o SingleTargetDatasetResponseOutput) DatasetId() pulumi.StringOutput {
 	return o.ApplyT(func(v SingleTargetDatasetResponse) string { return v.DatasetId }).(pulumi.StringOutput)
 }

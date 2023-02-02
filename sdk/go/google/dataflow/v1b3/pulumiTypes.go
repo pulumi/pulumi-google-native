@@ -4042,37 +4042,37 @@ func (o PubSubIODetailsResponseArrayOutput) Index(i pulumi.IntInput) PubSubIODet
 
 // The environment values to set at runtime.
 type RuntimeEnvironment struct {
-	// Additional experiment flags for the job, specified with the `--experiments` option.
+	// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
 	AdditionalExperiments []string `pulumi:"additionalExperiments"`
-	// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+	// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
 	AdditionalUserLabels map[string]string `pulumi:"additionalUserLabels"`
-	// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+	// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
 	BypassTempDirValidation *bool `pulumi:"bypassTempDirValidation"`
-	// Whether to enable Streaming Engine for the job.
+	// Optional. Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
-	// Configuration for VM IPs.
+	// Optional. Configuration for VM IPs.
 	IpConfiguration *RuntimeEnvironmentIpConfiguration `pulumi:"ipConfiguration"`
-	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+	// Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// The machine type to use for the job. Defaults to the value from the template if not specified.
+	// Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
 	MachineType *string `pulumi:"machineType"`
-	// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+	// Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
 	MaxWorkers *int `pulumi:"maxWorkers"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+	// Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
 	Network *string `pulumi:"network"`
-	// The initial number of Google Compute Engine instances for the job.
+	// Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
 	NumWorkers *int `pulumi:"numWorkers"`
-	// The email address of the service account to run the job as.
+	// Optional. The email address of the service account to run the job as.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
-	// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+	// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 	Subnetwork *string `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	TempLocation *string `pulumi:"tempLocation"`
+	TempLocation string `pulumi:"tempLocation"`
 	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-	WorkerRegion *string `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+	WorkerRegion string `pulumi:"workerRegion"`
+	// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
 	WorkerZone *string `pulumi:"workerZone"`
-	// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+	// Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -4089,37 +4089,37 @@ type RuntimeEnvironmentInput interface {
 
 // The environment values to set at runtime.
 type RuntimeEnvironmentArgs struct {
-	// Additional experiment flags for the job, specified with the `--experiments` option.
+	// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
 	AdditionalExperiments pulumi.StringArrayInput `pulumi:"additionalExperiments"`
-	// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+	// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
 	AdditionalUserLabels pulumi.StringMapInput `pulumi:"additionalUserLabels"`
-	// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+	// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
 	BypassTempDirValidation pulumi.BoolPtrInput `pulumi:"bypassTempDirValidation"`
-	// Whether to enable Streaming Engine for the job.
+	// Optional. Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine pulumi.BoolPtrInput `pulumi:"enableStreamingEngine"`
-	// Configuration for VM IPs.
+	// Optional. Configuration for VM IPs.
 	IpConfiguration RuntimeEnvironmentIpConfigurationPtrInput `pulumi:"ipConfiguration"`
-	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+	// Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
-	// The machine type to use for the job. Defaults to the value from the template if not specified.
+	// Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+	// Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
 	MaxWorkers pulumi.IntPtrInput `pulumi:"maxWorkers"`
-	// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+	// Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// The initial number of Google Compute Engine instances for the job.
+	// Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
 	NumWorkers pulumi.IntPtrInput `pulumi:"numWorkers"`
-	// The email address of the service account to run the job as.
+	// Optional. The email address of the service account to run the job as.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
-	// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+	// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 	// The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	TempLocation pulumi.StringPtrInput `pulumi:"tempLocation"`
+	TempLocation pulumi.StringInput `pulumi:"tempLocation"`
 	// The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-	WorkerRegion pulumi.StringPtrInput `pulumi:"workerRegion"`
-	// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+	WorkerRegion pulumi.StringInput `pulumi:"workerRegion"`
+	// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
 	WorkerZone pulumi.StringPtrInput `pulumi:"workerZone"`
-	// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+	// Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
 
@@ -4201,82 +4201,82 @@ func (o RuntimeEnvironmentOutput) ToRuntimeEnvironmentPtrOutputWithContext(ctx c
 	}).(RuntimeEnvironmentPtrOutput)
 }
 
-// Additional experiment flags for the job, specified with the `--experiments` option.
+// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
 func (o RuntimeEnvironmentOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) []string { return v.AdditionalExperiments }).(pulumi.StringArrayOutput)
 }
 
-// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
 func (o RuntimeEnvironmentOutput) AdditionalUserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) map[string]string { return v.AdditionalUserLabels }).(pulumi.StringMapOutput)
 }
 
-// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
 func (o RuntimeEnvironmentOutput) BypassTempDirValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *bool { return v.BypassTempDirValidation }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable Streaming Engine for the job.
+// Optional. Whether to enable Streaming Engine for the job.
 func (o RuntimeEnvironmentOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *bool { return v.EnableStreamingEngine }).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for VM IPs.
+// Optional. Configuration for VM IPs.
 func (o RuntimeEnvironmentOutput) IpConfiguration() RuntimeEnvironmentIpConfigurationPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *RuntimeEnvironmentIpConfiguration { return v.IpConfiguration }).(RuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
-// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+// Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 func (o RuntimeEnvironmentOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// The machine type to use for the job. Defaults to the value from the template if not specified.
+// Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
 func (o RuntimeEnvironmentOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+// Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
 func (o RuntimeEnvironmentOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *int { return v.MaxWorkers }).(pulumi.IntPtrOutput)
 }
 
-// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+// Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
 func (o RuntimeEnvironmentOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// The initial number of Google Compute Engine instances for the job.
+// Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
 func (o RuntimeEnvironmentOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *int { return v.NumWorkers }).(pulumi.IntPtrOutput)
 }
 
-// The email address of the service account to run the job as.
+// Optional. The email address of the service account to run the job as.
 func (o RuntimeEnvironmentOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
 
-// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 func (o RuntimeEnvironmentOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
 // The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with `gs://`.
-func (o RuntimeEnvironmentOutput) TempLocation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.TempLocation }).(pulumi.StringPtrOutput)
+func (o RuntimeEnvironmentOutput) TempLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeEnvironment) string { return v.TempLocation }).(pulumi.StringOutput)
 }
 
 // The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with worker_zone. If neither worker_region nor worker_zone is specified, default to the control plane's region.
-func (o RuntimeEnvironmentOutput) WorkerRegion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.WorkerRegion }).(pulumi.StringPtrOutput)
+func (o RuntimeEnvironmentOutput) WorkerRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v RuntimeEnvironment) string { return v.WorkerRegion }).(pulumi.StringOutput)
 }
 
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
 func (o RuntimeEnvironmentOutput) WorkerZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.WorkerZone }).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+// Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
 func (o RuntimeEnvironmentOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.Zone }).(pulumi.StringPtrOutput)
 }
@@ -4305,7 +4305,7 @@ func (o RuntimeEnvironmentPtrOutput) Elem() RuntimeEnvironmentOutput {
 	}).(RuntimeEnvironmentOutput)
 }
 
-// Additional experiment flags for the job, specified with the `--experiments` option.
+// Optional. Additional experiment flags for the job, specified with the `--experiments` option.
 func (o RuntimeEnvironmentPtrOutput) AdditionalExperiments() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) []string {
 		if v == nil {
@@ -4315,7 +4315,7 @@ func (o RuntimeEnvironmentPtrOutput) AdditionalExperiments() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-// Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
+// Optional. Additional user labels to be specified for the job. Keys and values should follow the restrictions specified in the [labeling restrictions](https://cloud.google.com/compute/docs/labeling-resources#restrictions) page. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1kg", "count": "3" }.
 func (o RuntimeEnvironmentPtrOutput) AdditionalUserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) map[string]string {
 		if v == nil {
@@ -4325,7 +4325,7 @@ func (o RuntimeEnvironmentPtrOutput) AdditionalUserLabels() pulumi.StringMapOutp
 	}).(pulumi.StringMapOutput)
 }
 
-// Whether to bypass the safety checks for the job's temporary directory. Use with caution.
+// Optional. Whether to bypass the safety checks for the job's temporary directory. Use with caution.
 func (o RuntimeEnvironmentPtrOutput) BypassTempDirValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *bool {
 		if v == nil {
@@ -4335,7 +4335,7 @@ func (o RuntimeEnvironmentPtrOutput) BypassTempDirValidation() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether to enable Streaming Engine for the job.
+// Optional. Whether to enable Streaming Engine for the job.
 func (o RuntimeEnvironmentPtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *bool {
 		if v == nil {
@@ -4345,7 +4345,7 @@ func (o RuntimeEnvironmentPtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Configuration for VM IPs.
+// Optional. Configuration for VM IPs.
 func (o RuntimeEnvironmentPtrOutput) IpConfiguration() RuntimeEnvironmentIpConfigurationPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *RuntimeEnvironmentIpConfiguration {
 		if v == nil {
@@ -4355,7 +4355,7 @@ func (o RuntimeEnvironmentPtrOutput) IpConfiguration() RuntimeEnvironmentIpConfi
 	}).(RuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
-// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
+// Optional. Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 func (o RuntimeEnvironmentPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
@@ -4365,7 +4365,7 @@ func (o RuntimeEnvironmentPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The machine type to use for the job. Defaults to the value from the template if not specified.
+// Optional. The machine type to use for the job. Defaults to the value from the template if not specified.
 func (o RuntimeEnvironmentPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
@@ -4375,7 +4375,7 @@ func (o RuntimeEnvironmentPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000.
+// Optional. The maximum number of Google Compute Engine instances to be made available to your pipeline during execution, from 1 to 1000. The default value is 1.
 func (o RuntimeEnvironmentPtrOutput) MaxWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *int {
 		if v == nil {
@@ -4385,7 +4385,7 @@ func (o RuntimeEnvironmentPtrOutput) MaxWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
+// Optional. Network to which VMs will be assigned. If empty or unspecified, the service will use the network "default".
 func (o RuntimeEnvironmentPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
@@ -4395,7 +4395,7 @@ func (o RuntimeEnvironmentPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The initial number of Google Compute Engine instances for the job.
+// Optional. The initial number of Google Compute Engine instances for the job. The default value is 11.
 func (o RuntimeEnvironmentPtrOutput) NumWorkers() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *int {
 		if v == nil {
@@ -4405,7 +4405,7 @@ func (o RuntimeEnvironmentPtrOutput) NumWorkers() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The email address of the service account to run the job as.
+// Optional. The email address of the service account to run the job as.
 func (o RuntimeEnvironmentPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
@@ -4415,7 +4415,7 @@ func (o RuntimeEnvironmentPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
+// Optional. Subnetwork to which VMs will be assigned, if desired. You can specify a subnetwork using either a complete URL or an abbreviated path. Expected to be of the form "https://www.googleapis.com/compute/v1/projects/HOST_PROJECT_ID/regions/REGION/subnetworks/SUBNETWORK" or "regions/REGION/subnetworks/SUBNETWORK". If the subnetwork is located in a Shared VPC network, you must use the complete URL.
 func (o RuntimeEnvironmentPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
@@ -4431,7 +4431,7 @@ func (o RuntimeEnvironmentPtrOutput) TempLocation() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.TempLocation
+		return &v.TempLocation
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4441,11 +4441,11 @@ func (o RuntimeEnvironmentPtrOutput) WorkerRegion() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return v.WorkerRegion
+		return &v.WorkerRegion
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
+// Optional. The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with worker_region. If neither worker_region nor worker_zone is specified, a zone in the control plane's region is chosen based on available capacity. If both `worker_zone` and `zone` are set, `worker_zone` takes precedence.
 func (o RuntimeEnvironmentPtrOutput) WorkerZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {
@@ -4455,7 +4455,7 @@ func (o RuntimeEnvironmentPtrOutput) WorkerZone() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
+// Optional. The Compute Engine [availability zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for launching worker instances to run your pipeline. In the future, worker_zone will take precedence.
 func (o RuntimeEnvironmentPtrOutput) Zone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuntimeEnvironment) *string {
 		if v == nil {

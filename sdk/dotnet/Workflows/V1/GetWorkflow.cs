@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Workflows.V1
     public static class GetWorkflow
     {
         /// <summary>
-        /// Gets details of a single Workflow.
+        /// Gets details of a single workflow.
         /// </summary>
         public static Task<GetWorkflowResult> InvokeAsync(GetWorkflowArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkflowResult>("google-native:workflows/v1:getWorkflow", args ?? new GetWorkflowArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets details of a single Workflow.
+        /// Gets details of a single workflow.
         /// </summary>
         public static Output<GetWorkflowResult> Invoke(GetWorkflowInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkflowResult>("google-native:workflows/v1:getWorkflow", args ?? new GetWorkflowInvokeArgs(), options.WithDefaults());
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
     public sealed class GetWorkflowResult
     {
         /// <summary>
-        /// The timestamp of when the workflow was created.
+        /// The timestamp for when the workflow was created.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The timestamp that the latest revision of the workflow was created.
+        /// The timestamp for the latest revision of the workflow's creation.
         /// </summary>
         public readonly string RevisionCreateTime;
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// The last update timestamp of the workflow.
+        /// The timestamp for when the workflow was last updated.
         /// </summary>
         public readonly string UpdateTime;
 

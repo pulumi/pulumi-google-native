@@ -19,21 +19,29 @@ __all__ = [
     'BindingResponse',
     'CloudSqlConnectionProfileResponse',
     'CloudSqlSettingsResponse',
+    'ConversionWorkspaceInfoResponse',
+    'DatabaseEngineInfoResponse',
     'DatabaseTypeResponse',
     'DumpFlagResponse',
     'DumpFlagsResponse',
     'ExprResponse',
+    'ForwardSshTunnelConnectivityResponse',
     'MachineConfigResponse',
     'MySqlConnectionProfileResponse',
+    'OracleConnectionProfileResponse',
     'PostgreSqlConnectionProfileResponse',
     'PrimaryInstanceSettingsResponse',
+    'PrivateConnectivityResponse',
+    'PrivateServiceConnectConnectivityResponse',
     'ReverseSshConnectivityResponse',
     'SqlAclEntryResponse',
     'SqlIpConfigResponse',
     'SslConfigResponse',
     'StaticIpConnectivityResponse',
+    'StaticServiceIpConnectivityResponse',
     'StatusResponse',
     'UserPasswordResponse',
+    'VpcPeeringConfigResponse',
     'VpcPeeringConnectivityResponse',
 ]
 
@@ -313,7 +321,9 @@ class CloudSqlConnectionProfileResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudSqlId":
+        if key == "additionalPublicIp":
+            suggest = "additional_public_ip"
+        elif key == "cloudSqlId":
             suggest = "cloud_sql_id"
         elif key == "privateIp":
             suggest = "private_ip"
@@ -332,21 +342,32 @@ class CloudSqlConnectionProfileResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 additional_public_ip: str,
                  cloud_sql_id: str,
                  private_ip: str,
                  public_ip: str,
                  settings: 'outputs.CloudSqlSettingsResponse'):
         """
         Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
+        :param str additional_public_ip: The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
         :param str cloud_sql_id: The Cloud SQL instance ID that this connection profile is associated with.
         :param str private_ip: The Cloud SQL database instance's private IP.
         :param str public_ip: The Cloud SQL database instance's public IP.
         :param 'CloudSqlSettingsResponse' settings: Immutable. Metadata used to create the destination Cloud SQL database.
         """
+        pulumi.set(__self__, "additional_public_ip", additional_public_ip)
         pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
         pulumi.set(__self__, "private_ip", private_ip)
         pulumi.set(__self__, "public_ip", public_ip)
         pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="additionalPublicIp")
+    def additional_public_ip(self) -> str:
+        """
+        The Cloud SQL database instance's additional (outgoing) public IP. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+        """
+        return pulumi.get(self, "additional_public_ip")
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -393,6 +414,8 @@ class CloudSqlSettingsResponse(dict):
             suggest = "activation_policy"
         elif key == "autoStorageIncrease":
             suggest = "auto_storage_increase"
+        elif key == "availabilityType":
+            suggest = "availability_type"
         elif key == "cmekKeyName":
             suggest = "cmek_key_name"
         elif key == "dataDiskSizeGb":
@@ -409,6 +432,8 @@ class CloudSqlSettingsResponse(dict):
             suggest = "root_password"
         elif key == "rootPasswordSet":
             suggest = "root_password_set"
+        elif key == "secondaryZone":
+            suggest = "secondary_zone"
         elif key == "sourceId":
             suggest = "source_id"
         elif key == "storageAutoResizeLimit":
@@ -430,6 +455,7 @@ class CloudSqlSettingsResponse(dict):
     def __init__(__self__, *,
                  activation_policy: str,
                  auto_storage_increase: bool,
+                 availability_type: str,
                  cmek_key_name: str,
                  collation: str,
                  data_disk_size_gb: str,
@@ -439,6 +465,7 @@ class CloudSqlSettingsResponse(dict):
                  ip_config: 'outputs.SqlIpConfigResponse',
                  root_password: str,
                  root_password_set: bool,
+                 secondary_zone: str,
                  source_id: str,
                  storage_auto_resize_limit: str,
                  tier: str,
@@ -448,6 +475,7 @@ class CloudSqlSettingsResponse(dict):
         Settings for creating a Cloud SQL database instance.
         :param str activation_policy: The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
         :param bool auto_storage_increase: [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
+        :param str availability_type: Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
         :param str cmek_key_name: The KMS key name used for the csql instance.
         :param str collation: The Cloud SQL default instance level collation.
         :param str data_disk_size_gb: The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
@@ -457,6 +485,7 @@ class CloudSqlSettingsResponse(dict):
         :param 'SqlIpConfigResponse' ip_config: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
         :param str root_password: Input only. Initial root password.
         :param bool root_password_set: Indicates If this connection profile root password is stored.
+        :param str secondary_zone: Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
         :param str source_id: The Database Migration Service source connection profile ID, in the format: `projects/my_project_name/locations/us-central1/connectionProfiles/connection_profile_ID`
         :param str storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param str tier: The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
@@ -465,6 +494,7 @@ class CloudSqlSettingsResponse(dict):
         """
         pulumi.set(__self__, "activation_policy", activation_policy)
         pulumi.set(__self__, "auto_storage_increase", auto_storage_increase)
+        pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "cmek_key_name", cmek_key_name)
         pulumi.set(__self__, "collation", collation)
         pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
@@ -474,6 +504,7 @@ class CloudSqlSettingsResponse(dict):
         pulumi.set(__self__, "ip_config", ip_config)
         pulumi.set(__self__, "root_password", root_password)
         pulumi.set(__self__, "root_password_set", root_password_set)
+        pulumi.set(__self__, "secondary_zone", secondary_zone)
         pulumi.set(__self__, "source_id", source_id)
         pulumi.set(__self__, "storage_auto_resize_limit", storage_auto_resize_limit)
         pulumi.set(__self__, "tier", tier)
@@ -495,6 +526,14 @@ class CloudSqlSettingsResponse(dict):
         [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
         """
         return pulumi.get(self, "auto_storage_increase")
+
+    @property
+    @pulumi.getter(name="availabilityType")
+    def availability_type(self) -> str:
+        """
+        Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+        """
+        return pulumi.get(self, "availability_type")
 
     @property
     @pulumi.getter(name="cmekKeyName")
@@ -569,6 +608,14 @@ class CloudSqlSettingsResponse(dict):
         return pulumi.get(self, "root_password_set")
 
     @property
+    @pulumi.getter(name="secondaryZone")
+    def secondary_zone(self) -> str:
+        """
+        Optional. The Google Cloud Platform zone where the failover Cloud SQL database instance is located. Used when the Cloud SQL database availability type is REGIONAL (i.e. multiple zones / highly available).
+        """
+        return pulumi.get(self, "secondary_zone")
+
+    @property
     @pulumi.getter(name="sourceId")
     def source_id(self) -> str:
         """
@@ -607,6 +654,89 @@ class CloudSqlSettingsResponse(dict):
         The Google Cloud Platform zone where your Cloud SQL database instance is located.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class ConversionWorkspaceInfoResponse(dict):
+    """
+    A conversion workspace's version.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commitId":
+            suggest = "commit_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConversionWorkspaceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConversionWorkspaceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConversionWorkspaceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 commit_id: str,
+                 name: str):
+        """
+        A conversion workspace's version.
+        :param str commit_id: The commit ID of the conversion workspace.
+        :param str name: The resource name (URI) of the conversion workspace.
+        """
+        pulumi.set(__self__, "commit_id", commit_id)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="commitId")
+    def commit_id(self) -> str:
+        """
+        The commit ID of the conversion workspace.
+        """
+        return pulumi.get(self, "commit_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name (URI) of the conversion workspace.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class DatabaseEngineInfoResponse(dict):
+    """
+    The type and version of a source or destination DB.
+    """
+    def __init__(__self__, *,
+                 engine: str,
+                 version: str):
+        """
+        The type and version of a source or destination DB.
+        :param str engine: Engine Type.
+        :param str version: Engine named version, for e.g. 12.c.1
+        """
+        pulumi.set(__self__, "engine", engine)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def engine(self) -> str:
+        """
+        Engine Type.
+        """
+        return pulumi.get(self, "engine")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Engine named version, for e.g. 12.c.1
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -770,6 +900,89 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class ForwardSshTunnelConnectivityResponse(dict):
+    """
+    Forward SSH Tunnel connectivity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForwardSshTunnelConnectivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForwardSshTunnelConnectivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForwardSshTunnelConnectivityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 hostname: str,
+                 password: str,
+                 port: int,
+                 private_key: str,
+                 username: str):
+        """
+        Forward SSH Tunnel connectivity.
+        :param str hostname: Hostname for the SSH tunnel.
+        :param str password: Input only. SSH password.
+        :param int port: Port for the SSH tunnel, default value is 22.
+        :param str private_key: Input only. SSH private key.
+        :param str username: Username for the SSH tunnel.
+        """
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "private_key", private_key)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname for the SSH tunnel.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Input only. SSH password.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port for the SSH tunnel, default value is 22.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateKey")
+    def private_key(self) -> str:
+        """
+        Input only. SSH private key.
+        """
+        return pulumi.get(self, "private_key")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username for the SSH tunnel.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
 class MachineConfigResponse(dict):
     """
     MachineConfig describes the configuration of a machine.
@@ -916,6 +1129,141 @@ class MySqlConnectionProfileResponse(dict):
 
 
 @pulumi.output_type
+class OracleConnectionProfileResponse(dict):
+    """
+    Specifies connection parameters required specifically for Oracle databases.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseService":
+            suggest = "database_service"
+        elif key == "forwardSshConnectivity":
+            suggest = "forward_ssh_connectivity"
+        elif key == "passwordSet":
+            suggest = "password_set"
+        elif key == "privateConnectivity":
+            suggest = "private_connectivity"
+        elif key == "staticServiceIpConnectivity":
+            suggest = "static_service_ip_connectivity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OracleConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OracleConnectionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OracleConnectionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_service: str,
+                 forward_ssh_connectivity: 'outputs.ForwardSshTunnelConnectivityResponse',
+                 host: str,
+                 password: str,
+                 password_set: bool,
+                 port: int,
+                 private_connectivity: 'outputs.PrivateConnectivityResponse',
+                 static_service_ip_connectivity: 'outputs.StaticServiceIpConnectivityResponse',
+                 username: str):
+        """
+        Specifies connection parameters required specifically for Oracle databases.
+        :param str database_service: Database service for the Oracle connection.
+        :param 'ForwardSshTunnelConnectivityResponse' forward_ssh_connectivity: Forward SSH tunnel connectivity.
+        :param str host: The IP or hostname of the source Oracle database.
+        :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        :param bool password_set: Indicates whether a new password is included in the request.
+        :param int port: The network port of the source Oracle database.
+        :param 'PrivateConnectivityResponse' private_connectivity: Private connectivity.
+        :param 'StaticServiceIpConnectivityResponse' static_service_ip_connectivity: Static Service IP connectivity.
+        :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        pulumi.set(__self__, "database_service", database_service)
+        pulumi.set(__self__, "forward_ssh_connectivity", forward_ssh_connectivity)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "password_set", password_set)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "private_connectivity", private_connectivity)
+        pulumi.set(__self__, "static_service_ip_connectivity", static_service_ip_connectivity)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="databaseService")
+    def database_service(self) -> str:
+        """
+        Database service for the Oracle connection.
+        """
+        return pulumi.get(self, "database_service")
+
+    @property
+    @pulumi.getter(name="forwardSshConnectivity")
+    def forward_ssh_connectivity(self) -> 'outputs.ForwardSshTunnelConnectivityResponse':
+        """
+        Forward SSH tunnel connectivity.
+        """
+        return pulumi.get(self, "forward_ssh_connectivity")
+
+    @property
+    @pulumi.getter
+    def host(self) -> str:
+        """
+        The IP or hostname of the source Oracle database.
+        """
+        return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="passwordSet")
+    def password_set(self) -> bool:
+        """
+        Indicates whether a new password is included in the request.
+        """
+        return pulumi.get(self, "password_set")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        The network port of the source Oracle database.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="privateConnectivity")
+    def private_connectivity(self) -> 'outputs.PrivateConnectivityResponse':
+        """
+        Private connectivity.
+        """
+        return pulumi.get(self, "private_connectivity")
+
+    @property
+    @pulumi.getter(name="staticServiceIpConnectivity")
+    def static_service_ip_connectivity(self) -> 'outputs.StaticServiceIpConnectivityResponse':
+        """
+        Static Service IP connectivity.
+        """
+        return pulumi.get(self, "static_service_ip_connectivity")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
 class PostgreSqlConnectionProfileResponse(dict):
     """
     Specifies connection parameters required specifically for PostgreSQL databases.
@@ -929,6 +1277,10 @@ class PostgreSqlConnectionProfileResponse(dict):
             suggest = "network_architecture"
         elif key == "passwordSet":
             suggest = "password_set"
+        elif key == "privateServiceConnectConnectivity":
+            suggest = "private_service_connect_connectivity"
+        elif key == "staticIpConnectivity":
+            suggest = "static_ip_connectivity"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PostgreSqlConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
@@ -948,7 +1300,9 @@ class PostgreSqlConnectionProfileResponse(dict):
                  password: str,
                  password_set: bool,
                  port: int,
+                 private_service_connect_connectivity: 'outputs.PrivateServiceConnectConnectivityResponse',
                  ssl: 'outputs.SslConfigResponse',
+                 static_ip_connectivity: 'outputs.StaticIpConnectivityResponse',
                  username: str):
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
@@ -958,7 +1312,9 @@ class PostgreSqlConnectionProfileResponse(dict):
         :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         :param bool password_set: Indicates If this connection profile password is stored.
         :param int port: The network port of the source PostgreSQL database.
+        :param 'PrivateServiceConnectConnectivityResponse' private_service_connect_connectivity: Private service connect connectivity.
         :param 'SslConfigResponse' ssl: SSL configuration for the destination to connect to the source database.
+        :param 'StaticIpConnectivityResponse' static_ip_connectivity: Static ip connectivity data (default, no additional details needed).
         :param str username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
@@ -967,7 +1323,9 @@ class PostgreSqlConnectionProfileResponse(dict):
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "password_set", password_set)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "private_service_connect_connectivity", private_service_connect_connectivity)
         pulumi.set(__self__, "ssl", ssl)
+        pulumi.set(__self__, "static_ip_connectivity", static_ip_connectivity)
         pulumi.set(__self__, "username", username)
 
     @property
@@ -1019,12 +1377,28 @@ class PostgreSqlConnectionProfileResponse(dict):
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter(name="privateServiceConnectConnectivity")
+    def private_service_connect_connectivity(self) -> 'outputs.PrivateServiceConnectConnectivityResponse':
+        """
+        Private service connect connectivity.
+        """
+        return pulumi.get(self, "private_service_connect_connectivity")
+
+    @property
     @pulumi.getter
     def ssl(self) -> 'outputs.SslConfigResponse':
         """
         SSL configuration for the destination to connect to the source database.
         """
         return pulumi.get(self, "ssl")
+
+    @property
+    @pulumi.getter(name="staticIpConnectivity")
+    def static_ip_connectivity(self) -> 'outputs.StaticIpConnectivityResponse':
+        """
+        Static ip connectivity data (default, no additional details needed).
+        """
+        return pulumi.get(self, "static_ip_connectivity")
 
     @property
     @pulumi.getter
@@ -1109,6 +1483,84 @@ class PrimaryInstanceSettingsResponse(dict):
         The private IP address for the Instance. This is the connection endpoint for an end-user application.
         """
         return pulumi.get(self, "private_ip")
+
+
+@pulumi.output_type
+class PrivateConnectivityResponse(dict):
+    """
+    Private Connectivity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateConnection":
+            suggest = "private_connection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateConnectivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateConnectivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateConnectivityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_connection: str):
+        """
+        Private Connectivity.
+        :param str private_connection: The resource name (URI) of the private connection.
+        """
+        pulumi.set(__self__, "private_connection", private_connection)
+
+    @property
+    @pulumi.getter(name="privateConnection")
+    def private_connection(self) -> str:
+        """
+        The resource name (URI) of the private connection.
+        """
+        return pulumi.get(self, "private_connection")
+
+
+@pulumi.output_type
+class PrivateServiceConnectConnectivityResponse(dict):
+    """
+    Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAttachment":
+            suggest = "service_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateServiceConnectConnectivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateServiceConnectConnectivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateServiceConnectConnectivityResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_attachment: str):
+        """
+        Private Service Connect connectivity (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+        :param str service_attachment: A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+        """
+        pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> str:
+        """
+        A service attachment that exposes a database, and has the following format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment_name}
+        """
+        return pulumi.get(self, "service_attachment")
 
 
 @pulumi.output_type
@@ -1424,6 +1876,18 @@ class StaticIpConnectivityResponse(dict):
 
 
 @pulumi.output_type
+class StaticServiceIpConnectivityResponse(dict):
+    """
+    Static IP address connectivity configured on service project.
+    """
+    def __init__(__self__):
+        """
+        Static IP address connectivity configured on service project.
+        """
+        pass
+
+
+@pulumi.output_type
 class StatusResponse(dict):
     """
     The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
@@ -1526,6 +1990,56 @@ class UserPasswordResponse(dict):
         The database username.
         """
         return pulumi.get(self, "user")
+
+
+@pulumi.output_type
+class VpcPeeringConfigResponse(dict):
+    """
+    The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vpcName":
+            suggest = "vpc_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcPeeringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcPeeringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcPeeringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 subnet: str,
+                 vpc_name: str):
+        """
+        The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+        :param str subnet: A free subnet for peering. (CIDR of /29)
+        :param str vpc_name: Fully qualified name of the VPC DMS will peer to.
+        """
+        pulumi.set(__self__, "subnet", subnet)
+        pulumi.set(__self__, "vpc_name", vpc_name)
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> str:
+        """
+        A free subnet for peering. (CIDR of /29)
+        """
+        return pulumi.get(self, "subnet")
+
+    @property
+    @pulumi.getter(name="vpcName")
+    def vpc_name(self) -> str:
+        """
+        Fully qualified name of the VPC DMS will peer to.
+        """
+        return pulumi.get(self, "vpc_name")
 
 
 @pulumi.output_type

@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .get_node import *
+from .get_queued_resource import *
 from .node import *
+from .queued_resource import *
 from ._inputs import *
 from . import outputs

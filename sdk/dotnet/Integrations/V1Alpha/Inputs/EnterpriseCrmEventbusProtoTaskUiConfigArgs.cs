@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+    /// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
     /// </summary>
     public sealed class EnterpriseCrmEventbusProtoTaskUiConfigArgs : global::Pulumi.ResourceArgs
     {

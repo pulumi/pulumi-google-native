@@ -253,7 +253,7 @@ class GetInterconnectResult:
     @pulumi.getter(name="nocContactEmail")
     def noc_contact_email(self) -> str:
         """
-        Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+        Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
         """
         return pulumi.get(self, "noc_contact_email")
 
@@ -370,7 +370,7 @@ def get_interconnect(interconnect: Optional[str] = None,
                      project: Optional[str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInterconnectResult:
     """
-    Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+    Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
     """
     __args__ = dict()
     __args__['interconnect'] = interconnect
@@ -414,6 +414,6 @@ def get_interconnect_output(interconnect: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInterconnectResult]:
     """
-    Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+    Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
     """
     ...

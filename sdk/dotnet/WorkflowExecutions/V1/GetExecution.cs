@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         public readonly string CallLogLevel;
         /// <summary>
+        /// Measures the duration of the execution.
+        /// </summary>
+        public readonly string Duration;
+        /// <summary>
         /// Marks the end of execution, successful or not.
         /// </summary>
         public readonly string EndTime;
@@ -91,6 +95,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
         /// </summary>
         public readonly Outputs.ErrorResponse Error;
+        /// <summary>
+        /// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
         /// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
         /// </summary>
@@ -122,9 +130,13 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
 
             string callLogLevel,
 
+            string duration,
+
             string endTime,
 
             Outputs.ErrorResponse error,
+
+            ImmutableDictionary<string, string> labels,
 
             string name,
 
@@ -140,8 +152,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         {
             Argument = argument;
             CallLogLevel = callLogLevel;
+            Duration = duration;
             EndTime = endTime;
             Error = error;
+            Labels = labels;
             Name = name;
             Result = result;
             StartTime = startTime;

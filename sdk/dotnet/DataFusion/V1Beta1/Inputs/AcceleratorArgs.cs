@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
         [Input("acceleratorType")]
         public Input<Pulumi.GoogleNative.DataFusion.V1Beta1.AcceleratorAcceleratorType>? AcceleratorType { get; set; }
 
+        /// <summary>
+        /// The state of the accelerator.
+        /// </summary>
+        [Input("state")]
+        public Input<Pulumi.GoogleNative.DataFusion.V1Beta1.AcceleratorState>? State { get; set; }
+
         public AcceleratorArgs()
         {
         }

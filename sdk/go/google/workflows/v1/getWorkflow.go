@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets details of a single Workflow.
+// Gets details of a single workflow.
 func LookupWorkflow(ctx *pulumi.Context, args *LookupWorkflowArgs, opts ...pulumi.InvokeOption) (*LookupWorkflowResult, error) {
 	var rv LookupWorkflowResult
 	err := ctx.Invoke("google-native:workflows/v1:getWorkflow", args, &rv, opts...)
@@ -27,15 +27,15 @@ type LookupWorkflowArgs struct {
 }
 
 type LookupWorkflowResult struct {
-	// The timestamp of when the workflow was created.
+	// The timestamp for when the workflow was created.
 	CreateTime string `pulumi:"createTime"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description string `pulumi:"description"`
-	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name string `pulumi:"name"`
-	// The timestamp that the latest revision of the workflow was created.
+	// The timestamp for the latest revision of the workflow's creation.
 	RevisionCreateTime string `pulumi:"revisionCreateTime"`
 	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
 	RevisionId string `pulumi:"revisionId"`
@@ -45,7 +45,7 @@ type LookupWorkflowResult struct {
 	SourceContents string `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State string `pulumi:"state"`
-	// The last update timestamp of the workflow.
+	// The timestamp for when the workflow was last updated.
 	UpdateTime string `pulumi:"updateTime"`
 }
 
@@ -86,7 +86,7 @@ func (o LookupWorkflowResultOutput) ToLookupWorkflowResultOutputWithContext(ctx 
 	return o
 }
 
-// The timestamp of when the workflow was created.
+// The timestamp for when the workflow was created.
 func (o LookupWorkflowResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -96,7 +96,7 @@ func (o LookupWorkflowResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
 func (o LookupWorkflowResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -106,7 +106,7 @@ func (o LookupWorkflowResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The timestamp that the latest revision of the workflow was created.
+// The timestamp for the latest revision of the workflow's creation.
 func (o LookupWorkflowResultOutput) RevisionCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.RevisionCreateTime }).(pulumi.StringOutput)
 }
@@ -131,7 +131,7 @@ func (o LookupWorkflowResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// The last update timestamp of the workflow.
+// The timestamp for when the workflow was last updated.
 func (o LookupWorkflowResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkflowResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }

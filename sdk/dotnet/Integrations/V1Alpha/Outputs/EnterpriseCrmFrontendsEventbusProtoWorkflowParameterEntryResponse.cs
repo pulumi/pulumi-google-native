@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string InOutType;
         /// <summary>
-        /// Whether this parameter is a transient parameter. go/ip-transient-parameters
+        /// Whether this parameter is a transient parameter.
         /// </summary>
         public readonly bool IsTransient;
         /// <summary>

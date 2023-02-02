@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
         public Input<Pulumi.GoogleNative.DataFusion.V1.AcceleratorAcceleratorType>? AcceleratorType { get; set; }
 
         /// <summary>
-        /// The state of the accelerator
+        /// The state of the accelerator.
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.DataFusion.V1.AcceleratorState>? State { get; set; }

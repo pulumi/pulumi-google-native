@@ -626,7 +626,7 @@ class NodeConfigArgs:
                  max_node_count: Optional[pulumi.Input[int]] = None,
                  min_node_count: Optional[pulumi.Input[int]] = None):
         """
-        Configuration for the connection.
+        Node configuration for the connection.
         :param pulumi.Input[int] max_node_count: Maximum number of nodes in the runtime nodes.
         :param pulumi.Input[int] min_node_count: Minimum number of nodes in the runtime nodes.
         """

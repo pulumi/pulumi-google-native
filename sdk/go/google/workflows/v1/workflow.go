@@ -11,21 +11,21 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
+// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation returns a ALREADY_EXISTS error.
 type Workflow struct {
 	pulumi.CustomResourceState
 
-	// The timestamp of when the workflow was created.
+	// The timestamp for when the workflow was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The timestamp that the latest revision of the workflow was created.
+	// The timestamp for the latest revision of the workflow's creation.
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// The revision of the workflow. A new revision of a workflow is created as a result of updating the following properties of a workflow: - Service account - Workflow code to be executed The format is "000001-a4d", where the first 6 characters define the zero-padded revision ordinal number. They are followed by a hyphen and 3 hexadecimal random characters.
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
@@ -35,7 +35,7 @@ type Workflow struct {
 	SourceContents pulumi.StringOutput `pulumi:"sourceContents"`
 	// State of the workflow deployment.
 	State pulumi.StringOutput `pulumi:"state"`
-	// The last update timestamp of the workflow.
+	// The timestamp for when the workflow was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
 	WorkflowId pulumi.StringOutput `pulumi:"workflowId"`
@@ -91,7 +91,7 @@ func (WorkflowState) ElementType() reflect.Type {
 type workflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
-	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
@@ -109,7 +109,7 @@ type workflowArgs struct {
 type WorkflowArgs struct {
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
-	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
@@ -160,7 +160,7 @@ func (o WorkflowOutput) ToWorkflowOutputWithContext(ctx context.Context) Workflo
 	return o
 }
 
-// The timestamp of when the workflow was created.
+// The timestamp for when the workflow was created.
 func (o WorkflowOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -170,7 +170,7 @@ func (o WorkflowOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
 func (o WorkflowOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -188,7 +188,7 @@ func (o WorkflowOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The timestamp that the latest revision of the workflow was created.
+// The timestamp for the latest revision of the workflow's creation.
 func (o WorkflowOutput) RevisionCreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.RevisionCreateTime }).(pulumi.StringOutput)
 }
@@ -213,7 +213,7 @@ func (o WorkflowOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// The last update timestamp of the workflow.
+// The timestamp for when the workflow was last updated.
 func (o WorkflowOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

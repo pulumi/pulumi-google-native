@@ -1661,6 +1661,8 @@ class VolumeConfigResponse(dict):
             suggest = "size_gb"
         elif key == "snapshotsEnabled":
             suggest = "snapshots_enabled"
+        elif key == "storageAggregatePool":
+            suggest = "storage_aggregate_pool"
         elif key == "userNote":
             suggest = "user_note"
 
@@ -1685,6 +1687,7 @@ class VolumeConfigResponse(dict):
                  protocol: str,
                  size_gb: int,
                  snapshots_enabled: bool,
+                 storage_aggregate_pool: str,
                  type: str,
                  user_note: str):
         """
@@ -1698,6 +1701,7 @@ class VolumeConfigResponse(dict):
         :param str protocol: Volume protocol.
         :param int size_gb: The requested size of this volume, in GB.
         :param bool snapshots_enabled: Whether snapshots should be enabled.
+        :param str storage_aggregate_pool: Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
         :param str type: The type of this Volume.
         :param str user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
@@ -1710,6 +1714,7 @@ class VolumeConfigResponse(dict):
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "size_gb", size_gb)
         pulumi.set(__self__, "snapshots_enabled", snapshots_enabled)
+        pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_note", user_note)
 
@@ -1786,6 +1791,14 @@ class VolumeConfigResponse(dict):
         return pulumi.get(self, "snapshots_enabled")
 
     @property
+    @pulumi.getter(name="storageAggregatePool")
+    def storage_aggregate_pool(self) -> str:
+        """
+        Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        """
+        return pulumi.get(self, "storage_aggregate_pool")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -1836,8 +1849,12 @@ class VolumeResponse(dict):
             suggest = "snapshot_reservation_detail"
         elif key == "snapshotSchedulePolicy":
             suggest = "snapshot_schedule_policy"
+        elif key == "storageAggregatePool":
+            suggest = "storage_aggregate_pool"
         elif key == "storageType":
             suggest = "storage_type"
+        elif key == "workloadProfile":
+            suggest = "workload_profile"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in VolumeResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1870,7 +1887,9 @@ class VolumeResponse(dict):
                  snapshot_reservation_detail: 'outputs.SnapshotReservationDetailResponse',
                  snapshot_schedule_policy: str,
                  state: str,
-                 storage_type: str):
+                 storage_aggregate_pool: str,
+                 storage_type: str,
+                 workload_profile: str):
         """
         A storage volume.
         :param str auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
@@ -1892,7 +1911,9 @@ class VolumeResponse(dict):
         :param 'SnapshotReservationDetailResponse' snapshot_reservation_detail: Details about snapshot space reservation and usage on the storage volume.
         :param str snapshot_schedule_policy: The name of the snapshot schedule policy in use for this volume, if any.
         :param str state: The state of this storage volume.
+        :param str storage_aggregate_pool: Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
         :param str storage_type: The storage type for this volume.
+        :param str workload_profile: The workload profile for the volume.
         """
         pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
         pulumi.set(__self__, "boot_volume", boot_volume)
@@ -1913,7 +1934,9 @@ class VolumeResponse(dict):
         pulumi.set(__self__, "snapshot_reservation_detail", snapshot_reservation_detail)
         pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
         pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "workload_profile", workload_profile)
 
     @property
     @pulumi.getter(name="autoGrownSizeGib")
@@ -2068,11 +2091,27 @@ class VolumeResponse(dict):
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="storageAggregatePool")
+    def storage_aggregate_pool(self) -> str:
+        """
+        Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        """
+        return pulumi.get(self, "storage_aggregate_pool")
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> str:
         """
         The storage type for this volume.
         """
         return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="workloadProfile")
+    def workload_profile(self) -> str:
+        """
+        The workload profile for the volume.
+        """
+        return pulumi.get(self, "workload_profile")
 
 

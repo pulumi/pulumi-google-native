@@ -2364,6 +2364,87 @@ func (o ContentMatcherResponseArrayOutput) Index(i pulumi.IntInput) ContentMatch
 	}).(ContentMatcherResponseOutput)
 }
 
+// Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
+type Criteria struct {
+	// The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+	Policies []string `pulumi:"policies"`
+}
+
+// CriteriaInput is an input type that accepts CriteriaArgs and CriteriaOutput values.
+// You can construct a concrete instance of `CriteriaInput` via:
+//
+//	CriteriaArgs{...}
+type CriteriaInput interface {
+	pulumi.Input
+
+	ToCriteriaOutput() CriteriaOutput
+	ToCriteriaOutputWithContext(context.Context) CriteriaOutput
+}
+
+// Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
+type CriteriaArgs struct {
+	// The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+	Policies pulumi.StringArrayInput `pulumi:"policies"`
+}
+
+func (CriteriaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Criteria)(nil)).Elem()
+}
+
+func (i CriteriaArgs) ToCriteriaOutput() CriteriaOutput {
+	return i.ToCriteriaOutputWithContext(context.Background())
+}
+
+func (i CriteriaArgs) ToCriteriaOutputWithContext(ctx context.Context) CriteriaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CriteriaOutput)
+}
+
+// Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
+type CriteriaOutput struct{ *pulumi.OutputState }
+
+func (CriteriaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Criteria)(nil)).Elem()
+}
+
+func (o CriteriaOutput) ToCriteriaOutput() CriteriaOutput {
+	return o
+}
+
+func (o CriteriaOutput) ToCriteriaOutputWithContext(ctx context.Context) CriteriaOutput {
+	return o
+}
+
+// The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+func (o CriteriaOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v Criteria) []string { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
+// Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
+type CriteriaResponse struct {
+	// The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+	Policies []string `pulumi:"policies"`
+}
+
+// Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
+type CriteriaResponseOutput struct{ *pulumi.OutputState }
+
+func (CriteriaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CriteriaResponse)(nil)).Elem()
+}
+
+func (o CriteriaResponseOutput) ToCriteriaResponseOutput() CriteriaResponseOutput {
+	return o
+}
+
+func (o CriteriaResponseOutput) ToCriteriaResponseOutputWithContext(ctx context.Context) CriteriaResponseOutput {
+	return o
+}
+
+// The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+func (o CriteriaResponseOutput) Policies() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CriteriaResponse) []string { return v.Policies }).(pulumi.StringArrayOutput)
+}
+
 // Use a custom service to designate a service that you want to monitor when none of the other service types (like App Engine, Cloud Run, or a GKE type) matches your intended service.
 type Custom struct {
 }
@@ -2698,7 +2779,7 @@ func (o DistributionCutResponseOutput) Range() GoogleMonitoringV3RangeResponseOu
 
 // A content string and a MIME type that describes the content string's format.
 type Documentation struct {
-	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+	// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content *string `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType *string `pulumi:"mimeType"`
@@ -2717,7 +2798,7 @@ type DocumentationInput interface {
 
 // A content string and a MIME type that describes the content string's format.
 type DocumentationArgs struct {
-	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+	// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
@@ -2801,7 +2882,7 @@ func (o DocumentationOutput) ToDocumentationPtrOutputWithContext(ctx context.Con
 	}).(DocumentationPtrOutput)
 }
 
-// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Documentation) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
@@ -2835,7 +2916,7 @@ func (o DocumentationPtrOutput) Elem() DocumentationOutput {
 	}).(DocumentationOutput)
 }
 
-// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationPtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Documentation) *string {
 		if v == nil {
@@ -2857,7 +2938,7 @@ func (o DocumentationPtrOutput) MimeType() pulumi.StringPtrOutput {
 
 // A content string and a MIME type that describes the content string's format.
 type DocumentationResponse struct {
-	// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+	// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 	Content string `pulumi:"content"`
 	// The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 	MimeType string `pulumi:"mimeType"`
@@ -2878,7 +2959,7 @@ func (o DocumentationResponseOutput) ToDocumentationResponseOutputWithContext(ct
 	return o
 }
 
-// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+// The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
 func (o DocumentationResponseOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.Content }).(pulumi.StringOutput)
 }
@@ -2886,6 +2967,172 @@ func (o DocumentationResponseOutput) Content() pulumi.StringOutput {
 // The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
 func (o DocumentationResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v DocumentationResponse) string { return v.MimeType }).(pulumi.StringOutput)
+}
+
+// Options used when forecasting the time series and testing the predicted value against the threshold.
+type ForecastOptions struct {
+	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+	ForecastHorizon string `pulumi:"forecastHorizon"`
+}
+
+// ForecastOptionsInput is an input type that accepts ForecastOptionsArgs and ForecastOptionsOutput values.
+// You can construct a concrete instance of `ForecastOptionsInput` via:
+//
+//	ForecastOptionsArgs{...}
+type ForecastOptionsInput interface {
+	pulumi.Input
+
+	ToForecastOptionsOutput() ForecastOptionsOutput
+	ToForecastOptionsOutputWithContext(context.Context) ForecastOptionsOutput
+}
+
+// Options used when forecasting the time series and testing the predicted value against the threshold.
+type ForecastOptionsArgs struct {
+	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+	ForecastHorizon pulumi.StringInput `pulumi:"forecastHorizon"`
+}
+
+func (ForecastOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForecastOptions)(nil)).Elem()
+}
+
+func (i ForecastOptionsArgs) ToForecastOptionsOutput() ForecastOptionsOutput {
+	return i.ToForecastOptionsOutputWithContext(context.Background())
+}
+
+func (i ForecastOptionsArgs) ToForecastOptionsOutputWithContext(ctx context.Context) ForecastOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForecastOptionsOutput)
+}
+
+func (i ForecastOptionsArgs) ToForecastOptionsPtrOutput() ForecastOptionsPtrOutput {
+	return i.ToForecastOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ForecastOptionsArgs) ToForecastOptionsPtrOutputWithContext(ctx context.Context) ForecastOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForecastOptionsOutput).ToForecastOptionsPtrOutputWithContext(ctx)
+}
+
+// ForecastOptionsPtrInput is an input type that accepts ForecastOptionsArgs, ForecastOptionsPtr and ForecastOptionsPtrOutput values.
+// You can construct a concrete instance of `ForecastOptionsPtrInput` via:
+//
+//	        ForecastOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ForecastOptionsPtrInput interface {
+	pulumi.Input
+
+	ToForecastOptionsPtrOutput() ForecastOptionsPtrOutput
+	ToForecastOptionsPtrOutputWithContext(context.Context) ForecastOptionsPtrOutput
+}
+
+type forecastOptionsPtrType ForecastOptionsArgs
+
+func ForecastOptionsPtr(v *ForecastOptionsArgs) ForecastOptionsPtrInput {
+	return (*forecastOptionsPtrType)(v)
+}
+
+func (*forecastOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForecastOptions)(nil)).Elem()
+}
+
+func (i *forecastOptionsPtrType) ToForecastOptionsPtrOutput() ForecastOptionsPtrOutput {
+	return i.ToForecastOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *forecastOptionsPtrType) ToForecastOptionsPtrOutputWithContext(ctx context.Context) ForecastOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ForecastOptionsPtrOutput)
+}
+
+// Options used when forecasting the time series and testing the predicted value against the threshold.
+type ForecastOptionsOutput struct{ *pulumi.OutputState }
+
+func (ForecastOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForecastOptions)(nil)).Elem()
+}
+
+func (o ForecastOptionsOutput) ToForecastOptionsOutput() ForecastOptionsOutput {
+	return o
+}
+
+func (o ForecastOptionsOutput) ToForecastOptionsOutputWithContext(ctx context.Context) ForecastOptionsOutput {
+	return o
+}
+
+func (o ForecastOptionsOutput) ToForecastOptionsPtrOutput() ForecastOptionsPtrOutput {
+	return o.ToForecastOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ForecastOptionsOutput) ToForecastOptionsPtrOutputWithContext(ctx context.Context) ForecastOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ForecastOptions) *ForecastOptions {
+		return &v
+	}).(ForecastOptionsPtrOutput)
+}
+
+// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+func (o ForecastOptionsOutput) ForecastHorizon() pulumi.StringOutput {
+	return o.ApplyT(func(v ForecastOptions) string { return v.ForecastHorizon }).(pulumi.StringOutput)
+}
+
+type ForecastOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ForecastOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ForecastOptions)(nil)).Elem()
+}
+
+func (o ForecastOptionsPtrOutput) ToForecastOptionsPtrOutput() ForecastOptionsPtrOutput {
+	return o
+}
+
+func (o ForecastOptionsPtrOutput) ToForecastOptionsPtrOutputWithContext(ctx context.Context) ForecastOptionsPtrOutput {
+	return o
+}
+
+func (o ForecastOptionsPtrOutput) Elem() ForecastOptionsOutput {
+	return o.ApplyT(func(v *ForecastOptions) ForecastOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ForecastOptions
+		return ret
+	}).(ForecastOptionsOutput)
+}
+
+// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+func (o ForecastOptionsPtrOutput) ForecastHorizon() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ForecastOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ForecastHorizon
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options used when forecasting the time series and testing the predicted value against the threshold.
+type ForecastOptionsResponse struct {
+	// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+	ForecastHorizon string `pulumi:"forecastHorizon"`
+}
+
+// Options used when forecasting the time series and testing the predicted value against the threshold.
+type ForecastOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (ForecastOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ForecastOptionsResponse)(nil)).Elem()
+}
+
+func (o ForecastOptionsResponseOutput) ToForecastOptionsResponseOutput() ForecastOptionsResponseOutput {
+	return o
+}
+
+func (o ForecastOptionsResponseOutput) ToForecastOptionsResponseOutputWithContext(ctx context.Context) ForecastOptionsResponseOutput {
+	return o
+}
+
+// The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+func (o ForecastOptionsResponseOutput) ForecastHorizon() pulumi.StringOutput {
+	return o.ApplyT(func(v ForecastOptionsResponse) string { return v.ForecastHorizon }).(pulumi.StringOutput)
 }
 
 // GKE Namespace. The field names correspond to the resource metadata labels on monitored resources that fall under a namespace (for example, k8s_container or k8s_pod).
@@ -6357,6 +6604,8 @@ type MetricThreshold struct {
 	EvaluationMissingData *MetricThresholdEvaluationMissingData `pulumi:"evaluationMissingData"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter string `pulumi:"filter"`
+	// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+	ForecastOptions *ForecastOptions `pulumi:"forecastOptions"`
 	// A value against which to compare the time series.
 	ThresholdValue *float64 `pulumi:"thresholdValue"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -6390,6 +6639,8 @@ type MetricThresholdArgs struct {
 	EvaluationMissingData MetricThresholdEvaluationMissingDataPtrInput `pulumi:"evaluationMissingData"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter pulumi.StringInput `pulumi:"filter"`
+	// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+	ForecastOptions ForecastOptionsPtrInput `pulumi:"forecastOptions"`
 	// A value against which to compare the time series.
 	ThresholdValue pulumi.Float64PtrInput `pulumi:"thresholdValue"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -6509,6 +6760,11 @@ func (o MetricThresholdOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricThreshold) string { return v.Filter }).(pulumi.StringOutput)
 }
 
+// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+func (o MetricThresholdOutput) ForecastOptions() ForecastOptionsPtrOutput {
+	return o.ApplyT(func(v MetricThreshold) *ForecastOptions { return v.ForecastOptions }).(ForecastOptionsPtrOutput)
+}
+
 // A value against which to compare the time series.
 func (o MetricThresholdOutput) ThresholdValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v MetricThreshold) *float64 { return v.ThresholdValue }).(pulumi.Float64PtrOutput)
@@ -6613,6 +6869,16 @@ func (o MetricThresholdPtrOutput) Filter() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+func (o MetricThresholdPtrOutput) ForecastOptions() ForecastOptionsPtrOutput {
+	return o.ApplyT(func(v *MetricThreshold) *ForecastOptions {
+		if v == nil {
+			return nil
+		}
+		return v.ForecastOptions
+	}).(ForecastOptionsPtrOutput)
+}
+
 // A value against which to compare the time series.
 func (o MetricThresholdPtrOutput) ThresholdValue() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *MetricThreshold) *float64 {
@@ -6649,6 +6915,8 @@ type MetricThresholdResponse struct {
 	EvaluationMissingData string `pulumi:"evaluationMissingData"`
 	// A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 	Filter string `pulumi:"filter"`
+	// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+	ForecastOptions ForecastOptionsResponse `pulumi:"forecastOptions"`
 	// A value against which to compare the time series.
 	ThresholdValue float64 `pulumi:"thresholdValue"`
 	// The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
@@ -6703,6 +6971,11 @@ func (o MetricThresholdResponseOutput) EvaluationMissingData() pulumi.StringOutp
 // A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
 func (o MetricThresholdResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v MetricThresholdResponse) string { return v.Filter }).(pulumi.StringOutput)
+}
+
+// When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+func (o MetricThresholdResponseOutput) ForecastOptions() ForecastOptionsResponseOutput {
+	return o.ApplyT(func(v MetricThresholdResponse) ForecastOptionsResponse { return v.ForecastOptions }).(ForecastOptionsResponseOutput)
 }
 
 // A value against which to compare the time series.
@@ -9300,6 +9573,103 @@ func (o TelemetryResponseOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v TelemetryResponse) string { return v.ResourceName }).(pulumi.StringOutput)
 }
 
+// Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
+type TimeInterval struct {
+	// The end of the time interval.
+	EndTime string `pulumi:"endTime"`
+	// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// TimeIntervalInput is an input type that accepts TimeIntervalArgs and TimeIntervalOutput values.
+// You can construct a concrete instance of `TimeIntervalInput` via:
+//
+//	TimeIntervalArgs{...}
+type TimeIntervalInput interface {
+	pulumi.Input
+
+	ToTimeIntervalOutput() TimeIntervalOutput
+	ToTimeIntervalOutputWithContext(context.Context) TimeIntervalOutput
+}
+
+// Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
+type TimeIntervalArgs struct {
+	// The end of the time interval.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (TimeIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeInterval)(nil)).Elem()
+}
+
+func (i TimeIntervalArgs) ToTimeIntervalOutput() TimeIntervalOutput {
+	return i.ToTimeIntervalOutputWithContext(context.Background())
+}
+
+func (i TimeIntervalArgs) ToTimeIntervalOutputWithContext(ctx context.Context) TimeIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeIntervalOutput)
+}
+
+// Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
+type TimeIntervalOutput struct{ *pulumi.OutputState }
+
+func (TimeIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeInterval)(nil)).Elem()
+}
+
+func (o TimeIntervalOutput) ToTimeIntervalOutput() TimeIntervalOutput {
+	return o
+}
+
+func (o TimeIntervalOutput) ToTimeIntervalOutputWithContext(ctx context.Context) TimeIntervalOutput {
+	return o
+}
+
+// The end of the time interval.
+func (o TimeIntervalOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeInterval) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+func (o TimeIntervalOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TimeInterval) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+// Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
+type TimeIntervalResponse struct {
+	// The end of the time interval.
+	EndTime string `pulumi:"endTime"`
+	// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+	StartTime string `pulumi:"startTime"`
+}
+
+// Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
+type TimeIntervalResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeIntervalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeIntervalResponse)(nil)).Elem()
+}
+
+func (o TimeIntervalResponseOutput) ToTimeIntervalResponseOutput() TimeIntervalResponseOutput {
+	return o
+}
+
+func (o TimeIntervalResponseOutput) ToTimeIntervalResponseOutputWithContext(ctx context.Context) TimeIntervalResponseOutput {
+	return o
+}
+
+// The end of the time interval.
+func (o TimeIntervalResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeIntervalResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+func (o TimeIntervalResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeIntervalResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
 // A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
 type TimeSeriesRatio struct {
 	// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying bad service, either demanded service that was not provided or demanded service that was of inadequate quality. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE.
@@ -10005,12 +10375,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionArrayInput)(nil)).Elem(), ConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentMatcherInput)(nil)).Elem(), ContentMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContentMatcherArrayInput)(nil)).Elem(), ContentMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CriteriaInput)(nil)).Elem(), CriteriaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomInput)(nil)).Elem(), CustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomPtrInput)(nil)).Elem(), CustomArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutInput)(nil)).Elem(), DistributionCutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionCutPtrInput)(nil)).Elem(), DistributionCutArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationInput)(nil)).Elem(), DocumentationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DocumentationPtrInput)(nil)).Elem(), DocumentationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForecastOptionsInput)(nil)).Elem(), ForecastOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ForecastOptionsPtrInput)(nil)).Elem(), ForecastOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNamespaceInput)(nil)).Elem(), GkeNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeNamespacePtrInput)(nil)).Elem(), GkeNamespaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeServiceInput)(nil)).Elem(), GkeServiceArgs{})
@@ -10070,6 +10443,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TcpCheckPtrInput)(nil)).Elem(), TcpCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryInput)(nil)).Elem(), TelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryPtrInput)(nil)).Elem(), TelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeIntervalInput)(nil)).Elem(), TimeIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesRatioInput)(nil)).Elem(), TimeSeriesRatioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesRatioPtrInput)(nil)).Elem(), TimeSeriesRatioArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerInput)(nil)).Elem(), TriggerArgs{})
@@ -10115,6 +10489,8 @@ func init() {
 	pulumi.RegisterOutputType(ContentMatcherArrayOutput{})
 	pulumi.RegisterOutputType(ContentMatcherResponseOutput{})
 	pulumi.RegisterOutputType(ContentMatcherResponseArrayOutput{})
+	pulumi.RegisterOutputType(CriteriaOutput{})
+	pulumi.RegisterOutputType(CriteriaResponseOutput{})
 	pulumi.RegisterOutputType(CustomOutput{})
 	pulumi.RegisterOutputType(CustomPtrOutput{})
 	pulumi.RegisterOutputType(CustomResponseOutput{})
@@ -10124,6 +10500,9 @@ func init() {
 	pulumi.RegisterOutputType(DocumentationOutput{})
 	pulumi.RegisterOutputType(DocumentationPtrOutput{})
 	pulumi.RegisterOutputType(DocumentationResponseOutput{})
+	pulumi.RegisterOutputType(ForecastOptionsOutput{})
+	pulumi.RegisterOutputType(ForecastOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ForecastOptionsResponseOutput{})
 	pulumi.RegisterOutputType(GkeNamespaceOutput{})
 	pulumi.RegisterOutputType(GkeNamespacePtrOutput{})
 	pulumi.RegisterOutputType(GkeNamespaceResponseOutput{})
@@ -10216,6 +10595,8 @@ func init() {
 	pulumi.RegisterOutputType(TelemetryOutput{})
 	pulumi.RegisterOutputType(TelemetryPtrOutput{})
 	pulumi.RegisterOutputType(TelemetryResponseOutput{})
+	pulumi.RegisterOutputType(TimeIntervalOutput{})
+	pulumi.RegisterOutputType(TimeIntervalResponseOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioPtrOutput{})
 	pulumi.RegisterOutputType(TimeSeriesRatioResponseOutput{})

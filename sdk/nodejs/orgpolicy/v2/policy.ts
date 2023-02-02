@@ -44,6 +44,10 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly alternate!: pulumi.Output<outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2AlternatePolicySpecResponse>;
     /**
+     * dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     */
+    public readonly dryRunSpec!: pulumi.Output<outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecResponse>;
+    /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
     public readonly name!: pulumi.Output<string>;
@@ -65,11 +69,13 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["alternate"] = args ? args.alternate : undefined;
+            resourceInputs["dryRunSpec"] = args ? args.dryRunSpec : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
         } else {
             resourceInputs["alternate"] = undefined /*out*/;
+            resourceInputs["dryRunSpec"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["spec"] = undefined /*out*/;
@@ -91,6 +97,10 @@ export interface PolicyArgs {
      * @deprecated Deprecated.
      */
     alternate?: pulumi.Input<inputs.orgpolicy.v2.GoogleCloudOrgpolicyV2AlternatePolicySpecArgs>;
+    /**
+     * dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     */
+    dryRunSpec?: pulumi.Input<inputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecArgs>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
         /// </summary>
         public readonly string Ipv4Address;
         /// <summary>
-        /// IPv6 address of a target name server. Does not accept both fields (ipv4 &amp; ipv6) being populated.
+        /// IPv6 address of a target name server. Does not accept both fields (ipv4 &amp; ipv6) being populated. Public preview as of November 2022.
         /// </summary>
         public readonly string Ipv6Address;
         public readonly string Kind;

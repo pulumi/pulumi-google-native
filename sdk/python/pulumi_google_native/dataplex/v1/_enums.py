@@ -7,9 +7,11 @@ from enum import Enum
 __all__ = [
     'EntitySystem',
     'EntityType',
+    'GoogleCloudDataplexV1AssetResourceSpecReadAccessMode',
     'GoogleCloudDataplexV1AssetResourceSpecType',
     'GoogleCloudDataplexV1ContentNotebookKernelType',
     'GoogleCloudDataplexV1ContentSqlScriptEngine',
+    'GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic',
     'GoogleCloudDataplexV1SchemaPartitionFieldType',
     'GoogleCloudDataplexV1SchemaPartitionStyle',
     'GoogleCloudDataplexV1SchemaSchemaFieldMode',
@@ -58,6 +60,24 @@ class EntityType(str, Enum):
     """
 
 
+class GoogleCloudDataplexV1AssetResourceSpecReadAccessMode(str, Enum):
+    """
+    Optional. Determines how read permissions are handled for each asset and their associated tables. Only available to storage buckets assets.
+    """
+    ACCESS_MODE_UNSPECIFIED = "ACCESS_MODE_UNSPECIFIED"
+    """
+    Access mode unspecified.
+    """
+    DIRECT = "DIRECT"
+    """
+    Default. Data is accessed directly using storage APIs.
+    """
+    MANAGED = "MANAGED"
+    """
+    Data is accessed through a managed interface using BigQuery APIs.
+    """
+
+
 class GoogleCloudDataplexV1AssetResourceSpecType(str, Enum):
     """
     Required. Immutable. Type of resource.
@@ -101,6 +121,25 @@ class GoogleCloudDataplexV1ContentSqlScriptEngine(str, Enum):
     SPARK = "SPARK"
     """
     Spark SQL Query.
+    """
+
+
+class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectationStatistic(str, Enum):
+    STATISTIC_UNDEFINED = "STATISTIC_UNDEFINED"
+    """
+    Unspecified statistic type
+    """
+    MEAN = "MEAN"
+    """
+    Evaluate the column mean
+    """
+    MIN = "MIN"
+    """
+    Evaluate the column min
+    """
+    MAX = "MAX"
+    """
+    Evaluate the column max
     """
 
 

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Outputs
     public sealed class QueryContentResponse
     {
         /// <summary>
-        /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
+        /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy RPC or the AssetService.AnalyzeIamPolicyLongrunning RPC.
         /// </summary>
         public readonly Outputs.IamPolicyAnalysisQueryResponse IamPolicyAnalysisQuery;
 

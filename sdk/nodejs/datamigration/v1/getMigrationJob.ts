@@ -31,6 +31,10 @@ export interface GetMigrationJobArgs {
 
 export interface GetMigrationJobResult {
     /**
+     * The conversion workspace used by the migration.
+     */
+    readonly conversionWorkspace: outputs.datamigration.v1.ConversionWorkspaceInfoResponse;
+    /**
      * The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     readonly createTime: string;
@@ -66,6 +70,10 @@ export interface GetMigrationJobResult {
      * The error details in case of state FAILED.
      */
     readonly error: outputs.datamigration.v1.StatusResponse;
+    /**
+     * This field can be used to select the entities to migrate as part of the migration job. It uses AIP-160 notation to select a subset of the entities configured on the associated conversion-workspace. This field should not be set on migration-jobs that are not associated with a conversion workspace.
+     */
+    readonly filter: string;
     /**
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */

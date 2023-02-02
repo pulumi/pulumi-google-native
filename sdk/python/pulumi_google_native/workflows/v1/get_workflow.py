@@ -54,7 +54,7 @@ class GetWorkflowResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp of when the workflow was created.
+        The timestamp for when the workflow was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -70,7 +70,7 @@ class GetWorkflowResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+        Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
         """
         return pulumi.get(self, "labels")
 
@@ -86,7 +86,7 @@ class GetWorkflowResult:
     @pulumi.getter(name="revisionCreateTime")
     def revision_create_time(self) -> str:
         """
-        The timestamp that the latest revision of the workflow was created.
+        The timestamp for the latest revision of the workflow's creation.
         """
         return pulumi.get(self, "revision_create_time")
 
@@ -126,7 +126,7 @@ class GetWorkflowResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        The last update timestamp of the workflow.
+        The timestamp for when the workflow was last updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -154,7 +154,7 @@ def get_workflow(location: Optional[str] = None,
                  workflow_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowResult:
     """
-    Gets details of a single Workflow.
+    Gets details of a single workflow.
     """
     __args__ = dict()
     __args__['location'] = location
@@ -182,6 +182,6 @@ def get_workflow_output(location: Optional[pulumi.Input[str]] = None,
                         workflow_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowResult]:
     """
-    Gets details of a single Workflow.
+    Gets details of a single workflow.
     """
     ...

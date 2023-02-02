@@ -46,6 +46,26 @@ export const CloudSqlSettingsActivationPolicy = {
  */
 export type CloudSqlSettingsActivationPolicy = (typeof CloudSqlSettingsActivationPolicy)[keyof typeof CloudSqlSettingsActivationPolicy];
 
+export const CloudSqlSettingsAvailabilityType = {
+    /**
+     * This is an unknown Availability type.
+     */
+    SqlAvailabilityTypeUnspecified: "SQL_AVAILABILITY_TYPE_UNSPECIFIED",
+    /**
+     * Zonal availablility instance.
+     */
+    Zonal: "ZONAL",
+    /**
+     * Regional availability instance.
+     */
+    Regional: "REGIONAL",
+} as const;
+
+/**
+ * Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+ */
+export type CloudSqlSettingsAvailabilityType = (typeof CloudSqlSettingsAvailabilityType)[keyof typeof CloudSqlSettingsAvailabilityType];
+
 export const CloudSqlSettingsDataDiskType = {
     /**
      * Unspecified.
@@ -182,6 +202,30 @@ export const ConnectionProfileState = {
  */
 export type ConnectionProfileState = (typeof ConnectionProfileState)[keyof typeof ConnectionProfileState];
 
+export const DatabaseEngineInfoEngine = {
+    /**
+     * The source database engine of the migration job is unknown.
+     */
+    DatabaseEngineUnspecified: "DATABASE_ENGINE_UNSPECIFIED",
+    /**
+     * The source engine is MySQL.
+     */
+    Mysql: "MYSQL",
+    /**
+     * The source engine is PostgreSQL.
+     */
+    Postgresql: "POSTGRESQL",
+    /**
+     * The source engine is Oracle
+     */
+    Oracle: "ORACLE",
+} as const;
+
+/**
+ * Required. Engine Type.
+ */
+export type DatabaseEngineInfoEngine = (typeof DatabaseEngineInfoEngine)[keyof typeof DatabaseEngineInfoEngine];
+
 export const DatabaseTypeEngine = {
     /**
      * The source database engine of the migration job is unknown.
@@ -195,6 +239,10 @@ export const DatabaseTypeEngine = {
      * The source engine is PostgreSQL.
      */
     Postgresql: "POSTGRESQL",
+    /**
+     * The source engine is Oracle
+     */
+    Oracle: "ORACLE",
 } as const;
 
 /**

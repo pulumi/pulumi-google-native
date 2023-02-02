@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+    /// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
     /// </summary>
     [OutputType]
     public sealed class EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse
@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string TaskNumber;
         /// <summary>
-        /// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+        /// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
         /// </summary>
         public readonly string TaskSpec;
         /// <summary>

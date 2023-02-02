@@ -21,3 +21,31 @@ export const DeliveryConfigDeliveryRequirement = {
  * The DeliveryRequirement for this subscription.
  */
 export type DeliveryConfigDeliveryRequirement = (typeof DeliveryConfigDeliveryRequirement)[keyof typeof DeliveryConfigDeliveryRequirement];
+
+export const ExportConfigDesiredState = {
+    /**
+     * Default value. This value is unused.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * Messages are being exported.
+     */
+    Active: "ACTIVE",
+    /**
+     * Exporting messages is suspended.
+     */
+    Paused: "PAUSED",
+    /**
+     * Messages cannot be exported due to permission denied errors. Output only.
+     */
+    PermissionDenied: "PERMISSION_DENIED",
+    /**
+     * Messages cannot be exported due to missing resources. Output only.
+     */
+    NotFound: "NOT_FOUND",
+} as const;
+
+/**
+ * The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+ */
+export type ExportConfigDesiredState = (typeof ExportConfigDesiredState)[keyof typeof ExportConfigDesiredState];

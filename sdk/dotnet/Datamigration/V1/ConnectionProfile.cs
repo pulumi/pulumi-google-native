@@ -73,6 +73,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// An Oracle database connection profile.
+        /// </summary>
+        [Output("oracle")]
+        public Output<Outputs.OracleConnectionProfileResponse> Oracle { get; private set; } = null!;
+
+        /// <summary>
         /// A PostgreSQL database connection profile.
         /// </summary>
         [Output("postgresql")]
@@ -88,10 +94,16 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Provider { get; private set; } = null!;
 
         /// <summary>
-        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+        /// </summary>
+        [Output("skipValidation")]
+        public Output<bool?> SkipValidation { get; private set; } = null!;
 
         /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
@@ -104,6 +116,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+        /// </summary>
+        [Output("validateOnly")]
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -208,6 +226,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// An Oracle database connection profile.
+        /// </summary>
+        [Input("oracle")]
+        public Input<Inputs.OracleConnectionProfileArgs>? Oracle { get; set; }
+
+        /// <summary>
         /// A PostgreSQL database connection profile.
         /// </summary>
         [Input("postgresql")]
@@ -223,16 +247,28 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<Pulumi.GoogleNative.Datamigration.V1.ConnectionProfileProvider>? Provider { get; set; }
 
         /// <summary>
-        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+        /// </summary>
+        [Input("skipValidation")]
+        public Input<bool>? SkipValidation { get; set; }
 
         /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).
         /// </summary>
         [Input("state")]
         public Input<Pulumi.GoogleNative.Datamigration.V1.ConnectionProfileState>? State { get; set; }
+
+        /// <summary>
+        /// Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+        /// </summary>
+        [Input("validateOnly")]
+        public Input<bool>? ValidateOnly { get; set; }
 
         public ConnectionProfileArgs()
         {

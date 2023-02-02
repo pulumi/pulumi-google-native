@@ -41,9 +41,17 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly int Port;
         /// <summary>
+        /// Private service connect connectivity.
+        /// </summary>
+        public readonly Outputs.PrivateServiceConnectConnectivityResponse PrivateServiceConnectConnectivity;
+        /// <summary>
         /// SSL configuration for the destination to connect to the source database.
         /// </summary>
         public readonly Outputs.SslConfigResponse Ssl;
+        /// <summary>
+        /// Static ip connectivity data (default, no additional details needed).
+        /// </summary>
+        public readonly Outputs.StaticIpConnectivityResponse StaticIpConnectivity;
         /// <summary>
         /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         /// </summary>
@@ -63,7 +71,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             int port,
 
+            Outputs.PrivateServiceConnectConnectivityResponse privateServiceConnectConnectivity,
+
             Outputs.SslConfigResponse ssl,
+
+            Outputs.StaticIpConnectivityResponse staticIpConnectivity,
 
             string username)
         {
@@ -73,7 +85,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
             Password = password;
             PasswordSet = passwordSet;
             Port = port;
+            PrivateServiceConnectConnectivity = privateServiceConnectConnectivity;
             Ssl = ssl;
+            StaticIpConnectivity = staticIpConnectivity;
             Username = username;
         }
     }

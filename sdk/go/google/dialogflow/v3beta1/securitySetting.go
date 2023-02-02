@@ -35,7 +35,7 @@ type SecuritySetting struct {
 	RedactionScope pulumi.StringOutput `pulumi:"redactionScope"`
 	// Strategy that defines how we do redaction.
 	RedactionStrategy pulumi.StringOutput `pulumi:"redactionStrategy"`
-	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
+	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
 	RetentionWindowDays pulumi.IntOutput `pulumi:"retentionWindowDays"`
 }
 
@@ -106,7 +106,7 @@ type securitySettingArgs struct {
 	RedactionScope *SecuritySettingRedactionScope `pulumi:"redactionScope"`
 	// Strategy that defines how we do redaction.
 	RedactionStrategy *SecuritySettingRedactionStrategy `pulumi:"redactionStrategy"`
-	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
+	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
 	RetentionWindowDays *int `pulumi:"retentionWindowDays"`
 }
 
@@ -132,7 +132,7 @@ type SecuritySettingArgs struct {
 	RedactionScope SecuritySettingRedactionScopePtrInput
 	// Strategy that defines how we do redaction.
 	RedactionStrategy SecuritySettingRedactionStrategyPtrInput
-	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
+	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
 	RetentionWindowDays pulumi.IntPtrInput
 }
 
@@ -230,7 +230,7 @@ func (o SecuritySettingOutput) RedactionStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecuritySetting) pulumi.StringOutput { return v.RedactionStrategy }).(pulumi.StringOutput)
 }
 
-// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
+// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
 func (o SecuritySettingOutput) RetentionWindowDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *SecuritySetting) pulumi.IntOutput { return v.RetentionWindowDays }).(pulumi.IntOutput)
 }

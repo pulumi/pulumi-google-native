@@ -70,6 +70,10 @@ namespace Pulumi.GoogleNative.Firestore.V1
     public sealed class GetIndexResult
     {
         /// <summary>
+        /// The API scope supported by this index.
+        /// </summary>
+        public readonly string ApiScope;
+        /// <summary>
         /// The fields supported by this index. For composite indexes, this requires a minimum of 2 and a maximum of 100 fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleFirestoreAdminV1IndexFieldResponse> Fields;
@@ -88,6 +92,8 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
         [OutputConstructor]
         private GetIndexResult(
+            string apiScope,
+
             ImmutableArray<Outputs.GoogleFirestoreAdminV1IndexFieldResponse> fields,
 
             string name,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
             string state)
         {
+            ApiScope = apiScope;
             Fields = fields;
             Name = name;
             QueryScope = queryScope;

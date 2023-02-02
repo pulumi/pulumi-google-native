@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         private InputList<string>? _resources;
 
         /// <summary>
-        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects are allowed. Format: `projects/{project_number}`
+        /// A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
         /// </summary>
         public InputList<string> Resources
         {

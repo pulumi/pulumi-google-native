@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
     [GoogleNativeResourceType("google-native:firestore/v1:Index")]
     public partial class Index : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The API scope supported by this index.
+        /// </summary>
+        [Output("apiScope")]
+        public Output<string> ApiScope { get; private set; } = null!;
+
         [Output("collectionGroupId")]
         public Output<string> CollectionGroupId { get; private set; } = null!;
 
@@ -100,6 +106,12 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
     public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The API scope supported by this index.
+        /// </summary>
+        [Input("apiScope")]
+        public Input<Pulumi.GoogleNative.Firestore.V1.IndexApiScope>? ApiScope { get; set; }
+
         [Input("collectionGroupId", required: true)]
         public Input<string> CollectionGroupId { get; set; } = null!;
 

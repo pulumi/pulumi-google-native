@@ -23,6 +23,7 @@ class EndpointArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  traffic_logs: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Endpoint resource.
@@ -32,6 +33,7 @@ class EndpointArgs:
         :param pulumi.Input[str] description: User-provided description of the endpoint
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the endpoint.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: List of threat IDs to be excepted from generating alerts.
         :param pulumi.Input[bool] traffic_logs: Whether the endpoint should report traffic logs in addition to threat logs.
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
@@ -47,6 +49,8 @@ class EndpointArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if threat_exceptions is not None:
+            pulumi.set(__self__, "threat_exceptions", threat_exceptions)
         if traffic_logs is not None:
             pulumi.set(__self__, "traffic_logs", traffic_logs)
 
@@ -141,6 +145,18 @@ class EndpointArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="threatExceptions")
+    def threat_exceptions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of threat IDs to be excepted from generating alerts.
+        """
+        return pulumi.get(self, "threat_exceptions")
+
+    @threat_exceptions.setter
+    def threat_exceptions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "threat_exceptions", value)
+
+    @property
     @pulumi.getter(name="trafficLogs")
     def traffic_logs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -166,6 +182,7 @@ class Endpoint(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['EndpointSeverity']] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  traffic_logs: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -180,6 +197,7 @@ class Endpoint(pulumi.CustomResource):
         :param pulumi.Input[str] network: The fully qualified URL of the network to which the IDS Endpoint is attached.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['EndpointSeverity'] severity: Lowest threat severity that this endpoint will alert on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] threat_exceptions: List of threat IDs to be excepted from generating alerts.
         :param pulumi.Input[bool] traffic_logs: Whether the endpoint should report traffic logs in addition to threat logs.
         """
         ...
@@ -215,6 +233,7 @@ class Endpoint(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  severity: Optional[pulumi.Input['EndpointSeverity']] = None,
+                 threat_exceptions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  traffic_logs: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -239,6 +258,7 @@ class Endpoint(pulumi.CustomResource):
             if severity is None and not opts.urn:
                 raise TypeError("Missing required property 'severity'")
             __props__.__dict__["severity"] = severity
+            __props__.__dict__["threat_exceptions"] = threat_exceptions
             __props__.__dict__["traffic_logs"] = traffic_logs
             __props__.__dict__["create_time"] = None
             __props__.__dict__["endpoint_forwarding_rule"] = None
@@ -283,6 +303,7 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["request_id"] = None
         __props__.__dict__["severity"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["threat_exceptions"] = None
         __props__.__dict__["traffic_logs"] = None
         __props__.__dict__["update_time"] = None
         return Endpoint(resource_name, opts=opts, __props__=__props__)
@@ -384,6 +405,14 @@ class Endpoint(pulumi.CustomResource):
         Current state of the endpoint.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="threatExceptions")
+    def threat_exceptions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of threat IDs to be excepted from generating alerts.
+        """
+        return pulumi.get(self, "threat_exceptions")
 
     @property
     @pulumi.getter(name="trafficLogs")

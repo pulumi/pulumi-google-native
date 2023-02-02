@@ -130,6 +130,67 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
     }
 
     /// <summary>
+    /// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+    /// </summary>
+    [EnumType]
+    public readonly struct HttpTargetHttpMethod : IEquatable<HttpTargetHttpMethod>
+    {
+        private readonly string _value;
+
+        private HttpTargetHttpMethod(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// HTTP method unspecified
+        /// </summary>
+        public static HttpTargetHttpMethod HttpMethodUnspecified { get; } = new HttpTargetHttpMethod("HTTP_METHOD_UNSPECIFIED");
+        /// <summary>
+        /// HTTP POST
+        /// </summary>
+        public static HttpTargetHttpMethod Post { get; } = new HttpTargetHttpMethod("POST");
+        /// <summary>
+        /// HTTP GET
+        /// </summary>
+        public static HttpTargetHttpMethod Get { get; } = new HttpTargetHttpMethod("GET");
+        /// <summary>
+        /// HTTP HEAD
+        /// </summary>
+        public static HttpTargetHttpMethod Head { get; } = new HttpTargetHttpMethod("HEAD");
+        /// <summary>
+        /// HTTP PUT
+        /// </summary>
+        public static HttpTargetHttpMethod Put { get; } = new HttpTargetHttpMethod("PUT");
+        /// <summary>
+        /// HTTP DELETE
+        /// </summary>
+        public static HttpTargetHttpMethod Delete { get; } = new HttpTargetHttpMethod("DELETE");
+        /// <summary>
+        /// HTTP PATCH
+        /// </summary>
+        public static HttpTargetHttpMethod Patch { get; } = new HttpTargetHttpMethod("PATCH");
+        /// <summary>
+        /// HTTP OPTIONS
+        /// </summary>
+        public static HttpTargetHttpMethod Options { get; } = new HttpTargetHttpMethod("OPTIONS");
+
+        public static bool operator ==(HttpTargetHttpMethod left, HttpTargetHttpMethod right) => left.Equals(right);
+        public static bool operator !=(HttpTargetHttpMethod left, HttpTargetHttpMethod right) => !left.Equals(right);
+
+        public static explicit operator string(HttpTargetHttpMethod value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is HttpTargetHttpMethod other && Equals(other);
+        public bool Equals(HttpTargetHttpMethod other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The type of a queue (push or pull). `Queue.type` is an immutable property of the queue that is set at the queue creation time. When left unspecified, the default value of `PUSH` is selected.
     /// </summary>
     [EnumType]
@@ -204,6 +265,88 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is TaskResponseView other && Equals(other);
         public bool Equals(TaskResponseView other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
+    /// </summary>
+    [EnumType]
+    public readonly struct UriOverrideScheme : IEquatable<UriOverrideScheme>
+    {
+        private readonly string _value;
+
+        private UriOverrideScheme(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Scheme unspecified. Defaults to HTTPS.
+        /// </summary>
+        public static UriOverrideScheme SchemeUnspecified { get; } = new UriOverrideScheme("SCHEME_UNSPECIFIED");
+        /// <summary>
+        /// Convert the scheme to HTTP, e.g., https://www.google.ca will change to http://www.google.ca.
+        /// </summary>
+        public static UriOverrideScheme Http { get; } = new UriOverrideScheme("HTTP");
+        /// <summary>
+        /// Convert the scheme to HTTPS, e.g., http://www.google.ca will change to https://www.google.ca.
+        /// </summary>
+        public static UriOverrideScheme Https { get; } = new UriOverrideScheme("HTTPS");
+
+        public static bool operator ==(UriOverrideScheme left, UriOverrideScheme right) => left.Equals(right);
+        public static bool operator !=(UriOverrideScheme left, UriOverrideScheme right) => !left.Equals(right);
+
+        public static explicit operator string(UriOverrideScheme value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UriOverrideScheme other && Equals(other);
+        public bool Equals(UriOverrideScheme other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
+    /// </summary>
+    [EnumType]
+    public readonly struct UriOverrideUriOverrideEnforceMode : IEquatable<UriOverrideUriOverrideEnforceMode>
+    {
+        private readonly string _value;
+
+        private UriOverrideUriOverrideEnforceMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// OverrideMode Unspecified. Defaults to ALWAYS.
+        /// </summary>
+        public static UriOverrideUriOverrideEnforceMode UriOverrideEnforceModeUnspecified { get; } = new UriOverrideUriOverrideEnforceMode("URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED");
+        /// <summary>
+        /// In the IF_NOT_EXISTS mode, queue-level configuration is only applied where task-level configuration does not exist.
+        /// </summary>
+        public static UriOverrideUriOverrideEnforceMode IfNotExists { get; } = new UriOverrideUriOverrideEnforceMode("IF_NOT_EXISTS");
+        /// <summary>
+        /// In the ALWAYS mode, queue-level configuration overrides all task-level configuration
+        /// </summary>
+        public static UriOverrideUriOverrideEnforceMode Always { get; } = new UriOverrideUriOverrideEnforceMode("ALWAYS");
+
+        public static bool operator ==(UriOverrideUriOverrideEnforceMode left, UriOverrideUriOverrideEnforceMode right) => left.Equals(right);
+        public static bool operator !=(UriOverrideUriOverrideEnforceMode left, UriOverrideUriOverrideEnforceMode right) => !left.Equals(right);
+
+        public static explicit operator string(UriOverrideUriOverrideEnforceMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is UriOverrideUriOverrideEnforceMode other && Equals(other);
+        public bool Equals(UriOverrideUriOverrideEnforceMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

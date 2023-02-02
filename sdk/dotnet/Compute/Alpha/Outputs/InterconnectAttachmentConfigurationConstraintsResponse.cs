@@ -21,22 +21,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// List of ASN ranges that the remote location is known to support. Formatted as an array of inclusive ranges {min: min-value, max: max-value}. For example, [{min: 123, max: 123}, {min: 64512, max: 65534}] allows the peer ASN to be 123 or anything in the range 64512-65534. This field is only advisory. Although the API accepts other ranges, these are the ranges that we recommend.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse> BgpPeerAsnRanges;
-        /// <summary>
-        /// Network Connectivity Center constraints, which can take one of the following values: NCC_UNCONSTRAINED, NCC_SPOKE_REQUIRED
-        /// </summary>
-        public readonly string NetworkConnectivityCenter;
 
         [OutputConstructor]
         private InterconnectAttachmentConfigurationConstraintsResponse(
             string bgpMd5,
 
-            ImmutableArray<Outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse> bgpPeerAsnRanges,
-
-            string networkConnectivityCenter)
+            ImmutableArray<Outputs.InterconnectAttachmentConfigurationConstraintsBgpPeerASNRangeResponse> bgpPeerAsnRanges)
         {
             BgpMd5 = bgpMd5;
             BgpPeerAsnRanges = bgpPeerAsnRanges;
-            NetworkConnectivityCenter = networkConnectivityCenter;
         }
     }
 }

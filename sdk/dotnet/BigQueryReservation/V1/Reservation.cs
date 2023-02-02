@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        /// </summary>
+        [Output("autoscale")]
+        public Output<Outputs.AutoscaleResponse> Autoscale { get; private set; } = null!;
+
+        /// <summary>
         /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
         /// </summary>
         [Output("concurrency")]
@@ -26,6 +32,12 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         [Output("creationTime")]
         public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Edition of the reservation.
+        /// </summary>
+        [Output("edition")]
+        public Output<string> Edition { get; private set; } = null!;
 
         /// <summary>
         /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.
@@ -120,10 +132,22 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configuration parameters for the auto scaling feature. Note this is an alpha feature.
+        /// </summary>
+        [Input("autoscale")]
+        public Input<Inputs.AutoscaleArgs>? Autoscale { get; set; }
+
+        /// <summary>
         /// Job concurrency target which sets a soft upper bound on the number of jobs that can run concurrently in this reservation. This is a soft target due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency target will be automatically computed by the system. NOTE: this field is exposed as `target_job_concurrency` in the Information Schema, DDL and BQ CLI.
         /// </summary>
         [Input("concurrency")]
         public Input<string>? Concurrency { get; set; }
+
+        /// <summary>
+        /// Edition of the reservation.
+        /// </summary>
+        [Input("edition")]
+        public Input<Pulumi.GoogleNative.BigQueryReservation.V1.ReservationEdition>? Edition { get; set; }
 
         /// <summary>
         /// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified in the slot_capacity field at most.

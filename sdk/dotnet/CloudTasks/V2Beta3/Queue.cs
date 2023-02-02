@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         [Output("appEngineHttpQueue")]
         public Output<Outputs.AppEngineHttpQueueResponse> AppEngineHttpQueue { get; private set; } = null!;
 
+        /// <summary>
+        /// Modifies HTTP target for HTTP tasks.
+        /// </summary>
+        [Output("httpTarget")]
+        public Output<Outputs.HttpTargetResponse> HttpTarget { get; private set; } = null!;
+
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -142,6 +148,12 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         /// </summary>
         [Input("appEngineHttpQueue")]
         public Input<Inputs.AppEngineHttpQueueArgs>? AppEngineHttpQueue { get; set; }
+
+        /// <summary>
+        /// Modifies HTTP target for HTTP tasks.
+        /// </summary>
+        [Input("httpTarget")]
+        public Input<Inputs.HttpTargetArgs>? HttpTarget { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

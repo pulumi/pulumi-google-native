@@ -25,13 +25,17 @@ __all__ = [
 @pulumi.input_type
 class AcceleratorArgs:
     def __init__(__self__, *,
-                 accelerator_type: Optional[pulumi.Input['AcceleratorAcceleratorType']] = None):
+                 accelerator_type: Optional[pulumi.Input['AcceleratorAcceleratorType']] = None,
+                 state: Optional[pulumi.Input['AcceleratorState']] = None):
         """
         Identifies Data Fusion accelerators for an instance.
         :param pulumi.Input['AcceleratorAcceleratorType'] accelerator_type: The type of an accelator for a CDF instance.
+        :param pulumi.Input['AcceleratorState'] state: The state of the accelerator.
         """
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -44,6 +48,18 @@ class AcceleratorArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: Optional[pulumi.Input['AcceleratorAcceleratorType']]):
         pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['AcceleratorState']]:
+        """
+        The state of the accelerator.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['AcceleratorState']]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type

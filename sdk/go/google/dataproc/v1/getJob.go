@@ -33,6 +33,8 @@ type LookupJobResult struct {
 	DriverControlFilesUri string `pulumi:"driverControlFilesUri"`
 	// A URI pointing to the location of the stdout of the job's driver program.
 	DriverOutputResourceUri string `pulumi:"driverOutputResourceUri"`
+	// Optional. Driver scheduling configuration.
+	DriverSchedulingConfig DriverSchedulingConfigResponse `pulumi:"driverSchedulingConfig"`
 	// Optional. Job is a Hadoop job.
 	HadoopJob HadoopJobResponse `pulumi:"hadoopJob"`
 	// Optional. Job is a Hive job.
@@ -119,6 +121,11 @@ func (o LookupJobResultOutput) DriverControlFilesUri() pulumi.StringOutput {
 // A URI pointing to the location of the stdout of the job's driver program.
 func (o LookupJobResultOutput) DriverOutputResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.DriverOutputResourceUri }).(pulumi.StringOutput)
+}
+
+// Optional. Driver scheduling configuration.
+func (o LookupJobResultOutput) DriverSchedulingConfig() DriverSchedulingConfigResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) DriverSchedulingConfigResponse { return v.DriverSchedulingConfig }).(DriverSchedulingConfigResponseOutput)
 }
 
 // Optional. Job is a Hadoop job.

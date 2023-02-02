@@ -89,6 +89,12 @@ namespace Pulumi.GoogleNative.IDS.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
+        /// List of threat IDs to be excepted from generating alerts.
+        /// </summary>
+        [Output("threatExceptions")]
+        public Output<ImmutableArray<string>> ThreatExceptions { get; private set; } = null!;
+
+        /// <summary>
         /// Whether the endpoint should report traffic logs in addition to threat logs.
         /// </summary>
         [Output("trafficLogs")]
@@ -198,6 +204,18 @@ namespace Pulumi.GoogleNative.IDS.V1
         /// </summary>
         [Input("severity", required: true)]
         public Input<Pulumi.GoogleNative.IDS.V1.EndpointSeverity> Severity { get; set; } = null!;
+
+        [Input("threatExceptions")]
+        private InputList<string>? _threatExceptions;
+
+        /// <summary>
+        /// List of threat IDs to be excepted from generating alerts.
+        /// </summary>
+        public InputList<string> ThreatExceptions
+        {
+            get => _threatExceptions ?? (_threatExceptions = new InputList<string>());
+            set => _threatExceptions = value;
+        }
 
         /// <summary>
         /// Whether the endpoint should report traffic logs in addition to threat logs.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCaseResult:
-    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, name=None, priority=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
+    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, language_code=None, name=None, priority=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
         if classification and not isinstance(classification, dict):
             raise TypeError("Expected argument 'classification' to be a dict")
         pulumi.set(__self__, "classification", classification)
@@ -38,6 +38,9 @@ class GetCaseResult:
         if escalated and not isinstance(escalated, bool):
             raise TypeError("Expected argument 'escalated' to be a bool")
         pulumi.set(__self__, "escalated", escalated)
+        if language_code and not isinstance(language_code, str):
+            raise TypeError("Expected argument 'language_code' to be a str")
+        pulumi.set(__self__, "language_code", language_code)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -116,6 +119,14 @@ class GetCaseResult:
         return pulumi.get(self, "escalated")
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -192,6 +203,7 @@ class AwaitableGetCaseResult(GetCaseResult):
             description=self.description,
             display_name=self.display_name,
             escalated=self.escalated,
+            language_code=self.language_code,
             name=self.name,
             priority=self.priority,
             severity=self.severity,
@@ -223,6 +235,7 @@ def get_case(case_id: Optional[str] = None,
         description=__ret__.description,
         display_name=__ret__.display_name,
         escalated=__ret__.escalated,
+        language_code=__ret__.language_code,
         name=__ret__.name,
         priority=__ret__.priority,
         severity=__ret__.severity,

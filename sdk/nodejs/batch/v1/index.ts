@@ -15,16 +15,6 @@ export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy
 export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
 
-export { GetNodeIamPolicyArgs, GetNodeIamPolicyResult, GetNodeIamPolicyOutputArgs } from "./getNodeIamPolicy";
-export const getNodeIamPolicy: typeof import("./getNodeIamPolicy").getNodeIamPolicy = null as any;
-export const getNodeIamPolicyOutput: typeof import("./getNodeIamPolicy").getNodeIamPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getNodeIamPolicy","getNodeIamPolicyOutput"], () => require("./getNodeIamPolicy"));
-
-export { GetTaskIamPolicyArgs, GetTaskIamPolicyResult, GetTaskIamPolicyOutputArgs } from "./getTaskIamPolicy";
-export const getTaskIamPolicy: typeof import("./getTaskIamPolicy").getTaskIamPolicy = null as any;
-export const getTaskIamPolicyOutput: typeof import("./getTaskIamPolicy").getTaskIamPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getTaskIamPolicy","getTaskIamPolicyOutput"], () => require("./getTaskIamPolicy"));
-
 export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
@@ -45,36 +35,6 @@ export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
 export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
 utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
 
-export { NodeIamBindingArgs } from "./nodeIamBinding";
-export type NodeIamBinding = import("./nodeIamBinding").NodeIamBinding;
-export const NodeIamBinding: typeof import("./nodeIamBinding").NodeIamBinding = null as any;
-utilities.lazyLoad(exports, ["NodeIamBinding"], () => require("./nodeIamBinding"));
-
-export { NodeIamMemberArgs } from "./nodeIamMember";
-export type NodeIamMember = import("./nodeIamMember").NodeIamMember;
-export const NodeIamMember: typeof import("./nodeIamMember").NodeIamMember = null as any;
-utilities.lazyLoad(exports, ["NodeIamMember"], () => require("./nodeIamMember"));
-
-export { NodeIamPolicyArgs } from "./nodeIamPolicy";
-export type NodeIamPolicy = import("./nodeIamPolicy").NodeIamPolicy;
-export const NodeIamPolicy: typeof import("./nodeIamPolicy").NodeIamPolicy = null as any;
-utilities.lazyLoad(exports, ["NodeIamPolicy"], () => require("./nodeIamPolicy"));
-
-export { TaskIamBindingArgs } from "./taskIamBinding";
-export type TaskIamBinding = import("./taskIamBinding").TaskIamBinding;
-export const TaskIamBinding: typeof import("./taskIamBinding").TaskIamBinding = null as any;
-utilities.lazyLoad(exports, ["TaskIamBinding"], () => require("./taskIamBinding"));
-
-export { TaskIamMemberArgs } from "./taskIamMember";
-export type TaskIamMember = import("./taskIamMember").TaskIamMember;
-export const TaskIamMember: typeof import("./taskIamMember").TaskIamMember = null as any;
-utilities.lazyLoad(exports, ["TaskIamMember"], () => require("./taskIamMember"));
-
-export { TaskIamPolicyArgs } from "./taskIamPolicy";
-export type TaskIamPolicy = import("./taskIamPolicy").TaskIamPolicy;
-export const TaskIamPolicy: typeof import("./taskIamPolicy").TaskIamPolicy = null as any;
-utilities.lazyLoad(exports, ["TaskIamPolicy"], () => require("./taskIamPolicy"));
-
 
 // Export enums:
 export * from "../../types/enums/batch/v1";
@@ -91,18 +51,6 @@ const _module = {
                 return new JobIamMember(name, <any>undefined, { urn })
             case "google-native:batch/v1:JobIamPolicy":
                 return new JobIamPolicy(name, <any>undefined, { urn })
-            case "google-native:batch/v1:NodeIamBinding":
-                return new NodeIamBinding(name, <any>undefined, { urn })
-            case "google-native:batch/v1:NodeIamMember":
-                return new NodeIamMember(name, <any>undefined, { urn })
-            case "google-native:batch/v1:NodeIamPolicy":
-                return new NodeIamPolicy(name, <any>undefined, { urn })
-            case "google-native:batch/v1:TaskIamBinding":
-                return new TaskIamBinding(name, <any>undefined, { urn })
-            case "google-native:batch/v1:TaskIamMember":
-                return new TaskIamMember(name, <any>undefined, { urn })
-            case "google-native:batch/v1:TaskIamPolicy":
-                return new TaskIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

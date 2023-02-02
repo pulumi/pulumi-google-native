@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+    /// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
     /// </summary>
     [OutputType]
     public sealed class EnterpriseCrmEventbusProtoTaskAlertConfigResponse

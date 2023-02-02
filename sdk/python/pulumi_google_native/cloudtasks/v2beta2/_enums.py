@@ -148,7 +148,7 @@ class TaskResponseView(str, Enum):
 
 class UriOverrideScheme(str, Enum):
     """
-    Scheme override. When specified, the Uri scheme is replaced by the provided value.
+    Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
     """
     SCHEME_UNSPECIFIED = "SCHEME_UNSPECIFIED"
     """
@@ -166,7 +166,7 @@ class UriOverrideScheme(str, Enum):
 
 class UriOverrideUriOverrideEnforceMode(str, Enum):
     """
-    Uri Override Enforce Mode Determines the Target UriOverride mode.
+    URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
     """
     URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED = "URI_OVERRIDE_ENFORCE_MODE_UNSPECIFIED"
     """

@@ -60,6 +60,11 @@ export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
 utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
+export { GetNodeGroupArgs, GetNodeGroupResult, GetNodeGroupOutputArgs } from "./getNodeGroup";
+export const getNodeGroup: typeof import("./getNodeGroup").getNodeGroup = null as any;
+export const getNodeGroupOutput: typeof import("./getNodeGroup").getNodeGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getNodeGroup","getNodeGroupOutput"], () => require("./getNodeGroup"));
+
 export { GetRegionAutoscalingPolicyIamPolicyArgs, GetRegionAutoscalingPolicyIamPolicyResult, GetRegionAutoscalingPolicyIamPolicyOutputArgs } from "./getRegionAutoscalingPolicyIamPolicy";
 export const getRegionAutoscalingPolicyIamPolicy: typeof import("./getRegionAutoscalingPolicyIamPolicy").getRegionAutoscalingPolicyIamPolicy = null as any;
 export const getRegionAutoscalingPolicyIamPolicyOutput: typeof import("./getRegionAutoscalingPolicyIamPolicy").getRegionAutoscalingPolicyIamPolicyOutput = null as any;
@@ -99,6 +104,11 @@ export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+
+export { NodeGroupArgs } from "./nodeGroup";
+export type NodeGroup = import("./nodeGroup").NodeGroup;
+export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
+utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
 
 export { RegionAutoscalingPolicyIamBindingArgs } from "./regionAutoscalingPolicyIamBinding";
 export type RegionAutoscalingPolicyIamBinding = import("./regionAutoscalingPolicyIamBinding").RegionAutoscalingPolicyIamBinding;
@@ -217,6 +227,8 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "google-native:dataproc/v1:NodeGroup":
+                return new NodeGroup(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionAutoscalingPolicyIamBinding":
                 return new RegionAutoscalingPolicyIamBinding(name, <any>undefined, { urn })
             case "google-native:dataproc/v1:RegionAutoscalingPolicyIamMember":

@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified interconnect. Get a list of available interconnects by making a list() request.
+ * Returns the specified Interconnect. Get a list of available Interconnects by making a list() request.
  */
 export function getInterconnect(args: GetInterconnectArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectResult> {
     if (!opts) {
@@ -93,7 +93,7 @@ export interface GetInterconnectResult {
      */
     readonly name: string;
     /**
-     * Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
+     * Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Cloud Monitoring logs alerting and Cloud Notifications. This field is required for users who sign up for Cloud Interconnect using workforce identity federation.
      */
     readonly nocContactEmail: string;
     /**

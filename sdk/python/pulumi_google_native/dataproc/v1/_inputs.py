@@ -13,6 +13,7 @@ from ._enums import *
 __all__ = [
     'AcceleratorConfigArgs',
     'AutoscalingConfigArgs',
+    'AuxiliaryNodeGroupArgs',
     'AuxiliaryServicesConfigArgs',
     'BasicAutoscalingAlgorithmArgs',
     'BasicYarnAutoscalingConfigArgs',
@@ -22,6 +23,7 @@ __all__ = [
     'ConfidentialInstanceConfigArgs',
     'DataprocMetricConfigArgs',
     'DiskConfigArgs',
+    'DriverSchedulingConfigArgs',
     'EncryptionConfigArgs',
     'EndpointConfigArgs',
     'EnvironmentConfigArgs',
@@ -52,6 +54,7 @@ __all__ = [
     'MetricArgs',
     'NamespacedGkeDeploymentTargetArgs',
     'NodeGroupAffinityArgs',
+    'NodeGroupArgs',
     'NodeInitializationActionArgs',
     'OrderedJobArgs',
     'ParameterValidationArgs',
@@ -144,6 +147,45 @@ class AutoscalingConfigArgs:
     @policy_uri.setter
     def policy_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "policy_uri", value)
+
+
+@pulumi.input_type
+class AuxiliaryNodeGroupArgs:
+    def __init__(__self__, *,
+                 node_group: pulumi.Input['NodeGroupArgs'],
+                 node_group_id: Optional[pulumi.Input[str]] = None):
+        """
+        Node group identification and configuration information.
+        :param pulumi.Input['NodeGroupArgs'] node_group: Node group configuration.
+        :param pulumi.Input[str] node_group_id: Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        """
+        pulumi.set(__self__, "node_group", node_group)
+        if node_group_id is not None:
+            pulumi.set(__self__, "node_group_id", node_group_id)
+
+    @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> pulumi.Input['NodeGroupArgs']:
+        """
+        Node group configuration.
+        """
+        return pulumi.get(self, "node_group")
+
+    @node_group.setter
+    def node_group(self, value: pulumi.Input['NodeGroupArgs']):
+        pulumi.set(self, "node_group", value)
+
+    @property
+    @pulumi.getter(name="nodeGroupId")
+    def node_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters.
+        """
+        return pulumi.get(self, "node_group_id")
+
+    @node_group_id.setter
+    def node_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_group_id", value)
 
 
 @pulumi.input_type
@@ -387,6 +429,7 @@ class BindingArgs:
 class ClusterConfigArgs:
     def __init__(__self__, *,
                  autoscaling_config: Optional[pulumi.Input['AutoscalingConfigArgs']] = None,
+                 auxiliary_node_groups: Optional[pulumi.Input[Sequence[pulumi.Input['AuxiliaryNodeGroupArgs']]]] = None,
                  config_bucket: Optional[pulumi.Input[str]] = None,
                  dataproc_metric_config: Optional[pulumi.Input['DataprocMetricConfigArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
@@ -405,6 +448,7 @@ class ClusterConfigArgs:
         """
         The cluster config.
         :param pulumi.Input['AutoscalingConfigArgs'] autoscaling_config: Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
+        :param pulumi.Input[Sequence[pulumi.Input['AuxiliaryNodeGroupArgs']]] auxiliary_node_groups: Optional. The node group settings.
         :param pulumi.Input[str] config_bucket: Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket.
         :param pulumi.Input['DataprocMetricConfigArgs'] dataproc_metric_config: Optional. The config for Dataproc metrics.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for the cluster.
@@ -423,6 +467,8 @@ class ClusterConfigArgs:
         """
         if autoscaling_config is not None:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
+        if auxiliary_node_groups is not None:
+            pulumi.set(__self__, "auxiliary_node_groups", auxiliary_node_groups)
         if config_bucket is not None:
             pulumi.set(__self__, "config_bucket", config_bucket)
         if dataproc_metric_config is not None:
@@ -465,6 +511,18 @@ class ClusterConfigArgs:
     @autoscaling_config.setter
     def autoscaling_config(self, value: Optional[pulumi.Input['AutoscalingConfigArgs']]):
         pulumi.set(self, "autoscaling_config", value)
+
+    @property
+    @pulumi.getter(name="auxiliaryNodeGroups")
+    def auxiliary_node_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuxiliaryNodeGroupArgs']]]]:
+        """
+        Optional. The node group settings.
+        """
+        return pulumi.get(self, "auxiliary_node_groups")
+
+    @auxiliary_node_groups.setter
+    def auxiliary_node_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuxiliaryNodeGroupArgs']]]]):
+        pulumi.set(self, "auxiliary_node_groups", value)
 
     @property
     @pulumi.getter(name="configBucket")
@@ -806,6 +864,44 @@ class DiskConfigArgs:
 
 
 @pulumi.input_type
+class DriverSchedulingConfigArgs:
+    def __init__(__self__, *,
+                 memory_mb: pulumi.Input[int],
+                 vcores: pulumi.Input[int]):
+        """
+        Driver scheduling configuration.
+        :param pulumi.Input[int] memory_mb: The amount of memory in MB the driver is requesting.
+        :param pulumi.Input[int] vcores: The number of vCPUs the driver is requesting.
+        """
+        pulumi.set(__self__, "memory_mb", memory_mb)
+        pulumi.set(__self__, "vcores", vcores)
+
+    @property
+    @pulumi.getter(name="memoryMb")
+    def memory_mb(self) -> pulumi.Input[int]:
+        """
+        The amount of memory in MB the driver is requesting.
+        """
+        return pulumi.get(self, "memory_mb")
+
+    @memory_mb.setter
+    def memory_mb(self, value: pulumi.Input[int]):
+        pulumi.set(self, "memory_mb", value)
+
+    @property
+    @pulumi.getter
+    def vcores(self) -> pulumi.Input[int]:
+        """
+        The number of vCPUs the driver is requesting.
+        """
+        return pulumi.get(self, "vcores")
+
+    @vcores.setter
+    def vcores(self, value: pulumi.Input[int]):
+        pulumi.set(self, "vcores", value)
+
+
+@pulumi.input_type
 class EncryptionConfigArgs:
     def __init__(__self__, *,
                  gce_pd_kms_key_name: Optional[pulumi.Input[str]] = None):
@@ -904,7 +1000,7 @@ class ExecutionConfigArgs:
                  subnetwork_uri: Optional[pulumi.Input[str]] = None):
         """
         Execution configuration for a workload.
-        :param pulumi.Input[str] idle_ttl: Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        :param pulumi.Input[str] idle_ttl: Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
         :param pulumi.Input[str] kms_key: Optional. The Cloud KMS key to use for encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] network_tags: Optional. Tags used for network traffic control.
         :param pulumi.Input[str] network_uri: Optional. Network URI to connect workload to.
@@ -928,7 +1024,7 @@ class ExecutionConfigArgs:
     @pulumi.getter(name="idleTtl")
     def idle_ttl(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 10 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both ttl and idle_ttl are specified, the conditions are treated as and OR: the workload will be terminated when it has been idle for idle_ttl or when the ttl has passed, whichever comes first.
         """
         return pulumi.get(self, "idle_ttl")
 
@@ -2194,8 +2290,8 @@ class JobSchedulingArgs:
                  max_failures_total: Optional[pulumi.Input[int]] = None):
         """
         Job scheduling options.
-        :param pulumi.Input[int] max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
-        :param pulumi.Input[int] max_failures_total: Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        :param pulumi.Input[int] max_failures_per_hour: Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
+        :param pulumi.Input[int] max_failures_total: Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         if max_failures_per_hour is not None:
             pulumi.set(__self__, "max_failures_per_hour", max_failures_per_hour)
@@ -2206,7 +2302,7 @@ class JobSchedulingArgs:
     @pulumi.getter(name="maxFailuresPerHour")
     def max_failures_per_hour(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         return pulumi.get(self, "max_failures_per_hour")
 
@@ -2218,7 +2314,7 @@ class JobSchedulingArgs:
     @pulumi.getter(name="maxFailuresTotal")
     def max_failures_total(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow template (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template) jobs.
+        Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
         """
         return pulumi.get(self, "max_failures_total")
 
@@ -2811,7 +2907,7 @@ class NodeGroupAffinityArgs:
     def __init__(__self__, *,
                  node_group_uri: pulumi.Input[str]):
         """
-        Node Group Affinity for clusters using sole-tenant node groups.
+        Node Group Affinity for clusters using sole-tenant node groups. The Dataproc NodeGroupAffinity resource is not related to the Dataproc NodeGroup resource.
         :param pulumi.Input[str] node_group_uri: The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
         """
         pulumi.set(__self__, "node_group_uri", node_group_uri)
@@ -2827,6 +2923,77 @@ class NodeGroupAffinityArgs:
     @node_group_uri.setter
     def node_group_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "node_group_uri", value)
+
+
+@pulumi.input_type
+class NodeGroupArgs:
+    def __init__(__self__, *,
+                 roles: pulumi.Input[Sequence[pulumi.Input['NodeGroupRolesItem']]],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_group_config: Optional[pulumi.Input['InstanceGroupConfigArgs']] = None):
+        """
+        Dataproc Node Group. The Dataproc NodeGroup resource is not related to the Dataproc NodeGroupAffinity resource.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeGroupRolesItem']]] roles: Node group roles.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+        :param pulumi.Input[str] name: The Node group resource name (https://aip.dev/122).
+        :param pulumi.Input['InstanceGroupConfigArgs'] node_group_config: Optional. The node group instance group configuration.
+        """
+        pulumi.set(__self__, "roles", roles)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_group_config is not None:
+            pulumi.set(__self__, "node_group_config", node_group_config)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> pulumi.Input[Sequence[pulumi.Input['NodeGroupRolesItem']]]:
+        """
+        Node group roles.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: pulumi.Input[Sequence[pulumi.Input['NodeGroupRolesItem']]]):
+        pulumi.set(self, "roles", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Node group labels. Label keys must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty. If specified, they must consist of from 1 to 63 characters and conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). The node group must have no more than 32 labelsn.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Node group resource name (https://aip.dev/122).
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeGroupConfig")
+    def node_group_config(self) -> Optional[pulumi.Input['InstanceGroupConfigArgs']]:
+        """
+        Optional. The node group instance group configuration.
+        """
+        return pulumi.get(self, "node_group_config")
+
+    @node_group_config.setter
+    def node_group_config(self, value: Optional[pulumi.Input['InstanceGroupConfigArgs']]):
+        pulumi.set(self, "node_group_config", value)
 
 
 @pulumi.input_type

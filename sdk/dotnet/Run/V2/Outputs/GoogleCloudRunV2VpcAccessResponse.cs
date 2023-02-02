@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
     public sealed class GoogleCloudRunV2VpcAccessResponse
     {
         /// <summary>
-        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
+        /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
         /// </summary>
         public readonly string Connector;
         /// <summary>

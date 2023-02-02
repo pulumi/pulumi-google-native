@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A list of GCLB targets which use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
+        /// A list of GCLB targets that use this Certificate Map. A Target Proxy is only present on this list if it's attached to a Forwarding Rule.
         /// </summary>
         [Output("gclbTargets")]
         public Output<ImmutableArray<Outputs.GclbTargetResponse>> GclbTargets { get; private set; } = null!;

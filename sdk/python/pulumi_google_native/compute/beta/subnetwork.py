@@ -21,6 +21,7 @@ class SubnetworkArgs:
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input['SubnetworkIpv6AccessType']] = None,
                  log_config: Optional[pulumi.Input['SubnetworkLogConfigArgs']] = None,
@@ -41,6 +42,7 @@ class SubnetworkArgs:
         :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Whether this subnetwork's ranges can conflict with existing static routes. Setting this to true allows this subnetwork's primary and secondary ranges to overlap with (and contain) static routes that have already been configured on the corresponding network. For example if a static route has range 10.1.0.0/16, a subnet range 10.0.0.0/8 could only be created if allow_conflicting_routes=true. Overlapping is only allowed on subnetwork operations; routes whose ranges conflict with this subnetwork's ranges won't be allowed unless route.allow_conflicting_subnetworks is set to true. Typically packets destined to IPs within the subnetwork (which may contain private/sensitive data) are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        :param pulumi.Input[str] external_ipv6_prefix: The external IPv6 address range that is owned by this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         :param pulumi.Input['SubnetworkIpv6AccessType'] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
         :param pulumi.Input['SubnetworkLogConfigArgs'] log_config: This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
@@ -62,6 +64,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "description", description)
         if enable_flow_logs is not None:
             pulumi.set(__self__, "enable_flow_logs", enable_flow_logs)
+        if external_ipv6_prefix is not None:
+            pulumi.set(__self__, "external_ipv6_prefix", external_ipv6_prefix)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if ipv6_access_type is not None:
@@ -138,6 +142,18 @@ class SubnetworkArgs:
     @enable_flow_logs.setter
     def enable_flow_logs(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_flow_logs", value)
+
+    @property
+    @pulumi.getter(name="externalIpv6Prefix")
+    def external_ipv6_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        The external IPv6 address range that is owned by this subnetwork.
+        """
+        return pulumi.get(self, "external_ipv6_prefix")
+
+    @external_ipv6_prefix.setter
+    def external_ipv6_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_ipv6_prefix", value)
 
     @property
     @pulumi.getter(name="ipCidrRange")
@@ -313,6 +329,7 @@ class Subnetwork(pulumi.CustomResource):
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input['SubnetworkIpv6AccessType']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
@@ -337,6 +354,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Whether this subnetwork's ranges can conflict with existing static routes. Setting this to true allows this subnetwork's primary and secondary ranges to overlap with (and contain) static routes that have already been configured on the corresponding network. For example if a static route has range 10.1.0.0/16, a subnet range 10.0.0.0/8 could only be created if allow_conflicting_routes=true. Overlapping is only allowed on subnetwork operations; routes whose ranges conflict with this subnetwork's ranges won't be allowed unless route.allow_conflicting_subnetworks is set to true. Typically packets destined to IPs within the subnetwork (which may contain private/sensitive data) are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
         :param pulumi.Input[bool] enable_flow_logs: Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled. This field isn't supported with the purpose field set to INTERNAL_HTTPS_LOAD_BALANCER.
+        :param pulumi.Input[str] external_ipv6_prefix: The external IPv6 address range that is owned by this subnetwork.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
         :param pulumi.Input['SubnetworkIpv6AccessType'] ipv6_access_type: The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack.
         :param pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']] log_config: This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
@@ -379,6 +397,7 @@ class Subnetwork(pulumi.CustomResource):
                  allow_subnet_cidr_routes_overlap: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_flow_logs: Optional[pulumi.Input[bool]] = None,
+                 external_ipv6_prefix: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  ipv6_access_type: Optional[pulumi.Input['SubnetworkIpv6AccessType']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['SubnetworkLogConfigArgs']]] = None,
@@ -406,6 +425,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["allow_subnet_cidr_routes_overlap"] = allow_subnet_cidr_routes_overlap
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_flow_logs"] = enable_flow_logs
+            __props__.__dict__["external_ipv6_prefix"] = external_ipv6_prefix
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["ipv6_access_type"] = ipv6_access_type
             __props__.__dict__["log_config"] = log_config
@@ -424,7 +444,6 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["creation_timestamp"] = None
-            __props__.__dict__["external_ipv6_prefix"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["gateway_address"] = None
             __props__.__dict__["internal_ipv6_prefix"] = None
@@ -521,7 +540,7 @@ class Subnetwork(pulumi.CustomResource):
     @pulumi.getter(name="externalIpv6Prefix")
     def external_ipv6_prefix(self) -> pulumi.Output[str]:
         """
-        The external IPv6 address range that is assigned to this subnetwork.
+        The external IPv6 address range that is owned by this subnetwork.
         """
         return pulumi.get(self, "external_ipv6_prefix")
 

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Outputs
     public sealed class TargetsPresentConditionResponse
     {
         /// <summary>
-        /// The list of Target names that are missing. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
+        /// The list of Target names that do not exist. For example, projects/{project_id}/locations/{location_name}/targets/{target_name}.
         /// </summary>
         public readonly ImmutableArray<string> MissingTargets;
         /// <summary>

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetReservationResult:
-    def __init__(__self__, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+    def __init__(__self__, aggregate_reservation=None, commitment=None, creation_timestamp=None, description=None, kind=None, name=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, self_link_with_id=None, share_settings=None, specific_reservation=None, specific_reservation_required=None, status=None, zone=None):
+        if aggregate_reservation and not isinstance(aggregate_reservation, dict):
+            raise TypeError("Expected argument 'aggregate_reservation' to be a dict")
+        pulumi.set(__self__, "aggregate_reservation", aggregate_reservation)
         if commitment and not isinstance(commitment, str):
             raise TypeError("Expected argument 'commitment' to be a str")
         pulumi.set(__self__, "commitment", commitment)
@@ -65,6 +68,14 @@ class GetReservationResult:
         if zone and not isinstance(zone, str):
             raise TypeError("Expected argument 'zone' to be a str")
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="aggregateReservation")
+    def aggregate_reservation(self) -> 'outputs.AllocationAggregateReservationResponse':
+        """
+        Reservation for aggregated resources, providing shape flexibility.
+        """
+        return pulumi.get(self, "aggregate_reservation")
 
     @property
     @pulumi.getter
@@ -150,7 +161,7 @@ class GetReservationResult:
     @pulumi.getter(name="shareSettings")
     def share_settings(self) -> 'outputs.ShareSettingsResponse':
         """
-        Share-settings for shared-reservation
+        Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         """
         return pulumi.get(self, "share_settings")
 
@@ -193,6 +204,7 @@ class AwaitableGetReservationResult(GetReservationResult):
         if False:
             yield self
         return GetReservationResult(
+            aggregate_reservation=self.aggregate_reservation,
             commitment=self.commitment,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
@@ -225,6 +237,7 @@ def get_reservation(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/alpha:getReservation', __args__, opts=opts, typ=GetReservationResult).value
 
     return AwaitableGetReservationResult(
+        aggregate_reservation=__ret__.aggregate_reservation,
         commitment=__ret__.commitment,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,

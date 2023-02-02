@@ -201,6 +201,22 @@ class CryptoKeyVersionTemplateAlgorithm(str, Enum):
     """
     HMAC-SHA256 signing with a 256 bit key.
     """
+    HMAC_SHA1 = "HMAC_SHA1"
+    """
+    HMAC-SHA1 signing with a 160 bit key.
+    """
+    HMAC_SHA384 = "HMAC_SHA384"
+    """
+    HMAC-SHA384 signing with a 384 bit key.
+    """
+    HMAC_SHA512 = "HMAC_SHA512"
+    """
+    HMAC-SHA512 signing with a 512 bit key.
+    """
+    HMAC_SHA224 = "HMAC_SHA224"
+    """
+    HMAC-SHA224 signing with a 224 bit key.
+    """
     EXTERNAL_SYMMETRIC_ENCRYPTION = "EXTERNAL_SYMMETRIC_ENCRYPTION"
     """
     Algorithm representing symmetric encryption by an external key manager.

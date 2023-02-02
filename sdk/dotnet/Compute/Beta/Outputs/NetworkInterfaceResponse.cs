@@ -57,6 +57,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        /// </summary>
+        public readonly string NetworkAttachment;
+        /// <summary>
         /// An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         /// </summary>
         public readonly string NetworkIP;
@@ -99,6 +103,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string network,
 
+            string networkAttachment,
+
             string networkIP,
 
             string nicType,
@@ -119,6 +125,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             Kind = kind;
             Name = name;
             Network = network;
+            NetworkAttachment = networkAttachment;
             NetworkIP = networkIP;
             NicType = nicType;
             QueueCount = queueCount;

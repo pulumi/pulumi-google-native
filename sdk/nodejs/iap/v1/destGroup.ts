@@ -35,11 +35,11 @@ export class DestGroup extends pulumi.CustomResource {
     }
 
     /**
-     * null List of CIDRs that this group applies to.
+     * Unordered list. List of CIDRs that this group applies to.
      */
     public readonly cidrs!: pulumi.Output<string[]>;
     /**
-     * null List of FQDNs that this group applies to.
+     * Unordered list. List of FQDNs that this group applies to.
      */
     public readonly fqdns!: pulumi.Output<string[]>;
     public readonly location!: pulumi.Output<string>;
@@ -93,11 +93,11 @@ export class DestGroup extends pulumi.CustomResource {
  */
 export interface DestGroupArgs {
     /**
-     * null List of CIDRs that this group applies to.
+     * Unordered list. List of CIDRs that this group applies to.
      */
     cidrs?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * null List of FQDNs that this group applies to.
+     * Unordered list. List of FQDNs that this group applies to.
      */
     fqdns?: pulumi.Input<pulumi.Input<string>[]>;
     location?: pulumi.Input<string>;

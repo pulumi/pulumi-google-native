@@ -21,6 +21,10 @@ __all__ = [
     'MembershipRoleResponse',
     'MembershipRoleRestrictionEvaluationResponse',
     'RestrictionEvaluationsResponse',
+    'SamlIdpConfigResponse',
+    'SamlSpConfigResponse',
+    'SamlSsoInfoResponse',
+    'SignInBehaviorResponse',
 ]
 
 @pulumi.output_type
@@ -417,5 +421,213 @@ class RestrictionEvaluationsResponse(dict):
         Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
         """
         return pulumi.get(self, "member_restriction_evaluation")
+
+
+@pulumi.output_type
+class SamlIdpConfigResponse(dict):
+    """
+    SAML IDP (identity provider) configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "changePasswordUri":
+            suggest = "change_password_uri"
+        elif key == "entityId":
+            suggest = "entity_id"
+        elif key == "logoutRedirectUri":
+            suggest = "logout_redirect_uri"
+        elif key == "singleSignOnServiceUri":
+            suggest = "single_sign_on_service_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SamlIdpConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SamlIdpConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SamlIdpConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 change_password_uri: str,
+                 entity_id: str,
+                 logout_redirect_uri: str,
+                 single_sign_on_service_uri: str):
+        """
+        SAML IDP (identity provider) configuration.
+        :param str change_password_uri: The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+        :param str entity_id: The SAML **Entity ID** of the identity provider.
+        :param str logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        :param str single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        """
+        pulumi.set(__self__, "change_password_uri", change_password_uri)
+        pulumi.set(__self__, "entity_id", entity_id)
+        pulumi.set(__self__, "logout_redirect_uri", logout_redirect_uri)
+        pulumi.set(__self__, "single_sign_on_service_uri", single_sign_on_service_uri)
+
+    @property
+    @pulumi.getter(name="changePasswordUri")
+    def change_password_uri(self) -> str:
+        """
+        The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "change_password_uri")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        """
+        The SAML **Entity ID** of the identity provider.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @property
+    @pulumi.getter(name="logoutRedirectUri")
+    def logout_redirect_uri(self) -> str:
+        """
+        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        """
+        return pulumi.get(self, "logout_redirect_uri")
+
+    @property
+    @pulumi.getter(name="singleSignOnServiceUri")
+    def single_sign_on_service_uri(self) -> str:
+        """
+        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        """
+        return pulumi.get(self, "single_sign_on_service_uri")
+
+
+@pulumi.output_type
+class SamlSpConfigResponse(dict):
+    """
+    SAML SP (service provider) configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assertionConsumerServiceUri":
+            suggest = "assertion_consumer_service_uri"
+        elif key == "entityId":
+            suggest = "entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SamlSpConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SamlSpConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SamlSpConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assertion_consumer_service_uri: str,
+                 entity_id: str):
+        """
+        SAML SP (service provider) configuration.
+        :param str assertion_consumer_service_uri: The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+        :param str entity_id: The SAML **Entity ID** for this service provider.
+        """
+        pulumi.set(__self__, "assertion_consumer_service_uri", assertion_consumer_service_uri)
+        pulumi.set(__self__, "entity_id", entity_id)
+
+    @property
+    @pulumi.getter(name="assertionConsumerServiceUri")
+    def assertion_consumer_service_uri(self) -> str:
+        """
+        The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+        """
+        return pulumi.get(self, "assertion_consumer_service_uri")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        """
+        The SAML **Entity ID** for this service provider.
+        """
+        return pulumi.get(self, "entity_id")
+
+
+@pulumi.output_type
+class SamlSsoInfoResponse(dict):
+    """
+    Details that are applicable when `sso_mode` == `SAML_SSO`.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inboundSamlSsoProfile":
+            suggest = "inbound_saml_sso_profile"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SamlSsoInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SamlSsoInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SamlSsoInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 inbound_saml_sso_profile: str):
+        """
+        Details that are applicable when `sso_mode` == `SAML_SSO`.
+        :param str inbound_saml_sso_profile: Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`. 
+        """
+        pulumi.set(__self__, "inbound_saml_sso_profile", inbound_saml_sso_profile)
+
+    @property
+    @pulumi.getter(name="inboundSamlSsoProfile")
+    def inbound_saml_sso_profile(self) -> str:
+        """
+        Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`. 
+        """
+        return pulumi.get(self, "inbound_saml_sso_profile")
+
+
+@pulumi.output_type
+class SignInBehaviorResponse(dict):
+    """
+    Controls sign-in behavior.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectCondition":
+            suggest = "redirect_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SignInBehaviorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SignInBehaviorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SignInBehaviorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_condition: str):
+        """
+        Controls sign-in behavior.
+        :param str redirect_condition: When to redirect sign-ins to the IdP.
+        """
+        pulumi.set(__self__, "redirect_condition", redirect_condition)
+
+    @property
+    @pulumi.getter(name="redirectCondition")
+    def redirect_condition(self) -> str:
+        """
+        When to redirect sign-ins to the IdP.
+        """
+        return pulumi.get(self, "redirect_condition")
 
 

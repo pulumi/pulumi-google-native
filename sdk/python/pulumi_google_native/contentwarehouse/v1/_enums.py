@@ -5,8 +5,10 @@
 from enum import Enum
 
 __all__ = [
+    'DocumentContentCategory',
     'DocumentRawDocumentFileType',
     'GoogleCloudContentwarehouseV1AccessControlActionOperationType',
+    'GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance',
     'GoogleCloudContentwarehouseV1RuleTriggerType',
     'GoogleCloudContentwarehouseV1UpdateOptionsUpdateType',
     'GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType',
@@ -15,6 +17,28 @@ __all__ = [
     'GoogleCloudDocumentaiV1DocumentProvenanceType',
     'GoogleIamV1AuditLogConfigLogType',
 ]
+
+
+class DocumentContentCategory(str, Enum):
+    """
+    Indicates the category (image, audio, video etc.) of the original content.
+    """
+    CONTENT_CATEGORY_UNSPECIFIED = "CONTENT_CATEGORY_UNSPECIFIED"
+    """
+    No category is specified.
+    """
+    CONTENT_CATEGORY_IMAGE = "CONTENT_CATEGORY_IMAGE"
+    """
+    Content is of image type.
+    """
+    CONTENT_CATEGORY_AUDIO = "CONTENT_CATEGORY_AUDIO"
+    """
+    Content is of audio type.
+    """
+    CONTENT_CATEGORY_VIDEO = "CONTENT_CATEGORY_VIDEO"
+    """
+    Content is of video type.
+    """
 
 
 class DocumentRawDocumentFileType(str, Enum):
@@ -45,6 +69,10 @@ class DocumentRawDocumentFileType(str, Enum):
     """
     UTF-8 encoded text format
     """
+    RAW_DOCUMENT_FILE_TYPE_TIFF = "RAW_DOCUMENT_FILE_TYPE_TIFF"
+    """
+    TIFF or TIF image file format
+    """
 
 
 class GoogleCloudContentwarehouseV1AccessControlActionOperationType(str, Enum):
@@ -52,6 +80,9 @@ class GoogleCloudContentwarehouseV1AccessControlActionOperationType(str, Enum):
     Identifies the type of operation.
     """
     UNKNOWN = "UNKNOWN"
+    """
+    The unknown operation type.
+    """
     ADD_POLICY_BINDING = "ADD_POLICY_BINDING"
     """
     Adds newly given policy bindings in the existing bindings list.
@@ -66,11 +97,48 @@ class GoogleCloudContentwarehouseV1AccessControlActionOperationType(str, Enum):
     """
 
 
+class GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance(str, Enum):
+    """
+    The retrieval importance of the property during search.
+    """
+    RETRIEVAL_IMPORTANCE_UNSPECIFIED = "RETRIEVAL_IMPORTANCE_UNSPECIFIED"
+    """
+    No importance specified. Default medium importance.
+    """
+    HIGHEST = "HIGHEST"
+    """
+    Highest importance.
+    """
+    HIGHER = "HIGHER"
+    """
+    Higher importance.
+    """
+    HIGH = "HIGH"
+    """
+    High importance.
+    """
+    MEDIUM = "MEDIUM"
+    """
+    Medium importance.
+    """
+    LOW = "LOW"
+    """
+    Low importance (negative).
+    """
+    LOWEST = "LOWEST"
+    """
+    Lowest importance (negative).
+    """
+
+
 class GoogleCloudContentwarehouseV1RuleTriggerType(str, Enum):
     """
     Identifies the trigger type for running the policy.
     """
     UNKNOWN = "UNKNOWN"
+    """
+    Trigger for unknown action.
+    """
     ON_CREATE = "ON_CREATE"
     """
     Trigger for create document action.
@@ -91,7 +159,7 @@ class GoogleCloudContentwarehouseV1UpdateOptionsUpdateType(str, Enum):
     """
     UPDATE_TYPE_REPLACE = "UPDATE_TYPE_REPLACE"
     """
-    Fully replace all the fields. Any field masks will be ignored.
+    Fully replace all the fields (including previously linked raw document). Any field masks will be ignored.
     """
     UPDATE_TYPE_MERGE = "UPDATE_TYPE_MERGE"
     """

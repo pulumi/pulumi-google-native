@@ -50,6 +50,219 @@ func (o AbortInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v AbortInfoResponse) string { return v.ResourceUri }).(pulumi.StringOutput)
 }
 
+// Wrapper for app engine service version attributes.
+type AppEngineVersionEndpoint struct {
+	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+	Uri *string `pulumi:"uri"`
+}
+
+// AppEngineVersionEndpointInput is an input type that accepts AppEngineVersionEndpointArgs and AppEngineVersionEndpointOutput values.
+// You can construct a concrete instance of `AppEngineVersionEndpointInput` via:
+//
+//	AppEngineVersionEndpointArgs{...}
+type AppEngineVersionEndpointInput interface {
+	pulumi.Input
+
+	ToAppEngineVersionEndpointOutput() AppEngineVersionEndpointOutput
+	ToAppEngineVersionEndpointOutputWithContext(context.Context) AppEngineVersionEndpointOutput
+}
+
+// Wrapper for app engine service version attributes.
+type AppEngineVersionEndpointArgs struct {
+	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (AppEngineVersionEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionEndpoint)(nil)).Elem()
+}
+
+func (i AppEngineVersionEndpointArgs) ToAppEngineVersionEndpointOutput() AppEngineVersionEndpointOutput {
+	return i.ToAppEngineVersionEndpointOutputWithContext(context.Background())
+}
+
+func (i AppEngineVersionEndpointArgs) ToAppEngineVersionEndpointOutputWithContext(ctx context.Context) AppEngineVersionEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionEndpointOutput)
+}
+
+func (i AppEngineVersionEndpointArgs) ToAppEngineVersionEndpointPtrOutput() AppEngineVersionEndpointPtrOutput {
+	return i.ToAppEngineVersionEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AppEngineVersionEndpointArgs) ToAppEngineVersionEndpointPtrOutputWithContext(ctx context.Context) AppEngineVersionEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionEndpointOutput).ToAppEngineVersionEndpointPtrOutputWithContext(ctx)
+}
+
+// AppEngineVersionEndpointPtrInput is an input type that accepts AppEngineVersionEndpointArgs, AppEngineVersionEndpointPtr and AppEngineVersionEndpointPtrOutput values.
+// You can construct a concrete instance of `AppEngineVersionEndpointPtrInput` via:
+//
+//	        AppEngineVersionEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppEngineVersionEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAppEngineVersionEndpointPtrOutput() AppEngineVersionEndpointPtrOutput
+	ToAppEngineVersionEndpointPtrOutputWithContext(context.Context) AppEngineVersionEndpointPtrOutput
+}
+
+type appEngineVersionEndpointPtrType AppEngineVersionEndpointArgs
+
+func AppEngineVersionEndpointPtr(v *AppEngineVersionEndpointArgs) AppEngineVersionEndpointPtrInput {
+	return (*appEngineVersionEndpointPtrType)(v)
+}
+
+func (*appEngineVersionEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineVersionEndpoint)(nil)).Elem()
+}
+
+func (i *appEngineVersionEndpointPtrType) ToAppEngineVersionEndpointPtrOutput() AppEngineVersionEndpointPtrOutput {
+	return i.ToAppEngineVersionEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *appEngineVersionEndpointPtrType) ToAppEngineVersionEndpointPtrOutputWithContext(ctx context.Context) AppEngineVersionEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppEngineVersionEndpointPtrOutput)
+}
+
+// Wrapper for app engine service version attributes.
+type AppEngineVersionEndpointOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionEndpoint)(nil)).Elem()
+}
+
+func (o AppEngineVersionEndpointOutput) ToAppEngineVersionEndpointOutput() AppEngineVersionEndpointOutput {
+	return o
+}
+
+func (o AppEngineVersionEndpointOutput) ToAppEngineVersionEndpointOutputWithContext(ctx context.Context) AppEngineVersionEndpointOutput {
+	return o
+}
+
+func (o AppEngineVersionEndpointOutput) ToAppEngineVersionEndpointPtrOutput() AppEngineVersionEndpointPtrOutput {
+	return o.ToAppEngineVersionEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineVersionEndpointOutput) ToAppEngineVersionEndpointPtrOutputWithContext(ctx context.Context) AppEngineVersionEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineVersionEndpoint) *AppEngineVersionEndpoint {
+		return &v
+	}).(AppEngineVersionEndpointPtrOutput)
+}
+
+// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+func (o AppEngineVersionEndpointOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppEngineVersionEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type AppEngineVersionEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppEngineVersionEndpoint)(nil)).Elem()
+}
+
+func (o AppEngineVersionEndpointPtrOutput) ToAppEngineVersionEndpointPtrOutput() AppEngineVersionEndpointPtrOutput {
+	return o
+}
+
+func (o AppEngineVersionEndpointPtrOutput) ToAppEngineVersionEndpointPtrOutputWithContext(ctx context.Context) AppEngineVersionEndpointPtrOutput {
+	return o
+}
+
+func (o AppEngineVersionEndpointPtrOutput) Elem() AppEngineVersionEndpointOutput {
+	return o.ApplyT(func(v *AppEngineVersionEndpoint) AppEngineVersionEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AppEngineVersionEndpoint
+		return ret
+	}).(AppEngineVersionEndpointOutput)
+}
+
+// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+func (o AppEngineVersionEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppEngineVersionEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Wrapper for app engine service version attributes.
+type AppEngineVersionEndpointResponse struct {
+	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+	Uri string `pulumi:"uri"`
+}
+
+// Wrapper for app engine service version attributes.
+type AppEngineVersionEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionEndpointResponse)(nil)).Elem()
+}
+
+func (o AppEngineVersionEndpointResponseOutput) ToAppEngineVersionEndpointResponseOutput() AppEngineVersionEndpointResponseOutput {
+	return o
+}
+
+func (o AppEngineVersionEndpointResponseOutput) ToAppEngineVersionEndpointResponseOutputWithContext(ctx context.Context) AppEngineVersionEndpointResponseOutput {
+	return o
+}
+
+// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions) name.
+func (o AppEngineVersionEndpointResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// For display only. Metadata associated with an App Engine version.
+type AppEngineVersionInfoResponse struct {
+	// Name of an App Engine version.
+	DisplayName string `pulumi:"displayName"`
+	// App Engine execution environment for a version.
+	Environment string `pulumi:"environment"`
+	// Runtime of the App Engine version.
+	Runtime string `pulumi:"runtime"`
+	// URI of an App Engine version.
+	Uri string `pulumi:"uri"`
+}
+
+// For display only. Metadata associated with an App Engine version.
+type AppEngineVersionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (AppEngineVersionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineVersionInfoResponse)(nil)).Elem()
+}
+
+func (o AppEngineVersionInfoResponseOutput) ToAppEngineVersionInfoResponseOutput() AppEngineVersionInfoResponseOutput {
+	return o
+}
+
+func (o AppEngineVersionInfoResponseOutput) ToAppEngineVersionInfoResponseOutputWithContext(ctx context.Context) AppEngineVersionInfoResponseOutput {
+	return o
+}
+
+// Name of an App Engine version.
+func (o AppEngineVersionInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// App Engine execution environment for a version.
+func (o AppEngineVersionInfoResponseOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// Runtime of the App Engine version.
+func (o AppEngineVersionInfoResponseOutput) Runtime() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.Runtime }).(pulumi.StringOutput)
+}
+
+// URI of an App Engine version.
+func (o AppEngineVersionInfoResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AppEngineVersionInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -765,6 +978,219 @@ func (o CloudFunctionInfoResponseOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudFunctionInfoResponse) string { return v.VersionId }).(pulumi.StringOutput)
 }
 
+// Wrapper for Cloud Run revision attributes.
+type CloudRunRevisionEndpoint struct {
+	// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+	Uri *string `pulumi:"uri"`
+}
+
+// CloudRunRevisionEndpointInput is an input type that accepts CloudRunRevisionEndpointArgs and CloudRunRevisionEndpointOutput values.
+// You can construct a concrete instance of `CloudRunRevisionEndpointInput` via:
+//
+//	CloudRunRevisionEndpointArgs{...}
+type CloudRunRevisionEndpointInput interface {
+	pulumi.Input
+
+	ToCloudRunRevisionEndpointOutput() CloudRunRevisionEndpointOutput
+	ToCloudRunRevisionEndpointOutputWithContext(context.Context) CloudRunRevisionEndpointOutput
+}
+
+// Wrapper for Cloud Run revision attributes.
+type CloudRunRevisionEndpointArgs struct {
+	// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (CloudRunRevisionEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRevisionEndpoint)(nil)).Elem()
+}
+
+func (i CloudRunRevisionEndpointArgs) ToCloudRunRevisionEndpointOutput() CloudRunRevisionEndpointOutput {
+	return i.ToCloudRunRevisionEndpointOutputWithContext(context.Background())
+}
+
+func (i CloudRunRevisionEndpointArgs) ToCloudRunRevisionEndpointOutputWithContext(ctx context.Context) CloudRunRevisionEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRevisionEndpointOutput)
+}
+
+func (i CloudRunRevisionEndpointArgs) ToCloudRunRevisionEndpointPtrOutput() CloudRunRevisionEndpointPtrOutput {
+	return i.ToCloudRunRevisionEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i CloudRunRevisionEndpointArgs) ToCloudRunRevisionEndpointPtrOutputWithContext(ctx context.Context) CloudRunRevisionEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRevisionEndpointOutput).ToCloudRunRevisionEndpointPtrOutputWithContext(ctx)
+}
+
+// CloudRunRevisionEndpointPtrInput is an input type that accepts CloudRunRevisionEndpointArgs, CloudRunRevisionEndpointPtr and CloudRunRevisionEndpointPtrOutput values.
+// You can construct a concrete instance of `CloudRunRevisionEndpointPtrInput` via:
+//
+//	        CloudRunRevisionEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudRunRevisionEndpointPtrInput interface {
+	pulumi.Input
+
+	ToCloudRunRevisionEndpointPtrOutput() CloudRunRevisionEndpointPtrOutput
+	ToCloudRunRevisionEndpointPtrOutputWithContext(context.Context) CloudRunRevisionEndpointPtrOutput
+}
+
+type cloudRunRevisionEndpointPtrType CloudRunRevisionEndpointArgs
+
+func CloudRunRevisionEndpointPtr(v *CloudRunRevisionEndpointArgs) CloudRunRevisionEndpointPtrInput {
+	return (*cloudRunRevisionEndpointPtrType)(v)
+}
+
+func (*cloudRunRevisionEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunRevisionEndpoint)(nil)).Elem()
+}
+
+func (i *cloudRunRevisionEndpointPtrType) ToCloudRunRevisionEndpointPtrOutput() CloudRunRevisionEndpointPtrOutput {
+	return i.ToCloudRunRevisionEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRunRevisionEndpointPtrType) ToCloudRunRevisionEndpointPtrOutputWithContext(ctx context.Context) CloudRunRevisionEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRevisionEndpointPtrOutput)
+}
+
+// Wrapper for Cloud Run revision attributes.
+type CloudRunRevisionEndpointOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRevisionEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRevisionEndpoint)(nil)).Elem()
+}
+
+func (o CloudRunRevisionEndpointOutput) ToCloudRunRevisionEndpointOutput() CloudRunRevisionEndpointOutput {
+	return o
+}
+
+func (o CloudRunRevisionEndpointOutput) ToCloudRunRevisionEndpointOutputWithContext(ctx context.Context) CloudRunRevisionEndpointOutput {
+	return o
+}
+
+func (o CloudRunRevisionEndpointOutput) ToCloudRunRevisionEndpointPtrOutput() CloudRunRevisionEndpointPtrOutput {
+	return o.ToCloudRunRevisionEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o CloudRunRevisionEndpointOutput) ToCloudRunRevisionEndpointPtrOutputWithContext(ctx context.Context) CloudRunRevisionEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunRevisionEndpoint) *CloudRunRevisionEndpoint {
+		return &v
+	}).(CloudRunRevisionEndpointPtrOutput)
+}
+
+// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+func (o CloudRunRevisionEndpointOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudRunRevisionEndpoint) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type CloudRunRevisionEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRevisionEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunRevisionEndpoint)(nil)).Elem()
+}
+
+func (o CloudRunRevisionEndpointPtrOutput) ToCloudRunRevisionEndpointPtrOutput() CloudRunRevisionEndpointPtrOutput {
+	return o
+}
+
+func (o CloudRunRevisionEndpointPtrOutput) ToCloudRunRevisionEndpointPtrOutputWithContext(ctx context.Context) CloudRunRevisionEndpointPtrOutput {
+	return o
+}
+
+func (o CloudRunRevisionEndpointPtrOutput) Elem() CloudRunRevisionEndpointOutput {
+	return o.ApplyT(func(v *CloudRunRevisionEndpoint) CloudRunRevisionEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunRevisionEndpoint
+		return ret
+	}).(CloudRunRevisionEndpointOutput)
+}
+
+// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+func (o CloudRunRevisionEndpointPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunRevisionEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Wrapper for Cloud Run revision attributes.
+type CloudRunRevisionEndpointResponse struct {
+	// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+	Uri string `pulumi:"uri"`
+}
+
+// Wrapper for Cloud Run revision attributes.
+type CloudRunRevisionEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRevisionEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRevisionEndpointResponse)(nil)).Elem()
+}
+
+func (o CloudRunRevisionEndpointResponseOutput) ToCloudRunRevisionEndpointResponseOutput() CloudRunRevisionEndpointResponseOutput {
+	return o
+}
+
+func (o CloudRunRevisionEndpointResponseOutput) ToCloudRunRevisionEndpointResponseOutputWithContext(ctx context.Context) CloudRunRevisionEndpointResponseOutput {
+	return o
+}
+
+// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
+func (o CloudRunRevisionEndpointResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRevisionEndpointResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// For display only. Metadata associated with a Cloud Run revision.
+type CloudRunRevisionInfoResponse struct {
+	// Name of a Cloud Run revision.
+	DisplayName string `pulumi:"displayName"`
+	// Location in which this revision is deployed.
+	Location string `pulumi:"location"`
+	// URI of Cloud Run service this revision belongs to.
+	ServiceUri string `pulumi:"serviceUri"`
+	// URI of a Cloud Run revision.
+	Uri string `pulumi:"uri"`
+}
+
+// For display only. Metadata associated with a Cloud Run revision.
+type CloudRunRevisionInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRevisionInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRevisionInfoResponse)(nil)).Elem()
+}
+
+func (o CloudRunRevisionInfoResponseOutput) ToCloudRunRevisionInfoResponseOutput() CloudRunRevisionInfoResponseOutput {
+	return o
+}
+
+func (o CloudRunRevisionInfoResponseOutput) ToCloudRunRevisionInfoResponseOutputWithContext(ctx context.Context) CloudRunRevisionInfoResponseOutput {
+	return o
+}
+
+// Name of a Cloud Run revision.
+func (o CloudRunRevisionInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRevisionInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Location in which this revision is deployed.
+func (o CloudRunRevisionInfoResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRevisionInfoResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// URI of Cloud Run service this revision belongs to.
+func (o CloudRunRevisionInfoResponseOutput) ServiceUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRevisionInfoResponse) string { return v.ServiceUri }).(pulumi.StringOutput)
+}
+
+// URI of a Cloud Run revision.
+func (o CloudRunRevisionInfoResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRevisionInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // For display only. Metadata associated with a Cloud SQL instance.
 type CloudSQLInstanceInfoResponse struct {
 	// Name of a Cloud SQL instance.
@@ -894,8 +1320,12 @@ func (o DropInfoResponseOutput) ResourceUri() pulumi.StringOutput {
 
 // Source or destination of the Connectivity Test.
 type Endpoint struct {
+	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+	AppEngineVersion *AppEngineVersionEndpoint `pulumi:"appEngineVersion"`
 	// A [Cloud Function](https://cloud.google.com/functions).
 	CloudFunction *CloudFunctionEndpoint `pulumi:"cloudFunction"`
+	// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+	CloudRunRevision *CloudRunRevisionEndpoint `pulumi:"cloudRunRevision"`
 	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
 	CloudSqlInstance *string `pulumi:"cloudSqlInstance"`
 	// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
@@ -927,8 +1357,12 @@ type EndpointInput interface {
 
 // Source or destination of the Connectivity Test.
 type EndpointArgs struct {
+	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+	AppEngineVersion AppEngineVersionEndpointPtrInput `pulumi:"appEngineVersion"`
 	// A [Cloud Function](https://cloud.google.com/functions).
 	CloudFunction CloudFunctionEndpointPtrInput `pulumi:"cloudFunction"`
+	// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+	CloudRunRevision CloudRunRevisionEndpointPtrInput `pulumi:"cloudRunRevision"`
 	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
 	CloudSqlInstance pulumi.StringPtrInput `pulumi:"cloudSqlInstance"`
 	// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
@@ -974,9 +1408,19 @@ func (o EndpointOutput) ToEndpointOutputWithContext(ctx context.Context) Endpoin
 	return o
 }
 
+// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+func (o EndpointOutput) AppEngineVersion() AppEngineVersionEndpointPtrOutput {
+	return o.ApplyT(func(v Endpoint) *AppEngineVersionEndpoint { return v.AppEngineVersion }).(AppEngineVersionEndpointPtrOutput)
+}
+
 // A [Cloud Function](https://cloud.google.com/functions).
 func (o EndpointOutput) CloudFunction() CloudFunctionEndpointPtrOutput {
 	return o.ApplyT(func(v Endpoint) *CloudFunctionEndpoint { return v.CloudFunction }).(CloudFunctionEndpointPtrOutput)
+}
+
+// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+func (o EndpointOutput) CloudRunRevision() CloudRunRevisionEndpointPtrOutput {
+	return o.ApplyT(func(v Endpoint) *CloudRunRevisionEndpoint { return v.CloudRunRevision }).(CloudRunRevisionEndpointPtrOutput)
 }
 
 // A [Cloud SQL](https://cloud.google.com/sql) instance URI.
@@ -1089,8 +1533,12 @@ func (o EndpointInfoResponseOutput) SourcePort() pulumi.IntOutput {
 
 // Source or destination of the Connectivity Test.
 type EndpointResponse struct {
+	// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+	AppEngineVersion AppEngineVersionEndpointResponse `pulumi:"appEngineVersion"`
 	// A [Cloud Function](https://cloud.google.com/functions).
 	CloudFunction CloudFunctionEndpointResponse `pulumi:"cloudFunction"`
+	// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+	CloudRunRevision CloudRunRevisionEndpointResponse `pulumi:"cloudRunRevision"`
 	// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
 	CloudSqlInstance string `pulumi:"cloudSqlInstance"`
 	// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
@@ -1124,9 +1572,19 @@ func (o EndpointResponseOutput) ToEndpointResponseOutputWithContext(ctx context.
 	return o
 }
 
+// An [App Engine](https://cloud.google.com/appengine) [service version](https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions).
+func (o EndpointResponseOutput) AppEngineVersion() AppEngineVersionEndpointResponseOutput {
+	return o.ApplyT(func(v EndpointResponse) AppEngineVersionEndpointResponse { return v.AppEngineVersion }).(AppEngineVersionEndpointResponseOutput)
+}
+
 // A [Cloud Function](https://cloud.google.com/functions).
 func (o EndpointResponseOutput) CloudFunction() CloudFunctionEndpointResponseOutput {
 	return o.ApplyT(func(v EndpointResponse) CloudFunctionEndpointResponse { return v.CloudFunction }).(CloudFunctionEndpointResponseOutput)
+}
+
+// A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
+func (o EndpointResponseOutput) CloudRunRevision() CloudRunRevisionEndpointResponseOutput {
+	return o.ApplyT(func(v EndpointResponse) CloudRunRevisionEndpointResponse { return v.CloudRunRevision }).(CloudRunRevisionEndpointResponseOutput)
 }
 
 // A [Cloud SQL](https://cloud.google.com/sql) instance URI.
@@ -2094,10 +2552,14 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 type StepResponse struct {
 	// Display information of the final state "abort" and reason.
 	Abort AbortInfoResponse `pulumi:"abort"`
+	// Display information of an App Engine service version.
+	AppEngineVersion AppEngineVersionInfoResponse `pulumi:"appEngineVersion"`
 	// This is a step that leads to the final state Drop.
 	CausesDrop bool `pulumi:"causesDrop"`
 	// Display information of a Cloud Function.
 	CloudFunction CloudFunctionInfoResponse `pulumi:"cloudFunction"`
+	// Display information of a Cloud Run revision.
+	CloudRunRevision CloudRunRevisionInfoResponse `pulumi:"cloudRunRevision"`
 	// Display information of a Cloud SQL instance.
 	CloudSqlInstance CloudSQLInstanceInfoResponse `pulumi:"cloudSqlInstance"`
 	// Display information of the final state "deliver" and reason.
@@ -2156,6 +2618,11 @@ func (o StepResponseOutput) Abort() AbortInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) AbortInfoResponse { return v.Abort }).(AbortInfoResponseOutput)
 }
 
+// Display information of an App Engine service version.
+func (o StepResponseOutput) AppEngineVersion() AppEngineVersionInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) AppEngineVersionInfoResponse { return v.AppEngineVersion }).(AppEngineVersionInfoResponseOutput)
+}
+
 // This is a step that leads to the final state Drop.
 func (o StepResponseOutput) CausesDrop() pulumi.BoolOutput {
 	return o.ApplyT(func(v StepResponse) bool { return v.CausesDrop }).(pulumi.BoolOutput)
@@ -2164,6 +2631,11 @@ func (o StepResponseOutput) CausesDrop() pulumi.BoolOutput {
 // Display information of a Cloud Function.
 func (o StepResponseOutput) CloudFunction() CloudFunctionInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) CloudFunctionInfoResponse { return v.CloudFunction }).(CloudFunctionInfoResponseOutput)
+}
+
+// Display information of a Cloud Run revision.
+func (o StepResponseOutput) CloudRunRevision() CloudRunRevisionInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) CloudRunRevisionInfoResponse { return v.CloudRunRevision }).(CloudRunRevisionInfoResponseOutput)
 }
 
 // Display information of a Cloud SQL instance.
@@ -2513,6 +2985,8 @@ func (o VpnTunnelInfoResponseOutput) Uri() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionEndpointInput)(nil)).Elem(), AppEngineVersionEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppEngineVersionEndpointPtrInput)(nil)).Elem(), AppEngineVersionEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -2521,10 +2995,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionEndpointInput)(nil)).Elem(), CloudFunctionEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudFunctionEndpointPtrInput)(nil)).Elem(), CloudFunctionEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunRevisionEndpointInput)(nil)).Elem(), CloudRunRevisionEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunRevisionEndpointPtrInput)(nil)).Elem(), CloudRunRevisionEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EndpointInput)(nil)).Elem(), EndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterOutputType(AbortInfoResponseOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionEndpointOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionEndpointPtrOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionEndpointResponseOutput{})
+	pulumi.RegisterOutputType(AppEngineVersionInfoResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -2541,6 +3021,10 @@ func init() {
 	pulumi.RegisterOutputType(CloudFunctionEndpointPtrOutput{})
 	pulumi.RegisterOutputType(CloudFunctionEndpointResponseOutput{})
 	pulumi.RegisterOutputType(CloudFunctionInfoResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunRevisionEndpointOutput{})
+	pulumi.RegisterOutputType(CloudRunRevisionEndpointPtrOutput{})
+	pulumi.RegisterOutputType(CloudRunRevisionEndpointResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunRevisionInfoResponseOutput{})
 	pulumi.RegisterOutputType(CloudSQLInstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(DeliverInfoResponseOutput{})
 	pulumi.RegisterOutputType(DropInfoResponseOutput{})

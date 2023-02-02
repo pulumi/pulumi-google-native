@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Describe whether the function is gen1 or gen2.
+        /// Describe whether the function is 1st Gen or 2nd Gen.
         /// </summary>
         [Output("environment")]
         public Output<string> Environment { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Describe whether the function is gen1 or gen2.
+        /// Describe whether the function is 1st Gen or 2nd Gen.
         /// </summary>
         [Input("environment")]
         public Input<Pulumi.GoogleNative.CloudFunctions.V2Beta.FunctionEnvironment>? Environment { get; set; }

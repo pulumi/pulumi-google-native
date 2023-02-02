@@ -32,7 +32,7 @@ type LookupDeploymentResult struct {
 	AccessGuidance string `pulumi:"accessGuidance"`
 	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
 	Annotations map[string]string `pulumi:"annotations"`
-	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
 	ApiSpecRevision string `pulumi:"apiSpecRevision"`
 	// Creation timestamp; when the deployment resource was created.
 	CreateTime string `pulumi:"createTime"`
@@ -106,7 +106,7 @@ func (o LookupDeploymentResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
 func (o LookupDeploymentResultOutput) ApiSpecRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.ApiSpecRevision }).(pulumi.StringOutput)
 }

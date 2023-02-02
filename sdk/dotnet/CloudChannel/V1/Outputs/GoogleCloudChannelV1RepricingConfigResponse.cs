@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse ChannelPartnerGranularity;
         /// <summary>
+        /// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudChannelV1ConditionalOverrideResponse> ConditionalOverrides;
+        /// <summary>
         /// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
         /// </summary>
         public readonly Outputs.GoogleTypeDateResponse EffectiveInvoiceMonth;
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
 
             Outputs.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityResponse channelPartnerGranularity,
 
+            ImmutableArray<Outputs.GoogleCloudChannelV1ConditionalOverrideResponse> conditionalOverrides,
+
             Outputs.GoogleTypeDateResponse effectiveInvoiceMonth,
 
             Outputs.GoogleCloudChannelV1RepricingConfigEntitlementGranularityResponse entitlementGranularity,
@@ -51,6 +57,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
         {
             Adjustment = adjustment;
             ChannelPartnerGranularity = channelPartnerGranularity;
+            ConditionalOverrides = conditionalOverrides;
             EffectiveInvoiceMonth = effectiveInvoiceMonth;
             EntitlementGranularity = entitlementGranularity;
             RebillingBasis = rebillingBasis;

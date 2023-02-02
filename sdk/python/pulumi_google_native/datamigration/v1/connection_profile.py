@@ -25,11 +25,14 @@ class ConnectionProfileArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input['MySqlConnectionProfileArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oracle: Optional[pulumi.Input['OracleConnectionProfileArgs']] = None,
                  postgresql: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input['ConnectionProfileState']] = None):
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
+                 state: Optional[pulumi.Input['ConnectionProfileState']] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
@@ -39,10 +42,13 @@ class ConnectionProfileArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input['MySqlConnectionProfileArgs'] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
+        :param pulumi.Input['OracleConnectionProfileArgs'] oracle: An Oracle database connection profile.
         :param pulumi.Input['PostgreSqlConnectionProfileArgs'] postgresql: A PostgreSQL database connection profile.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
-        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         if alloydb is not None:
@@ -59,6 +65,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "mysql", mysql)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if oracle is not None:
+            pulumi.set(__self__, "oracle", oracle)
         if postgresql is not None:
             pulumi.set(__self__, "postgresql", postgresql)
         if project is not None:
@@ -67,8 +75,12 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "provider", provider)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if skip_validation is not None:
+            pulumi.set(__self__, "skip_validation", skip_validation)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -165,6 +177,18 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
+    def oracle(self) -> Optional[pulumi.Input['OracleConnectionProfileArgs']]:
+        """
+        An Oracle database connection profile.
+        """
+        return pulumi.get(self, "oracle")
+
+    @oracle.setter
+    def oracle(self, value: Optional[pulumi.Input['OracleConnectionProfileArgs']]):
+        pulumi.set(self, "oracle", value)
+
+    @property
+    @pulumi.getter
     def postgresql(self) -> Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']]:
         """
         A PostgreSQL database connection profile.
@@ -200,13 +224,25 @@ class ConnectionProfileArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 
     @request_id.setter
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
+
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+        """
+        return pulumi.get(self, "skip_validation")
+
+    @skip_validation.setter
+    def skip_validation(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_validation", value)
 
     @property
     @pulumi.getter
@@ -219,6 +255,18 @@ class ConnectionProfileArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input['ConnectionProfileState']]):
         pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+        """
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "validate_only", value)
 
 
 class ConnectionProfile(pulumi.CustomResource):
@@ -234,11 +282,14 @@ class ConnectionProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oracle: Optional[pulumi.Input[pulumi.InputType['OracleConnectionProfileArgs']]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new connection profile in a given project and location.
@@ -252,10 +303,13 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']] mysql: A MySQL database connection profile.
         :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}.
+        :param pulumi.Input[pulumi.InputType['OracleConnectionProfileArgs']] oracle: An Oracle database connection profile.
         :param pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']] postgresql: A PostgreSQL database connection profile.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
-        :param pulumi.Input[str] request_id: A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
         """
         ...
     @overload
@@ -289,11 +343,14 @@ class ConnectionProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 oracle: Optional[pulumi.Input[pulumi.InputType['OracleConnectionProfileArgs']]] = None,
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input['ConnectionProfileProvider']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 skip_validation: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input['ConnectionProfileState']] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -313,11 +370,14 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["mysql"] = mysql
             __props__.__dict__["name"] = name
+            __props__.__dict__["oracle"] = oracle
             __props__.__dict__["postgresql"] = postgresql
             __props__.__dict__["project"] = project
             __props__.__dict__["provider"] = provider
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["skip_validation"] = skip_validation
             __props__.__dict__["state"] = state
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["update_time"] = None
@@ -355,12 +415,15 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["mysql"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["oracle"] = None
         __props__.__dict__["postgresql"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["provider"] = None
         __props__.__dict__["request_id"] = None
+        __props__.__dict__["skip_validation"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -442,6 +505,14 @@ class ConnectionProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def oracle(self) -> pulumi.Output['outputs.OracleConnectionProfileResponse']:
+        """
+        An Oracle database connection profile.
+        """
+        return pulumi.get(self, "oracle")
+
+    @property
+    @pulumi.getter
     def postgresql(self) -> pulumi.Output['outputs.PostgreSqlConnectionProfileResponse']:
         """
         A PostgreSQL database connection profile.
@@ -465,9 +536,17 @@ class ConnectionProfile(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
+
+    @property
+    @pulumi.getter(name="skipValidation")
+    def skip_validation(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+        """
+        return pulumi.get(self, "skip_validation")
 
     @property
     @pulumi.getter
@@ -484,4 +563,12 @@ class ConnectionProfile(pulumi.CustomResource):
         The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+        """
+        return pulumi.get(self, "validate_only")
 

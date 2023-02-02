@@ -29,11 +29,13 @@ type Reservation struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies pulumi.StringMapOutput `pulumi:"resourcePolicies"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationResponseOutput `pulumi:"specificReservation"`
@@ -97,7 +99,7 @@ type reservationArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation *AllocationSpecificSKUReservation `pulumi:"specificReservation"`
@@ -118,7 +120,7 @@ type ReservationArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies pulumi.StringMapInput
-	// Share-settings for shared-reservation
+	// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 	ShareSettings ShareSettingsPtrInput
 	// Reservation for instances with specific machine shapes.
 	SpecificReservation AllocationSpecificSKUReservationPtrInput
@@ -204,6 +206,11 @@ func (o ReservationOutput) ResourcePolicies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringMapOutput { return v.ResourcePolicies }).(pulumi.StringMapOutput)
 }
 
+// Status information for Reservation resource.
+func (o ReservationOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Reservation) AllocationResourceStatusResponseOutput { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
+}
+
 // Reserved for future use.
 func (o ReservationOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
@@ -214,7 +221,7 @@ func (o ReservationOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Share-settings for shared-reservation
+// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
 func (o ReservationOutput) ShareSettings() ShareSettingsResponseOutput {
 	return o.ApplyT(func(v *Reservation) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }

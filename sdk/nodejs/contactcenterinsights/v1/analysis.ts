@@ -41,6 +41,10 @@ export class Analysis extends pulumi.CustomResource {
      * The result of the analysis, which is populated when the analysis finishes.
      */
     public /*out*/ readonly analysisResult!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnalysisResultResponse>;
+    /**
+     * To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+     */
+    public readonly annotatorSelector!: pulumi.Output<outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse>;
     public readonly conversationId!: pulumi.Output<string>;
     /**
      * The time at which the analysis was created, which occurs when the long-running operation completes.
@@ -71,6 +75,7 @@ export class Analysis extends pulumi.CustomResource {
             if ((!args || args.conversationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'conversationId'");
             }
+            resourceInputs["annotatorSelector"] = args ? args.annotatorSelector : undefined;
             resourceInputs["conversationId"] = args ? args.conversationId : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -80,6 +85,7 @@ export class Analysis extends pulumi.CustomResource {
             resourceInputs["requestTime"] = undefined /*out*/;
         } else {
             resourceInputs["analysisResult"] = undefined /*out*/;
+            resourceInputs["annotatorSelector"] = undefined /*out*/;
             resourceInputs["conversationId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -98,6 +104,10 @@ export class Analysis extends pulumi.CustomResource {
  * The set of arguments for constructing a Analysis resource.
  */
 export interface AnalysisArgs {
+    /**
+     * To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+     */
+    annotatorSelector?: pulumi.Input<inputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1AnnotatorSelectorArgs>;
     conversationId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**

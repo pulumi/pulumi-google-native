@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEvaluationResult:
-    def __init__(__self__, create_time=None, display_name=None, evaluation_config=None, name=None, smart_reply_metrics=None):
+    def __init__(__self__, create_time=None, display_name=None, evaluation_config=None, name=None, raw_human_eval_template_csv=None, smart_reply_metrics=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -32,6 +32,9 @@ class GetEvaluationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if raw_human_eval_template_csv and not isinstance(raw_human_eval_template_csv, str):
+            raise TypeError("Expected argument 'raw_human_eval_template_csv' to be a str")
+        pulumi.set(__self__, "raw_human_eval_template_csv", raw_human_eval_template_csv)
         if smart_reply_metrics and not isinstance(smart_reply_metrics, dict):
             raise TypeError("Expected argument 'smart_reply_metrics' to be a dict")
         pulumi.set(__self__, "smart_reply_metrics", smart_reply_metrics)
@@ -69,6 +72,14 @@ class GetEvaluationResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="rawHumanEvalTemplateCsv")
+    def raw_human_eval_template_csv(self) -> str:
+        """
+        Human eval template in csv format. It tooks real-world conversations provided through input dataset, generates example suggestions for customer to verify quality of the model. For Smart Reply, the generated csv file contains columns of Context, (Suggestions,Q1,Q2)*3, Actual reply. Context contains at most 10 latest messages in the conversation prior to the current suggestion. Q1: "Would you send it as the next message of agent?" Evaluated based on whether the suggest is appropriate to be sent by agent in current context. Q2: "Does the suggestion move the conversation closer to resolution?" Evaluated based on whether the suggestion provide solutions, or answers customer's question or collect information from customer to resolve the customer's issue. Actual reply column contains the actual agent reply sent in the context.
+        """
+        return pulumi.get(self, "raw_human_eval_template_csv")
+
+    @property
     @pulumi.getter(name="smartReplyMetrics")
     def smart_reply_metrics(self) -> 'outputs.GoogleCloudDialogflowV2SmartReplyMetricsResponse':
         """
@@ -87,6 +98,7 @@ class AwaitableGetEvaluationResult(GetEvaluationResult):
             display_name=self.display_name,
             evaluation_config=self.evaluation_config,
             name=self.name,
+            raw_human_eval_template_csv=self.raw_human_eval_template_csv,
             smart_reply_metrics=self.smart_reply_metrics)
 
 
@@ -111,6 +123,7 @@ def get_evaluation(conversation_model_id: Optional[str] = None,
         display_name=__ret__.display_name,
         evaluation_config=__ret__.evaluation_config,
         name=__ret__.name,
+        raw_human_eval_template_csv=__ret__.raw_human_eval_template_csv,
         smart_reply_metrics=__ret__.smart_reply_metrics)
 
 

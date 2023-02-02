@@ -27,9 +27,9 @@ type LookupDestGroupArgs struct {
 }
 
 type LookupDestGroupResult struct {
-	// null List of CIDRs that this group applies to.
+	// Unordered list. List of CIDRs that this group applies to.
 	Cidrs []string `pulumi:"cidrs"`
-	// null List of FQDNs that this group applies to.
+	// Unordered list. List of FQDNs that this group applies to.
 	Fqdns []string `pulumi:"fqdns"`
 	// Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
 	Name string `pulumi:"name"`
@@ -72,12 +72,12 @@ func (o LookupDestGroupResultOutput) ToLookupDestGroupResultOutputWithContext(ct
 	return o
 }
 
-// null List of CIDRs that this group applies to.
+// Unordered list. List of CIDRs that this group applies to.
 func (o LookupDestGroupResultOutput) Cidrs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDestGroupResult) []string { return v.Cidrs }).(pulumi.StringArrayOutput)
 }
 
-// null List of FQDNs that this group applies to.
+// Unordered list. List of FQDNs that this group applies to.
 func (o LookupDestGroupResultOutput) Fqdns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDestGroupResult) []string { return v.Fqdns }).(pulumi.StringArrayOutput)
 }

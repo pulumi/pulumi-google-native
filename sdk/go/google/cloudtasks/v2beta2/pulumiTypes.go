@@ -2428,6 +2428,172 @@ func (o OidcTokenResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v OidcTokenResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverride struct {
+	// The URI path (e.g., a/b/c). Default is Empty string.
+	Path *string `pulumi:"path"`
+}
+
+// PathOverrideInput is an input type that accepts PathOverrideArgs and PathOverrideOutput values.
+// You can construct a concrete instance of `PathOverrideInput` via:
+//
+//	PathOverrideArgs{...}
+type PathOverrideInput interface {
+	pulumi.Input
+
+	ToPathOverrideOutput() PathOverrideOutput
+	ToPathOverrideOutputWithContext(context.Context) PathOverrideOutput
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideArgs struct {
+	// The URI path (e.g., a/b/c). Default is Empty string.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (PathOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PathOverride)(nil)).Elem()
+}
+
+func (i PathOverrideArgs) ToPathOverrideOutput() PathOverrideOutput {
+	return i.ToPathOverrideOutputWithContext(context.Background())
+}
+
+func (i PathOverrideArgs) ToPathOverrideOutputWithContext(ctx context.Context) PathOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PathOverrideOutput)
+}
+
+func (i PathOverrideArgs) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return i.ToPathOverridePtrOutputWithContext(context.Background())
+}
+
+func (i PathOverrideArgs) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PathOverrideOutput).ToPathOverridePtrOutputWithContext(ctx)
+}
+
+// PathOverridePtrInput is an input type that accepts PathOverrideArgs, PathOverridePtr and PathOverridePtrOutput values.
+// You can construct a concrete instance of `PathOverridePtrInput` via:
+//
+//	        PathOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type PathOverridePtrInput interface {
+	pulumi.Input
+
+	ToPathOverridePtrOutput() PathOverridePtrOutput
+	ToPathOverridePtrOutputWithContext(context.Context) PathOverridePtrOutput
+}
+
+type pathOverridePtrType PathOverrideArgs
+
+func PathOverridePtr(v *PathOverrideArgs) PathOverridePtrInput {
+	return (*pathOverridePtrType)(v)
+}
+
+func (*pathOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PathOverride)(nil)).Elem()
+}
+
+func (i *pathOverridePtrType) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return i.ToPathOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *pathOverridePtrType) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PathOverridePtrOutput)
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideOutput struct{ *pulumi.OutputState }
+
+func (PathOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PathOverride)(nil)).Elem()
+}
+
+func (o PathOverrideOutput) ToPathOverrideOutput() PathOverrideOutput {
+	return o
+}
+
+func (o PathOverrideOutput) ToPathOverrideOutputWithContext(ctx context.Context) PathOverrideOutput {
+	return o
+}
+
+func (o PathOverrideOutput) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return o.ToPathOverridePtrOutputWithContext(context.Background())
+}
+
+func (o PathOverrideOutput) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PathOverride) *PathOverride {
+		return &v
+	}).(PathOverridePtrOutput)
+}
+
+// The URI path (e.g., a/b/c). Default is Empty string.
+func (o PathOverrideOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PathOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type PathOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (PathOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PathOverride)(nil)).Elem()
+}
+
+func (o PathOverridePtrOutput) ToPathOverridePtrOutput() PathOverridePtrOutput {
+	return o
+}
+
+func (o PathOverridePtrOutput) ToPathOverridePtrOutputWithContext(ctx context.Context) PathOverridePtrOutput {
+	return o
+}
+
+func (o PathOverridePtrOutput) Elem() PathOverrideOutput {
+	return o.ApplyT(func(v *PathOverride) PathOverride {
+		if v != nil {
+			return *v
+		}
+		var ret PathOverride
+		return ret
+	}).(PathOverrideOutput)
+}
+
+// The URI path (e.g., a/b/c). Default is Empty string.
+func (o PathOverridePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PathOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideResponse struct {
+	// The URI path (e.g., a/b/c). Default is Empty string.
+	Path string `pulumi:"path"`
+}
+
+// PathOverride. Path message defines path override for HTTP targets.
+type PathOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (PathOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PathOverrideResponse)(nil)).Elem()
+}
+
+func (o PathOverrideResponseOutput) ToPathOverrideResponseOutput() PathOverrideResponseOutput {
+	return o
+}
+
+func (o PathOverrideResponseOutput) ToPathOverrideResponseOutputWithContext(ctx context.Context) PathOverrideResponseOutput {
+	return o
+}
+
+// The URI path (e.g., a/b/c). Default is Empty string.
+func (o PathOverrideResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v PathOverrideResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
 // The pull message contains data that can be used by the caller of LeaseTasks to process the task. This proto can only be used for tasks in a queue which has pull_target set.
 type PullMessage struct {
 	// A data payload consumed by the worker to execute the task.
@@ -2758,6 +2924,172 @@ func (o PullTargetResponseOutput) ToPullTargetResponseOutput() PullTargetRespons
 
 func (o PullTargetResponseOutput) ToPullTargetResponseOutputWithContext(ctx context.Context) PullTargetResponseOutput {
 	return o
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverride struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+	QueryParams *string `pulumi:"queryParams"`
+}
+
+// QueryOverrideInput is an input type that accepts QueryOverrideArgs and QueryOverrideOutput values.
+// You can construct a concrete instance of `QueryOverrideInput` via:
+//
+//	QueryOverrideArgs{...}
+type QueryOverrideInput interface {
+	pulumi.Input
+
+	ToQueryOverrideOutput() QueryOverrideOutput
+	ToQueryOverrideOutputWithContext(context.Context) QueryOverrideOutput
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideArgs struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+	QueryParams pulumi.StringPtrInput `pulumi:"queryParams"`
+}
+
+func (QueryOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryOverride)(nil)).Elem()
+}
+
+func (i QueryOverrideArgs) ToQueryOverrideOutput() QueryOverrideOutput {
+	return i.ToQueryOverrideOutputWithContext(context.Background())
+}
+
+func (i QueryOverrideArgs) ToQueryOverrideOutputWithContext(ctx context.Context) QueryOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryOverrideOutput)
+}
+
+func (i QueryOverrideArgs) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return i.ToQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (i QueryOverrideArgs) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryOverrideOutput).ToQueryOverridePtrOutputWithContext(ctx)
+}
+
+// QueryOverridePtrInput is an input type that accepts QueryOverrideArgs, QueryOverridePtr and QueryOverridePtrOutput values.
+// You can construct a concrete instance of `QueryOverridePtrInput` via:
+//
+//	        QueryOverrideArgs{...}
+//
+//	or:
+//
+//	        nil
+type QueryOverridePtrInput interface {
+	pulumi.Input
+
+	ToQueryOverridePtrOutput() QueryOverridePtrOutput
+	ToQueryOverridePtrOutputWithContext(context.Context) QueryOverridePtrOutput
+}
+
+type queryOverridePtrType QueryOverrideArgs
+
+func QueryOverridePtr(v *QueryOverrideArgs) QueryOverridePtrInput {
+	return (*queryOverridePtrType)(v)
+}
+
+func (*queryOverridePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryOverride)(nil)).Elem()
+}
+
+func (i *queryOverridePtrType) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return i.ToQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (i *queryOverridePtrType) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryOverridePtrOutput)
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideOutput struct{ *pulumi.OutputState }
+
+func (QueryOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryOverride)(nil)).Elem()
+}
+
+func (o QueryOverrideOutput) ToQueryOverrideOutput() QueryOverrideOutput {
+	return o
+}
+
+func (o QueryOverrideOutput) ToQueryOverrideOutputWithContext(ctx context.Context) QueryOverrideOutput {
+	return o
+}
+
+func (o QueryOverrideOutput) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return o.ToQueryOverridePtrOutputWithContext(context.Background())
+}
+
+func (o QueryOverrideOutput) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v QueryOverride) *QueryOverride {
+		return &v
+	}).(QueryOverridePtrOutput)
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+func (o QueryOverrideOutput) QueryParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v QueryOverride) *string { return v.QueryParams }).(pulumi.StringPtrOutput)
+}
+
+type QueryOverridePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryOverridePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryOverride)(nil)).Elem()
+}
+
+func (o QueryOverridePtrOutput) ToQueryOverridePtrOutput() QueryOverridePtrOutput {
+	return o
+}
+
+func (o QueryOverridePtrOutput) ToQueryOverridePtrOutputWithContext(ctx context.Context) QueryOverridePtrOutput {
+	return o
+}
+
+func (o QueryOverridePtrOutput) Elem() QueryOverrideOutput {
+	return o.ApplyT(func(v *QueryOverride) QueryOverride {
+		if v != nil {
+			return *v
+		}
+		var ret QueryOverride
+		return ret
+	}).(QueryOverrideOutput)
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+func (o QueryOverridePtrOutput) QueryParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *QueryOverride) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryParams
+	}).(pulumi.StringPtrOutput)
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideResponse struct {
+	// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+	QueryParams string `pulumi:"queryParams"`
+}
+
+// QueryOverride. Query message defines query override for HTTP targets.
+type QueryOverrideResponseOutput struct{ *pulumi.OutputState }
+
+func (QueryOverrideResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*QueryOverrideResponse)(nil)).Elem()
+}
+
+func (o QueryOverrideResponseOutput) ToQueryOverrideResponseOutput() QueryOverrideResponseOutput {
+	return o
+}
+
+func (o QueryOverrideResponseOutput) ToQueryOverrideResponseOutputWithContext(ctx context.Context) QueryOverrideResponseOutput {
+	return o
+}
+
+// The query parameters (e.g., qparam1=123&qparam2=456). Default is Empty string.
+func (o QueryOverrideResponseOutput) QueryParams() pulumi.StringOutput {
+	return o.ApplyT(func(v QueryOverrideResponse) string { return v.QueryParams }).(pulumi.StringOutput)
 }
 
 // Statistics for a queue.
@@ -3417,17 +3749,17 @@ func (o TaskStatusResponseOutput) LastAttemptStatus() AttemptStatusResponseOutpu
 
 // Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
 type UriOverride struct {
-	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+	// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
 	Host *string `pulumi:"host"`
-	// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-	Path *string `pulumi:"path"`
-	// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+	// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+	PathOverride *PathOverride `pulumi:"pathOverride"`
+	// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
 	Port *string `pulumi:"port"`
-	// Uri Query. Will replace the query part of the task uri.
-	Query *string `pulumi:"query"`
-	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+	// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	QueryOverride *QueryOverride `pulumi:"queryOverride"`
+	// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 	Scheme *UriOverrideScheme `pulumi:"scheme"`
-	// Uri Override Enforce Mode Determines the Target UriOverride mode.
+	// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 	UriOverrideEnforceMode *UriOverrideUriOverrideEnforceMode `pulumi:"uriOverrideEnforceMode"`
 }
 
@@ -3444,17 +3776,17 @@ type UriOverrideInput interface {
 
 // Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
 type UriOverrideArgs struct {
-	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+	// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
 	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+	// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+	PathOverride PathOverridePtrInput `pulumi:"pathOverride"`
+	// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
 	Port pulumi.StringPtrInput `pulumi:"port"`
-	// Uri Query. Will replace the query part of the task uri.
-	Query pulumi.StringPtrInput `pulumi:"query"`
-	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+	// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	QueryOverride QueryOverridePtrInput `pulumi:"queryOverride"`
+	// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 	Scheme UriOverrideSchemePtrInput `pulumi:"scheme"`
-	// Uri Override Enforce Mode Determines the Target UriOverride mode.
+	// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 	UriOverrideEnforceMode UriOverrideUriOverrideEnforceModePtrInput `pulumi:"uriOverrideEnforceMode"`
 }
 
@@ -3536,32 +3868,32 @@ func (o UriOverrideOutput) ToUriOverridePtrOutputWithContext(ctx context.Context
 	}).(UriOverridePtrOutput)
 }
 
-// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
 func (o UriOverrideOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriOverride) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-func (o UriOverrideOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UriOverride) *string { return v.Path }).(pulumi.StringPtrOutput)
+// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+func (o UriOverrideOutput) PathOverride() PathOverridePtrOutput {
+	return o.ApplyT(func(v UriOverride) *PathOverride { return v.PathOverride }).(PathOverridePtrOutput)
 }
 
-// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
 func (o UriOverrideOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UriOverride) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// Uri Query. Will replace the query part of the task uri.
-func (o UriOverrideOutput) Query() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UriOverride) *string { return v.Query }).(pulumi.StringPtrOutput)
+// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+func (o UriOverrideOutput) QueryOverride() QueryOverridePtrOutput {
+	return o.ApplyT(func(v UriOverride) *QueryOverride { return v.QueryOverride }).(QueryOverridePtrOutput)
 }
 
-// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 func (o UriOverrideOutput) Scheme() UriOverrideSchemePtrOutput {
 	return o.ApplyT(func(v UriOverride) *UriOverrideScheme { return v.Scheme }).(UriOverrideSchemePtrOutput)
 }
 
-// Uri Override Enforce Mode Determines the Target UriOverride mode.
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 func (o UriOverrideOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnforceModePtrOutput {
 	return o.ApplyT(func(v UriOverride) *UriOverrideUriOverrideEnforceMode { return v.UriOverrideEnforceMode }).(UriOverrideUriOverrideEnforceModePtrOutput)
 }
@@ -3590,7 +3922,7 @@ func (o UriOverridePtrOutput) Elem() UriOverrideOutput {
 	}).(UriOverrideOutput)
 }
 
-// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
 func (o UriOverridePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UriOverride) *string {
 		if v == nil {
@@ -3600,17 +3932,17 @@ func (o UriOverridePtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-func (o UriOverridePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UriOverride) *string {
+// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+func (o UriOverridePtrOutput) PathOverride() PathOverridePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *PathOverride {
 		if v == nil {
 			return nil
 		}
-		return v.Path
-	}).(pulumi.StringPtrOutput)
+		return v.PathOverride
+	}).(PathOverridePtrOutput)
 }
 
-// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
 func (o UriOverridePtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UriOverride) *string {
 		if v == nil {
@@ -3620,17 +3952,17 @@ func (o UriOverridePtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Uri Query. Will replace the query part of the task uri.
-func (o UriOverridePtrOutput) Query() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *UriOverride) *string {
+// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+func (o UriOverridePtrOutput) QueryOverride() QueryOverridePtrOutput {
+	return o.ApplyT(func(v *UriOverride) *QueryOverride {
 		if v == nil {
 			return nil
 		}
-		return v.Query
-	}).(pulumi.StringPtrOutput)
+		return v.QueryOverride
+	}).(QueryOverridePtrOutput)
 }
 
-// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 func (o UriOverridePtrOutput) Scheme() UriOverrideSchemePtrOutput {
 	return o.ApplyT(func(v *UriOverride) *UriOverrideScheme {
 		if v == nil {
@@ -3640,7 +3972,7 @@ func (o UriOverridePtrOutput) Scheme() UriOverrideSchemePtrOutput {
 	}).(UriOverrideSchemePtrOutput)
 }
 
-// Uri Override Enforce Mode Determines the Target UriOverride mode.
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 func (o UriOverridePtrOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnforceModePtrOutput {
 	return o.ApplyT(func(v *UriOverride) *UriOverrideUriOverrideEnforceMode {
 		if v == nil {
@@ -3652,17 +3984,17 @@ func (o UriOverridePtrOutput) UriOverrideEnforceMode() UriOverrideUriOverrideEnf
 
 // Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
 type UriOverrideResponse struct {
-	// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+	// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
 	Host string `pulumi:"host"`
-	// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-	Path string `pulumi:"path"`
-	// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+	// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+	PathOverride PathOverrideResponse `pulumi:"pathOverride"`
+	// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
 	Port string `pulumi:"port"`
-	// Uri Query. Will replace the query part of the task uri.
-	Query string `pulumi:"query"`
-	// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+	// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+	QueryOverride QueryOverrideResponse `pulumi:"queryOverride"`
+	// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 	Scheme string `pulumi:"scheme"`
-	// Uri Override Enforce Mode Determines the Target UriOverride mode.
+	// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 	UriOverrideEnforceMode string `pulumi:"uriOverrideEnforceMode"`
 }
 
@@ -3681,32 +4013,32 @@ func (o UriOverrideResponseOutput) ToUriOverrideResponseOutputWithContext(ctx co
 	return o
 }
 
-// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
+// Host override. When specified, will replace the host part of the task URL. For example, if the task URL is "https://www.google.com", and host value is set to "example.net", the overridden URI will be changed to "https://example.net". Host value cannot be an empty string.
 func (o UriOverrideResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v UriOverrideResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Uri path. Will be used as the path for the current Uri (replaces any existing path of the task url).
-func (o UriOverrideResponseOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v UriOverrideResponse) string { return v.Path }).(pulumi.StringOutput)
+// URI path. When specified, will replace the existing path of the task URL. Setting the path value to an empty string clears the URI path segment.
+func (o UriOverrideResponseOutput) PathOverride() PathOverrideResponseOutput {
+	return o.ApplyT(func(v UriOverrideResponse) PathOverrideResponse { return v.PathOverride }).(PathOverrideResponseOutput)
 }
 
-// Port override. When specified, the port part of Uri will be replaced by the provided value. For instance, for a Uri http://www.google.com/foo and port=123 the overridden Uri becomes http://www.google.com:123/foo.
+// Port override. When specified, will replace the port part of the task URI. For instance, for a URI http://www.google.com/foo and port=123, the overridden URI becomes http://www.google.com:123/foo. Note that the port value must be a positive integer. Setting the port to 0 (Zero) clears the URI port.
 func (o UriOverrideResponseOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v UriOverrideResponse) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// Uri Query. Will replace the query part of the task uri.
-func (o UriOverrideResponseOutput) Query() pulumi.StringOutput {
-	return o.ApplyT(func(v UriOverrideResponse) string { return v.Query }).(pulumi.StringOutput)
+// URI Query. When specified, will replace the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
+func (o UriOverrideResponseOutput) QueryOverride() QueryOverrideResponseOutput {
+	return o.ApplyT(func(v UriOverrideResponse) QueryOverrideResponse { return v.QueryOverride }).(QueryOverrideResponseOutput)
 }
 
-// Scheme override. When specified, the Uri scheme is replaced by the provided value.
+// Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
 func (o UriOverrideResponseOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v UriOverrideResponse) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
-// Uri Override Enforce Mode Determines the Target UriOverride mode.
+// URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
 func (o UriOverrideResponseOutput) UriOverrideEnforceMode() pulumi.StringOutput {
 	return o.ApplyT(func(v UriOverrideResponse) string { return v.UriOverrideEnforceMode }).(pulumi.StringOutput)
 }
@@ -3734,10 +4066,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OAuthTokenPtrInput)(nil)).Elem(), OAuthTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenInput)(nil)).Elem(), OidcTokenArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcTokenPtrInput)(nil)).Elem(), OidcTokenArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathOverrideInput)(nil)).Elem(), PathOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PathOverridePtrInput)(nil)).Elem(), PathOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessageInput)(nil)).Elem(), PullMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullMessagePtrInput)(nil)).Elem(), PullMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullTargetInput)(nil)).Elem(), PullTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PullTargetPtrInput)(nil)).Elem(), PullTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryOverrideInput)(nil)).Elem(), QueryOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*QueryOverridePtrInput)(nil)).Elem(), QueryOverrideArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsInput)(nil)).Elem(), RateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RateLimitsPtrInput)(nil)).Elem(), RateLimitsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RetryConfigInput)(nil)).Elem(), RetryConfigArgs{})
@@ -3780,12 +4116,18 @@ func init() {
 	pulumi.RegisterOutputType(OidcTokenOutput{})
 	pulumi.RegisterOutputType(OidcTokenPtrOutput{})
 	pulumi.RegisterOutputType(OidcTokenResponseOutput{})
+	pulumi.RegisterOutputType(PathOverrideOutput{})
+	pulumi.RegisterOutputType(PathOverridePtrOutput{})
+	pulumi.RegisterOutputType(PathOverrideResponseOutput{})
 	pulumi.RegisterOutputType(PullMessageOutput{})
 	pulumi.RegisterOutputType(PullMessagePtrOutput{})
 	pulumi.RegisterOutputType(PullMessageResponseOutput{})
 	pulumi.RegisterOutputType(PullTargetOutput{})
 	pulumi.RegisterOutputType(PullTargetPtrOutput{})
 	pulumi.RegisterOutputType(PullTargetResponseOutput{})
+	pulumi.RegisterOutputType(QueryOverrideOutput{})
+	pulumi.RegisterOutputType(QueryOverridePtrOutput{})
+	pulumi.RegisterOutputType(QueryOverrideResponseOutput{})
 	pulumi.RegisterOutputType(QueueStatsResponseOutput{})
 	pulumi.RegisterOutputType(RateLimitsOutput{})
 	pulumi.RegisterOutputType(RateLimitsPtrOutput{})

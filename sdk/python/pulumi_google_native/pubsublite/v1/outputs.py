@@ -14,7 +14,9 @@ from ._enums import *
 __all__ = [
     'CapacityResponse',
     'DeliveryConfigResponse',
+    'ExportConfigResponse',
     'PartitionConfigResponse',
+    'PubSubConfigResponse',
     'ReservationConfigResponse',
     'RetentionConfigResponse',
 ]
@@ -111,6 +113,84 @@ class DeliveryConfigResponse(dict):
 
 
 @pulumi.output_type
+class ExportConfigResponse(dict):
+    """
+    Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentState":
+            suggest = "current_state"
+        elif key == "deadLetterTopic":
+            suggest = "dead_letter_topic"
+        elif key == "desiredState":
+            suggest = "desired_state"
+        elif key == "pubsubConfig":
+            suggest = "pubsub_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExportConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExportConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExportConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 current_state: str,
+                 dead_letter_topic: str,
+                 desired_state: str,
+                 pubsub_config: 'outputs.PubSubConfigResponse'):
+        """
+        Configuration for a Pub/Sub Lite subscription that writes messages to a destination. User subscriber clients must not connect to this subscription.
+        :param str current_state: The current state of the export, which may be different to the desired state due to errors. This field is output only.
+        :param str dead_letter_topic: Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+        :param str desired_state: The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+        :param 'PubSubConfigResponse' pubsub_config: Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+        """
+        pulumi.set(__self__, "current_state", current_state)
+        pulumi.set(__self__, "dead_letter_topic", dead_letter_topic)
+        pulumi.set(__self__, "desired_state", desired_state)
+        pulumi.set(__self__, "pubsub_config", pubsub_config)
+
+    @property
+    @pulumi.getter(name="currentState")
+    def current_state(self) -> str:
+        """
+        The current state of the export, which may be different to the desired state due to errors. This field is output only.
+        """
+        return pulumi.get(self, "current_state")
+
+    @property
+    @pulumi.getter(name="deadLetterTopic")
+    def dead_letter_topic(self) -> str:
+        """
+        Optional. The name of an optional Pub/Sub Lite topic to publish messages that can not be exported to the destination. For example, the message can not be published to the Pub/Sub service because it does not satisfy the constraints documented at https://cloud.google.com/pubsub/docs/publisher. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}. Must be within the same project and location as the subscription. The topic may be changed or removed.
+        """
+        return pulumi.get(self, "dead_letter_topic")
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> str:
+        """
+        The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @property
+    @pulumi.getter(name="pubsubConfig")
+    def pubsub_config(self) -> 'outputs.PubSubConfigResponse':
+        """
+        Messages are automatically written from the Pub/Sub Lite topic associated with this subscription to a Pub/Sub topic.
+        """
+        return pulumi.get(self, "pubsub_config")
+
+
+@pulumi.output_type
 class PartitionConfigResponse(dict):
     """
     The settings for a topic's partitions.
@@ -152,6 +232,28 @@ class PartitionConfigResponse(dict):
         DEPRECATED: Use capacity instead which can express a superset of configurations. Every partition in the topic is allocated throughput equivalent to `scale` times the standard partition throughput (4 MiB/s). This is also reflected in the cost of this topic; a topic with `scale` of 2 and count of 10 is charged for 20 partitions. This value must be in the range [1,4].
         """
         return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class PubSubConfigResponse(dict):
+    """
+    Configuration for exporting to a Pub/Sub topic.
+    """
+    def __init__(__self__, *,
+                 topic: str):
+        """
+        Configuration for exporting to a Pub/Sub topic.
+        :param str topic: The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+        """
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
+        """
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type

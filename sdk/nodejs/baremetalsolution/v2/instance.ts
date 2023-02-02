@@ -105,6 +105,10 @@ export class Instance extends pulumi.CustomResource {
      * Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
      */
     public readonly volumes!: pulumi.Output<outputs.baremetalsolution.v2.VolumeResponse[]>;
+    /**
+     * The workload profile for the instance.
+     */
+    public readonly workloadProfile!: pulumi.Output<string>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -129,6 +133,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["pod"] = args ? args.pod : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["volumes"] = args ? args.volumes : undefined;
+            resourceInputs["workloadProfile"] = args ? args.workloadProfile : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["interactiveSerialConsoleEnabled"] = undefined /*out*/;
             resourceInputs["loginInfo"] = undefined /*out*/;
@@ -154,6 +159,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["volumes"] = undefined /*out*/;
+            resourceInputs["workloadProfile"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
@@ -208,4 +214,8 @@ export interface InstanceArgs {
      * Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in Get/List responses.
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.baremetalsolution.v2.VolumeArgs>[]>;
+    /**
+     * The workload profile for the instance.
+     */
+    workloadProfile?: pulumi.Input<enums.baremetalsolution.v2.InstanceWorkloadProfile>;
 }

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class GitHubEventsConfigResponse
     {
         /// <summary>
-        /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         public readonly string EnterpriseConfigResourceName;
         /// <summary>

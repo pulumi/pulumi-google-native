@@ -65,6 +65,8 @@ type LookupConfigResult struct {
 	Name string `pulumi:"name"`
 	// The Google project that owns this service.
 	ProducerProjectId string `pulumi:"producerProjectId"`
+	// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+	Publishing PublishingResponse `pulumi:"publishing"`
 	// Quota configuration.
 	Quota QuotaResponse `pulumi:"quota"`
 	// The source information for this configuration if available.
@@ -211,6 +213,11 @@ func (o LookupConfigResultOutput) Name() pulumi.StringOutput {
 // The Google project that owns this service.
 func (o LookupConfigResultOutput) ProducerProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConfigResult) string { return v.ProducerProjectId }).(pulumi.StringOutput)
+}
+
+// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+func (o LookupConfigResultOutput) Publishing() PublishingResponseOutput {
+	return o.ApplyT(func(v LookupConfigResult) PublishingResponse { return v.Publishing }).(PublishingResponseOutput)
 }
 
 // Quota configuration.

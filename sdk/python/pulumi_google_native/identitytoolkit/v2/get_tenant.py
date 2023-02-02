@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTenantResult:
-    def __init__(__self__, allow_password_signup=None, autodelete_anonymous_users=None, client=None, disable_auth=None, display_name=None, enable_anonymous_user=None, enable_email_link_signin=None, hash_config=None, inheritance=None, mfa_config=None, monitoring=None, name=None, sms_region_config=None, test_phone_numbers=None):
+    def __init__(__self__, allow_password_signup=None, autodelete_anonymous_users=None, client=None, disable_auth=None, display_name=None, email_privacy_config=None, enable_anonymous_user=None, enable_email_link_signin=None, hash_config=None, inheritance=None, mfa_config=None, monitoring=None, name=None, sms_region_config=None, test_phone_numbers=None):
         if allow_password_signup and not isinstance(allow_password_signup, bool):
             raise TypeError("Expected argument 'allow_password_signup' to be a bool")
         pulumi.set(__self__, "allow_password_signup", allow_password_signup)
@@ -35,6 +35,9 @@ class GetTenantResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if email_privacy_config and not isinstance(email_privacy_config, dict):
+            raise TypeError("Expected argument 'email_privacy_config' to be a dict")
+        pulumi.set(__self__, "email_privacy_config", email_privacy_config)
         if enable_anonymous_user and not isinstance(enable_anonymous_user, bool):
             raise TypeError("Expected argument 'enable_anonymous_user' to be a bool")
         pulumi.set(__self__, "enable_anonymous_user", enable_anonymous_user)
@@ -102,6 +105,14 @@ class GetTenantResult:
         Display name of the tenant.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="emailPrivacyConfig")
+    def email_privacy_config(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse':
+        """
+        Configuration for settings related to email privacy and public visibility.
+        """
+        return pulumi.get(self, "email_privacy_config")
 
     @property
     @pulumi.getter(name="enableAnonymousUser")
@@ -187,6 +198,7 @@ class AwaitableGetTenantResult(GetTenantResult):
             client=self.client,
             disable_auth=self.disable_auth,
             display_name=self.display_name,
+            email_privacy_config=self.email_privacy_config,
             enable_anonymous_user=self.enable_anonymous_user,
             enable_email_link_signin=self.enable_email_link_signin,
             hash_config=self.hash_config,
@@ -216,6 +228,7 @@ def get_tenant(project: Optional[str] = None,
         client=__ret__.client,
         disable_auth=__ret__.disable_auth,
         display_name=__ret__.display_name,
+        email_privacy_config=__ret__.email_privacy_config,
         enable_anonymous_user=__ret__.enable_anonymous_user,
         enable_email_link_signin=__ret__.enable_email_link_signin,
         hash_config=__ret__.hash_config,

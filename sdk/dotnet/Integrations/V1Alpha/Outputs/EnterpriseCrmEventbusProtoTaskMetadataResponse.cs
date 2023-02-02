@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
 {
 
     /// <summary>
-    /// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+    /// TaskMetadata are attributes that are associated to every common Task we have.
     /// </summary>
     [OutputType]
     public sealed class EnterpriseCrmEventbusProtoTaskMetadataResponse
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Outputs
         /// </summary>
         public readonly string G3DocLink;
         /// <summary>
-        /// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+        /// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
         /// </summary>
         public readonly string IconLink;
         /// <summary>

@@ -276,7 +276,7 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public static PersistenceConfigRdbSnapshotPeriod TwelveHours { get; } = new PersistenceConfigRdbSnapshotPeriod("TWELVE_HOURS");
         /// <summary>
-        /// Snapshot every 24 horus.
+        /// Snapshot every 24 hours.
         /// </summary>
         public static PersistenceConfigRdbSnapshotPeriod TwentyFourHours { get; } = new PersistenceConfigRdbSnapshotPeriod("TWENTY_FOUR_HOURS");
 

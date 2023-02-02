@@ -90,6 +90,47 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
     }
 
     /// <summary>
+    /// The workload profile for the instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceWorkloadProfile : IEquatable<InstanceWorkloadProfile>
+    {
+        private readonly string _value;
+
+        private InstanceWorkloadProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The workload profile is in an unknown state.
+        /// </summary>
+        public static InstanceWorkloadProfile WorkloadProfileUnspecified { get; } = new InstanceWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// The workload profile is generic.
+        /// </summary>
+        public static InstanceWorkloadProfile WorkloadProfileGeneric { get; } = new InstanceWorkloadProfile("WORKLOAD_PROFILE_GENERIC");
+        /// <summary>
+        /// The workload profile is hana.
+        /// </summary>
+        public static InstanceWorkloadProfile WorkloadProfileHana { get; } = new InstanceWorkloadProfile("WORKLOAD_PROFILE_HANA");
+
+        public static bool operator ==(InstanceWorkloadProfile left, InstanceWorkloadProfile right) => left.Equals(right);
+        public static bool operator !=(InstanceWorkloadProfile left, InstanceWorkloadProfile right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceWorkloadProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceWorkloadProfile other && Equals(other);
+        public bool Equals(InstanceWorkloadProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Type of network.
     /// </summary>
     [EnumType]
@@ -778,6 +819,47 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VolumeStorageType other && Equals(other);
         public bool Equals(VolumeStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The workload profile for the volume.
+    /// </summary>
+    [EnumType]
+    public readonly struct VolumeWorkloadProfile : IEquatable<VolumeWorkloadProfile>
+    {
+        private readonly string _value;
+
+        private VolumeWorkloadProfile(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The workload profile is in an unknown state.
+        /// </summary>
+        public static VolumeWorkloadProfile WorkloadProfileUnspecified { get; } = new VolumeWorkloadProfile("WORKLOAD_PROFILE_UNSPECIFIED");
+        /// <summary>
+        /// The workload profile is generic.
+        /// </summary>
+        public static VolumeWorkloadProfile Generic { get; } = new VolumeWorkloadProfile("GENERIC");
+        /// <summary>
+        /// The workload profile is hana.
+        /// </summary>
+        public static VolumeWorkloadProfile Hana { get; } = new VolumeWorkloadProfile("HANA");
+
+        public static bool operator ==(VolumeWorkloadProfile left, VolumeWorkloadProfile right) => left.Equals(right);
+        public static bool operator !=(VolumeWorkloadProfile left, VolumeWorkloadProfile right) => !left.Equals(right);
+
+        public static explicit operator string(VolumeWorkloadProfile value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VolumeWorkloadProfile other && Equals(other);
+        public bool Equals(VolumeWorkloadProfile other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

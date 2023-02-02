@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public static InternalRangeOverlapsItem OverlapUnspecified { get; } = new InternalRangeOverlapsItem("OVERLAP_UNSPECIFIED");
         /// <summary>
-        /// Allow creation of static routes more specific that the current InternalRange.
+        /// Allow creation of static routes more specific that the current internal range.
         /// </summary>
         public static InternalRangeOverlapsItem OverlapRouteRange { get; } = new InternalRangeOverlapsItem("OVERLAP_ROUTE_RANGE");
 
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     }
 
     /// <summary>
-    /// The type of peering set for this InternalRange.
+    /// The type of peering set for this internal range.
     /// </summary>
     [EnumType]
     public readonly struct InternalRangePeering : IEquatable<InternalRangePeering>
@@ -104,15 +104,15 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         /// </summary>
         public static InternalRangePeering PeeringUnspecified { get; } = new InternalRangePeering("PEERING_UNSPECIFIED");
         /// <summary>
-        /// This is the default behavior and represents the case that this InternalRange is intended to be used in the VPC on which it is created and is accessible from it’s peers. This implies that peers or peer-of-peer’s cannot use this range.
+        /// This is the default behavior and represents the case that this internal range is intended to be used in the VPC in which it is created and is accessible from its peers. This implies that peers or peers-of-peers cannot use this range.
         /// </summary>
         public static InternalRangePeering ForSelf { get; } = new InternalRangePeering("FOR_SELF");
         /// <summary>
-        /// This behavior can be set when the Internal Range is being reserved for usage by the peers. This means that no resource within the VPC in which it is being created can use this to associate with a GCP resource, but one of the peer’s can. This represents "donating" a range for peers to use.
+        /// This behavior can be set when the internal range is being reserved for usage by peers. This means that no resource within the VPC in which it is being created can use this to associate with a VPC resource, but one of the peers can. This represents donating a range for peers to use.
         /// </summary>
         public static InternalRangePeering ForPeer { get; } = new InternalRangePeering("FOR_PEER");
         /// <summary>
-        /// This behavior can be set when the Internal Range is being reserved for usage by the VPC on which it is created but not shared with the peers. In a sense it is local to the VPC. This can be used to create Internal Ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or for interconnect routes that are not shared with peers. This also implies that peer’s cannot use this range in a way that is visible to this VPC, but can re-use this range as long as it is NOT_SHARED from the peer VPC too.
+        /// This behavior can be set when the internal range is being reserved for usage by the VPC in which it is created, but not shared with peers. In a sense, it is local to the VPC. This can be used to create internal ranges for various purposes like HTTP_INTERNAL_LOAD_BALANCER or for Interconnect routes that are not shared with peers. This also implies that peers cannot use this range in a way that is visible to this VPC, but can re-use this range as long as it is NOT_SHARED from the peer VPC, too.
         /// </summary>
         public static InternalRangePeering NotShared { get; } = new InternalRangePeering("NOT_SHARED");
 
@@ -145,15 +145,15 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         }
 
         /// <summary>
-        /// Unspecified usage is allowed in calls which identify the resource by other fields and do not need Usage set to complete. These are i.e.: GetInternalRange and DeleteInternalRange. Usage needs to be specified explicitly in CreateInternalRange or UpdateInternalRange calls.
+        /// Unspecified usage is allowed in calls which identify the resource by other fields and do not need Usage set to complete. These are, i.e.: GetInternalRange and DeleteInternalRange. Usage needs to be specified explicitly in CreateInternalRange or UpdateInternalRange calls.
         /// </summary>
         public static InternalRangeUsage UsageUnspecified { get; } = new InternalRangeUsage("USAGE_UNSPECIFIED");
         /// <summary>
-        /// A GCP resource can use the reserved CIDR block by associating it with the Internal Range resource if usage is set to FOR_VPC.
+        /// A VPC resource can use the reserved CIDR block by associating it with the internal range resource if usage is set to FOR_VPC.
         /// </summary>
         public static InternalRangeUsage ForVpc { get; } = new InternalRangeUsage("FOR_VPC");
         /// <summary>
-        /// Ranges created with EXTERNAL_TO_VPC cannot be associated with GCP resources and are meant to block out address ranges for various use cases, like for example, usage on-prem, with dynamic route announcements via interconnect.
+        /// Ranges created with EXTERNAL_TO_VPC cannot be associated with VPC resources and are meant to block out address ranges for various use cases, like for example, usage on-prem, with dynamic route announcements via interconnect.
         /// </summary>
         public static InternalRangeUsage ExternalToVpc { get; } = new InternalRangeUsage("EXTERNAL_TO_VPC");
 

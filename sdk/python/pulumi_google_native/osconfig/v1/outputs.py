@@ -694,7 +694,7 @@ class OSPolicyResourceExecResourceExecResponse(dict):
         :param 'OSPolicyResourceFileResponse' file: A remote or local file.
         :param str interpreter: The script interpreter to use.
         :param str output_file_path: Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
-        :param str script: An inline script. The size of the script is limited to 1024 characters.
+        :param str script: An inline script. The size of the script is limited to 32KiB.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "file", file)
@@ -738,7 +738,7 @@ class OSPolicyResourceExecResourceExecResponse(dict):
     @pulumi.getter
     def script(self) -> str:
         """
-        An inline script. The size of the script is limited to 1024 characters.
+        An inline script. The size of the script is limited to 32KiB.
         """
         return pulumi.get(self, "script")
 
@@ -883,7 +883,7 @@ class OSPolicyResourceFileResourceResponse(dict):
                  state: str):
         """
         A resource that manages the state of a file.
-        :param str content: A a file with this content. The size of the content is limited to 1024 characters.
+        :param str content: A a file with this content. The size of the content is limited to 32KiB.
         :param 'OSPolicyResourceFileResponse' file: A remote or local source.
         :param str path: The absolute path of the file within the VM.
         :param str permissions: Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
@@ -899,7 +899,7 @@ class OSPolicyResourceFileResourceResponse(dict):
     @pulumi.getter
     def content(self) -> str:
         """
-        A a file with this content. The size of the content is limited to 1024 characters.
+        A a file with this content. The size of the content is limited to 32KiB.
         """
         return pulumi.get(self, "content")
 

@@ -2047,7 +2047,7 @@ func (o LockConfigResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v LockConfigResponse) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// Configuration for the connection.
+// Node configuration for the connection.
 type NodeConfig struct {
 	// Maximum number of nodes in the runtime nodes.
 	MaxNodeCount *int `pulumi:"maxNodeCount"`
@@ -2066,7 +2066,7 @@ type NodeConfigInput interface {
 	ToNodeConfigOutputWithContext(context.Context) NodeConfigOutput
 }
 
-// Configuration for the connection.
+// Node configuration for the connection.
 type NodeConfigArgs struct {
 	// Maximum number of nodes in the runtime nodes.
 	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
@@ -2127,7 +2127,7 @@ func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
 }
 
-// Configuration for the connection.
+// Node configuration for the connection.
 type NodeConfigOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigOutput) ElementType() reflect.Type {
@@ -2206,7 +2206,7 @@ func (o NodeConfigPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Configuration for the connection.
+// Node configuration for the connection.
 type NodeConfigResponse struct {
 	// Maximum number of nodes in the runtime nodes.
 	MaxNodeCount int `pulumi:"maxNodeCount"`
@@ -2214,7 +2214,7 @@ type NodeConfigResponse struct {
 	MinNodeCount int `pulumi:"minNodeCount"`
 }
 
-// Configuration for the connection.
+// Node configuration for the connection.
 type NodeConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigResponseOutput) ElementType() reflect.Type {

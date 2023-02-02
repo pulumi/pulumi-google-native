@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -165,7 +165,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
+        /// Optional. The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}"
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

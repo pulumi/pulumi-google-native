@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// An Oracle database connection profile.
+        /// </summary>
+        public readonly Outputs.OracleConnectionProfileResponse Oracle;
+        /// <summary>
         /// A PostgreSQL database connection profile.
         /// </summary>
         public readonly Outputs.PostgreSqlConnectionProfileResponse Postgresql;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             string name,
 
+            Outputs.OracleConnectionProfileResponse oracle,
+
             Outputs.PostgreSqlConnectionProfileResponse postgresql,
 
             string provider,
@@ -146,6 +152,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             Labels = labels;
             Mysql = mysql;
             Name = name;
+            Oracle = oracle;
             Postgresql = postgresql;
             Provider = provider;
             State = state;

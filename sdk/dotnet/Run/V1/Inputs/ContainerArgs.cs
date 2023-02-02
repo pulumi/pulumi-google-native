@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         private InputList<Inputs.EnvVarArgs>? _env;
 
         /// <summary>
-        /// List of environment variables to set in the container.
+        /// List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
         /// </summary>
         public InputList<Inputs.EnvVarArgs> Env
         {
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         }
 
         /// <summary>
-        /// URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        /// Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         /// </summary>
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<Inputs.ProbeArgs>? LivenessProbe { get; set; }
 
         /// <summary>
-        /// Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        /// Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

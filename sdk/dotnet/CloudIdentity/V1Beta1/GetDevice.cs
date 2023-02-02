@@ -27,6 +27,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
     public sealed class GetDeviceArgs : global::Pulumi.InvokeArgs
     {
+        [Input("customer")]
+        public string? Customer { get; set; }
+
         [Input("deviceId", required: true)]
         public string DeviceId { get; set; } = null!;
 
@@ -38,6 +41,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
     public sealed class GetDeviceInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("customer")]
+        public Input<string>? Customer { get; set; }
+
         [Input("deviceId", required: true)]
         public Input<string> DeviceId { get; set; } = null!;
 
@@ -76,6 +82,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         public readonly string BuildNumber;
         /// <summary>
+        /// List of the clients the device is reporting to.
+        /// </summary>
+        public readonly ImmutableArray<string> ClientTypes;
+        /// <summary>
         /// Represents whether the Device is compromised.
         /// </summary>
         public readonly string CompromisedState;
@@ -107,6 +117,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// Attributes specific to Endpoint Verification devices.
         /// </summary>
         public readonly Outputs.EndpointVerificationSpecificAttributesResponse EndpointVerificationSpecificAttributes;
+        /// <summary>
+        /// Host name of the device.
+        /// </summary>
+        public readonly string Hostname;
         /// <summary>
         /// IMEI number of device if GSM device; empty otherwise.
         /// </summary>
@@ -186,6 +200,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
             string buildNumber,
 
+            ImmutableArray<string> clientTypes,
+
             string compromisedState,
 
             string createTime,
@@ -201,6 +217,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
             string encryptionState,
 
             Outputs.EndpointVerificationSpecificAttributesResponse endpointVerificationSpecificAttributes,
+
+            string hostname,
 
             string imei,
 
@@ -240,6 +258,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
             BootloaderVersion = bootloaderVersion;
             Brand = brand;
             BuildNumber = buildNumber;
+            ClientTypes = clientTypes;
             CompromisedState = compromisedState;
             CreateTime = createTime;
             DeviceId = deviceId;
@@ -248,6 +267,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
             EnabledUsbDebugging = enabledUsbDebugging;
             EncryptionState = encryptionState;
             EndpointVerificationSpecificAttributes = endpointVerificationSpecificAttributes;
+            Hostname = hostname;
             Imei = imei;
             KernelVersion = kernelVersion;
             LastSyncTime = lastSyncTime;

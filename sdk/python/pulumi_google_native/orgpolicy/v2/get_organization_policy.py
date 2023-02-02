@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetOrganizationPolicyResult:
-    def __init__(__self__, alternate=None, name=None, spec=None):
+    def __init__(__self__, alternate=None, dry_run_spec=None, name=None, spec=None):
         if alternate and not isinstance(alternate, dict):
             raise TypeError("Expected argument 'alternate' to be a dict")
         if alternate is not None:
@@ -27,6 +27,9 @@ class GetOrganizationPolicyResult:
             pulumi.log.warn("""alternate is deprecated: Deprecated.""")
 
         pulumi.set(__self__, "alternate", alternate)
+        if dry_run_spec and not isinstance(dry_run_spec, dict):
+            raise TypeError("Expected argument 'dry_run_spec' to be a dict")
+        pulumi.set(__self__, "dry_run_spec", dry_run_spec)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -41,6 +44,14 @@ class GetOrganizationPolicyResult:
         Deprecated.
         """
         return pulumi.get(self, "alternate")
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> 'outputs.GoogleCloudOrgpolicyV2PolicySpecResponse':
+        """
+        dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
 
     @property
     @pulumi.getter
@@ -66,6 +77,7 @@ class AwaitableGetOrganizationPolicyResult(GetOrganizationPolicyResult):
             yield self
         return GetOrganizationPolicyResult(
             alternate=self.alternate,
+            dry_run_spec=self.dry_run_spec,
             name=self.name,
             spec=self.spec)
 
@@ -84,6 +96,7 @@ def get_organization_policy(organization_id: Optional[str] = None,
 
     return AwaitableGetOrganizationPolicyResult(
         alternate=__ret__.alternate,
+        dry_run_spec=__ret__.dry_run_spec,
         name=__ret__.name,
         spec=__ret__.spec)
 

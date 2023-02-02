@@ -24,28 +24,36 @@ __all__ = [
     'BillingDestinationResponse',
     'BillingResponse',
     'BindingResponse',
+    'ClientLibrarySettingsResponse',
+    'CommonLanguageSettingsResponse',
     'ContextResponse',
     'ContextRuleResponse',
     'ControlResponse',
+    'CppSettingsResponse',
     'CustomErrorResponse',
     'CustomErrorRuleResponse',
     'CustomHttpPatternResponse',
     'DeleteServiceStrategyResponse',
     'DocumentationResponse',
     'DocumentationRuleResponse',
+    'DotnetSettingsResponse',
     'EndpointResponse',
     'EnumResponse',
     'EnumValueResponse',
     'ExprResponse',
     'FieldResponse',
+    'GoSettingsResponse',
     'HttpResponse',
     'HttpRuleResponse',
+    'JavaSettingsResponse',
     'JwtLocationResponse',
     'LabelDescriptorResponse',
     'LogDescriptorResponse',
     'LoggingDestinationResponse',
     'LoggingResponse',
+    'LongRunningResponse',
     'MethodResponse',
+    'MethodSettingsResponse',
     'MetricDescriptorMetadataResponse',
     'MetricDescriptorResponse',
     'MetricRuleResponse',
@@ -53,11 +61,16 @@ __all__ = [
     'MonitoredResourceDescriptorResponse',
     'MonitoringDestinationResponse',
     'MonitoringResponse',
+    'NodeSettingsResponse',
     'OAuthRequirementsResponse',
     'OptionResponse',
     'PageResponse',
+    'PhpSettingsResponse',
+    'PublishingResponse',
+    'PythonSettingsResponse',
     'QuotaLimitResponse',
     'QuotaResponse',
+    'RubySettingsResponse',
     'SourceContextResponse',
     'SourceInfoResponse',
     'SystemParameterResponse',
@@ -552,6 +565,8 @@ class BackendRuleResponse(dict):
             suggest = "disable_auth"
         elif key == "jwtAudience":
             suggest = "jwt_audience"
+        elif key == "minDeadline":
+            suggest = "min_deadline"
         elif key == "operationDeadline":
             suggest = "operation_deadline"
         elif key == "pathTranslation":
@@ -573,6 +588,7 @@ class BackendRuleResponse(dict):
                  deadline: float,
                  disable_auth: bool,
                  jwt_audience: str,
+                 min_deadline: float,
                  operation_deadline: float,
                  path_translation: str,
                  protocol: str,
@@ -583,6 +599,7 @@ class BackendRuleResponse(dict):
         :param float deadline: The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
         :param bool disable_auth: When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
         :param str jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
+        :param float min_deadline: Deprecated, do not use.
         :param float operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         :param str protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param str selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -591,6 +608,7 @@ class BackendRuleResponse(dict):
         pulumi.set(__self__, "deadline", deadline)
         pulumi.set(__self__, "disable_auth", disable_auth)
         pulumi.set(__self__, "jwt_audience", jwt_audience)
+        pulumi.set(__self__, "min_deadline", min_deadline)
         pulumi.set(__self__, "operation_deadline", operation_deadline)
         pulumi.set(__self__, "path_translation", path_translation)
         pulumi.set(__self__, "protocol", protocol)
@@ -627,6 +645,14 @@ class BackendRuleResponse(dict):
         The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         """
         return pulumi.get(self, "jwt_audience")
+
+    @property
+    @pulumi.getter(name="minDeadline")
+    def min_deadline(self) -> float:
+        """
+        Deprecated, do not use.
+        """
+        return pulumi.get(self, "min_deadline")
 
     @property
     @pulumi.getter(name="operationDeadline")
@@ -759,7 +785,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -778,7 +804,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -789,6 +815,223 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class ClientLibrarySettingsResponse(dict):
+    """
+    Details about how and where to publish client libraries.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cppSettings":
+            suggest = "cpp_settings"
+        elif key == "dotnetSettings":
+            suggest = "dotnet_settings"
+        elif key == "goSettings":
+            suggest = "go_settings"
+        elif key == "javaSettings":
+            suggest = "java_settings"
+        elif key == "launchStage":
+            suggest = "launch_stage"
+        elif key == "nodeSettings":
+            suggest = "node_settings"
+        elif key == "phpSettings":
+            suggest = "php_settings"
+        elif key == "pythonSettings":
+            suggest = "python_settings"
+        elif key == "restNumericEnums":
+            suggest = "rest_numeric_enums"
+        elif key == "rubySettings":
+            suggest = "ruby_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClientLibrarySettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClientLibrarySettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClientLibrarySettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpp_settings: 'outputs.CppSettingsResponse',
+                 dotnet_settings: 'outputs.DotnetSettingsResponse',
+                 go_settings: 'outputs.GoSettingsResponse',
+                 java_settings: 'outputs.JavaSettingsResponse',
+                 launch_stage: str,
+                 node_settings: 'outputs.NodeSettingsResponse',
+                 php_settings: 'outputs.PhpSettingsResponse',
+                 python_settings: 'outputs.PythonSettingsResponse',
+                 rest_numeric_enums: bool,
+                 ruby_settings: 'outputs.RubySettingsResponse',
+                 version: str):
+        """
+        Details about how and where to publish client libraries.
+        :param 'CppSettingsResponse' cpp_settings: Settings for C++ client libraries.
+        :param 'DotnetSettingsResponse' dotnet_settings: Settings for .NET client libraries.
+        :param 'GoSettingsResponse' go_settings: Settings for Go client libraries.
+        :param 'JavaSettingsResponse' java_settings: Settings for legacy Java features, supported in the Service YAML.
+        :param str launch_stage: Launch stage of this version of the API.
+        :param 'NodeSettingsResponse' node_settings: Settings for Node client libraries.
+        :param 'PhpSettingsResponse' php_settings: Settings for PHP client libraries.
+        :param 'PythonSettingsResponse' python_settings: Settings for Python client libraries.
+        :param bool rest_numeric_enums: When using transport=rest, the client request will encode enums as numbers rather than strings.
+        :param 'RubySettingsResponse' ruby_settings: Settings for Ruby client libraries.
+        :param str version: Version of the API to apply these settings to.
+        """
+        pulumi.set(__self__, "cpp_settings", cpp_settings)
+        pulumi.set(__self__, "dotnet_settings", dotnet_settings)
+        pulumi.set(__self__, "go_settings", go_settings)
+        pulumi.set(__self__, "java_settings", java_settings)
+        pulumi.set(__self__, "launch_stage", launch_stage)
+        pulumi.set(__self__, "node_settings", node_settings)
+        pulumi.set(__self__, "php_settings", php_settings)
+        pulumi.set(__self__, "python_settings", python_settings)
+        pulumi.set(__self__, "rest_numeric_enums", rest_numeric_enums)
+        pulumi.set(__self__, "ruby_settings", ruby_settings)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="cppSettings")
+    def cpp_settings(self) -> 'outputs.CppSettingsResponse':
+        """
+        Settings for C++ client libraries.
+        """
+        return pulumi.get(self, "cpp_settings")
+
+    @property
+    @pulumi.getter(name="dotnetSettings")
+    def dotnet_settings(self) -> 'outputs.DotnetSettingsResponse':
+        """
+        Settings for .NET client libraries.
+        """
+        return pulumi.get(self, "dotnet_settings")
+
+    @property
+    @pulumi.getter(name="goSettings")
+    def go_settings(self) -> 'outputs.GoSettingsResponse':
+        """
+        Settings for Go client libraries.
+        """
+        return pulumi.get(self, "go_settings")
+
+    @property
+    @pulumi.getter(name="javaSettings")
+    def java_settings(self) -> 'outputs.JavaSettingsResponse':
+        """
+        Settings for legacy Java features, supported in the Service YAML.
+        """
+        return pulumi.get(self, "java_settings")
+
+    @property
+    @pulumi.getter(name="launchStage")
+    def launch_stage(self) -> str:
+        """
+        Launch stage of this version of the API.
+        """
+        return pulumi.get(self, "launch_stage")
+
+    @property
+    @pulumi.getter(name="nodeSettings")
+    def node_settings(self) -> 'outputs.NodeSettingsResponse':
+        """
+        Settings for Node client libraries.
+        """
+        return pulumi.get(self, "node_settings")
+
+    @property
+    @pulumi.getter(name="phpSettings")
+    def php_settings(self) -> 'outputs.PhpSettingsResponse':
+        """
+        Settings for PHP client libraries.
+        """
+        return pulumi.get(self, "php_settings")
+
+    @property
+    @pulumi.getter(name="pythonSettings")
+    def python_settings(self) -> 'outputs.PythonSettingsResponse':
+        """
+        Settings for Python client libraries.
+        """
+        return pulumi.get(self, "python_settings")
+
+    @property
+    @pulumi.getter(name="restNumericEnums")
+    def rest_numeric_enums(self) -> bool:
+        """
+        When using transport=rest, the client request will encode enums as numbers rather than strings.
+        """
+        return pulumi.get(self, "rest_numeric_enums")
+
+    @property
+    @pulumi.getter(name="rubySettings")
+    def ruby_settings(self) -> 'outputs.RubySettingsResponse':
+        """
+        Settings for Ruby client libraries.
+        """
+        return pulumi.get(self, "ruby_settings")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the API to apply these settings to.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class CommonLanguageSettingsResponse(dict):
+    """
+    Required information for every language.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceDocsUri":
+            suggest = "reference_docs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CommonLanguageSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CommonLanguageSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CommonLanguageSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 destinations: Sequence[str],
+                 reference_docs_uri: str):
+        """
+        Required information for every language.
+        :param Sequence[str] destinations: The destination where API teams want this client library to be published.
+        :param str reference_docs_uri: Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+        """
+        pulumi.set(__self__, "destinations", destinations)
+        pulumi.set(__self__, "reference_docs_uri", reference_docs_uri)
+
+    @property
+    @pulumi.getter
+    def destinations(self) -> Sequence[str]:
+        """
+        The destination where API teams want this client library to be published.
+        """
+        return pulumi.get(self, "destinations")
+
+    @property
+    @pulumi.getter(name="referenceDocsUri")
+    def reference_docs_uri(self) -> str:
+        """
+        Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
+        """
+        return pulumi.get(self, "reference_docs_uri")
 
 
 @pulumi.output_type
@@ -901,12 +1144,12 @@ class ContextRuleResponse(dict):
 @pulumi.output_type
 class ControlResponse(dict):
     """
-    Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+    Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
     """
     def __init__(__self__, *,
                  environment: str):
         """
-        Selects and configures the service controller used by the service. The service controller handles two things: - **What is allowed:** for each API request, Chemist checks the project status, activation status, abuse status, billing status, service status, location restrictions, VPC Service Controls, SuperQuota, and other policies. - **What has happened:** for each API response, Chemist reports the telemetry data to analytics, auditing, billing, eventing, logging, monitoring, sawmill, and tracing. Chemist also accepts telemetry data not associated with API traffic, such as billing metrics. Example: control: environment: servicecontrol.googleapis.com
+        Selects and configures the service controller used by the service. Example: control: environment: servicecontrol.googleapis.com
         :param str environment: The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
         """
         pulumi.set(__self__, "environment", environment)
@@ -918,6 +1161,28 @@ class ControlResponse(dict):
         The service controller environment to use. If empty, no control plane feature (like quota and billing) will be enabled. The recommended value for most services is servicecontrol.googleapis.com
         """
         return pulumi.get(self, "environment")
+
+
+@pulumi.output_type
+class CppSettingsResponse(dict):
+    """
+    Settings for C++ client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for C++ client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
 
 
 @pulumi.output_type
@@ -1206,6 +1471,28 @@ class DocumentationRuleResponse(dict):
 
 
 @pulumi.output_type
+class DotnetSettingsResponse(dict):
+    """
+    Settings for Dotnet client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for Dotnet client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+
+@pulumi.output_type
 class EndpointResponse(dict):
     """
     `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
@@ -1228,18 +1515,29 @@ class EndpointResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 aliases: Sequence[str],
                  allow_cors: bool,
                  name: str,
                  target: str):
         """
         `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
+        :param Sequence[str] aliases: Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
         :param bool allow_cors: Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
         :param str name: The canonical name of this endpoint.
         :param str target: The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".
         """
+        pulumi.set(__self__, "aliases", aliases)
         pulumi.set(__self__, "allow_cors", allow_cors)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "target", target)
+
+    @property
+    @pulumi.getter
+    def aliases(self) -> Sequence[str]:
+        """
+        Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+        """
+        return pulumi.get(self, "aliases")
 
     @property
     @pulumi.getter(name="allowCors")
@@ -1593,6 +1891,28 @@ class FieldResponse(dict):
 
 
 @pulumi.output_type
+class GoSettingsResponse(dict):
+    """
+    Settings for Go client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for Go client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+
+@pulumi.output_type
 class HttpResponse(dict):
     """
     Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
@@ -1780,6 +2100,69 @@ class HttpRuleResponse(dict):
         Selects a method to which this rule applies. Refer to selector for syntax details.
         """
         return pulumi.get(self, "selector")
+
+
+@pulumi.output_type
+class JavaSettingsResponse(dict):
+    """
+    Settings for Java client libraries.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "libraryPackage":
+            suggest = "library_package"
+        elif key == "serviceClassNames":
+            suggest = "service_class_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JavaSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JavaSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JavaSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse',
+                 library_package: str,
+                 service_class_names: Mapping[str, str]):
+        """
+        Settings for Java client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        :param str library_package: The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+        :param Mapping[str, str] service_class_names: Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+        """
+        pulumi.set(__self__, "common", common)
+        pulumi.set(__self__, "library_package", library_package)
+        pulumi.set(__self__, "service_class_names", service_class_names)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+    @property
+    @pulumi.getter(name="libraryPackage")
+    def library_package(self) -> str:
+        """
+        The package name to use in Java. Clobbers the java_package option set in the protobuf. This should be used **only** by APIs who have already set the language_settings.java.package_name" field in gapic.yaml. API teams should use the protobuf java_package option where possible. Example of a YAML configuration:: publishing: java_settings: library_package: com.google.cloud.pubsub.v1
+        """
+        return pulumi.get(self, "library_package")
+
+    @property
+    @pulumi.getter(name="serviceClassNames")
+    def service_class_names(self) -> Mapping[str, str]:
+        """
+        Configure the Java class name to use instead of the service's for its corresponding generated GAPIC client. Keys are fully-qualified service names as they appear in the protobuf (including the full the language_settings.java.interface_names" field in gapic.yaml. API teams should otherwise use the service name as it appears in the protobuf. Example of a YAML configuration:: publishing: java_settings: service_class_names: - google.pubsub.v1.Publisher: TopicAdmin - google.pubsub.v1.Subscriber: SubscriptionAdmin
+        """
+        return pulumi.get(self, "service_class_names")
 
 
 @pulumi.output_type
@@ -2090,6 +2473,84 @@ class LoggingResponse(dict):
 
 
 @pulumi.output_type
+class LongRunningResponse(dict):
+    """
+    Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialPollDelay":
+            suggest = "initial_poll_delay"
+        elif key == "maxPollDelay":
+            suggest = "max_poll_delay"
+        elif key == "pollDelayMultiplier":
+            suggest = "poll_delay_multiplier"
+        elif key == "totalPollTimeout":
+            suggest = "total_poll_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LongRunningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LongRunningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LongRunningResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_poll_delay: str,
+                 max_poll_delay: str,
+                 poll_delay_multiplier: float,
+                 total_poll_timeout: str):
+        """
+        Describes settings to use when generating API methods that use the long-running operation pattern. All default values below are from those used in the client library generators (e.g. [Java](https://github.com/googleapis/gapic-generator-java/blob/04c2faa191a9b5a10b92392fe8482279c4404803/src/main/java/com/google/api/generator/gapic/composer/common/RetrySettingsComposer.java)).
+        :param str initial_poll_delay: Initial delay after which the first poll request will be made. Default value: 5 seconds.
+        :param str max_poll_delay: Maximum time between two subsequent poll requests. Default value: 45 seconds.
+        :param float poll_delay_multiplier: Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+        :param str total_poll_timeout: Total polling timeout. Default value: 5 minutes.
+        """
+        pulumi.set(__self__, "initial_poll_delay", initial_poll_delay)
+        pulumi.set(__self__, "max_poll_delay", max_poll_delay)
+        pulumi.set(__self__, "poll_delay_multiplier", poll_delay_multiplier)
+        pulumi.set(__self__, "total_poll_timeout", total_poll_timeout)
+
+    @property
+    @pulumi.getter(name="initialPollDelay")
+    def initial_poll_delay(self) -> str:
+        """
+        Initial delay after which the first poll request will be made. Default value: 5 seconds.
+        """
+        return pulumi.get(self, "initial_poll_delay")
+
+    @property
+    @pulumi.getter(name="maxPollDelay")
+    def max_poll_delay(self) -> str:
+        """
+        Maximum time between two subsequent poll requests. Default value: 45 seconds.
+        """
+        return pulumi.get(self, "max_poll_delay")
+
+    @property
+    @pulumi.getter(name="pollDelayMultiplier")
+    def poll_delay_multiplier(self) -> float:
+        """
+        Multiplier to gradually increase delay between subsequent polls until it reaches max_poll_delay. Default value: 1.5.
+        """
+        return pulumi.get(self, "poll_delay_multiplier")
+
+    @property
+    @pulumi.getter(name="totalPollTimeout")
+    def total_poll_timeout(self) -> str:
+        """
+        Total polling timeout. Default value: 5 minutes.
+        """
+        return pulumi.get(self, "total_poll_timeout")
+
+
+@pulumi.output_type
 class MethodResponse(dict):
     """
     Method represents a method of an API interface.
@@ -2198,6 +2659,56 @@ class MethodResponse(dict):
         The source syntax of this method.
         """
         return pulumi.get(self, "syntax")
+
+
+@pulumi.output_type
+class MethodSettingsResponse(dict):
+    """
+    Describes the generator configuration for a method.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "longRunning":
+            suggest = "long_running"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MethodSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MethodSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MethodSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 long_running: 'outputs.LongRunningResponse',
+                 selector: str):
+        """
+        Describes the generator configuration for a method.
+        :param 'LongRunningResponse' long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        :param str selector: The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+        """
+        pulumi.set(__self__, "long_running", long_running)
+        pulumi.set(__self__, "selector", selector)
+
+    @property
+    @pulumi.getter(name="longRunning")
+    def long_running(self) -> 'outputs.LongRunningResponse':
+        """
+        Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        """
+        return pulumi.get(self, "long_running")
+
+    @property
+    @pulumi.getter
+    def selector(self) -> str:
+        """
+        The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
+        """
+        return pulumi.get(self, "selector")
 
 
 @pulumi.output_type
@@ -2704,6 +3215,28 @@ class MonitoringResponse(dict):
 
 
 @pulumi.output_type
+class NodeSettingsResponse(dict):
+    """
+    Settings for Node client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for Node client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+
+@pulumi.output_type
 class OAuthRequirementsResponse(dict):
     """
     OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
@@ -2817,6 +3350,191 @@ class PageResponse(dict):
         Subpages of this page. The order of subpages specified here will be honored in the generated docset.
         """
         return pulumi.get(self, "subpages")
+
+
+@pulumi.output_type
+class PhpSettingsResponse(dict):
+    """
+    Settings for Php client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for Php client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
+
+
+@pulumi.output_type
+class PublishingResponse(dict):
+    """
+    This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiShortName":
+            suggest = "api_short_name"
+        elif key == "codeownerGithubTeams":
+            suggest = "codeowner_github_teams"
+        elif key == "docTagPrefix":
+            suggest = "doc_tag_prefix"
+        elif key == "documentationUri":
+            suggest = "documentation_uri"
+        elif key == "githubLabel":
+            suggest = "github_label"
+        elif key == "librarySettings":
+            suggest = "library_settings"
+        elif key == "methodSettings":
+            suggest = "method_settings"
+        elif key == "newIssueUri":
+            suggest = "new_issue_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublishingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublishingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublishingResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 api_short_name: str,
+                 codeowner_github_teams: Sequence[str],
+                 doc_tag_prefix: str,
+                 documentation_uri: str,
+                 github_label: str,
+                 library_settings: Sequence['outputs.ClientLibrarySettingsResponse'],
+                 method_settings: Sequence['outputs.MethodSettingsResponse'],
+                 new_issue_uri: str,
+                 organization: str):
+        """
+        This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
+        :param str api_short_name: Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+        :param Sequence[str] codeowner_github_teams: GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+        :param str doc_tag_prefix: A prefix used in sample code when demarking regions to be included in documentation.
+        :param str documentation_uri: Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+        :param str github_label: GitHub label to apply to issues and pull requests opened for this API.
+        :param Sequence['ClientLibrarySettingsResponse'] library_settings: Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+        :param Sequence['MethodSettingsResponse'] method_settings: A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+        :param str new_issue_uri: Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+        :param str organization: For whom the client library is being published.
+        """
+        pulumi.set(__self__, "api_short_name", api_short_name)
+        pulumi.set(__self__, "codeowner_github_teams", codeowner_github_teams)
+        pulumi.set(__self__, "doc_tag_prefix", doc_tag_prefix)
+        pulumi.set(__self__, "documentation_uri", documentation_uri)
+        pulumi.set(__self__, "github_label", github_label)
+        pulumi.set(__self__, "library_settings", library_settings)
+        pulumi.set(__self__, "method_settings", method_settings)
+        pulumi.set(__self__, "new_issue_uri", new_issue_uri)
+        pulumi.set(__self__, "organization", organization)
+
+    @property
+    @pulumi.getter(name="apiShortName")
+    def api_short_name(self) -> str:
+        """
+        Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
+        """
+        return pulumi.get(self, "api_short_name")
+
+    @property
+    @pulumi.getter(name="codeownerGithubTeams")
+    def codeowner_github_teams(self) -> Sequence[str]:
+        """
+        GitHub teams to be added to CODEOWNERS in the directory in GitHub containing source code for the client libraries for this API.
+        """
+        return pulumi.get(self, "codeowner_github_teams")
+
+    @property
+    @pulumi.getter(name="docTagPrefix")
+    def doc_tag_prefix(self) -> str:
+        """
+        A prefix used in sample code when demarking regions to be included in documentation.
+        """
+        return pulumi.get(self, "doc_tag_prefix")
+
+    @property
+    @pulumi.getter(name="documentationUri")
+    def documentation_uri(self) -> str:
+        """
+        Link to product home page. Example: https://cloud.google.com/asset-inventory/docs/overview
+        """
+        return pulumi.get(self, "documentation_uri")
+
+    @property
+    @pulumi.getter(name="githubLabel")
+    def github_label(self) -> str:
+        """
+        GitHub label to apply to issues and pull requests opened for this API.
+        """
+        return pulumi.get(self, "github_label")
+
+    @property
+    @pulumi.getter(name="librarySettings")
+    def library_settings(self) -> Sequence['outputs.ClientLibrarySettingsResponse']:
+        """
+        Client library settings. If the same version string appears multiple times in this list, then the last one wins. Settings from earlier settings with the same version string are discarded.
+        """
+        return pulumi.get(self, "library_settings")
+
+    @property
+    @pulumi.getter(name="methodSettings")
+    def method_settings(self) -> Sequence['outputs.MethodSettingsResponse']:
+        """
+        A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
+        """
+        return pulumi.get(self, "method_settings")
+
+    @property
+    @pulumi.getter(name="newIssueUri")
+    def new_issue_uri(self) -> str:
+        """
+        Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
+        """
+        return pulumi.get(self, "new_issue_uri")
+
+    @property
+    @pulumi.getter
+    def organization(self) -> str:
+        """
+        For whom the client library is being published.
+        """
+        return pulumi.get(self, "organization")
+
+
+@pulumi.output_type
+class PythonSettingsResponse(dict):
+    """
+    Settings for Python client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for Python client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
 
 
 @pulumi.output_type
@@ -3011,6 +3729,28 @@ class QuotaResponse(dict):
         List of MetricRule definitions, each one mapping a selected method to one or more metrics.
         """
         return pulumi.get(self, "metric_rules")
+
+
+@pulumi.output_type
+class RubySettingsResponse(dict):
+    """
+    Settings for Ruby client libraries.
+    """
+    def __init__(__self__, *,
+                 common: 'outputs.CommonLanguageSettingsResponse'):
+        """
+        Settings for Ruby client libraries.
+        :param 'CommonLanguageSettingsResponse' common: Some settings.
+        """
+        pulumi.set(__self__, "common", common)
+
+    @property
+    @pulumi.getter
+    def common(self) -> 'outputs.CommonLanguageSettingsResponse':
+        """
+        Some settings.
+        """
+        return pulumi.get(self, "common")
 
 
 @pulumi.output_type

@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for settings related to email privacy and public visibility.
+        /// </summary>
+        [Output("emailPrivacyConfig")]
+        public Output<Outputs.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse> EmailPrivacyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Whether to enable anonymous user authentication.
         /// </summary>
         [Output("enableAnonymousUser")]
@@ -181,6 +187,12 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Configuration for settings related to email privacy and public visibility.
+        /// </summary>
+        [Input("emailPrivacyConfig")]
+        public Input<Inputs.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigArgs>? EmailPrivacyConfig { get; set; }
 
         /// <summary>
         /// Whether to enable anonymous user authentication.

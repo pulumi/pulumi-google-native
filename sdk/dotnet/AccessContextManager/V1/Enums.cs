@@ -53,6 +53,125 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     }
 
     /// <summary>
+    /// The asset type of this authorized orgs desc. e.g. device, credential strength.
+    /// </summary>
+    [EnumType]
+    public readonly struct AuthorizedOrgsDescAssetType : IEquatable<AuthorizedOrgsDescAssetType>
+    {
+        private readonly string _value;
+
+        private AuthorizedOrgsDescAssetType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No asset type specified.
+        /// </summary>
+        public static AuthorizedOrgsDescAssetType AssetTypeUnspecified { get; } = new AuthorizedOrgsDescAssetType("ASSET_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Device asset type.
+        /// </summary>
+        public static AuthorizedOrgsDescAssetType AssetTypeDevice { get; } = new AuthorizedOrgsDescAssetType("ASSET_TYPE_DEVICE");
+        /// <summary>
+        /// credential strength asset type.
+        /// </summary>
+        public static AuthorizedOrgsDescAssetType AssetTypeCredentialStrength { get; } = new AuthorizedOrgsDescAssetType("ASSET_TYPE_CREDENTIAL_STRENGTH");
+
+        public static bool operator ==(AuthorizedOrgsDescAssetType left, AuthorizedOrgsDescAssetType right) => left.Equals(right);
+        public static bool operator !=(AuthorizedOrgsDescAssetType left, AuthorizedOrgsDescAssetType right) => !left.Equals(right);
+
+        public static explicit operator string(AuthorizedOrgsDescAssetType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AuthorizedOrgsDescAssetType other && Equals(other);
+        public bool Equals(AuthorizedOrgsDescAssetType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+    /// </summary>
+    [EnumType]
+    public readonly struct AuthorizedOrgsDescAuthorizationDirection : IEquatable<AuthorizedOrgsDescAuthorizationDirection>
+    {
+        private readonly string _value;
+
+        private AuthorizedOrgsDescAuthorizationDirection(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No direction specified.
+        /// </summary>
+        public static AuthorizedOrgsDescAuthorizationDirection AuthorizationDirectionUnspecified { get; } = new AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_UNSPECIFIED");
+        /// <summary>
+        /// Specified orgs will evaluate traffic.
+        /// </summary>
+        public static AuthorizedOrgsDescAuthorizationDirection AuthorizationDirectionTo { get; } = new AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_TO");
+        /// <summary>
+        /// Specified orgs' traffic will be evaluated.
+        /// </summary>
+        public static AuthorizedOrgsDescAuthorizationDirection AuthorizationDirectionFrom { get; } = new AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_FROM");
+
+        public static bool operator ==(AuthorizedOrgsDescAuthorizationDirection left, AuthorizedOrgsDescAuthorizationDirection right) => left.Equals(right);
+        public static bool operator !=(AuthorizedOrgsDescAuthorizationDirection left, AuthorizedOrgsDescAuthorizationDirection right) => !left.Equals(right);
+
+        public static explicit operator string(AuthorizedOrgsDescAuthorizationDirection value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AuthorizedOrgsDescAuthorizationDirection other && Equals(other);
+        public bool Equals(AuthorizedOrgsDescAuthorizationDirection other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+    /// </summary>
+    [EnumType]
+    public readonly struct AuthorizedOrgsDescAuthorizationType : IEquatable<AuthorizedOrgsDescAuthorizationType>
+    {
+        private readonly string _value;
+
+        private AuthorizedOrgsDescAuthorizationType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No authorization type specified.
+        /// </summary>
+        public static AuthorizedOrgsDescAuthorizationType AuthorizationTypeUnspecified { get; } = new AuthorizedOrgsDescAuthorizationType("AUTHORIZATION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// This authorization relationship is "trust".
+        /// </summary>
+        public static AuthorizedOrgsDescAuthorizationType AuthorizationTypeTrust { get; } = new AuthorizedOrgsDescAuthorizationType("AUTHORIZATION_TYPE_TRUST");
+
+        public static bool operator ==(AuthorizedOrgsDescAuthorizationType left, AuthorizedOrgsDescAuthorizationType right) => left.Equals(right);
+        public static bool operator !=(AuthorizedOrgsDescAuthorizationType left, AuthorizedOrgsDescAuthorizationType right) => !left.Equals(right);
+
+        public static explicit operator string(AuthorizedOrgsDescAuthorizationType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AuthorizedOrgsDescAuthorizationType other && Equals(other);
+        public bool Equals(AuthorizedOrgsDescAuthorizationType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
     /// </summary>
     [EnumType]
@@ -334,7 +453,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         }
 
         /// <summary>
-        /// Regular Perimeter.
+        /// Regular Perimeter. When no value is specified, the perimeter uses this type.
         /// </summary>
         public static ServicePerimeterPerimeterType PerimeterTypeRegular { get; } = new ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR");
         /// <summary>

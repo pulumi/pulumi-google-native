@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType>? InOutType { get; set; }
 
         /// <summary>
-        /// Whether this parameter is a transient parameter. go/ip-transient-parameters
+        /// Whether this parameter is a transient parameter.
         /// </summary>
         [Input("isTransient")]
         public Input<bool>? IsTransient { get; set; }

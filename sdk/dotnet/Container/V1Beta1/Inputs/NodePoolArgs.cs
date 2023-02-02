@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.NodeConfigArgs>? Config { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// </summary>
+        [Input("etag")]
+        public Input<string>? Etag { get; set; }
+
+        /// <summary>
         /// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         /// </summary>
         [Input("initialNodeCount")]
@@ -94,7 +100,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<Inputs.UpgradeSettingsArgs>? UpgradeSettings { get; set; }
 
         /// <summary>
-        /// The version of the Kubernetes of this node.
+        /// The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -91,7 +91,7 @@ class GetDatacenterConnectorResult:
     @pulumi.getter
     def bucket(self) -> str:
         """
-        The communication channel between the datacenter connector and GCP.
+        The communication channel between the datacenter connector and Google Cloud.
         """
         return pulumi.get(self, "bucket")
 

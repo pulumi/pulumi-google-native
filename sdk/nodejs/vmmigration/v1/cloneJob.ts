@@ -80,6 +80,10 @@ export class CloneJob extends pulumi.CustomResource {
      * The time the state was last updated.
      */
     public /*out*/ readonly stateTime!: pulumi.Output<string>;
+    /**
+     * The clone steps list representing its progress.
+     */
+    public /*out*/ readonly steps!: pulumi.Output<outputs.vmmigration.v1.CloneStepResponse[]>;
 
     /**
      * Create a CloneJob resource with the given unique name, arguments, and options.
@@ -114,6 +118,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
         } else {
             resourceInputs["cloneJobId"] = undefined /*out*/;
             resourceInputs["computeEngineTargetDetails"] = undefined /*out*/;
@@ -128,6 +133,7 @@ export class CloneJob extends pulumi.CustomResource {
             resourceInputs["sourceId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateTime"] = undefined /*out*/;
+            resourceInputs["steps"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["cloneJobId", "location", "migratingVmId", "project", "sourceId"] };

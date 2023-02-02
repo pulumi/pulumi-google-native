@@ -75,7 +75,7 @@ class EventTriggerRetryPolicy(str, Enum):
 
 class FunctionEnvironment(str, Enum):
     """
-    Describe whether the function is gen1 or gen2.
+    Describe whether the function is 1st Gen or 2nd Gen.
     """
     ENVIRONMENT_UNSPECIFIED = "ENVIRONMENT_UNSPECIFIED"
     """
@@ -115,7 +115,7 @@ class ServiceConfigIngressSettings(str, Enum):
 
 class ServiceConfigSecurityLevel(str, Enum):
     """
-    Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+    Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
     """
     SECURITY_LEVEL_UNSPECIFIED = "SECURITY_LEVEL_UNSPECIFIED"
     """

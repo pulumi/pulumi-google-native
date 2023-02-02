@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public partial class FolderNotificationConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+        /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
         /// </summary>
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -32,7 +32,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public Output<string> FolderId { get; private set; } = null!;
 
         /// <summary>
-        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     public sealed class FolderNotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
+        /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters and contain alphanumeric characters, underscores, or hyphens only.
         /// </summary>
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public Input<string> FolderId { get; set; } = null!;
 
         /// <summary>
-        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

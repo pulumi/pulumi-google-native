@@ -19,6 +19,7 @@ __all__ = [
     'FilterOptionsResponse',
     'FilterResponse',
     'GSuitePrincipalResponse',
+    'IntegerFacetingOptionsResponse',
     'QueryInterpretationConfigResponse',
     'ScoringConfigResponse',
     'SortOptionsResponse',
@@ -180,7 +181,9 @@ class FacetOptionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "numFacetBuckets":
+        if key == "integerFacetingOptions":
+            suggest = "integer_faceting_options"
+        elif key == "numFacetBuckets":
             suggest = "num_facet_buckets"
         elif key == "objectType":
             suggest = "object_type"
@@ -201,21 +204,32 @@ class FacetOptionsResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 integer_faceting_options: 'outputs.IntegerFacetingOptionsResponse',
                  num_facet_buckets: int,
                  object_type: str,
                  operator_name: str,
                  source_name: str):
         """
         Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
+        :param 'IntegerFacetingOptionsResponse' integer_faceting_options: If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
         :param int num_facet_buckets: Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
         :param str object_type: If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
         :param str operator_name: The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
         :param str source_name: Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
         """
+        pulumi.set(__self__, "integer_faceting_options", integer_faceting_options)
         pulumi.set(__self__, "num_facet_buckets", num_facet_buckets)
         pulumi.set(__self__, "object_type", object_type)
         pulumi.set(__self__, "operator_name", operator_name)
         pulumi.set(__self__, "source_name", source_name)
+
+    @property
+    @pulumi.getter(name="integerFacetingOptions")
+    def integer_faceting_options(self) -> 'outputs.IntegerFacetingOptionsResponse':
+        """
+        If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+        """
+        return pulumi.get(self, "integer_faceting_options")
 
     @property
     @pulumi.getter(name="numFacetBuckets")
@@ -403,6 +417,45 @@ class GSuitePrincipalResponse(dict):
         This principal references a Google Workspace user account.
         """
         return pulumi.get(self, "gsuite_user_email")
+
+
+@pulumi.output_type
+class IntegerFacetingOptionsResponse(dict):
+    """
+    Used to specify integer faceting options.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integerBuckets":
+            suggest = "integer_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IntegerFacetingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IntegerFacetingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IntegerFacetingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 integer_buckets: Sequence[str]):
+        """
+        Used to specify integer faceting options.
+        :param Sequence[str] integer_buckets: Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+        """
+        pulumi.set(__self__, "integer_buckets", integer_buckets)
+
+    @property
+    @pulumi.getter(name="integerBuckets")
+    def integer_buckets(self) -> Sequence[str]:
+        """
+        Buckets for given integer values should be in strictly ascending order. For example, if values supplied are (1,5,10,100), the following facet buckets will be formed {<1, [1,5), [5-10), [10-100), >=100}.
+        """
+        return pulumi.get(self, "integer_buckets")
 
 
 @pulumi.output_type

@@ -1308,6 +1308,146 @@ func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
 }
 
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpec struct {
+}
+
+// CommonFleetDefaultMemberConfigSpecInput is an input type that accepts CommonFleetDefaultMemberConfigSpecArgs and CommonFleetDefaultMemberConfigSpecOutput values.
+// You can construct a concrete instance of `CommonFleetDefaultMemberConfigSpecInput` via:
+//
+//	CommonFleetDefaultMemberConfigSpecArgs{...}
+type CommonFleetDefaultMemberConfigSpecInput interface {
+	pulumi.Input
+
+	ToCommonFleetDefaultMemberConfigSpecOutput() CommonFleetDefaultMemberConfigSpecOutput
+	ToCommonFleetDefaultMemberConfigSpecOutputWithContext(context.Context) CommonFleetDefaultMemberConfigSpecOutput
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecArgs struct {
+}
+
+func (CommonFleetDefaultMemberConfigSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecOutput() CommonFleetDefaultMemberConfigSpecOutput {
+	return i.ToCommonFleetDefaultMemberConfigSpecOutputWithContext(context.Background())
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFleetDefaultMemberConfigSpecOutput)
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return i.ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFleetDefaultMemberConfigSpecOutput).ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx)
+}
+
+// CommonFleetDefaultMemberConfigSpecPtrInput is an input type that accepts CommonFleetDefaultMemberConfigSpecArgs, CommonFleetDefaultMemberConfigSpecPtr and CommonFleetDefaultMemberConfigSpecPtrOutput values.
+// You can construct a concrete instance of `CommonFleetDefaultMemberConfigSpecPtrInput` via:
+//
+//	        CommonFleetDefaultMemberConfigSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommonFleetDefaultMemberConfigSpecPtrInput interface {
+	pulumi.Input
+
+	ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput
+	ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput
+}
+
+type commonFleetDefaultMemberConfigSpecPtrType CommonFleetDefaultMemberConfigSpecArgs
+
+func CommonFleetDefaultMemberConfigSpecPtr(v *CommonFleetDefaultMemberConfigSpecArgs) CommonFleetDefaultMemberConfigSpecPtrInput {
+	return (*commonFleetDefaultMemberConfigSpecPtrType)(v)
+}
+
+func (*commonFleetDefaultMemberConfigSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (i *commonFleetDefaultMemberConfigSpecPtrType) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return i.ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *commonFleetDefaultMemberConfigSpecPtrType) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFleetDefaultMemberConfigSpecPtrOutput)
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecOutput struct{ *pulumi.OutputState }
+
+func (CommonFleetDefaultMemberConfigSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecOutput() CommonFleetDefaultMemberConfigSpecOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o.ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFleetDefaultMemberConfigSpec) *CommonFleetDefaultMemberConfigSpec {
+		return &v
+	}).(CommonFleetDefaultMemberConfigSpecPtrOutput)
+}
+
+type CommonFleetDefaultMemberConfigSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFleetDefaultMemberConfigSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) Elem() CommonFleetDefaultMemberConfigSpecOutput {
+	return o.ApplyT(func(v *CommonFleetDefaultMemberConfigSpec) CommonFleetDefaultMemberConfigSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFleetDefaultMemberConfigSpec
+		return ret
+	}).(CommonFleetDefaultMemberConfigSpecOutput)
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecResponse struct {
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonFleetDefaultMemberConfigSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecResponse)(nil)).Elem()
+}
+
+func (o CommonFleetDefaultMemberConfigSpecResponseOutput) ToCommonFleetDefaultMemberConfigSpecResponseOutput() CommonFleetDefaultMemberConfigSpecResponseOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecResponseOutput) ToCommonFleetDefaultMemberConfigSpecResponseOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecResponseOutput {
+	return o
+}
+
 // EdgeCluster contains information specific to Google Edge Clusters.
 type EdgeCluster struct {
 	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -3595,6 +3735,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecInput)(nil)).Elem(), CommonFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecPtrInput)(nil)).Elem(), CommonFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecInput)(nil)).Elem(), CommonFleetDefaultMemberConfigSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecPtrInput)(nil)).Elem(), CommonFleetDefaultMemberConfigSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterInput)(nil)).Elem(), EdgeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterPtrInput)(nil)).Elem(), EdgeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
@@ -3641,6 +3783,9 @@ func init() {
 	pulumi.RegisterOutputType(CommonFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(CommonFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(CommonFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(CommonFleetDefaultMemberConfigSpecOutput{})
+	pulumi.RegisterOutputType(CommonFleetDefaultMemberConfigSpecPtrOutput{})
+	pulumi.RegisterOutputType(CommonFleetDefaultMemberConfigSpecResponseOutput{})
 	pulumi.RegisterOutputType(EdgeClusterOutput{})
 	pulumi.RegisterOutputType(EdgeClusterPtrOutput{})
 	pulumi.RegisterOutputType(EdgeClusterResponseOutput{})

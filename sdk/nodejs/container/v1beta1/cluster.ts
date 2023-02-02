@@ -122,6 +122,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
+     * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
@@ -360,6 +364,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
+            resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             resourceInputs["initialClusterVersion"] = args ? args.initialClusterVersion : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
@@ -438,6 +443,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableKubernetesAlpha"] = undefined /*out*/;
             resourceInputs["enableTpu"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
+            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
             resourceInputs["identityServiceConfig"] = undefined /*out*/;
             resourceInputs["initialClusterVersion"] = undefined /*out*/;
@@ -579,6 +585,10 @@ export interface ClusterArgs {
      * @deprecated Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * Configuration for Identity Service component.
      */

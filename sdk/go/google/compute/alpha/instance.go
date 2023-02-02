@@ -39,7 +39,7 @@ type Instance struct {
 	GuestAccelerators AcceleratorConfigResponseArrayOutput `pulumi:"guestAccelerators"`
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
 	InstanceEncryptionKey CustomerEncryptionKeyResponseOutput `pulumi:"instanceEncryptionKey"`
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType pulumi.StringOutput `pulumi:"keyRevocationActionType"`
@@ -94,7 +94,9 @@ type Instance struct {
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-	ServiceAccounts                 ServiceAccountResponseArrayOutput             `pulumi:"serviceAccounts"`
+	ServiceAccounts ServiceAccountResponseArrayOutput `pulumi:"serviceAccounts"`
+	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+	ServiceIntegrationSpecs         pulumi.StringMapOutput                        `pulumi:"serviceIntegrationSpecs"`
 	ShieldedInstanceConfig          ShieldedInstanceConfigResponseOutput          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyResponseOutput `pulumi:"shieldedInstanceIntegrityPolicy"`
 	// Deprecating, please use shielded_instance_config.
@@ -183,7 +185,7 @@ type instanceArgs struct {
 	GuestAccelerators []AcceleratorConfig `pulumi:"guestAccelerators"`
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname *string `pulumi:"hostname"`
-	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
 	InstanceEncryptionKey *CustomerEncryptionKey `pulumi:"instanceEncryptionKey"`
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType *InstanceKeyRevocationActionType `pulumi:"keyRevocationActionType"`
@@ -220,7 +222,9 @@ type instanceArgs struct {
 	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
 	SecureTags []string `pulumi:"secureTags"`
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-	ServiceAccounts                 []ServiceAccount                 `pulumi:"serviceAccounts"`
+	ServiceAccounts []ServiceAccount `pulumi:"serviceAccounts"`
+	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+	ServiceIntegrationSpecs         map[string]string                `pulumi:"serviceIntegrationSpecs"`
 	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
 	// Deprecating, please use shielded_instance_config.
@@ -259,7 +263,7 @@ type InstanceArgs struct {
 	GuestAccelerators AcceleratorConfigArrayInput
 	// Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
 	Hostname pulumi.StringPtrInput
-	// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+	// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
 	InstanceEncryptionKey CustomerEncryptionKeyPtrInput
 	// KeyRevocationActionType of the instance. Supported options are "STOP" and "NONE". The default value is "NONE" if it is not specified.
 	KeyRevocationActionType InstanceKeyRevocationActionTypePtrInput
@@ -296,7 +300,9 @@ type InstanceArgs struct {
 	// [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
 	SecureTags pulumi.StringArrayInput
 	// A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
-	ServiceAccounts                 ServiceAccountArrayInput
+	ServiceAccounts ServiceAccountArrayInput
+	// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+	ServiceIntegrationSpecs         pulumi.StringMapInput
 	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput
 	// Deprecating, please use shielded_instance_config.
@@ -415,7 +421,7 @@ func (o InstanceOutput) Hostname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
 }
 
-// Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+// Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
 func (o InstanceOutput) InstanceEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v *Instance) CustomerEncryptionKeyResponseOutput { return v.InstanceEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
 }
@@ -556,6 +562,11 @@ func (o InstanceOutput) SelfLinkWithId() pulumi.StringOutput {
 // A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
 func (o InstanceOutput) ServiceAccounts() ServiceAccountResponseArrayOutput {
 	return o.ApplyT(func(v *Instance) ServiceAccountResponseArrayOutput { return v.ServiceAccounts }).(ServiceAccountResponseArrayOutput)
+}
+
+// Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+func (o InstanceOutput) ServiceIntegrationSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.ServiceIntegrationSpecs }).(pulumi.StringMapOutput)
 }
 
 func (o InstanceOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {

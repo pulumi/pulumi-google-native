@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Self { get; private set; } = null!;
 
         /// <summary>
-        /// Query state could be "enqueued", "running", "completed", "failed".
+        /// Query state could be "enqueued", "running", "completed", "expired" and "failed".
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;

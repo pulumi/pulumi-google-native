@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 {
     /// <summary>
-    /// Create a new case and associate it with the given Cloud resource.
+    /// Create a new case and associate it with the given Cloud resource. The case object must have the following fields set: display_name, description, classification, and severity.
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
@@ -52,6 +52,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         [Output("escalated")]
         public Output<bool> Escalated { get; private set; } = null!;
+
+        /// <summary>
+        /// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+        /// </summary>
+        [Output("languageCode")]
+        public Output<string> LanguageCode { get; private set; } = null!;
 
         /// <summary>
         /// The resource name for the case.
@@ -186,6 +192,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         [Input("escalated")]
         public Input<bool>? Escalated { get; set; }
+
+        /// <summary>
+        /// The language the user has requested to receive support in. This should be a BCP 47 language code (e.g., `"en"`, `"zh-CN"`, `"zh-TW"`, `"ja"`, `"ko"`). If no language or an unsupported language is specified, this field defaults to English (en). Language selection during case creation may affect your available support options. For a list of supported languages and their support working hours, see: https://cloud.google.com/support/docs/language-working-hours
+        /// </summary>
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
         /// The resource name for the case.

@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public Output<string?> FeatureId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Feature configuration applicable to all memberships of the fleet.
+        /// </summary>
+        [Output("fleetDefaultMemberConfig")]
+        public Output<Outputs.CommonFleetDefaultMemberConfigSpecResponse> FleetDefaultMemberConfig { get; private set; } = null!;
+
+        /// <summary>
         /// GCP labels for this Feature.
         /// </summary>
         [Output("labels")]
@@ -161,6 +167,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         [Input("featureId")]
         public Input<string>? FeatureId { get; set; }
+
+        /// <summary>
+        /// Optional. Feature configuration applicable to all memberships of the fleet.
+        /// </summary>
+        [Input("fleetDefaultMemberConfig")]
+        public Input<Inputs.CommonFleetDefaultMemberConfigSpecArgs>? FleetDefaultMemberConfig { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

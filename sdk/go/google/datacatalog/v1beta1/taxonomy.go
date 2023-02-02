@@ -28,6 +28,8 @@ type Taxonomy struct {
 	// Number of policy tags contained in this taxonomy.
 	PolicyTagCount pulumi.IntOutput    `pulumi:"policyTagCount"`
 	Project        pulumi.StringOutput `pulumi:"project"`
+	// Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+	Service GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput `pulumi:"service"`
 	// Timestamps about this taxonomy. Only create_time and update_time are used.
 	TaxonomyTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponseOutput `pulumi:"taxonomyTimestamps"`
 }
@@ -169,6 +171,11 @@ func (o TaxonomyOutput) PolicyTagCount() pulumi.IntOutput {
 
 func (o TaxonomyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Taxonomy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+func (o TaxonomyOutput) Service() GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput {
+	return o.ApplyT(func(v *Taxonomy) GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput { return v.Service }).(GoogleCloudDatacatalogV1beta1TaxonomyServiceResponseOutput)
 }
 
 // Timestamps about this taxonomy. Only create_time and update_time are used.

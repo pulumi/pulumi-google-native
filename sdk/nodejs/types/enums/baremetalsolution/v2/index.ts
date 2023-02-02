@@ -42,6 +42,26 @@ export const InstanceConfigNetworkConfig = {
  */
 export type InstanceConfigNetworkConfig = (typeof InstanceConfigNetworkConfig)[keyof typeof InstanceConfigNetworkConfig];
 
+export const InstanceWorkloadProfile = {
+    /**
+     * The workload profile is in an unknown state.
+     */
+    WorkloadProfileUnspecified: "WORKLOAD_PROFILE_UNSPECIFIED",
+    /**
+     * The workload profile is generic.
+     */
+    WorkloadProfileGeneric: "WORKLOAD_PROFILE_GENERIC",
+    /**
+     * The workload profile is hana.
+     */
+    WorkloadProfileHana: "WORKLOAD_PROFILE_HANA",
+} as const;
+
+/**
+ * The workload profile for the instance.
+ */
+export type InstanceWorkloadProfile = (typeof InstanceWorkloadProfile)[keyof typeof InstanceWorkloadProfile];
+
 export const LogicalNetworkInterfaceNetworkType = {
     /**
      * Unspecified value.
@@ -401,3 +421,23 @@ export const VolumeStorageType = {
  * The storage type for this volume.
  */
 export type VolumeStorageType = (typeof VolumeStorageType)[keyof typeof VolumeStorageType];
+
+export const VolumeWorkloadProfile = {
+    /**
+     * The workload profile is in an unknown state.
+     */
+    WorkloadProfileUnspecified: "WORKLOAD_PROFILE_UNSPECIFIED",
+    /**
+     * The workload profile is generic.
+     */
+    Generic: "GENERIC",
+    /**
+     * The workload profile is hana.
+     */
+    Hana: "HANA",
+} as const;
+
+/**
+ * The workload profile for the volume.
+ */
+export type VolumeWorkloadProfile = (typeof VolumeWorkloadProfile)[keyof typeof VolumeWorkloadProfile];

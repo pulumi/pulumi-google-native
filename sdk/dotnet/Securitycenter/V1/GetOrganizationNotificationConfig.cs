@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        /// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket", "folders/{folder_id}/notificationConfigs/notify_public_bucket", or "projects/{project_id}/notificationConfigs/notify_public_bucket".
         /// </summary>
         public readonly string Name;
         /// <summary>

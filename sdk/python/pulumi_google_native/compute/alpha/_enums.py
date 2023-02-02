@@ -12,6 +12,8 @@ __all__ = [
     'AddressIpv6EndpointType',
     'AddressNetworkTier',
     'AddressPurpose',
+    'AdvancedMachineFeaturesPerformanceMonitoringUnit',
+    'AllocationAggregateReservationVmFamily',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval',
     'AttachedDiskInitializeParamsArchitecture',
@@ -34,10 +36,12 @@ __all__ = [
     'BackendServiceCompressionMode',
     'BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends',
     'BackendServiceConnectionTrackingPolicyTrackingMode',
+    'BackendServiceIpAddressSelectionPolicy',
     'BackendServiceLoadBalancingScheme',
     'BackendServiceLocalityLbPolicy',
     'BackendServiceLocalityLoadBalancingPolicyConfigPolicyName',
     'BackendServiceLogConfigOptional',
+    'BackendServiceLogConfigOptionalMode',
     'BackendServiceProtocol',
     'BackendServiceSessionAffinity',
     'BackendServiceVpcNetworkScope',
@@ -96,6 +100,7 @@ __all__ = [
     'ImageSourceType',
     'InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheck',
     'InstanceGroupManagerFailoverAction',
+    'InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure',
     'InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair',
     'InstanceGroupManagerListManagedInstancesResults',
     'InstanceGroupManagerUpdatePolicyInstanceRedistributionType',
@@ -142,6 +147,7 @@ __all__ = [
     'PublicAdvertisedPrefixPdpScope',
     'PublicAdvertisedPrefixStatus',
     'RegionBackendServiceCompressionMode',
+    'RegionBackendServiceIpAddressSelectionPolicy',
     'RegionBackendServiceLoadBalancingScheme',
     'RegionBackendServiceLocalityLbPolicy',
     'RegionBackendServiceProtocol',
@@ -208,6 +214,7 @@ __all__ = [
     'SecurityPolicyRuleMatcherVersionedExpr',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType',
     'SecurityPolicyRuleRedirectOptionsType',
     'SecurityPolicyType',
     'SecurityPolicyUserDefinedFieldBase',
@@ -382,6 +389,34 @@ class AddressPurpose(str, Enum):
     """
 
 
+class AdvancedMachineFeaturesPerformanceMonitoringUnit(str, Enum):
+    """
+    Type of Performance Monitoring Unit requested on instance.
+    """
+    ARCHITECTURAL = "ARCHITECTURAL"
+    """
+    Architecturally defined non-LLC events.
+    """
+    ENHANCED = "ENHANCED"
+    """
+    Most documented core/L2 and LLC events.
+    """
+    PERFORMANCE_MONITORING_UNIT_UNSPECIFIED = "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED"
+    STANDARD = "STANDARD"
+    """
+    Most documented core/L2 events.
+    """
+
+
+class AllocationAggregateReservationVmFamily(str, Enum):
+    """
+    The VM family that all instances scheduled against this reservation must belong to.
+    """
+    VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P = "VM_FAMILY_CLOUD_TPU_POD_SLICE_CT4P"
+    VM_FAMILY_GENERAL_PURPOSE_T2D = "VM_FAMILY_GENERAL_PURPOSE_T2D"
+    VM_FAMILY_MEMORY_OPTIMIZED_M3 = "VM_FAMILY_MEMORY_OPTIMIZED_M3"
+
+
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterface(str, Enum):
     """
     Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
@@ -398,6 +433,10 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterv
     PERIODIC = "PERIODIC"
     """
     VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
+    """
+    RECURRENT = "RECURRENT"
+    """
+    VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
     """
 
 
@@ -715,6 +754,28 @@ class BackendServiceConnectionTrackingPolicyTrackingMode(str, Enum):
     PER_SESSION = "PER_SESSION"
 
 
+class BackendServiceIpAddressSelectionPolicy(str, Enum):
+    """
+    Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    """
+    IPV4_ONLY = "IPV4_ONLY"
+    """
+    Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
+    """
+    IPV6_ONLY = "IPV6_ONLY"
+    """
+    Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends.
+    """
+    IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED = "IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED"
+    """
+    Unspecified IP address selection policy.
+    """
+    PREFER_IPV6 = "PREFER_IPV6"
+    """
+    Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address).
+    """
+
+
 class BackendServiceLoadBalancingScheme(str, Enum):
     """
     Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -779,7 +840,7 @@ class BackendServiceLocalityLbPolicy(str, Enum):
 
 class BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(str, Enum):
     """
-    The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+    The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
@@ -813,6 +874,25 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(str, Enum):
 
 
 class BackendServiceLogConfigOptional(str, Enum):
+    """
+    Deprecated in favor of optionalMode. This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+    """
+    CUSTOM = "CUSTOM"
+    """
+    A subset of optional fields.
+    """
+    EXCLUDE_ALL_OPTIONAL = "EXCLUDE_ALL_OPTIONAL"
+    """
+    None optional fields.
+    """
+    INCLUDE_ALL_OPTIONAL = "INCLUDE_ALL_OPTIONAL"
+    """
+    All optional fields.
+    """
+    UNSPECIFIED_OPTIONAL_MODE = "UNSPECIFIED_OPTIONAL_MODE"
+
+
+class BackendServiceLogConfigOptionalMode(str, Enum):
     """
     This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
     """
@@ -1852,6 +1932,20 @@ class InstanceGroupManagerFailoverAction(str, Enum):
     UNKNOWN = "UNKNOWN"
 
 
+class InstanceGroupManagerInstanceLifecyclePolicyDefaultActionOnFailure(str, Enum):
+    """
+    Defines behaviour for all instance or failures
+    """
+    DO_NOTHING = "DO_NOTHING"
+    """
+    If any of the MIG's VMs is not running, or is failing, no repair action will be taken.
+    """
+    REPAIR = "REPAIR"
+    """
+    *[Default]* If any of the MIG's VMs is not running - for example, a VM cannot be created during a scale out or a VM fails – then the group will retry until it creates that VM successfully. For more information about how a MIG manages its VMs, see What is a managed instance."
+    """
+
+
 class InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(str, Enum):
     """
     A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
@@ -2595,6 +2689,28 @@ class RegionBackendServiceCompressionMode(str, Enum):
     """
 
 
+class RegionBackendServiceIpAddressSelectionPolicy(str, Enum):
+    """
+    Specifies preference of traffic to the backend (from the proxy and from the client for proxyless gRPC). The possible values are: - IPV4_ONLY: Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting. - PREFER_IPV6: Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address). - IPV6_ONLY: Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends. This field is applicable to either: - Advanced Global External HTTPS Load Balancing (load balancing scheme EXTERNAL_MANAGED), - Regional External HTTPS Load Balancing, - Internal TCP Proxy (load balancing scheme INTERNAL_MANAGED), - Regional Internal HTTPS Load Balancing (load balancing scheme INTERNAL_MANAGED), - Traffic Director with Envoy proxies and proxyless gRPC (load balancing scheme INTERNAL_SELF_MANAGED). 
+    """
+    IPV4_ONLY = "IPV4_ONLY"
+    """
+    Only send IPv4 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv4 health-checks are used to check the health of the backends. This is the default setting.
+    """
+    IPV6_ONLY = "IPV6_ONLY"
+    """
+    Only send IPv6 traffic to the backends of the Backend Service (Instance Group, Managed Instance Group, Network Endpoint Group) regardless of traffic from the client to the proxy. Only IPv6 health-checks are used to check the health of the backends.
+    """
+    IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED = "IP_ADDRESS_SELECTION_POLICY_UNSPECIFIED"
+    """
+    Unspecified IP address selection policy.
+    """
+    PREFER_IPV6 = "PREFER_IPV6"
+    """
+    Prioritize the connection to the endpoints IPv6 address over its IPv4 address (provided there is a healthy IPv6 address).
+    """
+
+
 class RegionBackendServiceLoadBalancingScheme(str, Enum):
     """
     Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
@@ -2775,6 +2891,7 @@ class RegionCommitmentType(str, Enum):
     GENERAL_PURPOSE_N2 = "GENERAL_PURPOSE_N2"
     GENERAL_PURPOSE_N2D = "GENERAL_PURPOSE_N2D"
     GENERAL_PURPOSE_T2D = "GENERAL_PURPOSE_T2D"
+    GRAPHICS_OPTIMIZED = "GRAPHICS_OPTIMIZED"
     MEMORY_OPTIMIZED = "MEMORY_OPTIMIZED"
     MEMORY_OPTIMIZED_M3 = "MEMORY_OPTIMIZED_M3"
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
@@ -2817,7 +2934,7 @@ class RegionDiskStorageType(str, Enum):
 
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     """
-    Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+    Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
     """
     AND_ = "AND"
     """
@@ -3058,7 +3175,7 @@ class ReservationAffinityConsumeReservationType(str, Enum):
 
 class ResourceCommitmentType(str, Enum):
     """
-    Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+    Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
     """
     ACCELERATOR = "ACCELERATOR"
     LOCAL_SSD = "LOCAL_SSD"
@@ -3442,6 +3559,10 @@ class SchedulingMaintenanceInterval(str, Enum):
     """
     VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available.
     """
+    RECURRENT = "RECURRENT"
+    """
+    VMs receive infrastructure and hypervisor updates on a periodic basis, minimizing the number of maintenance operations (live migrations or terminations) on an individual VM. This may mean a VM will take longer to receive an update than if it was configured for AS_NEEDED. Security updates will still be applied as soon as they are available. RECURRENT is used for GEN3 and Slice of Hardware VMs.
+    """
 
 
 class SchedulingNodeAffinityOperator(str, Enum):
@@ -3557,7 +3678,22 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    """
+    ALL = "ALL"
+    ALL_IPS = "ALL_IPS"
+    HTTP_COOKIE = "HTTP_COOKIE"
+    HTTP_HEADER = "HTTP_HEADER"
+    HTTP_PATH = "HTTP_PATH"
+    IP = "IP"
+    REGION_CODE = "REGION_CODE"
+    SNI = "SNI"
+    XFF_IP = "XFF_IP"
+
+
+class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(str, Enum):
+    """
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"

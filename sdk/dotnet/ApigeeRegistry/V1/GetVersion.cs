@@ -94,6 +94,10 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
+        /// </summary>
+        public readonly string PrimarySpec;
+        /// <summary>
         /// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
         /// </summary>
         public readonly string State;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 
             string name,
 
+            string primarySpec,
+
             string state,
 
             string updateTime)
@@ -126,6 +132,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
             DisplayName = displayName;
             Labels = labels;
             Name = name;
+            PrimarySpec = primarySpec;
             State = state;
             UpdateTime = updateTime;
         }

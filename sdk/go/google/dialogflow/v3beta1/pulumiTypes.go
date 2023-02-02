@@ -7597,6 +7597,8 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputResponseOutput) Text() GoogleClo
 
 // Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
 type GoogleCloudDialogflowCxV3beta1ResponseMessage struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel *string `pulumi:"channel"`
 	// Indicates that the conversation succeeded.
 	ConversationSuccess *GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess `pulumi:"conversationSuccess"`
 	// Hands off conversation to a human agent.
@@ -7626,6 +7628,8 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageInput interface {
 
 // Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageArgs struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel pulumi.StringPtrInput `pulumi:"channel"`
 	// Indicates that the conversation succeeded.
 	ConversationSuccess GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrInput `pulumi:"conversationSuccess"`
 	// Hands off conversation to a human agent.
@@ -7745,6 +7749,11 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) ToGoogleCloudDialog
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput)
 }
 
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessage) *string { return v.Channel }).(pulumi.StringPtrOutput)
+}
+
 // Indicates that the conversation succeeded.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutput) ConversationSuccess() GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessage) *GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
@@ -7814,6 +7823,16 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) Elem() GoogleClo
 		var ret GoogleCloudDialogflowCxV3beta1ResponseMessage
 		return ret
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageOutput)
+}
+
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePtrOutput) Channel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Channel
+	}).(pulumi.StringPtrOutput)
 }
 
 // Indicates that the conversation succeeded.
@@ -8733,6 +8752,8 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponseOutput) Au
 
 // Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageResponse struct {
+	// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+	Channel string `pulumi:"channel"`
 	// Indicates that the conversation succeeded.
 	ConversationSuccess GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse `pulumi:"conversationSuccess"`
 	// A signal that indicates the interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only when the conversation reaches `END_SESSION` page. It is not supposed to be defined by the user. It's guaranteed that there is at most one such message in each response.
@@ -8766,6 +8787,11 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput) ToGoogleClo
 
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput) ToGoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput {
 	return o
+}
+
+// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageResponse) string { return v.Channel }).(pulumi.StringOutput)
 }
 
 // Indicates that the conversation succeeded.

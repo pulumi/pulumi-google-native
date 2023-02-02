@@ -216,17 +216,23 @@ class GooglePrivacyDlpV2CustomInfoTypeLikelihood(str, Enum):
     """
     VERY_UNLIKELY = "VERY_UNLIKELY"
     """
-    Few matching elements.
+    Highest chance of a false positive.
     """
     UNLIKELY = "UNLIKELY"
+    """
+    High chance of a false positive.
+    """
     POSSIBLE = "POSSIBLE"
     """
-    Some matching elements.
+    Some matching signals. The default value.
     """
     LIKELY = "LIKELY"
+    """
+    Low chance of a false positive.
+    """
     VERY_LIKELY = "VERY_LIKELY"
     """
-    Many matching elements.
+    Confidence level is high. Lowest chance of a false positive.
     """
 
 
@@ -338,17 +344,23 @@ class GooglePrivacyDlpV2InspectConfigMinLikelihood(str, Enum):
     """
     VERY_UNLIKELY = "VERY_UNLIKELY"
     """
-    Few matching elements.
+    Highest chance of a false positive.
     """
     UNLIKELY = "UNLIKELY"
+    """
+    High chance of a false positive.
+    """
     POSSIBLE = "POSSIBLE"
     """
-    Some matching elements.
+    Some matching signals. The default value.
     """
     LIKELY = "LIKELY"
+    """
+    Low chance of a false positive.
+    """
     VERY_LIKELY = "VERY_LIKELY"
     """
-    Many matching elements.
+    Confidence level is high. Lowest chance of a false positive.
     """
 
 
@@ -362,17 +374,23 @@ class GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihood(str, Enum):
     """
     VERY_UNLIKELY = "VERY_UNLIKELY"
     """
-    Few matching elements.
+    Highest chance of a false positive.
     """
     UNLIKELY = "UNLIKELY"
+    """
+    High chance of a false positive.
+    """
     POSSIBLE = "POSSIBLE"
     """
-    Some matching elements.
+    Some matching signals. The default value.
     """
     LIKELY = "LIKELY"
+    """
+    Low chance of a false positive.
+    """
     VERY_LIKELY = "VERY_LIKELY"
     """
-    Many matching elements.
+    Confidence level is high. Lowest chance of a false positive.
     """
 
 

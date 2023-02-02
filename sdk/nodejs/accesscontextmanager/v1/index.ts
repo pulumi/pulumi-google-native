@@ -30,6 +30,11 @@ export type AccessPolicyIamPolicy = import("./accessPolicyIamPolicy").AccessPoli
 export const AccessPolicyIamPolicy: typeof import("./accessPolicyIamPolicy").AccessPolicyIamPolicy = null as any;
 utilities.lazyLoad(exports, ["AccessPolicyIamPolicy"], () => require("./accessPolicyIamPolicy"));
 
+export { AuthorizedOrgsDescArgs } from "./authorizedOrgsDesc";
+export type AuthorizedOrgsDesc = import("./authorizedOrgsDesc").AuthorizedOrgsDesc;
+export const AuthorizedOrgsDesc: typeof import("./authorizedOrgsDesc").AuthorizedOrgsDesc = null as any;
+utilities.lazyLoad(exports, ["AuthorizedOrgsDesc"], () => require("./authorizedOrgsDesc"));
+
 export { GcpUserAccessBindingArgs } from "./gcpUserAccessBinding";
 export type GcpUserAccessBinding = import("./gcpUserAccessBinding").GcpUserAccessBinding;
 export const GcpUserAccessBinding: typeof import("./gcpUserAccessBinding").GcpUserAccessBinding = null as any;
@@ -49,6 +54,11 @@ export { GetAccessPolicyIamPolicyArgs, GetAccessPolicyIamPolicyResult, GetAccess
 export const getAccessPolicyIamPolicy: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicy = null as any;
 export const getAccessPolicyIamPolicyOutput: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAccessPolicyIamPolicy","getAccessPolicyIamPolicyOutput"], () => require("./getAccessPolicyIamPolicy"));
+
+export { GetAuthorizedOrgsDescArgs, GetAuthorizedOrgsDescResult, GetAuthorizedOrgsDescOutputArgs } from "./getAuthorizedOrgsDesc";
+export const getAuthorizedOrgsDesc: typeof import("./getAuthorizedOrgsDesc").getAuthorizedOrgsDesc = null as any;
+export const getAuthorizedOrgsDescOutput: typeof import("./getAuthorizedOrgsDesc").getAuthorizedOrgsDescOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthorizedOrgsDesc","getAuthorizedOrgsDescOutput"], () => require("./getAuthorizedOrgsDesc"));
 
 export { GetGcpUserAccessBindingArgs, GetGcpUserAccessBindingResult, GetGcpUserAccessBindingOutputArgs } from "./getGcpUserAccessBinding";
 export const getGcpUserAccessBinding: typeof import("./getGcpUserAccessBinding").getGcpUserAccessBinding = null as any;
@@ -83,6 +93,8 @@ const _module = {
                 return new AccessPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:AccessPolicyIamPolicy":
                 return new AccessPolicyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:accesscontextmanager/v1:AuthorizedOrgsDesc":
+                return new AuthorizedOrgsDesc(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:GcpUserAccessBinding":
                 return new GcpUserAccessBinding(name, <any>undefined, { urn })
             case "google-native:accesscontextmanager/v1:ServicePerimeter":

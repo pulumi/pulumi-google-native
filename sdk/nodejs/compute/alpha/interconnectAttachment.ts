@@ -202,7 +202,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
      */
     public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     /**
-     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
      */
     public readonly vlanTag8021q!: pulumi.Output<number>;
 
@@ -414,7 +414,7 @@ export interface InterconnectAttachmentArgs {
      */
     validateOnly?: pulumi.Input<boolean>;
     /**
-     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
+     * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4093. Only specified at creation time.
      */
     vlanTag8021q?: pulumi.Input<number>;
 }

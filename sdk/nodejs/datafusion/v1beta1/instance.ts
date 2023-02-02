@@ -87,6 +87,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly enableStackdriverMonitoring!: pulumi.Output<boolean>;
     /**
+     * Option to enable zone separation.
+     */
+    public readonly enableZoneSeparation!: pulumi.Output<boolean>;
+    /**
      * Option to enable and pass metadata for event publishing.
      */
     public readonly eventPublishConfig!: pulumi.Output<outputs.datafusion.v1beta1.EventPublishConfigResponse>;
@@ -189,6 +193,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableRbac"] = args ? args.enableRbac : undefined;
             resourceInputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             resourceInputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
+            resourceInputs["enableZoneSeparation"] = args ? args.enableZoneSeparation : undefined;
             resourceInputs["eventPublishConfig"] = args ? args.eventPublishConfig : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -225,6 +230,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["enableRbac"] = undefined /*out*/;
             resourceInputs["enableStackdriverLogging"] = undefined /*out*/;
             resourceInputs["enableStackdriverMonitoring"] = undefined /*out*/;
+            resourceInputs["enableZoneSeparation"] = undefined /*out*/;
             resourceInputs["eventPublishConfig"] = undefined /*out*/;
             resourceInputs["gcsBucket"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -293,6 +299,10 @@ export interface InstanceArgs {
      * Option to enable Stackdriver Monitoring.
      */
     enableStackdriverMonitoring?: pulumi.Input<boolean>;
+    /**
+     * Option to enable zone separation.
+     */
+    enableZoneSeparation?: pulumi.Input<boolean>;
     /**
      * Option to enable and pass metadata for event publishing.
      */

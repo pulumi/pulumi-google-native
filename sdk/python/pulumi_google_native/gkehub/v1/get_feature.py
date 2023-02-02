@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetFeatureResult:
-    def __init__(__self__, create_time=None, delete_time=None, labels=None, membership_specs=None, membership_states=None, name=None, resource_state=None, scope_specs=None, scope_states=None, spec=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, fleet_default_member_config=None, labels=None, membership_specs=None, membership_states=None, name=None, resource_state=None, scope_specs=None, scope_states=None, spec=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
         if delete_time and not isinstance(delete_time, str):
             raise TypeError("Expected argument 'delete_time' to be a str")
         pulumi.set(__self__, "delete_time", delete_time)
+        if fleet_default_member_config and not isinstance(fleet_default_member_config, dict):
+            raise TypeError("Expected argument 'fleet_default_member_config' to be a dict")
+        pulumi.set(__self__, "fleet_default_member_config", fleet_default_member_config)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -72,6 +75,14 @@ class GetFeatureResult:
         When the Feature resource was deleted.
         """
         return pulumi.get(self, "delete_time")
+
+    @property
+    @pulumi.getter(name="fleetDefaultMemberConfig")
+    def fleet_default_member_config(self) -> 'outputs.CommonFleetDefaultMemberConfigSpecResponse':
+        """
+        Optional. Feature configuration applicable to all memberships of the fleet.
+        """
+        return pulumi.get(self, "fleet_default_member_config")
 
     @property
     @pulumi.getter
@@ -162,6 +173,7 @@ class AwaitableGetFeatureResult(GetFeatureResult):
         return GetFeatureResult(
             create_time=self.create_time,
             delete_time=self.delete_time,
+            fleet_default_member_config=self.fleet_default_member_config,
             labels=self.labels,
             membership_specs=self.membership_specs,
             membership_states=self.membership_states,
@@ -191,6 +203,7 @@ def get_feature(feature_id: Optional[str] = None,
     return AwaitableGetFeatureResult(
         create_time=__ret__.create_time,
         delete_time=__ret__.delete_time,
+        fleet_default_member_config=__ret__.fleet_default_member_config,
         labels=__ret__.labels,
         membership_specs=__ret__.membership_specs,
         membership_states=__ret__.membership_states,

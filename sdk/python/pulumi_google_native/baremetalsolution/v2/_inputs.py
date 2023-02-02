@@ -1121,6 +1121,7 @@ class VolumeConfigArgs:
                  protocol: Optional[pulumi.Input['VolumeConfigProtocol']] = None,
                  size_gb: Optional[pulumi.Input[int]] = None,
                  snapshots_enabled: Optional[pulumi.Input[bool]] = None,
+                 storage_aggregate_pool: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['VolumeConfigType']] = None,
                  user_note: Optional[pulumi.Input[str]] = None):
         """
@@ -1134,6 +1135,7 @@ class VolumeConfigArgs:
         :param pulumi.Input['VolumeConfigProtocol'] protocol: Volume protocol.
         :param pulumi.Input[int] size_gb: The requested size of this volume, in GB.
         :param pulumi.Input[bool] snapshots_enabled: Whether snapshots should be enabled.
+        :param pulumi.Input[str] storage_aggregate_pool: Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
         :param pulumi.Input['VolumeConfigType'] type: The type of this Volume.
         :param pulumi.Input[str] user_note: User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
@@ -1155,6 +1157,8 @@ class VolumeConfigArgs:
             pulumi.set(__self__, "size_gb", size_gb)
         if snapshots_enabled is not None:
             pulumi.set(__self__, "snapshots_enabled", snapshots_enabled)
+        if storage_aggregate_pool is not None:
+            pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_note is not None:
@@ -1269,6 +1273,18 @@ class VolumeConfigArgs:
         pulumi.set(self, "snapshots_enabled", value)
 
     @property
+    @pulumi.getter(name="storageAggregatePool")
+    def storage_aggregate_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        """
+        return pulumi.get(self, "storage_aggregate_pool")
+
+    @storage_aggregate_pool.setter
+    def storage_aggregate_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_aggregate_pool", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['VolumeConfigType']]:
         """
@@ -1313,7 +1329,9 @@ class VolumeArgs:
                  snapshot_reservation_detail: Optional[pulumi.Input['SnapshotReservationDetailArgs']] = None,
                  snapshot_schedule_policy: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['VolumeState']] = None,
-                 storage_type: Optional[pulumi.Input['VolumeStorageType']] = None):
+                 storage_aggregate_pool: Optional[pulumi.Input[str]] = None,
+                 storage_type: Optional[pulumi.Input['VolumeStorageType']] = None,
+                 workload_profile: Optional[pulumi.Input['VolumeWorkloadProfile']] = None):
         """
         A storage volume.
         :param pulumi.Input[str] auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
@@ -1333,7 +1351,9 @@ class VolumeArgs:
         :param pulumi.Input['SnapshotReservationDetailArgs'] snapshot_reservation_detail: Details about snapshot space reservation and usage on the storage volume.
         :param pulumi.Input[str] snapshot_schedule_policy: The name of the snapshot schedule policy in use for this volume, if any.
         :param pulumi.Input['VolumeState'] state: The state of this storage volume.
+        :param pulumi.Input[str] storage_aggregate_pool: Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
         :param pulumi.Input['VolumeStorageType'] storage_type: The storage type for this volume.
+        :param pulumi.Input['VolumeWorkloadProfile'] workload_profile: The workload profile for the volume.
         """
         if auto_grown_size_gib is not None:
             pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
@@ -1369,8 +1389,12 @@ class VolumeArgs:
             pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if storage_aggregate_pool is not None:
+            pulumi.set(__self__, "storage_aggregate_pool", storage_aggregate_pool)
         if storage_type is not None:
             pulumi.set(__self__, "storage_type", storage_type)
+        if workload_profile is not None:
+            pulumi.set(__self__, "workload_profile", workload_profile)
 
     @property
     @pulumi.getter(name="autoGrownSizeGib")
@@ -1577,6 +1601,18 @@ class VolumeArgs:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="storageAggregatePool")
+    def storage_aggregate_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Name of the storage aggregate pool to allocate the volume in. Can be used only for VOLUME_PERFORMANCE_TIER_ASSIGNED volumes.
+        """
+        return pulumi.get(self, "storage_aggregate_pool")
+
+    @storage_aggregate_pool.setter
+    def storage_aggregate_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_aggregate_pool", value)
+
+    @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input['VolumeStorageType']]:
         """
@@ -1587,5 +1623,17 @@ class VolumeArgs:
     @storage_type.setter
     def storage_type(self, value: Optional[pulumi.Input['VolumeStorageType']]):
         pulumi.set(self, "storage_type", value)
+
+    @property
+    @pulumi.getter(name="workloadProfile")
+    def workload_profile(self) -> Optional[pulumi.Input['VolumeWorkloadProfile']]:
+        """
+        The workload profile for the volume.
+        """
+        return pulumi.get(self, "workload_profile")
+
+    @workload_profile.setter
+    def workload_profile(self, value: Optional[pulumi.Input['VolumeWorkloadProfile']]):
+        pulumi.set(self, "workload_profile", value)
 
 

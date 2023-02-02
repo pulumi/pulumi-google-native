@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse DataSourceConnectionSpec;
         /// <summary>
-        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        /// Specification that applies to a table resource. Valid only for entries with the `TABLE` or `EXPLORE` type.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1DatabaseTableSpecResponse DatabaseTableSpec;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display name of an entry. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum size is 200 bytes when encoded in UTF-8. Default value is an empty string.
+        /// Display name of an entry. The maximum size is 500 bytes when encoded in UTF-8. Default value is an empty string.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -126,6 +126,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly string LinkedResource;
         /// <summary>
+        /// Specification that applies to Looker sysstem. Only settable when `user_specified_system` is equal to `LOOKER`
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse LookerSystemSpec;
+        /// <summary>
         /// The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name.
         /// </summary>
         public readonly string Name;
@@ -145,6 +149,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse SourceSystemTimestamps;
+        /// <summary>
+        /// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse SqlDatabaseSystemSpec;
         /// <summary>
         /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
         /// </summary>
@@ -192,6 +200,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             string linkedResource,
 
+            Outputs.GoogleCloudDatacatalogV1LookerSystemSpecResponse lookerSystemSpec,
+
             string name,
 
             Outputs.GoogleCloudDatacatalogV1PersonalDetailsResponse personalDetails,
@@ -201,6 +211,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             Outputs.GoogleCloudDatacatalogV1SchemaResponse schema,
 
             Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse sourceSystemTimestamps,
+
+            Outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse sqlDatabaseSystemSpec,
 
             string type,
 
@@ -224,11 +236,13 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             IntegratedSystem = integratedSystem;
             Labels = labels;
             LinkedResource = linkedResource;
+            LookerSystemSpec = lookerSystemSpec;
             Name = name;
             PersonalDetails = personalDetails;
             RoutineSpec = routineSpec;
             Schema = schema;
             SourceSystemTimestamps = sourceSystemTimestamps;
+            SqlDatabaseSystemSpec = sqlDatabaseSystemSpec;
             Type = type;
             UsageSignal = usageSignal;
             UserSpecifiedSystem = userSpecifiedSystem;

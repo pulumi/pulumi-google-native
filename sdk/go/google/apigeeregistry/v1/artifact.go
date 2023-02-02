@@ -15,7 +15,9 @@ import (
 type Artifact struct {
 	pulumi.CustomResourceState
 
-	ApiId pulumi.StringOutput `pulumi:"apiId"`
+	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
+	ApiId       pulumi.StringOutput    `pulumi:"apiId"`
 	// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ArtifactId pulumi.StringOutput `pulumi:"artifactId"`
 	// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
@@ -23,8 +25,10 @@ type Artifact struct {
 	// Creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
-	Hash     pulumi.StringOutput `pulumi:"hash"`
-	Location pulumi.StringOutput `pulumi:"location"`
+	Hash pulumi.StringOutput `pulumi:"hash"`
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 	MimeType pulumi.StringOutput `pulumi:"mimeType"`
 	// Resource name.
@@ -98,12 +102,16 @@ func (ArtifactState) ElementType() reflect.Type {
 }
 
 type artifactArgs struct {
-	ApiId string `pulumi:"apiId"`
+	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+	Annotations map[string]string `pulumi:"annotations"`
+	ApiId       string            `pulumi:"apiId"`
 	// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ArtifactId string `pulumi:"artifactId"`
 	// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
 	Contents *string `pulumi:"contents"`
-	Location *string `pulumi:"location"`
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 	MimeType *string `pulumi:"mimeType"`
 	// Resource name.
@@ -115,11 +123,15 @@ type artifactArgs struct {
 
 // The set of arguments for constructing a Artifact resource.
 type ArtifactArgs struct {
-	ApiId pulumi.StringInput
+	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+	Annotations pulumi.StringMapInput
+	ApiId       pulumi.StringInput
 	// Required. The ID to use for the artifact, which will become the final component of the artifact's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ArtifactId pulumi.StringInput
 	// Input only. The contents of the artifact. Provided by API callers when artifacts are created or replaced. To access the contents of an artifact, use GetArtifactContents.
 	Contents pulumi.StringPtrInput
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
 	MimeType pulumi.StringPtrInput
@@ -167,6 +179,11 @@ func (o ArtifactOutput) ToArtifactOutputWithContext(ctx context.Context) Artifac
 	return o
 }
 
+// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
+func (o ArtifactOutput) Annotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Artifact) pulumi.StringMapOutput { return v.Annotations }).(pulumi.StringMapOutput)
+}
+
 func (o ArtifactOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Artifact) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
 }
@@ -189,6 +206,11 @@ func (o ArtifactOutput) CreateTime() pulumi.StringOutput {
 // A SHA-256 hash of the artifact's contents. If the artifact is gzipped, this is the hash of the uncompressed artifact.
 func (o ArtifactOutput) Hash() pulumi.StringOutput {
 	return o.ApplyT(func(v *Artifact) pulumi.StringOutput { return v.Hash }).(pulumi.StringOutput)
+}
+
+// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "registry.googleapis.com/" and cannot be changed.
+func (o ArtifactOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Artifact) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o ArtifactOutput) Location() pulumi.StringOutput {

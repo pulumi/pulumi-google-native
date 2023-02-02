@@ -34,6 +34,8 @@ __all__ = [
     'DatabaseEncryptionArgs',
     'DefaultSnatStatusArgs',
     'DnsCacheConfigArgs',
+    'EphemeralStorageLocalSsdConfigArgs',
+    'FastSocketArgs',
     'FilterArgs',
     'GPUSharingConfigArgs',
     'GatewayAPIConfigArgs',
@@ -48,6 +50,7 @@ __all__ = [
     'KubernetesDashboardArgs',
     'LegacyAbacArgs',
     'LinuxNodeConfigArgs',
+    'LocalNvmeSsdBlockConfigArgs',
     'LoggingComponentConfigArgs',
     'LoggingConfigArgs',
     'LoggingVariantConfigArgs',
@@ -78,6 +81,7 @@ __all__ = [
     'NodePoolArgs',
     'NodeTaintArgs',
     'NotificationConfigArgs',
+    'PlacementPolicyArgs',
     'PrivateClusterConfigArgs',
     'PrivateClusterMasterGlobalAccessConfigArgs',
     'PubSubArgs',
@@ -96,6 +100,7 @@ __all__ = [
     'UpgradeSettingsArgs',
     'VerticalPodAutoscalingArgs',
     'VirtualNICArgs',
+    'WindowsNodeConfigArgs',
     'WorkloadIdentityConfigArgs',
     'WorkloadMetadataConfigArgs',
 ]
@@ -455,9 +460,9 @@ class AutoprovisioningNodePoolDefaultsArgs:
         :param pulumi.Input[str] boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input[str] image_type: The image type to use for NAP created node.
+        :param pulumi.Input[str] image_type: The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         :param pulumi.Input['NodeManagementArgs'] management: Specifies the node management options for NAP created node-pools.
-        :param pulumi.Input[str] min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        :param pulumi.Input[str] min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: Scopes that are used by NAP when creating node pools.
         :param pulumi.Input[str] service_account: The Google Cloud Platform Service Account to be used by the node VMs.
         :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
@@ -474,8 +479,8 @@ class AutoprovisioningNodePoolDefaultsArgs:
         if management is not None:
             pulumi.set(__self__, "management", management)
         if min_cpu_platform is not None:
-            warnings.warn("""Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass \"automatic\" as field value.""", DeprecationWarning)
-            pulumi.log.warn("""min_cpu_platform is deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass \"automatic\" as field value.""")
+            warnings.warn("""Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass \"automatic\" as field value.""", DeprecationWarning)
+            pulumi.log.warn("""min_cpu_platform is deprecated: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass \"automatic\" as field value.""")
         if min_cpu_platform is not None:
             pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
         if oauth_scopes is not None:
@@ -527,7 +532,7 @@ class AutoprovisioningNodePoolDefaultsArgs:
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The image type to use for NAP created node.
+        The image type to use for NAP created node. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         """
         return pulumi.get(self, "image_type")
 
@@ -551,7 +556,7 @@ class AutoprovisioningNodePoolDefaultsArgs:
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> Optional[pulumi.Input[str]]:
         """
-        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform). This field is deprecated, min_cpu_platform should be specified using `cloud.google.com/requested-min-cpu-platform` label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -640,7 +645,7 @@ class BinaryAuthorizationArgs:
         """
         Configuration for Binary Authorization.
         :param pulumi.Input[bool] enabled: This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
-        :param pulumi.Input['BinaryAuthorizationEvaluationMode'] evaluation_mode: Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        :param pulumi.Input['BinaryAuthorizationEvaluationMode'] evaluation_mode: Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         """
         if enabled is not None:
             warnings.warn("""This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.""", DeprecationWarning)
@@ -666,7 +671,7 @@ class BinaryAuthorizationArgs:
     @pulumi.getter(name="evaluationMode")
     def evaluation_mode(self) -> Optional[pulumi.Input['BinaryAuthorizationEvaluationMode']]:
         """
-        Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         """
         return pulumi.get(self, "evaluation_mode")
 
@@ -1163,6 +1168,54 @@ class DnsCacheConfigArgs:
     def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether NodeLocal DNSCache is enabled for this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class EphemeralStorageLocalSsdConfigArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: Optional[pulumi.Input[int]] = None):
+        """
+        EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral storage using Local SSD.
+        :param pulumi.Input[int] local_ssd_count: Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "local_ssd_count", value)
+
+
+@pulumi.input_type
+class FastSocketArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration of Fast Socket feature.
+        :param pulumi.Input[bool] enabled: Whether Fast Socket features are enabled in the node pool.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Fast Socket features are enabled in the node pool.
         """
         return pulumi.get(self, "enabled")
 
@@ -1770,6 +1823,30 @@ class LinuxNodeConfigArgs:
     @sysctls.setter
     def sysctls(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "sysctls", value)
+
+
+@pulumi.input_type
+class LocalNvmeSsdBlockConfigArgs:
+    def __init__(__self__, *,
+                 local_ssd_count: Optional[pulumi.Input[int]] = None):
+        """
+        LocalNvmeSsdBlockConfig contains configuration for using raw-block local NVMe SSD.
+        :param pulumi.Input[int] local_ssd_count: The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        if local_ssd_count is not None:
+            pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+
+    @property
+    @pulumi.getter(name="localSsdCount")
+    def local_ssd_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size. If zero, it means no raw-block local NVMe SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        """
+        return pulumi.get(self, "local_ssd_count")
+
+    @local_ssd_count.setter
+    def local_ssd_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "local_ssd_count", value)
 
 
 @pulumi.input_type
@@ -2509,12 +2586,15 @@ class NodeConfigArgs:
                  confidential_nodes: Optional[pulumi.Input['ConfidentialNodesArgs']] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  disk_type: Optional[pulumi.Input[str]] = None,
+                 ephemeral_storage_local_ssd_config: Optional[pulumi.Input['EphemeralStorageLocalSsdConfigArgs']] = None,
+                 fast_socket: Optional[pulumi.Input['FastSocketArgs']] = None,
                  gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None,
                  gvnic: Optional[pulumi.Input['VirtualNICArgs']] = None,
                  image_type: Optional[pulumi.Input[str]] = None,
                  kubelet_config: Optional[pulumi.Input['NodeKubeletConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_node_config: Optional[pulumi.Input['LinuxNodeConfigArgs']] = None,
+                 local_nvme_ssd_block_config: Optional[pulumi.Input['LocalNvmeSsdBlockConfigArgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
                  logging_config: Optional[pulumi.Input['NodePoolLoggingConfigArgs']] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
@@ -2531,6 +2611,7 @@ class NodeConfigArgs:
                  spot: Optional[pulumi.Input[bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]] = None,
+                 windows_node_config: Optional[pulumi.Input['WindowsNodeConfigArgs']] = None,
                  workload_metadata_config: Optional[pulumi.Input['WorkloadMetadataConfigArgs']] = None):
         """
         Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
@@ -2540,12 +2621,15 @@ class NodeConfigArgs:
         :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Confidential nodes config. All the nodes in the node pool will be Confidential VM once enabled.
         :param pulumi.Input[int] disk_size_gb: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. If unspecified, the default disk size is 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
+        :param pulumi.Input['EphemeralStorageLocalSsdConfigArgs'] ephemeral_storage_local_ssd_config: Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
+        :param pulumi.Input['FastSocketArgs'] fast_socket: Enable or disable NCCL fast socket for the node pool.
         :param pulumi.Input['GcfsConfigArgs'] gcfs_config: Google Container File System (image streaming) configs.
         :param pulumi.Input['VirtualNICArgs'] gvnic: Enable or disable gvnic in the node pool.
-        :param pulumi.Input[str] image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        :param pulumi.Input[str] image_type: The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         :param pulumi.Input['NodeKubeletConfigArgs'] kubelet_config: Node kubelet configs.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
         :param pulumi.Input['LinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes.
+        :param pulumi.Input['LocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_config: Parameters for using raw-block Local NVMe SSDs.
         :param pulumi.Input[int] local_ssd_count: The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
         :param pulumi.Input['NodePoolLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
@@ -2562,6 +2646,7 @@ class NodeConfigArgs:
         :param pulumi.Input[bool] spot: Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster or node pool creation. Each tag within the list must comply with RFC1035.
         :param pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]] taints: List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+        :param pulumi.Input['WindowsNodeConfigArgs'] windows_node_config: Parameters that can be configured on Windows nodes.
         :param pulumi.Input['WorkloadMetadataConfigArgs'] workload_metadata_config: The workload metadata configuration for this node.
         """
         if accelerators is not None:
@@ -2576,6 +2661,10 @@ class NodeConfigArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
+        if ephemeral_storage_local_ssd_config is not None:
+            pulumi.set(__self__, "ephemeral_storage_local_ssd_config", ephemeral_storage_local_ssd_config)
+        if fast_socket is not None:
+            pulumi.set(__self__, "fast_socket", fast_socket)
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
         if gvnic is not None:
@@ -2588,6 +2677,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "labels", labels)
         if linux_node_config is not None:
             pulumi.set(__self__, "linux_node_config", linux_node_config)
+        if local_nvme_ssd_block_config is not None:
+            pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
         if logging_config is not None:
@@ -2620,6 +2711,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if taints is not None:
             pulumi.set(__self__, "taints", taints)
+        if windows_node_config is not None:
+            pulumi.set(__self__, "windows_node_config", windows_node_config)
         if workload_metadata_config is not None:
             pulumi.set(__self__, "workload_metadata_config", workload_metadata_config)
 
@@ -2696,6 +2789,30 @@ class NodeConfigArgs:
         pulumi.set(self, "disk_type", value)
 
     @property
+    @pulumi.getter(name="ephemeralStorageLocalSsdConfig")
+    def ephemeral_storage_local_ssd_config(self) -> Optional[pulumi.Input['EphemeralStorageLocalSsdConfigArgs']]:
+        """
+        Parameters for the node ephemeral storage using Local SSDs. If unspecified, ephemeral storage is backed by the boot disk.
+        """
+        return pulumi.get(self, "ephemeral_storage_local_ssd_config")
+
+    @ephemeral_storage_local_ssd_config.setter
+    def ephemeral_storage_local_ssd_config(self, value: Optional[pulumi.Input['EphemeralStorageLocalSsdConfigArgs']]):
+        pulumi.set(self, "ephemeral_storage_local_ssd_config", value)
+
+    @property
+    @pulumi.getter(name="fastSocket")
+    def fast_socket(self) -> Optional[pulumi.Input['FastSocketArgs']]:
+        """
+        Enable or disable NCCL fast socket for the node pool.
+        """
+        return pulumi.get(self, "fast_socket")
+
+    @fast_socket.setter
+    def fast_socket(self, value: Optional[pulumi.Input['FastSocketArgs']]):
+        pulumi.set(self, "fast_socket", value)
+
+    @property
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional[pulumi.Input['GcfsConfigArgs']]:
         """
@@ -2723,7 +2840,7 @@ class NodeConfigArgs:
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The image type to use for this node. Note that for a given image type, the latest version of it will be used.
+        The image type to use for this node. Note that for a given image type, the latest version of it will be used. Please see https://cloud.google.com/kubernetes-engine/docs/concepts/node-images for available image types.
         """
         return pulumi.get(self, "image_type")
 
@@ -2766,6 +2883,18 @@ class NodeConfigArgs:
     @linux_node_config.setter
     def linux_node_config(self, value: Optional[pulumi.Input['LinuxNodeConfigArgs']]):
         pulumi.set(self, "linux_node_config", value)
+
+    @property
+    @pulumi.getter(name="localNvmeSsdBlockConfig")
+    def local_nvme_ssd_block_config(self) -> Optional[pulumi.Input['LocalNvmeSsdBlockConfigArgs']]:
+        """
+        Parameters for using raw-block Local NVMe SSDs.
+        """
+        return pulumi.get(self, "local_nvme_ssd_block_config")
+
+    @local_nvme_ssd_block_config.setter
+    def local_nvme_ssd_block_config(self, value: Optional[pulumi.Input['LocalNvmeSsdBlockConfigArgs']]):
+        pulumi.set(self, "local_nvme_ssd_block_config", value)
 
     @property
     @pulumi.getter(name="localSsdCount")
@@ -2958,6 +3087,18 @@ class NodeConfigArgs:
     @taints.setter
     def taints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTaintArgs']]]]):
         pulumi.set(self, "taints", value)
+
+    @property
+    @pulumi.getter(name="windowsNodeConfig")
+    def windows_node_config(self) -> Optional[pulumi.Input['WindowsNodeConfigArgs']]:
+        """
+        Parameters that can be configured on Windows nodes.
+        """
+        return pulumi.get(self, "windows_node_config")
+
+    @windows_node_config.setter
+    def windows_node_config(self, value: Optional[pulumi.Input['WindowsNodeConfigArgs']]):
+        pulumi.set(self, "windows_node_config", value)
 
     @property
     @pulumi.getter(name="workloadMetadataConfig")
@@ -3386,12 +3527,14 @@ class NodePoolArgs:
                  autoscaling: Optional[pulumi.Input['NodePoolAutoscalingArgs']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
                  config: Optional[pulumi.Input['NodeConfigArgs']] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  management: Optional[pulumi.Input['NodeManagementArgs']] = None,
                  max_pods_constraint: Optional[pulumi.Input['MaxPodsConstraintArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NodeNetworkConfigArgs']] = None,
+                 placement_policy: Optional[pulumi.Input['PlacementPolicyArgs']] = None,
                  upgrade_settings: Optional[pulumi.Input['UpgradeSettingsArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
@@ -3399,14 +3542,16 @@ class NodePoolArgs:
         :param pulumi.Input['NodePoolAutoscalingArgs'] autoscaling: Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current node pool state.
         :param pulumi.Input['NodeConfigArgs'] config: The node configuration of the pool.
+        :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[int] initial_node_count: The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         :param pulumi.Input['NodeManagementArgs'] management: NodeManagement configuration for this NodePool.
         :param pulumi.Input['MaxPodsConstraintArgs'] max_pods_constraint: The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
         :param pulumi.Input[str] name: The name of the node pool.
         :param pulumi.Input['NodeNetworkConfigArgs'] network_config: Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
+        :param pulumi.Input['PlacementPolicyArgs'] placement_policy: Specifies the node placement policy.
         :param pulumi.Input['UpgradeSettingsArgs'] upgrade_settings: Upgrade settings control disruption and speed of the upgrade.
-        :param pulumi.Input[str] version: The version of the Kubernetes of this node.
+        :param pulumi.Input[str] version: The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
@@ -3414,6 +3559,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "conditions", conditions)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if initial_node_count is not None:
             pulumi.set(__self__, "initial_node_count", initial_node_count)
         if locations is not None:
@@ -3426,6 +3573,8 @@ class NodePoolArgs:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if placement_policy is not None:
+            pulumi.set(__self__, "placement_policy", placement_policy)
         if upgrade_settings is not None:
             pulumi.set(__self__, "upgrade_settings", upgrade_settings)
         if version is not None:
@@ -3466,6 +3615,18 @@ class NodePoolArgs:
     @config.setter
     def config(self, value: Optional[pulumi.Input['NodeConfigArgs']]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter(name="initialNodeCount")
@@ -3540,6 +3701,18 @@ class NodePoolArgs:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="placementPolicy")
+    def placement_policy(self) -> Optional[pulumi.Input['PlacementPolicyArgs']]:
+        """
+        Specifies the node placement policy.
+        """
+        return pulumi.get(self, "placement_policy")
+
+    @placement_policy.setter
+    def placement_policy(self, value: Optional[pulumi.Input['PlacementPolicyArgs']]):
+        pulumi.set(self, "placement_policy", value)
+
+    @property
     @pulumi.getter(name="upgradeSettings")
     def upgrade_settings(self) -> Optional[pulumi.Input['UpgradeSettingsArgs']]:
         """
@@ -3555,7 +3728,7 @@ class NodePoolArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the Kubernetes of this node.
+        The version of Kubernetes running on this NodePool's nodes. If unspecified, it defaults as described [here](https://cloud.google.com/kubernetes-engine/versioning#specifying_node_version).
         """
         return pulumi.get(self, "version")
 
@@ -3642,6 +3815,30 @@ class NotificationConfigArgs:
     @pubsub.setter
     def pubsub(self, value: Optional[pulumi.Input['PubSubArgs']]):
         pulumi.set(self, "pubsub", value)
+
+
+@pulumi.input_type
+class PlacementPolicyArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input['PlacementPolicyType']] = None):
+        """
+        PlacementPolicy defines the placement policy used by the node pool.
+        :param pulumi.Input['PlacementPolicyType'] type: The type of placement.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['PlacementPolicyType']]:
+        """
+        The type of placement.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['PlacementPolicyType']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -4445,6 +4642,30 @@ class VirtualNICArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class WindowsNodeConfigArgs:
+    def __init__(__self__, *,
+                 os_version: Optional[pulumi.Input['WindowsNodeConfigOsVersion']] = None):
+        """
+        Parameters that can be configured on Windows nodes. Windows Node Config that define the parameters that will be used to configure the Windows node pool settings
+        :param pulumi.Input['WindowsNodeConfigOsVersion'] os_version: OSVersion specifies the Windows node config to be used on the node
+        """
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[pulumi.Input['WindowsNodeConfigOsVersion']]:
+        """
+        OSVersion specifies the Windows node config to be used on the node
+        """
+        return pulumi.get(self, "os_version")
+
+    @os_version.setter
+    def os_version(self, value: Optional[pulumi.Input['WindowsNodeConfigOsVersion']]):
+        pulumi.set(self, "os_version", value)
 
 
 @pulumi.input_type

@@ -89,6 +89,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public Output<bool> EnableStackdriverMonitoring { get; private set; } = null!;
 
         /// <summary>
+        /// Option to enable zone separation.
+        /// </summary>
+        [Output("enableZoneSeparation")]
+        public Output<bool> EnableZoneSeparation { get; private set; } = null!;
+
+        /// <summary>
         /// Option to enable and pass metadata for event publishing.
         /// </summary>
         [Output("eventPublishConfig")]
@@ -318,6 +324,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         [Input("enableStackdriverMonitoring")]
         public Input<bool>? EnableStackdriverMonitoring { get; set; }
+
+        /// <summary>
+        /// Option to enable zone separation.
+        /// </summary>
+        [Input("enableZoneSeparation")]
+        public Input<bool>? EnableZoneSeparation { get; set; }
 
         /// <summary>
         /// Option to enable and pass metadata for event publishing.

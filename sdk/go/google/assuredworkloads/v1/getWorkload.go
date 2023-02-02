@@ -53,7 +53,7 @@ type LookupWorkloadResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
 	Name string `pulumi:"name"`
-	// Optional. Compliance Regime associated with this workload.
+	// Optional. Partner regime associated with this workload.
 	Partner string `pulumi:"partner"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a folder resource which is a child of the Workload parent. If not specified all resources are created under the parent organization. Format: folders/{folder_id}
 	ProvisionedResourcesParent string `pulumi:"provisionedResourcesParent"`
@@ -168,7 +168,7 @@ func (o LookupWorkloadResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Optional. Compliance Regime associated with this workload.
+// Optional. Partner regime associated with this workload.
 func (o LookupWorkloadResultOutput) Partner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.Partner }).(pulumi.StringOutput)
 }

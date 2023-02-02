@@ -77,7 +77,7 @@ export interface GetConnectionResult {
      */
     readonly name: string;
     /**
-     * Optional. Configuration for the connection.
+     * Optional. Node configuration for the connection.
      */
     readonly nodeConfig: outputs.connectors.v1.NodeConfigResponse;
     /**

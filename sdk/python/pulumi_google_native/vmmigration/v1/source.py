@@ -17,6 +17,7 @@ __all__ = ['SourceArgs', 'Source']
 class SourceArgs:
     def __init__(__self__, *,
                  source_id: pulumi.Input[str],
+                 aws: Optional[pulumi.Input['AwsSourceDetailsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -26,12 +27,15 @@ class SourceArgs:
         """
         The set of arguments for constructing a Source resource.
         :param pulumi.Input[str] source_id: Required. The source identifier.
+        :param pulumi.Input['AwsSourceDetailsArgs'] aws: AWS type source details.
         :param pulumi.Input[str] description: User-provided description of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the source.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['VmwareSourceDetailsArgs'] vmware: Vmware type source details.
         """
         pulumi.set(__self__, "source_id", source_id)
+        if aws is not None:
+            pulumi.set(__self__, "aws", aws)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -56,6 +60,18 @@ class SourceArgs:
     @source_id.setter
     def source_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "source_id", value)
+
+    @property
+    @pulumi.getter
+    def aws(self) -> Optional[pulumi.Input['AwsSourceDetailsArgs']]:
+        """
+        AWS type source details.
+        """
+        return pulumi.get(self, "aws")
+
+    @aws.setter
+    def aws(self, value: Optional[pulumi.Input['AwsSourceDetailsArgs']]):
+        pulumi.set(self, "aws", value)
 
     @property
     @pulumi.getter
@@ -129,6 +145,7 @@ class Source(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['AwsSourceDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -143,6 +160,7 @@ class Source(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AwsSourceDetailsArgs']] aws: AWS type source details.
         :param pulumi.Input[str] description: User-provided description of the source.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the source.
         :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
@@ -174,6 +192,7 @@ class Source(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 aws: Optional[pulumi.Input[pulumi.InputType['AwsSourceDetailsArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -190,6 +209,7 @@ class Source(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SourceArgs.__new__(SourceArgs)
 
+            __props__.__dict__["aws"] = aws
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -226,6 +246,7 @@ class Source(pulumi.CustomResource):
 
         __props__ = SourceArgs.__new__(SourceArgs)
 
+        __props__.__dict__["aws"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
@@ -237,6 +258,14 @@ class Source(pulumi.CustomResource):
         __props__.__dict__["update_time"] = None
         __props__.__dict__["vmware"] = None
         return Source(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def aws(self) -> pulumi.Output['outputs.AwsSourceDetailsResponse']:
+        """
+        AWS type source details.
+        """
+        return pulumi.get(self, "aws")
 
     @property
     @pulumi.getter(name="createTime")

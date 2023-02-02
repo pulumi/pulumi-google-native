@@ -47,6 +47,8 @@ type LookupCutoverJobResult struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The time the state was last updated.
 	StateTime string `pulumi:"stateTime"`
+	// The cutover steps list representing its progress.
+	Steps []CutoverStepResponse `pulumi:"steps"`
 }
 
 func LookupCutoverJobOutput(ctx *pulumi.Context, args LookupCutoverJobOutputArgs, opts ...pulumi.InvokeOption) LookupCutoverJobResultOutput {
@@ -131,6 +133,11 @@ func (o LookupCutoverJobResultOutput) StateMessage() pulumi.StringOutput {
 // The time the state was last updated.
 func (o LookupCutoverJobResultOutput) StateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCutoverJobResult) string { return v.StateTime }).(pulumi.StringOutput)
+}
+
+// The cutover steps list representing its progress.
+func (o LookupCutoverJobResultOutput) Steps() CutoverStepResponseArrayOutput {
+	return o.ApplyT(func(v LookupCutoverJobResult) []CutoverStepResponse { return v.Steps }).(CutoverStepResponseArrayOutput)
 }
 
 func init() {

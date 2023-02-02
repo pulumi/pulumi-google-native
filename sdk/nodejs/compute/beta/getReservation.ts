@@ -55,6 +55,10 @@ export interface GetReservationResult {
      */
     readonly resourcePolicies: {[key: string]: string};
     /**
+     * Status information for Reservation resource.
+     */
+    readonly resourceStatus: outputs.compute.beta.AllocationResourceStatusResponse;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
@@ -63,7 +67,7 @@ export interface GetReservationResult {
      */
     readonly selfLink: string;
     /**
-     * Share-settings for shared-reservation
+     * Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
      */
     readonly shareSettings: outputs.compute.beta.ShareSettingsResponse;
     /**

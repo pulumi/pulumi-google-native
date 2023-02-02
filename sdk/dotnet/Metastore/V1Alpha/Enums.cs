@@ -355,6 +355,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public override string ToString() => _value;
     }
 
+    /// <summary>
+    /// The output format of the Dataproc Metastore service's logs.
+    /// </summary>
     [EnumType]
     public readonly struct TelemetryConfigLogFormat : IEquatable<TelemetryConfigLogFormat>
     {

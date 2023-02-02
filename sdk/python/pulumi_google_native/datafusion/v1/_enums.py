@@ -37,23 +37,23 @@ class AcceleratorAcceleratorType(str, Enum):
 
 class AcceleratorState(str, Enum):
     """
-    The state of the accelerator
+    The state of the accelerator.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
     """
-    Default value, do not use
+    Default value, do not use.
     """
     ENABLED = "ENABLED"
     """
-    Indicates that the accelerator is enabled and available to use
+    Indicates that the accelerator is enabled and available to use.
     """
     DISABLED = "DISABLED"
     """
-    Indicates that the accelerator is disabled and not available to use
+    Indicates that the accelerator is disabled and not available to use.
     """
     UNKNOWN = "UNKNOWN"
     """
-    Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state
+    Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
     """
 
 

@@ -23,9 +23,11 @@ __all__ = [
     'ClusterIstioArgs',
     'ConditionArgs',
     'ContentMatcherArgs',
+    'CriteriaArgs',
     'CustomArgs',
     'DistributionCutArgs',
     'DocumentationArgs',
+    'ForecastOptionsArgs',
     'GkeNamespaceArgs',
     'GkeServiceArgs',
     'GkeWorkloadArgs',
@@ -55,6 +57,7 @@ __all__ = [
     'StatusArgs',
     'TcpCheckArgs',
     'TelemetryArgs',
+    'TimeIntervalArgs',
     'TimeSeriesRatioArgs',
     'TriggerArgs',
     'WindowsBasedSliArgs',
@@ -670,6 +673,30 @@ class ContentMatcherArgs:
 
 
 @pulumi.input_type
+class CriteriaArgs:
+    def __init__(__self__, *,
+                 policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Criteria specific to the AlertPolicys that this Snooze applies to. The Snooze will suppress alerts that come from one of the AlertPolicys whose names are supplied.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] policies: The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+        """
+        if policies is not None:
+            pulumi.set(__self__, "policies", policies)
+
+    @property
+    @pulumi.getter
+    def policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation.
+        """
+        return pulumi.get(self, "policies")
+
+    @policies.setter
+    def policies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "policies", value)
+
+
+@pulumi.input_type
 class CustomArgs:
     def __init__(__self__):
         """
@@ -725,7 +752,7 @@ class DocumentationArgs:
                  mime_type: Optional[pulumi.Input[str]] = None):
         """
         A content string and a MIME type that describes the content string's format.
-        :param pulumi.Input[str] content: The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+        :param pulumi.Input[str] content: The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
         :param pulumi.Input[str] mime_type: The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
         """
         if content is not None:
@@ -737,7 +764,7 @@ class DocumentationArgs:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
+        The body of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
         """
         return pulumi.get(self, "content")
 
@@ -756,6 +783,29 @@ class DocumentationArgs:
     @mime_type.setter
     def mime_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mime_type", value)
+
+
+@pulumi.input_type
+class ForecastOptionsArgs:
+    def __init__(__self__, *,
+                 forecast_horizon: pulumi.Input[str]):
+        """
+        Options used when forecasting the time series and testing the predicted value against the threshold.
+        :param pulumi.Input[str] forecast_horizon: The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+        """
+        pulumi.set(__self__, "forecast_horizon", forecast_horizon)
+
+    @property
+    @pulumi.getter(name="forecastHorizon")
+    def forecast_horizon(self) -> pulumi.Input[str]:
+        """
+        The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing.
+        """
+        return pulumi.get(self, "forecast_horizon")
+
+    @forecast_horizon.setter
+    def forecast_horizon(self, value: pulumi.Input[str]):
+        pulumi.set(self, "forecast_horizon", value)
 
 
 @pulumi.input_type
@@ -1769,6 +1819,7 @@ class MetricThresholdArgs:
                  denominator_filter: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
                  evaluation_missing_data: Optional[pulumi.Input['MetricThresholdEvaluationMissingData']] = None,
+                 forecast_options: Optional[pulumi.Input['ForecastOptionsArgs']] = None,
                  threshold_value: Optional[pulumi.Input[float]] = None,
                  trigger: Optional[pulumi.Input['TriggerArgs']] = None):
         """
@@ -1780,6 +1831,7 @@ class MetricThresholdArgs:
         :param pulumi.Input[str] denominator_filter: A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies a time series that should be used as the denominator of a ratio that will be compared with the threshold. If a denominator_filter is specified, the time series specified by the filter field will be used as the numerator.The filter must specify the metric type and optionally may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.
         :param pulumi.Input[str] duration: The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly.
         :param pulumi.Input['MetricThresholdEvaluationMissingData'] evaluation_missing_data: A condition control that determines how metric-threshold conditions are evaluated when data stops arriving.
+        :param pulumi.Input['ForecastOptionsArgs'] forecast_options: When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
         :param pulumi.Input[float] threshold_value: A value against which to compare the time series.
         :param pulumi.Input['TriggerArgs'] trigger: The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and denominator_aggregations are specified.
         """
@@ -1796,6 +1848,8 @@ class MetricThresholdArgs:
             pulumi.set(__self__, "duration", duration)
         if evaluation_missing_data is not None:
             pulumi.set(__self__, "evaluation_missing_data", evaluation_missing_data)
+        if forecast_options is not None:
+            pulumi.set(__self__, "forecast_options", forecast_options)
         if threshold_value is not None:
             pulumi.set(__self__, "threshold_value", threshold_value)
         if trigger is not None:
@@ -1884,6 +1938,18 @@ class MetricThresholdArgs:
     @evaluation_missing_data.setter
     def evaluation_missing_data(self, value: Optional[pulumi.Input['MetricThresholdEvaluationMissingData']]):
         pulumi.set(self, "evaluation_missing_data", value)
+
+    @property
+    @pulumi.getter(name="forecastOptions")
+    def forecast_options(self) -> Optional[pulumi.Input['ForecastOptionsArgs']]:
+        """
+        When this field is present, the MetricThreshold condition forecasts whether the time series is predicted to violate the threshold within the forecast_horizon. When this field is not set, the MetricThreshold tests the current value of the timeseries against the threshold.
+        """
+        return pulumi.get(self, "forecast_options")
+
+    @forecast_options.setter
+    def forecast_options(self, value: Optional[pulumi.Input['ForecastOptionsArgs']]):
+        pulumi.set(self, "forecast_options", value)
 
     @property
     @pulumi.getter(name="thresholdValue")
@@ -2458,6 +2524,45 @@ class TelemetryArgs:
     @resource_name.setter
     def resource_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_name", value)
+
+
+@pulumi.input_type
+class TimeIntervalArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[str],
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Describes a time interval: Reads: A half-open time interval. It includes the end time but excludes the start time: (startTime, endTime]. The start time must be specified, must be earlier than the end time, and should be no older than the data retention period for the metric. Writes: A closed time interval. It extends from the start time to the end time, and includes both: [startTime, endTime]. Valid time intervals depend on the MetricKind (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.metricDescriptors#MetricKind) of the metric value. The end time must not be earlier than the start time, and the end time must not be more than 25 hours in the past or more than five minutes in the future. For GAUGE metrics, the startTime value is technically optional; if no value is specified, the start time defaults to the value of the end time, and the interval represents a single point in time. If both start and end times are specified, they must be identical. Such an interval is valid only for GAUGE metrics, which are point-in-time measurements. The end time of a new interval must be at least a millisecond after the end time of the previous interval. For DELTA metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying contiguous and non-overlapping intervals. For DELTA metrics, the start time of the next interval must be at least a millisecond after the end time of the previous interval. For CUMULATIVE metrics, the start time and end time must specify a non-zero interval, with subsequent points specifying the same start time and increasing end times, until an event resets the cumulative value to zero and sets a new start time for the following points. The new start time must be at least a millisecond after the end time of the previous interval. The start time of a new interval must be at least a millisecond after the end time of the previous interval because intervals are closed. If the start time of a new interval is the same as the end time of the previous interval, then data written at the new start time could overwrite data written at the previous end time.
+        :param pulumi.Input[str] end_time: The end of the time interval.
+        :param pulumi.Input[str] start_time: Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        The end of the time interval.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
 
 
 @pulumi.input_type

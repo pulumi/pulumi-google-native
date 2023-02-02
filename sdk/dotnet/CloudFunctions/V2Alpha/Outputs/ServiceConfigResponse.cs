@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
 {
 
     /// <summary>
-    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
+    /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed). Next tag: 23
     /// </summary>
     [OutputType]
     public sealed class ServiceConfigResponse
@@ -20,6 +20,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
         /// </summary>
         public readonly bool AllTrafficOnLatestRevision;
+        /// <summary>
+        /// The number of CPUs used in a single container instance. Default value is calculated from available memory. Supports the same values as Cloud Run, see https://cloud.google.com/run/docs/reference/rest/v1/Container#resourcerequirements Example: "1" indicates 1 vCPU
+        /// </summary>
+        public readonly string AvailableCpu;
         /// <summary>
         /// The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description.
         /// </summary>
@@ -37,6 +41,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// </summary>
         public readonly int MaxInstanceCount;
         /// <summary>
+        /// Sets the maximum number of concurrent requests that each instance can receive. Defaults to 1.
+        /// </summary>
+        public readonly int MaxInstanceRequestConcurrency;
+        /// <summary>
         /// The limit on the minimum number of function instances that may coexist at a given time. Function instances are kept in idle state for a short period after they finished executing the request to reduce cold start time for subsequent requests. Setting a minimum instance count will ensure that the given number of instances are kept running in idle state always. This can help with cold start times when jump in incoming request count occurs after the idle instance would have been stopped in the default case.
         /// </summary>
         public readonly int MinInstanceCount;
@@ -53,7 +61,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SecretVolumeResponse> SecretVolumes;
         /// <summary>
-        /// Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+        /// Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
         /// </summary>
         public readonly string SecurityLevel;
         /// <summary>
@@ -85,6 +93,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
         private ServiceConfigResponse(
             bool allTrafficOnLatestRevision,
 
+            string availableCpu,
+
             string availableMemory,
 
             ImmutableDictionary<string, string> environmentVariables,
@@ -92,6 +102,8 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
             string ingressSettings,
 
             int maxInstanceCount,
+
+            int maxInstanceRequestConcurrency,
 
             int minInstanceCount,
 
@@ -116,10 +128,12 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Outputs
             string vpcConnectorEgressSettings)
         {
             AllTrafficOnLatestRevision = allTrafficOnLatestRevision;
+            AvailableCpu = availableCpu;
             AvailableMemory = availableMemory;
             EnvironmentVariables = environmentVariables;
             IngressSettings = ingressSettings;
             MaxInstanceCount = maxInstanceCount;
+            MaxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             MinInstanceCount = minInstanceCount;
             Revision = revision;
             SecretEnvironmentVariables = secretEnvironmentVariables;

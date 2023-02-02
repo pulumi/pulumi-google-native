@@ -10,6 +10,11 @@ export type Asset = import("./asset").Asset;
 export const Asset: typeof import("./asset").Asset = null as any;
 utilities.lazyLoad(exports, ["Asset"], () => require("./asset"));
 
+export { AttributeArgs } from "./attribute";
+export type Attribute = import("./attribute").Attribute;
+export const Attribute: typeof import("./attribute").Attribute = null as any;
+utilities.lazyLoad(exports, ["Attribute"], () => require("./attribute"));
+
 export { ContentArgs } from "./content";
 export type Content = import("./content").Content;
 export const Content: typeof import("./content").Content = null as any;
@@ -19,6 +24,81 @@ export { ContentitemArgs } from "./contentitem";
 export type Contentitem = import("./contentitem").Contentitem;
 export const Contentitem: typeof import("./contentitem").Contentitem = null as any;
 utilities.lazyLoad(exports, ["Contentitem"], () => require("./contentitem"));
+
+export { DataAttributeBindingArgs } from "./dataAttributeBinding";
+export type DataAttributeBinding = import("./dataAttributeBinding").DataAttributeBinding;
+export const DataAttributeBinding: typeof import("./dataAttributeBinding").DataAttributeBinding = null as any;
+utilities.lazyLoad(exports, ["DataAttributeBinding"], () => require("./dataAttributeBinding"));
+
+export { DataAttributeBindingIamBindingArgs } from "./dataAttributeBindingIamBinding";
+export type DataAttributeBindingIamBinding = import("./dataAttributeBindingIamBinding").DataAttributeBindingIamBinding;
+export const DataAttributeBindingIamBinding: typeof import("./dataAttributeBindingIamBinding").DataAttributeBindingIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataAttributeBindingIamBinding"], () => require("./dataAttributeBindingIamBinding"));
+
+export { DataAttributeBindingIamMemberArgs } from "./dataAttributeBindingIamMember";
+export type DataAttributeBindingIamMember = import("./dataAttributeBindingIamMember").DataAttributeBindingIamMember;
+export const DataAttributeBindingIamMember: typeof import("./dataAttributeBindingIamMember").DataAttributeBindingIamMember = null as any;
+utilities.lazyLoad(exports, ["DataAttributeBindingIamMember"], () => require("./dataAttributeBindingIamMember"));
+
+export { DataAttributeBindingIamPolicyArgs } from "./dataAttributeBindingIamPolicy";
+export type DataAttributeBindingIamPolicy = import("./dataAttributeBindingIamPolicy").DataAttributeBindingIamPolicy;
+export const DataAttributeBindingIamPolicy: typeof import("./dataAttributeBindingIamPolicy").DataAttributeBindingIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataAttributeBindingIamPolicy"], () => require("./dataAttributeBindingIamPolicy"));
+
+export { DataScanArgs } from "./dataScan";
+export type DataScan = import("./dataScan").DataScan;
+export const DataScan: typeof import("./dataScan").DataScan = null as any;
+utilities.lazyLoad(exports, ["DataScan"], () => require("./dataScan"));
+
+export { DataScanIamBindingArgs } from "./dataScanIamBinding";
+export type DataScanIamBinding = import("./dataScanIamBinding").DataScanIamBinding;
+export const DataScanIamBinding: typeof import("./dataScanIamBinding").DataScanIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataScanIamBinding"], () => require("./dataScanIamBinding"));
+
+export { DataScanIamMemberArgs } from "./dataScanIamMember";
+export type DataScanIamMember = import("./dataScanIamMember").DataScanIamMember;
+export const DataScanIamMember: typeof import("./dataScanIamMember").DataScanIamMember = null as any;
+utilities.lazyLoad(exports, ["DataScanIamMember"], () => require("./dataScanIamMember"));
+
+export { DataScanIamPolicyArgs } from "./dataScanIamPolicy";
+export type DataScanIamPolicy = import("./dataScanIamPolicy").DataScanIamPolicy;
+export const DataScanIamPolicy: typeof import("./dataScanIamPolicy").DataScanIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataScanIamPolicy"], () => require("./dataScanIamPolicy"));
+
+export { DataTaxonomyArgs } from "./dataTaxonomy";
+export type DataTaxonomy = import("./dataTaxonomy").DataTaxonomy;
+export const DataTaxonomy: typeof import("./dataTaxonomy").DataTaxonomy = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomy"], () => require("./dataTaxonomy"));
+
+export { DataTaxonomyAttributeIamBindingArgs } from "./dataTaxonomyAttributeIamBinding";
+export type DataTaxonomyAttributeIamBinding = import("./dataTaxonomyAttributeIamBinding").DataTaxonomyAttributeIamBinding;
+export const DataTaxonomyAttributeIamBinding: typeof import("./dataTaxonomyAttributeIamBinding").DataTaxonomyAttributeIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomyAttributeIamBinding"], () => require("./dataTaxonomyAttributeIamBinding"));
+
+export { DataTaxonomyAttributeIamMemberArgs } from "./dataTaxonomyAttributeIamMember";
+export type DataTaxonomyAttributeIamMember = import("./dataTaxonomyAttributeIamMember").DataTaxonomyAttributeIamMember;
+export const DataTaxonomyAttributeIamMember: typeof import("./dataTaxonomyAttributeIamMember").DataTaxonomyAttributeIamMember = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomyAttributeIamMember"], () => require("./dataTaxonomyAttributeIamMember"));
+
+export { DataTaxonomyAttributeIamPolicyArgs } from "./dataTaxonomyAttributeIamPolicy";
+export type DataTaxonomyAttributeIamPolicy = import("./dataTaxonomyAttributeIamPolicy").DataTaxonomyAttributeIamPolicy;
+export const DataTaxonomyAttributeIamPolicy: typeof import("./dataTaxonomyAttributeIamPolicy").DataTaxonomyAttributeIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomyAttributeIamPolicy"], () => require("./dataTaxonomyAttributeIamPolicy"));
+
+export { DataTaxonomyIamBindingArgs } from "./dataTaxonomyIamBinding";
+export type DataTaxonomyIamBinding = import("./dataTaxonomyIamBinding").DataTaxonomyIamBinding;
+export const DataTaxonomyIamBinding: typeof import("./dataTaxonomyIamBinding").DataTaxonomyIamBinding = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomyIamBinding"], () => require("./dataTaxonomyIamBinding"));
+
+export { DataTaxonomyIamMemberArgs } from "./dataTaxonomyIamMember";
+export type DataTaxonomyIamMember = import("./dataTaxonomyIamMember").DataTaxonomyIamMember;
+export const DataTaxonomyIamMember: typeof import("./dataTaxonomyIamMember").DataTaxonomyIamMember = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomyIamMember"], () => require("./dataTaxonomyIamMember"));
+
+export { DataTaxonomyIamPolicyArgs } from "./dataTaxonomyIamPolicy";
+export type DataTaxonomyIamPolicy = import("./dataTaxonomyIamPolicy").DataTaxonomyIamPolicy;
+export const DataTaxonomyIamPolicy: typeof import("./dataTaxonomyIamPolicy").DataTaxonomyIamPolicy = null as any;
+utilities.lazyLoad(exports, ["DataTaxonomyIamPolicy"], () => require("./dataTaxonomyIamPolicy"));
 
 export { EntityArgs } from "./entity";
 export type Entity = import("./entity").Entity;
@@ -35,6 +115,11 @@ export const getAsset: typeof import("./getAsset").getAsset = null as any;
 export const getAssetOutput: typeof import("./getAsset").getAssetOutput = null as any;
 utilities.lazyLoad(exports, ["getAsset","getAssetOutput"], () => require("./getAsset"));
 
+export { GetAttributeArgs, GetAttributeResult, GetAttributeOutputArgs } from "./getAttribute";
+export const getAttribute: typeof import("./getAttribute").getAttribute = null as any;
+export const getAttributeOutput: typeof import("./getAttribute").getAttributeOutput = null as any;
+utilities.lazyLoad(exports, ["getAttribute","getAttributeOutput"], () => require("./getAttribute"));
+
 export { GetContentArgs, GetContentResult, GetContentOutputArgs } from "./getContent";
 export const getContent: typeof import("./getContent").getContent = null as any;
 export const getContentOutput: typeof import("./getContent").getContentOutput = null as any;
@@ -44,6 +129,41 @@ export { GetContentitemArgs, GetContentitemResult, GetContentitemOutputArgs } fr
 export const getContentitem: typeof import("./getContentitem").getContentitem = null as any;
 export const getContentitemOutput: typeof import("./getContentitem").getContentitemOutput = null as any;
 utilities.lazyLoad(exports, ["getContentitem","getContentitemOutput"], () => require("./getContentitem"));
+
+export { GetDataAttributeBindingArgs, GetDataAttributeBindingResult, GetDataAttributeBindingOutputArgs } from "./getDataAttributeBinding";
+export const getDataAttributeBinding: typeof import("./getDataAttributeBinding").getDataAttributeBinding = null as any;
+export const getDataAttributeBindingOutput: typeof import("./getDataAttributeBinding").getDataAttributeBindingOutput = null as any;
+utilities.lazyLoad(exports, ["getDataAttributeBinding","getDataAttributeBindingOutput"], () => require("./getDataAttributeBinding"));
+
+export { GetDataAttributeBindingIamPolicyArgs, GetDataAttributeBindingIamPolicyResult, GetDataAttributeBindingIamPolicyOutputArgs } from "./getDataAttributeBindingIamPolicy";
+export const getDataAttributeBindingIamPolicy: typeof import("./getDataAttributeBindingIamPolicy").getDataAttributeBindingIamPolicy = null as any;
+export const getDataAttributeBindingIamPolicyOutput: typeof import("./getDataAttributeBindingIamPolicy").getDataAttributeBindingIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataAttributeBindingIamPolicy","getDataAttributeBindingIamPolicyOutput"], () => require("./getDataAttributeBindingIamPolicy"));
+
+export { GetDataScanArgs, GetDataScanResult, GetDataScanOutputArgs } from "./getDataScan";
+export const getDataScan: typeof import("./getDataScan").getDataScan = null as any;
+export const getDataScanOutput: typeof import("./getDataScan").getDataScanOutput = null as any;
+utilities.lazyLoad(exports, ["getDataScan","getDataScanOutput"], () => require("./getDataScan"));
+
+export { GetDataScanIamPolicyArgs, GetDataScanIamPolicyResult, GetDataScanIamPolicyOutputArgs } from "./getDataScanIamPolicy";
+export const getDataScanIamPolicy: typeof import("./getDataScanIamPolicy").getDataScanIamPolicy = null as any;
+export const getDataScanIamPolicyOutput: typeof import("./getDataScanIamPolicy").getDataScanIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataScanIamPolicy","getDataScanIamPolicyOutput"], () => require("./getDataScanIamPolicy"));
+
+export { GetDataTaxonomyArgs, GetDataTaxonomyResult, GetDataTaxonomyOutputArgs } from "./getDataTaxonomy";
+export const getDataTaxonomy: typeof import("./getDataTaxonomy").getDataTaxonomy = null as any;
+export const getDataTaxonomyOutput: typeof import("./getDataTaxonomy").getDataTaxonomyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataTaxonomy","getDataTaxonomyOutput"], () => require("./getDataTaxonomy"));
+
+export { GetDataTaxonomyAttributeIamPolicyArgs, GetDataTaxonomyAttributeIamPolicyResult, GetDataTaxonomyAttributeIamPolicyOutputArgs } from "./getDataTaxonomyAttributeIamPolicy";
+export const getDataTaxonomyAttributeIamPolicy: typeof import("./getDataTaxonomyAttributeIamPolicy").getDataTaxonomyAttributeIamPolicy = null as any;
+export const getDataTaxonomyAttributeIamPolicyOutput: typeof import("./getDataTaxonomyAttributeIamPolicy").getDataTaxonomyAttributeIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataTaxonomyAttributeIamPolicy","getDataTaxonomyAttributeIamPolicyOutput"], () => require("./getDataTaxonomyAttributeIamPolicy"));
+
+export { GetDataTaxonomyIamPolicyArgs, GetDataTaxonomyIamPolicyResult, GetDataTaxonomyIamPolicyOutputArgs } from "./getDataTaxonomyIamPolicy";
+export const getDataTaxonomyIamPolicy: typeof import("./getDataTaxonomyIamPolicy").getDataTaxonomyIamPolicy = null as any;
+export const getDataTaxonomyIamPolicyOutput: typeof import("./getDataTaxonomyIamPolicy").getDataTaxonomyIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getDataTaxonomyIamPolicy","getDataTaxonomyIamPolicyOutput"], () => require("./getDataTaxonomyIamPolicy"));
 
 export { GetEntityArgs, GetEntityResult, GetEntityOutputArgs } from "./getEntity";
 export const getEntity: typeof import("./getEntity").getEntity = null as any;
@@ -245,10 +365,42 @@ const _module = {
         switch (type) {
             case "google-native:dataplex/v1:Asset":
                 return new Asset(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:Attribute":
+                return new Attribute(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Content":
                 return new Content(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Contentitem":
                 return new Contentitem(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataAttributeBinding":
+                return new DataAttributeBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataAttributeBindingIamBinding":
+                return new DataAttributeBindingIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataAttributeBindingIamMember":
+                return new DataAttributeBindingIamMember(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataAttributeBindingIamPolicy":
+                return new DataAttributeBindingIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataScan":
+                return new DataScan(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataScanIamBinding":
+                return new DataScanIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataScanIamMember":
+                return new DataScanIamMember(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataScanIamPolicy":
+                return new DataScanIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomy":
+                return new DataTaxonomy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomyAttributeIamBinding":
+                return new DataTaxonomyAttributeIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomyAttributeIamMember":
+                return new DataTaxonomyAttributeIamMember(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomyAttributeIamPolicy":
+                return new DataTaxonomyAttributeIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomyIamBinding":
+                return new DataTaxonomyIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomyIamMember":
+                return new DataTaxonomyIamMember(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:DataTaxonomyIamPolicy":
+                return new DataTaxonomyIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Entity":
                 return new Entity(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Environment":

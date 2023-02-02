@@ -73,6 +73,10 @@ export const DatasetAccessEntryTargetTypesItem = {
      * This entry applies to views in the dataset.
      */
     Views: "VIEWS",
+    /**
+     * This entry applies to routines in the dataset.
+     */
+    Routines: "ROUTINES",
 } as const;
 
 export type DatasetAccessEntryTargetTypesItem = (typeof DatasetAccessEntryTargetTypesItem)[keyof typeof DatasetAccessEntryTargetTypesItem];
@@ -114,7 +118,7 @@ export const RoutineLanguage = {
 } as const;
 
 /**
- * Optional. Defaults to "SQL".
+ * Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
  */
 export type RoutineLanguage = (typeof RoutineLanguage)[keyof typeof RoutineLanguage];
 

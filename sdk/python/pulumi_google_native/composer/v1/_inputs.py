@@ -23,6 +23,8 @@ __all__ = [
     'NodeConfigArgs',
     'PrivateClusterConfigArgs',
     'PrivateEnvironmentConfigArgs',
+    'RecoveryConfigArgs',
+    'ScheduledSnapshotsConfigArgs',
     'SchedulerResourceArgs',
     'SoftwareConfigArgs',
     'WebServerConfigArgs',
@@ -171,6 +173,7 @@ class EnvironmentConfigArgs:
                  node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  private_environment_config: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']] = None,
+                 recovery_config: Optional[pulumi.Input['RecoveryConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['SoftwareConfigArgs']] = None,
                  web_server_config: Optional[pulumi.Input['WebServerConfigArgs']] = None,
                  web_server_network_access_control: Optional[pulumi.Input['WebServerNetworkAccessControlArgs']] = None,
@@ -185,6 +188,7 @@ class EnvironmentConfigArgs:
         :param pulumi.Input['NodeConfigArgs'] node_config: The configuration used for the Kubernetes Engine cluster.
         :param pulumi.Input[int] node_count: The number of nodes in the Kubernetes Engine cluster that will be used to run this environment. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input['PrivateEnvironmentConfigArgs'] private_environment_config: The configuration used for the Private IP Cloud Composer environment.
+        :param pulumi.Input['RecoveryConfigArgs'] recovery_config: Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
         :param pulumi.Input['SoftwareConfigArgs'] software_config: The configuration settings for software inside the environment.
         :param pulumi.Input['WebServerConfigArgs'] web_server_config: Optional. The configuration settings for the Airflow web server App Engine instance.
         :param pulumi.Input['WebServerNetworkAccessControlArgs'] web_server_network_access_control: Optional. The network-level access control policy for the Airflow web server. If unspecified, no network-level access restrictions will be applied.
@@ -206,6 +210,8 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "node_count", node_count)
         if private_environment_config is not None:
             pulumi.set(__self__, "private_environment_config", private_environment_config)
+        if recovery_config is not None:
+            pulumi.set(__self__, "recovery_config", recovery_config)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if web_server_config is not None:
@@ -310,6 +316,18 @@ class EnvironmentConfigArgs:
     @private_environment_config.setter
     def private_environment_config(self, value: Optional[pulumi.Input['PrivateEnvironmentConfigArgs']]):
         pulumi.set(self, "private_environment_config", value)
+
+    @property
+    @pulumi.getter(name="recoveryConfig")
+    def recovery_config(self) -> Optional[pulumi.Input['RecoveryConfigArgs']]:
+        """
+        Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        """
+        return pulumi.get(self, "recovery_config")
+
+    @recovery_config.setter
+    def recovery_config(self, value: Optional[pulumi.Input['RecoveryConfigArgs']]):
+        pulumi.set(self, "recovery_config", value)
 
     @property
     @pulumi.getter(name="softwareConfig")
@@ -589,7 +607,7 @@ class NodeConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oauth_scopes: Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
         :param pulumi.Input[str] service_account: Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
         :param pulumi.Input[str] subnetwork: Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -724,7 +742,7 @@ class NodeConfigArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+        Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
         """
         return pulumi.get(self, "tags")
 
@@ -907,6 +925,102 @@ class PrivateEnvironmentConfigArgs:
     @web_server_ipv4_cidr_block.setter
     def web_server_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "web_server_ipv4_cidr_block", value)
+
+
+@pulumi.input_type
+class RecoveryConfigArgs:
+    def __init__(__self__, *,
+                 scheduled_snapshots_config: Optional[pulumi.Input['ScheduledSnapshotsConfigArgs']] = None):
+        """
+        The Recovery settings of an environment.
+        :param pulumi.Input['ScheduledSnapshotsConfigArgs'] scheduled_snapshots_config: Optional. The configuration for scheduled snapshot creation mechanism.
+        """
+        if scheduled_snapshots_config is not None:
+            pulumi.set(__self__, "scheduled_snapshots_config", scheduled_snapshots_config)
+
+    @property
+    @pulumi.getter(name="scheduledSnapshotsConfig")
+    def scheduled_snapshots_config(self) -> Optional[pulumi.Input['ScheduledSnapshotsConfigArgs']]:
+        """
+        Optional. The configuration for scheduled snapshot creation mechanism.
+        """
+        return pulumi.get(self, "scheduled_snapshots_config")
+
+    @scheduled_snapshots_config.setter
+    def scheduled_snapshots_config(self, value: Optional[pulumi.Input['ScheduledSnapshotsConfigArgs']]):
+        pulumi.set(self, "scheduled_snapshots_config", value)
+
+
+@pulumi.input_type
+class ScheduledSnapshotsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 snapshot_creation_schedule: Optional[pulumi.Input[str]] = None,
+                 snapshot_location: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None):
+        """
+        The configuration for scheduled snapshot creation mechanism.
+        :param pulumi.Input[bool] enabled: Optional. Whether scheduled snapshots creation is enabled.
+        :param pulumi.Input[str] snapshot_creation_schedule: Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+        :param pulumi.Input[str] snapshot_location: Optional. The Cloud Storage location for storing automatically created snapshots.
+        :param pulumi.Input[str] time_zone: Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if snapshot_creation_schedule is not None:
+            pulumi.set(__self__, "snapshot_creation_schedule", snapshot_creation_schedule)
+        if snapshot_location is not None:
+            pulumi.set(__self__, "snapshot_location", snapshot_location)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether scheduled snapshots creation is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="snapshotCreationSchedule")
+    def snapshot_creation_schedule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+        """
+        return pulumi.get(self, "snapshot_creation_schedule")
+
+    @snapshot_creation_schedule.setter
+    def snapshot_creation_schedule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_creation_schedule", value)
+
+    @property
+    @pulumi.getter(name="snapshotLocation")
+    def snapshot_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The Cloud Storage location for storing automatically created snapshots.
+        """
+        return pulumi.get(self, "snapshot_location")
+
+    @snapshot_location.setter
+    def snapshot_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snapshot_location", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
 
 @pulumi.input_type

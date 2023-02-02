@@ -31,7 +31,7 @@ type Subnetwork struct {
 	//
 	// Deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
 	EnablePrivateV6Access pulumi.BoolOutput `pulumi:"enablePrivateV6Access"`
-	// The external IPv6 address range that is assigned to this subnetwork.
+	// The external IPv6 address range that is owned by this subnetwork.
 	ExternalIpv6Prefix pulumi.StringOutput `pulumi:"externalIpv6Prefix"`
 	// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
@@ -146,6 +146,8 @@ type subnetworkArgs struct {
 	//
 	// Deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
 	EnablePrivateV6Access *bool `pulumi:"enablePrivateV6Access"`
+	// The external IPv6 address range that is owned by this subnetwork.
+	ExternalIpv6Prefix *string `pulumi:"externalIpv6Prefix"`
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling *float64 `pulumi:"flowSampling"`
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
@@ -199,6 +201,8 @@ type SubnetworkArgs struct {
 	//
 	// Deprecated: Deprecated in favor of enable in PrivateIpv6GoogleAccess. Whether the VMs in this subnet can directly access Google services via internal IPv6 addresses. This field can be both set at resource creation time and updated using patch.
 	EnablePrivateV6Access pulumi.BoolPtrInput
+	// The external IPv6 address range that is owned by this subnetwork.
+	ExternalIpv6Prefix pulumi.StringPtrInput
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
 	FlowSampling pulumi.Float64PtrInput
 	// The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
@@ -310,7 +314,7 @@ func (o SubnetworkOutput) EnablePrivateV6Access() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.BoolOutput { return v.EnablePrivateV6Access }).(pulumi.BoolOutput)
 }
 
-// The external IPv6 address range that is assigned to this subnetwork.
+// The external IPv6 address range that is owned by this subnetwork.
 func (o SubnetworkOutput) ExternalIpv6Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.ExternalIpv6Prefix }).(pulumi.StringOutput)
 }

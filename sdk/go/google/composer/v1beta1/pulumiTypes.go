@@ -334,6 +334,172 @@ func (o CidrBlockResponseArrayOutput) Index(i pulumi.IntInput) CidrBlockResponse
 	}).(CidrBlockResponseOutput)
 }
 
+// Configuration for Cloud Data Lineage integration.
+type CloudDataLineageIntegration struct {
+	// Optional. Whether or not Cloud Data Lineage integration is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// CloudDataLineageIntegrationInput is an input type that accepts CloudDataLineageIntegrationArgs and CloudDataLineageIntegrationOutput values.
+// You can construct a concrete instance of `CloudDataLineageIntegrationInput` via:
+//
+//	CloudDataLineageIntegrationArgs{...}
+type CloudDataLineageIntegrationInput interface {
+	pulumi.Input
+
+	ToCloudDataLineageIntegrationOutput() CloudDataLineageIntegrationOutput
+	ToCloudDataLineageIntegrationOutputWithContext(context.Context) CloudDataLineageIntegrationOutput
+}
+
+// Configuration for Cloud Data Lineage integration.
+type CloudDataLineageIntegrationArgs struct {
+	// Optional. Whether or not Cloud Data Lineage integration is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (CloudDataLineageIntegrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (i CloudDataLineageIntegrationArgs) ToCloudDataLineageIntegrationOutput() CloudDataLineageIntegrationOutput {
+	return i.ToCloudDataLineageIntegrationOutputWithContext(context.Background())
+}
+
+func (i CloudDataLineageIntegrationArgs) ToCloudDataLineageIntegrationOutputWithContext(ctx context.Context) CloudDataLineageIntegrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudDataLineageIntegrationOutput)
+}
+
+func (i CloudDataLineageIntegrationArgs) ToCloudDataLineageIntegrationPtrOutput() CloudDataLineageIntegrationPtrOutput {
+	return i.ToCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudDataLineageIntegrationArgs) ToCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) CloudDataLineageIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudDataLineageIntegrationOutput).ToCloudDataLineageIntegrationPtrOutputWithContext(ctx)
+}
+
+// CloudDataLineageIntegrationPtrInput is an input type that accepts CloudDataLineageIntegrationArgs, CloudDataLineageIntegrationPtr and CloudDataLineageIntegrationPtrOutput values.
+// You can construct a concrete instance of `CloudDataLineageIntegrationPtrInput` via:
+//
+//	        CloudDataLineageIntegrationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudDataLineageIntegrationPtrInput interface {
+	pulumi.Input
+
+	ToCloudDataLineageIntegrationPtrOutput() CloudDataLineageIntegrationPtrOutput
+	ToCloudDataLineageIntegrationPtrOutputWithContext(context.Context) CloudDataLineageIntegrationPtrOutput
+}
+
+type cloudDataLineageIntegrationPtrType CloudDataLineageIntegrationArgs
+
+func CloudDataLineageIntegrationPtr(v *CloudDataLineageIntegrationArgs) CloudDataLineageIntegrationPtrInput {
+	return (*cloudDataLineageIntegrationPtrType)(v)
+}
+
+func (*cloudDataLineageIntegrationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (i *cloudDataLineageIntegrationPtrType) ToCloudDataLineageIntegrationPtrOutput() CloudDataLineageIntegrationPtrOutput {
+	return i.ToCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudDataLineageIntegrationPtrType) ToCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) CloudDataLineageIntegrationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudDataLineageIntegrationPtrOutput)
+}
+
+// Configuration for Cloud Data Lineage integration.
+type CloudDataLineageIntegrationOutput struct{ *pulumi.OutputState }
+
+func (CloudDataLineageIntegrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (o CloudDataLineageIntegrationOutput) ToCloudDataLineageIntegrationOutput() CloudDataLineageIntegrationOutput {
+	return o
+}
+
+func (o CloudDataLineageIntegrationOutput) ToCloudDataLineageIntegrationOutputWithContext(ctx context.Context) CloudDataLineageIntegrationOutput {
+	return o
+}
+
+func (o CloudDataLineageIntegrationOutput) ToCloudDataLineageIntegrationPtrOutput() CloudDataLineageIntegrationPtrOutput {
+	return o.ToCloudDataLineageIntegrationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudDataLineageIntegrationOutput) ToCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) CloudDataLineageIntegrationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudDataLineageIntegration) *CloudDataLineageIntegration {
+		return &v
+	}).(CloudDataLineageIntegrationPtrOutput)
+}
+
+// Optional. Whether or not Cloud Data Lineage integration is enabled.
+func (o CloudDataLineageIntegrationOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudDataLineageIntegration) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type CloudDataLineageIntegrationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudDataLineageIntegrationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudDataLineageIntegration)(nil)).Elem()
+}
+
+func (o CloudDataLineageIntegrationPtrOutput) ToCloudDataLineageIntegrationPtrOutput() CloudDataLineageIntegrationPtrOutput {
+	return o
+}
+
+func (o CloudDataLineageIntegrationPtrOutput) ToCloudDataLineageIntegrationPtrOutputWithContext(ctx context.Context) CloudDataLineageIntegrationPtrOutput {
+	return o
+}
+
+func (o CloudDataLineageIntegrationPtrOutput) Elem() CloudDataLineageIntegrationOutput {
+	return o.ApplyT(func(v *CloudDataLineageIntegration) CloudDataLineageIntegration {
+		if v != nil {
+			return *v
+		}
+		var ret CloudDataLineageIntegration
+		return ret
+	}).(CloudDataLineageIntegrationOutput)
+}
+
+// Optional. Whether or not Cloud Data Lineage integration is enabled.
+func (o CloudDataLineageIntegrationPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudDataLineageIntegration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for Cloud Data Lineage integration.
+type CloudDataLineageIntegrationResponse struct {
+	// Optional. Whether or not Cloud Data Lineage integration is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for Cloud Data Lineage integration.
+type CloudDataLineageIntegrationResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudDataLineageIntegrationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudDataLineageIntegrationResponse)(nil)).Elem()
+}
+
+func (o CloudDataLineageIntegrationResponseOutput) ToCloudDataLineageIntegrationResponseOutput() CloudDataLineageIntegrationResponseOutput {
+	return o
+}
+
+func (o CloudDataLineageIntegrationResponseOutput) ToCloudDataLineageIntegrationResponseOutputWithContext(ctx context.Context) CloudDataLineageIntegrationResponseOutput {
+	return o
+}
+
+// Optional. Whether or not Cloud Data Lineage integration is enabled.
+func (o CloudDataLineageIntegrationResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudDataLineageIntegrationResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 // The configuration of Cloud SQL instance that is used by the Apache Airflow software.
 type DatabaseConfig struct {
 	// Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -684,6 +850,8 @@ type EnvironmentConfig struct {
 	NodeCount *int `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig *PrivateEnvironmentConfig `pulumi:"privateEnvironmentConfig"`
+	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	RecoveryConfig *RecoveryConfig `pulumi:"recoveryConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig *SoftwareConfig `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -723,6 +891,8 @@ type EnvironmentConfigArgs struct {
 	NodeCount pulumi.IntPtrInput `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigPtrInput `pulumi:"privateEnvironmentConfig"`
+	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	RecoveryConfig RecoveryConfigPtrInput `pulumi:"recoveryConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigPtrInput `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -851,6 +1021,11 @@ func (o EnvironmentConfigOutput) PrivateEnvironmentConfig() PrivateEnvironmentCo
 	return o.ApplyT(func(v EnvironmentConfig) *PrivateEnvironmentConfig { return v.PrivateEnvironmentConfig }).(PrivateEnvironmentConfigPtrOutput)
 }
 
+// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+func (o EnvironmentConfigOutput) RecoveryConfig() RecoveryConfigPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *RecoveryConfig { return v.RecoveryConfig }).(RecoveryConfigPtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *SoftwareConfig { return v.SoftwareConfig }).(SoftwareConfigPtrOutput)
@@ -975,6 +1150,16 @@ func (o EnvironmentConfigPtrOutput) PrivateEnvironmentConfig() PrivateEnvironmen
 	}).(PrivateEnvironmentConfigPtrOutput)
 }
 
+// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+func (o EnvironmentConfigPtrOutput) RecoveryConfig() RecoveryConfigPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *RecoveryConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RecoveryConfig
+	}).(RecoveryConfigPtrOutput)
+}
+
 // The configuration settings for software inside the environment.
 func (o EnvironmentConfigPtrOutput) SoftwareConfig() SoftwareConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *SoftwareConfig {
@@ -1039,6 +1224,8 @@ type EnvironmentConfigResponse struct {
 	NodeCount int `pulumi:"nodeCount"`
 	// The configuration used for the Private IP Cloud Composer environment.
 	PrivateEnvironmentConfig PrivateEnvironmentConfigResponse `pulumi:"privateEnvironmentConfig"`
+	// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+	RecoveryConfig RecoveryConfigResponse `pulumi:"recoveryConfig"`
 	// The configuration settings for software inside the environment.
 	SoftwareConfig SoftwareConfigResponse `pulumi:"softwareConfig"`
 	// Optional. The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -1119,6 +1306,11 @@ func (o EnvironmentConfigResponseOutput) NodeCount() pulumi.IntOutput {
 // The configuration used for the Private IP Cloud Composer environment.
 func (o EnvironmentConfigResponseOutput) PrivateEnvironmentConfig() PrivateEnvironmentConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) PrivateEnvironmentConfigResponse { return v.PrivateEnvironmentConfig }).(PrivateEnvironmentConfigResponseOutput)
+}
+
+// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+func (o EnvironmentConfigResponseOutput) RecoveryConfig() RecoveryConfigResponseOutput {
+	return o.ApplyT(func(v EnvironmentConfigResponse) RecoveryConfigResponse { return v.RecoveryConfig }).(RecoveryConfigResponseOutput)
 }
 
 // The configuration settings for software inside the environment.
@@ -2011,7 +2203,7 @@ type NodeConfig struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork *string `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -2048,7 +2240,7 @@ type NodeConfigArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
 
@@ -2180,7 +2372,7 @@ func (o NodeConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 func (o NodeConfigOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2309,7 +2501,7 @@ func (o NodeConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 func (o NodeConfigPtrOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NodeConfig) []string {
 		if v == nil {
@@ -2341,7 +2533,7 @@ type NodeConfigResponse struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork string `pulumi:"subnetwork"`
-	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+	// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 	Tags []string `pulumi:"tags"`
 }
 
@@ -2410,7 +2602,7 @@ func (o NodeConfigResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
 
-// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
+// Optional. The list of instance tags applied to all node VMs. Tags are used to identify valid sources or targets for network firewalls. Each tag within the list must comply with [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Cannot be updated.
 func (o NodeConfigResponseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -2976,6 +3168,416 @@ func (o PrivateEnvironmentConfigResponseOutput) WebServerIpv4ReservedRange() pul
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.WebServerIpv4ReservedRange }).(pulumi.StringOutput)
 }
 
+// The Recovery settings of an environment.
+type RecoveryConfig struct {
+	// Optional. The configuration for scheduled snapshot creation mechanism.
+	ScheduledSnapshotsConfig *ScheduledSnapshotsConfig `pulumi:"scheduledSnapshotsConfig"`
+}
+
+// RecoveryConfigInput is an input type that accepts RecoveryConfigArgs and RecoveryConfigOutput values.
+// You can construct a concrete instance of `RecoveryConfigInput` via:
+//
+//	RecoveryConfigArgs{...}
+type RecoveryConfigInput interface {
+	pulumi.Input
+
+	ToRecoveryConfigOutput() RecoveryConfigOutput
+	ToRecoveryConfigOutputWithContext(context.Context) RecoveryConfigOutput
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigArgs struct {
+	// Optional. The configuration for scheduled snapshot creation mechanism.
+	ScheduledSnapshotsConfig ScheduledSnapshotsConfigPtrInput `pulumi:"scheduledSnapshotsConfig"`
+}
+
+func (RecoveryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecoveryConfig)(nil)).Elem()
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigOutput() RecoveryConfigOutput {
+	return i.ToRecoveryConfigOutputWithContext(context.Background())
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigOutputWithContext(ctx context.Context) RecoveryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigOutput)
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return i.ToRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RecoveryConfigArgs) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigOutput).ToRecoveryConfigPtrOutputWithContext(ctx)
+}
+
+// RecoveryConfigPtrInput is an input type that accepts RecoveryConfigArgs, RecoveryConfigPtr and RecoveryConfigPtrOutput values.
+// You can construct a concrete instance of `RecoveryConfigPtrInput` via:
+//
+//	        RecoveryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RecoveryConfigPtrInput interface {
+	pulumi.Input
+
+	ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput
+	ToRecoveryConfigPtrOutputWithContext(context.Context) RecoveryConfigPtrOutput
+}
+
+type recoveryConfigPtrType RecoveryConfigArgs
+
+func RecoveryConfigPtr(v *RecoveryConfigArgs) RecoveryConfigPtrInput {
+	return (*recoveryConfigPtrType)(v)
+}
+
+func (*recoveryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecoveryConfig)(nil)).Elem()
+}
+
+func (i *recoveryConfigPtrType) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return i.ToRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *recoveryConfigPtrType) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RecoveryConfigPtrOutput)
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigOutput struct{ *pulumi.OutputState }
+
+func (RecoveryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecoveryConfig)(nil)).Elem()
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigOutput() RecoveryConfigOutput {
+	return o
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigOutputWithContext(ctx context.Context) RecoveryConfigOutput {
+	return o
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return o.ToRecoveryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RecoveryConfigOutput) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecoveryConfig) *RecoveryConfig {
+		return &v
+	}).(RecoveryConfigPtrOutput)
+}
+
+// Optional. The configuration for scheduled snapshot creation mechanism.
+func (o RecoveryConfigOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyT(func(v RecoveryConfig) *ScheduledSnapshotsConfig { return v.ScheduledSnapshotsConfig }).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+type RecoveryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RecoveryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RecoveryConfig)(nil)).Elem()
+}
+
+func (o RecoveryConfigPtrOutput) ToRecoveryConfigPtrOutput() RecoveryConfigPtrOutput {
+	return o
+}
+
+func (o RecoveryConfigPtrOutput) ToRecoveryConfigPtrOutputWithContext(ctx context.Context) RecoveryConfigPtrOutput {
+	return o
+}
+
+func (o RecoveryConfigPtrOutput) Elem() RecoveryConfigOutput {
+	return o.ApplyT(func(v *RecoveryConfig) RecoveryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RecoveryConfig
+		return ret
+	}).(RecoveryConfigOutput)
+}
+
+// Optional. The configuration for scheduled snapshot creation mechanism.
+func (o RecoveryConfigPtrOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyT(func(v *RecoveryConfig) *ScheduledSnapshotsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ScheduledSnapshotsConfig
+	}).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigResponse struct {
+	// Optional. The configuration for scheduled snapshot creation mechanism.
+	ScheduledSnapshotsConfig ScheduledSnapshotsConfigResponse `pulumi:"scheduledSnapshotsConfig"`
+}
+
+// The Recovery settings of an environment.
+type RecoveryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RecoveryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecoveryConfigResponse)(nil)).Elem()
+}
+
+func (o RecoveryConfigResponseOutput) ToRecoveryConfigResponseOutput() RecoveryConfigResponseOutput {
+	return o
+}
+
+func (o RecoveryConfigResponseOutput) ToRecoveryConfigResponseOutputWithContext(ctx context.Context) RecoveryConfigResponseOutput {
+	return o
+}
+
+// Optional. The configuration for scheduled snapshot creation mechanism.
+func (o RecoveryConfigResponseOutput) ScheduledSnapshotsConfig() ScheduledSnapshotsConfigResponseOutput {
+	return o.ApplyT(func(v RecoveryConfigResponse) ScheduledSnapshotsConfigResponse { return v.ScheduledSnapshotsConfig }).(ScheduledSnapshotsConfigResponseOutput)
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfig struct {
+	// Optional. Whether scheduled snapshots creation is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+	SnapshotCreationSchedule *string `pulumi:"snapshotCreationSchedule"`
+	// Optional. The Cloud Storage location for storing automatically created snapshots.
+	SnapshotLocation *string `pulumi:"snapshotLocation"`
+	// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+	TimeZone *string `pulumi:"timeZone"`
+}
+
+// ScheduledSnapshotsConfigInput is an input type that accepts ScheduledSnapshotsConfigArgs and ScheduledSnapshotsConfigOutput values.
+// You can construct a concrete instance of `ScheduledSnapshotsConfigInput` via:
+//
+//	ScheduledSnapshotsConfigArgs{...}
+type ScheduledSnapshotsConfigInput interface {
+	pulumi.Input
+
+	ToScheduledSnapshotsConfigOutput() ScheduledSnapshotsConfigOutput
+	ToScheduledSnapshotsConfigOutputWithContext(context.Context) ScheduledSnapshotsConfigOutput
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigArgs struct {
+	// Optional. Whether scheduled snapshots creation is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+	SnapshotCreationSchedule pulumi.StringPtrInput `pulumi:"snapshotCreationSchedule"`
+	// Optional. The Cloud Storage location for storing automatically created snapshots.
+	SnapshotLocation pulumi.StringPtrInput `pulumi:"snapshotLocation"`
+	// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
+}
+
+func (ScheduledSnapshotsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigOutput() ScheduledSnapshotsConfigOutput {
+	return i.ToScheduledSnapshotsConfigOutputWithContext(context.Background())
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigOutput)
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return i.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ScheduledSnapshotsConfigArgs) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigOutput).ToScheduledSnapshotsConfigPtrOutputWithContext(ctx)
+}
+
+// ScheduledSnapshotsConfigPtrInput is an input type that accepts ScheduledSnapshotsConfigArgs, ScheduledSnapshotsConfigPtr and ScheduledSnapshotsConfigPtrOutput values.
+// You can construct a concrete instance of `ScheduledSnapshotsConfigPtrInput` via:
+//
+//	        ScheduledSnapshotsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScheduledSnapshotsConfigPtrInput interface {
+	pulumi.Input
+
+	ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput
+	ToScheduledSnapshotsConfigPtrOutputWithContext(context.Context) ScheduledSnapshotsConfigPtrOutput
+}
+
+type scheduledSnapshotsConfigPtrType ScheduledSnapshotsConfigArgs
+
+func ScheduledSnapshotsConfigPtr(v *ScheduledSnapshotsConfigArgs) ScheduledSnapshotsConfigPtrInput {
+	return (*scheduledSnapshotsConfigPtrType)(v)
+}
+
+func (*scheduledSnapshotsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (i *scheduledSnapshotsConfigPtrType) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return i.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *scheduledSnapshotsConfigPtrType) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSnapshotsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigOutput() ScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return o.ToScheduledSnapshotsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ScheduledSnapshotsConfigOutput) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScheduledSnapshotsConfig) *ScheduledSnapshotsConfig {
+		return &v
+	}).(ScheduledSnapshotsConfigPtrOutput)
+}
+
+// Optional. Whether scheduled snapshots creation is enabled.
+func (o ScheduledSnapshotsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+func (o ScheduledSnapshotsConfigOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *string { return v.SnapshotCreationSchedule }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage location for storing automatically created snapshots.
+func (o ScheduledSnapshotsConfigOutput) SnapshotLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *string { return v.SnapshotLocation }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+func (o ScheduledSnapshotsConfigOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfig) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
+type ScheduledSnapshotsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSnapshotsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScheduledSnapshotsConfig)(nil)).Elem()
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) ToScheduledSnapshotsConfigPtrOutput() ScheduledSnapshotsConfigPtrOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) ToScheduledSnapshotsConfigPtrOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigPtrOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigPtrOutput) Elem() ScheduledSnapshotsConfigOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) ScheduledSnapshotsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ScheduledSnapshotsConfig
+		return ret
+	}).(ScheduledSnapshotsConfigOutput)
+}
+
+// Optional. Whether scheduled snapshots creation is enabled.
+func (o ScheduledSnapshotsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+func (o ScheduledSnapshotsConfigPtrOutput) SnapshotCreationSchedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotCreationSchedule
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The Cloud Storage location for storing automatically created snapshots.
+func (o ScheduledSnapshotsConfigPtrOutput) SnapshotLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnapshotLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+func (o ScheduledSnapshotsConfigPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ScheduledSnapshotsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigResponse struct {
+	// Optional. Whether scheduled snapshots creation is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+	SnapshotCreationSchedule string `pulumi:"snapshotCreationSchedule"`
+	// Optional. The Cloud Storage location for storing automatically created snapshots.
+	SnapshotLocation string `pulumi:"snapshotLocation"`
+	// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+	TimeZone string `pulumi:"timeZone"`
+}
+
+// The configuration for scheduled snapshot creation mechanism.
+type ScheduledSnapshotsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ScheduledSnapshotsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScheduledSnapshotsConfigResponse)(nil)).Elem()
+}
+
+func (o ScheduledSnapshotsConfigResponseOutput) ToScheduledSnapshotsConfigResponseOutput() ScheduledSnapshotsConfigResponseOutput {
+	return o
+}
+
+func (o ScheduledSnapshotsConfigResponseOutput) ToScheduledSnapshotsConfigResponseOutputWithContext(ctx context.Context) ScheduledSnapshotsConfigResponseOutput {
+	return o
+}
+
+// Optional. Whether scheduled snapshots creation is enabled.
+func (o ScheduledSnapshotsConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
+func (o ScheduledSnapshotsConfigResponseOutput) SnapshotCreationSchedule() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) string { return v.SnapshotCreationSchedule }).(pulumi.StringOutput)
+}
+
+// Optional. The Cloud Storage location for storing automatically created snapshots.
+func (o ScheduledSnapshotsConfigResponseOutput) SnapshotLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) string { return v.SnapshotLocation }).(pulumi.StringOutput)
+}
+
+// Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
+func (o ScheduledSnapshotsConfigResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v ScheduledSnapshotsConfigResponse) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
 // Configuration for resources used by Airflow schedulers.
 type SchedulerResource struct {
 	// Optional. The number of schedulers.
@@ -3224,6 +3826,8 @@ func (o SchedulerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 type SoftwareConfig struct {
 	// Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
+	// Optional. The configuration for Cloud Data Lineage integration.
+	CloudDataLineageIntegration *CloudDataLineageIntegration `pulumi:"cloudDataLineageIntegration"`
 	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
@@ -3251,6 +3855,8 @@ type SoftwareConfigInput interface {
 type SoftwareConfigArgs struct {
 	// Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
 	AirflowConfigOverrides pulumi.StringMapInput `pulumi:"airflowConfigOverrides"`
+	// Optional. The configuration for Cloud Data Lineage integration.
+	CloudDataLineageIntegration CloudDataLineageIntegrationPtrInput `pulumi:"cloudDataLineageIntegration"`
 	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 	EnvVariables pulumi.StringMapInput `pulumi:"envVariables"`
 	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
@@ -3346,6 +3952,11 @@ func (o SoftwareConfigOutput) AirflowConfigOverrides() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfig) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// Optional. The configuration for Cloud Data Lineage integration.
+func (o SoftwareConfigOutput) CloudDataLineageIntegration() CloudDataLineageIntegrationPtrOutput {
+	return o.ApplyT(func(v SoftwareConfig) *CloudDataLineageIntegration { return v.CloudDataLineageIntegration }).(CloudDataLineageIntegrationPtrOutput)
+}
+
 // Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 func (o SoftwareConfigOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfig) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
@@ -3405,6 +4016,16 @@ func (o SoftwareConfigPtrOutput) AirflowConfigOverrides() pulumi.StringMapOutput
 	}).(pulumi.StringMapOutput)
 }
 
+// Optional. The configuration for Cloud Data Lineage integration.
+func (o SoftwareConfigPtrOutput) CloudDataLineageIntegration() CloudDataLineageIntegrationPtrOutput {
+	return o.ApplyT(func(v *SoftwareConfig) *CloudDataLineageIntegration {
+		if v == nil {
+			return nil
+		}
+		return v.CloudDataLineageIntegration
+	}).(CloudDataLineageIntegrationPtrOutput)
+}
+
 // Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 func (o SoftwareConfigPtrOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SoftwareConfig) map[string]string {
@@ -3459,6 +4080,8 @@ func (o SoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtrOutput {
 type SoftwareConfigResponse struct {
 	// Optional. Apache Airflow configuration properties to override. Property keys contain the section and property names, separated by a hyphen, for example "core-dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["), or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case). Property values can contain any character, and can be written in any lower/upper case format. Certain Apache Airflow configuration property values are [blocked](/composer/docs/concepts/airflow-configurations), and cannot be overridden.
 	AirflowConfigOverrides map[string]string `pulumi:"airflowConfigOverrides"`
+	// Optional. The configuration for Cloud Data Lineage integration.
+	CloudDataLineageIntegration CloudDataLineageIntegrationResponse `pulumi:"cloudDataLineageIntegration"`
 	// Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 	EnvVariables map[string]string `pulumi:"envVariables"`
 	// The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview).
@@ -3491,6 +4114,13 @@ func (o SoftwareConfigResponseOutput) AirflowConfigOverrides() pulumi.StringMapO
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.AirflowConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// Optional. The configuration for Cloud Data Lineage integration.
+func (o SoftwareConfigResponseOutput) CloudDataLineageIntegration() CloudDataLineageIntegrationResponseOutput {
+	return o.ApplyT(func(v SoftwareConfigResponse) CloudDataLineageIntegrationResponse {
+		return v.CloudDataLineageIntegration
+	}).(CloudDataLineageIntegrationResponseOutput)
+}
+
 // Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and webserver processes. Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow software configuration overrides (they cannot match the regular expression `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names: * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` * `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` * `SQL_USER`
 func (o SoftwareConfigResponseOutput) EnvVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.EnvVariables }).(pulumi.StringMapOutput)
@@ -3514,6 +4144,224 @@ func (o SoftwareConfigResponseOutput) PythonVersion() pulumi.StringOutput {
 // Optional. The number of schedulers for Airflow. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*.
 func (o SoftwareConfigResponseOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) int { return v.SchedulerCount }).(pulumi.IntOutput)
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResource struct {
+	// Optional. The number of triggerers.
+	Count *int `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow triggerer replica.
+	Cpu *float64 `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+	MemoryGb *float64 `pulumi:"memoryGb"`
+}
+
+// TriggererResourceInput is an input type that accepts TriggererResourceArgs and TriggererResourceOutput values.
+// You can construct a concrete instance of `TriggererResourceInput` via:
+//
+//	TriggererResourceArgs{...}
+type TriggererResourceInput interface {
+	pulumi.Input
+
+	ToTriggererResourceOutput() TriggererResourceOutput
+	ToTriggererResourceOutputWithContext(context.Context) TriggererResourceOutput
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceArgs struct {
+	// Optional. The number of triggerers.
+	Count pulumi.IntPtrInput `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow triggerer replica.
+	Cpu pulumi.Float64PtrInput `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+	MemoryGb pulumi.Float64PtrInput `pulumi:"memoryGb"`
+}
+
+func (TriggererResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggererResource)(nil)).Elem()
+}
+
+func (i TriggererResourceArgs) ToTriggererResourceOutput() TriggererResourceOutput {
+	return i.ToTriggererResourceOutputWithContext(context.Background())
+}
+
+func (i TriggererResourceArgs) ToTriggererResourceOutputWithContext(ctx context.Context) TriggererResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggererResourceOutput)
+}
+
+func (i TriggererResourceArgs) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return i.ToTriggererResourcePtrOutputWithContext(context.Background())
+}
+
+func (i TriggererResourceArgs) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggererResourceOutput).ToTriggererResourcePtrOutputWithContext(ctx)
+}
+
+// TriggererResourcePtrInput is an input type that accepts TriggererResourceArgs, TriggererResourcePtr and TriggererResourcePtrOutput values.
+// You can construct a concrete instance of `TriggererResourcePtrInput` via:
+//
+//	        TriggererResourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TriggererResourcePtrInput interface {
+	pulumi.Input
+
+	ToTriggererResourcePtrOutput() TriggererResourcePtrOutput
+	ToTriggererResourcePtrOutputWithContext(context.Context) TriggererResourcePtrOutput
+}
+
+type triggererResourcePtrType TriggererResourceArgs
+
+func TriggererResourcePtr(v *TriggererResourceArgs) TriggererResourcePtrInput {
+	return (*triggererResourcePtrType)(v)
+}
+
+func (*triggererResourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggererResource)(nil)).Elem()
+}
+
+func (i *triggererResourcePtrType) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return i.ToTriggererResourcePtrOutputWithContext(context.Background())
+}
+
+func (i *triggererResourcePtrType) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TriggererResourcePtrOutput)
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceOutput struct{ *pulumi.OutputState }
+
+func (TriggererResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggererResource)(nil)).Elem()
+}
+
+func (o TriggererResourceOutput) ToTriggererResourceOutput() TriggererResourceOutput {
+	return o
+}
+
+func (o TriggererResourceOutput) ToTriggererResourceOutputWithContext(ctx context.Context) TriggererResourceOutput {
+	return o
+}
+
+func (o TriggererResourceOutput) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return o.ToTriggererResourcePtrOutputWithContext(context.Background())
+}
+
+func (o TriggererResourceOutput) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TriggererResource) *TriggererResource {
+		return &v
+	}).(TriggererResourcePtrOutput)
+}
+
+// Optional. The number of triggerers.
+func (o TriggererResourceOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TriggererResource) *int { return v.Count }).(pulumi.IntPtrOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TriggererResource) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v TriggererResource) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+}
+
+type TriggererResourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TriggererResourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TriggererResource)(nil)).Elem()
+}
+
+func (o TriggererResourcePtrOutput) ToTriggererResourcePtrOutput() TriggererResourcePtrOutput {
+	return o
+}
+
+func (o TriggererResourcePtrOutput) ToTriggererResourcePtrOutputWithContext(ctx context.Context) TriggererResourcePtrOutput {
+	return o
+}
+
+func (o TriggererResourcePtrOutput) Elem() TriggererResourceOutput {
+	return o.ApplyT(func(v *TriggererResource) TriggererResource {
+		if v != nil {
+			return *v
+		}
+		var ret TriggererResource
+		return ret
+	}).(TriggererResourceOutput)
+}
+
+// Optional. The number of triggerers.
+func (o TriggererResourcePtrOutput) Count() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TriggererResource) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Count
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow triggerer replica.
+func (o TriggererResourcePtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TriggererResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+func (o TriggererResourcePtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *TriggererResource) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceResponse struct {
+	// Optional. The number of triggerers.
+	Count int `pulumi:"count"`
+	// Optional. CPU request and limit for a single Airflow triggerer replica.
+	Cpu float64 `pulumi:"cpu"`
+	// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+	MemoryGb float64 `pulumi:"memoryGb"`
+}
+
+// Configuration for resources used by Airflow triggerers.
+type TriggererResourceResponseOutput struct{ *pulumi.OutputState }
+
+func (TriggererResourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TriggererResourceResponse)(nil)).Elem()
+}
+
+func (o TriggererResourceResponseOutput) ToTriggererResourceResponseOutput() TriggererResourceResponseOutput {
+	return o
+}
+
+func (o TriggererResourceResponseOutput) ToTriggererResourceResponseOutputWithContext(ctx context.Context) TriggererResourceResponseOutput {
+	return o
+}
+
+// Optional. The number of triggerers.
+func (o TriggererResourceResponseOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v TriggererResourceResponse) int { return v.Count }).(pulumi.IntOutput)
+}
+
+// Optional. CPU request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceResponseOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v TriggererResourceResponse) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+// Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
+func (o TriggererResourceResponseOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v TriggererResourceResponse) float64 { return v.MemoryGb }).(pulumi.Float64Output)
 }
 
 // The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -4340,6 +5188,8 @@ func (o WorkerResourceResponseOutput) StorageGb() pulumi.Float64Output {
 type WorkloadsConfig struct {
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler *SchedulerResource `pulumi:"scheduler"`
+	// Optional. Resources used by Airflow triggerers.
+	Triggerer *TriggererResource `pulumi:"triggerer"`
 	// Optional. Resources used by Airflow web server.
 	WebServer *WebServerResource `pulumi:"webServer"`
 	// Optional. Resources used by Airflow workers.
@@ -4361,6 +5211,8 @@ type WorkloadsConfigInput interface {
 type WorkloadsConfigArgs struct {
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler SchedulerResourcePtrInput `pulumi:"scheduler"`
+	// Optional. Resources used by Airflow triggerers.
+	Triggerer TriggererResourcePtrInput `pulumi:"triggerer"`
 	// Optional. Resources used by Airflow web server.
 	WebServer WebServerResourcePtrInput `pulumi:"webServer"`
 	// Optional. Resources used by Airflow workers.
@@ -4450,6 +5302,11 @@ func (o WorkloadsConfigOutput) Scheduler() SchedulerResourcePtrOutput {
 	return o.ApplyT(func(v WorkloadsConfig) *SchedulerResource { return v.Scheduler }).(SchedulerResourcePtrOutput)
 }
 
+// Optional. Resources used by Airflow triggerers.
+func (o WorkloadsConfigOutput) Triggerer() TriggererResourcePtrOutput {
+	return o.ApplyT(func(v WorkloadsConfig) *TriggererResource { return v.Triggerer }).(TriggererResourcePtrOutput)
+}
+
 // Optional. Resources used by Airflow web server.
 func (o WorkloadsConfigOutput) WebServer() WebServerResourcePtrOutput {
 	return o.ApplyT(func(v WorkloadsConfig) *WebServerResource { return v.WebServer }).(WebServerResourcePtrOutput)
@@ -4494,6 +5351,16 @@ func (o WorkloadsConfigPtrOutput) Scheduler() SchedulerResourcePtrOutput {
 	}).(SchedulerResourcePtrOutput)
 }
 
+// Optional. Resources used by Airflow triggerers.
+func (o WorkloadsConfigPtrOutput) Triggerer() TriggererResourcePtrOutput {
+	return o.ApplyT(func(v *WorkloadsConfig) *TriggererResource {
+		if v == nil {
+			return nil
+		}
+		return v.Triggerer
+	}).(TriggererResourcePtrOutput)
+}
+
 // Optional. Resources used by Airflow web server.
 func (o WorkloadsConfigPtrOutput) WebServer() WebServerResourcePtrOutput {
 	return o.ApplyT(func(v *WorkloadsConfig) *WebServerResource {
@@ -4518,6 +5385,8 @@ func (o WorkloadsConfigPtrOutput) Worker() WorkerResourcePtrOutput {
 type WorkloadsConfigResponse struct {
 	// Optional. Resources used by Airflow schedulers.
 	Scheduler SchedulerResourceResponse `pulumi:"scheduler"`
+	// Optional. Resources used by Airflow triggerers.
+	Triggerer TriggererResourceResponse `pulumi:"triggerer"`
 	// Optional. Resources used by Airflow web server.
 	WebServer WebServerResourceResponse `pulumi:"webServer"`
 	// Optional. Resources used by Airflow workers.
@@ -4544,6 +5413,11 @@ func (o WorkloadsConfigResponseOutput) Scheduler() SchedulerResourceResponseOutp
 	return o.ApplyT(func(v WorkloadsConfigResponse) SchedulerResourceResponse { return v.Scheduler }).(SchedulerResourceResponseOutput)
 }
 
+// Optional. Resources used by Airflow triggerers.
+func (o WorkloadsConfigResponseOutput) Triggerer() TriggererResourceResponseOutput {
+	return o.ApplyT(func(v WorkloadsConfigResponse) TriggererResourceResponse { return v.Triggerer }).(TriggererResourceResponseOutput)
+}
+
 // Optional. Resources used by Airflow web server.
 func (o WorkloadsConfigResponseOutput) WebServer() WebServerResourceResponseOutput {
 	return o.ApplyT(func(v WorkloadsConfigResponse) WebServerResourceResponse { return v.WebServer }).(WebServerResourceResponseOutput)
@@ -4559,6 +5433,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllowedIpRangeArrayInput)(nil)).Elem(), AllowedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockInput)(nil)).Elem(), CidrBlockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CidrBlockArrayInput)(nil)).Elem(), CidrBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudDataLineageIntegrationInput)(nil)).Elem(), CloudDataLineageIntegrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudDataLineageIntegrationPtrInput)(nil)).Elem(), CloudDataLineageIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseConfigPtrInput)(nil)).Elem(), DatabaseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
@@ -4579,10 +5455,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateClusterConfigPtrInput)(nil)).Elem(), PrivateClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateEnvironmentConfigPtrInput)(nil)).Elem(), PrivateEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecoveryConfigInput)(nil)).Elem(), RecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RecoveryConfigPtrInput)(nil)).Elem(), RecoveryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSnapshotsConfigInput)(nil)).Elem(), ScheduledSnapshotsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScheduledSnapshotsConfigPtrInput)(nil)).Elem(), ScheduledSnapshotsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourceInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulerResourcePtrInput)(nil)).Elem(), SchedulerResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigInput)(nil)).Elem(), SoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SoftwareConfigPtrInput)(nil)).Elem(), SoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourceInput)(nil)).Elem(), TriggererResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TriggererResourcePtrInput)(nil)).Elem(), TriggererResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigInput)(nil)).Elem(), WebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerConfigPtrInput)(nil)).Elem(), WebServerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WebServerNetworkAccessControlInput)(nil)).Elem(), WebServerNetworkAccessControlArgs{})
@@ -4601,6 +5483,9 @@ func init() {
 	pulumi.RegisterOutputType(CidrBlockArrayOutput{})
 	pulumi.RegisterOutputType(CidrBlockResponseOutput{})
 	pulumi.RegisterOutputType(CidrBlockResponseArrayOutput{})
+	pulumi.RegisterOutputType(CloudDataLineageIntegrationOutput{})
+	pulumi.RegisterOutputType(CloudDataLineageIntegrationPtrOutput{})
+	pulumi.RegisterOutputType(CloudDataLineageIntegrationResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseConfigResponseOutput{})
@@ -4631,12 +5516,21 @@ func init() {
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigPtrOutput{})
 	pulumi.RegisterOutputType(PrivateEnvironmentConfigResponseOutput{})
+	pulumi.RegisterOutputType(RecoveryConfigOutput{})
+	pulumi.RegisterOutputType(RecoveryConfigPtrOutput{})
+	pulumi.RegisterOutputType(RecoveryConfigResponseOutput{})
+	pulumi.RegisterOutputType(ScheduledSnapshotsConfigOutput{})
+	pulumi.RegisterOutputType(ScheduledSnapshotsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ScheduledSnapshotsConfigResponseOutput{})
 	pulumi.RegisterOutputType(SchedulerResourceOutput{})
 	pulumi.RegisterOutputType(SchedulerResourcePtrOutput{})
 	pulumi.RegisterOutputType(SchedulerResourceResponseOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigPtrOutput{})
 	pulumi.RegisterOutputType(SoftwareConfigResponseOutput{})
+	pulumi.RegisterOutputType(TriggererResourceOutput{})
+	pulumi.RegisterOutputType(TriggererResourcePtrOutput{})
+	pulumi.RegisterOutputType(TriggererResourceResponseOutput{})
 	pulumi.RegisterOutputType(WebServerConfigOutput{})
 	pulumi.RegisterOutputType(WebServerConfigPtrOutput{})
 	pulumi.RegisterOutputType(WebServerConfigResponseOutput{})

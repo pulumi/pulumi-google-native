@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public Input<string> Path { get; set; } = null!;
 
         /// <summary>
-        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version.
+        /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

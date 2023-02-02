@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkEndpointResponse> NetworkEndpoints;
         /// <summary>
+        /// The qualified name of the QueuedResource that requested this Node.
+        /// </summary>
+        public readonly string QueuedResource;
+        /// <summary>
         /// The runtime version running in the Node.
         /// </summary>
         public readonly string RuntimeVersion;
@@ -172,6 +176,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             ImmutableArray<Outputs.NetworkEndpointResponse> networkEndpoints,
 
+            string queuedResource,
+
             string runtimeVersion,
 
             Outputs.SchedulingConfigResponse schedulingConfig,
@@ -199,6 +205,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
             Name = name;
             NetworkConfig = networkConfig;
             NetworkEndpoints = networkEndpoints;
+            QueuedResource = queuedResource;
             RuntimeVersion = runtimeVersion;
             SchedulingConfig = schedulingConfig;
             ServiceAccount = serviceAccount;

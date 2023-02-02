@@ -46,6 +46,8 @@ type Node struct {
 	// The unqualified resource name.
 	NodeId  pulumi.StringPtrOutput `pulumi:"nodeId"`
 	Project pulumi.StringOutput    `pulumi:"project"`
+	// The qualified name of the QueuedResource that requested this Node.
+	QueuedResource pulumi.StringOutput `pulumi:"queuedResource"`
 	// Idempotent request UUID.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The runtime version running in the Node.
@@ -294,6 +296,11 @@ func (o NodeOutput) NodeId() pulumi.StringPtrOutput {
 
 func (o NodeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The qualified name of the QueuedResource that requested this Node.
+func (o NodeOutput) QueuedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v *Node) pulumi.StringOutput { return v.QueuedResource }).(pulumi.StringOutput)
 }
 
 // Idempotent request UUID.

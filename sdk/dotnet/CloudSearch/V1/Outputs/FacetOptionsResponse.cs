@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
     public sealed class FacetOptionsResponse
     {
         /// <summary>
+        /// If set, describes integer faceting options for the given integer property. The corresponding integer property in the schema should be marked isFacetable. The number of buckets returned would be minimum of this and num_facet_buckets.
+        /// </summary>
+        public readonly Outputs.IntegerFacetingOptionsResponse IntegerFacetingOptions;
+        /// <summary>
         /// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
         /// </summary>
         public readonly int NumFacetBuckets;
@@ -35,6 +39,8 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 
         [OutputConstructor]
         private FacetOptionsResponse(
+            Outputs.IntegerFacetingOptionsResponse integerFacetingOptions,
+
             int numFacetBuckets,
 
             string objectType,
@@ -43,6 +49,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Outputs
 
             string sourceName)
         {
+            IntegerFacetingOptions = integerFacetingOptions;
             NumFacetBuckets = numFacetBuckets;
             ObjectType = objectType;
             OperatorName = operatorName;

@@ -107,6 +107,10 @@ export interface GetConfigResult {
      */
     readonly producerProjectId: string;
     /**
+     * Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+     */
+    readonly publishing: outputs.servicemanagement.v1.PublishingResponse;
+    /**
      * Quota configuration.
      */
     readonly quota: outputs.servicemanagement.v1.QuotaResponse;

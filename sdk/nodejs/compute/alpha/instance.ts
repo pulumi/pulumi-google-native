@@ -87,7 +87,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly hostname!: pulumi.Output<string>;
     /**
-     * Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+     * Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
      */
     public readonly instanceEncryptionKey!: pulumi.Output<outputs.compute.alpha.CustomerEncryptionKeyResponse>;
     /**
@@ -196,6 +196,10 @@ export class Instance extends pulumi.CustomResource {
      * A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
      */
     public readonly serviceAccounts!: pulumi.Output<outputs.compute.alpha.ServiceAccountResponse[]>;
+    /**
+     * Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+     */
+    public readonly serviceIntegrationSpecs!: pulumi.Output<{[key: string]: string}>;
     public readonly shieldedInstanceConfig!: pulumi.Output<outputs.compute.alpha.ShieldedInstanceConfigResponse>;
     public readonly shieldedInstanceIntegrityPolicy!: pulumi.Output<outputs.compute.alpha.ShieldedInstanceIntegrityPolicyResponse>;
     /**
@@ -281,6 +285,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["secureTags"] = args ? args.secureTags : undefined;
             resourceInputs["serviceAccounts"] = args ? args.serviceAccounts : undefined;
+            resourceInputs["serviceIntegrationSpecs"] = args ? args.serviceIntegrationSpecs : undefined;
             resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["shieldedInstanceIntegrityPolicy"] = args ? args.shieldedInstanceIntegrityPolicy : undefined;
             resourceInputs["shieldedVmConfig"] = args ? args.shieldedVmConfig : undefined;
@@ -349,6 +354,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
             resourceInputs["serviceAccounts"] = undefined /*out*/;
+            resourceInputs["serviceIntegrationSpecs"] = undefined /*out*/;
             resourceInputs["shieldedInstanceConfig"] = undefined /*out*/;
             resourceInputs["shieldedInstanceIntegrityPolicy"] = undefined /*out*/;
             resourceInputs["shieldedVmConfig"] = undefined /*out*/;
@@ -412,7 +418,7 @@ export interface InstanceArgs {
      */
     hostname?: pulumi.Input<string>;
     /**
-     * Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+     * Encrypts suspended data for an instance with a customer-managed encryption key. If you are creating a new instance, this field will encrypt the local SSD and in-memory contents of the instance during the suspend operation. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key during the suspend operation.
      */
     instanceEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
@@ -485,6 +491,10 @@ export interface InstanceArgs {
      * A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
      */
     serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAccountArgs>[]>;
+    /**
+     * Mapping of user-defined keys to specifications for service integrations. Currently only a single key-value pair is supported.
+     */
+    serviceIntegrationSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     shieldedInstanceConfig?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceConfigArgs>;
     shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceIntegrityPolicyArgs>;
     /**

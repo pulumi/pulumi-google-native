@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly ImmutableArray<string> ImportedLibraries;
         /// <summary>
-        /// Optional. Defaults to "SQL".
+        /// Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
         /// </summary>
         public readonly string Language;
         /// <summary>
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         public readonly Outputs.RemoteFunctionOptionsResponse RemoteFunctionOptions;
         /// <summary>
-        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+        /// Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
         /// </summary>
         public readonly Outputs.StandardSqlTableTypeResponse ReturnTableType;
         /// <summary>

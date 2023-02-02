@@ -15,16 +15,19 @@ __all__ = [
     'ExprArgs',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs',
     'GoogleCloudDatacatalogV1BusinessContextArgs',
+    'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
     'GoogleCloudDatacatalogV1ContactsPersonArgs',
     'GoogleCloudDatacatalogV1ContactsArgs',
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs',
+    'GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs',
     'GoogleCloudDatacatalogV1DatabaseTableSpecArgs',
     'GoogleCloudDatacatalogV1DataplexFilesetSpecArgs',
     'GoogleCloudDatacatalogV1DataplexSpecArgs',
     'GoogleCloudDatacatalogV1EntryOverviewArgs',
     'GoogleCloudDatacatalogV1FilesetSpecArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
+    'GoogleCloudDatacatalogV1LookerSystemSpecArgs',
     'GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs',
     'GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs',
     'GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs',
@@ -35,6 +38,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1RoutineSpecArgumentArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgs',
     'GoogleCloudDatacatalogV1SchemaArgs',
+    'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs',
     'GoogleCloudDatacatalogV1SystemTimestampsArgs',
     'GoogleCloudDatacatalogV1UsageSignalArgs',
 ]
@@ -232,27 +236,71 @@ class GoogleCloudDatacatalogV1BusinessContextArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType']] = None):
+        """
+        Column info specific to Looker System.
+        :param pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType'] type: Looker specific column type of this column.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType']]:
+        """
+        Looker specific column type of this column.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1ColumnSchemaArgs:
     def __init__(__self__, *,
                  column: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 default_value: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gc_rule: Optional[pulumi.Input[str]] = None,
+                 highest_indexing_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType']] = None,
+                 looker_column_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs']] = None,
                  mode: Optional[pulumi.Input[str]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
                  subcolumns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaArgs']]]] = None):
         """
         A column within a schema. Columns can be nested inside other columns.
         :param pulumi.Input[str] column: Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
         :param pulumi.Input[str] type: Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
+        :param pulumi.Input[str] default_value: Optional. Default value for the column.
         :param pulumi.Input[str] description: Optional. Description of the column. Default value is an empty string. The description must be a UTF-8 string with the maximum size of 2000 bytes.
+        :param pulumi.Input[str] gc_rule: Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        :param pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType'] highest_indexing_type: Optional. Most important inclusion of this column.
+        :param pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs'] looker_column_spec: Looker specific column info of this column.
         :param pulumi.Input[str] mode: Optional. A column's mode indicates whether values in this column are required, nullable, or repeated. Only `NULLABLE`, `REQUIRED`, and `REPEATED` values are supported. Default mode is `NULLABLE`.
+        :param pulumi.Input[int] ordinal_position: Optional. Ordinal position
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaArgs']]] subcolumns: Optional. Schema of sub-columns. A column can have zero or more sub-columns.
         """
         pulumi.set(__self__, "column", column)
         pulumi.set(__self__, "type", type)
+        if default_value is not None:
+            pulumi.set(__self__, "default_value", default_value)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gc_rule is not None:
+            pulumi.set(__self__, "gc_rule", gc_rule)
+        if highest_indexing_type is not None:
+            pulumi.set(__self__, "highest_indexing_type", highest_indexing_type)
+        if looker_column_spec is not None:
+            pulumi.set(__self__, "looker_column_spec", looker_column_spec)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
         if subcolumns is not None:
             pulumi.set(__self__, "subcolumns", subcolumns)
 
@@ -281,6 +329,18 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="defaultValue")
+    def default_value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Default value for the column.
+        """
+        return pulumi.get(self, "default_value")
+
+    @default_value.setter
+    def default_value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_value", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -293,6 +353,42 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="gcRule")
+    def gc_rule(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Garbage collection policy for the column or column family. Applies to systems like Cloud Bigtable.
+        """
+        return pulumi.get(self, "gc_rule")
+
+    @gc_rule.setter
+    def gc_rule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gc_rule", value)
+
+    @property
+    @pulumi.getter(name="highestIndexingType")
+    def highest_indexing_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType']]:
+        """
+        Optional. Most important inclusion of this column.
+        """
+        return pulumi.get(self, "highest_indexing_type")
+
+    @highest_indexing_type.setter
+    def highest_indexing_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaHighestIndexingType']]):
+        pulumi.set(self, "highest_indexing_type", value)
+
+    @property
+    @pulumi.getter(name="lookerColumnSpec")
+    def looker_column_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs']]:
+        """
+        Looker specific column info of this column.
+        """
+        return pulumi.get(self, "looker_column_spec")
+
+    @looker_column_spec.setter
+    def looker_column_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs']]):
+        pulumi.set(self, "looker_column_spec", value)
+
+    @property
     @pulumi.getter
     def mode(self) -> Optional[pulumi.Input[str]]:
         """
@@ -303,6 +399,18 @@ class GoogleCloudDatacatalogV1ColumnSchemaArgs:
     @mode.setter
     def mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Ordinal position
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
 
     @property
     @pulumi.getter
@@ -391,15 +499,87 @@ class GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs:
+    def __init__(__self__, *,
+                 base_table: Optional[pulumi.Input[str]] = None,
+                 sql_query: Optional[pulumi.Input[str]] = None,
+                 view_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType']] = None):
+        """
+        Specification that applies to database view.
+        :param pulumi.Input[str] base_table: Name of a singular table this view reflects one to one.
+        :param pulumi.Input[str] sql_query: SQL query used to generate this view.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType'] view_type: Type of this view.
+        """
+        if base_table is not None:
+            pulumi.set(__self__, "base_table", base_table)
+        if sql_query is not None:
+            pulumi.set(__self__, "sql_query", sql_query)
+        if view_type is not None:
+            pulumi.set(__self__, "view_type", view_type)
+
+    @property
+    @pulumi.getter(name="baseTable")
+    def base_table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of a singular table this view reflects one to one.
+        """
+        return pulumi.get(self, "base_table")
+
+    @base_table.setter
+    def base_table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_table", value)
+
+    @property
+    @pulumi.getter(name="sqlQuery")
+    def sql_query(self) -> Optional[pulumi.Input[str]]:
+        """
+        SQL query used to generate this view.
+        """
+        return pulumi.get(self, "sql_query")
+
+    @sql_query.setter
+    def sql_query(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_query", value)
+
+    @property
+    @pulumi.getter(name="viewType")
+    def view_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType']]:
+        """
+        Type of this view.
+        """
+        return pulumi.get(self, "view_type")
+
+    @view_type.setter
+    def view_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecViewType']]):
+        pulumi.set(self, "view_type", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1DatabaseTableSpecArgs:
     def __init__(__self__, *,
+                 database_view_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs']] = None,
                  type: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType']] = None):
         """
         Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs'] database_view_spec: Spec what aplies to tables that are actually views. Not set for "real" tables.
         :param pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecType'] type: Type of this table.
         """
+        if database_view_spec is not None:
+            pulumi.set(__self__, "database_view_spec", database_view_spec)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="databaseViewSpec")
+    def database_view_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs']]:
+        """
+        Spec what aplies to tables that are actually views. Not set for "real" tables.
+        """
+        return pulumi.get(self, "database_view_spec")
+
+    @database_view_spec.setter
+    def database_view_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpecArgs']]):
+        pulumi.set(self, "database_view_spec", value)
 
     @property
     @pulumi.getter
@@ -579,6 +759,110 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecArgs:
     @file_patterns.setter
     def file_patterns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "file_patterns", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1LookerSystemSpecArgs:
+    def __init__(__self__, *,
+                 parent_instance_display_name: Optional[pulumi.Input[str]] = None,
+                 parent_instance_id: Optional[pulumi.Input[str]] = None,
+                 parent_model_display_name: Optional[pulumi.Input[str]] = None,
+                 parent_model_id: Optional[pulumi.Input[str]] = None,
+                 parent_view_display_name: Optional[pulumi.Input[str]] = None,
+                 parent_view_id: Optional[pulumi.Input[str]] = None):
+        """
+        Specification that applies to entries that are part `LOOKER` system (user_specified_type)
+        :param pulumi.Input[str] parent_instance_display_name: Name of the parent Looker Instance. Empty if it does not exist.
+        :param pulumi.Input[str] parent_instance_id: ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+        :param pulumi.Input[str] parent_model_display_name: Name of the parent Model. Empty if it does not exist.
+        :param pulumi.Input[str] parent_model_id: ID of the parent Model. Empty if it does not exist.
+        :param pulumi.Input[str] parent_view_display_name: Name of the parent View. Empty if it does not exist.
+        :param pulumi.Input[str] parent_view_id: ID of the parent View. Empty if it does not exist.
+        """
+        if parent_instance_display_name is not None:
+            pulumi.set(__self__, "parent_instance_display_name", parent_instance_display_name)
+        if parent_instance_id is not None:
+            pulumi.set(__self__, "parent_instance_id", parent_instance_id)
+        if parent_model_display_name is not None:
+            pulumi.set(__self__, "parent_model_display_name", parent_model_display_name)
+        if parent_model_id is not None:
+            pulumi.set(__self__, "parent_model_id", parent_model_id)
+        if parent_view_display_name is not None:
+            pulumi.set(__self__, "parent_view_display_name", parent_view_display_name)
+        if parent_view_id is not None:
+            pulumi.set(__self__, "parent_view_id", parent_view_id)
+
+    @property
+    @pulumi.getter(name="parentInstanceDisplayName")
+    def parent_instance_display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the parent Looker Instance. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_instance_display_name")
+
+    @parent_instance_display_name.setter
+    def parent_instance_display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_instance_display_name", value)
+
+    @property
+    @pulumi.getter(name="parentInstanceId")
+    def parent_instance_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com`
+        """
+        return pulumi.get(self, "parent_instance_id")
+
+    @parent_instance_id.setter
+    def parent_instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_instance_id", value)
+
+    @property
+    @pulumi.getter(name="parentModelDisplayName")
+    def parent_model_display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the parent Model. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_model_display_name")
+
+    @parent_model_display_name.setter
+    def parent_model_display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_model_display_name", value)
+
+    @property
+    @pulumi.getter(name="parentModelId")
+    def parent_model_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the parent Model. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_model_id")
+
+    @parent_model_id.setter
+    def parent_model_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_model_id", value)
+
+    @property
+    @pulumi.getter(name="parentViewDisplayName")
+    def parent_view_display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the parent View. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_view_display_name")
+
+    @parent_view_display_name.setter
+    def parent_view_display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_view_display_name", value)
+
+    @property
+    @pulumi.getter(name="parentViewId")
+    def parent_view_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the parent View. Empty if it does not exist.
+        """
+        return pulumi.get(self, "parent_view_id")
+
+    @parent_view_id.setter
+    def parent_view_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_view_id", value)
 
 
 @pulumi.input_type
@@ -969,6 +1253,62 @@ class GoogleCloudDatacatalogV1SchemaArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs:
+    def __init__(__self__, *,
+                 database_version: Optional[pulumi.Input[str]] = None,
+                 instance_host: Optional[pulumi.Input[str]] = None,
+                 sql_engine: Optional[pulumi.Input[str]] = None):
+        """
+        Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
+        :param pulumi.Input[str] database_version: Version of the database engine.
+        :param pulumi.Input[str] instance_host: Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
+        :param pulumi.Input[str] sql_engine: SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
+        """
+        if database_version is not None:
+            pulumi.set(__self__, "database_version", database_version)
+        if instance_host is not None:
+            pulumi.set(__self__, "instance_host", instance_host)
+        if sql_engine is not None:
+            pulumi.set(__self__, "sql_engine", sql_engine)
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Version of the database engine.
+        """
+        return pulumi.get(self, "database_version")
+
+    @database_version.setter
+    def database_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_version", value)
+
+    @property
+    @pulumi.getter(name="instanceHost")
+    def instance_host(self) -> Optional[pulumi.Input[str]]:
+        """
+        Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
+        """
+        return pulumi.get(self, "instance_host")
+
+    @instance_host.setter
+    def instance_host(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_host", value)
+
+    @property
+    @pulumi.getter(name="sqlEngine")
+    def sql_engine(self) -> Optional[pulumi.Input[str]]:
+        """
+        SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
+        """
+        return pulumi.get(self, "sql_engine")
+
+    @sql_engine.setter
+    def sql_engine(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sql_engine", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1SystemTimestampsArgs:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -1011,13 +1351,45 @@ class GoogleCloudDatacatalogV1SystemTimestampsArgs:
 @pulumi.input_type
 class GoogleCloudDatacatalogV1UsageSignalArgs:
     def __init__(__self__, *,
+                 common_usage_within_time_range: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 favorite_count: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of all usage signals that Data Catalog stores. Note: Usually, these signals are updated daily. In rare cases, an update may fail but will be performed again on the next day.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] common_usage_within_time_range: Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        :param pulumi.Input[str] favorite_count: Favorite count in the source system.
         :param pulumi.Input[str] update_time: The end timestamp of the duration of usage statistics.
         """
+        if common_usage_within_time_range is not None:
+            pulumi.set(__self__, "common_usage_within_time_range", common_usage_within_time_range)
+        if favorite_count is not None:
+            pulumi.set(__self__, "favorite_count", favorite_count)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="commonUsageWithinTimeRange")
+    def common_usage_within_time_range(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        """
+        return pulumi.get(self, "common_usage_within_time_range")
+
+    @common_usage_within_time_range.setter
+    def common_usage_within_time_range(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "common_usage_within_time_range", value)
+
+    @property
+    @pulumi.getter(name="favoriteCount")
+    def favorite_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Favorite count in the source system.
+        """
+        return pulumi.get(self, "favorite_count")
+
+    @favorite_count.setter
+    def favorite_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "favorite_count", value)
 
     @property
     @pulumi.getter(name="updateTime")

@@ -68,7 +68,7 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly importedLibraries!: pulumi.Output<string[]>;
     /**
-     * Optional. Defaults to "SQL".
+     * Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
      */
     public readonly language!: pulumi.Output<string>;
     /**
@@ -81,7 +81,7 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly remoteFunctionOptions!: pulumi.Output<outputs.bigquery.v2.RemoteFunctionOptionsResponse>;
     /**
-     * Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+     * Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
      */
     public readonly returnTableType!: pulumi.Output<outputs.bigquery.v2.StandardSqlTableTypeResponse>;
     /**
@@ -199,7 +199,7 @@ export interface RoutineArgs {
      */
     importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Optional. Defaults to "SQL".
+     * Optional. Defaults to "SQL" if remote_function_options field is absent, not set otherwise.
      */
     language?: pulumi.Input<enums.bigquery.v2.RoutineLanguage>;
     project?: pulumi.Input<string>;
@@ -208,7 +208,7 @@ export interface RoutineArgs {
      */
     remoteFunctionOptions?: pulumi.Input<inputs.bigquery.v2.RemoteFunctionOptionsArgs>;
     /**
-     * Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
+     * Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specified in return table type, at query time.
      */
     returnTableType?: pulumi.Input<inputs.bigquery.v2.StandardSqlTableTypeArgs>;
     /**

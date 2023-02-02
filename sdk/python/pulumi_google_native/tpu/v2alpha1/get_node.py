@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
+    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
         if accelerator_type and not isinstance(accelerator_type, str):
             raise TypeError("Expected argument 'accelerator_type' to be a str")
         pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -59,6 +59,9 @@ class GetNodeResult:
         if network_endpoints and not isinstance(network_endpoints, list):
             raise TypeError("Expected argument 'network_endpoints' to be a list")
         pulumi.set(__self__, "network_endpoints", network_endpoints)
+        if queued_resource and not isinstance(queued_resource, str):
+            raise TypeError("Expected argument 'queued_resource' to be a str")
+        pulumi.set(__self__, "queued_resource", queued_resource)
         if runtime_version and not isinstance(runtime_version, str):
             raise TypeError("Expected argument 'runtime_version' to be a str")
         pulumi.set(__self__, "runtime_version", runtime_version)
@@ -186,6 +189,14 @@ class GetNodeResult:
         return pulumi.get(self, "network_endpoints")
 
     @property
+    @pulumi.getter(name="queuedResource")
+    def queued_resource(self) -> str:
+        """
+        The qualified name of the QueuedResource that requested this Node.
+        """
+        return pulumi.get(self, "queued_resource")
+
+    @property
     @pulumi.getter(name="runtimeVersion")
     def runtime_version(self) -> str:
         """
@@ -261,6 +272,7 @@ class AwaitableGetNodeResult(GetNodeResult):
             name=self.name,
             network_config=self.network_config,
             network_endpoints=self.network_endpoints,
+            queued_resource=self.queued_resource,
             runtime_version=self.runtime_version,
             scheduling_config=self.scheduling_config,
             service_account=self.service_account,
@@ -298,6 +310,7 @@ def get_node(location: Optional[str] = None,
         name=__ret__.name,
         network_config=__ret__.network_config,
         network_endpoints=__ret__.network_endpoints,
+        queued_resource=__ret__.queued_resource,
         runtime_version=__ret__.runtime_version,
         scheduling_config=__ret__.scheduling_config,
         service_account=__ret__.service_account,

@@ -732,7 +732,7 @@ func (o CloudRunResponseOutput) Service() pulumi.StringOutput {
 
 // Represents a target of an invocation over HTTP.
 type Destination struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction *string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun *CloudRun `pulumi:"cloudRun"`
@@ -755,7 +755,7 @@ type DestinationInput interface {
 
 // Represents a target of an invocation over HTTP.
 type DestinationArgs struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction pulumi.StringPtrInput `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunPtrInput `pulumi:"cloudRun"`
@@ -792,7 +792,7 @@ func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) D
 	return o
 }
 
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o DestinationOutput) CloudFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Destination) *string { return v.CloudFunction }).(pulumi.StringPtrOutput)
 }
@@ -814,7 +814,7 @@ func (o DestinationOutput) Workflow() pulumi.StringPtrOutput {
 
 // Represents a target of an invocation over HTTP.
 type DestinationResponse struct {
-	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+	// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 	CloudFunction string `pulumi:"cloudFunction"`
 	// Cloud Run fully-managed resource that receives the events. The resource should be in the same project as the trigger.
 	CloudRun CloudRunResponse `pulumi:"cloudRun"`
@@ -839,7 +839,7 @@ func (o DestinationResponseOutput) ToDestinationResponseOutputWithContext(ctx co
 	return o
 }
 
-// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
+// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}` This is a read-only field. Creating Cloud Functions V2 triggers is only supported via the Cloud Functions product. An error will be returned if the user sets this value.
 func (o DestinationResponseOutput) CloudFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationResponse) string { return v.CloudFunction }).(pulumi.StringOutput)
 }

@@ -82,7 +82,7 @@ export const FunctionEnvironment = {
 } as const;
 
 /**
- * Describe whether the function is gen1 or gen2.
+ * Describe whether the function is 1st Gen or 2nd Gen.
  */
 export type FunctionEnvironment = (typeof FunctionEnvironment)[keyof typeof FunctionEnvironment];
 
@@ -126,7 +126,7 @@ export const ServiceConfigSecurityLevel = {
 } as const;
 
 /**
- * Optional. Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
+ * Security level configure whether the function only accepts https. This configuration is only applicable to 1st Gen functions with Http trigger. By default https is optional for 1st Gen functions; 2nd Gen functions are https ONLY.
  */
 export type ServiceConfigSecurityLevel = (typeof ServiceConfigSecurityLevel)[keyof typeof ServiceConfigSecurityLevel];
 

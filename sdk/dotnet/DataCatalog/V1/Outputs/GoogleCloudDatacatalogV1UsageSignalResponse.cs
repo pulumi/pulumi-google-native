@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
     public sealed class GoogleCloudDatacatalogV1UsageSignalResponse
     {
         /// <summary>
+        /// Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> CommonUsageWithinTimeRange;
+        /// <summary>
+        /// Favorite count in the source system.
+        /// </summary>
+        public readonly string FavoriteCount;
+        /// <summary>
         /// The end timestamp of the duration of usage statistics.
         /// </summary>
         public readonly string UpdateTime;
@@ -27,10 +35,16 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDatacatalogV1UsageSignalResponse(
+            ImmutableDictionary<string, string> commonUsageWithinTimeRange,
+
+            string favoriteCount,
+
             string updateTime,
 
             ImmutableDictionary<string, string> usageWithinTimeRange)
         {
+            CommonUsageWithinTimeRange = commonUsageWithinTimeRange;
+            FavoriteCount = favoriteCount;
             UpdateTime = updateTime;
             UsageWithinTimeRange = usageWithinTimeRange;
         }

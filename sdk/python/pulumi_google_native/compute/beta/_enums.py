@@ -34,6 +34,7 @@ __all__ = [
     'BackendServiceLoadBalancingScheme',
     'BackendServiceLocalityLbPolicy',
     'BackendServiceLocalityLoadBalancingPolicyConfigPolicyName',
+    'BackendServiceLogConfigOptionalMode',
     'BackendServiceProtocol',
     'BackendServiceSessionAffinity',
     'ConditionIam',
@@ -103,6 +104,7 @@ __all__ = [
     'LogConfigCloudAuditOptionsLogName',
     'LogConfigDataAccessOptionsLogMode',
     'MetadataFilterFilterMatchCriteria',
+    'NetworkAttachmentConnectionPreference',
     'NetworkEndpointGroupNetworkEndpointType',
     'NetworkInterfaceNicType',
     'NetworkInterfaceStackType',
@@ -172,6 +174,7 @@ __all__ = [
     'SecurityPolicyRuleMatcherVersionedExpr',
     'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
+    'SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType',
     'SecurityPolicyRuleRedirectOptionsType',
     'SecurityPolicyType',
     'ServerBindingType',
@@ -681,7 +684,7 @@ class BackendServiceLocalityLbPolicy(str, Enum):
 
 class BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(str, Enum):
     """
-    The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+    The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
     """
     INVALID_LB_POLICY = "INVALID_LB_POLICY"
     LEAST_REQUEST = "LEAST_REQUEST"
@@ -711,6 +714,24 @@ class BackendServiceLocalityLoadBalancingPolicyConfigPolicyName(str, Enum):
     WEIGHTED_MAGLEV = "WEIGHTED_MAGLEV"
     """
     Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+    """
+
+
+class BackendServiceLogConfigOptionalMode(str, Enum):
+    """
+    This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+    """
+    CUSTOM = "CUSTOM"
+    """
+    A subset of optional fields.
+    """
+    EXCLUDE_ALL_OPTIONAL = "EXCLUDE_ALL_OPTIONAL"
+    """
+    None optional fields.
+    """
+    INCLUDE_ALL_OPTIONAL = "INCLUDE_ALL_OPTIONAL"
+    """
+    All optional fields.
     """
 
 
@@ -1355,6 +1376,7 @@ class GuestOsFeatureType(str, Enum):
     MULTI_IP_SUBNET = "MULTI_IP_SUBNET"
     SECURE_BOOT = "SECURE_BOOT"
     SEV_CAPABLE = "SEV_CAPABLE"
+    SEV_SNP_CAPABLE = "SEV_SNP_CAPABLE"
     UEFI_COMPATIBLE = "UEFI_COMPATIBLE"
     VIRTIO_SCSI_MULTIQUEUE = "VIRTIO_SCSI_MULTIQUEUE"
     WINDOWS = "WINDOWS"
@@ -1924,6 +1946,12 @@ class MetadataFilterFilterMatchCriteria(str, Enum):
     """
 
 
+class NetworkAttachmentConnectionPreference(str, Enum):
+    ACCEPT_AUTOMATIC = "ACCEPT_AUTOMATIC"
+    ACCEPT_MANUAL = "ACCEPT_MANUAL"
+    INVALID = "INVALID"
+
+
 class NetworkEndpointGroupNetworkEndpointType(str, Enum):
     """
     Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -2353,7 +2381,7 @@ class RegionDiskStorageType(str, Enum):
 
 class RegionHealthCheckServiceHealthStatusAggregationPolicy(str, Enum):
     """
-    Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+    Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
     """
     AND_ = "AND"
     """
@@ -2564,7 +2592,7 @@ class ReservationAffinityConsumeReservationType(str, Enum):
 
 class ResourceCommitmentType(str, Enum):
     """
-    Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+    Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
     """
     ACCELERATOR = "ACCELERATOR"
     LOCAL_SSD = "LOCAL_SSD"
@@ -2924,7 +2952,22 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(str, Enum):
 
 class SecurityPolicyRuleRateLimitOptionsEnforceOnKey(str, Enum):
     """
-    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    """
+    ALL = "ALL"
+    ALL_IPS = "ALL_IPS"
+    HTTP_COOKIE = "HTTP_COOKIE"
+    HTTP_HEADER = "HTTP_HEADER"
+    HTTP_PATH = "HTTP_PATH"
+    IP = "IP"
+    REGION_CODE = "REGION_CODE"
+    SNI = "SNI"
+    XFF_IP = "XFF_IP"
+
+
+class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(str, Enum):
+    """
+    Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     """
     ALL = "ALL"
     ALL_IPS = "ALL_IPS"

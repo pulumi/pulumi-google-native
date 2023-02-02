@@ -20,11 +20,16 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// An opaque ID of the host on which the VM is running.
         /// </summary>
         public readonly string PhysicalHost;
+        public readonly Outputs.ResourceStatusSchedulingResponse Scheduling;
 
         [OutputConstructor]
-        private ResourceStatusResponse(string physicalHost)
+        private ResourceStatusResponse(
+            string physicalHost,
+
+            Outputs.ResourceStatusSchedulingResponse scheduling)
         {
             PhysicalHost = physicalHost;
+            Scheduling = scheduling;
         }
     }
 }

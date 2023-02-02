@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetParticipantResult:
-    def __init__(__self__, documents_metadata_filters=None, name=None, role=None, sip_recording_media_label=None):
+    def __init__(__self__, documents_metadata_filters=None, name=None, obfuscated_external_user_id=None, role=None, sip_recording_media_label=None):
         if documents_metadata_filters and not isinstance(documents_metadata_filters, dict):
             raise TypeError("Expected argument 'documents_metadata_filters' to be a dict")
         pulumi.set(__self__, "documents_metadata_filters", documents_metadata_filters)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if obfuscated_external_user_id and not isinstance(obfuscated_external_user_id, str):
+            raise TypeError("Expected argument 'obfuscated_external_user_id' to be a str")
+        pulumi.set(__self__, "obfuscated_external_user_id", obfuscated_external_user_id)
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
@@ -47,6 +50,14 @@ class GetParticipantResult:
         Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="obfuscatedExternalUserId")
+    def obfuscated_external_user_id(self) -> str:
+        """
+        Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow returns an error if you try to add a user id for a non-END_USER participant. Dialogflow uses this user id for billing and measurement purposes. For example, Dialogflow determines whether a user in one conversation returned in a later conversation. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
+        """
+        return pulumi.get(self, "obfuscated_external_user_id")
 
     @property
     @pulumi.getter
@@ -73,6 +84,7 @@ class AwaitableGetParticipantResult(GetParticipantResult):
         return GetParticipantResult(
             documents_metadata_filters=self.documents_metadata_filters,
             name=self.name,
+            obfuscated_external_user_id=self.obfuscated_external_user_id,
             role=self.role,
             sip_recording_media_label=self.sip_recording_media_label)
 
@@ -96,6 +108,7 @@ def get_participant(conversation_id: Optional[str] = None,
     return AwaitableGetParticipantResult(
         documents_metadata_filters=__ret__.documents_metadata_filters,
         name=__ret__.name,
+        obfuscated_external_user_id=__ret__.obfuscated_external_user_id,
         role=__ret__.role,
         sip_recording_media_label=__ret__.sip_recording_media_label)
 

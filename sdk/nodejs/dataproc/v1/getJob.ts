@@ -43,6 +43,10 @@ export interface GetJobResult {
      */
     readonly driverOutputResourceUri: string;
     /**
+     * Optional. Driver scheduling configuration.
+     */
+    readonly driverSchedulingConfig: outputs.dataproc.v1.DriverSchedulingConfigResponse;
+    /**
      * Optional. Job is a Hadoop job.
      */
     readonly hadoopJob: outputs.dataproc.v1.HadoopJobResponse;

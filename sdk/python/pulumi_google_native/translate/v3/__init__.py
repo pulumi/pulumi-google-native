@@ -5,9 +5,13 @@
 from ... import _utilities
 import typing
 # Export this package's modules as members:
+from .dataset import *
+from .get_dataset import *
 from .get_glossary import *
 from .get_glossary_entry import *
+from .get_model import *
 from .glossary import *
 from .glossary_entry import *
+from .model import *
 from ._inputs import *
 from . import outputs

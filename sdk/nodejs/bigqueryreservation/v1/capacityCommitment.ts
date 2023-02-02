@@ -51,6 +51,10 @@ export class CapacityCommitment extends pulumi.CustomResource {
      */
     public /*out*/ readonly commitmentStartTime!: pulumi.Output<string>;
     /**
+     * Edition of the capacity commitment.
+     */
+    public readonly edition!: pulumi.Output<string>;
+    /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
     public readonly enforceSingleAdminProjectPerOrg!: pulumi.Output<boolean | undefined>;
@@ -97,6 +101,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
         opts = opts || {};
         if (!opts.id) {
             resourceInputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
+            resourceInputs["edition"] = args ? args.edition : undefined;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["multiRegionAuxiliary"] = args ? args.multiRegionAuxiliary : undefined;
@@ -113,6 +118,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
             resourceInputs["capacityCommitmentId"] = undefined /*out*/;
             resourceInputs["commitmentEndTime"] = undefined /*out*/;
             resourceInputs["commitmentStartTime"] = undefined /*out*/;
+            resourceInputs["edition"] = undefined /*out*/;
             resourceInputs["enforceSingleAdminProjectPerOrg"] = undefined /*out*/;
             resourceInputs["failureStatus"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -139,6 +145,10 @@ export interface CapacityCommitmentArgs {
      * The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
      */
     capacityCommitmentId?: pulumi.Input<string>;
+    /**
+     * Edition of the capacity commitment.
+     */
+    edition?: pulumi.Input<enums.bigqueryreservation.v1.CapacityCommitmentEdition>;
     /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */

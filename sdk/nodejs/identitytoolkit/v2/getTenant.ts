@@ -49,6 +49,10 @@ export interface GetTenantResult {
      */
     readonly displayName: string;
     /**
+     * Configuration for settings related to email privacy and public visibility.
+     */
+    readonly emailPrivacyConfig: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse;
+    /**
      * Whether to enable anonymous user authentication.
      */
     readonly enableAnonymousUser: boolean;

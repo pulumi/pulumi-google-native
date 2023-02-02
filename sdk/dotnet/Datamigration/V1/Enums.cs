@@ -94,6 +94,47 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     }
 
     /// <summary>
+    /// Optional. Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data availability. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available).
+    /// </summary>
+    [EnumType]
+    public readonly struct CloudSqlSettingsAvailabilityType : IEquatable<CloudSqlSettingsAvailabilityType>
+    {
+        private readonly string _value;
+
+        private CloudSqlSettingsAvailabilityType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// This is an unknown Availability type.
+        /// </summary>
+        public static CloudSqlSettingsAvailabilityType SqlAvailabilityTypeUnspecified { get; } = new CloudSqlSettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Zonal availablility instance.
+        /// </summary>
+        public static CloudSqlSettingsAvailabilityType Zonal { get; } = new CloudSqlSettingsAvailabilityType("ZONAL");
+        /// <summary>
+        /// Regional availability instance.
+        /// </summary>
+        public static CloudSqlSettingsAvailabilityType Regional { get; } = new CloudSqlSettingsAvailabilityType("REGIONAL");
+
+        public static bool operator ==(CloudSqlSettingsAvailabilityType left, CloudSqlSettingsAvailabilityType right) => left.Equals(right);
+        public static bool operator !=(CloudSqlSettingsAvailabilityType left, CloudSqlSettingsAvailabilityType right) => !left.Equals(right);
+
+        public static explicit operator string(CloudSqlSettingsAvailabilityType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CloudSqlSettingsAvailabilityType other && Equals(other);
+        public bool Equals(CloudSqlSettingsAvailabilityType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of storage: `PD_SSD` (default) or `PD_HDD`.
     /// </summary>
     [EnumType]
@@ -314,6 +355,51 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     }
 
     /// <summary>
+    /// Required. Engine Type.
+    /// </summary>
+    [EnumType]
+    public readonly struct DatabaseEngineInfoEngine : IEquatable<DatabaseEngineInfoEngine>
+    {
+        private readonly string _value;
+
+        private DatabaseEngineInfoEngine(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The source database engine of the migration job is unknown.
+        /// </summary>
+        public static DatabaseEngineInfoEngine DatabaseEngineUnspecified { get; } = new DatabaseEngineInfoEngine("DATABASE_ENGINE_UNSPECIFIED");
+        /// <summary>
+        /// The source engine is MySQL.
+        /// </summary>
+        public static DatabaseEngineInfoEngine Mysql { get; } = new DatabaseEngineInfoEngine("MYSQL");
+        /// <summary>
+        /// The source engine is PostgreSQL.
+        /// </summary>
+        public static DatabaseEngineInfoEngine Postgresql { get; } = new DatabaseEngineInfoEngine("POSTGRESQL");
+        /// <summary>
+        /// The source engine is Oracle
+        /// </summary>
+        public static DatabaseEngineInfoEngine Oracle { get; } = new DatabaseEngineInfoEngine("ORACLE");
+
+        public static bool operator ==(DatabaseEngineInfoEngine left, DatabaseEngineInfoEngine right) => left.Equals(right);
+        public static bool operator !=(DatabaseEngineInfoEngine left, DatabaseEngineInfoEngine right) => !left.Equals(right);
+
+        public static explicit operator string(DatabaseEngineInfoEngine value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is DatabaseEngineInfoEngine other && Equals(other);
+        public bool Equals(DatabaseEngineInfoEngine other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The database engine.
     /// </summary>
     [EnumType]
@@ -338,6 +424,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// The source engine is PostgreSQL.
         /// </summary>
         public static DatabaseTypeEngine Postgresql { get; } = new DatabaseTypeEngine("POSTGRESQL");
+        /// <summary>
+        /// The source engine is Oracle
+        /// </summary>
+        public static DatabaseTypeEngine Oracle { get; } = new DatabaseTypeEngine("ORACLE");
 
         public static bool operator ==(DatabaseTypeEngine left, DatabaseTypeEngine right) => left.Equals(right);
         public static bool operator !=(DatabaseTypeEngine left, DatabaseTypeEngine right) => !left.Equals(right);

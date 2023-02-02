@@ -107,6 +107,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Server-defined URL for this resource with the resource id.
         /// </summary>
         public readonly string SelfLinkWithId;
+        /// <summary>
+        /// The list of cloud regions from which health checks are performed. If any regions are specified, then exactly 3 regions should be specified. The region names must be valid names of GCP regions. This can only be set for global health check. If this list is non-empty, then there are restrictions on what other health check fields are supported and what other resources can use this health check: - SSL, HTTP2, and GRPC protocols are not supported. - The TCP request field is not supported. - The proxyHeader field for HTTP, HTTPS, and TCP is not supported. - The checkIntervalSec field must be at least 30. - The health check cannot be used with BackendService nor with managed instance group auto-healing. 
+        /// </summary>
+        public readonly ImmutableArray<string> SourceRegions;
         public readonly Outputs.SSLHealthCheckResponse SslHealthCheck;
         public readonly Outputs.TCPHealthCheckResponse TcpHealthCheck;
         /// <summary>
@@ -153,6 +157,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string selfLinkWithId,
 
+            ImmutableArray<string> sourceRegions,
+
             Outputs.SSLHealthCheckResponse sslHealthCheck,
 
             Outputs.TCPHealthCheckResponse tcpHealthCheck,
@@ -179,6 +185,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Region = region;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
+            SourceRegions = sourceRegions;
             SslHealthCheck = sslHealthCheck;
             TcpHealthCheck = tcpHealthCheck;
             TimeoutSec = timeoutSec;

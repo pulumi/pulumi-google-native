@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
 type BinaryAuthorizationEvaluationMode string
 
 const (
@@ -543,6 +543,18 @@ const (
 	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL")
 )
 
+// The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+type ClusterUpdateDesiredStackType string
+
+const (
+	// Default value, will be defaulted as IPV4 only
+	ClusterUpdateDesiredStackTypeStackTypeUnspecified = ClusterUpdateDesiredStackType("STACK_TYPE_UNSPECIFIED")
+	// Cluster is IPV4 only
+	ClusterUpdateDesiredStackTypeIpv4 = ClusterUpdateDesiredStackType("IPV4")
+	// Cluster can use both IPv4 and IPv6
+	ClusterUpdateDesiredStackTypeIpv4Ipv6 = ClusterUpdateDesiredStackType("IPV4_IPV6")
+)
+
 // cluster_dns indicates which in-cluster DNS provider should be used.
 type DNSConfigClusterDns string
 
@@ -718,6 +730,8 @@ type DNSConfigClusterDnsScope string
 const (
 	// Default value, will be inferred as cluster scope.
 	DNSConfigClusterDnsScopeDnsScopeUnspecified = DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED")
+	// DNS records are accessible from within the cluster.
+	DNSConfigClusterDnsScopeClusterScope = DNSConfigClusterDnsScope("CLUSTER_SCOPE")
 	// DNS records are accessible from within the VPC.
 	DNSConfigClusterDnsScopeVpcScope = DNSConfigClusterDnsScope("VPC_SCOPE")
 )
@@ -3896,6 +3910,173 @@ func (in *nodeTaintEffectPtr) ToNodeTaintEffectPtrOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, in).(NodeTaintEffectPtrOutput)
 }
 
+// The type of placement.
+type PlacementPolicyType string
+
+const (
+	// TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+	PlacementPolicyTypeTypeUnspecified = PlacementPolicyType("TYPE_UNSPECIFIED")
+	// COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+	PlacementPolicyTypeCompact = PlacementPolicyType("COMPACT")
+)
+
+func (PlacementPolicyType) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyType)(nil)).Elem()
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput {
+	return pulumi.ToOutput(e).(PlacementPolicyTypeOutput)
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypeOutputWithContext(ctx context.Context) PlacementPolicyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PlacementPolicyTypeOutput)
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return e.ToPlacementPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (e PlacementPolicyType) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return PlacementPolicyType(e).ToPlacementPolicyTypeOutputWithContext(ctx).ToPlacementPolicyTypePtrOutputWithContext(ctx)
+}
+
+func (e PlacementPolicyType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PlacementPolicyType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e PlacementPolicyType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e PlacementPolicyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PlacementPolicyTypeOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PlacementPolicyType)(nil)).Elem()
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput {
+	return o
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypeOutputWithContext(ctx context.Context) PlacementPolicyTypeOutput {
+	return o
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return o.ToPlacementPolicyTypePtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypeOutput) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PlacementPolicyType) *PlacementPolicyType {
+		return &v
+	}).(PlacementPolicyTypePtrOutput)
+}
+
+func (o PlacementPolicyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlacementPolicyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PlacementPolicyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PlacementPolicyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PlacementPolicyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PlacementPolicyTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PlacementPolicyType)(nil)).Elem()
+}
+
+func (o PlacementPolicyTypePtrOutput) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return o
+}
+
+func (o PlacementPolicyTypePtrOutput) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return o
+}
+
+func (o PlacementPolicyTypePtrOutput) Elem() PlacementPolicyTypeOutput {
+	return o.ApplyT(func(v *PlacementPolicyType) PlacementPolicyType {
+		if v != nil {
+			return *v
+		}
+		var ret PlacementPolicyType
+		return ret
+	}).(PlacementPolicyTypeOutput)
+}
+
+func (o PlacementPolicyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PlacementPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PlacementPolicyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// PlacementPolicyTypeInput is an input type that accepts PlacementPolicyTypeArgs and PlacementPolicyTypeOutput values.
+// You can construct a concrete instance of `PlacementPolicyTypeInput` via:
+//
+//	PlacementPolicyTypeArgs{...}
+type PlacementPolicyTypeInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyTypeOutput() PlacementPolicyTypeOutput
+	ToPlacementPolicyTypeOutputWithContext(context.Context) PlacementPolicyTypeOutput
+}
+
+var placementPolicyTypePtrType = reflect.TypeOf((**PlacementPolicyType)(nil)).Elem()
+
+type PlacementPolicyTypePtrInput interface {
+	pulumi.Input
+
+	ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput
+	ToPlacementPolicyTypePtrOutputWithContext(context.Context) PlacementPolicyTypePtrOutput
+}
+
+type placementPolicyTypePtr string
+
+func PlacementPolicyTypePtr(v string) PlacementPolicyTypePtrInput {
+	return (*placementPolicyTypePtr)(&v)
+}
+
+func (*placementPolicyTypePtr) ElementType() reflect.Type {
+	return placementPolicyTypePtrType
+}
+
+func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutput() PlacementPolicyTypePtrOutput {
+	return pulumi.ToOutput(in).(PlacementPolicyTypePtrOutput)
+}
+
+func (in *placementPolicyTypePtr) ToPlacementPolicyTypePtrOutputWithContext(ctx context.Context) PlacementPolicyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PlacementPolicyTypePtrOutput)
+}
+
 // channel specifies which release channel the cluster is subscribed to.
 type ReleaseChannelChannel string
 
@@ -4783,7 +4964,7 @@ func (in *statusConditionCodePtr) ToStatusConditionCodePtrOutputWithContext(ctx 
 type UpgradeSettingsStrategy string
 
 const (
-	// Default value.
+	// Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
 	UpgradeSettingsStrategyNodePoolUpdateStrategyUnspecified = UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED")
 	// blue-green upgrade.
 	UpgradeSettingsStrategyBlueGreen = UpgradeSettingsStrategy("BLUE_GREEN")
@@ -4946,6 +5127,175 @@ func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutput() Upgra
 
 func (in *upgradeSettingsStrategyPtr) ToUpgradeSettingsStrategyPtrOutputWithContext(ctx context.Context) UpgradeSettingsStrategyPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(UpgradeSettingsStrategyPtrOutput)
+}
+
+// OSVersion specifies the Windows node config to be used on the node
+type WindowsNodeConfigOsVersion string
+
+const (
+	// When OSVersion is not specified
+	WindowsNodeConfigOsVersionOsVersionUnspecified = WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED")
+	// LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+	WindowsNodeConfigOsVersionOsVersionLtsc2019 = WindowsNodeConfigOsVersion("OS_VERSION_LTSC2019")
+	// LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
+	WindowsNodeConfigOsVersionOsVersionLtsc2022 = WindowsNodeConfigOsVersion("OS_VERSION_LTSC2022")
+)
+
+func (WindowsNodeConfigOsVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfigOsVersion)(nil)).Elem()
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionOutput() WindowsNodeConfigOsVersionOutput {
+	return pulumi.ToOutput(e).(WindowsNodeConfigOsVersionOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WindowsNodeConfigOsVersionOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return e.ToWindowsNodeConfigOsVersionPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsNodeConfigOsVersion) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return WindowsNodeConfigOsVersion(e).ToWindowsNodeConfigOsVersionOutputWithContext(ctx).ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx)
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsNodeConfigOsVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WindowsNodeConfigOsVersionOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigOsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsNodeConfigOsVersion)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionOutput() WindowsNodeConfigOsVersionOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return o.ToWindowsNodeConfigOsVersionPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsNodeConfigOsVersion) *WindowsNodeConfigOsVersion {
+		return &v
+	}).(WindowsNodeConfigOsVersionPtrOutput)
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsNodeConfigOsVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsNodeConfigOsVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WindowsNodeConfigOsVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsNodeConfigOsVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WindowsNodeConfigOsVersion)(nil)).Elem()
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return o
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) Elem() WindowsNodeConfigOsVersionOutput {
+	return o.ApplyT(func(v *WindowsNodeConfigOsVersion) WindowsNodeConfigOsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret WindowsNodeConfigOsVersion
+		return ret
+	}).(WindowsNodeConfigOsVersionOutput)
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsNodeConfigOsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WindowsNodeConfigOsVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// WindowsNodeConfigOsVersionInput is an input type that accepts WindowsNodeConfigOsVersionArgs and WindowsNodeConfigOsVersionOutput values.
+// You can construct a concrete instance of `WindowsNodeConfigOsVersionInput` via:
+//
+//	WindowsNodeConfigOsVersionArgs{...}
+type WindowsNodeConfigOsVersionInput interface {
+	pulumi.Input
+
+	ToWindowsNodeConfigOsVersionOutput() WindowsNodeConfigOsVersionOutput
+	ToWindowsNodeConfigOsVersionOutputWithContext(context.Context) WindowsNodeConfigOsVersionOutput
+}
+
+var windowsNodeConfigOsVersionPtrType = reflect.TypeOf((**WindowsNodeConfigOsVersion)(nil)).Elem()
+
+type WindowsNodeConfigOsVersionPtrInput interface {
+	pulumi.Input
+
+	ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput
+	ToWindowsNodeConfigOsVersionPtrOutputWithContext(context.Context) WindowsNodeConfigOsVersionPtrOutput
+}
+
+type windowsNodeConfigOsVersionPtr string
+
+func WindowsNodeConfigOsVersionPtr(v string) WindowsNodeConfigOsVersionPtrInput {
+	return (*windowsNodeConfigOsVersionPtr)(&v)
+}
+
+func (*windowsNodeConfigOsVersionPtr) ElementType() reflect.Type {
+	return windowsNodeConfigOsVersionPtrType
+}
+
+func (in *windowsNodeConfigOsVersionPtr) ToWindowsNodeConfigOsVersionPtrOutput() WindowsNodeConfigOsVersionPtrOutput {
+	return pulumi.ToOutput(in).(WindowsNodeConfigOsVersionPtrOutput)
+}
+
+func (in *windowsNodeConfigOsVersionPtr) ToWindowsNodeConfigOsVersionPtrOutputWithContext(ctx context.Context) WindowsNodeConfigOsVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WindowsNodeConfigOsVersionPtrOutput)
 }
 
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.
@@ -5165,6 +5515,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingLocationPolicyPtrInput)(nil)).Elem(), NodePoolAutoscalingLocationPolicy("LOCATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintEffectPtrInput)(nil)).Elem(), NodeTaintEffect("EFFECT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypeInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*PlacementPolicyTypePtrInput)(nil)).Elem(), PlacementPolicyType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelChannelInput)(nil)).Elem(), ReleaseChannelChannel("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReleaseChannelChannelPtrInput)(nil)).Elem(), ReleaseChannelChannel("UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("UNSPECIFIED"))
@@ -5177,6 +5529,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusConditionCodePtrInput)(nil)).Elem(), StatusConditionCode("UNKNOWN"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsStrategyInput)(nil)).Elem(), UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*UpgradeSettingsStrategyPtrInput)(nil)).Elem(), UpgradeSettingsStrategy("NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigOsVersionInput)(nil)).Elem(), WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*WindowsNodeConfigOsVersionPtrInput)(nil)).Elem(), WindowsNodeConfigOsVersion("OS_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModeInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkloadMetadataConfigModePtrInput)(nil)).Elem(), WorkloadMetadataConfigMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(BinaryAuthorizationEvaluationModeOutput{})
@@ -5226,6 +5580,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolAutoscalingLocationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectOutput{})
 	pulumi.RegisterOutputType(NodeTaintEffectPtrOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyTypeOutput{})
+	pulumi.RegisterOutputType(PlacementPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelChannelOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelChannelPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
@@ -5238,6 +5594,8 @@ func init() {
 	pulumi.RegisterOutputType(StatusConditionCodePtrOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsStrategyOutput{})
 	pulumi.RegisterOutputType(UpgradeSettingsStrategyPtrOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigOsVersionOutput{})
+	pulumi.RegisterOutputType(WindowsNodeConfigOsVersionPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigModeOutput{})
 	pulumi.RegisterOutputType(WorkloadMetadataConfigModePtrOutput{})
 }

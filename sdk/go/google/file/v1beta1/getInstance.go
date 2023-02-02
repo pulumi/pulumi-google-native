@@ -53,6 +53,8 @@ type LookupInstanceResult struct {
 	Name string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfigResponse `pulumi:"networks"`
+	// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+	Protocol string `pulumi:"protocol"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The instance state.
@@ -165,6 +167,11 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 // VPC networks to which the instance is connected. For this version, only a single network is supported.
 func (o LookupInstanceResultOutput) Networks() NetworkConfigResponseArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []NetworkConfigResponse { return v.Networks }).(NetworkConfigResponseArrayOutput)
+}
+
+// Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
+func (o LookupInstanceResultOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
 // Reserved for future use.

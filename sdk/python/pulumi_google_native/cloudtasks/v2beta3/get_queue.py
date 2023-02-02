@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetQueueResult:
-    def __init__(__self__, app_engine_http_queue=None, name=None, purge_time=None, rate_limits=None, retry_config=None, stackdriver_logging_config=None, state=None, stats=None, task_ttl=None, tombstone_ttl=None, type=None):
+    def __init__(__self__, app_engine_http_queue=None, http_target=None, name=None, purge_time=None, rate_limits=None, retry_config=None, stackdriver_logging_config=None, state=None, stats=None, task_ttl=None, tombstone_ttl=None, type=None):
         if app_engine_http_queue and not isinstance(app_engine_http_queue, dict):
             raise TypeError("Expected argument 'app_engine_http_queue' to be a dict")
         pulumi.set(__self__, "app_engine_http_queue", app_engine_http_queue)
+        if http_target and not isinstance(http_target, dict):
+            raise TypeError("Expected argument 'http_target' to be a dict")
+        pulumi.set(__self__, "http_target", http_target)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -61,6 +64,14 @@ class GetQueueResult:
         AppEngineHttpQueue settings apply only to App Engine tasks in this queue. Http tasks are not affected by this proto.
         """
         return pulumi.get(self, "app_engine_http_queue")
+
+    @property
+    @pulumi.getter(name="httpTarget")
+    def http_target(self) -> 'outputs.HttpTargetResponse':
+        """
+        Modifies HTTP target for HTTP tasks.
+        """
+        return pulumi.get(self, "http_target")
 
     @property
     @pulumi.getter
@@ -150,6 +161,7 @@ class AwaitableGetQueueResult(GetQueueResult):
             yield self
         return GetQueueResult(
             app_engine_http_queue=self.app_engine_http_queue,
+            http_target=self.http_target,
             name=self.name,
             purge_time=self.purge_time,
             rate_limits=self.rate_limits,
@@ -180,6 +192,7 @@ def get_queue(location: Optional[str] = None,
 
     return AwaitableGetQueueResult(
         app_engine_http_queue=__ret__.app_engine_http_queue,
+        http_target=__ret__.http_target,
         name=__ret__.name,
         purge_time=__ret__.purge_time,
         rate_limits=__ret__.rate_limits,

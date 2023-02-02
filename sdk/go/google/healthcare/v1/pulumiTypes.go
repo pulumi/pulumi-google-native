@@ -1034,9 +1034,9 @@ func (o CryptoHashConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponse
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfig struct {
-	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 	CryptoKey *string `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 	KmsWrapped *KmsWrappedCryptoKey `pulumi:"kmsWrapped"`
 }
 
@@ -1053,9 +1053,9 @@ type DateShiftConfigInput interface {
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfigArgs struct {
-	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 	CryptoKey pulumi.StringPtrInput `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 	KmsWrapped KmsWrappedCryptoKeyPtrInput `pulumi:"kmsWrapped"`
 }
 
@@ -1137,12 +1137,12 @@ func (o DateShiftConfigOutput) ToDateShiftConfigPtrOutputWithContext(ctx context
 	}).(DateShiftConfigPtrOutput)
 }
 
-// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 func (o DateShiftConfigOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DateShiftConfig) *string { return v.CryptoKey }).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v DateShiftConfig) *KmsWrappedCryptoKey { return v.KmsWrapped }).(KmsWrappedCryptoKeyPtrOutput)
 }
@@ -1171,7 +1171,7 @@ func (o DateShiftConfigPtrOutput) Elem() DateShiftConfigOutput {
 	}).(DateShiftConfigOutput)
 }
 
-// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DateShiftConfig) *string {
 		if v == nil {
@@ -1181,7 +1181,7 @@ func (o DateShiftConfigPtrOutput) CryptoKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 	return o.ApplyT(func(v *DateShiftConfig) *KmsWrappedCryptoKey {
 		if v == nil {
@@ -1193,9 +1193,9 @@ func (o DateShiftConfigPtrOutput) KmsWrapped() KmsWrappedCryptoKeyPtrOutput {
 
 // Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
 type DateShiftConfigResponse struct {
-	// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+	// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 	CryptoKey string `pulumi:"cryptoKey"`
-	// KMS wrapped key. Must not be set if `crypto_key` is set.
+	// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 	KmsWrapped KmsWrappedCryptoKeyResponse `pulumi:"kmsWrapped"`
 }
 
@@ -1214,12 +1214,12 @@ func (o DateShiftConfigResponseOutput) ToDateShiftConfigResponseOutputWithContex
 	return o
 }
 
-// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
+// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
 func (o DateShiftConfigResponseOutput) CryptoKey() pulumi.StringOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) string { return v.CryptoKey }).(pulumi.StringOutput)
 }
 
-// KMS wrapped key. Must not be set if `crypto_key` is set.
+// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key` is set.
 func (o DateShiftConfigResponseOutput) KmsWrapped() KmsWrappedCryptoKeyResponseOutput {
 	return o.ApplyT(func(v DateShiftConfigResponse) KmsWrappedCryptoKeyResponse { return v.KmsWrapped }).(KmsWrappedCryptoKeyResponseOutput)
 }

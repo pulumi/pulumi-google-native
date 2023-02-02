@@ -552,12 +552,12 @@ class ContainerResponse(dict):
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
         :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
-        :param Sequence['EnvVarResponse'] env: List of environment variables to set in the container.
+        :param Sequence['EnvVarResponse'] env: List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
         :param Sequence['EnvFromSourceResponse'] env_from: Not supported by Cloud Run.
-        :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param str image: Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         :param str image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
         :param 'ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param str name: Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        :param str name: Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         :param Sequence['ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         :param 'ProbeResponse' readiness_probe: Not supported by Cloud Run.
         :param 'ResourceRequirementsResponse' resources: Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
@@ -606,7 +606,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def env(self) -> Sequence['outputs.EnvVarResponse']:
         """
-        List of environment variables to set in the container.
+        List of environment variables to set in the container. EnvVar with duplicate names are generally allowed; if referencing a secret, the name must be unique for the container. For non-secret EnvVar names, the Container will only get the last-declared one.
         """
         return pulumi.get(self, "env")
 
@@ -622,7 +622,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed. More info: https://kubernetes.io/docs/concepts/containers/images
         """
         return pulumi.get(self, "image")
 
@@ -646,7 +646,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        Name of the container specified as a DNS_LABEL (RFC 1123). More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         """
         return pulumi.get(self, "name")
 
@@ -1569,7 +1569,7 @@ class KeyToPathResponse(dict):
                  path: str):
         """
         Maps a string key to a path within a volume.
-        :param str key: The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+        :param str key: The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
         :param int mode: (Optional) Mode bits to use on this file, must be a value between 01 and 0777 (octal). If 0 or not set, the Volume's default mode will be used. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
         :param str path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
@@ -1581,7 +1581,7 @@ class KeyToPathResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
+        The Cloud Secret Manager secret version. Can be 'latest' for the latest value, or an integer or a secret alias for a specific version. The key to project.
         """
         return pulumi.get(self, "key")
 
@@ -1687,7 +1687,7 @@ class ObjectMetaResponse(dict):
         :param str generate_name: Not supported by Cloud Run
         :param int generation: A system-provided sequence number representing a specific generation of the desired state.
         :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
-        :param str name: The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+        :param str name: The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
         :param str namespace: Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
         :param Sequence['OwnerReferenceResponse'] owner_references: Not supported by Cloud Run
         :param str resource_version: Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
@@ -1786,7 +1786,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters.
+        The name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), must be unique within a Cloud Run project/region, and cannot be changed once created. More info: https://kubernetes.io/docs/user-guide/identifiers#names
         """
         return pulumi.get(self, "name")
 
@@ -2377,7 +2377,7 @@ class SecretKeySelectorResponse(dict):
                  optional: bool):
         """
         SecretKeySelector selects a key of a Secret.
-        :param str key: A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+        :param str key: A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
         :param str name: The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
         :param bool optional: Specify whether the Secret or its key must be defined.
@@ -2391,7 +2391,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
+        A Cloud Secret Manager secret version. Must be 'latest' for the latest version, an integer for a specific version, or a version alias. The key of the secret to select from. Must be a valid secret key.
         """
         return pulumi.get(self, "key")
 
@@ -2831,11 +2831,11 @@ class TrafficTargetResponse(dict):
                  url: str):
         """
         TrafficTarget holds a single entry of the routing table for a Route.
-        :param str configuration_name: ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
-        :param bool latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+        :param str configuration_name: [Deprecated] Not supported in Cloud Run. It must be empty.
+        :param bool latest_revision: Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
         :param int percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
-        :param str revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
-        :param str tag: Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+        :param str revision_name: Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
+        :param str tag: Tag is used to expose a dedicated url for referencing this target exclusively.
         :param str url: URL displays the URL for accessing tagged traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. https://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc.)
         """
         pulumi.set(__self__, "configuration_name", configuration_name)
@@ -2849,7 +2849,7 @@ class TrafficTargetResponse(dict):
     @pulumi.getter(name="configurationName")
     def configuration_name(self) -> str:
         """
-        ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+        [Deprecated] Not supported in Cloud Run. It must be empty.
         """
         return pulumi.get(self, "configuration_name")
 
@@ -2857,7 +2857,7 @@ class TrafficTargetResponse(dict):
     @pulumi.getter(name="latestRevision")
     def latest_revision(self) -> bool:
         """
-        Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty in spec. When shown in status, this indicates that the RevisionName was resolved from a spec's ConfigurationName.
+        Uses the "status.latestReadyRevisionName" of the Service to determine the traffic target. When it changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field must be false if RevisionName is set. This field defaults to true otherwise. If the field is set to true on Status, this means that the Revision was resolved from the Service's latest ready revision.
         """
         return pulumi.get(self, "latest_revision")
 
@@ -2873,7 +2873,7 @@ class TrafficTargetResponse(dict):
     @pulumi.getter(name="revisionName")
     def revision_name(self) -> str:
         """
-        RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
+        Points this traffic target to a specific Revision. This field is mutually exclusive with latest_revision.
         """
         return pulumi.get(self, "revision_name")
 
@@ -2881,7 +2881,7 @@ class TrafficTargetResponse(dict):
     @pulumi.getter
     def tag(self) -> str:
         """
-        Optional. Tag is used to expose a dedicated url for referencing this target exclusively.
+        Tag is used to expose a dedicated url for referencing this target exclusively.
         """
         return pulumi.get(self, "tag")
 

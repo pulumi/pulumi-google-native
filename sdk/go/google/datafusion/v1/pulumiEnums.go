@@ -181,17 +181,17 @@ func (in *acceleratorAcceleratorTypePtr) ToAcceleratorAcceleratorTypePtrOutputWi
 	return pulumi.ToOutputWithContext(ctx, in).(AcceleratorAcceleratorTypePtrOutput)
 }
 
-// The state of the accelerator
+// The state of the accelerator.
 type AcceleratorState string
 
 const (
-	// Default value, do not use
+	// Default value, do not use.
 	AcceleratorStateStateUnspecified = AcceleratorState("STATE_UNSPECIFIED")
-	// Indicates that the accelerator is enabled and available to use
+	// Indicates that the accelerator is enabled and available to use.
 	AcceleratorStateEnabled = AcceleratorState("ENABLED")
-	// Indicates that the accelerator is disabled and not available to use
+	// Indicates that the accelerator is disabled and not available to use.
 	AcceleratorStateDisabled = AcceleratorState("DISABLED")
-	// Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state
+	// Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state.
 	AcceleratorStateUnknown = AcceleratorState("UNKNOWN")
 )
 

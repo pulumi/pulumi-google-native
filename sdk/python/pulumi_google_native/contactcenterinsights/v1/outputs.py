@@ -16,6 +16,7 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse',
     'GoogleCloudContactcenterinsightsV1AnalysisResultResponse',
     'GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse',
+    'GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse',
     'GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse',
     'GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse',
     'GoogleCloudContactcenterinsightsV1CallAnnotationResponse',
@@ -37,6 +38,7 @@ __all__ = [
     'GoogleCloudContactcenterinsightsV1IntentMatchDataResponse',
     'GoogleCloudContactcenterinsightsV1InterruptionDataResponse',
     'GoogleCloudContactcenterinsightsV1IssueAssignmentResponse',
+    'GoogleCloudContactcenterinsightsV1IssueMatchDataResponse',
     'GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse',
     'GoogleCloudContactcenterinsightsV1IssueModelLabelStatsResponse',
     'GoogleCloudContactcenterinsightsV1IssueModelResultResponse',
@@ -61,6 +63,8 @@ class GoogleCloudContactcenterinsightsV1AnalysisResponse(dict):
         suggest = None
         if key == "analysisResult":
             suggest = "analysis_result"
+        elif key == "annotatorSelector":
+            suggest = "annotator_selector"
         elif key == "createTime":
             suggest = "create_time"
         elif key == "requestTime":
@@ -79,17 +83,20 @@ class GoogleCloudContactcenterinsightsV1AnalysisResponse(dict):
 
     def __init__(__self__, *,
                  analysis_result: 'outputs.GoogleCloudContactcenterinsightsV1AnalysisResultResponse',
+                 annotator_selector: 'outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse',
                  create_time: str,
                  name: str,
                  request_time: str):
         """
         The analysis resource.
         :param 'GoogleCloudContactcenterinsightsV1AnalysisResultResponse' analysis_result: The result of the analysis, which is populated when the analysis finishes.
+        :param 'GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse' annotator_selector: To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
         :param str create_time: The time at which the analysis was created, which occurs when the long-running operation completes.
         :param str name: Immutable. The resource name of the analysis. Format: projects/{project}/locations/{location}/conversations/{conversation}/analyses/{analysis}
         :param str request_time: The time at which the analysis was requested.
         """
         pulumi.set(__self__, "analysis_result", analysis_result)
+        pulumi.set(__self__, "annotator_selector", annotator_selector)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "request_time", request_time)
@@ -101,6 +108,14 @@ class GoogleCloudContactcenterinsightsV1AnalysisResponse(dict):
         The result of the analysis, which is populated when the analysis finishes.
         """
         return pulumi.get(self, "analysis_result")
+
+    @property
+    @pulumi.getter(name="annotatorSelector")
+    def annotator_selector(self) -> 'outputs.GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse':
+        """
+        To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run.
+        """
+        return pulumi.get(self, "annotator_selector")
 
     @property
     @pulumi.getter(name="createTime")
@@ -328,6 +343,149 @@ class GoogleCloudContactcenterinsightsV1AnnotationBoundaryResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse(dict):
+    """
+    Selector of all available annotators and phrase matchers to run.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issueModels":
+            suggest = "issue_models"
+        elif key == "phraseMatchers":
+            suggest = "phrase_matchers"
+        elif key == "runEntityAnnotator":
+            suggest = "run_entity_annotator"
+        elif key == "runIntentAnnotator":
+            suggest = "run_intent_annotator"
+        elif key == "runInterruptionAnnotator":
+            suggest = "run_interruption_annotator"
+        elif key == "runIssueModelAnnotator":
+            suggest = "run_issue_model_annotator"
+        elif key == "runPhraseMatcherAnnotator":
+            suggest = "run_phrase_matcher_annotator"
+        elif key == "runSentimentAnnotator":
+            suggest = "run_sentiment_annotator"
+        elif key == "runSilenceAnnotator":
+            suggest = "run_silence_annotator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1AnnotatorSelectorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 issue_models: Sequence[str],
+                 phrase_matchers: Sequence[str],
+                 run_entity_annotator: bool,
+                 run_intent_annotator: bool,
+                 run_interruption_annotator: bool,
+                 run_issue_model_annotator: bool,
+                 run_phrase_matcher_annotator: bool,
+                 run_sentiment_annotator: bool,
+                 run_silence_annotator: bool):
+        """
+        Selector of all available annotators and phrase matchers to run.
+        :param Sequence[str] issue_models: The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+        :param Sequence[str] phrase_matchers: The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        :param bool run_entity_annotator: Whether to run the entity annotator.
+        :param bool run_intent_annotator: Whether to run the intent annotator.
+        :param bool run_interruption_annotator: Whether to run the interruption annotator.
+        :param bool run_issue_model_annotator: Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        :param bool run_phrase_matcher_annotator: Whether to run the active phrase matcher annotator(s).
+        :param bool run_sentiment_annotator: Whether to run the sentiment annotator.
+        :param bool run_silence_annotator: Whether to run the silence annotator.
+        """
+        pulumi.set(__self__, "issue_models", issue_models)
+        pulumi.set(__self__, "phrase_matchers", phrase_matchers)
+        pulumi.set(__self__, "run_entity_annotator", run_entity_annotator)
+        pulumi.set(__self__, "run_intent_annotator", run_intent_annotator)
+        pulumi.set(__self__, "run_interruption_annotator", run_interruption_annotator)
+        pulumi.set(__self__, "run_issue_model_annotator", run_issue_model_annotator)
+        pulumi.set(__self__, "run_phrase_matcher_annotator", run_phrase_matcher_annotator)
+        pulumi.set(__self__, "run_sentiment_annotator", run_sentiment_annotator)
+        pulumi.set(__self__, "run_silence_annotator", run_silence_annotator)
+
+    @property
+    @pulumi.getter(name="issueModels")
+    def issue_models(self) -> Sequence[str]:
+        """
+        The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference.
+        """
+        return pulumi.get(self, "issue_models")
+
+    @property
+    @pulumi.getter(name="phraseMatchers")
+    def phrase_matchers(self) -> Sequence[str]:
+        """
+        The list of phrase matchers to run. If not provided, all active phrase matchers will be used. If inactive phrase matchers are provided, they will not be used. Phrase matchers will be run only if run_phrase_matcher_annotator is set to true. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher}
+        """
+        return pulumi.get(self, "phrase_matchers")
+
+    @property
+    @pulumi.getter(name="runEntityAnnotator")
+    def run_entity_annotator(self) -> bool:
+        """
+        Whether to run the entity annotator.
+        """
+        return pulumi.get(self, "run_entity_annotator")
+
+    @property
+    @pulumi.getter(name="runIntentAnnotator")
+    def run_intent_annotator(self) -> bool:
+        """
+        Whether to run the intent annotator.
+        """
+        return pulumi.get(self, "run_intent_annotator")
+
+    @property
+    @pulumi.getter(name="runInterruptionAnnotator")
+    def run_interruption_annotator(self) -> bool:
+        """
+        Whether to run the interruption annotator.
+        """
+        return pulumi.get(self, "run_interruption_annotator")
+
+    @property
+    @pulumi.getter(name="runIssueModelAnnotator")
+    def run_issue_model_annotator(self) -> bool:
+        """
+        Whether to run the issue model annotator. A model should have already been deployed for this to take effect.
+        """
+        return pulumi.get(self, "run_issue_model_annotator")
+
+    @property
+    @pulumi.getter(name="runPhraseMatcherAnnotator")
+    def run_phrase_matcher_annotator(self) -> bool:
+        """
+        Whether to run the active phrase matcher annotator(s).
+        """
+        return pulumi.get(self, "run_phrase_matcher_annotator")
+
+    @property
+    @pulumi.getter(name="runSentimentAnnotator")
+    def run_sentiment_annotator(self) -> bool:
+        """
+        Whether to run the sentiment annotator.
+        """
+        return pulumi.get(self, "run_sentiment_annotator")
+
+    @property
+    @pulumi.getter(name="runSilenceAnnotator")
+    def run_silence_annotator(self) -> bool:
+        """
+        Whether to run the silence annotator.
+        """
+        return pulumi.get(self, "run_silence_annotator")
+
+
+@pulumi.output_type
 class GoogleCloudContactcenterinsightsV1AnswerFeedbackResponse(dict):
     """
     The feedback that the customer has about a certain answer in the conversation.
@@ -506,6 +664,8 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse(dict):
             suggest = "intent_match_data"
         elif key == "interruptionData":
             suggest = "interruption_data"
+        elif key == "issueMatchData":
+            suggest = "issue_match_data"
         elif key == "phraseMatchData":
             suggest = "phrase_match_data"
         elif key == "sentimentData":
@@ -532,6 +692,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse(dict):
                  hold_data: 'outputs.GoogleCloudContactcenterinsightsV1HoldDataResponse',
                  intent_match_data: 'outputs.GoogleCloudContactcenterinsightsV1IntentMatchDataResponse',
                  interruption_data: 'outputs.GoogleCloudContactcenterinsightsV1InterruptionDataResponse',
+                 issue_match_data: 'outputs.GoogleCloudContactcenterinsightsV1IssueMatchDataResponse',
                  phrase_match_data: 'outputs.GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse',
                  sentiment_data: 'outputs.GoogleCloudContactcenterinsightsV1SentimentDataResponse',
                  silence_data: 'outputs.GoogleCloudContactcenterinsightsV1SilenceDataResponse'):
@@ -544,6 +705,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse(dict):
         :param 'GoogleCloudContactcenterinsightsV1HoldDataResponse' hold_data: Data specifying a hold.
         :param 'GoogleCloudContactcenterinsightsV1IntentMatchDataResponse' intent_match_data: Data specifying an intent match.
         :param 'GoogleCloudContactcenterinsightsV1InterruptionDataResponse' interruption_data: Data specifying an interruption.
+        :param 'GoogleCloudContactcenterinsightsV1IssueMatchDataResponse' issue_match_data: Data specifying an issue match.
         :param 'GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse' phrase_match_data: Data specifying a phrase match.
         :param 'GoogleCloudContactcenterinsightsV1SentimentDataResponse' sentiment_data: Data specifying sentiment.
         :param 'GoogleCloudContactcenterinsightsV1SilenceDataResponse' silence_data: Data specifying silence.
@@ -555,6 +717,7 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse(dict):
         pulumi.set(__self__, "hold_data", hold_data)
         pulumi.set(__self__, "intent_match_data", intent_match_data)
         pulumi.set(__self__, "interruption_data", interruption_data)
+        pulumi.set(__self__, "issue_match_data", issue_match_data)
         pulumi.set(__self__, "phrase_match_data", phrase_match_data)
         pulumi.set(__self__, "sentiment_data", sentiment_data)
         pulumi.set(__self__, "silence_data", silence_data)
@@ -614,6 +777,14 @@ class GoogleCloudContactcenterinsightsV1CallAnnotationResponse(dict):
         Data specifying an interruption.
         """
         return pulumi.get(self, "interruption_data")
+
+    @property
+    @pulumi.getter(name="issueMatchData")
+    def issue_match_data(self) -> 'outputs.GoogleCloudContactcenterinsightsV1IssueMatchDataResponse':
+        """
+        Data specifying an issue match.
+        """
+        return pulumi.get(self, "issue_match_data")
 
     @property
     @pulumi.getter(name="phraseMatchData")
@@ -1644,6 +1815,45 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse(dict):
         Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
         """
         return pulumi.get(self, "score")
+
+
+@pulumi.output_type
+class GoogleCloudContactcenterinsightsV1IssueMatchDataResponse(dict):
+    """
+    The data for an issue match annotation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issueAssignment":
+            suggest = "issue_assignment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudContactcenterinsightsV1IssueMatchDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudContactcenterinsightsV1IssueMatchDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudContactcenterinsightsV1IssueMatchDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 issue_assignment: 'outputs.GoogleCloudContactcenterinsightsV1IssueAssignmentResponse'):
+        """
+        The data for an issue match annotation.
+        :param 'GoogleCloudContactcenterinsightsV1IssueAssignmentResponse' issue_assignment: Information about the issue's assignment.
+        """
+        pulumi.set(__self__, "issue_assignment", issue_assignment)
+
+    @property
+    @pulumi.getter(name="issueAssignment")
+    def issue_assignment(self) -> 'outputs.GoogleCloudContactcenterinsightsV1IssueAssignmentResponse':
+        """
+        Information about the issue's assignment.
+        """
+        return pulumi.get(self, "issue_assignment")
 
 
 @pulumi.output_type

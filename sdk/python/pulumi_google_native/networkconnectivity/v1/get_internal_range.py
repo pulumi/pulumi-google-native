@@ -63,7 +63,7 @@ class GetInternalRangeResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Time when the InternalRange was created.
+        Time when the internal range was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -79,7 +79,7 @@ class GetInternalRangeResult:
     @pulumi.getter(name="ipCidrRange")
     def ip_cidr_range(self) -> str:
         """
-        IP range that this InternalRange defines.
+        The IP range that this internal range defines.
         """
         return pulumi.get(self, "ip_cidr_range")
 
@@ -95,7 +95,7 @@ class GetInternalRangeResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. The name of a InternalRange. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
+        Immutable. The name of an internal range. Format: projects/{project}/locations/{location}/internalRanges/{internal_range} See: https://google.aip.dev/122#fields-representing-resource-names
         """
         return pulumi.get(self, "name")
 
@@ -103,7 +103,7 @@ class GetInternalRangeResult:
     @pulumi.getter
     def network(self) -> str:
         """
-        The URL or resource ID of the network in which to reserve the Internal Range. The network cannot be deleted if there are any reserved Internal Ranges referring to it. Legacy network is not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
+        The URL or resource ID of the network in which to reserve the internal range. The network cannot be deleted if there are any reserved internal ranges referring to it. Legacy networks are not supported. This can only be specified for a global internal address. Example: - URL: /compute/v1/projects/{project}/global/networks/{resourceId} - ID: network123
         """
         return pulumi.get(self, "network")
 
@@ -111,7 +111,7 @@ class GetInternalRangeResult:
     @pulumi.getter
     def overlaps(self) -> Sequence[str]:
         """
-        Optional. Types of resources that are allowed to overlap with the current InternalRange.
+        Optional. Types of resources that are allowed to overlap with the current internal range.
         """
         return pulumi.get(self, "overlaps")
 
@@ -119,7 +119,7 @@ class GetInternalRangeResult:
     @pulumi.getter
     def peering(self) -> str:
         """
-        The type of peering set for this InternalRange.
+        The type of peering set for this internal range.
         """
         return pulumi.get(self, "peering")
 
@@ -127,7 +127,7 @@ class GetInternalRangeResult:
     @pulumi.getter(name="prefixLength")
     def prefix_length(self) -> int:
         """
-        An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, it's an error if the range sizes don't match. Can also be used during updates to change the range size.
+        An alternate to ip_cidr_range. Can be set when trying to create a reservation that automatically finds a free range of the given size. If both ip_cidr_range and prefix_length are set, there is an error if the range sizes do not match. Can also be used during updates to change the range size.
         """
         return pulumi.get(self, "prefix_length")
 
@@ -143,7 +143,7 @@ class GetInternalRangeResult:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
-        Time when the InternalRange was updated.
+        Time when the internal range was updated.
         """
         return pulumi.get(self, "update_time")
 
@@ -159,7 +159,7 @@ class GetInternalRangeResult:
     @pulumi.getter
     def users(self) -> Sequence[str]:
         """
-        The list of resources that refer to this internal range. Resources that use the InternalRange for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this InternalRange. Having a user, based on this reference, prevents deletion of the InternalRange referred to. Can be empty.
+        The list of resources that refer to this internal range. Resources that use the internal range for their range allocation are referred to as users of the range. Other resources mark themselves as users while doing so by creating a reference to this internal range. Having a user, based on this reference, prevents deletion of the internal range referred to. Can be empty.
         """
         return pulumi.get(self, "users")
 
@@ -190,7 +190,7 @@ def get_internal_range(internal_range_id: Optional[str] = None,
                        project: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInternalRangeResult:
     """
-    Gets details of a single InternalRange.
+    Gets details of a single internal range.
     """
     __args__ = dict()
     __args__['internalRangeId'] = internal_range_id
@@ -221,6 +221,6 @@ def get_internal_range_output(internal_range_id: Optional[pulumi.Input[str]] = N
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInternalRangeResult]:
     """
-    Gets details of a single InternalRange.
+    Gets details of a single internal range.
     """
     ...

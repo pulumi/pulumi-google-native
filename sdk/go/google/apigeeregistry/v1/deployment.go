@@ -22,7 +22,7 @@ type Deployment struct {
 	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ApiDeploymentId pulumi.StringOutput `pulumi:"apiDeploymentId"`
 	ApiId           pulumi.StringOutput `pulumi:"apiId"`
-	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
 	ApiSpecRevision pulumi.StringOutput `pulumi:"apiSpecRevision"`
 	// Creation timestamp; when the deployment resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -109,7 +109,7 @@ type deploymentArgs struct {
 	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ApiDeploymentId string `pulumi:"apiDeploymentId"`
 	ApiId           string `pulumi:"apiId"`
-	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
 	ApiSpecRevision *string `pulumi:"apiSpecRevision"`
 	// A detailed description.
 	Description *string `pulumi:"description"`
@@ -138,7 +138,7 @@ type DeploymentArgs struct {
 	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ApiDeploymentId pulumi.StringInput
 	ApiId           pulumi.StringInput
-	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
 	ApiSpecRevision pulumi.StringPtrInput
 	// A detailed description.
 	Description pulumi.StringPtrInput
@@ -214,7 +214,7 @@ func (o DeploymentOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
 }
 
-// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
 func (o DeploymentOutput) ApiSpecRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiSpecRevision }).(pulumi.StringOutput)
 }

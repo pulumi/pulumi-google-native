@@ -48,7 +48,7 @@ export class Deployment extends pulumi.CustomResource {
     public readonly apiDeploymentId!: pulumi.Output<string>;
     public readonly apiId!: pulumi.Output<string>;
     /**
-     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
      */
     public readonly apiSpecRevision!: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export interface DeploymentArgs {
     apiDeploymentId: pulumi.Input<string>;
     apiId: pulumi.Input<string>;
     /**
-     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
+     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec@revision}`
      */
     apiSpecRevision?: pulumi.Input<string>;
     /**

@@ -33,7 +33,7 @@ type LookupBackupResult struct {
 	Database string `pulumi:"database"`
 	// The database dialect information for the backup.
 	DatabaseDialect string `pulumi:"databaseDialect"`
-	// The encryption information for the backup. .
+	// The encryption information for the backup.
 	EncryptionInfo EncryptionInfoResponse `pulumi:"encryptionInfo"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
 	ExpireTime string `pulumi:"expireTime"`
@@ -105,7 +105,7 @@ func (o LookupBackupResultOutput) DatabaseDialect() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.DatabaseDialect }).(pulumi.StringOutput)
 }
 
-// The encryption information for the backup. .
+// The encryption information for the backup.
 func (o LookupBackupResultOutput) EncryptionInfo() EncryptionInfoResponseOutput {
 	return o.ApplyT(func(v LookupBackupResult) EncryptionInfoResponse { return v.EncryptionInfo }).(EncryptionInfoResponseOutput)
 }

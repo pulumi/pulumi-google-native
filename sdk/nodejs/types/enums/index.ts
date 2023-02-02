@@ -36,6 +36,7 @@ import * as cloudtasks from "./cloudtasks";
 import * as composer from "./composer";
 import * as compute from "./compute";
 import * as connectors from "./connectors";
+import * as contactcenteraiplatform from "./contactcenteraiplatform";
 import * as contactcenterinsights from "./contactcenterinsights";
 import * as container from "./container";
 import * as containeranalysis from "./containeranalysis";
@@ -107,6 +108,7 @@ import * as transcoder from "./transcoder";
 import * as vmmigration from "./vmmigration";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
+import * as workstations from "./workstations";
 
 export {
     accesscontextmanager,
@@ -143,6 +145,7 @@ export {
     composer,
     compute,
     connectors,
+    contactcenteraiplatform,
     contactcenterinsights,
     container,
     containeranalysis,
@@ -214,4 +217,5 @@ export {
     vmmigration,
     websecurityscanner,
     workflowexecutions,
+    workstations,
 };

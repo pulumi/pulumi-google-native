@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
-    /// Creates a big query export.
+    /// Creates a BigQuery export.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:OrganizationBigQueryExport")]
     public partial class OrganizationBigQueryExport : global::Pulumi.CustomResource
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public Output<string> BigQueryExportId { get; private set; } = null!;
 
         /// <summary>
-        /// The time at which the big query export was created. This field is set by the server and will be ignored if provided on export on creation.
+        /// The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public Output<string> Filter { get; private set; } = null!;
 
         /// <summary>
-        /// Email address of the user who last edited the big query export. This field is set by the server and will be ignored if provided on export creation or update.
+        /// Email address of the user who last edited the BigQuery export. This field is set by the server and will be ignored if provided on export creation or update.
         /// </summary>
         [Output("mostRecentEditor")]
         public Output<string> MostRecentEditor { get; private set; } = null!;
@@ -61,13 +61,13 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// The service account that needs permission to create table, upload data to the big query dataset.
+        /// The service account that needs permission to create table and upload data to the BigQuery dataset.
         /// </summary>
         [Output("principal")]
         public Output<string> Principal { get; private set; } = null!;
 
         /// <summary>
-        /// The most recent time at which the big export was updated. This field is set by the server and will be ignored if provided on export creation or update.
+        /// The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;

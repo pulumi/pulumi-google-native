@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+// Attributes are additional options that can be associated with each event property. For more information, see
 type EnterpriseCrmEventbusProtoAttributes struct {
 	// Things like URL, Email, Currency, Timestamp (rather than string, int64...)
 	DataType *EnterpriseCrmEventbusProtoAttributesDataType `pulumi:"dataType"`
@@ -22,7 +22,7 @@ type EnterpriseCrmEventbusProtoAttributes struct {
 	//
 	// Deprecated: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
 	IsSearchable *bool `pulumi:"isSearchable"`
-	// See go/integration-platform/analytics/logging_task.md for details.
+	// See
 	LogSettings *EnterpriseCrmEventbusProtoLogSettings          `pulumi:"logSettings"`
 	Searchable  *EnterpriseCrmEventbusProtoAttributesSearchable `pulumi:"searchable"`
 	// List of tasks that can view this property, if empty then all.
@@ -40,7 +40,7 @@ type EnterpriseCrmEventbusProtoAttributesInput interface {
 	ToEnterpriseCrmEventbusProtoAttributesOutputWithContext(context.Context) EnterpriseCrmEventbusProtoAttributesOutput
 }
 
-// Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+// Attributes are additional options that can be associated with each event property. For more information, see
 type EnterpriseCrmEventbusProtoAttributesArgs struct {
 	// Things like URL, Email, Currency, Timestamp (rather than string, int64...)
 	DataType EnterpriseCrmEventbusProtoAttributesDataTypePtrInput `pulumi:"dataType"`
@@ -52,7 +52,7 @@ type EnterpriseCrmEventbusProtoAttributesArgs struct {
 	//
 	// Deprecated: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
 	IsSearchable pulumi.BoolPtrInput `pulumi:"isSearchable"`
-	// See go/integration-platform/analytics/logging_task.md for details.
+	// See
 	LogSettings EnterpriseCrmEventbusProtoLogSettingsPtrInput          `pulumi:"logSettings"`
 	Searchable  EnterpriseCrmEventbusProtoAttributesSearchablePtrInput `pulumi:"searchable"`
 	// List of tasks that can view this property, if empty then all.
@@ -112,7 +112,7 @@ func (i *enterpriseCrmEventbusProtoAttributesPtrType) ToEnterpriseCrmEventbusPro
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoAttributesPtrOutput)
 }
 
-// Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+// Attributes are additional options that can be associated with each event property. For more information, see
 type EnterpriseCrmEventbusProtoAttributesOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoAttributesOutput) ElementType() reflect.Type {
@@ -163,7 +163,7 @@ func (o EnterpriseCrmEventbusProtoAttributesOutput) IsSearchable() pulumi.BoolPt
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributes) *bool { return v.IsSearchable }).(pulumi.BoolPtrOutput)
 }
 
-// See go/integration-platform/analytics/logging_task.md for details.
+// See
 func (o EnterpriseCrmEventbusProtoAttributesOutput) LogSettings() EnterpriseCrmEventbusProtoLogSettingsPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributes) *EnterpriseCrmEventbusProtoLogSettings {
 		return v.LogSettings
@@ -247,7 +247,7 @@ func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) IsSearchable() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// See go/integration-platform/analytics/logging_task.md for details.
+// See
 func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) LogSettings() EnterpriseCrmEventbusProtoLogSettingsPtrOutput {
 	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoAttributes) *EnterpriseCrmEventbusProtoLogSettings {
 		if v == nil {
@@ -276,7 +276,7 @@ func (o EnterpriseCrmEventbusProtoAttributesPtrOutput) TaskVisibility() pulumi.S
 	}).(pulumi.StringArrayOutput)
 }
 
-// Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+// Attributes are additional options that can be associated with each event property. For more information, see
 type EnterpriseCrmEventbusProtoAttributesResponse struct {
 	// Things like URL, Email, Currency, Timestamp (rather than string, int64...)
 	DataType string `pulumi:"dataType"`
@@ -288,14 +288,14 @@ type EnterpriseCrmEventbusProtoAttributesResponse struct {
 	//
 	// Deprecated: Used to indicate if a ParameterEntry should be converted to ParamIndexes for ST-Spanner full-text search. DEPRECATED: use searchable.
 	IsSearchable bool `pulumi:"isSearchable"`
-	// See go/integration-platform/analytics/logging_task.md for details.
+	// See
 	LogSettings EnterpriseCrmEventbusProtoLogSettingsResponse `pulumi:"logSettings"`
 	Searchable  string                                        `pulumi:"searchable"`
 	// List of tasks that can view this property, if empty then all.
 	TaskVisibility []string `pulumi:"taskVisibility"`
 }
 
-// Attributes are additional options that can be associated with each event property. For more information, see go/integration-platform/event_bus/attributes_registry.md. Next available: 8
+// Attributes are additional options that can be associated with each event property. For more information, see
 type EnterpriseCrmEventbusProtoAttributesResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoAttributesResponseOutput) ElementType() reflect.Type {
@@ -334,7 +334,7 @@ func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) IsSearchable() pulum
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributesResponse) bool { return v.IsSearchable }).(pulumi.BoolOutput)
 }
 
-// See go/integration-platform/analytics/logging_task.md for details.
+// See
 func (o EnterpriseCrmEventbusProtoAttributesResponseOutput) LogSettings() EnterpriseCrmEventbusProtoLogSettingsResponseOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoAttributesResponse) EnterpriseCrmEventbusProtoLogSettingsResponse {
 		return v.LogSettings
@@ -532,7 +532,7 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponseOutput) Fi
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse) string { return v.FilterType }).(pulumi.StringOutput)
 }
 
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue struct {
 	Absolute   *string `pulumi:"absolute"`
 	Percentage *int    `pulumi:"percentage"`
@@ -549,7 +549,7 @@ type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueInput interface {
 	ToEnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutputWithContext(context.Context) EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput
 }
 
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueArgs struct {
 	Absolute   pulumi.StringPtrInput `pulumi:"absolute"`
 	Percentage pulumi.IntPtrInput    `pulumi:"percentage"`
@@ -608,7 +608,7 @@ func (i *enterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrType) ToEnter
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput)
 }
 
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueOutput) ElementType() reflect.Type {
@@ -683,13 +683,13 @@ func (o EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput) Percen
 	}).(pulumi.IntPtrOutput)
 }
 
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse struct {
 	Absolute   string `pulumi:"absolute"`
 	Percentage int    `pulumi:"percentage"`
 }
 
-// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig. See go/eventbus-alert-config-examples
+// The threshold value of the metric, above or below which the alert should be triggered. See EventAlertConfig or TaskAlertConfig for the different alert metric types in each case. For the *RATE metrics, one or both of these fields may be set. Zero is the default value and can be left at that. For *PERCENTILE_DURATION metrics, one or both of these fields may be set, and also, the duration threshold value should be specified in the threshold_duration_ms member below. For *AVERAGE_DURATION metrics, these fields should not be set at all. A different member, threshold_duration_ms, must be set in the EventAlertConfig or the TaskAlertConfig.
 type EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponseOutput) ElementType() reflect.Type {
@@ -1933,7 +1933,7 @@ func (o EnterpriseCrmEventbusProtoDoubleParameterArrayResponseOutput) DoubleValu
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoDoubleParameterArrayResponse) []float64 { return v.DoubleValues }).(pulumi.Float64ArrayOutput)
 }
 
-// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 type EnterpriseCrmEventbusProtoEventBusProperties struct {
 	// An unordered list of property entries.
 	Properties []EnterpriseCrmEventbusProtoPropertyEntry `pulumi:"properties"`
@@ -1950,7 +1950,7 @@ type EnterpriseCrmEventbusProtoEventBusPropertiesInput interface {
 	ToEnterpriseCrmEventbusProtoEventBusPropertiesOutputWithContext(context.Context) EnterpriseCrmEventbusProtoEventBusPropertiesOutput
 }
 
-// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 type EnterpriseCrmEventbusProtoEventBusPropertiesArgs struct {
 	// An unordered list of property entries.
 	Properties EnterpriseCrmEventbusProtoPropertyEntryArrayInput `pulumi:"properties"`
@@ -2009,7 +2009,7 @@ func (i *enterpriseCrmEventbusProtoEventBusPropertiesPtrType) ToEnterpriseCrmEve
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput)
 }
 
-// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 type EnterpriseCrmEventbusProtoEventBusPropertiesOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoEventBusPropertiesOutput) ElementType() reflect.Type {
@@ -2075,13 +2075,13 @@ func (o EnterpriseCrmEventbusProtoEventBusPropertiesPtrOutput) Properties() Ente
 	}).(EnterpriseCrmEventbusProtoPropertyEntryArrayOutput)
 }
 
-// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 type EnterpriseCrmEventbusProtoEventBusPropertiesResponse struct {
 	// An unordered list of property entries.
 	Properties []EnterpriseCrmEventbusProtoPropertyEntryResponse `pulumi:"properties"`
 }
 
-// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus. Please see go/cloud-crm-eng/platform/event_bus.md for more details.
+// LINT.IfChange This message is used for storing key value pair properties for each Event / Task in the EventBus.
 type EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput) ElementType() reflect.Type {
@@ -2103,7 +2103,7 @@ func (o EnterpriseCrmEventbusProtoEventBusPropertiesResponseOutput) Properties()
 	}).(EnterpriseCrmEventbusProtoPropertyEntryResponseArrayOutput)
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmEventbusProtoEventParameters struct {
 	// Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
 	Parameters []EnterpriseCrmEventbusProtoParameterEntry `pulumi:"parameters"`
@@ -2120,7 +2120,7 @@ type EnterpriseCrmEventbusProtoEventParametersInput interface {
 	ToEnterpriseCrmEventbusProtoEventParametersOutputWithContext(context.Context) EnterpriseCrmEventbusProtoEventParametersOutput
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmEventbusProtoEventParametersArgs struct {
 	// Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
 	Parameters EnterpriseCrmEventbusProtoParameterEntryArrayInput `pulumi:"parameters"`
@@ -2179,7 +2179,7 @@ func (i *enterpriseCrmEventbusProtoEventParametersPtrType) ToEnterpriseCrmEventb
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoEventParametersPtrOutput)
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmEventbusProtoEventParametersOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoEventParametersOutput) ElementType() reflect.Type {
@@ -2245,13 +2245,13 @@ func (o EnterpriseCrmEventbusProtoEventParametersPtrOutput) Parameters() Enterpr
 	}).(EnterpriseCrmEventbusProtoParameterEntryArrayOutput)
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmEventbusProtoEventParametersResponse struct {
 	// Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
 	Parameters []EnterpriseCrmEventbusProtoParameterEntryResponse `pulumi:"parameters"`
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmEventbusProtoEventParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoEventParametersResponseOutput) ElementType() reflect.Type {
@@ -2803,7 +2803,7 @@ func (o EnterpriseCrmEventbusProtoIntParameterArrayResponseOutput) IntValues() p
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoIntParameterArrayResponse) []string { return v.IntValues }).(pulumi.StringArrayOutput)
 }
 
-// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 type EnterpriseCrmEventbusProtoLogSettings struct {
 	// The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
 	LogFieldName *string `pulumi:"logFieldName"`
@@ -2826,7 +2826,7 @@ type EnterpriseCrmEventbusProtoLogSettingsInput interface {
 	ToEnterpriseCrmEventbusProtoLogSettingsOutputWithContext(context.Context) EnterpriseCrmEventbusProtoLogSettingsOutput
 }
 
-// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 type EnterpriseCrmEventbusProtoLogSettingsArgs struct {
 	// The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
 	LogFieldName pulumi.StringPtrInput `pulumi:"logFieldName"`
@@ -2891,7 +2891,7 @@ func (i *enterpriseCrmEventbusProtoLogSettingsPtrType) ToEnterpriseCrmEventbusPr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoLogSettingsPtrOutput)
 }
 
-// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 type EnterpriseCrmEventbusProtoLogSettingsOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoLogSettingsOutput) ElementType() reflect.Type {
@@ -3019,7 +3019,7 @@ func (o EnterpriseCrmEventbusProtoLogSettingsPtrOutput) ShorteningLimits() Enter
 	}).(EnterpriseCrmLoggingGwsFieldLimitsPtrOutput)
 }
 
-// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 type EnterpriseCrmEventbusProtoLogSettingsResponse struct {
 	// The name of corresponding logging field of the event property. If omitted, assumes the same name as the event property key.
 	LogFieldName string `pulumi:"logFieldName"`
@@ -3031,7 +3031,7 @@ type EnterpriseCrmEventbusProtoLogSettingsResponse struct {
 	ShorteningLimits EnterpriseCrmLoggingGwsFieldLimitsResponse `pulumi:"shorteningLimits"`
 }
 
-// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information. See go/integration-platform/analytics/logging_task.md for details.
+// The LogSettings define the logging attributes for an event property. These attributes are used to map the property to the parameter in the log proto. Also used to define scrubbing/truncation behavior and PII information.
 type EnterpriseCrmEventbusProtoLogSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoLogSettingsResponseOutput) ElementType() reflect.Type {
@@ -6516,7 +6516,7 @@ func (o EnterpriseCrmEventbusProtoSuccessPolicyResponseOutput) FinalState() pulu
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoSuccessPolicyResponse) string { return v.FinalState }).(pulumi.StringOutput)
 }
 
-// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
 type EnterpriseCrmEventbusProtoTaskAlertConfig struct {
 	// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
 	AggregationPeriod *string `pulumi:"aggregationPeriod"`
@@ -6554,7 +6554,7 @@ type EnterpriseCrmEventbusProtoTaskAlertConfigInput interface {
 	ToEnterpriseCrmEventbusProtoTaskAlertConfigOutputWithContext(context.Context) EnterpriseCrmEventbusProtoTaskAlertConfigOutput
 }
 
-// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
 type EnterpriseCrmEventbusProtoTaskAlertConfigArgs struct {
 	// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
 	AggregationPeriod pulumi.StringPtrInput `pulumi:"aggregationPeriod"`
@@ -6618,7 +6618,7 @@ func (i EnterpriseCrmEventbusProtoTaskAlertConfigArray) ToEnterpriseCrmEventbusP
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput)
 }
 
-// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
 type EnterpriseCrmEventbusProtoTaskAlertConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTaskAlertConfigOutput) ElementType() reflect.Type {
@@ -6725,7 +6725,7 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigArrayOutput) Index(i pulumi.Int
 	}).(EnterpriseCrmEventbusProtoTaskAlertConfigOutput)
 }
 
-// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
 type EnterpriseCrmEventbusProtoTaskAlertConfigResponse struct {
 	// The period over which the metric value should be aggregated and evaluated. Format is , where integer should be a positive integer and unit should be one of (s,m,h,d,w) meaning (second, minute, hour, day, week).
 	AggregationPeriod string `pulumi:"aggregationPeriod"`
@@ -6752,7 +6752,7 @@ type EnterpriseCrmEventbusProtoTaskAlertConfigResponse struct {
 	WarningEnumList EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse  `pulumi:"warningEnumList"`
 }
 
-// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure alerting in the {@code TaskConfig} protos for tasks in an event.
 type EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput) ElementType() reflect.Type {
@@ -6855,7 +6855,7 @@ func (o EnterpriseCrmEventbusProtoTaskAlertConfigResponseArrayOutput) Index(i pu
 	}).(EnterpriseCrmEventbusProtoTaskAlertConfigResponseOutput)
 }
 
-// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+// TaskMetadata are attributes that are associated to every common Task we have.
 type EnterpriseCrmEventbusProtoTaskMetadata struct {
 	// The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
 	ActiveTaskName *string                                         `pulumi:"activeTaskName"`
@@ -6886,7 +6886,7 @@ type EnterpriseCrmEventbusProtoTaskMetadata struct {
 	ExternalDocMarkdown *string `pulumi:"externalDocMarkdown"`
 	// URL to the associated G3 Doc for the task if available
 	G3DocLink *string `pulumi:"g3DocLink"`
-	// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+	// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
 	IconLink *string `pulumi:"iconLink"`
 	// The deprecation status of the current task. Default value is false;
 	IsDeprecated *bool `pulumi:"isDeprecated"`
@@ -6912,7 +6912,7 @@ type EnterpriseCrmEventbusProtoTaskMetadataInput interface {
 	ToEnterpriseCrmEventbusProtoTaskMetadataOutputWithContext(context.Context) EnterpriseCrmEventbusProtoTaskMetadataOutput
 }
 
-// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+// TaskMetadata are attributes that are associated to every common Task we have.
 type EnterpriseCrmEventbusProtoTaskMetadataArgs struct {
 	// The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
 	ActiveTaskName pulumi.StringPtrInput                                  `pulumi:"activeTaskName"`
@@ -6943,7 +6943,7 @@ type EnterpriseCrmEventbusProtoTaskMetadataArgs struct {
 	ExternalDocMarkdown pulumi.StringPtrInput `pulumi:"externalDocMarkdown"`
 	// URL to the associated G3 Doc for the task if available
 	G3DocLink pulumi.StringPtrInput `pulumi:"g3DocLink"`
-	// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+	// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
 	IconLink pulumi.StringPtrInput `pulumi:"iconLink"`
 	// The deprecation status of the current task. Default value is false;
 	IsDeprecated pulumi.BoolPtrInput `pulumi:"isDeprecated"`
@@ -7011,7 +7011,7 @@ func (i *enterpriseCrmEventbusProtoTaskMetadataPtrType) ToEnterpriseCrmEventbusP
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskMetadataPtrOutput)
 }
 
-// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+// TaskMetadata are attributes that are associated to every common Task we have.
 type EnterpriseCrmEventbusProtoTaskMetadataOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTaskMetadataOutput) ElementType() reflect.Type {
@@ -7118,7 +7118,7 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataOutput) G3DocLink() pulumi.StringP
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskMetadata) *string { return v.G3DocLink }).(pulumi.StringPtrOutput)
 }
 
-// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
 func (o EnterpriseCrmEventbusProtoTaskMetadataOutput) IconLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskMetadata) *string { return v.IconLink }).(pulumi.StringPtrOutput)
 }
@@ -7329,7 +7329,7 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataPtrOutput) G3DocLink() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
 func (o EnterpriseCrmEventbusProtoTaskMetadataPtrOutput) IconLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnterpriseCrmEventbusProtoTaskMetadata) *string {
 		if v == nil {
@@ -7550,7 +7550,7 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataAdminResponseArrayOutput) Index(i 
 	}).(EnterpriseCrmEventbusProtoTaskMetadataAdminResponseOutput)
 }
 
-// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+// TaskMetadata are attributes that are associated to every common Task we have.
 type EnterpriseCrmEventbusProtoTaskMetadataResponse struct {
 	// The new task name to replace the current task if it is deprecated. Otherwise, it is the same as the current task name.
 	ActiveTaskName string                                                `pulumi:"activeTaskName"`
@@ -7581,7 +7581,7 @@ type EnterpriseCrmEventbusProtoTaskMetadataResponse struct {
 	ExternalDocMarkdown string `pulumi:"externalDocMarkdown"`
 	// URL to the associated G3 Doc for the task if available
 	G3DocLink string `pulumi:"g3DocLink"`
-	// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+	// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
 	IconLink string `pulumi:"iconLink"`
 	// The deprecation status of the current task. Default value is false;
 	IsDeprecated bool `pulumi:"isDeprecated"`
@@ -7596,7 +7596,7 @@ type EnterpriseCrmEventbusProtoTaskMetadataResponse struct {
 	Tags []string `pulumi:"tags"`
 }
 
-// TaskMetadata are attributes that are associated to every common Task we have. Next available: 26
+// TaskMetadata are attributes that are associated to every common Task we have.
 type EnterpriseCrmEventbusProtoTaskMetadataResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) ElementType() reflect.Type {
@@ -7687,7 +7687,7 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) G3DocLink() pulumi
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskMetadataResponse) string { return v.G3DocLink }).(pulumi.StringOutput)
 }
 
-// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format. See go/icons.
+// URL to gstatic image icon for this task. This icon shows up on the task list panel along with the task name in the Workflow Editor screen. Use the 24p, 2x, gray color icon image format.
 func (o EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) IconLink() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskMetadataResponse) string { return v.IconLink }).(pulumi.StringOutput)
 }
@@ -7721,7 +7721,7 @@ func (o EnterpriseCrmEventbusProtoTaskMetadataResponseOutput) Tags() pulumi.Stri
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoTaskMetadataResponse) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 type EnterpriseCrmEventbusProtoTaskUiConfig struct {
 	// Configurations of included config modules.
 	TaskUiModuleConfigs []EnterpriseCrmEventbusProtoTaskUiModuleConfig `pulumi:"taskUiModuleConfigs"`
@@ -7738,7 +7738,7 @@ type EnterpriseCrmEventbusProtoTaskUiConfigInput interface {
 	ToEnterpriseCrmEventbusProtoTaskUiConfigOutputWithContext(context.Context) EnterpriseCrmEventbusProtoTaskUiConfigOutput
 }
 
-// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 type EnterpriseCrmEventbusProtoTaskUiConfigArgs struct {
 	// Configurations of included config modules.
 	TaskUiModuleConfigs EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayInput `pulumi:"taskUiModuleConfigs"`
@@ -7797,7 +7797,7 @@ func (i *enterpriseCrmEventbusProtoTaskUiConfigPtrType) ToEnterpriseCrmEventbusP
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput)
 }
 
-// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 type EnterpriseCrmEventbusProtoTaskUiConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTaskUiConfigOutput) ElementType() reflect.Type {
@@ -7863,13 +7863,13 @@ func (o EnterpriseCrmEventbusProtoTaskUiConfigPtrOutput) TaskUiModuleConfigs() E
 	}).(EnterpriseCrmEventbusProtoTaskUiModuleConfigArrayOutput)
 }
 
-// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 type EnterpriseCrmEventbusProtoTaskUiConfigResponse struct {
 	// Configurations of included config modules.
 	TaskUiModuleConfigs []EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse `pulumi:"taskUiModuleConfigs"`
 }
 
-// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework: go/integration-platform-config-module-framework
+// Task authors would use this type to configure the UI for a particular task by specifying what UI config modules should be included to compose the UI. Learn more about config module framework:
 type EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput) ElementType() reflect.Type {
@@ -8962,7 +8962,7 @@ func (o EnterpriseCrmEventbusProtoValueTypeResponseOutput) StringValue() pulumi.
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoValueTypeResponse) string { return v.StringValue }).(pulumi.StringOutput)
 }
 
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfig struct {
 	// For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
 	AggregationPeriod *string `pulumi:"aggregationPeriod"`
@@ -8984,7 +8984,7 @@ type EnterpriseCrmEventbusProtoWorkflowAlertConfig struct {
 	PlaybookUrl *string `pulumi:"playbookUrl"`
 	// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
 	ThresholdType *EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdType `pulumi:"thresholdType"`
-	// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+	// The metric value, above or below which the alert should be triggered.
 	ThresholdValue  *EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue `pulumi:"thresholdValue"`
 	WarningEnumList *EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumList  `pulumi:"warningEnumList"`
 }
@@ -9000,7 +9000,7 @@ type EnterpriseCrmEventbusProtoWorkflowAlertConfigInput interface {
 	ToEnterpriseCrmEventbusProtoWorkflowAlertConfigOutputWithContext(context.Context) EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput
 }
 
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs struct {
 	// For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
 	AggregationPeriod pulumi.StringPtrInput `pulumi:"aggregationPeriod"`
@@ -9022,7 +9022,7 @@ type EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs struct {
 	PlaybookUrl pulumi.StringPtrInput `pulumi:"playbookUrl"`
 	// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
 	ThresholdType EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtrInput `pulumi:"thresholdType"`
-	// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+	// The metric value, above or below which the alert should be triggered.
 	ThresholdValue  EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrInput `pulumi:"thresholdValue"`
 	WarningEnumList EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListPtrInput  `pulumi:"warningEnumList"`
 }
@@ -9064,7 +9064,7 @@ func (i EnterpriseCrmEventbusProtoWorkflowAlertConfigArray) ToEnterpriseCrmEvent
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput)
 }
 
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput) ElementType() reflect.Type {
@@ -9138,7 +9138,7 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput) ThresholdType() Ent
 	}).(EnterpriseCrmEventbusProtoWorkflowAlertConfigThresholdTypePtrOutput)
 }
 
-// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+// The metric value, above or below which the alert should be triggered.
 func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput) ThresholdValue() EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValuePtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoWorkflowAlertConfig) *EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValue {
 		return v.ThresholdValue
@@ -9171,7 +9171,7 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayOutput) Index(i pulumi
 	}).(EnterpriseCrmEventbusProtoWorkflowAlertConfigOutput)
 }
 
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse struct {
 	// For an EXPECTED_MIN threshold, this aggregation_period must be lesser than 24 hours.
 	AggregationPeriod string `pulumi:"aggregationPeriod"`
@@ -9193,12 +9193,12 @@ type EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse struct {
 	PlaybookUrl string `pulumi:"playbookUrl"`
 	// The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
 	ThresholdType string `pulumi:"thresholdType"`
-	// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+	// The metric value, above or below which the alert should be triggered.
 	ThresholdValue  EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse `pulumi:"thresholdValue"`
 	WarningEnumList EnterpriseCrmEventbusProtoBaseAlertConfigErrorEnumListResponse  `pulumi:"warningEnumList"`
 }
 
-// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event. See go/eventbus-alert-config-examples for examples of the different alerts that can be configured.
+// Message to be used to configure custom alerting in the {@code EventConfig} protos for an event.
 type EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput) ElementType() reflect.Type {
@@ -9268,7 +9268,7 @@ func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput) ThresholdTy
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse) string { return v.ThresholdType }).(pulumi.StringOutput)
 }
 
-// The metric value, above or below which the alert should be triggered. See go/eventbus-alert-config-examples.
+// The metric value, above or below which the alert should be triggered.
 func (o EnterpriseCrmEventbusProtoWorkflowAlertConfigResponseOutput) ThresholdValue() EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponseOutput {
 	return o.ApplyT(func(v EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse) EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse {
 		return v.ThresholdValue
@@ -10238,7 +10238,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoDoubleParameterArrayResponseOutput) D
 	}).(pulumi.Float64ArrayOutput)
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmFrontendsEventbusProtoEventParameters struct {
 	// Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
 	Parameters []EnterpriseCrmFrontendsEventbusProtoParameterEntry `pulumi:"parameters"`
@@ -10255,7 +10255,7 @@ type EnterpriseCrmFrontendsEventbusProtoEventParametersInput interface {
 	ToEnterpriseCrmFrontendsEventbusProtoEventParametersOutputWithContext(context.Context) EnterpriseCrmFrontendsEventbusProtoEventParametersOutput
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmFrontendsEventbusProtoEventParametersArgs struct {
 	// Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
 	Parameters EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayInput `pulumi:"parameters"`
@@ -10314,7 +10314,7 @@ func (i *enterpriseCrmFrontendsEventbusProtoEventParametersPtrType) ToEnterprise
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput)
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmFrontendsEventbusProtoEventParametersOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoEventParametersOutput) ElementType() reflect.Type {
@@ -10380,13 +10380,13 @@ func (o EnterpriseCrmFrontendsEventbusProtoEventParametersPtrOutput) Parameters(
 	}).(EnterpriseCrmFrontendsEventbusProtoParameterEntryArrayOutput)
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmFrontendsEventbusProtoEventParametersResponse struct {
 	// Parameters are a part of Event and can be used to communicate between different tasks that are part of the same workflow execution.
 	Parameters []EnterpriseCrmFrontendsEventbusProtoParameterEntryResponse `pulumi:"parameters"`
 }
 
-// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see go/integration-platform/event_bus.md for more details. Next id: 4
+// LINT.IfChange This message is used for processing and persisting (when applicable) key value pair parameters for each event in the event bus. Please see
 type EnterpriseCrmFrontendsEventbusProtoEventParametersResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoEventParametersResponseOutput) ElementType() reflect.Type {
@@ -12350,7 +12350,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoStringParameterArrayResponseOutput) S
 	}).(pulumi.StringArrayOutput)
 }
 
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfig struct {
 	// Alert configurations on error rate, warning rate, number of runs, durations, etc.
 	AlertConfigs []EnterpriseCrmEventbusProtoTaskAlertConfig `pulumi:"alertConfigs"`
@@ -12398,7 +12398,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfig struct {
 	TaskName *string `pulumi:"taskName"`
 	// REQUIRED: the identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_number`).
 	TaskNumber *string `pulumi:"taskNumber"`
-	// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+	// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
 	TaskSpec *string `pulumi:"taskSpec"`
 	// Used to define task-template name if task is of type task-template
 	TaskTemplateName *string `pulumi:"taskTemplateName"`
@@ -12417,7 +12417,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigInput interface {
 	ToEnterpriseCrmFrontendsEventbusProtoTaskConfigOutputWithContext(context.Context) EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput
 }
 
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs struct {
 	// Alert configurations on error rate, warning rate, number of runs, durations, etc.
 	AlertConfigs EnterpriseCrmEventbusProtoTaskAlertConfigArrayInput `pulumi:"alertConfigs"`
@@ -12465,7 +12465,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs struct {
 	TaskName pulumi.StringPtrInput `pulumi:"taskName"`
 	// REQUIRED: the identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_number`).
 	TaskNumber pulumi.StringPtrInput `pulumi:"taskNumber"`
-	// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+	// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
 	TaskSpec pulumi.StringPtrInput `pulumi:"taskSpec"`
 	// Used to define task-template name if task is of type task-template
 	TaskTemplateName pulumi.StringPtrInput `pulumi:"taskTemplateName"`
@@ -12510,7 +12510,7 @@ func (i EnterpriseCrmFrontendsEventbusProtoTaskConfigArray) ToEnterpriseCrmFront
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput)
 }
 
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) ElementType() reflect.Type {
@@ -12662,7 +12662,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) TaskNumber() pulumi
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) *string { return v.TaskNumber }).(pulumi.StringPtrOutput)
 }
 
-// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) TaskSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) *string { return v.TaskSpec }).(pulumi.StringPtrOutput)
 }
@@ -12699,7 +12699,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigArrayOutput) Index(i pulumi
 	}).(EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput)
 }
 
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse struct {
 	// Alert configurations on error rate, warning rate, number of runs, durations, etc.
 	AlertConfigs []EnterpriseCrmEventbusProtoTaskAlertConfigResponse `pulumi:"alertConfigs"`
@@ -12747,7 +12747,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse struct {
 	TaskName string `pulumi:"taskName"`
 	// REQUIRED: the identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_number`).
 	TaskNumber string `pulumi:"taskNumber"`
-	// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+	// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
 	TaskSpec string `pulumi:"taskSpec"`
 	// Used to define task-template name if task is of type task-template
 	TaskTemplateName string `pulumi:"taskTemplateName"`
@@ -12755,7 +12755,7 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse struct {
 	TaskType string `pulumi:"taskType"`
 }
 
-// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task. Next available id: 27
+// The task configuration details. This is not the implementation of Task. There might be multiple TaskConfigs for the same Task.
 type EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) ElementType() reflect.Type {
@@ -12905,7 +12905,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) TaskNumber(
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) string { return v.TaskNumber }).(pulumi.StringOutput)
 }
 
-// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field. Please refer to go/eventbus-task-spec-example for detailed usage example.
+// A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) TaskSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) string { return v.TaskSpec }).(pulumi.StringOutput)
 }
@@ -13649,7 +13649,7 @@ type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry struct {
 	DefaultValue *EnterpriseCrmFrontendsEventbusProtoParameterValueType `pulumi:"defaultValue"`
 	// Specifies the input/output type for the parameter.
 	InOutType *EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutType `pulumi:"inOutType"`
-	// Whether this parameter is a transient parameter. go/ip-transient-parameters
+	// Whether this parameter is a transient parameter.
 	IsTransient *bool `pulumi:"isTransient"`
 	// This schema will be used to validate runtime JSON-typed values of this parameter.
 	JsonSchema *string `pulumi:"jsonSchema"`
@@ -13688,7 +13688,7 @@ type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryArgs struct {
 	DefaultValue EnterpriseCrmFrontendsEventbusProtoParameterValueTypePtrInput `pulumi:"defaultValue"`
 	// Specifies the input/output type for the parameter.
 	InOutType EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtrInput `pulumi:"inOutType"`
-	// Whether this parameter is a transient parameter. go/ip-transient-parameters
+	// Whether this parameter is a transient parameter.
 	IsTransient pulumi.BoolPtrInput `pulumi:"isTransient"`
 	// This schema will be used to validate runtime JSON-typed values of this parameter.
 	JsonSchema pulumi.StringPtrInput `pulumi:"jsonSchema"`
@@ -13791,7 +13791,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) InOutTy
 	}).(EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryInOutTypePtrOutput)
 }
 
-// Whether this parameter is a transient parameter. go/ip-transient-parameters
+// Whether this parameter is a transient parameter.
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryOutput) IsTransient() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntry) *bool { return v.IsTransient }).(pulumi.BoolPtrOutput)
 }
@@ -13863,7 +13863,7 @@ type EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse struct {
 	DefaultValue EnterpriseCrmFrontendsEventbusProtoParameterValueTypeResponse `pulumi:"defaultValue"`
 	// Specifies the input/output type for the parameter.
 	InOutType string `pulumi:"inOutType"`
-	// Whether this parameter is a transient parameter. go/ip-transient-parameters
+	// Whether this parameter is a transient parameter.
 	IsTransient bool `pulumi:"isTransient"`
 	// This schema will be used to validate runtime JSON-typed values of this parameter.
 	JsonSchema string `pulumi:"jsonSchema"`
@@ -13925,7 +13925,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput)
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse) string { return v.InOutType }).(pulumi.StringOutput)
 }
 
-// Whether this parameter is a transient parameter. go/ip-transient-parameters
+// Whether this parameter is a transient parameter.
 func (o EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponseOutput) IsTransient() pulumi.BoolOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse) bool { return v.IsTransient }).(pulumi.BoolOutput)
 }

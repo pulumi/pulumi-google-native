@@ -18,7 +18,7 @@ export const BinaryAuthorizationEvaluationMode = {
 } as const;
 
 /**
- * Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+ * Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
  */
 export type BinaryAuthorizationEvaluationMode = (typeof BinaryAuthorizationEvaluationMode)[keyof typeof BinaryAuthorizationEvaluationMode];
 
@@ -106,6 +106,26 @@ export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
  */
 export type ClusterUpdateDesiredPrivateIpv6GoogleAccess = (typeof ClusterUpdateDesiredPrivateIpv6GoogleAccess)[keyof typeof ClusterUpdateDesiredPrivateIpv6GoogleAccess];
 
+export const ClusterUpdateDesiredStackType = {
+    /**
+     * Default value, will be defaulted as IPV4 only
+     */
+    StackTypeUnspecified: "STACK_TYPE_UNSPECIFIED",
+    /**
+     * Cluster is IPV4 only
+     */
+    Ipv4: "IPV4",
+    /**
+     * Cluster can use both IPv4 and IPv6
+     */
+    Ipv4Ipv6: "IPV4_IPV6",
+} as const;
+
+/**
+ * The desired stack type of the cluster. If a stack type is provided and does not match the current stack type of the cluster, update will attempt to change the stack type to the new type.
+ */
+export type ClusterUpdateDesiredStackType = (typeof ClusterUpdateDesiredStackType)[keyof typeof ClusterUpdateDesiredStackType];
+
 export const DNSConfigClusterDns = {
     /**
      * Default value
@@ -131,6 +151,10 @@ export const DNSConfigClusterDnsScope = {
      * Default value, will be inferred as cluster scope.
      */
     DnsScopeUnspecified: "DNS_SCOPE_UNSPECIFIED",
+    /**
+     * DNS records are accessible from within the cluster.
+     */
+    ClusterScope: "CLUSTER_SCOPE",
     /**
      * DNS records are accessible from within the VPC.
      */
@@ -497,6 +521,22 @@ export const NodeTaintEffect = {
  */
 export type NodeTaintEffect = (typeof NodeTaintEffect)[keyof typeof NodeTaintEffect];
 
+export const PlacementPolicyType = {
+    /**
+     * TYPE_UNSPECIFIED specifies no requirements on nodes placement.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * COMPACT specifies node placement in the same availability domain to ensure low communication latency.
+     */
+    Compact: "COMPACT",
+} as const;
+
+/**
+ * The type of placement.
+ */
+export type PlacementPolicyType = (typeof PlacementPolicyType)[keyof typeof PlacementPolicyType];
+
 export const ReleaseChannelChannel = {
     /**
      * No channel specified.
@@ -675,7 +715,7 @@ export type StatusConditionCode = (typeof StatusConditionCode)[keyof typeof Stat
 
 export const UpgradeSettingsStrategy = {
     /**
-     * Default value.
+     * Default value if unset. GKE internally defaults the update strategy to SURGE for unspecified strategies.
      */
     NodePoolUpdateStrategyUnspecified: "NODE_POOL_UPDATE_STRATEGY_UNSPECIFIED",
     /**
@@ -692,6 +732,26 @@ export const UpgradeSettingsStrategy = {
  * Update strategy of the node pool.
  */
 export type UpgradeSettingsStrategy = (typeof UpgradeSettingsStrategy)[keyof typeof UpgradeSettingsStrategy];
+
+export const WindowsNodeConfigOsVersion = {
+    /**
+     * When OSVersion is not specified
+     */
+    OsVersionUnspecified: "OS_VERSION_UNSPECIFIED",
+    /**
+     * LTSC2019 specifies to use LTSC2019 as the Windows Servercore Base Image
+     */
+    OsVersionLtsc2019: "OS_VERSION_LTSC2019",
+    /**
+     * LTSC2022 specifies to use LTSC2022 as the Windows Servercore Base Image
+     */
+    OsVersionLtsc2022: "OS_VERSION_LTSC2022",
+} as const;
+
+/**
+ * OSVersion specifies the Windows node config to be used on the node
+ */
+export type WindowsNodeConfigOsVersion = (typeof WindowsNodeConfigOsVersion)[keyof typeof WindowsNodeConfigOsVersion];
 
 export const WorkloadMetadataConfigMode = {
     /**

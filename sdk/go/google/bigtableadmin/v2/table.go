@@ -17,16 +17,20 @@ type Table struct {
 
 	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
 	ClusterStates pulumi.StringMapOutput `pulumi:"clusterStates"`
-	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 	ColumnFamilies pulumi.StringMapOutput `pulumi:"columnFamilies"`
+	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+	DeletionProtection pulumi.BoolOutput `pulumi:"deletionProtection"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity pulumi.StringOutput `pulumi:"granularity"`
 	InstanceId  pulumi.StringOutput `pulumi:"instanceId"`
-	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
 	RestoreInfo RestoreInfoResponseOutput `pulumi:"restoreInfo"`
+	// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+	Stats TableStatsResponseOutput `pulumi:"stats"`
 }
 
 // NewTable registers a new resource with the given unique name, arguments, and options.
@@ -79,32 +83,40 @@ func (TableState) ElementType() reflect.Type {
 }
 
 type tableArgs struct {
-	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
+	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity *TableGranularity `pulumi:"granularity"`
 	// The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
 	InitialSplits []Split `pulumi:"initialSplits"`
 	InstanceId    string  `pulumi:"instanceId"`
-	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+	Stats *TableStats `pulumi:"stats"`
 	// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
 	TableId string `pulumi:"tableId"`
 }
 
 // The set of arguments for constructing a Table resource.
 type TableArgs struct {
-	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 	ColumnFamilies pulumi.StringMapInput
+	// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+	DeletionProtection pulumi.BoolPtrInput
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
 	Granularity TableGranularityPtrInput
 	// The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
 	InitialSplits SplitArrayInput
 	InstanceId    pulumi.StringInput
-	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+	Stats TableStatsPtrInput
 	// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
 	TableId pulumi.StringInput
 }
@@ -151,9 +163,14 @@ func (o TableOutput) ClusterStates() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ClusterStates }).(pulumi.StringMapOutput)
 }
 
-// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
+// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `STATS_VIEW`, `FULL`
 func (o TableOutput) ColumnFamilies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringMapOutput { return v.ColumnFamilies }).(pulumi.StringMapOutput)
+}
+
+// Set to true to make the table protected against data loss. i.e. deleting the following resources through Admin APIs are prohibited: * The table. * The column families in the table. * The instance containing the table. Note one can still delete the data stored in the table through Data APIs.
+func (o TableOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Table) pulumi.BoolOutput { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
@@ -165,7 +182,7 @@ func (o TableOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
 }
 
-// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
+// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
 func (o TableOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -177,6 +194,11 @@ func (o TableOutput) Project() pulumi.StringOutput {
 // If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
 func (o TableOutput) RestoreInfo() RestoreInfoResponseOutput {
 	return o.ApplyT(func(v *Table) RestoreInfoResponseOutput { return v.RestoreInfo }).(RestoreInfoResponseOutput)
+}
+
+// Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
+func (o TableOutput) Stats() TableStatsResponseOutput {
+	return o.ApplyT(func(v *Table) TableStatsResponseOutput { return v.Stats }).(TableStatsResponseOutput)
 }
 
 func init() {

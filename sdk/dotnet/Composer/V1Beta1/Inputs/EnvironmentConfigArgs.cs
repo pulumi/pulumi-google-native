@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public Input<Inputs.PrivateEnvironmentConfigArgs>? PrivateEnvironmentConfig { get; set; }
 
         /// <summary>
+        /// Optional. The Recovery settings configuration of an environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("recoveryConfig")]
+        public Input<Inputs.RecoveryConfigArgs>? RecoveryConfig { get; set; }
+
+        /// <summary>
         /// The configuration settings for software inside the environment.
         /// </summary>
         [Input("softwareConfig")]

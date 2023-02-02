@@ -1947,6 +1947,174 @@ func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
 	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
 }
 
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpec struct {
+	// Identity Service-specific spec.
+	Identityservice *IdentityServiceMembershipSpec `pulumi:"identityservice"`
+}
+
+// CommonFleetDefaultMemberConfigSpecInput is an input type that accepts CommonFleetDefaultMemberConfigSpecArgs and CommonFleetDefaultMemberConfigSpecOutput values.
+// You can construct a concrete instance of `CommonFleetDefaultMemberConfigSpecInput` via:
+//
+//	CommonFleetDefaultMemberConfigSpecArgs{...}
+type CommonFleetDefaultMemberConfigSpecInput interface {
+	pulumi.Input
+
+	ToCommonFleetDefaultMemberConfigSpecOutput() CommonFleetDefaultMemberConfigSpecOutput
+	ToCommonFleetDefaultMemberConfigSpecOutputWithContext(context.Context) CommonFleetDefaultMemberConfigSpecOutput
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecArgs struct {
+	// Identity Service-specific spec.
+	Identityservice IdentityServiceMembershipSpecPtrInput `pulumi:"identityservice"`
+}
+
+func (CommonFleetDefaultMemberConfigSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecOutput() CommonFleetDefaultMemberConfigSpecOutput {
+	return i.ToCommonFleetDefaultMemberConfigSpecOutputWithContext(context.Background())
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFleetDefaultMemberConfigSpecOutput)
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return i.ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CommonFleetDefaultMemberConfigSpecArgs) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFleetDefaultMemberConfigSpecOutput).ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx)
+}
+
+// CommonFleetDefaultMemberConfigSpecPtrInput is an input type that accepts CommonFleetDefaultMemberConfigSpecArgs, CommonFleetDefaultMemberConfigSpecPtr and CommonFleetDefaultMemberConfigSpecPtrOutput values.
+// You can construct a concrete instance of `CommonFleetDefaultMemberConfigSpecPtrInput` via:
+//
+//	        CommonFleetDefaultMemberConfigSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type CommonFleetDefaultMemberConfigSpecPtrInput interface {
+	pulumi.Input
+
+	ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput
+	ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput
+}
+
+type commonFleetDefaultMemberConfigSpecPtrType CommonFleetDefaultMemberConfigSpecArgs
+
+func CommonFleetDefaultMemberConfigSpecPtr(v *CommonFleetDefaultMemberConfigSpecArgs) CommonFleetDefaultMemberConfigSpecPtrInput {
+	return (*commonFleetDefaultMemberConfigSpecPtrType)(v)
+}
+
+func (*commonFleetDefaultMemberConfigSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (i *commonFleetDefaultMemberConfigSpecPtrType) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return i.ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *commonFleetDefaultMemberConfigSpecPtrType) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFleetDefaultMemberConfigSpecPtrOutput)
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecOutput struct{ *pulumi.OutputState }
+
+func (CommonFleetDefaultMemberConfigSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecOutput() CommonFleetDefaultMemberConfigSpecOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o.ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CommonFleetDefaultMemberConfigSpecOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CommonFleetDefaultMemberConfigSpec) *CommonFleetDefaultMemberConfigSpec {
+		return &v
+	}).(CommonFleetDefaultMemberConfigSpecPtrOutput)
+}
+
+// Identity Service-specific spec.
+func (o CommonFleetDefaultMemberConfigSpecOutput) Identityservice() IdentityServiceMembershipSpecPtrOutput {
+	return o.ApplyT(func(v CommonFleetDefaultMemberConfigSpec) *IdentityServiceMembershipSpec { return v.Identityservice }).(IdentityServiceMembershipSpecPtrOutput)
+}
+
+type CommonFleetDefaultMemberConfigSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFleetDefaultMemberConfigSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFleetDefaultMemberConfigSpec)(nil)).Elem()
+}
+
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutput() CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) ToCommonFleetDefaultMemberConfigSpecPtrOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecPtrOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) Elem() CommonFleetDefaultMemberConfigSpecOutput {
+	return o.ApplyT(func(v *CommonFleetDefaultMemberConfigSpec) CommonFleetDefaultMemberConfigSpec {
+		if v != nil {
+			return *v
+		}
+		var ret CommonFleetDefaultMemberConfigSpec
+		return ret
+	}).(CommonFleetDefaultMemberConfigSpecOutput)
+}
+
+// Identity Service-specific spec.
+func (o CommonFleetDefaultMemberConfigSpecPtrOutput) Identityservice() IdentityServiceMembershipSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFleetDefaultMemberConfigSpec) *IdentityServiceMembershipSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Identityservice
+	}).(IdentityServiceMembershipSpecPtrOutput)
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecResponse struct {
+	// Identity Service-specific spec.
+	Identityservice IdentityServiceMembershipSpecResponse `pulumi:"identityservice"`
+}
+
+// CommonFleetDefaultMemberConfigSpec contains default configuration information for memberships of a fleet
+type CommonFleetDefaultMemberConfigSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonFleetDefaultMemberConfigSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecResponse)(nil)).Elem()
+}
+
+func (o CommonFleetDefaultMemberConfigSpecResponseOutput) ToCommonFleetDefaultMemberConfigSpecResponseOutput() CommonFleetDefaultMemberConfigSpecResponseOutput {
+	return o
+}
+
+func (o CommonFleetDefaultMemberConfigSpecResponseOutput) ToCommonFleetDefaultMemberConfigSpecResponseOutputWithContext(ctx context.Context) CommonFleetDefaultMemberConfigSpecResponseOutput {
+	return o
+}
+
+// Identity Service-specific spec.
+func (o CommonFleetDefaultMemberConfigSpecResponseOutput) Identityservice() IdentityServiceMembershipSpecResponseOutput {
+	return o.ApplyT(func(v CommonFleetDefaultMemberConfigSpecResponse) IdentityServiceMembershipSpecResponse {
+		return v.Identityservice
+	}).(IdentityServiceMembershipSpecResponseOutput)
+}
+
 // EdgeCluster contains information specific to Google Edge Clusters.
 type EdgeCluster struct {
 	// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -2971,6 +3139,1286 @@ func (o GkeClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
 // Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
 func (o GkeClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v GkeClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
+}
+
+// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+type IdentityServiceAuthMethod struct {
+	// AzureAD specific Configuration.
+	AzureadConfig *IdentityServiceAzureADConfig `pulumi:"azureadConfig"`
+	// GoogleConfig specific configuration
+	GoogleConfig *IdentityServiceGoogleConfig `pulumi:"googleConfig"`
+	// Identifier for auth config.
+	Name *string `pulumi:"name"`
+	// OIDC specific configuration.
+	OidcConfig *IdentityServiceOidcConfig `pulumi:"oidcConfig"`
+	// Proxy server address to use for auth method.
+	Proxy *string `pulumi:"proxy"`
+}
+
+// IdentityServiceAuthMethodInput is an input type that accepts IdentityServiceAuthMethodArgs and IdentityServiceAuthMethodOutput values.
+// You can construct a concrete instance of `IdentityServiceAuthMethodInput` via:
+//
+//	IdentityServiceAuthMethodArgs{...}
+type IdentityServiceAuthMethodInput interface {
+	pulumi.Input
+
+	ToIdentityServiceAuthMethodOutput() IdentityServiceAuthMethodOutput
+	ToIdentityServiceAuthMethodOutputWithContext(context.Context) IdentityServiceAuthMethodOutput
+}
+
+// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+type IdentityServiceAuthMethodArgs struct {
+	// AzureAD specific Configuration.
+	AzureadConfig IdentityServiceAzureADConfigPtrInput `pulumi:"azureadConfig"`
+	// GoogleConfig specific configuration
+	GoogleConfig IdentityServiceGoogleConfigPtrInput `pulumi:"googleConfig"`
+	// Identifier for auth config.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// OIDC specific configuration.
+	OidcConfig IdentityServiceOidcConfigPtrInput `pulumi:"oidcConfig"`
+	// Proxy server address to use for auth method.
+	Proxy pulumi.StringPtrInput `pulumi:"proxy"`
+}
+
+func (IdentityServiceAuthMethodArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceAuthMethod)(nil)).Elem()
+}
+
+func (i IdentityServiceAuthMethodArgs) ToIdentityServiceAuthMethodOutput() IdentityServiceAuthMethodOutput {
+	return i.ToIdentityServiceAuthMethodOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceAuthMethodArgs) ToIdentityServiceAuthMethodOutputWithContext(ctx context.Context) IdentityServiceAuthMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceAuthMethodOutput)
+}
+
+// IdentityServiceAuthMethodArrayInput is an input type that accepts IdentityServiceAuthMethodArray and IdentityServiceAuthMethodArrayOutput values.
+// You can construct a concrete instance of `IdentityServiceAuthMethodArrayInput` via:
+//
+//	IdentityServiceAuthMethodArray{ IdentityServiceAuthMethodArgs{...} }
+type IdentityServiceAuthMethodArrayInput interface {
+	pulumi.Input
+
+	ToIdentityServiceAuthMethodArrayOutput() IdentityServiceAuthMethodArrayOutput
+	ToIdentityServiceAuthMethodArrayOutputWithContext(context.Context) IdentityServiceAuthMethodArrayOutput
+}
+
+type IdentityServiceAuthMethodArray []IdentityServiceAuthMethodInput
+
+func (IdentityServiceAuthMethodArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityServiceAuthMethod)(nil)).Elem()
+}
+
+func (i IdentityServiceAuthMethodArray) ToIdentityServiceAuthMethodArrayOutput() IdentityServiceAuthMethodArrayOutput {
+	return i.ToIdentityServiceAuthMethodArrayOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceAuthMethodArray) ToIdentityServiceAuthMethodArrayOutputWithContext(ctx context.Context) IdentityServiceAuthMethodArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceAuthMethodArrayOutput)
+}
+
+// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+type IdentityServiceAuthMethodOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAuthMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceAuthMethod)(nil)).Elem()
+}
+
+func (o IdentityServiceAuthMethodOutput) ToIdentityServiceAuthMethodOutput() IdentityServiceAuthMethodOutput {
+	return o
+}
+
+func (o IdentityServiceAuthMethodOutput) ToIdentityServiceAuthMethodOutputWithContext(ctx context.Context) IdentityServiceAuthMethodOutput {
+	return o
+}
+
+// AzureAD specific Configuration.
+func (o IdentityServiceAuthMethodOutput) AzureadConfig() IdentityServiceAzureADConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *IdentityServiceAzureADConfig { return v.AzureadConfig }).(IdentityServiceAzureADConfigPtrOutput)
+}
+
+// GoogleConfig specific configuration
+func (o IdentityServiceAuthMethodOutput) GoogleConfig() IdentityServiceGoogleConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *IdentityServiceGoogleConfig { return v.GoogleConfig }).(IdentityServiceGoogleConfigPtrOutput)
+}
+
+// Identifier for auth config.
+func (o IdentityServiceAuthMethodOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// OIDC specific configuration.
+func (o IdentityServiceAuthMethodOutput) OidcConfig() IdentityServiceOidcConfigPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *IdentityServiceOidcConfig { return v.OidcConfig }).(IdentityServiceOidcConfigPtrOutput)
+}
+
+// Proxy server address to use for auth method.
+func (o IdentityServiceAuthMethodOutput) Proxy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethod) *string { return v.Proxy }).(pulumi.StringPtrOutput)
+}
+
+type IdentityServiceAuthMethodArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAuthMethodArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityServiceAuthMethod)(nil)).Elem()
+}
+
+func (o IdentityServiceAuthMethodArrayOutput) ToIdentityServiceAuthMethodArrayOutput() IdentityServiceAuthMethodArrayOutput {
+	return o
+}
+
+func (o IdentityServiceAuthMethodArrayOutput) ToIdentityServiceAuthMethodArrayOutputWithContext(ctx context.Context) IdentityServiceAuthMethodArrayOutput {
+	return o
+}
+
+func (o IdentityServiceAuthMethodArrayOutput) Index(i pulumi.IntInput) IdentityServiceAuthMethodOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityServiceAuthMethod {
+		return vs[0].([]IdentityServiceAuthMethod)[vs[1].(int)]
+	}).(IdentityServiceAuthMethodOutput)
+}
+
+// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+type IdentityServiceAuthMethodResponse struct {
+	// AzureAD specific Configuration.
+	AzureadConfig IdentityServiceAzureADConfigResponse `pulumi:"azureadConfig"`
+	// GoogleConfig specific configuration
+	GoogleConfig IdentityServiceGoogleConfigResponse `pulumi:"googleConfig"`
+	// Identifier for auth config.
+	Name string `pulumi:"name"`
+	// OIDC specific configuration.
+	OidcConfig IdentityServiceOidcConfigResponse `pulumi:"oidcConfig"`
+	// Proxy server address to use for auth method.
+	Proxy string `pulumi:"proxy"`
+}
+
+// Configuration of an auth method for a member/cluster. Only one authentication method (e.g., OIDC and LDAP) can be set per AuthMethod.
+type IdentityServiceAuthMethodResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAuthMethodResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceAuthMethodResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceAuthMethodResponseOutput) ToIdentityServiceAuthMethodResponseOutput() IdentityServiceAuthMethodResponseOutput {
+	return o
+}
+
+func (o IdentityServiceAuthMethodResponseOutput) ToIdentityServiceAuthMethodResponseOutputWithContext(ctx context.Context) IdentityServiceAuthMethodResponseOutput {
+	return o
+}
+
+// AzureAD specific Configuration.
+func (o IdentityServiceAuthMethodResponseOutput) AzureadConfig() IdentityServiceAzureADConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) IdentityServiceAzureADConfigResponse { return v.AzureadConfig }).(IdentityServiceAzureADConfigResponseOutput)
+}
+
+// GoogleConfig specific configuration
+func (o IdentityServiceAuthMethodResponseOutput) GoogleConfig() IdentityServiceGoogleConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) IdentityServiceGoogleConfigResponse { return v.GoogleConfig }).(IdentityServiceGoogleConfigResponseOutput)
+}
+
+// Identifier for auth config.
+func (o IdentityServiceAuthMethodResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OIDC specific configuration.
+func (o IdentityServiceAuthMethodResponseOutput) OidcConfig() IdentityServiceOidcConfigResponseOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) IdentityServiceOidcConfigResponse { return v.OidcConfig }).(IdentityServiceOidcConfigResponseOutput)
+}
+
+// Proxy server address to use for auth method.
+func (o IdentityServiceAuthMethodResponseOutput) Proxy() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAuthMethodResponse) string { return v.Proxy }).(pulumi.StringOutput)
+}
+
+type IdentityServiceAuthMethodResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAuthMethodResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]IdentityServiceAuthMethodResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceAuthMethodResponseArrayOutput) ToIdentityServiceAuthMethodResponseArrayOutput() IdentityServiceAuthMethodResponseArrayOutput {
+	return o
+}
+
+func (o IdentityServiceAuthMethodResponseArrayOutput) ToIdentityServiceAuthMethodResponseArrayOutputWithContext(ctx context.Context) IdentityServiceAuthMethodResponseArrayOutput {
+	return o
+}
+
+func (o IdentityServiceAuthMethodResponseArrayOutput) Index(i pulumi.IntInput) IdentityServiceAuthMethodResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) IdentityServiceAuthMethodResponse {
+		return vs[0].([]IdentityServiceAuthMethodResponse)[vs[1].(int)]
+	}).(IdentityServiceAuthMethodResponseOutput)
+}
+
+// Configuration for the AzureAD Auth flow.
+type IdentityServiceAzureADConfig struct {
+	// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+	ClientId *string `pulumi:"clientId"`
+	// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// The redirect URL that kubectl uses for authorization.
+	KubectlRedirectUri *string `pulumi:"kubectlRedirectUri"`
+	// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+	Tenant *string `pulumi:"tenant"`
+}
+
+// IdentityServiceAzureADConfigInput is an input type that accepts IdentityServiceAzureADConfigArgs and IdentityServiceAzureADConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceAzureADConfigInput` via:
+//
+//	IdentityServiceAzureADConfigArgs{...}
+type IdentityServiceAzureADConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceAzureADConfigOutput() IdentityServiceAzureADConfigOutput
+	ToIdentityServiceAzureADConfigOutputWithContext(context.Context) IdentityServiceAzureADConfigOutput
+}
+
+// Configuration for the AzureAD Auth flow.
+type IdentityServiceAzureADConfigArgs struct {
+	// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// The redirect URL that kubectl uses for authorization.
+	KubectlRedirectUri pulumi.StringPtrInput `pulumi:"kubectlRedirectUri"`
+	// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+	Tenant pulumi.StringPtrInput `pulumi:"tenant"`
+}
+
+func (IdentityServiceAzureADConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceAzureADConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceAzureADConfigArgs) ToIdentityServiceAzureADConfigOutput() IdentityServiceAzureADConfigOutput {
+	return i.ToIdentityServiceAzureADConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceAzureADConfigArgs) ToIdentityServiceAzureADConfigOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceAzureADConfigOutput)
+}
+
+func (i IdentityServiceAzureADConfigArgs) ToIdentityServiceAzureADConfigPtrOutput() IdentityServiceAzureADConfigPtrOutput {
+	return i.ToIdentityServiceAzureADConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceAzureADConfigArgs) ToIdentityServiceAzureADConfigPtrOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceAzureADConfigOutput).ToIdentityServiceAzureADConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceAzureADConfigPtrInput is an input type that accepts IdentityServiceAzureADConfigArgs, IdentityServiceAzureADConfigPtr and IdentityServiceAzureADConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceAzureADConfigPtrInput` via:
+//
+//	        IdentityServiceAzureADConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceAzureADConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceAzureADConfigPtrOutput() IdentityServiceAzureADConfigPtrOutput
+	ToIdentityServiceAzureADConfigPtrOutputWithContext(context.Context) IdentityServiceAzureADConfigPtrOutput
+}
+
+type identityServiceAzureADConfigPtrType IdentityServiceAzureADConfigArgs
+
+func IdentityServiceAzureADConfigPtr(v *IdentityServiceAzureADConfigArgs) IdentityServiceAzureADConfigPtrInput {
+	return (*identityServiceAzureADConfigPtrType)(v)
+}
+
+func (*identityServiceAzureADConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceAzureADConfig)(nil)).Elem()
+}
+
+func (i *identityServiceAzureADConfigPtrType) ToIdentityServiceAzureADConfigPtrOutput() IdentityServiceAzureADConfigPtrOutput {
+	return i.ToIdentityServiceAzureADConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceAzureADConfigPtrType) ToIdentityServiceAzureADConfigPtrOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceAzureADConfigPtrOutput)
+}
+
+// Configuration for the AzureAD Auth flow.
+type IdentityServiceAzureADConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAzureADConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceAzureADConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceAzureADConfigOutput) ToIdentityServiceAzureADConfigOutput() IdentityServiceAzureADConfigOutput {
+	return o
+}
+
+func (o IdentityServiceAzureADConfigOutput) ToIdentityServiceAzureADConfigOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigOutput {
+	return o
+}
+
+func (o IdentityServiceAzureADConfigOutput) ToIdentityServiceAzureADConfigPtrOutput() IdentityServiceAzureADConfigPtrOutput {
+	return o.ToIdentityServiceAzureADConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceAzureADConfigOutput) ToIdentityServiceAzureADConfigPtrOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceAzureADConfig) *IdentityServiceAzureADConfig {
+		return &v
+	}).(IdentityServiceAzureADConfigPtrOutput)
+}
+
+// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+func (o IdentityServiceAzureADConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+func (o IdentityServiceAzureADConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The redirect URL that kubectl uses for authorization.
+func (o IdentityServiceAzureADConfigOutput) KubectlRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.KubectlRedirectUri }).(pulumi.StringPtrOutput)
+}
+
+// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+func (o IdentityServiceAzureADConfigOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfig) *string { return v.Tenant }).(pulumi.StringPtrOutput)
+}
+
+type IdentityServiceAzureADConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAzureADConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceAzureADConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceAzureADConfigPtrOutput) ToIdentityServiceAzureADConfigPtrOutput() IdentityServiceAzureADConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceAzureADConfigPtrOutput) ToIdentityServiceAzureADConfigPtrOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceAzureADConfigPtrOutput) Elem() IdentityServiceAzureADConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) IdentityServiceAzureADConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceAzureADConfig
+		return ret
+	}).(IdentityServiceAzureADConfigOutput)
+}
+
+// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+func (o IdentityServiceAzureADConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+func (o IdentityServiceAzureADConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The redirect URL that kubectl uses for authorization.
+func (o IdentityServiceAzureADConfigPtrOutput) KubectlRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubectlRedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+func (o IdentityServiceAzureADConfigPtrOutput) Tenant() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceAzureADConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Tenant
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for the AzureAD Auth flow.
+type IdentityServiceAzureADConfigResponse struct {
+	// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+	ClientId string `pulumi:"clientId"`
+	// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Encrypted AzureAD client secret.
+	EncryptedClientSecret string `pulumi:"encryptedClientSecret"`
+	// The redirect URL that kubectl uses for authorization.
+	KubectlRedirectUri string `pulumi:"kubectlRedirectUri"`
+	// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+	Tenant string `pulumi:"tenant"`
+}
+
+// Configuration for the AzureAD Auth flow.
+type IdentityServiceAzureADConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceAzureADConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceAzureADConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceAzureADConfigResponseOutput) ToIdentityServiceAzureADConfigResponseOutput() IdentityServiceAzureADConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceAzureADConfigResponseOutput) ToIdentityServiceAzureADConfigResponseOutputWithContext(ctx context.Context) IdentityServiceAzureADConfigResponseOutput {
+	return o
+}
+
+// ID for the registered client application that makes authentication requests to the Azure AD identity provider.
+func (o IdentityServiceAzureADConfigResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Input only. Unencrypted AzureAD client secret will be passed to the GKE Hub CLH.
+func (o IdentityServiceAzureADConfigResponseOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Encrypted AzureAD client secret.
+func (o IdentityServiceAzureADConfigResponseOutput) EncryptedClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.EncryptedClientSecret }).(pulumi.StringOutput)
+}
+
+// The redirect URL that kubectl uses for authorization.
+func (o IdentityServiceAzureADConfigResponseOutput) KubectlRedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.KubectlRedirectUri }).(pulumi.StringOutput)
+}
+
+// Kind of Azure AD account to be authenticated. Supported values are or for accounts belonging to a specific tenant.
+func (o IdentityServiceAzureADConfigResponseOutput) Tenant() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceAzureADConfigResponse) string { return v.Tenant }).(pulumi.StringOutput)
+}
+
+// Configuration for the Google Plugin Auth flow.
+type IdentityServiceGoogleConfig struct {
+	// Disable automatic configuration of Google Plugin on supported platforms.
+	Disable *bool `pulumi:"disable"`
+}
+
+// IdentityServiceGoogleConfigInput is an input type that accepts IdentityServiceGoogleConfigArgs and IdentityServiceGoogleConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceGoogleConfigInput` via:
+//
+//	IdentityServiceGoogleConfigArgs{...}
+type IdentityServiceGoogleConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceGoogleConfigOutput() IdentityServiceGoogleConfigOutput
+	ToIdentityServiceGoogleConfigOutputWithContext(context.Context) IdentityServiceGoogleConfigOutput
+}
+
+// Configuration for the Google Plugin Auth flow.
+type IdentityServiceGoogleConfigArgs struct {
+	// Disable automatic configuration of Google Plugin on supported platforms.
+	Disable pulumi.BoolPtrInput `pulumi:"disable"`
+}
+
+func (IdentityServiceGoogleConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceGoogleConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceGoogleConfigArgs) ToIdentityServiceGoogleConfigOutput() IdentityServiceGoogleConfigOutput {
+	return i.ToIdentityServiceGoogleConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceGoogleConfigArgs) ToIdentityServiceGoogleConfigOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceGoogleConfigOutput)
+}
+
+func (i IdentityServiceGoogleConfigArgs) ToIdentityServiceGoogleConfigPtrOutput() IdentityServiceGoogleConfigPtrOutput {
+	return i.ToIdentityServiceGoogleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceGoogleConfigArgs) ToIdentityServiceGoogleConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceGoogleConfigOutput).ToIdentityServiceGoogleConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceGoogleConfigPtrInput is an input type that accepts IdentityServiceGoogleConfigArgs, IdentityServiceGoogleConfigPtr and IdentityServiceGoogleConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceGoogleConfigPtrInput` via:
+//
+//	        IdentityServiceGoogleConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceGoogleConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceGoogleConfigPtrOutput() IdentityServiceGoogleConfigPtrOutput
+	ToIdentityServiceGoogleConfigPtrOutputWithContext(context.Context) IdentityServiceGoogleConfigPtrOutput
+}
+
+type identityServiceGoogleConfigPtrType IdentityServiceGoogleConfigArgs
+
+func IdentityServiceGoogleConfigPtr(v *IdentityServiceGoogleConfigArgs) IdentityServiceGoogleConfigPtrInput {
+	return (*identityServiceGoogleConfigPtrType)(v)
+}
+
+func (*identityServiceGoogleConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceGoogleConfig)(nil)).Elem()
+}
+
+func (i *identityServiceGoogleConfigPtrType) ToIdentityServiceGoogleConfigPtrOutput() IdentityServiceGoogleConfigPtrOutput {
+	return i.ToIdentityServiceGoogleConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceGoogleConfigPtrType) ToIdentityServiceGoogleConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceGoogleConfigPtrOutput)
+}
+
+// Configuration for the Google Plugin Auth flow.
+type IdentityServiceGoogleConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceGoogleConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceGoogleConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceGoogleConfigOutput) ToIdentityServiceGoogleConfigOutput() IdentityServiceGoogleConfigOutput {
+	return o
+}
+
+func (o IdentityServiceGoogleConfigOutput) ToIdentityServiceGoogleConfigOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigOutput {
+	return o
+}
+
+func (o IdentityServiceGoogleConfigOutput) ToIdentityServiceGoogleConfigPtrOutput() IdentityServiceGoogleConfigPtrOutput {
+	return o.ToIdentityServiceGoogleConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceGoogleConfigOutput) ToIdentityServiceGoogleConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceGoogleConfig) *IdentityServiceGoogleConfig {
+		return &v
+	}).(IdentityServiceGoogleConfigPtrOutput)
+}
+
+// Disable automatic configuration of Google Plugin on supported platforms.
+func (o IdentityServiceGoogleConfigOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityServiceGoogleConfig) *bool { return v.Disable }).(pulumi.BoolPtrOutput)
+}
+
+type IdentityServiceGoogleConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceGoogleConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceGoogleConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceGoogleConfigPtrOutput) ToIdentityServiceGoogleConfigPtrOutput() IdentityServiceGoogleConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceGoogleConfigPtrOutput) ToIdentityServiceGoogleConfigPtrOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceGoogleConfigPtrOutput) Elem() IdentityServiceGoogleConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceGoogleConfig) IdentityServiceGoogleConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceGoogleConfig
+		return ret
+	}).(IdentityServiceGoogleConfigOutput)
+}
+
+// Disable automatic configuration of Google Plugin on supported platforms.
+func (o IdentityServiceGoogleConfigPtrOutput) Disable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceGoogleConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Disable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Google Plugin Auth flow.
+type IdentityServiceGoogleConfigResponse struct {
+	// Disable automatic configuration of Google Plugin on supported platforms.
+	Disable bool `pulumi:"disable"`
+}
+
+// Configuration for the Google Plugin Auth flow.
+type IdentityServiceGoogleConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceGoogleConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceGoogleConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceGoogleConfigResponseOutput) ToIdentityServiceGoogleConfigResponseOutput() IdentityServiceGoogleConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceGoogleConfigResponseOutput) ToIdentityServiceGoogleConfigResponseOutputWithContext(ctx context.Context) IdentityServiceGoogleConfigResponseOutput {
+	return o
+}
+
+// Disable automatic configuration of Google Plugin on supported platforms.
+func (o IdentityServiceGoogleConfigResponseOutput) Disable() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdentityServiceGoogleConfigResponse) bool { return v.Disable }).(pulumi.BoolOutput)
+}
+
+// **Anthos Identity Service**: Configuration for a single Membership.
+type IdentityServiceMembershipSpec struct {
+	// A member may support multiple auth methods.
+	AuthMethods []IdentityServiceAuthMethod `pulumi:"authMethods"`
+}
+
+// IdentityServiceMembershipSpecInput is an input type that accepts IdentityServiceMembershipSpecArgs and IdentityServiceMembershipSpecOutput values.
+// You can construct a concrete instance of `IdentityServiceMembershipSpecInput` via:
+//
+//	IdentityServiceMembershipSpecArgs{...}
+type IdentityServiceMembershipSpecInput interface {
+	pulumi.Input
+
+	ToIdentityServiceMembershipSpecOutput() IdentityServiceMembershipSpecOutput
+	ToIdentityServiceMembershipSpecOutputWithContext(context.Context) IdentityServiceMembershipSpecOutput
+}
+
+// **Anthos Identity Service**: Configuration for a single Membership.
+type IdentityServiceMembershipSpecArgs struct {
+	// A member may support multiple auth methods.
+	AuthMethods IdentityServiceAuthMethodArrayInput `pulumi:"authMethods"`
+}
+
+func (IdentityServiceMembershipSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceMembershipSpec)(nil)).Elem()
+}
+
+func (i IdentityServiceMembershipSpecArgs) ToIdentityServiceMembershipSpecOutput() IdentityServiceMembershipSpecOutput {
+	return i.ToIdentityServiceMembershipSpecOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceMembershipSpecArgs) ToIdentityServiceMembershipSpecOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceMembershipSpecOutput)
+}
+
+func (i IdentityServiceMembershipSpecArgs) ToIdentityServiceMembershipSpecPtrOutput() IdentityServiceMembershipSpecPtrOutput {
+	return i.ToIdentityServiceMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceMembershipSpecArgs) ToIdentityServiceMembershipSpecPtrOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceMembershipSpecOutput).ToIdentityServiceMembershipSpecPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceMembershipSpecPtrInput is an input type that accepts IdentityServiceMembershipSpecArgs, IdentityServiceMembershipSpecPtr and IdentityServiceMembershipSpecPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceMembershipSpecPtrInput` via:
+//
+//	        IdentityServiceMembershipSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceMembershipSpecPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceMembershipSpecPtrOutput() IdentityServiceMembershipSpecPtrOutput
+	ToIdentityServiceMembershipSpecPtrOutputWithContext(context.Context) IdentityServiceMembershipSpecPtrOutput
+}
+
+type identityServiceMembershipSpecPtrType IdentityServiceMembershipSpecArgs
+
+func IdentityServiceMembershipSpecPtr(v *IdentityServiceMembershipSpecArgs) IdentityServiceMembershipSpecPtrInput {
+	return (*identityServiceMembershipSpecPtrType)(v)
+}
+
+func (*identityServiceMembershipSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceMembershipSpec)(nil)).Elem()
+}
+
+func (i *identityServiceMembershipSpecPtrType) ToIdentityServiceMembershipSpecPtrOutput() IdentityServiceMembershipSpecPtrOutput {
+	return i.ToIdentityServiceMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceMembershipSpecPtrType) ToIdentityServiceMembershipSpecPtrOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceMembershipSpecPtrOutput)
+}
+
+// **Anthos Identity Service**: Configuration for a single Membership.
+type IdentityServiceMembershipSpecOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceMembershipSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceMembershipSpec)(nil)).Elem()
+}
+
+func (o IdentityServiceMembershipSpecOutput) ToIdentityServiceMembershipSpecOutput() IdentityServiceMembershipSpecOutput {
+	return o
+}
+
+func (o IdentityServiceMembershipSpecOutput) ToIdentityServiceMembershipSpecOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecOutput {
+	return o
+}
+
+func (o IdentityServiceMembershipSpecOutput) ToIdentityServiceMembershipSpecPtrOutput() IdentityServiceMembershipSpecPtrOutput {
+	return o.ToIdentityServiceMembershipSpecPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceMembershipSpecOutput) ToIdentityServiceMembershipSpecPtrOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceMembershipSpec) *IdentityServiceMembershipSpec {
+		return &v
+	}).(IdentityServiceMembershipSpecPtrOutput)
+}
+
+// A member may support multiple auth methods.
+func (o IdentityServiceMembershipSpecOutput) AuthMethods() IdentityServiceAuthMethodArrayOutput {
+	return o.ApplyT(func(v IdentityServiceMembershipSpec) []IdentityServiceAuthMethod { return v.AuthMethods }).(IdentityServiceAuthMethodArrayOutput)
+}
+
+type IdentityServiceMembershipSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceMembershipSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceMembershipSpec)(nil)).Elem()
+}
+
+func (o IdentityServiceMembershipSpecPtrOutput) ToIdentityServiceMembershipSpecPtrOutput() IdentityServiceMembershipSpecPtrOutput {
+	return o
+}
+
+func (o IdentityServiceMembershipSpecPtrOutput) ToIdentityServiceMembershipSpecPtrOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecPtrOutput {
+	return o
+}
+
+func (o IdentityServiceMembershipSpecPtrOutput) Elem() IdentityServiceMembershipSpecOutput {
+	return o.ApplyT(func(v *IdentityServiceMembershipSpec) IdentityServiceMembershipSpec {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceMembershipSpec
+		return ret
+	}).(IdentityServiceMembershipSpecOutput)
+}
+
+// A member may support multiple auth methods.
+func (o IdentityServiceMembershipSpecPtrOutput) AuthMethods() IdentityServiceAuthMethodArrayOutput {
+	return o.ApplyT(func(v *IdentityServiceMembershipSpec) []IdentityServiceAuthMethod {
+		if v == nil {
+			return nil
+		}
+		return v.AuthMethods
+	}).(IdentityServiceAuthMethodArrayOutput)
+}
+
+// **Anthos Identity Service**: Configuration for a single Membership.
+type IdentityServiceMembershipSpecResponse struct {
+	// A member may support multiple auth methods.
+	AuthMethods []IdentityServiceAuthMethodResponse `pulumi:"authMethods"`
+}
+
+// **Anthos Identity Service**: Configuration for a single Membership.
+type IdentityServiceMembershipSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceMembershipSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceMembershipSpecResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceMembershipSpecResponseOutput) ToIdentityServiceMembershipSpecResponseOutput() IdentityServiceMembershipSpecResponseOutput {
+	return o
+}
+
+func (o IdentityServiceMembershipSpecResponseOutput) ToIdentityServiceMembershipSpecResponseOutputWithContext(ctx context.Context) IdentityServiceMembershipSpecResponseOutput {
+	return o
+}
+
+// A member may support multiple auth methods.
+func (o IdentityServiceMembershipSpecResponseOutput) AuthMethods() IdentityServiceAuthMethodResponseArrayOutput {
+	return o.ApplyT(func(v IdentityServiceMembershipSpecResponse) []IdentityServiceAuthMethodResponse {
+		return v.AuthMethods
+	}).(IdentityServiceAuthMethodResponseArrayOutput)
+}
+
+// Configuration for OIDC Auth flow.
+type IdentityServiceOidcConfig struct {
+	// PEM-encoded CA for OIDC provider.
+	CertificateAuthorityData *string `pulumi:"certificateAuthorityData"`
+	// ID for OIDC client application.
+	ClientId *string `pulumi:"clientId"`
+	// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+	DeployCloudConsoleProxy *bool `pulumi:"deployCloudConsoleProxy"`
+	// Enable access token.
+	EnableAccessToken *bool `pulumi:"enableAccessToken"`
+	// Comma-separated list of key-value pairs.
+	ExtraParams *string `pulumi:"extraParams"`
+	// Prefix to prepend to group name.
+	GroupPrefix *string `pulumi:"groupPrefix"`
+	// Claim in OIDC ID token that holds group information.
+	GroupsClaim *string `pulumi:"groupsClaim"`
+	// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+	IssuerUri *string `pulumi:"issuerUri"`
+	// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+	KubectlRedirectUri *string `pulumi:"kubectlRedirectUri"`
+	// Comma-separated list of identifiers.
+	Scopes *string `pulumi:"scopes"`
+	// Claim in OIDC ID token that holds username.
+	UserClaim *string `pulumi:"userClaim"`
+	// Prefix to prepend to user name.
+	UserPrefix *string `pulumi:"userPrefix"`
+}
+
+// IdentityServiceOidcConfigInput is an input type that accepts IdentityServiceOidcConfigArgs and IdentityServiceOidcConfigOutput values.
+// You can construct a concrete instance of `IdentityServiceOidcConfigInput` via:
+//
+//	IdentityServiceOidcConfigArgs{...}
+type IdentityServiceOidcConfigInput interface {
+	pulumi.Input
+
+	ToIdentityServiceOidcConfigOutput() IdentityServiceOidcConfigOutput
+	ToIdentityServiceOidcConfigOutputWithContext(context.Context) IdentityServiceOidcConfigOutput
+}
+
+// Configuration for OIDC Auth flow.
+type IdentityServiceOidcConfigArgs struct {
+	// PEM-encoded CA for OIDC provider.
+	CertificateAuthorityData pulumi.StringPtrInput `pulumi:"certificateAuthorityData"`
+	// ID for OIDC client application.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
+	// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+	DeployCloudConsoleProxy pulumi.BoolPtrInput `pulumi:"deployCloudConsoleProxy"`
+	// Enable access token.
+	EnableAccessToken pulumi.BoolPtrInput `pulumi:"enableAccessToken"`
+	// Comma-separated list of key-value pairs.
+	ExtraParams pulumi.StringPtrInput `pulumi:"extraParams"`
+	// Prefix to prepend to group name.
+	GroupPrefix pulumi.StringPtrInput `pulumi:"groupPrefix"`
+	// Claim in OIDC ID token that holds group information.
+	GroupsClaim pulumi.StringPtrInput `pulumi:"groupsClaim"`
+	// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+	IssuerUri pulumi.StringPtrInput `pulumi:"issuerUri"`
+	// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+	KubectlRedirectUri pulumi.StringPtrInput `pulumi:"kubectlRedirectUri"`
+	// Comma-separated list of identifiers.
+	Scopes pulumi.StringPtrInput `pulumi:"scopes"`
+	// Claim in OIDC ID token that holds username.
+	UserClaim pulumi.StringPtrInput `pulumi:"userClaim"`
+	// Prefix to prepend to user name.
+	UserPrefix pulumi.StringPtrInput `pulumi:"userPrefix"`
+}
+
+func (IdentityServiceOidcConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceOidcConfig)(nil)).Elem()
+}
+
+func (i IdentityServiceOidcConfigArgs) ToIdentityServiceOidcConfigOutput() IdentityServiceOidcConfigOutput {
+	return i.ToIdentityServiceOidcConfigOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceOidcConfigArgs) ToIdentityServiceOidcConfigOutputWithContext(ctx context.Context) IdentityServiceOidcConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceOidcConfigOutput)
+}
+
+func (i IdentityServiceOidcConfigArgs) ToIdentityServiceOidcConfigPtrOutput() IdentityServiceOidcConfigPtrOutput {
+	return i.ToIdentityServiceOidcConfigPtrOutputWithContext(context.Background())
+}
+
+func (i IdentityServiceOidcConfigArgs) ToIdentityServiceOidcConfigPtrOutputWithContext(ctx context.Context) IdentityServiceOidcConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceOidcConfigOutput).ToIdentityServiceOidcConfigPtrOutputWithContext(ctx)
+}
+
+// IdentityServiceOidcConfigPtrInput is an input type that accepts IdentityServiceOidcConfigArgs, IdentityServiceOidcConfigPtr and IdentityServiceOidcConfigPtrOutput values.
+// You can construct a concrete instance of `IdentityServiceOidcConfigPtrInput` via:
+//
+//	        IdentityServiceOidcConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type IdentityServiceOidcConfigPtrInput interface {
+	pulumi.Input
+
+	ToIdentityServiceOidcConfigPtrOutput() IdentityServiceOidcConfigPtrOutput
+	ToIdentityServiceOidcConfigPtrOutputWithContext(context.Context) IdentityServiceOidcConfigPtrOutput
+}
+
+type identityServiceOidcConfigPtrType IdentityServiceOidcConfigArgs
+
+func IdentityServiceOidcConfigPtr(v *IdentityServiceOidcConfigArgs) IdentityServiceOidcConfigPtrInput {
+	return (*identityServiceOidcConfigPtrType)(v)
+}
+
+func (*identityServiceOidcConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceOidcConfig)(nil)).Elem()
+}
+
+func (i *identityServiceOidcConfigPtrType) ToIdentityServiceOidcConfigPtrOutput() IdentityServiceOidcConfigPtrOutput {
+	return i.ToIdentityServiceOidcConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *identityServiceOidcConfigPtrType) ToIdentityServiceOidcConfigPtrOutputWithContext(ctx context.Context) IdentityServiceOidcConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(IdentityServiceOidcConfigPtrOutput)
+}
+
+// Configuration for OIDC Auth flow.
+type IdentityServiceOidcConfigOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceOidcConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceOidcConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceOidcConfigOutput) ToIdentityServiceOidcConfigOutput() IdentityServiceOidcConfigOutput {
+	return o
+}
+
+func (o IdentityServiceOidcConfigOutput) ToIdentityServiceOidcConfigOutputWithContext(ctx context.Context) IdentityServiceOidcConfigOutput {
+	return o
+}
+
+func (o IdentityServiceOidcConfigOutput) ToIdentityServiceOidcConfigPtrOutput() IdentityServiceOidcConfigPtrOutput {
+	return o.ToIdentityServiceOidcConfigPtrOutputWithContext(context.Background())
+}
+
+func (o IdentityServiceOidcConfigOutput) ToIdentityServiceOidcConfigPtrOutputWithContext(ctx context.Context) IdentityServiceOidcConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IdentityServiceOidcConfig) *IdentityServiceOidcConfig {
+		return &v
+	}).(IdentityServiceOidcConfigPtrOutput)
+}
+
+// PEM-encoded CA for OIDC provider.
+func (o IdentityServiceOidcConfigOutput) CertificateAuthorityData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.CertificateAuthorityData }).(pulumi.StringPtrOutput)
+}
+
+// ID for OIDC client application.
+func (o IdentityServiceOidcConfigOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+func (o IdentityServiceOidcConfigOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+func (o IdentityServiceOidcConfigOutput) DeployCloudConsoleProxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *bool { return v.DeployCloudConsoleProxy }).(pulumi.BoolPtrOutput)
+}
+
+// Enable access token.
+func (o IdentityServiceOidcConfigOutput) EnableAccessToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *bool { return v.EnableAccessToken }).(pulumi.BoolPtrOutput)
+}
+
+// Comma-separated list of key-value pairs.
+func (o IdentityServiceOidcConfigOutput) ExtraParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.ExtraParams }).(pulumi.StringPtrOutput)
+}
+
+// Prefix to prepend to group name.
+func (o IdentityServiceOidcConfigOutput) GroupPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.GroupPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Claim in OIDC ID token that holds group information.
+func (o IdentityServiceOidcConfigOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.GroupsClaim }).(pulumi.StringPtrOutput)
+}
+
+// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+func (o IdentityServiceOidcConfigOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.IssuerUri }).(pulumi.StringPtrOutput)
+}
+
+// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+func (o IdentityServiceOidcConfigOutput) KubectlRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.KubectlRedirectUri }).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of identifiers.
+func (o IdentityServiceOidcConfigOutput) Scopes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.Scopes }).(pulumi.StringPtrOutput)
+}
+
+// Claim in OIDC ID token that holds username.
+func (o IdentityServiceOidcConfigOutput) UserClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.UserClaim }).(pulumi.StringPtrOutput)
+}
+
+// Prefix to prepend to user name.
+func (o IdentityServiceOidcConfigOutput) UserPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfig) *string { return v.UserPrefix }).(pulumi.StringPtrOutput)
+}
+
+type IdentityServiceOidcConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceOidcConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**IdentityServiceOidcConfig)(nil)).Elem()
+}
+
+func (o IdentityServiceOidcConfigPtrOutput) ToIdentityServiceOidcConfigPtrOutput() IdentityServiceOidcConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceOidcConfigPtrOutput) ToIdentityServiceOidcConfigPtrOutputWithContext(ctx context.Context) IdentityServiceOidcConfigPtrOutput {
+	return o
+}
+
+func (o IdentityServiceOidcConfigPtrOutput) Elem() IdentityServiceOidcConfigOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) IdentityServiceOidcConfig {
+		if v != nil {
+			return *v
+		}
+		var ret IdentityServiceOidcConfig
+		return ret
+	}).(IdentityServiceOidcConfigOutput)
+}
+
+// PEM-encoded CA for OIDC provider.
+func (o IdentityServiceOidcConfigPtrOutput) CertificateAuthorityData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateAuthorityData
+	}).(pulumi.StringPtrOutput)
+}
+
+// ID for OIDC client application.
+func (o IdentityServiceOidcConfigPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+func (o IdentityServiceOidcConfigPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+func (o IdentityServiceOidcConfigPtrOutput) DeployCloudConsoleProxy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployCloudConsoleProxy
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enable access token.
+func (o IdentityServiceOidcConfigPtrOutput) EnableAccessToken() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAccessToken
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Comma-separated list of key-value pairs.
+func (o IdentityServiceOidcConfigPtrOutput) ExtraParams() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraParams
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prefix to prepend to group name.
+func (o IdentityServiceOidcConfigPtrOutput) GroupPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Claim in OIDC ID token that holds group information.
+func (o IdentityServiceOidcConfigPtrOutput) GroupsClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GroupsClaim
+	}).(pulumi.StringPtrOutput)
+}
+
+// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+func (o IdentityServiceOidcConfigPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+func (o IdentityServiceOidcConfigPtrOutput) KubectlRedirectUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KubectlRedirectUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma-separated list of identifiers.
+func (o IdentityServiceOidcConfigPtrOutput) Scopes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scopes
+	}).(pulumi.StringPtrOutput)
+}
+
+// Claim in OIDC ID token that holds username.
+func (o IdentityServiceOidcConfigPtrOutput) UserClaim() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserClaim
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prefix to prepend to user name.
+func (o IdentityServiceOidcConfigPtrOutput) UserPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *IdentityServiceOidcConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UserPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for OIDC Auth flow.
+type IdentityServiceOidcConfigResponse struct {
+	// PEM-encoded CA for OIDC provider.
+	CertificateAuthorityData string `pulumi:"certificateAuthorityData"`
+	// ID for OIDC client application.
+	ClientId string `pulumi:"clientId"`
+	// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+	DeployCloudConsoleProxy bool `pulumi:"deployCloudConsoleProxy"`
+	// Enable access token.
+	EnableAccessToken bool `pulumi:"enableAccessToken"`
+	// Encrypted OIDC Client secret
+	EncryptedClientSecret string `pulumi:"encryptedClientSecret"`
+	// Comma-separated list of key-value pairs.
+	ExtraParams string `pulumi:"extraParams"`
+	// Prefix to prepend to group name.
+	GroupPrefix string `pulumi:"groupPrefix"`
+	// Claim in OIDC ID token that holds group information.
+	GroupsClaim string `pulumi:"groupsClaim"`
+	// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+	IssuerUri string `pulumi:"issuerUri"`
+	// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+	KubectlRedirectUri string `pulumi:"kubectlRedirectUri"`
+	// Comma-separated list of identifiers.
+	Scopes string `pulumi:"scopes"`
+	// Claim in OIDC ID token that holds username.
+	UserClaim string `pulumi:"userClaim"`
+	// Prefix to prepend to user name.
+	UserPrefix string `pulumi:"userPrefix"`
+}
+
+// Configuration for OIDC Auth flow.
+type IdentityServiceOidcConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (IdentityServiceOidcConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IdentityServiceOidcConfigResponse)(nil)).Elem()
+}
+
+func (o IdentityServiceOidcConfigResponseOutput) ToIdentityServiceOidcConfigResponseOutput() IdentityServiceOidcConfigResponseOutput {
+	return o
+}
+
+func (o IdentityServiceOidcConfigResponseOutput) ToIdentityServiceOidcConfigResponseOutputWithContext(ctx context.Context) IdentityServiceOidcConfigResponseOutput {
+	return o
+}
+
+// PEM-encoded CA for OIDC provider.
+func (o IdentityServiceOidcConfigResponseOutput) CertificateAuthorityData() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.CertificateAuthorityData }).(pulumi.StringOutput)
+}
+
+// ID for OIDC client application.
+func (o IdentityServiceOidcConfigResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// Input only. Unencrypted OIDC client secret will be passed to the GKE Hub CLH.
+func (o IdentityServiceOidcConfigResponseOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Flag to denote if reverse proxy is used to connect to auth provider. This flag should be set to true when provider is not reachable by Google Cloud Console.
+func (o IdentityServiceOidcConfigResponseOutput) DeployCloudConsoleProxy() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) bool { return v.DeployCloudConsoleProxy }).(pulumi.BoolOutput)
+}
+
+// Enable access token.
+func (o IdentityServiceOidcConfigResponseOutput) EnableAccessToken() pulumi.BoolOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) bool { return v.EnableAccessToken }).(pulumi.BoolOutput)
+}
+
+// Encrypted OIDC Client secret
+func (o IdentityServiceOidcConfigResponseOutput) EncryptedClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.EncryptedClientSecret }).(pulumi.StringOutput)
+}
+
+// Comma-separated list of key-value pairs.
+func (o IdentityServiceOidcConfigResponseOutput) ExtraParams() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.ExtraParams }).(pulumi.StringOutput)
+}
+
+// Prefix to prepend to group name.
+func (o IdentityServiceOidcConfigResponseOutput) GroupPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.GroupPrefix }).(pulumi.StringOutput)
+}
+
+// Claim in OIDC ID token that holds group information.
+func (o IdentityServiceOidcConfigResponseOutput) GroupsClaim() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.GroupsClaim }).(pulumi.StringOutput)
+}
+
+// URI for the OIDC provider. This should point to the level below .well-known/openid-configuration.
+func (o IdentityServiceOidcConfigResponseOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+// Registered redirect uri to redirect users going through OAuth flow using kubectl plugin.
+func (o IdentityServiceOidcConfigResponseOutput) KubectlRedirectUri() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.KubectlRedirectUri }).(pulumi.StringOutput)
+}
+
+// Comma-separated list of identifiers.
+func (o IdentityServiceOidcConfigResponseOutput) Scopes() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.Scopes }).(pulumi.StringOutput)
+}
+
+// Claim in OIDC ID token that holds username.
+func (o IdentityServiceOidcConfigResponseOutput) UserClaim() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.UserClaim }).(pulumi.StringOutput)
+}
+
+// Prefix to prepend to user name.
+func (o IdentityServiceOidcConfigResponseOutput) UserPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v IdentityServiceOidcConfigResponse) string { return v.UserPrefix }).(pulumi.StringOutput)
 }
 
 // KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
@@ -4832,6 +6280,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudAuditLoggingFeatureSpecPtrInput)(nil)).Elem(), CloudAuditLoggingFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecInput)(nil)).Elem(), CommonFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecPtrInput)(nil)).Elem(), CommonFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecInput)(nil)).Elem(), CommonFleetDefaultMemberConfigSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecPtrInput)(nil)).Elem(), CommonFleetDefaultMemberConfigSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterInput)(nil)).Elem(), EdgeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EdgeClusterPtrInput)(nil)).Elem(), EdgeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
@@ -4842,6 +6292,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FleetObservabilityFeatureSpecPtrInput)(nil)).Elem(), FleetObservabilityFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAuthMethodInput)(nil)).Elem(), IdentityServiceAuthMethodArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAuthMethodArrayInput)(nil)).Elem(), IdentityServiceAuthMethodArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAzureADConfigInput)(nil)).Elem(), IdentityServiceAzureADConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceAzureADConfigPtrInput)(nil)).Elem(), IdentityServiceAzureADConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceGoogleConfigInput)(nil)).Elem(), IdentityServiceGoogleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceGoogleConfigPtrInput)(nil)).Elem(), IdentityServiceGoogleConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceMembershipSpecInput)(nil)).Elem(), IdentityServiceMembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceMembershipSpecPtrInput)(nil)).Elem(), IdentityServiceMembershipSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceOidcConfigInput)(nil)).Elem(), IdentityServiceOidcConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*IdentityServiceOidcConfigPtrInput)(nil)).Elem(), IdentityServiceOidcConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourceInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesResourcePtrInput)(nil)).Elem(), KubernetesResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipEndpointInput)(nil)).Elem(), MembershipEndpointArgs{})
@@ -4891,6 +6351,9 @@ func init() {
 	pulumi.RegisterOutputType(CommonFeatureSpecPtrOutput{})
 	pulumi.RegisterOutputType(CommonFeatureSpecResponseOutput{})
 	pulumi.RegisterOutputType(CommonFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(CommonFleetDefaultMemberConfigSpecOutput{})
+	pulumi.RegisterOutputType(CommonFleetDefaultMemberConfigSpecPtrOutput{})
+	pulumi.RegisterOutputType(CommonFleetDefaultMemberConfigSpecResponseOutput{})
 	pulumi.RegisterOutputType(EdgeClusterOutput{})
 	pulumi.RegisterOutputType(EdgeClusterPtrOutput{})
 	pulumi.RegisterOutputType(EdgeClusterResponseOutput{})
@@ -4910,6 +6373,22 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAuthMethodOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAuthMethodArrayOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAuthMethodResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAuthMethodResponseArrayOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAzureADConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAzureADConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceAzureADConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceGoogleConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceGoogleConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceGoogleConfigResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceMembershipSpecOutput{})
+	pulumi.RegisterOutputType(IdentityServiceMembershipSpecPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceMembershipSpecResponseOutput{})
+	pulumi.RegisterOutputType(IdentityServiceOidcConfigOutput{})
+	pulumi.RegisterOutputType(IdentityServiceOidcConfigPtrOutput{})
+	pulumi.RegisterOutputType(IdentityServiceOidcConfigResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesMetadataResponseOutput{})
 	pulumi.RegisterOutputType(KubernetesResourceOutput{})
 	pulumi.RegisterOutputType(KubernetesResourcePtrOutput{})

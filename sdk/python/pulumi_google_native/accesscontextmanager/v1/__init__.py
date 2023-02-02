@@ -11,10 +11,12 @@ from .access_policy import *
 from .access_policy_iam_binding import *
 from .access_policy_iam_member import *
 from .access_policy_iam_policy import *
+from .authorized_orgs_desc import *
 from .gcp_user_access_binding import *
 from .get_access_level import *
 from .get_access_policy import *
 from .get_access_policy_iam_policy import *
+from .get_authorized_orgs_desc import *
 from .get_gcp_user_access_binding import *
 from .get_service_perimeter import *
 from .service_perimeter import *

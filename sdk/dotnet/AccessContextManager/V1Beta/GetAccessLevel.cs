@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
+        /// Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
         /// </summary>
         public readonly string Name;
         /// <summary>

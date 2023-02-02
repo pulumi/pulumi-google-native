@@ -265,6 +265,16 @@ export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
 
+export { GetNetworkAttachmentArgs, GetNetworkAttachmentResult, GetNetworkAttachmentOutputArgs } from "./getNetworkAttachment";
+export const getNetworkAttachment: typeof import("./getNetworkAttachment").getNetworkAttachment = null as any;
+export const getNetworkAttachmentOutput: typeof import("./getNetworkAttachment").getNetworkAttachmentOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkAttachment","getNetworkAttachmentOutput"], () => require("./getNetworkAttachment"));
+
+export { GetNetworkAttachmentIamPolicyArgs, GetNetworkAttachmentIamPolicyResult, GetNetworkAttachmentIamPolicyOutputArgs } from "./getNetworkAttachmentIamPolicy";
+export const getNetworkAttachmentIamPolicy: typeof import("./getNetworkAttachmentIamPolicy").getNetworkAttachmentIamPolicy = null as any;
+export const getNetworkAttachmentIamPolicyOutput: typeof import("./getNetworkAttachmentIamPolicy").getNetworkAttachmentIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkAttachmentIamPolicy","getNetworkAttachmentIamPolicyOutput"], () => require("./getNetworkAttachmentIamPolicy"));
+
 export { GetNetworkEdgeSecurityServiceArgs, GetNetworkEdgeSecurityServiceResult, GetNetworkEdgeSecurityServiceOutputArgs } from "./getNetworkEdgeSecurityService";
 export const getNetworkEdgeSecurityService: typeof import("./getNetworkEdgeSecurityService").getNetworkEdgeSecurityService = null as any;
 export const getNetworkEdgeSecurityServiceOutput: typeof import("./getNetworkEdgeSecurityService").getNetworkEdgeSecurityServiceOutput = null as any;
@@ -709,6 +719,26 @@ export { NetworkArgs } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
+export { NetworkAttachmentArgs } from "./networkAttachment";
+export type NetworkAttachment = import("./networkAttachment").NetworkAttachment;
+export const NetworkAttachment: typeof import("./networkAttachment").NetworkAttachment = null as any;
+utilities.lazyLoad(exports, ["NetworkAttachment"], () => require("./networkAttachment"));
+
+export { NetworkAttachmentIamBindingArgs } from "./networkAttachmentIamBinding";
+export type NetworkAttachmentIamBinding = import("./networkAttachmentIamBinding").NetworkAttachmentIamBinding;
+export const NetworkAttachmentIamBinding: typeof import("./networkAttachmentIamBinding").NetworkAttachmentIamBinding = null as any;
+utilities.lazyLoad(exports, ["NetworkAttachmentIamBinding"], () => require("./networkAttachmentIamBinding"));
+
+export { NetworkAttachmentIamMemberArgs } from "./networkAttachmentIamMember";
+export type NetworkAttachmentIamMember = import("./networkAttachmentIamMember").NetworkAttachmentIamMember;
+export const NetworkAttachmentIamMember: typeof import("./networkAttachmentIamMember").NetworkAttachmentIamMember = null as any;
+utilities.lazyLoad(exports, ["NetworkAttachmentIamMember"], () => require("./networkAttachmentIamMember"));
+
+export { NetworkAttachmentIamPolicyArgs } from "./networkAttachmentIamPolicy";
+export type NetworkAttachmentIamPolicy = import("./networkAttachmentIamPolicy").NetworkAttachmentIamPolicy;
+export const NetworkAttachmentIamPolicy: typeof import("./networkAttachmentIamPolicy").NetworkAttachmentIamPolicy = null as any;
+utilities.lazyLoad(exports, ["NetworkAttachmentIamPolicy"], () => require("./networkAttachmentIamPolicy"));
 
 export { NetworkEdgeSecurityServiceArgs } from "./networkEdgeSecurityService";
 export type NetworkEdgeSecurityService = import("./networkEdgeSecurityService").NetworkEdgeSecurityService;
@@ -1213,6 +1243,14 @@ const _module = {
                 return new MachineImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NetworkAttachment":
+                return new NetworkAttachment(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NetworkAttachmentIamBinding":
+                return new NetworkAttachmentIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NetworkAttachmentIamMember":
+                return new NetworkAttachmentIamMember(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NetworkAttachmentIamPolicy":
+                return new NetworkAttachmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:NetworkEdgeSecurityService":
                 return new NetworkEdgeSecurityService(name, <any>undefined, { urn })
             case "google-native:compute/v1:NetworkEndpointGroup":

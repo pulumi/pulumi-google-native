@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
+        /// Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
         /// </summary>
         [Input("evaluationMode")]
         public Input<Pulumi.GoogleNative.Container.V1Beta1.BinaryAuthorizationEvaluationMode>? EvaluationMode { get; set; }

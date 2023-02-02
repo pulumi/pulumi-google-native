@@ -12,10 +12,13 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AccessKeyCredentialsResponse',
     'AdaptingOSStepResponse',
     'ApplianceVersionResponse',
     'AppliedLicenseResponse',
     'AvailableUpdatesResponse',
+    'AwsSourceDetailsResponse',
+    'AwsSourceVmDetailsResponse',
     'CloneJobResponse',
     'CloneStepResponse',
     'ComputeEngineTargetDefaultsResponse',
@@ -36,6 +39,7 @@ __all__ = [
     'SchedulingNodeAffinityResponse',
     'ShuttingDownSourceVMStepResponse',
     'StatusResponse',
+    'TagResponse',
     'TargetVMDetailsResponse',
     'UpgradeStatusResponse',
     'VmUtilizationInfoResponse',
@@ -43,6 +47,58 @@ __all__ = [
     'VmwareSourceDetailsResponse',
     'VmwareVmDetailsResponse',
 ]
+
+@pulumi.output_type
+class AccessKeyCredentialsResponse(dict):
+    """
+    Message describing AWS Credentials using access key id and secret.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessKeyCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessKeyCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessKeyCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: str,
+                 secret_access_key: str):
+        """
+        Message describing AWS Credentials using access key id and secret.
+        :param str access_key_id: AWS access key ID.
+        :param str secret_access_key: Input only. AWS secret access key.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> str:
+        """
+        AWS access key ID.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> str:
+        """
+        Input only. AWS secret access key.
+        """
+        return pulumi.get(self, "secret_access_key")
+
 
 @pulumi.output_type
 class AdaptingOSStepResponse(dict):
@@ -228,6 +284,182 @@ class AvailableUpdatesResponse(dict):
         The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
         """
         return pulumi.get(self, "new_deployable_appliance")
+
+
+@pulumi.output_type
+class AwsSourceDetailsResponse(dict):
+    """
+    AwsSourceDetails message describes a specific source details for the AWS source type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyCreds":
+            suggest = "access_key_creds"
+        elif key == "awsRegion":
+            suggest = "aws_region"
+        elif key == "inventorySecurityGroupNames":
+            suggest = "inventory_security_group_names"
+        elif key == "inventoryTagList":
+            suggest = "inventory_tag_list"
+        elif key == "migrationResourcesUserTags":
+            suggest = "migration_resources_user_tags"
+        elif key == "publicIp":
+            suggest = "public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSourceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSourceDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSourceDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_creds: 'outputs.AccessKeyCredentialsResponse',
+                 aws_region: str,
+                 error: 'outputs.StatusResponse',
+                 inventory_security_group_names: Sequence[str],
+                 inventory_tag_list: Sequence['outputs.TagResponse'],
+                 migration_resources_user_tags: Mapping[str, str],
+                 public_ip: str,
+                 state: str):
+        """
+        AwsSourceDetails message describes a specific source details for the AWS source type.
+        :param 'AccessKeyCredentialsResponse' access_key_creds: AWS Credentials using access key id and secret.
+        :param str aws_region: Immutable. The AWS region that the source VMs will be migrated from.
+        :param 'StatusResponse' error: Provides details on the state of the Source in case of an error.
+        :param Sequence[str] inventory_security_group_names: AWS security group names to limit the scope of the source inventory.
+        :param Sequence['TagResponse'] inventory_tag_list: AWS resource tags to limit the scope of the source inventory.
+        :param Mapping[str, str] migration_resources_user_tags: User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+        :param str public_ip: The source's public IP. All communication initiated by this source will originate from this IP.
+        :param str state: State of the source as determined by the health check.
+        """
+        pulumi.set(__self__, "access_key_creds", access_key_creds)
+        pulumi.set(__self__, "aws_region", aws_region)
+        pulumi.set(__self__, "error", error)
+        pulumi.set(__self__, "inventory_security_group_names", inventory_security_group_names)
+        pulumi.set(__self__, "inventory_tag_list", inventory_tag_list)
+        pulumi.set(__self__, "migration_resources_user_tags", migration_resources_user_tags)
+        pulumi.set(__self__, "public_ip", public_ip)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="accessKeyCreds")
+    def access_key_creds(self) -> 'outputs.AccessKeyCredentialsResponse':
+        """
+        AWS Credentials using access key id and secret.
+        """
+        return pulumi.get(self, "access_key_creds")
+
+    @property
+    @pulumi.getter(name="awsRegion")
+    def aws_region(self) -> str:
+        """
+        Immutable. The AWS region that the source VMs will be migrated from.
+        """
+        return pulumi.get(self, "aws_region")
+
+    @property
+    @pulumi.getter
+    def error(self) -> 'outputs.StatusResponse':
+        """
+        Provides details on the state of the Source in case of an error.
+        """
+        return pulumi.get(self, "error")
+
+    @property
+    @pulumi.getter(name="inventorySecurityGroupNames")
+    def inventory_security_group_names(self) -> Sequence[str]:
+        """
+        AWS security group names to limit the scope of the source inventory.
+        """
+        return pulumi.get(self, "inventory_security_group_names")
+
+    @property
+    @pulumi.getter(name="inventoryTagList")
+    def inventory_tag_list(self) -> Sequence['outputs.TagResponse']:
+        """
+        AWS resource tags to limit the scope of the source inventory.
+        """
+        return pulumi.get(self, "inventory_tag_list")
+
+    @property
+    @pulumi.getter(name="migrationResourcesUserTags")
+    def migration_resources_user_tags(self) -> Mapping[str, str]:
+        """
+        User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
+        """
+        return pulumi.get(self, "migration_resources_user_tags")
+
+    @property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> str:
+        """
+        The source's public IP. All communication initiated by this source will originate from this IP.
+        """
+        return pulumi.get(self, "public_ip")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        State of the source as determined by the health check.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class AwsSourceVmDetailsResponse(dict):
+    """
+    Represent the source AWS VM details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "committedStorageBytes":
+            suggest = "committed_storage_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsSourceVmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsSourceVmDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsSourceVmDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 committed_storage_bytes: str,
+                 firmware: str):
+        """
+        Represent the source AWS VM details.
+        :param str committed_storage_bytes: The total size of the disks being migrated in bytes.
+        :param str firmware: The firmware type of the source VM.
+        """
+        pulumi.set(__self__, "committed_storage_bytes", committed_storage_bytes)
+        pulumi.set(__self__, "firmware", firmware)
+
+    @property
+    @pulumi.getter(name="committedStorageBytes")
+    def committed_storage_bytes(self) -> str:
+        """
+        The total size of the disks being migrated in bytes.
+        """
+        return pulumi.get(self, "committed_storage_bytes")
+
+    @property
+    @pulumi.getter
+    def firmware(self) -> str:
+        """
+        The firmware type of the source VM.
+        """
+        return pulumi.get(self, "firmware")
 
 
 @pulumi.output_type
@@ -801,7 +1033,7 @@ class ComputeEngineTargetDetailsResponse(dict):
         :param Mapping[str, str] metadata: The metadata key/value pairs to assign to the VM.
         :param Sequence['NetworkInterfaceResponse'] network_interfaces: List of NICs connected to this VM.
         :param Sequence[str] network_tags: A map of network tags to associate with the VM.
-        :param str project: The GCP target project ID or project name.
+        :param str project: The Google Cloud target project ID or project name.
         :param bool secure_boot: Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is EFI.
         :param str service_account: The service account to associate the VM with.
         :param str vm_name: The name of the VM to create.
@@ -934,7 +1166,7 @@ class ComputeEngineTargetDetailsResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        The GCP target project ID or project name.
+        The Google Cloud target project ID or project name.
         """
         return pulumi.get(self, "project")
 
@@ -1697,9 +1929,9 @@ class ReplicationCycleResponse(dict):
         :param 'StatusResponse' error: Provides details on the state of the cycle in case of an error.
         :param str name: The identifier of the ReplicationCycle.
         :param int progress: The current progress in percentage of this cycle.
-        :param int progress_percent: The current progress in percentage of this cycle.
+        :param int progress_percent: The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
         :param str start_time: The time the replication cycle has started.
-        :param str state: State of the MigratingVm.
+        :param str state: State of the ReplicationCycle.
         :param Sequence['CycleStepResponse'] steps: The cycle's steps list representing its progress.
         :param str total_pause_duration: The accumulated duration the replication cycle was paused.
         """
@@ -1758,7 +1990,7 @@ class ReplicationCycleResponse(dict):
     @pulumi.getter(name="progressPercent")
     def progress_percent(self) -> int:
         """
-        The current progress in percentage of this cycle.
+        The current progress in percentage of this cycle. Was replaced by 'steps' field, which breaks down the cycle progression more accurately.
         """
         return pulumi.get(self, "progress_percent")
 
@@ -1774,7 +2006,7 @@ class ReplicationCycleResponse(dict):
     @pulumi.getter
     def state(self) -> str:
         """
-        State of the MigratingVm.
+        State of the ReplicationCycle.
         """
         return pulumi.get(self, "state")
 
@@ -1984,6 +2216,39 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class TagResponse(dict):
+    """
+    Tag is an AWS tag representation.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        Tag is an AWS tag representation.
+        :param str key: Key of tag.
+        :param str value: Value of tag.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key of tag.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value of tag.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

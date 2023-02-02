@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse
     {
         /// <summary>
+        /// The channel which the response is associated with. Clients can specify the channel via QueryParameters.channel, and only associated channel response will be returned.
+        /// </summary>
+        public readonly string Channel;
+        /// <summary>
         /// Indicates that the conversation succeeded.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse ConversationSuccess;
@@ -55,6 +59,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
         [OutputConstructor]
         private GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(
+            string channel,
+
             Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse conversationSuccess,
 
             Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionResponse endInteraction,
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse text)
         {
+            Channel = channel;
             ConversationSuccess = conversationSuccess;
             EndInteraction = endInteraction;
             LiveAgentHandoff = liveAgentHandoff;

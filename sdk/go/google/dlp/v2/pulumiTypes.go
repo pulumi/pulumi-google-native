@@ -7114,6 +7114,202 @@ func (o GooglePrivacyDlpV2ErrorResponseArrayOutput) Index(i pulumi.IntInput) Goo
 	}).(GooglePrivacyDlpV2ErrorResponseOutput)
 }
 
+// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
+type GooglePrivacyDlpV2ExcludeByHotword struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	HotwordRegex *GooglePrivacyDlpV2Regex `pulumi:"hotwordRegex"`
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+	Proximity *GooglePrivacyDlpV2Proximity `pulumi:"proximity"`
+}
+
+// GooglePrivacyDlpV2ExcludeByHotwordInput is an input type that accepts GooglePrivacyDlpV2ExcludeByHotwordArgs and GooglePrivacyDlpV2ExcludeByHotwordOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ExcludeByHotwordInput` via:
+//
+//	GooglePrivacyDlpV2ExcludeByHotwordArgs{...}
+type GooglePrivacyDlpV2ExcludeByHotwordInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ExcludeByHotwordOutput() GooglePrivacyDlpV2ExcludeByHotwordOutput
+	ToGooglePrivacyDlpV2ExcludeByHotwordOutputWithContext(context.Context) GooglePrivacyDlpV2ExcludeByHotwordOutput
+}
+
+// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
+type GooglePrivacyDlpV2ExcludeByHotwordArgs struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	HotwordRegex GooglePrivacyDlpV2RegexPtrInput `pulumi:"hotwordRegex"`
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+	Proximity GooglePrivacyDlpV2ProximityPtrInput `pulumi:"proximity"`
+}
+
+func (GooglePrivacyDlpV2ExcludeByHotwordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ExcludeByHotword)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ExcludeByHotwordArgs) ToGooglePrivacyDlpV2ExcludeByHotwordOutput() GooglePrivacyDlpV2ExcludeByHotwordOutput {
+	return i.ToGooglePrivacyDlpV2ExcludeByHotwordOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ExcludeByHotwordArgs) ToGooglePrivacyDlpV2ExcludeByHotwordOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExcludeByHotwordOutput)
+}
+
+func (i GooglePrivacyDlpV2ExcludeByHotwordArgs) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutput() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return i.ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ExcludeByHotwordArgs) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExcludeByHotwordOutput).ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2ExcludeByHotwordPtrInput is an input type that accepts GooglePrivacyDlpV2ExcludeByHotwordArgs, GooglePrivacyDlpV2ExcludeByHotwordPtr and GooglePrivacyDlpV2ExcludeByHotwordPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ExcludeByHotwordPtrInput` via:
+//
+//	        GooglePrivacyDlpV2ExcludeByHotwordArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2ExcludeByHotwordPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutput() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput
+	ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(context.Context) GooglePrivacyDlpV2ExcludeByHotwordPtrOutput
+}
+
+type googlePrivacyDlpV2ExcludeByHotwordPtrType GooglePrivacyDlpV2ExcludeByHotwordArgs
+
+func GooglePrivacyDlpV2ExcludeByHotwordPtr(v *GooglePrivacyDlpV2ExcludeByHotwordArgs) GooglePrivacyDlpV2ExcludeByHotwordPtrInput {
+	return (*googlePrivacyDlpV2ExcludeByHotwordPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2ExcludeByHotwordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2ExcludeByHotword)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2ExcludeByHotwordPtrType) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutput() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return i.ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2ExcludeByHotwordPtrType) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExcludeByHotwordPtrOutput)
+}
+
+// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
+type GooglePrivacyDlpV2ExcludeByHotwordOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ExcludeByHotwordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ExcludeByHotword)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordOutput) ToGooglePrivacyDlpV2ExcludeByHotwordOutput() GooglePrivacyDlpV2ExcludeByHotwordOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordOutput) ToGooglePrivacyDlpV2ExcludeByHotwordOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordOutput) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutput() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return o.ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordOutput) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ExcludeByHotword) *GooglePrivacyDlpV2ExcludeByHotword {
+		return &v
+	}).(GooglePrivacyDlpV2ExcludeByHotwordPtrOutput)
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+func (o GooglePrivacyDlpV2ExcludeByHotwordOutput) HotwordRegex() GooglePrivacyDlpV2RegexPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExcludeByHotword) *GooglePrivacyDlpV2Regex { return v.HotwordRegex }).(GooglePrivacyDlpV2RegexPtrOutput)
+}
+
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+func (o GooglePrivacyDlpV2ExcludeByHotwordOutput) Proximity() GooglePrivacyDlpV2ProximityPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExcludeByHotword) *GooglePrivacyDlpV2Proximity { return v.Proximity }).(GooglePrivacyDlpV2ProximityPtrOutput)
+}
+
+type GooglePrivacyDlpV2ExcludeByHotwordPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ExcludeByHotwordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2ExcludeByHotword)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordPtrOutput) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutput() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordPtrOutput) ToGooglePrivacyDlpV2ExcludeByHotwordPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordPtrOutput) Elem() GooglePrivacyDlpV2ExcludeByHotwordOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExcludeByHotword) GooglePrivacyDlpV2ExcludeByHotword {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ExcludeByHotword
+		return ret
+	}).(GooglePrivacyDlpV2ExcludeByHotwordOutput)
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+func (o GooglePrivacyDlpV2ExcludeByHotwordPtrOutput) HotwordRegex() GooglePrivacyDlpV2RegexPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExcludeByHotword) *GooglePrivacyDlpV2Regex {
+		if v == nil {
+			return nil
+		}
+		return v.HotwordRegex
+	}).(GooglePrivacyDlpV2RegexPtrOutput)
+}
+
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+func (o GooglePrivacyDlpV2ExcludeByHotwordPtrOutput) Proximity() GooglePrivacyDlpV2ProximityPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExcludeByHotword) *GooglePrivacyDlpV2Proximity {
+		if v == nil {
+			return nil
+		}
+		return v.Proximity
+	}).(GooglePrivacyDlpV2ProximityPtrOutput)
+}
+
+// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
+type GooglePrivacyDlpV2ExcludeByHotwordResponse struct {
+	// Regular expression pattern defining what qualifies as a hotword.
+	HotwordRegex GooglePrivacyDlpV2RegexResponse `pulumi:"hotwordRegex"`
+	// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+	Proximity GooglePrivacyDlpV2ProximityResponse `pulumi:"proximity"`
+}
+
+// The rule to exclude findings based on a hotword. For record inspection of tables, column names are considered hotwords. An example of this is to exclude a finding if it belongs to a BigQuery column that matches a specific pattern.
+type GooglePrivacyDlpV2ExcludeByHotwordResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ExcludeByHotwordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ExcludeByHotwordResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordResponseOutput) ToGooglePrivacyDlpV2ExcludeByHotwordResponseOutput() GooglePrivacyDlpV2ExcludeByHotwordResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ExcludeByHotwordResponseOutput) ToGooglePrivacyDlpV2ExcludeByHotwordResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ExcludeByHotwordResponseOutput {
+	return o
+}
+
+// Regular expression pattern defining what qualifies as a hotword.
+func (o GooglePrivacyDlpV2ExcludeByHotwordResponseOutput) HotwordRegex() GooglePrivacyDlpV2RegexResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExcludeByHotwordResponse) GooglePrivacyDlpV2RegexResponse {
+		return v.HotwordRegex
+	}).(GooglePrivacyDlpV2RegexResponseOutput)
+}
+
+// Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
+func (o GooglePrivacyDlpV2ExcludeByHotwordResponseOutput) Proximity() GooglePrivacyDlpV2ProximityResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExcludeByHotwordResponse) GooglePrivacyDlpV2ProximityResponse {
+		return v.Proximity
+	}).(GooglePrivacyDlpV2ProximityResponseOutput)
+}
+
 // List of excluded infoTypes.
 type GooglePrivacyDlpV2ExcludeInfoTypes struct {
 	// InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
@@ -7286,6 +7482,8 @@ func (o GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput) InfoTypes() GooglePriv
 type GooglePrivacyDlpV2ExclusionRule struct {
 	// Dictionary which defines the rule.
 	Dictionary *GooglePrivacyDlpV2Dictionary `pulumi:"dictionary"`
+	// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+	ExcludeByHotword *GooglePrivacyDlpV2ExcludeByHotword `pulumi:"excludeByHotword"`
 	// Set of infoTypes for which findings would affect this rule.
 	ExcludeInfoTypes *GooglePrivacyDlpV2ExcludeInfoTypes `pulumi:"excludeInfoTypes"`
 	// How the rule is applied, see MatchingType documentation for details.
@@ -7309,6 +7507,8 @@ type GooglePrivacyDlpV2ExclusionRuleInput interface {
 type GooglePrivacyDlpV2ExclusionRuleArgs struct {
 	// Dictionary which defines the rule.
 	Dictionary GooglePrivacyDlpV2DictionaryPtrInput `pulumi:"dictionary"`
+	// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+	ExcludeByHotword GooglePrivacyDlpV2ExcludeByHotwordPtrInput `pulumi:"excludeByHotword"`
 	// Set of infoTypes for which findings would affect this rule.
 	ExcludeInfoTypes GooglePrivacyDlpV2ExcludeInfoTypesPtrInput `pulumi:"excludeInfoTypes"`
 	// How the rule is applied, see MatchingType documentation for details.
@@ -7400,6 +7600,11 @@ func (o GooglePrivacyDlpV2ExclusionRuleOutput) Dictionary() GooglePrivacyDlpV2Di
 	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2Dictionary { return v.Dictionary }).(GooglePrivacyDlpV2DictionaryPtrOutput)
 }
 
+// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+func (o GooglePrivacyDlpV2ExclusionRuleOutput) ExcludeByHotword() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2ExcludeByHotword { return v.ExcludeByHotword }).(GooglePrivacyDlpV2ExcludeByHotwordPtrOutput)
+}
+
 // Set of infoTypes for which findings would affect this rule.
 func (o GooglePrivacyDlpV2ExclusionRuleOutput) ExcludeInfoTypes() GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2ExcludeInfoTypes { return v.ExcludeInfoTypes }).(GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput)
@@ -7451,6 +7656,16 @@ func (o GooglePrivacyDlpV2ExclusionRulePtrOutput) Dictionary() GooglePrivacyDlpV
 	}).(GooglePrivacyDlpV2DictionaryPtrOutput)
 }
 
+// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+func (o GooglePrivacyDlpV2ExclusionRulePtrOutput) ExcludeByHotword() GooglePrivacyDlpV2ExcludeByHotwordPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2ExcludeByHotword {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeByHotword
+	}).(GooglePrivacyDlpV2ExcludeByHotwordPtrOutput)
+}
+
 // Set of infoTypes for which findings would affect this rule.
 func (o GooglePrivacyDlpV2ExclusionRulePtrOutput) ExcludeInfoTypes() GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2ExclusionRule) *GooglePrivacyDlpV2ExcludeInfoTypes {
@@ -7485,6 +7700,8 @@ func (o GooglePrivacyDlpV2ExclusionRulePtrOutput) Regex() GooglePrivacyDlpV2Rege
 type GooglePrivacyDlpV2ExclusionRuleResponse struct {
 	// Dictionary which defines the rule.
 	Dictionary GooglePrivacyDlpV2DictionaryResponse `pulumi:"dictionary"`
+	// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+	ExcludeByHotword GooglePrivacyDlpV2ExcludeByHotwordResponse `pulumi:"excludeByHotword"`
 	// Set of infoTypes for which findings would affect this rule.
 	ExcludeInfoTypes GooglePrivacyDlpV2ExcludeInfoTypesResponse `pulumi:"excludeInfoTypes"`
 	// How the rule is applied, see MatchingType documentation for details.
@@ -7513,6 +7730,13 @@ func (o GooglePrivacyDlpV2ExclusionRuleResponseOutput) Dictionary() GooglePrivac
 	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRuleResponse) GooglePrivacyDlpV2DictionaryResponse {
 		return v.Dictionary
 	}).(GooglePrivacyDlpV2DictionaryResponseOutput)
+}
+
+// Drop if the hotword rule is contained in the proximate context. For tabular data, the context includes the column name.
+func (o GooglePrivacyDlpV2ExclusionRuleResponseOutput) ExcludeByHotword() GooglePrivacyDlpV2ExcludeByHotwordResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRuleResponse) GooglePrivacyDlpV2ExcludeByHotwordResponse {
+		return v.ExcludeByHotword
+	}).(GooglePrivacyDlpV2ExcludeByHotwordResponseOutput)
 }
 
 // Set of infoTypes for which findings would affect this rule.
@@ -15640,7 +15864,7 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput) ToGoo
 	return o
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCscc struct {
 }
 
@@ -15655,7 +15879,7 @@ type GooglePrivacyDlpV2PublishSummaryToCsccInput interface {
 	ToGooglePrivacyDlpV2PublishSummaryToCsccOutputWithContext(context.Context) GooglePrivacyDlpV2PublishSummaryToCsccOutput
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccArgs struct {
 }
 
@@ -15712,7 +15936,7 @@ func (i *googlePrivacyDlpV2PublishSummaryToCsccPtrType) ToGooglePrivacyDlpV2Publ
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput)
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishSummaryToCsccOutput) ElementType() reflect.Type {
@@ -15761,11 +15985,11 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput) Elem() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2PublishSummaryToCsccOutput)
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccResponse struct {
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput) ElementType() reflect.Type {
@@ -23117,6 +23341,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DictionaryPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DictionaryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2EntityIdPtrInput)(nil)).Elem(), GooglePrivacyDlpV2EntityIdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeByHotwordInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeByHotwordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeByHotwordPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeByHotwordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExcludeInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExcludeInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleArgs{})
@@ -23384,6 +23610,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2EntityIdResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ErrorResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ErrorResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeByHotwordOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeByHotwordPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeByHotwordResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeInfoTypesOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput{})

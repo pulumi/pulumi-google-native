@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> EkmConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. Etag of the currently stored EkmConnection.
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Input<string>? EkmConnectionId { get; set; }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value of other fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        /// Optional. Etag of the currently stored EkmConnection.
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }

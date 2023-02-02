@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         [Input("channelPartnerGranularity")]
         public Input<Inputs.GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs>? ChannelPartnerGranularity { get; set; }
 
+        [Input("conditionalOverrides")]
+        private InputList<Inputs.GoogleCloudChannelV1ConditionalOverrideArgs>? _conditionalOverrides;
+
+        /// <summary>
+        /// The conditional overrides to apply for this configuration. If you list multiple overrides, only the first valid override is used. If you don't list any overrides, the API uses the normal adjustment and rebilling basis.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudChannelV1ConditionalOverrideArgs> ConditionalOverrides
+        {
+            get => _conditionalOverrides ?? (_conditionalOverrides = new InputList<Inputs.GoogleCloudChannelV1ConditionalOverrideArgs>());
+            set => _conditionalOverrides = value;
+        }
+
         /// <summary>
         /// The YearMonth when these adjustments activate. The Day field needs to be "0" since we only accept YearMonth repricing boundaries.
         /// </summary>

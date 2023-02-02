@@ -181,6 +181,511 @@ func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
 }
 
+// The asset type of this authorized orgs desc. e.g. device, credential strength.
+type AuthorizedOrgsDescAssetType string
+
+const (
+	// No asset type specified.
+	AuthorizedOrgsDescAssetTypeAssetTypeUnspecified = AuthorizedOrgsDescAssetType("ASSET_TYPE_UNSPECIFIED")
+	// Device asset type.
+	AuthorizedOrgsDescAssetTypeAssetTypeDevice = AuthorizedOrgsDescAssetType("ASSET_TYPE_DEVICE")
+	// credential strength asset type.
+	AuthorizedOrgsDescAssetTypeAssetTypeCredentialStrength = AuthorizedOrgsDescAssetType("ASSET_TYPE_CREDENTIAL_STRENGTH")
+)
+
+func (AuthorizedOrgsDescAssetType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedOrgsDescAssetType)(nil)).Elem()
+}
+
+func (e AuthorizedOrgsDescAssetType) ToAuthorizedOrgsDescAssetTypeOutput() AuthorizedOrgsDescAssetTypeOutput {
+	return pulumi.ToOutput(e).(AuthorizedOrgsDescAssetTypeOutput)
+}
+
+func (e AuthorizedOrgsDescAssetType) ToAuthorizedOrgsDescAssetTypeOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthorizedOrgsDescAssetTypeOutput)
+}
+
+func (e AuthorizedOrgsDescAssetType) ToAuthorizedOrgsDescAssetTypePtrOutput() AuthorizedOrgsDescAssetTypePtrOutput {
+	return e.ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuthorizedOrgsDescAssetType) ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypePtrOutput {
+	return AuthorizedOrgsDescAssetType(e).ToAuthorizedOrgsDescAssetTypeOutputWithContext(ctx).ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx)
+}
+
+func (e AuthorizedOrgsDescAssetType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthorizedOrgsDescAssetType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthorizedOrgsDescAssetType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthorizedOrgsDescAssetType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthorizedOrgsDescAssetTypeOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedOrgsDescAssetTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedOrgsDescAssetType)(nil)).Elem()
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToAuthorizedOrgsDescAssetTypeOutput() AuthorizedOrgsDescAssetTypeOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToAuthorizedOrgsDescAssetTypeOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypeOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToAuthorizedOrgsDescAssetTypePtrOutput() AuthorizedOrgsDescAssetTypePtrOutput {
+	return o.ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizedOrgsDescAssetType) *AuthorizedOrgsDescAssetType {
+		return &v
+	}).(AuthorizedOrgsDescAssetTypePtrOutput)
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthorizedOrgsDescAssetType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAssetTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthorizedOrgsDescAssetType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthorizedOrgsDescAssetTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedOrgsDescAssetTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizedOrgsDescAssetType)(nil)).Elem()
+}
+
+func (o AuthorizedOrgsDescAssetTypePtrOutput) ToAuthorizedOrgsDescAssetTypePtrOutput() AuthorizedOrgsDescAssetTypePtrOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAssetTypePtrOutput) ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypePtrOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAssetTypePtrOutput) Elem() AuthorizedOrgsDescAssetTypeOutput {
+	return o.ApplyT(func(v *AuthorizedOrgsDescAssetType) AuthorizedOrgsDescAssetType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizedOrgsDescAssetType
+		return ret
+	}).(AuthorizedOrgsDescAssetTypeOutput)
+}
+
+func (o AuthorizedOrgsDescAssetTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAssetTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthorizedOrgsDescAssetType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthorizedOrgsDescAssetTypeInput is an input type that accepts AuthorizedOrgsDescAssetTypeArgs and AuthorizedOrgsDescAssetTypeOutput values.
+// You can construct a concrete instance of `AuthorizedOrgsDescAssetTypeInput` via:
+//
+//	AuthorizedOrgsDescAssetTypeArgs{...}
+type AuthorizedOrgsDescAssetTypeInput interface {
+	pulumi.Input
+
+	ToAuthorizedOrgsDescAssetTypeOutput() AuthorizedOrgsDescAssetTypeOutput
+	ToAuthorizedOrgsDescAssetTypeOutputWithContext(context.Context) AuthorizedOrgsDescAssetTypeOutput
+}
+
+var authorizedOrgsDescAssetTypePtrType = reflect.TypeOf((**AuthorizedOrgsDescAssetType)(nil)).Elem()
+
+type AuthorizedOrgsDescAssetTypePtrInput interface {
+	pulumi.Input
+
+	ToAuthorizedOrgsDescAssetTypePtrOutput() AuthorizedOrgsDescAssetTypePtrOutput
+	ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(context.Context) AuthorizedOrgsDescAssetTypePtrOutput
+}
+
+type authorizedOrgsDescAssetTypePtr string
+
+func AuthorizedOrgsDescAssetTypePtr(v string) AuthorizedOrgsDescAssetTypePtrInput {
+	return (*authorizedOrgsDescAssetTypePtr)(&v)
+}
+
+func (*authorizedOrgsDescAssetTypePtr) ElementType() reflect.Type {
+	return authorizedOrgsDescAssetTypePtrType
+}
+
+func (in *authorizedOrgsDescAssetTypePtr) ToAuthorizedOrgsDescAssetTypePtrOutput() AuthorizedOrgsDescAssetTypePtrOutput {
+	return pulumi.ToOutput(in).(AuthorizedOrgsDescAssetTypePtrOutput)
+}
+
+func (in *authorizedOrgsDescAssetTypePtr) ToAuthorizedOrgsDescAssetTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAssetTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthorizedOrgsDescAssetTypePtrOutput)
+}
+
+// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+type AuthorizedOrgsDescAuthorizationDirection string
+
+const (
+	// No direction specified.
+	AuthorizedOrgsDescAuthorizationDirectionAuthorizationDirectionUnspecified = AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_UNSPECIFIED")
+	// Specified orgs will evaluate traffic.
+	AuthorizedOrgsDescAuthorizationDirectionAuthorizationDirectionTo = AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_TO")
+	// Specified orgs' traffic will be evaluated.
+	AuthorizedOrgsDescAuthorizationDirectionAuthorizationDirectionFrom = AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_FROM")
+)
+
+func (AuthorizedOrgsDescAuthorizationDirection) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedOrgsDescAuthorizationDirection)(nil)).Elem()
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToAuthorizedOrgsDescAuthorizationDirectionOutput() AuthorizedOrgsDescAuthorizationDirectionOutput {
+	return pulumi.ToOutput(e).(AuthorizedOrgsDescAuthorizationDirectionOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToAuthorizedOrgsDescAuthorizationDirectionOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthorizedOrgsDescAuthorizationDirectionOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutput() AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return e.ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(context.Background())
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return AuthorizedOrgsDescAuthorizationDirection(e).ToAuthorizedOrgsDescAuthorizationDirectionOutputWithContext(ctx).ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(ctx)
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthorizedOrgsDescAuthorizationDirection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthorizedOrgsDescAuthorizationDirectionOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedOrgsDescAuthorizationDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedOrgsDescAuthorizationDirection)(nil)).Elem()
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToAuthorizedOrgsDescAuthorizationDirectionOutput() AuthorizedOrgsDescAuthorizationDirectionOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToAuthorizedOrgsDescAuthorizationDirectionOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationDirectionOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutput() AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return o.ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizedOrgsDescAuthorizationDirection) *AuthorizedOrgsDescAuthorizationDirection {
+		return &v
+	}).(AuthorizedOrgsDescAuthorizationDirectionPtrOutput)
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthorizedOrgsDescAuthorizationDirection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthorizedOrgsDescAuthorizationDirection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthorizedOrgsDescAuthorizationDirectionPtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedOrgsDescAuthorizationDirectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizedOrgsDescAuthorizationDirection)(nil)).Elem()
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionPtrOutput) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutput() AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionPtrOutput) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionPtrOutput) Elem() AuthorizedOrgsDescAuthorizationDirectionOutput {
+	return o.ApplyT(func(v *AuthorizedOrgsDescAuthorizationDirection) AuthorizedOrgsDescAuthorizationDirection {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizedOrgsDescAuthorizationDirection
+		return ret
+	}).(AuthorizedOrgsDescAuthorizationDirectionOutput)
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthorizedOrgsDescAuthorizationDirection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthorizedOrgsDescAuthorizationDirectionInput is an input type that accepts AuthorizedOrgsDescAuthorizationDirectionArgs and AuthorizedOrgsDescAuthorizationDirectionOutput values.
+// You can construct a concrete instance of `AuthorizedOrgsDescAuthorizationDirectionInput` via:
+//
+//	AuthorizedOrgsDescAuthorizationDirectionArgs{...}
+type AuthorizedOrgsDescAuthorizationDirectionInput interface {
+	pulumi.Input
+
+	ToAuthorizedOrgsDescAuthorizationDirectionOutput() AuthorizedOrgsDescAuthorizationDirectionOutput
+	ToAuthorizedOrgsDescAuthorizationDirectionOutputWithContext(context.Context) AuthorizedOrgsDescAuthorizationDirectionOutput
+}
+
+var authorizedOrgsDescAuthorizationDirectionPtrType = reflect.TypeOf((**AuthorizedOrgsDescAuthorizationDirection)(nil)).Elem()
+
+type AuthorizedOrgsDescAuthorizationDirectionPtrInput interface {
+	pulumi.Input
+
+	ToAuthorizedOrgsDescAuthorizationDirectionPtrOutput() AuthorizedOrgsDescAuthorizationDirectionPtrOutput
+	ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(context.Context) AuthorizedOrgsDescAuthorizationDirectionPtrOutput
+}
+
+type authorizedOrgsDescAuthorizationDirectionPtr string
+
+func AuthorizedOrgsDescAuthorizationDirectionPtr(v string) AuthorizedOrgsDescAuthorizationDirectionPtrInput {
+	return (*authorizedOrgsDescAuthorizationDirectionPtr)(&v)
+}
+
+func (*authorizedOrgsDescAuthorizationDirectionPtr) ElementType() reflect.Type {
+	return authorizedOrgsDescAuthorizationDirectionPtrType
+}
+
+func (in *authorizedOrgsDescAuthorizationDirectionPtr) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutput() AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return pulumi.ToOutput(in).(AuthorizedOrgsDescAuthorizationDirectionPtrOutput)
+}
+
+func (in *authorizedOrgsDescAuthorizationDirectionPtr) ToAuthorizedOrgsDescAuthorizationDirectionPtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationDirectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthorizedOrgsDescAuthorizationDirectionPtrOutput)
+}
+
+// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+type AuthorizedOrgsDescAuthorizationType string
+
+const (
+	// No authorization type specified.
+	AuthorizedOrgsDescAuthorizationTypeAuthorizationTypeUnspecified = AuthorizedOrgsDescAuthorizationType("AUTHORIZATION_TYPE_UNSPECIFIED")
+	// This authorization relationship is "trust".
+	AuthorizedOrgsDescAuthorizationTypeAuthorizationTypeTrust = AuthorizedOrgsDescAuthorizationType("AUTHORIZATION_TYPE_TRUST")
+)
+
+func (AuthorizedOrgsDescAuthorizationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedOrgsDescAuthorizationType)(nil)).Elem()
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToAuthorizedOrgsDescAuthorizationTypeOutput() AuthorizedOrgsDescAuthorizationTypeOutput {
+	return pulumi.ToOutput(e).(AuthorizedOrgsDescAuthorizationTypeOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToAuthorizedOrgsDescAuthorizationTypeOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuthorizedOrgsDescAuthorizationTypeOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToAuthorizedOrgsDescAuthorizationTypePtrOutput() AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return e.ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return AuthorizedOrgsDescAuthorizationType(e).ToAuthorizedOrgsDescAuthorizationTypeOutputWithContext(ctx).ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(ctx)
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AuthorizedOrgsDescAuthorizationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AuthorizedOrgsDescAuthorizationTypeOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedOrgsDescAuthorizationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuthorizedOrgsDescAuthorizationType)(nil)).Elem()
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToAuthorizedOrgsDescAuthorizationTypeOutput() AuthorizedOrgsDescAuthorizationTypeOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToAuthorizedOrgsDescAuthorizationTypeOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationTypeOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToAuthorizedOrgsDescAuthorizationTypePtrOutput() AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return o.ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuthorizedOrgsDescAuthorizationType) *AuthorizedOrgsDescAuthorizationType {
+		return &v
+	}).(AuthorizedOrgsDescAuthorizationTypePtrOutput)
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthorizedOrgsDescAuthorizationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuthorizedOrgsDescAuthorizationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuthorizedOrgsDescAuthorizationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuthorizedOrgsDescAuthorizationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AuthorizedOrgsDescAuthorizationType)(nil)).Elem()
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypePtrOutput) ToAuthorizedOrgsDescAuthorizationTypePtrOutput() AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypePtrOutput) ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return o
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypePtrOutput) Elem() AuthorizedOrgsDescAuthorizationTypeOutput {
+	return o.ApplyT(func(v *AuthorizedOrgsDescAuthorizationType) AuthorizedOrgsDescAuthorizationType {
+		if v != nil {
+			return *v
+		}
+		var ret AuthorizedOrgsDescAuthorizationType
+		return ret
+	}).(AuthorizedOrgsDescAuthorizationTypeOutput)
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuthorizedOrgsDescAuthorizationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuthorizedOrgsDescAuthorizationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AuthorizedOrgsDescAuthorizationTypeInput is an input type that accepts AuthorizedOrgsDescAuthorizationTypeArgs and AuthorizedOrgsDescAuthorizationTypeOutput values.
+// You can construct a concrete instance of `AuthorizedOrgsDescAuthorizationTypeInput` via:
+//
+//	AuthorizedOrgsDescAuthorizationTypeArgs{...}
+type AuthorizedOrgsDescAuthorizationTypeInput interface {
+	pulumi.Input
+
+	ToAuthorizedOrgsDescAuthorizationTypeOutput() AuthorizedOrgsDescAuthorizationTypeOutput
+	ToAuthorizedOrgsDescAuthorizationTypeOutputWithContext(context.Context) AuthorizedOrgsDescAuthorizationTypeOutput
+}
+
+var authorizedOrgsDescAuthorizationTypePtrType = reflect.TypeOf((**AuthorizedOrgsDescAuthorizationType)(nil)).Elem()
+
+type AuthorizedOrgsDescAuthorizationTypePtrInput interface {
+	pulumi.Input
+
+	ToAuthorizedOrgsDescAuthorizationTypePtrOutput() AuthorizedOrgsDescAuthorizationTypePtrOutput
+	ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(context.Context) AuthorizedOrgsDescAuthorizationTypePtrOutput
+}
+
+type authorizedOrgsDescAuthorizationTypePtr string
+
+func AuthorizedOrgsDescAuthorizationTypePtr(v string) AuthorizedOrgsDescAuthorizationTypePtrInput {
+	return (*authorizedOrgsDescAuthorizationTypePtr)(&v)
+}
+
+func (*authorizedOrgsDescAuthorizationTypePtr) ElementType() reflect.Type {
+	return authorizedOrgsDescAuthorizationTypePtrType
+}
+
+func (in *authorizedOrgsDescAuthorizationTypePtr) ToAuthorizedOrgsDescAuthorizationTypePtrOutput() AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return pulumi.ToOutput(in).(AuthorizedOrgsDescAuthorizationTypePtrOutput)
+}
+
+func (in *authorizedOrgsDescAuthorizationTypePtr) ToAuthorizedOrgsDescAuthorizationTypePtrOutputWithContext(ctx context.Context) AuthorizedOrgsDescAuthorizationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuthorizedOrgsDescAuthorizationTypePtrOutput)
+}
+
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 type BasicLevelCombiningFunction string
 
@@ -1301,7 +1806,7 @@ func (in *osConstraintOsTypePtr) ToOsConstraintOsTypePtrOutputWithContext(ctx co
 type ServicePerimeterPerimeterType string
 
 const (
-	// Regular Perimeter.
+	// Regular Perimeter. When no value is specified, the perimeter uses this type.
 	ServicePerimeterPerimeterTypePerimeterTypeRegular = ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR")
 	// Perimeter Bridge.
 	ServicePerimeterPerimeterTypePerimeterTypeBridge = ServicePerimeterPerimeterType("PERIMETER_TYPE_BRIDGE")
@@ -1467,6 +1972,12 @@ func (in *servicePerimeterPerimeterTypePtr) ToServicePerimeterPerimeterTypePtrOu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedOrgsDescAssetTypeInput)(nil)).Elem(), AuthorizedOrgsDescAssetType("ASSET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedOrgsDescAssetTypePtrInput)(nil)).Elem(), AuthorizedOrgsDescAssetType("ASSET_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedOrgsDescAuthorizationDirectionInput)(nil)).Elem(), AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedOrgsDescAuthorizationDirectionPtrInput)(nil)).Elem(), AuthorizedOrgsDescAuthorizationDirection("AUTHORIZATION_DIRECTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedOrgsDescAuthorizationTypeInput)(nil)).Elem(), AuthorizedOrgsDescAuthorizationType("AUTHORIZATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizedOrgsDescAuthorizationTypePtrInput)(nil)).Elem(), AuthorizedOrgsDescAuthorizationType("AUTHORIZATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelCombiningFunctionInput)(nil)).Elem(), BasicLevelCombiningFunction("AND"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BasicLevelCombiningFunctionPtrInput)(nil)).Elem(), BasicLevelCombiningFunction("AND"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DevicePolicyAllowedDeviceManagementLevelsItemInput)(nil)).Elem(), DevicePolicyAllowedDeviceManagementLevelsItem("MANAGEMENT_UNSPECIFIED"))
@@ -1485,6 +1996,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePerimeterPerimeterTypePtrInput)(nil)).Elem(), ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(AuthorizedOrgsDescAssetTypeOutput{})
+	pulumi.RegisterOutputType(AuthorizedOrgsDescAssetTypePtrOutput{})
+	pulumi.RegisterOutputType(AuthorizedOrgsDescAuthorizationDirectionOutput{})
+	pulumi.RegisterOutputType(AuthorizedOrgsDescAuthorizationDirectionPtrOutput{})
+	pulumi.RegisterOutputType(AuthorizedOrgsDescAuthorizationTypeOutput{})
+	pulumi.RegisterOutputType(AuthorizedOrgsDescAuthorizationTypePtrOutput{})
 	pulumi.RegisterOutputType(BasicLevelCombiningFunctionOutput{})
 	pulumi.RegisterOutputType(BasicLevelCombiningFunctionPtrOutput{})
 	pulumi.RegisterOutputType(DevicePolicyAllowedDeviceManagementLevelsItemOutput{})

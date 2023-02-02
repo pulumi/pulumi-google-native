@@ -70,6 +70,10 @@ export interface GetCutoverJobResult {
      * The time the state was last updated.
      */
     readonly stateTime: string;
+    /**
+     * The cutover steps list representing its progress.
+     */
+    readonly steps: outputs.vmmigration.v1.CutoverStepResponse[];
 }
 
 export function getCutoverJobOutput(args: GetCutoverJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCutoverJobResult> {

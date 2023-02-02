@@ -46,7 +46,7 @@ export class Function extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Describe whether the function is gen1 or gen2.
+     * Describe whether the function is 1st Gen or 2nd Gen.
      */
     public readonly environment!: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export interface FunctionArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Describe whether the function is gen1 or gen2.
+     * Describe whether the function is 1st Gen or 2nd Gen.
      */
     environment?: pulumi.Input<enums.cloudfunctions.v2beta.FunctionEnvironment>;
     /**

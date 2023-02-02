@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly bool EnableFlowLogs;
         /// <summary>
-        /// The external IPv6 address range that is assigned to this subnetwork.
+        /// The external IPv6 address range that is owned by this subnetwork.
         /// </summary>
         public readonly string ExternalIpv6Prefix;
         /// <summary>

@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['DocumentSchemaArgs', 'DocumentSchema']
@@ -25,7 +26,7 @@ class DocumentSchemaArgs:
                  property_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionArgs']]]] = None):
         """
         The set of arguments for constructing a DocumentSchema resource.
-        :param pulumi.Input[str] display_name: Name of the schema given by the user. Must be unique per customer.
+        :param pulumi.Input[str] display_name: Name of the schema given by the user. Must be unique per project.
         :param pulumi.Input[str] description: Schema description.
         :param pulumi.Input[bool] document_is_folder: Document Type, true refers the document is a folder, otherwise it is a typical document.
         :param pulumi.Input[str] name: The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
@@ -49,7 +50,7 @@ class DocumentSchemaArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        Name of the schema given by the user. Must be unique per customer.
+        Name of the schema given by the user. Must be unique per project.
         """
         return pulumi.get(self, "display_name")
 
@@ -143,7 +144,7 @@ class DocumentSchema(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Schema description.
-        :param pulumi.Input[str] display_name: Name of the schema given by the user. Must be unique per customer.
+        :param pulumi.Input[str] display_name: Name of the schema given by the user. Must be unique per project.
         :param pulumi.Input[bool] document_is_folder: Document Type, true refers the document is a folder, otherwise it is a typical document.
         :param pulumi.Input[str] name: The resource name of the document schema. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}. The name is ignored when creating a document schema.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudContentwarehouseV1PropertyDefinitionArgs']]]] property_definitions: Document details.
@@ -254,7 +255,7 @@ class DocumentSchema(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Name of the schema given by the user. Must be unique per customer.
+        Name of the schema given by the user. Must be unique per project.
         """
         return pulumi.get(self, "display_name")
 

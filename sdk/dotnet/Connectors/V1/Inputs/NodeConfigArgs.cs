@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
 {
 
     /// <summary>
-    /// Configuration for the connection.
+    /// Node configuration for the connection.
     /// </summary>
     public sealed class NodeConfigArgs : global::Pulumi.ResourceArgs
     {

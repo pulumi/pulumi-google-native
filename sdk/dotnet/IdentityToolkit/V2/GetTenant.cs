@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Configuration for settings related to email privacy and public visibility.
+        /// </summary>
+        public readonly Outputs.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse EmailPrivacyConfig;
+        /// <summary>
         /// Whether to enable anonymous user authentication.
         /// </summary>
         public readonly bool EnableAnonymousUser;
@@ -126,6 +130,8 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
 
             string displayName,
 
+            Outputs.GoogleCloudIdentitytoolkitAdminV2EmailPrivacyConfigResponse emailPrivacyConfig,
+
             bool enableAnonymousUser,
 
             bool enableEmailLinkSignin,
@@ -149,6 +155,7 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
             Client = client;
             DisableAuth = disableAuth;
             DisplayName = displayName;
+            EmailPrivacyConfig = emailPrivacyConfig;
             EnableAnonymousUser = enableAnonymousUser;
             EnableEmailLinkSignin = enableEmailLinkSignin;
             HashConfig = hashConfig;

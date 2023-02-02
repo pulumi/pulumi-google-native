@@ -40,6 +40,11 @@ export const getServiceLevelObjective: typeof import("./getServiceLevelObjective
 export const getServiceLevelObjectiveOutput: typeof import("./getServiceLevelObjective").getServiceLevelObjectiveOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceLevelObjective","getServiceLevelObjectiveOutput"], () => require("./getServiceLevelObjective"));
 
+export { GetSnoozeArgs, GetSnoozeResult, GetSnoozeOutputArgs } from "./getSnooze";
+export const getSnooze: typeof import("./getSnooze").getSnooze = null as any;
+export const getSnoozeOutput: typeof import("./getSnooze").getSnoozeOutput = null as any;
+utilities.lazyLoad(exports, ["getSnooze","getSnoozeOutput"], () => require("./getSnooze"));
+
 export { GetUptimeCheckConfigArgs, GetUptimeCheckConfigResult, GetUptimeCheckConfigOutputArgs } from "./getUptimeCheckConfig";
 export const getUptimeCheckConfig: typeof import("./getUptimeCheckConfig").getUptimeCheckConfig = null as any;
 export const getUptimeCheckConfigOutput: typeof import("./getUptimeCheckConfig").getUptimeCheckConfigOutput = null as any;
@@ -70,6 +75,11 @@ export type ServiceLevelObjective = import("./serviceLevelObjective").ServiceLev
 export const ServiceLevelObjective: typeof import("./serviceLevelObjective").ServiceLevelObjective = null as any;
 utilities.lazyLoad(exports, ["ServiceLevelObjective"], () => require("./serviceLevelObjective"));
 
+export { SnoozeArgs } from "./snooze";
+export type Snooze = import("./snooze").Snooze;
+export const Snooze: typeof import("./snooze").Snooze = null as any;
+utilities.lazyLoad(exports, ["Snooze"], () => require("./snooze"));
+
 export { UptimeCheckConfigArgs } from "./uptimeCheckConfig";
 export type UptimeCheckConfig = import("./uptimeCheckConfig").UptimeCheckConfig;
 export const UptimeCheckConfig: typeof import("./uptimeCheckConfig").UptimeCheckConfig = null as any;
@@ -95,6 +105,8 @@ const _module = {
                 return new Service(name, <any>undefined, { urn })
             case "google-native:monitoring/v3:ServiceLevelObjective":
                 return new ServiceLevelObjective(name, <any>undefined, { urn })
+            case "google-native:monitoring/v3:Snooze":
+                return new Snooze(name, <any>undefined, { urn })
             case "google-native:monitoring/v3:UptimeCheckConfig":
                 return new UptimeCheckConfig(name, <any>undefined, { urn })
             default:

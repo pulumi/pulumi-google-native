@@ -39,6 +39,10 @@ export class Entity extends pulumi.CustomResource {
     }
 
     /**
+     * Identifies the access mechanism to the entity. Not user settable.
+     */
+    public /*out*/ readonly access!: pulumi.Output<outputs.dataplex.v1.GoogleCloudDataplexV1StorageAccessResponse>;
+    /**
      * Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
      */
     public readonly asset!: pulumi.Output<string>;
@@ -97,6 +101,10 @@ export class Entity extends pulumi.CustomResource {
      * Immutable. The type of entity.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * System generated unique ID for the Entity. This ID will be different if the Entity is deleted and re-created with the same name.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
      * The time when the entity was last updated.
      */
@@ -158,12 +166,15 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["access"] = undefined /*out*/;
             resourceInputs["catalogEntry"] = undefined /*out*/;
             resourceInputs["compatibility"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["access"] = undefined /*out*/;
             resourceInputs["asset"] = undefined /*out*/;
             resourceInputs["catalogEntry"] = undefined /*out*/;
             resourceInputs["compatibility"] = undefined /*out*/;
@@ -181,6 +192,7 @@ export class Entity extends pulumi.CustomResource {
             resourceInputs["schema"] = undefined /*out*/;
             resourceInputs["system"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["validateOnly"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;

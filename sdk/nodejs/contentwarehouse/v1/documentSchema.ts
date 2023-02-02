@@ -46,7 +46,7 @@ export class DocumentSchema extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Name of the schema given by the user. Must be unique per customer.
+     * Name of the schema given by the user. Must be unique per project.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export interface DocumentSchemaArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Name of the schema given by the user. Must be unique per customer.
+     * Name of the schema given by the user. Must be unique per project.
      */
     displayName: pulumi.Input<string>;
     /**

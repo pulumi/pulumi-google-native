@@ -104,6 +104,10 @@ export class Version extends pulumi.CustomResource {
      */
     public readonly errorHandlers!: pulumi.Output<outputs.appengine.v1beta.ErrorHandlerResponse[]>;
     /**
+     * Settings for App Engine flexible runtimes.
+     */
+    public readonly flexibleRuntimeSettings!: pulumi.Output<outputs.appengine.v1beta.FlexibleRuntimeSettingsResponse>;
+    /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
     public readonly handlers!: pulumi.Output<outputs.appengine.v1beta.UrlMapResponse[]>;
@@ -230,6 +234,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["env"] = args ? args.env : undefined;
             resourceInputs["envVariables"] = args ? args.envVariables : undefined;
             resourceInputs["errorHandlers"] = args ? args.errorHandlers : undefined;
+            resourceInputs["flexibleRuntimeSettings"] = args ? args.flexibleRuntimeSettings : undefined;
             resourceInputs["handlers"] = args ? args.handlers : undefined;
             resourceInputs["healthCheck"] = args ? args.healthCheck : undefined;
             resourceInputs["id"] = args ? args.id : undefined;
@@ -276,6 +281,7 @@ export class Version extends pulumi.CustomResource {
             resourceInputs["env"] = undefined /*out*/;
             resourceInputs["envVariables"] = undefined /*out*/;
             resourceInputs["errorHandlers"] = undefined /*out*/;
+            resourceInputs["flexibleRuntimeSettings"] = undefined /*out*/;
             resourceInputs["handlers"] = undefined /*out*/;
             resourceInputs["healthCheck"] = undefined /*out*/;
             resourceInputs["inboundServices"] = undefined /*out*/;
@@ -365,6 +371,10 @@ export interface VersionArgs {
      * Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
      */
     errorHandlers?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.ErrorHandlerArgs>[]>;
+    /**
+     * Settings for App Engine flexible runtimes.
+     */
+    flexibleRuntimeSettings?: pulumi.Input<inputs.appengine.v1beta.FlexibleRuntimeSettingsArgs>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */

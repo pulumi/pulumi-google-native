@@ -644,6 +644,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
                  is_searchable: Optional[pulumi.Input[bool]] = None,
                  map_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1MapTypeOptionsArgs']] = None,
                  property_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs']] = None,
+                 retrieval_importance: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance']] = None,
                  text_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1TextTypeOptionsArgs']] = None,
                  timestamp_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs']] = None):
         """
@@ -655,12 +656,13 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
         :param pulumi.Input['GoogleCloudContentwarehouseV1FloatTypeOptionsArgs'] float_type_options: Float property.
         :param pulumi.Input['GoogleCloudContentwarehouseV1IntegerTypeOptionsArgs'] integer_type_options: Integer property.
         :param pulumi.Input[bool] is_filterable: Whether the property can be filtered. If this is a sub-property, all the parent properties must be marked filterable.
-        :param pulumi.Input[bool] is_metadata: Whether the property is user supplied metadata.
+        :param pulumi.Input[bool] is_metadata: Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
         :param pulumi.Input[bool] is_repeatable: Whether the property can have multiple values.
         :param pulumi.Input[bool] is_required: Whether the property is mandatory. Default is 'false', i.e. populating property value can be skipped. If 'true' then user must populate the value for this property.
         :param pulumi.Input[bool] is_searchable: Indicates that the property should be included in a global search.
         :param pulumi.Input['GoogleCloudContentwarehouseV1MapTypeOptionsArgs'] map_type_options: Map property.
         :param pulumi.Input['GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs'] property_type_options: Nested structured data property.
+        :param pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance'] retrieval_importance: The retrieval importance of the property during search.
         :param pulumi.Input['GoogleCloudContentwarehouseV1TextTypeOptionsArgs'] text_type_options: Text/string property.
         :param pulumi.Input['GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs'] timestamp_type_options: Timestamp property. It is not supported by CMEK compliant deployment.
         """
@@ -689,6 +691,8 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
             pulumi.set(__self__, "map_type_options", map_type_options)
         if property_type_options is not None:
             pulumi.set(__self__, "property_type_options", property_type_options)
+        if retrieval_importance is not None:
+            pulumi.set(__self__, "retrieval_importance", retrieval_importance)
         if text_type_options is not None:
             pulumi.set(__self__, "text_type_options", text_type_options)
         if timestamp_type_options is not None:
@@ -782,7 +786,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
     @pulumi.getter(name="isMetadata")
     def is_metadata(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the property is user supplied metadata.
+        Whether the property is user supplied metadata. This out-of-the box placeholder setting can be used to tag derived properties. Its value and interpretation logic should be implemented by API user.
         """
         return pulumi.get(self, "is_metadata")
 
@@ -849,6 +853,18 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
     @property_type_options.setter
     def property_type_options(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs']]):
         pulumi.set(self, "property_type_options", value)
+
+    @property
+    @pulumi.getter(name="retrievalImportance")
+    def retrieval_importance(self) -> Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance']]:
+        """
+        The retrieval importance of the property during search.
+        """
+        return pulumi.get(self, "retrieval_importance")
+
+    @retrieval_importance.setter
+    def retrieval_importance(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance']]):
+        pulumi.set(self, "retrieval_importance", value)
 
     @property
     @pulumi.getter(name="textTypeOptions")
@@ -1377,6 +1393,7 @@ class GoogleCloudContentwarehouseV1UserInfoArgs:
                  group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  id: Optional[pulumi.Input[str]] = None):
         """
+        The user information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_ids: The unique group identifications which the user is belong to. The format is "group:yyyy@example.com";
         :param pulumi.Input[str] id: A unique user identification string, as determined by the client. The maximum number of allowed characters is 255. Allowed characters include numbers 0 to 9, uppercase and lowercase letters, and restricted special symbols (:, @, +, -, _, ~) The format is "user:xxxx@example.com";
         """
@@ -1418,9 +1435,9 @@ class GoogleCloudDocumentaiV1BarcodeArgs:
                  value_format: Optional[pulumi.Input[str]] = None):
         """
         Encodes the detailed information of a barcode.
-        :param pulumi.Input[str] format: Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
-        :param pulumi.Input[str] raw_value: Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
-        :param pulumi.Input[str] value_format: Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        :param pulumi.Input[str] format: Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
+        :param pulumi.Input[str] raw_value: Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
+        :param pulumi.Input[str] value_format: Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
         """
         if format is not None:
             pulumi.set(__self__, "format", format)
@@ -1433,7 +1450,7 @@ class GoogleCloudDocumentaiV1BarcodeArgs:
     @pulumi.getter
     def format(self) -> Optional[pulumi.Input[str]]:
         """
-        Format of a barcode. The supported formats are: CODE_128: Code 128 type. CODE_39: Code 39 type. CODE_93: Code 93 type. CODABAR: Codabar type. DATA_MATRIX: 2D Data Matrix type. ITF: ITF type. EAN_13: EAN-13 type. EAN_8: EAN-8 type. QR_CODE: 2D QR code type. UPC_A: UPC-A type. UPC_E: UPC-E type. PDF417: PDF417 type. AZTEC: 2D Aztec code type. DATABAR: GS1 DataBar code type.
+        Format of a barcode. The supported formats are: - `CODE_128`: Code 128 type. - `CODE_39`: Code 39 type. - `CODE_93`: Code 93 type. - `CODABAR`: Codabar type. - `DATA_MATRIX`: 2D Data Matrix type. - `ITF`: ITF type. - `EAN_13`: EAN-13 type. - `EAN_8`: EAN-8 type. - `QR_CODE`: 2D QR code type. - `UPC_A`: UPC-A type. - `UPC_E`: UPC-E type. - `PDF417`: PDF417 type. - `AZTEC`: 2D Aztec code type. - `DATABAR`: GS1 DataBar code type.
         """
         return pulumi.get(self, "format")
 
@@ -1445,7 +1462,7 @@ class GoogleCloudDocumentaiV1BarcodeArgs:
     @pulumi.getter(name="rawValue")
     def raw_value(self) -> Optional[pulumi.Input[str]]:
         """
-        Raw value encoded in the barcode. For example, 'MEBKM:TITLE:Google;URL:https://www.google.com;;'.
+        Raw value encoded in the barcode. For example: `'MEBKM:TITLE:Google;URL:https://www.google.com;;'`.
         """
         return pulumi.get(self, "raw_value")
 
@@ -1457,7 +1474,7 @@ class GoogleCloudDocumentaiV1BarcodeArgs:
     @pulumi.getter(name="valueFormat")
     def value_format(self) -> Optional[pulumi.Input[str]]:
         """
-        Value format describes the format of the value that a barcode encodes. The supported formats are: CONTACT_INFO: Contact information. EMAIL: Email address. ISBN: ISBN identifier. PHONE: Phone number. PRODUCT: Product. SMS: SMS message. TEXT: Text string. URL: URL address. WIFI: Wifi information. GEO: Geo-localization. CALENDAR_EVENT: Calendar event. DRIVER_LICENSE: Driver's license.
+        Value format describes the format of the value that a barcode encodes. The supported formats are: - `CONTACT_INFO`: Contact information. - `EMAIL`: Email address. - `ISBN`: ISBN identifier. - `PHONE`: Phone number. - `PRODUCT`: Product. - `SMS`: SMS message. - `TEXT`: Text string. - `URL`: URL address. - `WIFI`: Wifi information. - `GEO`: Geo-localization. - `CALENDAR_EVENT`: Calendar event. - `DRIVER_LICENSE`: Driver's license.
         """
         return pulumi.get(self, "value_format")
 
@@ -1526,7 +1543,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs:
         :param pulumi.Input[float] float_value: Float value.
         :param pulumi.Input[int] integer_value: Integer value.
         :param pulumi.Input['GoogleTypeMoneyArgs'] money_value: Money value. See also: https://github.com/googleapis/googleapis/blob/master/google/type/money.proto
-        :param pulumi.Input[str] text: Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+        :param pulumi.Input[str] text: Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
         """
         if address_value is not None:
             pulumi.set(__self__, "address_value", address_value)
@@ -1633,7 +1650,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValueArgs:
     @pulumi.getter
     def text(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate float or int normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
+        Optional. An optional field to store a normalized string. For some entity types, one of respective `structured_value` fields may also be populated. Also not all the types of `structured_value` will be normalized. For example, some processors may not generate `float` or `integer` normalized text by default. Below are sample formats mapped to structured values. - Money/Currency type (`money_value`) is in the ISO 4217 text format. - Date type (`date_value`) is in the ISO 8601 text format. - Datetime type (`datetime_value`) is in the ISO 8601 text format.
         """
         return pulumi.get(self, "text")
 
@@ -1715,7 +1732,7 @@ class GoogleCloudDocumentaiV1DocumentEntityArgs:
         """
         An entity that could be a phrase in the text or a property that belongs to the document. It is a known entity type, such as a person, an organization, or location.
         :param pulumi.Input[str] type: Entity type from a schema e.g. `Address`.
-        :param pulumi.Input[float] confidence: Optional. Confidence of detected Schema entity. Range [0, 1].
+        :param pulumi.Input[float] confidence: Optional. Confidence of detected Schema entity. Range `[0, 1]`.
         :param pulumi.Input[str] id: Optional. Canonical id. This will be a unique value in the entity list for this document.
         :param pulumi.Input[str] mention_id: Optional. Deprecated. Use `id` field instead.
         :param pulumi.Input[str] mention_text: Optional. Text value of the entity e.g. `1600 Amphitheatre Pkwy`.
@@ -1767,7 +1784,7 @@ class GoogleCloudDocumentaiV1DocumentEntityArgs:
     @pulumi.getter
     def confidence(self) -> Optional[pulumi.Input[float]]:
         """
-        Optional. Confidence of detected Schema entity. Range [0, 1].
+        Optional. Confidence of detected Schema entity. Range `[0, 1]`.
         """
         return pulumi.get(self, "confidence")
 
@@ -1894,9 +1911,9 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs:
                  layout_type: Optional[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType']] = None):
         """
         Represents a weak reference to a page element within a document.
-        :param pulumi.Input[str] page: Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+        :param pulumi.Input[str] page: Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
         :param pulumi.Input['GoogleCloudDocumentaiV1BoundingPolyArgs'] bounding_poly: Optional. Identifies the bounding polygon of a layout element on the page.
-        :param pulumi.Input[float] confidence: Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        :param pulumi.Input[float] confidence: Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
         :param pulumi.Input[str] layout_id: Optional. Deprecated. Use PageRef.bounding_poly instead.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageAnchorPageRefLayoutType'] layout_type: Optional. The type of the layout element that is being referenced if any.
         """
@@ -1917,7 +1934,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs:
     @pulumi.getter
     def page(self) -> pulumi.Input[str]:
         """
-        Index into the Document.pages element, for example using Document.pages to locate the related page element. This field is skipped when its value is the default 0. See https://developers.google.com/protocol-buffers/docs/proto3#json.
+        Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
         """
         return pulumi.get(self, "page")
 
@@ -1941,7 +1958,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefArgs:
     @pulumi.getter
     def confidence(self) -> Optional[pulumi.Input[float]]:
         """
-        Optional. Confidence of detected page element, if applicable. Range [0, 1].
+        Optional. Confidence of detected page element, if applicable. Range `[0, 1]`.
         """
         return pulumi.get(self, "confidence")
 
@@ -2101,8 +2118,8 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs:
                  language_code: Optional[pulumi.Input[str]] = None):
         """
         Detected language for a structural component.
-        :param pulumi.Input[float] confidence: Confidence of detected language. Range [0, 1].
-        :param pulumi.Input[str] language_code: The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        :param pulumi.Input[float] confidence: Confidence of detected language. Range `[0, 1]`.
+        :param pulumi.Input[str] language_code: The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         """
         if confidence is not None:
             pulumi.set(__self__, "confidence", confidence)
@@ -2113,7 +2130,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs:
     @pulumi.getter
     def confidence(self) -> Optional[pulumi.Input[float]]:
         """
-        Confidence of detected language. Range [0, 1].
+        Confidence of detected language. Range `[0, 1]`.
         """
         return pulumi.get(self, "confidence")
 
@@ -2125,7 +2142,7 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs:
     @pulumi.getter(name="languageCode")
     def language_code(self) -> Optional[pulumi.Input[str]]:
         """
-        The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         """
         return pulumi.get(self, "language_code")
 
@@ -2210,7 +2227,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormFieldArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs']]] name_detected_languages: A list of detected languages for name together with confidence.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentProvenanceArgs'] provenance: The history of this annotation.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageDetectedLanguageArgs']]] value_detected_languages: A list of detected languages for value together with confidence.
-        :param pulumi.Input[str] value_type: If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        :param pulumi.Input[str] value_type: If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         """
         if corrected_key_text is not None:
             pulumi.set(__self__, "corrected_key_text", corrected_key_text)
@@ -2317,7 +2334,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormFieldArgs:
     @pulumi.getter(name="valueType")
     def value_type(self) -> Optional[pulumi.Input[str]]:
         """
-        If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the field_value is normal text) - "unfilled_checkbox" - "filled_checkbox"
+        If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
         """
         return pulumi.get(self, "value_type")
 
@@ -2333,8 +2350,8 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         Image Quality Defects
-        :param pulumi.Input[float] confidence: Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
-        :param pulumi.Input[str] type: Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        :param pulumi.Input[float] confidence: Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        :param pulumi.Input[str] type: Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
         """
         if confidence is not None:
             pulumi.set(__self__, "confidence", confidence)
@@ -2345,7 +2362,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs:
     @pulumi.getter
     def confidence(self) -> Optional[pulumi.Input[float]]:
         """
-        Confidence of detected defect. Range [0, 1] where 1 indicates strong confidence of that the defect exists.
+        Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
         """
         return pulumi.get(self, "confidence")
 
@@ -2357,7 +2374,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the defect type. Supported values are "quality/defect_blurry", "quality/defect_noisy", "quality/defect_dark", "quality/defect_faint", "quality/defect_text_too_small", "quality/defect_document_cutoff", "quality/defect_text_cutoff", "quality/defect_glare"
+        Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
         """
         return pulumi.get(self, "type")
 
@@ -2374,7 +2391,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs:
         """
         Image Quality Scores for the page image
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefectArgs']]] detected_defects: A list of detected defects.
-        :param pulumi.Input[float] quality_score: The overall quality score. Range [0, 1] where 1 is perfect quality.
+        :param pulumi.Input[float] quality_score: The overall quality score. Range `[0, 1]` where 1 is perfect quality.
         """
         if detected_defects is not None:
             pulumi.set(__self__, "detected_defects", detected_defects)
@@ -2397,7 +2414,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresArgs:
     @pulumi.getter(name="qualityScore")
     def quality_score(self) -> Optional[pulumi.Input[float]]:
         """
-        The overall quality score. Range [0, 1] where 1 is perfect quality.
+        The overall quality score. Range `[0, 1]` where 1 is perfect quality.
         """
         return pulumi.get(self, "quality_score")
 
@@ -2488,7 +2505,7 @@ class GoogleCloudDocumentaiV1DocumentPageLayoutArgs:
         """
         Visual element describing a layout unit on a page.
         :param pulumi.Input['GoogleCloudDocumentaiV1BoundingPolyArgs'] bounding_poly: The bounding polygon for the Layout.
-        :param pulumi.Input[float] confidence: Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+        :param pulumi.Input[float] confidence: Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentPageLayoutOrientation'] orientation: Detected orientation for the Layout.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentTextAnchorArgs'] text_anchor: Text anchor indexing into the Document.text.
         """
@@ -2517,7 +2534,7 @@ class GoogleCloudDocumentaiV1DocumentPageLayoutArgs:
     @pulumi.getter
     def confidence(self) -> Optional[pulumi.Input[float]]:
         """
-        Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range [0, 1].
+        Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
         """
         return pulumi.get(self, "confidence")
 
@@ -3789,7 +3806,7 @@ class GoogleCloudDocumentaiV1DocumentStyleArgs:
         Annotation for common text style attributes. This adheres to CSS conventions as much as possible.
         :param pulumi.Input['GoogleTypeColorArgs'] background_color: Text background color.
         :param pulumi.Input['GoogleTypeColorArgs'] color: Text color.
-        :param pulumi.Input[str] font_family: Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        :param pulumi.Input[str] font_family: Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentStyleFontSizeArgs'] font_size: Font size.
         :param pulumi.Input[str] font_weight: Font weight. Possible values are normal, bold, bolder, and lighter. https://www.w3schools.com/cssref/pr_font_weight.asp
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentTextAnchorArgs'] text_anchor: Text anchor indexing into the Document.text.
@@ -3841,7 +3858,7 @@ class GoogleCloudDocumentaiV1DocumentStyleArgs:
     @pulumi.getter(name="fontFamily")
     def font_family(self) -> Optional[pulumi.Input[str]]:
         """
-        Font family such as "Arial", "Times New Roman". https://www.w3schools.com/cssref/pr_font_font-family.asp
+        Font family such as `Arial`, `Times New Roman`. https://www.w3schools.com/cssref/pr_font_font-family.asp
         """
         return pulumi.get(self, "font_family")
 
@@ -4072,8 +4089,8 @@ class GoogleCloudDocumentaiV1DocumentArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentRevisionArgs']]] revisions: Placeholder. Revision history of this document.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentShardInfoArgs'] shard_info: Information about the sharding if this document is sharded part of a larger document. If the document is not sharded, this message is not specified.
         :param pulumi.Input[str] text: Optional. UTF-8 encoded text in reading order from the document.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentTextChangeArgs']]] text_changes: Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentStyleArgs']]] text_styles: Placeholder. Styles for the Document.text.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentTextChangeArgs']]] text_changes: Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentStyleArgs']]] text_styles: Styles for the Document.text.
         :param pulumi.Input[str] uri: Optional. Currently supports Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for more info.
         """
         if content is not None:
@@ -4213,7 +4230,7 @@ class GoogleCloudDocumentaiV1DocumentArgs:
     @pulumi.getter(name="textChanges")
     def text_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentTextChangeArgs']]]]:
         """
-        Placeholder. A list of text corrections made to [Document.text]. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
+        Placeholder. A list of text corrections made to Document.text. This is usually used for annotating corrections to OCR mistakes. Text changes for a given revision may not overlap with each other.
         """
         return pulumi.get(self, "text_changes")
 
@@ -4225,7 +4242,7 @@ class GoogleCloudDocumentaiV1DocumentArgs:
     @pulumi.getter(name="textStyles")
     def text_styles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDocumentaiV1DocumentStyleArgs']]]]:
         """
-        Placeholder. Styles for the Document.text.
+        Styles for the Document.text.
         """
         return pulumi.get(self, "text_styles")
 

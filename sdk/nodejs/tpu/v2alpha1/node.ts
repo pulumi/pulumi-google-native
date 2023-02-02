@@ -97,6 +97,10 @@ export class Node extends pulumi.CustomResource {
     public readonly nodeId!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string>;
     /**
+     * The qualified name of the QueuedResource that requested this Node.
+     */
+    public /*out*/ readonly queuedResource!: pulumi.Output<string>;
+    /**
      * Idempotent request UUID.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
@@ -165,6 +169,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["healthDescription"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["networkEndpoints"] = undefined /*out*/;
+            resourceInputs["queuedResource"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["symptoms"] = undefined /*out*/;
         } else {
@@ -184,6 +189,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["networkEndpoints"] = undefined /*out*/;
             resourceInputs["nodeId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["queuedResource"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["runtimeVersion"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;

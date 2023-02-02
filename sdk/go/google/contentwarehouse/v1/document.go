@@ -15,10 +15,10 @@ import (
 type Document struct {
 	pulumi.CustomResourceState
 
-	// If true, makes the document visible to asynchronous policies and rules.
-	AsyncEnabled pulumi.BoolOutput `pulumi:"asyncEnabled"`
 	// Document AI format to save the structured content, including OCR.
 	CloudAiDocument GoogleCloudDocumentaiV1DocumentResponseOutput `pulumi:"cloudAiDocument"`
+	// Indicates the category (image, audio, video etc.) of the original content.
+	ContentCategory pulumi.StringOutput `pulumi:"contentCategory"`
 	// The time when the document is created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user who creates the document.
@@ -45,11 +45,11 @@ type Document struct {
 	RawDocumentPath pulumi.StringOutput `pulumi:"rawDocumentPath"`
 	// The reference ID set by customers. Must be unique per project and location.
 	ReferenceId pulumi.StringOutput `pulumi:"referenceId"`
-	// A path linked to structured content file.
-	StructuredContentUri pulumi.StringOutput `pulumi:"structuredContentUri"`
 	// If true, text extraction will not be performed.
 	TextExtractionDisabled pulumi.BoolOutput `pulumi:"textExtractionDisabled"`
-	// Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+	// If true, text extraction will be performed.
+	TextExtractionEnabled pulumi.BoolOutput `pulumi:"textExtractionEnabled"`
+	// Title that describes the document. This can be the top heading or text that describes the document.
 	Title pulumi.StringOutput `pulumi:"title"`
 	// The time when the document is last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -104,13 +104,13 @@ func (DocumentState) ElementType() reflect.Type {
 }
 
 type documentArgs struct {
-	// If true, makes the document visible to asynchronous policies and rules.
-	AsyncEnabled *bool `pulumi:"asyncEnabled"`
 	// Document AI format to save the structured content, including OCR.
 	CloudAiDocument *GoogleCloudDocumentaiV1Document `pulumi:"cloudAiDocument"`
-	// Request Option for processing Cloud AI Document in CW Document.
+	// Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
 	CloudAiDocumentOption *GoogleCloudContentwarehouseV1CloudAIDocumentOption `pulumi:"cloudAiDocumentOption"`
-	// Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+	// Indicates the category (image, audio, video etc.) of the original content.
+	ContentCategory *DocumentContentCategory `pulumi:"contentCategory"`
+	// Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
 	CreateMask *string `pulumi:"createMask"`
 	// The user who creates the document.
 	Creator *string `pulumi:"creator"`
@@ -127,7 +127,7 @@ type documentArgs struct {
 	Name *string `pulumi:"name"`
 	// Other document format, such as PPTX, XLXS
 	PlainText *string `pulumi:"plainText"`
-	// Default document policy during creation. Conditions defined in the policy will be ignored.
+	// Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
 	Policy  *GoogleIamV1Policy `pulumi:"policy"`
 	Project *string            `pulumi:"project"`
 	// List of values that are user supplied metadata.
@@ -140,11 +140,11 @@ type documentArgs struct {
 	ReferenceId *string `pulumi:"referenceId"`
 	// The meta information collected about the end user, used to enforce access control for the service.
 	RequestMetadata *GoogleCloudContentwarehouseV1RequestMetadata `pulumi:"requestMetadata"`
-	// A path linked to structured content file.
-	StructuredContentUri *string `pulumi:"structuredContentUri"`
 	// If true, text extraction will not be performed.
 	TextExtractionDisabled *bool `pulumi:"textExtractionDisabled"`
-	// Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+	// If true, text extraction will be performed.
+	TextExtractionEnabled *bool `pulumi:"textExtractionEnabled"`
+	// Title that describes the document. This can be the top heading or text that describes the document.
 	Title *string `pulumi:"title"`
 	// The user who lastly updates the document.
 	Updater *string `pulumi:"updater"`
@@ -152,13 +152,13 @@ type documentArgs struct {
 
 // The set of arguments for constructing a Document resource.
 type DocumentArgs struct {
-	// If true, makes the document visible to asynchronous policies and rules.
-	AsyncEnabled pulumi.BoolPtrInput
 	// Document AI format to save the structured content, including OCR.
 	CloudAiDocument GoogleCloudDocumentaiV1DocumentPtrInput
-	// Request Option for processing Cloud AI Document in CW Document.
+	// Request Option for processing Cloud AI Document in Document Warehouse. This field offers limited support for mapping entities from Cloud AI Document to Warehouse Document. Please consult with product team before using this field and other available options.
 	CloudAiDocumentOption GoogleCloudContentwarehouseV1CloudAIDocumentOptionPtrInput
-	// Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+	// Indicates the category (image, audio, video etc.) of the original content.
+	ContentCategory DocumentContentCategoryPtrInput
+	// Field mask for creating Document fields. If mask path is empty, it means all fields are masked. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask.
 	CreateMask pulumi.StringPtrInput
 	// The user who creates the document.
 	Creator pulumi.StringPtrInput
@@ -175,7 +175,7 @@ type DocumentArgs struct {
 	Name pulumi.StringPtrInput
 	// Other document format, such as PPTX, XLXS
 	PlainText pulumi.StringPtrInput
-	// Default document policy during creation. Conditions defined in the policy will be ignored.
+	// Default document policy during creation. This refers to an Identity and Access (IAM) policy, which specifies access controls for the Document. Conditions defined in the policy will be ignored.
 	Policy  GoogleIamV1PolicyPtrInput
 	Project pulumi.StringPtrInput
 	// List of values that are user supplied metadata.
@@ -188,11 +188,11 @@ type DocumentArgs struct {
 	ReferenceId pulumi.StringPtrInput
 	// The meta information collected about the end user, used to enforce access control for the service.
 	RequestMetadata GoogleCloudContentwarehouseV1RequestMetadataPtrInput
-	// A path linked to structured content file.
-	StructuredContentUri pulumi.StringPtrInput
 	// If true, text extraction will not be performed.
 	TextExtractionDisabled pulumi.BoolPtrInput
-	// Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+	// If true, text extraction will be performed.
+	TextExtractionEnabled pulumi.BoolPtrInput
+	// Title that describes the document. This can be the top heading or text that describes the document.
 	Title pulumi.StringPtrInput
 	// The user who lastly updates the document.
 	Updater pulumi.StringPtrInput
@@ -235,14 +235,14 @@ func (o DocumentOutput) ToDocumentOutputWithContext(ctx context.Context) Documen
 	return o
 }
 
-// If true, makes the document visible to asynchronous policies and rules.
-func (o DocumentOutput) AsyncEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Document) pulumi.BoolOutput { return v.AsyncEnabled }).(pulumi.BoolOutput)
-}
-
 // Document AI format to save the structured content, including OCR.
 func (o DocumentOutput) CloudAiDocument() GoogleCloudDocumentaiV1DocumentResponseOutput {
 	return o.ApplyT(func(v *Document) GoogleCloudDocumentaiV1DocumentResponseOutput { return v.CloudAiDocument }).(GoogleCloudDocumentaiV1DocumentResponseOutput)
+}
+
+// Indicates the category (image, audio, video etc.) of the original content.
+func (o DocumentOutput) ContentCategory() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.ContentCategory }).(pulumi.StringOutput)
 }
 
 // The time when the document is created.
@@ -313,17 +313,17 @@ func (o DocumentOutput) ReferenceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.ReferenceId }).(pulumi.StringOutput)
 }
 
-// A path linked to structured content file.
-func (o DocumentOutput) StructuredContentUri() pulumi.StringOutput {
-	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.StructuredContentUri }).(pulumi.StringOutput)
-}
-
 // If true, text extraction will not be performed.
 func (o DocumentOutput) TextExtractionDisabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Document) pulumi.BoolOutput { return v.TextExtractionDisabled }).(pulumi.BoolOutput)
 }
 
-// Title that describes the document. This is usually present in the top section of the document, and is a mandatory field for the question-answering feature.
+// If true, text extraction will be performed.
+func (o DocumentOutput) TextExtractionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Document) pulumi.BoolOutput { return v.TextExtractionEnabled }).(pulumi.BoolOutput)
+}
+
+// Title that describes the document. This can be the top heading or text that describes the document.
 func (o DocumentOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Title }).(pulumi.StringOutput)
 }

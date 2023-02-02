@@ -75,6 +75,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * An Oracle database connection profile.
+     */
+    public readonly oracle!: pulumi.Output<outputs.datamigration.v1.OracleConnectionProfileResponse>;
+    /**
      * A PostgreSQL database connection profile.
      */
     public readonly postgresql!: pulumi.Output<outputs.datamigration.v1.PostgreSqlConnectionProfileResponse>;
@@ -84,9 +88,13 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly provider!: pulumi.Output<string>;
     /**
-     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
+    /**
+     * Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+     */
+    public readonly skipValidation!: pulumi.Output<boolean | undefined>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
@@ -95,6 +103,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      * The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+     */
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -118,11 +130,14 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mysql"] = args ? args.mysql : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["oracle"] = args ? args.oracle : undefined;
             resourceInputs["postgresql"] = args ? args.postgresql : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provider"] = args ? args.provider : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["skipValidation"] = args ? args.skipValidation : undefined;
             resourceInputs["state"] = args ? args.state : undefined;
+            resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -137,12 +152,15 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mysql"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["oracle"] = undefined /*out*/;
             resourceInputs["postgresql"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provider"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["skipValidation"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["validateOnly"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["connectionProfileId", "location", "project"] };
@@ -185,6 +203,10 @@ export interface ConnectionProfileArgs {
      */
     name?: pulumi.Input<string>;
     /**
+     * An Oracle database connection profile.
+     */
+    oracle?: pulumi.Input<inputs.datamigration.v1.OracleConnectionProfileArgs>;
+    /**
      * A PostgreSQL database connection profile.
      */
     postgresql?: pulumi.Input<inputs.datamigration.v1.PostgreSqlConnectionProfileArgs>;
@@ -194,11 +216,19 @@ export interface ConnectionProfileArgs {
      */
     provider?: pulumi.Input<enums.datamigration.v1.ConnectionProfileProvider>;
     /**
-     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
+     */
+    skipValidation?: pulumi.Input<boolean>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */
     state?: pulumi.Input<enums.datamigration.v1.ConnectionProfileState>;
+    /**
+     * Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
+     */
+    validateOnly?: pulumi.Input<boolean>;
 }

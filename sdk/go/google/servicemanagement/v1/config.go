@@ -55,6 +55,8 @@ type Config struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Google project that owns this service.
 	ProducerProjectId pulumi.StringOutput `pulumi:"producerProjectId"`
+	// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+	Publishing PublishingResponseOutput `pulumi:"publishing"`
 	// Quota configuration.
 	Quota       QuotaResponseOutput `pulumi:"quota"`
 	ServiceName pulumi.StringOutput `pulumi:"serviceName"`
@@ -158,6 +160,8 @@ type configArgs struct {
 	Name *string `pulumi:"name"`
 	// The Google project that owns this service.
 	ProducerProjectId *string `pulumi:"producerProjectId"`
+	// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+	Publishing *Publishing `pulumi:"publishing"`
 	// Quota configuration.
 	Quota       *Quota `pulumi:"quota"`
 	ServiceName string `pulumi:"serviceName"`
@@ -215,6 +219,8 @@ type ConfigArgs struct {
 	Name pulumi.StringPtrInput
 	// The Google project that owns this service.
 	ProducerProjectId pulumi.StringPtrInput
+	// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+	Publishing PublishingPtrInput
 	// Quota configuration.
 	Quota       QuotaPtrInput
 	ServiceName pulumi.StringInput
@@ -360,6 +366,11 @@ func (o ConfigOutput) Name() pulumi.StringOutput {
 // The Google project that owns this service.
 func (o ConfigOutput) ProducerProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringOutput { return v.ProducerProjectId }).(pulumi.StringOutput)
+}
+
+// Settings for [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from APIs defined as protocol buffers.
+func (o ConfigOutput) Publishing() PublishingResponseOutput {
+	return o.ApplyT(func(v *Config) PublishingResponseOutput { return v.Publishing }).(PublishingResponseOutput)
 }
 
 // Quota configuration.

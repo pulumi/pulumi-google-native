@@ -1131,7 +1131,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// The name of a locality load balancer policy to be used. The value should be one of the predefined ones as supported by localityLbPolicy, although at the moment only ROUND_ROBIN is supported. This field should only be populated when the customPolicy field is not used. Note that specifying the same policy more than once for a backend is not a valid configuration and will be rejected.
+    /// The name of a locality load-balancing policy. Valid values include ROUND_ROBIN and, for Java clients, LEAST_REQUEST. For information about these values, see the description of localityLbPolicy. Do not specify the same policy more than once for a backend. If you do, the configuration is rejected.
     /// </summary>
     [EnumType]
     public readonly struct BackendServiceLocalityLoadBalancingPolicyConfigPolicyName : IEquatable<BackendServiceLocalityLoadBalancingPolicyConfigPolicyName>
@@ -1181,6 +1181,47 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is BackendServiceLocalityLoadBalancingPolicyConfigPolicyName other && Equals(other);
         public bool Equals(BackendServiceLocalityLoadBalancingPolicyConfigPolicyName other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+    /// </summary>
+    [EnumType]
+    public readonly struct BackendServiceLogConfigOptionalMode : IEquatable<BackendServiceLogConfigOptionalMode>
+    {
+        private readonly string _value;
+
+        private BackendServiceLogConfigOptionalMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// A subset of optional fields.
+        /// </summary>
+        public static BackendServiceLogConfigOptionalMode Custom { get; } = new BackendServiceLogConfigOptionalMode("CUSTOM");
+        /// <summary>
+        /// None optional fields.
+        /// </summary>
+        public static BackendServiceLogConfigOptionalMode ExcludeAllOptional { get; } = new BackendServiceLogConfigOptionalMode("EXCLUDE_ALL_OPTIONAL");
+        /// <summary>
+        /// All optional fields.
+        /// </summary>
+        public static BackendServiceLogConfigOptionalMode IncludeAllOptional { get; } = new BackendServiceLogConfigOptionalMode("INCLUDE_ALL_OPTIONAL");
+
+        public static bool operator ==(BackendServiceLogConfigOptionalMode left, BackendServiceLogConfigOptionalMode right) => left.Equals(right);
+        public static bool operator !=(BackendServiceLogConfigOptionalMode left, BackendServiceLogConfigOptionalMode right) => !left.Equals(right);
+
+        public static explicit operator string(BackendServiceLogConfigOptionalMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is BackendServiceLogConfigOptionalMode other && Equals(other);
+        public bool Equals(BackendServiceLogConfigOptionalMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2597,6 +2638,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public static GuestOsFeatureType MultiIpSubnet { get; } = new GuestOsFeatureType("MULTI_IP_SUBNET");
         public static GuestOsFeatureType SecureBoot { get; } = new GuestOsFeatureType("SECURE_BOOT");
         public static GuestOsFeatureType SevCapable { get; } = new GuestOsFeatureType("SEV_CAPABLE");
+        public static GuestOsFeatureType SevSnpCapable { get; } = new GuestOsFeatureType("SEV_SNP_CAPABLE");
         public static GuestOsFeatureType UefiCompatible { get; } = new GuestOsFeatureType("UEFI_COMPATIBLE");
         public static GuestOsFeatureType VirtioScsiMultiqueue { get; } = new GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE");
         public static GuestOsFeatureType Windows { get; } = new GuestOsFeatureType("WINDOWS");
@@ -3985,6 +4027,35 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct NetworkAttachmentConnectionPreference : IEquatable<NetworkAttachmentConnectionPreference>
+    {
+        private readonly string _value;
+
+        private NetworkAttachmentConnectionPreference(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static NetworkAttachmentConnectionPreference AcceptAutomatic { get; } = new NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC");
+        public static NetworkAttachmentConnectionPreference AcceptManual { get; } = new NetworkAttachmentConnectionPreference("ACCEPT_MANUAL");
+        public static NetworkAttachmentConnectionPreference Invalid { get; } = new NetworkAttachmentConnectionPreference("INVALID");
+
+        public static bool operator ==(NetworkAttachmentConnectionPreference left, NetworkAttachmentConnectionPreference right) => left.Equals(right);
+        public static bool operator !=(NetworkAttachmentConnectionPreference left, NetworkAttachmentConnectionPreference right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkAttachmentConnectionPreference value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkAttachmentConnectionPreference other && Equals(other);
+        public bool Equals(NetworkAttachmentConnectionPreference other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
     /// </summary>
@@ -4988,7 +5059,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. .
+    /// Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified. - NO_AGGREGATION. An EndpointHealth message is returned for each pair in the health check service. - AND. If any health check of an endpoint reports UNHEALTHY, then UNHEALTHY is the HealthState of the endpoint. If all health checks report HEALTHY, the HealthState of the endpoint is HEALTHY. . This is only allowed with regional HealthCheckService.
     /// </summary>
     [EnumType]
     public readonly struct RegionHealthCheckServiceHealthStatusAggregationPolicy : IEquatable<RegionHealthCheckServiceHealthStatusAggregationPolicy>
@@ -5498,7 +5569,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Type of resource for which this commitment applies. Possible values are VCPU and MEMORY
+    /// Type of resource for which this commitment applies. Possible values are VCPU, MEMORY, LOCAL_SSD, and ACCELERATOR.
     /// </summary>
     [EnumType]
     public readonly struct ResourceCommitmentType : IEquatable<ResourceCommitmentType>
@@ -6548,7 +6619,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
-    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
     /// </summary>
     [EnumType]
     public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKey : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKey>
@@ -6578,6 +6649,44 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyRuleRateLimitOptionsEnforceOnKey other && Equals(other);
         public bool Equals(SecurityPolicyRuleRateLimitOptionsEnforceOnKey other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates. 
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType : IEquatable<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType All { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType AllIps { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("ALL_IPS");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpCookie { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_COOKIE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpHeader { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_HEADER");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType HttpPath { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("HTTP_PATH");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Ip { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("IP");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType RegionCode { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("REGION_CODE");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType Sni { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("SNI");
+        public static SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType XffIp { get; } = new SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType("XFF_IP");
+
+        public static bool operator ==(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType left, SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType other && Equals(other);
+        public bool Equals(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigEnforceOnKeyType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

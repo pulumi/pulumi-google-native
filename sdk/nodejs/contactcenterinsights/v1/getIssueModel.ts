@@ -43,6 +43,10 @@ export interface GetIssueModelResult {
      */
     readonly inputDataConfig: outputs.contactcenterinsights.v1.GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigResponse;
     /**
+     * Number of issues in this issue model.
+     */
+    readonly issueCount: string;
+    /**
      * Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model}
      */
     readonly name: string;

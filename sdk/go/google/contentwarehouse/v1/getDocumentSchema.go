@@ -31,7 +31,7 @@ type LookupDocumentSchemaResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Schema description.
 	Description string `pulumi:"description"`
-	// Name of the schema given by the user. Must be unique per customer.
+	// Name of the schema given by the user. Must be unique per project.
 	DisplayName string `pulumi:"displayName"`
 	// Document Type, true refers the document is a folder, otherwise it is a typical document.
 	DocumentIsFolder bool `pulumi:"documentIsFolder"`
@@ -90,7 +90,7 @@ func (o LookupDocumentSchemaResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentSchemaResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Name of the schema given by the user. Must be unique per customer.
+// Name of the schema given by the user. Must be unique per project.
 func (o LookupDocumentSchemaResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDocumentSchemaResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }

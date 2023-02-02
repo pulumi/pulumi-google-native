@@ -72,6 +72,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         public readonly string DeleteTime;
         /// <summary>
+        /// Optional. Feature configuration applicable to all memberships of the fleet.
+        /// </summary>
+        public readonly Outputs.CommonFleetDefaultMemberConfigSpecResponse FleetDefaultMemberConfig;
+        /// <summary>
         /// GCP labels for this Feature.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -118,6 +122,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
             string deleteTime,
 
+            Outputs.CommonFleetDefaultMemberConfigSpecResponse fleetDefaultMemberConfig,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableDictionary<string, string> membershipSpecs,
@@ -140,6 +146,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         {
             CreateTime = createTime;
             DeleteTime = deleteTime;
+            FleetDefaultMemberConfig = fleetDefaultMemberConfig;
             Labels = labels;
             MembershipSpecs = membershipSpecs;
             MembershipStates = membershipStates;

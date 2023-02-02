@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetVersionResult:
-    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
+    def __init__(__self__, api_config=None, app_engine_apis=None, automatic_scaling=None, basic_scaling=None, beta_settings=None, build_env_variables=None, create_time=None, created_by=None, default_expiration=None, deployment=None, disk_usage_bytes=None, endpoints_api_service=None, entrypoint=None, env=None, env_variables=None, error_handlers=None, flexible_runtime_settings=None, handlers=None, health_check=None, inbound_services=None, instance_class=None, libraries=None, liveness_check=None, manual_scaling=None, name=None, network=None, nobuild_files_regex=None, readiness_check=None, resources=None, runtime=None, runtime_api_version=None, runtime_channel=None, runtime_main_executable_path=None, service_account=None, serving_status=None, threadsafe=None, version_url=None, vm=None, vpc_access_connector=None, zones=None):
         if api_config and not isinstance(api_config, dict):
             raise TypeError("Expected argument 'api_config' to be a dict")
         pulumi.set(__self__, "api_config", api_config)
@@ -68,6 +68,9 @@ class GetVersionResult:
         if error_handlers and not isinstance(error_handlers, list):
             raise TypeError("Expected argument 'error_handlers' to be a list")
         pulumi.set(__self__, "error_handlers", error_handlers)
+        if flexible_runtime_settings and not isinstance(flexible_runtime_settings, dict):
+            raise TypeError("Expected argument 'flexible_runtime_settings' to be a dict")
+        pulumi.set(__self__, "flexible_runtime_settings", flexible_runtime_settings)
         if handlers and not isinstance(handlers, list):
             raise TypeError("Expected argument 'handlers' to be a list")
         pulumi.set(__self__, "handlers", handlers)
@@ -269,6 +272,14 @@ class GetVersionResult:
         Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "error_handlers")
+
+    @property
+    @pulumi.getter(name="flexibleRuntimeSettings")
+    def flexible_runtime_settings(self) -> 'outputs.FlexibleRuntimeSettingsResponse':
+        """
+        Settings for App Engine flexible runtimes.
+        """
+        return pulumi.get(self, "flexible_runtime_settings")
 
     @property
     @pulumi.getter
@@ -477,6 +488,7 @@ class AwaitableGetVersionResult(GetVersionResult):
             env=self.env,
             env_variables=self.env_variables,
             error_handlers=self.error_handlers,
+            flexible_runtime_settings=self.flexible_runtime_settings,
             handlers=self.handlers,
             health_check=self.health_check,
             inbound_services=self.inbound_services,
@@ -535,6 +547,7 @@ def get_version(app_id: Optional[str] = None,
         env=__ret__.env,
         env_variables=__ret__.env_variables,
         error_handlers=__ret__.error_handlers,
+        flexible_runtime_settings=__ret__.flexible_runtime_settings,
         handlers=__ret__.handlers,
         health_check=__ret__.health_check,
         inbound_services=__ret__.inbound_services,

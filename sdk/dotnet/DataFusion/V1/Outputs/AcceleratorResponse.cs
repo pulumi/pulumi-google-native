@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Outputs
         /// </summary>
         public readonly string AcceleratorType;
         /// <summary>
-        /// The state of the accelerator
+        /// The state of the accelerator.
         /// </summary>
         public readonly string State;
 

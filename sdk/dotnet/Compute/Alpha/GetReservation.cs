@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public sealed class GetReservationResult
     {
         /// <summary>
+        /// Reservation for aggregated resources, providing shape flexibility.
+        /// </summary>
+        public readonly Outputs.AllocationAggregateReservationResponse AggregateReservation;
+        /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
         /// </summary>
         public readonly string Commitment;
@@ -104,7 +108,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string SelfLinkWithId;
         /// <summary>
-        /// Share-settings for shared-reservation
+        /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>
         public readonly Outputs.ShareSettingsResponse ShareSettings;
         /// <summary>
@@ -126,6 +130,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [OutputConstructor]
         private GetReservationResult(
+            Outputs.AllocationAggregateReservationResponse aggregateReservation,
+
             string commitment,
 
             string creationTimestamp,
@@ -156,6 +162,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string zone)
         {
+            AggregateReservation = aggregateReservation;
             Commitment = commitment;
             CreationTimestamp = creationTimestamp;
             Description = description;

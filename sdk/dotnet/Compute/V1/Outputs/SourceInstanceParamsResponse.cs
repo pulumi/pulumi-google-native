@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class SourceInstanceParamsResponse
     {
         /// <summary>
-        /// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, new custom images will be created from each disk. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
+        /// Attached disks configuration. If not provided, defaults are applied: For boot disk and any other R/W disks, the source images for each disk will be used. For read-only disks, they will be attached in read-only mode. Local SSD disks will be created as blank volumes.
         /// </summary>
         public readonly ImmutableArray<Outputs.DiskInstantiationConfigResponse> DiskConfigs;
 

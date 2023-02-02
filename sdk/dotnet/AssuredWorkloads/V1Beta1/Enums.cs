@@ -121,6 +121,14 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
         /// Assured Workloads for Partners;
         /// </summary>
         public static WorkloadComplianceRegime AssuredWorkloadsForPartners { get; } = new WorkloadComplianceRegime("ASSURED_WORKLOADS_FOR_PARTNERS");
+        /// <summary>
+        /// Assured Workloads for Israel
+        /// </summary>
+        public static WorkloadComplianceRegime IsrRegions { get; } = new WorkloadComplianceRegime("ISR_REGIONS");
+        /// <summary>
+        /// Assured Workloads for Canada Protected B regime
+        /// </summary>
+        public static WorkloadComplianceRegime CaProtectedB { get; } = new WorkloadComplianceRegime("CA_PROTECTED_B");
 
         public static bool operator ==(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => left.Equals(right);
         public static bool operator !=(WorkloadComplianceRegime left, WorkloadComplianceRegime right) => !left.Equals(right);
@@ -138,7 +146,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
     }
 
     /// <summary>
-    /// Optional. Compliance Regime associated with this workload.
+    /// Optional. Partner regime associated with this workload.
     /// </summary>
     [EnumType]
     public readonly struct WorkloadPartner : IEquatable<WorkloadPartner>
@@ -150,14 +158,15 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1Beta1
             _value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
-        /// <summary>
-        /// Unknown partner regime/controls.
-        /// </summary>
         public static WorkloadPartner PartnerUnspecified { get; } = new WorkloadPartner("PARTNER_UNSPECIFIED");
         /// <summary>
-        /// S3NS regime/controls.
+        /// Enum representing S3NS partner.
         /// </summary>
         public static WorkloadPartner LocalControlsByS3ns { get; } = new WorkloadPartner("LOCAL_CONTROLS_BY_S3NS");
+        /// <summary>
+        /// Enum representing T_SYSTEM partner.
+        /// </summary>
+        public static WorkloadPartner SovereignControlsByTSystems { get; } = new WorkloadPartner("SOVEREIGN_CONTROLS_BY_T_SYSTEMS");
 
         public static bool operator ==(WorkloadPartner left, WorkloadPartner right) => left.Equals(right);
         public static bool operator !=(WorkloadPartner left, WorkloadPartner right) => !left.Equals(right);

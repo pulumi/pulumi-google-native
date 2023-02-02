@@ -2,6 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const CapacityCommitmentEdition = {
+    /**
+     * Default value, only for legacy reservations and capacity commitments.
+     */
+    EditionUnspecified: "EDITION_UNSPECIFIED",
+    /**
+     * Enterprise edition.
+     */
+    Enterprise: "ENTERPRISE",
+} as const;
+
+/**
+ * Edition of the capacity commitment.
+ */
+export type CapacityCommitmentEdition = (typeof CapacityCommitmentEdition)[keyof typeof CapacityCommitmentEdition];
+
 export const CapacityCommitmentPlan = {
     /**
      * Invalid plan value. Requests with this value will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`.
@@ -23,6 +39,10 @@ export const CapacityCommitmentPlan = {
      * Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
      */
     Annual: "ANNUAL",
+    /**
+     * Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+     */
+    None: "NONE",
 } as const;
 
 /**
@@ -51,9 +71,29 @@ export const CapacityCommitmentRenewalPlan = {
      * Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
      */
     Annual: "ANNUAL",
+    /**
+     * Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
+     */
+    None: "NONE",
 } as const;
 
 /**
  * The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
  */
 export type CapacityCommitmentRenewalPlan = (typeof CapacityCommitmentRenewalPlan)[keyof typeof CapacityCommitmentRenewalPlan];
+
+export const ReservationEdition = {
+    /**
+     * Default value, only for legacy reservations and capacity commitments.
+     */
+    EditionUnspecified: "EDITION_UNSPECIFIED",
+    /**
+     * Enterprise edition.
+     */
+    Enterprise: "ENTERPRISE",
+} as const;
+
+/**
+ * Edition of the reservation.
+ */
+export type ReservationEdition = (typeof ReservationEdition)[keyof typeof ReservationEdition];

@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool EnablePrivateV6Access;
         /// <summary>
-        /// The external IPv6 address range that is assigned to this subnetwork.
+        /// The external IPv6 address range that is owned by this subnetwork.
         /// </summary>
         public readonly string ExternalIpv6Prefix;
         /// <summary>

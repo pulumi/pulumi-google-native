@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     public sealed class OSPolicyResourceFileResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A a file with this content. The size of the content is limited to 1024 characters.
+        /// A a file with this content. The size of the content is limited to 32KiB.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }

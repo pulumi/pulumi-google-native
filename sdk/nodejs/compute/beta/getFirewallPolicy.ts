@@ -53,7 +53,7 @@ export interface GetFirewallPolicyResult {
      */
     readonly kind: string;
     /**
-     * Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by GCP which uniquely identifies the Organization Firewall Policy.
+     * Name of the resource. For Organization Firewall Policies it's a [Output Only] numeric ID allocated by Google Cloud which uniquely identifies the Organization Firewall Policy.
      */
     readonly name: string;
     /**

@@ -439,7 +439,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     }
 
     /// <summary>
-    /// Configuration for VM IPs.
+    /// Optional. Configuration for VM IPs.
     /// </summary>
     [EnumType]
     public readonly struct RuntimeEnvironmentIpConfiguration : IEquatable<RuntimeEnvironmentIpConfiguration>

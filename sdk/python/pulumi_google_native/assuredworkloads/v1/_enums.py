@@ -93,17 +93,26 @@ class WorkloadComplianceRegime(str, Enum):
     """
     Assured Workloads for Partners
     """
+    ISR_REGIONS = "ISR_REGIONS"
+    """
+    Assured Workloads for Israel Regions
+    """
+    CA_PROTECTED_B = "CA_PROTECTED_B"
+    """
+    Assured Workloads for Canada Protected B regime
+    """
 
 
 class WorkloadPartner(str, Enum):
     """
-    Optional. Compliance Regime associated with this workload.
+    Optional. Partner regime associated with this workload.
     """
     PARTNER_UNSPECIFIED = "PARTNER_UNSPECIFIED"
-    """
-    Unknown partner regime/controls.
-    """
     LOCAL_CONTROLS_BY_S3NS = "LOCAL_CONTROLS_BY_S3NS"
     """
-    S3NS regime/controls.
+    Enum representing S3NS partner.
+    """
+    SOVEREIGN_CONTROLS_BY_T_SYSTEMS = "SOVEREIGN_CONTROLS_BY_T_SYSTEMS"
+    """
+    Enum representing T_SYSTEM partner.
     """

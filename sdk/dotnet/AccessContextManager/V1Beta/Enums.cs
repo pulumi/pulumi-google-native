@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         }
 
         /// <summary>
-        /// Regular Perimeter.
+        /// Regular Perimeter. When no value is specified, the perimeter uses this type.
         /// </summary>
         public static ServicePerimeterPerimeterType PerimeterTypeRegular { get; } = new ServicePerimeterPerimeterType("PERIMETER_TYPE_REGULAR");
         /// <summary>

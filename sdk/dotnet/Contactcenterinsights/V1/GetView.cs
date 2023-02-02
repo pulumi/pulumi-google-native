@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// String with specific view properties.
+        /// String with specific view properties, must be non-empty.
         /// </summary>
         public readonly string Value;
 

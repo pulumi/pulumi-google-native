@@ -21,6 +21,18 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         [Input("email")]
         public Input<string>? Email { get; set; }
 
+        [Input("scopes")]
+        private InputList<string>? _scopes;
+
+        /// <summary>
+        /// List of scopes to be enabled for this service account on the VM, in addition to the cloud-platform API scope that will be added by default.
+        /// </summary>
+        public InputList<string> Scopes
+        {
+            get => _scopes ?? (_scopes = new InputList<string>());
+            set => _scopes = value;
+        }
+
         public ServiceAccountArgs()
         {
         }

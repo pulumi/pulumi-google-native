@@ -119,6 +119,10 @@ export interface GetClusterResult {
      */
     readonly endpoint: string;
     /**
+     * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+     */
+    readonly etag: string;
+    /**
      * [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     readonly expireTime: string;
