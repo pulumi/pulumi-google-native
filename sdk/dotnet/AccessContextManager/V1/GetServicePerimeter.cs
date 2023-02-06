@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         /// </summary>
         public readonly string PerimeterType;
         /// <summary>

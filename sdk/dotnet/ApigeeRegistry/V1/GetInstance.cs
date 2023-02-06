@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     public sealed class GetInstanceResult
     {
         /// <summary>
+        /// Build info of the Instance if it's in `ACTIVE` state.
+        /// </summary>
+        public readonly Outputs.BuildResponse Build;
+        /// <summary>
         /// Config of the Instance.
         /// </summary>
         public readonly Outputs.ConfigResponse Config;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 
         [OutputConstructor]
         private GetInstanceResult(
+            Outputs.BuildResponse build,
+
             Outputs.ConfigResponse config,
 
             string createTime,
@@ -102,6 +108,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 
             string updateTime)
         {
+            Build = build;
             Config = config;
             CreateTime = createTime;
             Name = name;

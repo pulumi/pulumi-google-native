@@ -55,6 +55,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Output<Outputs.MavenRepositoryConfigResponse> MavenConfig { get; private set; } = null!;
 
         /// <summary>
+        /// The mode of the repository.
+        /// </summary>
+        [Output("mode")]
+        public Output<string> Mode { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         [Output("name")]
@@ -62,6 +68,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration specific for a Remote Repository.
+        /// </summary>
+        [Output("remoteRepositoryConfig")]
+        public Output<Outputs.RemoteRepositoryConfigResponse> RemoteRepositoryConfig { get; private set; } = null!;
 
         /// <summary>
         /// The repository id to use for this repository.
@@ -86,6 +98,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration specific for a Virtual Repository.
+        /// </summary>
+        [Output("virtualRepositoryConfig")]
+        public Output<Outputs.VirtualRepositoryConfigResponse> VirtualRepositoryConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -183,6 +201,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public Input<Inputs.MavenRepositoryConfigArgs>? MavenConfig { get; set; }
 
         /// <summary>
+        /// The mode of the repository.
+        /// </summary>
+        [Input("mode")]
+        public Input<Pulumi.GoogleNative.ArtifactRegistry.V1.RepositoryMode>? Mode { get; set; }
+
+        /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         [Input("name")]
@@ -190,6 +214,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration specific for a Remote Repository.
+        /// </summary>
+        [Input("remoteRepositoryConfig")]
+        public Input<Inputs.RemoteRepositoryConfigArgs>? RemoteRepositoryConfig { get; set; }
 
         /// <summary>
         /// The repository id to use for this repository.
@@ -202,6 +232,12 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Configuration specific for a Virtual Repository.
+        /// </summary>
+        [Input("virtualRepositoryConfig")]
+        public Input<Inputs.VirtualRepositoryConfigArgs>? VirtualRepositoryConfig { get; set; }
 
         public RepositoryArgs()
         {

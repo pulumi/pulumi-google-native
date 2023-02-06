@@ -38,6 +38,8 @@ type LookupIosAppResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
 	Etag string `pulumi:"etag"`
+	// Timestamp of when the App will be considered expired and cannot be undeleted. This value is only provided if the App is in the `DELETED` state.
+	ExpireTime string `pulumi:"expireTime"`
 	// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
 	Name string `pulumi:"name"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
@@ -112,6 +114,11 @@ func (o LookupIosAppResultOutput) DisplayName() pulumi.StringOutput {
 // This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
 func (o LookupIosAppResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIosAppResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Timestamp of when the App will be considered expired and cannot be undeleted. This value is only provided if the App is in the `DELETED` state.
+func (o LookupIosAppResultOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIosAppResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
 
 // The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).

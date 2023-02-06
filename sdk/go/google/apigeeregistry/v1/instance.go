@@ -16,6 +16,8 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
+	// Build info of the Instance if it's in `ACTIVE` state.
+	Build BuildResponseOutput `pulumi:"build"`
 	// Config of the Instance.
 	Config ConfigResponseOutput `pulumi:"config"`
 	// Creation timestamp.
@@ -142,6 +144,11 @@ func (o InstanceOutput) ToInstanceOutput() InstanceOutput {
 
 func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) InstanceOutput {
 	return o
+}
+
+// Build info of the Instance if it's in `ACTIVE` state.
+func (o InstanceOutput) Build() BuildResponseOutput {
+	return o.ApplyT(func(v *Instance) BuildResponseOutput { return v.Build }).(BuildResponseOutput)
 }
 
 // Config of the Instance.

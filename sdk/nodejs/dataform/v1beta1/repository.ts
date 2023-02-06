@@ -56,6 +56,10 @@ export class Repository extends pulumi.CustomResource {
      * Required. The ID to use for the repository, which will become the final component of the repository's resource name.
      */
     public readonly repositoryId!: pulumi.Output<string>;
+    /**
+     * Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+     */
+    public readonly workspaceCompilationOverrides!: pulumi.Output<outputs.dataform.v1beta1.WorkspaceCompilationOverridesResponse>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -76,6 +80,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = args ? args.npmrcEnvironmentVariablesSecretVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
+            resourceInputs["workspaceCompilationOverrides"] = args ? args.workspaceCompilationOverrides : undefined;
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["gitRemoteSettings"] = undefined /*out*/;
@@ -84,6 +89,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["repositoryId"] = undefined /*out*/;
+            resourceInputs["workspaceCompilationOverrides"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project", "repositoryId"] };
@@ -110,4 +116,8 @@ export interface RepositoryArgs {
      * Required. The ID to use for the repository, which will become the final component of the repository's resource name.
      */
     repositoryId: pulumi.Input<string>;
+    /**
+     * Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+     */
+    workspaceCompilationOverrides?: pulumi.Input<inputs.dataform.v1beta1.WorkspaceCompilationOverridesArgs>;
 }

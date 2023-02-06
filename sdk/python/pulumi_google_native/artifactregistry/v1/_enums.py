@@ -5,9 +5,28 @@
 from enum import Enum
 
 __all__ = [
+    'DockerRepositoryPublicRepository',
     'MavenRepositoryConfigVersionPolicy',
+    'MavenRepositoryPublicRepository',
+    'NpmRepositoryPublicRepository',
+    'PythonRepositoryPublicRepository',
     'RepositoryFormat',
+    'RepositoryMode',
 ]
+
+
+class DockerRepositoryPublicRepository(str, Enum):
+    """
+    One of the publicly available Docker repositories supported by Artifact Registry.
+    """
+    PUBLIC_REPOSITORY_UNSPECIFIED = "PUBLIC_REPOSITORY_UNSPECIFIED"
+    """
+    Unspecified repository.
+    """
+    DOCKER_HUB = "DOCKER_HUB"
+    """
+    Docker Hub.
+    """
 
 
 class MavenRepositoryConfigVersionPolicy(str, Enum):
@@ -25,6 +44,48 @@ class MavenRepositoryConfigVersionPolicy(str, Enum):
     SNAPSHOT = "SNAPSHOT"
     """
     SNAPSHOT - repository will accept only Snapshot versions.
+    """
+
+
+class MavenRepositoryPublicRepository(str, Enum):
+    """
+    One of the publicly available Maven repositories supported by Artifact Registry.
+    """
+    PUBLIC_REPOSITORY_UNSPECIFIED = "PUBLIC_REPOSITORY_UNSPECIFIED"
+    """
+    Unspecified repository.
+    """
+    MAVEN_CENTRAL = "MAVEN_CENTRAL"
+    """
+    Maven Central.
+    """
+
+
+class NpmRepositoryPublicRepository(str, Enum):
+    """
+    One of the publicly available Npm repositories supported by Artifact Registry.
+    """
+    PUBLIC_REPOSITORY_UNSPECIFIED = "PUBLIC_REPOSITORY_UNSPECIFIED"
+    """
+    Unspecified repository.
+    """
+    NPMJS = "NPMJS"
+    """
+    npmjs.
+    """
+
+
+class PythonRepositoryPublicRepository(str, Enum):
+    """
+    One of the publicly available Python repositories supported by Artifact Registry.
+    """
+    PUBLIC_REPOSITORY_UNSPECIFIED = "PUBLIC_REPOSITORY_UNSPECIFIED"
+    """
+    Unspecified repository.
+    """
+    PYPI = "PYPI"
+    """
+    PyPI.
     """
 
 
@@ -63,4 +124,26 @@ class RepositoryFormat(str, Enum):
     KFP = "KFP"
     """
     Kubeflow Pipelines package format.
+    """
+
+
+class RepositoryMode(str, Enum):
+    """
+    The mode of the repository.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Unspecified mode.
+    """
+    STANDARD_REPOSITORY = "STANDARD_REPOSITORY"
+    """
+    A standard repository storing artifacts.
+    """
+    VIRTUAL_REPOSITORY = "VIRTUAL_REPOSITORY"
+    """
+    A virtual repository to serve artifacts from one or more sources.
+    """
+    REMOTE_REPOSITORY = "REMOTE_REPOSITORY"
+    """
+    A remote repository to serve artifacts from a remote source.
     """

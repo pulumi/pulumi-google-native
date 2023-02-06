@@ -31,6 +31,10 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
+     * Build info of the Instance if it's in `ACTIVE` state.
+     */
+    readonly build: outputs.apigeeregistry.v1.BuildResponse;
+    /**
      * Config of the Instance.
      */
     readonly config: outputs.apigeeregistry.v1.ConfigResponse;

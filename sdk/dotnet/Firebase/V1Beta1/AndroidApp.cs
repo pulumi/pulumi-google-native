@@ -42,6 +42,12 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// Timestamp of when the App will be considered expired and cannot be undeleted. This value is only provided if the App is in the `DELETED` state.
+        /// </summary>
+        [Output("expireTime")]
+        public Output<string> ExpireTime { get; private set; } = null!;
+
+        /// <summary>
         /// The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
         /// </summary>
         [Output("name")]

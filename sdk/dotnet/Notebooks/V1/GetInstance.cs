@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     public sealed class GetInstanceResult
     {
         /// <summary>
-        /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         /// </summary>
         public readonly Outputs.AcceleratorConfigResponse AcceleratorConfig;
         /// <summary>
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         /// </summary>
         public readonly string MachineType;
         /// <summary>

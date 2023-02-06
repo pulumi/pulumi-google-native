@@ -63,10 +63,18 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly mavenConfig!: pulumi.Output<outputs.artifactregistry.v1.MavenRepositoryConfigResponse>;
     /**
+     * The mode of the repository.
+     */
+    public readonly mode!: pulumi.Output<string>;
+    /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Configuration specific for a Remote Repository.
+     */
+    public readonly remoteRepositoryConfig!: pulumi.Output<outputs.artifactregistry.v1.RemoteRepositoryConfigResponse>;
     /**
      * The repository id to use for this repository.
      */
@@ -83,6 +91,10 @@ export class Repository extends pulumi.CustomResource {
      * The time when the repository was last updated.
      */
     public readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Configuration specific for a Virtual Repository.
+     */
+    public readonly virtualRepositoryConfig!: pulumi.Output<outputs.artifactregistry.v1.VirtualRepositoryConfigResponse>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -102,10 +114,13 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mavenConfig"] = args ? args.mavenConfig : undefined;
+            resourceInputs["mode"] = args ? args.mode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["remoteRepositoryConfig"] = args ? args.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["updateTime"] = args ? args.updateTime : undefined;
+            resourceInputs["virtualRepositoryConfig"] = args ? args.virtualRepositoryConfig : undefined;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
         } else {
@@ -116,12 +131,15 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["mavenConfig"] = undefined /*out*/;
+            resourceInputs["mode"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["remoteRepositoryConfig"] = undefined /*out*/;
             resourceInputs["repositoryId"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
+            resourceInputs["virtualRepositoryConfig"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["location", "project"] };
@@ -160,10 +178,18 @@ export interface RepositoryArgs {
      */
     mavenConfig?: pulumi.Input<inputs.artifactregistry.v1.MavenRepositoryConfigArgs>;
     /**
+     * The mode of the repository.
+     */
+    mode?: pulumi.Input<enums.artifactregistry.v1.RepositoryMode>;
+    /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    /**
+     * Configuration specific for a Remote Repository.
+     */
+    remoteRepositoryConfig?: pulumi.Input<inputs.artifactregistry.v1.RemoteRepositoryConfigArgs>;
     /**
      * The repository id to use for this repository.
      */
@@ -172,4 +198,8 @@ export interface RepositoryArgs {
      * The time when the repository was last updated.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Configuration specific for a Virtual Repository.
+     */
+    virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.v1.VirtualRepositoryConfigArgs>;
 }

@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWebAppResult:
-    def __init__(__self__, api_key_id=None, app_id=None, app_urls=None, display_name=None, etag=None, name=None, project=None, state=None, web_id=None):
+    def __init__(__self__, api_key_id=None, app_id=None, app_urls=None, display_name=None, etag=None, expire_time=None, name=None, project=None, state=None, web_id=None):
         if api_key_id and not isinstance(api_key_id, str):
             raise TypeError("Expected argument 'api_key_id' to be a str")
         pulumi.set(__self__, "api_key_id", api_key_id)
@@ -34,6 +34,9 @@ class GetWebAppResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if expire_time and not isinstance(expire_time, str):
+            raise TypeError("Expected argument 'expire_time' to be a str")
+        pulumi.set(__self__, "expire_time", expire_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -88,6 +91,14 @@ class GetWebAppResult:
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Timestamp of when the App will be considered expired and cannot be undeleted. This value is only provided if the App is in the `DELETED` state.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -131,6 +142,7 @@ class AwaitableGetWebAppResult(GetWebAppResult):
             app_urls=self.app_urls,
             display_name=self.display_name,
             etag=self.etag,
+            expire_time=self.expire_time,
             name=self.name,
             project=self.project,
             state=self.state,
@@ -155,6 +167,7 @@ def get_web_app(project: Optional[str] = None,
         app_urls=__ret__.app_urls,
         display_name=__ret__.display_name,
         etag=__ret__.etag,
+        expire_time=__ret__.expire_time,
         name=__ret__.name,
         project=__ret__.project,
         state=__ret__.state,

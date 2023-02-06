@@ -55,9 +55,17 @@ export interface GetRepositoryResult {
      */
     readonly mavenConfig: outputs.artifactregistry.v1.MavenRepositoryConfigResponse;
     /**
+     * The mode of the repository.
+     */
+    readonly mode: string;
+    /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     readonly name: string;
+    /**
+     * Configuration specific for a Remote Repository.
+     */
+    readonly remoteRepositoryConfig: outputs.artifactregistry.v1.RemoteRepositoryConfigResponse;
     /**
      * If set, the repository satisfies physical zone separation.
      */
@@ -70,6 +78,10 @@ export interface GetRepositoryResult {
      * The time when the repository was last updated.
      */
     readonly updateTime: string;
+    /**
+     * Configuration specific for a Virtual Repository.
+     */
+    readonly virtualRepositoryConfig: outputs.artifactregistry.v1.VirtualRepositoryConfigResponse;
 }
 
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {

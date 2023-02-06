@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. * Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The system will try to use more slots immediately. * At a particular moment, the number of slots scaled is determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an alpha feature.
+// Auto scaling settings.
 type Autoscale struct {
 	// Number of slots to be scaled when needed.
 	MaxSlots *string `pulumi:"maxSlots"`
@@ -27,7 +27,7 @@ type AutoscaleInput interface {
 	ToAutoscaleOutputWithContext(context.Context) AutoscaleOutput
 }
 
-// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. * Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The system will try to use more slots immediately. * At a particular moment, the number of slots scaled is determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an alpha feature.
+// Auto scaling settings.
 type AutoscaleArgs struct {
 	// Number of slots to be scaled when needed.
 	MaxSlots pulumi.StringPtrInput `pulumi:"maxSlots"`
@@ -86,7 +86,7 @@ func (i *autoscalePtrType) ToAutoscalePtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(AutoscalePtrOutput)
 }
 
-// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. * Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The system will try to use more slots immediately. * At a particular moment, the number of slots scaled is determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an alpha feature.
+// Auto scaling settings.
 type AutoscaleOutput struct{ *pulumi.OutputState }
 
 func (AutoscaleOutput) ElementType() reflect.Type {
@@ -150,7 +150,7 @@ func (o AutoscalePtrOutput) MaxSlots() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. * Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The system will try to use more slots immediately. * At a particular moment, the number of slots scaled is determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an alpha feature.
+// Auto scaling settings.
 type AutoscaleResponse struct {
 	// The slot capacity added to this reservation when autoscale happens. Will be between [0, max_slots].
 	CurrentSlots string `pulumi:"currentSlots"`
@@ -158,7 +158,7 @@ type AutoscaleResponse struct {
 	MaxSlots string `pulumi:"maxSlots"`
 }
 
-// Auto scaling settings. max_slots and budget are mutually exclusive. If max_slots is set: * The system will create a dedicated `FLEX` capacity commitment to hold the slots for auto-scale. Users won't be able to manage it, to avoid conflicts. * Scale-up will happen if there are always pending tasks for the past 10 minutes. * Scale-down will happen, if the system detects that scale-up won't be triggered again. If budget is set: * The system will try to use more slots immediately. * At a particular moment, the number of slots scaled is determined by the sytsem, based on the remaining budget and system limit. But overall the usage will conform to the budget if there is enough traffic. * The system will round the slot usage every minute. **Note** this is an alpha feature.
+// Auto scaling settings.
 type AutoscaleResponseOutput struct{ *pulumi.OutputState }
 
 func (AutoscaleResponseOutput) ElementType() reflect.Type {

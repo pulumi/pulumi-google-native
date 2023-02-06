@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
         /// </summary>
         [Output("cronSchedule")]
         public Output<string> CronSchedule { get; private set; } = null!;
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`, and underscores `_`.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
         /// </summary>
         [Input("cronSchedule")]
         public Input<string>? CronSchedule { get; set; }

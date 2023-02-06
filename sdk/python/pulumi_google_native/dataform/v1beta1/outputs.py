@@ -20,6 +20,7 @@ __all__ = [
     'ScheduledReleaseRecordResponse',
     'StatusResponse',
     'TargetResponse',
+    'WorkspaceCompilationOverridesResponse',
 ]
 
 @pulumi.output_type
@@ -657,5 +658,70 @@ class TargetResponse(dict):
         The action's schema (BigQuery dataset ID), within `database`.
         """
         return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class WorkspaceCompilationOverridesResponse(dict):
+    """
+    Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultDatabase":
+            suggest = "default_database"
+        elif key == "schemaSuffix":
+            suggest = "schema_suffix"
+        elif key == "tablePrefix":
+            suggest = "table_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkspaceCompilationOverridesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkspaceCompilationOverridesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkspaceCompilationOverridesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_database: str,
+                 schema_suffix: str,
+                 table_prefix: str):
+        """
+        Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+        :param str default_database: Optional. The default database (Google Cloud project ID).
+        :param str schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        :param str table_prefix: Optional. The prefix that should be prepended to all table names.
+        """
+        pulumi.set(__self__, "default_database", default_database)
+        pulumi.set(__self__, "schema_suffix", schema_suffix)
+        pulumi.set(__self__, "table_prefix", table_prefix)
+
+    @property
+    @pulumi.getter(name="defaultDatabase")
+    def default_database(self) -> str:
+        """
+        Optional. The default database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "default_database")
+
+    @property
+    @pulumi.getter(name="schemaSuffix")
+    def schema_suffix(self) -> str:
+        """
+        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        return pulumi.get(self, "schema_suffix")
+
+    @property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> str:
+        """
+        Optional. The prefix that should be prepended to all table names.
+        """
+        return pulumi.get(self, "table_prefix")
 
 

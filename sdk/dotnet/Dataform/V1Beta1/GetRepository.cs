@@ -75,6 +75,10 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         /// </summary>
         public readonly string NpmrcEnvironmentVariablesSecretVersion;
+        /// <summary>
+        /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        /// </summary>
+        public readonly Outputs.WorkspaceCompilationOverridesResponse WorkspaceCompilationOverrides;
 
         [OutputConstructor]
         private GetRepositoryResult(
@@ -82,11 +86,14 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
 
             string name,
 
-            string npmrcEnvironmentVariablesSecretVersion)
+            string npmrcEnvironmentVariablesSecretVersion,
+
+            Outputs.WorkspaceCompilationOverridesResponse workspaceCompilationOverrides)
         {
             GitRemoteSettings = gitRemoteSettings;
             Name = name;
             NpmrcEnvironmentVariablesSecretVersion = npmrcEnvironmentVariablesSecretVersion;
+            WorkspaceCompilationOverrides = workspaceCompilationOverrides;
         }
     }
 }

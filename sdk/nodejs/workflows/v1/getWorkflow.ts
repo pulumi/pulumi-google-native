@@ -16,6 +16,7 @@ export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions):
     return pulumi.runtime.invoke("google-native:workflows/v1:getWorkflow", {
         "location": args.location,
         "project": args.project,
+        "revisionId": args.revisionId,
         "workflowId": args.workflowId,
     }, opts);
 }
@@ -23,6 +24,7 @@ export function getWorkflow(args: GetWorkflowArgs, opts?: pulumi.InvokeOptions):
 export interface GetWorkflowArgs {
     location: string;
     project?: string;
+    revisionId?: string;
     workflowId: string;
 }
 
@@ -76,5 +78,6 @@ export function getWorkflowOutput(args: GetWorkflowOutputArgs, opts?: pulumi.Inv
 export interface GetWorkflowOutputArgs {
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
+    revisionId?: pulumi.Input<string>;
     workflowId: pulumi.Input<string>;
 }

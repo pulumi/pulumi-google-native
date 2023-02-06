@@ -30,6 +30,21 @@ export type ConversionWorkspace = import("./conversionWorkspace").ConversionWork
 export const ConversionWorkspace: typeof import("./conversionWorkspace").ConversionWorkspace = null as any;
 utilities.lazyLoad(exports, ["ConversionWorkspace"], () => require("./conversionWorkspace"));
 
+export { ConversionWorkspaceIamBindingArgs } from "./conversionWorkspaceIamBinding";
+export type ConversionWorkspaceIamBinding = import("./conversionWorkspaceIamBinding").ConversionWorkspaceIamBinding;
+export const ConversionWorkspaceIamBinding: typeof import("./conversionWorkspaceIamBinding").ConversionWorkspaceIamBinding = null as any;
+utilities.lazyLoad(exports, ["ConversionWorkspaceIamBinding"], () => require("./conversionWorkspaceIamBinding"));
+
+export { ConversionWorkspaceIamMemberArgs } from "./conversionWorkspaceIamMember";
+export type ConversionWorkspaceIamMember = import("./conversionWorkspaceIamMember").ConversionWorkspaceIamMember;
+export const ConversionWorkspaceIamMember: typeof import("./conversionWorkspaceIamMember").ConversionWorkspaceIamMember = null as any;
+utilities.lazyLoad(exports, ["ConversionWorkspaceIamMember"], () => require("./conversionWorkspaceIamMember"));
+
+export { ConversionWorkspaceIamPolicyArgs } from "./conversionWorkspaceIamPolicy";
+export type ConversionWorkspaceIamPolicy = import("./conversionWorkspaceIamPolicy").ConversionWorkspaceIamPolicy;
+export const ConversionWorkspaceIamPolicy: typeof import("./conversionWorkspaceIamPolicy").ConversionWorkspaceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["ConversionWorkspaceIamPolicy"], () => require("./conversionWorkspaceIamPolicy"));
+
 export { GetConnectionProfileArgs, GetConnectionProfileResult, GetConnectionProfileOutputArgs } from "./getConnectionProfile";
 export const getConnectionProfile: typeof import("./getConnectionProfile").getConnectionProfile = null as any;
 export const getConnectionProfileOutput: typeof import("./getConnectionProfile").getConnectionProfileOutput = null as any;
@@ -44,6 +59,11 @@ export { GetConversionWorkspaceArgs, GetConversionWorkspaceResult, GetConversion
 export const getConversionWorkspace: typeof import("./getConversionWorkspace").getConversionWorkspace = null as any;
 export const getConversionWorkspaceOutput: typeof import("./getConversionWorkspace").getConversionWorkspaceOutput = null as any;
 utilities.lazyLoad(exports, ["getConversionWorkspace","getConversionWorkspaceOutput"], () => require("./getConversionWorkspace"));
+
+export { GetConversionWorkspaceIamPolicyArgs, GetConversionWorkspaceIamPolicyResult, GetConversionWorkspaceIamPolicyOutputArgs } from "./getConversionWorkspaceIamPolicy";
+export const getConversionWorkspaceIamPolicy: typeof import("./getConversionWorkspaceIamPolicy").getConversionWorkspaceIamPolicy = null as any;
+export const getConversionWorkspaceIamPolicyOutput: typeof import("./getConversionWorkspaceIamPolicy").getConversionWorkspaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getConversionWorkspaceIamPolicy","getConversionWorkspaceIamPolicyOutput"], () => require("./getConversionWorkspaceIamPolicy"));
 
 export { GetMigrationJobArgs, GetMigrationJobResult, GetMigrationJobOutputArgs } from "./getMigrationJob";
 export const getMigrationJob: typeof import("./getMigrationJob").getMigrationJob = null as any;
@@ -103,6 +123,12 @@ const _module = {
                 return new ConnectionProfileIamPolicy(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:ConversionWorkspace":
                 return new ConversionWorkspace(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:ConversionWorkspaceIamBinding":
+                return new ConversionWorkspaceIamBinding(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:ConversionWorkspaceIamMember":
+                return new ConversionWorkspaceIamMember(name, <any>undefined, { urn })
+            case "google-native:datamigration/v1:ConversionWorkspaceIamPolicy":
+                return new ConversionWorkspaceIamPolicy(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJob":
                 return new MigrationJob(name, <any>undefined, { urn })
             case "google-native:datamigration/v1:MigrationJobIamBinding":

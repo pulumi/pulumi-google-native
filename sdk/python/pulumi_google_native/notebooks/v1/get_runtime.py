@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRuntimeResult:
-    def __init__(__self__, access_config=None, create_time=None, health_state=None, metrics=None, name=None, software_config=None, state=None, update_time=None, virtual_machine=None):
+    def __init__(__self__, access_config=None, create_time=None, health_state=None, labels=None, metrics=None, name=None, software_config=None, state=None, update_time=None, virtual_machine=None):
         if access_config and not isinstance(access_config, dict):
             raise TypeError("Expected argument 'access_config' to be a dict")
         pulumi.set(__self__, "access_config", access_config)
@@ -29,6 +29,9 @@ class GetRuntimeResult:
         if health_state and not isinstance(health_state, str):
             raise TypeError("Expected argument 'health_state' to be a str")
         pulumi.set(__self__, "health_state", health_state)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if metrics and not isinstance(metrics, dict):
             raise TypeError("Expected argument 'metrics' to be a dict")
         pulumi.set(__self__, "metrics", metrics)
@@ -71,6 +74,14 @@ class GetRuntimeResult:
         Runtime health_state.
         """
         return pulumi.get(self, "health_state")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -130,6 +141,7 @@ class AwaitableGetRuntimeResult(GetRuntimeResult):
             access_config=self.access_config,
             create_time=self.create_time,
             health_state=self.health_state,
+            labels=self.labels,
             metrics=self.metrics,
             name=self.name,
             software_config=self.software_config,
@@ -156,6 +168,7 @@ def get_runtime(location: Optional[str] = None,
         access_config=__ret__.access_config,
         create_time=__ret__.create_time,
         health_state=__ret__.health_state,
+        labels=__ret__.labels,
         metrics=__ret__.metrics,
         name=__ret__.name,
         software_config=__ret__.software_config,

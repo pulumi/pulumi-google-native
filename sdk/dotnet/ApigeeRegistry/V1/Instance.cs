@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Build info of the Instance if it's in `ACTIVE` state.
+        /// </summary>
+        [Output("build")]
+        public Output<Outputs.BuildResponse> Build { get; private set; } = null!;
+
+        /// <summary>
         /// Config of the Instance.
         /// </summary>
         [Output("config")]

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 {
 
     /// <summary>
-    /// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data,the data is only accessible to principals explicitly granted access through the DataAttribute. Principals with access to the containing resource are not implicitly granted access.
+    /// DataAccessSpec holds the access control configuration to be enforced on data stored within resources (eg: rows, columns in BigQuery Tables). When associated with data, the data is only accessible to principals explicitly granted access through the DataAccessSpec. Principals with access to the containing resource are not implicitly granted access.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDataplexV1DataAccessSpecResponse

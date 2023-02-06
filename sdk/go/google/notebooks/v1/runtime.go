@@ -22,7 +22,9 @@ type Runtime struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Runtime health_state.
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
-	Location    pulumi.StringOutput `pulumi:"location"`
+	// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
 	Metrics RuntimeMetricsResponseOutput `pulumi:"metrics"`
 	// The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}`
@@ -92,8 +94,10 @@ func (RuntimeState) ElementType() reflect.Type {
 type runtimeArgs struct {
 	// The config settings for accessing runtime.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
-	Location     *string              `pulumi:"location"`
-	Project      *string              `pulumi:"project"`
+	// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
+	Project  *string           `pulumi:"project"`
 	// Idempotent request UUID.
 	RequestId *string `pulumi:"requestId"`
 	// Required. User-defined unique ID of this Runtime.
@@ -108,8 +112,10 @@ type runtimeArgs struct {
 type RuntimeArgs struct {
 	// The config settings for accessing runtime.
 	AccessConfig RuntimeAccessConfigPtrInput
-	Location     pulumi.StringPtrInput
-	Project      pulumi.StringPtrInput
+	// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringPtrInput
 	// Idempotent request UUID.
 	RequestId pulumi.StringPtrInput
 	// Required. User-defined unique ID of this Runtime.
@@ -170,6 +176,11 @@ func (o RuntimeOutput) CreateTime() pulumi.StringOutput {
 // Runtime health_state.
 func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+func (o RuntimeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o RuntimeOutput) Location() pulumi.StringOutput {

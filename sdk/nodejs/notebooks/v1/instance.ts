@@ -39,7 +39,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
-     * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+     * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
      */
     public readonly acceleratorConfig!: pulumi.Output<outputs.notebooks.v1.AcceleratorConfigResponse>;
     /**
@@ -108,7 +108,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+     * The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
@@ -298,7 +298,7 @@ export class Instance extends pulumi.CustomResource {
  */
 export interface InstanceArgs {
     /**
-     * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+     * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
      */
     acceleratorConfig?: pulumi.Input<inputs.notebooks.v1.AcceleratorConfigArgs>;
     /**
@@ -355,7 +355,7 @@ export interface InstanceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+     * The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
      */
     machineType: pulumi.Input<string>;
     /**

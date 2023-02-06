@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
     public sealed class TextConfigResponse
     {
         /// <summary>
-        /// The transformations to apply to the detected data.
+        /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>
         public readonly ImmutableArray<Outputs.InfoTypeTransformationResponse> Transformations;
 

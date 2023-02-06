@@ -14,7 +14,7 @@ import (
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -35,7 +35,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -98,7 +98,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -132,7 +132,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -158,7 +158,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -186,6 +186,172 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// Configuration for a Docker remote repository.
+type DockerRepository struct {
+	// One of the publicly available Docker repositories supported by Artifact Registry.
+	PublicRepository *DockerRepositoryPublicRepository `pulumi:"publicRepository"`
+}
+
+// DockerRepositoryInput is an input type that accepts DockerRepositoryArgs and DockerRepositoryOutput values.
+// You can construct a concrete instance of `DockerRepositoryInput` via:
+//
+//	DockerRepositoryArgs{...}
+type DockerRepositoryInput interface {
+	pulumi.Input
+
+	ToDockerRepositoryOutput() DockerRepositoryOutput
+	ToDockerRepositoryOutputWithContext(context.Context) DockerRepositoryOutput
+}
+
+// Configuration for a Docker remote repository.
+type DockerRepositoryArgs struct {
+	// One of the publicly available Docker repositories supported by Artifact Registry.
+	PublicRepository DockerRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
+}
+
+func (DockerRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerRepository)(nil)).Elem()
+}
+
+func (i DockerRepositoryArgs) ToDockerRepositoryOutput() DockerRepositoryOutput {
+	return i.ToDockerRepositoryOutputWithContext(context.Background())
+}
+
+func (i DockerRepositoryArgs) ToDockerRepositoryOutputWithContext(ctx context.Context) DockerRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryOutput)
+}
+
+func (i DockerRepositoryArgs) ToDockerRepositoryPtrOutput() DockerRepositoryPtrOutput {
+	return i.ToDockerRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i DockerRepositoryArgs) ToDockerRepositoryPtrOutputWithContext(ctx context.Context) DockerRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryOutput).ToDockerRepositoryPtrOutputWithContext(ctx)
+}
+
+// DockerRepositoryPtrInput is an input type that accepts DockerRepositoryArgs, DockerRepositoryPtr and DockerRepositoryPtrOutput values.
+// You can construct a concrete instance of `DockerRepositoryPtrInput` via:
+//
+//	        DockerRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type DockerRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToDockerRepositoryPtrOutput() DockerRepositoryPtrOutput
+	ToDockerRepositoryPtrOutputWithContext(context.Context) DockerRepositoryPtrOutput
+}
+
+type dockerRepositoryPtrType DockerRepositoryArgs
+
+func DockerRepositoryPtr(v *DockerRepositoryArgs) DockerRepositoryPtrInput {
+	return (*dockerRepositoryPtrType)(v)
+}
+
+func (*dockerRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerRepository)(nil)).Elem()
+}
+
+func (i *dockerRepositoryPtrType) ToDockerRepositoryPtrOutput() DockerRepositoryPtrOutput {
+	return i.ToDockerRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *dockerRepositoryPtrType) ToDockerRepositoryPtrOutputWithContext(ctx context.Context) DockerRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryPtrOutput)
+}
+
+// Configuration for a Docker remote repository.
+type DockerRepositoryOutput struct{ *pulumi.OutputState }
+
+func (DockerRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerRepository)(nil)).Elem()
+}
+
+func (o DockerRepositoryOutput) ToDockerRepositoryOutput() DockerRepositoryOutput {
+	return o
+}
+
+func (o DockerRepositoryOutput) ToDockerRepositoryOutputWithContext(ctx context.Context) DockerRepositoryOutput {
+	return o
+}
+
+func (o DockerRepositoryOutput) ToDockerRepositoryPtrOutput() DockerRepositoryPtrOutput {
+	return o.ToDockerRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o DockerRepositoryOutput) ToDockerRepositoryPtrOutputWithContext(ctx context.Context) DockerRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerRepository) *DockerRepository {
+		return &v
+	}).(DockerRepositoryPtrOutput)
+}
+
+// One of the publicly available Docker repositories supported by Artifact Registry.
+func (o DockerRepositoryOutput) PublicRepository() DockerRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v DockerRepository) *DockerRepositoryPublicRepository { return v.PublicRepository }).(DockerRepositoryPublicRepositoryPtrOutput)
+}
+
+type DockerRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (DockerRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerRepository)(nil)).Elem()
+}
+
+func (o DockerRepositoryPtrOutput) ToDockerRepositoryPtrOutput() DockerRepositoryPtrOutput {
+	return o
+}
+
+func (o DockerRepositoryPtrOutput) ToDockerRepositoryPtrOutputWithContext(ctx context.Context) DockerRepositoryPtrOutput {
+	return o
+}
+
+func (o DockerRepositoryPtrOutput) Elem() DockerRepositoryOutput {
+	return o.ApplyT(func(v *DockerRepository) DockerRepository {
+		if v != nil {
+			return *v
+		}
+		var ret DockerRepository
+		return ret
+	}).(DockerRepositoryOutput)
+}
+
+// One of the publicly available Docker repositories supported by Artifact Registry.
+func (o DockerRepositoryPtrOutput) PublicRepository() DockerRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v *DockerRepository) *DockerRepositoryPublicRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(DockerRepositoryPublicRepositoryPtrOutput)
+}
+
+// Configuration for a Docker remote repository.
+type DockerRepositoryResponse struct {
+	// One of the publicly available Docker repositories supported by Artifact Registry.
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// Configuration for a Docker remote repository.
+type DockerRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (DockerRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerRepositoryResponse)(nil)).Elem()
+}
+
+func (o DockerRepositoryResponseOutput) ToDockerRepositoryResponseOutput() DockerRepositoryResponseOutput {
+	return o
+}
+
+func (o DockerRepositoryResponseOutput) ToDockerRepositoryResponseOutputWithContext(ctx context.Context) DockerRepositoryResponseOutput {
+	return o
+}
+
+// One of the publicly available Docker repositories supported by Artifact Registry.
+func (o DockerRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -432,6 +598,146 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Configuration for a Maven remote repository.
+type MavenRepository struct {
+	// One of the publicly available Maven repositories supported by Artifact Registry.
+	PublicRepository *MavenRepositoryPublicRepository `pulumi:"publicRepository"`
+}
+
+// MavenRepositoryInput is an input type that accepts MavenRepositoryArgs and MavenRepositoryOutput values.
+// You can construct a concrete instance of `MavenRepositoryInput` via:
+//
+//	MavenRepositoryArgs{...}
+type MavenRepositoryInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryOutput() MavenRepositoryOutput
+	ToMavenRepositoryOutputWithContext(context.Context) MavenRepositoryOutput
+}
+
+// Configuration for a Maven remote repository.
+type MavenRepositoryArgs struct {
+	// One of the publicly available Maven repositories supported by Artifact Registry.
+	PublicRepository MavenRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
+}
+
+func (MavenRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepository)(nil)).Elem()
+}
+
+func (i MavenRepositoryArgs) ToMavenRepositoryOutput() MavenRepositoryOutput {
+	return i.ToMavenRepositoryOutputWithContext(context.Background())
+}
+
+func (i MavenRepositoryArgs) ToMavenRepositoryOutputWithContext(ctx context.Context) MavenRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryOutput)
+}
+
+func (i MavenRepositoryArgs) ToMavenRepositoryPtrOutput() MavenRepositoryPtrOutput {
+	return i.ToMavenRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i MavenRepositoryArgs) ToMavenRepositoryPtrOutputWithContext(ctx context.Context) MavenRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryOutput).ToMavenRepositoryPtrOutputWithContext(ctx)
+}
+
+// MavenRepositoryPtrInput is an input type that accepts MavenRepositoryArgs, MavenRepositoryPtr and MavenRepositoryPtrOutput values.
+// You can construct a concrete instance of `MavenRepositoryPtrInput` via:
+//
+//	        MavenRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type MavenRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToMavenRepositoryPtrOutput() MavenRepositoryPtrOutput
+	ToMavenRepositoryPtrOutputWithContext(context.Context) MavenRepositoryPtrOutput
+}
+
+type mavenRepositoryPtrType MavenRepositoryArgs
+
+func MavenRepositoryPtr(v *MavenRepositoryArgs) MavenRepositoryPtrInput {
+	return (*mavenRepositoryPtrType)(v)
+}
+
+func (*mavenRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepository)(nil)).Elem()
+}
+
+func (i *mavenRepositoryPtrType) ToMavenRepositoryPtrOutput() MavenRepositoryPtrOutput {
+	return i.ToMavenRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *mavenRepositoryPtrType) ToMavenRepositoryPtrOutputWithContext(ctx context.Context) MavenRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MavenRepositoryPtrOutput)
+}
+
+// Configuration for a Maven remote repository.
+type MavenRepositoryOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepository)(nil)).Elem()
+}
+
+func (o MavenRepositoryOutput) ToMavenRepositoryOutput() MavenRepositoryOutput {
+	return o
+}
+
+func (o MavenRepositoryOutput) ToMavenRepositoryOutputWithContext(ctx context.Context) MavenRepositoryOutput {
+	return o
+}
+
+func (o MavenRepositoryOutput) ToMavenRepositoryPtrOutput() MavenRepositoryPtrOutput {
+	return o.ToMavenRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o MavenRepositoryOutput) ToMavenRepositoryPtrOutputWithContext(ctx context.Context) MavenRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MavenRepository) *MavenRepository {
+		return &v
+	}).(MavenRepositoryPtrOutput)
+}
+
+// One of the publicly available Maven repositories supported by Artifact Registry.
+func (o MavenRepositoryOutput) PublicRepository() MavenRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v MavenRepository) *MavenRepositoryPublicRepository { return v.PublicRepository }).(MavenRepositoryPublicRepositoryPtrOutput)
+}
+
+type MavenRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MavenRepository)(nil)).Elem()
+}
+
+func (o MavenRepositoryPtrOutput) ToMavenRepositoryPtrOutput() MavenRepositoryPtrOutput {
+	return o
+}
+
+func (o MavenRepositoryPtrOutput) ToMavenRepositoryPtrOutputWithContext(ctx context.Context) MavenRepositoryPtrOutput {
+	return o
+}
+
+func (o MavenRepositoryPtrOutput) Elem() MavenRepositoryOutput {
+	return o.ApplyT(func(v *MavenRepository) MavenRepository {
+		if v != nil {
+			return *v
+		}
+		var ret MavenRepository
+		return ret
+	}).(MavenRepositoryOutput)
+}
+
+// One of the publicly available Maven repositories supported by Artifact Registry.
+func (o MavenRepositoryPtrOutput) PublicRepository() MavenRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v *MavenRepository) *MavenRepositoryPublicRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(MavenRepositoryPublicRepositoryPtrOutput)
+}
+
 // MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
 type MavenRepositoryConfig struct {
 	// The repository with this flag will allow publishing the same snapshot versions.
@@ -624,21 +930,1022 @@ func (o MavenRepositoryConfigResponseOutput) VersionPolicy() pulumi.StringOutput
 	return o.ApplyT(func(v MavenRepositoryConfigResponse) string { return v.VersionPolicy }).(pulumi.StringOutput)
 }
 
+// Configuration for a Maven remote repository.
+type MavenRepositoryResponse struct {
+	// One of the publicly available Maven repositories supported by Artifact Registry.
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// Configuration for a Maven remote repository.
+type MavenRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (MavenRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MavenRepositoryResponse)(nil)).Elem()
+}
+
+func (o MavenRepositoryResponseOutput) ToMavenRepositoryResponseOutput() MavenRepositoryResponseOutput {
+	return o
+}
+
+func (o MavenRepositoryResponseOutput) ToMavenRepositoryResponseOutputWithContext(ctx context.Context) MavenRepositoryResponseOutput {
+	return o
+}
+
+// One of the publicly available Maven repositories supported by Artifact Registry.
+func (o MavenRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v MavenRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+// Configuration for a Npm remote repository.
+type NpmRepository struct {
+	// One of the publicly available Npm repositories supported by Artifact Registry.
+	PublicRepository *NpmRepositoryPublicRepository `pulumi:"publicRepository"`
+}
+
+// NpmRepositoryInput is an input type that accepts NpmRepositoryArgs and NpmRepositoryOutput values.
+// You can construct a concrete instance of `NpmRepositoryInput` via:
+//
+//	NpmRepositoryArgs{...}
+type NpmRepositoryInput interface {
+	pulumi.Input
+
+	ToNpmRepositoryOutput() NpmRepositoryOutput
+	ToNpmRepositoryOutputWithContext(context.Context) NpmRepositoryOutput
+}
+
+// Configuration for a Npm remote repository.
+type NpmRepositoryArgs struct {
+	// One of the publicly available Npm repositories supported by Artifact Registry.
+	PublicRepository NpmRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
+}
+
+func (NpmRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpmRepository)(nil)).Elem()
+}
+
+func (i NpmRepositoryArgs) ToNpmRepositoryOutput() NpmRepositoryOutput {
+	return i.ToNpmRepositoryOutputWithContext(context.Background())
+}
+
+func (i NpmRepositoryArgs) ToNpmRepositoryOutputWithContext(ctx context.Context) NpmRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpmRepositoryOutput)
+}
+
+func (i NpmRepositoryArgs) ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutput {
+	return i.ToNpmRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i NpmRepositoryArgs) ToNpmRepositoryPtrOutputWithContext(ctx context.Context) NpmRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpmRepositoryOutput).ToNpmRepositoryPtrOutputWithContext(ctx)
+}
+
+// NpmRepositoryPtrInput is an input type that accepts NpmRepositoryArgs, NpmRepositoryPtr and NpmRepositoryPtrOutput values.
+// You can construct a concrete instance of `NpmRepositoryPtrInput` via:
+//
+//	        NpmRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type NpmRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutput
+	ToNpmRepositoryPtrOutputWithContext(context.Context) NpmRepositoryPtrOutput
+}
+
+type npmRepositoryPtrType NpmRepositoryArgs
+
+func NpmRepositoryPtr(v *NpmRepositoryArgs) NpmRepositoryPtrInput {
+	return (*npmRepositoryPtrType)(v)
+}
+
+func (*npmRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NpmRepository)(nil)).Elem()
+}
+
+func (i *npmRepositoryPtrType) ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutput {
+	return i.ToNpmRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *npmRepositoryPtrType) ToNpmRepositoryPtrOutputWithContext(ctx context.Context) NpmRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NpmRepositoryPtrOutput)
+}
+
+// Configuration for a Npm remote repository.
+type NpmRepositoryOutput struct{ *pulumi.OutputState }
+
+func (NpmRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpmRepository)(nil)).Elem()
+}
+
+func (o NpmRepositoryOutput) ToNpmRepositoryOutput() NpmRepositoryOutput {
+	return o
+}
+
+func (o NpmRepositoryOutput) ToNpmRepositoryOutputWithContext(ctx context.Context) NpmRepositoryOutput {
+	return o
+}
+
+func (o NpmRepositoryOutput) ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutput {
+	return o.ToNpmRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o NpmRepositoryOutput) ToNpmRepositoryPtrOutputWithContext(ctx context.Context) NpmRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NpmRepository) *NpmRepository {
+		return &v
+	}).(NpmRepositoryPtrOutput)
+}
+
+// One of the publicly available Npm repositories supported by Artifact Registry.
+func (o NpmRepositoryOutput) PublicRepository() NpmRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v NpmRepository) *NpmRepositoryPublicRepository { return v.PublicRepository }).(NpmRepositoryPublicRepositoryPtrOutput)
+}
+
+type NpmRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (NpmRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NpmRepository)(nil)).Elem()
+}
+
+func (o NpmRepositoryPtrOutput) ToNpmRepositoryPtrOutput() NpmRepositoryPtrOutput {
+	return o
+}
+
+func (o NpmRepositoryPtrOutput) ToNpmRepositoryPtrOutputWithContext(ctx context.Context) NpmRepositoryPtrOutput {
+	return o
+}
+
+func (o NpmRepositoryPtrOutput) Elem() NpmRepositoryOutput {
+	return o.ApplyT(func(v *NpmRepository) NpmRepository {
+		if v != nil {
+			return *v
+		}
+		var ret NpmRepository
+		return ret
+	}).(NpmRepositoryOutput)
+}
+
+// One of the publicly available Npm repositories supported by Artifact Registry.
+func (o NpmRepositoryPtrOutput) PublicRepository() NpmRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v *NpmRepository) *NpmRepositoryPublicRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(NpmRepositoryPublicRepositoryPtrOutput)
+}
+
+// Configuration for a Npm remote repository.
+type NpmRepositoryResponse struct {
+	// One of the publicly available Npm repositories supported by Artifact Registry.
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// Configuration for a Npm remote repository.
+type NpmRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (NpmRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NpmRepositoryResponse)(nil)).Elem()
+}
+
+func (o NpmRepositoryResponseOutput) ToNpmRepositoryResponseOutput() NpmRepositoryResponseOutput {
+	return o
+}
+
+func (o NpmRepositoryResponseOutput) ToNpmRepositoryResponseOutputWithContext(ctx context.Context) NpmRepositoryResponseOutput {
+	return o
+}
+
+// One of the publicly available Npm repositories supported by Artifact Registry.
+func (o NpmRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v NpmRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+// Configuration for a Python remote repository.
+type PythonRepository struct {
+	// One of the publicly available Python repositories supported by Artifact Registry.
+	PublicRepository *PythonRepositoryPublicRepository `pulumi:"publicRepository"`
+}
+
+// PythonRepositoryInput is an input type that accepts PythonRepositoryArgs and PythonRepositoryOutput values.
+// You can construct a concrete instance of `PythonRepositoryInput` via:
+//
+//	PythonRepositoryArgs{...}
+type PythonRepositoryInput interface {
+	pulumi.Input
+
+	ToPythonRepositoryOutput() PythonRepositoryOutput
+	ToPythonRepositoryOutputWithContext(context.Context) PythonRepositoryOutput
+}
+
+// Configuration for a Python remote repository.
+type PythonRepositoryArgs struct {
+	// One of the publicly available Python repositories supported by Artifact Registry.
+	PublicRepository PythonRepositoryPublicRepositoryPtrInput `pulumi:"publicRepository"`
+}
+
+func (PythonRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonRepository)(nil)).Elem()
+}
+
+func (i PythonRepositoryArgs) ToPythonRepositoryOutput() PythonRepositoryOutput {
+	return i.ToPythonRepositoryOutputWithContext(context.Background())
+}
+
+func (i PythonRepositoryArgs) ToPythonRepositoryOutputWithContext(ctx context.Context) PythonRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonRepositoryOutput)
+}
+
+func (i PythonRepositoryArgs) ToPythonRepositoryPtrOutput() PythonRepositoryPtrOutput {
+	return i.ToPythonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i PythonRepositoryArgs) ToPythonRepositoryPtrOutputWithContext(ctx context.Context) PythonRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonRepositoryOutput).ToPythonRepositoryPtrOutputWithContext(ctx)
+}
+
+// PythonRepositoryPtrInput is an input type that accepts PythonRepositoryArgs, PythonRepositoryPtr and PythonRepositoryPtrOutput values.
+// You can construct a concrete instance of `PythonRepositoryPtrInput` via:
+//
+//	        PythonRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type PythonRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToPythonRepositoryPtrOutput() PythonRepositoryPtrOutput
+	ToPythonRepositoryPtrOutputWithContext(context.Context) PythonRepositoryPtrOutput
+}
+
+type pythonRepositoryPtrType PythonRepositoryArgs
+
+func PythonRepositoryPtr(v *PythonRepositoryArgs) PythonRepositoryPtrInput {
+	return (*pythonRepositoryPtrType)(v)
+}
+
+func (*pythonRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PythonRepository)(nil)).Elem()
+}
+
+func (i *pythonRepositoryPtrType) ToPythonRepositoryPtrOutput() PythonRepositoryPtrOutput {
+	return i.ToPythonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *pythonRepositoryPtrType) ToPythonRepositoryPtrOutputWithContext(ctx context.Context) PythonRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PythonRepositoryPtrOutput)
+}
+
+// Configuration for a Python remote repository.
+type PythonRepositoryOutput struct{ *pulumi.OutputState }
+
+func (PythonRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonRepository)(nil)).Elem()
+}
+
+func (o PythonRepositoryOutput) ToPythonRepositoryOutput() PythonRepositoryOutput {
+	return o
+}
+
+func (o PythonRepositoryOutput) ToPythonRepositoryOutputWithContext(ctx context.Context) PythonRepositoryOutput {
+	return o
+}
+
+func (o PythonRepositoryOutput) ToPythonRepositoryPtrOutput() PythonRepositoryPtrOutput {
+	return o.ToPythonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o PythonRepositoryOutput) ToPythonRepositoryPtrOutputWithContext(ctx context.Context) PythonRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PythonRepository) *PythonRepository {
+		return &v
+	}).(PythonRepositoryPtrOutput)
+}
+
+// One of the publicly available Python repositories supported by Artifact Registry.
+func (o PythonRepositoryOutput) PublicRepository() PythonRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v PythonRepository) *PythonRepositoryPublicRepository { return v.PublicRepository }).(PythonRepositoryPublicRepositoryPtrOutput)
+}
+
+type PythonRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (PythonRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PythonRepository)(nil)).Elem()
+}
+
+func (o PythonRepositoryPtrOutput) ToPythonRepositoryPtrOutput() PythonRepositoryPtrOutput {
+	return o
+}
+
+func (o PythonRepositoryPtrOutput) ToPythonRepositoryPtrOutputWithContext(ctx context.Context) PythonRepositoryPtrOutput {
+	return o
+}
+
+func (o PythonRepositoryPtrOutput) Elem() PythonRepositoryOutput {
+	return o.ApplyT(func(v *PythonRepository) PythonRepository {
+		if v != nil {
+			return *v
+		}
+		var ret PythonRepository
+		return ret
+	}).(PythonRepositoryOutput)
+}
+
+// One of the publicly available Python repositories supported by Artifact Registry.
+func (o PythonRepositoryPtrOutput) PublicRepository() PythonRepositoryPublicRepositoryPtrOutput {
+	return o.ApplyT(func(v *PythonRepository) *PythonRepositoryPublicRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PublicRepository
+	}).(PythonRepositoryPublicRepositoryPtrOutput)
+}
+
+// Configuration for a Python remote repository.
+type PythonRepositoryResponse struct {
+	// One of the publicly available Python repositories supported by Artifact Registry.
+	PublicRepository string `pulumi:"publicRepository"`
+}
+
+// Configuration for a Python remote repository.
+type PythonRepositoryResponseOutput struct{ *pulumi.OutputState }
+
+func (PythonRepositoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PythonRepositoryResponse)(nil)).Elem()
+}
+
+func (o PythonRepositoryResponseOutput) ToPythonRepositoryResponseOutput() PythonRepositoryResponseOutput {
+	return o
+}
+
+func (o PythonRepositoryResponseOutput) ToPythonRepositoryResponseOutputWithContext(ctx context.Context) PythonRepositoryResponseOutput {
+	return o
+}
+
+// One of the publicly available Python repositories supported by Artifact Registry.
+func (o PythonRepositoryResponseOutput) PublicRepository() pulumi.StringOutput {
+	return o.ApplyT(func(v PythonRepositoryResponse) string { return v.PublicRepository }).(pulumi.StringOutput)
+}
+
+// Remote repository configuration.
+type RemoteRepositoryConfig struct {
+	// The description of the remote source.
+	Description *string `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	DockerRepository *DockerRepository `pulumi:"dockerRepository"`
+	// Specific settings for a Maven remote repository.
+	MavenRepository *MavenRepository `pulumi:"mavenRepository"`
+	// Specific settings for an Npm remote repository.
+	NpmRepository *NpmRepository `pulumi:"npmRepository"`
+	// Specific settings for a Python remote repository.
+	PythonRepository *PythonRepository `pulumi:"pythonRepository"`
+}
+
+// RemoteRepositoryConfigInput is an input type that accepts RemoteRepositoryConfigArgs and RemoteRepositoryConfigOutput values.
+// You can construct a concrete instance of `RemoteRepositoryConfigInput` via:
+//
+//	RemoteRepositoryConfigArgs{...}
+type RemoteRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToRemoteRepositoryConfigOutput() RemoteRepositoryConfigOutput
+	ToRemoteRepositoryConfigOutputWithContext(context.Context) RemoteRepositoryConfigOutput
+}
+
+// Remote repository configuration.
+type RemoteRepositoryConfigArgs struct {
+	// The description of the remote source.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	DockerRepository DockerRepositoryPtrInput `pulumi:"dockerRepository"`
+	// Specific settings for a Maven remote repository.
+	MavenRepository MavenRepositoryPtrInput `pulumi:"mavenRepository"`
+	// Specific settings for an Npm remote repository.
+	NpmRepository NpmRepositoryPtrInput `pulumi:"npmRepository"`
+	// Specific settings for a Python remote repository.
+	PythonRepository PythonRepositoryPtrInput `pulumi:"pythonRepository"`
+}
+
+func (RemoteRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (i RemoteRepositoryConfigArgs) ToRemoteRepositoryConfigOutput() RemoteRepositoryConfigOutput {
+	return i.ToRemoteRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i RemoteRepositoryConfigArgs) ToRemoteRepositoryConfigOutputWithContext(ctx context.Context) RemoteRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteRepositoryConfigOutput)
+}
+
+func (i RemoteRepositoryConfigArgs) ToRemoteRepositoryConfigPtrOutput() RemoteRepositoryConfigPtrOutput {
+	return i.ToRemoteRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RemoteRepositoryConfigArgs) ToRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RemoteRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteRepositoryConfigOutput).ToRemoteRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// RemoteRepositoryConfigPtrInput is an input type that accepts RemoteRepositoryConfigArgs, RemoteRepositoryConfigPtr and RemoteRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `RemoteRepositoryConfigPtrInput` via:
+//
+//	        RemoteRepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RemoteRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToRemoteRepositoryConfigPtrOutput() RemoteRepositoryConfigPtrOutput
+	ToRemoteRepositoryConfigPtrOutputWithContext(context.Context) RemoteRepositoryConfigPtrOutput
+}
+
+type remoteRepositoryConfigPtrType RemoteRepositoryConfigArgs
+
+func RemoteRepositoryConfigPtr(v *RemoteRepositoryConfigArgs) RemoteRepositoryConfigPtrInput {
+	return (*remoteRepositoryConfigPtrType)(v)
+}
+
+func (*remoteRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (i *remoteRepositoryConfigPtrType) ToRemoteRepositoryConfigPtrOutput() RemoteRepositoryConfigPtrOutput {
+	return i.ToRemoteRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *remoteRepositoryConfigPtrType) ToRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RemoteRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RemoteRepositoryConfigPtrOutput)
+}
+
+// Remote repository configuration.
+type RemoteRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (RemoteRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (o RemoteRepositoryConfigOutput) ToRemoteRepositoryConfigOutput() RemoteRepositoryConfigOutput {
+	return o
+}
+
+func (o RemoteRepositoryConfigOutput) ToRemoteRepositoryConfigOutputWithContext(ctx context.Context) RemoteRepositoryConfigOutput {
+	return o
+}
+
+func (o RemoteRepositoryConfigOutput) ToRemoteRepositoryConfigPtrOutput() RemoteRepositoryConfigPtrOutput {
+	return o.ToRemoteRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RemoteRepositoryConfigOutput) ToRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RemoteRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemoteRepositoryConfig) *RemoteRepositoryConfig {
+		return &v
+	}).(RemoteRepositoryConfigPtrOutput)
+}
+
+// The description of the remote source.
+func (o RemoteRepositoryConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Specific settings for a Docker remote repository.
+func (o RemoteRepositoryConfigOutput) DockerRepository() DockerRepositoryPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *DockerRepository { return v.DockerRepository }).(DockerRepositoryPtrOutput)
+}
+
+// Specific settings for a Maven remote repository.
+func (o RemoteRepositoryConfigOutput) MavenRepository() MavenRepositoryPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *MavenRepository { return v.MavenRepository }).(MavenRepositoryPtrOutput)
+}
+
+// Specific settings for an Npm remote repository.
+func (o RemoteRepositoryConfigOutput) NpmRepository() NpmRepositoryPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *NpmRepository { return v.NpmRepository }).(NpmRepositoryPtrOutput)
+}
+
+// Specific settings for a Python remote repository.
+func (o RemoteRepositoryConfigOutput) PythonRepository() PythonRepositoryPtrOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfig) *PythonRepository { return v.PythonRepository }).(PythonRepositoryPtrOutput)
+}
+
+type RemoteRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RemoteRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemoteRepositoryConfig)(nil)).Elem()
+}
+
+func (o RemoteRepositoryConfigPtrOutput) ToRemoteRepositoryConfigPtrOutput() RemoteRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RemoteRepositoryConfigPtrOutput) ToRemoteRepositoryConfigPtrOutputWithContext(ctx context.Context) RemoteRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o RemoteRepositoryConfigPtrOutput) Elem() RemoteRepositoryConfigOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) RemoteRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RemoteRepositoryConfig
+		return ret
+	}).(RemoteRepositoryConfigOutput)
+}
+
+// The description of the remote source.
+func (o RemoteRepositoryConfigPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specific settings for a Docker remote repository.
+func (o RemoteRepositoryConfigPtrOutput) DockerRepository() DockerRepositoryPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *DockerRepository {
+		if v == nil {
+			return nil
+		}
+		return v.DockerRepository
+	}).(DockerRepositoryPtrOutput)
+}
+
+// Specific settings for a Maven remote repository.
+func (o RemoteRepositoryConfigPtrOutput) MavenRepository() MavenRepositoryPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *MavenRepository {
+		if v == nil {
+			return nil
+		}
+		return v.MavenRepository
+	}).(MavenRepositoryPtrOutput)
+}
+
+// Specific settings for an Npm remote repository.
+func (o RemoteRepositoryConfigPtrOutput) NpmRepository() NpmRepositoryPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *NpmRepository {
+		if v == nil {
+			return nil
+		}
+		return v.NpmRepository
+	}).(NpmRepositoryPtrOutput)
+}
+
+// Specific settings for a Python remote repository.
+func (o RemoteRepositoryConfigPtrOutput) PythonRepository() PythonRepositoryPtrOutput {
+	return o.ApplyT(func(v *RemoteRepositoryConfig) *PythonRepository {
+		if v == nil {
+			return nil
+		}
+		return v.PythonRepository
+	}).(PythonRepositoryPtrOutput)
+}
+
+// Remote repository configuration.
+type RemoteRepositoryConfigResponse struct {
+	// The description of the remote source.
+	Description string `pulumi:"description"`
+	// Specific settings for a Docker remote repository.
+	DockerRepository DockerRepositoryResponse `pulumi:"dockerRepository"`
+	// Specific settings for a Maven remote repository.
+	MavenRepository MavenRepositoryResponse `pulumi:"mavenRepository"`
+	// Specific settings for an Npm remote repository.
+	NpmRepository NpmRepositoryResponse `pulumi:"npmRepository"`
+	// Specific settings for a Python remote repository.
+	PythonRepository PythonRepositoryResponse `pulumi:"pythonRepository"`
+}
+
+// Remote repository configuration.
+type RemoteRepositoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RemoteRepositoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemoteRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o RemoteRepositoryConfigResponseOutput) ToRemoteRepositoryConfigResponseOutput() RemoteRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o RemoteRepositoryConfigResponseOutput) ToRemoteRepositoryConfigResponseOutputWithContext(ctx context.Context) RemoteRepositoryConfigResponseOutput {
+	return o
+}
+
+// The description of the remote source.
+func (o RemoteRepositoryConfigResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Specific settings for a Docker remote repository.
+func (o RemoteRepositoryConfigResponseOutput) DockerRepository() DockerRepositoryResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) DockerRepositoryResponse { return v.DockerRepository }).(DockerRepositoryResponseOutput)
+}
+
+// Specific settings for a Maven remote repository.
+func (o RemoteRepositoryConfigResponseOutput) MavenRepository() MavenRepositoryResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) MavenRepositoryResponse { return v.MavenRepository }).(MavenRepositoryResponseOutput)
+}
+
+// Specific settings for an Npm remote repository.
+func (o RemoteRepositoryConfigResponseOutput) NpmRepository() NpmRepositoryResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) NpmRepositoryResponse { return v.NpmRepository }).(NpmRepositoryResponseOutput)
+}
+
+// Specific settings for a Python remote repository.
+func (o RemoteRepositoryConfigResponseOutput) PythonRepository() PythonRepositoryResponseOutput {
+	return o.ApplyT(func(v RemoteRepositoryConfigResponse) PythonRepositoryResponse { return v.PythonRepository }).(PythonRepositoryResponseOutput)
+}
+
+// Artifact policy configuration for the repository contents.
+type UpstreamPolicy struct {
+	// The user-provided ID of the upstream policy.
+	Id *string `pulumi:"id"`
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority *int `pulumi:"priority"`
+	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+	Repository *string `pulumi:"repository"`
+}
+
+// UpstreamPolicyInput is an input type that accepts UpstreamPolicyArgs and UpstreamPolicyOutput values.
+// You can construct a concrete instance of `UpstreamPolicyInput` via:
+//
+//	UpstreamPolicyArgs{...}
+type UpstreamPolicyInput interface {
+	pulumi.Input
+
+	ToUpstreamPolicyOutput() UpstreamPolicyOutput
+	ToUpstreamPolicyOutputWithContext(context.Context) UpstreamPolicyOutput
+}
+
+// Artifact policy configuration for the repository contents.
+type UpstreamPolicyArgs struct {
+	// The user-provided ID of the upstream policy.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+	Repository pulumi.StringPtrInput `pulumi:"repository"`
+}
+
+func (UpstreamPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamPolicy)(nil)).Elem()
+}
+
+func (i UpstreamPolicyArgs) ToUpstreamPolicyOutput() UpstreamPolicyOutput {
+	return i.ToUpstreamPolicyOutputWithContext(context.Background())
+}
+
+func (i UpstreamPolicyArgs) ToUpstreamPolicyOutputWithContext(ctx context.Context) UpstreamPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamPolicyOutput)
+}
+
+// UpstreamPolicyArrayInput is an input type that accepts UpstreamPolicyArray and UpstreamPolicyArrayOutput values.
+// You can construct a concrete instance of `UpstreamPolicyArrayInput` via:
+//
+//	UpstreamPolicyArray{ UpstreamPolicyArgs{...} }
+type UpstreamPolicyArrayInput interface {
+	pulumi.Input
+
+	ToUpstreamPolicyArrayOutput() UpstreamPolicyArrayOutput
+	ToUpstreamPolicyArrayOutputWithContext(context.Context) UpstreamPolicyArrayOutput
+}
+
+type UpstreamPolicyArray []UpstreamPolicyInput
+
+func (UpstreamPolicyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpstreamPolicy)(nil)).Elem()
+}
+
+func (i UpstreamPolicyArray) ToUpstreamPolicyArrayOutput() UpstreamPolicyArrayOutput {
+	return i.ToUpstreamPolicyArrayOutputWithContext(context.Background())
+}
+
+func (i UpstreamPolicyArray) ToUpstreamPolicyArrayOutputWithContext(ctx context.Context) UpstreamPolicyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UpstreamPolicyArrayOutput)
+}
+
+// Artifact policy configuration for the repository contents.
+type UpstreamPolicyOutput struct{ *pulumi.OutputState }
+
+func (UpstreamPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamPolicy)(nil)).Elem()
+}
+
+func (o UpstreamPolicyOutput) ToUpstreamPolicyOutput() UpstreamPolicyOutput {
+	return o
+}
+
+func (o UpstreamPolicyOutput) ToUpstreamPolicyOutputWithContext(ctx context.Context) UpstreamPolicyOutput {
+	return o
+}
+
+// The user-provided ID of the upstream policy.
+func (o UpstreamPolicyOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpstreamPolicy) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Entries with a greater priority value take precedence in the pull order.
+func (o UpstreamPolicyOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v UpstreamPolicy) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+func (o UpstreamPolicyOutput) Repository() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UpstreamPolicy) *string { return v.Repository }).(pulumi.StringPtrOutput)
+}
+
+type UpstreamPolicyArrayOutput struct{ *pulumi.OutputState }
+
+func (UpstreamPolicyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpstreamPolicy)(nil)).Elem()
+}
+
+func (o UpstreamPolicyArrayOutput) ToUpstreamPolicyArrayOutput() UpstreamPolicyArrayOutput {
+	return o
+}
+
+func (o UpstreamPolicyArrayOutput) ToUpstreamPolicyArrayOutputWithContext(ctx context.Context) UpstreamPolicyArrayOutput {
+	return o
+}
+
+func (o UpstreamPolicyArrayOutput) Index(i pulumi.IntInput) UpstreamPolicyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpstreamPolicy {
+		return vs[0].([]UpstreamPolicy)[vs[1].(int)]
+	}).(UpstreamPolicyOutput)
+}
+
+// Artifact policy configuration for the repository contents.
+type UpstreamPolicyResponse struct {
+	// Entries with a greater priority value take precedence in the pull order.
+	Priority int `pulumi:"priority"`
+	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+	Repository string `pulumi:"repository"`
+}
+
+// Artifact policy configuration for the repository contents.
+type UpstreamPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (UpstreamPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UpstreamPolicyResponse)(nil)).Elem()
+}
+
+func (o UpstreamPolicyResponseOutput) ToUpstreamPolicyResponseOutput() UpstreamPolicyResponseOutput {
+	return o
+}
+
+func (o UpstreamPolicyResponseOutput) ToUpstreamPolicyResponseOutputWithContext(ctx context.Context) UpstreamPolicyResponseOutput {
+	return o
+}
+
+// Entries with a greater priority value take precedence in the pull order.
+func (o UpstreamPolicyResponseOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v UpstreamPolicyResponse) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+func (o UpstreamPolicyResponseOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v UpstreamPolicyResponse) string { return v.Repository }).(pulumi.StringOutput)
+}
+
+type UpstreamPolicyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (UpstreamPolicyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]UpstreamPolicyResponse)(nil)).Elem()
+}
+
+func (o UpstreamPolicyResponseArrayOutput) ToUpstreamPolicyResponseArrayOutput() UpstreamPolicyResponseArrayOutput {
+	return o
+}
+
+func (o UpstreamPolicyResponseArrayOutput) ToUpstreamPolicyResponseArrayOutputWithContext(ctx context.Context) UpstreamPolicyResponseArrayOutput {
+	return o
+}
+
+func (o UpstreamPolicyResponseArrayOutput) Index(i pulumi.IntInput) UpstreamPolicyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UpstreamPolicyResponse {
+		return vs[0].([]UpstreamPolicyResponse)[vs[1].(int)]
+	}).(UpstreamPolicyResponseOutput)
+}
+
+// Virtual repository configuration.
+type VirtualRepositoryConfig struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+	UpstreamPolicies []UpstreamPolicy `pulumi:"upstreamPolicies"`
+}
+
+// VirtualRepositoryConfigInput is an input type that accepts VirtualRepositoryConfigArgs and VirtualRepositoryConfigOutput values.
+// You can construct a concrete instance of `VirtualRepositoryConfigInput` via:
+//
+//	VirtualRepositoryConfigArgs{...}
+type VirtualRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToVirtualRepositoryConfigOutput() VirtualRepositoryConfigOutput
+	ToVirtualRepositoryConfigOutputWithContext(context.Context) VirtualRepositoryConfigOutput
+}
+
+// Virtual repository configuration.
+type VirtualRepositoryConfigArgs struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+	UpstreamPolicies UpstreamPolicyArrayInput `pulumi:"upstreamPolicies"`
+}
+
+func (VirtualRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (i VirtualRepositoryConfigArgs) ToVirtualRepositoryConfigOutput() VirtualRepositoryConfigOutput {
+	return i.ToVirtualRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i VirtualRepositoryConfigArgs) ToVirtualRepositoryConfigOutputWithContext(ctx context.Context) VirtualRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRepositoryConfigOutput)
+}
+
+func (i VirtualRepositoryConfigArgs) ToVirtualRepositoryConfigPtrOutput() VirtualRepositoryConfigPtrOutput {
+	return i.ToVirtualRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VirtualRepositoryConfigArgs) ToVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) VirtualRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRepositoryConfigOutput).ToVirtualRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// VirtualRepositoryConfigPtrInput is an input type that accepts VirtualRepositoryConfigArgs, VirtualRepositoryConfigPtr and VirtualRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `VirtualRepositoryConfigPtrInput` via:
+//
+//	        VirtualRepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VirtualRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToVirtualRepositoryConfigPtrOutput() VirtualRepositoryConfigPtrOutput
+	ToVirtualRepositoryConfigPtrOutputWithContext(context.Context) VirtualRepositoryConfigPtrOutput
+}
+
+type virtualRepositoryConfigPtrType VirtualRepositoryConfigArgs
+
+func VirtualRepositoryConfigPtr(v *VirtualRepositoryConfigArgs) VirtualRepositoryConfigPtrInput {
+	return (*virtualRepositoryConfigPtrType)(v)
+}
+
+func (*virtualRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (i *virtualRepositoryConfigPtrType) ToVirtualRepositoryConfigPtrOutput() VirtualRepositoryConfigPtrOutput {
+	return i.ToVirtualRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *virtualRepositoryConfigPtrType) ToVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) VirtualRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VirtualRepositoryConfigPtrOutput)
+}
+
+// Virtual repository configuration.
+type VirtualRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (VirtualRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (o VirtualRepositoryConfigOutput) ToVirtualRepositoryConfigOutput() VirtualRepositoryConfigOutput {
+	return o
+}
+
+func (o VirtualRepositoryConfigOutput) ToVirtualRepositoryConfigOutputWithContext(ctx context.Context) VirtualRepositoryConfigOutput {
+	return o
+}
+
+func (o VirtualRepositoryConfigOutput) ToVirtualRepositoryConfigPtrOutput() VirtualRepositoryConfigPtrOutput {
+	return o.ToVirtualRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VirtualRepositoryConfigOutput) ToVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) VirtualRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VirtualRepositoryConfig) *VirtualRepositoryConfig {
+		return &v
+	}).(VirtualRepositoryConfigPtrOutput)
+}
+
+// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+func (o VirtualRepositoryConfigOutput) UpstreamPolicies() UpstreamPolicyArrayOutput {
+	return o.ApplyT(func(v VirtualRepositoryConfig) []UpstreamPolicy { return v.UpstreamPolicies }).(UpstreamPolicyArrayOutput)
+}
+
+type VirtualRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VirtualRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VirtualRepositoryConfig)(nil)).Elem()
+}
+
+func (o VirtualRepositoryConfigPtrOutput) ToVirtualRepositoryConfigPtrOutput() VirtualRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o VirtualRepositoryConfigPtrOutput) ToVirtualRepositoryConfigPtrOutputWithContext(ctx context.Context) VirtualRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o VirtualRepositoryConfigPtrOutput) Elem() VirtualRepositoryConfigOutput {
+	return o.ApplyT(func(v *VirtualRepositoryConfig) VirtualRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VirtualRepositoryConfig
+		return ret
+	}).(VirtualRepositoryConfigOutput)
+}
+
+// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+func (o VirtualRepositoryConfigPtrOutput) UpstreamPolicies() UpstreamPolicyArrayOutput {
+	return o.ApplyT(func(v *VirtualRepositoryConfig) []UpstreamPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamPolicies
+	}).(UpstreamPolicyArrayOutput)
+}
+
+// Virtual repository configuration.
+type VirtualRepositoryConfigResponse struct {
+	// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+	UpstreamPolicies []UpstreamPolicyResponse `pulumi:"upstreamPolicies"`
+}
+
+// Virtual repository configuration.
+type VirtualRepositoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (VirtualRepositoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VirtualRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o VirtualRepositoryConfigResponseOutput) ToVirtualRepositoryConfigResponseOutput() VirtualRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o VirtualRepositoryConfigResponseOutput) ToVirtualRepositoryConfigResponseOutputWithContext(ctx context.Context) VirtualRepositoryConfigResponseOutput {
+	return o
+}
+
+// Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+func (o VirtualRepositoryConfigResponseOutput) UpstreamPolicies() UpstreamPolicyResponseArrayOutput {
+	return o.ApplyT(func(v VirtualRepositoryConfigResponse) []UpstreamPolicyResponse { return v.UpstreamPolicies }).(UpstreamPolicyResponseArrayOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryInput)(nil)).Elem(), DockerRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryPtrInput)(nil)).Elem(), DockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryInput)(nil)).Elem(), MavenRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryPtrInput)(nil)).Elem(), MavenRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryConfigPtrInput)(nil)).Elem(), MavenRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NpmRepositoryInput)(nil)).Elem(), NpmRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NpmRepositoryPtrInput)(nil)).Elem(), NpmRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PythonRepositoryInput)(nil)).Elem(), PythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PythonRepositoryPtrInput)(nil)).Elem(), PythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteRepositoryConfigInput)(nil)).Elem(), RemoteRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RemoteRepositoryConfigPtrInput)(nil)).Elem(), RemoteRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpstreamPolicyInput)(nil)).Elem(), UpstreamPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UpstreamPolicyArrayInput)(nil)).Elem(), UpstreamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualRepositoryConfigInput)(nil)).Elem(), VirtualRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VirtualRepositoryConfigPtrInput)(nil)).Elem(), VirtualRepositoryConfigArgs{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(DockerRepositoryOutput{})
+	pulumi.RegisterOutputType(DockerRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(DockerRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(MavenRepositoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(MavenRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(NpmRepositoryOutput{})
+	pulumi.RegisterOutputType(NpmRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(NpmRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(PythonRepositoryOutput{})
+	pulumi.RegisterOutputType(PythonRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(PythonRepositoryResponseOutput{})
+	pulumi.RegisterOutputType(RemoteRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(RemoteRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(RemoteRepositoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(UpstreamPolicyOutput{})
+	pulumi.RegisterOutputType(UpstreamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(UpstreamPolicyResponseOutput{})
+	pulumi.RegisterOutputType(UpstreamPolicyResponseArrayOutput{})
+	pulumi.RegisterOutputType(VirtualRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(VirtualRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(VirtualRepositoryConfigResponseOutput{})
 }

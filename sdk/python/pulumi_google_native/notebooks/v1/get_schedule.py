@@ -63,7 +63,7 @@ class GetScheduleResult:
     @pulumi.getter(name="cronSchedule")
     def cron_schedule(self) -> str:
         """
-        Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
         """
         return pulumi.get(self, "cron_schedule")
 
@@ -79,7 +79,7 @@ class GetScheduleResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+        Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`, and underscores `_`.
         """
         return pulumi.get(self, "display_name")
 

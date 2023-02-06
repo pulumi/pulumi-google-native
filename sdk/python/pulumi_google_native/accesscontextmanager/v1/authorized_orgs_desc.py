@@ -23,11 +23,11 @@ class AuthorizedOrgsDescArgs:
                  orgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AuthorizedOrgsDesc resource.
-        :param pulumi.Input['AuthorizedOrgsDescAssetType'] asset_type: The asset type of this authorized orgs desc. e.g. device, credential strength.
-        :param pulumi.Input['AuthorizedOrgsDescAuthorizationDirection'] authorization_direction: Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
-        :param pulumi.Input['AuthorizedOrgsDescAuthorizationType'] authorization_type: The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
-        :param pulumi.Input[str] name: Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc.
+        :param pulumi.Input['AuthorizedOrgsDescAssetType'] asset_type: The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        :param pulumi.Input['AuthorizedOrgsDescAuthorizationDirection'] authorization_direction: The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
+        :param pulumi.Input['AuthorizedOrgsDescAuthorizationType'] authorization_type: A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
+        :param pulumi.Input[str] name: Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
         """
         pulumi.set(__self__, "access_policy_id", access_policy_id)
         if asset_type is not None:
@@ -54,7 +54,7 @@ class AuthorizedOrgsDescArgs:
     @pulumi.getter(name="assetType")
     def asset_type(self) -> Optional[pulumi.Input['AuthorizedOrgsDescAssetType']]:
         """
-        The asset type of this authorized orgs desc. e.g. device, credential strength.
+        The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         """
         return pulumi.get(self, "asset_type")
 
@@ -66,7 +66,7 @@ class AuthorizedOrgsDescArgs:
     @pulumi.getter(name="authorizationDirection")
     def authorization_direction(self) -> Optional[pulumi.Input['AuthorizedOrgsDescAuthorizationDirection']]:
         """
-        Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+        The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
         """
         return pulumi.get(self, "authorization_direction")
 
@@ -78,7 +78,7 @@ class AuthorizedOrgsDescArgs:
     @pulumi.getter(name="authorizationType")
     def authorization_type(self) -> Optional[pulumi.Input['AuthorizedOrgsDescAuthorizationType']]:
         """
-        The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+        A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
         """
         return pulumi.get(self, "authorization_type")
 
@@ -90,7 +90,7 @@ class AuthorizedOrgsDescArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+        Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
         """
         return pulumi.get(self, "name")
 
@@ -102,7 +102,7 @@ class AuthorizedOrgsDescArgs:
     @pulumi.getter
     def orgs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of organization ids in this AuthorizedOrgsDesc.
+        The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
         """
         return pulumi.get(self, "orgs")
 
@@ -124,15 +124,15 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                  orgs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
+        Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input['AuthorizedOrgsDescAssetType'] asset_type: The asset type of this authorized orgs desc. e.g. device, credential strength.
-        :param pulumi.Input['AuthorizedOrgsDescAuthorizationDirection'] authorization_direction: Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
-        :param pulumi.Input['AuthorizedOrgsDescAuthorizationType'] authorization_type: The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
-        :param pulumi.Input[str] name: Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc.
+        :param pulumi.Input['AuthorizedOrgsDescAssetType'] asset_type: The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
+        :param pulumi.Input['AuthorizedOrgsDescAuthorizationDirection'] authorization_direction: The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
+        :param pulumi.Input['AuthorizedOrgsDescAuthorizationType'] authorization_type: A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
+        :param pulumi.Input[str] name: Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] orgs: The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
         """
         ...
     @overload
@@ -141,7 +141,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
                  args: AuthorizedOrgsDescArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
+        Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
 
         :param str resource_name: The name of the resource.
         :param AuthorizedOrgsDescArgs args: The arguments to use to populate this resource's properties.
@@ -222,7 +222,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     @pulumi.getter(name="assetType")
     def asset_type(self) -> pulumi.Output[str]:
         """
-        The asset type of this authorized orgs desc. e.g. device, credential strength.
+        The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
         """
         return pulumi.get(self, "asset_type")
 
@@ -230,7 +230,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     @pulumi.getter(name="authorizationDirection")
     def authorization_direction(self) -> pulumi.Output[str]:
         """
-        Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+        The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
         """
         return pulumi.get(self, "authorization_direction")
 
@@ -238,7 +238,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     @pulumi.getter(name="authorizationType")
     def authorization_type(self) -> pulumi.Output[str]:
         """
-        The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+        A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
         """
         return pulumi.get(self, "authorization_type")
 
@@ -246,7 +246,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+        Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
         """
         return pulumi.get(self, "name")
 
@@ -254,7 +254,7 @@ class AuthorizedOrgsDesc(pulumi.CustomResource):
     @pulumi.getter
     def orgs(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of organization ids in this AuthorizedOrgsDesc.
+        The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
         """
         return pulumi.get(self, "orgs")
 

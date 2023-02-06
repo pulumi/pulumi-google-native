@@ -42,7 +42,7 @@ class FhirStoreArgs:
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         :param pulumi.Input[str] fhir_store_id: The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input['NotificationConfigArgs'] notification_config: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        :param pulumi.Input['NotificationConfigArgs'] notification_config: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input['FhirNotificationConfigArgs']]] notification_configs: Specifies where and whether to send notifications upon changes to a Fhir store.
         :param pulumi.Input['SearchConfigArgs'] search_config: Configuration for how FHIR resources can be searched.
         :param pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
@@ -66,6 +66,9 @@ class FhirStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if notification_config is not None:
+            warnings.warn("""If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\". Deprecated. Use `notification_configs` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_config is deprecated: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\". Deprecated. Use `notification_configs` instead.""")
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs is not None:
@@ -187,7 +190,7 @@ class FhirStoreArgs:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> Optional[pulumi.Input['NotificationConfigArgs']]:
         """
-        If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         """
         return pulumi.get(self, "notification_config")
 
@@ -300,7 +303,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         :param pulumi.Input[str] fhir_store_id: The ID of the FHIR store that is being created. The string must match the following regex: `[\\p{L}\\p{N}_\\-\\.]{1,256}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \\p{Ll}\\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\\p{Ll}\\p{Lo}\\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-        :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirNotificationConfigArgs']]]] notification_configs: Specifies where and whether to send notifications upon changes to a Fhir store.
         :param pulumi.Input[pulumi.InputType['SearchConfigArgs']] search_config: Configuration for how FHIR resources can be searched.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
@@ -368,6 +371,9 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["fhir_store_id"] = fhir_store_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            if notification_config is not None and not opts.urn:
+                warnings.warn("""If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\". Deprecated. Use `notification_configs` instead.""", DeprecationWarning)
+                pulumi.log.warn("""notification_config is deprecated: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\". Deprecated. Use `notification_configs` instead.""")
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["notification_configs"] = notification_configs
             __props__.__dict__["project"] = project
@@ -497,7 +503,7 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> pulumi.Output['outputs.NotificationConfigResponse']:
         """
-        If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         """
         return pulumi.get(self, "notification_config")
 

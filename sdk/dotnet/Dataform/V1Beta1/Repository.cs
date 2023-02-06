@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        /// </summary>
+        [Output("workspaceCompilationOverrides")]
+        public Output<Outputs.WorkspaceCompilationOverridesResponse> WorkspaceCompilationOverrides { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Repository resource with the given unique name, arguments, and options.
@@ -120,6 +126,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        /// </summary>
+        [Input("workspaceCompilationOverrides")]
+        public Input<Inputs.WorkspaceCompilationOverridesArgs>? WorkspaceCompilationOverrides { get; set; }
 
         public RepositoryArgs()
         {

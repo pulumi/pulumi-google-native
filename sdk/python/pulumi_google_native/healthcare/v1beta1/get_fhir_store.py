@@ -43,6 +43,10 @@ class GetFhirStoreResult:
         pulumi.set(__self__, "name", name)
         if notification_config and not isinstance(notification_config, dict):
             raise TypeError("Expected argument 'notification_config' to be a dict")
+        if notification_config is not None:
+            warnings.warn("""If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\". Deprecated. Use `notification_configs` instead.""", DeprecationWarning)
+            pulumi.log.warn("""notification_config is deprecated: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, \"action\":\"CreateResource\". Deprecated. Use `notification_configs` instead.""")
+
         pulumi.set(__self__, "notification_config", notification_config)
         if notification_configs and not isinstance(notification_configs, list):
             raise TypeError("Expected argument 'notification_configs' to be a list")
@@ -120,7 +124,7 @@ class GetFhirStoreResult:
     @pulumi.getter(name="notificationConfig")
     def notification_config(self) -> 'outputs.NotificationConfigResponse':
         """
-        If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         """
         return pulumi.get(self, "notification_config")
 

@@ -11,9 +11,13 @@ from .connection_profile_iam_binding import *
 from .connection_profile_iam_member import *
 from .connection_profile_iam_policy import *
 from .conversion_workspace import *
+from .conversion_workspace_iam_binding import *
+from .conversion_workspace_iam_member import *
+from .conversion_workspace_iam_policy import *
 from .get_connection_profile import *
 from .get_connection_profile_iam_policy import *
 from .get_conversion_workspace import *
+from .get_conversion_workspace_iam_policy import *
 from .get_migration_job import *
 from .get_migration_job_iam_policy import *
 from .get_private_connection import *

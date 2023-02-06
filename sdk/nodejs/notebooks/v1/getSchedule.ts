@@ -35,7 +35,7 @@ export interface GetScheduleResult {
      */
     readonly createTime: string;
     /**
-     * Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+     * Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
      */
     readonly cronSchedule: string;
     /**
@@ -43,7 +43,7 @@ export interface GetScheduleResult {
      */
     readonly description: string;
     /**
-     * Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+     * Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`, and underscores `_`.
      */
     readonly displayName: string;
     /**

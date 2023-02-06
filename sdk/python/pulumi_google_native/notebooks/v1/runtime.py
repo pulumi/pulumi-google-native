@@ -19,6 +19,7 @@ class RuntimeArgs:
     def __init__(__self__, *,
                  runtime_id: pulumi.Input[str],
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -28,6 +29,7 @@ class RuntimeArgs:
         The set of arguments for constructing a Runtime resource.
         :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
         :param pulumi.Input['VirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
@@ -35,6 +37,8 @@ class RuntimeArgs:
         pulumi.set(__self__, "runtime_id", runtime_id)
         if access_config is not None:
             pulumi.set(__self__, "access_config", access_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if project is not None:
@@ -69,6 +73,18 @@ class RuntimeArgs:
     @access_config.setter
     def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
         pulumi.set(self, "access_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -131,6 +147,7 @@ class Runtime(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -145,6 +162,7 @@ class Runtime(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input[str] runtime_id: Required. User-defined unique ID of this Runtime.
         :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
@@ -176,6 +194,7 @@ class Runtime(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -192,6 +211,7 @@ class Runtime(pulumi.CustomResource):
             __props__ = RuntimeArgs.__new__(RuntimeArgs)
 
             __props__.__dict__["access_config"] = access_config
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
@@ -233,6 +253,7 @@ class Runtime(pulumi.CustomResource):
         __props__.__dict__["access_config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["health_state"] = None
+        __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["metrics"] = None
         __props__.__dict__["name"] = None
@@ -268,6 +289,14 @@ class Runtime(pulumi.CustomResource):
         Runtime health_state.
         """
         return pulumi.get(self, "health_state")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter

@@ -27,9 +27,13 @@ type Repository struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigResponseOutput `pulumi:"mavenConfig"`
+	// The mode of the repository.
+	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Configuration specific for a Remote Repository.
+	RemoteRepositoryConfig RemoteRepositoryConfigResponseOutput `pulumi:"remoteRepositoryConfig"`
 	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrOutput `pulumi:"repositoryId"`
 	// If set, the repository satisfies physical zone separation.
@@ -38,6 +42,8 @@ type Repository struct {
 	SizeBytes pulumi.StringOutput `pulumi:"sizeBytes"`
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Configuration specific for a Virtual Repository.
+	VirtualRepositoryConfig VirtualRepositoryConfigResponseOutput `pulumi:"virtualRepositoryConfig"`
 }
 
 // NewRepository registers a new resource with the given unique name, arguments, and options.
@@ -97,13 +103,19 @@ type repositoryArgs struct {
 	Location *string           `pulumi:"location"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig *MavenRepositoryConfig `pulumi:"mavenConfig"`
+	// The mode of the repository.
+	Mode *RepositoryMode `pulumi:"mode"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
+	// Configuration specific for a Remote Repository.
+	RemoteRepositoryConfig *RemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The repository id to use for this repository.
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Configuration specific for a Virtual Repository.
+	VirtualRepositoryConfig *VirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
 }
 
 // The set of arguments for constructing a Repository resource.
@@ -121,13 +133,19 @@ type RepositoryArgs struct {
 	Location pulumi.StringPtrInput
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigPtrInput
+	// The mode of the repository.
+	Mode RepositoryModePtrInput
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
+	// Configuration specific for a Remote Repository.
+	RemoteRepositoryConfig RemoteRepositoryConfigPtrInput
 	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
+	// Configuration specific for a Virtual Repository.
+	VirtualRepositoryConfig VirtualRepositoryConfigPtrInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {
@@ -201,6 +219,11 @@ func (o RepositoryOutput) MavenConfig() MavenRepositoryConfigResponseOutput {
 	return o.ApplyT(func(v *Repository) MavenRepositoryConfigResponseOutput { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
 }
 
+// The mode of the repository.
+func (o RepositoryOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Mode }).(pulumi.StringOutput)
+}
+
 // The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
@@ -208,6 +231,11 @@ func (o RepositoryOutput) Name() pulumi.StringOutput {
 
 func (o RepositoryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// Configuration specific for a Remote Repository.
+func (o RepositoryOutput) RemoteRepositoryConfig() RemoteRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v *Repository) RemoteRepositoryConfigResponseOutput { return v.RemoteRepositoryConfig }).(RemoteRepositoryConfigResponseOutput)
 }
 
 // The repository id to use for this repository.
@@ -228,6 +256,11 @@ func (o RepositoryOutput) SizeBytes() pulumi.StringOutput {
 // The time when the repository was last updated.
 func (o RepositoryOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration specific for a Virtual Repository.
+func (o RepositoryOutput) VirtualRepositoryConfig() VirtualRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v *Repository) VirtualRepositoryConfigResponseOutput { return v.VirtualRepositoryConfig }).(VirtualRepositoryConfigResponseOutput)
 }
 
 func init() {

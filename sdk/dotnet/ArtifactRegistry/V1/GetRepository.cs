@@ -88,9 +88,17 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// </summary>
         public readonly Outputs.MavenRepositoryConfigResponse MavenConfig;
         /// <summary>
+        /// The mode of the repository.
+        /// </summary>
+        public readonly string Mode;
+        /// <summary>
         /// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Configuration specific for a Remote Repository.
+        /// </summary>
+        public readonly Outputs.RemoteRepositoryConfigResponse RemoteRepositoryConfig;
         /// <summary>
         /// If set, the repository satisfies physical zone separation.
         /// </summary>
@@ -103,6 +111,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         /// The time when the repository was last updated.
         /// </summary>
         public readonly string UpdateTime;
+        /// <summary>
+        /// Configuration specific for a Virtual Repository.
+        /// </summary>
+        public readonly Outputs.VirtualRepositoryConfigResponse VirtualRepositoryConfig;
 
         [OutputConstructor]
         private GetRepositoryResult(
@@ -118,13 +130,19 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
 
             Outputs.MavenRepositoryConfigResponse mavenConfig,
 
+            string mode,
+
             string name,
+
+            Outputs.RemoteRepositoryConfigResponse remoteRepositoryConfig,
 
             bool satisfiesPzs,
 
             string sizeBytes,
 
-            string updateTime)
+            string updateTime,
+
+            Outputs.VirtualRepositoryConfigResponse virtualRepositoryConfig)
         {
             CreateTime = createTime;
             Description = description;
@@ -132,10 +150,13 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
             KmsKeyName = kmsKeyName;
             Labels = labels;
             MavenConfig = mavenConfig;
+            Mode = mode;
             Name = name;
+            RemoteRepositoryConfig = remoteRepositoryConfig;
             SatisfiesPzs = satisfiesPzs;
             SizeBytes = sizeBytes;
             UpdateTime = updateTime;
+            VirtualRepositoryConfig = virtualRepositoryConfig;
         }
     }
 }

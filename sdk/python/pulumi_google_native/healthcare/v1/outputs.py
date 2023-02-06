@@ -1881,7 +1881,7 @@ class TextConfigResponse(dict):
     def __init__(__self__, *,
                  transformations: Sequence['outputs.InfoTypeTransformationResponse']):
         """
-        :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data.
+        :param Sequence['InfoTypeTransformationResponse'] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         pulumi.set(__self__, "transformations", transformations)
 
@@ -1889,7 +1889,7 @@ class TextConfigResponse(dict):
     @pulumi.getter
     def transformations(self) -> Sequence['outputs.InfoTypeTransformationResponse']:
         """
-        The transformations to apply to the detected data.
+        The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         return pulumi.get(self, "transformations")
 

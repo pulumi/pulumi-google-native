@@ -16,8 +16,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         private InputList<Inputs.InfoTypeTransformationArgs>? _transformations;
 
         /// <summary>
-        /// The transformations to apply to the detected data.
+        /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>
+        [Obsolete(@"The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.")]
         public InputList<Inputs.InfoTypeTransformationArgs> Transformations
         {
             get => _transformations ?? (_transformations = new InputList<Inputs.InfoTypeTransformationArgs>());

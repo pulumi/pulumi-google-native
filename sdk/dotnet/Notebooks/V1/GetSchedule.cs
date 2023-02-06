@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+        /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
         /// </summary>
         public readonly string CronSchedule;
         /// <summary>
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`, and underscores `_`.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

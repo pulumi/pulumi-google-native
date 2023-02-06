@@ -1291,6 +1291,224 @@ func (o TargetResponseArrayOutput) Index(i pulumi.IntInput) TargetResponseOutput
 	}).(TargetResponseOutput)
 }
 
+// Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+type WorkspaceCompilationOverrides struct {
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase *string `pulumi:"defaultDatabase"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix *string `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix *string `pulumi:"tablePrefix"`
+}
+
+// WorkspaceCompilationOverridesInput is an input type that accepts WorkspaceCompilationOverridesArgs and WorkspaceCompilationOverridesOutput values.
+// You can construct a concrete instance of `WorkspaceCompilationOverridesInput` via:
+//
+//	WorkspaceCompilationOverridesArgs{...}
+type WorkspaceCompilationOverridesInput interface {
+	pulumi.Input
+
+	ToWorkspaceCompilationOverridesOutput() WorkspaceCompilationOverridesOutput
+	ToWorkspaceCompilationOverridesOutputWithContext(context.Context) WorkspaceCompilationOverridesOutput
+}
+
+// Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+type WorkspaceCompilationOverridesArgs struct {
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase pulumi.StringPtrInput `pulumi:"defaultDatabase"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix pulumi.StringPtrInput `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix pulumi.StringPtrInput `pulumi:"tablePrefix"`
+}
+
+func (WorkspaceCompilationOverridesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (i WorkspaceCompilationOverridesArgs) ToWorkspaceCompilationOverridesOutput() WorkspaceCompilationOverridesOutput {
+	return i.ToWorkspaceCompilationOverridesOutputWithContext(context.Background())
+}
+
+func (i WorkspaceCompilationOverridesArgs) ToWorkspaceCompilationOverridesOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCompilationOverridesOutput)
+}
+
+func (i WorkspaceCompilationOverridesArgs) ToWorkspaceCompilationOverridesPtrOutput() WorkspaceCompilationOverridesPtrOutput {
+	return i.ToWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i WorkspaceCompilationOverridesArgs) ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCompilationOverridesOutput).ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx)
+}
+
+// WorkspaceCompilationOverridesPtrInput is an input type that accepts WorkspaceCompilationOverridesArgs, WorkspaceCompilationOverridesPtr and WorkspaceCompilationOverridesPtrOutput values.
+// You can construct a concrete instance of `WorkspaceCompilationOverridesPtrInput` via:
+//
+//	        WorkspaceCompilationOverridesArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkspaceCompilationOverridesPtrInput interface {
+	pulumi.Input
+
+	ToWorkspaceCompilationOverridesPtrOutput() WorkspaceCompilationOverridesPtrOutput
+	ToWorkspaceCompilationOverridesPtrOutputWithContext(context.Context) WorkspaceCompilationOverridesPtrOutput
+}
+
+type workspaceCompilationOverridesPtrType WorkspaceCompilationOverridesArgs
+
+func WorkspaceCompilationOverridesPtr(v *WorkspaceCompilationOverridesArgs) WorkspaceCompilationOverridesPtrInput {
+	return (*workspaceCompilationOverridesPtrType)(v)
+}
+
+func (*workspaceCompilationOverridesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (i *workspaceCompilationOverridesPtrType) ToWorkspaceCompilationOverridesPtrOutput() WorkspaceCompilationOverridesPtrOutput {
+	return i.ToWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (i *workspaceCompilationOverridesPtrType) ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkspaceCompilationOverridesPtrOutput)
+}
+
+// Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+type WorkspaceCompilationOverridesOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceCompilationOverridesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (o WorkspaceCompilationOverridesOutput) ToWorkspaceCompilationOverridesOutput() WorkspaceCompilationOverridesOutput {
+	return o
+}
+
+func (o WorkspaceCompilationOverridesOutput) ToWorkspaceCompilationOverridesOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesOutput {
+	return o
+}
+
+func (o WorkspaceCompilationOverridesOutput) ToWorkspaceCompilationOverridesPtrOutput() WorkspaceCompilationOverridesPtrOutput {
+	return o.ToWorkspaceCompilationOverridesPtrOutputWithContext(context.Background())
+}
+
+func (o WorkspaceCompilationOverridesOutput) ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkspaceCompilationOverrides) *WorkspaceCompilationOverrides {
+		return &v
+	}).(WorkspaceCompilationOverridesPtrOutput)
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o WorkspaceCompilationOverridesOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCompilationOverrides) *string { return v.DefaultDatabase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o WorkspaceCompilationOverridesOutput) SchemaSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCompilationOverrides) *string { return v.SchemaSuffix }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o WorkspaceCompilationOverridesOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkspaceCompilationOverrides) *string { return v.TablePrefix }).(pulumi.StringPtrOutput)
+}
+
+type WorkspaceCompilationOverridesPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceCompilationOverridesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkspaceCompilationOverrides)(nil)).Elem()
+}
+
+func (o WorkspaceCompilationOverridesPtrOutput) ToWorkspaceCompilationOverridesPtrOutput() WorkspaceCompilationOverridesPtrOutput {
+	return o
+}
+
+func (o WorkspaceCompilationOverridesPtrOutput) ToWorkspaceCompilationOverridesPtrOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesPtrOutput {
+	return o
+}
+
+func (o WorkspaceCompilationOverridesPtrOutput) Elem() WorkspaceCompilationOverridesOutput {
+	return o.ApplyT(func(v *WorkspaceCompilationOverrides) WorkspaceCompilationOverrides {
+		if v != nil {
+			return *v
+		}
+		var ret WorkspaceCompilationOverrides
+		return ret
+	}).(WorkspaceCompilationOverridesOutput)
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o WorkspaceCompilationOverridesPtrOutput) DefaultDatabase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceCompilationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultDatabase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o WorkspaceCompilationOverridesPtrOutput) SchemaSuffix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceCompilationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SchemaSuffix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o WorkspaceCompilationOverridesPtrOutput) TablePrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkspaceCompilationOverrides) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TablePrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+type WorkspaceCompilationOverridesResponse struct {
+	// Optional. The default database (Google Cloud project ID).
+	DefaultDatabase string `pulumi:"defaultDatabase"`
+	// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+	SchemaSuffix string `pulumi:"schemaSuffix"`
+	// Optional. The prefix that should be prepended to all table names.
+	TablePrefix string `pulumi:"tablePrefix"`
+}
+
+// Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+type WorkspaceCompilationOverridesResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkspaceCompilationOverridesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkspaceCompilationOverridesResponse)(nil)).Elem()
+}
+
+func (o WorkspaceCompilationOverridesResponseOutput) ToWorkspaceCompilationOverridesResponseOutput() WorkspaceCompilationOverridesResponseOutput {
+	return o
+}
+
+func (o WorkspaceCompilationOverridesResponseOutput) ToWorkspaceCompilationOverridesResponseOutputWithContext(ctx context.Context) WorkspaceCompilationOverridesResponseOutput {
+	return o
+}
+
+// Optional. The default database (Google Cloud project ID).
+func (o WorkspaceCompilationOverridesResponseOutput) DefaultDatabase() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceCompilationOverridesResponse) string { return v.DefaultDatabase }).(pulumi.StringOutput)
+}
+
+// Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+func (o WorkspaceCompilationOverridesResponseOutput) SchemaSuffix() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceCompilationOverridesResponse) string { return v.SchemaSuffix }).(pulumi.StringOutput)
+}
+
+// Optional. The prefix that should be prepended to all table names.
+func (o WorkspaceCompilationOverridesResponseOutput) TablePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkspaceCompilationOverridesResponse) string { return v.TablePrefix }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeCompilationConfigInput)(nil)).Elem(), CodeCompilationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CodeCompilationConfigPtrInput)(nil)).Elem(), CodeCompilationConfigArgs{})
@@ -1300,6 +1518,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InvocationConfigPtrInput)(nil)).Elem(), InvocationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetInput)(nil)).Elem(), TargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetArrayInput)(nil)).Elem(), TargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceCompilationOverridesInput)(nil)).Elem(), WorkspaceCompilationOverridesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkspaceCompilationOverridesPtrInput)(nil)).Elem(), WorkspaceCompilationOverridesArgs{})
 	pulumi.RegisterOutputType(CodeCompilationConfigOutput{})
 	pulumi.RegisterOutputType(CodeCompilationConfigPtrOutput{})
 	pulumi.RegisterOutputType(CodeCompilationConfigResponseOutput{})
@@ -1321,4 +1541,7 @@ func init() {
 	pulumi.RegisterOutputType(TargetArrayOutput{})
 	pulumi.RegisterOutputType(TargetResponseOutput{})
 	pulumi.RegisterOutputType(TargetResponseArrayOutput{})
+	pulumi.RegisterOutputType(WorkspaceCompilationOverridesOutput{})
+	pulumi.RegisterOutputType(WorkspaceCompilationOverridesPtrOutput{})
+	pulumi.RegisterOutputType(WorkspaceCompilationOverridesResponseOutput{})
 }

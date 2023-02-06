@@ -160,6 +160,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
+            __props__.__dict__["build"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_message"] = None
@@ -188,6 +189,7 @@ class Instance(pulumi.CustomResource):
 
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
+        __props__.__dict__["build"] = None
         __props__.__dict__["config"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["instance_id"] = None
@@ -198,6 +200,14 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state_message"] = None
         __props__.__dict__["update_time"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def build(self) -> pulumi.Output['outputs.BuildResponse']:
+        """
+        Build info of the Instance if it's in `ACTIVE` state.
+        """
+        return pulumi.get(self, "build")
 
     @property
     @pulumi.getter

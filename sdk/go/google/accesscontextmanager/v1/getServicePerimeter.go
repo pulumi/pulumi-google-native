@@ -30,7 +30,7 @@ type LookupServicePerimeterResult struct {
 	Description string `pulumi:"description"`
 	// Resource name for the `ServicePerimeter`. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`, you cannot change its `name`.
 	Name string `pulumi:"name"`
-	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+	// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 	PerimeterType string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
 	Spec ServicePerimeterConfigResponse `pulumi:"spec"`
@@ -88,7 +88,7 @@ func (o LookupServicePerimeterResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePerimeterResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 func (o LookupServicePerimeterResultOutput) PerimeterType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePerimeterResult) string { return v.PerimeterType }).(pulumi.StringOutput)
 }

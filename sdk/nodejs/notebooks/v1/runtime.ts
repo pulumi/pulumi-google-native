@@ -50,6 +50,10 @@ export class Runtime extends pulumi.CustomResource {
      * Runtime health_state.
      */
     public /*out*/ readonly healthState!: pulumi.Output<string>;
+    /**
+     * Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
      * Contains Runtime daemon metrics such as Service status and JupyterLab stats.
@@ -100,6 +104,7 @@ export class Runtime extends pulumi.CustomResource {
                 throw new Error("Missing required property 'runtimeId'");
             }
             resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -116,6 +121,7 @@ export class Runtime extends pulumi.CustomResource {
             resourceInputs["accessConfig"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["healthState"] = undefined /*out*/;
+            resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -142,6 +148,10 @@ export interface RuntimeArgs {
      * The config settings for accessing runtime.
      */
     accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
+    /**
+     * Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         /// </summary>
         [Output("notificationConfig")]
         public Output<Outputs.NotificationConfigResponse> NotificationConfig { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
         /// </summary>
         [Input("notificationConfig")]
         public Input<Inputs.NotificationConfigArgs>? NotificationConfig { get; set; }

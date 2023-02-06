@@ -43,6 +43,10 @@ export interface GetRuntimeResult {
      */
     readonly healthState: string;
     /**
+     * Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * Contains Runtime daemon metrics such as Service status and JupyterLab stats.
      */
     readonly metrics: outputs.notebooks.v1.RuntimeMetricsResponse;

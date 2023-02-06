@@ -18,11 +18,11 @@ type Schedule struct {
 
 	// Time the schedule was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule pulumi.StringOutput `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`, and underscores `_`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplateResponseOutput `pulumi:"executionTemplate"`
@@ -89,7 +89,7 @@ func (ScheduleState) ElementType() reflect.Type {
 }
 
 type scheduleArgs struct {
-	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
@@ -106,7 +106,7 @@ type scheduleArgs struct {
 
 // The set of arguments for constructing a Schedule resource.
 type ScheduleArgs struct {
-	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+	// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
 	CronSchedule pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
@@ -163,7 +163,7 @@ func (o ScheduleOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
+// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. `0 0 * * WED` = every Wednesday More examples: https://crontab.guru/examples.html
 func (o ScheduleOutput) CronSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.CronSchedule }).(pulumi.StringOutput)
 }
@@ -173,7 +173,7 @@ func (o ScheduleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
+// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens `-`, and underscores `_`.
 func (o ScheduleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Schedule) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

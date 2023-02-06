@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
 {
 
     /// <summary>
-    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
+    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
     /// </summary>
     public sealed class AcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {

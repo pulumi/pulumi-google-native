@@ -42,6 +42,10 @@ export interface GetRepositoryResult {
      * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*&#47;secrets/*&#47;versions/*`. The file itself must be in a JSON format.
      */
     readonly npmrcEnvironmentVariablesSecretVersion: string;
+    /**
+     * Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+     */
+    readonly workspaceCompilationOverrides: outputs.dataform.v1beta1.WorkspaceCompilationOverridesResponse;
 }
 
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {

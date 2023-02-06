@@ -33,6 +33,9 @@ namespace Pulumi.GoogleNative.Workflows.V1
         [Input("project")]
         public string? Project { get; set; }
 
+        [Input("revisionId")]
+        public string? RevisionId { get; set; }
+
         [Input("workflowId", required: true)]
         public string WorkflowId { get; set; } = null!;
 
@@ -49,6 +52,9 @@ namespace Pulumi.GoogleNative.Workflows.V1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("revisionId")]
+        public Input<string>? RevisionId { get; set; }
 
         [Input("workflowId", required: true)]
         public Input<string> WorkflowId { get; set; } = null!;

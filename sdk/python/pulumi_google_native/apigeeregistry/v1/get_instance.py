@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, config=None, create_time=None, name=None, state=None, state_message=None, update_time=None):
+    def __init__(__self__, build=None, config=None, create_time=None, name=None, state=None, state_message=None, update_time=None):
+        if build and not isinstance(build, dict):
+            raise TypeError("Expected argument 'build' to be a dict")
+        pulumi.set(__self__, "build", build)
         if config and not isinstance(config, dict):
             raise TypeError("Expected argument 'config' to be a dict")
         pulumi.set(__self__, "config", config)
@@ -38,6 +41,14 @@ class GetInstanceResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def build(self) -> 'outputs.BuildResponse':
+        """
+        Build info of the Instance if it's in `ACTIVE` state.
+        """
+        return pulumi.get(self, "build")
 
     @property
     @pulumi.getter
@@ -94,6 +105,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
         if False:
             yield self
         return GetInstanceResult(
+            build=self.build,
             config=self.config,
             create_time=self.create_time,
             name=self.name,
@@ -117,6 +129,7 @@ def get_instance(instance_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigeeregistry/v1:getInstance', __args__, opts=opts, typ=GetInstanceResult).value
 
     return AwaitableGetInstanceResult(
+        build=__ret__.build,
         config=__ret__.config,
         create_time=__ret__.create_time,
         name=__ret__.name,

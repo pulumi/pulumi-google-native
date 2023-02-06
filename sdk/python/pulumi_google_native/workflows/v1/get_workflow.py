@@ -151,6 +151,7 @@ class AwaitableGetWorkflowResult(GetWorkflowResult):
 
 def get_workflow(location: Optional[str] = None,
                  project: Optional[str] = None,
+                 revision_id: Optional[str] = None,
                  workflow_id: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowResult:
     """
@@ -159,6 +160,7 @@ def get_workflow(location: Optional[str] = None,
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
+    __args__['revisionId'] = revision_id
     __args__['workflowId'] = workflow_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('google-native:workflows/v1:getWorkflow', __args__, opts=opts, typ=GetWorkflowResult).value
@@ -179,6 +181,7 @@ def get_workflow(location: Optional[str] = None,
 @_utilities.lift_output_func(get_workflow)
 def get_workflow_output(location: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
+                        revision_id: Optional[pulumi.Input[Optional[str]]] = None,
                         workflow_id: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowResult]:
     """

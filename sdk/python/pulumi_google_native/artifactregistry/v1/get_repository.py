@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, name=None, satisfies_pzs=None, size_bytes=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, format=None, kms_key_name=None, labels=None, maven_config=None, mode=None, name=None, remote_repository_config=None, satisfies_pzs=None, size_bytes=None, update_time=None, virtual_repository_config=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -38,9 +38,15 @@ class GetRepositoryResult:
         if maven_config and not isinstance(maven_config, dict):
             raise TypeError("Expected argument 'maven_config' to be a dict")
         pulumi.set(__self__, "maven_config", maven_config)
+        if mode and not isinstance(mode, str):
+            raise TypeError("Expected argument 'mode' to be a str")
+        pulumi.set(__self__, "mode", mode)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if remote_repository_config and not isinstance(remote_repository_config, dict):
+            raise TypeError("Expected argument 'remote_repository_config' to be a dict")
+        pulumi.set(__self__, "remote_repository_config", remote_repository_config)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -50,6 +56,9 @@ class GetRepositoryResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+        if virtual_repository_config and not isinstance(virtual_repository_config, dict):
+            raise TypeError("Expected argument 'virtual_repository_config' to be a dict")
+        pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
 
     @property
     @pulumi.getter(name="createTime")
@@ -101,11 +110,27 @@ class GetRepositoryResult:
 
     @property
     @pulumi.getter
+    def mode(self) -> str:
+        """
+        The mode of the repository.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="remoteRepositoryConfig")
+    def remote_repository_config(self) -> 'outputs.RemoteRepositoryConfigResponse':
+        """
+        Configuration specific for a Remote Repository.
+        """
+        return pulumi.get(self, "remote_repository_config")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -131,6 +156,14 @@ class GetRepositoryResult:
         """
         return pulumi.get(self, "update_time")
 
+    @property
+    @pulumi.getter(name="virtualRepositoryConfig")
+    def virtual_repository_config(self) -> 'outputs.VirtualRepositoryConfigResponse':
+        """
+        Configuration specific for a Virtual Repository.
+        """
+        return pulumi.get(self, "virtual_repository_config")
+
 
 class AwaitableGetRepositoryResult(GetRepositoryResult):
     # pylint: disable=using-constant-test
@@ -144,10 +177,13 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             kms_key_name=self.kms_key_name,
             labels=self.labels,
             maven_config=self.maven_config,
+            mode=self.mode,
             name=self.name,
+            remote_repository_config=self.remote_repository_config,
             satisfies_pzs=self.satisfies_pzs,
             size_bytes=self.size_bytes,
-            update_time=self.update_time)
+            update_time=self.update_time,
+            virtual_repository_config=self.virtual_repository_config)
 
 
 def get_repository(location: Optional[str] = None,
@@ -171,10 +207,13 @@ def get_repository(location: Optional[str] = None,
         kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
         maven_config=__ret__.maven_config,
+        mode=__ret__.mode,
         name=__ret__.name,
+        remote_repository_config=__ret__.remote_repository_config,
         satisfies_pzs=__ret__.satisfies_pzs,
         size_bytes=__ret__.size_bytes,
-        update_time=__ret__.update_time)
+        update_time=__ret__.update_time,
+        virtual_repository_config=__ret__.virtual_repository_config)
 
 
 @_utilities.lift_output_func(get_repository)

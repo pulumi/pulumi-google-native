@@ -31,7 +31,7 @@ export interface GetInstanceArgs {
 
 export interface GetInstanceResult {
     /**
-     * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+     * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
      */
     readonly acceleratorConfig: outputs.notebooks.v1.AcceleratorConfigResponse;
     /**
@@ -95,7 +95,7 @@ export interface GetInstanceResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+     * The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
      */
     readonly machineType: string;
     /**

@@ -20,12 +20,14 @@ class RepositoryArgs:
                  git_remote_settings: Optional[pulumi.Input['GitRemoteSettingsArgs']] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input['WorkspaceCompilationOverridesArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         :param pulumi.Input['GitRemoteSettingsArgs'] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
+        :param pulumi.Input['WorkspaceCompilationOverridesArgs'] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         """
         pulumi.set(__self__, "repository_id", repository_id)
         if git_remote_settings is not None:
@@ -36,6 +38,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "npmrc_environment_variables_secret_version", npmrc_environment_variables_secret_version)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if workspace_compilation_overrides is not None:
+            pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
     @property
     @pulumi.getter(name="repositoryId")
@@ -91,6 +95,18 @@ class RepositoryArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="workspaceCompilationOverrides")
+    def workspace_compilation_overrides(self) -> Optional[pulumi.Input['WorkspaceCompilationOverridesArgs']]:
+        """
+        Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        """
+        return pulumi.get(self, "workspace_compilation_overrides")
+
+    @workspace_compilation_overrides.setter
+    def workspace_compilation_overrides(self, value: Optional[pulumi.Input['WorkspaceCompilationOverridesArgs']]):
+        pulumi.set(self, "workspace_compilation_overrides", value)
+
 
 class Repository(pulumi.CustomResource):
     @overload
@@ -102,6 +118,7 @@ class Repository(pulumi.CustomResource):
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']]] = None,
                  __props__=None):
         """
         Creates a new Repository in a given project and location.
@@ -112,6 +129,7 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GitRemoteSettingsArgs']] git_remote_settings: Optional. If set, configures this repository to be linked to a Git remote.
         :param pulumi.Input[str] npmrc_environment_variables_secret_version: Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
         :param pulumi.Input[str] repository_id: Required. The ID to use for the repository, which will become the final component of the repository's resource name.
+        :param pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']] workspace_compilation_overrides: Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
         """
         ...
     @overload
@@ -143,6 +161,7 @@ class Repository(pulumi.CustomResource):
                  npmrc_environment_variables_secret_version: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
+                 workspace_compilation_overrides: Optional[pulumi.Input[pulumi.InputType['WorkspaceCompilationOverridesArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -159,6 +178,7 @@ class Repository(pulumi.CustomResource):
             if repository_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
+            __props__.__dict__["workspace_compilation_overrides"] = workspace_compilation_overrides
             __props__.__dict__["name"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "repository_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -190,6 +210,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["npmrc_environment_variables_secret_version"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["repository_id"] = None
+        __props__.__dict__["workspace_compilation_overrides"] = None
         return Repository(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -233,4 +254,12 @@ class Repository(pulumi.CustomResource):
         Required. The ID to use for the repository, which will become the final component of the repository's resource name.
         """
         return pulumi.get(self, "repository_id")
+
+    @property
+    @pulumi.getter(name="workspaceCompilationOverrides")
+    def workspace_compilation_overrides(self) -> pulumi.Output['outputs.WorkspaceCompilationOverridesResponse']:
+        """
+        Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        """
+        return pulumi.get(self, "workspace_compilation_overrides")
 

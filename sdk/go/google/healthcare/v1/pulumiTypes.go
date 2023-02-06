@@ -6634,7 +6634,9 @@ func (o TagFilterListResponseOutput) Tags() pulumi.StringArrayOutput {
 }
 
 type TextConfig struct {
-	// The transformations to apply to the detected data.
+	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+	//
+	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	Transformations []InfoTypeTransformation `pulumi:"transformations"`
 }
 
@@ -6650,7 +6652,9 @@ type TextConfigInput interface {
 }
 
 type TextConfigArgs struct {
-	// The transformations to apply to the detected data.
+	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+	//
+	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	Transformations InfoTypeTransformationArrayInput `pulumi:"transformations"`
 }
 
@@ -6731,7 +6735,9 @@ func (o TextConfigOutput) ToTextConfigPtrOutputWithContext(ctx context.Context) 
 	}).(TextConfigPtrOutput)
 }
 
-// The transformations to apply to the detected data.
+// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+//
+// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 func (o TextConfigOutput) Transformations() InfoTypeTransformationArrayOutput {
 	return o.ApplyT(func(v TextConfig) []InfoTypeTransformation { return v.Transformations }).(InfoTypeTransformationArrayOutput)
 }
@@ -6760,7 +6766,9 @@ func (o TextConfigPtrOutput) Elem() TextConfigOutput {
 	}).(TextConfigOutput)
 }
 
-// The transformations to apply to the detected data.
+// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+//
+// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput {
 	return o.ApplyT(func(v *TextConfig) []InfoTypeTransformation {
 		if v == nil {
@@ -6771,7 +6779,9 @@ func (o TextConfigPtrOutput) Transformations() InfoTypeTransformationArrayOutput
 }
 
 type TextConfigResponse struct {
-	// The transformations to apply to the detected data.
+	// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+	//
+	// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 	Transformations []InfoTypeTransformationResponse `pulumi:"transformations"`
 }
 
@@ -6789,7 +6799,9 @@ func (o TextConfigResponseOutput) ToTextConfigResponseOutputWithContext(ctx cont
 	return o
 }
 
-// The transformations to apply to the detected data.
+// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
+//
+// Deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
 func (o TextConfigResponseOutput) Transformations() InfoTypeTransformationResponseArrayOutput {
 	return o.ApplyT(func(v TextConfigResponse) []InfoTypeTransformationResponse { return v.Transformations }).(InfoTypeTransformationResponseArrayOutput)
 }

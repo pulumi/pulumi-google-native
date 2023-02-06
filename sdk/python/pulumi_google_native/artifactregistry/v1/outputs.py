@@ -13,8 +13,15 @@ from ._enums import *
 
 __all__ = [
     'BindingResponse',
+    'DockerRepositoryResponse',
     'ExprResponse',
     'MavenRepositoryConfigResponse',
+    'MavenRepositoryResponse',
+    'NpmRepositoryResponse',
+    'PythonRepositoryResponse',
+    'RemoteRepositoryConfigResponse',
+    'UpstreamPolicyResponse',
+    'VirtualRepositoryConfigResponse',
 ]
 
 @pulumi.output_type
@@ -29,7 +36,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -48,7 +55,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -59,6 +66,45 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class DockerRepositoryResponse(dict):
+    """
+    Configuration for a Docker remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DockerRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DockerRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DockerRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: str):
+        """
+        Configuration for a Docker remote repository.
+        :param str public_repository: One of the publicly available Docker repositories supported by Artifact Registry.
+        """
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        """
+        One of the publicly available Docker repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
 
 
 @pulumi.output_type
@@ -166,5 +212,283 @@ class MavenRepositoryConfigResponse(dict):
         Version policy defines the versions that the registry will accept.
         """
         return pulumi.get(self, "version_policy")
+
+
+@pulumi.output_type
+class MavenRepositoryResponse(dict):
+    """
+    Configuration for a Maven remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MavenRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MavenRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MavenRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: str):
+        """
+        Configuration for a Maven remote repository.
+        :param str public_repository: One of the publicly available Maven repositories supported by Artifact Registry.
+        """
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        """
+        One of the publicly available Maven repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class NpmRepositoryResponse(dict):
+    """
+    Configuration for a Npm remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NpmRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NpmRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NpmRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: str):
+        """
+        Configuration for a Npm remote repository.
+        :param str public_repository: One of the publicly available Npm repositories supported by Artifact Registry.
+        """
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        """
+        One of the publicly available Npm repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class PythonRepositoryResponse(dict):
+    """
+    Configuration for a Python remote repository.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicRepository":
+            suggest = "public_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PythonRepositoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PythonRepositoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PythonRepositoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 public_repository: str):
+        """
+        Configuration for a Python remote repository.
+        :param str public_repository: One of the publicly available Python repositories supported by Artifact Registry.
+        """
+        pulumi.set(__self__, "public_repository", public_repository)
+
+    @property
+    @pulumi.getter(name="publicRepository")
+    def public_repository(self) -> str:
+        """
+        One of the publicly available Python repositories supported by Artifact Registry.
+        """
+        return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RemoteRepositoryConfigResponse(dict):
+    """
+    Remote repository configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dockerRepository":
+            suggest = "docker_repository"
+        elif key == "mavenRepository":
+            suggest = "maven_repository"
+        elif key == "npmRepository":
+            suggest = "npm_repository"
+        elif key == "pythonRepository":
+            suggest = "python_repository"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemoteRepositoryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemoteRepositoryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemoteRepositoryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 description: str,
+                 docker_repository: 'outputs.DockerRepositoryResponse',
+                 maven_repository: 'outputs.MavenRepositoryResponse',
+                 npm_repository: 'outputs.NpmRepositoryResponse',
+                 python_repository: 'outputs.PythonRepositoryResponse'):
+        """
+        Remote repository configuration.
+        :param str description: The description of the remote source.
+        :param 'DockerRepositoryResponse' docker_repository: Specific settings for a Docker remote repository.
+        :param 'MavenRepositoryResponse' maven_repository: Specific settings for a Maven remote repository.
+        :param 'NpmRepositoryResponse' npm_repository: Specific settings for an Npm remote repository.
+        :param 'PythonRepositoryResponse' python_repository: Specific settings for a Python remote repository.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "docker_repository", docker_repository)
+        pulumi.set(__self__, "maven_repository", maven_repository)
+        pulumi.set(__self__, "npm_repository", npm_repository)
+        pulumi.set(__self__, "python_repository", python_repository)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the remote source.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dockerRepository")
+    def docker_repository(self) -> 'outputs.DockerRepositoryResponse':
+        """
+        Specific settings for a Docker remote repository.
+        """
+        return pulumi.get(self, "docker_repository")
+
+    @property
+    @pulumi.getter(name="mavenRepository")
+    def maven_repository(self) -> 'outputs.MavenRepositoryResponse':
+        """
+        Specific settings for a Maven remote repository.
+        """
+        return pulumi.get(self, "maven_repository")
+
+    @property
+    @pulumi.getter(name="npmRepository")
+    def npm_repository(self) -> 'outputs.NpmRepositoryResponse':
+        """
+        Specific settings for an Npm remote repository.
+        """
+        return pulumi.get(self, "npm_repository")
+
+    @property
+    @pulumi.getter(name="pythonRepository")
+    def python_repository(self) -> 'outputs.PythonRepositoryResponse':
+        """
+        Specific settings for a Python remote repository.
+        """
+        return pulumi.get(self, "python_repository")
+
+
+@pulumi.output_type
+class UpstreamPolicyResponse(dict):
+    """
+    Artifact policy configuration for the repository contents.
+    """
+    def __init__(__self__, *,
+                 priority: int,
+                 repository: str):
+        """
+        Artifact policy configuration for the repository contents.
+        :param int priority: Entries with a greater priority value take precedence in the pull order.
+        :param str repository: A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        """
+        pulumi.set(__self__, "priority", priority)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> int:
+        """
+        Entries with a greater priority value take precedence in the pull order.
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        """
+        A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+        """
+        return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class VirtualRepositoryConfigResponse(dict):
+    """
+    Virtual repository configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "upstreamPolicies":
+            suggest = "upstream_policies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualRepositoryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualRepositoryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualRepositoryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 upstream_policies: Sequence['outputs.UpstreamPolicyResponse']):
+        """
+        Virtual repository configuration.
+        :param Sequence['UpstreamPolicyResponse'] upstream_policies: Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+        """
+        pulumi.set(__self__, "upstream_policies", upstream_policies)
+
+    @property
+    @pulumi.getter(name="upstreamPolicies")
+    def upstream_policies(self) -> Sequence['outputs.UpstreamPolicyResponse']:
+        """
+        Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
+        """
+        return pulumi.get(self, "upstream_policies")
 
 

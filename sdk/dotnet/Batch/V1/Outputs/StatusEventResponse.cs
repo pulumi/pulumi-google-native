@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly Outputs.TaskExecutionResponse TaskExecution;
         /// <summary>
+        /// Task State
+        /// </summary>
+        public readonly string TaskState;
+        /// <summary>
         /// Type of the event.
         /// </summary>
         public readonly string Type;
@@ -41,11 +45,14 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 
             Outputs.TaskExecutionResponse taskExecution,
 
+            string taskState,
+
             string type)
         {
             Description = description;
             EventTime = eventTime;
             TaskExecution = taskExecution;
+            TaskState = taskState;
             Type = type;
         }
     }

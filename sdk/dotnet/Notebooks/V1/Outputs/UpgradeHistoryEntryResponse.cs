@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+        /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
         /// </summary>
         public readonly string TargetImage;
         /// <summary>

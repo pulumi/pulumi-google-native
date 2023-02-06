@@ -1669,8 +1669,11 @@ class TextConfigArgs:
     def __init__(__self__, *,
                  transformations: Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] transformations: The transformations to apply to the detected data.
+        :param pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]] transformations: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
+        if transformations is not None:
+            warnings.warn("""The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""", DeprecationWarning)
+            pulumi.log.warn("""transformations is deprecated: The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.""")
         if transformations is not None:
             pulumi.set(__self__, "transformations", transformations)
 
@@ -1678,7 +1681,7 @@ class TextConfigArgs:
     @pulumi.getter
     def transformations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InfoTypeTransformationArgs']]]]:
         """
-        The transformations to apply to the detected data.
+        The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         """
         return pulumi.get(self, "transformations")
 

@@ -14,6 +14,7 @@ __all__ = [
     'GitRemoteSettingsArgs',
     'InvocationConfigArgs',
     'TargetArgs',
+    'WorkspaceCompilationOverridesArgs',
 ]
 
 @pulumi.input_type
@@ -347,5 +348,61 @@ class TargetArgs:
     @schema.setter
     def schema(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "schema", value)
+
+
+@pulumi.input_type
+class WorkspaceCompilationOverridesArgs:
+    def __init__(__self__, *,
+                 default_database: Optional[pulumi.Input[str]] = None,
+                 schema_suffix: Optional[pulumi.Input[str]] = None,
+                 table_prefix: Optional[pulumi.Input[str]] = None):
+        """
+        Configures workspace compilation overrides for a repository. Primarily used by the UI (`console.cloud.google.com`). `schema_suffix` and `table_prefix` can have a special expression - `${workspaceName}`, which refers to the workspace name from which the compilation results will be created. API callers are expected to resolve the expression in these overrides and provide them explicitly in `code_compilation_config` (https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories.compilationResults#codecompilationconfig) when creating workspace-scoped compilation results.
+        :param pulumi.Input[str] default_database: Optional. The default database (Google Cloud project ID).
+        :param pulumi.Input[str] schema_suffix: Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        :param pulumi.Input[str] table_prefix: Optional. The prefix that should be prepended to all table names.
+        """
+        if default_database is not None:
+            pulumi.set(__self__, "default_database", default_database)
+        if schema_suffix is not None:
+            pulumi.set(__self__, "schema_suffix", schema_suffix)
+        if table_prefix is not None:
+            pulumi.set(__self__, "table_prefix", table_prefix)
+
+    @property
+    @pulumi.getter(name="defaultDatabase")
+    def default_database(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The default database (Google Cloud project ID).
+        """
+        return pulumi.get(self, "default_database")
+
+    @default_database.setter
+    def default_database(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_database", value)
+
+    @property
+    @pulumi.getter(name="schemaSuffix")
+    def schema_suffix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
+        """
+        return pulumi.get(self, "schema_suffix")
+
+    @schema_suffix.setter
+    def schema_suffix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_suffix", value)
+
+    @property
+    @pulumi.getter(name="tablePrefix")
+    def table_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The prefix that should be prepended to all table names.
+        """
+        return pulumi.get(self, "table_prefix")
+
+    @table_prefix.setter
+    def table_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table_prefix", value)
 
 

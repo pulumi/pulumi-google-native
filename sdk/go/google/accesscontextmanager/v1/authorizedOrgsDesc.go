@@ -11,20 +11,20 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
+// Creates an authorized orgs desc. The long-running operation from this RPC has a successful status after the authorized orgs desc propagates to long-lasting storage. If a authorized orgs desc contains errors, an error response is returned for the first error encountered. The name of this `AuthorizedOrgsDesc` will be assigned during creation.
 type AuthorizedOrgsDesc struct {
 	pulumi.CustomResourceState
 
 	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
-	// The asset type of this authorized orgs desc. e.g. device, credential strength.
+	// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType pulumi.StringOutput `pulumi:"assetType"`
-	// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+	// The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
 	AuthorizationDirection pulumi.StringOutput `pulumi:"authorizationDirection"`
-	// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+	// A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType pulumi.StringOutput `pulumi:"authorizationType"`
-	// Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+	// Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The list of organization ids in this AuthorizedOrgsDesc.
+	// The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
 	Orgs pulumi.StringArrayOutput `pulumi:"orgs"`
 }
 
@@ -75,30 +75,30 @@ func (AuthorizedOrgsDescState) ElementType() reflect.Type {
 
 type authorizedOrgsDescArgs struct {
 	AccessPolicyId string `pulumi:"accessPolicyId"`
-	// The asset type of this authorized orgs desc. e.g. device, credential strength.
+	// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType *AuthorizedOrgsDescAssetType `pulumi:"assetType"`
-	// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+	// The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
 	AuthorizationDirection *AuthorizedOrgsDescAuthorizationDirection `pulumi:"authorizationDirection"`
-	// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+	// A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType *AuthorizedOrgsDescAuthorizationType `pulumi:"authorizationType"`
-	// Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+	// Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
 	Name *string `pulumi:"name"`
-	// The list of organization ids in this AuthorizedOrgsDesc.
+	// The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
 	Orgs []string `pulumi:"orgs"`
 }
 
 // The set of arguments for constructing a AuthorizedOrgsDesc resource.
 type AuthorizedOrgsDescArgs struct {
 	AccessPolicyId pulumi.StringInput
-	// The asset type of this authorized orgs desc. e.g. device, credential strength.
+	// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 	AssetType AuthorizedOrgsDescAssetTypePtrInput
-	// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+	// The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
 	AuthorizationDirection AuthorizedOrgsDescAuthorizationDirectionPtrInput
-	// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+	// A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
 	AuthorizationType AuthorizedOrgsDescAuthorizationTypePtrInput
-	// Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+	// Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
 	Name pulumi.StringPtrInput
-	// The list of organization ids in this AuthorizedOrgsDesc.
+	// The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
 	Orgs pulumi.StringArrayInput
 }
 
@@ -143,27 +143,27 @@ func (o AuthorizedOrgsDescOutput) AccessPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
-// The asset type of this authorized orgs desc. e.g. device, credential strength.
+// The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
 func (o AuthorizedOrgsDescOutput) AssetType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.AssetType }).(pulumi.StringOutput)
 }
 
-// Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+// The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
 func (o AuthorizedOrgsDescOutput) AuthorizationDirection() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.AuthorizationDirection }).(pulumi.StringOutput)
 }
 
-// The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+// A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
 func (o AuthorizedOrgsDescOutput) AuthorizationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.AuthorizationType }).(pulumi.StringOutput)
 }
 
-// Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "accessPolicies/122256/authorizedOrgs/b3-BhcX_Ud5N"
+// Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
 func (o AuthorizedOrgsDescOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The list of organization ids in this AuthorizedOrgsDesc.
+// The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
 func (o AuthorizedOrgsDescOutput) Orgs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AuthorizedOrgsDesc) pulumi.StringArrayOutput { return v.Orgs }).(pulumi.StringArrayOutput)
 }

@@ -133,7 +133,7 @@ class GetInstanceResult:
     @pulumi.getter(name="acceleratorConfig")
     def accelerator_config(self) -> 'outputs.AcceleratorConfigResponse':
         """
-        The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         """
         return pulumi.get(self, "accelerator_config")
 
@@ -261,7 +261,7 @@ class GetInstanceResult:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         """
         return pulumi.get(self, "machine_type")
 

@@ -39,14 +39,20 @@ type LookupRepositoryResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Maven repository config contains repository level configuration for the repositories of maven type.
 	MavenConfig MavenRepositoryConfigResponse `pulumi:"mavenConfig"`
+	// The mode of the repository.
+	Mode string `pulumi:"mode"`
 	// The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Name string `pulumi:"name"`
+	// Configuration specific for a Remote Repository.
+	RemoteRepositoryConfig RemoteRepositoryConfigResponse `pulumi:"remoteRepositoryConfig"`
 	// If set, the repository satisfies physical zone separation.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
 	SizeBytes string `pulumi:"sizeBytes"`
 	// The time when the repository was last updated.
 	UpdateTime string `pulumi:"updateTime"`
+	// Configuration specific for a Virtual Repository.
+	VirtualRepositoryConfig VirtualRepositoryConfigResponse `pulumi:"virtualRepositoryConfig"`
 }
 
 func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryResultOutput {
@@ -116,9 +122,19 @@ func (o LookupRepositoryResultOutput) MavenConfig() MavenRepositoryConfigRespons
 	return o.ApplyT(func(v LookupRepositoryResult) MavenRepositoryConfigResponse { return v.MavenConfig }).(MavenRepositoryConfigResponseOutput)
 }
 
+// The mode of the repository.
+func (o LookupRepositoryResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 // The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
 func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Configuration specific for a Remote Repository.
+func (o LookupRepositoryResultOutput) RemoteRepositoryConfig() RemoteRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) RemoteRepositoryConfigResponse { return v.RemoteRepositoryConfig }).(RemoteRepositoryConfigResponseOutput)
 }
 
 // If set, the repository satisfies physical zone separation.
@@ -134,6 +150,11 @@ func (o LookupRepositoryResultOutput) SizeBytes() pulumi.StringOutput {
 // The time when the repository was last updated.
 func (o LookupRepositoryResultOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration specific for a Virtual Repository.
+func (o LookupRepositoryResultOutput) VirtualRepositoryConfig() VirtualRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) VirtualRepositoryConfigResponse { return v.VirtualRepositoryConfig }).(VirtualRepositoryConfigResponseOutput)
 }
 
 func init() {

@@ -39,6 +39,10 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /**
+     * Build info of the Instance if it's in `ACTIVE` state.
+     */
+    public /*out*/ readonly build!: pulumi.Output<outputs.apigeeregistry.v1.BuildResponse>;
+    /**
      * Config of the Instance.
      */
     public readonly config!: pulumi.Output<outputs.apigeeregistry.v1.ConfigResponse>;
@@ -91,11 +95,13 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["build"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["stateMessage"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["build"] = undefined /*out*/;
             resourceInputs["config"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;

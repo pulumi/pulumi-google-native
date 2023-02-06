@@ -33,6 +33,8 @@ type LookupRepositoryResult struct {
 	Name string `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
+	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+	WorkspaceCompilationOverrides WorkspaceCompilationOverridesResponse `pulumi:"workspaceCompilationOverrides"`
 }
 
 func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryResultOutput {
@@ -85,6 +87,13 @@ func (o LookupRepositoryResultOutput) Name() pulumi.StringOutput {
 // Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 func (o LookupRepositoryResultOutput) NpmrcEnvironmentVariablesSecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) string { return v.NpmrcEnvironmentVariablesSecretVersion }).(pulumi.StringOutput)
+}
+
+// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+func (o LookupRepositoryResultOutput) WorkspaceCompilationOverrides() WorkspaceCompilationOverridesResponseOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) WorkspaceCompilationOverridesResponse {
+		return v.WorkspaceCompilationOverrides
+	}).(WorkspaceCompilationOverridesResponseOutput)
 }
 
 func init() {

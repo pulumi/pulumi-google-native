@@ -27,6 +27,8 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
+	// Build info of the Instance if it's in `ACTIVE` state.
+	Build BuildResponse `pulumi:"build"`
 	// Config of the Instance.
 	Config ConfigResponse `pulumi:"config"`
 	// Creation timestamp.
@@ -76,6 +78,11 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutput() LookupInstanc
 
 func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx context.Context) LookupInstanceResultOutput {
 	return o
+}
+
+// Build info of the Instance if it's in `ACTIVE` state.
+func (o LookupInstanceResultOutput) Build() BuildResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) BuildResponse { return v.Build }).(BuildResponseOutput)
 }
 
 // Config of the Instance.

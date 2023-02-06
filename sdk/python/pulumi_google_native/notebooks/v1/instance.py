@@ -52,8 +52,8 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_id: Required. User-defined unique ID of this instance.
-        :param pulumi.Input[str] machine_type: The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
-        :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        :param pulumi.Input[str] machine_type: The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
+        :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
         :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         :param pulumi.Input[bool] can_ip_forward: Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
@@ -161,7 +161,7 @@ class InstanceArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Input[str]:
         """
-        The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         """
         return pulumi.get(self, "machine_type")
 
@@ -173,7 +173,7 @@ class InstanceArgs:
     @pulumi.getter(name="acceleratorConfig")
     def accelerator_config(self) -> Optional[pulumi.Input['AcceleratorConfigArgs']]:
         """
-        The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         """
         return pulumi.get(self, "accelerator_config")
 
@@ -568,7 +568,7 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         :param pulumi.Input[str] boot_disk_size_gb: Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
         :param pulumi.Input['InstanceBootDiskType'] boot_disk_type: Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
         :param pulumi.Input[bool] can_ip_forward: Optional. Flag to enable ip forwarding or not, default false/off. https://cloud.google.com/vpc/docs/using-routes#canipforward
@@ -582,7 +582,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_owners: Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
         :param pulumi.Input[str] kms_key: Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        :param pulumi.Input[str] machine_type: The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         :param pulumi.Input['InstanceNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -777,7 +777,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="acceleratorConfig")
     def accelerator_config(self) -> pulumi.Output['outputs.AcceleratorConfigResponse']:
         """
-        The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         """
         return pulumi.get(self, "accelerator_config")
 
@@ -918,7 +918,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[str]:
         """
-        The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         """
         return pulumi.get(self, "machine_type")
 

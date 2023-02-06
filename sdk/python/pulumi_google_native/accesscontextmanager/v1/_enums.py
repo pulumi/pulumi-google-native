@@ -43,7 +43,7 @@ class AuditLogConfigLogType(str, Enum):
 
 class AuthorizedOrgsDescAssetType(str, Enum):
     """
-    The asset type of this authorized orgs desc. e.g. device, credential strength.
+    The asset type of this authorized orgs desc. Valid values are `ASSET_TYPE_DEVICE`, and `ASSET_TYPE_CREDENTIAL_STRENGTH`.
     """
     ASSET_TYPE_UNSPECIFIED = "ASSET_TYPE_UNSPECIFIED"
     """
@@ -55,13 +55,13 @@ class AuthorizedOrgsDescAssetType(str, Enum):
     """
     ASSET_TYPE_CREDENTIAL_STRENGTH = "ASSET_TYPE_CREDENTIAL_STRENGTH"
     """
-    credential strength asset type.
+    Credential strength asset type.
     """
 
 
 class AuthorizedOrgsDescAuthorizationDirection(str, Enum):
     """
-    Authorization direction of this authorization relationship. i.e. Whether to allow specified orgs to evaluate this org's traffic, or allow specified orgs' traffic to be evaluated by this org. Orgs specified as `AUTHORIZATION_DIRECTION_TO` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_FROM` in their own AuthorizedOrgsDesc in order for this relationship to take effect. Orgs specified as `AUTHORIZATION_DIRECTION_FROM` in this AuthorizedOrgsDesc[com.google.identity.accesscontextmanager.v1.AuthorizedOrgsDesc] must also specify this org as the `AUTHORIZATION_DIRECTION_TO` in their own AuthorizedOrgsDesc in order for this relationship to take effect.
+    The direction of the authorization relationship between this organization and the organizations listed in the `orgs` field. The valid values for this field include the following: `AUTHORIZATION_DIRECTION_FROM`: Allows this organization to evaluate traffic in the organizations listed in the `orgs` field. `AUTHORIZATION_DIRECTION_TO`: Allows the organizations listed in the `orgs` field to evaluate the traffic in this organization. For the authorization relationship to take effect, all of the organizations must authorize and specify the appropriate relationship direction. For example, if organization A authorized organization B and C to evaluate its traffic, by specifying `AUTHORIZATION_DIRECTION_TO` as the authorization direction, organizations B and C must specify `AUTHORIZATION_DIRECTION_FROM` as the authorization direction in their `AuthorizedOrgsDesc` resource.
     """
     AUTHORIZATION_DIRECTION_UNSPECIFIED = "AUTHORIZATION_DIRECTION_UNSPECIFIED"
     """
@@ -69,17 +69,17 @@ class AuthorizedOrgsDescAuthorizationDirection(str, Enum):
     """
     AUTHORIZATION_DIRECTION_TO = "AUTHORIZATION_DIRECTION_TO"
     """
-    Specified orgs will evaluate traffic.
+    The specified organizations are authorized to evaluate traffic in this organization.
     """
     AUTHORIZATION_DIRECTION_FROM = "AUTHORIZATION_DIRECTION_FROM"
     """
-    Specified orgs' traffic will be evaluated.
+    The traffic of the specified organizations can be evaluated by this organization.
     """
 
 
 class AuthorizedOrgsDescAuthorizationType(str, Enum):
     """
-    The authorization type of this authorized orgs desc. e.g.authorization, troubleshooting or logging.
+    A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
     """
     AUTHORIZATION_TYPE_UNSPECIFIED = "AUTHORIZATION_TYPE_UNSPECIFIED"
     """
@@ -223,7 +223,7 @@ class OsConstraintOsType(str, Enum):
 
 class ServicePerimeterPerimeterType(str, Enum):
     """
-    Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+    Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
     """
     PERIMETER_TYPE_REGULAR = "PERIMETER_TYPE_REGULAR"
     """

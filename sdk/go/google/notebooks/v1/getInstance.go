@@ -27,7 +27,7 @@ type LookupInstanceArgs struct {
 }
 
 type LookupInstanceResult struct {
-	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
 	AcceleratorConfig AcceleratorConfigResponse `pulumi:"acceleratorConfig"`
 	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
 	BootDiskSizeGb string `pulumi:"bootDiskSizeGb"`
@@ -59,7 +59,7 @@ type LookupInstanceResult struct {
 	KmsKey string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels map[string]string `pulumi:"labels"`
-	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -138,7 +138,7 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 	return o
 }
 
-// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
 func (o LookupInstanceResultOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v LookupInstanceResult) AcceleratorConfigResponse { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
 }
@@ -218,7 +218,7 @@ func (o LookupInstanceResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 func (o LookupInstanceResultOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.MachineType }).(pulumi.StringOutput)
 }

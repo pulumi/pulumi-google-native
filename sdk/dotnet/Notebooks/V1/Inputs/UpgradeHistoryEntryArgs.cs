@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<Pulumi.GoogleNative.Notebooks.V1.UpgradeHistoryEntryState>? State { get; set; }
 
         /// <summary>
-        /// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
+        /// Target VM Image. Format: `ainotebooks-vm/project/image-name/name`.
         /// </summary>
         [Input("targetImage")]
         public Input<string>? TargetImage { get; set; }

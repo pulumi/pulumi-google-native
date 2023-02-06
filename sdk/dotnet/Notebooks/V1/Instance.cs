@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         /// </summary>
         [Output("acceleratorConfig")]
         public Output<Outputs.AcceleratorConfigResponse> AcceleratorConfig { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -296,7 +296,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+        /// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
         /// </summary>
         [Input("acceleratorConfig")]
         public Input<Inputs.AcceleratorConfigArgs>? AcceleratorConfig { get; set; }
@@ -395,7 +395,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;

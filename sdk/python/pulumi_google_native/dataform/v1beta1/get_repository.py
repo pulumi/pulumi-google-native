@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, git_remote_settings=None, name=None, npmrc_environment_variables_secret_version=None):
+    def __init__(__self__, git_remote_settings=None, name=None, npmrc_environment_variables_secret_version=None, workspace_compilation_overrides=None):
         if git_remote_settings and not isinstance(git_remote_settings, dict):
             raise TypeError("Expected argument 'git_remote_settings' to be a dict")
         pulumi.set(__self__, "git_remote_settings", git_remote_settings)
@@ -29,6 +29,9 @@ class GetRepositoryResult:
         if npmrc_environment_variables_secret_version and not isinstance(npmrc_environment_variables_secret_version, str):
             raise TypeError("Expected argument 'npmrc_environment_variables_secret_version' to be a str")
         pulumi.set(__self__, "npmrc_environment_variables_secret_version", npmrc_environment_variables_secret_version)
+        if workspace_compilation_overrides and not isinstance(workspace_compilation_overrides, dict):
+            raise TypeError("Expected argument 'workspace_compilation_overrides' to be a dict")
+        pulumi.set(__self__, "workspace_compilation_overrides", workspace_compilation_overrides)
 
     @property
     @pulumi.getter(name="gitRemoteSettings")
@@ -54,6 +57,14 @@ class GetRepositoryResult:
         """
         return pulumi.get(self, "npmrc_environment_variables_secret_version")
 
+    @property
+    @pulumi.getter(name="workspaceCompilationOverrides")
+    def workspace_compilation_overrides(self) -> 'outputs.WorkspaceCompilationOverridesResponse':
+        """
+        Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+        """
+        return pulumi.get(self, "workspace_compilation_overrides")
+
 
 class AwaitableGetRepositoryResult(GetRepositoryResult):
     # pylint: disable=using-constant-test
@@ -63,7 +74,8 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
         return GetRepositoryResult(
             git_remote_settings=self.git_remote_settings,
             name=self.name,
-            npmrc_environment_variables_secret_version=self.npmrc_environment_variables_secret_version)
+            npmrc_environment_variables_secret_version=self.npmrc_environment_variables_secret_version,
+            workspace_compilation_overrides=self.workspace_compilation_overrides)
 
 
 def get_repository(location: Optional[str] = None,
@@ -83,7 +95,8 @@ def get_repository(location: Optional[str] = None,
     return AwaitableGetRepositoryResult(
         git_remote_settings=__ret__.git_remote_settings,
         name=__ret__.name,
-        npmrc_environment_variables_secret_version=__ret__.npmrc_environment_variables_secret_version)
+        npmrc_environment_variables_secret_version=__ret__.npmrc_environment_variables_secret_version,
+        workspace_compilation_overrides=__ret__.workspace_compilation_overrides)
 
 
 @_utilities.lift_output_func(get_repository)

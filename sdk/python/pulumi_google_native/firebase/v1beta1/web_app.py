@@ -184,6 +184,7 @@ class WebApp(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["app_id"] = None
+            __props__.__dict__["expire_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["web_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
@@ -215,6 +216,7 @@ class WebApp(pulumi.CustomResource):
         __props__.__dict__["app_urls"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["etag"] = None
+        __props__.__dict__["expire_time"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["state"] = None
@@ -260,6 +262,14 @@ class WebApp(pulumi.CustomResource):
         This checksum is computed by the server based on the value of other fields, and it may be sent with update requests to ensure the client has an up-to-date value before proceeding. Learn more about `etag` in Google's [AIP-154 standard](https://google.aip.dev/154#declarative-friendly-resources). This etag is strongly validated.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> pulumi.Output[str]:
+        """
+        Timestamp of when the App will be considered expired and cannot be undeleted. This value is only provided if the App is in the `DELETED` state.
+        """
+        return pulumi.get(self, "expire_time")
 
     @property
     @pulumi.getter

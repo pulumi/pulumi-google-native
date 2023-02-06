@@ -62,7 +62,7 @@ class GetServicePerimeterResult:
     @pulumi.getter(name="perimeterType")
     def perimeter_type(self) -> str:
         """
-        Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         """
         return pulumi.get(self, "perimeter_type")
 

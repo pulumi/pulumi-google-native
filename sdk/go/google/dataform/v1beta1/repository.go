@@ -26,6 +26,8 @@ type Repository struct {
 	Project                                pulumi.StringOutput `pulumi:"project"`
 	// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
+	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+	WorkspaceCompilationOverrides WorkspaceCompilationOverridesResponseOutput `pulumi:"workspaceCompilationOverrides"`
 }
 
 // NewRepository registers a new resource with the given unique name, arguments, and options.
@@ -84,6 +86,8 @@ type repositoryArgs struct {
 	Project                                *string `pulumi:"project"`
 	// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 	RepositoryId string `pulumi:"repositoryId"`
+	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+	WorkspaceCompilationOverrides *WorkspaceCompilationOverrides `pulumi:"workspaceCompilationOverrides"`
 }
 
 // The set of arguments for constructing a Repository resource.
@@ -96,6 +100,8 @@ type RepositoryArgs struct {
 	Project                                pulumi.StringPtrInput
 	// Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 	RepositoryId pulumi.StringInput
+	// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+	WorkspaceCompilationOverrides WorkspaceCompilationOverridesPtrInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {
@@ -161,6 +167,13 @@ func (o RepositoryOutput) Project() pulumi.StringOutput {
 // Required. The ID to use for the repository, which will become the final component of the repository's resource name.
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
+}
+
+// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that are specified in dataform.json when creating workspace-scoped compilation results. See documentation for `WorkspaceCompilationOverrides` for more information.
+func (o RepositoryOutput) WorkspaceCompilationOverrides() WorkspaceCompilationOverridesResponseOutput {
+	return o.ApplyT(func(v *Repository) WorkspaceCompilationOverridesResponseOutput {
+		return v.WorkspaceCompilationOverrides
+	}).(WorkspaceCompilationOverridesResponseOutput)
 }
 
 func init() {

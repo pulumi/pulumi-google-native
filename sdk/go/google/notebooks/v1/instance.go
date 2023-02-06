@@ -16,7 +16,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
 	AcceleratorConfig AcceleratorConfigResponseOutput `pulumi:"acceleratorConfig"`
 	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.StringOutput `pulumi:"bootDiskSizeGb"`
@@ -51,7 +51,7 @@ type Instance struct {
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
@@ -145,7 +145,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
 	AcceleratorConfig *AcceleratorConfig `pulumi:"acceleratorConfig"`
 	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
 	BootDiskSizeGb *string `pulumi:"bootDiskSizeGb"`
@@ -174,7 +174,7 @@ type instanceArgs struct {
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -211,7 +211,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+	// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
 	AcceleratorConfig AcceleratorConfigPtrInput
 	// Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
 	BootDiskSizeGb pulumi.StringPtrInput
@@ -240,7 +240,7 @@ type InstanceArgs struct {
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringInput
 	// Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapInput
@@ -312,7 +312,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
+// The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
 func (o InstanceOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
 	return o.ApplyT(func(v *Instance) AcceleratorConfigResponseOutput { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
 }
@@ -401,7 +401,7 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+// The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-types) of this instance.
 func (o InstanceOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.MachineType }).(pulumi.StringOutput)
 }

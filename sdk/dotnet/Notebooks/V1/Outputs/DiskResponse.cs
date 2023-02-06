@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly bool Boot;
         /// <summary>
-        /// Indicates a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
+        /// Indicates a unique device name of your choice that is reflected into the `/dev/disk/by-id/google-*` tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine.This field is only applicable for persistent disks.
         /// </summary>
         public readonly string DeviceName;
         /// <summary>
@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string Index;
         /// <summary>
-        /// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * NVME * SCSI
+        /// Indicates the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: * `NVME` * `SCSI`
         /// </summary>
         public readonly string Interface;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Licenses;
         /// <summary>
-        /// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: * READ_ONLY * READ_WRITE
+        /// The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode. Valid values: * `READ_ONLY` * `READ_WRITE`
         /// </summary>
         public readonly string Mode;
         /// <summary>
@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string Source;
         /// <summary>
-        /// Indicates the type of the disk, either SCRATCH or PERSISTENT. Valid values: * PERSISTENT * SCRATCH
+        /// Indicates the type of the disk, either `SCRATCH` or `PERSISTENT`. Valid values: * `PERSISTENT` * `SCRATCH`
         /// </summary>
         public readonly string Type;
 

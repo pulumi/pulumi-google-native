@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         /// </summary>
         [Output("perimeterType")]
         public Output<string> PerimeterType { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        /// Perimeter type indicator. A single project or VPC network is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
         /// </summary>
         [Input("perimeterType")]
         public Input<Pulumi.GoogleNative.AccessContextManager.V1.ServicePerimeterPerimeterType>? PerimeterType { get; set; }

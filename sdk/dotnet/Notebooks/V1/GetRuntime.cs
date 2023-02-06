@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string HealthState;
         /// <summary>
+        /// Optional. The labels to associate with this Managed Notebook or Runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Contains Runtime daemon metrics such as Service status and JupyterLab stats.
         /// </summary>
         public readonly Outputs.RuntimeMetricsResponse Metrics;
@@ -108,6 +112,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
 
             string healthState,
 
+            ImmutableDictionary<string, string> labels,
+
             Outputs.RuntimeMetricsResponse metrics,
 
             string name,
@@ -123,6 +129,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
             AccessConfig = accessConfig;
             CreateTime = createTime;
             HealthState = healthState;
+            Labels = labels;
             Metrics = metrics;
             Name = name;
             SoftwareConfig = softwareConfig;
