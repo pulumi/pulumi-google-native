@@ -27,6 +27,8 @@ type LookupNodeArgs struct {
 }
 
 type LookupNodeResult struct {
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig AcceleratorConfigResponse `pulumi:"acceleratorConfig"`
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The API version that created this Node.
@@ -106,6 +108,11 @@ func (o LookupNodeResultOutput) ToLookupNodeResultOutput() LookupNodeResultOutpu
 
 func (o LookupNodeResultOutput) ToLookupNodeResultOutputWithContext(ctx context.Context) LookupNodeResultOutput {
 	return o
+}
+
+// The AccleratorConfig for the TPU Node.
+func (o LookupNodeResultOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v LookupNodeResult) AcceleratorConfigResponse { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
 }
 
 // The type of hardware accelerators associated with this node.

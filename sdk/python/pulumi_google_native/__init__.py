@@ -2470,7 +2470,9 @@ _utilities.register(
   "classes": {
    "google-native:firebasehosting/v1beta1:Channel": "Channel",
    "google-native:firebasehosting/v1beta1:Domain": "Domain",
-   "google-native:firebasehosting/v1beta1:Site": "Site"
+   "google-native:firebasehosting/v1beta1:Release": "Release",
+   "google-native:firebasehosting/v1beta1:Site": "Site",
+   "google-native:firebasehosting/v1beta1:Version": "Version"
   }
  },
  {

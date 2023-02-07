@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class PrivateClusterConfigResponse
     {
         /// <summary>
+        /// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default, the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// </summary>
+        public readonly ImmutableArray<string> AllowedProjects;
+        /// <summary>
         /// Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment.
         /// </summary>
         public readonly string ClusterHostname;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 
         [OutputConstructor]
         private PrivateClusterConfigResponse(
+            ImmutableArray<string> allowedProjects,
+
             string clusterHostname,
 
             bool enablePrivateEndpoint,
 
             string serviceAttachmentUri)
         {
+            AllowedProjects = allowedProjects;
             ClusterHostname = clusterHostname;
             EnablePrivateEndpoint = enablePrivateEndpoint;
             ServiceAttachmentUri = serviceAttachmentUri;

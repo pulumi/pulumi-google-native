@@ -73,6 +73,10 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
         /// </summary>
         public readonly string RetrievalImportance;
         /// <summary>
+        /// The mapping information between this property to another schema source.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse> SchemaSources;
+        /// <summary>
         /// Text/string property.
         /// </summary>
         public readonly Outputs.GoogleCloudContentwarehouseV1TextTypeOptionsResponse TextTypeOptions;
@@ -111,6 +115,8 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
 
             string retrievalImportance,
 
+            ImmutableArray<Outputs.GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse> schemaSources,
+
             Outputs.GoogleCloudContentwarehouseV1TextTypeOptionsResponse textTypeOptions,
 
             Outputs.GoogleCloudContentwarehouseV1TimestampTypeOptionsResponse timestampTypeOptions)
@@ -129,6 +135,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Outputs
             Name = name;
             PropertyTypeOptions = propertyTypeOptions;
             RetrievalImportance = retrievalImportance;
+            SchemaSources = schemaSources;
             TextTypeOptions = textTypeOptions;
             TimestampTypeOptions = timestampTypeOptions;
         }

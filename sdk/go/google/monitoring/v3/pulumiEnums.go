@@ -3694,6 +3694,12 @@ const (
 	UptimeCheckConfigSelectedRegionsItemSouthAmerica = UptimeCheckConfigSelectedRegionsItem("SOUTH_AMERICA")
 	// Allows checks to run from locations within the Asia Pacific area (ex: Singapore).
 	UptimeCheckConfigSelectedRegionsItemAsiaPacific = UptimeCheckConfigSelectedRegionsItem("ASIA_PACIFIC")
+	// Allows checks to run from locations within the western United States of America
+	UptimeCheckConfigSelectedRegionsItemUsaOregon = UptimeCheckConfigSelectedRegionsItem("USA_OREGON")
+	// Allows checks to run from locations within the central United States of America
+	UptimeCheckConfigSelectedRegionsItemUsaIowa = UptimeCheckConfigSelectedRegionsItem("USA_IOWA")
+	// Allows checks to run from locations within the eastern United States of America
+	UptimeCheckConfigSelectedRegionsItemUsaVirginia = UptimeCheckConfigSelectedRegionsItem("USA_VIRGINIA")
 )
 
 func (UptimeCheckConfigSelectedRegionsItem) ElementType() reflect.Type {

@@ -1142,6 +1142,18 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// Allows checks to run from locations within the Asia Pacific area (ex: Singapore).
         /// </summary>
         public static UptimeCheckConfigSelectedRegionsItem AsiaPacific { get; } = new UptimeCheckConfigSelectedRegionsItem("ASIA_PACIFIC");
+        /// <summary>
+        /// Allows checks to run from locations within the western United States of America
+        /// </summary>
+        public static UptimeCheckConfigSelectedRegionsItem UsaOregon { get; } = new UptimeCheckConfigSelectedRegionsItem("USA_OREGON");
+        /// <summary>
+        /// Allows checks to run from locations within the central United States of America
+        /// </summary>
+        public static UptimeCheckConfigSelectedRegionsItem UsaIowa { get; } = new UptimeCheckConfigSelectedRegionsItem("USA_IOWA");
+        /// <summary>
+        /// Allows checks to run from locations within the eastern United States of America
+        /// </summary>
+        public static UptimeCheckConfigSelectedRegionsItem UsaVirginia { get; } = new UptimeCheckConfigSelectedRegionsItem("USA_VIRGINIA");
 
         public static bool operator ==(UptimeCheckConfigSelectedRegionsItem left, UptimeCheckConfigSelectedRegionsItem right) => left.Equals(right);
         public static bool operator !=(UptimeCheckConfigSelectedRegionsItem left, UptimeCheckConfigSelectedRegionsItem right) => !left.Equals(right);

@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AcceleratorConfigResponse',
     'AcceptedDataResponse',
     'AccessConfigResponse',
     'ActiveDataResponse',
@@ -38,6 +39,39 @@ __all__ = [
     'SymptomResponse',
     'TpuResponse',
 ]
+
+@pulumi.output_type
+class AcceleratorConfigResponse(dict):
+    """
+    A TPU accelerator configuration.
+    """
+    def __init__(__self__, *,
+                 topology: str,
+                 type: str):
+        """
+        A TPU accelerator configuration.
+        :param str topology: Topology of TPU in chips.
+        :param str type: Type of TPU.
+        """
+        pulumi.set(__self__, "topology", topology)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def topology(self) -> str:
+        """
+        Topology of TPU in chips.
+        """
+        return pulumi.get(self, "topology")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of TPU.
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class AcceptedDataResponse(dict):
@@ -457,7 +491,9 @@ class NodeResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "acceleratorType":
+        if key == "acceleratorConfig":
+            suggest = "accelerator_config"
+        elif key == "acceleratorType":
             suggest = "accelerator_type"
         elif key == "apiVersion":
             suggest = "api_version"
@@ -496,6 +532,7 @@ class NodeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 accelerator_config: 'outputs.AcceleratorConfigResponse',
                  accelerator_type: str,
                  api_version: str,
                  cidr_block: str,
@@ -519,6 +556,7 @@ class NodeResponse(dict):
                  tags: Sequence[str]):
         """
         A TPU instance.
+        :param 'AcceleratorConfigResponse' accelerator_config: The AccleratorConfig for the TPU Node.
         :param str accelerator_type: The type of hardware accelerators associated with this node.
         :param str api_version: The API version that created this Node.
         :param str cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
@@ -541,6 +579,7 @@ class NodeResponse(dict):
         :param Sequence['SymptomResponse'] symptoms: The Symptoms that have occurred to the TPU Node.
         :param Sequence[str] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
+        pulumi.set(__self__, "accelerator_config", accelerator_config)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "cidr_block", cidr_block)
@@ -562,6 +601,14 @@ class NodeResponse(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "symptoms", symptoms)
         pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> 'outputs.AcceleratorConfigResponse':
+        """
+        The AccleratorConfig for the TPU Node.
+        """
+        return pulumi.get(self, "accelerator_config")
 
     @property
     @pulumi.getter(name="acceleratorType")

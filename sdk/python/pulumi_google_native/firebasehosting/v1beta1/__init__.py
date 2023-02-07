@@ -10,7 +10,11 @@ from .channel import *
 from .domain import *
 from .get_channel import *
 from .get_domain import *
+from .get_release import *
 from .get_site import *
+from .get_version import *
+from .release import *
 from .site import *
+from .version import *
 from ._inputs import *
 from . import outputs

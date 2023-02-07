@@ -31,6 +31,10 @@ export interface GetNodeArgs {
 
 export interface GetNodeResult {
     /**
+     * The AccleratorConfig for the TPU Node.
+     */
+    readonly acceleratorConfig: outputs.tpu.v2alpha1.AcceleratorConfigResponse;
+    /**
      * The type of hardware accelerators associated with this node.
      */
     readonly acceleratorType: string;

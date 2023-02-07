@@ -2,6 +2,30 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AcceleratorConfigType = {
+    /**
+     * Unspecified version.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * TPU v2.
+     */
+    V2: "V2",
+    /**
+     * TPU v3.
+     */
+    V3: "V3",
+    /**
+     * TPU v4.
+     */
+    V4: "V4",
+} as const;
+
+/**
+ * Required. Type of TPU.
+ */
+export type AcceleratorConfigType = (typeof AcceleratorConfigType)[keyof typeof AcceleratorConfigType];
+
 export const AttachedDiskMode = {
     /**
      * The disk mode is not known/set.

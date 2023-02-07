@@ -39,6 +39,10 @@ export class Node extends pulumi.CustomResource {
     }
 
     /**
+     * The AccleratorConfig for the TPU Node.
+     */
+    public readonly acceleratorConfig!: pulumi.Output<outputs.tpu.v2alpha1.AcceleratorConfigResponse>;
+    /**
      * The type of hardware accelerators associated with this node.
      */
     public readonly acceleratorType!: pulumi.Output<string>;
@@ -147,6 +151,7 @@ export class Node extends pulumi.CustomResource {
             if ((!args || args.runtimeVersion === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimeVersion'");
             }
+            resourceInputs["acceleratorConfig"] = args ? args.acceleratorConfig : undefined;
             resourceInputs["acceleratorType"] = args ? args.acceleratorType : undefined;
             resourceInputs["cidrBlock"] = args ? args.cidrBlock : undefined;
             resourceInputs["dataDisks"] = args ? args.dataDisks : undefined;
@@ -173,6 +178,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["symptoms"] = undefined /*out*/;
         } else {
+            resourceInputs["acceleratorConfig"] = undefined /*out*/;
             resourceInputs["acceleratorType"] = undefined /*out*/;
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["cidrBlock"] = undefined /*out*/;
@@ -210,6 +216,10 @@ export class Node extends pulumi.CustomResource {
  * The set of arguments for constructing a Node resource.
  */
 export interface NodeArgs {
+    /**
+     * The AccleratorConfig for the TPU Node.
+     */
+    acceleratorConfig?: pulumi.Input<inputs.tpu.v2alpha1.AcceleratorConfigArgs>;
     /**
      * The type of hardware accelerators associated with this node.
      */

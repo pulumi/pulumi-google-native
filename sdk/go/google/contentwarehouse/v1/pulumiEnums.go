@@ -1426,13 +1426,15 @@ const (
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeAdd = GoogleCloudDocumentaiV1DocumentProvenanceType("ADD")
 	// Remove an element identified by `parent`.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeRemove = GoogleCloudDocumentaiV1DocumentProvenanceType("REMOVE")
-	// Replace an element identified by `parent`.
+	// Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.
+	GoogleCloudDocumentaiV1DocumentProvenanceTypeUpdate = GoogleCloudDocumentaiV1DocumentProvenanceType("UPDATE")
+	// Currently unused. Replace an element identified by `parent`.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeReplace = GoogleCloudDocumentaiV1DocumentProvenanceType("REPLACE")
-	// Request human review for the element identified by `parent`.
+	// Deprecated. Request human review for the element identified by `parent`.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeEvalRequested = GoogleCloudDocumentaiV1DocumentProvenanceType("EVAL_REQUESTED")
-	// Element is reviewed and approved at human review, confidence will be set to 1.0.
+	// Deprecated. Element is reviewed and approved at human review, confidence will be set to 1.0.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeEvalApproved = GoogleCloudDocumentaiV1DocumentProvenanceType("EVAL_APPROVED")
-	// Element is skipped in the validation process.
+	// Deprecated. Element is skipped in the validation process.
 	GoogleCloudDocumentaiV1DocumentProvenanceTypeEvalSkipped = GoogleCloudDocumentaiV1DocumentProvenanceType("EVAL_SKIPPED")
 )
 

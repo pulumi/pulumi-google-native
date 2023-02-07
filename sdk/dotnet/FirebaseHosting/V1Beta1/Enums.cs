@@ -43,4 +43,184 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
+    /// </summary>
+    [EnumType]
+    public readonly struct ReleaseType : IEquatable<ReleaseType>
+    {
+        private readonly string _value;
+
+        private ReleaseType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified type. Indicates that a version was released. This is the default value when no other `type` is explicitly specified.
+        /// </summary>
+        public static ReleaseType TypeUnspecified { get; } = new ReleaseType("TYPE_UNSPECIFIED");
+        /// <summary>
+        /// A version was uploaded to Firebase Hosting and released.
+        /// </summary>
+        public static ReleaseType Deploy { get; } = new ReleaseType("DEPLOY");
+        /// <summary>
+        /// The release points back to a previously deployed version.
+        /// </summary>
+        public static ReleaseType Rollback { get; } = new ReleaseType("ROLLBACK");
+        /// <summary>
+        /// The release prevents the site from serving content. Firebase Hosting acts as if the site never existed.
+        /// </summary>
+        public static ReleaseType SiteDisable { get; } = new ReleaseType("SITE_DISABLE");
+
+        public static bool operator ==(ReleaseType left, ReleaseType right) => left.Equals(right);
+        public static bool operator !=(ReleaseType left, ReleaseType right) => !left.Equals(right);
+
+        public static explicit operator string(ReleaseType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ReleaseType other && Equals(other);
+        public bool Equals(ReleaseType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// How to handle well known App Association files.
+    /// </summary>
+    [EnumType]
+    public readonly struct ServingConfigAppAssociation : IEquatable<ServingConfigAppAssociation>
+    {
+        private readonly string _value;
+
+        private ServingConfigAppAssociation(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The app association files will be automatically created from the apps that exist in the Firebase project.
+        /// </summary>
+        public static ServingConfigAppAssociation Auto { get; } = new ServingConfigAppAssociation("AUTO");
+        /// <summary>
+        /// No special handling of the app association files will occur, these paths will result in a 404 unless caught with a Rewrite.
+        /// </summary>
+        public static ServingConfigAppAssociation None { get; } = new ServingConfigAppAssociation("NONE");
+
+        public static bool operator ==(ServingConfigAppAssociation left, ServingConfigAppAssociation right) => left.Equals(right);
+        public static bool operator !=(ServingConfigAppAssociation left, ServingConfigAppAssociation right) => !left.Equals(right);
+
+        public static explicit operator string(ServingConfigAppAssociation value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServingConfigAppAssociation other && Equals(other);
+        public bool Equals(ServingConfigAppAssociation other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defines how to handle a trailing slash in the URL path.
+    /// </summary>
+    [EnumType]
+    public readonly struct ServingConfigTrailingSlashBehavior : IEquatable<ServingConfigTrailingSlashBehavior>
+    {
+        private readonly string _value;
+
+        private ServingConfigTrailingSlashBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No behavior is specified. Files are served at their exact location only, and trailing slashes are only added to directory indexes.
+        /// </summary>
+        public static ServingConfigTrailingSlashBehavior TrailingSlashBehaviorUnspecified { get; } = new ServingConfigTrailingSlashBehavior("TRAILING_SLASH_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// Trailing slashes are _added_ to directory indexes as well as to any URL path not ending in a file extension.
+        /// </summary>
+        public static ServingConfigTrailingSlashBehavior Add { get; } = new ServingConfigTrailingSlashBehavior("ADD");
+        /// <summary>
+        /// Trailing slashes are _removed_ from directory indexes as well as from any URL path not ending in a file extension.
+        /// </summary>
+        public static ServingConfigTrailingSlashBehavior Remove { get; } = new ServingConfigTrailingSlashBehavior("REMOVE");
+
+        public static bool operator ==(ServingConfigTrailingSlashBehavior left, ServingConfigTrailingSlashBehavior right) => left.Equals(right);
+        public static bool operator !=(ServingConfigTrailingSlashBehavior left, ServingConfigTrailingSlashBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(ServingConfigTrailingSlashBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServingConfigTrailingSlashBehavior other && Equals(other);
+        public bool Equals(ServingConfigTrailingSlashBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
+    /// </summary>
+    [EnumType]
+    public readonly struct VersionStatus : IEquatable<VersionStatus>
+    {
+        private readonly string _value;
+
+        private VersionStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The default status; should not be intentionally used.
+        /// </summary>
+        public static VersionStatus VersionStatusUnspecified { get; } = new VersionStatus("VERSION_STATUS_UNSPECIFIED");
+        /// <summary>
+        /// The version has been created, and content is currently being added to the version.
+        /// </summary>
+        public static VersionStatus Created { get; } = new VersionStatus("CREATED");
+        /// <summary>
+        /// All content has been added to the version, and the version can no longer be changed.
+        /// </summary>
+        public static VersionStatus Finalized { get; } = new VersionStatus("FINALIZED");
+        /// <summary>
+        /// The version has been deleted.
+        /// </summary>
+        public static VersionStatus Deleted { get; } = new VersionStatus("DELETED");
+        /// <summary>
+        /// The version was not updated to `FINALIZED` within 12 hours and was automatically deleted.
+        /// </summary>
+        public static VersionStatus Abandoned { get; } = new VersionStatus("ABANDONED");
+        /// <summary>
+        /// The version is outside the site-configured limit for the number of retained versions, so the version's content is scheduled for deletion.
+        /// </summary>
+        public static VersionStatus Expired { get; } = new VersionStatus("EXPIRED");
+        /// <summary>
+        /// The version is being cloned from another version. All content is still being copied over.
+        /// </summary>
+        public static VersionStatus Cloning { get; } = new VersionStatus("CLONING");
+
+        public static bool operator ==(VersionStatus left, VersionStatus right) => left.Equals(right);
+        public static bool operator !=(VersionStatus left, VersionStatus right) => !left.Equals(right);
+
+        public static explicit operator string(VersionStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VersionStatus other && Equals(other);
+        public bool Equals(VersionStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

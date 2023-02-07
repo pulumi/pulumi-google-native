@@ -486,19 +486,23 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType Remove { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("REMOVE");
         /// <summary>
-        /// Replace an element identified by `parent`.
+        /// Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.
+        /// </summary>
+        public static GoogleCloudDocumentaiV1DocumentProvenanceType Update { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("UPDATE");
+        /// <summary>
+        /// Currently unused. Replace an element identified by `parent`.
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType Replace { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("REPLACE");
         /// <summary>
-        /// Request human review for the element identified by `parent`.
+        /// Deprecated. Request human review for the element identified by `parent`.
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType EvalRequested { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("EVAL_REQUESTED");
         /// <summary>
-        /// Element is reviewed and approved at human review, confidence will be set to 1.0.
+        /// Deprecated. Element is reviewed and approved at human review, confidence will be set to 1.0.
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType EvalApproved { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("EVAL_APPROVED");
         /// <summary>
-        /// Element is skipped in the validation process.
+        /// Deprecated. Element is skipped in the validation process.
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType EvalSkipped { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("EVAL_SKIPPED");
 

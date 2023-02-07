@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
     public sealed class GetNodeResult
     {
         /// <summary>
+        /// The AccleratorConfig for the TPU Node.
+        /// </summary>
+        public readonly Outputs.AcceleratorConfigResponse AcceleratorConfig;
+        /// <summary>
         /// The type of hardware accelerators associated with this node.
         /// </summary>
         public readonly string AcceleratorType;
@@ -150,6 +154,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
         [OutputConstructor]
         private GetNodeResult(
+            Outputs.AcceleratorConfigResponse acceleratorConfig,
+
             string acceleratorType,
 
             string apiVersion,
@@ -192,6 +198,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             ImmutableArray<string> tags)
         {
+            AcceleratorConfig = acceleratorConfig;
             AcceleratorType = acceleratorType;
             ApiVersion = apiVersion;
             CidrBlock = cidrBlock;

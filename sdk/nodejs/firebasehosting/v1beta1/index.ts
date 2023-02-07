@@ -25,15 +25,35 @@ export const getDomain: typeof import("./getDomain").getDomain = null as any;
 export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
 utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
 
+export { GetReleaseArgs, GetReleaseResult, GetReleaseOutputArgs } from "./getRelease";
+export const getRelease: typeof import("./getRelease").getRelease = null as any;
+export const getReleaseOutput: typeof import("./getRelease").getReleaseOutput = null as any;
+utilities.lazyLoad(exports, ["getRelease","getReleaseOutput"], () => require("./getRelease"));
+
 export { GetSiteArgs, GetSiteResult, GetSiteOutputArgs } from "./getSite";
 export const getSite: typeof import("./getSite").getSite = null as any;
 export const getSiteOutput: typeof import("./getSite").getSiteOutput = null as any;
 utilities.lazyLoad(exports, ["getSite","getSiteOutput"], () => require("./getSite"));
 
+export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+
+export { ReleaseArgs } from "./release";
+export type Release = import("./release").Release;
+export const Release: typeof import("./release").Release = null as any;
+utilities.lazyLoad(exports, ["Release"], () => require("./release"));
+
 export { SiteArgs } from "./site";
 export type Site = import("./site").Site;
 export const Site: typeof import("./site").Site = null as any;
 utilities.lazyLoad(exports, ["Site"], () => require("./site"));
+
+export { VersionArgs } from "./version";
+export type Version = import("./version").Version;
+export const Version: typeof import("./version").Version = null as any;
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
 
 
 // Export enums:
@@ -47,8 +67,12 @@ const _module = {
                 return new Channel(name, <any>undefined, { urn })
             case "google-native:firebasehosting/v1beta1:Domain":
                 return new Domain(name, <any>undefined, { urn })
+            case "google-native:firebasehosting/v1beta1:Release":
+                return new Release(name, <any>undefined, { urn })
             case "google-native:firebasehosting/v1beta1:Site":
                 return new Site(name, <any>undefined, { urn })
+            case "google-native:firebasehosting/v1beta1:Version":
+                return new Version(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

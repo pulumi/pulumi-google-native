@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AcceleratorConfigArgs',
     'AttachedDiskArgs',
     'BestEffortArgs',
     'GuaranteedArgs',
@@ -24,6 +25,44 @@ __all__ = [
     'ShieldedInstanceConfigArgs',
     'TpuArgs',
 ]
+
+@pulumi.input_type
+class AcceleratorConfigArgs:
+    def __init__(__self__, *,
+                 topology: pulumi.Input[str],
+                 type: pulumi.Input['AcceleratorConfigType']):
+        """
+        A TPU accelerator configuration.
+        :param pulumi.Input[str] topology: Topology of TPU in chips.
+        :param pulumi.Input['AcceleratorConfigType'] type: Type of TPU.
+        """
+        pulumi.set(__self__, "topology", topology)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def topology(self) -> pulumi.Input[str]:
+        """
+        Topology of TPU in chips.
+        """
+        return pulumi.get(self, "topology")
+
+    @topology.setter
+    def topology(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topology", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['AcceleratorConfigType']:
+        """
+        Type of TPU.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['AcceleratorConfigType']):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class AttachedDiskArgs:
@@ -284,6 +323,7 @@ class NodeSpecArgs:
 class NodeArgs:
     def __init__(__self__, *,
                  runtime_version: pulumi.Input[str],
+                 accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
@@ -299,6 +339,7 @@ class NodeArgs:
         """
         A TPU instance.
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
+        :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] data_disks: The additional data disks for the Node.
@@ -313,6 +354,8 @@ class NodeArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
         pulumi.set(__self__, "runtime_version", runtime_version)
+        if accelerator_config is not None:
+            pulumi.set(__self__, "accelerator_config", accelerator_config)
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
         if cidr_block is not None:
@@ -349,6 +392,18 @@ class NodeArgs:
     @runtime_version.setter
     def runtime_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "runtime_version", value)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> Optional[pulumi.Input['AcceleratorConfigArgs']]:
+        """
+        The AccleratorConfig for the TPU Node.
+        """
+        return pulumi.get(self, "accelerator_config")
+
+    @accelerator_config.setter
+    def accelerator_config(self, value: Optional[pulumi.Input['AcceleratorConfigArgs']]):
+        pulumi.set(self, "accelerator_config", value)
 
     @property
     @pulumi.getter(name="acceleratorType")

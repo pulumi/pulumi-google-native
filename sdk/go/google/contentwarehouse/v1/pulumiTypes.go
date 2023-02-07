@@ -3254,6 +3254,8 @@ type GoogleCloudContentwarehouseV1PropertyDefinition struct {
 	PropertyTypeOptions *GoogleCloudContentwarehouseV1PropertyTypeOptions `pulumi:"propertyTypeOptions"`
 	// The retrieval importance of the property during search.
 	RetrievalImportance *GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance `pulumi:"retrievalImportance"`
+	// The mapping information between this property to another schema source.
+	SchemaSources []GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource `pulumi:"schemaSources"`
 	// Text/string property.
 	TextTypeOptions *GoogleCloudContentwarehouseV1TextTypeOptions `pulumi:"textTypeOptions"`
 	// Timestamp property. It is not supported by CMEK compliant deployment.
@@ -3301,6 +3303,8 @@ type GoogleCloudContentwarehouseV1PropertyDefinitionArgs struct {
 	PropertyTypeOptions GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrInput `pulumi:"propertyTypeOptions"`
 	// The retrieval importance of the property during search.
 	RetrievalImportance GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrInput `pulumi:"retrievalImportance"`
+	// The mapping information between this property to another schema source.
+	SchemaSources GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput `pulumi:"schemaSources"`
 	// Text/string property.
 	TextTypeOptions GoogleCloudContentwarehouseV1TextTypeOptionsPtrInput `pulumi:"textTypeOptions"`
 	// Timestamp property. It is not supported by CMEK compliant deployment.
@@ -3443,6 +3447,13 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) RetrievalImportan
 	}).(GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportancePtrOutput)
 }
 
+// The mapping information between this property to another schema source.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) SchemaSources() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinition) []GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
+		return v.SchemaSources
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput)
+}
+
 // Text/string property.
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionOutput) TextTypeOptions() GoogleCloudContentwarehouseV1TextTypeOptionsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinition) *GoogleCloudContentwarehouseV1TextTypeOptions {
@@ -3507,6 +3518,8 @@ type GoogleCloudContentwarehouseV1PropertyDefinitionResponse struct {
 	PropertyTypeOptions GoogleCloudContentwarehouseV1PropertyTypeOptionsResponse `pulumi:"propertyTypeOptions"`
 	// The retrieval importance of the property during search.
 	RetrievalImportance string `pulumi:"retrievalImportance"`
+	// The mapping information between this property to another schema source.
+	SchemaSources []GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse `pulumi:"schemaSources"`
 	// Text/string property.
 	TextTypeOptions GoogleCloudContentwarehouseV1TextTypeOptionsResponse `pulumi:"textTypeOptions"`
 	// Timestamp property. It is not supported by CMEK compliant deployment.
@@ -3610,6 +3623,13 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) Retrieval
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) string { return v.RetrievalImportance }).(pulumi.StringOutput)
 }
 
+// The mapping information between this property to another schema source.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) SchemaSources() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) []GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse {
+		return v.SchemaSources
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput)
+}
+
 // Text/string property.
 func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput) TextTypeOptions() GoogleCloudContentwarehouseV1TextTypeOptionsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionResponse) GoogleCloudContentwarehouseV1TextTypeOptionsResponse {
@@ -3642,6 +3662,170 @@ func (o GoogleCloudContentwarehouseV1PropertyDefinitionResponseArrayOutput) Inde
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1PropertyDefinitionResponse {
 		return vs[0].([]GoogleCloudContentwarehouseV1PropertyDefinitionResponse)[vs[1].(int)]
 	}).(GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput)
+}
+
+// The schema source information.
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource struct {
+	// The schema name in the source.
+	Name *string `pulumi:"name"`
+	// The Doc AI processor type name.
+	ProcessorType *string `pulumi:"processorType"`
+}
+
+// GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceInput is an input type that accepts GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs and GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceInput` via:
+//
+//	GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs{...}
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutputWithContext(context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput
+}
+
+// The schema source information.
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs struct {
+	// The schema name in the source.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The Doc AI processor type name.
+	ProcessorType pulumi.StringPtrInput `pulumi:"processorType"`
+}
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource)(nil)).Elem()
+}
+
+func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
+	return i.ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput)
+}
+
+// GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput is an input type that accepts GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray and GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput` via:
+//
+//	GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray{ GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs{...} }
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput
+	ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutputWithContext(context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput
+}
+
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray []GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceInput
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource)(nil)).Elem()
+}
+
+func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput {
+	return i.ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput)
+}
+
+// The schema source information.
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
+	return o
+}
+
+// The schema name in the source.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The Doc AI processor type name.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput) ProcessorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource) *string { return v.ProcessorType }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource {
+		return vs[0].([]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSource)[vs[1].(int)]
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput)
+}
+
+// The schema source information.
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse struct {
+	// The schema name in the source.
+	Name string `pulumi:"name"`
+	// The Doc AI processor type name.
+	ProcessorType string `pulumi:"processorType"`
+}
+
+// The schema source information.
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput {
+	return o
+}
+
+// The schema name in the source.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Doc AI processor type name.
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput) ProcessorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse) string {
+		return v.ProcessorType
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput() GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) ToGoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutputWithContext(ctx context.Context) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse {
+		return vs[0].([]GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponse)[vs[1].(int)]
+	}).(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput)
 }
 
 // Property of a document.
@@ -12629,11 +12813,11 @@ func (o GoogleCloudDocumentaiV1DocumentResponseOutput) Uri() pulumi.StringOutput
 type GoogleCloudDocumentaiV1DocumentRevision struct {
 	// If the change was made by a person specify the name or id of that person.
 	Agent *string `pulumi:"agent"`
-	// The time that the revision was created.
+	// The time that the revision was created, internally generated by doc proto storage at the time of create.
 	CreateTime *string `pulumi:"createTime"`
 	// Human Review information of this revision.
 	HumanReview *GoogleCloudDocumentaiV1DocumentRevisionHumanReview `pulumi:"humanReview"`
-	// Id of the revision. Unique within the context of the document.
+	// Id of the revision, internally generated by doc proto storage. Unique within the context of the document.
 	Id *string `pulumi:"id"`
 	// The revisions that this revision is based on. This can include one or more parent (when documents are merged.) This field represents the index into the `revisions` field.
 	Parent []int `pulumi:"parent"`
@@ -12658,11 +12842,11 @@ type GoogleCloudDocumentaiV1DocumentRevisionInput interface {
 type GoogleCloudDocumentaiV1DocumentRevisionArgs struct {
 	// If the change was made by a person specify the name or id of that person.
 	Agent pulumi.StringPtrInput `pulumi:"agent"`
-	// The time that the revision was created.
+	// The time that the revision was created, internally generated by doc proto storage at the time of create.
 	CreateTime pulumi.StringPtrInput `pulumi:"createTime"`
 	// Human Review information of this revision.
 	HumanReview GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrInput `pulumi:"humanReview"`
-	// Id of the revision. Unique within the context of the document.
+	// Id of the revision, internally generated by doc proto storage. Unique within the context of the document.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The revisions that this revision is based on. This can include one or more parent (when documents are merged.) This field represents the index into the `revisions` field.
 	Parent pulumi.IntArrayInput `pulumi:"parent"`
@@ -12729,7 +12913,7 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) Agent() pulumi.StringPtrO
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevision) *string { return v.Agent }).(pulumi.StringPtrOutput)
 }
 
-// The time that the revision was created.
+// The time that the revision was created, internally generated by doc proto storage at the time of create.
 func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) CreateTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevision) *string { return v.CreateTime }).(pulumi.StringPtrOutput)
 }
@@ -12741,7 +12925,7 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) HumanReview() GoogleCloud
 	}).(GoogleCloudDocumentaiV1DocumentRevisionHumanReviewPtrOutput)
 }
 
-// Id of the revision. Unique within the context of the document.
+// Id of the revision, internally generated by doc proto storage. Unique within the context of the document.
 func (o GoogleCloudDocumentaiV1DocumentRevisionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevision) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -12977,7 +13161,7 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponseOutput) StateM
 type GoogleCloudDocumentaiV1DocumentRevisionResponse struct {
 	// If the change was made by a person specify the name or id of that person.
 	Agent string `pulumi:"agent"`
-	// The time that the revision was created.
+	// The time that the revision was created, internally generated by doc proto storage at the time of create.
 	CreateTime string `pulumi:"createTime"`
 	// Human Review information of this revision.
 	HumanReview GoogleCloudDocumentaiV1DocumentRevisionHumanReviewResponse `pulumi:"humanReview"`
@@ -13009,7 +13193,7 @@ func (o GoogleCloudDocumentaiV1DocumentRevisionResponseOutput) Agent() pulumi.St
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevisionResponse) string { return v.Agent }).(pulumi.StringOutput)
 }
 
-// The time that the revision was created.
+// The time that the revision was created, internally generated by doc proto storage at the time of create.
 func (o GoogleCloudDocumentaiV1DocumentRevisionResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDocumentaiV1DocumentRevisionResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -14928,7 +15112,7 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -14949,7 +15133,7 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -15012,7 +15196,7 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -15046,7 +15230,7 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -15072,7 +15256,7 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -17578,6 +17762,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyArrayPtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyDefinitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionArrayInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyDefinitionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyTypeOptionsInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PropertyTypeOptionsPtrInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudContentwarehouseV1PublishActionInput)(nil)).Elem(), GoogleCloudContentwarehouseV1PublishActionArgs{})
@@ -17768,6 +17954,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudContentwarehouseV1PropertyTypeOptionsOutput{})

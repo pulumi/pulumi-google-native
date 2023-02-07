@@ -99,6 +99,18 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1.Inputs
         [Input("retrievalImportance")]
         public Input<Pulumi.GoogleNative.Contentwarehouse.V1.GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance>? RetrievalImportance { get; set; }
 
+        [Input("schemaSources")]
+        private InputList<Inputs.GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs>? _schemaSources;
+
+        /// <summary>
+        /// The mapping information between this property to another schema source.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs> SchemaSources
+        {
+            get => _schemaSources ?? (_schemaSources = new InputList<Inputs.GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs>());
+            set => _schemaSources = value;
+        }
+
         /// <summary>
         /// Text/string property.
         /// </summary>

@@ -673,3 +673,15 @@ class UptimeCheckConfigSelectedRegionsItem(str, Enum):
     """
     Allows checks to run from locations within the Asia Pacific area (ex: Singapore).
     """
+    USA_OREGON = "USA_OREGON"
+    """
+    Allows checks to run from locations within the western United States of America
+    """
+    USA_IOWA = "USA_IOWA"
+    """
+    Allows checks to run from locations within the central United States of America
+    """
+    USA_VIRGINIA = "USA_VIRGINIA"
+    """
+    Allows checks to run from locations within the eastern United States of America
+    """

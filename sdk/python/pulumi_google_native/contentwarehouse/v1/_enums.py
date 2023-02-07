@@ -281,21 +281,25 @@ class GoogleCloudDocumentaiV1DocumentProvenanceType(str, Enum):
     """
     Remove an element identified by `parent`.
     """
+    UPDATE = "UPDATE"
+    """
+    Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.
+    """
     REPLACE = "REPLACE"
     """
-    Replace an element identified by `parent`.
+    Currently unused. Replace an element identified by `parent`.
     """
     EVAL_REQUESTED = "EVAL_REQUESTED"
     """
-    Request human review for the element identified by `parent`.
+    Deprecated. Request human review for the element identified by `parent`.
     """
     EVAL_APPROVED = "EVAL_APPROVED"
     """
-    Element is reviewed and approved at human review, confidence will be set to 1.0.
+    Deprecated. Element is reviewed and approved at human review, confidence will be set to 1.0.
     """
     EVAL_SKIPPED = "EVAL_SKIPPED"
     """
-    Element is skipped in the validation process.
+    Deprecated. Element is skipped in the validation process.
     """
 
 

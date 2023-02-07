@@ -110,6 +110,165 @@ func (o CertHttpChallengeResponseOutput) Token() pulumi.StringOutput {
 }
 
 // A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
+type CloudRunRewrite struct {
+	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
+	Region *string `pulumi:"region"`
+	// User-defined ID of the Cloud Run service.
+	ServiceId string `pulumi:"serviceId"`
+}
+
+// CloudRunRewriteInput is an input type that accepts CloudRunRewriteArgs and CloudRunRewriteOutput values.
+// You can construct a concrete instance of `CloudRunRewriteInput` via:
+//
+//	CloudRunRewriteArgs{...}
+type CloudRunRewriteInput interface {
+	pulumi.Input
+
+	ToCloudRunRewriteOutput() CloudRunRewriteOutput
+	ToCloudRunRewriteOutputWithContext(context.Context) CloudRunRewriteOutput
+}
+
+// A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
+type CloudRunRewriteArgs struct {
+	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// User-defined ID of the Cloud Run service.
+	ServiceId pulumi.StringInput `pulumi:"serviceId"`
+}
+
+func (CloudRunRewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRewrite)(nil)).Elem()
+}
+
+func (i CloudRunRewriteArgs) ToCloudRunRewriteOutput() CloudRunRewriteOutput {
+	return i.ToCloudRunRewriteOutputWithContext(context.Background())
+}
+
+func (i CloudRunRewriteArgs) ToCloudRunRewriteOutputWithContext(ctx context.Context) CloudRunRewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRewriteOutput)
+}
+
+func (i CloudRunRewriteArgs) ToCloudRunRewritePtrOutput() CloudRunRewritePtrOutput {
+	return i.ToCloudRunRewritePtrOutputWithContext(context.Background())
+}
+
+func (i CloudRunRewriteArgs) ToCloudRunRewritePtrOutputWithContext(ctx context.Context) CloudRunRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRewriteOutput).ToCloudRunRewritePtrOutputWithContext(ctx)
+}
+
+// CloudRunRewritePtrInput is an input type that accepts CloudRunRewriteArgs, CloudRunRewritePtr and CloudRunRewritePtrOutput values.
+// You can construct a concrete instance of `CloudRunRewritePtrInput` via:
+//
+//	        CloudRunRewriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudRunRewritePtrInput interface {
+	pulumi.Input
+
+	ToCloudRunRewritePtrOutput() CloudRunRewritePtrOutput
+	ToCloudRunRewritePtrOutputWithContext(context.Context) CloudRunRewritePtrOutput
+}
+
+type cloudRunRewritePtrType CloudRunRewriteArgs
+
+func CloudRunRewritePtr(v *CloudRunRewriteArgs) CloudRunRewritePtrInput {
+	return (*cloudRunRewritePtrType)(v)
+}
+
+func (*cloudRunRewritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunRewrite)(nil)).Elem()
+}
+
+func (i *cloudRunRewritePtrType) ToCloudRunRewritePtrOutput() CloudRunRewritePtrOutput {
+	return i.ToCloudRunRewritePtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRunRewritePtrType) ToCloudRunRewritePtrOutputWithContext(ctx context.Context) CloudRunRewritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunRewritePtrOutput)
+}
+
+// A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
+type CloudRunRewriteOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunRewrite)(nil)).Elem()
+}
+
+func (o CloudRunRewriteOutput) ToCloudRunRewriteOutput() CloudRunRewriteOutput {
+	return o
+}
+
+func (o CloudRunRewriteOutput) ToCloudRunRewriteOutputWithContext(ctx context.Context) CloudRunRewriteOutput {
+	return o
+}
+
+func (o CloudRunRewriteOutput) ToCloudRunRewritePtrOutput() CloudRunRewritePtrOutput {
+	return o.ToCloudRunRewritePtrOutputWithContext(context.Background())
+}
+
+func (o CloudRunRewriteOutput) ToCloudRunRewritePtrOutputWithContext(ctx context.Context) CloudRunRewritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunRewrite) *CloudRunRewrite {
+		return &v
+	}).(CloudRunRewritePtrOutput)
+}
+
+// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
+func (o CloudRunRewriteOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CloudRunRewrite) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// User-defined ID of the Cloud Run service.
+func (o CloudRunRewriteOutput) ServiceId() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunRewrite) string { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+type CloudRunRewritePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRunRewritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunRewrite)(nil)).Elem()
+}
+
+func (o CloudRunRewritePtrOutput) ToCloudRunRewritePtrOutput() CloudRunRewritePtrOutput {
+	return o
+}
+
+func (o CloudRunRewritePtrOutput) ToCloudRunRewritePtrOutputWithContext(ctx context.Context) CloudRunRewritePtrOutput {
+	return o
+}
+
+func (o CloudRunRewritePtrOutput) Elem() CloudRunRewriteOutput {
+	return o.ApplyT(func(v *CloudRunRewrite) CloudRunRewrite {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunRewrite
+		return ret
+	}).(CloudRunRewriteOutput)
+}
+
+// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
+func (o CloudRunRewritePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-defined ID of the Cloud Run service.
+func (o CloudRunRewritePtrOutput) ServiceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunRewrite) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
 type CloudRunRewriteResponse struct {
 	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 	Region string `pulumi:"region"`
@@ -410,6 +569,124 @@ func (o DomainRedirectResponseOutput) Type() pulumi.StringOutput {
 }
 
 // A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+type Header struct {
+	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+	Glob *string `pulumi:"glob"`
+	// The additional headers to add to the response.
+	Headers map[string]string `pulumi:"headers"`
+	// The user-supplied RE2 regular expression to match against the request URL path.
+	Regex *string `pulumi:"regex"`
+}
+
+// HeaderInput is an input type that accepts HeaderArgs and HeaderOutput values.
+// You can construct a concrete instance of `HeaderInput` via:
+//
+//	HeaderArgs{...}
+type HeaderInput interface {
+	pulumi.Input
+
+	ToHeaderOutput() HeaderOutput
+	ToHeaderOutputWithContext(context.Context) HeaderOutput
+}
+
+// A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+type HeaderArgs struct {
+	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+	Glob pulumi.StringPtrInput `pulumi:"glob"`
+	// The additional headers to add to the response.
+	Headers pulumi.StringMapInput `pulumi:"headers"`
+	// The user-supplied RE2 regular expression to match against the request URL path.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+}
+
+func (HeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (i HeaderArgs) ToHeaderOutput() HeaderOutput {
+	return i.ToHeaderOutputWithContext(context.Background())
+}
+
+func (i HeaderArgs) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderOutput)
+}
+
+// HeaderArrayInput is an input type that accepts HeaderArray and HeaderArrayOutput values.
+// You can construct a concrete instance of `HeaderArrayInput` via:
+//
+//	HeaderArray{ HeaderArgs{...} }
+type HeaderArrayInput interface {
+	pulumi.Input
+
+	ToHeaderArrayOutput() HeaderArrayOutput
+	ToHeaderArrayOutputWithContext(context.Context) HeaderArrayOutput
+}
+
+type HeaderArray []HeaderInput
+
+func (HeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Header)(nil)).Elem()
+}
+
+func (i HeaderArray) ToHeaderArrayOutput() HeaderArrayOutput {
+	return i.ToHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i HeaderArray) ToHeaderArrayOutputWithContext(ctx context.Context) HeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HeaderArrayOutput)
+}
+
+// A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+type HeaderOutput struct{ *pulumi.OutputState }
+
+func (HeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Header)(nil)).Elem()
+}
+
+func (o HeaderOutput) ToHeaderOutput() HeaderOutput {
+	return o
+}
+
+func (o HeaderOutput) ToHeaderOutputWithContext(ctx context.Context) HeaderOutput {
+	return o
+}
+
+// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+func (o HeaderOutput) Glob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Glob }).(pulumi.StringPtrOutput)
+}
+
+// The additional headers to add to the response.
+func (o HeaderOutput) Headers() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Header) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
+}
+
+// The user-supplied RE2 regular expression to match against the request URL path.
+func (o HeaderOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Header) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+type HeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (HeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Header)(nil)).Elem()
+}
+
+func (o HeaderArrayOutput) ToHeaderArrayOutput() HeaderArrayOutput {
+	return o
+}
+
+func (o HeaderArrayOutput) ToHeaderArrayOutputWithContext(ctx context.Context) HeaderArrayOutput {
+	return o
+}
+
+func (o HeaderArrayOutput) Index(i pulumi.IntInput) HeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Header {
+		return vs[0].([]Header)[vs[1].(int)]
+	}).(HeaderOutput)
+}
+
+// A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
 type HeaderResponse struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 	Glob string `pulumi:"glob"`
@@ -470,6 +747,146 @@ func (o HeaderResponseArrayOutput) Index(i pulumi.IntInput) HeaderResponseOutput
 }
 
 // If provided, i18n rewrites are enabled.
+type I18nConfig struct {
+	// The user-supplied path where country and language specific content will be looked for within the public directory.
+	Root string `pulumi:"root"`
+}
+
+// I18nConfigInput is an input type that accepts I18nConfigArgs and I18nConfigOutput values.
+// You can construct a concrete instance of `I18nConfigInput` via:
+//
+//	I18nConfigArgs{...}
+type I18nConfigInput interface {
+	pulumi.Input
+
+	ToI18nConfigOutput() I18nConfigOutput
+	ToI18nConfigOutputWithContext(context.Context) I18nConfigOutput
+}
+
+// If provided, i18n rewrites are enabled.
+type I18nConfigArgs struct {
+	// The user-supplied path where country and language specific content will be looked for within the public directory.
+	Root pulumi.StringInput `pulumi:"root"`
+}
+
+func (I18nConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*I18nConfig)(nil)).Elem()
+}
+
+func (i I18nConfigArgs) ToI18nConfigOutput() I18nConfigOutput {
+	return i.ToI18nConfigOutputWithContext(context.Background())
+}
+
+func (i I18nConfigArgs) ToI18nConfigOutputWithContext(ctx context.Context) I18nConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigOutput)
+}
+
+func (i I18nConfigArgs) ToI18nConfigPtrOutput() I18nConfigPtrOutput {
+	return i.ToI18nConfigPtrOutputWithContext(context.Background())
+}
+
+func (i I18nConfigArgs) ToI18nConfigPtrOutputWithContext(ctx context.Context) I18nConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigOutput).ToI18nConfigPtrOutputWithContext(ctx)
+}
+
+// I18nConfigPtrInput is an input type that accepts I18nConfigArgs, I18nConfigPtr and I18nConfigPtrOutput values.
+// You can construct a concrete instance of `I18nConfigPtrInput` via:
+//
+//	        I18nConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type I18nConfigPtrInput interface {
+	pulumi.Input
+
+	ToI18nConfigPtrOutput() I18nConfigPtrOutput
+	ToI18nConfigPtrOutputWithContext(context.Context) I18nConfigPtrOutput
+}
+
+type i18nConfigPtrType I18nConfigArgs
+
+func I18nConfigPtr(v *I18nConfigArgs) I18nConfigPtrInput {
+	return (*i18nConfigPtrType)(v)
+}
+
+func (*i18nConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**I18nConfig)(nil)).Elem()
+}
+
+func (i *i18nConfigPtrType) ToI18nConfigPtrOutput() I18nConfigPtrOutput {
+	return i.ToI18nConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *i18nConfigPtrType) ToI18nConfigPtrOutputWithContext(ctx context.Context) I18nConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(I18nConfigPtrOutput)
+}
+
+// If provided, i18n rewrites are enabled.
+type I18nConfigOutput struct{ *pulumi.OutputState }
+
+func (I18nConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*I18nConfig)(nil)).Elem()
+}
+
+func (o I18nConfigOutput) ToI18nConfigOutput() I18nConfigOutput {
+	return o
+}
+
+func (o I18nConfigOutput) ToI18nConfigOutputWithContext(ctx context.Context) I18nConfigOutput {
+	return o
+}
+
+func (o I18nConfigOutput) ToI18nConfigPtrOutput() I18nConfigPtrOutput {
+	return o.ToI18nConfigPtrOutputWithContext(context.Background())
+}
+
+func (o I18nConfigOutput) ToI18nConfigPtrOutputWithContext(ctx context.Context) I18nConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v I18nConfig) *I18nConfig {
+		return &v
+	}).(I18nConfigPtrOutput)
+}
+
+// The user-supplied path where country and language specific content will be looked for within the public directory.
+func (o I18nConfigOutput) Root() pulumi.StringOutput {
+	return o.ApplyT(func(v I18nConfig) string { return v.Root }).(pulumi.StringOutput)
+}
+
+type I18nConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (I18nConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**I18nConfig)(nil)).Elem()
+}
+
+func (o I18nConfigPtrOutput) ToI18nConfigPtrOutput() I18nConfigPtrOutput {
+	return o
+}
+
+func (o I18nConfigPtrOutput) ToI18nConfigPtrOutputWithContext(ctx context.Context) I18nConfigPtrOutput {
+	return o
+}
+
+func (o I18nConfigPtrOutput) Elem() I18nConfigOutput {
+	return o.ApplyT(func(v *I18nConfig) I18nConfig {
+		if v != nil {
+			return *v
+		}
+		var ret I18nConfig
+		return ret
+	}).(I18nConfigOutput)
+}
+
+// The user-supplied path where country and language specific content will be looked for within the public directory.
+func (o I18nConfigPtrOutput) Root() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *I18nConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Root
+	}).(pulumi.StringPtrOutput)
+}
+
+// If provided, i18n rewrites are enabled.
 type I18nConfigResponse struct {
 	// The user-supplied path where country and language specific content will be looked for within the public directory.
 	Root string `pulumi:"root"`
@@ -493,6 +910,133 @@ func (o I18nConfigResponseOutput) ToI18nConfigResponseOutputWithContext(ctx cont
 // The user-supplied path where country and language specific content will be looked for within the public directory.
 func (o I18nConfigResponseOutput) Root() pulumi.StringOutput {
 	return o.ApplyT(func(v I18nConfigResponse) string { return v.Root }).(pulumi.StringOutput)
+}
+
+// A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+type Redirect struct {
+	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+	Glob *string `pulumi:"glob"`
+	// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+	Location string `pulumi:"location"`
+	// The user-supplied RE2 regular expression to match against the request URL path.
+	Regex *string `pulumi:"regex"`
+	// The status HTTP code to return in the response. It must be a valid 3xx status code.
+	StatusCode int `pulumi:"statusCode"`
+}
+
+// RedirectInput is an input type that accepts RedirectArgs and RedirectOutput values.
+// You can construct a concrete instance of `RedirectInput` via:
+//
+//	RedirectArgs{...}
+type RedirectInput interface {
+	pulumi.Input
+
+	ToRedirectOutput() RedirectOutput
+	ToRedirectOutputWithContext(context.Context) RedirectOutput
+}
+
+// A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+type RedirectArgs struct {
+	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+	Glob pulumi.StringPtrInput `pulumi:"glob"`
+	// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+	Location pulumi.StringInput `pulumi:"location"`
+	// The user-supplied RE2 regular expression to match against the request URL path.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+	// The status HTTP code to return in the response. It must be a valid 3xx status code.
+	StatusCode pulumi.IntInput `pulumi:"statusCode"`
+}
+
+func (RedirectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Redirect)(nil)).Elem()
+}
+
+func (i RedirectArgs) ToRedirectOutput() RedirectOutput {
+	return i.ToRedirectOutputWithContext(context.Background())
+}
+
+func (i RedirectArgs) ToRedirectOutputWithContext(ctx context.Context) RedirectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedirectOutput)
+}
+
+// RedirectArrayInput is an input type that accepts RedirectArray and RedirectArrayOutput values.
+// You can construct a concrete instance of `RedirectArrayInput` via:
+//
+//	RedirectArray{ RedirectArgs{...} }
+type RedirectArrayInput interface {
+	pulumi.Input
+
+	ToRedirectArrayOutput() RedirectArrayOutput
+	ToRedirectArrayOutputWithContext(context.Context) RedirectArrayOutput
+}
+
+type RedirectArray []RedirectInput
+
+func (RedirectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Redirect)(nil)).Elem()
+}
+
+func (i RedirectArray) ToRedirectArrayOutput() RedirectArrayOutput {
+	return i.ToRedirectArrayOutputWithContext(context.Background())
+}
+
+func (i RedirectArray) ToRedirectArrayOutputWithContext(ctx context.Context) RedirectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RedirectArrayOutput)
+}
+
+// A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+type RedirectOutput struct{ *pulumi.OutputState }
+
+func (RedirectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Redirect)(nil)).Elem()
+}
+
+func (o RedirectOutput) ToRedirectOutput() RedirectOutput {
+	return o
+}
+
+func (o RedirectOutput) ToRedirectOutputWithContext(ctx context.Context) RedirectOutput {
+	return o
+}
+
+// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+func (o RedirectOutput) Glob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Redirect) *string { return v.Glob }).(pulumi.StringPtrOutput)
+}
+
+// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+func (o RedirectOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v Redirect) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The user-supplied RE2 regular expression to match against the request URL path.
+func (o RedirectOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Redirect) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+// The status HTTP code to return in the response. It must be a valid 3xx status code.
+func (o RedirectOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v Redirect) int { return v.StatusCode }).(pulumi.IntOutput)
+}
+
+type RedirectArrayOutput struct{ *pulumi.OutputState }
+
+func (RedirectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Redirect)(nil)).Elem()
+}
+
+func (o RedirectArrayOutput) ToRedirectArrayOutput() RedirectArrayOutput {
+	return o
+}
+
+func (o RedirectArrayOutput) ToRedirectArrayOutputWithContext(ctx context.Context) RedirectArrayOutput {
+	return o
+}
+
+func (o RedirectArrayOutput) Index(i pulumi.IntInput) RedirectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Redirect {
+		return vs[0].([]Redirect)[vs[1].(int)]
+	}).(RedirectOutput)
 }
 
 // A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
@@ -624,6 +1168,160 @@ func (o ReleaseResponseOutput) Version() VersionResponseOutput {
 }
 
 // A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+type Rewrite struct {
+	// The request will be forwarded to Firebase Dynamic Links.
+	DynamicLinks *bool `pulumi:"dynamicLinks"`
+	// The function to proxy requests to. Must match the exported function name exactly.
+	Function *string `pulumi:"function"`
+	// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+	FunctionRegion *string `pulumi:"functionRegion"`
+	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+	Glob *string `pulumi:"glob"`
+	// The URL path to rewrite the request to.
+	Path *string `pulumi:"path"`
+	// The user-supplied RE2 regular expression to match against the request URL path.
+	Regex *string `pulumi:"regex"`
+	// The request will be forwarded to Cloud Run.
+	Run *CloudRunRewrite `pulumi:"run"`
+}
+
+// RewriteInput is an input type that accepts RewriteArgs and RewriteOutput values.
+// You can construct a concrete instance of `RewriteInput` via:
+//
+//	RewriteArgs{...}
+type RewriteInput interface {
+	pulumi.Input
+
+	ToRewriteOutput() RewriteOutput
+	ToRewriteOutputWithContext(context.Context) RewriteOutput
+}
+
+// A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+type RewriteArgs struct {
+	// The request will be forwarded to Firebase Dynamic Links.
+	DynamicLinks pulumi.BoolPtrInput `pulumi:"dynamicLinks"`
+	// The function to proxy requests to. Must match the exported function name exactly.
+	Function pulumi.StringPtrInput `pulumi:"function"`
+	// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+	FunctionRegion pulumi.StringPtrInput `pulumi:"functionRegion"`
+	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+	Glob pulumi.StringPtrInput `pulumi:"glob"`
+	// The URL path to rewrite the request to.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The user-supplied RE2 regular expression to match against the request URL path.
+	Regex pulumi.StringPtrInput `pulumi:"regex"`
+	// The request will be forwarded to Cloud Run.
+	Run CloudRunRewritePtrInput `pulumi:"run"`
+}
+
+func (RewriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rewrite)(nil)).Elem()
+}
+
+func (i RewriteArgs) ToRewriteOutput() RewriteOutput {
+	return i.ToRewriteOutputWithContext(context.Background())
+}
+
+func (i RewriteArgs) ToRewriteOutputWithContext(ctx context.Context) RewriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RewriteOutput)
+}
+
+// RewriteArrayInput is an input type that accepts RewriteArray and RewriteArrayOutput values.
+// You can construct a concrete instance of `RewriteArrayInput` via:
+//
+//	RewriteArray{ RewriteArgs{...} }
+type RewriteArrayInput interface {
+	pulumi.Input
+
+	ToRewriteArrayOutput() RewriteArrayOutput
+	ToRewriteArrayOutputWithContext(context.Context) RewriteArrayOutput
+}
+
+type RewriteArray []RewriteInput
+
+func (RewriteArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Rewrite)(nil)).Elem()
+}
+
+func (i RewriteArray) ToRewriteArrayOutput() RewriteArrayOutput {
+	return i.ToRewriteArrayOutputWithContext(context.Background())
+}
+
+func (i RewriteArray) ToRewriteArrayOutputWithContext(ctx context.Context) RewriteArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RewriteArrayOutput)
+}
+
+// A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+type RewriteOutput struct{ *pulumi.OutputState }
+
+func (RewriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Rewrite)(nil)).Elem()
+}
+
+func (o RewriteOutput) ToRewriteOutput() RewriteOutput {
+	return o
+}
+
+func (o RewriteOutput) ToRewriteOutputWithContext(ctx context.Context) RewriteOutput {
+	return o
+}
+
+// The request will be forwarded to Firebase Dynamic Links.
+func (o RewriteOutput) DynamicLinks() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Rewrite) *bool { return v.DynamicLinks }).(pulumi.BoolPtrOutput)
+}
+
+// The function to proxy requests to. Must match the exported function name exactly.
+func (o RewriteOutput) Function() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rewrite) *string { return v.Function }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Specify a Cloud region for rewritten Functions invocations. If not provided, defaults to us-central1.
+func (o RewriteOutput) FunctionRegion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rewrite) *string { return v.FunctionRegion }).(pulumi.StringPtrOutput)
+}
+
+// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
+func (o RewriteOutput) Glob() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rewrite) *string { return v.Glob }).(pulumi.StringPtrOutput)
+}
+
+// The URL path to rewrite the request to.
+func (o RewriteOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rewrite) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// The user-supplied RE2 regular expression to match against the request URL path.
+func (o RewriteOutput) Regex() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Rewrite) *string { return v.Regex }).(pulumi.StringPtrOutput)
+}
+
+// The request will be forwarded to Cloud Run.
+func (o RewriteOutput) Run() CloudRunRewritePtrOutput {
+	return o.ApplyT(func(v Rewrite) *CloudRunRewrite { return v.Run }).(CloudRunRewritePtrOutput)
+}
+
+type RewriteArrayOutput struct{ *pulumi.OutputState }
+
+func (RewriteArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Rewrite)(nil)).Elem()
+}
+
+func (o RewriteArrayOutput) ToRewriteArrayOutput() RewriteArrayOutput {
+	return o
+}
+
+func (o RewriteArrayOutput) ToRewriteArrayOutputWithContext(ctx context.Context) RewriteArrayOutput {
+	return o
+}
+
+func (o RewriteArrayOutput) Index(i pulumi.IntInput) RewriteOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Rewrite {
+		return vs[0].([]Rewrite)[vs[1].(int)]
+	}).(RewriteOutput)
+}
+
+// A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
 type RewriteResponse struct {
 	// The request will be forwarded to Firebase Dynamic Links.
 	DynamicLinks bool `pulumi:"dynamicLinks"`
@@ -709,6 +1407,260 @@ func (o RewriteResponseArrayOutput) Index(i pulumi.IntInput) RewriteResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RewriteResponse {
 		return vs[0].([]RewriteResponse)[vs[1].(int)]
 	}).(RewriteResponseOutput)
+}
+
+// The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
+type ServingConfig struct {
+	// How to handle well known App Association files.
+	AppAssociation *ServingConfigAppAssociation `pulumi:"appAssociation"`
+	// Defines whether to drop the file extension from uploaded files.
+	CleanUrls *bool `pulumi:"cleanUrls"`
+	// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+	Headers []Header `pulumi:"headers"`
+	// Optional. Defines i18n rewrite behavior.
+	I18n *I18nConfig `pulumi:"i18n"`
+	// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+	Redirects []Redirect `pulumi:"redirects"`
+	// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+	Rewrites []Rewrite `pulumi:"rewrites"`
+	// Defines how to handle a trailing slash in the URL path.
+	TrailingSlashBehavior *ServingConfigTrailingSlashBehavior `pulumi:"trailingSlashBehavior"`
+}
+
+// ServingConfigInput is an input type that accepts ServingConfigArgs and ServingConfigOutput values.
+// You can construct a concrete instance of `ServingConfigInput` via:
+//
+//	ServingConfigArgs{...}
+type ServingConfigInput interface {
+	pulumi.Input
+
+	ToServingConfigOutput() ServingConfigOutput
+	ToServingConfigOutputWithContext(context.Context) ServingConfigOutput
+}
+
+// The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
+type ServingConfigArgs struct {
+	// How to handle well known App Association files.
+	AppAssociation ServingConfigAppAssociationPtrInput `pulumi:"appAssociation"`
+	// Defines whether to drop the file extension from uploaded files.
+	CleanUrls pulumi.BoolPtrInput `pulumi:"cleanUrls"`
+	// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+	Headers HeaderArrayInput `pulumi:"headers"`
+	// Optional. Defines i18n rewrite behavior.
+	I18n I18nConfigPtrInput `pulumi:"i18n"`
+	// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+	Redirects RedirectArrayInput `pulumi:"redirects"`
+	// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+	Rewrites RewriteArrayInput `pulumi:"rewrites"`
+	// Defines how to handle a trailing slash in the URL path.
+	TrailingSlashBehavior ServingConfigTrailingSlashBehaviorPtrInput `pulumi:"trailingSlashBehavior"`
+}
+
+func (ServingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServingConfig)(nil)).Elem()
+}
+
+func (i ServingConfigArgs) ToServingConfigOutput() ServingConfigOutput {
+	return i.ToServingConfigOutputWithContext(context.Background())
+}
+
+func (i ServingConfigArgs) ToServingConfigOutputWithContext(ctx context.Context) ServingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigOutput)
+}
+
+func (i ServingConfigArgs) ToServingConfigPtrOutput() ServingConfigPtrOutput {
+	return i.ToServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServingConfigArgs) ToServingConfigPtrOutputWithContext(ctx context.Context) ServingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigOutput).ToServingConfigPtrOutputWithContext(ctx)
+}
+
+// ServingConfigPtrInput is an input type that accepts ServingConfigArgs, ServingConfigPtr and ServingConfigPtrOutput values.
+// You can construct a concrete instance of `ServingConfigPtrInput` via:
+//
+//	        ServingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServingConfigPtrInput interface {
+	pulumi.Input
+
+	ToServingConfigPtrOutput() ServingConfigPtrOutput
+	ToServingConfigPtrOutputWithContext(context.Context) ServingConfigPtrOutput
+}
+
+type servingConfigPtrType ServingConfigArgs
+
+func ServingConfigPtr(v *ServingConfigArgs) ServingConfigPtrInput {
+	return (*servingConfigPtrType)(v)
+}
+
+func (*servingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServingConfig)(nil)).Elem()
+}
+
+func (i *servingConfigPtrType) ToServingConfigPtrOutput() ServingConfigPtrOutput {
+	return i.ToServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *servingConfigPtrType) ToServingConfigPtrOutputWithContext(ctx context.Context) ServingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServingConfigPtrOutput)
+}
+
+// The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
+type ServingConfigOutput struct{ *pulumi.OutputState }
+
+func (ServingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServingConfig)(nil)).Elem()
+}
+
+func (o ServingConfigOutput) ToServingConfigOutput() ServingConfigOutput {
+	return o
+}
+
+func (o ServingConfigOutput) ToServingConfigOutputWithContext(ctx context.Context) ServingConfigOutput {
+	return o
+}
+
+func (o ServingConfigOutput) ToServingConfigPtrOutput() ServingConfigPtrOutput {
+	return o.ToServingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServingConfigOutput) ToServingConfigPtrOutputWithContext(ctx context.Context) ServingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServingConfig) *ServingConfig {
+		return &v
+	}).(ServingConfigPtrOutput)
+}
+
+// How to handle well known App Association files.
+func (o ServingConfigOutput) AppAssociation() ServingConfigAppAssociationPtrOutput {
+	return o.ApplyT(func(v ServingConfig) *ServingConfigAppAssociation { return v.AppAssociation }).(ServingConfigAppAssociationPtrOutput)
+}
+
+// Defines whether to drop the file extension from uploaded files.
+func (o ServingConfigOutput) CleanUrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServingConfig) *bool { return v.CleanUrls }).(pulumi.BoolPtrOutput)
+}
+
+// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+func (o ServingConfigOutput) Headers() HeaderArrayOutput {
+	return o.ApplyT(func(v ServingConfig) []Header { return v.Headers }).(HeaderArrayOutput)
+}
+
+// Optional. Defines i18n rewrite behavior.
+func (o ServingConfigOutput) I18n() I18nConfigPtrOutput {
+	return o.ApplyT(func(v ServingConfig) *I18nConfig { return v.I18n }).(I18nConfigPtrOutput)
+}
+
+// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+func (o ServingConfigOutput) Redirects() RedirectArrayOutput {
+	return o.ApplyT(func(v ServingConfig) []Redirect { return v.Redirects }).(RedirectArrayOutput)
+}
+
+// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+func (o ServingConfigOutput) Rewrites() RewriteArrayOutput {
+	return o.ApplyT(func(v ServingConfig) []Rewrite { return v.Rewrites }).(RewriteArrayOutput)
+}
+
+// Defines how to handle a trailing slash in the URL path.
+func (o ServingConfigOutput) TrailingSlashBehavior() ServingConfigTrailingSlashBehaviorPtrOutput {
+	return o.ApplyT(func(v ServingConfig) *ServingConfigTrailingSlashBehavior { return v.TrailingSlashBehavior }).(ServingConfigTrailingSlashBehaviorPtrOutput)
+}
+
+type ServingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServingConfig)(nil)).Elem()
+}
+
+func (o ServingConfigPtrOutput) ToServingConfigPtrOutput() ServingConfigPtrOutput {
+	return o
+}
+
+func (o ServingConfigPtrOutput) ToServingConfigPtrOutputWithContext(ctx context.Context) ServingConfigPtrOutput {
+	return o
+}
+
+func (o ServingConfigPtrOutput) Elem() ServingConfigOutput {
+	return o.ApplyT(func(v *ServingConfig) ServingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServingConfig
+		return ret
+	}).(ServingConfigOutput)
+}
+
+// How to handle well known App Association files.
+func (o ServingConfigPtrOutput) AppAssociation() ServingConfigAppAssociationPtrOutput {
+	return o.ApplyT(func(v *ServingConfig) *ServingConfigAppAssociation {
+		if v == nil {
+			return nil
+		}
+		return v.AppAssociation
+	}).(ServingConfigAppAssociationPtrOutput)
+}
+
+// Defines whether to drop the file extension from uploaded files.
+func (o ServingConfigPtrOutput) CleanUrls() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CleanUrls
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
+func (o ServingConfigPtrOutput) Headers() HeaderArrayOutput {
+	return o.ApplyT(func(v *ServingConfig) []Header {
+		if v == nil {
+			return nil
+		}
+		return v.Headers
+	}).(HeaderArrayOutput)
+}
+
+// Optional. Defines i18n rewrite behavior.
+func (o ServingConfigPtrOutput) I18n() I18nConfigPtrOutput {
+	return o.ApplyT(func(v *ServingConfig) *I18nConfig {
+		if v == nil {
+			return nil
+		}
+		return v.I18n
+	}).(I18nConfigPtrOutput)
+}
+
+// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
+func (o ServingConfigPtrOutput) Redirects() RedirectArrayOutput {
+	return o.ApplyT(func(v *ServingConfig) []Redirect {
+		if v == nil {
+			return nil
+		}
+		return v.Redirects
+	}).(RedirectArrayOutput)
+}
+
+// An array of objects (called rewrite rules), where each rule specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
+func (o ServingConfigPtrOutput) Rewrites() RewriteArrayOutput {
+	return o.ApplyT(func(v *ServingConfig) []Rewrite {
+		if v == nil {
+			return nil
+		}
+		return v.Rewrites
+	}).(RewriteArrayOutput)
+}
+
+// Defines how to handle a trailing slash in the URL path.
+func (o ServingConfigPtrOutput) TrailingSlashBehavior() ServingConfigTrailingSlashBehaviorPtrOutput {
+	return o.ApplyT(func(v *ServingConfig) *ServingConfigTrailingSlashBehavior {
+		if v == nil {
+			return nil
+		}
+		return v.TrailingSlashBehavior
+	}).(ServingConfigTrailingSlashBehaviorPtrOutput)
 }
 
 // The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
@@ -883,24 +1835,48 @@ func (o VersionResponseOutput) VersionBytes() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunRewriteInput)(nil)).Elem(), CloudRunRewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunRewritePtrInput)(nil)).Elem(), CloudRunRewriteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectInput)(nil)).Elem(), DomainRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DomainRedirectPtrInput)(nil)).Elem(), DomainRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderInput)(nil)).Elem(), HeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*HeaderArrayInput)(nil)).Elem(), HeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*I18nConfigInput)(nil)).Elem(), I18nConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*I18nConfigPtrInput)(nil)).Elem(), I18nConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedirectInput)(nil)).Elem(), RedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RedirectArrayInput)(nil)).Elem(), RedirectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RewriteInput)(nil)).Elem(), RewriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RewriteArrayInput)(nil)).Elem(), RewriteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigInput)(nil)).Elem(), ServingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigPtrInput)(nil)).Elem(), ServingConfigArgs{})
 	pulumi.RegisterOutputType(ActingUserResponseOutput{})
 	pulumi.RegisterOutputType(CertDnsChallengeResponseOutput{})
 	pulumi.RegisterOutputType(CertHttpChallengeResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunRewriteOutput{})
+	pulumi.RegisterOutputType(CloudRunRewritePtrOutput{})
 	pulumi.RegisterOutputType(CloudRunRewriteResponseOutput{})
 	pulumi.RegisterOutputType(DomainProvisioningResponseOutput{})
 	pulumi.RegisterOutputType(DomainRedirectOutput{})
 	pulumi.RegisterOutputType(DomainRedirectPtrOutput{})
 	pulumi.RegisterOutputType(DomainRedirectResponseOutput{})
+	pulumi.RegisterOutputType(HeaderOutput{})
+	pulumi.RegisterOutputType(HeaderArrayOutput{})
 	pulumi.RegisterOutputType(HeaderResponseOutput{})
 	pulumi.RegisterOutputType(HeaderResponseArrayOutput{})
+	pulumi.RegisterOutputType(I18nConfigOutput{})
+	pulumi.RegisterOutputType(I18nConfigPtrOutput{})
 	pulumi.RegisterOutputType(I18nConfigResponseOutput{})
+	pulumi.RegisterOutputType(RedirectOutput{})
+	pulumi.RegisterOutputType(RedirectArrayOutput{})
 	pulumi.RegisterOutputType(RedirectResponseOutput{})
 	pulumi.RegisterOutputType(RedirectResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseResponseOutput{})
+	pulumi.RegisterOutputType(RewriteOutput{})
+	pulumi.RegisterOutputType(RewriteArrayOutput{})
 	pulumi.RegisterOutputType(RewriteResponseOutput{})
 	pulumi.RegisterOutputType(RewriteResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServingConfigOutput{})
+	pulumi.RegisterOutputType(ServingConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServingConfigResponseOutput{})
 	pulumi.RegisterOutputType(VersionResponseOutput{})
 }

@@ -17,3 +17,99 @@ export const DomainRedirectType = {
  * Required. The redirect status code.
  */
 export type DomainRedirectType = (typeof DomainRedirectType)[keyof typeof DomainRedirectType];
+
+export const ReleaseType = {
+    /**
+     * An unspecified type. Indicates that a version was released. This is the default value when no other `type` is explicitly specified.
+     */
+    TypeUnspecified: "TYPE_UNSPECIFIED",
+    /**
+     * A version was uploaded to Firebase Hosting and released.
+     */
+    Deploy: "DEPLOY",
+    /**
+     * The release points back to a previously deployed version.
+     */
+    Rollback: "ROLLBACK",
+    /**
+     * The release prevents the site from serving content. Firebase Hosting acts as if the site never existed.
+     */
+    SiteDisable: "SITE_DISABLE",
+} as const;
+
+/**
+ * Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
+ */
+export type ReleaseType = (typeof ReleaseType)[keyof typeof ReleaseType];
+
+export const ServingConfigAppAssociation = {
+    /**
+     * The app association files will be automatically created from the apps that exist in the Firebase project.
+     */
+    Auto: "AUTO",
+    /**
+     * No special handling of the app association files will occur, these paths will result in a 404 unless caught with a Rewrite.
+     */
+    None: "NONE",
+} as const;
+
+/**
+ * How to handle well known App Association files.
+ */
+export type ServingConfigAppAssociation = (typeof ServingConfigAppAssociation)[keyof typeof ServingConfigAppAssociation];
+
+export const ServingConfigTrailingSlashBehavior = {
+    /**
+     * No behavior is specified. Files are served at their exact location only, and trailing slashes are only added to directory indexes.
+     */
+    TrailingSlashBehaviorUnspecified: "TRAILING_SLASH_BEHAVIOR_UNSPECIFIED",
+    /**
+     * Trailing slashes are _added_ to directory indexes as well as to any URL path not ending in a file extension.
+     */
+    Add: "ADD",
+    /**
+     * Trailing slashes are _removed_ from directory indexes as well as from any URL path not ending in a file extension.
+     */
+    Remove: "REMOVE",
+} as const;
+
+/**
+ * Defines how to handle a trailing slash in the URL path.
+ */
+export type ServingConfigTrailingSlashBehavior = (typeof ServingConfigTrailingSlashBehavior)[keyof typeof ServingConfigTrailingSlashBehavior];
+
+export const VersionStatus = {
+    /**
+     * The default status; should not be intentionally used.
+     */
+    VersionStatusUnspecified: "VERSION_STATUS_UNSPECIFIED",
+    /**
+     * The version has been created, and content is currently being added to the version.
+     */
+    Created: "CREATED",
+    /**
+     * All content has been added to the version, and the version can no longer be changed.
+     */
+    Finalized: "FINALIZED",
+    /**
+     * The version has been deleted.
+     */
+    Deleted: "DELETED",
+    /**
+     * The version was not updated to `FINALIZED` within 12 hours and was automatically deleted.
+     */
+    Abandoned: "ABANDONED",
+    /**
+     * The version is outside the site-configured limit for the number of retained versions, so the version's content is scheduled for deletion.
+     */
+    Expired: "EXPIRED",
+    /**
+     * The version is being cloned from another version. All content is still being copied over.
+     */
+    Cloning: "CLONING",
+} as const;
+
+/**
+ * The deploy status of the version. For a successful deploy, call [`CreateVersion`](sites.versions/create) to make a new version (`CREATED` status), [upload all desired files](sites.versions/populateFiles) to the version, then [update](sites.versions/patch) the version to the `FINALIZED` status. Note that if you leave the version in the `CREATED` state for more than 12 hours, the system will automatically mark the version as `ABANDONED`. You can also change the status of a version to `DELETED` by calling [`DeleteVersion`](sites.versions/delete).
+ */
+export type VersionStatus = (typeof VersionStatus)[keyof typeof VersionStatus];

@@ -25,8 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Channel{}
 	case "google-native:firebasehosting/v1beta1:Domain":
 		r = &Domain{}
+	case "google-native:firebasehosting/v1beta1:Release":
+		r = &Release{}
 	case "google-native:firebasehosting/v1beta1:Site":
 		r = &Site{}
+	case "google-native:firebasehosting/v1beta1:Version":
+		r = &Version{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

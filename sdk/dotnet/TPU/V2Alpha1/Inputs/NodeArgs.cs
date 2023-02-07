@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
     public sealed class NodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The AccleratorConfig for the TPU Node.
+        /// </summary>
+        [Input("acceleratorConfig")]
+        public Input<Inputs.AcceleratorConfigArgs>? AcceleratorConfig { get; set; }
+
+        /// <summary>
         /// The type of hardware accelerators associated with this node.
         /// </summary>
         [Input("acceleratorType")]

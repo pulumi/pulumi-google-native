@@ -687,6 +687,18 @@ export const UptimeCheckConfigSelectedRegionsItem = {
      * Allows checks to run from locations within the Asia Pacific area (ex: Singapore).
      */
     AsiaPacific: "ASIA_PACIFIC",
+    /**
+     * Allows checks to run from locations within the western United States of America
+     */
+    UsaOregon: "USA_OREGON",
+    /**
+     * Allows checks to run from locations within the central United States of America
+     */
+    UsaIowa: "USA_IOWA",
+    /**
+     * Allows checks to run from locations within the eastern United States of America
+     */
+    UsaVirginia: "USA_VIRGINIA",
 } as const;
 
 export type UptimeCheckConfigSelectedRegionsItem = (typeof UptimeCheckConfigSelectedRegionsItem)[keyof typeof UptimeCheckConfigSelectedRegionsItem];

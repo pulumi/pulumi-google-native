@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
+    def __init__(__self__, accelerator_config=None, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, queued_resource=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
+        if accelerator_config and not isinstance(accelerator_config, dict):
+            raise TypeError("Expected argument 'accelerator_config' to be a dict")
+        pulumi.set(__self__, "accelerator_config", accelerator_config)
         if accelerator_type and not isinstance(accelerator_type, str):
             raise TypeError("Expected argument 'accelerator_type' to be a str")
         pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -83,6 +86,14 @@ class GetNodeResult:
         if tags and not isinstance(tags, list):
             raise TypeError("Expected argument 'tags' to be a list")
         pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> 'outputs.AcceleratorConfigResponse':
+        """
+        The AccleratorConfig for the TPU Node.
+        """
+        return pulumi.get(self, "accelerator_config")
 
     @property
     @pulumi.getter(name="acceleratorType")
@@ -259,6 +270,7 @@ class AwaitableGetNodeResult(GetNodeResult):
         if False:
             yield self
         return GetNodeResult(
+            accelerator_config=self.accelerator_config,
             accelerator_type=self.accelerator_type,
             api_version=self.api_version,
             cidr_block=self.cidr_block,
@@ -297,6 +309,7 @@ def get_node(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:tpu/v2alpha1:getNode', __args__, opts=opts, typ=GetNodeResult).value
 
     return AwaitableGetNodeResult(
+        accelerator_config=__ret__.accelerator_config,
         accelerator_type=__ret__.accelerator_type,
         api_version=__ret__.api_version,
         cidr_block=__ret__.cidr_block,

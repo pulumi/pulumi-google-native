@@ -29,6 +29,7 @@ __all__ = [
     'GoogleCloudContentwarehouseV1MapPropertyArgs',
     'GoogleCloudContentwarehouseV1MapTypeOptionsArgs',
     'GoogleCloudContentwarehouseV1PropertyArrayArgs',
+    'GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs',
     'GoogleCloudContentwarehouseV1PropertyDefinitionArgs',
     'GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs',
     'GoogleCloudContentwarehouseV1PropertyArgs',
@@ -629,6 +630,46 @@ class GoogleCloudContentwarehouseV1PropertyArrayArgs:
 
 
 @pulumi.input_type
+class GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 processor_type: Optional[pulumi.Input[str]] = None):
+        """
+        The schema source information.
+        :param pulumi.Input[str] name: The schema name in the source.
+        :param pulumi.Input[str] processor_type: The Doc AI processor type name.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if processor_type is not None:
+            pulumi.set(__self__, "processor_type", processor_type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The schema name in the source.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="processorType")
+    def processor_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Doc AI processor type name.
+        """
+        return pulumi.get(self, "processor_type")
+
+    @processor_type.setter
+    def processor_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "processor_type", value)
+
+
+@pulumi.input_type
 class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
@@ -645,6 +686,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
                  map_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1MapTypeOptionsArgs']] = None,
                  property_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs']] = None,
                  retrieval_importance: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance']] = None,
+                 schema_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs']]]] = None,
                  text_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1TextTypeOptionsArgs']] = None,
                  timestamp_type_options: Optional[pulumi.Input['GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs']] = None):
         """
@@ -663,6 +705,7 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
         :param pulumi.Input['GoogleCloudContentwarehouseV1MapTypeOptionsArgs'] map_type_options: Map property.
         :param pulumi.Input['GoogleCloudContentwarehouseV1PropertyTypeOptionsArgs'] property_type_options: Nested structured data property.
         :param pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance'] retrieval_importance: The retrieval importance of the property during search.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs']]] schema_sources: The mapping information between this property to another schema source.
         :param pulumi.Input['GoogleCloudContentwarehouseV1TextTypeOptionsArgs'] text_type_options: Text/string property.
         :param pulumi.Input['GoogleCloudContentwarehouseV1TimestampTypeOptionsArgs'] timestamp_type_options: Timestamp property. It is not supported by CMEK compliant deployment.
         """
@@ -693,6 +736,8 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
             pulumi.set(__self__, "property_type_options", property_type_options)
         if retrieval_importance is not None:
             pulumi.set(__self__, "retrieval_importance", retrieval_importance)
+        if schema_sources is not None:
+            pulumi.set(__self__, "schema_sources", schema_sources)
         if text_type_options is not None:
             pulumi.set(__self__, "text_type_options", text_type_options)
         if timestamp_type_options is not None:
@@ -865,6 +910,18 @@ class GoogleCloudContentwarehouseV1PropertyDefinitionArgs:
     @retrieval_importance.setter
     def retrieval_importance(self, value: Optional[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionRetrievalImportance']]):
         pulumi.set(self, "retrieval_importance", value)
+
+    @property
+    @pulumi.getter(name="schemaSources")
+    def schema_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs']]]]:
+        """
+        The mapping information between this property to another schema source.
+        """
+        return pulumi.get(self, "schema_sources")
+
+    @schema_sources.setter
+    def schema_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudContentwarehouseV1PropertyDefinitionSchemaSourceArgs']]]]):
+        pulumi.set(self, "schema_sources", value)
 
     @property
     @pulumi.getter(name="textTypeOptions")
@@ -3588,9 +3645,9 @@ class GoogleCloudDocumentaiV1DocumentRevisionArgs:
         """
         Contains past or forward revisions of this document.
         :param pulumi.Input[str] agent: If the change was made by a person specify the name or id of that person.
-        :param pulumi.Input[str] create_time: The time that the revision was created.
+        :param pulumi.Input[str] create_time: The time that the revision was created, internally generated by doc proto storage at the time of create.
         :param pulumi.Input['GoogleCloudDocumentaiV1DocumentRevisionHumanReviewArgs'] human_review: Human Review information of this revision.
-        :param pulumi.Input[str] id: Id of the revision. Unique within the context of the document.
+        :param pulumi.Input[str] id: Id of the revision, internally generated by doc proto storage. Unique within the context of the document.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] parent: The revisions that this revision is based on. This can include one or more parent (when documents are merged.) This field represents the index into the `revisions` field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] parent_ids: The revisions that this revision is based on. Must include all the ids that have anything to do with this revision - eg. there are `provenance.parent.revision` fields that index into this field.
         :param pulumi.Input[str] processor: If the annotation was made by processor identify the processor by its resource name.
@@ -3626,7 +3683,7 @@ class GoogleCloudDocumentaiV1DocumentRevisionArgs:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        The time that the revision was created.
+        The time that the revision was created, internally generated by doc proto storage at the time of create.
         """
         return pulumi.get(self, "create_time")
 
@@ -3650,7 +3707,7 @@ class GoogleCloudDocumentaiV1DocumentRevisionArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
         """
-        Id of the revision. Unique within the context of the document.
+        Id of the revision, internally generated by doc proto storage. Unique within the context of the document.
         """
         return pulumi.get(self, "id")
 
@@ -4432,7 +4489,7 @@ class GoogleIamV1BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['GoogleTypeExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
@@ -4458,7 +4515,7 @@ class GoogleIamV1BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
