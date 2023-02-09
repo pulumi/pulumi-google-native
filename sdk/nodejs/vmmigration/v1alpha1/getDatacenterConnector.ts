@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single DatacenterConnector.
  */
 export function getDatacenterConnector(args: GetDatacenterConnectorArgs, opts?: pulumi.InvokeOptions): Promise<GetDatacenterConnectorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getDatacenterConnector", {
         "datacenterConnectorId": args.datacenterConnectorId,
         "location": args.location,
@@ -89,9 +86,11 @@ export interface GetDatacenterConnectorResult {
      */
     readonly version: string;
 }
-
+/**
+ * Gets details of a single DatacenterConnector.
+ */
 export function getDatacenterConnectorOutput(args: GetDatacenterConnectorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatacenterConnectorResult> {
-    return pulumi.output(args).apply(a => getDatacenterConnector(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatacenterConnector(a, opts))
 }
 
 export interface GetDatacenterConnectorOutputArgs {

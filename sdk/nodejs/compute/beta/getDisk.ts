@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getDisk", {
         "disk": args.disk,
         "project": args.project,
@@ -211,9 +208,11 @@ export interface GetDiskResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ */
 export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
-    return pulumi.output(args).apply(a => getDisk(a, opts))
+    return pulumi.output(args).apply((a: any) => getDisk(a, opts))
 }
 
 export interface GetDiskOutputArgs {

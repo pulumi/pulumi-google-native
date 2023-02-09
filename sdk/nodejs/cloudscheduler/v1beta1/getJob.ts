@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a job.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudscheduler/v1beta1:getJob", {
         "jobId": args.jobId,
         "location": args.location,
@@ -91,9 +88,11 @@ export interface GetJobResult {
      */
     readonly userUpdateTime: string;
 }
-
+/**
+ * Gets a job.
+ */
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    return pulumi.output(args).apply(a => getJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getJob(a, opts))
 }
 
 export interface GetJobOutputArgs {

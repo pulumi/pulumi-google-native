@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets information about a database.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firestore/v1:getDatabase", {
         "databaseId": args.databaseId,
         "project": args.project,
@@ -54,9 +51,11 @@ export interface GetDatabaseResult {
      */
     readonly type: string;
 }
-
+/**
+ * Gets information about a database.
+ */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
-    return pulumi.output(args).apply(a => getDatabase(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabase(a, opts))
 }
 
 export interface GetDatabaseOutputArgs {

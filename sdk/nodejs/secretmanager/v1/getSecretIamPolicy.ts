@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
  */
 export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSecretIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:secretmanager/v1:getSecretIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -47,9 +44,11 @@ export interface GetSecretIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
+ */
 export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretIamPolicyResult> {
-    return pulumi.output(args).apply(a => getSecretIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getSecretIamPolicy(a, opts))
 }
 
 export interface GetSecretIamPolicyOutputArgs {

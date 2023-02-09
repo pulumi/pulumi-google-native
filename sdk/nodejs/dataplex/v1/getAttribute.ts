@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a Data Attribute resource.
  */
 export function getAttribute(args: GetAttributeArgs, opts?: pulumi.InvokeOptions): Promise<GetAttributeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getAttribute", {
         "attributeId": args.attributeId,
         "dataTaxonomyId": args.dataTaxonomyId,
@@ -81,9 +78,11 @@ export interface GetAttributeResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a Data Attribute resource.
+ */
 export function getAttributeOutput(args: GetAttributeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttributeResult> {
-    return pulumi.output(args).apply(a => getAttribute(a, opts))
+    return pulumi.output(args).apply((a: any) => getAttribute(a, opts))
 }
 
 export interface GetAttributeOutputArgs {

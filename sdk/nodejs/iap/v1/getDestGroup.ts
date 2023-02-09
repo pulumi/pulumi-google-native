@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves an existing TunnelDestGroup.
  */
 export function getDestGroup(args: GetDestGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetDestGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iap/v1:getDestGroup", {
         "destGroupId": args.destGroupId,
         "location": args.location,
@@ -40,9 +37,11 @@ export interface GetDestGroupResult {
      */
     readonly name: string;
 }
-
+/**
+ * Retrieves an existing TunnelDestGroup.
+ */
 export function getDestGroupOutput(args: GetDestGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDestGroupResult> {
-    return pulumi.output(args).apply(a => getDestGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getDestGroup(a, opts))
 }
 
 export interface GetDestGroupOutputArgs {

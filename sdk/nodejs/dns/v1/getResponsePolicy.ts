@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches the representation of an existing Response Policy.
  */
 export function getResponsePolicy(args: GetResponsePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetResponsePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dns/v1:getResponsePolicy", {
         "clientOperationId": args.clientOperationId,
         "project": args.project,
@@ -52,9 +49,11 @@ export interface GetResponsePolicyResult {
      */
     readonly responsePolicyName: string;
 }
-
+/**
+ * Fetches the representation of an existing Response Policy.
+ */
 export function getResponsePolicyOutput(args: GetResponsePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResponsePolicyResult> {
-    return pulumi.output(args).apply(a => getResponsePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getResponsePolicy(a, opts))
 }
 
 export interface GetResponsePolicyOutputArgs {

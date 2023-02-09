@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified User data mapping.
  */
 export function getUserDataMapping(args: GetUserDataMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetUserDataMappingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getUserDataMapping", {
         "consentStoreId": args.consentStoreId,
         "datasetId": args.datasetId,
@@ -59,9 +56,11 @@ export interface GetUserDataMappingResult {
      */
     readonly userId: string;
 }
-
+/**
+ * Gets the specified User data mapping.
+ */
 export function getUserDataMappingOutput(args: GetUserDataMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserDataMappingResult> {
-    return pulumi.output(args).apply(a => getUserDataMapping(a, opts))
+    return pulumi.output(args).apply((a: any) => getUserDataMapping(a, opts))
 }
 
 export interface GetUserDataMappingOutputArgs {

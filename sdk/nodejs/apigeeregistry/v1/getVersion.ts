@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns a specified version.
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigeeregistry/v1:getVersion", {
         "apiId": args.apiId,
         "location": args.location,
@@ -66,9 +63,11 @@ export interface GetVersionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns a specified version.
+ */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(args).apply(a => getVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getVersion(a, opts))
 }
 
 export interface GetVersionOutputArgs {

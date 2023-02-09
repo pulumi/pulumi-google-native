@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Peering.
  */
 export function getPeering(args: GetPeeringArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1beta1:getPeering", {
         "peeringId": args.peeringId,
         "project": args.project,
@@ -58,9 +55,11 @@ export interface GetPeeringResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Peering.
+ */
 export function getPeeringOutput(args: GetPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringResult> {
-    return pulumi.output(args).apply(a => getPeering(a, opts))
+    return pulumi.output(args).apply((a: any) => getPeering(a, opts))
 }
 
 export interface GetPeeringOutputArgs {

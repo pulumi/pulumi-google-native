@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
  */
 export function getStep(args: GetStepArgs, opts?: pulumi.InvokeOptions): Promise<GetStepResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:toolresults/v1beta3:getStep", {
         "executionId": args.executionId,
         "historyId": args.historyId,
@@ -93,9 +90,11 @@ export interface GetStepResult {
      */
     readonly toolExecutionStep: outputs.toolresults.v1beta3.ToolExecutionStepResponse;
 }
-
+/**
+ * Gets a Step. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Step does not exist
+ */
 export function getStepOutput(args: GetStepOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStepResult> {
-    return pulumi.output(args).apply(a => getStep(a, opts))
+    return pulumi.output(args).apply((a: any) => getStep(a, opts))
 }
 
 export interface GetStepOutputArgs {

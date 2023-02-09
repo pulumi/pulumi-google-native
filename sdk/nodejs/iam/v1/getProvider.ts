@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an individual WorkloadIdentityPoolProvider.
  */
 export function getProvider(args: GetProviderArgs, opts?: pulumi.InvokeOptions): Promise<GetProviderResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iam/v1:getProvider", {
         "location": args.location,
         "project": args.project,
@@ -73,9 +70,11 @@ export interface GetProviderResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets an individual WorkloadIdentityPoolProvider.
+ */
 export function getProviderOutput(args: GetProviderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProviderResult> {
-    return pulumi.output(args).apply(a => getProvider(a, opts))
+    return pulumi.output(args).apply((a: any) => getProvider(a, opts))
 }
 
 export interface GetProviderOutputArgs {

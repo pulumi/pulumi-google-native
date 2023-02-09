@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of schedule
  */
 export function getSchedule(args: GetScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetScheduleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:notebooks/v1:getSchedule", {
         "location": args.location,
         "project": args.project,
@@ -68,9 +65,11 @@ export interface GetScheduleResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of schedule
+ */
 export function getScheduleOutput(args: GetScheduleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScheduleResult> {
-    return pulumi.output(args).apply(a => getSchedule(a, opts))
+    return pulumi.output(args).apply((a: any) => getSchedule(a, opts))
 }
 
 export interface GetScheduleOutputArgs {

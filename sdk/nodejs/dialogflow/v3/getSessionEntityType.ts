@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified session entity type.
  */
 export function getSessionEntityType(args: GetSessionEntityTypeArgs, opts?: pulumi.InvokeOptions): Promise<GetSessionEntityTypeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getSessionEntityType", {
         "agentId": args.agentId,
         "entityTypeId": args.entityTypeId,
@@ -49,9 +46,11 @@ export interface GetSessionEntityTypeResult {
      */
     readonly name: string;
 }
-
+/**
+ * Retrieves the specified session entity type.
+ */
 export function getSessionEntityTypeOutput(args: GetSessionEntityTypeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSessionEntityTypeResult> {
-    return pulumi.output(args).apply(a => getSessionEntityType(a, opts))
+    return pulumi.output(args).apply((a: any) => getSessionEntityType(a, opts))
 }
 
 export interface GetSessionEntityTypeOutputArgs {

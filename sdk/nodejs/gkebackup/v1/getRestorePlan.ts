@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve the details of a single RestorePlan.
  */
 export function getRestorePlan(args: GetRestorePlanArgs, opts?: pulumi.InvokeOptions): Promise<GetRestorePlanResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkebackup/v1:getRestorePlan", {
         "location": args.location,
         "project": args.project,
@@ -71,9 +68,11 @@ export interface GetRestorePlanResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieve the details of a single RestorePlan.
+ */
 export function getRestorePlanOutput(args: GetRestorePlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePlanResult> {
-    return pulumi.output(args).apply(a => getRestorePlan(a, opts))
+    return pulumi.output(args).apply((a: any) => getRestorePlan(a, opts))
 }
 
 export interface GetRestorePlanOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an EntryGroup.
  */
 export function getEntryGroup(args: GetEntryGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetEntryGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datacatalog/v1beta1:getEntryGroup", {
         "entryGroupId": args.entryGroupId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetEntryGroupResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets an EntryGroup.
+ */
 export function getEntryGroupOutput(args: GetEntryGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryGroupResult> {
-    return pulumi.output(args).apply(a => getEntryGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getEntryGroup(a, opts))
 }
 
 export interface GetEntryGroupOutputArgs {

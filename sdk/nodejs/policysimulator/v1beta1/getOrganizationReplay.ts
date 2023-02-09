@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Replay. Each `Replay` is available for at least 7 days.
  */
 export function getOrganizationReplay(args: GetOrganizationReplayArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationReplayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:policysimulator/v1beta1:getOrganizationReplay", {
         "location": args.location,
         "organizationId": args.organizationId,
@@ -47,9 +44,11 @@ export interface GetOrganizationReplayResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets the specified Replay. Each `Replay` is available for at least 7 days.
+ */
 export function getOrganizationReplayOutput(args: GetOrganizationReplayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationReplayResult> {
-    return pulumi.output(args).apply(a => getOrganizationReplay(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationReplay(a, opts))
 }
 
 export interface GetOrganizationReplayOutputArgs {

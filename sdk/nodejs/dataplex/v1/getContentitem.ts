@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a content resource.
  */
 export function getContentitem(args: GetContentitemArgs, opts?: pulumi.InvokeOptions): Promise<GetContentitemResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getContentitem", {
         "contentitemId": args.contentitemId,
         "lakeId": args.lakeId,
@@ -75,9 +72,11 @@ export interface GetContentitemResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Get a content resource.
+ */
 export function getContentitemOutput(args: GetContentitemOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContentitemResult> {
-    return pulumi.output(args).apply(a => getContentitem(a, opts))
+    return pulumi.output(args).apply((a: any) => getContentitem(a, opts))
 }
 
 export interface GetContentitemOutputArgs {

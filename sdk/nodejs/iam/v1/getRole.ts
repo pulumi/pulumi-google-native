@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the definition of a Role.
  */
 export function getRole(args: GetRoleArgs, opts?: pulumi.InvokeOptions): Promise<GetRoleResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iam/v1:getRole", {
         "project": args.project,
         "roleId": args.roleId,
@@ -54,9 +51,11 @@ export interface GetRoleResult {
      */
     readonly title: string;
 }
-
+/**
+ * Gets the definition of a Role.
+ */
 export function getRoleOutput(args: GetRoleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRoleResult> {
-    return pulumi.output(args).apply(a => getRole(a, opts))
+    return pulumi.output(args).apply((a: any) => getRole(a, opts))
 }
 
 export interface GetRoleOutputArgs {

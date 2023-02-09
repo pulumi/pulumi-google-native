@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an authorized orgs desc based on the resource name.
  */
 export function getAuthorizedOrgsDesc(args: GetAuthorizedOrgsDescArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizedOrgsDescResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:accesscontextmanager/v1:getAuthorizedOrgsDesc", {
         "accessPolicyId": args.accessPolicyId,
         "authorizedOrgsDescId": args.authorizedOrgsDescId,
@@ -46,9 +43,11 @@ export interface GetAuthorizedOrgsDescResult {
      */
     readonly orgs: string[];
 }
-
+/**
+ * Gets an authorized orgs desc based on the resource name.
+ */
 export function getAuthorizedOrgsDescOutput(args: GetAuthorizedOrgsDescOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizedOrgsDescResult> {
-    return pulumi.output(args).apply(a => getAuthorizedOrgsDesc(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuthorizedOrgsDesc(a, opts))
 }
 
 export interface GetAuthorizedOrgsDescOutputArgs {

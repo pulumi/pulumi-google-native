@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM access control policy for a function. Returns an empty policy if the function exists and does not have a policy set.
  */
 export function getFunctionIamPolicy(args: GetFunctionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFunctionIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudfunctions/v1:getFunctionIamPolicy", {
         "functionId": args.functionId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetFunctionIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the IAM access control policy for a function. Returns an empty policy if the function exists and does not have a policy set.
+ */
 export function getFunctionIamPolicyOutput(args: GetFunctionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFunctionIamPolicyResult> {
-    return pulumi.output(args).apply(a => getFunctionIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFunctionIamPolicy(a, opts))
 }
 
 export interface GetFunctionIamPolicyOutputArgs {

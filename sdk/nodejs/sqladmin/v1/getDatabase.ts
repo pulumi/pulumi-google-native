@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a resource containing information about a database inside a Cloud SQL instance.
  */
 export function getDatabase(args: GetDatabaseArgs, opts?: pulumi.InvokeOptions): Promise<GetDatabaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sqladmin/v1:getDatabase", {
         "database": args.database,
         "instance": args.instance,
@@ -66,9 +63,11 @@ export interface GetDatabaseResult {
     readonly selfLink: string;
     readonly sqlserverDatabaseDetails: outputs.sqladmin.v1.SqlServerDatabaseDetailsResponse;
 }
-
+/**
+ * Retrieves a resource containing information about a database inside a Cloud SQL instance.
+ */
 export function getDatabaseOutput(args: GetDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseResult> {
-    return pulumi.output(args).apply(a => getDatabase(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatabase(a, opts))
 }
 
 export interface GetDatabaseOutputArgs {

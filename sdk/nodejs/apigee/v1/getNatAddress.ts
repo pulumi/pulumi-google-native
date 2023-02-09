@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
  */
 export function getNatAddress(args: GetNatAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetNatAddressResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getNatAddress", {
         "instanceId": args.instanceId,
         "natAddressId": args.natAddressId,
@@ -40,9 +37,11 @@ export interface GetNatAddressResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
+ */
 export function getNatAddressOutput(args: GetNatAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatAddressResult> {
-    return pulumi.output(args).apply(a => getNatAddress(a, opts))
+    return pulumi.output(args).apply((a: any) => getNatAddress(a, opts))
 }
 
 export interface GetNatAddressOutputArgs {

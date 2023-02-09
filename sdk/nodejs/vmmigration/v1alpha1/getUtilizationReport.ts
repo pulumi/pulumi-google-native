@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a single Utilization Report.
  */
 export function getUtilizationReport(args: GetUtilizationReportArgs, opts?: pulumi.InvokeOptions): Promise<GetUtilizationReportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getUtilizationReport", {
         "location": args.location,
         "project": args.project,
@@ -79,9 +76,11 @@ export interface GetUtilizationReportResult {
      */
     readonly vmsCount: number;
 }
-
+/**
+ * Gets a single Utilization Report.
+ */
 export function getUtilizationReportOutput(args: GetUtilizationReportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUtilizationReportResult> {
-    return pulumi.output(args).apply(a => getUtilizationReport(a, opts))
+    return pulumi.output(args).apply((a: any) => getUtilizationReport(a, opts))
 }
 
 export interface GetUtilizationReportOutputArgs {

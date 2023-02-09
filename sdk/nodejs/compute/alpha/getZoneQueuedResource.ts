@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified QueuedResource resource.
  */
 export function getZoneQueuedResource(args: GetZoneQueuedResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneQueuedResourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getZoneQueuedResource", {
         "project": args.project,
         "queuedResource": args.queuedResource,
@@ -75,9 +72,11 @@ export interface GetZoneQueuedResourceResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified QueuedResource resource.
+ */
 export function getZoneQueuedResourceOutput(args: GetZoneQueuedResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneQueuedResourceResult> {
-    return pulumi.output(args).apply(a => getZoneQueuedResource(a, opts))
+    return pulumi.output(args).apply((a: any) => getZoneQueuedResource(a, opts))
 }
 
 export interface GetZoneQueuedResourceOutputArgs {

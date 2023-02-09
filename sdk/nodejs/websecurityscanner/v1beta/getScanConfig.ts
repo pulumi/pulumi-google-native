@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a ScanConfig.
  */
 export function getScanConfig(args: GetScanConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetScanConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:websecurityscanner/v1beta:getScanConfig", {
         "project": args.project,
         "scanConfigId": args.scanConfigId,
@@ -89,9 +86,11 @@ export interface GetScanConfigResult {
      */
     readonly userAgent: string;
 }
-
+/**
+ * Gets a ScanConfig.
+ */
 export function getScanConfigOutput(args: GetScanConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScanConfigResult> {
-    return pulumi.output(args).apply(a => getScanConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getScanConfig(a, opts))
 }
 
 export interface GetScanConfigOutputArgs {

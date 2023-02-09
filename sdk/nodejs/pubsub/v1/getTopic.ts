@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the configuration of a topic.
  */
 export function getTopic(args: GetTopicArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:pubsub/v1:getTopic", {
         "project": args.project,
         "topicId": args.topicId,
@@ -57,9 +54,11 @@ export interface GetTopicResult {
      */
     readonly schemaSettings: outputs.pubsub.v1.SchemaSettingsResponse;
 }
-
+/**
+ * Gets the configuration of a topic.
+ */
 export function getTopicOutput(args: GetTopicOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicResult> {
-    return pulumi.output(args).apply(a => getTopic(a, opts))
+    return pulumi.output(args).apply((a: any) => getTopic(a, opts))
 }
 
 export interface GetTopicOutputArgs {

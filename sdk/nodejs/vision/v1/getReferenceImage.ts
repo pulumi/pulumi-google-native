@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
  */
 export function getReferenceImage(args: GetReferenceImageArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceImageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vision/v1:getReferenceImage", {
         "location": args.location,
         "productId": args.productId,
@@ -45,9 +42,11 @@ export interface GetReferenceImageResult {
      */
     readonly uri: string;
 }
-
+/**
+ * Gets information associated with a ReferenceImage. Possible errors: * Returns NOT_FOUND if the specified image does not exist.
+ */
 export function getReferenceImageOutput(args: GetReferenceImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceImageResult> {
-    return pulumi.output(args).apply(a => getReferenceImage(a, opts))
+    return pulumi.output(args).apply((a: any) => getReferenceImage(a, opts))
 }
 
 export interface GetReferenceImageOutputArgs {

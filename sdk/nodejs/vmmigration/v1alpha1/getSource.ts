@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Source.
  */
 export function getSource(args: GetSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getSource", {
         "location": args.location,
         "project": args.project,
@@ -63,9 +60,11 @@ export interface GetSourceResult {
      */
     readonly vmware: outputs.vmmigration.v1alpha1.VmwareSourceDetailsResponse;
 }
-
+/**
+ * Gets details of a single Source.
+ */
 export function getSourceOutput(args: GetSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceResult> {
-    return pulumi.output(args).apply(a => getSource(a, opts))
+    return pulumi.output(args).apply((a: any) => getSource(a, opts))
 }
 
 export interface GetSourceOutputArgs {

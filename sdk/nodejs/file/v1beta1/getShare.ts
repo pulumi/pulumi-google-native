@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a specific share.
  */
 export function getShare(args: GetShareArgs, opts?: pulumi.InvokeOptions): Promise<GetShareResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:file/v1beta1:getShare", {
         "instanceId": args.instanceId,
         "location": args.location,
@@ -65,9 +62,11 @@ export interface GetShareResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets the details of a specific share.
+ */
 export function getShareOutput(args: GetShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetShareResult> {
-    return pulumi.output(args).apply(a => getShare(a, opts))
+    return pulumi.output(args).apply((a: any) => getShare(a, opts))
 }
 
 export interface GetShareOutputArgs {

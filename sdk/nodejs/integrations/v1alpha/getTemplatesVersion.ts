@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns an IntegrationTemplateVersion in the specified project.
  */
 export function getTemplatesVersion(args: GetTemplatesVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplatesVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:integrations/v1alpha:getTemplatesVersion", {
         "integrationtemplateId": args.integrationtemplateId,
         "location": args.location,
@@ -91,9 +88,11 @@ export interface GetTemplatesVersionResult {
      */
     readonly userLabel: string;
 }
-
+/**
+ * Returns an IntegrationTemplateVersion in the specified project.
+ */
 export function getTemplatesVersionOutput(args: GetTemplatesVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplatesVersionResult> {
-    return pulumi.output(args).apply(a => getTemplatesVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getTemplatesVersion(a, opts))
 }
 
 export interface GetTemplatesVersionOutputArgs {

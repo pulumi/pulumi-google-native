@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
  */
 export function getEntry(args: GetEntryArgs, opts?: pulumi.InvokeOptions): Promise<GetEntryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getEntry", {
         "apiId": args.apiId,
         "entryId": args.entryId,
@@ -38,9 +35,11 @@ export interface GetEntryResult {
      */
     readonly value: string;
 }
-
+/**
+ * Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+ */
 export function getEntryOutput(args: GetEntryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryResult> {
-    return pulumi.output(args).apply(a => getEntry(a, opts))
+    return pulumi.output(args).apply((a: any) => getEntry(a, opts))
 }
 
 export interface GetEntryOutputArgs {

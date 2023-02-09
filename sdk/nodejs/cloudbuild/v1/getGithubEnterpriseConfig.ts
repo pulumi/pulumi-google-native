@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve a GitHubEnterpriseConfig.
  */
 export function getGithubEnterpriseConfig(args: GetGithubEnterpriseConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetGithubEnterpriseConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getGithubEnterpriseConfig", {
         "configId": args.configId,
         "githubEnterpriseConfigId": args.githubEnterpriseConfigId,
@@ -71,9 +68,11 @@ export interface GetGithubEnterpriseConfigResult {
      */
     readonly webhookKey: string;
 }
-
+/**
+ * Retrieve a GitHubEnterpriseConfig.
+ */
 export function getGithubEnterpriseConfigOutput(args: GetGithubEnterpriseConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGithubEnterpriseConfigResult> {
-    return pulumi.output(args).apply(a => getGithubEnterpriseConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getGithubEnterpriseConfig(a, opts))
 }
 
 export interface GetGithubEnterpriseConfigOutputArgs {
