@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. Authorization requires `spanner.instances.getIamPolicy` on resource.
  */
 export function getInstanceIamPolicy(args: GetInstanceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getInstanceIamPolicy", {
         "instanceId": args.instanceId,
         "project": args.project,
@@ -41,9 +38,11 @@ export interface GetInstanceIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for an instance resource. Returns an empty policy if an instance exists but does not have a policy set. Authorization requires `spanner.instances.getIamPolicy` on resource.
+ */
 export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceIamPolicyResult> {
-    return pulumi.output(args).apply(a => getInstanceIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceIamPolicy(a, opts))
 }
 
 export interface GetInstanceIamPolicyOutputArgs {

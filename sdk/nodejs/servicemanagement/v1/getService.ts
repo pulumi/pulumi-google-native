@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a managed service. Authentication is required unless the service is public.
  */
 export function getService(args: GetServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicemanagement/v1:getService", {
         "serviceName": args.serviceName,
     }, opts);
@@ -32,9 +29,11 @@ export interface GetServiceResult {
      */
     readonly serviceName: string;
 }
-
+/**
+ * Gets a managed service. Authentication is required unless the service is public.
+ */
 export function getServiceOutput(args: GetServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceResult> {
-    return pulumi.output(args).apply(a => getService(a, opts))
+    return pulumi.output(args).apply((a: any) => getService(a, opts))
 }
 
 export interface GetServiceOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a `Ruleset` by name including the full `Source` contents.
  */
 export function getRuleset(args: GetRulesetArgs, opts?: pulumi.InvokeOptions): Promise<GetRulesetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebaserules/v1:getRuleset", {
         "project": args.project,
         "rulesetId": args.rulesetId,
@@ -45,9 +42,11 @@ export interface GetRulesetResult {
      */
     readonly source: outputs.firebaserules.v1.SourceResponse;
 }
-
+/**
+ * Get a `Ruleset` by name including the full `Source` contents.
+ */
 export function getRulesetOutput(args: GetRulesetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRulesetResult> {
-    return pulumi.output(args).apply(a => getRuleset(a, opts))
+    return pulumi.output(args).apply((a: any) => getRuleset(a, opts))
 }
 
 export interface GetRulesetOutputArgs {

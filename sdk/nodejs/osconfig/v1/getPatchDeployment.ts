@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get an OS Config patch deployment.
  */
 export function getPatchDeployment(args: GetPatchDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetPatchDeploymentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:osconfig/v1:getPatchDeployment", {
         "patchDeploymentId": args.patchDeploymentId,
         "project": args.project,
@@ -77,9 +74,11 @@ export interface GetPatchDeploymentResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Get an OS Config patch deployment.
+ */
 export function getPatchDeploymentOutput(args: GetPatchDeploymentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPatchDeploymentResult> {
-    return pulumi.output(args).apply(a => getPatchDeployment(a, opts))
+    return pulumi.output(args).apply((a: any) => getPatchDeployment(a, opts))
 }
 
 export interface GetPatchDeploymentOutputArgs {

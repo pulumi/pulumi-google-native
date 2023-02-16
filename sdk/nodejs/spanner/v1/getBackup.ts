@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets metadata on a pending or completed Backup.
  */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getBackup", {
         "backupId": args.backupId,
         "instanceId": args.instanceId,
@@ -79,9 +76,11 @@ export interface GetBackupResult {
      */
     readonly versionTime: string;
 }
-
+/**
+ * Gets metadata on a pending or completed Backup.
+ */
 export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupResult> {
-    return pulumi.output(args).apply(a => getBackup(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackup(a, opts))
 }
 
 export interface GetBackupOutputArgs {

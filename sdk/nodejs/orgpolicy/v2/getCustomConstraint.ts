@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
  */
 export function getCustomConstraint(args: GetCustomConstraintArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomConstraintResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:orgpolicy/v2:getCustomConstraint", {
         "customConstraintId": args.customConstraintId,
         "organizationId": args.organizationId,
@@ -58,9 +55,11 @@ export interface GetCustomConstraintResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
+ */
 export function getCustomConstraintOutput(args: GetCustomConstraintOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomConstraintResult> {
-    return pulumi.output(args).apply(a => getCustomConstraint(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomConstraint(a, opts))
 }
 
 export interface GetCustomConstraintOutputArgs {

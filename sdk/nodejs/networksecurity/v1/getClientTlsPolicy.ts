@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ClientTlsPolicy.
  */
 export function getClientTlsPolicy(args: GetClientTlsPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClientTlsPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networksecurity/v1:getClientTlsPolicy", {
         "clientTlsPolicyId": args.clientTlsPolicyId,
         "location": args.location,
@@ -63,9 +60,11 @@ export interface GetClientTlsPolicyResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single ClientTlsPolicy.
+ */
 export function getClientTlsPolicyOutput(args: GetClientTlsPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientTlsPolicyResult> {
-    return pulumi.output(args).apply(a => getClientTlsPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getClientTlsPolicy(a, opts))
 }
 
 export interface GetClientTlsPolicyOutputArgs {

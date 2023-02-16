@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified subnetwork. Gets a list of available subnetworks list() request.
  */
 export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getSubnetwork", {
         "project": args.project,
         "region": args.region,
@@ -123,9 +120,11 @@ export interface GetSubnetworkResult {
      */
     readonly state: string;
 }
-
+/**
+ * Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+ */
 export function getSubnetworkOutput(args: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
-    return pulumi.output(args).apply(a => getSubnetwork(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubnetwork(a, opts))
 }
 
 export interface GetSubnetworkOutputArgs {

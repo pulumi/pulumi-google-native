@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Api.
  */
 export function getApi(args: GetApiArgs, opts?: pulumi.InvokeOptions): Promise<GetApiResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigateway/v1:getApi", {
         "apiId": args.apiId,
         "location": args.location,
@@ -56,9 +53,11 @@ export interface GetApiResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Api.
+ */
 export function getApiOutput(args: GetApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
-    return pulumi.output(args).apply(a => getApi(a, opts))
+    return pulumi.output(args).apply((a: any) => getApi(a, opts))
 }
 
 export interface GetApiOutputArgs {

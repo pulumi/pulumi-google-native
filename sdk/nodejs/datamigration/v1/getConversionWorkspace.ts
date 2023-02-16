@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single conversion workspace.
  */
 export function getConversionWorkspace(args: GetConversionWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetConversionWorkspaceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datamigration/v1:getConversionWorkspace", {
         "conversionWorkspaceId": args.conversionWorkspaceId,
         "location": args.location,
@@ -71,9 +68,11 @@ export interface GetConversionWorkspaceResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single conversion workspace.
+ */
 export function getConversionWorkspaceOutput(args: GetConversionWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversionWorkspaceResult> {
-    return pulumi.output(args).apply(a => getConversionWorkspace(a, opts))
+    return pulumi.output(args).apply((a: any) => getConversionWorkspace(a, opts))
 }
 
 export interface GetConversionWorkspaceOutputArgs {

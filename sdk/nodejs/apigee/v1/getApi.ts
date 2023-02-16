@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an API proxy including a list of existing revisions.
  */
 export function getApi(args: GetApiArgs, opts?: pulumi.InvokeOptions): Promise<GetApiResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getApi", {
         "apiId": args.apiId,
         "organizationId": args.organizationId,
@@ -57,9 +54,11 @@ export interface GetApiResult {
      */
     readonly revision: string[];
 }
-
+/**
+ * Gets an API proxy including a list of existing revisions.
+ */
 export function getApiOutput(args: GetApiOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiResult> {
-    return pulumi.output(args).apply(a => getApi(a, opts))
+    return pulumi.output(args).apply((a: any) => getApi(a, opts))
 }
 
 export interface GetApiOutputArgs {

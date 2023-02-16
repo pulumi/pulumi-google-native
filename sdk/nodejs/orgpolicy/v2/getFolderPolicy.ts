@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
  */
 export function getFolderPolicy(args: GetFolderPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:orgpolicy/v2:getFolderPolicy", {
         "folderId": args.folderId,
         "policyId": args.policyId,
@@ -47,9 +44,11 @@ export interface GetFolderPolicyResult {
      */
     readonly spec: outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecResponse;
 }
-
+/**
+ * Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+ */
 export function getFolderPolicyOutput(args: GetFolderPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderPolicyResult> {
-    return pulumi.output(args).apply(a => getFolderPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolderPolicy(a, opts))
 }
 
 export interface GetFolderPolicyOutputArgs {

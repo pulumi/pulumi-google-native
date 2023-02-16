@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified key.
  */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:recaptchaenterprise/v1:getKey", {
         "keyId": args.keyId,
         "project": args.project,
@@ -65,9 +62,11 @@ export interface GetKeyResult {
      */
     readonly webSettings: outputs.recaptchaenterprise.v1.GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse;
 }
-
+/**
+ * Returns the specified key.
+ */
 export function getKeyOutput(args: GetKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyResult> {
-    return pulumi.output(args).apply(a => getKey(a, opts))
+    return pulumi.output(args).apply((a: any) => getKey(a, opts))
 }
 
 export interface GetKeyOutputArgs {

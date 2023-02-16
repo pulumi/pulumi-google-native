@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the resource representation for a node group in a cluster.
  */
 export function getNodeGroup(args: GetNodeGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getNodeGroup", {
         "clusterId": args.clusterId,
         "nodeGroupId": args.nodeGroupId,
@@ -49,9 +46,11 @@ export interface GetNodeGroupResult {
      */
     readonly roles: string[];
 }
-
+/**
+ * Gets the resource representation for a node group in a cluster.
+ */
 export function getNodeGroupOutput(args: GetNodeGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupResult> {
-    return pulumi.output(args).apply(a => getNodeGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeGroup(a, opts))
 }
 
 export interface GetNodeGroupOutputArgs {

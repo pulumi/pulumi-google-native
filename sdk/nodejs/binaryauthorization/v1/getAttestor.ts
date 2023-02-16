@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
  */
 export function getAttestor(args: GetAttestorArgs, opts?: pulumi.InvokeOptions): Promise<GetAttestorResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:binaryauthorization/v1:getAttestor", {
         "attestorId": args.attestorId,
         "project": args.project,
@@ -49,9 +46,11 @@ export interface GetAttestorResult {
      */
     readonly userOwnedGrafeasNote: outputs.binaryauthorization.v1.UserOwnedGrafeasNoteResponse;
 }
-
+/**
+ * Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
+ */
 export function getAttestorOutput(args: GetAttestorOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorResult> {
-    return pulumi.output(args).apply(a => getAttestor(a, opts))
+    return pulumi.output(args).apply((a: any) => getAttestor(a, opts))
 }
 
 export interface GetAttestorOutputArgs {

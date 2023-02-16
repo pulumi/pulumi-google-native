@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a BigQuery export.
  */
 export function getOrganizationBigQueryExport(args: GetOrganizationBigQueryExportArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationBigQueryExportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getOrganizationBigQueryExport", {
         "bigQueryExportId": args.bigQueryExportId,
         "organizationId": args.organizationId,
@@ -58,9 +55,11 @@ export interface GetOrganizationBigQueryExportResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a BigQuery export.
+ */
 export function getOrganizationBigQueryExportOutput(args: GetOrganizationBigQueryExportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationBigQueryExportResult> {
-    return pulumi.output(args).apply(a => getOrganizationBigQueryExport(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationBigQueryExport(a, opts))
 }
 
 export interface GetOrganizationBigQueryExportOutputArgs {

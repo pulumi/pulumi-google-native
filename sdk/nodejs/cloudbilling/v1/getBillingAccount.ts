@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
  */
 export function getBillingAccount(args: GetBillingAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbilling/v1:getBillingAccount", {
         "billingAccountId": args.billingAccountId,
     }, opts);
@@ -40,9 +37,11 @@ export interface GetBillingAccountResult {
      */
     readonly open: boolean;
 }
-
+/**
+ * Gets information about a billing account. The current authenticated user must be a [viewer of the billing account](https://cloud.google.com/billing/docs/how-to/billing-access).
+ */
 export function getBillingAccountOutput(args: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
-    return pulumi.output(args).apply(a => getBillingAccount(a, opts))
+    return pulumi.output(args).apply((a: any) => getBillingAccount(a, opts))
 }
 
 export interface GetBillingAccountOutputArgs {

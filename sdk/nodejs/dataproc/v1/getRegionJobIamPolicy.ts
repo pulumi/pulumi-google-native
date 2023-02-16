@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRegionJobIamPolicy(args: GetRegionJobIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionJobIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getRegionJobIamPolicy", {
         "jobId": args.jobId,
         "project": args.project,
@@ -43,9 +40,11 @@ export interface GetRegionJobIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getRegionJobIamPolicyOutput(args: GetRegionJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionJobIamPolicyResult> {
-    return pulumi.output(args).apply(a => getRegionJobIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionJobIamPolicy(a, opts))
 }
 
 export interface GetRegionJobIamPolicyOutputArgs {

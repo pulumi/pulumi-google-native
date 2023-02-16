@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getAddressGroupIamPolicy(args: GetAddressGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressGroupIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networksecurity/v1beta1:getAddressGroupIamPolicy", {
         "addressGroupId": args.addressGroupId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetAddressGroupIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getAddressGroupIamPolicyOutput(args: GetAddressGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressGroupIamPolicyResult> {
-    return pulumi.output(args).apply(a => getAddressGroupIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAddressGroupIamPolicy(a, opts))
 }
 
 export interface GetAddressGroupIamPolicyOutputArgs {

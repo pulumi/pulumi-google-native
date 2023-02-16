@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a Reference resource.
  */
 export function getReference(args: GetReferenceArgs, opts?: pulumi.InvokeOptions): Promise<GetReferenceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getReference", {
         "environmentId": args.environmentId,
         "organizationId": args.organizationId,
@@ -44,9 +41,11 @@ export interface GetReferenceResult {
      */
     readonly resourceType: string;
 }
-
+/**
+ * Gets a Reference resource.
+ */
 export function getReferenceOutput(args: GetReferenceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReferenceResult> {
-    return pulumi.output(args).apply(a => getReference(a, opts))
+    return pulumi.output(args).apply((a: any) => getReference(a, opts))
 }
 
 export interface GetReferenceOutputArgs {

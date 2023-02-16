@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified SSL certificate.
  */
 export function getAuthorizedCertificate(args: GetAuthorizedCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizedCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1:getAuthorizedCertificate", {
         "appId": args.appId,
         "authorizedCertificateId": args.authorizedCertificateId,
@@ -63,9 +60,11 @@ export interface GetAuthorizedCertificateResult {
      */
     readonly visibleDomainMappings: string[];
 }
-
+/**
+ * Gets the specified SSL certificate.
+ */
 export function getAuthorizedCertificateOutput(args: GetAuthorizedCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizedCertificateResult> {
-    return pulumi.output(args).apply(a => getAuthorizedCertificate(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuthorizedCertificate(a, opts))
 }
 
 export interface GetAuthorizedCertificateOutputArgs {

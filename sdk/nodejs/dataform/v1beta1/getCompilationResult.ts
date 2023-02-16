@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches a single CompilationResult.
  */
 export function getCompilationResult(args: GetCompilationResultArgs, opts?: pulumi.InvokeOptions): Promise<GetCompilationResultResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataform/v1beta1:getCompilationResult", {
         "compilationResultId": args.compilationResultId,
         "location": args.location,
@@ -65,9 +62,11 @@ export interface GetCompilationResultResult {
      */
     readonly workspace: string;
 }
-
+/**
+ * Fetches a single CompilationResult.
+ */
 export function getCompilationResultOutput(args: GetCompilationResultOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCompilationResultResult> {
-    return pulumi.output(args).apply(a => getCompilationResult(a, opts))
+    return pulumi.output(args).apply((a: any) => getCompilationResult(a, opts))
 }
 
 export interface GetCompilationResultOutputArgs {

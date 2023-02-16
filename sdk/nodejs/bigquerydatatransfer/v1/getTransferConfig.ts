@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns information about a data transfer config.
  */
 export function getTransferConfig(args: GetTransferConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetTransferConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigquerydatatransfer/v1:getTransferConfig", {
         "location": args.location,
         "project": args.project,
@@ -101,9 +98,11 @@ export interface GetTransferConfigResult {
      */
     readonly userId: string;
 }
-
+/**
+ * Returns information about a data transfer config.
+ */
 export function getTransferConfigOutput(args: GetTransferConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferConfigResult> {
-    return pulumi.output(args).apply(a => getTransferConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getTransferConfig(a, opts))
 }
 
 export interface GetTransferConfigOutputArgs {

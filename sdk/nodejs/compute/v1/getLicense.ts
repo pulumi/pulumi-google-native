@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
  */
 export function getLicense(args: GetLicenseArgs, opts?: pulumi.InvokeOptions): Promise<GetLicenseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getLicense", {
         "license": args.license,
         "project": args.project,
@@ -64,9 +61,11 @@ export interface GetLicenseResult {
      */
     readonly transferable: boolean;
 }
-
+/**
+ * Returns the specified License resource. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+ */
 export function getLicenseOutput(args: GetLicenseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLicenseResult> {
-    return pulumi.output(args).apply(a => getLicense(a, opts))
+    return pulumi.output(args).apply((a: any) => getLicense(a, opts))
 }
 
 export interface GetLicenseOutputArgs {

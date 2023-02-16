@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the configuration of the specified FHIR store.
  */
 export function getFhirStore(args: GetFhirStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetFhirStoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getFhirStore", {
         "datasetId": args.datasetId,
         "fhirStoreId": args.fhirStoreId,
@@ -77,9 +74,11 @@ export interface GetFhirStoreResult {
      */
     readonly version: string;
 }
-
+/**
+ * Gets the configuration of the specified FHIR store.
+ */
 export function getFhirStoreOutput(args: GetFhirStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirStoreResult> {
-    return pulumi.output(args).apply(a => getFhirStore(a, opts))
+    return pulumi.output(args).apply((a: any) => getFhirStore(a, opts))
 }
 
 export interface GetFhirStoreOutputArgs {

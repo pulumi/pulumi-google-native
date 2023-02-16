@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Looks up a single pipeline. Returns a "NOT_FOUND" error if no such pipeline exists. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
  */
 export function getPipeline(args: GetPipelineArgs, opts?: pulumi.InvokeOptions): Promise<GetPipelineResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datapipelines/v1:getPipeline", {
         "location": args.location,
         "pipelineId": args.pipelineId,
@@ -75,9 +72,11 @@ export interface GetPipelineResult {
      */
     readonly workload: outputs.datapipelines.v1.GoogleCloudDatapipelinesV1WorkloadResponse;
 }
-
+/**
+ * Looks up a single pipeline. Returns a "NOT_FOUND" error if no such pipeline exists. Returns a "FORBIDDEN" error if the caller doesn't have permission to access it.
+ */
 export function getPipelineOutput(args: GetPipelineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPipelineResult> {
-    return pulumi.output(args).apply(a => getPipeline(a, opts))
+    return pulumi.output(args).apply((a: any) => getPipeline(a, opts))
 }
 
 export interface GetPipelineOutputArgs {

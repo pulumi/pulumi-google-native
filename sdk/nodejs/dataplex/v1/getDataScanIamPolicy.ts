@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDataScanIamPolicy(args: GetDataScanIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataScanIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getDataScanIamPolicy", {
         "dataScanId": args.dataScanId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetDataScanIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getDataScanIamPolicyOutput(args: GetDataScanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataScanIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDataScanIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataScanIamPolicy(a, opts))
 }
 
 export interface GetDataScanIamPolicyOutputArgs {
