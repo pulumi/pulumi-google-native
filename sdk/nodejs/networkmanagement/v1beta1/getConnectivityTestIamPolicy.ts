@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getConnectivityTestIamPolicy(args: GetConnectivityTestIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityTestIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkmanagement/v1beta1:getConnectivityTestIamPolicy", {
         "connectivityTestId": args.connectivityTestId,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -47,9 +44,11 @@ export interface GetConnectivityTestIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getConnectivityTestIamPolicyOutput(args: GetConnectivityTestIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectivityTestIamPolicyResult> {
-    return pulumi.output(args).apply(a => getConnectivityTestIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnectivityTestIamPolicy(a, opts))
 }
 
 export interface GetConnectivityTestIamPolicyOutputArgs {

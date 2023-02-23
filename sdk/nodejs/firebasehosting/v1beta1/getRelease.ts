@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site.
  */
 export function getRelease(args: GetReleaseArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebasehosting/v1beta1:getRelease", {
         "channelId": args.channelId,
         "project": args.project,
@@ -57,9 +54,11 @@ export interface GetReleaseResult {
      */
     readonly version: outputs.firebasehosting.v1beta1.VersionResponse;
 }
-
+/**
+ * Gets the specified release for a site or channel. When used to get a release for a site, this can get releases for both the default `live` channel and any active preview channels for the specified site.
+ */
 export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseResult> {
-    return pulumi.output(args).apply(a => getRelease(a, opts))
+    return pulumi.output(args).apply((a: any) => getRelease(a, opts))
 }
 
 export interface GetReleaseOutputArgs {

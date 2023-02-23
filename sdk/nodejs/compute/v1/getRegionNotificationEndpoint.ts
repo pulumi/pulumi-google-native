@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified NotificationEndpoint resource in the given region.
  */
 export function getRegionNotificationEndpoint(args: GetRegionNotificationEndpointArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionNotificationEndpointResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionNotificationEndpoint", {
         "notificationEndpoint": args.notificationEndpoint,
         "project": args.project,
@@ -59,9 +56,11 @@ export interface GetRegionNotificationEndpointResult {
      */
     readonly selfLink: string;
 }
-
+/**
+ * Returns the specified NotificationEndpoint resource in the given region.
+ */
 export function getRegionNotificationEndpointOutput(args: GetRegionNotificationEndpointOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNotificationEndpointResult> {
-    return pulumi.output(args).apply(a => getRegionNotificationEndpoint(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionNotificationEndpoint(a, opts))
 }
 
 export interface GetRegionNotificationEndpointOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a node.
  */
 export function getNode(args: GetNodeArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:tpu/v1alpha1:getNode", {
         "location": args.location,
         "nodeId": args.nodeId,
@@ -111,9 +108,11 @@ export interface GetNodeResult {
      */
     readonly useServiceNetworking: boolean;
 }
-
+/**
+ * Gets the details of a node.
+ */
 export function getNodeOutput(args: GetNodeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeResult> {
-    return pulumi.output(args).apply(a => getNode(a, opts))
+    return pulumi.output(args).apply((a: any) => getNode(a, opts))
 }
 
 export interface GetNodeOutputArgs {

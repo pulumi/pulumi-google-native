@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified DICOM store.
  */
 export function getDicomStore(args: GetDicomStoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDicomStoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getDicomStore", {
         "datasetId": args.datasetId,
         "dicomStoreId": args.dicomStoreId,
@@ -45,9 +42,11 @@ export interface GetDicomStoreResult {
      */
     readonly notificationConfig: outputs.healthcare.v1.NotificationConfigResponse;
 }
-
+/**
+ * Gets the specified DICOM store.
+ */
 export function getDicomStoreOutput(args: GetDicomStoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDicomStoreResult> {
-    return pulumi.output(args).apply(a => getDicomStore(a, opts))
+    return pulumi.output(args).apply((a: any) => getDicomStore(a, opts))
 }
 
 export interface GetDicomStoreOutputArgs {

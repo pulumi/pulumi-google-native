@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve a custom report definition.
  */
 export function getReport(args: GetReportArgs, opts?: pulumi.InvokeOptions): Promise<GetReportResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getReport", {
         "organizationId": args.organizationId,
         "reportId": args.reportId,
@@ -117,9 +114,11 @@ export interface GetReportResult {
      */
     readonly topk: string;
 }
-
+/**
+ * Retrieve a custom report definition.
+ */
 export function getReportOutput(args: GetReportOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReportResult> {
-    return pulumi.output(args).apply(a => getReport(a, opts))
+    return pulumi.output(args).apply((a: any) => getReport(a, opts))
 }
 
 export interface GetReportOutputArgs {

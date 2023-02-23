@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a test case.
  */
 export function getTestCase(args: GetTestCaseArgs, opts?: pulumi.InvokeOptions): Promise<GetTestCaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3beta1:getTestCase", {
         "agentId": args.agentId,
         "location": args.location,
@@ -65,9 +62,11 @@ export interface GetTestCaseResult {
      */
     readonly testConfig: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestConfigResponse;
 }
-
+/**
+ * Gets a test case.
+ */
 export function getTestCaseOutput(args: GetTestCaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestCaseResult> {
-    return pulumi.output(args).apply(a => getTestCase(a, opts))
+    return pulumi.output(args).apply((a: any) => getTestCase(a, opts))
 }
 
 export interface GetTestCaseOutputArgs {

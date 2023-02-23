@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the details of a single Restore.
  */
 export function getRestore(args: GetRestoreArgs, opts?: pulumi.InvokeOptions): Promise<GetRestoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkebackup/v1:getRestore", {
         "location": args.location,
         "project": args.project,
@@ -101,9 +98,11 @@ export interface GetRestoreResult {
      */
     readonly volumesRestoredCount: number;
 }
-
+/**
+ * Retrieves the details of a single Restore.
+ */
 export function getRestoreOutput(args: GetRestoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestoreResult> {
-    return pulumi.output(args).apply(a => getRestore(a, opts))
+    return pulumi.output(args).apply((a: any) => getRestore(a, opts))
 }
 
 export interface GetRestoreOutputArgs {

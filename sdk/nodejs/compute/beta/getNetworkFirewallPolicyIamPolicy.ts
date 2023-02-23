@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getNetworkFirewallPolicyIamPolicy(args: GetNetworkFirewallPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkFirewallPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getNetworkFirewallPolicyIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetNetworkFirewallPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getNetworkFirewallPolicyIamPolicyOutput(args: GetNetworkFirewallPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkFirewallPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getNetworkFirewallPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkFirewallPolicyIamPolicy(a, opts))
 }
 
 export interface GetNetworkFirewallPolicyIamPolicyOutputArgs {

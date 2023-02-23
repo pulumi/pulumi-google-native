@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details about a device.
  */
 export function getDevice(args: GetDeviceArgs, opts?: pulumi.InvokeOptions): Promise<GetDeviceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudiot/v1:getDevice", {
         "deviceId": args.deviceId,
         "fieldMask": args.fieldMask,
@@ -99,9 +96,11 @@ export interface GetDeviceResult {
      */
     readonly state: outputs.cloudiot.v1.DeviceStateResponse;
 }
-
+/**
+ * Gets details about a device.
+ */
 export function getDeviceOutput(args: GetDeviceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeviceResult> {
-    return pulumi.output(args).apply(a => getDevice(a, opts))
+    return pulumi.output(args).apply((a: any) => getDevice(a, opts))
 }
 
 export interface GetDeviceOutputArgs {

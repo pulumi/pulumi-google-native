@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested workstation cluster.
  */
 export function getWorkstationCluster(args: GetWorkstationClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkstationClusterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:workstations/v1beta:getWorkstationCluster", {
         "location": args.location,
         "project": args.project,
@@ -91,9 +88,11 @@ export interface GetWorkstationClusterResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns the requested workstation cluster.
+ */
 export function getWorkstationClusterOutput(args: GetWorkstationClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkstationClusterResult> {
-    return pulumi.output(args).apply(a => getWorkstationCluster(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkstationCluster(a, opts))
 }
 
 export interface GetWorkstationClusterOutputArgs {

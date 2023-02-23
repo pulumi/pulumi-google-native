@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a Product.
  */
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:retail/v2alpha:getProduct", {
         "branchId": args.branchId,
         "catalogId": args.catalogId,
@@ -169,9 +166,11 @@ export interface GetProductResult {
      */
     readonly variants: outputs.retail.v2alpha.GoogleCloudRetailV2alphaProductResponse[];
 }
-
+/**
+ * Gets a Product.
+ */
 export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
-    return pulumi.output(args).apply(a => getProduct(a, opts))
+    return pulumi.output(args).apply((a: any) => getProduct(a, opts))
 }
 
 export interface GetProductOutputArgs {

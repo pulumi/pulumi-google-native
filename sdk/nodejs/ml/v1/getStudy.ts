@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a study.
  */
 export function getStudy(args: GetStudyArgs, opts?: pulumi.InvokeOptions): Promise<GetStudyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getStudy", {
         "location": args.location,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetStudyResult {
      */
     readonly studyConfig: outputs.ml.v1.GoogleCloudMlV1__StudyConfigResponse;
 }
-
+/**
+ * Gets a study.
+ */
 export function getStudyOutput(args: GetStudyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStudyResult> {
-    return pulumi.output(args).apply(a => getStudy(a, opts))
+    return pulumi.output(args).apply((a: any) => getStudy(a, opts))
 }
 
 export interface GetStudyOutputArgs {

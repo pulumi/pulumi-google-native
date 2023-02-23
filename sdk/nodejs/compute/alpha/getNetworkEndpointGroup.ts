@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
  */
 export function getNetworkEndpointGroup(args: GetNetworkEndpointGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkEndpointGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getNetworkEndpointGroup", {
         "networkEndpointGroup": args.networkEndpointGroup,
         "project": args.project,
@@ -118,9 +115,11 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+ */
 export function getNetworkEndpointGroupOutput(args: GetNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkEndpointGroupResult> {
-    return pulumi.output(args).apply(a => getNetworkEndpointGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkEndpointGroup(a, opts))
 }
 
 export interface GetNetworkEndpointGroupOutputArgs {

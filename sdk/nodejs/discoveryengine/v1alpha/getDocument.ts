@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a Document.
  */
 export function getDocument(args: GetDocumentArgs, opts?: pulumi.InvokeOptions): Promise<GetDocumentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:discoveryengine/v1alpha:getDocument", {
         "branchId": args.branchId,
         "dataStoreId": args.dataStoreId,
@@ -52,9 +49,11 @@ export interface GetDocumentResult {
      */
     readonly structData: {[key: string]: string};
 }
-
+/**
+ * Gets a Document.
+ */
 export function getDocumentOutput(args: GetDocumentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDocumentResult> {
-    return pulumi.output(args).apply(a => getDocument(a, opts))
+    return pulumi.output(args).apply((a: any) => getDocument(a, opts))
 }
 
 export interface GetDocumentOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
  */
 export function getLakeContentitemIamPolicy(args: GetLakeContentitemIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetLakeContentitemIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getLakeContentitemIamPolicy", {
         "contentitemId": args.contentitemId,
         "lakeId": args.lakeId,
@@ -51,9 +48,11 @@ export interface GetLakeContentitemIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a contentitem resource. A NOT_FOUND error is returned if the resource does not exist. An empty policy is returned if the resource exists but does not have a policy set on it.Caller must have Google IAM dataplex.content.getIamPolicy permission on the resource.
+ */
 export function getLakeContentitemIamPolicyOutput(args: GetLakeContentitemIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLakeContentitemIamPolicyResult> {
-    return pulumi.output(args).apply(a => getLakeContentitemIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getLakeContentitemIamPolicy(a, opts))
 }
 
 export interface GetLakeContentitemIamPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Replay. Each `Replay` is available for at least 7 days.
  */
 export function getFolderReplay(args: GetFolderReplayArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderReplayResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:policysimulator/v1:getFolderReplay", {
         "folderId": args.folderId,
         "location": args.location,
@@ -47,9 +44,11 @@ export interface GetFolderReplayResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets the specified Replay. Each `Replay` is available for at least 7 days.
+ */
 export function getFolderReplayOutput(args: GetFolderReplayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderReplayResult> {
-    return pulumi.output(args).apply(a => getFolderReplay(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolderReplay(a, opts))
 }
 
 export interface GetFolderReplayOutputArgs {

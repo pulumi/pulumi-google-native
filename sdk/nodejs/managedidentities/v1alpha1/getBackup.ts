@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Backup.
  */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1alpha1:getBackup", {
         "backupId": args.backupId,
         "domainId": args.domainId,
@@ -60,9 +57,11 @@ export interface GetBackupResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Backup.
+ */
 export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupResult> {
-    return pulumi.output(args).apply(a => getBackup(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackup(a, opts))
 }
 
 export interface GetBackupOutputArgs {

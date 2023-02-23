@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getClientTlsPolicyIamPolicy(args: GetClientTlsPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetClientTlsPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networksecurity/v1beta1:getClientTlsPolicyIamPolicy", {
         "clientTlsPolicyId": args.clientTlsPolicyId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetClientTlsPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getClientTlsPolicyIamPolicyOutput(args: GetClientTlsPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClientTlsPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getClientTlsPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getClientTlsPolicyIamPolicy(a, opts))
 }
 
 export interface GetClientTlsPolicyIamPolicyOutputArgs {

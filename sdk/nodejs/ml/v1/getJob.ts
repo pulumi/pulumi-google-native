@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Describes a job.
  */
 export function getJob(args: GetJobArgs, opts?: pulumi.InvokeOptions): Promise<GetJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getJob", {
         "jobId": args.jobId,
         "project": args.project,
@@ -81,9 +78,11 @@ export interface GetJobResult {
      */
     readonly trainingOutput: outputs.ml.v1.GoogleCloudMlV1__TrainingOutputResponse;
 }
-
+/**
+ * Describes a job.
+ */
 export function getJobOutput(args: GetJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobResult> {
-    return pulumi.output(args).apply(a => getJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getJob(a, opts))
 }
 
 export interface GetJobOutputArgs {

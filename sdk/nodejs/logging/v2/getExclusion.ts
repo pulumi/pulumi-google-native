@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the description of an exclusion in the _Default sink.
  */
 export function getExclusion(args: GetExclusionArgs, opts?: pulumi.InvokeOptions): Promise<GetExclusionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getExclusion", {
         "exclusionId": args.exclusionId,
         "project": args.project,
@@ -50,9 +47,11 @@ export interface GetExclusionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets the description of an exclusion in the _Default sink.
+ */
 export function getExclusionOutput(args: GetExclusionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExclusionResult> {
-    return pulumi.output(args).apply(a => getExclusion(a, opts))
+    return pulumi.output(args).apply((a: any) => getExclusion(a, opts))
 }
 
 export interface GetExclusionOutputArgs {

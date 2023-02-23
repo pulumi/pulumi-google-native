@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
  */
 export function getModel(args: GetModelArgs, opts?: pulumi.InvokeOptions): Promise<GetModelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getModel", {
         "modelId": args.modelId,
         "project": args.project,
@@ -61,9 +58,11 @@ export interface GetModelResult {
      */
     readonly regions: string[];
 }
-
+/**
+ * Gets information about a model, including its name, the description (if set), and the default version (if at least one version of the model has been deployed).
+ */
 export function getModelOutput(args: GetModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelResult> {
-    return pulumi.output(args).apply(a => getModel(a, opts))
+    return pulumi.output(args).apply((a: any) => getModel(a, opts))
 }
 
 export interface GetModelOutputArgs {

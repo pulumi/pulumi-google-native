@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * List all of the ordered rules present in a single specified policy.
  */
 export function getRegionSecurityPolicy(args: GetRegionSecurityPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionSecurityPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionSecurityPolicy", {
         "project": args.project,
         "region": args.region,
@@ -71,9 +68,11 @@ export interface GetRegionSecurityPolicyResult {
      */
     readonly type: string;
 }
-
+/**
+ * List all of the ordered rules present in a single specified policy.
+ */
 export function getRegionSecurityPolicyOutput(args: GetRegionSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionSecurityPolicyResult> {
-    return pulumi.output(args).apply(a => getRegionSecurityPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionSecurityPolicy(a, opts))
 }
 
 export interface GetRegionSecurityPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getFeatureIamPolicy(args: GetFeatureIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFeatureIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:gkehub/v1beta:getFeatureIamPolicy", {
         "featureId": args.featureId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetFeatureIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getFeatureIamPolicyOutput(args: GetFeatureIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureIamPolicyResult> {
-    return pulumi.output(args).apply(a => getFeatureIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFeatureIamPolicy(a, opts))
 }
 
 export interface GetFeatureIamPolicyOutputArgs {

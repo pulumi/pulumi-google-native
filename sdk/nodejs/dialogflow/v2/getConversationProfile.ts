@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified conversation profile.
  */
 export function getConversationProfile(args: GetConversationProfileArgs, opts?: pulumi.InvokeOptions): Promise<GetConversationProfileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getConversationProfile", {
         "conversationProfileId": args.conversationProfileId,
         "location": args.location,
@@ -87,9 +84,11 @@ export interface GetConversationProfileResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves the specified conversation profile.
+ */
 export function getConversationProfileOutput(args: GetConversationProfileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationProfileResult> {
-    return pulumi.output(args).apply(a => getConversationProfile(a, opts))
+    return pulumi.output(args).apply((a: any) => getConversationProfile(a, opts))
 }
 
 export interface GetConversationProfileOutputArgs {

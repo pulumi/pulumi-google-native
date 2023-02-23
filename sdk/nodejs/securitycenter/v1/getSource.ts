@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a source.
  */
 export function getSource(args: GetSourceArgs, opts?: pulumi.InvokeOptions): Promise<GetSourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getSource", {
         "organizationId": args.organizationId,
         "sourceId": args.sourceId,
@@ -42,9 +39,11 @@ export interface GetSourceResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets a source.
+ */
 export function getSourceOutput(args: GetSourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSourceResult> {
-    return pulumi.output(args).apply(a => getSource(a, opts))
+    return pulumi.output(args).apply((a: any) => getSource(a, opts))
 }
 
 export interface GetSourceOutputArgs {
