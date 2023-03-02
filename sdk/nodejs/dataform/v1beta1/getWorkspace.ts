@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Fetches a single Workspace.
  */
 export function getWorkspace(args: GetWorkspaceArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkspaceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataform/v1beta1:getWorkspace", {
         "location": args.location,
         "project": args.project,
@@ -34,9 +31,11 @@ export interface GetWorkspaceResult {
      */
     readonly name: string;
 }
-
+/**
+ * Fetches a single Workspace.
+ */
 export function getWorkspaceOutput(args: GetWorkspaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkspaceResult> {
-    return pulumi.output(args).apply(a => getWorkspace(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkspace(a, opts))
 }
 
 export interface GetWorkspaceOutputArgs {

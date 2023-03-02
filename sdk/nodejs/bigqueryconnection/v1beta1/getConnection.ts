@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns specified connection.
  */
 export function getConnection(args: GetConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigqueryconnection/v1beta1:getConnection", {
         "connectionId": args.connectionId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetConnectionResult {
      */
     readonly name: string;
 }
-
+/**
+ * Returns specified connection.
+ */
 export function getConnectionOutput(args: GetConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionResult> {
-    return pulumi.output(args).apply(a => getConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnection(a, opts))
 }
 
 export interface GetConnectionOutputArgs {

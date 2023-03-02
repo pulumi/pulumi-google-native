@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches the representation of an existing ResourceRecordSet.
  */
 export function getResourceRecordSet(args: GetResourceRecordSetArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceRecordSetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dns/v1:getResourceRecordSet", {
         "clientOperationId": args.clientOperationId,
         "managedZone": args.managedZone,
@@ -60,9 +57,11 @@ export interface GetResourceRecordSetResult {
      */
     readonly type: string;
 }
-
+/**
+ * Fetches the representation of an existing ResourceRecordSet.
+ */
 export function getResourceRecordSetOutput(args: GetResourceRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceRecordSetResult> {
-    return pulumi.output(args).apply(a => getResourceRecordSet(a, opts))
+    return pulumi.output(args).apply((a: any) => getResourceRecordSet(a, opts))
 }
 
 export interface GetResourceRecordSetOutputArgs {

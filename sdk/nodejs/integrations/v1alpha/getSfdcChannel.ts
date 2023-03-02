@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown.
  */
 export function getSfdcChannel(args: GetSfdcChannelArgs, opts?: pulumi.InvokeOptions): Promise<GetSfdcChannelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:integrations/v1alpha:getSfdcChannel", {
         "location": args.location,
         "productId": args.productId,
@@ -68,9 +65,11 @@ export interface GetSfdcChannelResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets an sfdc channel. If the channel doesn't exist, Code.NOT_FOUND exception will be thrown.
+ */
 export function getSfdcChannelOutput(args: GetSfdcChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSfdcChannelResult> {
-    return pulumi.output(args).apply(a => getSfdcChannel(a, opts))
+    return pulumi.output(args).apply((a: any) => getSfdcChannel(a, opts))
 }
 
 export interface GetSfdcChannelOutputArgs {

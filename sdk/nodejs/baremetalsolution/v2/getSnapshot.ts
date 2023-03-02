@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:baremetalsolution/v2:getSnapshot", {
         "location": args.location,
         "project": args.project,
@@ -50,9 +47,11 @@ export interface GetSnapshotResult {
      */
     readonly type: string;
 }
-
+/**
+ * Returns the specified snapshot resource. Returns INVALID_ARGUMENT if called for a non-boot volume.
+ */
 export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
-    return pulumi.output(args).apply(a => getSnapshot(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))
 }
 
 export interface GetSnapshotOutputArgs {

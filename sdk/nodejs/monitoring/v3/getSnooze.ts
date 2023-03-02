@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a Snooze by name.
  */
 export function getSnooze(args: GetSnoozeArgs, opts?: pulumi.InvokeOptions): Promise<GetSnoozeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:monitoring/v3:getSnooze", {
         "project": args.project,
         "snoozeId": args.snoozeId,
@@ -45,9 +42,11 @@ export interface GetSnoozeResult {
      */
     readonly name: string;
 }
-
+/**
+ * Retrieves a Snooze by name.
+ */
 export function getSnoozeOutput(args: GetSnoozeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnoozeResult> {
-    return pulumi.output(args).apply(a => getSnooze(a, opts))
+    return pulumi.output(args).apply((a: any) => getSnooze(a, opts))
 }
 
 export interface GetSnoozeOutputArgs {

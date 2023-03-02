@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns information about a `WorkerPool`.
  */
 export function getWorkerPool(args: GetWorkerPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbuild/v1alpha1:getWorkerPool", {
         "project": args.project,
         "workerPoolId": args.workerPoolId,
@@ -69,9 +66,11 @@ export interface GetWorkerPoolResult {
      */
     readonly workerCount: string;
 }
-
+/**
+ * Returns information about a `WorkerPool`.
+ */
 export function getWorkerPoolOutput(args: GetWorkerPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkerPoolResult> {
-    return pulumi.output(args).apply(a => getWorkerPool(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkerPool(a, opts))
 }
 
 export interface GetWorkerPoolOutputArgs {

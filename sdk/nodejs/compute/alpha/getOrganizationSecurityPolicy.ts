@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * List all of the ordered rules present in a single specified policy.
  */
 export function getOrganizationSecurityPolicy(args: GetOrganizationSecurityPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationSecurityPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getOrganizationSecurityPolicy", {
         "securityPolicy": args.securityPolicy,
     }, opts);
@@ -100,9 +97,11 @@ export interface GetOrganizationSecurityPolicyResult {
      */
     readonly userDefinedFields: outputs.compute.alpha.SecurityPolicyUserDefinedFieldResponse[];
 }
-
+/**
+ * List all of the ordered rules present in a single specified policy.
+ */
 export function getOrganizationSecurityPolicyOutput(args: GetOrganizationSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationSecurityPolicyResult> {
-    return pulumi.output(args).apply(a => getOrganizationSecurityPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationSecurityPolicy(a, opts))
 }
 
 export interface GetOrganizationSecurityPolicyOutputArgs {

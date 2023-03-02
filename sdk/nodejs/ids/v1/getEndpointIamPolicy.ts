@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getEndpointIamPolicy(args: GetEndpointIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ids/v1:getEndpointIamPolicy", {
         "endpointId": args.endpointId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetEndpointIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getEndpointIamPolicyOutput(args: GetEndpointIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointIamPolicyResult> {
-    return pulumi.output(args).apply(a => getEndpointIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getEndpointIamPolicy(a, opts))
 }
 
 export interface GetEndpointIamPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single private connection.
  */
 export function getPrivateConnection(args: GetPrivateConnectionArgs, opts?: pulumi.InvokeOptions): Promise<GetPrivateConnectionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datamigration/v1:getPrivateConnection", {
         "location": args.location,
         "privateConnectionId": args.privateConnectionId,
@@ -63,9 +60,11 @@ export interface GetPrivateConnectionResult {
      */
     readonly vpcPeeringConfig: outputs.datamigration.v1.VpcPeeringConfigResponse;
 }
-
+/**
+ * Gets details of a single private connection.
+ */
 export function getPrivateConnectionOutput(args: GetPrivateConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrivateConnectionResult> {
-    return pulumi.output(args).apply(a => getPrivateConnection(a, opts))
+    return pulumi.output(args).apply((a: any) => getPrivateConnection(a, opts))
 }
 
 export interface GetPrivateConnectionOutputArgs {

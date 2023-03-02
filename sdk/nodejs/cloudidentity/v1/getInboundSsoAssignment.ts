@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an InboundSsoAssignment.
  */
 export function getInboundSsoAssignment(args: GetInboundSsoAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetInboundSsoAssignmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudidentity/v1:getInboundSsoAssignment", {
         "inboundSsoAssignmentId": args.inboundSsoAssignmentId,
     }, opts);
@@ -59,9 +56,11 @@ export interface GetInboundSsoAssignmentResult {
      */
     readonly targetOrgUnit: string;
 }
-
+/**
+ * Gets an InboundSsoAssignment.
+ */
 export function getInboundSsoAssignmentOutput(args: GetInboundSsoAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInboundSsoAssignmentResult> {
-    return pulumi.output(args).apply(a => getInboundSsoAssignment(a, opts))
+    return pulumi.output(args).apply((a: any) => getInboundSsoAssignment(a, opts))
 }
 
 export interface GetInboundSsoAssignmentOutputArgs {

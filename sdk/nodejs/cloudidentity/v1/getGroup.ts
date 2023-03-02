@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a `Group`.
  */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudidentity/v1:getGroup", {
         "groupId": args.groupId,
     }, opts);
@@ -63,9 +60,11 @@ export interface GetGroupResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a `Group`.
+ */
 export function getGroupOutput(args: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply(a => getGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
 
 export interface GetGroupOutputArgs {

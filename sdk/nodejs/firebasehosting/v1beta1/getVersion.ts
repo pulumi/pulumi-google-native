@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get the specified version that has been created for the specified site. This can include versions that were created for the default `live` channel or for any active preview channels for the specified site.
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebasehosting/v1beta1:getVersion", {
         "project": args.project,
         "siteId": args.siteId,
@@ -79,9 +76,11 @@ export interface GetVersionResult {
      */
     readonly versionBytes: string;
 }
-
+/**
+ * Get the specified version that has been created for the specified site. This can include versions that were created for the default `live` channel or for any active preview channels for the specified site.
+ */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(args).apply(a => getVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getVersion(a, opts))
 }
 
 export interface GetVersionOutputArgs {

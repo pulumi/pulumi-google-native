@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDataAttributeBindingIamPolicy(args: GetDataAttributeBindingIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataAttributeBindingIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getDataAttributeBindingIamPolicy", {
         "dataAttributeBindingId": args.dataAttributeBindingId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetDataAttributeBindingIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getDataAttributeBindingIamPolicyOutput(args: GetDataAttributeBindingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataAttributeBindingIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDataAttributeBindingIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataAttributeBindingIamPolicy(a, opts))
 }
 
 export interface GetDataAttributeBindingIamPolicyOutputArgs {

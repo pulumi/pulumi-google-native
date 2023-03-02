@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getSubscriptionIamPolicy(args: GetSubscriptionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:pubsub/v1beta2:getSubscriptionIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -43,9 +40,11 @@ export interface GetSubscriptionIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getSubscriptionIamPolicyOutput(args: GetSubscriptionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionIamPolicyResult> {
-    return pulumi.output(args).apply(a => getSubscriptionIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getSubscriptionIamPolicy(a, opts))
 }
 
 export interface GetSubscriptionIamPolicyOutputArgs {

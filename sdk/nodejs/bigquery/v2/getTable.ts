@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigquery/v2:getTable", {
         "datasetId": args.datasetId,
         "project": args.project,
@@ -191,9 +188,11 @@ export interface GetTableResult {
      */
     readonly view: outputs.bigquery.v2.ViewDefinitionResponse;
 }
-
+/**
+ * Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
+ */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
-    return pulumi.output(args).apply(a => getTable(a, opts))
+    return pulumi.output(args).apply((a: any) => getTable(a, opts))
 }
 
 export interface GetTableOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a trial.
  */
 export function getTrial(args: GetTrialArgs, opts?: pulumi.InvokeOptions): Promise<GetTrialResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getTrial", {
         "location": args.location,
         "project": args.project,
@@ -73,9 +70,11 @@ export interface GetTrialResult {
      */
     readonly trialInfeasible: boolean;
 }
-
+/**
+ * Gets a trial.
+ */
 export function getTrialOutput(args: GetTrialOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrialResult> {
-    return pulumi.output(args).apply(a => getTrial(a, opts))
+    return pulumi.output(args).apply((a: any) => getTrial(a, opts))
 }
 
 export interface GetTrialOutputArgs {

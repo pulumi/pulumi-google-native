@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets an attachment. **Note:** Not supported for Apigee hybrid.
  */
 export function getInstanceAttachment(args: GetInstanceAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getInstanceAttachment", {
         "attachmentId": args.attachmentId,
         "instanceId": args.instanceId,
@@ -40,9 +37,11 @@ export interface GetInstanceAttachmentResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets an attachment. **Note:** Not supported for Apigee hybrid.
+ */
 export function getInstanceAttachmentOutput(args: GetInstanceAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentResult> {
-    return pulumi.output(args).apply(a => getInstanceAttachment(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceAttachment(a, opts))
 }
 
 export interface GetInstanceAttachmentOutputArgs {

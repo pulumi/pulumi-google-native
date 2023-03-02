@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a complete auth config. If the auth config doesn't exist, Code.NOT_FOUND exception will be thrown. Returns the decrypted auth config.
  */
 export function getAuthConfig(args: GetAuthConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:integrations/v1alpha:getAuthConfig", {
         "authConfigId": args.authConfigId,
         "location": args.location,
@@ -101,9 +98,11 @@ export interface GetAuthConfigResult {
      */
     readonly visibility: string;
 }
-
+/**
+ * Gets a complete auth config. If the auth config doesn't exist, Code.NOT_FOUND exception will be thrown. Returns the decrypted auth config.
+ */
 export function getAuthConfigOutput(args: GetAuthConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthConfigResult> {
-    return pulumi.output(args).apply(a => getAuthConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuthConfig(a, opts))
 }
 
 export interface GetAuthConfigOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
  */
 export function getResourcefile(args: GetResourcefileArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcefileResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getResourcefile", {
         "environmentId": args.environmentId,
         "name": args.name,
@@ -42,9 +39,11 @@ export interface GetResourcefileResult {
      */
     readonly extensions: {[key: string]: string}[];
 }
-
+/**
+ * Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+ */
 export function getResourcefileOutput(args: GetResourcefileOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcefileResult> {
-    return pulumi.output(args).apply(a => getResourcefile(a, opts))
+    return pulumi.output(args).apply((a: any) => getResourcefile(a, opts))
 }
 
 export interface GetResourcefileOutputArgs {

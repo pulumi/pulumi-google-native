@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getMeshIamPolicy(args: GetMeshIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetMeshIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkservices/v1:getMeshIamPolicy", {
         "location": args.location,
         "meshId": args.meshId,
@@ -49,9 +46,11 @@ export interface GetMeshIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getMeshIamPolicyOutput(args: GetMeshIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMeshIamPolicyResult> {
-    return pulumi.output(args).apply(a => getMeshIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getMeshIamPolicy(a, opts))
 }
 
 export interface GetMeshIamPolicyOutputArgs {

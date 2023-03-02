@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a DataTaxonomy resource.
  */
 export function getDataTaxonomy(args: GetDataTaxonomyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataTaxonomyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getDataTaxonomy", {
         "dataTaxonomyId": args.dataTaxonomyId,
         "location": args.location,
@@ -64,9 +61,11 @@ export interface GetDataTaxonomyResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a DataTaxonomy resource.
+ */
 export function getDataTaxonomyOutput(args: GetDataTaxonomyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataTaxonomyResult> {
-    return pulumi.output(args).apply(a => getDataTaxonomy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataTaxonomy(a, opts))
 }
 
 export interface GetDataTaxonomyOutputArgs {

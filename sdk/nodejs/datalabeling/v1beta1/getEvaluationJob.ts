@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets an evaluation job by resource name.
  */
 export function getEvaluationJob(args: GetEvaluationJobArgs, opts?: pulumi.InvokeOptions): Promise<GetEvaluationJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getEvaluationJob", {
         "evaluationJobId": args.evaluationJobId,
         "project": args.project,
@@ -69,9 +66,11 @@ export interface GetEvaluationJobResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets an evaluation job by resource name.
+ */
 export function getEvaluationJobOutput(args: GetEvaluationJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEvaluationJobResult> {
-    return pulumi.output(args).apply(a => getEvaluationJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getEvaluationJob(a, opts))
 }
 
 export interface GetEvaluationJobOutputArgs {

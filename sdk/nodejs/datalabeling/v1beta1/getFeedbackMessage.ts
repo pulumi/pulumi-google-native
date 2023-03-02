@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a FeedbackMessage object.
  */
 export function getFeedbackMessage(args: GetFeedbackMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetFeedbackMessageResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datalabeling/v1beta1:getFeedbackMessage", {
         "annotatedDatasetId": args.annotatedDatasetId,
         "datasetId": args.datasetId,
@@ -53,9 +50,11 @@ export interface GetFeedbackMessageResult {
     readonly operatorFeedbackMetadata: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse;
     readonly requesterFeedbackMetadata: outputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse;
 }
-
+/**
+ * Get a FeedbackMessage object.
+ */
 export function getFeedbackMessageOutput(args: GetFeedbackMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeedbackMessageResult> {
-    return pulumi.output(args).apply(a => getFeedbackMessage(a, opts))
+    return pulumi.output(args).apply((a: any) => getFeedbackMessage(a, opts))
 }
 
 export interface GetFeedbackMessageOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a Control.
  */
 export function getControl(args: GetControlArgs, opts?: pulumi.InvokeOptions): Promise<GetControlResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:retail/v2:getControl", {
         "catalogId": args.catalogId,
         "controlId": args.controlId,
@@ -57,9 +54,11 @@ export interface GetControlResult {
      */
     readonly solutionTypes: string[];
 }
-
+/**
+ * Gets a Control.
+ */
 export function getControlOutput(args: GetControlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetControlResult> {
-    return pulumi.output(args).apply(a => getControl(a, opts))
+    return pulumi.output(args).apply((a: any) => getControl(a, opts))
 }
 
 export interface GetControlOutputArgs {

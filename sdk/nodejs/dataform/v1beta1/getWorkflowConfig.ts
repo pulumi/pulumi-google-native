@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches a single WorkflowConfig.
  */
 export function getWorkflowConfig(args: GetWorkflowConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataform/v1beta1:getWorkflowConfig", {
         "location": args.location,
         "project": args.project,
@@ -57,9 +54,11 @@ export interface GetWorkflowConfigResult {
      */
     readonly timeZone: string;
 }
-
+/**
+ * Fetches a single WorkflowConfig.
+ */
 export function getWorkflowConfigOutput(args: GetWorkflowConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowConfigResult> {
-    return pulumi.output(args).apply(a => getWorkflowConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkflowConfig(a, opts))
 }
 
 export interface GetWorkflowConfigOutputArgs {
