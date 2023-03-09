@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getRegionWorkflowTemplateIamPolicy(args: GetRegionWorkflowTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionWorkflowTemplateIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1beta2:getRegionWorkflowTemplateIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -45,9 +42,11 @@ export interface GetRegionWorkflowTemplateIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getRegionWorkflowTemplateIamPolicyOutput(args: GetRegionWorkflowTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionWorkflowTemplateIamPolicyResult> {
-    return pulumi.output(args).apply(a => getRegionWorkflowTemplateIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionWorkflowTemplateIamPolicy(a, opts))
 }
 
 export interface GetRegionWorkflowTemplateIamPolicyOutputArgs {

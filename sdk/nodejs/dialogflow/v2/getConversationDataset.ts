@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified conversation dataset.
  */
 export function getConversationDataset(args: GetConversationDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetConversationDatasetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getConversationDataset", {
         "conversationDatasetId": args.conversationDatasetId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetConversationDatasetResult {
      */
     readonly name: string;
 }
-
+/**
+ * Retrieves the specified conversation dataset.
+ */
 export function getConversationDatasetOutput(args: GetConversationDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationDatasetResult> {
-    return pulumi.output(args).apply(a => getConversationDataset(a, opts))
+    return pulumi.output(args).apply((a: any) => getConversationDataset(a, opts))
 }
 
 export interface GetConversationDatasetOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
  */
 export function getOrganizationPolicy(args: GetOrganizationPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:orgpolicy/v2:getOrganizationPolicy", {
         "organizationId": args.organizationId,
         "policyId": args.policyId,
@@ -47,9 +44,11 @@ export interface GetOrganizationPolicyResult {
      */
     readonly spec: outputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecResponse;
 }
-
+/**
+ * Gets a `Policy` on a resource. If no `Policy` is set on the resource, NOT_FOUND is returned. The `etag` value can be used with `UpdatePolicy()` to update a `Policy` during read-modify-write.
+ */
 export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
-    return pulumi.output(args).apply(a => getOrganizationPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationPolicy(a, opts))
 }
 
 export interface GetOrganizationPolicyOutputArgs {

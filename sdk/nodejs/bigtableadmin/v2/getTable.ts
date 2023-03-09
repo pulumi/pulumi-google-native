@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets metadata information about the specified table.
  */
 export function getTable(args: GetTableArgs, opts?: pulumi.InvokeOptions): Promise<GetTableResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getTable", {
         "instanceId": args.instanceId,
         "project": args.project,
@@ -61,9 +58,11 @@ export interface GetTableResult {
      */
     readonly stats: outputs.bigtableadmin.v2.TableStatsResponse;
 }
-
+/**
+ * Gets metadata information about the specified table.
+ */
 export function getTableOutput(args: GetTableOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableResult> {
-    return pulumi.output(args).apply(a => getTable(a, opts))
+    return pulumi.output(args).apply((a: any) => getTable(a, opts))
 }
 
 export interface GetTableOutputArgs {

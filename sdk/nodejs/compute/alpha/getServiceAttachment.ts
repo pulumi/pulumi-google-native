@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified ServiceAttachment resource in the given scope.
  */
 export function getServiceAttachment(args: GetServiceAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceAttachmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getServiceAttachment", {
         "project": args.project,
         "region": args.region,
@@ -99,9 +96,11 @@ export interface GetServiceAttachmentResult {
      */
     readonly targetService: string;
 }
-
+/**
+ * Returns the specified ServiceAttachment resource in the given scope.
+ */
 export function getServiceAttachmentOutput(args: GetServiceAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceAttachmentResult> {
-    return pulumi.output(args).apply(a => getServiceAttachment(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceAttachment(a, opts))
 }
 
 export interface GetServiceAttachmentOutputArgs {

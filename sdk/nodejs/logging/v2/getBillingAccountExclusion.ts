@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the description of an exclusion in the _Default sink.
  */
 export function getBillingAccountExclusion(args: GetBillingAccountExclusionArgs, opts?: pulumi.InvokeOptions): Promise<GetBillingAccountExclusionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getBillingAccountExclusion", {
         "billingAccountId": args.billingAccountId,
         "exclusionId": args.exclusionId,
@@ -50,9 +47,11 @@ export interface GetBillingAccountExclusionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets the description of an exclusion in the _Default sink.
+ */
 export function getBillingAccountExclusionOutput(args: GetBillingAccountExclusionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountExclusionResult> {
-    return pulumi.output(args).apply(a => getBillingAccountExclusion(a, opts))
+    return pulumi.output(args).apply((a: any) => getBillingAccountExclusion(a, opts))
 }
 
 export interface GetBillingAccountExclusionOutputArgs {

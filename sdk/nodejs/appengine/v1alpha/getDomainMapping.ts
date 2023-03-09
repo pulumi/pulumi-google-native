@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified domain mapping.
  */
 export function getDomainMapping(args: GetDomainMappingArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainMappingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1alpha:getDomainMapping", {
         "appId": args.appId,
         "domainMappingId": args.domainMappingId,
@@ -41,9 +38,11 @@ export interface GetDomainMappingResult {
      */
     readonly sslSettings: outputs.appengine.v1alpha.SslSettingsResponse;
 }
-
+/**
+ * Gets the specified domain mapping.
+ */
 export function getDomainMappingOutput(args: GetDomainMappingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainMappingResult> {
-    return pulumi.output(args).apply(a => getDomainMapping(a, opts))
+    return pulumi.output(args).apply((a: any) => getDomainMapping(a, opts))
 }
 
 export interface GetDomainMappingOutputArgs {

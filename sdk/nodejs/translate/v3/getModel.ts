@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a model.
  */
 export function getModel(args: GetModelArgs, opts?: pulumi.InvokeOptions): Promise<GetModelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:translate/v3:getModel", {
         "location": args.location,
         "modelId": args.modelId,
@@ -72,9 +69,11 @@ export interface GetModelResult {
      */
     readonly validateExampleCount: number;
 }
-
+/**
+ * Gets a model.
+ */
 export function getModelOutput(args: GetModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelResult> {
-    return pulumi.output(args).apply(a => getModel(a, opts))
+    return pulumi.output(args).apply((a: any) => getModel(a, opts))
 }
 
 export interface GetModelOutputArgs {

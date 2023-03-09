@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getNodeGroupIamPolicy(args: GetNodeGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeGroupIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getNodeGroupIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -53,9 +50,11 @@ export interface GetNodeGroupIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getNodeGroupIamPolicyOutput(args: GetNodeGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeGroupIamPolicyResult> {
-    return pulumi.output(args).apply(a => getNodeGroupIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getNodeGroupIamPolicy(a, opts))
 }
 
 export interface GetNodeGroupIamPolicyOutputArgs {

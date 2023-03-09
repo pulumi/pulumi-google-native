@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getFederationIamPolicy(args: GetFederationIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetFederationIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:metastore/v1alpha:getFederationIamPolicy", {
         "federationId": args.federationId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetFederationIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getFederationIamPolicyOutput(args: GetFederationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFederationIamPolicyResult> {
-    return pulumi.output(args).apply(a => getFederationIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getFederationIamPolicy(a, opts))
 }
 
 export interface GetFederationIamPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:beyondcorp/v1alpha:getConnectionIamPolicy", {
         "connectionId": args.connectionId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetConnectionIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
-    return pulumi.output(args).apply(a => getConnectionIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnectionIamPolicy(a, opts))
 }
 
 export interface GetConnectionIamPolicyOutputArgs {

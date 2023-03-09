@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names).
  */
 export function getProjectIamPolicy(args: GetProjectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v1beta1:getProjectIamPolicy", {
         "resource": args.resource,
     }, opts);
@@ -43,9 +40,11 @@ export interface GetProjectIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Returns the IAM access control policy for the specified Project. Permission is denied if the policy or the resource does not exist. For additional information about resource structure and identification, see [Resource Names](/apis/design/resource_names).
+ */
 export function getProjectIamPolicyOutput(args: GetProjectIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectIamPolicyResult> {
-    return pulumi.output(args).apply(a => getProjectIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjectIamPolicy(a, opts))
 }
 
 export interface GetProjectIamPolicyOutputArgs {

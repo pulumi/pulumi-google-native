@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a specified regional persistent disk.
  */
 export function getRegionDisk(args: GetRegionDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionDiskResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getRegionDisk", {
         "disk": args.disk,
         "project": args.project,
@@ -179,9 +176,11 @@ export interface GetRegionDiskResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns a specified regional persistent disk.
+ */
 export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionDiskResult> {
-    return pulumi.output(args).apply(a => getRegionDisk(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionDisk(a, opts))
 }
 
 export interface GetRegionDiskOutputArgs {

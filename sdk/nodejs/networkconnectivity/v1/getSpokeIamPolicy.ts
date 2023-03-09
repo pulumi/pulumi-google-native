@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getSpokeIamPolicy(args: GetSpokeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSpokeIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkconnectivity/v1:getSpokeIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -49,9 +46,11 @@ export interface GetSpokeIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getSpokeIamPolicyOutput(args: GetSpokeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpokeIamPolicyResult> {
-    return pulumi.output(args).apply(a => getSpokeIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpokeIamPolicy(a, opts))
 }
 
 export interface GetSpokeIamPolicyOutputArgs {

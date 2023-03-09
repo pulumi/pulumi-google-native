@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
  */
 export function getTargetProject(args: GetTargetProjectArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetProjectResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1alpha1:getTargetProject", {
         "location": args.location,
         "project": args.project,
@@ -48,9 +45,11 @@ export interface GetTargetProjectResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+ */
 export function getTargetProjectOutput(args: GetTargetProjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetProjectResult> {
-    return pulumi.output(args).apply(a => getTargetProject(a, opts))
+    return pulumi.output(args).apply((a: any) => getTargetProject(a, opts))
 }
 
 export interface GetTargetProjectOutputArgs {

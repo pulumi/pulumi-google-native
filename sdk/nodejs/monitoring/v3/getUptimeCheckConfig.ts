@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a single Uptime check configuration.
  */
 export function getUptimeCheckConfig(args: GetUptimeCheckConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetUptimeCheckConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:monitoring/v3:getUptimeCheckConfig", {
         "project": args.project,
         "uptimeCheckConfigId": args.uptimeCheckConfigId,
@@ -85,9 +82,11 @@ export interface GetUptimeCheckConfigResult {
      */
     readonly userLabels: {[key: string]: string};
 }
-
+/**
+ * Gets a single Uptime check configuration.
+ */
 export function getUptimeCheckConfigOutput(args: GetUptimeCheckConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUptimeCheckConfigResult> {
-    return pulumi.output(args).apply(a => getUptimeCheckConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getUptimeCheckConfig(a, opts))
 }
 
 export interface GetUptimeCheckConfigOutputArgs {

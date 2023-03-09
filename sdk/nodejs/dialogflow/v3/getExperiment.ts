@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified Experiment.
  */
 export function getExperiment(args: GetExperimentArgs, opts?: pulumi.InvokeOptions): Promise<GetExperimentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v3:getExperiment", {
         "agentId": args.agentId,
         "environmentId": args.environmentId,
@@ -95,9 +92,11 @@ export interface GetExperimentResult {
      */
     readonly variantsHistory: outputs.dialogflow.v3.GoogleCloudDialogflowCxV3VariantsHistoryResponse[];
 }
-
+/**
+ * Retrieves the specified Experiment.
+ */
 export function getExperimentOutput(args: GetExperimentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExperimentResult> {
-    return pulumi.output(args).apply(a => getExperiment(a, opts))
+    return pulumi.output(args).apply((a: any) => getExperiment(a, opts))
 }
 
 export interface GetExperimentOutputArgs {

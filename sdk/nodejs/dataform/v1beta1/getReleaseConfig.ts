@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches a single ReleaseConfig.
  */
 export function getReleaseConfig(args: GetReleaseConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataform/v1beta1:getReleaseConfig", {
         "location": args.location,
         "project": args.project,
@@ -61,9 +58,11 @@ export interface GetReleaseConfigResult {
      */
     readonly timeZone: string;
 }
-
+/**
+ * Fetches a single ReleaseConfig.
+ */
 export function getReleaseConfigOutput(args: GetReleaseConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseConfigResult> {
-    return pulumi.output(args).apply(a => getReleaseConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getReleaseConfig(a, opts))
 }
 
 export interface GetReleaseConfigOutputArgs {

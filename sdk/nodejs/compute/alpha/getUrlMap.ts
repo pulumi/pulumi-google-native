@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
  */
 export function getUrlMap(args: GetUrlMapArgs, opts?: pulumi.InvokeOptions): Promise<GetUrlMapResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getUrlMap", {
         "project": args.project,
         "urlMap": args.urlMap,
@@ -89,9 +86,11 @@ export interface GetUrlMapResult {
      */
     readonly tests: outputs.compute.alpha.UrlMapTestResponse[];
 }
-
+/**
+ * Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+ */
 export function getUrlMapOutput(args: GetUrlMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUrlMapResult> {
-    return pulumi.output(args).apply(a => getUrlMap(a, opts))
+    return pulumi.output(args).apply((a: any) => getUrlMap(a, opts))
 }
 
 export interface GetUrlMapOutputArgs {

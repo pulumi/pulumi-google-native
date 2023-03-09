@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a category on the portal.
  */
 export function getApicategory(args: GetApicategoryArgs, opts?: pulumi.InvokeOptions): Promise<GetApicategoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getApicategory", {
         "apicategoryId": args.apicategoryId,
         "organizationId": args.organizationId,
@@ -51,9 +48,11 @@ export interface GetApicategoryResult {
      */
     readonly status: string;
 }
-
+/**
+ * Gets a category on the portal.
+ */
 export function getApicategoryOutput(args: GetApicategoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApicategoryResult> {
-    return pulumi.output(args).apply(a => getApicategory(a, opts))
+    return pulumi.output(args).apply((a: any) => getApicategory(a, opts))
 }
 
 export interface GetApicategoryOutputArgs {

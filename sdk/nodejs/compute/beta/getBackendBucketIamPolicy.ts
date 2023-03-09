@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getBackendBucketIamPolicy(args: GetBackendBucketIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getBackendBucketIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetBackendBucketIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getBackendBucketIamPolicyOutput(args: GetBackendBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketIamPolicyResult> {
-    return pulumi.output(args).apply(a => getBackendBucketIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackendBucketIamPolicy(a, opts))
 }
 
 export interface GetBackendBucketIamPolicyOutputArgs {
