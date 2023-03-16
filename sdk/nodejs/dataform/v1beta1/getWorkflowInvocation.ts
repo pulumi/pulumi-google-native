@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches a single WorkflowInvocation.
  */
 export function getWorkflowInvocation(args: GetWorkflowInvocationArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkflowInvocationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataform/v1beta1:getWorkflowInvocation", {
         "location": args.location,
         "project": args.project,
@@ -57,9 +54,11 @@ export interface GetWorkflowInvocationResult {
      */
     readonly workflowConfig: string;
 }
-
+/**
+ * Fetches a single WorkflowInvocation.
+ */
 export function getWorkflowInvocationOutput(args: GetWorkflowInvocationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkflowInvocationResult> {
-    return pulumi.output(args).apply(a => getWorkflowInvocation(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkflowInvocation(a, opts))
 }
 
 export interface GetWorkflowInvocationOutputArgs {

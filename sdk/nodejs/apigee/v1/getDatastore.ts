@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get a Datastore
  */
 export function getDatastore(args: GetDatastoreArgs, opts?: pulumi.InvokeOptions): Promise<GetDatastoreResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getDatastore", {
         "datastoreId": args.datastoreId,
         "organizationId": args.organizationId,
@@ -57,9 +54,11 @@ export interface GetDatastoreResult {
      */
     readonly targetType: string;
 }
-
+/**
+ * Get a Datastore
+ */
 export function getDatastoreOutput(args: GetDatastoreOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatastoreResult> {
-    return pulumi.output(args).apply(a => getDatastore(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatastore(a, opts))
 }
 
 export interface GetDatastoreOutputArgs {

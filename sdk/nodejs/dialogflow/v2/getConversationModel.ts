@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets conversation model.
  */
 export function getConversationModel(args: GetConversationModelArgs, opts?: pulumi.InvokeOptions): Promise<GetConversationModelResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2:getConversationModel", {
         "conversationModelId": args.conversationModelId,
         "location": args.location,
@@ -63,9 +60,11 @@ export interface GetConversationModelResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets conversation model.
+ */
 export function getConversationModelOutput(args: GetConversationModelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConversationModelResult> {
-    return pulumi.output(args).apply(a => getConversationModel(a, opts))
+    return pulumi.output(args).apply((a: any) => getConversationModel(a, opts))
 }
 
 export interface GetConversationModelOutputArgs {

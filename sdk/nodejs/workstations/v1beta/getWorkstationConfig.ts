@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested workstation configuration.
  */
 export function getWorkstationConfig(args: GetWorkstationConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkstationConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:workstations/v1beta:getWorkstationConfig", {
         "location": args.location,
         "project": args.project,
@@ -105,9 +102,11 @@ export interface GetWorkstationConfigResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns the requested workstation configuration.
+ */
 export function getWorkstationConfigOutput(args: GetWorkstationConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkstationConfigResult> {
-    return pulumi.output(args).apply(a => getWorkstationConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkstationConfig(a, opts))
 }
 
 export interface GetWorkstationConfigOutputArgs {

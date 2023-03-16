@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:ml/v1:getVersion", {
         "modelId": args.modelId,
         "project": args.project,
@@ -135,9 +132,11 @@ export interface GetVersionResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets information about a model version. Models can have multiple versions. You can call projects.models.versions.list to get the same information that this method returns for all of the versions of a model.
+ */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(args).apply(a => getVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getVersion(a, opts))
 }
 
 export interface GetVersionOutputArgs {

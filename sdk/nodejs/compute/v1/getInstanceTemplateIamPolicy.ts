@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getInstanceTemplateIamPolicy(args: GetInstanceTemplateIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getInstanceTemplateIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetInstanceTemplateIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getInstanceTemplateIamPolicyOutput(args: GetInstanceTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateIamPolicyResult> {
-    return pulumi.output(args).apply(a => getInstanceTemplateIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceTemplateIamPolicy(a, opts))
 }
 
 export interface GetInstanceTemplateIamPolicyOutputArgs {

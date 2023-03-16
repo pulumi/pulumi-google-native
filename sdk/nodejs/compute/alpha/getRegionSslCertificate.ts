@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
  */
 export function getRegionSslCertificate(args: GetRegionSslCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionSslCertificateResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionSslCertificate", {
         "project": args.project,
         "region": args.region,
@@ -87,9 +84,11 @@ export interface GetRegionSslCertificateResult {
      */
     readonly type: string;
 }
-
+/**
+ * Returns the specified SslCertificate resource in the specified region. Get a list of available SSL certificates by making a list() request.
+ */
 export function getRegionSslCertificateOutput(args: GetRegionSslCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionSslCertificateResult> {
-    return pulumi.output(args).apply(a => getRegionSslCertificate(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionSslCertificate(a, opts))
 }
 
 export interface GetRegionSslCertificateOutputArgs {

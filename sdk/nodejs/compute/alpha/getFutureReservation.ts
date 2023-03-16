@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves information about the specified future reservation.
  */
 export function getFutureReservation(args: GetFutureReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetFutureReservationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getFutureReservation", {
         "futureReservation": args.futureReservation,
         "project": args.project,
@@ -83,9 +80,11 @@ export interface GetFutureReservationResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Retrieves information about the specified future reservation.
+ */
 export function getFutureReservationOutput(args: GetFutureReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFutureReservationResult> {
-    return pulumi.output(args).apply(a => getFutureReservation(a, opts))
+    return pulumi.output(args).apply((a: any) => getFutureReservation(a, opts))
 }
 
 export interface GetFutureReservationOutputArgs {

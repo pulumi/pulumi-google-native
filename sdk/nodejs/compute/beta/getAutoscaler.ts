@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
  */
 export function getAutoscaler(args: GetAutoscalerArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getAutoscaler", {
         "autoscaler": args.autoscaler,
         "project": args.project,
@@ -83,9 +80,11 @@ export interface GetAutoscalerResult {
      */
     readonly zone: string;
 }
-
+/**
+ * Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+ */
 export function getAutoscalerOutput(args: GetAutoscalerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalerResult> {
-    return pulumi.output(args).apply(a => getAutoscaler(a, opts))
+    return pulumi.output(args).apply((a: any) => getAutoscaler(a, opts))
 }
 
 export interface GetAutoscalerOutputArgs {

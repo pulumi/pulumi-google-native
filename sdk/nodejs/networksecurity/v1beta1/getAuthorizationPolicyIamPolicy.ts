@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getAuthorizationPolicyIamPolicy(args: GetAuthorizationPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetAuthorizationPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networksecurity/v1beta1:getAuthorizationPolicyIamPolicy", {
         "authorizationPolicyId": args.authorizationPolicyId,
         "location": args.location,
@@ -49,9 +46,11 @@ export interface GetAuthorizationPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getAuthorizationPolicyIamPolicyOutput(args: GetAuthorizationPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorizationPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getAuthorizationPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getAuthorizationPolicyIamPolicy(a, opts))
 }
 
 export interface GetAuthorizationPolicyIamPolicyOutputArgs {

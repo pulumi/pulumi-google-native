@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getInterconnectIamPolicy(args: GetInterconnectIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInterconnectIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getInterconnectIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -51,9 +48,11 @@ export interface GetInterconnectIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getInterconnectIamPolicyOutput(args: GetInterconnectIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterconnectIamPolicyResult> {
-    return pulumi.output(args).apply(a => getInterconnectIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getInterconnectIamPolicy(a, opts))
 }
 
 export interface GetInterconnectIamPolicyOutputArgs {

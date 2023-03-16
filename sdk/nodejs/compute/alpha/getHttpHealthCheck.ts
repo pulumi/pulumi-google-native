@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by making a list() request.
  */
 export function getHttpHealthCheck(args: GetHttpHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpHealthCheckResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getHttpHealthCheck", {
         "httpHealthCheck": args.httpHealthCheck,
         "project": args.project,
@@ -78,9 +75,11 @@ export interface GetHttpHealthCheckResult {
      */
     readonly unhealthyThreshold: number;
 }
-
+/**
+ * Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by making a list() request.
+ */
 export function getHttpHealthCheckOutput(args: GetHttpHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpHealthCheckResult> {
-    return pulumi.output(args).apply(a => getHttpHealthCheck(a, opts))
+    return pulumi.output(args).apply((a: any) => getHttpHealthCheck(a, opts))
 }
 
 export interface GetHttpHealthCheckOutputArgs {

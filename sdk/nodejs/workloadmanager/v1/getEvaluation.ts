@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single Evaluation.
  */
 export function getEvaluation(args: GetEvaluationArgs, opts?: pulumi.InvokeOptions): Promise<GetEvaluationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:workloadmanager/v1:getEvaluation", {
         "evaluationId": args.evaluationId,
         "location": args.location,
@@ -67,9 +64,11 @@ export interface GetEvaluationResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single Evaluation.
+ */
 export function getEvaluationOutput(args: GetEvaluationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEvaluationResult> {
-    return pulumi.output(args).apply(a => getEvaluation(a, opts))
+    return pulumi.output(args).apply((a: any) => getEvaluation(a, opts))
 }
 
 export interface GetEvaluationOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
  */
 export function getIdentityAwareProxyClient(args: GetIdentityAwareProxyClientArgs, opts?: pulumi.InvokeOptions): Promise<GetIdentityAwareProxyClientResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iap/v1:getIdentityAwareProxyClient", {
         "brandId": args.brandId,
         "identityAwareProxyClientId": args.identityAwareProxyClientId,
@@ -40,9 +37,11 @@ export interface GetIdentityAwareProxyClientResult {
      */
     readonly secret: string;
 }
-
+/**
+ * Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
+ */
 export function getIdentityAwareProxyClientOutput(args: GetIdentityAwareProxyClientOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIdentityAwareProxyClientResult> {
-    return pulumi.output(args).apply(a => getIdentityAwareProxyClient(a, opts))
+    return pulumi.output(args).apply((a: any) => getIdentityAwareProxyClient(a, opts))
 }
 
 export interface GetIdentityAwareProxyClientOutputArgs {

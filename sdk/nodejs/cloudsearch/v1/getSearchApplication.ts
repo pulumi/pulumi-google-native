@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified search application. **Note:** This API requires an admin account to execute.
  */
 export function getSearchApplication(args: GetSearchApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetSearchApplicationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudsearch/v1:getSearchApplication", {
         "debugOptionsEnableDebugging": args.debugOptionsEnableDebugging,
         "searchapplicationId": args.searchapplicationId,
@@ -73,9 +70,11 @@ export interface GetSearchApplicationResult {
      */
     readonly sourceConfig: outputs.cloudsearch.v1.SourceConfigResponse[];
 }
-
+/**
+ * Gets the specified search application. **Note:** This API requires an admin account to execute.
+ */
 export function getSearchApplicationOutput(args: GetSearchApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchApplicationResult> {
-    return pulumi.output(args).apply(a => getSearchApplication(a, opts))
+    return pulumi.output(args).apply((a: any) => getSearchApplication(a, opts))
 }
 
 export interface GetSearchApplicationOutputArgs {

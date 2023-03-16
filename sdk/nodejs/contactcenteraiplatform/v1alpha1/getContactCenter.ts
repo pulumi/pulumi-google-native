@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single ContactCenter.
  */
 export function getContactCenter(args: GetContactCenterArgs, opts?: pulumi.InvokeOptions): Promise<GetContactCenterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contactcenteraiplatform/v1alpha1:getContactCenter", {
         "contactCenterId": args.contactCenterId,
         "location": args.location,
@@ -79,9 +76,11 @@ export interface GetContactCenterResult {
      */
     readonly userEmail: string;
 }
-
+/**
+ * Gets details of a single ContactCenter.
+ */
 export function getContactCenterOutput(args: GetContactCenterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetContactCenterResult> {
-    return pulumi.output(args).apply(a => getContactCenter(a, opts))
+    return pulumi.output(args).apply((a: any) => getContactCenter(a, opts))
 }
 
 export interface GetContactCenterOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a `GitLabConfig`. This API is experimental
  */
 export function getGitLabConfig(args: GetGitLabConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetGitLabConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudbuild/v1:getGitLabConfig", {
         "gitLabConfigId": args.gitLabConfigId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetGitLabConfigResult {
      */
     readonly webhookKey: string;
 }
-
+/**
+ * Retrieves a `GitLabConfig`. This API is experimental
+ */
 export function getGitLabConfigOutput(args: GetGitLabConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitLabConfigResult> {
-    return pulumi.output(args).apply(a => getGitLabConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getGitLabConfig(a, opts))
 }
 
 export interface GetGitLabConfigOutputArgs {

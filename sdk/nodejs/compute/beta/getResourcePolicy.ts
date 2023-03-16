@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves all information of the specified resource policy.
  */
 export function getResourcePolicy(args: GetResourcePolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcePolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getResourcePolicy", {
         "project": args.project,
         "region": args.region,
@@ -69,9 +66,11 @@ export interface GetResourcePolicyResult {
      */
     readonly status: string;
 }
-
+/**
+ * Retrieves all information of the specified resource policy.
+ */
 export function getResourcePolicyOutput(args: GetResourcePolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourcePolicyResult> {
-    return pulumi.output(args).apply(a => getResourcePolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getResourcePolicy(a, opts))
 }
 
 export interface GetResourcePolicyOutputArgs {

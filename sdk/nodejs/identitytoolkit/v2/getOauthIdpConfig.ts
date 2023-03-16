@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve an Oidc Idp configuration for an Identity Toolkit project.
  */
 export function getOauthIdpConfig(args: GetOauthIdpConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetOauthIdpConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:identitytoolkit/v2:getOauthIdpConfig", {
         "oauthIdpConfigId": args.oauthIdpConfigId,
         "project": args.project,
@@ -59,9 +56,11 @@ export interface GetOauthIdpConfigResult {
      */
     readonly responseType: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse;
 }
-
+/**
+ * Retrieve an Oidc Idp configuration for an Identity Toolkit project.
+ */
 export function getOauthIdpConfigOutput(args: GetOauthIdpConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOauthIdpConfigResult> {
-    return pulumi.output(args).apply(a => getOauthIdpConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getOauthIdpConfig(a, opts))
 }
 
 export interface GetOauthIdpConfigOutputArgs {

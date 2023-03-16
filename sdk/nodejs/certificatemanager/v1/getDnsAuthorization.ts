@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single DnsAuthorization.
  */
 export function getDnsAuthorization(args: GetDnsAuthorizationArgs, opts?: pulumi.InvokeOptions): Promise<GetDnsAuthorizationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:certificatemanager/v1:getDnsAuthorization", {
         "dnsAuthorizationId": args.dnsAuthorizationId,
         "location": args.location,
@@ -59,9 +56,11 @@ export interface GetDnsAuthorizationResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets details of a single DnsAuthorization.
+ */
 export function getDnsAuthorizationOutput(args: GetDnsAuthorizationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDnsAuthorizationResult> {
-    return pulumi.output(args).apply(a => getDnsAuthorization(a, opts))
+    return pulumi.output(args).apply((a: any) => getDnsAuthorization(a, opts))
 }
 
 export interface GetDnsAuthorizationOutputArgs {

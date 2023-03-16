@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified target pool. Gets a list of available target pools by making a list() request.
  */
 export function getTargetPool(args: GetTargetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getTargetPool", {
         "project": args.project,
         "region": args.region,
@@ -80,9 +77,11 @@ export interface GetTargetPoolResult {
      */
     readonly sessionAffinity: string;
 }
-
+/**
+ * Returns the specified target pool. Gets a list of available target pools by making a list() request.
+ */
 export function getTargetPoolOutput(args: GetTargetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetPoolResult> {
-    return pulumi.output(args).apply(a => getTargetPool(a, opts))
+    return pulumi.output(args).apply((a: any) => getTargetPool(a, opts))
 }
 
 export interface GetTargetPoolOutputArgs {

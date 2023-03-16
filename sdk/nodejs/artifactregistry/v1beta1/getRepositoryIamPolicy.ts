@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM policy for a given resource.
  */
 export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:artifactregistry/v1beta1:getRepositoryIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -45,9 +42,11 @@ export interface GetRepositoryIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the IAM policy for a given resource.
+ */
 export function getRepositoryIamPolicyOutput(args: GetRepositoryIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryIamPolicyResult> {
-    return pulumi.output(args).apply(a => getRepositoryIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepositoryIamPolicy(a, opts))
 }
 
 export interface GetRepositoryIamPolicyOutputArgs {

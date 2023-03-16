@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves the specified agent version.
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dialogflow/v2beta1:getVersion", {
         "location": args.location,
         "project": args.project,
@@ -48,9 +45,11 @@ export interface GetVersionResult {
      */
     readonly versionNumber: number;
 }
-
+/**
+ * Retrieves the specified agent version.
+ */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(args).apply(a => getVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getVersion(a, opts))
 }
 
 export interface GetVersionOutputArgs {

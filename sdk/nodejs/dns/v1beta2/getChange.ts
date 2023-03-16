@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches the representation of an existing Change.
  */
 export function getChange(args: GetChangeArgs, opts?: pulumi.InvokeOptions): Promise<GetChangeResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dns/v1beta2:getChange", {
         "changeId": args.changeId,
         "clientOperationId": args.clientOperationId,
@@ -54,9 +51,11 @@ export interface GetChangeResult {
      */
     readonly status: string;
 }
-
+/**
+ * Fetches the representation of an existing Change.
+ */
 export function getChangeOutput(args: GetChangeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeResult> {
-    return pulumi.output(args).apply(a => getChange(a, opts))
+    return pulumi.output(args).apply((a: any) => getChange(a, opts))
 }
 
 export interface GetChangeOutputArgs {

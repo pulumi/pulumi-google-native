@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns information about the reservation.
  */
 export function getReservation(args: GetReservationArgs, opts?: pulumi.InvokeOptions): Promise<GetReservationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigqueryreservation/v1beta1:getReservation", {
         "location": args.location,
         "project": args.project,
@@ -56,9 +53,11 @@ export interface GetReservationResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns information about the reservation.
+ */
 export function getReservationOutput(args: GetReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservationResult> {
-    return pulumi.output(args).apply(a => getReservation(a, opts))
+    return pulumi.output(args).apply((a: any) => getReservation(a, opts))
 }
 
 export interface GetReservationOutputArgs {

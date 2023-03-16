@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
  */
 export function getInstanceClusterBackupIamPolicy(args: GetInstanceClusterBackupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceClusterBackupIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:bigtableadmin/v2:getInstanceClusterBackupIamPolicy", {
         "backupId": args.backupId,
         "clusterId": args.clusterId,
@@ -49,9 +46,11 @@ export interface GetInstanceClusterBackupIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a Table resource. Returns an empty policy if the resource exists but does not have a policy set.
+ */
 export function getInstanceClusterBackupIamPolicyOutput(args: GetInstanceClusterBackupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceClusterBackupIamPolicyResult> {
-    return pulumi.output(args).apply(a => getInstanceClusterBackupIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceClusterBackupIamPolicy(a, opts))
 }
 
 export interface GetInstanceClusterBackupIamPolicyOutputArgs {
