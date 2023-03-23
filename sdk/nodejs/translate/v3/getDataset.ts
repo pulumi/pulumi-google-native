@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a Dataset.
  */
 export function getDataset(args: GetDatasetArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:translate/v3:getDataset", {
         "datasetId": args.datasetId,
         "location": args.location,
@@ -68,9 +65,11 @@ export interface GetDatasetResult {
      */
     readonly validateExampleCount: number;
 }
-
+/**
+ * Gets a Dataset.
+ */
 export function getDatasetOutput(args: GetDatasetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetResult> {
-    return pulumi.output(args).apply(a => getDataset(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataset(a, opts))
 }
 
 export interface GetDatasetOutputArgs {

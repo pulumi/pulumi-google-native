@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Get a `Release` by name.
  */
 export function getRelease(args: GetReleaseArgs, opts?: pulumi.InvokeOptions): Promise<GetReleaseResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebaserules/v1:getRelease", {
         "project": args.project,
         "releaseId": args.releaseId,
@@ -42,9 +39,11 @@ export interface GetReleaseResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Get a `Release` by name.
+ */
 export function getReleaseOutput(args: GetReleaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReleaseResult> {
-    return pulumi.output(args).apply(a => getRelease(a, opts))
+    return pulumi.output(args).apply((a: any) => getRelease(a, opts))
 }
 
 export interface GetReleaseOutputArgs {

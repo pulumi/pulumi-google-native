@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a DataScan resource.
  */
 export function getDataScan(args: GetDataScanArgs, opts?: pulumi.InvokeOptions): Promise<GetDataScanResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getDataScan", {
         "dataScanId": args.dataScanId,
         "location": args.location,
@@ -97,9 +94,11 @@ export interface GetDataScanResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a DataScan resource.
+ */
 export function getDataScanOutput(args: GetDataScanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataScanResult> {
-    return pulumi.output(args).apply(a => getDataScan(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataScan(a, opts))
 }
 
 export interface GetDataScanOutputArgs {

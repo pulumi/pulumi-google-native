@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a sink.
  */
 export function getOrganizationSink(args: GetOrganizationSinkArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationSinkResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getOrganizationSink", {
         "organizationId": args.organizationId,
         "sinkId": args.sinkId,
@@ -79,9 +76,11 @@ export interface GetOrganizationSinkResult {
      */
     readonly writerIdentity: string;
 }
-
+/**
+ * Gets a sink.
+ */
 export function getOrganizationSinkOutput(args: GetOrganizationSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationSinkResult> {
-    return pulumi.output(args).apply(a => getOrganizationSink(a, opts))
+    return pulumi.output(args).apply((a: any) => getOrganizationSink(a, opts))
 }
 
 export interface GetOrganizationSinkOutputArgs {

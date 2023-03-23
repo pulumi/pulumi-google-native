@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves an asset resource.
  */
 export function getAsset(args: GetAssetArgs, opts?: pulumi.InvokeOptions): Promise<GetAssetResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getAsset", {
         "assetId": args.assetId,
         "lakeId": args.lakeId,
@@ -87,9 +84,11 @@ export interface GetAssetResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves an asset resource.
+ */
 export function getAssetOutput(args: GetAssetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetResult> {
-    return pulumi.output(args).apply(a => getAsset(a, opts))
+    return pulumi.output(args).apply((a: any) => getAsset(a, opts))
 }
 
 export interface GetAssetOutputArgs {

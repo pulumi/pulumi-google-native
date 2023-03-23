@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM Access Control policy currently in effect for the given Cloud Run service. This result does not include any inherited policies.
  */
 export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:run/v1:getServiceIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -49,9 +46,11 @@ export interface GetServiceIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the IAM Access Control policy currently in effect for the given Cloud Run service. This result does not include any inherited policies.
+ */
 export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIamPolicyResult> {
-    return pulumi.output(args).apply(a => getServiceIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getServiceIamPolicy(a, opts))
 }
 
 export interface GetServiceIamPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDatasetDicomStoreIamPolicy(args: GetDatasetDicomStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetDicomStoreIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getDatasetDicomStoreIamPolicy", {
         "datasetId": args.datasetId,
         "dicomStoreId": args.dicomStoreId,
@@ -51,9 +48,11 @@ export interface GetDatasetDicomStoreIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getDatasetDicomStoreIamPolicyOutput(args: GetDatasetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetDicomStoreIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDatasetDicomStoreIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatasetDicomStoreIamPolicy(a, opts))
 }
 
 export interface GetDatasetDicomStoreIamPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
  */
 export function getVersion(args: GetVersionArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:appengine/v1:getVersion", {
         "appId": args.appId,
         "serviceId": args.serviceId,
@@ -191,9 +188,11 @@ export interface GetVersionResult {
      */
     readonly zones: string[];
 }
-
+/**
+ * Gets the specified Version resource. By default, only a BASIC_VIEW will be returned. Specify the FULL_VIEW parameter to get the full resource.
+ */
 export function getVersionOutput(args: GetVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionResult> {
-    return pulumi.output(args).apply(a => getVersion(a, opts))
+    return pulumi.output(args).apply((a: any) => getVersion(a, opts))
 }
 
 export interface GetVersionOutputArgs {

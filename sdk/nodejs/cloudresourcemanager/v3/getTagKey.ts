@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
  */
 export function getTagKey(args: GetTagKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetTagKeyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudresourcemanager/v3:getTagKey", {
         "tagKeyId": args.tagKeyId,
     }, opts);
@@ -64,9 +61,11 @@ export interface GetTagKeyResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a TagKey. This method will return `PERMISSION_DENIED` if the key does not exist or the user does not have permission to view it.
+ */
 export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyResult> {
-    return pulumi.output(args).apply(a => getTagKey(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagKey(a, opts))
 }
 
 export interface GetTagKeyOutputArgs {

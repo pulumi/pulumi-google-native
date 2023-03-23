@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getInstanceNamespaceIamPolicy(args: GetInstanceNamespaceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceNamespaceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:datafusion/v1beta1:getInstanceNamespaceIamPolicy", {
         "instanceId": args.instanceId,
         "location": args.location,
@@ -51,9 +48,11 @@ export interface GetInstanceNamespaceIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getInstanceNamespaceIamPolicyOutput(args: GetInstanceNamespaceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceNamespaceIamPolicyResult> {
-    return pulumi.output(args).apply(a => getInstanceNamespaceIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getInstanceNamespaceIamPolicy(a, opts))
 }
 
 export interface GetInstanceNamespaceIamPolicyOutputArgs {

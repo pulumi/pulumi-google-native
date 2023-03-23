@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getWorkstationClusterWorkstationConfigIamPolicy(args: GetWorkstationClusterWorkstationConfigIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkstationClusterWorkstationConfigIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:workstations/v1beta:getWorkstationClusterWorkstationConfigIamPolicy", {
         "location": args.location,
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
@@ -51,9 +48,11 @@ export interface GetWorkstationClusterWorkstationConfigIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getWorkstationClusterWorkstationConfigIamPolicyOutput(args: GetWorkstationClusterWorkstationConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkstationClusterWorkstationConfigIamPolicyResult> {
-    return pulumi.output(args).apply(a => getWorkstationClusterWorkstationConfigIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkstationClusterWorkstationConfigIamPolicy(a, opts))
 }
 
 export interface GetWorkstationClusterWorkstationConfigIamPolicyOutputArgs {

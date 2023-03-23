@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
  */
 export function getPerfSampleSeries(args: GetPerfSampleSeriesArgs, opts?: pulumi.InvokeOptions): Promise<GetPerfSampleSeriesResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:toolresults/v1beta3:getPerfSampleSeries", {
         "executionId": args.executionId,
         "historyId": args.historyId,
@@ -59,9 +56,11 @@ export interface GetPerfSampleSeriesResult {
      */
     readonly stepId: string;
 }
-
+/**
+ * Gets a PerfSampleSeries. May return any of the following error code(s): - NOT_FOUND - The specified PerfSampleSeries does not exist
+ */
 export function getPerfSampleSeriesOutput(args: GetPerfSampleSeriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPerfSampleSeriesResult> {
-    return pulumi.output(args).apply(a => getPerfSampleSeries(a, opts))
+    return pulumi.output(args).apply((a: any) => getPerfSampleSeries(a, opts))
 }
 
 export interface GetPerfSampleSeriesOutputArgs {

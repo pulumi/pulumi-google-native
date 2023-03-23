@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Returns the specified TargetTcpProxy resource.
  */
 export function getRegionTargetTcpProxy(args: GetRegionTargetTcpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionTargetTcpProxyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/alpha:getRegionTargetTcpProxy", {
         "project": args.project,
         "region": args.region,
@@ -64,9 +61,11 @@ export interface GetRegionTargetTcpProxyResult {
      */
     readonly service: string;
 }
-
+/**
+ * Returns the specified TargetTcpProxy resource.
+ */
 export function getRegionTargetTcpProxyOutput(args: GetRegionTargetTcpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionTargetTcpProxyResult> {
-    return pulumi.output(args).apply(a => getRegionTargetTcpProxy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegionTargetTcpProxy(a, opts))
 }
 
 export interface GetRegionTargetTcpProxyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDatasetConsentStoreIamPolicy(args: GetDatasetConsentStoreIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDatasetConsentStoreIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1beta1:getDatasetConsentStoreIamPolicy", {
         "consentStoreId": args.consentStoreId,
         "datasetId": args.datasetId,
@@ -51,9 +48,11 @@ export interface GetDatasetConsentStoreIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getDatasetConsentStoreIamPolicyOutput(args: GetDatasetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetConsentStoreIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDatasetConsentStoreIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDatasetConsentStoreIamPolicy(a, opts))
 }
 
 export interface GetDatasetConsentStoreIamPolicyOutputArgs {

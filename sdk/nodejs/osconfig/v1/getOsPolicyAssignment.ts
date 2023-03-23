@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
  */
 export function getOsPolicyAssignment(args: GetOsPolicyAssignmentArgs, opts?: pulumi.InvokeOptions): Promise<GetOsPolicyAssignmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:osconfig/v1:getOsPolicyAssignment", {
         "location": args.location,
         "osPolicyAssignmentId": args.osPolicyAssignmentId,
@@ -83,9 +80,11 @@ export interface GetOsPolicyAssignmentResult {
      */
     readonly uid: string;
 }
-
+/**
+ * Retrieve an existing OS policy assignment. This method always returns the latest revision. In order to retrieve a previous revision of the assignment, also provide the revision ID in the `name` parameter.
+ */
 export function getOsPolicyAssignmentOutput(args: GetOsPolicyAssignmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOsPolicyAssignmentResult> {
-    return pulumi.output(args).apply(a => getOsPolicyAssignment(a, opts))
+    return pulumi.output(args).apply((a: any) => getOsPolicyAssignment(a, opts))
 }
 
 export interface GetOsPolicyAssignmentOutputArgs {

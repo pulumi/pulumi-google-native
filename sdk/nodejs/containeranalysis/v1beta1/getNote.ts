@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified note.
  */
 export function getNote(args: GetNoteArgs, opts?: pulumi.InvokeOptions): Promise<GetNoteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:containeranalysis/v1beta1:getNote", {
         "noteId": args.noteId,
         "project": args.project,
@@ -113,9 +110,11 @@ export interface GetNoteResult {
      */
     readonly vulnerability: outputs.containeranalysis.v1beta1.VulnerabilityResponse;
 }
-
+/**
+ * Gets the specified note.
+ */
 export function getNoteOutput(args: GetNoteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNoteResult> {
-    return pulumi.output(args).apply(a => getNote(a, opts))
+    return pulumi.output(args).apply((a: any) => getNote(a, opts))
 }
 
 export interface GetNoteOutputArgs {

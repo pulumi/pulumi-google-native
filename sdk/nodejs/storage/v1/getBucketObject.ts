@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves an object or its metadata.
  */
 export function getBucketObject(args: GetBucketObjectArgs, opts?: pulumi.InvokeOptions): Promise<GetBucketObjectResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:storage/v1:getBucketObject", {
         "bucket": args.bucket,
         "generation": args.generation,
@@ -167,9 +164,11 @@ export interface GetBucketObjectResult {
      */
     readonly updated: string;
 }
-
+/**
+ * Retrieves an object or its metadata.
+ */
 export function getBucketObjectOutput(args: GetBucketObjectOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectResult> {
-    return pulumi.output(args).apply(a => getBucketObject(a, opts))
+    return pulumi.output(args).apply((a: any) => getBucketObject(a, opts))
 }
 
 export interface GetBucketObjectOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
  */
 export function getSession(args: GetSessionArgs, opts?: pulumi.InvokeOptions): Promise<GetSessionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:spanner/v1:getSession", {
         "databaseId": args.databaseId,
         "instanceId": args.instanceId,
@@ -50,9 +47,11 @@ export interface GetSessionResult {
      */
     readonly name: string;
 }
-
+/**
+ * Gets a session. Returns `NOT_FOUND` if the session does not exist. This is mainly useful for determining whether a session is still alive.
+ */
 export function getSessionOutput(args: GetSessionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSessionResult> {
-    return pulumi.output(args).apply(a => getSession(a, opts))
+    return pulumi.output(args).apply((a: any) => getSession(a, opts))
 }
 
 export interface GetSessionOutputArgs {
