@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
  */
 export function getSslCert(args: GetSslCertArgs, opts?: pulumi.InvokeOptions): Promise<GetSslCertResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sqladmin/v1:getSslCert", {
         "instance": args.instance,
         "project": args.project,
@@ -64,9 +61,11 @@ export interface GetSslCertResult {
      */
     readonly sha1Fingerprint: string;
 }
-
+/**
+ * Retrieves a particular SSL certificate. Does not include the private key (required for usage). The private key must be saved from the response to initial creation.
+ */
 export function getSslCertOutput(args: GetSslCertOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslCertResult> {
-    return pulumi.output(args).apply(a => getSslCert(a, opts))
+    return pulumi.output(args).apply((a: any) => getSslCert(a, opts))
 }
 
 export interface GetSslCertOutputArgs {

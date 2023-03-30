@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a queued resource.
  */
 export function getQueuedResource(args: GetQueuedResourceArgs, opts?: pulumi.InvokeOptions): Promise<GetQueuedResourceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:tpu/v2alpha1:getQueuedResource", {
         "location": args.location,
         "project": args.project,
@@ -55,9 +52,11 @@ export interface GetQueuedResourceResult {
      */
     readonly tpu: outputs.tpu.v2alpha1.TpuResponse;
 }
-
+/**
+ * Gets details of a queued resource.
+ */
 export function getQueuedResourceOutput(args: GetQueuedResourceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueuedResourceResult> {
-    return pulumi.output(args).apply(a => getQueuedResource(a, opts))
+    return pulumi.output(args).apply((a: any) => getQueuedResource(a, opts))
 }
 
 export interface GetQueuedResourceOutputArgs {

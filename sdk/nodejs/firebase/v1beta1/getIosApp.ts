@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the specified IosApp.
  */
 export function getIosApp(args: GetIosAppArgs, opts?: pulumi.InvokeOptions): Promise<GetIosAppResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:firebase/v1beta1:getIosApp", {
         "iosAppId": args.iosAppId,
         "project": args.project,
@@ -70,9 +67,11 @@ export interface GetIosAppResult {
      */
     readonly teamId: string;
 }
-
+/**
+ * Gets the specified IosApp.
+ */
 export function getIosAppOutput(args: GetIosAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIosAppResult> {
-    return pulumi.output(args).apply(a => getIosApp(a, opts))
+    return pulumi.output(args).apply((a: any) => getIosApp(a, opts))
 }
 
 export interface GetIosAppOutputArgs {

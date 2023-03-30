@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified NetworkAttachment resource in the given scope.
  */
 export function getNetworkAttachment(args: GetNetworkAttachmentArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAttachmentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/v1:getNetworkAttachment", {
         "networkAttachment": args.networkAttachment,
         "project": args.project,
@@ -84,9 +81,11 @@ export interface GetNetworkAttachmentResult {
      */
     readonly subnetworks: string[];
 }
-
+/**
+ * Returns the specified NetworkAttachment resource in the given scope.
+ */
 export function getNetworkAttachmentOutput(args: GetNetworkAttachmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAttachmentResult> {
-    return pulumi.output(args).apply(a => getNetworkAttachment(a, opts))
+    return pulumi.output(args).apply((a: any) => getNetworkAttachment(a, opts))
 }
 
 export interface GetNetworkAttachmentOutputArgs {

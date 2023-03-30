@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
  */
 export function getCustomer(args: GetCustomerArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudchannel/v1:getCustomer", {
         "accountId": args.accountId,
         "channelPartnerLinkId": args.channelPartnerLinkId,
@@ -79,9 +76,11 @@ export interface GetCustomerResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
+ */
 export function getCustomerOutput(args: GetCustomerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerResult> {
-    return pulumi.output(args).apply(a => getCustomer(a, opts))
+    return pulumi.output(args).apply((a: any) => getCustomer(a, opts))
 }
 
 export interface GetCustomerOutputArgs {

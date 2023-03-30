@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the IAM Policy for a resource
  */
 export function getRegistrationPolicyIamPolicy(args: GetRegistrationPolicyIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationPolicyIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:servicedirectory/v1beta1:getRegistrationPolicyIamPolicy", {
         "location": args.location,
         "project": args.project,
@@ -43,9 +40,11 @@ export interface GetRegistrationPolicyIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the IAM Policy for a resource
+ */
 export function getRegistrationPolicyIamPolicyOutput(args: GetRegistrationPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrationPolicyIamPolicyResult> {
-    return pulumi.output(args).apply(a => getRegistrationPolicyIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistrationPolicyIamPolicy(a, opts))
 }
 
 export interface GetRegistrationPolicyIamPolicyOutputArgs {

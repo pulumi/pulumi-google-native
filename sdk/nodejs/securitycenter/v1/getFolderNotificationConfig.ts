@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a notification config.
  */
 export function getFolderNotificationConfig(args: GetFolderNotificationConfigArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderNotificationConfigResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:securitycenter/v1:getFolderNotificationConfig", {
         "folderId": args.folderId,
         "notificationConfigId": args.notificationConfigId,
@@ -49,9 +46,11 @@ export interface GetFolderNotificationConfigResult {
      */
     readonly streamingConfig: outputs.securitycenter.v1.StreamingConfigResponse;
 }
-
+/**
+ * Gets a notification config.
+ */
 export function getFolderNotificationConfigOutput(args: GetFolderNotificationConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderNotificationConfigResult> {
-    return pulumi.output(args).apply(a => getFolderNotificationConfig(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolderNotificationConfig(a, opts))
 }
 
 export interface GetFolderNotificationConfigOutputArgs {

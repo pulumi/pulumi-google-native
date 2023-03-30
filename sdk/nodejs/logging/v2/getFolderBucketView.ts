@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets a view on a log bucket..
  */
 export function getFolderBucketView(args: GetFolderBucketViewArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderBucketViewResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getFolderBucketView", {
         "bucketId": args.bucketId,
         "folderId": args.folderId,
@@ -50,9 +47,11 @@ export interface GetFolderBucketViewResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets a view on a log bucket..
+ */
 export function getFolderBucketViewOutput(args: GetFolderBucketViewOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderBucketViewResult> {
-    return pulumi.output(args).apply(a => getFolderBucketView(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolderBucketView(a, opts))
 }
 
 export interface GetFolderBucketViewOutputArgs {

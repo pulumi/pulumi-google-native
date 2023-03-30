@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
  */
 export function getDeploymentIamPolicy(args: GetDeploymentIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:deploymentmanager/v2beta:getDeploymentIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "project": args.project,
@@ -47,9 +44,11 @@ export interface GetDeploymentIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
+ */
 export function getDeploymentIamPolicyOutput(args: GetDeploymentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDeploymentIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeploymentIamPolicy(a, opts))
 }
 
 export interface GetDeploymentIamPolicyOutputArgs {

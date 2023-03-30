@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns the specified Route resource. Gets a list of available routes by making a list() request.
  */
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:compute/beta:getRoute", {
         "project": args.project,
         "route": args.route,
@@ -113,9 +110,11 @@ export interface GetRouteResult {
      */
     readonly warnings: outputs.compute.beta.RouteWarningsItemResponse[];
 }
-
+/**
+ * Returns the specified Route resource. Gets a list of available routes by making a list() request.
+ */
 export function getRouteOutput(args: GetRouteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteResult> {
-    return pulumi.output(args).apply(a => getRoute(a, opts))
+    return pulumi.output(args).apply((a: any) => getRoute(a, opts))
 }
 
 export interface GetRouteOutputArgs {

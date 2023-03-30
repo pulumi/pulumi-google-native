@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getDataTaxonomyAttributeIamPolicy(args: GetDataTaxonomyAttributeIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetDataTaxonomyAttributeIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getDataTaxonomyAttributeIamPolicy", {
         "attributeId": args.attributeId,
         "dataTaxonomyId": args.dataTaxonomyId,
@@ -51,9 +48,11 @@ export interface GetDataTaxonomyAttributeIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getDataTaxonomyAttributeIamPolicyOutput(args: GetDataTaxonomyAttributeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataTaxonomyAttributeIamPolicyResult> {
-    return pulumi.output(args).apply(a => getDataTaxonomyAttributeIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataTaxonomyAttributeIamPolicy(a, opts))
 }
 
 export interface GetDataTaxonomyAttributeIamPolicyOutputArgs {

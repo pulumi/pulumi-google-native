@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getPeeringIamPolicy(args: GetPeeringIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetPeeringIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:managedidentities/v1beta1:getPeeringIamPolicy", {
         "optionsRequestedPolicyVersion": args.optionsRequestedPolicyVersion,
         "peeringId": args.peeringId,
@@ -43,9 +40,11 @@ export interface GetPeeringIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getPeeringIamPolicyOutput(args: GetPeeringIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeringIamPolicyResult> {
-    return pulumi.output(args).apply(a => getPeeringIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getPeeringIamPolicy(a, opts))
 }
 
 export interface GetPeeringIamPolicyOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a phrase matcher.
  */
 export function getPhraseMatcher(args: GetPhraseMatcherArgs, opts?: pulumi.InvokeOptions): Promise<GetPhraseMatcherResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:contactcenterinsights/v1:getPhraseMatcher", {
         "location": args.location,
         "phraseMatcherId": args.phraseMatcherId,
@@ -75,9 +72,11 @@ export interface GetPhraseMatcherResult {
      */
     readonly versionTag: string;
 }
-
+/**
+ * Gets a phrase matcher.
+ */
 export function getPhraseMatcherOutput(args: GetPhraseMatcherOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhraseMatcherResult> {
-    return pulumi.output(args).apply(a => getPhraseMatcher(a, opts))
+    return pulumi.output(args).apply((a: any) => getPhraseMatcher(a, opts))
 }
 
 export interface GetPhraseMatcherOutputArgs {

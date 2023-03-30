@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details of a single CutoverJob.
  */
 export function getCutoverJob(args: GetCutoverJobArgs, opts?: pulumi.InvokeOptions): Promise<GetCutoverJobResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:vmmigration/v1:getCutoverJob", {
         "cutoverJobId": args.cutoverJobId,
         "location": args.location,
@@ -75,9 +72,11 @@ export interface GetCutoverJobResult {
      */
     readonly steps: outputs.vmmigration.v1.CutoverStepResponse[];
 }
-
+/**
+ * Gets details of a single CutoverJob.
+ */
 export function getCutoverJobOutput(args: GetCutoverJobOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCutoverJobResult> {
-    return pulumi.output(args).apply(a => getCutoverJob(a, opts))
+    return pulumi.output(args).apply((a: any) => getCutoverJob(a, opts))
 }
 
 export interface GetCutoverJobOutputArgs {

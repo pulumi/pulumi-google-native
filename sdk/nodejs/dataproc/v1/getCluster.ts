@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the resource representation for a cluster in a project.
  */
 export function getCluster(args: GetClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetClusterResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataproc/v1:getCluster", {
         "clusterName": args.clusterName,
         "project": args.project,
@@ -67,9 +64,11 @@ export interface GetClusterResult {
      */
     readonly virtualClusterConfig: outputs.dataproc.v1.VirtualClusterConfigResponse;
 }
-
+/**
+ * Gets the resource representation for a cluster in a project.
+ */
 export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
-    return pulumi.output(args).apply(a => getCluster(a, opts))
+    return pulumi.output(args).apply((a: any) => getCluster(a, opts))
 }
 
 export interface GetClusterOutputArgs {

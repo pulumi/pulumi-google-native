@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a `Registration` resource.
  */
 export function getRegistration(args: GetRegistrationArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrationResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:domains/v1alpha2:getRegistration", {
         "location": args.location,
         "project": args.project,
@@ -87,9 +84,11 @@ export interface GetRegistrationResult {
      */
     readonly transferFailureReason: string;
 }
-
+/**
+ * Gets the details of a `Registration` resource.
+ */
 export function getRegistrationOutput(args: GetRegistrationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrationResult> {
-    return pulumi.output(args).apply(a => getRegistration(a, opts))
+    return pulumi.output(args).apply((a: any) => getRegistration(a, opts))
 }
 
 export interface GetRegistrationOutputArgs {

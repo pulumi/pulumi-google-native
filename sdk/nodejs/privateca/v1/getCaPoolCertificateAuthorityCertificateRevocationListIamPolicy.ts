@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
  */
 export function getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(args: GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:privateca/v1:getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy", {
         "caPoolId": args.caPoolId,
         "certificateAuthorityId": args.certificateAuthorityId,
@@ -53,9 +50,11 @@ export interface GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicy
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+ */
 export function getCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput(args: GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult> {
-    return pulumi.output(args).apply(a => getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy(a, opts))
 }
 
 export interface GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs {

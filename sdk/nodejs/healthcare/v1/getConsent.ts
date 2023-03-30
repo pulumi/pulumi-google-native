@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
  */
 export function getConsent(args: GetConsentArgs, opts?: pulumi.InvokeOptions): Promise<GetConsentResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:healthcare/v1:getConsent", {
         "consentId": args.consentId,
         "consentStoreId": args.consentStoreId,
@@ -75,9 +72,11 @@ export interface GetConsentResult {
      */
     readonly userId: string;
 }
-
+/**
+ * Gets the specified revision of a Consent, or the latest revision if `revision_id` is not specified in the resource name.
+ */
 export function getConsentOutput(args: GetConsentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentResult> {
-    return pulumi.output(args).apply(a => getConsent(a, opts))
+    return pulumi.output(args).apply((a: any) => getConsent(a, opts))
 }
 
 export interface GetConsentOutputArgs {

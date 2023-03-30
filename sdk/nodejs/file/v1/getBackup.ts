@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a specific backup.
  */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:file/v1:getBackup", {
         "backupId": args.backupId,
         "location": args.location,
@@ -80,9 +77,11 @@ export interface GetBackupResult {
      */
     readonly storageBytes: string;
 }
-
+/**
+ * Gets the details of a specific backup.
+ */
 export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupResult> {
-    return pulumi.output(args).apply(a => getBackup(a, opts))
+    return pulumi.output(args).apply((a: any) => getBackup(a, opts))
 }
 
 export interface GetBackupOutputArgs {
