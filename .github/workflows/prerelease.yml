@@ -34,19 +34,6 @@ env:
 jobs:
   prerequisites:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        goversion:
-        - 1.19.x
-        dotnetversion:
-        - |
-          6.0.x
-          3.1.301
-        pythonversion:
-        - "3.7"
-        nodeversion:
-        - 14.x
     name: prerequisites
     steps:
     - name: Checkout Repo
@@ -60,16 +47,14 @@ jobs:
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
       with:
-        go-version: ${{matrix.goversion}}
+        skip_dotnet_and_java: "true"
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
     - if: github.event_name == 'pull_request'
       name: Install Schema Tools
       uses: jaxxstorm/action-install-gh-release@v1.5.0
@@ -135,18 +120,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        goversion:
-        - 1.19.x
-        dotnetversion:
-        - |
-          6.0.x
-          3.1.301
-        pythonversion:
-        - "3.7"
-        nodeversion:
-        - 14.x
-        javaversion:
-        - "11"
         language:
         - nodejs
         - python
@@ -166,35 +139,12 @@ jobs:
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{matrix.goversion}}
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
-    - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{matrix.dotnetversion}}
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{matrix.pythonversion}}
-    - name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: ${{matrix.javaversion}}
-        distribution: temurin
-        cache: gradle
     - name: Download provider + tfgen binaries
       uses: actions/download-artifact@v2
       with:
@@ -236,18 +186,6 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        goversion:
-        - 1.19.x
-        dotnetversion:
-        - |
-          6.0.x
-          3.1.301
-        pythonversion:
-        - "3.7"
-        nodeversion:
-        - 14.x
-        javaversion:
-        - "11"
         language:
         - nodejs
         - python
@@ -270,35 +208,12 @@ jobs:
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{matrix.goversion}}
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
-    - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{matrix.dotnetversion}}
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{matrix.pythonversion}}
-    - name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: ${{matrix.javaversion}}
-        distribution: temurin
-        cache: gradle
     - name: Download provider + tfgen binaries
       uses: actions/download-artifact@v2
       with:
@@ -361,10 +276,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     needs: test
-    strategy:
-      matrix:
-        goversion:
-        - 1.19.x
     name: publish
     steps:
     - name: Checkout Repo
@@ -373,16 +284,14 @@ jobs:
         lfs: true
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
       with:
-        go-version: ${{matrix.goversion}}
+        skip_dotnet_and_java: "true"
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -412,19 +321,6 @@ jobs:
   publish_sdk:
     runs-on: ubuntu-latest
     needs: publish
-    strategy:
-      fail-fast: true
-      matrix:
-        goversion:
-        - 1.19.x
-        dotnetversion:
-        - |
-          6.0.x
-          3.1.301
-        pythonversion:
-        - "3.7"
-        nodeversion:
-        - 14.x
     name: publish_sdk
     steps:
     - name: Checkout Repo
@@ -438,29 +334,12 @@ jobs:
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{matrix.goversion}}
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
-    - name: Setup Node
-      uses: actions/setup-node@v2
-      with:
-        node-version: ${{matrix.nodeversion}}
-        registry-url: https://registry.npmjs.org
-    - name: Setup DotNet
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{matrix.dotnetversion}}
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{matrix.pythonversion}}
     - name: Download python SDK
       uses: actions/download-artifact@v2
       with:
@@ -502,13 +381,6 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     needs: publish
-    strategy:
-      fail-fast: true
-      matrix:
-        goversion:
-        - 1.19.x
-        javaversion:
-        - "11"
     name: publish_java_sdk
     steps:
     - name: Checkout Repo
@@ -522,22 +394,14 @@ jobs:
         repository: pulumi/scripts
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{matrix.goversion}}
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v2
-    - name: Setup Java
-      uses: actions/setup-java@v3
-      with:
-        java-version: ${{matrix.javaversion}}
-        distribution: temurin
-        cache: gradle
     - name: Download java SDK
       uses: actions/download-artifact@v2
       with:
