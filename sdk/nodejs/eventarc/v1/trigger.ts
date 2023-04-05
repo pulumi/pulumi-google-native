@@ -58,6 +58,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+     */
+    public readonly eventDataContentType!: pulumi.Output<string>;
+    /**
      * Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
      */
     public readonly eventFilters!: pulumi.Output<outputs.eventarc.v1.EventFilterResponse[]>;
@@ -121,6 +125,7 @@ export class Trigger extends pulumi.CustomResource {
             }
             resourceInputs["channel"] = args ? args.channel : undefined;
             resourceInputs["destination"] = args ? args.destination : undefined;
+            resourceInputs["eventDataContentType"] = args ? args.eventDataContentType : undefined;
             resourceInputs["eventFilters"] = args ? args.eventFilters : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -141,6 +146,7 @@ export class Trigger extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["destination"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["eventDataContentType"] = undefined /*out*/;
             resourceInputs["eventFilters"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -172,6 +178,10 @@ export interface TriggerArgs {
      * Destination specifies where the events should be sent to.
      */
     destination: pulumi.Input<inputs.eventarc.v1.DestinationArgs>;
+    /**
+     * Optional. EventDataContentType specifies the type of payload in MIME format that is expected from the CloudEvent data field. This will be set to `application/json` if the value is not defined.
+     */
+    eventDataContentType?: pulumi.Input<string>;
     /**
      * Unordered list. The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
      */

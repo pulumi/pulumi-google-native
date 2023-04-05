@@ -56,6 +56,8 @@ type LookupConnectionResult struct {
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 	ServiceDirectory string `pulumi:"serviceDirectory"`
+	// Optional. Ssl config of a connection
+	SslConfig SslConfigResponse `pulumi:"sslConfig"`
 	// Current status of the connection.
 	Status ConnectionStatusResponse `pulumi:"status"`
 	// Optional. Suspended indicates if a user has suspended a connection or not.
@@ -170,6 +172,11 @@ func (o LookupConnectionResultOutput) ServiceAccount() pulumi.StringOutput {
 // The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
 func (o LookupConnectionResultOutput) ServiceDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.ServiceDirectory }).(pulumi.StringOutput)
+}
+
+// Optional. Ssl config of a connection
+func (o LookupConnectionResultOutput) SslConfig() SslConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) SslConfigResponse { return v.SslConfig }).(SslConfigResponseOutput)
 }
 
 // Current status of the connection.

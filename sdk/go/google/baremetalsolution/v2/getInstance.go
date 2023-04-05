@@ -29,6 +29,8 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	// Create a time stamp.
 	CreateTime string `pulumi:"createTime"`
+	// The firmware version for the instance.
+	FirmwareVersion string `pulumi:"firmwareVersion"`
 	// True if you enable hyperthreading for the server, otherwise false. The default value is false.
 	HyperthreadingEnabled bool `pulumi:"hyperthreadingEnabled"`
 	// True if the interactive serial console feature is enabled for the instance, false otherwise. The default value is false.
@@ -103,6 +105,11 @@ func (o LookupInstanceResultOutput) ToLookupInstanceResultOutputWithContext(ctx 
 // Create a time stamp.
 func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The firmware version for the instance.
+func (o LookupInstanceResultOutput) FirmwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.FirmwareVersion }).(pulumi.StringOutput)
 }
 
 // True if you enable hyperthreading for the server, otherwise false. The default value is false.

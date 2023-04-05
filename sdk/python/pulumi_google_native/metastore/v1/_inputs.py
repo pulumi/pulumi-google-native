@@ -22,6 +22,7 @@ __all__ = [
     'KerberosConfigArgs',
     'MaintenanceWindowArgs',
     'NetworkConfigArgs',
+    'ScalingConfigArgs',
     'SecretArgs',
     'TelemetryConfigArgs',
 ]
@@ -357,21 +358,37 @@ class ExprArgs:
 @pulumi.input_type
 class HiveMetastoreConfigArgs:
     def __init__(__self__, *,
+                 auxiliary_versions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  config_overrides: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  kerberos_config: Optional[pulumi.Input['KerberosConfigArgs']] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         Specifies configuration information specific to running Hive metastore software as the metastore service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] auxiliary_versions: A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] config_overrides: A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml). The mappings override system defaults (some keys cannot be overridden). These overrides are also applied to auxiliary versions and can be further customized in the auxiliary version's AuxiliaryVersionConfig.
         :param pulumi.Input['KerberosConfigArgs'] kerberos_config: Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
         :param pulumi.Input[str] version: Immutable. The Hive metastore schema version.
         """
+        if auxiliary_versions is not None:
+            pulumi.set(__self__, "auxiliary_versions", auxiliary_versions)
         if config_overrides is not None:
             pulumi.set(__self__, "config_overrides", config_overrides)
         if kerberos_config is not None:
             pulumi.set(__self__, "kerberos_config", kerberos_config)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="auxiliaryVersions")
+    def auxiliary_versions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of Hive metastore version to the auxiliary version configuration. When specified, a secondary Hive metastore service is created along with the primary service. All auxiliary versions must be less than the service's primary version. The key is the auxiliary service name and it must match the regular expression a-z?. This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        """
+        return pulumi.get(self, "auxiliary_versions")
+
+    @auxiliary_versions.setter
+    def auxiliary_versions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "auxiliary_versions", value)
 
     @property
     @pulumi.getter(name="configOverrides")
@@ -528,6 +545,46 @@ class NetworkConfigArgs:
     @consumers.setter
     def consumers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConsumerArgs']]]]):
         pulumi.set(self, "consumers", value)
+
+
+@pulumi.input_type
+class ScalingConfigArgs:
+    def __init__(__self__, *,
+                 instance_size: Optional[pulumi.Input['ScalingConfigInstanceSize']] = None,
+                 scaling_factor: Optional[pulumi.Input[float]] = None):
+        """
+        Represents the scaling configuration of a metastore service.
+        :param pulumi.Input['ScalingConfigInstanceSize'] instance_size: An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        :param pulumi.Input[float] scaling_factor: Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        if instance_size is not None:
+            pulumi.set(__self__, "instance_size", instance_size)
+        if scaling_factor is not None:
+            pulumi.set(__self__, "scaling_factor", scaling_factor)
+
+    @property
+    @pulumi.getter(name="instanceSize")
+    def instance_size(self) -> Optional[pulumi.Input['ScalingConfigInstanceSize']]:
+        """
+        An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+        """
+        return pulumi.get(self, "instance_size")
+
+    @instance_size.setter
+    def instance_size(self, value: Optional[pulumi.Input['ScalingConfigInstanceSize']]):
+        pulumi.set(self, "instance_size", value)
+
+    @property
+    @pulumi.getter(name="scalingFactor")
+    def scaling_factor(self) -> Optional[pulumi.Input[float]]:
+        """
+        Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+        """
+        return pulumi.get(self, "scaling_factor")
+
+    @scaling_factor.setter
+    def scaling_factor(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "scaling_factor", value)
 
 
 @pulumi.input_type

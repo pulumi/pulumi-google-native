@@ -43,7 +43,7 @@ type LookupClusterResult struct {
 	Status ClusterStatusResponse `pulumi:"status"`
 	// The previous cluster status.
 	StatusHistory []ClusterStatusResponse `pulumi:"statusHistory"`
-	// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
+	// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
 	VirtualClusterConfig VirtualClusterConfigResponse `pulumi:"virtualClusterConfig"`
 }
 
@@ -124,7 +124,7 @@ func (o LookupClusterResultOutput) StatusHistory() ClusterStatusResponseArrayOut
 	return o.ApplyT(func(v LookupClusterResult) []ClusterStatusResponse { return v.StatusHistory }).(ClusterStatusResponseArrayOutput)
 }
 
-// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
+// Optional. The virtual cluster config is used when creating a Dataproc cluster that does not directly control the underlying compute resources, for example, when creating a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke-overview). Dataproc may set default values, and values may change when clusters are updated. Exactly one of config or virtual_cluster_config must be specified.
 func (o LookupClusterResultOutput) VirtualClusterConfig() VirtualClusterConfigResponseOutput {
 	return o.ApplyT(func(v LookupClusterResult) VirtualClusterConfigResponse { return v.VirtualClusterConfig }).(VirtualClusterConfigResponseOutput)
 }

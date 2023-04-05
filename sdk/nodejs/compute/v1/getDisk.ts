@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ * Returns the specified persistent disk.
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
 
@@ -177,7 +177,7 @@ export interface GetDiskResult {
     readonly zone: string;
 }
 /**
- * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ * Returns the specified persistent disk.
  */
 export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
     return pulumi.output(args).apply((a: any) => getDisk(a, opts))

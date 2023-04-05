@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> CustomMetadata;
         /// <summary>
+        /// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered exactly as specified in this field. Only considered when parent_name is NOT provided.
+        /// </summary>
+        public readonly string GroupName;
+        /// <summary>
         /// The help text to display for the parameter.
         /// </summary>
         public readonly string HelpText;
@@ -41,6 +45,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly string ParamType;
         /// <summary>
+        /// Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to make this parameter conditional (will only be rendered conditionally). Should be mappable to a ParameterMetadata.name field.
+        /// </summary>
+        public readonly string ParentName;
+        /// <summary>
+        /// Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided).
+        /// </summary>
+        public readonly ImmutableArray<string> ParentTriggerValues;
+        /// <summary>
         /// Optional. Regexes that the parameter must match.
         /// </summary>
         public readonly ImmutableArray<string> Regexes;
@@ -48,6 +60,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         [OutputConstructor]
         private ParameterMetadataResponse(
             ImmutableDictionary<string, string> customMetadata,
+
+            string groupName,
 
             string helpText,
 
@@ -59,14 +73,21 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string paramType,
 
+            string parentName,
+
+            ImmutableArray<string> parentTriggerValues,
+
             ImmutableArray<string> regexes)
         {
             CustomMetadata = customMetadata;
+            GroupName = groupName;
             HelpText = helpText;
             IsOptional = isOptional;
             Label = label;
             Name = name;
             ParamType = paramType;
+            ParentName = parentName;
+            ParentTriggerValues = parentTriggerValues;
             Regexes = regexes;
         }
     }

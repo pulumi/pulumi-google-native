@@ -52,6 +52,10 @@ export interface GetRegionDiskResult {
      */
     readonly diskEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
     /**
+     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     */
+    readonly enableConfidentialCompute: boolean;
+    /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
     readonly eraseWindowsVssSignature: boolean;

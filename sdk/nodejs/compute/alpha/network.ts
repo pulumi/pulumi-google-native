@@ -58,7 +58,7 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly firewallPolicy!: pulumi.Output<string>;
     /**
-     * The gateway address for default routing out of the network, selected by GCP.
+     * The gateway address for default routing out of the network, selected by Google Cloud.
      */
     public /*out*/ readonly gatewayIPv4!: pulumi.Output<string>;
     /**

@@ -18,6 +18,9 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         [Output("branchId")]
         public Output<string> BranchId { get; private set; } = null!;
 
+        [Output("collectionId")]
+        public Output<string> CollectionId { get; private set; } = null!;
+
         [Output("dataStoreId")]
         public Output<string> DataStoreId { get; private set; } = null!;
 
@@ -37,7 +40,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -89,6 +92,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
                 ReplaceOnChanges =
                 {
                     "branchId",
+                    "collectionId",
                     "dataStoreId",
                     "documentId",
                     "location",
@@ -119,6 +123,9 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
 
+        [Input("collectionId", required: true)]
+        public Input<string> CollectionId { get; set; } = null!;
+
         [Input("dataStoreId", required: true)]
         public Input<string> DataStoreId { get; set; } = null!;
 
@@ -144,7 +151,7 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -161,8 +168,8 @@ namespace Pulumi.GoogleNative.DiscoveryEngine.V1Alpha
         /// <summary>
         /// The identifier of the schema located in the same data store.
         /// </summary>
-        [Input("schemaId", required: true)]
-        public Input<string> SchemaId { get; set; } = null!;
+        [Input("schemaId")]
+        public Input<string>? SchemaId { get; set; }
 
         [Input("structData")]
         private InputMap<string>? _structData;

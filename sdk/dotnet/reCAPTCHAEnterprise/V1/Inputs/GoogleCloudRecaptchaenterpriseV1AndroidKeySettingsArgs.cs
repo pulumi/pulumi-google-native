@@ -33,6 +33,12 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
             set => _allowedPackageNames = value;
         }
 
+        /// <summary>
+        /// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        /// </summary>
+        [Input("supportNonGoogleAppStoreDistribution")]
+        public Input<bool>? SupportNonGoogleAppStoreDistribution { get; set; }
+
         public GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs()
         {
         }

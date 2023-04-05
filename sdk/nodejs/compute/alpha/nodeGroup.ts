@@ -63,6 +63,10 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly locationHint!: pulumi.Output<string>;
     /**
+     * Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+     */
+    public readonly maintenanceInterval!: pulumi.Output<string>;
+    /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */
     public readonly maintenancePolicy!: pulumi.Output<string>;
@@ -117,6 +121,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             resourceInputs["locationHint"] = args ? args.locationHint : undefined;
+            resourceInputs["maintenanceInterval"] = args ? args.maintenanceInterval : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -140,6 +145,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["initialNodeCount"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["locationHint"] = undefined /*out*/;
+            resourceInputs["maintenanceInterval"] = undefined /*out*/;
             resourceInputs["maintenancePolicy"] = undefined /*out*/;
             resourceInputs["maintenanceWindow"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -180,6 +186,10 @@ export interface NodeGroupArgs {
      * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
      */
     locationHint?: pulumi.Input<string>;
+    /**
+     * Specifies the frequency of planned maintenance events. The accepted values are: `AS_NEEDED` and `RECURRENT`.
+     */
+    maintenanceInterval?: pulumi.Input<enums.compute.alpha.NodeGroupMaintenanceInterval>;
     /**
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */

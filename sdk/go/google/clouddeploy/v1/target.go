@@ -32,6 +32,8 @@ type Target struct {
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
+	// Information specifying a multiTarget.
+	MultiTarget MultiTargetResponseOutput `pulumi:"multiTarget"`
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -114,6 +116,8 @@ type targetArgs struct {
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
+	// Information specifying a multiTarget.
+	MultiTarget *MultiTarget `pulumi:"multiTarget"`
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
@@ -146,6 +150,8 @@ type TargetArgs struct {
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
+	// Information specifying a multiTarget.
+	MultiTarget MultiTargetPtrInput
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
@@ -240,6 +246,11 @@ func (o TargetOutput) Labels() pulumi.StringMapOutput {
 
 func (o TargetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Target) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Information specifying a multiTarget.
+func (o TargetOutput) MultiTarget() MultiTargetResponseOutput {
+	return o.ApplyT(func(v *Target) MultiTargetResponseOutput { return v.MultiTarget }).(MultiTargetResponseOutput)
 }
 
 // Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.

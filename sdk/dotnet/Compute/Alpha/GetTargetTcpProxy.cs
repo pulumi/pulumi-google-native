@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetTargetTcpProxy
     {
         /// <summary>
-        /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+        /// Returns the specified TargetTcpProxy resource.
         /// </summary>
         public static Task<GetTargetTcpProxyResult> InvokeAsync(GetTargetTcpProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetTcpProxyResult>("google-native:compute/alpha:getTargetTcpProxy", args ?? new GetTargetTcpProxyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by making a list() request.
+        /// Returns the specified TargetTcpProxy resource.
         /// </summary>
         public static Output<GetTargetTcpProxyResult> Invoke(GetTargetTcpProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetTcpProxyResult>("google-native:compute/alpha:getTargetTcpProxy", args ?? new GetTargetTcpProxyInvokeArgs(), options.WithDefaults());

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
     public partial class ContactCenter : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Info about the first admin user, such as given name and family name.
+        /// </summary>
+        [Output("adminUser")]
+        public Output<Outputs.AdminUserResponse> AdminUser { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         /// </summary>
         [Output("ccaipManagedUsers")]
@@ -70,7 +76,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
@@ -100,7 +106,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         public Output<Outputs.URIsResponse> Uris { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Email address of the first admin users.
+        /// Optional. Email address of the first admin user.
         /// </summary>
         [Output("userEmail")]
         public Output<string> UserEmail { get; private set; } = null!;
@@ -157,6 +163,12 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
     public sealed class ContactCenterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Info about the first admin user, such as given name and family name.
+        /// </summary>
+        [Input("adminUser")]
+        public Input<Inputs.AdminUserArgs>? AdminUser { get; set; }
+
+        /// <summary>
         /// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         /// </summary>
         [Input("ccaipManagedUsers")]
@@ -211,7 +223,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -223,7 +235,7 @@ namespace Pulumi.GoogleNative.ContactCenterAIPlatform.V1Alpha1
         public Input<Inputs.SAMLParamsArgs>? SamlParams { get; set; }
 
         /// <summary>
-        /// Optional. Email address of the first admin users.
+        /// Optional. Email address of the first admin user.
         /// </summary>
         [Input("userEmail")]
         public Input<string>? UserEmail { get; set; }

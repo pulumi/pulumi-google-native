@@ -39,6 +39,10 @@ export class OrganizationBucket extends pulumi.CustomResource {
     }
 
     /**
+     * Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+     */
+    public readonly analyticsEnabled!: pulumi.Output<boolean>;
+    /**
      * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
      */
     public readonly bucketId!: pulumi.Output<string>;
@@ -102,6 +106,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
+            resourceInputs["analyticsEnabled"] = args ? args.analyticsEnabled : undefined;
             resourceInputs["bucketId"] = args ? args.bucketId : undefined;
             resourceInputs["cmekSettings"] = args ? args.cmekSettings : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -116,6 +121,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["analyticsEnabled"] = undefined /*out*/;
             resourceInputs["bucketId"] = undefined /*out*/;
             resourceInputs["cmekSettings"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -141,6 +147,10 @@ export class OrganizationBucket extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationBucket resource.
  */
 export interface OrganizationBucketArgs {
+    /**
+     * Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+     */
+    analyticsEnabled?: pulumi.Input<boolean>;
     /**
      * Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
      */

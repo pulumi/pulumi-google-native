@@ -552,7 +552,7 @@ class Interconnect(pulumi.CustomResource):
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> pulumi.Output[bool]:
         """
-        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        Reserved for future use.
         """
         return pulumi.get(self, "satisfies_pzs")
 

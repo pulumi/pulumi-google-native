@@ -178,7 +178,7 @@ def get_backend_bucket(backend_bucket: Optional[str] = None,
                        project: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackendBucketResult:
     """
-    Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+    Returns the specified BackendBucket resource.
     """
     __args__ = dict()
     __args__['backendBucket'] = backend_bucket
@@ -206,6 +206,6 @@ def get_backend_bucket_output(backend_bucket: Optional[pulumi.Input[str]] = None
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendBucketResult]:
     """
-    Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+    Returns the specified BackendBucket resource.
     """
     ...

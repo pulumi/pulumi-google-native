@@ -12362,6 +12362,9 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfig struct {
 	Description *string `pulumi:"description"`
 	// If this config contains a TypedTask, allow validation to succeed if an input is read from the output of another TypedTask whose output type is declared as a superclass of the requested input type. For instance, if the previous task declares an output of type Message, any task with this flag enabled will pass validation when attempting to read any proto Message type from the resultant Event parameter.
 	DisableStrictTypeValidation *bool `pulumi:"disableStrictTypeValidation"`
+	// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId   *string                                                        `pulumi:"errorCatcherId"`
+	ExternalTaskType *EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType `pulumi:"externalTaskType"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 	FailurePolicy *EnterpriseCrmEventbusProtoFailurePolicy `pulumi:"failurePolicy"`
 	// The number of edges leading into this TaskConfig.
@@ -12429,6 +12432,9 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If this config contains a TypedTask, allow validation to succeed if an input is read from the output of another TypedTask whose output type is declared as a superclass of the requested input type. For instance, if the previous task declares an output of type Message, any task with this flag enabled will pass validation when attempting to read any proto Message type from the resultant Event parameter.
 	DisableStrictTypeValidation pulumi.BoolPtrInput `pulumi:"disableStrictTypeValidation"`
+	// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId   pulumi.StringPtrInput                                                 `pulumi:"errorCatcherId"`
+	ExternalTaskType EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrInput `pulumi:"externalTaskType"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 	FailurePolicy EnterpriseCrmEventbusProtoFailurePolicyPtrInput `pulumi:"failurePolicy"`
 	// The number of edges leading into this TaskConfig.
@@ -12550,6 +12556,17 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) Description() pulum
 // If this config contains a TypedTask, allow validation to succeed if an input is read from the output of another TypedTask whose output type is declared as a superclass of the requested input type. For instance, if the previous task declares an output of type Message, any task with this flag enabled will pass validation when attempting to read any proto Message type from the resultant Event parameter.
 func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) DisableStrictTypeValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) *bool { return v.DisableStrictTypeValidation }).(pulumi.BoolPtrOutput)
+}
+
+// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) ErrorCatcherId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) *string { return v.ErrorCatcherId }).(pulumi.StringPtrOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigOutput) ExternalTaskType() EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfig) *EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType {
+		return v.ExternalTaskType
+	}).(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskTypePtrOutput)
 }
 
 // Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
@@ -12711,6 +12728,9 @@ type EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse struct {
 	Description string `pulumi:"description"`
 	// If this config contains a TypedTask, allow validation to succeed if an input is read from the output of another TypedTask whose output type is declared as a superclass of the requested input type. For instance, if the previous task declares an output of type Message, any task with this flag enabled will pass validation when attempting to read any proto Message type from the resultant Event parameter.
 	DisableStrictTypeValidation bool `pulumi:"disableStrictTypeValidation"`
+	// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId   string `pulumi:"errorCatcherId"`
+	ExternalTaskType string `pulumi:"externalTaskType"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 	FailurePolicy EnterpriseCrmEventbusProtoFailurePolicyResponse `pulumi:"failurePolicy"`
 	// The number of edges leading into this TaskConfig.
@@ -12797,6 +12817,15 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) DisableStri
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) bool {
 		return v.DisableStrictTypeValidation
 	}).(pulumi.BoolOutput)
+}
+
+// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) ErrorCatcherId() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) string { return v.ErrorCatcherId }).(pulumi.StringOutput)
+}
+
+func (o EnterpriseCrmFrontendsEventbusProtoTaskConfigResponseOutput) ExternalTaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTaskConfigResponse) string { return v.ExternalTaskType }).(pulumi.StringOutput)
 }
 
 // Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
@@ -13264,7 +13293,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoTaskEntityResponseOutput) UiConfig() 
 	}).(EnterpriseCrmEventbusProtoTaskUiConfigResponseOutput)
 }
 
-// Configuration detail of a trigger. Next available id: 17
+// Configuration detail of a trigger. Next available id: 19
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfig struct {
 	// An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
 	AlertConfig          []EnterpriseCrmEventbusProtoWorkflowAlertConfig `pulumi:"alertConfig"`
@@ -13273,6 +13302,8 @@ type EnterpriseCrmFrontendsEventbusProtoTriggerConfig struct {
 	Description *string `pulumi:"description"`
 	// The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
 	EnabledClients []string `pulumi:"enabledClients"`
+	// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId *string `pulumi:"errorCatcherId"`
 	// The user created label for a particular trigger.
 	Label *string `pulumi:"label"`
 	// Dictates how next tasks will be executed.
@@ -13305,7 +13336,7 @@ type EnterpriseCrmFrontendsEventbusProtoTriggerConfigInput interface {
 	ToEnterpriseCrmFrontendsEventbusProtoTriggerConfigOutputWithContext(context.Context) EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput
 }
 
-// Configuration detail of a trigger. Next available id: 17
+// Configuration detail of a trigger. Next available id: 19
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs struct {
 	// An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
 	AlertConfig          EnterpriseCrmEventbusProtoWorkflowAlertConfigArrayInput `pulumi:"alertConfig"`
@@ -13314,6 +13345,8 @@ type EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
 	EnabledClients pulumi.StringArrayInput `pulumi:"enabledClients"`
+	// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId pulumi.StringPtrInput `pulumi:"errorCatcherId"`
 	// The user created label for a particular trigger.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// Dictates how next tasks will be executed.
@@ -13372,7 +13405,7 @@ func (i EnterpriseCrmFrontendsEventbusProtoTriggerConfigArray) ToEnterpriseCrmFr
 	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput)
 }
 
-// Configuration detail of a trigger. Next available id: 17
+// Configuration detail of a trigger. Next available id: 19
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) ElementType() reflect.Type {
@@ -13408,6 +13441,11 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) Description() pu
 // The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
 func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) EnabledClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTriggerConfig) []string { return v.EnabledClients }).(pulumi.StringArrayOutput)
+}
+
+// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput) ErrorCatcherId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTriggerConfig) *string { return v.ErrorCatcherId }).(pulumi.StringPtrOutput)
 }
 
 // The user created label for a particular trigger.
@@ -13489,7 +13527,7 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigArrayOutput) Index(i pul
 	}).(EnterpriseCrmFrontendsEventbusProtoTriggerConfigOutput)
 }
 
-// Configuration detail of a trigger. Next available id: 17
+// Configuration detail of a trigger. Next available id: 19
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse struct {
 	// An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
 	AlertConfig          []EnterpriseCrmEventbusProtoWorkflowAlertConfigResponse `pulumi:"alertConfig"`
@@ -13498,6 +13536,8 @@ type EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse struct {
 	Description string `pulumi:"description"`
 	// The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
 	EnabledClients []string `pulumi:"enabledClients"`
+	// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId string `pulumi:"errorCatcherId"`
 	// The user created label for a particular trigger.
 	Label string `pulumi:"label"`
 	// Dictates how next tasks will be executed.
@@ -13519,7 +13559,7 @@ type EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse struct {
 	TriggerType   string `pulumi:"triggerType"`
 }
 
-// Configuration detail of a trigger. Next available id: 17
+// Configuration detail of a trigger. Next available id: 19
 type EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) ElementType() reflect.Type {
@@ -13555,6 +13595,11 @@ func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) Descript
 // The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
 func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) EnabledClients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse) []string { return v.EnabledClients }).(pulumi.StringArrayOutput)
+}
+
+// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponseOutput) ErrorCatcherId() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse) string { return v.ErrorCatcherId }).(pulumi.StringOutput)
 }
 
 // The user created label for a particular trigger.
@@ -15754,6 +15799,198 @@ func (o GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponseOutput) Servic
 	}).(pulumi.StringOutput)
 }
 
+// Configuration detail of coordinate, it used for UI
+type GoogleCloudIntegrationsV1alphaCoordinate struct {
+	// X axis of the coordinate
+	X int `pulumi:"x"`
+	// Y axis of the coordinate
+	Y int `pulumi:"y"`
+}
+
+// GoogleCloudIntegrationsV1alphaCoordinateInput is an input type that accepts GoogleCloudIntegrationsV1alphaCoordinateArgs and GoogleCloudIntegrationsV1alphaCoordinateOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCoordinateInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaCoordinateArgs{...}
+type GoogleCloudIntegrationsV1alphaCoordinateInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaCoordinateOutput() GoogleCloudIntegrationsV1alphaCoordinateOutput
+	ToGoogleCloudIntegrationsV1alphaCoordinateOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCoordinateOutput
+}
+
+// Configuration detail of coordinate, it used for UI
+type GoogleCloudIntegrationsV1alphaCoordinateArgs struct {
+	// X axis of the coordinate
+	X pulumi.IntInput `pulumi:"x"`
+	// Y axis of the coordinate
+	Y pulumi.IntInput `pulumi:"y"`
+}
+
+func (GoogleCloudIntegrationsV1alphaCoordinateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinate)(nil)).Elem()
+}
+
+func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToGoogleCloudIntegrationsV1alphaCoordinateOutput() GoogleCloudIntegrationsV1alphaCoordinateOutput {
+	return i.ToGoogleCloudIntegrationsV1alphaCoordinateOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToGoogleCloudIntegrationsV1alphaCoordinateOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCoordinateOutput)
+}
+
+func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutput() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return i.ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIntegrationsV1alphaCoordinateArgs) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCoordinateOutput).ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIntegrationsV1alphaCoordinatePtrInput is an input type that accepts GoogleCloudIntegrationsV1alphaCoordinateArgs, GoogleCloudIntegrationsV1alphaCoordinatePtr and GoogleCloudIntegrationsV1alphaCoordinatePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaCoordinatePtrInput` via:
+//
+//	        GoogleCloudIntegrationsV1alphaCoordinateArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIntegrationsV1alphaCoordinatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutput() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput
+	ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaCoordinatePtrOutput
+}
+
+type googleCloudIntegrationsV1alphaCoordinatePtrType GoogleCloudIntegrationsV1alphaCoordinateArgs
+
+func GoogleCloudIntegrationsV1alphaCoordinatePtr(v *GoogleCloudIntegrationsV1alphaCoordinateArgs) GoogleCloudIntegrationsV1alphaCoordinatePtrInput {
+	return (*googleCloudIntegrationsV1alphaCoordinatePtrType)(v)
+}
+
+func (*googleCloudIntegrationsV1alphaCoordinatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCoordinate)(nil)).Elem()
+}
+
+func (i *googleCloudIntegrationsV1alphaCoordinatePtrType) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutput() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return i.ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIntegrationsV1alphaCoordinatePtrType) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
+}
+
+// Configuration detail of coordinate, it used for UI
+type GoogleCloudIntegrationsV1alphaCoordinateOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaCoordinateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinate)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) ToGoogleCloudIntegrationsV1alphaCoordinateOutput() GoogleCloudIntegrationsV1alphaCoordinateOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) ToGoogleCloudIntegrationsV1alphaCoordinateOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinateOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutput() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o.ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIntegrationsV1alphaCoordinate) *GoogleCloudIntegrationsV1alphaCoordinate {
+		return &v
+	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
+}
+
+// X axis of the coordinate
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) X() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCoordinate) int { return v.X }).(pulumi.IntOutput)
+}
+
+// Y axis of the coordinate
+func (o GoogleCloudIntegrationsV1alphaCoordinateOutput) Y() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCoordinate) int { return v.Y }).(pulumi.IntOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaCoordinatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIntegrationsV1alphaCoordinate)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutput() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) ToGoogleCloudIntegrationsV1alphaCoordinatePtrOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) Elem() GoogleCloudIntegrationsV1alphaCoordinateOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCoordinate) GoogleCloudIntegrationsV1alphaCoordinate {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIntegrationsV1alphaCoordinate
+		return ret
+	}).(GoogleCloudIntegrationsV1alphaCoordinateOutput)
+}
+
+// X axis of the coordinate
+func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) X() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCoordinate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.X
+	}).(pulumi.IntPtrOutput)
+}
+
+// Y axis of the coordinate
+func (o GoogleCloudIntegrationsV1alphaCoordinatePtrOutput) Y() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIntegrationsV1alphaCoordinate) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Y
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration detail of coordinate, it used for UI
+type GoogleCloudIntegrationsV1alphaCoordinateResponse struct {
+	// X axis of the coordinate
+	X int `pulumi:"x"`
+	// Y axis of the coordinate
+	Y int `pulumi:"y"`
+}
+
+// Configuration detail of coordinate, it used for UI
+type GoogleCloudIntegrationsV1alphaCoordinateResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinateResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) ToGoogleCloudIntegrationsV1alphaCoordinateResponseOutput() GoogleCloudIntegrationsV1alphaCoordinateResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) ToGoogleCloudIntegrationsV1alphaCoordinateResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaCoordinateResponseOutput {
+	return o
+}
+
+// X axis of the coordinate
+func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) X() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCoordinateResponse) int { return v.X }).(pulumi.IntOutput)
+}
+
+// Y axis of the coordinate
+func (o GoogleCloudIntegrationsV1alphaCoordinateResponseOutput) Y() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaCoordinateResponse) int { return v.Y }).(pulumi.IntOutput)
+}
+
 // Defines parameters for a single, canonical credential.
 type GoogleCloudIntegrationsV1alphaCredential struct {
 	// Auth token credential
@@ -16324,6 +16561,240 @@ func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput) ToGoog
 // Double number array.
 func (o GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput) DoubleValues() pulumi.Float64ArrayOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponse) []float64 { return v.DoubleValues }).(pulumi.Float64ArrayOutput)
+}
+
+// Configuration detail of a error catch task
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfig struct {
+	// Optional. User-provided description intended to give more business context about the error catcher config.
+	Description *string `pulumi:"description"`
+	// An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+	ErrorCatcherId string `pulumi:"errorCatcherId"`
+	// A number to uniquely identify each error catcher config within the workflow on UI.
+	ErrorCatcherNumber string `pulumi:"errorCatcherNumber"`
+	// Optional. The user created label for a particular error catcher. Optional.
+	Label *string `pulumi:"label"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position *GoogleCloudIntegrationsV1alphaCoordinate `pulumi:"position"`
+	// The set of start tasks that are to be executed for the error catch flow
+	StartErrorTasks []GoogleCloudIntegrationsV1alphaNextTask `pulumi:"startErrorTasks"`
+}
+
+// GoogleCloudIntegrationsV1alphaErrorCatcherConfigInput is an input type that accepts GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs and GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaErrorCatcherConfigInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs{...}
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput
+	ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput
+}
+
+// Configuration detail of a error catch task
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs struct {
+	// Optional. User-provided description intended to give more business context about the error catcher config.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+	ErrorCatcherId pulumi.StringInput `pulumi:"errorCatcherId"`
+	// A number to uniquely identify each error catcher config within the workflow on UI.
+	ErrorCatcherNumber pulumi.StringInput `pulumi:"errorCatcherNumber"`
+	// Optional. The user created label for a particular error catcher. Optional.
+	Label pulumi.StringPtrInput `pulumi:"label"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position GoogleCloudIntegrationsV1alphaCoordinatePtrInput `pulumi:"position"`
+	// The set of start tasks that are to be executed for the error catch flow
+	StartErrorTasks GoogleCloudIntegrationsV1alphaNextTaskArrayInput `pulumi:"startErrorTasks"`
+}
+
+func (GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
+	return i.ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput)
+}
+
+// GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput is an input type that accepts GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray and GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput` via:
+//
+//	GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray{ GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs{...} }
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput
+	ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutputWithContext(context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput
+}
+
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray []GoogleCloudIntegrationsV1alphaErrorCatcherConfigInput
+
+func (GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaErrorCatcherConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput {
+	return i.ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput)
+}
+
+// Configuration detail of a error catch task
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
+	return o
+}
+
+// Optional. User-provided description intended to give more business context about the error catcher config.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ErrorCatcherId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfig) string { return v.ErrorCatcherId }).(pulumi.StringOutput)
+}
+
+// A number to uniquely identify each error catcher config within the workflow on UI.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) ErrorCatcherNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfig) string { return v.ErrorCatcherNumber }).(pulumi.StringOutput)
+}
+
+// Optional. The user created label for a particular error catcher. Optional.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) Label() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfig) *string { return v.Label }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) Position() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfig) *GoogleCloudIntegrationsV1alphaCoordinate {
+		return v.Position
+	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
+}
+
+// The set of start tasks that are to be executed for the error catch flow
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput) StartErrorTasks() GoogleCloudIntegrationsV1alphaNextTaskArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfig) []GoogleCloudIntegrationsV1alphaNextTask {
+		return v.StartErrorTasks
+	}).(GoogleCloudIntegrationsV1alphaNextTaskArrayOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaErrorCatcherConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaErrorCatcherConfig {
+		return vs[0].([]GoogleCloudIntegrationsV1alphaErrorCatcherConfig)[vs[1].(int)]
+	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput)
+}
+
+// Configuration detail of a error catch task
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse struct {
+	// Optional. User-provided description intended to give more business context about the error catcher config.
+	Description string `pulumi:"description"`
+	// An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+	ErrorCatcherId string `pulumi:"errorCatcherId"`
+	// A number to uniquely identify each error catcher config within the workflow on UI.
+	ErrorCatcherNumber string `pulumi:"errorCatcherNumber"`
+	// Optional. The user created label for a particular error catcher. Optional.
+	Label string `pulumi:"label"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position GoogleCloudIntegrationsV1alphaCoordinateResponse `pulumi:"position"`
+	// The set of start tasks that are to be executed for the error catch flow
+	StartErrorTasks []GoogleCloudIntegrationsV1alphaNextTaskResponse `pulumi:"startErrorTasks"`
+}
+
+// Configuration detail of a error catch task
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput {
+	return o
+}
+
+// Optional. User-provided description intended to give more business context about the error catcher config.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ErrorCatcherId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse) string { return v.ErrorCatcherId }).(pulumi.StringOutput)
+}
+
+// A number to uniquely identify each error catcher config within the workflow on UI.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) ErrorCatcherNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse) string { return v.ErrorCatcherNumber }).(pulumi.StringOutput)
+}
+
+// Optional. The user created label for a particular error catcher. Optional.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) Label() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse) string { return v.Label }).(pulumi.StringOutput)
+}
+
+// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) Position() GoogleCloudIntegrationsV1alphaCoordinateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse) GoogleCloudIntegrationsV1alphaCoordinateResponse {
+		return v.Position
+	}).(GoogleCloudIntegrationsV1alphaCoordinateResponseOutput)
+}
+
+// The set of start tasks that are to be executed for the error catch flow
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput) StartErrorTasks() GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse) []GoogleCloudIntegrationsV1alphaNextTaskResponse {
+		return v.StartErrorTasks
+	}).(GoogleCloudIntegrationsV1alphaNextTaskResponseArrayOutput)
+}
+
+type GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) ToGoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutputWithContext(ctx context.Context) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse {
+		return vs[0].([]GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse)[vs[1].(int)]
+	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput)
 }
 
 // Policy that defines the task retry logic and failure type. If no FailurePolicy is defined for a task, all its dependent tasks will not be executed (i.e, a `retry_strategy` of NONE will be applied).
@@ -20462,6 +20933,10 @@ type GoogleCloudIntegrationsV1alphaTaskConfig struct {
 	Description *string `pulumi:"description"`
 	// Optional. User-provided label that is attached to this TaskConfig in the UI.
 	DisplayName *string `pulumi:"displayName"`
+	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId *string `pulumi:"errorCatcherId"`
+	// Optional. External task type of the task
+	ExternalTaskType *GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType `pulumi:"externalTaskType"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 	FailurePolicy *GoogleCloudIntegrationsV1alphaFailurePolicy `pulumi:"failurePolicy"`
 	// Optional. If set, overrides the option configured in the Task implementation class.
@@ -20472,6 +20947,8 @@ type GoogleCloudIntegrationsV1alphaTaskConfig struct {
 	NextTasksExecutionPolicy *GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy `pulumi:"nextTasksExecutionPolicy"`
 	// Optional. The customized parameters the user can pass to this task.
 	Parameters map[string]string `pulumi:"parameters"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position *GoogleCloudIntegrationsV1alphaCoordinate `pulumi:"position"`
 	// Optional. Determines what action to take upon successful task completion.
 	SuccessPolicy *GoogleCloudIntegrationsV1alphaSuccessPolicy `pulumi:"successPolicy"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
@@ -20503,6 +20980,10 @@ type GoogleCloudIntegrationsV1alphaTaskConfigArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. User-provided label that is attached to this TaskConfig in the UI.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId pulumi.StringPtrInput `pulumi:"errorCatcherId"`
+	// Optional. External task type of the task
+	ExternalTaskType GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrInput `pulumi:"externalTaskType"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 	FailurePolicy GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput `pulumi:"failurePolicy"`
 	// Optional. If set, overrides the option configured in the Task implementation class.
@@ -20513,6 +20994,8 @@ type GoogleCloudIntegrationsV1alphaTaskConfigArgs struct {
 	NextTasksExecutionPolicy GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicyPtrInput `pulumi:"nextTasksExecutionPolicy"`
 	// Optional. The customized parameters the user can pass to this task.
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position GoogleCloudIntegrationsV1alphaCoordinatePtrInput `pulumi:"position"`
 	// Optional. Determines what action to take upon successful task completion.
 	SuccessPolicy GoogleCloudIntegrationsV1alphaSuccessPolicyPtrInput `pulumi:"successPolicy"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
@@ -20589,6 +21072,18 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) DisplayName() pulumi.Str
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ErrorCatcherId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *string { return v.ErrorCatcherId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. External task type of the task
+func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) ExternalTaskType() GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType {
+		return v.ExternalTaskType
+	}).(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskTypePtrOutput)
+}
+
 // Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) FailurePolicy() GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaFailurePolicy {
@@ -20620,6 +21115,13 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) NextTasksExecutionPolicy
 // Optional. The customized parameters the user can pass to this task.
 func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+func (o GoogleCloudIntegrationsV1alphaTaskConfigOutput) Position() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfig) *GoogleCloudIntegrationsV1alphaCoordinate {
+		return v.Position
+	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
 }
 
 // Optional. Determines what action to take upon successful task completion.
@@ -20684,6 +21186,10 @@ type GoogleCloudIntegrationsV1alphaTaskConfigResponse struct {
 	Description string `pulumi:"description"`
 	// Optional. User-provided label that is attached to this TaskConfig in the UI.
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId string `pulumi:"errorCatcherId"`
+	// Optional. External task type of the task
+	ExternalTaskType string `pulumi:"externalTaskType"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 	FailurePolicy GoogleCloudIntegrationsV1alphaFailurePolicyResponse `pulumi:"failurePolicy"`
 	// Optional. If set, overrides the option configured in the Task implementation class.
@@ -20694,6 +21200,8 @@ type GoogleCloudIntegrationsV1alphaTaskConfigResponse struct {
 	NextTasksExecutionPolicy string `pulumi:"nextTasksExecutionPolicy"`
 	// Optional. The customized parameters the user can pass to this task.
 	Parameters map[string]string `pulumi:"parameters"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position GoogleCloudIntegrationsV1alphaCoordinateResponse `pulumi:"position"`
 	// Optional. Determines what action to take upon successful task completion.
 	SuccessPolicy GoogleCloudIntegrationsV1alphaSuccessPolicyResponse `pulumi:"successPolicy"`
 	// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
@@ -20733,6 +21241,16 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) DisplayName() pu
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) ErrorCatcherId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) string { return v.ErrorCatcherId }).(pulumi.StringOutput)
+}
+
+// Optional. External task type of the task
+func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) ExternalTaskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) string { return v.ExternalTaskType }).(pulumi.StringOutput)
+}
+
 // Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
 func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) FailurePolicy() GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) GoogleCloudIntegrationsV1alphaFailurePolicyResponse {
@@ -20760,6 +21278,13 @@ func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) NextTasksExecuti
 // Optional. The customized parameters the user can pass to this task.
 func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+func (o GoogleCloudIntegrationsV1alphaTaskConfigResponseOutput) Position() GoogleCloudIntegrationsV1alphaCoordinateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTaskConfigResponse) GoogleCloudIntegrationsV1alphaCoordinateResponse {
+		return v.Position
+	}).(GoogleCloudIntegrationsV1alphaCoordinateResponseOutput)
 }
 
 // Optional. Determines what action to take upon successful task completion.
@@ -20824,10 +21349,14 @@ type GoogleCloudIntegrationsV1alphaTriggerConfig struct {
 	CloudSchedulerConfig *GoogleCloudIntegrationsV1alphaCloudSchedulerConfig `pulumi:"cloudSchedulerConfig"`
 	// Optional. User-provided description intended to give additional business context about the task.
 	Description *string `pulumi:"description"`
+	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId *string `pulumi:"errorCatcherId"`
 	// Optional. The user created label for a particular trigger.
 	Label *string `pulumi:"label"`
 	// Optional. Dictates how next tasks will be executed.
 	NextTasksExecutionPolicy *GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy `pulumi:"nextTasksExecutionPolicy"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position *GoogleCloudIntegrationsV1alphaCoordinate `pulumi:"position"`
 	// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
 	Properties map[string]string `pulumi:"properties"`
 	// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
@@ -20859,10 +21388,14 @@ type GoogleCloudIntegrationsV1alphaTriggerConfigArgs struct {
 	CloudSchedulerConfig GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput `pulumi:"cloudSchedulerConfig"`
 	// Optional. User-provided description intended to give additional business context about the task.
 	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId pulumi.StringPtrInput `pulumi:"errorCatcherId"`
 	// Optional. The user created label for a particular trigger.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// Optional. Dictates how next tasks will be executed.
 	NextTasksExecutionPolicy GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrInput `pulumi:"nextTasksExecutionPolicy"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position GoogleCloudIntegrationsV1alphaCoordinatePtrInput `pulumi:"position"`
 	// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
@@ -20946,6 +21479,11 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Description() pulumi.
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) ErrorCatcherId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.ErrorCatcherId }).(pulumi.StringPtrOutput)
+}
+
 // Optional. The user created label for a particular trigger.
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Label() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *string { return v.Label }).(pulumi.StringPtrOutput)
@@ -20956,6 +21494,13 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) NextTasksExecutionPol
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy {
 		return v.NextTasksExecutionPolicy
 	}).(GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicyPtrOutput)
+}
+
+// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigOutput) Position() GoogleCloudIntegrationsV1alphaCoordinatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfig) *GoogleCloudIntegrationsV1alphaCoordinate {
+		return v.Position
+	}).(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput)
 }
 
 // Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
@@ -21015,10 +21560,14 @@ type GoogleCloudIntegrationsV1alphaTriggerConfigResponse struct {
 	CloudSchedulerConfig GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponse `pulumi:"cloudSchedulerConfig"`
 	// Optional. User-provided description intended to give additional business context about the task.
 	Description string `pulumi:"description"`
+	// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+	ErrorCatcherId string `pulumi:"errorCatcherId"`
 	// Optional. The user created label for a particular trigger.
 	Label string `pulumi:"label"`
 	// Optional. Dictates how next tasks will be executed.
 	NextTasksExecutionPolicy string `pulumi:"nextTasksExecutionPolicy"`
+	// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+	Position GoogleCloudIntegrationsV1alphaCoordinateResponse `pulumi:"position"`
 	// Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
 	Properties map[string]string `pulumi:"properties"`
 	// Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
@@ -21065,6 +21614,11 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) Description()
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfigResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) ErrorCatcherId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfigResponse) string { return v.ErrorCatcherId }).(pulumi.StringOutput)
+}
+
 // Optional. The user created label for a particular trigger.
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfigResponse) string { return v.Label }).(pulumi.StringOutput)
@@ -21073,6 +21627,13 @@ func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) Label() pulum
 // Optional. Dictates how next tasks will be executed.
 func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) NextTasksExecutionPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfigResponse) string { return v.NextTasksExecutionPolicy }).(pulumi.StringOutput)
+}
+
+// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+func (o GoogleCloudIntegrationsV1alphaTriggerConfigResponseOutput) Position() GoogleCloudIntegrationsV1alphaCoordinateResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIntegrationsV1alphaTriggerConfigResponse) GoogleCloudIntegrationsV1alphaCoordinateResponse {
+		return v.Position
+	}).(GoogleCloudIntegrationsV1alphaCoordinateResponseOutput)
 }
 
 // Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
@@ -21843,10 +22404,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaClientCertificatePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaClientCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudSchedulerConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinateInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCoordinateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCoordinatePtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCoordinateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCredentialInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaCredentialPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaCredentialArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaDoubleParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfigInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaErrorCatcherConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaFailurePolicyPtrInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaFailurePolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIntegrationsV1alphaIntParameterArrayInput)(nil)).Elem(), GoogleCloudIntegrationsV1alphaIntParameterArrayArgs{})
@@ -22111,12 +22676,19 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCloudSchedulerConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCoordinateOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCoordinatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCoordinateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCredentialOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCredentialPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaCredentialResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaDoubleParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaDoubleParameterArrayPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaDoubleParameterArrayResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIntegrationsV1alphaFailurePolicyResponseOutput{})

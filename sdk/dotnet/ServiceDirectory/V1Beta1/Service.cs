@@ -55,6 +55,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
+        /// A globally unique identifier (in UUID4 format) for this service.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
         /// </summary>
         [Output("updateTime")]

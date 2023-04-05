@@ -39,6 +39,8 @@ type LookupJobResult struct {
 	InputUri string `pulumi:"inputUri"`
 	// The labels associated with this job. You can use these to organize and group your jobs.
 	Labels map[string]string `pulumi:"labels"`
+	// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+	Mode string `pulumi:"mode"`
 	// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 	Name string `pulumi:"name"`
 	// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example, `gs://my-bucket/outputs/`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -47,7 +49,7 @@ type LookupJobResult struct {
 	StartTime string `pulumi:"startTime"`
 	// The current state of the job.
 	State string `pulumi:"state"`
-	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+	// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
 	TemplateId string `pulumi:"templateId"`
 	// Job time to live value in days, which will be effective after job completion. Job should be deleted automatically after the given TTL. Enter a value between 1 and 90. The default is 30.
 	TtlAfterCompletionDays int `pulumi:"ttlAfterCompletionDays"`
@@ -120,6 +122,11 @@ func (o LookupJobResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupJobResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+func (o LookupJobResultOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupJobResult) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 // The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
 func (o LookupJobResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.Name }).(pulumi.StringOutput)
@@ -140,7 +147,7 @@ func (o LookupJobResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
 func (o LookupJobResultOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupJobResult) string { return v.TemplateId }).(pulumi.StringOutput)
 }

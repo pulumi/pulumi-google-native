@@ -92,6 +92,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// </summary>
         public readonly Outputs.ReplicationCycleResponse CurrentSyncInfo;
         /// <summary>
+        /// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        /// </summary>
+        public readonly Outputs.CutoverForecastResponse CutoverForecast;
+        /// <summary>
         /// The description attached to the migrating VM by the user.
         /// </summary>
         public readonly string Description;
@@ -111,6 +115,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         /// The labels of the migrating VM.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
+        /// Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+        /// </summary>
+        public readonly Outputs.ReplicationCycleResponse LastReplicationCycle;
         /// <summary>
         /// The most updated snapshot created time in the source that finished replication.
         /// </summary>
@@ -158,6 +166,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
             Outputs.ReplicationCycleResponse currentSyncInfo,
 
+            Outputs.CutoverForecastResponse cutoverForecast,
+
             string description,
 
             string displayName,
@@ -167,6 +177,8 @@ namespace Pulumi.GoogleNative.VMMigration.V1
             string group,
 
             ImmutableDictionary<string, string> labels,
+
+            Outputs.ReplicationCycleResponse lastReplicationCycle,
 
             Outputs.ReplicationSyncResponse lastSync,
 
@@ -190,11 +202,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1
             ComputeEngineTargetDefaults = computeEngineTargetDefaults;
             CreateTime = createTime;
             CurrentSyncInfo = currentSyncInfo;
+            CutoverForecast = cutoverForecast;
             Description = description;
             DisplayName = displayName;
             Error = error;
             Group = group;
             Labels = labels;
+            LastReplicationCycle = lastReplicationCycle;
             LastSync = lastSync;
             Name = name;
             Policy = policy;

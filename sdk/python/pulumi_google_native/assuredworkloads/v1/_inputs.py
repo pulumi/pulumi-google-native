@@ -11,9 +11,66 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs',
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs:
+    def __init__(__self__, *,
+                 ekm_provisioning_error_domain: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']] = None,
+                 ekm_provisioning_error_message: Optional[pulumi.Input[str]] = None,
+                 ekm_provisioning_state: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState']] = None):
+        """
+        External key management systems(EKM) Provisioning response
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain'] ekm_provisioning_error_domain: Indicates Ekm provisioning error if any.
+        :param pulumi.Input[str] ekm_provisioning_error_message: Detailed error message if Ekm provisioning fails
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState'] ekm_provisioning_state: Indicates Ekm enrollment Provisioning of a given workload.
+        """
+        if ekm_provisioning_error_domain is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_domain", ekm_provisioning_error_domain)
+        if ekm_provisioning_error_message is not None:
+            pulumi.set(__self__, "ekm_provisioning_error_message", ekm_provisioning_error_message)
+        if ekm_provisioning_state is not None:
+            pulumi.set(__self__, "ekm_provisioning_state", ekm_provisioning_state)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorDomain")
+    def ekm_provisioning_error_domain(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']]:
+        """
+        Indicates Ekm provisioning error if any.
+        """
+        return pulumi.get(self, "ekm_provisioning_error_domain")
+
+    @ekm_provisioning_error_domain.setter
+    def ekm_provisioning_error_domain(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain']]):
+        pulumi.set(self, "ekm_provisioning_error_domain", value)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningErrorMessage")
+    def ekm_provisioning_error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        Detailed error message if Ekm provisioning fails
+        """
+        return pulumi.get(self, "ekm_provisioning_error_message")
+
+    @ekm_provisioning_error_message.setter
+    def ekm_provisioning_error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ekm_provisioning_error_message", value)
+
+    @property
+    @pulumi.getter(name="ekmProvisioningState")
+    def ekm_provisioning_state(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState']]:
+        """
+        Indicates Ekm enrollment Provisioning of a given workload.
+        """
+        return pulumi.get(self, "ekm_provisioning_state")
+
+    @ekm_provisioning_state.setter
+    def ekm_provisioning_state(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState']]):
+        pulumi.set(self, "ekm_provisioning_state", value)
+
 
 @pulumi.input_type
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:

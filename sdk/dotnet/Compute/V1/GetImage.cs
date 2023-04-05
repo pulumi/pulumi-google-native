@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetImage
     {
         /// <summary>
-        /// Returns the specified image. Gets a list of available images by making a list() request.
+        /// Returns the specified image.
         /// </summary>
         public static Task<GetImageResult> InvokeAsync(GetImageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("google-native:compute/v1:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified image. Gets a list of available images by making a list() request.
+        /// Returns the specified image.
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("google-native:compute/v1:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
-        /// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
+        /// The name of the image family to which this image belongs. The image family name can be from a publicly managed image family provided by Compute Engine, or from a custom image family you create. For example, centos-stream-9 is a publicly available image family. For more information, see Image family best practices. When creating disks, you can specify an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
         /// </summary>
         public readonly string Family;
         /// <summary>

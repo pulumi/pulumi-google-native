@@ -19,10 +19,19 @@ __all__ = [
 
 @pulumi.output_type
 class GetRepositoryResult:
-    def __init__(__self__, git_remote_settings=None, name=None, npmrc_environment_variables_secret_version=None, workspace_compilation_overrides=None):
+    def __init__(__self__, git_remote_settings=None, initial_commit_file_contents=None, initial_commit_metadata=None, labels=None, name=None, npmrc_environment_variables_secret_version=None, workspace_compilation_overrides=None):
         if git_remote_settings and not isinstance(git_remote_settings, dict):
             raise TypeError("Expected argument 'git_remote_settings' to be a dict")
         pulumi.set(__self__, "git_remote_settings", git_remote_settings)
+        if initial_commit_file_contents and not isinstance(initial_commit_file_contents, dict):
+            raise TypeError("Expected argument 'initial_commit_file_contents' to be a dict")
+        pulumi.set(__self__, "initial_commit_file_contents", initial_commit_file_contents)
+        if initial_commit_metadata and not isinstance(initial_commit_metadata, dict):
+            raise TypeError("Expected argument 'initial_commit_metadata' to be a dict")
+        pulumi.set(__self__, "initial_commit_metadata", initial_commit_metadata)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -40,6 +49,30 @@ class GetRepositoryResult:
         Optional. If set, configures this repository to be linked to a Git remote.
         """
         return pulumi.get(self, "git_remote_settings")
+
+    @property
+    @pulumi.getter(name="initialCommitFileContents")
+    def initial_commit_file_contents(self) -> Mapping[str, str]:
+        """
+        Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        """
+        return pulumi.get(self, "initial_commit_file_contents")
+
+    @property
+    @pulumi.getter(name="initialCommitMetadata")
+    def initial_commit_metadata(self) -> 'outputs.CommitMetadataResponse':
+        """
+        Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        """
+        return pulumi.get(self, "initial_commit_metadata")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Optional. Repository user labels.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -73,6 +106,9 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             yield self
         return GetRepositoryResult(
             git_remote_settings=self.git_remote_settings,
+            initial_commit_file_contents=self.initial_commit_file_contents,
+            initial_commit_metadata=self.initial_commit_metadata,
+            labels=self.labels,
             name=self.name,
             npmrc_environment_variables_secret_version=self.npmrc_environment_variables_secret_version,
             workspace_compilation_overrides=self.workspace_compilation_overrides)
@@ -94,6 +130,9 @@ def get_repository(location: Optional[str] = None,
 
     return AwaitableGetRepositoryResult(
         git_remote_settings=__ret__.git_remote_settings,
+        initial_commit_file_contents=__ret__.initial_commit_file_contents,
+        initial_commit_metadata=__ret__.initial_commit_metadata,
+        labels=__ret__.labels,
         name=__ret__.name,
         npmrc_environment_variables_secret_version=__ret__.npmrc_environment_variables_secret_version,
         workspace_compilation_overrides=__ret__.workspace_compilation_overrides)

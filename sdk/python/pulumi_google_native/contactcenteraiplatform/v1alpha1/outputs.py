@@ -11,10 +11,63 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AdminUserResponse',
     'InstanceConfigResponse',
     'SAMLParamsResponse',
     'URIsResponse',
 ]
+
+@pulumi.output_type
+class AdminUserResponse(dict):
+    """
+    Message storing info about the first admin user. Next ID: 3
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "familyName":
+            suggest = "family_name"
+        elif key == "givenName":
+            suggest = "given_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdminUserResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdminUserResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdminUserResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 family_name: str,
+                 given_name: str):
+        """
+        Message storing info about the first admin user. Next ID: 3
+        :param str family_name: Optional. Last/family name of the first admin user.
+        :param str given_name: Optional. First/given name of the first admin user.
+        """
+        pulumi.set(__self__, "family_name", family_name)
+        pulumi.set(__self__, "given_name", given_name)
+
+    @property
+    @pulumi.getter(name="familyName")
+    def family_name(self) -> str:
+        """
+        Optional. Last/family name of the first admin user.
+        """
+        return pulumi.get(self, "family_name")
+
+    @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> str:
+        """
+        Optional. First/given name of the first admin user.
+        """
+        return pulumi.get(self, "given_name")
+
 
 @pulumi.output_type
 class InstanceConfigResponse(dict):

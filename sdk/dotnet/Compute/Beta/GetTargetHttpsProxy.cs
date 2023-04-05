@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public static class GetTargetHttpsProxy
     {
         /// <summary>
-        /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+        /// Returns the specified TargetHttpsProxy resource.
         /// </summary>
         public static Task<GetTargetHttpsProxyResult> InvokeAsync(GetTargetHttpsProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTargetHttpsProxyResult>("google-native:compute/beta:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+        /// Returns the specified TargetHttpsProxy resource.
         /// </summary>
         public static Output<GetTargetHttpsProxyResult> Invoke(GetTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTargetHttpsProxyResult>("google-native:compute/beta:getTargetHttpsProxy", args ?? new GetTargetHttpsProxyInvokeArgs(), options.WithDefaults());
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         /// </summary>
         public readonly string ServerTlsPolicy;
         /// <summary>

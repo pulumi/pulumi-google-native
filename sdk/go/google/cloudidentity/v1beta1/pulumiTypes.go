@@ -768,6 +768,26 @@ func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
 
+type EntityKeyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (EntityKeyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EntityKeyResponse)(nil)).Elem()
+}
+
+func (o EntityKeyResponseArrayOutput) ToEntityKeyResponseArrayOutput() EntityKeyResponseArrayOutput {
+	return o
+}
+
+func (o EntityKeyResponseArrayOutput) ToEntityKeyResponseArrayOutputWithContext(ctx context.Context) EntityKeyResponseArrayOutput {
+	return o
+}
+
+func (o EntityKeyResponseArrayOutput) Index(i pulumi.IntInput) EntityKeyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityKeyResponse {
+		return vs[0].([]EntityKeyResponse)[vs[1].(int)]
+	}).(EntityKeyResponseOutput)
+}
+
 // The `MembershipRole` expiry details.
 type ExpiryDetail struct {
 	// The time at which the `MembershipRole` will expire.
@@ -1613,9 +1633,9 @@ type SamlIdpConfig struct {
 	ChangePasswordUri *string `pulumi:"changePasswordUri"`
 	// The SAML **Entity ID** of the identity provider.
 	EntityId string `pulumi:"entityId"`
-	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
 	LogoutRedirectUri *string `pulumi:"logoutRedirectUri"`
-	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
 	SingleSignOnServiceUri string `pulumi:"singleSignOnServiceUri"`
 }
 
@@ -1636,9 +1656,9 @@ type SamlIdpConfigArgs struct {
 	ChangePasswordUri pulumi.StringPtrInput `pulumi:"changePasswordUri"`
 	// The SAML **Entity ID** of the identity provider.
 	EntityId pulumi.StringInput `pulumi:"entityId"`
-	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
 	LogoutRedirectUri pulumi.StringPtrInput `pulumi:"logoutRedirectUri"`
-	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
 	SingleSignOnServiceUri pulumi.StringInput `pulumi:"singleSignOnServiceUri"`
 }
 
@@ -1730,12 +1750,12 @@ func (o SamlIdpConfigOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlIdpConfig) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
 func (o SamlIdpConfigOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SamlIdpConfig) *string { return v.LogoutRedirectUri }).(pulumi.StringPtrOutput)
 }
 
-// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
 func (o SamlIdpConfigOutput) SingleSignOnServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlIdpConfig) string { return v.SingleSignOnServiceUri }).(pulumi.StringOutput)
 }
@@ -1784,7 +1804,7 @@ func (o SamlIdpConfigPtrOutput) EntityId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
 func (o SamlIdpConfigPtrOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SamlIdpConfig) *string {
 		if v == nil {
@@ -1794,7 +1814,7 @@ func (o SamlIdpConfigPtrOutput) LogoutRedirectUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
 func (o SamlIdpConfigPtrOutput) SingleSignOnServiceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SamlIdpConfig) *string {
 		if v == nil {
@@ -1810,9 +1830,9 @@ type SamlIdpConfigResponse struct {
 	ChangePasswordUri string `pulumi:"changePasswordUri"`
 	// The SAML **Entity ID** of the identity provider.
 	EntityId string `pulumi:"entityId"`
-	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+	// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
 	LogoutRedirectUri string `pulumi:"logoutRedirectUri"`
-	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+	// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
 	SingleSignOnServiceUri string `pulumi:"singleSignOnServiceUri"`
 }
 
@@ -1841,12 +1861,12 @@ func (o SamlIdpConfigResponseOutput) EntityId() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.EntityId }).(pulumi.StringOutput)
 }
 
-// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+// The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
 func (o SamlIdpConfigResponseOutput) LogoutRedirectUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.LogoutRedirectUri }).(pulumi.StringOutput)
 }
 
-// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+// The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
 func (o SamlIdpConfigResponseOutput) SingleSignOnServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlIdpConfigResponse) string { return v.SingleSignOnServiceUri }).(pulumi.StringOutput)
 }
@@ -1974,7 +1994,7 @@ func (o SamlSpConfigPtrOutput) Elem() SamlSpConfigOutput {
 
 // SAML SP (service provider) configuration.
 type SamlSpConfigResponse struct {
-	// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+	// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
 	AssertionConsumerServiceUri string `pulumi:"assertionConsumerServiceUri"`
 	// The SAML **Entity ID** for this service provider.
 	EntityId string `pulumi:"entityId"`
@@ -1995,7 +2015,7 @@ func (o SamlSpConfigResponseOutput) ToSamlSpConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
 func (o SamlSpConfigResponseOutput) AssertionConsumerServiceUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SamlSpConfigResponse) string { return v.AssertionConsumerServiceUri }).(pulumi.StringOutput)
 }
@@ -2378,6 +2398,7 @@ func init() {
 	pulumi.RegisterOutputType(EntityKeyOutput{})
 	pulumi.RegisterOutputType(EntityKeyPtrOutput{})
 	pulumi.RegisterOutputType(EntityKeyResponseOutput{})
+	pulumi.RegisterOutputType(EntityKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailPtrOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailResponseOutput{})

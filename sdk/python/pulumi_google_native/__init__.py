@@ -109,6 +109,8 @@ if typing.TYPE_CHECKING:
     datafusion = __datafusion
     import pulumi_google_native.datalabeling as __datalabeling
     datalabeling = __datalabeling
+    import pulumi_google_native.datalineage as __datalineage
+    datalineage = __datalineage
     import pulumi_google_native.datamigration as __datamigration
     datamigration = __datamigration
     import pulumi_google_native.datapipelines as __datapipelines
@@ -145,6 +147,8 @@ if typing.TYPE_CHECKING:
     firebase = __firebase
     import pulumi_google_native.firebaseappcheck as __firebaseappcheck
     firebaseappcheck = __firebaseappcheck
+    import pulumi_google_native.firebaseappdistribution as __firebaseappdistribution
+    firebaseappdistribution = __firebaseappdistribution
     import pulumi_google_native.firebasedatabase as __firebasedatabase
     firebasedatabase = __firebasedatabase
     import pulumi_google_native.firebasehosting as __firebasehosting
@@ -185,6 +189,8 @@ if typing.TYPE_CHECKING:
     memcache = __memcache
     import pulumi_google_native.metastore as __metastore
     metastore = __metastore
+    import pulumi_google_native.migrationcenter as __migrationcenter
+    migrationcenter = __migrationcenter
     import pulumi_google_native.ml as __ml
     ml = __ml
     import pulumi_google_native.monitoring as __monitoring
@@ -324,6 +330,7 @@ else:
     dataform = _utilities.lazy_import('pulumi_google_native.dataform')
     datafusion = _utilities.lazy_import('pulumi_google_native.datafusion')
     datalabeling = _utilities.lazy_import('pulumi_google_native.datalabeling')
+    datalineage = _utilities.lazy_import('pulumi_google_native.datalineage')
     datamigration = _utilities.lazy_import('pulumi_google_native.datamigration')
     datapipelines = _utilities.lazy_import('pulumi_google_native.datapipelines')
     dataplex = _utilities.lazy_import('pulumi_google_native.dataplex')
@@ -342,6 +349,7 @@ else:
     file = _utilities.lazy_import('pulumi_google_native.file')
     firebase = _utilities.lazy_import('pulumi_google_native.firebase')
     firebaseappcheck = _utilities.lazy_import('pulumi_google_native.firebaseappcheck')
+    firebaseappdistribution = _utilities.lazy_import('pulumi_google_native.firebaseappdistribution')
     firebasedatabase = _utilities.lazy_import('pulumi_google_native.firebasedatabase')
     firebasehosting = _utilities.lazy_import('pulumi_google_native.firebasehosting')
     firebaseml = _utilities.lazy_import('pulumi_google_native.firebaseml')
@@ -362,6 +370,7 @@ else:
     managedidentities = _utilities.lazy_import('pulumi_google_native.managedidentities')
     memcache = _utilities.lazy_import('pulumi_google_native.memcache')
     metastore = _utilities.lazy_import('pulumi_google_native.metastore')
+    migrationcenter = _utilities.lazy_import('pulumi_google_native.migrationcenter')
     ml = _utilities.lazy_import('pulumi_google_native.ml')
     monitoring = _utilities.lazy_import('pulumi_google_native.monitoring')
     networkconnectivity = _utilities.lazy_import('pulumi_google_native.networkconnectivity')
@@ -606,6 +615,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.appengine.v1",
   "classes": {
    "google-native:appengine/v1:App": "App",
+   "google-native:appengine/v1:Application": "Application",
    "google-native:appengine/v1:AuthorizedCertificate": "AuthorizedCertificate",
    "google-native:appengine/v1:DomainMapping": "DomainMapping",
    "google-native:appengine/v1:IngressRule": "IngressRule",
@@ -702,10 +712,7 @@ _utilities.register(
   "mod": "batch/v1",
   "fqn": "pulumi_google_native.batch.v1",
   "classes": {
-   "google-native:batch/v1:Job": "Job",
-   "google-native:batch/v1:JobIamBinding": "JobIamBinding",
-   "google-native:batch/v1:JobIamMember": "JobIamMember",
-   "google-native:batch/v1:JobIamPolicy": "JobIamPolicy"
+   "google-native:batch/v1:Job": "Job"
   }
  },
  {
@@ -1422,6 +1429,10 @@ _utilities.register(
    "google-native:compute/alpha:SnapshotIamPolicy": "SnapshotIamPolicy",
    "google-native:compute/alpha:SslCertificate": "SslCertificate",
    "google-native:compute/alpha:SslPolicy": "SslPolicy",
+   "google-native:compute/alpha:StoragePool": "StoragePool",
+   "google-native:compute/alpha:StoragePoolIamBinding": "StoragePoolIamBinding",
+   "google-native:compute/alpha:StoragePoolIamMember": "StoragePoolIamMember",
+   "google-native:compute/alpha:StoragePoolIamPolicy": "StoragePoolIamPolicy",
    "google-native:compute/alpha:Subnetwork": "Subnetwork",
    "google-native:compute/alpha:SubnetworkIamBinding": "SubnetworkIamBinding",
    "google-native:compute/alpha:SubnetworkIamMember": "SubnetworkIamMember",
@@ -1533,6 +1544,7 @@ _utilities.register(
    "google-native:compute/beta:RegionHealthCheck": "RegionHealthCheck",
    "google-native:compute/beta:RegionHealthCheckService": "RegionHealthCheckService",
    "google-native:compute/beta:RegionInstanceGroupManager": "RegionInstanceGroupManager",
+   "google-native:compute/beta:RegionInstanceTemplate": "RegionInstanceTemplate",
    "google-native:compute/beta:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup",
    "google-native:compute/beta:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/beta:RegionNetworkFirewallPolicyIamBinding": "RegionNetworkFirewallPolicyIamBinding",
@@ -1908,6 +1920,12 @@ _utilities.register(
    "google-native:dataform/v1beta1:CompilationResult": "CompilationResult",
    "google-native:dataform/v1beta1:ReleaseConfig": "ReleaseConfig",
    "google-native:dataform/v1beta1:Repository": "Repository",
+   "google-native:dataform/v1beta1:RepositoryIamBinding": "RepositoryIamBinding",
+   "google-native:dataform/v1beta1:RepositoryIamMember": "RepositoryIamMember",
+   "google-native:dataform/v1beta1:RepositoryIamPolicy": "RepositoryIamPolicy",
+   "google-native:dataform/v1beta1:RepositoryWorkspaceIamBinding": "RepositoryWorkspaceIamBinding",
+   "google-native:dataform/v1beta1:RepositoryWorkspaceIamMember": "RepositoryWorkspaceIamMember",
+   "google-native:dataform/v1beta1:RepositoryWorkspaceIamPolicy": "RepositoryWorkspaceIamPolicy",
    "google-native:dataform/v1beta1:WorkflowConfig": "WorkflowConfig",
    "google-native:dataform/v1beta1:WorkflowInvocation": "WorkflowInvocation",
    "google-native:dataform/v1beta1:Workspace": "Workspace"
@@ -1948,6 +1966,16 @@ _utilities.register(
    "google-native:datalabeling/v1beta1:EvaluationJob": "EvaluationJob",
    "google-native:datalabeling/v1beta1:FeedbackMessage": "FeedbackMessage",
    "google-native:datalabeling/v1beta1:Instruction": "Instruction"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "datalineage/v1",
+  "fqn": "pulumi_google_native.datalineage.v1",
+  "classes": {
+   "google-native:datalineage/v1:LineageEvent": "LineageEvent",
+   "google-native:datalineage/v1:Process": "Process",
+   "google-native:datalineage/v1:Run": "Run"
   }
  },
  {
@@ -2457,6 +2485,14 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "firebaseappdistribution/v1",
+  "fqn": "pulumi_google_native.firebaseappdistribution.v1",
+  "classes": {
+   "google-native:firebaseappdistribution/v1:Group": "Group"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "firebasedatabase/v1beta",
   "fqn": "pulumi_google_native.firebasedatabase.v1beta",
   "classes": {
@@ -2579,6 +2615,7 @@ _utilities.register(
   "mod": "gkehub/v1",
   "fqn": "pulumi_google_native.gkehub.v1",
   "classes": {
+   "google-native:gkehub/v1:Binding": "Binding",
    "google-native:gkehub/v1:Feature": "Feature",
    "google-native:gkehub/v1:FeatureIamBinding": "FeatureIamBinding",
    "google-native:gkehub/v1:FeatureIamMember": "FeatureIamMember",
@@ -2586,7 +2623,8 @@ _utilities.register(
    "google-native:gkehub/v1:Membership": "Membership",
    "google-native:gkehub/v1:MembershipIamBinding": "MembershipIamBinding",
    "google-native:gkehub/v1:MembershipIamMember": "MembershipIamMember",
-   "google-native:gkehub/v1:MembershipIamPolicy": "MembershipIamPolicy"
+   "google-native:gkehub/v1:MembershipIamPolicy": "MembershipIamPolicy",
+   "google-native:gkehub/v1:Scope": "Scope"
   }
  },
  {
@@ -2594,6 +2632,7 @@ _utilities.register(
   "mod": "gkehub/v1alpha",
   "fqn": "pulumi_google_native.gkehub.v1alpha",
   "classes": {
+   "google-native:gkehub/v1alpha:Binding": "Binding",
    "google-native:gkehub/v1alpha:Feature": "Feature",
    "google-native:gkehub/v1alpha:FeatureIamBinding": "FeatureIamBinding",
    "google-native:gkehub/v1alpha:FeatureIamMember": "FeatureIamMember",
@@ -2602,7 +2641,10 @@ _utilities.register(
    "google-native:gkehub/v1alpha:Membership": "Membership",
    "google-native:gkehub/v1alpha:MembershipIamBinding": "MembershipIamBinding",
    "google-native:gkehub/v1alpha:MembershipIamMember": "MembershipIamMember",
-   "google-native:gkehub/v1alpha:MembershipIamPolicy": "MembershipIamPolicy"
+   "google-native:gkehub/v1alpha:MembershipIamPolicy": "MembershipIamPolicy",
+   "google-native:gkehub/v1alpha:Namespace": "Namespace",
+   "google-native:gkehub/v1alpha:Rbacrolebinding": "Rbacrolebinding",
+   "google-native:gkehub/v1alpha:Scope": "Scope"
   }
  },
  {
@@ -2621,13 +2663,17 @@ _utilities.register(
   "mod": "gkehub/v1beta",
   "fqn": "pulumi_google_native.gkehub.v1beta",
   "classes": {
+   "google-native:gkehub/v1beta:Binding": "Binding",
    "google-native:gkehub/v1beta:Feature": "Feature",
    "google-native:gkehub/v1beta:FeatureIamBinding": "FeatureIamBinding",
    "google-native:gkehub/v1beta:FeatureIamMember": "FeatureIamMember",
    "google-native:gkehub/v1beta:FeatureIamPolicy": "FeatureIamPolicy",
    "google-native:gkehub/v1beta:MembershipIamBinding": "MembershipIamBinding",
    "google-native:gkehub/v1beta:MembershipIamMember": "MembershipIamMember",
-   "google-native:gkehub/v1beta:MembershipIamPolicy": "MembershipIamPolicy"
+   "google-native:gkehub/v1beta:MembershipIamPolicy": "MembershipIamPolicy",
+   "google-native:gkehub/v1beta:Namespace": "Namespace",
+   "google-native:gkehub/v1beta:Rbacrolebinding": "Rbacrolebinding",
+   "google-native:gkehub/v1beta:Scope": "Scope"
   }
  },
  {
@@ -2723,7 +2769,14 @@ _utilities.register(
    "google-native:iam/v1:ServiceAccountIamBinding": "ServiceAccountIamBinding",
    "google-native:iam/v1:ServiceAccountIamMember": "ServiceAccountIamMember",
    "google-native:iam/v1:ServiceAccountIamPolicy": "ServiceAccountIamPolicy",
-   "google-native:iam/v1:WorkloadIdentityPool": "WorkloadIdentityPool"
+   "google-native:iam/v1:WorkforcePool": "WorkforcePool",
+   "google-native:iam/v1:WorkforcePoolIamBinding": "WorkforcePoolIamBinding",
+   "google-native:iam/v1:WorkforcePoolIamMember": "WorkforcePoolIamMember",
+   "google-native:iam/v1:WorkforcePoolIamPolicy": "WorkforcePoolIamPolicy",
+   "google-native:iam/v1:WorkforcePoolKey": "WorkforcePoolKey",
+   "google-native:iam/v1:WorkforcePoolProvider": "WorkforcePoolProvider",
+   "google-native:iam/v1:WorkloadIdentityPool": "WorkloadIdentityPool",
+   "google-native:iam/v1:WorkloadIdentityPoolKey": "WorkloadIdentityPoolKey"
   }
  },
  {
@@ -2812,6 +2865,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.logging.v2",
   "classes": {
    "google-native:logging/v2:BillingAccountBucket": "BillingAccountBucket",
+   "google-native:logging/v2:BillingAccountBucketLink": "BillingAccountBucketLink",
    "google-native:logging/v2:BillingAccountBucketView": "BillingAccountBucketView",
    "google-native:logging/v2:BillingAccountExclusion": "BillingAccountExclusion",
    "google-native:logging/v2:BillingAccountSink": "BillingAccountSink",
@@ -2819,11 +2873,14 @@ _utilities.register(
    "google-native:logging/v2:BucketView": "BucketView",
    "google-native:logging/v2:Exclusion": "Exclusion",
    "google-native:logging/v2:FolderBucket": "FolderBucket",
+   "google-native:logging/v2:FolderBucketLink": "FolderBucketLink",
    "google-native:logging/v2:FolderBucketView": "FolderBucketView",
    "google-native:logging/v2:FolderExclusion": "FolderExclusion",
    "google-native:logging/v2:FolderSink": "FolderSink",
+   "google-native:logging/v2:Link": "Link",
    "google-native:logging/v2:Metric": "Metric",
    "google-native:logging/v2:OrganizationBucket": "OrganizationBucket",
+   "google-native:logging/v2:OrganizationBucketLink": "OrganizationBucketLink",
    "google-native:logging/v2:OrganizationBucketView": "OrganizationBucketView",
    "google-native:logging/v2:OrganizationExclusion": "OrganizationExclusion",
    "google-native:logging/v2:OrganizationSink": "OrganizationSink",
@@ -2977,6 +3034,20 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "migrationcenter/v1alpha1",
+  "fqn": "pulumi_google_native.migrationcenter.v1alpha1",
+  "classes": {
+   "google-native:migrationcenter/v1alpha1:Group": "Group",
+   "google-native:migrationcenter/v1alpha1:ImportDataFile": "ImportDataFile",
+   "google-native:migrationcenter/v1alpha1:ImportJob": "ImportJob",
+   "google-native:migrationcenter/v1alpha1:PreferenceSet": "PreferenceSet",
+   "google-native:migrationcenter/v1alpha1:Report": "Report",
+   "google-native:migrationcenter/v1alpha1:ReportConfig": "ReportConfig",
+   "google-native:migrationcenter/v1alpha1:Source": "Source"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "ml/v1",
   "fqn": "pulumi_google_native.ml.v1",
   "classes": {
@@ -3109,6 +3180,7 @@ _utilities.register(
   "mod": "networksecurity/v1beta1",
   "fqn": "pulumi_google_native.networksecurity.v1beta1",
   "classes": {
+   "google-native:networksecurity/v1beta1:AddressGroup": "AddressGroup",
    "google-native:networksecurity/v1beta1:AddressGroupIamBinding": "AddressGroupIamBinding",
    "google-native:networksecurity/v1beta1:AddressGroupIamMember": "AddressGroupIamMember",
    "google-native:networksecurity/v1beta1:AddressGroupIamPolicy": "AddressGroupIamPolicy",
@@ -3120,10 +3192,15 @@ _utilities.register(
    "google-native:networksecurity/v1beta1:ClientTlsPolicyIamBinding": "ClientTlsPolicyIamBinding",
    "google-native:networksecurity/v1beta1:ClientTlsPolicyIamMember": "ClientTlsPolicyIamMember",
    "google-native:networksecurity/v1beta1:ClientTlsPolicyIamPolicy": "ClientTlsPolicyIamPolicy",
+   "google-native:networksecurity/v1beta1:GatewaySecurityPolicy": "GatewaySecurityPolicy",
+   "google-native:networksecurity/v1beta1:OrganizationAddressGroup": "OrganizationAddressGroup",
+   "google-native:networksecurity/v1beta1:Rule": "Rule",
    "google-native:networksecurity/v1beta1:ServerTlsPolicy": "ServerTlsPolicy",
    "google-native:networksecurity/v1beta1:ServerTlsPolicyIamBinding": "ServerTlsPolicyIamBinding",
    "google-native:networksecurity/v1beta1:ServerTlsPolicyIamMember": "ServerTlsPolicyIamMember",
-   "google-native:networksecurity/v1beta1:ServerTlsPolicyIamPolicy": "ServerTlsPolicyIamPolicy"
+   "google-native:networksecurity/v1beta1:ServerTlsPolicyIamPolicy": "ServerTlsPolicyIamPolicy",
+   "google-native:networksecurity/v1beta1:TlsInspectionPolicy": "TlsInspectionPolicy",
+   "google-native:networksecurity/v1beta1:UrlList": "UrlList"
   }
  },
  {
@@ -3154,6 +3231,21 @@ _utilities.register(
    "google-native:networkservices/v1:MeshIamBinding": "MeshIamBinding",
    "google-native:networkservices/v1:MeshIamMember": "MeshIamMember",
    "google-native:networkservices/v1:MeshIamPolicy": "MeshIamPolicy",
+   "google-native:networkservices/v1:MulticastConsumerAssociationIamBinding": "MulticastConsumerAssociationIamBinding",
+   "google-native:networkservices/v1:MulticastConsumerAssociationIamMember": "MulticastConsumerAssociationIamMember",
+   "google-native:networkservices/v1:MulticastConsumerAssociationIamPolicy": "MulticastConsumerAssociationIamPolicy",
+   "google-native:networkservices/v1:MulticastDomainActivationIamBinding": "MulticastDomainActivationIamBinding",
+   "google-native:networkservices/v1:MulticastDomainActivationIamMember": "MulticastDomainActivationIamMember",
+   "google-native:networkservices/v1:MulticastDomainActivationIamPolicy": "MulticastDomainActivationIamPolicy",
+   "google-native:networkservices/v1:MulticastDomainIamBinding": "MulticastDomainIamBinding",
+   "google-native:networkservices/v1:MulticastDomainIamMember": "MulticastDomainIamMember",
+   "google-native:networkservices/v1:MulticastDomainIamPolicy": "MulticastDomainIamPolicy",
+   "google-native:networkservices/v1:MulticastGroupDefinitionIamBinding": "MulticastGroupDefinitionIamBinding",
+   "google-native:networkservices/v1:MulticastGroupDefinitionIamMember": "MulticastGroupDefinitionIamMember",
+   "google-native:networkservices/v1:MulticastGroupDefinitionIamPolicy": "MulticastGroupDefinitionIamPolicy",
+   "google-native:networkservices/v1:MulticastGroupIamBinding": "MulticastGroupIamBinding",
+   "google-native:networkservices/v1:MulticastGroupIamMember": "MulticastGroupIamMember",
+   "google-native:networkservices/v1:MulticastGroupIamPolicy": "MulticastGroupIamPolicy",
    "google-native:networkservices/v1:ServiceBinding": "ServiceBinding",
    "google-native:networkservices/v1:ServiceBindingIamBinding": "ServiceBindingIamBinding",
    "google-native:networkservices/v1:ServiceBindingIamMember": "ServiceBindingIamMember",
@@ -3205,6 +3297,16 @@ _utilities.register(
    "google-native:notebooks/v1:RuntimeIamMember": "RuntimeIamMember",
    "google-native:notebooks/v1:RuntimeIamPolicy": "RuntimeIamPolicy",
    "google-native:notebooks/v1:Schedule": "Schedule"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "notebooks/v2",
+  "fqn": "pulumi_google_native.notebooks.v2",
+  "classes": {
+   "google-native:notebooks/v2:InstanceIamBinding": "InstanceIamBinding",
+   "google-native:notebooks/v2:InstanceIamMember": "InstanceIamMember",
+   "google-native:notebooks/v2:InstanceIamPolicy": "InstanceIamPolicy"
   }
  },
  {
@@ -3313,8 +3415,6 @@ _utilities.register(
   "mod": "privateca/v1beta1",
   "fqn": "pulumi_google_native.privateca.v1beta1",
   "classes": {
-   "google-native:privateca/v1beta1:Certificate": "Certificate",
-   "google-native:privateca/v1beta1:CertificateAuthority": "CertificateAuthority",
    "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamBinding": "CertificateAuthorityCertificateRevocationListIamBinding",
    "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamMember": "CertificateAuthorityCertificateRevocationListIamMember",
    "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy": "CertificateAuthorityCertificateRevocationListIamPolicy",
@@ -3388,6 +3488,7 @@ _utilities.register(
   "mod": "recaptchaenterprise/v1",
   "fqn": "pulumi_google_native.recaptchaenterprise.v1",
   "classes": {
+   "google-native:recaptchaenterprise/v1:Firewallpolicy": "Firewallpolicy",
    "google-native:recaptchaenterprise/v1:Key": "Key"
   }
  },
@@ -3430,6 +3531,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.retail.v2",
   "classes": {
    "google-native:retail/v2:Control": "Control",
+   "google-native:retail/v2:Model": "Model",
    "google-native:retail/v2:Product": "Product",
    "google-native:retail/v2:ServingConfig": "ServingConfig"
   }
@@ -3440,6 +3542,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.retail.v2alpha",
   "classes": {
    "google-native:retail/v2alpha:Control": "Control",
+   "google-native:retail/v2alpha:Model": "Model",
    "google-native:retail/v2alpha:Product": "Product",
    "google-native:retail/v2alpha:ServingConfig": "ServingConfig"
   }
@@ -3450,6 +3553,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.retail.v2beta",
   "classes": {
    "google-native:retail/v2beta:Control": "Control",
+   "google-native:retail/v2beta:Model": "Model",
    "google-native:retail/v2beta:Product": "Product",
    "google-native:retail/v2beta:ServingConfig": "ServingConfig"
   }
@@ -3581,6 +3685,9 @@ _utilities.register(
    "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamBinding": "NamespaceServiceWorkloadIamBinding",
    "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamMember": "NamespaceServiceWorkloadIamMember",
    "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy": "NamespaceServiceWorkloadIamPolicy",
+   "google-native:servicedirectory/v1beta1:NamespaceWorkloadIamBinding": "NamespaceWorkloadIamBinding",
+   "google-native:servicedirectory/v1beta1:NamespaceWorkloadIamMember": "NamespaceWorkloadIamMember",
+   "google-native:servicedirectory/v1beta1:NamespaceWorkloadIamPolicy": "NamespaceWorkloadIamPolicy",
    "google-native:servicedirectory/v1beta1:RegistrationPolicyIamBinding": "RegistrationPolicyIamBinding",
    "google-native:servicedirectory/v1beta1:RegistrationPolicyIamMember": "RegistrationPolicyIamMember",
    "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy": "RegistrationPolicyIamPolicy",
@@ -3823,6 +3930,14 @@ _utilities.register(
   "fqn": "pulumi_google_native.vpcaccess.v1",
   "classes": {
    "google-native:vpcaccess/v1:Connector": "Connector"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "vpcaccess/v1beta1",
+  "fqn": "pulumi_google_native.vpcaccess.v1beta1",
+  "classes": {
+   "google-native:vpcaccess/v1beta1:Connector": "Connector"
   }
  },
  {

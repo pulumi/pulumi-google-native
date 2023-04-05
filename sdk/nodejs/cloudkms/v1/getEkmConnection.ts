@@ -32,9 +32,17 @@ export interface GetEkmConnectionResult {
      */
     readonly createTime: string;
     /**
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+     */
+    readonly cryptoSpacePath: string;
+    /**
      * Optional. Etag of the currently stored EkmConnection.
      */
     readonly etag: string;
+    /**
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+     */
+    readonly keyManagementMode: string;
     /**
      * The resource name for the EkmConnection in the format `projects/*&#47;locations/*&#47;ekmConnections/*`.
      */

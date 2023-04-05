@@ -44,6 +44,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// Identification of a Spanner source used in the Dataflow job.
         /// </summary>
         public readonly ImmutableArray<Outputs.SpannerIODetailsResponse> SpannerDetails;
+        /// <summary>
+        /// List of display properties to help UI filter jobs.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> UserDisplayProperties;
 
         [OutputConstructor]
         private JobMetadataResponse(
@@ -59,7 +63,9 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             Outputs.SdkVersionResponse sdkVersion,
 
-            ImmutableArray<Outputs.SpannerIODetailsResponse> spannerDetails)
+            ImmutableArray<Outputs.SpannerIODetailsResponse> spannerDetails,
+
+            ImmutableDictionary<string, string> userDisplayProperties)
         {
             BigTableDetails = bigTableDetails;
             BigqueryDetails = bigqueryDetails;
@@ -68,6 +74,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
             PubsubDetails = pubsubDetails;
             SdkVersion = sdkVersion;
             SpannerDetails = spannerDetails;
+            UserDisplayProperties = userDisplayProperties;
         }
     }
 }

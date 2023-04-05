@@ -35,6 +35,8 @@ type LookupRolloutResult struct {
 	ApprovalState string `pulumi:"approvalState"`
 	// Time at which the `Rollout` was approved.
 	ApproveTime string `pulumi:"approveTime"`
+	// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+	ControllerRollout string `pulumi:"controllerRollout"`
 	// Time at which the `Rollout` was created.
 	CreateTime string `pulumi:"createTime"`
 	// Time at which the `Rollout` finished deploying.
@@ -121,6 +123,11 @@ func (o LookupRolloutResultOutput) ApprovalState() pulumi.StringOutput {
 // Time at which the `Rollout` was approved.
 func (o LookupRolloutResultOutput) ApproveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.ApproveTime }).(pulumi.StringOutput)
+}
+
+// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+func (o LookupRolloutResultOutput) ControllerRollout() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRolloutResult) string { return v.ControllerRollout }).(pulumi.StringOutput)
 }
 
 // Time at which the `Rollout` was created.

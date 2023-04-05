@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
     public sealed class AlloyDbSettingsResponse
     {
         /// <summary>
+        /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+        /// </summary>
+        public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required.
         /// </summary>
         public readonly Outputs.UserPasswordResponse InitialUser;
@@ -32,6 +36,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
         [OutputConstructor]
         private AlloyDbSettingsResponse(
+            Outputs.EncryptionConfigResponse encryptionConfig,
+
             Outputs.UserPasswordResponse initialUser,
 
             ImmutableDictionary<string, string> labels,
@@ -40,6 +46,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             string vpcNetwork)
         {
+            EncryptionConfig = encryptionConfig;
             InitialUser = initialUser;
             Labels = labels;
             PrimaryInstanceSettings = primaryInstanceSettings;

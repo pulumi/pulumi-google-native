@@ -124,6 +124,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
+     * Fleet information for the cluster.
+     */
+    public readonly fleet!: pulumi.Output<outputs.container.v1.FleetResponse>;
+    /**
      * Configuration for Identity Service component.
      */
     public readonly identityServiceConfig!: pulumi.Output<outputs.container.v1.IdentityServiceConfigResponse>;
@@ -322,6 +326,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableKubernetesAlpha"] = args ? args.enableKubernetesAlpha : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
             resourceInputs["initialClusterVersion"] = args ? args.initialClusterVersion : undefined;
             resourceInputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
@@ -393,6 +398,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
+            resourceInputs["fleet"] = undefined /*out*/;
             resourceInputs["identityServiceConfig"] = undefined /*out*/;
             resourceInputs["initialClusterVersion"] = undefined /*out*/;
             resourceInputs["initialNodeCount"] = undefined /*out*/;
@@ -523,6 +529,10 @@ export interface ClusterArgs {
      * This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Fleet information for the cluster.
+     */
+    fleet?: pulumi.Input<inputs.container.v1.FleetArgs>;
     /**
      * Configuration for Identity Service component.
      */

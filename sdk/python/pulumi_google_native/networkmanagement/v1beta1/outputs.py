@@ -321,7 +321,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -340,7 +340,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -941,10 +941,18 @@ class EndpointResponse(dict):
             suggest = "cloud_run_revision"
         elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
+        elif key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "forwardingRuleTarget":
+            suggest = "forwarding_rule_target"
         elif key == "gkeMasterCluster":
             suggest = "gke_master_cluster"
         elif key == "ipAddress":
             suggest = "ip_address"
+        elif key == "loadBalancerId":
+            suggest = "load_balancer_id"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
         elif key == "networkType":
             suggest = "network_type"
 
@@ -964,9 +972,13 @@ class EndpointResponse(dict):
                  cloud_function: 'outputs.CloudFunctionEndpointResponse',
                  cloud_run_revision: 'outputs.CloudRunRevisionEndpointResponse',
                  cloud_sql_instance: str,
+                 forwarding_rule: str,
+                 forwarding_rule_target: str,
                  gke_master_cluster: str,
                  instance: str,
                  ip_address: str,
+                 load_balancer_id: str,
+                 load_balancer_type: str,
                  network: str,
                  network_type: str,
                  port: int,
@@ -977,9 +989,13 @@ class EndpointResponse(dict):
         :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud Function](https://cloud.google.com/functions).
         :param 'CloudRunRevisionEndpointResponse' cloud_run_revision: A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get)
         :param str cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        :param str forwarding_rule: Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        :param str forwarding_rule_target: Specifies the type of the target of the forwarding rule.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
         :param str ip_address: The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
+        :param str load_balancer_id: ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+        :param str load_balancer_type: Type of the load balancer the forwarding rule points to.
         :param str network: A Compute Engine network URI.
         :param str network_type: Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
@@ -989,9 +1005,13 @@ class EndpointResponse(dict):
         pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_run_revision", cloud_run_revision)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "forwarding_rule_target", forwarding_rule_target)
         pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "load_balancer_id", load_balancer_id)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "port", port)
@@ -1030,6 +1050,22 @@ class EndpointResponse(dict):
         return pulumi.get(self, "cloud_sql_instance")
 
     @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="forwardingRuleTarget")
+    def forwarding_rule_target(self) -> str:
+        """
+        Specifies the type of the target of the forwarding rule.
+        """
+        return pulumi.get(self, "forwarding_rule_target")
+
+    @property
     @pulumi.getter(name="gkeMasterCluster")
     def gke_master_cluster(self) -> str:
         """
@@ -1052,6 +1088,22 @@ class EndpointResponse(dict):
         The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="loadBalancerId")
+    def load_balancer_id(self) -> str:
+        """
+        ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+        """
+        return pulumi.get(self, "load_balancer_id")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> str:
+        """
+        Type of the load balancer the forwarding rule points to.
+        """
+        return pulumi.get(self, "load_balancer_type")
 
     @property
     @pulumi.getter

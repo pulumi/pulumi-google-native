@@ -38,7 +38,7 @@ class JobArgs:
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
-        :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
         :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         """
@@ -153,7 +153,7 @@ class JobArgs:
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> Optional[pulumi.Input['JobLaunchStage']]:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         """
         return pulumi.get(self, "launch_stage")
 
@@ -233,7 +233,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[str] job_id: Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
-        :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        :param pulumi.Input['JobLaunchStage'] launch_stage: The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         :param pulumi.Input[str] name: The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
         :param pulumi.Input[pulumi.InputType['GoogleCloudRunV2ExecutionTemplateArgs']] template: The template used to create executions for this Job.
         :param pulumi.Input[bool] validate_only: Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
@@ -311,6 +311,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["latest_created_execution"] = None
             __props__.__dict__["observed_generation"] = None
             __props__.__dict__["reconciling"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["terminal_condition"] = None
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
@@ -360,6 +361,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["observed_generation"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["reconciling"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["template"] = None
         __props__.__dict__["terminal_condition"] = None
         __props__.__dict__["uid"] = None
@@ -499,7 +501,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="launchStage")
     def launch_stage(self) -> pulumi.Output[str]:
         """
-        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         """
         return pulumi.get(self, "launch_stage")
 
@@ -536,6 +538,14 @@ class Job(pulumi.CustomResource):
         Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
         """
         return pulumi.get(self, "reconciling")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter

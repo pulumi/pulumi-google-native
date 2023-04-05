@@ -12,6 +12,8 @@ import (
 
 // Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 type GoogleCloudDialogflowCxV3AdvancedSettings struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+	AudioExportGcsDestination *GoogleCloudDialogflowCxV3GcsDestination `pulumi:"audioExportGcsDestination"`
 	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
 	LoggingSettings *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings `pulumi:"loggingSettings"`
 }
@@ -29,6 +31,8 @@ type GoogleCloudDialogflowCxV3AdvancedSettingsInput interface {
 
 // Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 type GoogleCloudDialogflowCxV3AdvancedSettingsArgs struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+	AudioExportGcsDestination GoogleCloudDialogflowCxV3GcsDestinationPtrInput `pulumi:"audioExportGcsDestination"`
 	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
 	LoggingSettings GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput `pulumi:"loggingSettings"`
 }
@@ -111,6 +115,13 @@ func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) ToGoogleCloudDialogflow
 	}).(GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput)
 }
 
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) AudioExportGcsDestination() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettings) *GoogleCloudDialogflowCxV3GcsDestination {
+		return v.AudioExportGcsDestination
+	}).(GoogleCloudDialogflowCxV3GcsDestinationPtrOutput)
+}
+
 // Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
 func (o GoogleCloudDialogflowCxV3AdvancedSettingsOutput) LoggingSettings() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettings) *GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
@@ -140,6 +151,16 @@ func (o GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) Elem() GoogleCloudDi
 		var ret GoogleCloudDialogflowCxV3AdvancedSettings
 		return ret
 	}).(GoogleCloudDialogflowCxV3AdvancedSettingsOutput)
+}
+
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput) AudioExportGcsDestination() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AdvancedSettings) *GoogleCloudDialogflowCxV3GcsDestination {
+		if v == nil {
+			return nil
+		}
+		return v.AudioExportGcsDestination
+	}).(GoogleCloudDialogflowCxV3GcsDestinationPtrOutput)
 }
 
 // Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
@@ -354,6 +375,8 @@ func (o GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput) 
 
 // Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy: Agent->Flow->Page->Fulfillment/Parameter.
 type GoogleCloudDialogflowCxV3AdvancedSettingsResponse struct {
+	// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+	AudioExportGcsDestination GoogleCloudDialogflowCxV3GcsDestinationResponse `pulumi:"audioExportGcsDestination"`
 	// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
 	LoggingSettings GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse `pulumi:"loggingSettings"`
 }
@@ -373,6 +396,13 @@ func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) ToGoogleCloudDi
 	return o
 }
 
+// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
+func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) AudioExportGcsDestination() GoogleCloudDialogflowCxV3GcsDestinationResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsResponse) GoogleCloudDialogflowCxV3GcsDestinationResponse {
+		return v.AudioExportGcsDestination
+	}).(GoogleCloudDialogflowCxV3GcsDestinationResponseOutput)
+}
+
 // Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
 func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) LoggingSettings() GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AdvancedSettingsResponse) GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsResponse {
@@ -382,7 +412,7 @@ func (o GoogleCloudDialogflowCxV3AdvancedSettingsResponseOutput) LoggingSettings
 
 // Represents the natural speech audio to be processed.
 type GoogleCloudDialogflowCxV3AudioInput struct {
-	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+	// The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio *string `pulumi:"audio"`
 	// Instructs the speech recognizer how to process the speech audio.
 	Config GoogleCloudDialogflowCxV3InputAudioConfig `pulumi:"config"`
@@ -401,7 +431,7 @@ type GoogleCloudDialogflowCxV3AudioInputInput interface {
 
 // Represents the natural speech audio to be processed.
 type GoogleCloudDialogflowCxV3AudioInputArgs struct {
-	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+	// The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio pulumi.StringPtrInput `pulumi:"audio"`
 	// Instructs the speech recognizer how to process the speech audio.
 	Config GoogleCloudDialogflowCxV3InputAudioConfigInput `pulumi:"config"`
@@ -485,7 +515,7 @@ func (o GoogleCloudDialogflowCxV3AudioInputOutput) ToGoogleCloudDialogflowCxV3Au
 	}).(GoogleCloudDialogflowCxV3AudioInputPtrOutput)
 }
 
-// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+// The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 func (o GoogleCloudDialogflowCxV3AudioInputOutput) Audio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AudioInput) *string { return v.Audio }).(pulumi.StringPtrOutput)
 }
@@ -519,7 +549,7 @@ func (o GoogleCloudDialogflowCxV3AudioInputPtrOutput) Elem() GoogleCloudDialogfl
 	}).(GoogleCloudDialogflowCxV3AudioInputOutput)
 }
 
-// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+// The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 func (o GoogleCloudDialogflowCxV3AudioInputPtrOutput) Audio() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3AudioInput) *string {
 		if v == nil {
@@ -541,7 +571,7 @@ func (o GoogleCloudDialogflowCxV3AudioInputPtrOutput) Config() GoogleCloudDialog
 
 // Represents the natural speech audio to be processed.
 type GoogleCloudDialogflowCxV3AudioInputResponse struct {
-	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+	// The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio string `pulumi:"audio"`
 	// Instructs the speech recognizer how to process the speech audio.
 	Config GoogleCloudDialogflowCxV3InputAudioConfigResponse `pulumi:"config"`
@@ -562,7 +592,7 @@ func (o GoogleCloudDialogflowCxV3AudioInputResponseOutput) ToGoogleCloudDialogfl
 	return o
 }
 
-// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
+// The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 func (o GoogleCloudDialogflowCxV3AudioInputResponseOutput) Audio() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3AudioInputResponse) string { return v.Audio }).(pulumi.StringOutput)
 }
@@ -5334,13 +5364,179 @@ func (o GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArrayOutpu
 	}).(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseOutput)
 }
 
+// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+type GoogleCloudDialogflowCxV3GcsDestination struct {
+	// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	Uri string `pulumi:"uri"`
+}
+
+// GoogleCloudDialogflowCxV3GcsDestinationInput is an input type that accepts GoogleCloudDialogflowCxV3GcsDestinationArgs and GoogleCloudDialogflowCxV3GcsDestinationOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3GcsDestinationInput` via:
+//
+//	GoogleCloudDialogflowCxV3GcsDestinationArgs{...}
+type GoogleCloudDialogflowCxV3GcsDestinationInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3GcsDestinationOutput() GoogleCloudDialogflowCxV3GcsDestinationOutput
+	ToGoogleCloudDialogflowCxV3GcsDestinationOutputWithContext(context.Context) GoogleCloudDialogflowCxV3GcsDestinationOutput
+}
+
+// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+type GoogleCloudDialogflowCxV3GcsDestinationArgs struct {
+	// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GoogleCloudDialogflowCxV3GcsDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3GcsDestination)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3GcsDestinationArgs) ToGoogleCloudDialogflowCxV3GcsDestinationOutput() GoogleCloudDialogflowCxV3GcsDestinationOutput {
+	return i.ToGoogleCloudDialogflowCxV3GcsDestinationOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3GcsDestinationArgs) ToGoogleCloudDialogflowCxV3GcsDestinationOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3GcsDestinationOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3GcsDestinationArgs) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutput() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3GcsDestinationArgs) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3GcsDestinationOutput).ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3GcsDestinationPtrInput is an input type that accepts GoogleCloudDialogflowCxV3GcsDestinationArgs, GoogleCloudDialogflowCxV3GcsDestinationPtr and GoogleCloudDialogflowCxV3GcsDestinationPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3GcsDestinationPtrInput` via:
+//
+//	        GoogleCloudDialogflowCxV3GcsDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowCxV3GcsDestinationPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutput() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput
+	ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3GcsDestinationPtrOutput
+}
+
+type googleCloudDialogflowCxV3GcsDestinationPtrType GoogleCloudDialogflowCxV3GcsDestinationArgs
+
+func GoogleCloudDialogflowCxV3GcsDestinationPtr(v *GoogleCloudDialogflowCxV3GcsDestinationArgs) GoogleCloudDialogflowCxV3GcsDestinationPtrInput {
+	return (*googleCloudDialogflowCxV3GcsDestinationPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3GcsDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3GcsDestination)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3GcsDestinationPtrType) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutput() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3GcsDestinationPtrType) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3GcsDestinationPtrOutput)
+}
+
+// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+type GoogleCloudDialogflowCxV3GcsDestinationOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3GcsDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3GcsDestination)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) ToGoogleCloudDialogflowCxV3GcsDestinationOutput() GoogleCloudDialogflowCxV3GcsDestinationOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) ToGoogleCloudDialogflowCxV3GcsDestinationOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutput() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3GcsDestination) *GoogleCloudDialogflowCxV3GcsDestination {
+		return &v
+	}).(GoogleCloudDialogflowCxV3GcsDestinationPtrOutput)
+}
+
+// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+func (o GoogleCloudDialogflowCxV3GcsDestinationOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3GcsDestination) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowCxV3GcsDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3GcsDestination)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutput() GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) ToGoogleCloudDialogflowCxV3GcsDestinationPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) Elem() GoogleCloudDialogflowCxV3GcsDestinationOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3GcsDestination) GoogleCloudDialogflowCxV3GcsDestination {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3GcsDestination
+		return ret
+	}).(GoogleCloudDialogflowCxV3GcsDestinationOutput)
+}
+
+// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+func (o GoogleCloudDialogflowCxV3GcsDestinationPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3GcsDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+type GoogleCloudDialogflowCxV3GcsDestinationResponse struct {
+	// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+	Uri string `pulumi:"uri"`
+}
+
+// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
+type GoogleCloudDialogflowCxV3GcsDestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3GcsDestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3GcsDestinationResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationResponseOutput) ToGoogleCloudDialogflowCxV3GcsDestinationResponseOutput() GoogleCloudDialogflowCxV3GcsDestinationResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3GcsDestinationResponseOutput) ToGoogleCloudDialogflowCxV3GcsDestinationResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3GcsDestinationResponseOutput {
+	return o
+}
+
+// The Google Cloud Storage URI for the exported objects. A URI is of the form: gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
+func (o GoogleCloudDialogflowCxV3GcsDestinationResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3GcsDestinationResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3InputAudioConfig struct {
 	// Audio encoding of the audio content to process.
 	AudioEncoding GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo *bool `pulumi:"enableWordInfo"`
-	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
 	Model *string `pulumi:"model"`
 	// Optional. Which variant of the Speech model to use.
 	ModelVariant *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant `pulumi:"modelVariant"`
@@ -5369,7 +5565,7 @@ type GoogleCloudDialogflowCxV3InputAudioConfigArgs struct {
 	AudioEncoding GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
-	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Optional. Which variant of the Speech model to use.
 	ModelVariant GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrInput `pulumi:"modelVariant"`
@@ -5471,7 +5667,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigOutput) EnableWordInfo() pulumi
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3InputAudioConfig) *bool { return v.EnableWordInfo }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
 func (o GoogleCloudDialogflowCxV3InputAudioConfigOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3InputAudioConfig) *string { return v.Model }).(pulumi.StringPtrOutput)
 }
@@ -5542,7 +5738,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigPtrOutput) EnableWordInfo() pul
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
 func (o GoogleCloudDialogflowCxV3InputAudioConfigPtrOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfig) *string {
 		if v == nil {
@@ -5598,7 +5794,7 @@ type GoogleCloudDialogflowCxV3InputAudioConfigResponse struct {
 	AudioEncoding string `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo bool `pulumi:"enableWordInfo"`
-	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
 	Model string `pulumi:"model"`
 	// Optional. Which variant of the Speech model to use.
 	ModelVariant string `pulumi:"modelVariant"`
@@ -5635,7 +5831,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigResponseOutput) EnableWordInfo(
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3InputAudioConfigResponse) bool { return v.EnableWordInfo }).(pulumi.BoolOutput)
 }
 
-// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
+// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)
 func (o GoogleCloudDialogflowCxV3InputAudioConfigResponseOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3InputAudioConfigResponse) string { return v.Model }).(pulumi.StringOutput)
 }
@@ -5660,7 +5856,7 @@ func (o GoogleCloudDialogflowCxV3InputAudioConfigResponseOutput) SingleUtterance
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3InputAudioConfigResponse) bool { return v.SingleUtterance }).(pulumi.BoolOutput)
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
 type GoogleCloudDialogflowCxV3Intent struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
@@ -5691,7 +5887,7 @@ type GoogleCloudDialogflowCxV3IntentInput interface {
 	ToGoogleCloudDialogflowCxV3IntentOutputWithContext(context.Context) GoogleCloudDialogflowCxV3IntentOutput
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
 type GoogleCloudDialogflowCxV3IntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
@@ -5764,7 +5960,7 @@ func (i *googleCloudDialogflowCxV3IntentPtrType) ToGoogleCloudDialogflowCxV3Inte
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3IntentPtrOutput)
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
 type GoogleCloudDialogflowCxV3IntentOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3IntentOutput) ElementType() reflect.Type {
@@ -6290,7 +6486,7 @@ func (o GoogleCloudDialogflowCxV3IntentParameterResponseArrayOutput) Index(i pul
 	}).(GoogleCloudDialogflowCxV3IntentParameterResponseOutput)
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
 type GoogleCloudDialogflowCxV3IntentResponse struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description string `pulumi:"description"`
@@ -6310,7 +6506,7 @@ type GoogleCloudDialogflowCxV3IntentResponse struct {
 	TrainingPhrases []GoogleCloudDialogflowCxV3IntentTrainingPhraseResponse `pulumi:"trainingPhrases"`
 }
 
-// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
+// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15
 type GoogleCloudDialogflowCxV3IntentResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDialogflowCxV3IntentResponseOutput) ElementType() reflect.Type {
@@ -11164,6 +11360,176 @@ func (o GoogleCloudDialogflowCxV3TextInputResponseOutput) Text() pulumi.StringOu
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextInputResponse) string { return v.Text }).(pulumi.StringOutput)
 }
 
+// Settings related to speech generating.
+type GoogleCloudDialogflowCxV3TextToSpeechSettings struct {
+	// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+}
+
+// GoogleCloudDialogflowCxV3TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs and GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3TextToSpeechSettingsInput` via:
+//
+//	GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs{...}
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput
+	ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutputWithContext(context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput
+}
+
+// Settings related to speech generating.
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs struct {
+	// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
+}
+
+func (GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3TextToSpeechSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput {
+	return i.ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput).ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs, GoogleCloudDialogflowCxV3TextToSpeechSettingsPtr and GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrInput` via:
+//
+//	        GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput
+	ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput
+}
+
+type googleCloudDialogflowCxV3TextToSpeechSettingsPtrType GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs
+
+func GoogleCloudDialogflowCxV3TextToSpeechSettingsPtr(v *GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs) GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrInput {
+	return (*googleCloudDialogflowCxV3TextToSpeechSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3TextToSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3TextToSpeechSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3TextToSpeechSettingsPtrType) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3TextToSpeechSettingsPtrType) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput)
+}
+
+// Settings related to speech generating.
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3TextToSpeechSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3TextToSpeechSettings) *GoogleCloudDialogflowCxV3TextToSpeechSettings {
+		return &v
+	}).(GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput)
+}
+
+// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettings) map[string]string {
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3TextToSpeechSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) Elem() GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TextToSpeechSettings) GoogleCloudDialogflowCxV3TextToSpeechSettings {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowCxV3TextToSpeechSettings
+		return ret
+	}).(GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput)
+}
+
+// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TextToSpeechSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
+// Settings related to speech generating.
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse struct {
+	// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+}
+
+// Settings related to speech generating.
+type GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput() GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput {
+	return o
+}
+
+// Configuration of how speech should be synthesized, mapping from language (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse) map[string]string {
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
 // A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
 type GoogleCloudDialogflowCxV3TransitionRoute struct {
 	// The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
@@ -12874,6 +13240,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentSetParameterActionInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3GcsDestinationInput)(nil)).Elem(), GoogleCloudDialogflowCxV3GcsDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3GcsDestinationPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3GcsDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigInput)(nil)).Elem(), GoogleCloudDialogflowCxV3InputAudioConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3InputAudioConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3IntentInput)(nil)).Elem(), GoogleCloudDialogflowCxV3IntentArgs{})
@@ -12926,6 +13294,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TestConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TestConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextInputInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextInputArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextInputPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextInputArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextToSpeechSettingsInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TransitionRouteInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TransitionRouteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3TransitionRouteArrayInput)(nil)).Elem(), GoogleCloudDialogflowCxV3TransitionRouteArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowCxV3VariantsHistoryInput)(nil)).Elem(), GoogleCloudDialogflowCxV3VariantsHistoryArgs{})
@@ -13035,6 +13405,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3FulfillmentSetParameterActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3GcsDestinationOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3GcsDestinationPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3GcsDestinationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigResponseOutput{})
@@ -13124,6 +13497,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TextInputOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TextInputPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TextInputResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TextToSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TextToSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TextToSpeechSettingsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TransitionRouteOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TransitionRouteArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TransitionRouteResponseOutput{})

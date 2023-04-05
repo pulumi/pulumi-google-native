@@ -31,6 +31,10 @@ export interface GetDatabaseResult {
      */
     readonly concurrencyMode: string;
     /**
+     * The timestamp at which this database was created.
+     */
+    readonly createTime: string;
+    /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
     readonly etag: string;
@@ -50,6 +54,14 @@ export interface GetDatabaseResult {
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
      */
     readonly type: string;
+    /**
+     * The system-generated UUID4 for this Database.
+     */
+    readonly uid: string;
+    /**
+     * The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+     */
+    readonly updateTime: string;
 }
 /**
  * Gets information about a database.

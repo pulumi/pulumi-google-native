@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+ * Returns the specified target VPN gateway.
  */
 export function getTargetVpnGateway(args: GetTargetVpnGatewayArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetVpnGatewayResult> {
 
@@ -66,7 +66,7 @@ export interface GetTargetVpnGatewayResult {
     readonly tunnels: string[];
 }
 /**
- * Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+ * Returns the specified target VPN gateway.
  */
 export function getTargetVpnGatewayOutput(args: GetTargetVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetVpnGatewayResult> {
     return pulumi.output(args).apply((a: any) => getTargetVpnGateway(a, opts))

@@ -1146,6 +1146,8 @@ const (
 	SoftwareConfigOptionalComponentsItemHbase = SoftwareConfigOptionalComponentsItem("HBASE")
 	// The Hive Web HCatalog (the REST service for accessing HCatalog).
 	SoftwareConfigOptionalComponentsItemHiveWebhcat = SoftwareConfigOptionalComponentsItem("HIVE_WEBHCAT")
+	// Hudi.
+	SoftwareConfigOptionalComponentsItemHudi = SoftwareConfigOptionalComponentsItem("HUDI")
 	// The Jupyter Notebook.
 	SoftwareConfigOptionalComponentsItemJupyter = SoftwareConfigOptionalComponentsItem("JUPYTER")
 	// The Presto query engine.

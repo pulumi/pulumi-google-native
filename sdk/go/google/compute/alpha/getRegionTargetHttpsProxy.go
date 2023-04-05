@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+// Returns the specified TargetHttpsProxy resource in the specified region.
 func LookupRegionTargetHttpsProxy(ctx *pulumi.Context, args *LookupRegionTargetHttpsProxyArgs, opts ...pulumi.InvokeOption) (*LookupRegionTargetHttpsProxyResult, error) {
 	var rv LookupRegionTargetHttpsProxyResult
 	err := ctx.Invoke("google-native:compute/alpha:getRegionTargetHttpsProxy", args, &rv, opts...)
@@ -47,6 +47,8 @@ type LookupRegionTargetHttpsProxyResult struct {
 	Fingerprint string `pulumi:"fingerprint"`
 	// URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
 	HttpFilters []string `pulumi:"httpFilters"`
+	// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+	HttpKeepAliveTimeoutSec int `pulumi:"httpKeepAliveTimeoutSec"`
 	// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
 	Kind string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -61,7 +63,7 @@ type LookupRegionTargetHttpsProxyResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+	// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
 	ServerTlsPolicy string `pulumi:"serverTlsPolicy"`
 	// URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
@@ -152,6 +154,11 @@ func (o LookupRegionTargetHttpsProxyResultOutput) HttpFilters() pulumi.StringArr
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) []string { return v.HttpFilters }).(pulumi.StringArrayOutput)
 }
 
+// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+func (o LookupRegionTargetHttpsProxyResultOutput) HttpKeepAliveTimeoutSec() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) int { return v.HttpKeepAliveTimeoutSec }).(pulumi.IntOutput)
+}
+
 // Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
 func (o LookupRegionTargetHttpsProxyResultOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.Kind }).(pulumi.StringOutput)
@@ -187,7 +194,7 @@ func (o LookupRegionTargetHttpsProxyResultOutput) SelfLinkWithId() pulumi.String
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.SelfLinkWithId }).(pulumi.StringOutput)
 }
 
-// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
 func (o LookupRegionTargetHttpsProxyResultOutput) ServerTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionTargetHttpsProxyResult) string { return v.ServerTlsPolicy }).(pulumi.StringOutput)
 }

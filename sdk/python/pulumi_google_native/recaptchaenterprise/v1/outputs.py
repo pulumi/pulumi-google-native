@@ -8,10 +8,17 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 from ._enums import *
 
 __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse',
     'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse',
     'GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse',
     'GoogleCloudRecaptchaenterpriseV1WafSettingsResponse',
@@ -30,6 +37,8 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
             suggest = "allow_all_package_names"
         elif key == "allowedPackageNames":
             suggest = "allowed_package_names"
+        elif key == "supportNonGoogleAppStoreDistribution":
+            suggest = "support_non_google_app_store_distribution"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -44,14 +53,17 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
 
     def __init__(__self__, *,
                  allow_all_package_names: bool,
-                 allowed_package_names: Sequence[str]):
+                 allowed_package_names: Sequence[str],
+                 support_non_google_app_store_distribution: bool):
         """
         Settings specific to keys that can be used by Android apps.
         :param bool allow_all_package_names: If set to true, allowed_package_names are not enforced.
         :param Sequence[str] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        :param bool support_non_google_app_store_distribution: Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
         """
         pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
         pulumi.set(__self__, "allowed_package_names", allowed_package_names)
+        pulumi.set(__self__, "support_non_google_app_store_distribution", support_non_google_app_store_distribution)
 
     @property
     @pulumi.getter(name="allowAllPackageNames")
@@ -68,6 +80,188 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(dict):
         Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         """
         return pulumi.get(self, "allowed_package_names")
+
+    @property
+    @pulumi.getter(name="supportNonGoogleAppStoreDistribution")
+    def support_non_google_app_store_distribution(self) -> bool:
+        """
+        Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        """
+        return pulumi.get(self, "support_non_google_app_store_distribution")
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse(dict):
+    """
+    An allow action continues processing a request unimpeded.
+    """
+    def __init__(__self__):
+        """
+        An allow action continues processing a request unimpeded.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse(dict):
+    """
+    A block action serves an HTTP error code a prevents the request from hitting the backend.
+    """
+    def __init__(__self__):
+        """
+        A block action serves an HTTP error code a prevents the request from hitting the backend.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse(dict):
+    """
+    A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+    """
+    def __init__(__self__):
+        """
+        A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+        """
+        pass
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionResponse(dict):
+    """
+    An individual action. Each action represents what to do if a policy matches.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "setHeader":
+            suggest = "set_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecaptchaenterpriseV1FirewallActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRecaptchaenterpriseV1FirewallActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRecaptchaenterpriseV1FirewallActionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse',
+                 block: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse',
+                 redirect: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse',
+                 set_header: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse',
+                 substitute: 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse'):
+        """
+        An individual action. Each action represents what to do if a policy matches.
+        :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse' allow: The user request did not match any policy and should be allowed access to the requested resource.
+        :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse' block: This action will deny access to a given page. The user will get an HTTP error code.
+        :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse' redirect: This action will redirect the request to a ReCaptcha interstitial to attach a token.
+        :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse' set_header: This action will set a custom header but allow the request to continue to the customer backend.
+        :param 'GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse' substitute: This action will transparently serve a different page to an offending user.
+        """
+        pulumi.set(__self__, "allow", allow)
+        pulumi.set(__self__, "block", block)
+        pulumi.set(__self__, "redirect", redirect)
+        pulumi.set(__self__, "set_header", set_header)
+        pulumi.set(__self__, "substitute", substitute)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionResponse':
+        """
+        The user request did not match any policy and should be allowed access to the requested resource.
+        """
+        return pulumi.get(self, "allow")
+
+    @property
+    @pulumi.getter
+    def block(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionResponse':
+        """
+        This action will deny access to a given page. The user will get an HTTP error code.
+        """
+        return pulumi.get(self, "block")
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionResponse':
+        """
+        This action will redirect the request to a ReCaptcha interstitial to attach a token.
+        """
+        return pulumi.get(self, "redirect")
+
+    @property
+    @pulumi.getter(name="setHeader")
+    def set_header(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse':
+        """
+        This action will set a custom header but allow the request to continue to the customer backend.
+        """
+        return pulumi.get(self, "set_header")
+
+    @property
+    @pulumi.getter
+    def substitute(self) -> 'outputs.GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse':
+        """
+        This action will transparently serve a different page to an offending user.
+        """
+        return pulumi.get(self, "substitute")
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionResponse(dict):
+    """
+    A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+    """
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+        :param str key: The header key to set in the request to the backend server.
+        :param str value: The header value to set in the request to the backend server.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        The header key to set in the request to the backend server.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The header value to set in the request to the backend server.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse(dict):
+    """
+    A substitute action transparently serves a different page than the one requested.
+    """
+    def __init__(__self__, *,
+                 path: str):
+        """
+        A substitute action transparently serves a different page than the one requested.
+        :param str path: The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        """
+        return pulumi.get(self, "path")
 
 
 @pulumi.output_type

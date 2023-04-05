@@ -45,7 +45,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input['OracleConnectionProfileArgs'] oracle: An Oracle database connection profile.
         :param pulumi.Input['PostgreSqlConnectionProfileArgs'] postgresql: A PostgreSQL database connection profile.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
-        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
@@ -224,7 +224,7 @@ class ConnectionProfileArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 
@@ -306,7 +306,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['OracleConnectionProfileArgs']] oracle: An Oracle database connection profile.
         :param pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']] postgresql: A PostgreSQL database connection profile.
         :param pulumi.Input['ConnectionProfileProvider'] provider: The database provider.
-        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input[str] request_id: Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         :param pulumi.Input[bool] skip_validation: Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles.
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles.
@@ -536,7 +536,7 @@ class ConnectionProfile(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         """
         return pulumi.get(self, "request_id")
 

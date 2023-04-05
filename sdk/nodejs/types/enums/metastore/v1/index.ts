@@ -102,6 +102,38 @@ export const MaintenanceWindowDayOfWeek = {
  */
 export type MaintenanceWindowDayOfWeek = (typeof MaintenanceWindowDayOfWeek)[keyof typeof MaintenanceWindowDayOfWeek];
 
+export const ScalingConfigInstanceSize = {
+    /**
+     * Unspecified instance size
+     */
+    InstanceSizeUnspecified: "INSTANCE_SIZE_UNSPECIFIED",
+    /**
+     * Extra small instance size, maps to a scaling factor of 0.1.
+     */
+    ExtraSmall: "EXTRA_SMALL",
+    /**
+     * Small instance size, maps to a scaling factor of 0.5.
+     */
+    Small: "SMALL",
+    /**
+     * Medium instance size, maps to a scaling factor of 1.0.
+     */
+    Medium: "MEDIUM",
+    /**
+     * Large instance size, maps to a scaling factor of 3.0.
+     */
+    Large: "LARGE",
+    /**
+     * Extra large instance size, maps to a scaling factor of 6.0.
+     */
+    ExtraLarge: "EXTRA_LARGE",
+} as const;
+
+/**
+ * An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+ */
+export type ScalingConfigInstanceSize = (typeof ScalingConfigInstanceSize)[keyof typeof ScalingConfigInstanceSize];
+
 export const ServiceDatabaseType = {
     /**
      * The DATABASE_TYPE is not set.

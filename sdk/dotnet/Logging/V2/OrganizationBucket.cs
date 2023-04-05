@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Logging.V2
     public partial class OrganizationBucket : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// </summary>
+        [Output("analyticsEnabled")]
+        public Output<bool> AnalyticsEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         /// </summary>
         [Output("bucketId")]
@@ -139,6 +145,12 @@ namespace Pulumi.GoogleNative.Logging.V2
 
     public sealed class OrganizationBucketArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// </summary>
+        [Input("analyticsEnabled")]
+        public Input<bool>? AnalyticsEnabled { get; set; }
+
         /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
         /// </summary>

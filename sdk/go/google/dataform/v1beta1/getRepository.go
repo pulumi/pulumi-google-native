@@ -29,6 +29,12 @@ type LookupRepositoryArgs struct {
 type LookupRepositoryResult struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsResponse `pulumi:"gitRemoteSettings"`
+	// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+	InitialCommitFileContents map[string]string `pulumi:"initialCommitFileContents"`
+	// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+	InitialCommitMetadata CommitMetadataResponse `pulumi:"initialCommitMetadata"`
+	// Optional. Repository user labels.
+	Labels map[string]string `pulumi:"labels"`
 	// The repository's name.
 	Name string `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
@@ -77,6 +83,21 @@ func (o LookupRepositoryResultOutput) ToLookupRepositoryResultOutputWithContext(
 // Optional. If set, configures this repository to be linked to a Git remote.
 func (o LookupRepositoryResultOutput) GitRemoteSettings() GitRemoteSettingsResponseOutput {
 	return o.ApplyT(func(v LookupRepositoryResult) GitRemoteSettingsResponse { return v.GitRemoteSettings }).(GitRemoteSettingsResponseOutput)
+}
+
+// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+func (o LookupRepositoryResultOutput) InitialCommitFileContents() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.InitialCommitFileContents }).(pulumi.StringMapOutput)
+}
+
+// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+func (o LookupRepositoryResultOutput) InitialCommitMetadata() CommitMetadataResponseOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) CommitMetadataResponse { return v.InitialCommitMetadata }).(CommitMetadataResponseOutput)
+}
+
+// Optional. Repository user labels.
+func (o LookupRepositoryResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The repository's name.

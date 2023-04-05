@@ -4,13 +4,21 @@
 
 export const CapacityCommitmentEdition = {
     /**
-     * Default value, only for legacy reservations and capacity commitments.
+     * Default value, which will be treated as ENTERPRISE.
      */
     EditionUnspecified: "EDITION_UNSPECIFIED",
+    /**
+     * Standard edition.
+     */
+    Standard: "STANDARD",
     /**
      * Enterprise edition.
      */
     Enterprise: "ENTERPRISE",
+    /**
+     * Enterprise plus edition.
+     */
+    EnterprisePlus: "ENTERPRISE_PLUS",
 } as const;
 
 /**
@@ -28,6 +36,10 @@ export const CapacityCommitmentPlan = {
      */
     Flex: "FLEX",
     /**
+     * Same as FLEX, should only be used if flat-rate commitments are still available.
+     */
+    FlexFlatRate: "FLEX_FLAT_RATE",
+    /**
      * Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
      */
     Trial: "TRIAL",
@@ -36,9 +48,21 @@ export const CapacityCommitmentPlan = {
      */
     Monthly: "MONTHLY",
     /**
+     * Same as MONTHLY, should only be used if flat-rate commitments are still available.
+     */
+    MonthlyFlatRate: "MONTHLY_FLAT_RATE",
+    /**
      * Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
      */
     Annual: "ANNUAL",
+    /**
+     * Same as ANNUAL, should only be used if flat-rate commitments are still available.
+     */
+    AnnualFlatRate: "ANNUAL_FLAT_RATE",
+    /**
+     * 3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+     */
+    ThreeYear: "THREE_YEAR",
     /**
      * Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
      */
@@ -60,6 +84,10 @@ export const CapacityCommitmentRenewalPlan = {
      */
     Flex: "FLEX",
     /**
+     * Same as FLEX, should only be used if flat-rate commitments are still available.
+     */
+    FlexFlatRate: "FLEX_FLAT_RATE",
+    /**
      * Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
      */
     Trial: "TRIAL",
@@ -68,9 +96,21 @@ export const CapacityCommitmentRenewalPlan = {
      */
     Monthly: "MONTHLY",
     /**
+     * Same as MONTHLY, should only be used if flat-rate commitments are still available.
+     */
+    MonthlyFlatRate: "MONTHLY_FLAT_RATE",
+    /**
      * Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
      */
     Annual: "ANNUAL",
+    /**
+     * Same as ANNUAL, should only be used if flat-rate commitments are still available.
+     */
+    AnnualFlatRate: "ANNUAL_FLAT_RATE",
+    /**
+     * 3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+     */
+    ThreeYear: "THREE_YEAR",
     /**
      * Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
      */
@@ -84,13 +124,21 @@ export type CapacityCommitmentRenewalPlan = (typeof CapacityCommitmentRenewalPla
 
 export const ReservationEdition = {
     /**
-     * Default value, only for legacy reservations and capacity commitments.
+     * Default value, which will be treated as ENTERPRISE.
      */
     EditionUnspecified: "EDITION_UNSPECIFIED",
+    /**
+     * Standard edition.
+     */
+    Standard: "STANDARD",
     /**
      * Enterprise edition.
      */
     Enterprise: "ENTERPRISE",
+    /**
+     * Enterprise plus edition.
+     */
+    EnterprisePlus: "ENTERPRISE_PLUS",
 } as const;
 
 /**

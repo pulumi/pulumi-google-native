@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ * Returns the specified persistent disk.
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
 
@@ -31,6 +31,14 @@ export interface GetDiskResult {
      * The architecture of the disk. Valid values are ARM64 or X86_64.
      */
     readonly architecture: string;
+    /**
+     * Disk asynchronously replicated into this disk.
+     */
+    readonly asyncPrimaryDisk: outputs.compute.beta.DiskAsyncReplicationResponse;
+    /**
+     * A list of disks this disk is asynchronously replicated to.
+     */
+    readonly asyncSecondaryDisks: {[key: string]: string};
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -134,6 +142,10 @@ export interface GetDiskResult {
      */
     readonly resourcePolicies: string[];
     /**
+     * Status information for the disk resource.
+     */
+    readonly resourceStatus: outputs.compute.beta.DiskResourceStatusResponse;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
@@ -145,6 +157,14 @@ export interface GetDiskResult {
      * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
      */
     readonly sizeGb: string;
+    /**
+     * URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+     */
+    readonly sourceConsistencyGroupPolicy: string;
+    /**
+     * ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+     */
+    readonly sourceConsistencyGroupPolicyId: string;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
      */
@@ -209,7 +229,7 @@ export interface GetDiskResult {
     readonly zone: string;
 }
 /**
- * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ * Returns the specified persistent disk.
  */
 export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
     return pulumi.output(args).apply((a: any) => getDisk(a, opts))

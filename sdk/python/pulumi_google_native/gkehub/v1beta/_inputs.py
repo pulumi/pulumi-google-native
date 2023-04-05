@@ -27,6 +27,7 @@ __all__ = [
     'IdentityServiceMembershipSpecArgs',
     'IdentityServiceOidcConfigArgs',
     'MultiClusterIngressFeatureSpecArgs',
+    'RoleArgs',
 ]
 
 @pulumi.input_type
@@ -896,5 +897,29 @@ class MultiClusterIngressFeatureSpecArgs:
     @config_membership.setter
     def config_membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config_membership", value)
+
+
+@pulumi.input_type
+class RoleArgs:
+    def __init__(__self__, *,
+                 predefined_role: Optional[pulumi.Input['RolePredefinedRole']] = None):
+        """
+        Role is the type for Kubernetes roles
+        :param pulumi.Input['RolePredefinedRole'] predefined_role: predefined_role is the Kubernetes default role to use
+        """
+        if predefined_role is not None:
+            pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="predefinedRole")
+    def predefined_role(self) -> Optional[pulumi.Input['RolePredefinedRole']]:
+        """
+        predefined_role is the Kubernetes default role to use
+        """
+        return pulumi.get(self, "predefined_role")
+
+    @predefined_role.setter
+    def predefined_role(self, value: Optional[pulumi.Input['RolePredefinedRole']]):
+        pulumi.set(self, "predefined_role", value)
 
 

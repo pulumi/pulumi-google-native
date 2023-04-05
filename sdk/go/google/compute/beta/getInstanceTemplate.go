@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+// Returns the specified instance template.
 func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupInstanceTemplateResult, error) {
 	var rv LookupInstanceTemplateResult
 	err := ctx.Invoke("google-native:compute/beta:getInstanceTemplate", args, &rv, opts...)
@@ -36,6 +36,8 @@ type LookupInstanceTemplateResult struct {
 	Name string `pulumi:"name"`
 	// The instance properties for this instance template.
 	Properties InstancePropertiesResponse `pulumi:"properties"`
+	// URL of the region where the instance template resides. Only applicable for regional resources.
+	Region string `pulumi:"region"`
 	// The URL for this instance template. The server defines this URL.
 	SelfLink string `pulumi:"selfLink"`
 	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
@@ -103,6 +105,11 @@ func (o LookupInstanceTemplateResultOutput) Name() pulumi.StringOutput {
 // The instance properties for this instance template.
 func (o LookupInstanceTemplateResultOutput) Properties() InstancePropertiesResponseOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) InstancePropertiesResponse { return v.Properties }).(InstancePropertiesResponseOutput)
+}
+
+// URL of the region where the instance template resides. Only applicable for regional resources.
+func (o LookupInstanceTemplateResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The URL for this instance template. The server defines this URL.

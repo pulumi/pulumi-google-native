@@ -56,6 +56,8 @@ type LookupNoteResult struct {
 	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
 	// A note describing a software bill of materials.
 	Sbom DocumentNoteResponse `pulumi:"sbom"`
+	// A note describing an SBOM reference.
+	SbomReference SBOMReferenceNoteResponse `pulumi:"sbomReference"`
 	// A one sentence description of this note.
 	ShortDescription string `pulumi:"shortDescription"`
 	// A note describing an SPDX File.
@@ -68,6 +70,8 @@ type LookupNoteResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// A note describing a package vulnerability.
 	Vulnerability VulnerabilityResponse `pulumi:"vulnerability"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNoteResponse `pulumi:"vulnerabilityAssessment"`
 }
 
 func LookupNoteOutput(ctx *pulumi.Context, args LookupNoteOutputArgs, opts ...pulumi.InvokeOption) LookupNoteResultOutput {
@@ -181,6 +185,11 @@ func (o LookupNoteResultOutput) Sbom() DocumentNoteResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) DocumentNoteResponse { return v.Sbom }).(DocumentNoteResponseOutput)
 }
 
+// A note describing an SBOM reference.
+func (o LookupNoteResultOutput) SbomReference() SBOMReferenceNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) SBOMReferenceNoteResponse { return v.SbomReference }).(SBOMReferenceNoteResponseOutput)
+}
+
 // A one sentence description of this note.
 func (o LookupNoteResultOutput) ShortDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNoteResult) string { return v.ShortDescription }).(pulumi.StringOutput)
@@ -209,6 +218,11 @@ func (o LookupNoteResultOutput) UpdateTime() pulumi.StringOutput {
 // A note describing a package vulnerability.
 func (o LookupNoteResultOutput) Vulnerability() VulnerabilityResponseOutput {
 	return o.ApplyT(func(v LookupNoteResult) VulnerabilityResponse { return v.Vulnerability }).(VulnerabilityResponseOutput)
+}
+
+// A note describing a vulnerability assessment.
+func (o LookupNoteResultOutput) VulnerabilityAssessment() VulnerabilityAssessmentNoteResponseOutput {
+	return o.ApplyT(func(v LookupNoteResult) VulnerabilityAssessmentNoteResponse { return v.VulnerabilityAssessment }).(VulnerabilityAssessmentNoteResponseOutput)
 }
 
 func init() {

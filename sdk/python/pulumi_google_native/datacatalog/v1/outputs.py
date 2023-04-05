@@ -19,6 +19,9 @@ __all__ = [
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse',
     'GoogleCloudDatacatalogV1BigQueryTableSpecResponse',
     'GoogleCloudDatacatalogV1BusinessContextResponse',
+    'GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse',
+    'GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse',
+    'GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse',
     'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecResponse',
     'GoogleCloudDatacatalogV1ColumnSchemaResponse',
@@ -48,6 +51,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1RoutineSpecArgumentResponse',
     'GoogleCloudDatacatalogV1RoutineSpecResponse',
     'GoogleCloudDatacatalogV1SchemaResponse',
+    'GoogleCloudDatacatalogV1ServiceSpecResponse',
     'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse',
     'GoogleCloudDatacatalogV1StoragePropertiesResponse',
     'GoogleCloudDatacatalogV1SystemTimestampsResponse',
@@ -449,6 +453,158 @@ class GoogleCloudDatacatalogV1BusinessContextResponse(dict):
         Entry overview fields for rich text descriptions of entries.
         """
         return pulumi.get(self, "entry_overview")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse(dict):
+    """
+    Spec that applies to clusters of an Instance of Cloud Bigtable.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "linkedResource":
+            suggest = "linked_resource"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 linked_resource: str,
+                 location: str,
+                 type: str):
+        """
+        Spec that applies to clusters of an Instance of Cloud Bigtable.
+        :param str display_name: Name of the cluster.
+        :param str linked_resource: A link back to the parent resource, in this case Instance.
+        :param str location: Location of the cluster, typically a Cloud zone.
+        :param str type: Type of the resource. For a cluster this would be "CLUSTER".
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "linked_resource", linked_resource)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of the cluster.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="linkedResource")
+    def linked_resource(self) -> str:
+        """
+        A link back to the parent resource, in this case Instance.
+        """
+        return pulumi.get(self, "linked_resource")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location of the cluster, typically a Cloud zone.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of the resource. For a cluster this would be "CLUSTER".
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse(dict):
+    """
+    Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudBigtableClusterSpecs":
+            suggest = "cloud_bigtable_cluster_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_bigtable_cluster_specs: Sequence['outputs.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse']):
+        """
+        Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+        :param Sequence['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse'] cloud_bigtable_cluster_specs: The list of clusters for the Instance.
+        """
+        pulumi.set(__self__, "cloud_bigtable_cluster_specs", cloud_bigtable_cluster_specs)
+
+    @property
+    @pulumi.getter(name="cloudBigtableClusterSpecs")
+    def cloud_bigtable_cluster_specs(self) -> Sequence['outputs.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse']:
+        """
+        The list of clusters for the Instance.
+        """
+        return pulumi.get(self, "cloud_bigtable_cluster_specs")
+
+
+@pulumi.output_type
+class GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse(dict):
+    """
+    Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceDisplayName":
+            suggest = "instance_display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 instance_display_name: str):
+        """
+        Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+        :param str instance_display_name: Display name of the Instance. This is user specified and different from the resource name.
+        """
+        pulumi.set(__self__, "instance_display_name", instance_display_name)
+
+    @property
+    @pulumi.getter(name="instanceDisplayName")
+    def instance_display_name(self) -> str:
+        """
+        Display name of the Instance. This is user specified and different from the resource name.
+        """
+        return pulumi.get(self, "instance_display_name")
 
 
 @pulumi.output_type
@@ -1910,6 +2066,45 @@ class GoogleCloudDatacatalogV1SchemaResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudDatacatalogV1ServiceSpecResponse(dict):
+    """
+    Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudBigtableInstanceSpec":
+            suggest = "cloud_bigtable_instance_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1ServiceSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1ServiceSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1ServiceSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_bigtable_instance_spec: 'outputs.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse'):
+        """
+        Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+        :param 'GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse' cloud_bigtable_instance_spec: Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+        """
+        pulumi.set(__self__, "cloud_bigtable_instance_spec", cloud_bigtable_instance_spec)
+
+    @property
+    @pulumi.getter(name="cloudBigtableInstanceSpec")
+    def cloud_bigtable_instance_spec(self) -> 'outputs.GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse':
+        """
+        Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+        """
+        return pulumi.get(self, "cloud_bigtable_instance_spec")
+
+
+@pulumi.output_type
 class GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse(dict):
     """
     Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
@@ -2141,7 +2336,7 @@ class GoogleCloudDatacatalogV1TaxonomyServiceResponse(dict):
         """
         The source system of the Taxonomy.
         :param str identity: P4SA Identity of the service.
-        :param str name: The GCP service name.
+        :param str name: The Google Cloud service name.
         """
         pulumi.set(__self__, "identity", identity)
         pulumi.set(__self__, "name", name)
@@ -2158,7 +2353,7 @@ class GoogleCloudDatacatalogV1TaxonomyServiceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The GCP service name.
+        The Google Cloud service name.
         """
         return pulumi.get(self, "name")
 

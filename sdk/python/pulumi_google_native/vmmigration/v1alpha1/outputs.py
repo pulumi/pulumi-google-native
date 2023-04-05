@@ -29,6 +29,9 @@ __all__ = [
     'CycleStepResponse',
     'InitializingReplicationStepResponse',
     'InstantiatingMigratedVMStepResponse',
+    'LinkResponse',
+    'LocalizedMessageResponse',
+    'MigrationWarningResponse',
     'NetworkInterfaceResponse',
     'PostProcessingStepResponse',
     'PreparingVMDisksStepResponse',
@@ -60,6 +63,8 @@ class AccessKeyCredentialsResponse(dict):
             suggest = "access_key_id"
         elif key == "secretAccessKey":
             suggest = "secret_access_key"
+        elif key == "sessionToken":
+            suggest = "session_token"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AccessKeyCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -74,14 +79,17 @@ class AccessKeyCredentialsResponse(dict):
 
     def __init__(__self__, *,
                  access_key_id: str,
-                 secret_access_key: str):
+                 secret_access_key: str,
+                 session_token: str):
         """
         Message describing AWS Credentials using access key id and secret.
         :param str access_key_id: AWS access key ID.
         :param str secret_access_key: Input only. AWS secret access key.
+        :param str session_token: Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
         """
         pulumi.set(__self__, "access_key_id", access_key_id)
         pulumi.set(__self__, "secret_access_key", secret_access_key)
+        pulumi.set(__self__, "session_token", session_token)
 
     @property
     @pulumi.getter(name="accessKeyId")
@@ -98,6 +106,14 @@ class AccessKeyCredentialsResponse(dict):
         Input only. AWS secret access key.
         """
         return pulumi.get(self, "secret_access_key")
+
+    @property
+    @pulumi.getter(name="sessionToken")
+    def session_token(self) -> str:
+        """
+        Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+        """
+        return pulumi.get(self, "session_token")
 
 
 @pulumi.output_type
@@ -1706,6 +1722,161 @@ class InstantiatingMigratedVMStepResponse(dict):
 
 
 @pulumi.output_type
+class LinkResponse(dict):
+    """
+    Describes a URL link.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 url: str):
+        """
+        Describes a URL link.
+        :param str description: Describes what the link offers.
+        :param str url: The URL of the link.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "url", url)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Describes what the link offers.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def url(self) -> str:
+        """
+        The URL of the link.
+        """
+        return pulumi.get(self, "url")
+
+
+@pulumi.output_type
+class LocalizedMessageResponse(dict):
+    """
+    Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+    """
+    def __init__(__self__, *,
+                 locale: str,
+                 message: str):
+        """
+        Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+        :param str locale: The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        :param str message: The localized error message in the above locale.
+        """
+        pulumi.set(__self__, "locale", locale)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def locale(self) -> str:
+        """
+        The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        """
+        return pulumi.get(self, "locale")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        The localized error message in the above locale.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class MigrationWarningResponse(dict):
+    """
+    Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "actionItem":
+            suggest = "action_item"
+        elif key == "helpLinks":
+            suggest = "help_links"
+        elif key == "warningMessage":
+            suggest = "warning_message"
+        elif key == "warningTime":
+            suggest = "warning_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MigrationWarningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MigrationWarningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MigrationWarningResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action_item: 'outputs.LocalizedMessageResponse',
+                 code: str,
+                 help_links: Sequence['outputs.LinkResponse'],
+                 warning_message: 'outputs.LocalizedMessageResponse',
+                 warning_time: str):
+        """
+        Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations.
+        :param 'LocalizedMessageResponse' action_item: Suggested action for solving the warning.
+        :param str code: The warning code.
+        :param Sequence['LinkResponse'] help_links: URL(s) pointing to additional information on handling the current warning.
+        :param 'LocalizedMessageResponse' warning_message: The localized warning message.
+        :param str warning_time: The time the warning occurred.
+        """
+        pulumi.set(__self__, "action_item", action_item)
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "help_links", help_links)
+        pulumi.set(__self__, "warning_message", warning_message)
+        pulumi.set(__self__, "warning_time", warning_time)
+
+    @property
+    @pulumi.getter(name="actionItem")
+    def action_item(self) -> 'outputs.LocalizedMessageResponse':
+        """
+        Suggested action for solving the warning.
+        """
+        return pulumi.get(self, "action_item")
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The warning code.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter(name="helpLinks")
+    def help_links(self) -> Sequence['outputs.LinkResponse']:
+        """
+        URL(s) pointing to additional information on handling the current warning.
+        """
+        return pulumi.get(self, "help_links")
+
+    @property
+    @pulumi.getter(name="warningMessage")
+    def warning_message(self) -> 'outputs.LocalizedMessageResponse':
+        """
+        The localized warning message.
+        """
+        return pulumi.get(self, "warning_message")
+
+    @property
+    @pulumi.getter(name="warningTime")
+    def warning_time(self) -> str:
+        """
+        The time the warning occurred.
+        """
+        return pulumi.get(self, "warning_time")
+
+
+@pulumi.output_type
 class NetworkInterfaceResponse(dict):
     """
     NetworkInterface represents a NIC of a VM.
@@ -1921,7 +2092,8 @@ class ReplicationCycleResponse(dict):
                  start_time: str,
                  state: str,
                  steps: Sequence['outputs.CycleStepResponse'],
-                 total_pause_duration: str):
+                 total_pause_duration: str,
+                 warnings: Sequence['outputs.MigrationWarningResponse']):
         """
         ReplicationCycle contains information about the current replication cycle status.
         :param int cycle_number: The cycle's ordinal number.
@@ -1934,6 +2106,7 @@ class ReplicationCycleResponse(dict):
         :param str state: State of the ReplicationCycle.
         :param Sequence['CycleStepResponse'] steps: The cycle's steps list representing its progress.
         :param str total_pause_duration: The accumulated duration the replication cycle was paused.
+        :param Sequence['MigrationWarningResponse'] warnings: Warnings that occurred during the cycle.
         """
         pulumi.set(__self__, "cycle_number", cycle_number)
         pulumi.set(__self__, "end_time", end_time)
@@ -1945,6 +2118,7 @@ class ReplicationCycleResponse(dict):
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "steps", steps)
         pulumi.set(__self__, "total_pause_duration", total_pause_duration)
+        pulumi.set(__self__, "warnings", warnings)
 
     @property
     @pulumi.getter(name="cycleNumber")
@@ -2025,6 +2199,14 @@ class ReplicationCycleResponse(dict):
         The accumulated duration the replication cycle was paused.
         """
         return pulumi.get(self, "total_pause_duration")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.MigrationWarningResponse']:
+        """
+        Warnings that occurred during the cycle.
+        """
+        return pulumi.get(self, "warnings")
 
 
 @pulumi.output_type

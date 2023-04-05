@@ -1005,7 +1005,7 @@ class Product(pulumi.CustomResource):
     @pulumi.getter(name="localInventories")
     def local_inventories(self) -> pulumi.Output[Sequence['outputs.GoogleCloudRetailV2betaLocalInventoryResponse']]:
         """
-        A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+        A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         """
         return pulumi.get(self, "local_inventories")
 

@@ -27,7 +27,7 @@ export interface GetCertificateMapEntryArgs {
 
 export interface GetCertificateMapEntryResult {
     /**
-     * A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
+     * A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*&#47;locations/*&#47;certificates/*`.
      */
     readonly certificates: string[];
     /**

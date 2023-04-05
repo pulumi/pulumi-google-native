@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceTemplateResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, properties=None, self_link=None, source_instance=None, source_instance_params=None):
+    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, properties=None, region=None, self_link=None, source_instance=None, source_instance_params=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -35,6 +35,9 @@ class GetInstanceTemplateResult:
         if properties and not isinstance(properties, dict):
             raise TypeError("Expected argument 'properties' to be a dict")
         pulumi.set(__self__, "properties", properties)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -86,6 +89,14 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "properties")
 
     @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        URL of the region where the instance template resides. Only applicable for regional resources.
+        """
+        return pulumi.get(self, "region")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
@@ -121,6 +132,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             kind=self.kind,
             name=self.name,
             properties=self.properties,
+            region=self.region,
             self_link=self.self_link,
             source_instance=self.source_instance,
             source_instance_params=self.source_instance_params)
@@ -130,7 +142,7 @@ def get_instance_template(instance_template: Optional[str] = None,
                           project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceTemplateResult:
     """
-    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    Returns the specified instance template.
     """
     __args__ = dict()
     __args__['instanceTemplate'] = instance_template
@@ -144,6 +156,7 @@ def get_instance_template(instance_template: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         properties=__ret__.properties,
+        region=__ret__.region,
         self_link=__ret__.self_link,
         source_instance=__ret__.source_instance,
         source_instance_params=__ret__.source_instance_params)
@@ -154,6 +167,6 @@ def get_instance_template_output(instance_template: Optional[pulumi.Input[str]] 
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
-    Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+    Returns the specified instance template.
     """
     ...

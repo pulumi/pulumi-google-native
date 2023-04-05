@@ -145,6 +145,31 @@ export const getMeshIamPolicy: typeof import("./getMeshIamPolicy").getMeshIamPol
 export const getMeshIamPolicyOutput: typeof import("./getMeshIamPolicy").getMeshIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getMeshIamPolicy","getMeshIamPolicyOutput"], () => require("./getMeshIamPolicy"));
 
+export { GetMulticastConsumerAssociationIamPolicyArgs, GetMulticastConsumerAssociationIamPolicyResult, GetMulticastConsumerAssociationIamPolicyOutputArgs } from "./getMulticastConsumerAssociationIamPolicy";
+export const getMulticastConsumerAssociationIamPolicy: typeof import("./getMulticastConsumerAssociationIamPolicy").getMulticastConsumerAssociationIamPolicy = null as any;
+export const getMulticastConsumerAssociationIamPolicyOutput: typeof import("./getMulticastConsumerAssociationIamPolicy").getMulticastConsumerAssociationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMulticastConsumerAssociationIamPolicy","getMulticastConsumerAssociationIamPolicyOutput"], () => require("./getMulticastConsumerAssociationIamPolicy"));
+
+export { GetMulticastDomainActivationIamPolicyArgs, GetMulticastDomainActivationIamPolicyResult, GetMulticastDomainActivationIamPolicyOutputArgs } from "./getMulticastDomainActivationIamPolicy";
+export const getMulticastDomainActivationIamPolicy: typeof import("./getMulticastDomainActivationIamPolicy").getMulticastDomainActivationIamPolicy = null as any;
+export const getMulticastDomainActivationIamPolicyOutput: typeof import("./getMulticastDomainActivationIamPolicy").getMulticastDomainActivationIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMulticastDomainActivationIamPolicy","getMulticastDomainActivationIamPolicyOutput"], () => require("./getMulticastDomainActivationIamPolicy"));
+
+export { GetMulticastDomainIamPolicyArgs, GetMulticastDomainIamPolicyResult, GetMulticastDomainIamPolicyOutputArgs } from "./getMulticastDomainIamPolicy";
+export const getMulticastDomainIamPolicy: typeof import("./getMulticastDomainIamPolicy").getMulticastDomainIamPolicy = null as any;
+export const getMulticastDomainIamPolicyOutput: typeof import("./getMulticastDomainIamPolicy").getMulticastDomainIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMulticastDomainIamPolicy","getMulticastDomainIamPolicyOutput"], () => require("./getMulticastDomainIamPolicy"));
+
+export { GetMulticastGroupDefinitionIamPolicyArgs, GetMulticastGroupDefinitionIamPolicyResult, GetMulticastGroupDefinitionIamPolicyOutputArgs } from "./getMulticastGroupDefinitionIamPolicy";
+export const getMulticastGroupDefinitionIamPolicy: typeof import("./getMulticastGroupDefinitionIamPolicy").getMulticastGroupDefinitionIamPolicy = null as any;
+export const getMulticastGroupDefinitionIamPolicyOutput: typeof import("./getMulticastGroupDefinitionIamPolicy").getMulticastGroupDefinitionIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMulticastGroupDefinitionIamPolicy","getMulticastGroupDefinitionIamPolicyOutput"], () => require("./getMulticastGroupDefinitionIamPolicy"));
+
+export { GetMulticastGroupIamPolicyArgs, GetMulticastGroupIamPolicyResult, GetMulticastGroupIamPolicyOutputArgs } from "./getMulticastGroupIamPolicy";
+export const getMulticastGroupIamPolicy: typeof import("./getMulticastGroupIamPolicy").getMulticastGroupIamPolicy = null as any;
+export const getMulticastGroupIamPolicyOutput: typeof import("./getMulticastGroupIamPolicy").getMulticastGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getMulticastGroupIamPolicy","getMulticastGroupIamPolicyOutput"], () => require("./getMulticastGroupIamPolicy"));
+
 export { GetServiceBindingArgs, GetServiceBindingResult, GetServiceBindingOutputArgs } from "./getServiceBinding";
 export const getServiceBinding: typeof import("./getServiceBinding").getServiceBinding = null as any;
 export const getServiceBindingOutput: typeof import("./getServiceBinding").getServiceBindingOutput = null as any;
@@ -194,6 +219,81 @@ export { MeshIamPolicyArgs } from "./meshIamPolicy";
 export type MeshIamPolicy = import("./meshIamPolicy").MeshIamPolicy;
 export const MeshIamPolicy: typeof import("./meshIamPolicy").MeshIamPolicy = null as any;
 utilities.lazyLoad(exports, ["MeshIamPolicy"], () => require("./meshIamPolicy"));
+
+export { MulticastConsumerAssociationIamBindingArgs } from "./multicastConsumerAssociationIamBinding";
+export type MulticastConsumerAssociationIamBinding = import("./multicastConsumerAssociationIamBinding").MulticastConsumerAssociationIamBinding;
+export const MulticastConsumerAssociationIamBinding: typeof import("./multicastConsumerAssociationIamBinding").MulticastConsumerAssociationIamBinding = null as any;
+utilities.lazyLoad(exports, ["MulticastConsumerAssociationIamBinding"], () => require("./multicastConsumerAssociationIamBinding"));
+
+export { MulticastConsumerAssociationIamMemberArgs } from "./multicastConsumerAssociationIamMember";
+export type MulticastConsumerAssociationIamMember = import("./multicastConsumerAssociationIamMember").MulticastConsumerAssociationIamMember;
+export const MulticastConsumerAssociationIamMember: typeof import("./multicastConsumerAssociationIamMember").MulticastConsumerAssociationIamMember = null as any;
+utilities.lazyLoad(exports, ["MulticastConsumerAssociationIamMember"], () => require("./multicastConsumerAssociationIamMember"));
+
+export { MulticastConsumerAssociationIamPolicyArgs } from "./multicastConsumerAssociationIamPolicy";
+export type MulticastConsumerAssociationIamPolicy = import("./multicastConsumerAssociationIamPolicy").MulticastConsumerAssociationIamPolicy;
+export const MulticastConsumerAssociationIamPolicy: typeof import("./multicastConsumerAssociationIamPolicy").MulticastConsumerAssociationIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MulticastConsumerAssociationIamPolicy"], () => require("./multicastConsumerAssociationIamPolicy"));
+
+export { MulticastDomainActivationIamBindingArgs } from "./multicastDomainActivationIamBinding";
+export type MulticastDomainActivationIamBinding = import("./multicastDomainActivationIamBinding").MulticastDomainActivationIamBinding;
+export const MulticastDomainActivationIamBinding: typeof import("./multicastDomainActivationIamBinding").MulticastDomainActivationIamBinding = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainActivationIamBinding"], () => require("./multicastDomainActivationIamBinding"));
+
+export { MulticastDomainActivationIamMemberArgs } from "./multicastDomainActivationIamMember";
+export type MulticastDomainActivationIamMember = import("./multicastDomainActivationIamMember").MulticastDomainActivationIamMember;
+export const MulticastDomainActivationIamMember: typeof import("./multicastDomainActivationIamMember").MulticastDomainActivationIamMember = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainActivationIamMember"], () => require("./multicastDomainActivationIamMember"));
+
+export { MulticastDomainActivationIamPolicyArgs } from "./multicastDomainActivationIamPolicy";
+export type MulticastDomainActivationIamPolicy = import("./multicastDomainActivationIamPolicy").MulticastDomainActivationIamPolicy;
+export const MulticastDomainActivationIamPolicy: typeof import("./multicastDomainActivationIamPolicy").MulticastDomainActivationIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainActivationIamPolicy"], () => require("./multicastDomainActivationIamPolicy"));
+
+export { MulticastDomainIamBindingArgs } from "./multicastDomainIamBinding";
+export type MulticastDomainIamBinding = import("./multicastDomainIamBinding").MulticastDomainIamBinding;
+export const MulticastDomainIamBinding: typeof import("./multicastDomainIamBinding").MulticastDomainIamBinding = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainIamBinding"], () => require("./multicastDomainIamBinding"));
+
+export { MulticastDomainIamMemberArgs } from "./multicastDomainIamMember";
+export type MulticastDomainIamMember = import("./multicastDomainIamMember").MulticastDomainIamMember;
+export const MulticastDomainIamMember: typeof import("./multicastDomainIamMember").MulticastDomainIamMember = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainIamMember"], () => require("./multicastDomainIamMember"));
+
+export { MulticastDomainIamPolicyArgs } from "./multicastDomainIamPolicy";
+export type MulticastDomainIamPolicy = import("./multicastDomainIamPolicy").MulticastDomainIamPolicy;
+export const MulticastDomainIamPolicy: typeof import("./multicastDomainIamPolicy").MulticastDomainIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MulticastDomainIamPolicy"], () => require("./multicastDomainIamPolicy"));
+
+export { MulticastGroupDefinitionIamBindingArgs } from "./multicastGroupDefinitionIamBinding";
+export type MulticastGroupDefinitionIamBinding = import("./multicastGroupDefinitionIamBinding").MulticastGroupDefinitionIamBinding;
+export const MulticastGroupDefinitionIamBinding: typeof import("./multicastGroupDefinitionIamBinding").MulticastGroupDefinitionIamBinding = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupDefinitionIamBinding"], () => require("./multicastGroupDefinitionIamBinding"));
+
+export { MulticastGroupDefinitionIamMemberArgs } from "./multicastGroupDefinitionIamMember";
+export type MulticastGroupDefinitionIamMember = import("./multicastGroupDefinitionIamMember").MulticastGroupDefinitionIamMember;
+export const MulticastGroupDefinitionIamMember: typeof import("./multicastGroupDefinitionIamMember").MulticastGroupDefinitionIamMember = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupDefinitionIamMember"], () => require("./multicastGroupDefinitionIamMember"));
+
+export { MulticastGroupDefinitionIamPolicyArgs } from "./multicastGroupDefinitionIamPolicy";
+export type MulticastGroupDefinitionIamPolicy = import("./multicastGroupDefinitionIamPolicy").MulticastGroupDefinitionIamPolicy;
+export const MulticastGroupDefinitionIamPolicy: typeof import("./multicastGroupDefinitionIamPolicy").MulticastGroupDefinitionIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupDefinitionIamPolicy"], () => require("./multicastGroupDefinitionIamPolicy"));
+
+export { MulticastGroupIamBindingArgs } from "./multicastGroupIamBinding";
+export type MulticastGroupIamBinding = import("./multicastGroupIamBinding").MulticastGroupIamBinding;
+export const MulticastGroupIamBinding: typeof import("./multicastGroupIamBinding").MulticastGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupIamBinding"], () => require("./multicastGroupIamBinding"));
+
+export { MulticastGroupIamMemberArgs } from "./multicastGroupIamMember";
+export type MulticastGroupIamMember = import("./multicastGroupIamMember").MulticastGroupIamMember;
+export const MulticastGroupIamMember: typeof import("./multicastGroupIamMember").MulticastGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupIamMember"], () => require("./multicastGroupIamMember"));
+
+export { MulticastGroupIamPolicyArgs } from "./multicastGroupIamPolicy";
+export type MulticastGroupIamPolicy = import("./multicastGroupIamPolicy").MulticastGroupIamPolicy;
+export const MulticastGroupIamPolicy: typeof import("./multicastGroupIamPolicy").MulticastGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["MulticastGroupIamPolicy"], () => require("./multicastGroupIamPolicy"));
 
 export { ServiceBindingArgs } from "./serviceBinding";
 export type ServiceBinding = import("./serviceBinding").ServiceBinding;
@@ -279,6 +379,36 @@ const _module = {
                 return new MeshIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:MeshIamPolicy":
                 return new MeshIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastConsumerAssociationIamBinding":
+                return new MulticastConsumerAssociationIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastConsumerAssociationIamMember":
+                return new MulticastConsumerAssociationIamMember(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastConsumerAssociationIamPolicy":
+                return new MulticastConsumerAssociationIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastDomainActivationIamBinding":
+                return new MulticastDomainActivationIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastDomainActivationIamMember":
+                return new MulticastDomainActivationIamMember(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastDomainActivationIamPolicy":
+                return new MulticastDomainActivationIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastDomainIamBinding":
+                return new MulticastDomainIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastDomainIamMember":
+                return new MulticastDomainIamMember(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastDomainIamPolicy":
+                return new MulticastDomainIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastGroupDefinitionIamBinding":
+                return new MulticastGroupDefinitionIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastGroupDefinitionIamMember":
+                return new MulticastGroupDefinitionIamMember(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastGroupDefinitionIamPolicy":
+                return new MulticastGroupDefinitionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastGroupIamBinding":
+                return new MulticastGroupIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastGroupIamMember":
+                return new MulticastGroupIamMember(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MulticastGroupIamPolicy":
+                return new MulticastGroupIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:ServiceBinding":
                 return new ServiceBinding(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:ServiceBindingIamBinding":

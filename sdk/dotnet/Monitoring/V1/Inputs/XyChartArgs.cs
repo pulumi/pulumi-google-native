@@ -52,19 +52,19 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<string>? TimeshiftDuration { get; set; }
 
         /// <summary>
-        /// The properties applied to the X axis.
+        /// The properties applied to the x-axis.
         /// </summary>
         [Input("xAxis")]
         public Input<Inputs.AxisArgs>? XAxis { get; set; }
 
         /// <summary>
-        /// The properties applied to the Y2 axis.
+        /// The properties applied to the y2-axis.
         /// </summary>
         [Input("y2Axis")]
         public Input<Inputs.AxisArgs>? Y2Axis { get; set; }
 
         /// <summary>
-        /// The properties applied to the Y axis.
+        /// The properties applied to the y-axis.
         /// </summary>
         [Input("yAxis")]
         public Input<Inputs.AxisArgs>? YAxis { get; set; }

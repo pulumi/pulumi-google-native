@@ -14,6 +14,7 @@ __all__ = [
     'AliasContextArgs',
     'AnalysisCompletedArgs',
     'ArtifactArgs',
+    'AssessmentArgs',
     'AttestationNoteArgs',
     'AttestationOccurrenceArgs',
     'BindingArgs',
@@ -60,6 +61,7 @@ __all__ = [
     'ImageOccurrenceArgs',
     'InTotoProvenanceArgs',
     'InTotoStatementArgs',
+    'JustificationArgs',
     'JwtArgs',
     'KnowledgeBaseArgs',
     'LayerArgs',
@@ -71,9 +73,12 @@ __all__ = [
     'PackageIssueArgs',
     'PackageNoteArgs',
     'PackageOccurrenceArgs',
+    'ProductArgs',
     'ProjectRepoIdArgs',
+    'PublisherArgs',
     'RecipeArgs',
     'RelatedUrlArgs',
+    'RemediationArgs',
     'RepoIdArgs',
     'SignatureArgs',
     'SlsaBuilderArgs',
@@ -90,6 +95,8 @@ __all__ = [
     'UpgradeNoteArgs',
     'UpgradeOccurrenceArgs',
     'VersionArgs',
+    'VexAssessmentArgs',
+    'VulnerabilityAssessmentNoteArgs',
     'VulnerabilityNoteArgs',
     'VulnerabilityOccurrenceArgs',
     'WindowsDetailArgs',
@@ -210,6 +217,142 @@ class ArtifactArgs:
     @names.setter
     def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "names", value)
+
+
+@pulumi.input_type
+class AssessmentArgs:
+    def __init__(__self__, *,
+                 cve: Optional[pulumi.Input[str]] = None,
+                 impacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 justification: Optional[pulumi.Input['JustificationArgs']] = None,
+                 long_description: Optional[pulumi.Input[str]] = None,
+                 related_uris: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
+                 remediations: Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]] = None,
+                 short_description: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['AssessmentState']] = None):
+        """
+        Assessment provides all information that is related to a single vulnerability for this product.
+        :param pulumi.Input[str] cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] impacts: Contains information about the impact of this vulnerability, this will change with time.
+        :param pulumi.Input['JustificationArgs'] justification: Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        :param pulumi.Input[str] long_description: A detailed description of this Vex.
+        :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_uris: Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+        :param pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
+        :param pulumi.Input[str] short_description: A one sentence description of this Vex.
+        :param pulumi.Input['AssessmentState'] state: Provides the state of this Vulnerability assessment.
+        """
+        if cve is not None:
+            pulumi.set(__self__, "cve", cve)
+        if impacts is not None:
+            pulumi.set(__self__, "impacts", impacts)
+        if justification is not None:
+            pulumi.set(__self__, "justification", justification)
+        if long_description is not None:
+            pulumi.set(__self__, "long_description", long_description)
+        if related_uris is not None:
+            pulumi.set(__self__, "related_uris", related_uris)
+        if remediations is not None:
+            pulumi.set(__self__, "remediations", remediations)
+        if short_description is not None:
+            pulumi.set(__self__, "short_description", short_description)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def cve(self) -> Optional[pulumi.Input[str]]:
+        """
+        Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        """
+        return pulumi.get(self, "cve")
+
+    @cve.setter
+    def cve(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cve", value)
+
+    @property
+    @pulumi.getter
+    def impacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains information about the impact of this vulnerability, this will change with time.
+        """
+        return pulumi.get(self, "impacts")
+
+    @impacts.setter
+    def impacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "impacts", value)
+
+    @property
+    @pulumi.getter
+    def justification(self) -> Optional[pulumi.Input['JustificationArgs']]:
+        """
+        Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        """
+        return pulumi.get(self, "justification")
+
+    @justification.setter
+    def justification(self, value: Optional[pulumi.Input['JustificationArgs']]):
+        pulumi.set(self, "justification", value)
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A detailed description of this Vex.
+        """
+        return pulumi.get(self, "long_description")
+
+    @long_description.setter
+    def long_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_description", value)
+
+    @property
+    @pulumi.getter(name="relatedUris")
+    def related_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]]:
+        """
+        Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+        """
+        return pulumi.get(self, "related_uris")
+
+    @related_uris.setter
+    def related_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]]):
+        pulumi.set(self, "related_uris", value)
+
+    @property
+    @pulumi.getter
+    def remediations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]]:
+        """
+        Specifies details on how to handle (and presumably, fix) a vulnerability.
+        """
+        return pulumi.get(self, "remediations")
+
+    @remediations.setter
+    def remediations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]]):
+        pulumi.set(self, "remediations", value)
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A one sentence description of this Vex.
+        """
+        return pulumi.get(self, "short_description")
+
+    @short_description.setter
+    def short_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_description", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['AssessmentState']]:
+        """
+        Provides the state of this Vulnerability assessment.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['AssessmentState']]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type
@@ -3062,6 +3205,46 @@ class InTotoStatementArgs:
 
 
 @pulumi.input_type
+class JustificationArgs:
+    def __init__(__self__, *,
+                 details: Optional[pulumi.Input[str]] = None,
+                 justification_type: Optional[pulumi.Input['JustificationJustificationType']] = None):
+        """
+        Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        :param pulumi.Input[str] details: Additional details on why this justification was chosen.
+        :param pulumi.Input['JustificationJustificationType'] justification_type: The justification type for this vulnerability.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if justification_type is not None:
+            pulumi.set(__self__, "justification_type", justification_type)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional details on why this justification was chosen.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter(name="justificationType")
+    def justification_type(self) -> Optional[pulumi.Input['JustificationJustificationType']]:
+        """
+        The justification type for this vulnerability.
+        """
+        return pulumi.get(self, "justification_type")
+
+    @justification_type.setter
+    def justification_type(self, value: Optional[pulumi.Input['JustificationJustificationType']]):
+        pulumi.set(self, "justification_type", value)
+
+
+@pulumi.input_type
 class JwtArgs:
     def __init__(__self__, *,
                  compact_jwt: Optional[pulumi.Input[str]] = None):
@@ -3796,6 +3979,62 @@ class PackageOccurrenceArgs:
 
 
 @pulumi.input_type
+class ProductArgs:
+    def __init__(__self__, *,
+                 generic_uri: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Product contains information about a product and how to uniquely identify it.
+        :param pulumi.Input[str] generic_uri: Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+        :param pulumi.Input[str] id: Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
+        :param pulumi.Input[str] name: Name of the product.
+        """
+        if generic_uri is not None:
+            pulumi.set(__self__, "generic_uri", generic_uri)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="genericUri")
+    def generic_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+        """
+        return pulumi.get(self, "generic_uri")
+
+    @generic_uri.setter
+    def generic_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generic_uri", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Token that identifies a product so that it can be referred to from other parts in the document. There is no predefined format as long as it uniquely identifies a group in the context of the current document.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the product.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
 class ProjectRepoIdArgs:
     def __init__(__self__, *,
                  project: Optional[pulumi.Input[str]] = None,
@@ -3833,6 +4072,62 @@ class ProjectRepoIdArgs:
     @repo_name.setter
     def repo_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repo_name", value)
+
+
+@pulumi.input_type
+class PublisherArgs:
+    def __init__(__self__, *,
+                 issuing_authority: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 publisher_namespace: Optional[pulumi.Input[str]] = None):
+        """
+        Publisher contains information about the publisher of this Note.
+        :param pulumi.Input[str] issuing_authority: Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+        :param pulumi.Input[str] name: Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+        :param pulumi.Input[str] publisher_namespace: The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+        """
+        if issuing_authority is not None:
+            pulumi.set(__self__, "issuing_authority", issuing_authority)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if publisher_namespace is not None:
+            pulumi.set(__self__, "publisher_namespace", publisher_namespace)
+
+    @property
+    @pulumi.getter(name="issuingAuthority")
+    def issuing_authority(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+        """
+        return pulumi.get(self, "issuing_authority")
+
+    @issuing_authority.setter
+    def issuing_authority(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "issuing_authority", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="publisherNamespace")
+    def publisher_namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+        """
+        return pulumi.get(self, "publisher_namespace")
+
+    @publisher_namespace.setter
+    def publisher_namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "publisher_namespace", value)
 
 
 @pulumi.input_type
@@ -3961,6 +4256,62 @@ class RelatedUrlArgs:
     @url.setter
     def url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url", value)
+
+
+@pulumi.input_type
+class RemediationArgs:
+    def __init__(__self__, *,
+                 details: Optional[pulumi.Input[str]] = None,
+                 remediation_type: Optional[pulumi.Input['RemediationRemediationType']] = None,
+                 remediation_uri: Optional[pulumi.Input['RelatedUrlArgs']] = None):
+        """
+        Specifies details on how to handle (and presumably, fix) a vulnerability.
+        :param pulumi.Input[str] details: Contains a comprehensive human-readable discussion of the remediation.
+        :param pulumi.Input['RemediationRemediationType'] remediation_type: The type of remediation that can be applied.
+        :param pulumi.Input['RelatedUrlArgs'] remediation_uri: Contains the URL where to obtain the remediation.
+        """
+        if details is not None:
+            pulumi.set(__self__, "details", details)
+        if remediation_type is not None:
+            pulumi.set(__self__, "remediation_type", remediation_type)
+        if remediation_uri is not None:
+            pulumi.set(__self__, "remediation_uri", remediation_uri)
+
+    @property
+    @pulumi.getter
+    def details(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains a comprehensive human-readable discussion of the remediation.
+        """
+        return pulumi.get(self, "details")
+
+    @details.setter
+    def details(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "details", value)
+
+    @property
+    @pulumi.getter(name="remediationType")
+    def remediation_type(self) -> Optional[pulumi.Input['RemediationRemediationType']]:
+        """
+        The type of remediation that can be applied.
+        """
+        return pulumi.get(self, "remediation_type")
+
+    @remediation_type.setter
+    def remediation_type(self, value: Optional[pulumi.Input['RemediationRemediationType']]):
+        pulumi.set(self, "remediation_type", value)
+
+    @property
+    @pulumi.getter(name="remediationUri")
+    def remediation_uri(self) -> Optional[pulumi.Input['RelatedUrlArgs']]:
+        """
+        Contains the URL where to obtain the remediation.
+        """
+        return pulumi.get(self, "remediation_uri")
+
+    @remediation_uri.setter
+    def remediation_uri(self, value: Optional[pulumi.Input['RelatedUrlArgs']]):
+        pulumi.set(self, "remediation_uri", value)
 
 
 @pulumi.input_type
@@ -4994,9 +5345,250 @@ class VersionArgs:
 
 
 @pulumi.input_type
+class VexAssessmentArgs:
+    def __init__(__self__, *,
+                 cve: Optional[pulumi.Input[str]] = None,
+                 impacts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 justification: Optional[pulumi.Input['JustificationArgs']] = None,
+                 note_name: Optional[pulumi.Input[str]] = None,
+                 related_uris: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
+                 remediations: Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]] = None,
+                 state: Optional[pulumi.Input['VexAssessmentState']] = None):
+        """
+        VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+        :param pulumi.Input[str] cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] impacts: Contains information about the impact of this vulnerability, this will change with time.
+        :param pulumi.Input['JustificationArgs'] justification: Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        :param pulumi.Input[str] note_name: The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_uris: Holds a list of references associated with this vulnerability item and assessment.
+        :param pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
+        :param pulumi.Input['VexAssessmentState'] state: Provides the state of this Vulnerability assessment.
+        """
+        if cve is not None:
+            pulumi.set(__self__, "cve", cve)
+        if impacts is not None:
+            pulumi.set(__self__, "impacts", impacts)
+        if justification is not None:
+            pulumi.set(__self__, "justification", justification)
+        if note_name is not None:
+            pulumi.set(__self__, "note_name", note_name)
+        if related_uris is not None:
+            pulumi.set(__self__, "related_uris", related_uris)
+        if remediations is not None:
+            pulumi.set(__self__, "remediations", remediations)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def cve(self) -> Optional[pulumi.Input[str]]:
+        """
+        Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        """
+        return pulumi.get(self, "cve")
+
+    @cve.setter
+    def cve(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cve", value)
+
+    @property
+    @pulumi.getter
+    def impacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains information about the impact of this vulnerability, this will change with time.
+        """
+        return pulumi.get(self, "impacts")
+
+    @impacts.setter
+    def impacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "impacts", value)
+
+    @property
+    @pulumi.getter
+    def justification(self) -> Optional[pulumi.Input['JustificationArgs']]:
+        """
+        Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        """
+        return pulumi.get(self, "justification")
+
+    @justification.setter
+    def justification(self, value: Optional[pulumi.Input['JustificationArgs']]):
+        pulumi.set(self, "justification", value)
+
+    @property
+    @pulumi.getter(name="noteName")
+    def note_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        """
+        return pulumi.get(self, "note_name")
+
+    @note_name.setter
+    def note_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "note_name", value)
+
+    @property
+    @pulumi.getter(name="relatedUris")
+    def related_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]]:
+        """
+        Holds a list of references associated with this vulnerability item and assessment.
+        """
+        return pulumi.get(self, "related_uris")
+
+    @related_uris.setter
+    def related_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]]):
+        pulumi.set(self, "related_uris", value)
+
+    @property
+    @pulumi.getter
+    def remediations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]]:
+        """
+        Specifies details on how to handle (and presumably, fix) a vulnerability.
+        """
+        return pulumi.get(self, "remediations")
+
+    @remediations.setter
+    def remediations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RemediationArgs']]]]):
+        pulumi.set(self, "remediations", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['VexAssessmentState']]:
+        """
+        Provides the state of this Vulnerability assessment.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['VexAssessmentState']]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class VulnerabilityAssessmentNoteArgs:
+    def __init__(__self__, *,
+                 assessment: Optional[pulumi.Input['AssessmentArgs']] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
+                 long_description: Optional[pulumi.Input[str]] = None,
+                 product: Optional[pulumi.Input['ProductArgs']] = None,
+                 publisher: Optional[pulumi.Input['PublisherArgs']] = None,
+                 short_description: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+        :param pulumi.Input['AssessmentArgs'] assessment: Represents a vulnerability assessment for the product.
+        :param pulumi.Input[str] language_code: Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+        :param pulumi.Input[str] long_description: A detailed description of this Vex.
+        :param pulumi.Input['ProductArgs'] product: The product affected by this vex.
+        :param pulumi.Input['PublisherArgs'] publisher: Publisher details of this Note.
+        :param pulumi.Input[str] short_description: A one sentence description of this Vex.
+        :param pulumi.Input[str] title: The title of the note. E.g. `Vex-Debian-11.4`
+        """
+        if assessment is not None:
+            pulumi.set(__self__, "assessment", assessment)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if long_description is not None:
+            pulumi.set(__self__, "long_description", long_description)
+        if product is not None:
+            pulumi.set(__self__, "product", product)
+        if publisher is not None:
+            pulumi.set(__self__, "publisher", publisher)
+        if short_description is not None:
+            pulumi.set(__self__, "short_description", short_description)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def assessment(self) -> Optional[pulumi.Input['AssessmentArgs']]:
+        """
+        Represents a vulnerability assessment for the product.
+        """
+        return pulumi.get(self, "assessment")
+
+    @assessment.setter
+    def assessment(self, value: Optional[pulumi.Input['AssessmentArgs']]):
+        pulumi.set(self, "assessment", value)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A detailed description of this Vex.
+        """
+        return pulumi.get(self, "long_description")
+
+    @long_description.setter
+    def long_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "long_description", value)
+
+    @property
+    @pulumi.getter
+    def product(self) -> Optional[pulumi.Input['ProductArgs']]:
+        """
+        The product affected by this vex.
+        """
+        return pulumi.get(self, "product")
+
+    @product.setter
+    def product(self, value: Optional[pulumi.Input['ProductArgs']]):
+        pulumi.set(self, "product", value)
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> Optional[pulumi.Input['PublisherArgs']]:
+        """
+        Publisher details of this Note.
+        """
+        return pulumi.get(self, "publisher")
+
+    @publisher.setter
+    def publisher(self, value: Optional[pulumi.Input['PublisherArgs']]):
+        pulumi.set(self, "publisher", value)
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A one sentence description of this Vex.
+        """
+        return pulumi.get(self, "short_description")
+
+    @short_description.setter
+    def short_description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "short_description", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The title of the note. E.g. `Vex-Debian-11.4`
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
 class VulnerabilityNoteArgs:
     def __init__(__self__, *,
                  cvss_score: Optional[pulumi.Input[float]] = None,
+                 cvss_v2: Optional[pulumi.Input['CVSSArgs']] = None,
                  cvss_v3: Optional[pulumi.Input['CVSSv3Args']] = None,
                  cvss_version: Optional[pulumi.Input['VulnerabilityNoteCvssVersion']] = None,
                  details: Optional[pulumi.Input[Sequence[pulumi.Input['DetailArgs']]]] = None,
@@ -5006,6 +5598,7 @@ class VulnerabilityNoteArgs:
         """
         A security vulnerability that can be found in resources.
         :param pulumi.Input[float] cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0 - 10 where 0 indicates low severity and 10 indicates high severity.
+        :param pulumi.Input['CVSSArgs'] cvss_v2: The full description of the v2 CVSS for this vulnerability.
         :param pulumi.Input['CVSSv3Args'] cvss_v3: The full description of the CVSSv3 for this vulnerability.
         :param pulumi.Input['VulnerabilityNoteCvssVersion'] cvss_version: CVSS version used to populate cvss_score and severity.
         :param pulumi.Input[Sequence[pulumi.Input['DetailArgs']]] details: Details of all known distros and packages affected by this vulnerability.
@@ -5015,6 +5608,8 @@ class VulnerabilityNoteArgs:
         """
         if cvss_score is not None:
             pulumi.set(__self__, "cvss_score", cvss_score)
+        if cvss_v2 is not None:
+            pulumi.set(__self__, "cvss_v2", cvss_v2)
         if cvss_v3 is not None:
             pulumi.set(__self__, "cvss_v3", cvss_v3)
         if cvss_version is not None:
@@ -5039,6 +5634,18 @@ class VulnerabilityNoteArgs:
     @cvss_score.setter
     def cvss_score(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "cvss_score", value)
+
+    @property
+    @pulumi.getter(name="cvssV2")
+    def cvss_v2(self) -> Optional[pulumi.Input['CVSSArgs']]:
+        """
+        The full description of the v2 CVSS for this vulnerability.
+        """
+        return pulumi.get(self, "cvss_v2")
+
+    @cvss_v2.setter
+    def cvss_v2(self, value: Optional[pulumi.Input['CVSSArgs']]):
+        pulumi.set(self, "cvss_v2", value)
 
     @property
     @pulumi.getter(name="cvssV3")
@@ -5117,23 +5724,30 @@ class VulnerabilityNoteArgs:
 class VulnerabilityOccurrenceArgs:
     def __init__(__self__, *,
                  package_issue: pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]],
+                 cvss_v2: Optional[pulumi.Input['CVSSArgs']] = None,
                  cvssv3: Optional[pulumi.Input['CVSSArgs']] = None,
                  effective_severity: Optional[pulumi.Input['VulnerabilityOccurrenceEffectiveSeverity']] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 vex_assessment: Optional[pulumi.Input['VexAssessmentArgs']] = None):
         """
         An occurrence of a severity vulnerability on a resource.
         :param pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
+        :param pulumi.Input['CVSSArgs'] cvss_v2: The cvss v2 score for the vulnerability.
         :param pulumi.Input['CVSSArgs'] cvssv3: The cvss v3 score for the vulnerability.
         :param pulumi.Input['VulnerabilityOccurrenceEffectiveSeverity'] effective_severity: The distro assigned severity for this vulnerability when it is available, otherwise this is the note provider assigned severity. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         :param pulumi.Input[str] type: The type of package; whether native or non native (e.g., ruby gems, node.js packages, etc.).
         """
         pulumi.set(__self__, "package_issue", package_issue)
+        if cvss_v2 is not None:
+            pulumi.set(__self__, "cvss_v2", cvss_v2)
         if cvssv3 is not None:
             pulumi.set(__self__, "cvssv3", cvssv3)
         if effective_severity is not None:
             pulumi.set(__self__, "effective_severity", effective_severity)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if vex_assessment is not None:
+            pulumi.set(__self__, "vex_assessment", vex_assessment)
 
     @property
     @pulumi.getter(name="packageIssue")
@@ -5146,6 +5760,18 @@ class VulnerabilityOccurrenceArgs:
     @package_issue.setter
     def package_issue(self, value: pulumi.Input[Sequence[pulumi.Input['PackageIssueArgs']]]):
         pulumi.set(self, "package_issue", value)
+
+    @property
+    @pulumi.getter(name="cvssV2")
+    def cvss_v2(self) -> Optional[pulumi.Input['CVSSArgs']]:
+        """
+        The cvss v2 score for the vulnerability.
+        """
+        return pulumi.get(self, "cvss_v2")
+
+    @cvss_v2.setter
+    def cvss_v2(self, value: Optional[pulumi.Input['CVSSArgs']]):
+        pulumi.set(self, "cvss_v2", value)
 
     @property
     @pulumi.getter
@@ -5182,6 +5808,15 @@ class VulnerabilityOccurrenceArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="vexAssessment")
+    def vex_assessment(self) -> Optional[pulumi.Input['VexAssessmentArgs']]:
+        return pulumi.get(self, "vex_assessment")
+
+    @vex_assessment.setter
+    def vex_assessment(self, value: Optional[pulumi.Input['VexAssessmentArgs']]):
+        pulumi.set(self, "vex_assessment", value)
 
 
 @pulumi.input_type

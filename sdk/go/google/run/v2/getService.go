@@ -61,7 +61,7 @@ type LookupServiceResult struct {
 	LatestCreatedRevision string `pulumi:"latestCreatedRevision"`
 	// Name of the latest revision that is serving traffic. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
 	LatestReadyRevision string `pulumi:"latestReadyRevision"`
-	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	LaunchStage string `pulumi:"launchStage"`
 	// The fully qualified name of this Service. In CreateServiceRequest, this field is ignored, and instead composed from CreateServiceRequest.parent and CreateServiceRequest.service_id. Format: projects/{project}/locations/{location}/services/{service_id}
 	Name string `pulumi:"name"`
@@ -69,6 +69,8 @@ type LookupServiceResult struct {
 	ObservedGeneration string `pulumi:"observedGeneration"`
 	// Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling bool `pulumi:"reconciling"`
+	// Reserved for future use.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// The template used to create revisions for this Service.
 	Template GoogleCloudRunV2RevisionTemplateResponse `pulumi:"template"`
 	// The Condition of this Service, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.
@@ -207,7 +209,7 @@ func (o LookupServiceResultOutput) LatestReadyRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.LatestReadyRevision }).(pulumi.StringOutput)
 }
 
-// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 func (o LookupServiceResultOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.LaunchStage }).(pulumi.StringOutput)
 }
@@ -225,6 +227,11 @@ func (o LookupServiceResultOutput) ObservedGeneration() pulumi.StringOutput {
 // Returns true if the Service is currently being acted upon by the system to bring it into the desired state. When a new Service is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Service to the desired serving state. This process is called reconciliation. While reconciliation is in process, `observed_generation`, `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the serving state matches the Service, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `traffic` and `traffic_statuses`, `observed_generation` and `generation`, `latest_ready_revision` and `latest_created_revision`. If reconciliation failed, `traffic_statuses`, `observed_generation`, and `latest_ready_revision` will have the state of the last serving revision, or empty for newly created Services. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 func (o LookupServiceResultOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServiceResult) bool { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o LookupServiceResultOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServiceResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The template used to create revisions for this Service.

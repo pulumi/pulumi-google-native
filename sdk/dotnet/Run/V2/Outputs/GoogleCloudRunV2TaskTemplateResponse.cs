@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string ExecutionEnvironment;
         /// <summary>
-        /// Number of retries allowed per Task, before marking this Task failed.
+        /// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
         /// </summary>
         public readonly int MaxRetries;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly string ServiceAccount;
         /// <summary>
-        /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        /// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
         /// </summary>
         public readonly string Timeout;
         /// <summary>

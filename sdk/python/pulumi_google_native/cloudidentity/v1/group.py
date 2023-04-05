@@ -212,6 +212,7 @@ class Group(pulumi.CustomResource):
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["additional_group_keys"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["update_time"] = None
@@ -237,6 +238,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = GroupArgs.__new__(GroupArgs)
 
+        __props__.__dict__["additional_group_keys"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
@@ -248,6 +250,14 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["parent"] = None
         __props__.__dict__["update_time"] = None
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="additionalGroupKeys")
+    def additional_group_keys(self) -> pulumi.Output[Sequence['outputs.EntityKeyResponse']]:
+        """
+        Additional group keys associated with the Group.
+        """
+        return pulumi.get(self, "additional_group_keys")
 
     @property
     @pulumi.getter(name="createTime")

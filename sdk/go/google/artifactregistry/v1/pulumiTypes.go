@@ -328,6 +328,172 @@ func (o DockerRepositoryPtrOutput) PublicRepository() DockerRepositoryPublicRepo
 	}).(DockerRepositoryPublicRepositoryPtrOutput)
 }
 
+// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+type DockerRepositoryConfig struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+	ImmutableTags *bool `pulumi:"immutableTags"`
+}
+
+// DockerRepositoryConfigInput is an input type that accepts DockerRepositoryConfigArgs and DockerRepositoryConfigOutput values.
+// You can construct a concrete instance of `DockerRepositoryConfigInput` via:
+//
+//	DockerRepositoryConfigArgs{...}
+type DockerRepositoryConfigInput interface {
+	pulumi.Input
+
+	ToDockerRepositoryConfigOutput() DockerRepositoryConfigOutput
+	ToDockerRepositoryConfigOutputWithContext(context.Context) DockerRepositoryConfigOutput
+}
+
+// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+type DockerRepositoryConfigArgs struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+	ImmutableTags pulumi.BoolPtrInput `pulumi:"immutableTags"`
+}
+
+func (DockerRepositoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerRepositoryConfig)(nil)).Elem()
+}
+
+func (i DockerRepositoryConfigArgs) ToDockerRepositoryConfigOutput() DockerRepositoryConfigOutput {
+	return i.ToDockerRepositoryConfigOutputWithContext(context.Background())
+}
+
+func (i DockerRepositoryConfigArgs) ToDockerRepositoryConfigOutputWithContext(ctx context.Context) DockerRepositoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryConfigOutput)
+}
+
+func (i DockerRepositoryConfigArgs) ToDockerRepositoryConfigPtrOutput() DockerRepositoryConfigPtrOutput {
+	return i.ToDockerRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DockerRepositoryConfigArgs) ToDockerRepositoryConfigPtrOutputWithContext(ctx context.Context) DockerRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryConfigOutput).ToDockerRepositoryConfigPtrOutputWithContext(ctx)
+}
+
+// DockerRepositoryConfigPtrInput is an input type that accepts DockerRepositoryConfigArgs, DockerRepositoryConfigPtr and DockerRepositoryConfigPtrOutput values.
+// You can construct a concrete instance of `DockerRepositoryConfigPtrInput` via:
+//
+//	        DockerRepositoryConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DockerRepositoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToDockerRepositoryConfigPtrOutput() DockerRepositoryConfigPtrOutput
+	ToDockerRepositoryConfigPtrOutputWithContext(context.Context) DockerRepositoryConfigPtrOutput
+}
+
+type dockerRepositoryConfigPtrType DockerRepositoryConfigArgs
+
+func DockerRepositoryConfigPtr(v *DockerRepositoryConfigArgs) DockerRepositoryConfigPtrInput {
+	return (*dockerRepositoryConfigPtrType)(v)
+}
+
+func (*dockerRepositoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerRepositoryConfig)(nil)).Elem()
+}
+
+func (i *dockerRepositoryConfigPtrType) ToDockerRepositoryConfigPtrOutput() DockerRepositoryConfigPtrOutput {
+	return i.ToDockerRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dockerRepositoryConfigPtrType) ToDockerRepositoryConfigPtrOutputWithContext(ctx context.Context) DockerRepositoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DockerRepositoryConfigPtrOutput)
+}
+
+// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+type DockerRepositoryConfigOutput struct{ *pulumi.OutputState }
+
+func (DockerRepositoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerRepositoryConfig)(nil)).Elem()
+}
+
+func (o DockerRepositoryConfigOutput) ToDockerRepositoryConfigOutput() DockerRepositoryConfigOutput {
+	return o
+}
+
+func (o DockerRepositoryConfigOutput) ToDockerRepositoryConfigOutputWithContext(ctx context.Context) DockerRepositoryConfigOutput {
+	return o
+}
+
+func (o DockerRepositoryConfigOutput) ToDockerRepositoryConfigPtrOutput() DockerRepositoryConfigPtrOutput {
+	return o.ToDockerRepositoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DockerRepositoryConfigOutput) ToDockerRepositoryConfigPtrOutputWithContext(ctx context.Context) DockerRepositoryConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DockerRepositoryConfig) *DockerRepositoryConfig {
+		return &v
+	}).(DockerRepositoryConfigPtrOutput)
+}
+
+// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+func (o DockerRepositoryConfigOutput) ImmutableTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DockerRepositoryConfig) *bool { return v.ImmutableTags }).(pulumi.BoolPtrOutput)
+}
+
+type DockerRepositoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DockerRepositoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DockerRepositoryConfig)(nil)).Elem()
+}
+
+func (o DockerRepositoryConfigPtrOutput) ToDockerRepositoryConfigPtrOutput() DockerRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o DockerRepositoryConfigPtrOutput) ToDockerRepositoryConfigPtrOutputWithContext(ctx context.Context) DockerRepositoryConfigPtrOutput {
+	return o
+}
+
+func (o DockerRepositoryConfigPtrOutput) Elem() DockerRepositoryConfigOutput {
+	return o.ApplyT(func(v *DockerRepositoryConfig) DockerRepositoryConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DockerRepositoryConfig
+		return ret
+	}).(DockerRepositoryConfigOutput)
+}
+
+// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+func (o DockerRepositoryConfigPtrOutput) ImmutableTags() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DockerRepositoryConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ImmutableTags
+	}).(pulumi.BoolPtrOutput)
+}
+
+// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+type DockerRepositoryConfigResponse struct {
+	// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+	ImmutableTags bool `pulumi:"immutableTags"`
+}
+
+// DockerRepositoryConfig is docker related repository details. Provides additional configuration details for repositories of the docker format type.
+type DockerRepositoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DockerRepositoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DockerRepositoryConfigResponse)(nil)).Elem()
+}
+
+func (o DockerRepositoryConfigResponseOutput) ToDockerRepositoryConfigResponseOutput() DockerRepositoryConfigResponseOutput {
+	return o
+}
+
+func (o DockerRepositoryConfigResponseOutput) ToDockerRepositoryConfigResponseOutputWithContext(ctx context.Context) DockerRepositoryConfigResponseOutput {
+	return o
+}
+
+// The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created.
+func (o DockerRepositoryConfigResponseOutput) ImmutableTags() pulumi.BoolOutput {
+	return o.ApplyT(func(v DockerRepositoryConfigResponse) bool { return v.ImmutableTags }).(pulumi.BoolOutput)
+}
+
 // Configuration for a Docker remote repository.
 type DockerRepositoryResponse struct {
 	// One of the publicly available Docker repositories supported by Artifact Registry.
@@ -1564,7 +1730,7 @@ type UpstreamPolicy struct {
 	Id *string `pulumi:"id"`
 	// Entries with a greater priority value take precedence in the pull order.
 	Priority *int `pulumi:"priority"`
-	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Repository *string `pulumi:"repository"`
 }
 
@@ -1585,7 +1751,7 @@ type UpstreamPolicyArgs struct {
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Entries with a greater priority value take precedence in the pull order.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Repository pulumi.StringPtrInput `pulumi:"repository"`
 }
 
@@ -1651,7 +1817,7 @@ func (o UpstreamPolicyOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v UpstreamPolicy) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
 func (o UpstreamPolicyOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UpstreamPolicy) *string { return v.Repository }).(pulumi.StringPtrOutput)
 }
@@ -1680,7 +1846,7 @@ func (o UpstreamPolicyArrayOutput) Index(i pulumi.IntInput) UpstreamPolicyOutput
 type UpstreamPolicyResponse struct {
 	// Entries with a greater priority value take precedence in the pull order.
 	Priority int `pulumi:"priority"`
-	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+	// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
 	Repository string `pulumi:"repository"`
 }
 
@@ -1704,7 +1870,7 @@ func (o UpstreamPolicyResponseOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v UpstreamPolicyResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
-// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repository/repo1".
+// A reference to the repository resource, for example: "projects/p1/locations/us-central1/repositories/repo1".
 func (o UpstreamPolicyResponseOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v UpstreamPolicyResponse) string { return v.Repository }).(pulumi.StringOutput)
 }
@@ -1900,6 +2066,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryInput)(nil)).Elem(), DockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryPtrInput)(nil)).Elem(), DockerRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryConfigInput)(nil)).Elem(), DockerRepositoryConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DockerRepositoryConfigPtrInput)(nil)).Elem(), DockerRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MavenRepositoryInput)(nil)).Elem(), MavenRepositoryArgs{})
@@ -1922,6 +2090,9 @@ func init() {
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(DockerRepositoryConfigOutput{})
+	pulumi.RegisterOutputType(DockerRepositoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(DockerRepositoryConfigResponseOutput{})
 	pulumi.RegisterOutputType(DockerRepositoryResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})

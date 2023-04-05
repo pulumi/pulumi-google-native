@@ -23,12 +23,14 @@ class InstanceArgs:
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
                  customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['PersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -48,12 +50,14 @@ class InstanceArgs:
         :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: Optional. The available maintenance versions that an instance could update to.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that the customer provides when trying to create the instance.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        :param pulumi.Input[str] maintenance_version: Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input['PersistenceConfigArgs'] persistence_config: Optional. Persistence configuration parameters
         :param pulumi.Input['InstanceReadReplicasMode'] read_replicas_mode: Optional. Read replicas mode for the instance. Defaults to READ_REPLICAS_DISABLED.
@@ -74,6 +78,8 @@ class InstanceArgs:
             pulumi.set(__self__, "auth_enabled", auth_enabled)
         if authorized_network is not None:
             pulumi.set(__self__, "authorized_network", authorized_network)
+        if available_maintenance_versions is not None:
+            pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
         if connect_mode is not None:
             pulumi.set(__self__, "connect_mode", connect_mode)
         if customer_managed_key is not None:
@@ -86,6 +92,8 @@ class InstanceArgs:
             pulumi.set(__self__, "location", location)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_version is not None:
+            pulumi.set(__self__, "maintenance_version", maintenance_version)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if persistence_config is not None:
@@ -182,6 +190,18 @@ class InstanceArgs:
         pulumi.set(self, "authorized_network", value)
 
     @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The available maintenance versions that an instance could update to.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
+
+    @available_maintenance_versions.setter
+    def available_maintenance_versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "available_maintenance_versions", value)
+
+    @property
     @pulumi.getter(name="connectMode")
     def connect_mode(self) -> Optional[pulumi.Input['InstanceConnectMode']]:
         """
@@ -252,6 +272,18 @@ class InstanceArgs:
     @maintenance_policy.setter
     def maintenance_policy(self, value: Optional[pulumi.Input['MaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        """
+        return pulumi.get(self, "maintenance_version")
+
+    @maintenance_version.setter
+    def maintenance_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_version", value)
 
     @property
     @pulumi.getter
@@ -391,6 +423,7 @@ class Instance(pulumi.CustomResource):
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
                  customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -398,6 +431,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['PersistenceConfigArgs']]] = None,
@@ -420,6 +454,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] alternative_location_id: Optional. If specified, at least one node will be provisioned in this zone in addition to the zone specified in location_id. Only applicable to standard tier. If provided, it must be a different zone from the one provided in [location_id]. Additional nodes beyond the first 2 will be placed in zones selected by the service.
         :param pulumi.Input[bool] auth_enabled: Optional. Indicates whether OSS Redis AUTH is enabled for the instance. If set to "true" AUTH is enabled on the instance. Default value is "false" meaning AUTH is disabled.
         :param pulumi.Input[str] authorized_network: Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] available_maintenance_versions: Optional. The available maintenance versions that an instance could update to.
         :param pulumi.Input['InstanceConnectMode'] connect_mode: Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[str] customer_managed_key: Optional. The KMS key reference that the customer provides when trying to create the instance.
         :param pulumi.Input[str] display_name: An arbitrary and optional user-provided name for the instance.
@@ -427,6 +462,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata
         :param pulumi.Input[str] location: Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone from the specified region for the instance. For standard tier, additional nodes will be added across multiple zones for protection against zonal failures. If specified, at least one node will be provisioned in this zone.
         :param pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']] maintenance_policy: Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        :param pulumi.Input[str] maintenance_version: Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
         :param pulumi.Input[int] memory_size_gb: Redis memory size in GiB.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         :param pulumi.Input[pulumi.InputType['PersistenceConfigArgs']] persistence_config: Optional. Persistence configuration parameters
@@ -467,6 +503,7 @@ class Instance(pulumi.CustomResource):
                  alternative_location_id: Optional[pulumi.Input[str]] = None,
                  auth_enabled: Optional[pulumi.Input[bool]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
+                 available_maintenance_versions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  connect_mode: Optional[pulumi.Input['InstanceConnectMode']] = None,
                  customer_managed_key: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -474,6 +511,7 @@ class Instance(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
+                 maintenance_version: Optional[pulumi.Input[str]] = None,
                  memory_size_gb: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input[pulumi.InputType['PersistenceConfigArgs']]] = None,
@@ -499,6 +537,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["alternative_location_id"] = alternative_location_id
             __props__.__dict__["auth_enabled"] = auth_enabled
             __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["available_maintenance_versions"] = available_maintenance_versions
             __props__.__dict__["connect_mode"] = connect_mode
             __props__.__dict__["customer_managed_key"] = customer_managed_key
             __props__.__dict__["display_name"] = display_name
@@ -508,6 +547,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["maintenance_version"] = maintenance_version
             if memory_size_gb is None and not opts.urn:
                 raise TypeError("Missing required property 'memory_size_gb'")
             __props__.__dict__["memory_size_gb"] = memory_size_gb
@@ -564,6 +604,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["alternative_location_id"] = None
         __props__.__dict__["auth_enabled"] = None
         __props__.__dict__["authorized_network"] = None
+        __props__.__dict__["available_maintenance_versions"] = None
         __props__.__dict__["connect_mode"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_location_id"] = None
@@ -575,6 +616,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = None
         __props__.__dict__["maintenance_policy"] = None
         __props__.__dict__["maintenance_schedule"] = None
+        __props__.__dict__["maintenance_version"] = None
         __props__.__dict__["memory_size_gb"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["nodes"] = None
@@ -621,6 +663,14 @@ class Instance(pulumi.CustomResource):
         Optional. The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
         """
         return pulumi.get(self, "authorized_network")
+
+    @property
+    @pulumi.getter(name="availableMaintenanceVersions")
+    def available_maintenance_versions(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Optional. The available maintenance versions that an instance could update to.
+        """
+        return pulumi.get(self, "available_maintenance_versions")
 
     @property
     @pulumi.getter(name="connectMode")
@@ -706,6 +756,14 @@ class Instance(pulumi.CustomResource):
         Date and time of upcoming maintenance events which have been scheduled.
         """
         return pulumi.get(self, "maintenance_schedule")
+
+    @property
+    @pulumi.getter(name="maintenanceVersion")
+    def maintenance_version(self) -> pulumi.Output[str]:
+        """
+        Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        """
+        return pulumi.get(self, "maintenance_version")
 
     @property
     @pulumi.getter(name="memorySizeGb")

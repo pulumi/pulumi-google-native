@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified BackendService resource. Gets a list of available backend services.
+ * Returns the specified BackendService resource.
  */
 export function getBackendService(args: GetBackendServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendServiceResult> {
 
@@ -172,7 +172,7 @@ export interface GetBackendServiceResult {
     readonly timeoutSec: number;
 }
 /**
- * Returns the specified BackendService resource. Gets a list of available backend services.
+ * Returns the specified BackendService resource.
  */
 export function getBackendServiceOutput(args: GetBackendServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendServiceResult> {
     return pulumi.output(args).apply((a: any) => getBackendService(a, opts))

@@ -52,7 +52,7 @@ export interface GetJobResult {
      */
     readonly notifications: outputs.batch.v1.JobNotificationResponse[];
     /**
-     * Priority of the Job. The valid value range is [0, 100). A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
+     * Priority of the Job. The valid value range is [0, 100). Default value is 0. Higher value indicates higher priority. A job with higher priority value is more likely to run earlier if all other requirements are satisfied.
      */
     readonly priority: string;
     /**

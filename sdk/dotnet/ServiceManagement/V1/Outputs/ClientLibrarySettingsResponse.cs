@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// </summary>
         public readonly Outputs.RubySettingsResponse RubySettings;
         /// <summary>
-        /// Version of the API to apply these settings to.
+        /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
         /// </summary>
         public readonly string Version;
 

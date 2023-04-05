@@ -68,9 +68,17 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        /// </summary>
+        public readonly string CryptoSpacePath;
+        /// <summary>
         /// Optional. Etag of the currently stored EkmConnection.
         /// </summary>
         public readonly string Etag;
+        /// <summary>
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+        /// </summary>
+        public readonly string KeyManagementMode;
         /// <summary>
         /// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
         /// </summary>
@@ -84,14 +92,20 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         private GetEkmConnectionResult(
             string createTime,
 
+            string cryptoSpacePath,
+
             string etag,
+
+            string keyManagementMode,
 
             string name,
 
             ImmutableArray<Outputs.ServiceResolverResponse> serviceResolvers)
         {
             CreateTime = createTime;
+            CryptoSpacePath = cryptoSpacePath;
             Etag = etag;
+            KeyManagementMode = keyManagementMode;
             Name = name;
             ServiceResolvers = serviceResolvers;
         }

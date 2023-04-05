@@ -135,10 +135,6 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// List of accelerators enabled for this CDF instance.
-	Accelerators []Accelerator `pulumi:"accelerators"`
-	// Available versions that the instance can be upgraded to using UpdateInstanceRequest.
-	AvailableVersion []Version `pulumi:"availableVersion"`
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	CryptoKeyConfig *CryptoKeyConfig `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
@@ -179,10 +175,6 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// List of accelerators enabled for this CDF instance.
-	Accelerators AcceleratorArrayInput
-	// Available versions that the instance can be upgraded to using UpdateInstanceRequest.
-	AvailableVersion VersionArrayInput
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	CryptoKeyConfig CryptoKeyConfigPtrInput
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.

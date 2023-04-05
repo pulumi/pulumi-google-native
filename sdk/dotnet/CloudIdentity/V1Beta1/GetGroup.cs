@@ -52,6 +52,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
     public sealed class GetGroupResult
     {
         /// <summary>
+        /// Additional group keys associated with the Group.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.EntityKeyResponse> AdditionalGroupKeys;
+        /// <summary>
         /// The time when the `Group` was created.
         /// </summary>
         public readonly string CreateTime;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
         [OutputConstructor]
         private GetGroupResult(
+            ImmutableArray<Outputs.EntityKeyResponse> additionalGroupKeys,
+
             string createTime,
 
             string description,
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
             string updateTime)
         {
+            AdditionalGroupKeys = additionalGroupKeys;
             CreateTime = createTime;
             Description = description;
             DisplayName = displayName;

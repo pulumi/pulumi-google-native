@@ -44,6 +44,10 @@ export interface GetCustomerResult {
      */
     readonly cloudIdentityInfo: outputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfoResponse;
     /**
+     * Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+     */
+    readonly correlationId: string;
+    /**
      * Time when the customer was created.
      */
     readonly createTime: string;

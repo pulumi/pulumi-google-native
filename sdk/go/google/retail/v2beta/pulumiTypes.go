@@ -1521,6 +1521,52 @@ func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) Index(i pulumi
 	}).(GoogleCloudRetailV2betaLocalInventoryResponseOutput)
 }
 
+// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+type GoogleCloudRetailV2betaModelServingConfigListResponse struct {
+	// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+	ServingConfigIds []string `pulumi:"servingConfigIds"`
+}
+
+// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+type GoogleCloudRetailV2betaModelServingConfigListResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaModelServingConfigListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ToGoogleCloudRetailV2betaModelServingConfigListResponseOutput() GoogleCloudRetailV2betaModelServingConfigListResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ToGoogleCloudRetailV2betaModelServingConfigListResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaModelServingConfigListResponseOutput {
+	return o
+}
+
+// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+func (o GoogleCloudRetailV2betaModelServingConfigListResponseOutput) ServingConfigIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaModelServingConfigListResponse) []string { return v.ServingConfigIds }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaModelServingConfigListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput() GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2betaModelServingConfigListResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaModelServingConfigListResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaModelServingConfigListResponse {
+		return vs[0].([]GoogleCloudRetailV2betaModelServingConfigListResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaModelServingConfigListResponseOutput)
+}
+
 // The price information of a Product.
 type GoogleCloudRetailV2betaPriceInfo struct {
 	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -1897,7 +1943,7 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	Images []GoogleCloudRetailV2betaImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
-	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+	// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 	LocalInventories []GoogleCloudRetailV2betaLocalInventoryResponse `pulumi:"localInventories"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
@@ -2036,7 +2082,7 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) LanguageCode() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 func (o GoogleCloudRetailV2betaProductResponseOutput) LocalInventories() GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []GoogleCloudRetailV2betaLocalInventoryResponse {
 		return v.LocalInventories
@@ -4800,7 +4846,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey struct {
 	CaseInsensitive *bool `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
-	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 	Intervals []GoogleCloudRetailV2betaInterval `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key string `pulumi:"key"`
@@ -4833,7 +4879,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs struct {
 	CaseInsensitive pulumi.BoolPtrInput `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains pulumi.StringArrayInput `pulumi:"contains"`
-	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 	Intervals GoogleCloudRetailV2betaIntervalArrayInput `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key pulumi.StringInput `pulumi:"key"`
@@ -4937,7 +4983,7 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Contains() 
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []string { return v.Contains }).(pulumi.StringArrayOutput)
 }
 
-// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput) Intervals() GoogleCloudRetailV2betaIntervalArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2betaInterval {
 		return v.Intervals
@@ -5018,7 +5064,7 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Contains
 	}).(pulumi.StringArrayOutput)
 }
 
-// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput) Intervals() GoogleCloudRetailV2betaIntervalArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey) []GoogleCloudRetailV2betaInterval {
 		if v == nil {
@@ -5094,7 +5140,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse struct {
 	CaseInsensitive bool `pulumi:"caseInsensitive"`
 	// Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
 	Contains []string `pulumi:"contains"`
-	// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+	// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 	Intervals []GoogleCloudRetailV2betaIntervalResponse `pulumi:"intervals"`
 	// Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
 	Key string `pulumi:"key"`
@@ -5135,7 +5181,7 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Con
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) []string { return v.Contains }).(pulumi.StringArrayOutput)
 }
 
-// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
 func (o GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput) Intervals() GoogleCloudRetailV2betaIntervalResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse) []GoogleCloudRetailV2betaIntervalResponse {
 		return v.Intervals
@@ -5471,6 +5517,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaLocalInventoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaModelServingConfigListResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaModelServingConfigListResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput{})

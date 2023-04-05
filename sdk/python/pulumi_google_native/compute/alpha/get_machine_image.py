@@ -238,7 +238,7 @@ def get_machine_image(machine_image: Optional[str] = None,
                       project: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMachineImageResult:
     """
-    Returns the specified machine image. Gets a list of available machine images by making a list() request.
+    Returns the specified machine image.
     """
     __args__ = dict()
     __args__['machineImage'] = machine_image
@@ -271,6 +271,6 @@ def get_machine_image_output(machine_image: Optional[pulumi.Input[str]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMachineImageResult]:
     """
-    Returns the specified machine image. Gets a list of available machine images by making a list() request.
+    Returns the specified machine image.
     """
     ...

@@ -48,6 +48,10 @@ export interface GetReservationResult {
      */
     readonly name: string;
     /**
+     * Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+     */
+    readonly resourcePolicies: {[key: string]: string};
+    /**
      * Status information for Reservation resource.
      */
     readonly resourceStatus: outputs.compute.v1.AllocationResourceStatusResponse;

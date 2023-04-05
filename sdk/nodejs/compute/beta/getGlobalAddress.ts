@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified address resource. Gets a list of available addresses by making a list() request.
+ * Returns the specified address resource.
  */
 export function getGlobalAddress(args: GetGlobalAddressArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalAddressResult> {
 
@@ -100,7 +100,7 @@ export interface GetGlobalAddressResult {
     readonly users: string[];
 }
 /**
- * Returns the specified address resource. Gets a list of available addresses by making a list() request.
+ * Returns the specified address resource.
  */
 export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalAddressResult> {
     return pulumi.output(args).apply((a: any) => getGlobalAddress(a, opts))

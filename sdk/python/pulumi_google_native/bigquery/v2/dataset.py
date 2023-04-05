@@ -341,6 +341,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["tags"] = tags
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["default_collation"] = None
+            __props__.__dict__["default_rounding_mode"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -376,6 +377,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["default_collation"] = None
         __props__.__dict__["default_encryption_configuration"] = None
         __props__.__dict__["default_partition_expiration_ms"] = None
+        __props__.__dict__["default_rounding_mode"] = None
         __props__.__dict__["default_table_expiration_ms"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["etag"] = None
@@ -437,6 +439,14 @@ class Dataset(pulumi.CustomResource):
         [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
         """
         return pulumi.get(self, "default_partition_expiration_ms")
+
+    @property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> pulumi.Output[str]:
+        """
+        The default rounding mode of the dataset.
+        """
+        return pulumi.get(self, "default_rounding_mode")
 
     @property
     @pulumi.getter(name="defaultTableExpirationMs")

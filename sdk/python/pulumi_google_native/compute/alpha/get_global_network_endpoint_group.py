@@ -299,7 +299,7 @@ def get_global_network_endpoint_group(network_endpoint_group: Optional[str] = No
                                       project: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGlobalNetworkEndpointGroupResult:
     """
-    Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+    Returns the specified network endpoint group.
     """
     __args__ = dict()
     __args__['networkEndpointGroup'] = network_endpoint_group
@@ -337,6 +337,6 @@ def get_global_network_endpoint_group_output(network_endpoint_group: Optional[pu
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalNetworkEndpointGroupResult]:
     """
-    Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+    Returns the specified network endpoint group.
     """
     ...

@@ -44,6 +44,10 @@ export class Case extends pulumi.CustomResource {
      */
     public readonly classification!: pulumi.Output<outputs.cloudsupport.v2beta.CaseClassificationResponse>;
     /**
+     * A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+     */
+    public readonly contactEmail!: pulumi.Output<string>;
+    /**
      * The time this case was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -122,6 +126,7 @@ export class Case extends pulumi.CustomResource {
                 throw new Error("Missing required property 'v2betumId'");
             }
             resourceInputs["classification"] = args ? args.classification : undefined;
+            resourceInputs["contactEmail"] = args ? args.contactEmail : undefined;
             resourceInputs["creator"] = args ? args.creator : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -140,6 +145,7 @@ export class Case extends pulumi.CustomResource {
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["classification"] = undefined /*out*/;
+            resourceInputs["contactEmail"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -172,6 +178,10 @@ export interface CaseArgs {
      * The issue classification applicable to this case.
      */
     classification?: pulumi.Input<inputs.cloudsupport.v2beta.CaseClassificationArgs>;
+    /**
+     * A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+     */
+    contactEmail?: pulumi.Input<string>;
     /**
      * The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
      */

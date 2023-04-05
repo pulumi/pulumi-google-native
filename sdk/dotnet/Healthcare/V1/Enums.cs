@@ -589,6 +589,55 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
     /// <summary>
+    /// Type of partitioning.
+    /// </summary>
+    [EnumType]
+    public readonly struct TimePartitioningType : IEquatable<TimePartitioningType>
+    {
+        private readonly string _value;
+
+        private TimePartitioningType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default unknown time.
+        /// </summary>
+        public static TimePartitioningType PartitionTypeUnspecified { get; } = new TimePartitioningType("PARTITION_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Data partitioned by hour.
+        /// </summary>
+        public static TimePartitioningType Hour { get; } = new TimePartitioningType("HOUR");
+        /// <summary>
+        /// Data partitioned by day.
+        /// </summary>
+        public static TimePartitioningType Day { get; } = new TimePartitioningType("DAY");
+        /// <summary>
+        /// Data partitioned by month.
+        /// </summary>
+        public static TimePartitioningType Month { get; } = new TimePartitioningType("MONTH");
+        /// <summary>
+        /// Data partitioned by year.
+        /// </summary>
+        public static TimePartitioningType Year { get; } = new TimePartitioningType("YEAR");
+
+        public static bool operator ==(TimePartitioningType left, TimePartitioningType right) => left.Equals(right);
+        public static bool operator !=(TimePartitioningType left, TimePartitioningType right) => !left.Equals(right);
+
+        public static explicit operator string(TimePartitioningType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TimePartitioningType other && Equals(other);
+        public bool Equals(TimePartitioningType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
     /// </summary>
     [EnumType]

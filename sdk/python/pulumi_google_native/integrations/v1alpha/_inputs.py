@@ -80,8 +80,10 @@ __all__ = [
     'GoogleCloudIntegrationsV1alphaBooleanParameterArrayArgs',
     'GoogleCloudIntegrationsV1alphaClientCertificateArgs',
     'GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs',
+    'GoogleCloudIntegrationsV1alphaCoordinateArgs',
     'GoogleCloudIntegrationsV1alphaCredentialArgs',
     'GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs',
+    'GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs',
     'GoogleCloudIntegrationsV1alphaFailurePolicyArgs',
     'GoogleCloudIntegrationsV1alphaIntParameterArrayArgs',
     'GoogleCloudIntegrationsV1alphaIntegrationAlertConfigThresholdValueArgs',
@@ -3503,6 +3505,8 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
                  creator_email: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_strict_type_validation: Optional[pulumi.Input[bool]] = None,
+                 error_catcher_id: Optional[pulumi.Input[str]] = None,
+                 external_task_type: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType']] = None,
                  failure_policy: Optional[pulumi.Input['EnterpriseCrmEventbusProtoFailurePolicyArgs']] = None,
                  incoming_edge_count: Optional[pulumi.Input[int]] = None,
                  json_validation_option: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption']] = None,
@@ -3531,6 +3535,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
         :param pulumi.Input[str] creator_email: The creator's email address. Auto-generated from the user's email.
         :param pulumi.Input[str] description: User-provided description intended to give more business context about the task.
         :param pulumi.Input[bool] disable_strict_type_validation: If this config contains a TypedTask, allow validation to succeed if an input is read from the output of another TypedTask whose output type is declared as a superclass of the requested input type. For instance, if the previous task declares an output of type Message, any task with this flag enabled will pass validation when attempting to read any proto Message type from the resultant Event parameter.
+        :param pulumi.Input[str] error_catcher_id: Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
         :param pulumi.Input['EnterpriseCrmEventbusProtoFailurePolicyArgs'] failure_policy: Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         :param pulumi.Input[int] incoming_edge_count: The number of edges leading into this TaskConfig.
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption'] json_validation_option: If set, overrides the option configured in the Task implementation class.
@@ -3563,6 +3568,10 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
             pulumi.set(__self__, "description", description)
         if disable_strict_type_validation is not None:
             pulumi.set(__self__, "disable_strict_type_validation", disable_strict_type_validation)
+        if error_catcher_id is not None:
+            pulumi.set(__self__, "error_catcher_id", error_catcher_id)
+        if external_task_type is not None:
+            pulumi.set(__self__, "external_task_type", external_task_type)
         if failure_policy is not None:
             pulumi.set(__self__, "failure_policy", failure_policy)
         if incoming_edge_count is not None:
@@ -3665,6 +3674,27 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfigArgs:
     @disable_strict_type_validation.setter
     def disable_strict_type_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disable_strict_type_validation", value)
+
+    @property
+    @pulumi.getter(name="errorCatcherId")
+    def error_catcher_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        """
+        return pulumi.get(self, "error_catcher_id")
+
+    @error_catcher_id.setter
+    def error_catcher_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_catcher_id", value)
+
+    @property
+    @pulumi.getter(name="externalTaskType")
+    def external_task_type(self) -> Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType']]:
+        return pulumi.get(self, "external_task_type")
+
+    @external_task_type.setter
+    def external_task_type(self, value: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType']]):
+        pulumi.set(self, "external_task_type", value)
 
     @property
     @pulumi.getter(name="failurePolicy")
@@ -4034,6 +4064,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
                  alert_config: Optional[pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs']]]] = None,
                  cloud_scheduler_config: Optional[pulumi.Input['EnterpriseCrmEventbusProtoCloudSchedulerConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 error_catcher_id: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  next_tasks_execution_policy: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy']] = None,
                  pause_workflow_executions: Optional[pulumi.Input[bool]] = None,
@@ -4044,11 +4075,12 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
                  trigger_id: Optional[pulumi.Input[str]] = None,
                  trigger_type: Optional[pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigTriggerType']] = None):
         """
-        Configuration detail of a trigger. Next available id: 17
+        Configuration detail of a trigger. Next available id: 19
         :param pulumi.Input[Sequence[pulumi.Input[str]]] enabled_clients: The list of client ids which are enabled to execute the workflow using this trigger. In other words, these clients have the workflow execution privledges for this trigger. For API trigger, the client id in the incoming request is validated against the list of enabled clients. For non-API triggers, one workflow execution is triggered on behalf of each enabled client.
         :param pulumi.Input[str] trigger_number: A number to uniquely identify each trigger config within the workflow on UI.
         :param pulumi.Input[Sequence[pulumi.Input['EnterpriseCrmEventbusProtoWorkflowAlertConfigArgs']]] alert_config: An alert threshold configuration for the [trigger + client + workflow] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + workflow] when published.
         :param pulumi.Input[str] description: User-provided description intended to give more business context about the task.
+        :param pulumi.Input[str] error_catcher_id: Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
         :param pulumi.Input[str] label: The user created label for a particular trigger.
         :param pulumi.Input['EnterpriseCrmFrontendsEventbusProtoTriggerConfigNextTasksExecutionPolicy'] next_tasks_execution_policy: Dictates how next tasks will be executed.
         :param pulumi.Input[bool] pause_workflow_executions: Optional. If set to true, any upcoming requests for this trigger config will be paused and the executions will be resumed later when the flag is reset. The workflow to which this trigger config belongs has to be in ACTIVE status for the executions to be paused or resumed.
@@ -4066,6 +4098,8 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
             pulumi.set(__self__, "cloud_scheduler_config", cloud_scheduler_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if error_catcher_id is not None:
+            pulumi.set(__self__, "error_catcher_id", error_catcher_id)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if next_tasks_execution_policy is not None:
@@ -4141,6 +4175,18 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="errorCatcherId")
+    def error_catcher_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        """
+        return pulumi.get(self, "error_catcher_id")
+
+    @error_catcher_id.setter
+    def error_catcher_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_catcher_id", value)
 
     @property
     @pulumi.getter
@@ -4904,6 +4950,44 @@ class GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs:
 
 
 @pulumi.input_type
+class GoogleCloudIntegrationsV1alphaCoordinateArgs:
+    def __init__(__self__, *,
+                 x: pulumi.Input[int],
+                 y: pulumi.Input[int]):
+        """
+        Configuration detail of coordinate, it used for UI
+        :param pulumi.Input[int] x: X axis of the coordinate
+        :param pulumi.Input[int] y: Y axis of the coordinate
+        """
+        pulumi.set(__self__, "x", x)
+        pulumi.set(__self__, "y", y)
+
+    @property
+    @pulumi.getter
+    def x(self) -> pulumi.Input[int]:
+        """
+        X axis of the coordinate
+        """
+        return pulumi.get(self, "x")
+
+    @x.setter
+    def x(self, value: pulumi.Input[int]):
+        pulumi.set(self, "x", value)
+
+    @property
+    @pulumi.getter
+    def y(self) -> pulumi.Input[int]:
+        """
+        Y axis of the coordinate
+        """
+        return pulumi.get(self, "y")
+
+    @y.setter
+    def y(self, value: pulumi.Input[int]):
+        pulumi.set(self, "y", value)
+
+
+@pulumi.input_type
 class GoogleCloudIntegrationsV1alphaCredentialArgs:
     def __init__(__self__, *,
                  auth_token: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaAuthTokenArgs']] = None,
@@ -5077,6 +5161,107 @@ class GoogleCloudIntegrationsV1alphaDoubleParameterArrayArgs:
     @double_values.setter
     def double_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[float]]]]):
         pulumi.set(self, "double_values", value)
+
+
+@pulumi.input_type
+class GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs:
+    def __init__(__self__, *,
+                 error_catcher_id: pulumi.Input[str],
+                 error_catcher_number: pulumi.Input[str],
+                 start_error_tasks: pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]],
+                 description: Optional[pulumi.Input[str]] = None,
+                 label: Optional[pulumi.Input[str]] = None,
+                 position: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']] = None):
+        """
+        Configuration detail of a error catch task
+        :param pulumi.Input[str] error_catcher_id: An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+        :param pulumi.Input[str] error_catcher_number: A number to uniquely identify each error catcher config within the workflow on UI.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]] start_error_tasks: The set of start tasks that are to be executed for the error catch flow
+        :param pulumi.Input[str] description: Optional. User-provided description intended to give more business context about the error catcher config.
+        :param pulumi.Input[str] label: Optional. The user created label for a particular error catcher. Optional.
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs'] position: Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        """
+        pulumi.set(__self__, "error_catcher_id", error_catcher_id)
+        pulumi.set(__self__, "error_catcher_number", error_catcher_number)
+        pulumi.set(__self__, "start_error_tasks", start_error_tasks)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if label is not None:
+            pulumi.set(__self__, "label", label)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+
+    @property
+    @pulumi.getter(name="errorCatcherId")
+    def error_catcher_id(self) -> pulumi.Input[str]:
+        """
+        An error catcher id is string representation for the error catcher config. Within a workflow, error_catcher_id uniquely identifies an error catcher config among all error catcher configs for the workflow
+        """
+        return pulumi.get(self, "error_catcher_id")
+
+    @error_catcher_id.setter
+    def error_catcher_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "error_catcher_id", value)
+
+    @property
+    @pulumi.getter(name="errorCatcherNumber")
+    def error_catcher_number(self) -> pulumi.Input[str]:
+        """
+        A number to uniquely identify each error catcher config within the workflow on UI.
+        """
+        return pulumi.get(self, "error_catcher_number")
+
+    @error_catcher_number.setter
+    def error_catcher_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "error_catcher_number", value)
+
+    @property
+    @pulumi.getter(name="startErrorTasks")
+    def start_error_tasks(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]:
+        """
+        The set of start tasks that are to be executed for the error catch flow
+        """
+        return pulumi.get(self, "start_error_tasks")
+
+    @start_error_tasks.setter
+    def start_error_tasks(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]):
+        pulumi.set(self, "start_error_tasks", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. User-provided description intended to give more business context about the error catcher config.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def label(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The user created label for a particular error catcher. Optional.
+        """
+        return pulumi.get(self, "label")
+
+    @label.setter
+    def label(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]:
+        """
+        Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]):
+        pulumi.set(self, "position", value)
 
 
 @pulumi.input_type
@@ -6421,11 +6606,14 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
                  task_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 error_catcher_id: Optional[pulumi.Input[str]] = None,
+                 external_task_type: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType']] = None,
                  failure_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaFailurePolicyArgs']] = None,
                  json_validation_option: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption']] = None,
                  next_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]] = None,
                  next_tasks_execution_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy']] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 position: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']] = None,
                  success_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaSuccessPolicyArgs']] = None,
                  synchronous_call_failure_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaFailurePolicyArgs']] = None,
                  task: Optional[pulumi.Input[str]] = None,
@@ -6436,11 +6624,14 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
         :param pulumi.Input[str] task_id: The identifier of this task within its parent event config, specified by the client. This should be unique among all the tasks belong to the same event config. We use this field as the identifier to find next tasks (via field `next_tasks.task_id`).
         :param pulumi.Input[str] description: Optional. User-provided description intended to give additional business context about the task.
         :param pulumi.Input[str] display_name: Optional. User-provided label that is attached to this TaskConfig in the UI.
+        :param pulumi.Input[str] error_catcher_id: Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType'] external_task_type: Optional. External task type of the task
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaFailurePolicyArgs'] failure_policy: Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption'] json_validation_option: Optional. If set, overrides the option configured in the Task implementation class.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]] next_tasks: Optional. The set of tasks that are next in line to be executed as per the execution graph defined for the parent event, specified by `event_config_id`. Each of these next tasks are executed only if the condition associated with them evaluates to true.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy'] next_tasks_execution_policy: Optional. The policy dictating the execution of the next set of tasks for the current task.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: Optional. The customized parameters the user can pass to this task.
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs'] position: Optional. Informs the front-end application where to draw this error catcher config on the UI.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaSuccessPolicyArgs'] success_policy: Optional. Determines what action to take upon successful task completion.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaFailurePolicyArgs'] synchronous_call_failure_policy: Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for synchronous calls to Eventbus alone (Post).
         :param pulumi.Input[str] task: Optional. The name for the task.
@@ -6452,6 +6643,10 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if error_catcher_id is not None:
+            pulumi.set(__self__, "error_catcher_id", error_catcher_id)
+        if external_task_type is not None:
+            pulumi.set(__self__, "external_task_type", external_task_type)
         if failure_policy is not None:
             pulumi.set(__self__, "failure_policy", failure_policy)
         if json_validation_option is not None:
@@ -6462,6 +6657,8 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
             pulumi.set(__self__, "next_tasks_execution_policy", next_tasks_execution_policy)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
         if success_policy is not None:
             pulumi.set(__self__, "success_policy", success_policy)
         if synchronous_call_failure_policy is not None:
@@ -6508,6 +6705,30 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="errorCatcherId")
+    def error_catcher_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        """
+        return pulumi.get(self, "error_catcher_id")
+
+    @error_catcher_id.setter
+    def error_catcher_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_catcher_id", value)
+
+    @property
+    @pulumi.getter(name="externalTaskType")
+    def external_task_type(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType']]:
+        """
+        Optional. External task type of the task
+        """
+        return pulumi.get(self, "external_task_type")
+
+    @external_task_type.setter
+    def external_task_type(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType']]):
+        pulumi.set(self, "external_task_type", value)
 
     @property
     @pulumi.getter(name="failurePolicy")
@@ -6568,6 +6789,18 @@ class GoogleCloudIntegrationsV1alphaTaskConfigArgs:
     @parameters.setter
     def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]:
+        """
+        Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]):
+        pulumi.set(self, "position", value)
 
     @property
     @pulumi.getter(name="successPolicy")
@@ -6637,8 +6870,10 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
                  alert_config: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs']]]] = None,
                  cloud_scheduler_config: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 error_catcher_id: Optional[pulumi.Input[str]] = None,
                  label: Optional[pulumi.Input[str]] = None,
                  next_tasks_execution_policy: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy']] = None,
+                 position: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  start_tasks: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
@@ -6649,8 +6884,10 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaIntegrationAlertConfigArgs']]] alert_config: Optional. An alert threshold configuration for the [trigger + client + integration] tuple. If these values are not specified in the trigger config, default values will be populated by the system. Note that there must be exactly one alert threshold configured per [client + trigger + integration] when published.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaCloudSchedulerConfigArgs'] cloud_scheduler_config: Optional. Cloud Scheduler Trigger related metadata
         :param pulumi.Input[str] description: Optional. User-provided description intended to give additional business context about the task.
+        :param pulumi.Input[str] error_catcher_id: Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
         :param pulumi.Input[str] label: Optional. The user created label for a particular trigger.
         :param pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy'] next_tasks_execution_policy: Optional. Dictates how next tasks will be executed.
+        :param pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs'] position: Optional. Informs the front-end application where to draw this error catcher config on the UI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. Configurable properties of the trigger, not to be confused with integration parameters. E.g. "name" is a property for API triggers and "subscription" is a property for Pub/sub triggers.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudIntegrationsV1alphaNextTaskArgs']]] start_tasks: Optional. Set of tasks numbers from where the integration execution is started by this trigger. If this is empty, then integration is executed with default start tasks. In the list of start tasks, none of two tasks can have direct ancestor-descendant relationships (i.e. in a same integration execution graph).
         :param pulumi.Input[str] trigger_id: Optional. The backend trigger ID.
@@ -6663,10 +6900,14 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
             pulumi.set(__self__, "cloud_scheduler_config", cloud_scheduler_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if error_catcher_id is not None:
+            pulumi.set(__self__, "error_catcher_id", error_catcher_id)
         if label is not None:
             pulumi.set(__self__, "label", label)
         if next_tasks_execution_policy is not None:
             pulumi.set(__self__, "next_tasks_execution_policy", next_tasks_execution_policy)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if start_tasks is not None:
@@ -6725,6 +6966,18 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="errorCatcherId")
+    def error_catcher_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        """
+        return pulumi.get(self, "error_catcher_id")
+
+    @error_catcher_id.setter
+    def error_catcher_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_catcher_id", value)
+
+    @property
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[str]]:
         """
@@ -6747,6 +7000,18 @@ class GoogleCloudIntegrationsV1alphaTriggerConfigArgs:
     @next_tasks_execution_policy.setter
     def next_tasks_execution_policy(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy']]):
         pulumi.set(self, "next_tasks_execution_policy", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]:
+        """
+        Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input['GoogleCloudIntegrationsV1alphaCoordinateArgs']]):
+        pulumi.set(self, "position", value)
 
     @property
     @pulumi.getter

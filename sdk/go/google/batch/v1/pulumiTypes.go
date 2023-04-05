@@ -807,330 +807,6 @@ func (o AttachedDiskResponseArrayOutput) Index(i pulumi.IntInput) AttachedDiskRe
 	}).(AttachedDiskResponseOutput)
 }
 
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-type AuditConfig struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs []AuditLogConfig `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service *string `pulumi:"service"`
-}
-
-// AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
-// You can construct a concrete instance of `AuditConfigInput` via:
-//
-//	AuditConfigArgs{...}
-type AuditConfigInput interface {
-	pulumi.Input
-
-	ToAuditConfigOutput() AuditConfigOutput
-	ToAuditConfigOutputWithContext(context.Context) AuditConfigOutput
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-type AuditConfigArgs struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs AuditLogConfigArrayInput `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service pulumi.StringPtrInput `pulumi:"service"`
-}
-
-func (AuditConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfig)(nil)).Elem()
-}
-
-func (i AuditConfigArgs) ToAuditConfigOutput() AuditConfigOutput {
-	return i.ToAuditConfigOutputWithContext(context.Background())
-}
-
-func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigOutput)
-}
-
-// AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
-// You can construct a concrete instance of `AuditConfigArrayInput` via:
-//
-//	AuditConfigArray{ AuditConfigArgs{...} }
-type AuditConfigArrayInput interface {
-	pulumi.Input
-
-	ToAuditConfigArrayOutput() AuditConfigArrayOutput
-	ToAuditConfigArrayOutputWithContext(context.Context) AuditConfigArrayOutput
-}
-
-type AuditConfigArray []AuditConfigInput
-
-func (AuditConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfig)(nil)).Elem()
-}
-
-func (i AuditConfigArray) ToAuditConfigArrayOutput() AuditConfigArrayOutput {
-	return i.ToAuditConfigArrayOutputWithContext(context.Background())
-}
-
-func (i AuditConfigArray) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditConfigArrayOutput)
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-type AuditConfigOutput struct{ *pulumi.OutputState }
-
-func (AuditConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfig)(nil)).Elem()
-}
-
-func (o AuditConfigOutput) ToAuditConfigOutput() AuditConfigOutput {
-	return o
-}
-
-func (o AuditConfigOutput) ToAuditConfigOutputWithContext(ctx context.Context) AuditConfigOutput {
-	return o
-}
-
-// The configuration for logging of each type of permission.
-func (o AuditConfigOutput) AuditLogConfigs() AuditLogConfigArrayOutput {
-	return o.ApplyT(func(v AuditConfig) []AuditLogConfig { return v.AuditLogConfigs }).(AuditLogConfigArrayOutput)
-}
-
-// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-func (o AuditConfigOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditConfig) *string { return v.Service }).(pulumi.StringPtrOutput)
-}
-
-type AuditConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (AuditConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfig)(nil)).Elem()
-}
-
-func (o AuditConfigArrayOutput) ToAuditConfigArrayOutput() AuditConfigArrayOutput {
-	return o
-}
-
-func (o AuditConfigArrayOutput) ToAuditConfigArrayOutputWithContext(ctx context.Context) AuditConfigArrayOutput {
-	return o
-}
-
-func (o AuditConfigArrayOutput) Index(i pulumi.IntInput) AuditConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfig {
-		return vs[0].([]AuditConfig)[vs[1].(int)]
-	}).(AuditConfigOutput)
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-type AuditConfigResponse struct {
-	// The configuration for logging of each type of permission.
-	AuditLogConfigs []AuditLogConfigResponse `pulumi:"auditLogConfigs"`
-	// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-	Service string `pulumi:"service"`
-}
-
-// Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-type AuditConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (AuditConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditConfigResponse)(nil)).Elem()
-}
-
-func (o AuditConfigResponseOutput) ToAuditConfigResponseOutput() AuditConfigResponseOutput {
-	return o
-}
-
-func (o AuditConfigResponseOutput) ToAuditConfigResponseOutputWithContext(ctx context.Context) AuditConfigResponseOutput {
-	return o
-}
-
-// The configuration for logging of each type of permission.
-func (o AuditConfigResponseOutput) AuditLogConfigs() AuditLogConfigResponseArrayOutput {
-	return o.ApplyT(func(v AuditConfigResponse) []AuditLogConfigResponse { return v.AuditLogConfigs }).(AuditLogConfigResponseArrayOutput)
-}
-
-// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-func (o AuditConfigResponseOutput) Service() pulumi.StringOutput {
-	return o.ApplyT(func(v AuditConfigResponse) string { return v.Service }).(pulumi.StringOutput)
-}
-
-type AuditConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (AuditConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditConfigResponse)(nil)).Elem()
-}
-
-func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutput() AuditConfigResponseArrayOutput {
-	return o
-}
-
-func (o AuditConfigResponseArrayOutput) ToAuditConfigResponseArrayOutputWithContext(ctx context.Context) AuditConfigResponseArrayOutput {
-	return o
-}
-
-func (o AuditConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditConfigResponse {
-		return vs[0].([]AuditConfigResponse)[vs[1].(int)]
-	}).(AuditConfigResponseOutput)
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfig struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers []string `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
-}
-
-// AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
-// You can construct a concrete instance of `AuditLogConfigInput` via:
-//
-//	AuditLogConfigArgs{...}
-type AuditLogConfigInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigOutput() AuditLogConfigOutput
-	ToAuditLogConfigOutputWithContext(context.Context) AuditLogConfigOutput
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigArgs struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
-}
-
-func (AuditLogConfigArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfig)(nil)).Elem()
-}
-
-func (i AuditLogConfigArgs) ToAuditLogConfigOutput() AuditLogConfigOutput {
-	return i.ToAuditLogConfigOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigOutput)
-}
-
-// AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
-// You can construct a concrete instance of `AuditLogConfigArrayInput` via:
-//
-//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
-type AuditLogConfigArrayInput interface {
-	pulumi.Input
-
-	ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput
-	ToAuditLogConfigArrayOutputWithContext(context.Context) AuditLogConfigArrayOutput
-}
-
-type AuditLogConfigArray []AuditLogConfigInput
-
-func (AuditLogConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfig)(nil)).Elem()
-}
-
-func (i AuditLogConfigArray) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput {
-	return i.ToAuditLogConfigArrayOutputWithContext(context.Background())
-}
-
-func (i AuditLogConfigArray) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AuditLogConfigArrayOutput)
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigOutput struct{ *pulumi.OutputState }
-
-func (AuditLogConfigOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfig)(nil)).Elem()
-}
-
-func (o AuditLogConfigOutput) ToAuditLogConfigOutput() AuditLogConfigOutput {
-	return o
-}
-
-func (o AuditLogConfigOutput) ToAuditLogConfigOutputWithContext(ctx context.Context) AuditLogConfigOutput {
-	return o
-}
-
-// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AuditLogConfig) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
-}
-
-// The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
-}
-
-type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (AuditLogConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfig)(nil)).Elem()
-}
-
-func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutput() AuditLogConfigArrayOutput {
-	return o
-}
-
-func (o AuditLogConfigArrayOutput) ToAuditLogConfigArrayOutputWithContext(ctx context.Context) AuditLogConfigArrayOutput {
-	return o
-}
-
-func (o AuditLogConfigArrayOutput) Index(i pulumi.IntInput) AuditLogConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfig {
-		return vs[0].([]AuditLogConfig)[vs[1].(int)]
-	}).(AuditLogConfigOutput)
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponse struct {
-	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-	ExemptedMembers []string `pulumi:"exemptedMembers"`
-	// The log type that this config enables.
-	LogType string `pulumi:"logType"`
-}
-
-// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-type AuditLogConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (AuditLogConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutput() AuditLogConfigResponseOutput {
-	return o
-}
-
-func (o AuditLogConfigResponseOutput) ToAuditLogConfigResponseOutputWithContext(ctx context.Context) AuditLogConfigResponseOutput {
-	return o
-}
-
-// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-func (o AuditLogConfigResponseOutput) ExemptedMembers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v AuditLogConfigResponse) []string { return v.ExemptedMembers }).(pulumi.StringArrayOutput)
-}
-
-// The log type that this config enables.
-func (o AuditLogConfigResponseOutput) LogType() pulumi.StringOutput {
-	return o.ApplyT(func(v AuditLogConfigResponse) string { return v.LogType }).(pulumi.StringOutput)
-}
-
-type AuditLogConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (AuditLogConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AuditLogConfigResponse)(nil)).Elem()
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutput() AuditLogConfigResponseArrayOutput {
-	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) ToAuditLogConfigResponseArrayOutputWithContext(ctx context.Context) AuditLogConfigResponseArrayOutput {
-	return o
-}
-
-func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AuditLogConfigResponse {
-		return vs[0].([]AuditLogConfigResponse)[vs[1].(int)]
-	}).(AuditLogConfigResponseOutput)
-}
-
 // Barrier runnable blocks until all tasks in a taskgroup reach it.
 type Barrier struct {
 	// Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
@@ -1295,184 +971,6 @@ func (o BarrierResponseOutput) ToBarrierResponseOutputWithContext(ctx context.Co
 // Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
 func (o BarrierResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BarrierResponse) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Associates `members`, or principals, with a `role`.
-type Binding struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role *string `pulumi:"role"`
-}
-
-// BindingInput is an input type that accepts BindingArgs and BindingOutput values.
-// You can construct a concrete instance of `BindingInput` via:
-//
-//	BindingArgs{...}
-type BindingInput interface {
-	pulumi.Input
-
-	ToBindingOutput() BindingOutput
-	ToBindingOutputWithContext(context.Context) BindingOutput
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingArgs struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-	Members pulumi.StringArrayInput `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role pulumi.StringPtrInput `pulumi:"role"`
-}
-
-func (BindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Binding)(nil)).Elem()
-}
-
-func (i BindingArgs) ToBindingOutput() BindingOutput {
-	return i.ToBindingOutputWithContext(context.Background())
-}
-
-func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
-}
-
-// BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
-// You can construct a concrete instance of `BindingArrayInput` via:
-//
-//	BindingArray{ BindingArgs{...} }
-type BindingArrayInput interface {
-	pulumi.Input
-
-	ToBindingArrayOutput() BindingArrayOutput
-	ToBindingArrayOutputWithContext(context.Context) BindingArrayOutput
-}
-
-type BindingArray []BindingInput
-
-func (BindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Binding)(nil)).Elem()
-}
-
-func (i BindingArray) ToBindingArrayOutput() BindingArrayOutput {
-	return i.ToBindingArrayOutputWithContext(context.Background())
-}
-
-func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingOutput struct{ *pulumi.OutputState }
-
-func (BindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Binding)(nil)).Elem()
-}
-
-func (o BindingOutput) ToBindingOutput() BindingOutput {
-	return o
-}
-
-func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
-	return o
-}
-
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o BindingOutput) Condition() ExprPtrOutput {
-	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
-}
-
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-func (o BindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
-}
-
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-func (o BindingOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
-}
-
-type BindingArrayOutput struct{ *pulumi.OutputState }
-
-func (BindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Binding)(nil)).Elem()
-}
-
-func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
-	return o
-}
-
-func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
-	return o
-}
-
-func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
-		return vs[0].([]Binding)[vs[1].(int)]
-	}).(BindingOutput)
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponse struct {
-	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-	Members []string `pulumi:"members"`
-	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-	Role string `pulumi:"role"`
-}
-
-// Associates `members`, or principals, with a `role`.
-type BindingResponseOutput struct{ *pulumi.OutputState }
-
-func (BindingResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BindingResponse)(nil)).Elem()
-}
-
-func (o BindingResponseOutput) ToBindingResponseOutput() BindingResponseOutput {
-	return o
-}
-
-func (o BindingResponseOutput) ToBindingResponseOutputWithContext(ctx context.Context) BindingResponseOutput {
-	return o
-}
-
-// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o BindingResponseOutput) Condition() ExprResponseOutput {
-	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
-}
-
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
-}
-
-// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-func (o BindingResponseOutput) Role() pulumi.StringOutput {
-	return o.ApplyT(func(v BindingResponse) string { return v.Role }).(pulumi.StringOutput)
-}
-
-type BindingResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (BindingResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]BindingResponse)(nil)).Elem()
-}
-
-func (o BindingResponseArrayOutput) ToBindingResponseArrayOutput() BindingResponseArrayOutput {
-	return o
-}
-
-func (o BindingResponseArrayOutput) ToBindingResponseArrayOutputWithContext(ctx context.Context) BindingResponseArrayOutput {
-	return o
-}
-
-func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
-		return vs[0].([]BindingResponse)[vs[1].(int)]
-	}).(BindingResponseOutput)
 }
 
 // Compute resource requirements
@@ -1695,7 +1193,7 @@ func (o ComputeResourceResponseOutput) MemoryMib() pulumi.StringOutput {
 
 // Container runnable.
 type Container struct {
-	// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+	// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
 	BlockExternalNetwork *bool `pulumi:"blockExternalNetwork"`
 	// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
 	Commands []string `pulumi:"commands"`
@@ -1726,7 +1224,7 @@ type ContainerInput interface {
 
 // Container runnable.
 type ContainerArgs struct {
-	// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+	// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
 	BlockExternalNetwork pulumi.BoolPtrInput `pulumi:"blockExternalNetwork"`
 	// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
 	Commands pulumi.StringArrayInput `pulumi:"commands"`
@@ -1822,7 +1320,7 @@ func (o ContainerOutput) ToContainerPtrOutputWithContext(ctx context.Context) Co
 	}).(ContainerPtrOutput)
 }
 
-// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
 func (o ContainerOutput) BlockExternalNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Container) *bool { return v.BlockExternalNetwork }).(pulumi.BoolPtrOutput)
 }
@@ -1886,7 +1384,7 @@ func (o ContainerPtrOutput) Elem() ContainerOutput {
 	}).(ContainerOutput)
 }
 
-// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
 func (o ContainerPtrOutput) BlockExternalNetwork() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Container) *bool {
 		if v == nil {
@@ -1968,7 +1466,7 @@ func (o ContainerPtrOutput) Volumes() pulumi.StringArrayOutput {
 
 // Container runnable.
 type ContainerResponse struct {
-	// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+	// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
 	BlockExternalNetwork bool `pulumi:"blockExternalNetwork"`
 	// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
 	Commands []string `pulumi:"commands"`
@@ -2001,7 +1499,7 @@ func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx contex
 	return o
 }
 
-// If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+// If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
 func (o ContainerResponseOutput) BlockExternalNetwork() pulumi.BoolOutput {
 	return o.ApplyT(func(v ContainerResponse) bool { return v.BlockExternalNetwork }).(pulumi.BoolOutput)
 }
@@ -2041,15 +1539,15 @@ func (o ContainerResponseOutput) Volumes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Volumes }).(pulumi.StringArrayOutput)
 }
 
-// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type Disk struct {
 	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
 	DiskInterface *string `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
 	Image *string `pulumi:"image"`
 	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 	SizeGb *string `pulumi:"sizeGb"`
-	// Name of a snapshot used as the data source.
+	// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 	Snapshot *string `pulumi:"snapshot"`
 	// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 	Type *string `pulumi:"type"`
@@ -2066,15 +1564,15 @@ type DiskInput interface {
 	ToDiskOutputWithContext(context.Context) DiskOutput
 }
 
-// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type DiskArgs struct {
 	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
 	DiskInterface pulumi.StringPtrInput `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
 	Image pulumi.StringPtrInput `pulumi:"image"`
 	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 	SizeGb pulumi.StringPtrInput `pulumi:"sizeGb"`
-	// Name of a snapshot used as the data source.
+	// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 	Snapshot pulumi.StringPtrInput `pulumi:"snapshot"`
 	// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -2133,7 +1631,7 @@ func (i *diskPtrType) ToDiskPtrOutputWithContext(ctx context.Context) DiskPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(DiskPtrOutput)
 }
 
-// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type DiskOutput struct{ *pulumi.OutputState }
 
 func (DiskOutput) ElementType() reflect.Type {
@@ -2163,7 +1661,7 @@ func (o DiskOutput) DiskInterface() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.DiskInterface }).(pulumi.StringPtrOutput)
 }
 
-// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
 func (o DiskOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Image }).(pulumi.StringPtrOutput)
 }
@@ -2173,7 +1671,7 @@ func (o DiskOutput) SizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.SizeGb }).(pulumi.StringPtrOutput)
 }
 
-// Name of a snapshot used as the data source.
+// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 func (o DiskOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Snapshot }).(pulumi.StringPtrOutput)
 }
@@ -2217,7 +1715,7 @@ func (o DiskPtrOutput) DiskInterface() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
 func (o DiskPtrOutput) Image() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2237,7 +1735,7 @@ func (o DiskPtrOutput) SizeGb() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Name of a snapshot used as the data source.
+// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 func (o DiskPtrOutput) Snapshot() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Disk) *string {
 		if v == nil {
@@ -2257,21 +1755,21 @@ func (o DiskPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type DiskResponse struct {
 	// Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
 	DiskInterface string `pulumi:"diskInterface"`
-	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+	// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
 	Image string `pulumi:"image"`
 	// Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
 	SizeGb string `pulumi:"sizeGb"`
-	// Name of a snapshot used as the data source.
+	// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 	Snapshot string `pulumi:"snapshot"`
 	// Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
 	Type string `pulumi:"type"`
 }
 
-// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
 type DiskResponseOutput struct{ *pulumi.OutputState }
 
 func (DiskResponseOutput) ElementType() reflect.Type {
@@ -2291,7 +1789,7 @@ func (o DiskResponseOutput) DiskInterface() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.DiskInterface }).(pulumi.StringOutput)
 }
 
-// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
 func (o DiskResponseOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Image }).(pulumi.StringOutput)
 }
@@ -2301,7 +1799,7 @@ func (o DiskResponseOutput) SizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.SizeGb }).(pulumi.StringOutput)
 }
 
-// Name of a snapshot used as the data source.
+// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
 func (o DiskResponseOutput) Snapshot() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Snapshot }).(pulumi.StringOutput)
 }
@@ -2594,250 +2092,6 @@ func (o EnvironmentResponseArrayOutput) Index(i pulumi.IntInput) EnvironmentResp
 	}).(EnvironmentResponseOutput)
 }
 
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type Expr struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description *string `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression *string `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location *string `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title *string `pulumi:"title"`
-}
-
-// ExprInput is an input type that accepts ExprArgs and ExprOutput values.
-// You can construct a concrete instance of `ExprInput` via:
-//
-//	ExprArgs{...}
-type ExprInput interface {
-	pulumi.Input
-
-	ToExprOutput() ExprOutput
-	ToExprOutputWithContext(context.Context) ExprOutput
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprArgs struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression pulumi.StringPtrInput `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location pulumi.StringPtrInput `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title pulumi.StringPtrInput `pulumi:"title"`
-}
-
-func (ExprArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Expr)(nil)).Elem()
-}
-
-func (i ExprArgs) ToExprOutput() ExprOutput {
-	return i.ToExprOutputWithContext(context.Background())
-}
-
-func (i ExprArgs) ToExprOutputWithContext(ctx context.Context) ExprOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput)
-}
-
-func (i ExprArgs) ToExprPtrOutput() ExprPtrOutput {
-	return i.ToExprPtrOutputWithContext(context.Background())
-}
-
-func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprOutput).ToExprPtrOutputWithContext(ctx)
-}
-
-// ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
-// You can construct a concrete instance of `ExprPtrInput` via:
-//
-//	        ExprArgs{...}
-//
-//	or:
-//
-//	        nil
-type ExprPtrInput interface {
-	pulumi.Input
-
-	ToExprPtrOutput() ExprPtrOutput
-	ToExprPtrOutputWithContext(context.Context) ExprPtrOutput
-}
-
-type exprPtrType ExprArgs
-
-func ExprPtr(v *ExprArgs) ExprPtrInput {
-	return (*exprPtrType)(v)
-}
-
-func (*exprPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**Expr)(nil)).Elem()
-}
-
-func (i *exprPtrType) ToExprPtrOutput() ExprPtrOutput {
-	return i.ToExprPtrOutputWithContext(context.Background())
-}
-
-func (i *exprPtrType) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ExprPtrOutput)
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprOutput struct{ *pulumi.OutputState }
-
-func (ExprOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Expr)(nil)).Elem()
-}
-
-func (o ExprOutput) ToExprOutput() ExprOutput {
-	return o
-}
-
-func (o ExprOutput) ToExprOutputWithContext(ctx context.Context) ExprOutput {
-	return o
-}
-
-func (o ExprOutput) ToExprPtrOutput() ExprPtrOutput {
-	return o.ToExprPtrOutputWithContext(context.Background())
-}
-
-func (o ExprOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v Expr) *Expr {
-		return &v
-	}).(ExprPtrOutput)
-}
-
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o ExprOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Expr) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o ExprOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Expr) *string { return v.Expression }).(pulumi.StringPtrOutput)
-}
-
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-func (o ExprOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Expr) *string { return v.Location }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-func (o ExprOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Expr) *string { return v.Title }).(pulumi.StringPtrOutput)
-}
-
-type ExprPtrOutput struct{ *pulumi.OutputState }
-
-func (ExprPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**Expr)(nil)).Elem()
-}
-
-func (o ExprPtrOutput) ToExprPtrOutput() ExprPtrOutput {
-	return o
-}
-
-func (o ExprPtrOutput) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput {
-	return o
-}
-
-func (o ExprPtrOutput) Elem() ExprOutput {
-	return o.ApplyT(func(v *Expr) Expr {
-		if v != nil {
-			return *v
-		}
-		var ret Expr
-		return ret
-	}).(ExprOutput)
-}
-
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o ExprPtrOutput) Description() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Expr) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Description
-	}).(pulumi.StringPtrOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o ExprPtrOutput) Expression() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Expr) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Expression
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-func (o ExprPtrOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Expr) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Location
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-func (o ExprPtrOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Expr) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Title
-	}).(pulumi.StringPtrOutput)
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponse struct {
-	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-	Description string `pulumi:"description"`
-	// Textual representation of an expression in Common Expression Language syntax.
-	Expression string `pulumi:"expression"`
-	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-	Location string `pulumi:"location"`
-	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-	Title string `pulumi:"title"`
-}
-
-// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-type ExprResponseOutput struct{ *pulumi.OutputState }
-
-func (ExprResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ExprResponse)(nil)).Elem()
-}
-
-func (o ExprResponseOutput) ToExprResponseOutput() ExprResponseOutput {
-	return o
-}
-
-func (o ExprResponseOutput) ToExprResponseOutputWithContext(ctx context.Context) ExprResponseOutput {
-	return o
-}
-
-// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-func (o ExprResponseOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ExprResponse) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// Textual representation of an expression in Common Expression Language syntax.
-func (o ExprResponseOutput) Expression() pulumi.StringOutput {
-	return o.ApplyT(func(v ExprResponse) string { return v.Expression }).(pulumi.StringOutput)
-}
-
-// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-func (o ExprResponseOutput) Location() pulumi.StringOutput {
-	return o.ApplyT(func(v ExprResponse) string { return v.Location }).(pulumi.StringOutput)
-}
-
-// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-func (o ExprResponseOutput) Title() pulumi.StringOutput {
-	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
 // Represents a Google Cloud Storage volume.
 type GCS struct {
 	// Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/
@@ -3008,13 +2262,13 @@ func (o GCSResponseOutput) RemotePath() pulumi.StringOutput {
 type InstancePolicy struct {
 	// The accelerators attached to each VM instance.
 	Accelerators []Accelerator `pulumi:"accelerators"`
-	// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+	// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 	BootDisk *Disk `pulumi:"bootDisk"`
 	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 	Disks []AttachedDisk `pulumi:"disks"`
 	// The Compute Engine machine type.
 	MachineType *string `pulumi:"machineType"`
-	// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// The provisioning model.
 	ProvisioningModel *InstancePolicyProvisioningModel `pulumi:"provisioningModel"`
@@ -3035,13 +2289,13 @@ type InstancePolicyInput interface {
 type InstancePolicyArgs struct {
 	// The accelerators attached to each VM instance.
 	Accelerators AcceleratorArrayInput `pulumi:"accelerators"`
-	// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+	// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 	BootDisk DiskPtrInput `pulumi:"bootDisk"`
 	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 	Disks AttachedDiskArrayInput `pulumi:"disks"`
 	// The Compute Engine machine type.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// The provisioning model.
 	ProvisioningModel InstancePolicyProvisioningModelPtrInput `pulumi:"provisioningModel"`
@@ -3130,7 +2384,7 @@ func (o InstancePolicyOutput) Accelerators() AcceleratorArrayOutput {
 	return o.ApplyT(func(v InstancePolicy) []Accelerator { return v.Accelerators }).(AcceleratorArrayOutput)
 }
 
-// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 func (o InstancePolicyOutput) BootDisk() DiskPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *Disk { return v.BootDisk }).(DiskPtrOutput)
 }
@@ -3145,7 +2399,7 @@ func (o InstancePolicyOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *string { return v.MachineType }).(pulumi.StringPtrOutput)
 }
 
-// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
 func (o InstancePolicyOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstancePolicy) *string { return v.MinCpuPlatform }).(pulumi.StringPtrOutput)
 }
@@ -3189,7 +2443,7 @@ func (o InstancePolicyPtrOutput) Accelerators() AcceleratorArrayOutput {
 	}).(AcceleratorArrayOutput)
 }
 
-// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 func (o InstancePolicyPtrOutput) BootDisk() DiskPtrOutput {
 	return o.ApplyT(func(v *InstancePolicy) *Disk {
 		if v == nil {
@@ -3219,7 +2473,7 @@ func (o InstancePolicyPtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
 func (o InstancePolicyPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstancePolicy) *string {
 		if v == nil {
@@ -3421,13 +2675,13 @@ func (o InstancePolicyOrTemplateResponseArrayOutput) Index(i pulumi.IntInput) In
 type InstancePolicyResponse struct {
 	// The accelerators attached to each VM instance.
 	Accelerators []AcceleratorResponse `pulumi:"accelerators"`
-	// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+	// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 	BootDisk DiskResponse `pulumi:"bootDisk"`
 	// Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
 	Disks []AttachedDiskResponse `pulumi:"disks"`
 	// The Compute Engine machine type.
 	MachineType string `pulumi:"machineType"`
-	// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+	// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
 	MinCpuPlatform string `pulumi:"minCpuPlatform"`
 	// The provisioning model.
 	ProvisioningModel string `pulumi:"provisioningModel"`
@@ -3453,7 +2707,7 @@ func (o InstancePolicyResponseOutput) Accelerators() AcceleratorResponseArrayOut
 	return o.ApplyT(func(v InstancePolicyResponse) []AcceleratorResponse { return v.Accelerators }).(AcceleratorResponseArrayOutput)
 }
 
-// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
 func (o InstancePolicyResponseOutput) BootDisk() DiskResponseOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) DiskResponse { return v.BootDisk }).(DiskResponseOutput)
 }
@@ -3468,7 +2722,7 @@ func (o InstancePolicyResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
-// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
 func (o InstancePolicyResponseOutput) MinCpuPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v InstancePolicyResponse) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
 }
@@ -3876,7 +3130,7 @@ func (o KMSEnvMapResponseOutput) KeyName() pulumi.StringOutput {
 
 // LifecyclePolicy describes how to deal with task failures based on different conditions.
 type LifecyclePolicy struct {
-	// Action to execute when ActionCondition is true.
+	// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
 	Action *LifecyclePolicyAction `pulumi:"action"`
 	// Conditions that decide why a task failure is dealt with a specific action.
 	ActionCondition *ActionCondition `pulumi:"actionCondition"`
@@ -3895,7 +3149,7 @@ type LifecyclePolicyInput interface {
 
 // LifecyclePolicy describes how to deal with task failures based on different conditions.
 type LifecyclePolicyArgs struct {
-	// Action to execute when ActionCondition is true.
+	// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
 	Action LifecyclePolicyActionPtrInput `pulumi:"action"`
 	// Conditions that decide why a task failure is dealt with a specific action.
 	ActionCondition ActionConditionPtrInput `pulumi:"actionCondition"`
@@ -3953,7 +3207,7 @@ func (o LifecyclePolicyOutput) ToLifecyclePolicyOutputWithContext(ctx context.Co
 	return o
 }
 
-// Action to execute when ActionCondition is true.
+// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
 func (o LifecyclePolicyOutput) Action() LifecyclePolicyActionPtrOutput {
 	return o.ApplyT(func(v LifecyclePolicy) *LifecyclePolicyAction { return v.Action }).(LifecyclePolicyActionPtrOutput)
 }
@@ -3985,7 +3239,7 @@ func (o LifecyclePolicyArrayOutput) Index(i pulumi.IntInput) LifecyclePolicyOutp
 
 // LifecyclePolicy describes how to deal with task failures based on different conditions.
 type LifecyclePolicyResponse struct {
-	// Action to execute when ActionCondition is true.
+	// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
 	Action string `pulumi:"action"`
 	// Conditions that decide why a task failure is dealt with a specific action.
 	ActionCondition ActionConditionResponse `pulumi:"actionCondition"`
@@ -4006,7 +3260,7 @@ func (o LifecyclePolicyResponseOutput) ToLifecyclePolicyResponseOutputWithContex
 	return o
 }
 
-// Action to execute when ActionCondition is true.
+// Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
 func (o LifecyclePolicyResponseOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v LifecyclePolicyResponse) string { return v.Action }).(pulumi.StringOutput)
 }
@@ -4801,11 +4055,11 @@ func (o NFSResponseOutput) Server() pulumi.StringOutput {
 
 // A network interface.
 type NetworkInterface struct {
-	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
 	Network *string `pulumi:"network"`
 	// Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
 	NoExternalIpAddress *bool `pulumi:"noExternalIpAddress"`
-	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
@@ -4822,11 +4076,11 @@ type NetworkInterfaceInput interface {
 
 // A network interface.
 type NetworkInterfaceArgs struct {
-	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
 	NoExternalIpAddress pulumi.BoolPtrInput `pulumi:"noExternalIpAddress"`
-	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
@@ -4882,7 +4136,7 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 	return o
 }
 
-// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
 func (o NetworkInterfaceOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -4892,7 +4146,7 @@ func (o NetworkInterfaceOutput) NoExternalIpAddress() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *bool { return v.NoExternalIpAddress }).(pulumi.BoolPtrOutput)
 }
 
-// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
 func (o NetworkInterfaceOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
@@ -4919,11 +4173,11 @@ func (o NetworkInterfaceArrayOutput) Index(i pulumi.IntInput) NetworkInterfaceOu
 
 // A network interface.
 type NetworkInterfaceResponse struct {
-	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+	// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
 	Network string `pulumi:"network"`
 	// Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
 	NoExternalIpAddress bool `pulumi:"noExternalIpAddress"`
-	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+	// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
 	Subnetwork string `pulumi:"subnetwork"`
 }
 
@@ -4942,7 +4196,7 @@ func (o NetworkInterfaceResponseOutput) ToNetworkInterfaceResponseOutputWithCont
 	return o
 }
 
-// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
 func (o NetworkInterfaceResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -4952,7 +4206,7 @@ func (o NetworkInterfaceResponseOutput) NoExternalIpAddress() pulumi.BoolOutput 
 	return o.ApplyT(func(v NetworkInterfaceResponse) bool { return v.NoExternalIpAddress }).(pulumi.BoolOutput)
 }
 
-// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
 func (o NetworkInterfaceResponseOutput) Subnetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Subnetwork }).(pulumi.StringOutput)
 }
@@ -5887,13 +5141,13 @@ func (o TaskExecutionResponseOutput) ExitCode() pulumi.IntOutput {
 
 // A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
 type TaskGroup struct {
-	// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+	// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 	Parallelism *string `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh *bool `pulumi:"permissiveSsh"`
 	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
 	RequireHostsFile *bool `pulumi:"requireHostsFile"`
-	// Number of Tasks in the TaskGroup. default is 1
+	// Number of Tasks in the TaskGroup. Default is 1.
 	TaskCount *string `pulumi:"taskCount"`
 	// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
 	TaskCountPerNode *string `pulumi:"taskCountPerNode"`
@@ -5916,13 +5170,13 @@ type TaskGroupInput interface {
 
 // A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
 type TaskGroupArgs struct {
-	// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+	// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 	Parallelism pulumi.StringPtrInput `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh pulumi.BoolPtrInput `pulumi:"permissiveSsh"`
 	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
 	RequireHostsFile pulumi.BoolPtrInput `pulumi:"requireHostsFile"`
-	// Number of Tasks in the TaskGroup. default is 1
+	// Number of Tasks in the TaskGroup. Default is 1.
 	TaskCount pulumi.StringPtrInput `pulumi:"taskCount"`
 	// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
 	TaskCountPerNode pulumi.StringPtrInput `pulumi:"taskCountPerNode"`
@@ -5984,7 +5238,7 @@ func (o TaskGroupOutput) ToTaskGroupOutputWithContext(ctx context.Context) TaskG
 	return o
 }
 
-// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 func (o TaskGroupOutput) Parallelism() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *string { return v.Parallelism }).(pulumi.StringPtrOutput)
 }
@@ -5999,7 +5253,7 @@ func (o TaskGroupOutput) RequireHostsFile() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *bool { return v.RequireHostsFile }).(pulumi.BoolPtrOutput)
 }
 
-// Number of Tasks in the TaskGroup. default is 1
+// Number of Tasks in the TaskGroup. Default is 1.
 func (o TaskGroupOutput) TaskCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TaskGroup) *string { return v.TaskCount }).(pulumi.StringPtrOutput)
 }
@@ -6043,13 +5297,13 @@ func (o TaskGroupArrayOutput) Index(i pulumi.IntInput) TaskGroupOutput {
 type TaskGroupResponse struct {
 	// TaskGroup name. The system generates this field based on parent Job name. For example: "projects/123456/locations/us-west1/jobs/job01/taskGroups/group01".
 	Name string `pulumi:"name"`
-	// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+	// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 	Parallelism string `pulumi:"parallelism"`
 	// When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
 	PermissiveSsh bool `pulumi:"permissiveSsh"`
 	// When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
 	RequireHostsFile bool `pulumi:"requireHostsFile"`
-	// Number of Tasks in the TaskGroup. default is 1
+	// Number of Tasks in the TaskGroup. Default is 1.
 	TaskCount string `pulumi:"taskCount"`
 	// Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
 	TaskCountPerNode string `pulumi:"taskCountPerNode"`
@@ -6079,7 +5333,7 @@ func (o TaskGroupResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
 func (o TaskGroupResponseOutput) Parallelism() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.Parallelism }).(pulumi.StringOutput)
 }
@@ -6094,7 +5348,7 @@ func (o TaskGroupResponseOutput) RequireHostsFile() pulumi.BoolOutput {
 	return o.ApplyT(func(v TaskGroupResponse) bool { return v.RequireHostsFile }).(pulumi.BoolOutput)
 }
 
-// Number of Tasks in the TaskGroup. default is 1
+// Number of Tasks in the TaskGroup. Default is 1.
 func (o TaskGroupResponseOutput) TaskCount() pulumi.StringOutput {
 	return o.ApplyT(func(v TaskGroupResponse) string { return v.TaskCount }).(pulumi.StringOutput)
 }
@@ -6144,7 +5398,7 @@ type TaskSpec struct {
 	//
 	// Deprecated: Deprecated: please use environment(non-plural) instead.
 	Environments map[string]string `pulumi:"environments"`
-	// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+	// Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 	LifecyclePolicies []LifecyclePolicy `pulumi:"lifecyclePolicies"`
 	// Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
 	MaxRetryCount *int `pulumi:"maxRetryCount"`
@@ -6177,7 +5431,7 @@ type TaskSpecArgs struct {
 	//
 	// Deprecated: Deprecated: please use environment(non-plural) instead.
 	Environments pulumi.StringMapInput `pulumi:"environments"`
-	// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+	// Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 	LifecyclePolicies LifecyclePolicyArrayInput `pulumi:"lifecyclePolicies"`
 	// Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
 	MaxRetryCount pulumi.IntPtrInput `pulumi:"maxRetryCount"`
@@ -6233,7 +5487,7 @@ func (o TaskSpecOutput) Environments() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskSpec) map[string]string { return v.Environments }).(pulumi.StringMapOutput)
 }
 
-// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+// Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 func (o TaskSpecOutput) LifecyclePolicies() LifecyclePolicyArrayOutput {
 	return o.ApplyT(func(v TaskSpec) []LifecyclePolicy { return v.LifecyclePolicies }).(LifecyclePolicyArrayOutput)
 }
@@ -6268,7 +5522,7 @@ type TaskSpecResponse struct {
 	//
 	// Deprecated: Deprecated: please use environment(non-plural) instead.
 	Environments map[string]string `pulumi:"environments"`
-	// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+	// Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 	LifecyclePolicies []LifecyclePolicyResponse `pulumi:"lifecyclePolicies"`
 	// Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
 	MaxRetryCount int `pulumi:"maxRetryCount"`
@@ -6312,7 +5566,7 @@ func (o TaskSpecResponseOutput) Environments() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TaskSpecResponse) map[string]string { return v.Environments }).(pulumi.StringMapOutput)
 }
 
-// Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+// Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
 func (o TaskSpecResponseOutput) LifecyclePolicies() LifecyclePolicyResponseArrayOutput {
 	return o.ApplyT(func(v TaskSpecResponse) []LifecyclePolicyResponse { return v.LifecyclePolicies }).(LifecyclePolicyResponseArrayOutput)
 }
@@ -6556,14 +5810,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AllocationPolicyPtrInput)(nil)).Elem(), AllocationPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInput)(nil)).Elem(), AttachedDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskArrayInput)(nil)).Elem(), AttachedDiskArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BarrierInput)(nil)).Elem(), BarrierArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BarrierPtrInput)(nil)).Elem(), BarrierArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeResourceInput)(nil)).Elem(), ComputeResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ComputeResourcePtrInput)(nil)).Elem(), ComputeResourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ContainerInput)(nil)).Elem(), ContainerArgs{})
@@ -6573,8 +5821,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentInput)(nil)).Elem(), EnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPtrInput)(nil)).Elem(), EnvironmentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentArrayInput)(nil)).Elem(), EnvironmentArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCSInput)(nil)).Elem(), GCSArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GCSPtrInput)(nil)).Elem(), GCSArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePolicyInput)(nil)).Elem(), InstancePolicyArgs{})
@@ -6624,21 +5870,9 @@ func init() {
 	pulumi.RegisterOutputType(AttachedDiskArrayOutput{})
 	pulumi.RegisterOutputType(AttachedDiskResponseOutput{})
 	pulumi.RegisterOutputType(AttachedDiskResponseArrayOutput{})
-	pulumi.RegisterOutputType(AuditConfigOutput{})
-	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
-	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
-	pulumi.RegisterOutputType(AuditConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(AuditLogConfigOutput{})
-	pulumi.RegisterOutputType(AuditLogConfigArrayOutput{})
-	pulumi.RegisterOutputType(AuditLogConfigResponseOutput{})
-	pulumi.RegisterOutputType(AuditLogConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(BarrierOutput{})
 	pulumi.RegisterOutputType(BarrierPtrOutput{})
 	pulumi.RegisterOutputType(BarrierResponseOutput{})
-	pulumi.RegisterOutputType(BindingOutput{})
-	pulumi.RegisterOutputType(BindingArrayOutput{})
-	pulumi.RegisterOutputType(BindingResponseOutput{})
-	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(ComputeResourceOutput{})
 	pulumi.RegisterOutputType(ComputeResourcePtrOutput{})
 	pulumi.RegisterOutputType(ComputeResourceResponseOutput{})
@@ -6653,9 +5887,6 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentResponseOutput{})
 	pulumi.RegisterOutputType(EnvironmentResponseArrayOutput{})
-	pulumi.RegisterOutputType(ExprOutput{})
-	pulumi.RegisterOutputType(ExprPtrOutput{})
-	pulumi.RegisterOutputType(ExprResponseOutput{})
 	pulumi.RegisterOutputType(GCSOutput{})
 	pulumi.RegisterOutputType(GCSPtrOutput{})
 	pulumi.RegisterOutputType(GCSResponseOutput{})

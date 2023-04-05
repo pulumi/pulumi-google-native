@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Inputs.CollapsibleGroupArgs>? CollapsibleGroup { get; set; }
 
         /// <summary>
+        /// A widget that shows list of incidents.
+        /// </summary>
+        [Input("incidentList")]
+        public Input<Inputs.IncidentListArgs>? IncidentList { get; set; }
+
+        /// <summary>
         /// A widget that shows a stream of logs.
         /// </summary>
         [Input("logsPanel")]

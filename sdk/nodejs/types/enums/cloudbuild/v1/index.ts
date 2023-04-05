@@ -2,6 +2,22 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const BuildOptionsDefaultLogsBucketBehavior = {
+    /**
+     * Unspecified.
+     */
+    DefaultLogsBucketBehaviorUnspecified: "DEFAULT_LOGS_BUCKET_BEHAVIOR_UNSPECIFIED",
+    /**
+     * Bucket is located in user-owned project in the same region as the build. The builder service account must have access to create and write to GCS buckets in the build project.
+     */
+    RegionalUserOwnedBucket: "REGIONAL_USER_OWNED_BUCKET",
+} as const;
+
+/**
+ * Optional. Option to specify how default logs buckets are setup.
+ */
+export type BuildOptionsDefaultLogsBucketBehavior = (typeof BuildOptionsDefaultLogsBucketBehavior)[keyof typeof BuildOptionsDefaultLogsBucketBehavior];
+
 export const BuildOptionsLogStreamingOption = {
     /**
      * Service may automatically determine build log streaming behavior.
@@ -133,7 +149,7 @@ export type BuildOptionsSubstitutionOption = (typeof BuildOptionsSubstitutionOpt
 
 export const GitFileSourceRepoType = {
     /**
-     * The default, unknown repo type.
+     * The default, unknown repo type. Don't use it, instead use one of the other repo types.
      */
     Unknown: "UNKNOWN",
     /**
@@ -161,7 +177,7 @@ export type GitFileSourceRepoType = (typeof GitFileSourceRepoType)[keyof typeof 
 
 export const GitRepoSourceRepoType = {
     /**
-     * The default, unknown repo type.
+     * The default, unknown repo type. Don't use it, instead use one of the other repo types.
      */
     Unknown: "UNKNOWN",
     /**

@@ -18,7 +18,6 @@ __all__ = ['KeyArgs', 'Key']
 class KeyArgs:
     def __init__(__self__, *,
                  android_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  ios_settings: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -30,7 +29,6 @@ class KeyArgs:
         """
         The set of arguments for constructing a Key resource.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs'] android_settings: Settings for keys that can be used by Android apps.
-        :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
         :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs'] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
@@ -41,8 +39,6 @@ class KeyArgs:
         """
         if android_settings is not None:
             pulumi.set(__self__, "android_settings", android_settings)
-        if create_time is not None:
-            pulumi.set(__self__, "create_time", create_time)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if ios_settings is not None:
@@ -71,18 +67,6 @@ class KeyArgs:
     @android_settings.setter
     def android_settings(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]):
         pulumi.set(self, "android_settings", value)
-
-    @property
-    @pulumi.getter(name="createTime")
-    def create_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        The timestamp corresponding to the creation of this Key.
-        """
-        return pulumi.get(self, "create_time")
-
-    @create_time.setter
-    def create_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_time", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -184,7 +168,6 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  android_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  ios_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -200,7 +183,6 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']] android_settings: Settings for keys that can be used by Android apps.
-        :param pulumi.Input[str] create_time: The timestamp corresponding to the creation of this Key.
         :param pulumi.Input[str] display_name: Human-readable display name of this key. Modifiable by user.
         :param pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']] ios_settings: Settings for keys that can be used by iOS apps.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
@@ -234,7 +216,6 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  android_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs']]] = None,
-                 create_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  ios_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -253,7 +234,6 @@ class Key(pulumi.CustomResource):
             __props__ = KeyArgs.__new__(KeyArgs)
 
             __props__.__dict__["android_settings"] = android_settings
-            __props__.__dict__["create_time"] = create_time
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["ios_settings"] = ios_settings
             __props__.__dict__["labels"] = labels
@@ -262,6 +242,7 @@ class Key(pulumi.CustomResource):
             __props__.__dict__["testing_options"] = testing_options
             __props__.__dict__["waf_settings"] = waf_settings
             __props__.__dict__["web_settings"] = web_settings
+            __props__.__dict__["create_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Key, __self__).__init__(
@@ -310,7 +291,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The timestamp corresponding to the creation of this Key.
+        The timestamp corresponding to the creation of this key.
         """
         return pulumi.get(self, "create_time")
 

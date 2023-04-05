@@ -28,6 +28,18 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        [Input("errorCatcherId")]
+        public Input<string>? ErrorCatcherId { get; set; }
+
+        /// <summary>
+        /// Optional. External task type of the task
+        /// </summary>
+        [Input("externalTaskType")]
+        public Input<Pulumi.GoogleNative.Integrations.V1Alpha.GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType>? ExternalTaskType { get; set; }
+
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
         [Input("failurePolicy")]
@@ -68,6 +80,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
             get => _parameters ?? (_parameters = new InputMap<string>());
             set => _parameters = value;
         }
+
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        [Input("position")]
+        public Input<Inputs.GoogleCloudIntegrationsV1alphaCoordinateArgs>? Position { get; set; }
 
         /// <summary>
         /// Optional. Determines what action to take upon successful task completion.

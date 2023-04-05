@@ -16,6 +16,8 @@ import (
 type Node struct {
 	pulumi.CustomResourceState
 
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig AcceleratorConfigResponseOutput `pulumi:"acceleratorConfig"`
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringOutput `pulumi:"acceleratorType"`
 	// The API version that created this Node.
@@ -112,6 +114,8 @@ func (NodeState) ElementType() reflect.Type {
 }
 
 type nodeArgs struct {
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig *AcceleratorConfig `pulumi:"acceleratorConfig"`
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
@@ -146,6 +150,8 @@ type nodeArgs struct {
 
 // The set of arguments for constructing a Node resource.
 type NodeArgs struct {
+	// The AccleratorConfig for the TPU Node.
+	AcceleratorConfig AcceleratorConfigPtrInput
 	// The type of hardware accelerators associated with this node.
 	AcceleratorType pulumi.StringInput
 	// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
@@ -213,6 +219,11 @@ func (o NodeOutput) ToNodeOutput() NodeOutput {
 
 func (o NodeOutput) ToNodeOutputWithContext(ctx context.Context) NodeOutput {
 	return o
+}
+
+// The AccleratorConfig for the TPU Node.
+func (o NodeOutput) AcceleratorConfig() AcceleratorConfigResponseOutput {
+	return o.ApplyT(func(v *Node) AcceleratorConfigResponseOutput { return v.AcceleratorConfig }).(AcceleratorConfigResponseOutput)
 }
 
 // The type of hardware accelerators associated with this node.

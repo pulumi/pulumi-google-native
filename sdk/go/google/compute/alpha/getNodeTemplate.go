@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified node template. Gets a list of available node templates by making a list() request.
+// Returns the specified node template.
 func LookupNodeTemplate(ctx *pulumi.Context, args *LookupNodeTemplateArgs, opts ...pulumi.InvokeOption) (*LookupNodeTemplateResult, error) {
 	var rv LookupNodeTemplateResult
 	err := ctx.Invoke("google-native:compute/alpha:getNodeTemplate", args, &rv, opts...)
@@ -43,7 +43,7 @@ type LookupNodeTemplateResult struct {
 	NodeAffinityLabels map[string]string `pulumi:"nodeAffinityLabels"`
 	// The node type to use for nodes group that are created from this template.
 	NodeType string `pulumi:"nodeType"`
-	// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+	// Do not use. Instead, use the node_type property.
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityResponse `pulumi:"nodeTypeFlexibility"`
 	// The name of the region where the node template resides, such as us-central1.
 	Region string `pulumi:"region"`
@@ -139,7 +139,7 @@ func (o LookupNodeTemplateResultOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeTemplateResult) string { return v.NodeType }).(pulumi.StringOutput)
 }
 
-// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+// Do not use. Instead, use the node_type property.
 func (o LookupNodeTemplateResultOutput) NodeTypeFlexibility() NodeTemplateNodeTypeFlexibilityResponseOutput {
 	return o.ApplyT(func(v LookupNodeTemplateResult) NodeTemplateNodeTypeFlexibilityResponse { return v.NodeTypeFlexibility }).(NodeTemplateNodeTypeFlexibilityResponseOutput)
 }

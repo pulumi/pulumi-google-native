@@ -21,7 +21,7 @@ type Evaluation struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the Evaluation
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. Id of the requesting object If auto-generating Id server-side, remove this field and evaluation_id from the method_signature of Create RPC
+	// Required. Id of the requesting object
 	EvaluationId pulumi.StringOutput `pulumi:"evaluationId"`
 	// Labels as key value pairs
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
@@ -29,7 +29,7 @@ type Evaluation struct {
 	// name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// annotations as key value pairs
 	ResourceFilter ResourceFilterResponseOutput `pulumi:"resourceFilter"`
@@ -93,7 +93,7 @@ func (EvaluationState) ElementType() reflect.Type {
 type evaluationArgs struct {
 	// Description of the Evaluation
 	Description *string `pulumi:"description"`
-	// Required. Id of the requesting object If auto-generating Id server-side, remove this field and evaluation_id from the method_signature of Create RPC
+	// Required. Id of the requesting object
 	EvaluationId string `pulumi:"evaluationId"`
 	// Labels as key value pairs
 	Labels   map[string]string `pulumi:"labels"`
@@ -101,7 +101,7 @@ type evaluationArgs struct {
 	// name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// annotations as key value pairs
 	ResourceFilter *ResourceFilter `pulumi:"resourceFilter"`
@@ -113,7 +113,7 @@ type evaluationArgs struct {
 type EvaluationArgs struct {
 	// Description of the Evaluation
 	Description pulumi.StringPtrInput
-	// Required. Id of the requesting object If auto-generating Id server-side, remove this field and evaluation_id from the method_signature of Create RPC
+	// Required. Id of the requesting object
 	EvaluationId pulumi.StringInput
 	// Labels as key value pairs
 	Labels   pulumi.StringMapInput
@@ -121,7 +121,7 @@ type EvaluationArgs struct {
 	// name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// annotations as key value pairs
 	ResourceFilter ResourceFilterPtrInput
@@ -176,7 +176,7 @@ func (o EvaluationOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Required. Id of the requesting object If auto-generating Id server-side, remove this field and evaluation_id from the method_signature of Create RPC
+// Required. Id of the requesting object
 func (o EvaluationOutput) EvaluationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.EvaluationId }).(pulumi.StringOutput)
 }
@@ -199,7 +199,7 @@ func (o EvaluationOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o EvaluationOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Evaluation) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

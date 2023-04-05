@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, business_context=None, cloud_bigtable_system_spec=None, data_source=None, data_source_connection_spec=None, database_table_spec=None, description=None, display_name=None, fileset_spec=None, fully_qualified_name=None, gcs_fileset_spec=None, integrated_system=None, labels=None, linked_resource=None, looker_system_spec=None, name=None, personal_details=None, routine_spec=None, schema=None, service_spec=None, source_system_timestamps=None, sql_database_system_spec=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -29,6 +29,9 @@ class GetEntryResult:
         if business_context and not isinstance(business_context, dict):
             raise TypeError("Expected argument 'business_context' to be a dict")
         pulumi.set(__self__, "business_context", business_context)
+        if cloud_bigtable_system_spec and not isinstance(cloud_bigtable_system_spec, dict):
+            raise TypeError("Expected argument 'cloud_bigtable_system_spec' to be a dict")
+        pulumi.set(__self__, "cloud_bigtable_system_spec", cloud_bigtable_system_spec)
         if data_source and not isinstance(data_source, dict):
             raise TypeError("Expected argument 'data_source' to be a dict")
         pulumi.set(__self__, "data_source", data_source)
@@ -77,6 +80,9 @@ class GetEntryResult:
         if schema and not isinstance(schema, dict):
             raise TypeError("Expected argument 'schema' to be a dict")
         pulumi.set(__self__, "schema", schema)
+        if service_spec and not isinstance(service_spec, dict):
+            raise TypeError("Expected argument 'service_spec' to be a dict")
+        pulumi.set(__self__, "service_spec", service_spec)
         if source_system_timestamps and not isinstance(source_system_timestamps, dict):
             raise TypeError("Expected argument 'source_system_timestamps' to be a dict")
         pulumi.set(__self__, "source_system_timestamps", source_system_timestamps)
@@ -119,6 +125,14 @@ class GetEntryResult:
         Business Context of the entry. Not supported for BigQuery datasets
         """
         return pulumi.get(self, "business_context")
+
+    @property
+    @pulumi.getter(name="cloudBigtableSystemSpec")
+    def cloud_bigtable_system_spec(self) -> 'outputs.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse':
+        """
+        Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        """
+        return pulumi.get(self, "cloud_bigtable_system_spec")
 
     @property
     @pulumi.getter(name="dataSource")
@@ -249,6 +263,14 @@ class GetEntryResult:
         return pulumi.get(self, "schema")
 
     @property
+    @pulumi.getter(name="serviceSpec")
+    def service_spec(self) -> 'outputs.GoogleCloudDatacatalogV1ServiceSpecResponse':
+        """
+        Specification that applies to a Service resource.
+        """
+        return pulumi.get(self, "service_spec")
+
+    @property
     @pulumi.getter(name="sourceSystemTimestamps")
     def source_system_timestamps(self) -> 'outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse':
         """
@@ -306,6 +328,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             bigquery_date_sharded_spec=self.bigquery_date_sharded_spec,
             bigquery_table_spec=self.bigquery_table_spec,
             business_context=self.business_context,
+            cloud_bigtable_system_spec=self.cloud_bigtable_system_spec,
             data_source=self.data_source,
             data_source_connection_spec=self.data_source_connection_spec,
             database_table_spec=self.database_table_spec,
@@ -322,6 +345,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             personal_details=self.personal_details,
             routine_spec=self.routine_spec,
             schema=self.schema,
+            service_spec=self.service_spec,
             source_system_timestamps=self.source_system_timestamps,
             sql_database_system_spec=self.sql_database_system_spec,
             type=self.type,
@@ -350,6 +374,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         bigquery_date_sharded_spec=__ret__.bigquery_date_sharded_spec,
         bigquery_table_spec=__ret__.bigquery_table_spec,
         business_context=__ret__.business_context,
+        cloud_bigtable_system_spec=__ret__.cloud_bigtable_system_spec,
         data_source=__ret__.data_source,
         data_source_connection_spec=__ret__.data_source_connection_spec,
         database_table_spec=__ret__.database_table_spec,
@@ -366,6 +391,7 @@ def get_entry(entry_group_id: Optional[str] = None,
         personal_details=__ret__.personal_details,
         routine_spec=__ret__.routine_spec,
         schema=__ret__.schema,
+        service_spec=__ret__.service_spec,
         source_system_timestamps=__ret__.source_system_timestamps,
         sql_database_system_spec=__ret__.sql_database_system_spec,
         type=__ret__.type,

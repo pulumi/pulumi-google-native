@@ -18,6 +18,7 @@ __all__ = [
     'SchemaConfigSchemaType',
     'SchemaPackageSchematizedParsingType',
     'SchemaPackageUnexpectedSegmentHandling',
+    'TimePartitioningType',
     'TypePrimitive',
 ]
 
@@ -301,6 +302,32 @@ class SchemaPackageUnexpectedSegmentHandling(str, Enum):
     PARSE = "PARSE"
     """
     Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES.
+    """
+
+
+class TimePartitioningType(str, Enum):
+    """
+    Type of partitioning.
+    """
+    PARTITION_TYPE_UNSPECIFIED = "PARTITION_TYPE_UNSPECIFIED"
+    """
+    Default unknown time.
+    """
+    HOUR = "HOUR"
+    """
+    Data partitioned by hour.
+    """
+    DAY = "DAY"
+    """
+    Data partitioned by day.
+    """
+    MONTH = "MONTH"
+    """
+    Data partitioned by month.
+    """
+    YEAR = "YEAR"
+    """
+    Data partitioned by year.
     """
 
 

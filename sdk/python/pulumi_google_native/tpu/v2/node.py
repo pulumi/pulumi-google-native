@@ -19,6 +19,7 @@ class NodeArgs:
     def __init__(__self__, *,
                  accelerator_type: pulumi.Input[str],
                  runtime_version: pulumi.Input[str],
+                 accelerator_config: Optional[pulumi.Input['AcceleratorConfigArgs']] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -37,6 +38,7 @@ class NodeArgs:
         The set of arguments for constructing a Node resource.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
+        :param pulumi.Input['AcceleratorConfigArgs'] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] data_disks: The additional data disks for the Node.
         :param pulumi.Input[str] description: The user-supplied description of the TPU. Maximum of 512 characters.
@@ -52,6 +54,8 @@ class NodeArgs:
         """
         pulumi.set(__self__, "accelerator_type", accelerator_type)
         pulumi.set(__self__, "runtime_version", runtime_version)
+        if accelerator_config is not None:
+            pulumi.set(__self__, "accelerator_config", accelerator_config)
         if cidr_block is not None:
             pulumi.set(__self__, "cidr_block", cidr_block)
         if data_disks is not None:
@@ -104,6 +108,18 @@ class NodeArgs:
     @runtime_version.setter
     def runtime_version(self, value: pulumi.Input[str]):
         pulumi.set(self, "runtime_version", value)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> Optional[pulumi.Input['AcceleratorConfigArgs']]:
+        """
+        The AccleratorConfig for the TPU Node.
+        """
+        return pulumi.get(self, "accelerator_config")
+
+    @accelerator_config.setter
+    def accelerator_config(self, value: Optional[pulumi.Input['AcceleratorConfigArgs']]):
+        pulumi.set(self, "accelerator_config", value)
 
     @property
     @pulumi.getter(name="cidrBlock")
@@ -273,6 +289,7 @@ class Node(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
@@ -296,6 +313,7 @@ class Node(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']] accelerator_config: The AccleratorConfig for the TPU Node.
         :param pulumi.Input[str] accelerator_type: The type of hardware accelerators associated with this node.
         :param pulumi.Input[str] cidr_block: The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the provided network is peered with another network that is using that CIDR block.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] data_disks: The additional data disks for the Node.
@@ -336,6 +354,7 @@ class Node(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 accelerator_config: Optional[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]] = None,
                  accelerator_type: Optional[pulumi.Input[str]] = None,
                  cidr_block: Optional[pulumi.Input[str]] = None,
                  data_disks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]]] = None,
@@ -361,6 +380,7 @@ class Node(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NodeArgs.__new__(NodeArgs)
 
+            __props__.__dict__["accelerator_config"] = accelerator_config
             if accelerator_type is None and not opts.urn:
                 raise TypeError("Missing required property 'accelerator_type'")
             __props__.__dict__["accelerator_type"] = accelerator_type
@@ -412,6 +432,7 @@ class Node(pulumi.CustomResource):
 
         __props__ = NodeArgs.__new__(NodeArgs)
 
+        __props__.__dict__["accelerator_config"] = None
         __props__.__dict__["accelerator_type"] = None
         __props__.__dict__["api_version"] = None
         __props__.__dict__["cidr_block"] = None
@@ -436,6 +457,14 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["symptoms"] = None
         __props__.__dict__["tags"] = None
         return Node(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="acceleratorConfig")
+    def accelerator_config(self) -> pulumi.Output['outputs.AcceleratorConfigResponse']:
+        """
+        The AccleratorConfig for the TPU Node.
+        """
+        return pulumi.get(self, "accelerator_config")
 
     @property
     @pulumi.getter(name="acceleratorType")

@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Datastream.V1.Inputs
 {
 
+    /// <summary>
+    /// BigQuery destination configuration
+    /// </summary>
     public sealed class BigQueryDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>

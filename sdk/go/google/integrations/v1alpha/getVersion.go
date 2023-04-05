@@ -35,6 +35,8 @@ type LookupVersionResult struct {
 	DatabasePersistencePolicy string `pulumi:"databasePersistencePolicy"`
 	// Optional. The integration description.
 	Description string `pulumi:"description"`
+	// Optional. Error Catch Task configuration for the integration. It's optional.
+	ErrorCatcherConfigs []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse `pulumi:"errorCatcherConfigs"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 	IntegrationParameters []GoogleCloudIntegrationsV1alphaIntegrationParameterResponse `pulumi:"integrationParameters"`
 	// Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
@@ -49,6 +51,8 @@ type LookupVersionResult struct {
 	Origin string `pulumi:"origin"`
 	// Optional. The id of the template which was used to create this integration_version.
 	ParentTemplateId string `pulumi:"parentTemplateId"`
+	// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+	RunAsServiceAccount string `pulumi:"runAsServiceAccount"`
 	// Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.
 	SnapshotNumber string `pulumi:"snapshotNumber"`
 	// User should not set it as an input.
@@ -125,6 +129,13 @@ func (o LookupVersionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Optional. Error Catch Task configuration for the integration. It's optional.
+func (o LookupVersionResultOutput) ErrorCatcherConfigs() GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupVersionResult) []GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse {
+		return v.ErrorCatcherConfigs
+	}).(GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponseArrayOutput)
+}
+
 // Optional. Parameters that are expected to be passed to the integration when an event is triggered. This consists of all the parameters that are expected in the integration execution. This gives the user the ability to provide default values, add information like PII and also provide data types of each parameter.
 func (o LookupVersionResultOutput) IntegrationParameters() GoogleCloudIntegrationsV1alphaIntegrationParameterResponseArrayOutput {
 	return o.ApplyT(func(v LookupVersionResult) []GoogleCloudIntegrationsV1alphaIntegrationParameterResponse {
@@ -162,6 +173,11 @@ func (o LookupVersionResultOutput) Origin() pulumi.StringOutput {
 // Optional. The id of the template which was used to create this integration_version.
 func (o LookupVersionResultOutput) ParentTemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.ParentTemplateId }).(pulumi.StringOutput)
+}
+
+// Optional. The run-as service account email, if set and auth config is not configured, that will be used to generate auth token to be used in Connector task, Rest caller task and Cloud function task.
+func (o LookupVersionResultOutput) RunAsServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVersionResult) string { return v.RunAsServiceAccount }).(pulumi.StringOutput)
 }
 
 // Optional. An increasing sequence that is set when a new snapshot is created. The last created snapshot can be identified by [workflow_name, org_id latest(snapshot_number)]. However, last created snapshot need not be same as the HEAD. So users should always use "HEAD" tag to identify the head.

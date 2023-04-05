@@ -76,6 +76,70 @@ export const GoogleCloudRetailV2SearchRequestPersonalizationSpecMode = {
  */
 export type GoogleCloudRetailV2SearchRequestPersonalizationSpecMode = (typeof GoogleCloudRetailV2SearchRequestPersonalizationSpecMode)[keyof typeof GoogleCloudRetailV2SearchRequestPersonalizationSpecMode];
 
+export const ModelFilteringOption = {
+    /**
+     * Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.
+     */
+    RecommendationsFilteringOptionUnspecified: "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED",
+    /**
+     * Recommendation filtering is disabled.
+     */
+    RecommendationsFilteringDisabled: "RECOMMENDATIONS_FILTERING_DISABLED",
+    /**
+     * Recommendation filtering is enabled.
+     */
+    RecommendationsFilteringEnabled: "RECOMMENDATIONS_FILTERING_ENABLED",
+} as const;
+
+/**
+ * Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+ */
+export type ModelFilteringOption = (typeof ModelFilteringOption)[keyof typeof ModelFilteringOption];
+
+export const ModelPeriodicTuningState = {
+    /**
+     * Unspecified default value, should never be explicitly set.
+     */
+    PeriodicTuningStateUnspecified: "PERIODIC_TUNING_STATE_UNSPECIFIED",
+    /**
+     * The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.
+     */
+    PeriodicTuningDisabled: "PERIODIC_TUNING_DISABLED",
+    /**
+     * The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.
+     */
+    AllTuningDisabled: "ALL_TUNING_DISABLED",
+    /**
+     * The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method.
+     */
+    PeriodicTuningEnabled: "PERIODIC_TUNING_ENABLED",
+} as const;
+
+/**
+ * Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+ */
+export type ModelPeriodicTuningState = (typeof ModelPeriodicTuningState)[keyof typeof ModelPeriodicTuningState];
+
+export const ModelTrainingState = {
+    /**
+     * Unspecified training state.
+     */
+    TrainingStateUnspecified: "TRAINING_STATE_UNSPECIFIED",
+    /**
+     * The model training is paused.
+     */
+    Paused: "PAUSED",
+    /**
+     * The model is training.
+     */
+    Training: "TRAINING",
+} as const;
+
+/**
+ * Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
+ */
+export type ModelTrainingState = (typeof ModelTrainingState)[keyof typeof ModelTrainingState];
+
 export const ProductAvailability = {
     /**
      * Default product availability. Default to Availability.IN_STOCK if unset.

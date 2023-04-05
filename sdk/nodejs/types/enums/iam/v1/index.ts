@@ -26,6 +26,30 @@ export const AuditLogConfigLogType = {
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
 
+export const KeyDataKeySpec = {
+    /**
+     * No key specification specified.
+     */
+    KeySpecUnspecified: "KEY_SPEC_UNSPECIFIED",
+    /**
+     * A 2048 bit RSA key.
+     */
+    Rsa2048: "RSA_2048",
+    /**
+     * A 3072 bit RSA key.
+     */
+    Rsa3072: "RSA_3072",
+    /**
+     * A 4096 bit RSA key.
+     */
+    Rsa4096: "RSA_4096",
+} as const;
+
+/**
+ * Immutable. The specifications for the key.
+ */
+export type KeyDataKeySpec = (typeof KeyDataKeySpec)[keyof typeof KeyDataKeySpec];
+
 export const KeyKeyAlgorithm = {
     /**
      * An unspecified key algorithm.
@@ -129,3 +153,35 @@ export const RoleStage = {
  * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
  */
 export type RoleStage = (typeof RoleStage)[keyof typeof RoleStage];
+
+export const WorkforcePoolKeyUse = {
+    /**
+     * KeyUse unspecified.
+     */
+    KeyUseUnspecified: "KEY_USE_UNSPECIFIED",
+    /**
+     * The key is used for encryption.
+     */
+    Encryption: "ENCRYPTION",
+} as const;
+
+/**
+ * Immutable. The purpose of the key.
+ */
+export type WorkforcePoolKeyUse = (typeof WorkforcePoolKeyUse)[keyof typeof WorkforcePoolKeyUse];
+
+export const WorkloadIdentityPoolKeyUse = {
+    /**
+     * The key use is not known.
+     */
+    KeyUseUnspecified: "KEY_USE_UNSPECIFIED",
+    /**
+     * The public key is used for encryption purposes.
+     */
+    Encryption: "ENCRYPTION",
+} as const;
+
+/**
+ * Immutable. The purpose of the key.
+ */
+export type WorkloadIdentityPoolKeyUse = (typeof WorkloadIdentityPoolKeyUse)[keyof typeof WorkloadIdentityPoolKeyUse];

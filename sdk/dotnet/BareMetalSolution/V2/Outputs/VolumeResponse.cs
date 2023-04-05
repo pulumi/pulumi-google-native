@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
     public sealed class VolumeResponse
     {
         /// <summary>
+        /// Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
+        /// </summary>
+        public readonly bool Attached;
+        /// <summary>
         /// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
         /// </summary>
         public readonly string AutoGrownSizeGib;
@@ -32,6 +36,14 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
         /// </summary>
         public readonly string EmergencySizeGib;
+        /// <summary>
+        /// Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
+        /// </summary>
+        public readonly string ExpireTime;
+        /// <summary>
+        /// Instances this Volume is attached to. This field is set only in Get requests.
+        /// </summary>
+        public readonly ImmutableArray<string> Instances;
         /// <summary>
         /// Labels as key value pairs.
         /// </summary>
@@ -107,6 +119,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
         [OutputConstructor]
         private VolumeResponse(
+            bool attached,
+
             string autoGrownSizeGib,
 
             bool bootVolume,
@@ -114,6 +128,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             string currentSizeGib,
 
             string emergencySizeGib,
+
+            string expireTime,
+
+            ImmutableArray<string> instances,
 
             ImmutableDictionary<string, string> labels,
 
@@ -151,10 +169,13 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string workloadProfile)
         {
+            Attached = attached;
             AutoGrownSizeGib = autoGrownSizeGib;
             BootVolume = bootVolume;
             CurrentSizeGib = currentSizeGib;
             EmergencySizeGib = emergencySizeGib;
+            ExpireTime = expireTime;
+            Instances = instances;
             Labels = labels;
             MaxSizeGib = maxSizeGib;
             Name = name;

@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.DLP.V2
     public partial class DlpJob : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Events that should occur after the job has completed.
+        /// </summary>
+        [Output("actionDetails")]
+        public Output<ImmutableArray<Outputs.GooglePrivacyDlpV2ActionDetailsResponse>> ActionDetails { get; private set; } = null!;
+
+        /// <summary>
         /// Time when the job was created.
         /// </summary>
         [Output("createTime")]

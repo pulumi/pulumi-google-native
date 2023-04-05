@@ -352,7 +352,7 @@ export const SchemaConfigSchemaType = {
      */
     SchemaTypeUnspecified: "SCHEMA_TYPE_UNSPECIFIED",
     /**
-     * A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
+     * A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification. This type cannot be used for streaming to BigQuery.
      */
     Lossless: "LOSSLESS",
     /**

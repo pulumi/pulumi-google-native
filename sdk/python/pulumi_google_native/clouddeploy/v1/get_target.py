@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetResult:
-    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, multi_target=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -44,6 +44,9 @@ class GetTargetResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if multi_target and not isinstance(multi_target, dict):
+            raise TypeError("Expected argument 'multi_target' to be a dict")
+        pulumi.set(__self__, "multi_target", multi_target)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -128,6 +131,14 @@ class GetTargetResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="multiTarget")
+    def multi_target(self) -> 'outputs.MultiTargetResponse':
+        """
+        Information specifying a multiTarget.
+        """
+        return pulumi.get(self, "multi_target")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
@@ -190,6 +201,7 @@ class AwaitableGetTargetResult(GetTargetResult):
             execution_configs=self.execution_configs,
             gke=self.gke,
             labels=self.labels,
+            multi_target=self.multi_target,
             name=self.name,
             require_approval=self.require_approval,
             run=self.run,
@@ -221,6 +233,7 @@ def get_target(location: Optional[str] = None,
         execution_configs=__ret__.execution_configs,
         gke=__ret__.gke,
         labels=__ret__.labels,
+        multi_target=__ret__.multi_target,
         name=__ret__.name,
         require_approval=__ret__.require_approval,
         run=__ret__.run,

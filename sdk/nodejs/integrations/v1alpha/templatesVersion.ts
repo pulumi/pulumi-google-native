@@ -52,6 +52,10 @@ export class TemplatesVersion extends pulumi.CustomResource {
      * Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+     */
+    public readonly errorCatcherConfigs!: pulumi.Output<outputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse[]>;
     public readonly integrationtemplateId!: pulumi.Output<string>;
     /**
      * Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.
@@ -120,6 +124,7 @@ export class TemplatesVersion extends pulumi.CustomResource {
             }
             resourceInputs["databasePersistencePolicy"] = args ? args.databasePersistencePolicy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["errorCatcherConfigs"] = args ? args.errorCatcherConfigs : undefined;
             resourceInputs["integrationtemplateId"] = args ? args.integrationtemplateId : undefined;
             resourceInputs["lastModifierEmail"] = args ? args.lastModifierEmail : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -140,6 +145,7 @@ export class TemplatesVersion extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databasePersistencePolicy"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["errorCatcherConfigs"] = undefined /*out*/;
             resourceInputs["integrationtemplateId"] = undefined /*out*/;
             resourceInputs["lastModifierEmail"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -175,6 +181,10 @@ export interface TemplatesVersionArgs {
      * Optional. The templateversion description. Permitted format is alphanumeric with underscores and no spaces.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+     */
+    errorCatcherConfigs?: pulumi.Input<pulumi.Input<inputs.integrations.v1alpha.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>[]>;
     integrationtemplateId: pulumi.Input<string>;
     /**
      * Optional. The last modifier's email address. Generated based on the End User Credentials/LOAS role of the user making the call.

@@ -25,7 +25,7 @@ class DatabaseArgs:
                  type: Optional[pulumi.Input['DatabaseType']] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         :param pulumi.Input['DatabaseAppEngineIntegrationMode'] app_engine_integration_mode: The App Engine integration mode to use for this database.
         :param pulumi.Input['DatabaseConcurrencyMode'] concurrency_mode: The concurrency control mode to use for this database.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -53,7 +53,7 @@ class DatabaseArgs:
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Input[str]:
         """
-        Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         """
         return pulumi.get(self, "database_id")
 
@@ -164,7 +164,7 @@ class Database(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input['DatabaseAppEngineIntegrationMode'] app_engine_integration_mode: The App Engine integration mode to use for this database.
         :param pulumi.Input['DatabaseConcurrencyMode'] concurrency_mode: The concurrency control mode to use for this database.
-        :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        :param pulumi.Input[str] database_id: Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location of the database. Available databases are listed at https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The resource name of the Database. Format: `projects/{project}/databases/{database}`
@@ -221,7 +221,10 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["type"] = type
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["key_prefix"] = None
+            __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["database_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Database, __self__).__init__(
@@ -248,6 +251,7 @@ class Database(pulumi.CustomResource):
 
         __props__.__dict__["app_engine_integration_mode"] = None
         __props__.__dict__["concurrency_mode"] = None
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["database_id"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["key_prefix"] = None
@@ -255,6 +259,8 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["type"] = None
+        __props__.__dict__["uid"] = None
+        __props__.__dict__["update_time"] = None
         return Database(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -274,10 +280,18 @@ class Database(pulumi.CustomResource):
         return pulumi.get(self, "concurrency_mode")
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp at which this database was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @property
     @pulumi.getter(name="databaseId")
     def database_id(self) -> pulumi.Output[str]:
         """
-        Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
         """
         return pulumi.get(self, "database_id")
 
@@ -325,4 +339,20 @@ class Database(pulumi.CustomResource):
         The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        The system-generated UUID4 for this Database.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+        """
+        return pulumi.get(self, "update_time")
 

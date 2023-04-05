@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTableResult:
-    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
+    def __init__(__self__, clone_definition=None, clustering=None, creation_time=None, default_collation=None, default_rounding_mode=None, description=None, encryption_configuration=None, etag=None, expiration_time=None, external_data_configuration=None, friendly_name=None, kind=None, labels=None, last_modified_time=None, location=None, materialized_view=None, max_staleness=None, model=None, num_active_logical_bytes=None, num_active_physical_bytes=None, num_bytes=None, num_long_term_bytes=None, num_long_term_logical_bytes=None, num_long_term_physical_bytes=None, num_partitions=None, num_physical_bytes=None, num_rows=None, num_time_travel_physical_bytes=None, num_total_logical_bytes=None, num_total_physical_bytes=None, range_partitioning=None, require_partition_filter=None, schema=None, self_link=None, snapshot_definition=None, streaming_buffer=None, table_reference=None, time_partitioning=None, type=None, view=None):
         if clone_definition and not isinstance(clone_definition, dict):
             raise TypeError("Expected argument 'clone_definition' to be a dict")
         pulumi.set(__self__, "clone_definition", clone_definition)
@@ -32,6 +32,9 @@ class GetTableResult:
         if default_collation and not isinstance(default_collation, str):
             raise TypeError("Expected argument 'default_collation' to be a str")
         pulumi.set(__self__, "default_collation", default_collation)
+        if default_rounding_mode and not isinstance(default_rounding_mode, str):
+            raise TypeError("Expected argument 'default_rounding_mode' to be a str")
+        pulumi.set(__self__, "default_rounding_mode", default_rounding_mode)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -169,6 +172,14 @@ class GetTableResult:
         The default collation of the table.
         """
         return pulumi.get(self, "default_collation")
+
+    @property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> str:
+        """
+        The default rounding mode of the table.
+        """
+        return pulumi.get(self, "default_rounding_mode")
 
     @property
     @pulumi.getter
@@ -461,6 +472,7 @@ class AwaitableGetTableResult(GetTableResult):
             clustering=self.clustering,
             creation_time=self.creation_time,
             default_collation=self.default_collation,
+            default_rounding_mode=self.default_rounding_mode,
             description=self.description,
             encryption_configuration=self.encryption_configuration,
             etag=self.etag,
@@ -521,6 +533,7 @@ def get_table(dataset_id: Optional[str] = None,
         clustering=__ret__.clustering,
         creation_time=__ret__.creation_time,
         default_collation=__ret__.default_collation,
+        default_rounding_mode=__ret__.default_rounding_mode,
         description=__ret__.description,
         encryption_configuration=__ret__.encryption_configuration,
         etag=__ret__.etag,

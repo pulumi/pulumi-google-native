@@ -19,7 +19,9 @@ type Database struct {
 	AppEngineIntegrationMode pulumi.StringOutput `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode pulumi.StringOutput `pulumi:"concurrencyMode"`
-	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+	// The timestamp at which this database was created.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 	DatabaseId pulumi.StringOutput `pulumi:"databaseId"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -32,6 +34,10 @@ type Database struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type pulumi.StringOutput `pulumi:"type"`
+	// The system-generated UUID4 for this Database.
+	Uid pulumi.StringOutput `pulumi:"uid"`
+	// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
 // NewDatabase registers a new resource with the given unique name, arguments, and options.
@@ -85,7 +91,7 @@ type databaseArgs struct {
 	AppEngineIntegrationMode *DatabaseAppEngineIntegrationMode `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode *DatabaseConcurrencyMode `pulumi:"concurrencyMode"`
-	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 	DatabaseId string `pulumi:"databaseId"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
@@ -104,7 +110,7 @@ type DatabaseArgs struct {
 	AppEngineIntegrationMode DatabaseAppEngineIntegrationModePtrInput
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode DatabaseConcurrencyModePtrInput
-	// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+	// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 	DatabaseId pulumi.StringInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
@@ -164,7 +170,12 @@ func (o DatabaseOutput) ConcurrencyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.ConcurrencyMode }).(pulumi.StringOutput)
 }
 
-// Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+// The timestamp at which this database was created.
+func (o DatabaseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
 func (o DatabaseOutput) DatabaseId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.DatabaseId }).(pulumi.StringOutput)
 }
@@ -196,6 +207,16 @@ func (o DatabaseOutput) Project() pulumi.StringOutput {
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 func (o DatabaseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The system-generated UUID4 for this Database.
+func (o DatabaseOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+func (o DatabaseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

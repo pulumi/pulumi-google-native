@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.TPU.V2
     public partial class Node : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The AccleratorConfig for the TPU Node.
+        /// </summary>
+        [Output("acceleratorConfig")]
+        public Output<Outputs.AcceleratorConfigResponse> AcceleratorConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The type of hardware accelerators associated with this node.
         /// </summary>
         [Output("acceleratorType")]
@@ -198,6 +204,12 @@ namespace Pulumi.GoogleNative.TPU.V2
 
     public sealed class NodeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The AccleratorConfig for the TPU Node.
+        /// </summary>
+        [Input("acceleratorConfig")]
+        public Input<Inputs.AcceleratorConfigArgs>? AcceleratorConfig { get; set; }
+
         /// <summary>
         /// The type of hardware accelerators associated with this node.
         /// </summary>

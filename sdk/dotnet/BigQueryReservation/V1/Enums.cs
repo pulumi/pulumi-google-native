@@ -21,13 +21,21 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         }
 
         /// <summary>
-        /// Default value, only for legacy reservations and capacity commitments.
+        /// Default value, which will be treated as ENTERPRISE.
         /// </summary>
         public static CapacityCommitmentEdition EditionUnspecified { get; } = new CapacityCommitmentEdition("EDITION_UNSPECIFIED");
+        /// <summary>
+        /// Standard edition.
+        /// </summary>
+        public static CapacityCommitmentEdition Standard { get; } = new CapacityCommitmentEdition("STANDARD");
         /// <summary>
         /// Enterprise edition.
         /// </summary>
         public static CapacityCommitmentEdition Enterprise { get; } = new CapacityCommitmentEdition("ENTERPRISE");
+        /// <summary>
+        /// Enterprise plus edition.
+        /// </summary>
+        public static CapacityCommitmentEdition EnterprisePlus { get; } = new CapacityCommitmentEdition("ENTERPRISE_PLUS");
 
         public static bool operator ==(CapacityCommitmentEdition left, CapacityCommitmentEdition right) => left.Equals(right);
         public static bool operator !=(CapacityCommitmentEdition left, CapacityCommitmentEdition right) => !left.Equals(right);
@@ -66,6 +74,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public static CapacityCommitmentPlan Flex { get; } = new CapacityCommitmentPlan("FLEX");
         /// <summary>
+        /// Same as FLEX, should only be used if flat-rate commitments are still available.
+        /// </summary>
+        public static CapacityCommitmentPlan FlexFlatRate { get; } = new CapacityCommitmentPlan("FLEX_FLAT_RATE");
+        /// <summary>
         /// Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
         /// </summary>
         public static CapacityCommitmentPlan Trial { get; } = new CapacityCommitmentPlan("TRIAL");
@@ -74,9 +86,21 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public static CapacityCommitmentPlan Monthly { get; } = new CapacityCommitmentPlan("MONTHLY");
         /// <summary>
+        /// Same as MONTHLY, should only be used if flat-rate commitments are still available.
+        /// </summary>
+        public static CapacityCommitmentPlan MonthlyFlatRate { get; } = new CapacityCommitmentPlan("MONTHLY_FLAT_RATE");
+        /// <summary>
         /// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
         /// </summary>
         public static CapacityCommitmentPlan Annual { get; } = new CapacityCommitmentPlan("ANNUAL");
+        /// <summary>
+        /// Same as ANNUAL, should only be used if flat-rate commitments are still available.
+        /// </summary>
+        public static CapacityCommitmentPlan AnnualFlatRate { get; } = new CapacityCommitmentPlan("ANNUAL_FLAT_RATE");
+        /// <summary>
+        /// 3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+        /// </summary>
+        public static CapacityCommitmentPlan ThreeYear { get; } = new CapacityCommitmentPlan("THREE_YEAR");
         /// <summary>
         /// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
         /// </summary>
@@ -119,6 +143,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public static CapacityCommitmentRenewalPlan Flex { get; } = new CapacityCommitmentRenewalPlan("FLEX");
         /// <summary>
+        /// Same as FLEX, should only be used if flat-rate commitments are still available.
+        /// </summary>
+        public static CapacityCommitmentRenewalPlan FlexFlatRate { get; } = new CapacityCommitmentRenewalPlan("FLEX_FLAT_RATE");
+        /// <summary>
         /// Trial commitments have a committed period of 182 days after becoming ACTIVE. After that, they are converted to a new commitment based on the `renewal_plan`. Default `renewal_plan` for Trial commitment is Flex so that it can be deleted right after committed period ends.
         /// </summary>
         public static CapacityCommitmentRenewalPlan Trial { get; } = new CapacityCommitmentRenewalPlan("TRIAL");
@@ -127,9 +155,21 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public static CapacityCommitmentRenewalPlan Monthly { get; } = new CapacityCommitmentRenewalPlan("MONTHLY");
         /// <summary>
+        /// Same as MONTHLY, should only be used if flat-rate commitments are still available.
+        /// </summary>
+        public static CapacityCommitmentRenewalPlan MonthlyFlatRate { get; } = new CapacityCommitmentRenewalPlan("MONTHLY_FLAT_RATE");
+        /// <summary>
         /// Annual commitments have a committed period of 365 days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
         /// </summary>
         public static CapacityCommitmentRenewalPlan Annual { get; } = new CapacityCommitmentRenewalPlan("ANNUAL");
+        /// <summary>
+        /// Same as ANNUAL, should only be used if flat-rate commitments are still available.
+        /// </summary>
+        public static CapacityCommitmentRenewalPlan AnnualFlatRate { get; } = new CapacityCommitmentRenewalPlan("ANNUAL_FLAT_RATE");
+        /// <summary>
+        /// 3-year commitments have a committed period of 1095(3 * 365) days after becoming ACTIVE. After that they are converted to a new commitment based on the renewal_plan.
+        /// </summary>
+        public static CapacityCommitmentRenewalPlan ThreeYear { get; } = new CapacityCommitmentRenewalPlan("THREE_YEAR");
         /// <summary>
         /// Should only be used for `renewal_plan` and is only meaningful if edition is specified to values other than EDITION_UNSPECIFIED. Otherwise CreateCapacityCommitmentRequest or UpdateCapacityCommitmentRequest will be rejected with error code `google.rpc.Code.INVALID_ARGUMENT`. If the renewal_plan is NONE, capacity commitment will be removed at the end of its commitment period.
         /// </summary>
@@ -164,13 +204,21 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         }
 
         /// <summary>
-        /// Default value, only for legacy reservations and capacity commitments.
+        /// Default value, which will be treated as ENTERPRISE.
         /// </summary>
         public static ReservationEdition EditionUnspecified { get; } = new ReservationEdition("EDITION_UNSPECIFIED");
+        /// <summary>
+        /// Standard edition.
+        /// </summary>
+        public static ReservationEdition Standard { get; } = new ReservationEdition("STANDARD");
         /// <summary>
         /// Enterprise edition.
         /// </summary>
         public static ReservationEdition Enterprise { get; } = new ReservationEdition("ENTERPRISE");
+        /// <summary>
+        /// Enterprise plus edition.
+        /// </summary>
+        public static ReservationEdition EnterprisePlus { get; } = new ReservationEdition("ENTERPRISE_PLUS");
 
         public static bool operator ==(ReservationEdition left, ReservationEdition right) => left.Equals(right);
         public static bool operator !=(ReservationEdition left, ReservationEdition right) => !left.Equals(right);

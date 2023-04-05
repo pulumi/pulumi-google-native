@@ -21,6 +21,7 @@ __all__ = [
     'GoogleCloudRetailV2betaImageResponse',
     'GoogleCloudRetailV2betaIntervalResponse',
     'GoogleCloudRetailV2betaLocalInventoryResponse',
+    'GoogleCloudRetailV2betaModelServingConfigListResponse',
     'GoogleCloudRetailV2betaPriceInfoPriceRangeResponse',
     'GoogleCloudRetailV2betaPriceInfoResponse',
     'GoogleCloudRetailV2betaProductResponse',
@@ -540,6 +541,45 @@ class GoogleCloudRetailV2betaLocalInventoryResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRetailV2betaModelServingConfigListResponse(dict):
+    """
+    Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "servingConfigIds":
+            suggest = "serving_config_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaModelServingConfigListResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaModelServingConfigListResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaModelServingConfigListResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 serving_config_ids: Sequence[str]):
+        """
+        Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+        :param Sequence[str] serving_config_ids: Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+        """
+        pulumi.set(__self__, "serving_config_ids", serving_config_ids)
+
+    @property
+    @pulumi.getter(name="servingConfigIds")
+    def serving_config_ids(self) -> Sequence[str]:
+        """
+        Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+        """
+        return pulumi.get(self, "serving_config_ids")
+
+
+@pulumi.output_type
 class GoogleCloudRetailV2betaPriceInfoPriceRangeResponse(dict):
     """
     The price range of all variant Product having the same Product.primary_product_id.
@@ -798,7 +838,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         :param str gtin: The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
         :param Sequence['GoogleCloudRetailV2betaImageResponse'] images: Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         :param str language_code: Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
-        :param Sequence['GoogleCloudRetailV2betaLocalInventoryResponse'] local_inventories: A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+        :param Sequence['GoogleCloudRetailV2betaLocalInventoryResponse'] local_inventories: A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         :param Sequence[str] materials: The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
         :param str name: Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
         :param Sequence[str] patterns: The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
@@ -982,7 +1022,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
     @pulumi.getter(name="localInventories")
     def local_inventories(self) -> Sequence['outputs.GoogleCloudRetailV2betaLocalInventoryResponse']:
         """
-        A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+        A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         """
         return pulumi.get(self, "local_inventories")
 
@@ -1785,7 +1825,7 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
         Specifies how a facet is computed.
         :param bool case_insensitive: True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
         :param Sequence[str] contains: Only get facet values that contains the given strings. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "contains" to "Shoe", the "categories" facet will give only "Women > Shoe" and "Men > Shoe". Only supported on textual fields. Maximum is 10.
-        :param Sequence['GoogleCloudRetailV2betaIntervalResponse'] intervals: Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        :param Sequence['GoogleCloudRetailV2betaIntervalResponse'] intervals: For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
         :param str key: Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
         :param str order_by: The order in which SearchResponse.Facet.values are returned. Allowed values are: * "count desc", which means order by SearchResponse.Facet.values.count descending. * "value desc", which means order by SearchResponse.Facet.values.value descending. Only applies to textual facets. If not set, textual values are sorted in [natural order](https://en.wikipedia.org/wiki/Natural_sort_order); numerical intervals are sorted in the order given by FacetSpec.FacetKey.intervals; FulfillmentInfo.place_ids are sorted in the order given by FacetSpec.FacetKey.restricted_values.
         :param Sequence[str] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
@@ -1823,7 +1863,7 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
     @pulumi.getter
     def intervals(self) -> Sequence['outputs.GoogleCloudRetailV2betaIntervalResponse']:
         """
-        Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
         """
         return pulumi.get(self, "intervals")
 

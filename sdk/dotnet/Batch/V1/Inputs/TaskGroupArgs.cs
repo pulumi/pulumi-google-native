@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
     public sealed class TaskGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+        /// Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         /// </summary>
         [Input("parallelism")]
         public Input<string>? Parallelism { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<bool>? RequireHostsFile { get; set; }
 
         /// <summary>
-        /// Number of Tasks in the TaskGroup. default is 1
+        /// Number of Tasks in the TaskGroup. Default is 1.
         /// </summary>
         [Input("taskCount")]
         public Input<string>? TaskCount { get; set; }

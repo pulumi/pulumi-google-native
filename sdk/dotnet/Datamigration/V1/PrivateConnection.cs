@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The resource's name.
+        /// The name of the resource.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<bool?> SkipValidation { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the Private Connection.
+        /// The state of the private connection.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// VPC Peering Config.
+        /// VPC peering configuration.
         /// </summary>
         [Output("vpcPeeringConfig")]
         public Output<Outputs.VpcPeeringConfigResponse> VpcPeeringConfig { get; private set; } = null!;
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// The resource's name.
+        /// The name of the resource.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<bool>? SkipValidation { get; set; }
 
         /// <summary>
-        /// VPC Peering Config.
+        /// VPC peering configuration.
         /// </summary>
         [Input("vpcPeeringConfig")]
         public Input<Inputs.VpcPeeringConfigArgs>? VpcPeeringConfig { get; set; }

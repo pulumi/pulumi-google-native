@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+// Returns the specified instance template.
 func LookupInstanceTemplate(ctx *pulumi.Context, args *LookupInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupInstanceTemplateResult, error) {
 	var rv LookupInstanceTemplateResult
 	err := ctx.Invoke("google-native:compute/alpha:getInstanceTemplate", args, &rv, opts...)

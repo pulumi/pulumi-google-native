@@ -29,7 +29,11 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly Outputs.OracleRdbmsResponse IncludeObjects;
         /// <summary>
-        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+        /// </summary>
+        public readonly int MaxConcurrentBackfillTasks;
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         /// </summary>
         public readonly int MaxConcurrentCdcTasks;
         /// <summary>
@@ -45,6 +49,8 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.OracleRdbmsResponse includeObjects,
 
+            int maxConcurrentBackfillTasks,
+
             int maxConcurrentCdcTasks,
 
             Outputs.StreamLargeObjectsResponse streamLargeObjects)
@@ -52,6 +58,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
             DropLargeObjects = dropLargeObjects;
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
+            MaxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
             StreamLargeObjects = streamLargeObjects;
         }

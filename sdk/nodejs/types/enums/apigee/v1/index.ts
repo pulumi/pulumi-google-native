@@ -364,7 +364,7 @@ export const TargetServerProtocol = {
      */
     Http: "HTTP",
     /**
-     * The TargetServer uses GRPC.
+     * GRPC TargetServer to be used in ExternalCallout Policy. Prefer to use EXTERNAL_CALLOUT instead. TODO(b/266125112) deprecate once EXTERNAL _CALLOUT generally available.
      */
     Grpc: "GRPC",
 } as const;

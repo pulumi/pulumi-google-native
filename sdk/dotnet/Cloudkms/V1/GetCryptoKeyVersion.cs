@@ -96,6 +96,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public readonly string DestroyTime;
         /// <summary>
+        /// The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        /// </summary>
+        public readonly string ExternalDestructionFailureReason;
+        /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         /// </summary>
         public readonly Outputs.ExternalProtectionLevelOptionsResponse ExternalProtectionLevelOptions;
@@ -103,6 +107,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// The time this CryptoKeyVersion's key material was generated.
         /// </summary>
         public readonly string GenerateTime;
+        /// <summary>
+        /// The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+        /// </summary>
+        public readonly string GenerationFailureReason;
         /// <summary>
         /// The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         /// </summary>
@@ -144,9 +152,13 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
             string destroyTime,
 
+            string externalDestructionFailureReason,
+
             Outputs.ExternalProtectionLevelOptionsResponse externalProtectionLevelOptions,
 
             string generateTime,
+
+            string generationFailureReason,
 
             string importFailureReason,
 
@@ -167,8 +179,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
             CreateTime = createTime;
             DestroyEventTime = destroyEventTime;
             DestroyTime = destroyTime;
+            ExternalDestructionFailureReason = externalDestructionFailureReason;
             ExternalProtectionLevelOptions = externalProtectionLevelOptions;
             GenerateTime = generateTime;
+            GenerationFailureReason = generationFailureReason;
             ImportFailureReason = importFailureReason;
             ImportJob = importJob;
             ImportTime = importTime;

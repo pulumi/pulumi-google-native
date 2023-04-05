@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+ * Returns the specified HttpsHealthCheck resource.
  */
 export function getHttpsHealthCheck(args: GetHttpsHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHttpsHealthCheckResult> {
 
@@ -55,7 +55,7 @@ export interface GetHttpsHealthCheckResult {
      */
     readonly port: number;
     /**
-     * The request path of the HTTPS health check request. The default value is "/".
+     * The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
      */
     readonly requestPath: string;
     /**
@@ -72,7 +72,7 @@ export interface GetHttpsHealthCheckResult {
     readonly unhealthyThreshold: number;
 }
 /**
- * Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+ * Returns the specified HttpsHealthCheck resource.
  */
 export function getHttpsHealthCheckOutput(args: GetHttpsHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHttpsHealthCheckResult> {
     return pulumi.output(args).apply((a: any) => getHttpsHealthCheck(a, opts))

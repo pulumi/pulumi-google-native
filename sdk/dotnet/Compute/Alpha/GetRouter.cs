@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetRouter
     {
         /// <summary>
-        /// Returns the specified Router resource. Gets a list of available routers by making a list() request.
+        /// Returns the specified Router resource.
         /// </summary>
         public static Task<GetRouterResult> InvokeAsync(GetRouterArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouterResult>("google-native:compute/alpha:getRouter", args ?? new GetRouterArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified Router resource. Gets a list of available routers by making a list() request.
+        /// Returns the specified Router resource.
         /// </summary>
         public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterResult>("google-native:compute/alpha:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());

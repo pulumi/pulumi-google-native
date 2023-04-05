@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -27,9 +30,17 @@ export interface GetWorkflowArgs {
 
 export interface GetWorkflowResult {
     /**
+     * Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+     */
+    readonly callLogLevel: string;
+    /**
      * The timestamp for when the workflow was created.
      */
     readonly createTime: string;
+    /**
+     * Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+     */
+    readonly cryptoKeyName: string;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -62,6 +73,10 @@ export interface GetWorkflowResult {
      * State of the workflow deployment.
      */
     readonly state: string;
+    /**
+     * Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+     */
+    readonly stateError: outputs.workflows.v1.StateErrorResponse;
     /**
      * The timestamp for when the workflow was last updated.
      */

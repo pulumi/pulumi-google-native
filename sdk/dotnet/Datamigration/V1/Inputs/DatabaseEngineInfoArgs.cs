@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
 {
 
     /// <summary>
-    /// The type and version of a source or destination DB.
+    /// The type and version of a source or destination database.
     /// </summary>
     public sealed class DatabaseEngineInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Engine Type.
+        /// Engine type.
         /// </summary>
         [Input("engine", required: true)]
         public Input<Pulumi.GoogleNative.Datamigration.V1.DatabaseEngineInfoEngine> Engine { get; set; } = null!;
 
         /// <summary>
-        /// Engine named version, for e.g. 12.c.1
+        /// Engine named version, for example 12.c.1.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;

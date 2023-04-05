@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         [Input("keyUsage")]
         public Input<Inputs.KeyUsageArgs>? KeyUsage { get; set; }
 
+        /// <summary>
+        /// Optional. Describes the X.509 name constraints extension.
+        /// </summary>
+        [Input("nameConstraints")]
+        public Input<Inputs.NameConstraintsArgs>? NameConstraints { get; set; }
+
         [Input("policyIds")]
         private InputList<Inputs.ObjectIdArgs>? _policyIds;
 

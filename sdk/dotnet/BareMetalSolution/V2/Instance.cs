@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The firmware version for the instance.
+        /// </summary>
+        [Output("firmwareVersion")]
+        public Output<string> FirmwareVersion { get; private set; } = null!;
+
+        /// <summary>
         /// True if you enable hyperthreading for the server, otherwise false. The default value is false.
         /// </summary>
         [Output("hyperthreadingEnabled")]

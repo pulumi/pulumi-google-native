@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly bool AdminEnabled;
         /// <summary>
+        /// [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+        /// </summary>
+        public readonly ImmutableArray<string> AvailableFeatures;
+        /// <summary>
         /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         /// </summary>
         public readonly ImmutableArray<Outputs.InterconnectCircuitInfoResponse> CircuitInfos;
@@ -150,11 +154,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string RemoteLocation;
         /// <summary>
+        /// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        /// </summary>
+        public readonly ImmutableArray<string> RequestedFeatures;
+        /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.
         /// </summary>
         public readonly int RequestedLinkCount;
         /// <summary>
-        /// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
@@ -173,6 +181,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [OutputConstructor]
         private GetInterconnectResult(
             bool adminEnabled,
+
+            ImmutableArray<string> availableFeatures,
 
             ImmutableArray<Outputs.InterconnectCircuitInfoResponse> circuitInfos,
 
@@ -218,6 +228,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string remoteLocation,
 
+            ImmutableArray<string> requestedFeatures,
+
             int requestedLinkCount,
 
             bool satisfiesPzs,
@@ -229,6 +241,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             string state)
         {
             AdminEnabled = adminEnabled;
+            AvailableFeatures = availableFeatures;
             CircuitInfos = circuitInfos;
             CreationTimestamp = creationTimestamp;
             CustomerName = customerName;
@@ -251,6 +264,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             PeerIpAddress = peerIpAddress;
             ProvisionedLinkCount = provisionedLinkCount;
             RemoteLocation = remoteLocation;
+            RequestedFeatures = requestedFeatures;
             RequestedLinkCount = requestedLinkCount;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;

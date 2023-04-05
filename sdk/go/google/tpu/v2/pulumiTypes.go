@@ -10,6 +10,198 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A TPU accelerator configuration.
+type AcceleratorConfig struct {
+	// Topology of TPU in chips.
+	Topology string `pulumi:"topology"`
+	// Type of TPU.
+	Type AcceleratorConfigType `pulumi:"type"`
+}
+
+// AcceleratorConfigInput is an input type that accepts AcceleratorConfigArgs and AcceleratorConfigOutput values.
+// You can construct a concrete instance of `AcceleratorConfigInput` via:
+//
+//	AcceleratorConfigArgs{...}
+type AcceleratorConfigInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigOutput() AcceleratorConfigOutput
+	ToAcceleratorConfigOutputWithContext(context.Context) AcceleratorConfigOutput
+}
+
+// A TPU accelerator configuration.
+type AcceleratorConfigArgs struct {
+	// Topology of TPU in chips.
+	Topology pulumi.StringInput `pulumi:"topology"`
+	// Type of TPU.
+	Type AcceleratorConfigTypeInput `pulumi:"type"`
+}
+
+func (AcceleratorConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfig)(nil)).Elem()
+}
+
+func (i AcceleratorConfigArgs) ToAcceleratorConfigOutput() AcceleratorConfigOutput {
+	return i.ToAcceleratorConfigOutputWithContext(context.Background())
+}
+
+func (i AcceleratorConfigArgs) ToAcceleratorConfigOutputWithContext(ctx context.Context) AcceleratorConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigOutput)
+}
+
+func (i AcceleratorConfigArgs) ToAcceleratorConfigPtrOutput() AcceleratorConfigPtrOutput {
+	return i.ToAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AcceleratorConfigArgs) ToAcceleratorConfigPtrOutputWithContext(ctx context.Context) AcceleratorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigOutput).ToAcceleratorConfigPtrOutputWithContext(ctx)
+}
+
+// AcceleratorConfigPtrInput is an input type that accepts AcceleratorConfigArgs, AcceleratorConfigPtr and AcceleratorConfigPtrOutput values.
+// You can construct a concrete instance of `AcceleratorConfigPtrInput` via:
+//
+//	        AcceleratorConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AcceleratorConfigPtrInput interface {
+	pulumi.Input
+
+	ToAcceleratorConfigPtrOutput() AcceleratorConfigPtrOutput
+	ToAcceleratorConfigPtrOutputWithContext(context.Context) AcceleratorConfigPtrOutput
+}
+
+type acceleratorConfigPtrType AcceleratorConfigArgs
+
+func AcceleratorConfigPtr(v *AcceleratorConfigArgs) AcceleratorConfigPtrInput {
+	return (*acceleratorConfigPtrType)(v)
+}
+
+func (*acceleratorConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorConfig)(nil)).Elem()
+}
+
+func (i *acceleratorConfigPtrType) ToAcceleratorConfigPtrOutput() AcceleratorConfigPtrOutput {
+	return i.ToAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *acceleratorConfigPtrType) ToAcceleratorConfigPtrOutputWithContext(ctx context.Context) AcceleratorConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AcceleratorConfigPtrOutput)
+}
+
+// A TPU accelerator configuration.
+type AcceleratorConfigOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfig)(nil)).Elem()
+}
+
+func (o AcceleratorConfigOutput) ToAcceleratorConfigOutput() AcceleratorConfigOutput {
+	return o
+}
+
+func (o AcceleratorConfigOutput) ToAcceleratorConfigOutputWithContext(ctx context.Context) AcceleratorConfigOutput {
+	return o
+}
+
+func (o AcceleratorConfigOutput) ToAcceleratorConfigPtrOutput() AcceleratorConfigPtrOutput {
+	return o.ToAcceleratorConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AcceleratorConfigOutput) ToAcceleratorConfigPtrOutputWithContext(ctx context.Context) AcceleratorConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AcceleratorConfig) *AcceleratorConfig {
+		return &v
+	}).(AcceleratorConfigPtrOutput)
+}
+
+// Topology of TPU in chips.
+func (o AcceleratorConfigOutput) Topology() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfig) string { return v.Topology }).(pulumi.StringOutput)
+}
+
+// Type of TPU.
+func (o AcceleratorConfigOutput) Type() AcceleratorConfigTypeOutput {
+	return o.ApplyT(func(v AcceleratorConfig) AcceleratorConfigType { return v.Type }).(AcceleratorConfigTypeOutput)
+}
+
+type AcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AcceleratorConfig)(nil)).Elem()
+}
+
+func (o AcceleratorConfigPtrOutput) ToAcceleratorConfigPtrOutput() AcceleratorConfigPtrOutput {
+	return o
+}
+
+func (o AcceleratorConfigPtrOutput) ToAcceleratorConfigPtrOutputWithContext(ctx context.Context) AcceleratorConfigPtrOutput {
+	return o
+}
+
+func (o AcceleratorConfigPtrOutput) Elem() AcceleratorConfigOutput {
+	return o.ApplyT(func(v *AcceleratorConfig) AcceleratorConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AcceleratorConfig
+		return ret
+	}).(AcceleratorConfigOutput)
+}
+
+// Topology of TPU in chips.
+func (o AcceleratorConfigPtrOutput) Topology() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AcceleratorConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topology
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of TPU.
+func (o AcceleratorConfigPtrOutput) Type() AcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v *AcceleratorConfig) *AcceleratorConfigType {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(AcceleratorConfigTypePtrOutput)
+}
+
+// A TPU accelerator configuration.
+type AcceleratorConfigResponse struct {
+	// Topology of TPU in chips.
+	Topology string `pulumi:"topology"`
+	// Type of TPU.
+	Type string `pulumi:"type"`
+}
+
+// A TPU accelerator configuration.
+type AcceleratorConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (AcceleratorConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AcceleratorConfigResponse)(nil)).Elem()
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutput() AcceleratorConfigResponseOutput {
+	return o
+}
+
+func (o AcceleratorConfigResponseOutput) ToAcceleratorConfigResponseOutputWithContext(ctx context.Context) AcceleratorConfigResponseOutput {
+	return o
+}
+
+// Topology of TPU in chips.
+func (o AcceleratorConfigResponseOutput) Topology() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.Topology }).(pulumi.StringOutput)
+}
+
+// Type of TPU.
+func (o AcceleratorConfigResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
 // An access config attached to the TPU worker.
 type AccessConfigResponse struct {
 	// An external IP address associated with the TPU worker.
@@ -1120,6 +1312,8 @@ func (o SymptomResponseArrayOutput) Index(i pulumi.IntInput) SymptomResponseOutp
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigInput)(nil)).Elem(), AcceleratorConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AcceleratorConfigPtrInput)(nil)).Elem(), AcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskInput)(nil)).Elem(), AttachedDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttachedDiskArrayInput)(nil)).Elem(), AttachedDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
@@ -1130,6 +1324,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountPtrInput)(nil)).Elem(), ServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigPtrOutput{})
+	pulumi.RegisterOutputType(AcceleratorConfigResponseOutput{})
 	pulumi.RegisterOutputType(AccessConfigResponseOutput{})
 	pulumi.RegisterOutputType(AttachedDiskOutput{})
 	pulumi.RegisterOutputType(AttachedDiskArrayOutput{})

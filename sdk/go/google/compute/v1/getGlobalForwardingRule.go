@@ -32,6 +32,8 @@ type LookupGlobalForwardingRuleResult struct {
 	AllowGlobalAccess bool `pulumi:"allowGlobalAccess"`
 	// Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 	BackendService string `pulumi:"backendService"`
+	// The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+	BaseForwardingRule string `pulumi:"baseForwardingRule"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -81,6 +83,8 @@ type LookupGlobalForwardingRuleResult struct {
 	ServiceLabel string `pulumi:"serviceLabel"`
 	// The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
 	ServiceName string `pulumi:"serviceName"`
+	// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+	SourceIpRanges []string `pulumi:"sourceIpRanges"`
 	// This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
 	Subnetwork string `pulumi:"subnetwork"`
 	// The URL of the target resource to receive the matched traffic. For regional forwarding rules, this target must be in the same region as the forwarding rule. For global forwarding rules, this target must be a global load balancing resource. The forwarded traffic must be of a type appropriate to the target object. - For load balancers, see the "Target" column in [Port specifications](https://cloud.google.com/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications). - For Private Service Connect forwarding rules that forward traffic to Google APIs, provide the name of a supported Google API bundle: - vpc-sc - APIs that support VPC Service Controls. - all-apis - All supported Google APIs. - For Private Service Connect forwarding rules that forward traffic to managed services, the target must be a service attachment.
@@ -136,6 +140,11 @@ func (o LookupGlobalForwardingRuleResultOutput) AllowGlobalAccess() pulumi.BoolO
 // Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
 func (o LookupGlobalForwardingRuleResultOutput) BackendService() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.BackendService }).(pulumi.StringOutput)
+}
+
+// The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+func (o LookupGlobalForwardingRuleResultOutput) BaseForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.BaseForwardingRule }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.
@@ -262,6 +271,11 @@ func (o LookupGlobalForwardingRuleResultOutput) ServiceLabel() pulumi.StringOutp
 // The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
 func (o LookupGlobalForwardingRuleResultOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.ServiceName }).(pulumi.StringOutput)
+}
+
+// If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+func (o LookupGlobalForwardingRuleResultOutput) SourceIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) []string { return v.SourceIpRanges }).(pulumi.StringArrayOutput)
 }
 
 // This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.

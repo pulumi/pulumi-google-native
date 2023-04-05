@@ -39,6 +39,10 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
+     * Additional group keys associated with the Group.
+     */
+    public /*out*/ readonly additionalGroupKeys!: pulumi.Output<outputs.cloudidentity.v1beta1.EntityKeyResponse[]>;
+    /**
      * The time when the `Group` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -114,10 +118,12 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["posixGroups"] = args ? args.posixGroups : undefined;
+            resourceInputs["additionalGroupKeys"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["additionalGroupKeys"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;

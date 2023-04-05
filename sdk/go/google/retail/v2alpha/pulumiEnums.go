@@ -436,6 +436,179 @@ func (o ControlSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) ControlSol
 	}).(ControlSolutionTypesItemOutput)
 }
 
+// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction string
+
+const (
+	// Unspecified value for restriction.
+	GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionRestrictionUnspecified = GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("RESTRICTION_UNSPECIFIED")
+	// Allow any ServingConfig to be show on any number of panels. Example: `Panel1 candidates`: pdp_ctr, pdp_cvr, home_page_ctr_no_diversity `Panel2 candidates`: home_page_ctr_no_diversity, home_page_ctr_diversity, pdp_cvr_no_diversity `Restriction` = NO_RESTRICTION `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: []
+	GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionNoRestriction = GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("NO_RESTRICTION")
+	// Do not allow the same ServingConfig.name to be shown on multiple panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_SERVING_CONFIG_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity_low) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) *
+	GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionUniqueServingConfigRestriction = GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("UNIQUE_SERVING_CONFIG_RESTRICTION")
+	// Do not allow multiple ServingConfigs with same Model.name to be show on on different panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_MODEL_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (pdp_cvr, pdp_cvr_no_diversity) *
+	GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionUniqueModelRestriction = GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("UNIQUE_MODEL_RESTRICTION")
+	// Do not allow multiple ServingConfigs with same Model.type to be shown on different panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_MODEL_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity) *
+	GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionUniqueModelTypeRestriction = GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("UNIQUE_MODEL_TYPE_RESTRICTION")
+)
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction)(nil)).Elem()
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput)
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput)
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return e.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction(e).ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutputWithContext(ctx).ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return o.ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) *GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction {
+		return &v
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput)
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput) Elem() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction
+		return ret
+	}).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput)
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionInput is an input type that accepts GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionArgs and GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionInput` via:
+//
+//	GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionArgs{...}
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput
+}
+
+var googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrType = reflect.TypeOf((**GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction)(nil)).Elem()
+
+type GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput
+	ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput
+}
+
+type googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtr string
+
+func GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtr(v string) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrInput {
+	return (*googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtr)(&v)
+}
+
+func (*googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtr) ElementType() reflect.Type {
+	return googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrType
+}
+
+func (in *googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtr) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput() GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput)
+}
+
+func (in *googleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtr) ToGoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput)
+}
+
 // Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
 type GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode string
 
@@ -772,6 +945,515 @@ func (in *googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr) ToGoo
 
 func (in *googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput)
+}
+
+// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+type ModelFilteringOption string
+
+const (
+	// Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.
+	ModelFilteringOptionRecommendationsFilteringOptionUnspecified = ModelFilteringOption("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED")
+	// Recommendation filtering is disabled.
+	ModelFilteringOptionRecommendationsFilteringDisabled = ModelFilteringOption("RECOMMENDATIONS_FILTERING_DISABLED")
+	// Recommendation filtering is enabled.
+	ModelFilteringOptionRecommendationsFilteringEnabled = ModelFilteringOption("RECOMMENDATIONS_FILTERING_ENABLED")
+)
+
+func (ModelFilteringOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelFilteringOption)(nil)).Elem()
+}
+
+func (e ModelFilteringOption) ToModelFilteringOptionOutput() ModelFilteringOptionOutput {
+	return pulumi.ToOutput(e).(ModelFilteringOptionOutput)
+}
+
+func (e ModelFilteringOption) ToModelFilteringOptionOutputWithContext(ctx context.Context) ModelFilteringOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ModelFilteringOptionOutput)
+}
+
+func (e ModelFilteringOption) ToModelFilteringOptionPtrOutput() ModelFilteringOptionPtrOutput {
+	return e.ToModelFilteringOptionPtrOutputWithContext(context.Background())
+}
+
+func (e ModelFilteringOption) ToModelFilteringOptionPtrOutputWithContext(ctx context.Context) ModelFilteringOptionPtrOutput {
+	return ModelFilteringOption(e).ToModelFilteringOptionOutputWithContext(ctx).ToModelFilteringOptionPtrOutputWithContext(ctx)
+}
+
+func (e ModelFilteringOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ModelFilteringOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ModelFilteringOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ModelFilteringOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ModelFilteringOptionOutput struct{ *pulumi.OutputState }
+
+func (ModelFilteringOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelFilteringOption)(nil)).Elem()
+}
+
+func (o ModelFilteringOptionOutput) ToModelFilteringOptionOutput() ModelFilteringOptionOutput {
+	return o
+}
+
+func (o ModelFilteringOptionOutput) ToModelFilteringOptionOutputWithContext(ctx context.Context) ModelFilteringOptionOutput {
+	return o
+}
+
+func (o ModelFilteringOptionOutput) ToModelFilteringOptionPtrOutput() ModelFilteringOptionPtrOutput {
+	return o.ToModelFilteringOptionPtrOutputWithContext(context.Background())
+}
+
+func (o ModelFilteringOptionOutput) ToModelFilteringOptionPtrOutputWithContext(ctx context.Context) ModelFilteringOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelFilteringOption) *ModelFilteringOption {
+		return &v
+	}).(ModelFilteringOptionPtrOutput)
+}
+
+func (o ModelFilteringOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ModelFilteringOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ModelFilteringOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ModelFilteringOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModelFilteringOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ModelFilteringOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelFilteringOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (ModelFilteringOptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelFilteringOption)(nil)).Elem()
+}
+
+func (o ModelFilteringOptionPtrOutput) ToModelFilteringOptionPtrOutput() ModelFilteringOptionPtrOutput {
+	return o
+}
+
+func (o ModelFilteringOptionPtrOutput) ToModelFilteringOptionPtrOutputWithContext(ctx context.Context) ModelFilteringOptionPtrOutput {
+	return o
+}
+
+func (o ModelFilteringOptionPtrOutput) Elem() ModelFilteringOptionOutput {
+	return o.ApplyT(func(v *ModelFilteringOption) ModelFilteringOption {
+		if v != nil {
+			return *v
+		}
+		var ret ModelFilteringOption
+		return ret
+	}).(ModelFilteringOptionOutput)
+}
+
+func (o ModelFilteringOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModelFilteringOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ModelFilteringOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ModelFilteringOptionInput is an input type that accepts ModelFilteringOptionArgs and ModelFilteringOptionOutput values.
+// You can construct a concrete instance of `ModelFilteringOptionInput` via:
+//
+//	ModelFilteringOptionArgs{...}
+type ModelFilteringOptionInput interface {
+	pulumi.Input
+
+	ToModelFilteringOptionOutput() ModelFilteringOptionOutput
+	ToModelFilteringOptionOutputWithContext(context.Context) ModelFilteringOptionOutput
+}
+
+var modelFilteringOptionPtrType = reflect.TypeOf((**ModelFilteringOption)(nil)).Elem()
+
+type ModelFilteringOptionPtrInput interface {
+	pulumi.Input
+
+	ToModelFilteringOptionPtrOutput() ModelFilteringOptionPtrOutput
+	ToModelFilteringOptionPtrOutputWithContext(context.Context) ModelFilteringOptionPtrOutput
+}
+
+type modelFilteringOptionPtr string
+
+func ModelFilteringOptionPtr(v string) ModelFilteringOptionPtrInput {
+	return (*modelFilteringOptionPtr)(&v)
+}
+
+func (*modelFilteringOptionPtr) ElementType() reflect.Type {
+	return modelFilteringOptionPtrType
+}
+
+func (in *modelFilteringOptionPtr) ToModelFilteringOptionPtrOutput() ModelFilteringOptionPtrOutput {
+	return pulumi.ToOutput(in).(ModelFilteringOptionPtrOutput)
+}
+
+func (in *modelFilteringOptionPtr) ToModelFilteringOptionPtrOutputWithContext(ctx context.Context) ModelFilteringOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ModelFilteringOptionPtrOutput)
+}
+
+// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+type ModelPeriodicTuningState string
+
+const (
+	// Unspecified default value, should never be explicitly set.
+	ModelPeriodicTuningStatePeriodicTuningStateUnspecified = ModelPeriodicTuningState("PERIODIC_TUNING_STATE_UNSPECIFIED")
+	// The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.
+	ModelPeriodicTuningStatePeriodicTuningDisabled = ModelPeriodicTuningState("PERIODIC_TUNING_DISABLED")
+	// The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.
+	ModelPeriodicTuningStateAllTuningDisabled = ModelPeriodicTuningState("ALL_TUNING_DISABLED")
+	// The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method.
+	ModelPeriodicTuningStatePeriodicTuningEnabled = ModelPeriodicTuningState("PERIODIC_TUNING_ENABLED")
+)
+
+func (ModelPeriodicTuningState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelPeriodicTuningState)(nil)).Elem()
+}
+
+func (e ModelPeriodicTuningState) ToModelPeriodicTuningStateOutput() ModelPeriodicTuningStateOutput {
+	return pulumi.ToOutput(e).(ModelPeriodicTuningStateOutput)
+}
+
+func (e ModelPeriodicTuningState) ToModelPeriodicTuningStateOutputWithContext(ctx context.Context) ModelPeriodicTuningStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ModelPeriodicTuningStateOutput)
+}
+
+func (e ModelPeriodicTuningState) ToModelPeriodicTuningStatePtrOutput() ModelPeriodicTuningStatePtrOutput {
+	return e.ToModelPeriodicTuningStatePtrOutputWithContext(context.Background())
+}
+
+func (e ModelPeriodicTuningState) ToModelPeriodicTuningStatePtrOutputWithContext(ctx context.Context) ModelPeriodicTuningStatePtrOutput {
+	return ModelPeriodicTuningState(e).ToModelPeriodicTuningStateOutputWithContext(ctx).ToModelPeriodicTuningStatePtrOutputWithContext(ctx)
+}
+
+func (e ModelPeriodicTuningState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ModelPeriodicTuningState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ModelPeriodicTuningState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ModelPeriodicTuningState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ModelPeriodicTuningStateOutput struct{ *pulumi.OutputState }
+
+func (ModelPeriodicTuningStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelPeriodicTuningState)(nil)).Elem()
+}
+
+func (o ModelPeriodicTuningStateOutput) ToModelPeriodicTuningStateOutput() ModelPeriodicTuningStateOutput {
+	return o
+}
+
+func (o ModelPeriodicTuningStateOutput) ToModelPeriodicTuningStateOutputWithContext(ctx context.Context) ModelPeriodicTuningStateOutput {
+	return o
+}
+
+func (o ModelPeriodicTuningStateOutput) ToModelPeriodicTuningStatePtrOutput() ModelPeriodicTuningStatePtrOutput {
+	return o.ToModelPeriodicTuningStatePtrOutputWithContext(context.Background())
+}
+
+func (o ModelPeriodicTuningStateOutput) ToModelPeriodicTuningStatePtrOutputWithContext(ctx context.Context) ModelPeriodicTuningStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelPeriodicTuningState) *ModelPeriodicTuningState {
+		return &v
+	}).(ModelPeriodicTuningStatePtrOutput)
+}
+
+func (o ModelPeriodicTuningStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ModelPeriodicTuningStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ModelPeriodicTuningState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ModelPeriodicTuningStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModelPeriodicTuningStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ModelPeriodicTuningState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelPeriodicTuningStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ModelPeriodicTuningStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelPeriodicTuningState)(nil)).Elem()
+}
+
+func (o ModelPeriodicTuningStatePtrOutput) ToModelPeriodicTuningStatePtrOutput() ModelPeriodicTuningStatePtrOutput {
+	return o
+}
+
+func (o ModelPeriodicTuningStatePtrOutput) ToModelPeriodicTuningStatePtrOutputWithContext(ctx context.Context) ModelPeriodicTuningStatePtrOutput {
+	return o
+}
+
+func (o ModelPeriodicTuningStatePtrOutput) Elem() ModelPeriodicTuningStateOutput {
+	return o.ApplyT(func(v *ModelPeriodicTuningState) ModelPeriodicTuningState {
+		if v != nil {
+			return *v
+		}
+		var ret ModelPeriodicTuningState
+		return ret
+	}).(ModelPeriodicTuningStateOutput)
+}
+
+func (o ModelPeriodicTuningStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModelPeriodicTuningStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ModelPeriodicTuningState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ModelPeriodicTuningStateInput is an input type that accepts ModelPeriodicTuningStateArgs and ModelPeriodicTuningStateOutput values.
+// You can construct a concrete instance of `ModelPeriodicTuningStateInput` via:
+//
+//	ModelPeriodicTuningStateArgs{...}
+type ModelPeriodicTuningStateInput interface {
+	pulumi.Input
+
+	ToModelPeriodicTuningStateOutput() ModelPeriodicTuningStateOutput
+	ToModelPeriodicTuningStateOutputWithContext(context.Context) ModelPeriodicTuningStateOutput
+}
+
+var modelPeriodicTuningStatePtrType = reflect.TypeOf((**ModelPeriodicTuningState)(nil)).Elem()
+
+type ModelPeriodicTuningStatePtrInput interface {
+	pulumi.Input
+
+	ToModelPeriodicTuningStatePtrOutput() ModelPeriodicTuningStatePtrOutput
+	ToModelPeriodicTuningStatePtrOutputWithContext(context.Context) ModelPeriodicTuningStatePtrOutput
+}
+
+type modelPeriodicTuningStatePtr string
+
+func ModelPeriodicTuningStatePtr(v string) ModelPeriodicTuningStatePtrInput {
+	return (*modelPeriodicTuningStatePtr)(&v)
+}
+
+func (*modelPeriodicTuningStatePtr) ElementType() reflect.Type {
+	return modelPeriodicTuningStatePtrType
+}
+
+func (in *modelPeriodicTuningStatePtr) ToModelPeriodicTuningStatePtrOutput() ModelPeriodicTuningStatePtrOutput {
+	return pulumi.ToOutput(in).(ModelPeriodicTuningStatePtrOutput)
+}
+
+func (in *modelPeriodicTuningStatePtr) ToModelPeriodicTuningStatePtrOutputWithContext(ctx context.Context) ModelPeriodicTuningStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ModelPeriodicTuningStatePtrOutput)
+}
+
+// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
+type ModelTrainingState string
+
+const (
+	// Unspecified training state.
+	ModelTrainingStateTrainingStateUnspecified = ModelTrainingState("TRAINING_STATE_UNSPECIFIED")
+	// The model training is paused.
+	ModelTrainingStatePaused = ModelTrainingState("PAUSED")
+	// The model is training.
+	ModelTrainingStateTraining = ModelTrainingState("TRAINING")
+)
+
+func (ModelTrainingState) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelTrainingState)(nil)).Elem()
+}
+
+func (e ModelTrainingState) ToModelTrainingStateOutput() ModelTrainingStateOutput {
+	return pulumi.ToOutput(e).(ModelTrainingStateOutput)
+}
+
+func (e ModelTrainingState) ToModelTrainingStateOutputWithContext(ctx context.Context) ModelTrainingStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ModelTrainingStateOutput)
+}
+
+func (e ModelTrainingState) ToModelTrainingStatePtrOutput() ModelTrainingStatePtrOutput {
+	return e.ToModelTrainingStatePtrOutputWithContext(context.Background())
+}
+
+func (e ModelTrainingState) ToModelTrainingStatePtrOutputWithContext(ctx context.Context) ModelTrainingStatePtrOutput {
+	return ModelTrainingState(e).ToModelTrainingStateOutputWithContext(ctx).ToModelTrainingStatePtrOutputWithContext(ctx)
+}
+
+func (e ModelTrainingState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ModelTrainingState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ModelTrainingState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ModelTrainingState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ModelTrainingStateOutput struct{ *pulumi.OutputState }
+
+func (ModelTrainingStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ModelTrainingState)(nil)).Elem()
+}
+
+func (o ModelTrainingStateOutput) ToModelTrainingStateOutput() ModelTrainingStateOutput {
+	return o
+}
+
+func (o ModelTrainingStateOutput) ToModelTrainingStateOutputWithContext(ctx context.Context) ModelTrainingStateOutput {
+	return o
+}
+
+func (o ModelTrainingStateOutput) ToModelTrainingStatePtrOutput() ModelTrainingStatePtrOutput {
+	return o.ToModelTrainingStatePtrOutputWithContext(context.Background())
+}
+
+func (o ModelTrainingStateOutput) ToModelTrainingStatePtrOutputWithContext(ctx context.Context) ModelTrainingStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ModelTrainingState) *ModelTrainingState {
+		return &v
+	}).(ModelTrainingStatePtrOutput)
+}
+
+func (o ModelTrainingStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ModelTrainingStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ModelTrainingState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ModelTrainingStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModelTrainingStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ModelTrainingState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ModelTrainingStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ModelTrainingStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ModelTrainingState)(nil)).Elem()
+}
+
+func (o ModelTrainingStatePtrOutput) ToModelTrainingStatePtrOutput() ModelTrainingStatePtrOutput {
+	return o
+}
+
+func (o ModelTrainingStatePtrOutput) ToModelTrainingStatePtrOutputWithContext(ctx context.Context) ModelTrainingStatePtrOutput {
+	return o
+}
+
+func (o ModelTrainingStatePtrOutput) Elem() ModelTrainingStateOutput {
+	return o.ApplyT(func(v *ModelTrainingState) ModelTrainingState {
+		if v != nil {
+			return *v
+		}
+		var ret ModelTrainingState
+		return ret
+	}).(ModelTrainingStateOutput)
+}
+
+func (o ModelTrainingStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ModelTrainingStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ModelTrainingState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ModelTrainingStateInput is an input type that accepts ModelTrainingStateArgs and ModelTrainingStateOutput values.
+// You can construct a concrete instance of `ModelTrainingStateInput` via:
+//
+//	ModelTrainingStateArgs{...}
+type ModelTrainingStateInput interface {
+	pulumi.Input
+
+	ToModelTrainingStateOutput() ModelTrainingStateOutput
+	ToModelTrainingStateOutputWithContext(context.Context) ModelTrainingStateOutput
+}
+
+var modelTrainingStatePtrType = reflect.TypeOf((**ModelTrainingState)(nil)).Elem()
+
+type ModelTrainingStatePtrInput interface {
+	pulumi.Input
+
+	ToModelTrainingStatePtrOutput() ModelTrainingStatePtrOutput
+	ToModelTrainingStatePtrOutputWithContext(context.Context) ModelTrainingStatePtrOutput
+}
+
+type modelTrainingStatePtr string
+
+func ModelTrainingStatePtr(v string) ModelTrainingStatePtrInput {
+	return (*modelTrainingStatePtr)(&v)
+}
+
+func (*modelTrainingStatePtr) ElementType() reflect.Type {
+	return modelTrainingStatePtrType
+}
+
+func (in *modelTrainingStatePtr) ToModelTrainingStatePtrOutput() ModelTrainingStatePtrOutput {
+	return pulumi.ToOutput(in).(ModelTrainingStatePtrOutput)
+}
+
+func (in *modelTrainingStatePtr) ToModelTrainingStatePtrOutputWithContext(ctx context.Context) ModelTrainingStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ModelTrainingStatePtrOutput)
 }
 
 // The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
@@ -1507,10 +2189,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSolutionTypesItemInput)(nil)).Elem(), ControlSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSolutionTypesItemPtrInput)(nil)).Elem(), ControlSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSolutionTypesItemArrayInput)(nil)).Elem(), ControlSolutionTypesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("RESTRICTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("RESTRICTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModeInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModePtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelFilteringOptionInput)(nil)).Elem(), ModelFilteringOption("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelFilteringOptionPtrInput)(nil)).Elem(), ModelFilteringOption("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelPeriodicTuningStateInput)(nil)).Elem(), ModelPeriodicTuningState("PERIODIC_TUNING_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelPeriodicTuningStatePtrInput)(nil)).Elem(), ModelPeriodicTuningState("PERIODIC_TUNING_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelTrainingStateInput)(nil)).Elem(), ModelTrainingState("TRAINING_STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ModelTrainingStatePtrInput)(nil)).Elem(), ModelTrainingState("TRAINING_STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductAvailabilityInput)(nil)).Elem(), ProductAvailability("AVAILABILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductAvailabilityPtrInput)(nil)).Elem(), ProductAvailability("AVAILABILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductTypeInput)(nil)).Elem(), ProductType("TYPE_UNSPECIFIED"))
@@ -1526,10 +2216,18 @@ func init() {
 	pulumi.RegisterOutputType(ControlSolutionTypesItemOutput{})
 	pulumi.RegisterOutputType(ControlSolutionTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(ControlSolutionTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestrictionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput{})
+	pulumi.RegisterOutputType(ModelFilteringOptionOutput{})
+	pulumi.RegisterOutputType(ModelFilteringOptionPtrOutput{})
+	pulumi.RegisterOutputType(ModelPeriodicTuningStateOutput{})
+	pulumi.RegisterOutputType(ModelPeriodicTuningStatePtrOutput{})
+	pulumi.RegisterOutputType(ModelTrainingStateOutput{})
+	pulumi.RegisterOutputType(ModelTrainingStatePtrOutput{})
 	pulumi.RegisterOutputType(ProductAvailabilityOutput{})
 	pulumi.RegisterOutputType(ProductAvailabilityPtrOutput{})
 	pulumi.RegisterOutputType(ProductTypeOutput{})

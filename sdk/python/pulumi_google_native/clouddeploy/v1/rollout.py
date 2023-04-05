@@ -337,6 +337,7 @@ class Rollout(pulumi.CustomResource):
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["approval_state"] = None
             __props__.__dict__["approve_time"] = None
+            __props__.__dict__["controller_rollout"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["deploy_end_time"] = None
             __props__.__dict__["deploy_failure_cause"] = None
@@ -375,6 +376,7 @@ class Rollout(pulumi.CustomResource):
         __props__.__dict__["annotations"] = None
         __props__.__dict__["approval_state"] = None
         __props__.__dict__["approve_time"] = None
+        __props__.__dict__["controller_rollout"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["delivery_pipeline_id"] = None
         __props__.__dict__["deploy_end_time"] = None
@@ -424,6 +426,14 @@ class Rollout(pulumi.CustomResource):
         Time at which the `Rollout` was approved.
         """
         return pulumi.get(self, "approve_time")
+
+    @property
+    @pulumi.getter(name="controllerRollout")
+    def controller_rollout(self) -> pulumi.Output[str]:
+        """
+        Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        """
+        return pulumi.get(self, "controller_rollout")
 
     @property
     @pulumi.getter(name="createTime")

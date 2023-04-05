@@ -40,11 +40,15 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The time when the repository was created.
      */
-    public readonly createTime!: pulumi.Output<string>;
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
      * The user-provided description of the repository.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     */
+    public readonly dockerConfig!: pulumi.Output<outputs.artifactregistry.v1.DockerRepositoryConfigResponse>;
     /**
      * The format of packages that are stored in the repository.
      */
@@ -90,7 +94,7 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The time when the repository was last updated.
      */
-    public readonly updateTime!: pulumi.Output<string>;
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
      * Configuration specific for a Virtual Repository.
      */
@@ -107,8 +111,8 @@ export class Repository extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            resourceInputs["createTime"] = args ? args.createTime : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["dockerConfig"] = args ? args.dockerConfig : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -119,13 +123,15 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["remoteRepositoryConfig"] = args ? args.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
-            resourceInputs["updateTime"] = args ? args.updateTime : undefined;
             resourceInputs["virtualRepositoryConfig"] = args ? args.virtualRepositoryConfig : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["sizeBytes"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["dockerConfig"] = undefined /*out*/;
             resourceInputs["format"] = undefined /*out*/;
             resourceInputs["kmsKeyName"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
@@ -153,13 +159,13 @@ export class Repository extends pulumi.CustomResource {
  */
 export interface RepositoryArgs {
     /**
-     * The time when the repository was created.
-     */
-    createTime?: pulumi.Input<string>;
-    /**
      * The user-provided description of the repository.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     */
+    dockerConfig?: pulumi.Input<inputs.artifactregistry.v1.DockerRepositoryConfigArgs>;
     /**
      * The format of packages that are stored in the repository.
      */
@@ -194,10 +200,6 @@ export interface RepositoryArgs {
      * The repository id to use for this repository.
      */
     repositoryId?: pulumi.Input<string>;
-    /**
-     * The time when the repository was last updated.
-     */
-    updateTime?: pulumi.Input<string>;
     /**
      * Configuration specific for a Virtual Repository.
      */

@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
             set => _consumers = value;
         }
 
+        /// <summary>
+        /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+        /// </summary>
+        [Input("customRoutesEnabled")]
+        public Input<bool>? CustomRoutesEnabled { get; set; }
+
         public NetworkConfigArgs()
         {
         }

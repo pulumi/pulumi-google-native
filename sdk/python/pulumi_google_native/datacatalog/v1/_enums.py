@@ -136,7 +136,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType(str, Enum):
     """
     Measure.
     """
-    PAREMETER = "PAREMETER"
+    PARAMETER = "PARAMETER"
     """
     Parameter.
     """

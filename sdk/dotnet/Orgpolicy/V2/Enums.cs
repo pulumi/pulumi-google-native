@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         }
 
         /// <summary>
-        /// Unspecified. Will results in user error.
+        /// Unspecified. Results in an error.
         /// </summary>
         public static CustomConstraintActionType ActionTypeUnspecified { get; } = new CustomConstraintActionType("ACTION_TYPE_UNSPECIFIED");
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         }
 
         /// <summary>
-        /// Unspecified. Will results in user error.
+        /// Unspecified. Results in an error.
         /// </summary>
         public static CustomConstraintMethodTypesItem MethodTypeUnspecified { get; } = new CustomConstraintMethodTypesItem("METHOD_TYPE_UNSPECIFIED");
         /// <summary>

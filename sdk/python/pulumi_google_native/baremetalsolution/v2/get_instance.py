@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, create_time=None, hyperthreading_enabled=None, interactive_serial_console_enabled=None, labels=None, logical_interfaces=None, login_info=None, luns=None, machine_type=None, name=None, network_template=None, networks=None, os_image=None, pod=None, state=None, update_time=None, volumes=None, workload_profile=None):
+    def __init__(__self__, create_time=None, firmware_version=None, hyperthreading_enabled=None, interactive_serial_console_enabled=None, labels=None, logical_interfaces=None, login_info=None, luns=None, machine_type=None, name=None, network_template=None, networks=None, os_image=None, pod=None, state=None, update_time=None, volumes=None, workload_profile=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if firmware_version and not isinstance(firmware_version, str):
+            raise TypeError("Expected argument 'firmware_version' to be a str")
+        pulumi.set(__self__, "firmware_version", firmware_version)
         if hyperthreading_enabled and not isinstance(hyperthreading_enabled, bool):
             raise TypeError("Expected argument 'hyperthreading_enabled' to be a bool")
         pulumi.set(__self__, "hyperthreading_enabled", hyperthreading_enabled)
@@ -79,6 +82,14 @@ class GetInstanceResult:
         Create a time stamp.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="firmwareVersion")
+    def firmware_version(self) -> str:
+        """
+        The firmware version for the instance.
+        """
+        return pulumi.get(self, "firmware_version")
 
     @property
     @pulumi.getter(name="hyperthreadingEnabled")
@@ -216,6 +227,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             yield self
         return GetInstanceResult(
             create_time=self.create_time,
+            firmware_version=self.firmware_version,
             hyperthreading_enabled=self.hyperthreading_enabled,
             interactive_serial_console_enabled=self.interactive_serial_console_enabled,
             labels=self.labels,
@@ -250,6 +262,7 @@ def get_instance(instance_id: Optional[str] = None,
 
     return AwaitableGetInstanceResult(
         create_time=__ret__.create_time,
+        firmware_version=__ret__.firmware_version,
         hyperthreading_enabled=__ret__.hyperthreading_enabled,
         interactive_serial_console_enabled=__ret__.interactive_serial_console_enabled,
         labels=__ret__.labels,

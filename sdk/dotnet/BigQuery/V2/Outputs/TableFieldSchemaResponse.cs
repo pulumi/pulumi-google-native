@@ -51,6 +51,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string Precision;
         /// <summary>
+        /// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+        /// </summary>
+        public readonly string RoundingMode;
+        /// <summary>
         /// [Optional] See documentation for precision.
         /// </summary>
         public readonly string Scale;
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string precision,
 
+            string roundingMode,
+
             string scale,
 
             string type)
@@ -95,6 +101,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             Name = name;
             PolicyTags = policyTags;
             Precision = precision;
+            RoundingMode = roundingMode;
             Scale = scale;
             Type = type;
         }

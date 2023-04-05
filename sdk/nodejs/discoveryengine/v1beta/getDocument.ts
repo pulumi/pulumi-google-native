@@ -12,6 +12,7 @@ export function getDocument(args: GetDocumentArgs, opts?: pulumi.InvokeOptions):
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:discoveryengine/v1beta:getDocument", {
         "branchId": args.branchId,
+        "collectionId": args.collectionId,
         "dataStoreId": args.dataStoreId,
         "documentId": args.documentId,
         "location": args.location,
@@ -21,6 +22,7 @@ export function getDocument(args: GetDocumentArgs, opts?: pulumi.InvokeOptions):
 
 export interface GetDocumentArgs {
     branchId: string;
+    collectionId: string;
     dataStoreId: string;
     documentId: string;
     location: string;
@@ -33,7 +35,7 @@ export interface GetDocumentResult {
      */
     readonly jsonData: string;
     /**
-     * Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+     * Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
      */
     readonly name: string;
     /**
@@ -58,6 +60,7 @@ export function getDocumentOutput(args: GetDocumentOutputArgs, opts?: pulumi.Inv
 
 export interface GetDocumentOutputArgs {
     branchId: pulumi.Input<string>;
+    collectionId: pulumi.Input<string>;
     dataStoreId: pulumi.Input<string>;
     documentId: pulumi.Input<string>;
     location: pulumi.Input<string>;

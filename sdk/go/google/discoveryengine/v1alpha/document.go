@@ -15,14 +15,15 @@ import (
 type Document struct {
 	pulumi.CustomResourceState
 
-	BranchId    pulumi.StringOutput `pulumi:"branchId"`
-	DataStoreId pulumi.StringOutput `pulumi:"dataStoreId"`
+	BranchId     pulumi.StringOutput `pulumi:"branchId"`
+	CollectionId pulumi.StringOutput `pulumi:"collectionId"`
+	DataStoreId  pulumi.StringOutput `pulumi:"dataStoreId"`
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	DocumentId pulumi.StringOutput `pulumi:"documentId"`
 	// The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
 	JsonData pulumi.StringOutput `pulumi:"jsonData"`
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	ParentDocumentId pulumi.StringOutput `pulumi:"parentDocumentId"`
@@ -43,17 +44,18 @@ func NewDocument(ctx *pulumi.Context,
 	if args.BranchId == nil {
 		return nil, errors.New("invalid value for required argument 'BranchId'")
 	}
+	if args.CollectionId == nil {
+		return nil, errors.New("invalid value for required argument 'CollectionId'")
+	}
 	if args.DataStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'DataStoreId'")
 	}
 	if args.DocumentId == nil {
 		return nil, errors.New("invalid value for required argument 'DocumentId'")
 	}
-	if args.SchemaId == nil {
-		return nil, errors.New("invalid value for required argument 'SchemaId'")
-	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"branchId",
+		"collectionId",
 		"dataStoreId",
 		"documentId",
 		"location",
@@ -92,8 +94,9 @@ func (DocumentState) ElementType() reflect.Type {
 }
 
 type documentArgs struct {
-	BranchId    string `pulumi:"branchId"`
-	DataStoreId string `pulumi:"dataStoreId"`
+	BranchId     string `pulumi:"branchId"`
+	CollectionId string `pulumi:"collectionId"`
+	DataStoreId  string `pulumi:"dataStoreId"`
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	DocumentId string `pulumi:"documentId"`
 	// Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
@@ -101,21 +104,22 @@ type documentArgs struct {
 	// The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
 	JsonData *string `pulumi:"jsonData"`
 	Location *string `pulumi:"location"`
-	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 	Name *string `pulumi:"name"`
 	// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	ParentDocumentId *string `pulumi:"parentDocumentId"`
 	Project          *string `pulumi:"project"`
 	// The identifier of the schema located in the same data store.
-	SchemaId string `pulumi:"schemaId"`
+	SchemaId *string `pulumi:"schemaId"`
 	// The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
 	StructData map[string]string `pulumi:"structData"`
 }
 
 // The set of arguments for constructing a Document resource.
 type DocumentArgs struct {
-	BranchId    pulumi.StringInput
-	DataStoreId pulumi.StringInput
+	BranchId     pulumi.StringInput
+	CollectionId pulumi.StringInput
+	DataStoreId  pulumi.StringInput
 	// Required. The ID to use for the Document, which will become the final component of the Document.name. If the caller does not have permission to create the Document, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is returned.
 	DocumentId pulumi.StringInput
 	// Immutable. The identifier of the document. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
@@ -123,13 +127,13 @@ type DocumentArgs struct {
 	// The JSON string representation of the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
 	JsonData pulumi.StringPtrInput
 	Location pulumi.StringPtrInput
-	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+	// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 	Name pulumi.StringPtrInput
 	// The identifier of the parent document. Currently supports at most two level document hierarchy. Id should conform to [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63 characters.
 	ParentDocumentId pulumi.StringPtrInput
 	Project          pulumi.StringPtrInput
 	// The identifier of the schema located in the same data store.
-	SchemaId pulumi.StringInput
+	SchemaId pulumi.StringPtrInput
 	// The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT error is thrown.
 	StructData pulumi.StringMapInput
 }
@@ -175,6 +179,10 @@ func (o DocumentOutput) BranchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.BranchId }).(pulumi.StringOutput)
 }
 
+func (o DocumentOutput) CollectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.CollectionId }).(pulumi.StringOutput)
+}
+
 func (o DocumentOutput) DataStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.DataStoreId }).(pulumi.StringOutput)
 }
@@ -193,7 +201,7 @@ func (o DocumentOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+// Immutable. The full resource name of the document. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
 func (o DocumentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Document) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

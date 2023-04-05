@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+ * Returns the specified BackendBucket resource.
  */
 export function getBackendBucket(args: GetBackendBucketArgs, opts?: pulumi.InvokeOptions): Promise<GetBackendBucketResult> {
 
@@ -71,7 +71,7 @@ export interface GetBackendBucketResult {
     readonly selfLink: string;
 }
 /**
- * Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+ * Returns the specified BackendBucket resource.
  */
 export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketResult> {
     return pulumi.output(args).apply((a: any) => getBackendBucket(a, opts))

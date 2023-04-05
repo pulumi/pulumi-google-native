@@ -156,6 +156,7 @@ class Namespace(pulumi.CustomResource):
             __props__.__dict__["namespace_id"] = namespace_id
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespace_id", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -187,6 +188,7 @@ class Namespace(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["namespace_id"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Namespace(resource_name, opts=opts, __props__=__props__)
 
@@ -231,6 +233,14 @@ class Namespace(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        A globally unique identifier (in UUID4 format) for this namespace.
+        """
+        return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter(name="updateTime")

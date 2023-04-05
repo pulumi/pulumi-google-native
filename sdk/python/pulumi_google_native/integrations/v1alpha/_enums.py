@@ -34,6 +34,7 @@ __all__ = [
     'EnterpriseCrmEventbusStatsDimensionsRetryAttempt',
     'EnterpriseCrmFrontendsEventbusProtoParamSpecEntryDataType',
     'EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType',
+    'EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType',
     'EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption',
     'EnterpriseCrmFrontendsEventbusProtoTaskConfigNextTasksExecutionPolicy',
     'EnterpriseCrmFrontendsEventbusProtoTaskConfigTaskExecutionStrategy',
@@ -61,6 +62,7 @@ __all__ = [
     'GoogleCloudIntegrationsV1alphaParameterMapKeyType',
     'GoogleCloudIntegrationsV1alphaParameterMapValueType',
     'GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState',
+    'GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType',
     'GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption',
     'GoogleCloudIntegrationsV1alphaTaskConfigNextTasksExecutionPolicy',
     'GoogleCloudIntegrationsV1alphaTaskConfigTaskExecutionStrategy',
@@ -431,6 +433,10 @@ class EnterpriseCrmEventbusProtoTaskMetadataCategory(str, Enum):
     """
     include connecting to Vector salesforce, CRM Hub Spanner etc. Task entities that derive from a custom task template.
     """
+    TASK_RECOMMENDATIONS = "TASK_RECOMMENDATIONS"
+    """
+    Category to show task recommendations
+    """
 
 
 class EnterpriseCrmEventbusProtoTaskMetadataDefaultJsonValidationOption(str, Enum):
@@ -718,6 +724,21 @@ class EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType(str, Enum):
     BYTES_ARRAY = "BYTES_ARRAY"
     NON_SERIALIZABLE_OBJECT = "NON_SERIALIZABLE_OBJECT"
     JSON_VALUE = "JSON_VALUE"
+
+
+class EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType(str, Enum):
+    EXTERNAL_TASK_TYPE_UNSPECIFIED = "EXTERNAL_TASK_TYPE_UNSPECIFIED"
+    """
+    Default value. External task type is not specified
+    """
+    NORMAL_TASK = "NORMAL_TASK"
+    """
+    Tasks belongs to the normal task flows
+    """
+    ERROR_TASK = "ERROR_TASK"
+    """
+    Task belongs to the error catch task flows
+    """
 
 
 class EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption(str, Enum):
@@ -1437,6 +1458,24 @@ class GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState(str, Enum):
     SUSPENDED = "SUSPENDED"
     """
     Sets the state to SUSPENDED after executing. This is required for SuspensionTask; event execution will continue once the user calls ResolveSuspensions with the event_execution_info_id and the task number.
+    """
+
+
+class GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType(str, Enum):
+    """
+    Optional. External task type of the task
+    """
+    EXTERNAL_TASK_TYPE_UNSPECIFIED = "EXTERNAL_TASK_TYPE_UNSPECIFIED"
+    """
+    Default value. External task type is not specified
+    """
+    NORMAL_TASK = "NORMAL_TASK"
+    """
+    Tasks belongs to the normal task flows
+    """
+    ERROR_TASK = "ERROR_TASK"
+    """
+    Task belongs to the error catch task flows
     """
 
 

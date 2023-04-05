@@ -39,14 +39,14 @@ class WorkstationConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input['ContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
         :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input['HostArgs'] host: Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input['PersistentDirectoryArgs']]] persistent_directories: Directories to persist across workstation sessions.
-        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
         :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         """
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
@@ -141,7 +141,7 @@ class WorkstationConfigArgs:
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -243,7 +243,7 @@ class WorkstationConfigArgs:
     @pulumi.getter(name="runningTimeout")
     def running_timeout(self) -> Optional[pulumi.Input[str]]:
         """
-        How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+        How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
         """
         return pulumi.get(self, "running_timeout")
 
@@ -294,14 +294,14 @@ class WorkstationConfig(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Client-specified annotations.
         :param pulumi.Input[pulumi.InputType['ContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
         :param pulumi.Input[str] etag: Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['HostArgs']] host: Runtime host for the workstation.
         :param pulumi.Input[str] idle_timeout: How long to wait before automatically stopping an instance that hasn't received any user traffic. A value of 0 indicates that this instance should never time out due to idleness. Defaults to 20 minutes.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Client-specified labels that are applied to the resource and that are also propagated to the underlying Compute Engine resources.
         :param pulumi.Input[str] name: Full name of this resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PersistentDirectoryArgs']]]] persistent_directories: Directories to persist across workstation sessions.
-        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+        :param pulumi.Input[str] running_timeout: How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
         :param pulumi.Input[bool] validate_only: If set, validate the request and preview the review, but do not actually apply it.
         :param pulumi.Input[str] workstation_config_id: Required. ID to use for the config.
         """
@@ -490,7 +490,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter(name="encryptionKey")
     def encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
         """
-        Encrypts resources of this workstation configuration using a customer-specified encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk will be encrypted using this encryption key. If this field is not set, the disks will be encrypted using a generated key. Customer-specified encryption keys do not protect disk metadata. If the customer-specified encryption key is rotated, when the workstation instance is stopped, the system will attempt to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
+        Encrypts resources of this workstation configuration using a customer-managed encryption key. If specified, the boot disk of the Compute Engine instance and the persistent disk are encrypted using this encryption key. If this field is not set, the disks are encrypted using a generated key. Customer-managed encryption keys do not protect disk metadata. If the customer-managed encryption key is rotated, when the workstation instance is stopped, the system attempts to recreate the persistent disk with the new version of the key. Be sure to keep older versions of the key until the persistent disk is recreated. Otherwise, data on the persistent disk will be lost. If the encryption key is revoked, the workstation session will automatically be stopped within 7 hours.
         """
         return pulumi.get(self, "encryption_key")
 
@@ -564,7 +564,7 @@ class WorkstationConfig(pulumi.CustomResource):
     @pulumi.getter(name="runningTimeout")
     def running_timeout(self) -> pulumi.Output[str]:
         """
-        How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this config should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
+        How long to wait before automatically stopping a workstation after it started. A value of 0 indicates that workstations using this configuration should never time out. Must be greater than 0 and less than 24 hours if encryption_key is set. Defaults to 12 hours.
         """
         return pulumi.get(self, "running_timeout")
 

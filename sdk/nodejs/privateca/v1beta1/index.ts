@@ -5,16 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export { CertificateArgs } from "./certificate";
-export type Certificate = import("./certificate").Certificate;
-export const Certificate: typeof import("./certificate").Certificate = null as any;
-utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
-
-export { CertificateAuthorityArgs } from "./certificateAuthority";
-export type CertificateAuthority = import("./certificateAuthority").CertificateAuthority;
-export const CertificateAuthority: typeof import("./certificateAuthority").CertificateAuthority = null as any;
-utilities.lazyLoad(exports, ["CertificateAuthority"], () => require("./certificateAuthority"));
-
 export { CertificateAuthorityCertificateRevocationListIamBindingArgs } from "./certificateAuthorityCertificateRevocationListIamBinding";
 export type CertificateAuthorityCertificateRevocationListIamBinding = import("./certificateAuthorityCertificateRevocationListIamBinding").CertificateAuthorityCertificateRevocationListIamBinding;
 export const CertificateAuthorityCertificateRevocationListIamBinding: typeof import("./certificateAuthorityCertificateRevocationListIamBinding").CertificateAuthorityCertificateRevocationListIamBinding = null as any;
@@ -44,16 +34,6 @@ export { CertificateAuthorityIamPolicyArgs } from "./certificateAuthorityIamPoli
 export type CertificateAuthorityIamPolicy = import("./certificateAuthorityIamPolicy").CertificateAuthorityIamPolicy;
 export const CertificateAuthorityIamPolicy: typeof import("./certificateAuthorityIamPolicy").CertificateAuthorityIamPolicy = null as any;
 utilities.lazyLoad(exports, ["CertificateAuthorityIamPolicy"], () => require("./certificateAuthorityIamPolicy"));
-
-export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
-export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
-export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
-utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
-
-export { GetCertificateAuthorityArgs, GetCertificateAuthorityResult, GetCertificateAuthorityOutputArgs } from "./getCertificateAuthority";
-export const getCertificateAuthority: typeof import("./getCertificateAuthority").getCertificateAuthority = null as any;
-export const getCertificateAuthorityOutput: typeof import("./getCertificateAuthority").getCertificateAuthorityOutput = null as any;
-utilities.lazyLoad(exports, ["getCertificateAuthority","getCertificateAuthorityOutput"], () => require("./getCertificateAuthority"));
 
 export { GetCertificateAuthorityCertificateRevocationListIamPolicyArgs, GetCertificateAuthorityCertificateRevocationListIamPolicyResult, GetCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs } from "./getCertificateAuthorityCertificateRevocationListIamPolicy";
 export const getCertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./getCertificateAuthorityCertificateRevocationListIamPolicy").getCertificateAuthorityCertificateRevocationListIamPolicy = null as any;
@@ -93,10 +73,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:privateca/v1beta1:Certificate":
-                return new Certificate(name, <any>undefined, { urn })
-            case "google-native:privateca/v1beta1:CertificateAuthority":
-                return new CertificateAuthority(name, <any>undefined, { urn })
             case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamBinding":
                 return new CertificateAuthorityCertificateRevocationListIamBinding(name, <any>undefined, { urn })
             case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamMember":

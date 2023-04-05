@@ -16,6 +16,9 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     [OutputType]
     public sealed class SourceHierarchyDatasetsResponse
     {
+        /// <summary>
+        /// The dataset template to use for dynamic dataset creation.
+        /// </summary>
         public readonly Outputs.DatasetTemplateResponse DatasetTemplate;
 
         [OutputConstructor]

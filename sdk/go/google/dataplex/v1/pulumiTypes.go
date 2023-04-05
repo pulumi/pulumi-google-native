@@ -979,6 +979,8 @@ func (o GoogleCloudDataplexV1AssetResourceSpecResponseOutput) Type() pulumi.Stri
 
 // Status of the resource referenced by an asset.
 type GoogleCloudDataplexV1AssetResourceStatusResponse struct {
+	// Service account associated with the BigQuery Connection.
+	ManagedAccessIdentity string `pulumi:"managedAccessIdentity"`
 	// Additional information about the current state.
 	Message string `pulumi:"message"`
 	// The current state of the managed resource.
@@ -1000,6 +1002,11 @@ func (o GoogleCloudDataplexV1AssetResourceStatusResponseOutput) ToGoogleCloudDat
 
 func (o GoogleCloudDataplexV1AssetResourceStatusResponseOutput) ToGoogleCloudDataplexV1AssetResourceStatusResponseOutputWithContext(ctx context.Context) GoogleCloudDataplexV1AssetResourceStatusResponseOutput {
 	return o
+}
+
+// Service account associated with the BigQuery Connection.
+func (o GoogleCloudDataplexV1AssetResourceStatusResponseOutput) ManagedAccessIdentity() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1AssetResourceStatusResponse) string { return v.ManagedAccessIdentity }).(pulumi.StringOutput)
 }
 
 // Additional information about the current state.
@@ -1599,11 +1606,11 @@ func (o GoogleCloudDataplexV1DataAccessSpecResponseOutput) Readers() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAccessSpecResponse) []string { return v.Readers }).(pulumi.StringArrayOutput)
 }
 
-// Represents a subresource of a given resource, and associated bindings with it.
+// Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
 type GoogleCloudDataplexV1DataAttributeBindingPath struct {
 	// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
 	Attributes []string `pulumi:"attributes"`
-	// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+	// The name identifier of the path. Nested columns should be of the form: 'address.city'.
 	Name string `pulumi:"name"`
 }
 
@@ -1618,11 +1625,11 @@ type GoogleCloudDataplexV1DataAttributeBindingPathInput interface {
 	ToGoogleCloudDataplexV1DataAttributeBindingPathOutputWithContext(context.Context) GoogleCloudDataplexV1DataAttributeBindingPathOutput
 }
 
-// Represents a subresource of a given resource, and associated bindings with it.
+// Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
 type GoogleCloudDataplexV1DataAttributeBindingPathArgs struct {
 	// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
 	Attributes pulumi.StringArrayInput `pulumi:"attributes"`
-	// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+	// The name identifier of the path. Nested columns should be of the form: 'address.city'.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1663,7 +1670,7 @@ func (i GoogleCloudDataplexV1DataAttributeBindingPathArray) ToGoogleCloudDataple
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput)
 }
 
-// Represents a subresource of a given resource, and associated bindings with it.
+// Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
 type GoogleCloudDataplexV1DataAttributeBindingPathOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataAttributeBindingPathOutput) ElementType() reflect.Type {
@@ -1683,7 +1690,7 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) Attributes() pulumi
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPath) []string { return v.Attributes }).(pulumi.StringArrayOutput)
 }
 
-// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+// The name identifier of the path. Nested columns should be of the form: 'address.city'.
 func (o GoogleCloudDataplexV1DataAttributeBindingPathOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPath) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1708,15 +1715,15 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathArrayOutput) Index(i pulumi
 	}).(GoogleCloudDataplexV1DataAttributeBindingPathOutput)
 }
 
-// Represents a subresource of a given resource, and associated bindings with it.
+// Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
 type GoogleCloudDataplexV1DataAttributeBindingPathResponse struct {
 	// Optional. List of attributes to be associated with the path of the resource, provided in the form: projects/{project}/locations/{location}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}
 	Attributes []string `pulumi:"attributes"`
-	// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+	// The name identifier of the path. Nested columns should be of the form: 'address.city'.
 	Name string `pulumi:"name"`
 }
 
-// Represents a subresource of a given resource, and associated bindings with it.
+// Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
 type GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) ElementType() reflect.Type {
@@ -1736,7 +1743,7 @@ func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) Attributes(
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPathResponse) []string { return v.Attributes }).(pulumi.StringArrayOutput)
 }
 
-// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+// The name identifier of the path. Nested columns should be of the form: 'address.city'.
 func (o GoogleCloudDataplexV1DataAttributeBindingPathResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataAttributeBindingPathResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2073,7 +2080,7 @@ type GoogleCloudDataplexV1DataProfileResultProfileFieldResponse struct {
 	Name string `pulumi:"name"`
 	// Profile information for the corresponding field.
 	Profile GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponse `pulumi:"profile"`
-	// The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+	// The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
 	Type string `pulumi:"type"`
 }
 
@@ -2109,7 +2116,7 @@ func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) Profil
 	}).(GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoResponseOutput)
 }
 
-// The field data type. Possible values include: STRING BYTE INT64 INT32 INT16 DOUBLE FLOAT DECIMAL BOOLEAN BINARY TIMESTAMP DATE TIME NULL RECORD
+// The data type retrieved from the schema of the data source. For instance, for a BigQuery native table, it is the BigQuery Table Schema (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema). For a Dataplex Entity, it is the Entity Schema (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
 func (o GoogleCloudDataplexV1DataProfileResultProfileFieldResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataProfileResultProfileFieldResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4763,6 +4770,8 @@ func (o GoogleCloudDataplexV1DataScanExecutionStatusResponseOutput) LatestJobSta
 type GoogleCloudDataplexV1DataSource struct {
 	// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
 	Entity *string `pulumi:"entity"`
+	// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	Resource *string `pulumi:"resource"`
 }
 
 // GoogleCloudDataplexV1DataSourceInput is an input type that accepts GoogleCloudDataplexV1DataSourceArgs and GoogleCloudDataplexV1DataSourceOutput values.
@@ -4780,6 +4789,8 @@ type GoogleCloudDataplexV1DataSourceInput interface {
 type GoogleCloudDataplexV1DataSourceArgs struct {
 	// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
 	Entity pulumi.StringPtrInput `pulumi:"entity"`
+	// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	Resource pulumi.StringPtrInput `pulumi:"resource"`
 }
 
 func (GoogleCloudDataplexV1DataSourceArgs) ElementType() reflect.Type {
@@ -4814,10 +4825,17 @@ func (o GoogleCloudDataplexV1DataSourceOutput) Entity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataSource) *string { return v.Entity }).(pulumi.StringPtrOutput)
 }
 
+// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataSourceOutput) Resource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataSource) *string { return v.Resource }).(pulumi.StringPtrOutput)
+}
+
 // The data source for DataScan.
 type GoogleCloudDataplexV1DataSourceResponse struct {
 	// Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
 	Entity string `pulumi:"entity"`
+	// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+	Resource string `pulumi:"resource"`
 }
 
 // The data source for DataScan.
@@ -4838,6 +4856,11 @@ func (o GoogleCloudDataplexV1DataSourceResponseOutput) ToGoogleCloudDataplexV1Da
 // Immutable. The Dataplex entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
 func (o GoogleCloudDataplexV1DataSourceResponseOutput) Entity() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1DataSourceResponse) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// Immutable. The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be: BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+func (o GoogleCloudDataplexV1DataSourceResponseOutput) Resource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDataplexV1DataSourceResponse) string { return v.Resource }).(pulumi.StringOutput)
 }
 
 // Provides compatibility information for a specific metadata store.
@@ -4910,6 +4933,7 @@ func (o GoogleCloudDataplexV1EntityCompatibilityStatusResponseOutput) HiveMetast
 	}).(GoogleCloudDataplexV1EntityCompatibilityStatusCompatibilityResponseOutput)
 }
 
+// URI Endpoints to access sessions associated with the Environment.
 type GoogleCloudDataplexV1EnvironmentEndpointsResponse struct {
 	// URI to serve notebook APIs
 	Notebooks string `pulumi:"notebooks"`
@@ -4917,6 +4941,7 @@ type GoogleCloudDataplexV1EnvironmentEndpointsResponse struct {
 	Sql string `pulumi:"sql"`
 }
 
+// URI Endpoints to access sessions associated with the Environment.
 type GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1EnvironmentEndpointsResponseOutput) ElementType() reflect.Type {
@@ -5413,6 +5438,7 @@ func (o GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponseOutput) OsImag
 	}).(GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeResponseOutput)
 }
 
+// Configuration for sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionSpec struct {
 	// Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
 	EnableFastStartup *bool `pulumi:"enableFastStartup"`
@@ -5431,6 +5457,7 @@ type GoogleCloudDataplexV1EnvironmentSessionSpecInput interface {
 	ToGoogleCloudDataplexV1EnvironmentSessionSpecOutputWithContext(context.Context) GoogleCloudDataplexV1EnvironmentSessionSpecOutput
 }
 
+// Configuration for sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionSpecArgs struct {
 	// Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
 	EnableFastStartup pulumi.BoolPtrInput `pulumi:"enableFastStartup"`
@@ -5491,6 +5518,7 @@ func (i *googleCloudDataplexV1EnvironmentSessionSpecPtrType) ToGoogleCloudDatapl
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput)
 }
 
+// Configuration for sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionSpecOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1EnvironmentSessionSpecOutput) ElementType() reflect.Type {
@@ -5569,6 +5597,7 @@ func (o GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput) MaxIdleDuration() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Configuration for sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionSpecResponse struct {
 	// Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
 	EnableFastStartup bool `pulumi:"enableFastStartup"`
@@ -5576,6 +5605,7 @@ type GoogleCloudDataplexV1EnvironmentSessionSpecResponse struct {
 	MaxIdleDuration string `pulumi:"maxIdleDuration"`
 }
 
+// Configuration for sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput) ElementType() reflect.Type {
@@ -5600,11 +5630,13 @@ func (o GoogleCloudDataplexV1EnvironmentSessionSpecResponseOutput) MaxIdleDurati
 	return o.ApplyT(func(v GoogleCloudDataplexV1EnvironmentSessionSpecResponse) string { return v.MaxIdleDuration }).(pulumi.StringOutput)
 }
 
+// Status of sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionStatusResponse struct {
 	// Queries over sessions to mark whether the environment is currently active or not
 	Active bool `pulumi:"active"`
 }
 
+// Status of sessions created for this environment.
 type GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDataplexV1EnvironmentSessionStatusResponseOutput) ElementType() reflect.Type {

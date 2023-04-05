@@ -53,6 +53,8 @@ type LookupConversationProfileResult struct {
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse `pulumi:"sttConfig"`
 	// The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
 	TimeZone string `pulumi:"timeZone"`
+	// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+	TtsConfig GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse `pulumi:"ttsConfig"`
 	// Update time of the conversation profile.
 	UpdateTime string `pulumi:"updateTime"`
 }
@@ -171,6 +173,13 @@ func (o LookupConversationProfileResultOutput) SttConfig() GoogleCloudDialogflow
 // The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
 func (o LookupConversationProfileResultOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConversationProfileResult) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+func (o LookupConversationProfileResultOutput) TtsConfig() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+	return o.ApplyT(func(v LookupConversationProfileResult) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse {
+		return v.TtsConfig
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput)
 }
 
 // Update time of the conversation profile.

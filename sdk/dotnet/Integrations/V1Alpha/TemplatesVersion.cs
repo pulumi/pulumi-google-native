@@ -36,6 +36,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        /// </summary>
+        [Output("errorCatcherConfigs")]
+        public Output<ImmutableArray<Outputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigResponse>> ErrorCatcherConfigs { get; private set; } = null!;
+
         [Output("integrationtemplateId")]
         public Output<string> IntegrationtemplateId { get; private set; } = null!;
 
@@ -177,6 +183,18 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("errorCatcherConfigs")]
+        private InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>? _errorCatcherConfigs;
+
+        /// <summary>
+        /// Optional. Error Catch Task configuration for the IntegrationTemplateVersion. It's optional.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs> ErrorCatcherConfigs
+        {
+            get => _errorCatcherConfigs ?? (_errorCatcherConfigs = new InputList<Inputs.GoogleCloudIntegrationsV1alphaErrorCatcherConfigArgs>());
+            set => _errorCatcherConfigs = value;
+        }
 
         [Input("integrationtemplateId", required: true)]
         public Input<string> IntegrationtemplateId { get; set; } = null!;

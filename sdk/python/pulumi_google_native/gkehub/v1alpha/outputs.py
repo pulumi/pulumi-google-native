@@ -41,14 +41,19 @@ __all__ = [
     'IdentityServiceOidcConfigResponse',
     'KubernetesMetadataResponse',
     'KubernetesResourceResponse',
+    'MembershipBindingLifecycleStateResponse',
     'MembershipEndpointResponse',
     'MembershipSpecResponse',
     'MembershipStateResponse',
     'MultiCloudClusterResponse',
     'MultiClusterIngressFeatureSpecResponse',
+    'NamespaceLifecycleStateResponse',
     'OnPremClusterResponse',
+    'RBACRoleBindingLifecycleStateResponse',
     'ResourceManifestResponse',
     'ResourceOptionsResponse',
+    'RoleResponse',
+    'ScopeLifecycleStateResponse',
     'ServiceMeshAnalysisMessageBaseResponse',
     'ServiceMeshAnalysisMessageResponse',
     'ServiceMeshFeatureStateResponse',
@@ -1616,6 +1621,28 @@ class KubernetesResourceResponse(dict):
 
 
 @pulumi.output_type
+class MembershipBindingLifecycleStateResponse(dict):
+    """
+    MembershipBindingLifecycleState describes the state of a Binding resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        MembershipBindingLifecycleState describes the state of a Binding resource.
+        :param str code: The current state of the MembershipBinding resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the MembershipBinding resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
 class MembershipEndpointResponse(dict):
     """
     MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
@@ -1629,6 +1656,8 @@ class MembershipEndpointResponse(dict):
             suggest = "edge_cluster"
         elif key == "gkeCluster":
             suggest = "gke_cluster"
+        elif key == "googleManaged":
+            suggest = "google_managed"
         elif key == "kubernetesMetadata":
             suggest = "kubernetes_metadata"
         elif key == "kubernetesResource":
@@ -1653,6 +1682,7 @@ class MembershipEndpointResponse(dict):
                  appliance_cluster: 'outputs.ApplianceClusterResponse',
                  edge_cluster: 'outputs.EdgeClusterResponse',
                  gke_cluster: 'outputs.GkeClusterResponse',
+                 google_managed: bool,
                  kubernetes_metadata: 'outputs.KubernetesMetadataResponse',
                  kubernetes_resource: 'outputs.KubernetesResourceResponse',
                  multi_cloud_cluster: 'outputs.MultiCloudClusterResponse',
@@ -1662,6 +1692,7 @@ class MembershipEndpointResponse(dict):
         :param 'ApplianceClusterResponse' appliance_cluster: Optional. Specific information for a GDC Edge Appliance cluster.
         :param 'EdgeClusterResponse' edge_cluster: Optional. Specific information for a Google Edge cluster.
         :param 'GkeClusterResponse' gke_cluster: Optional. Specific information for a GKE-on-GCP cluster.
+        :param bool google_managed: Whether the lifecycle of this membership is managed by a google cluster platform service.
         :param 'KubernetesMetadataResponse' kubernetes_metadata: Useful Kubernetes-specific metadata.
         :param 'KubernetesResourceResponse' kubernetes_resource: Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
         :param 'MultiCloudClusterResponse' multi_cloud_cluster: Optional. Specific information for a GKE Multi-Cloud cluster.
@@ -1670,6 +1701,7 @@ class MembershipEndpointResponse(dict):
         pulumi.set(__self__, "appliance_cluster", appliance_cluster)
         pulumi.set(__self__, "edge_cluster", edge_cluster)
         pulumi.set(__self__, "gke_cluster", gke_cluster)
+        pulumi.set(__self__, "google_managed", google_managed)
         pulumi.set(__self__, "kubernetes_metadata", kubernetes_metadata)
         pulumi.set(__self__, "kubernetes_resource", kubernetes_resource)
         pulumi.set(__self__, "multi_cloud_cluster", multi_cloud_cluster)
@@ -1698,6 +1730,14 @@ class MembershipEndpointResponse(dict):
         Optional. Specific information for a GKE-on-GCP cluster.
         """
         return pulumi.get(self, "gke_cluster")
+
+    @property
+    @pulumi.getter(name="googleManaged")
+    def google_managed(self) -> bool:
+        """
+        Whether the lifecycle of this membership is managed by a google cluster platform service.
+        """
+        return pulumi.get(self, "google_managed")
 
     @property
     @pulumi.getter(name="kubernetesMetadata")
@@ -1896,6 +1936,28 @@ class MultiClusterIngressFeatureSpecResponse(dict):
 
 
 @pulumi.output_type
+class NamespaceLifecycleStateResponse(dict):
+    """
+    NamespaceLifecycleState describes the state of a Namespace resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        NamespaceLifecycleState describes the state of a Namespace resource.
+        :param str code: The current state of the Namespace resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the Namespace resource.
+        """
+        return pulumi.get(self, "code")
+
+
+@pulumi.output_type
 class OnPremClusterResponse(dict):
     """
     OnPremCluster contains information specific to GKE On-Prem clusters.
@@ -1971,6 +2033,28 @@ class OnPremClusterResponse(dict):
         Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example: //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         """
         return pulumi.get(self, "resource_link")
+
+
+@pulumi.output_type
+class RBACRoleBindingLifecycleStateResponse(dict):
+    """
+    RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding resource.
+        :param str code: The current state of the rbacrolebinding resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the rbacrolebinding resource.
+        """
+        return pulumi.get(self, "code")
 
 
 @pulumi.output_type
@@ -2086,6 +2170,67 @@ class ResourceOptionsResponse(dict):
         Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources. This option should be set for clusters with Kubernetes apiserver versions <1.16.
         """
         return pulumi.get(self, "v1beta1_crd")
+
+
+@pulumi.output_type
+class RoleResponse(dict):
+    """
+    Role is the type for Kubernetes roles
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedRole":
+            suggest = "predefined_role"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoleResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predefined_role: str):
+        """
+        Role is the type for Kubernetes roles
+        :param str predefined_role: predefined_role is the Kubernetes default role to use
+        """
+        pulumi.set(__self__, "predefined_role", predefined_role)
+
+    @property
+    @pulumi.getter(name="predefinedRole")
+    def predefined_role(self) -> str:
+        """
+        predefined_role is the Kubernetes default role to use
+        """
+        return pulumi.get(self, "predefined_role")
+
+
+@pulumi.output_type
+class ScopeLifecycleStateResponse(dict):
+    """
+    ScopeLifecycleState describes the state of a Scope resource.
+    """
+    def __init__(__self__, *,
+                 code: str):
+        """
+        ScopeLifecycleState describes the state of a Scope resource.
+        :param str code: The current state of the scope resource.
+        """
+        pulumi.set(__self__, "code", code)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The current state of the scope resource.
+        """
+        return pulumi.get(self, "code")
 
 
 @pulumi.output_type

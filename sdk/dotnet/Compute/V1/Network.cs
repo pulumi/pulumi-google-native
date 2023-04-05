@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> FirewallPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// The gateway address for default routing out of the network, selected by GCP.
+        /// The gateway address for default routing out of the network, selected by Google Cloud.
         /// </summary>
         [Output("gatewayIPv4")]
         public Output<string> GatewayIPv4 { get; private set; } = null!;

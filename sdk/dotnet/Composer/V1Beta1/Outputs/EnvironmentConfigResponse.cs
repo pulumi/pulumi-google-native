@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
     public sealed class EnvironmentConfigResponse
     {
         /// <summary>
+        /// The 'bring your own identity' variant of the URI of the Apache Airflow Web UI hosted within this environment, to be accessed with external identities using workforce identity federation (see [Access environments with workforce identity federation](/composer/docs/composer-2/access-environments-with-workforce-identity-federation)).
+        /// </summary>
+        public readonly string AirflowByoidUri;
+        /// <summary>
         /// The URI of the Apache Airflow Web UI hosted within this environment (see [Airflow web interface](/composer/docs/how-to/accessing/airflow-web-interface)).
         /// </summary>
         public readonly string AirflowUri;
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
         [OutputConstructor]
         private EnvironmentConfigResponse(
+            string airflowByoidUri,
+
             string airflowUri,
 
             string dagGcsPrefix,
@@ -115,6 +121,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             Outputs.WorkloadsConfigResponse workloadsConfig)
         {
+            AirflowByoidUri = airflowByoidUri;
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
             DatabaseConfig = databaseConfig;

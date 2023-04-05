@@ -1101,6 +1101,558 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 }
 
 // Represents an OpenId Connect 1.0 identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderOidc struct {
+	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+	ClientId string `pulumi:"clientId"`
+	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+	IssuerUri string `pulumi:"issuerUri"`
+}
+
+// GoogleIamAdminV1WorkforcePoolProviderOidcInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderOidcArgs and GoogleIamAdminV1WorkforcePoolProviderOidcOutput values.
+// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcInput` via:
+//
+//	GoogleIamAdminV1WorkforcePoolProviderOidcArgs{...}
+type GoogleIamAdminV1WorkforcePoolProviderOidcInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcOutput() GoogleIamAdminV1WorkforcePoolProviderOidcOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcOutput
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderOidcArgs struct {
+	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+	IssuerUri pulumi.StringInput `pulumi:"issuerUri"`
+}
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToGoogleIamAdminV1WorkforcePoolProviderOidcOutput() GoogleIamAdminV1WorkforcePoolProviderOidcOutput {
+	return i.ToGoogleIamAdminV1WorkforcePoolProviderOidcOutputWithContext(context.Background())
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToGoogleIamAdminV1WorkforcePoolProviderOidcOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcOutput)
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return i.ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderOidcArgs) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcOutput).ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx)
+}
+
+// GoogleIamAdminV1WorkforcePoolProviderOidcPtrInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderOidcArgs, GoogleIamAdminV1WorkforcePoolProviderOidcPtr and GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput values.
+// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderOidcPtrInput` via:
+//
+//	        GoogleIamAdminV1WorkforcePoolProviderOidcArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleIamAdminV1WorkforcePoolProviderOidcPtrInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput
+}
+
+type googleIamAdminV1WorkforcePoolProviderOidcPtrType GoogleIamAdminV1WorkforcePoolProviderOidcArgs
+
+func GoogleIamAdminV1WorkforcePoolProviderOidcPtr(v *GoogleIamAdminV1WorkforcePoolProviderOidcArgs) GoogleIamAdminV1WorkforcePoolProviderOidcPtrInput {
+	return (*googleIamAdminV1WorkforcePoolProviderOidcPtrType)(v)
+}
+
+func (*googleIamAdminV1WorkforcePoolProviderOidcPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (i *googleIamAdminV1WorkforcePoolProviderOidcPtrType) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return i.ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (i *googleIamAdminV1WorkforcePoolProviderOidcPtrType) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderOidcOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcOutput() GoogleIamAdminV1WorkforcePoolProviderOidcOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return o.ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamAdminV1WorkforcePoolProviderOidc) *GoogleIamAdminV1WorkforcePoolProviderOidc {
+		return &v
+	}).(GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput)
+}
+
+// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderOidc) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderOidc) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+type GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderOidc)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput() GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderOidcOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderOidc) GoogleIamAdminV1WorkforcePoolProviderOidc {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamAdminV1WorkforcePoolProviderOidc
+		return ret
+	}).(GoogleIamAdminV1WorkforcePoolProviderOidcOutput)
+}
+
+// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput) IssuerUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderOidc) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IssuerUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderOidcResponse struct {
+	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+	ClientId string `pulumi:"clientId"`
+	// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+	IssuerUri string `pulumi:"issuerUri"`
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcResponse)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput() GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ToGoogleIamAdminV1WorkforcePoolProviderOidcResponseOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput {
+	return o
+}
+
+// The client ID. Must match the audience claim of the JWT issued by the identity provider.
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderOidcResponse) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
+func (o GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput) IssuerUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderOidcResponse) string { return v.IssuerUri }).(pulumi.StringOutput)
+}
+
+// Represents a SAML identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderSaml struct {
+	// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+	IdpMetadataXml string `pulumi:"idpMetadataXml"`
+}
+
+// GoogleIamAdminV1WorkforcePoolProviderSamlInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderSamlArgs and GoogleIamAdminV1WorkforcePoolProviderSamlOutput values.
+// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderSamlInput` via:
+//
+//	GoogleIamAdminV1WorkforcePoolProviderSamlArgs{...}
+type GoogleIamAdminV1WorkforcePoolProviderSamlInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderSamlOutput() GoogleIamAdminV1WorkforcePoolProviderSamlOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderSamlOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlOutput
+}
+
+// Represents a SAML identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderSamlArgs struct {
+	// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+	IdpMetadataXml pulumi.StringInput `pulumi:"idpMetadataXml"`
+}
+
+func (GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToGoogleIamAdminV1WorkforcePoolProviderSamlOutput() GoogleIamAdminV1WorkforcePoolProviderSamlOutput {
+	return i.ToGoogleIamAdminV1WorkforcePoolProviderSamlOutputWithContext(context.Background())
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToGoogleIamAdminV1WorkforcePoolProviderSamlOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderSamlOutput)
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput() GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return i.ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleIamAdminV1WorkforcePoolProviderSamlArgs) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderSamlOutput).ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx)
+}
+
+// GoogleIamAdminV1WorkforcePoolProviderSamlPtrInput is an input type that accepts GoogleIamAdminV1WorkforcePoolProviderSamlArgs, GoogleIamAdminV1WorkforcePoolProviderSamlPtr and GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput values.
+// You can construct a concrete instance of `GoogleIamAdminV1WorkforcePoolProviderSamlPtrInput` via:
+//
+//	        GoogleIamAdminV1WorkforcePoolProviderSamlArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleIamAdminV1WorkforcePoolProviderSamlPtrInput interface {
+	pulumi.Input
+
+	ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput() GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput
+	ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput
+}
+
+type googleIamAdminV1WorkforcePoolProviderSamlPtrType GoogleIamAdminV1WorkforcePoolProviderSamlArgs
+
+func GoogleIamAdminV1WorkforcePoolProviderSamlPtr(v *GoogleIamAdminV1WorkforcePoolProviderSamlArgs) GoogleIamAdminV1WorkforcePoolProviderSamlPtrInput {
+	return (*googleIamAdminV1WorkforcePoolProviderSamlPtrType)(v)
+}
+
+func (*googleIamAdminV1WorkforcePoolProviderSamlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (i *googleIamAdminV1WorkforcePoolProviderSamlPtrType) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput() GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return i.ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
+}
+
+func (i *googleIamAdminV1WorkforcePoolProviderSamlPtrType) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput)
+}
+
+// Represents a SAML identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderSamlOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlOutput() GoogleIamAdminV1WorkforcePoolProviderSamlOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput() GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return o.ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamAdminV1WorkforcePoolProviderSaml) *GoogleIamAdminV1WorkforcePoolProviderSaml {
+		return &v
+	}).(GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput)
+}
+
+// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlOutput) IdpMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderSaml) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
+}
+
+type GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleIamAdminV1WorkforcePoolProviderSaml)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput() GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlPtrOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) Elem() GoogleIamAdminV1WorkforcePoolProviderSamlOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderSaml) GoogleIamAdminV1WorkforcePoolProviderSaml {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleIamAdminV1WorkforcePoolProviderSaml
+		return ret
+	}).(GoogleIamAdminV1WorkforcePoolProviderSamlOutput)
+}
+
+// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput) IdpMetadataXml() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleIamAdminV1WorkforcePoolProviderSaml) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IdpMetadataXml
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a SAML identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderSamlResponse struct {
+	// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+	IdpMetadataXml string `pulumi:"idpMetadataXml"`
+}
+
+// Represents a SAML identity provider.
+type GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderSamlResponse)(nil)).Elem()
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput() GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput {
+	return o
+}
+
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) ToGoogleIamAdminV1WorkforcePoolProviderSamlResponseOutputWithContext(ctx context.Context) GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput {
+	return o
+}
+
+// SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata.
+func (o GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput) IdpMetadataXml() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleIamAdminV1WorkforcePoolProviderSamlResponse) string { return v.IdpMetadataXml }).(pulumi.StringOutput)
+}
+
+// Represents a public key data along with its format.
+type KeyData struct {
+	// Immutable. The specifications for the key.
+	KeySpec *KeyDataKeySpec `pulumi:"keySpec"`
+}
+
+// KeyDataInput is an input type that accepts KeyDataArgs and KeyDataOutput values.
+// You can construct a concrete instance of `KeyDataInput` via:
+//
+//	KeyDataArgs{...}
+type KeyDataInput interface {
+	pulumi.Input
+
+	ToKeyDataOutput() KeyDataOutput
+	ToKeyDataOutputWithContext(context.Context) KeyDataOutput
+}
+
+// Represents a public key data along with its format.
+type KeyDataArgs struct {
+	// Immutable. The specifications for the key.
+	KeySpec KeyDataKeySpecPtrInput `pulumi:"keySpec"`
+}
+
+func (KeyDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyData)(nil)).Elem()
+}
+
+func (i KeyDataArgs) ToKeyDataOutput() KeyDataOutput {
+	return i.ToKeyDataOutputWithContext(context.Background())
+}
+
+func (i KeyDataArgs) ToKeyDataOutputWithContext(ctx context.Context) KeyDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyDataOutput)
+}
+
+func (i KeyDataArgs) ToKeyDataPtrOutput() KeyDataPtrOutput {
+	return i.ToKeyDataPtrOutputWithContext(context.Background())
+}
+
+func (i KeyDataArgs) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyDataOutput).ToKeyDataPtrOutputWithContext(ctx)
+}
+
+// KeyDataPtrInput is an input type that accepts KeyDataArgs, KeyDataPtr and KeyDataPtrOutput values.
+// You can construct a concrete instance of `KeyDataPtrInput` via:
+//
+//	        KeyDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type KeyDataPtrInput interface {
+	pulumi.Input
+
+	ToKeyDataPtrOutput() KeyDataPtrOutput
+	ToKeyDataPtrOutputWithContext(context.Context) KeyDataPtrOutput
+}
+
+type keyDataPtrType KeyDataArgs
+
+func KeyDataPtr(v *KeyDataArgs) KeyDataPtrInput {
+	return (*keyDataPtrType)(v)
+}
+
+func (*keyDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyData)(nil)).Elem()
+}
+
+func (i *keyDataPtrType) ToKeyDataPtrOutput() KeyDataPtrOutput {
+	return i.ToKeyDataPtrOutputWithContext(context.Background())
+}
+
+func (i *keyDataPtrType) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KeyDataPtrOutput)
+}
+
+// Represents a public key data along with its format.
+type KeyDataOutput struct{ *pulumi.OutputState }
+
+func (KeyDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyData)(nil)).Elem()
+}
+
+func (o KeyDataOutput) ToKeyDataOutput() KeyDataOutput {
+	return o
+}
+
+func (o KeyDataOutput) ToKeyDataOutputWithContext(ctx context.Context) KeyDataOutput {
+	return o
+}
+
+func (o KeyDataOutput) ToKeyDataPtrOutput() KeyDataPtrOutput {
+	return o.ToKeyDataPtrOutputWithContext(context.Background())
+}
+
+func (o KeyDataOutput) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyData) *KeyData {
+		return &v
+	}).(KeyDataPtrOutput)
+}
+
+// Immutable. The specifications for the key.
+func (o KeyDataOutput) KeySpec() KeyDataKeySpecPtrOutput {
+	return o.ApplyT(func(v KeyData) *KeyDataKeySpec { return v.KeySpec }).(KeyDataKeySpecPtrOutput)
+}
+
+type KeyDataPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KeyData)(nil)).Elem()
+}
+
+func (o KeyDataPtrOutput) ToKeyDataPtrOutput() KeyDataPtrOutput {
+	return o
+}
+
+func (o KeyDataPtrOutput) ToKeyDataPtrOutputWithContext(ctx context.Context) KeyDataPtrOutput {
+	return o
+}
+
+func (o KeyDataPtrOutput) Elem() KeyDataOutput {
+	return o.ApplyT(func(v *KeyData) KeyData {
+		if v != nil {
+			return *v
+		}
+		var ret KeyData
+		return ret
+	}).(KeyDataOutput)
+}
+
+// Immutable. The specifications for the key.
+func (o KeyDataPtrOutput) KeySpec() KeyDataKeySpecPtrOutput {
+	return o.ApplyT(func(v *KeyData) *KeyDataKeySpec {
+		if v == nil {
+			return nil
+		}
+		return v.KeySpec
+	}).(KeyDataKeySpecPtrOutput)
+}
+
+// Represents a public key data along with its format.
+type KeyDataResponse struct {
+	// The format of the key.
+	Format string `pulumi:"format"`
+	// The key data. The format of the key is represented by the format field.
+	Key string `pulumi:"key"`
+	// Immutable. The specifications for the key.
+	KeySpec string `pulumi:"keySpec"`
+	// Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
+	NotAfterTime string `pulumi:"notAfterTime"`
+	// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
+	NotBeforeTime string `pulumi:"notBeforeTime"`
+}
+
+// Represents a public key data along with its format.
+type KeyDataResponseOutput struct{ *pulumi.OutputState }
+
+func (KeyDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyDataResponse)(nil)).Elem()
+}
+
+func (o KeyDataResponseOutput) ToKeyDataResponseOutput() KeyDataResponseOutput {
+	return o
+}
+
+func (o KeyDataResponseOutput) ToKeyDataResponseOutputWithContext(ctx context.Context) KeyDataResponseOutput {
+	return o
+}
+
+// The format of the key.
+func (o KeyDataResponseOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyDataResponse) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The key data. The format of the key is represented by the format field.
+func (o KeyDataResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyDataResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// Immutable. The specifications for the key.
+func (o KeyDataResponseOutput) KeySpec() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyDataResponse) string { return v.KeySpec }).(pulumi.StringOutput)
+}
+
+// Latest timestamp when this key is valid. Attempts to use this key after this time will fail. Only present if the key data represents a X.509 certificate.
+func (o KeyDataResponseOutput) NotAfterTime() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyDataResponse) string { return v.NotAfterTime }).(pulumi.StringOutput)
+}
+
+// Earliest timestamp when this key is valid. Attempts to use this key before this time will fail. Only present if the key data represents a X.509 certificate.
+func (o KeyDataResponseOutput) NotBeforeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyDataResponse) string { return v.NotBeforeTime }).(pulumi.StringOutput)
+}
+
+// Represents an OpenId Connect 1.0 identity provider.
 type Oidc struct {
 	// Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ```//iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/```
 	AllowedAudiences []string `pulumi:"allowedAudiences"`
@@ -1471,6 +2023,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionPtrInput)(nil)).Elem(), ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderOidcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderSamlInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamAdminV1WorkforcePoolProviderSamlPtrInput)(nil)).Elem(), GoogleIamAdminV1WorkforcePoolProviderSamlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyDataInput)(nil)).Elem(), KeyDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KeyDataPtrInput)(nil)).Elem(), KeyDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcInput)(nil)).Elem(), OidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcPtrInput)(nil)).Elem(), OidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SamlInput)(nil)).Elem(), SamlArgs{})
@@ -1495,6 +2053,15 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcPtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderOidcResponseOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderSamlOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderSamlPtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamAdminV1WorkforcePoolProviderSamlResponseOutput{})
+	pulumi.RegisterOutputType(KeyDataOutput{})
+	pulumi.RegisterOutputType(KeyDataPtrOutput{})
+	pulumi.RegisterOutputType(KeyDataResponseOutput{})
 	pulumi.RegisterOutputType(OidcOutput{})
 	pulumi.RegisterOutputType(OidcPtrOutput{})
 	pulumi.RegisterOutputType(OidcResponseOutput{})

@@ -394,6 +394,10 @@ export const EnterpriseCrmEventbusProtoTaskMetadataCategory = {
      * include connecting to Vector salesforce, CRM Hub Spanner etc. Task entities that derive from a custom task template.
      */
     CustomTaskTemplate: "CUSTOM_TASK_TEMPLATE",
+    /**
+     * Category to show task recommendations
+     */
+    TaskRecommendations: "TASK_RECOMMENDATIONS",
 } as const;
 
 export type EnterpriseCrmEventbusProtoTaskMetadataCategory = (typeof EnterpriseCrmEventbusProtoTaskMetadataCategory)[keyof typeof EnterpriseCrmEventbusProtoTaskMetadataCategory];
@@ -706,6 +710,23 @@ export const EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType = {
  * Explicitly getting the type of the parameter.
  */
 export type EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType = (typeof EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType)[keyof typeof EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType];
+
+export const EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType = {
+    /**
+     * Default value. External task type is not specified
+     */
+    ExternalTaskTypeUnspecified: "EXTERNAL_TASK_TYPE_UNSPECIFIED",
+    /**
+     * Tasks belongs to the normal task flows
+     */
+    NormalTask: "NORMAL_TASK",
+    /**
+     * Task belongs to the error catch task flows
+     */
+    ErrorTask: "ERROR_TASK",
+} as const;
+
+export type EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType = (typeof EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType)[keyof typeof EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType];
 
 export const EnterpriseCrmFrontendsEventbusProtoTaskConfigJsonValidationOption = {
     /**
@@ -1480,6 +1501,26 @@ export const GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState = {
  * State to which the execution snapshot status will be set if the task succeeds.
  */
 export type GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState = (typeof GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState)[keyof typeof GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState];
+
+export const GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType = {
+    /**
+     * Default value. External task type is not specified
+     */
+    ExternalTaskTypeUnspecified: "EXTERNAL_TASK_TYPE_UNSPECIFIED",
+    /**
+     * Tasks belongs to the normal task flows
+     */
+    NormalTask: "NORMAL_TASK",
+    /**
+     * Task belongs to the error catch task flows
+     */
+    ErrorTask: "ERROR_TASK",
+} as const;
+
+/**
+ * Optional. External task type of the task
+ */
+export type GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType = (typeof GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType)[keyof typeof GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType];
 
 export const GoogleCloudIntegrationsV1alphaTaskConfigJsonValidationOption = {
     /**

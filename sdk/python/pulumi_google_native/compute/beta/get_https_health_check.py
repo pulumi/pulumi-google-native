@@ -124,7 +124,7 @@ class GetHttpsHealthCheckResult:
     @pulumi.getter(name="requestPath")
     def request_path(self) -> str:
         """
-        The request path of the HTTPS health check request. The default value is "/".
+        The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
         """
         return pulumi.get(self, "request_path")
 
@@ -177,7 +177,7 @@ def get_https_health_check(https_health_check: Optional[str] = None,
                            project: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHttpsHealthCheckResult:
     """
-    Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+    Returns the specified HttpsHealthCheck resource.
     """
     __args__ = dict()
     __args__['httpsHealthCheck'] = https_health_check
@@ -205,6 +205,6 @@ def get_https_health_check_output(https_health_check: Optional[pulumi.Input[str]
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHttpsHealthCheckResult]:
     """
-    Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+    Returns the specified HttpsHealthCheck resource.
     """
     ...

@@ -1446,6 +1446,10 @@ func (o LunRangeResponseArrayOutput) Index(i pulumi.IntInput) LunRangeResponseOu
 type LunResponse struct {
 	// Display if this LUN is a boot LUN.
 	BootLun bool `pulumi:"bootLun"`
+	// Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
+	ExpireTime string `pulumi:"expireTime"`
+	// Instances this Lun is attached to.
+	Instances []string `pulumi:"instances"`
 	// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
 	MultiprotocolType string `pulumi:"multiprotocolType"`
 	// The name of the LUN.
@@ -1482,6 +1486,16 @@ func (o LunResponseOutput) ToLunResponseOutputWithContext(ctx context.Context) L
 // Display if this LUN is a boot LUN.
 func (o LunResponseOutput) BootLun() pulumi.BoolOutput {
 	return o.ApplyT(func(v LunResponse) bool { return v.BootLun }).(pulumi.BoolOutput)
+}
+
+// Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
+func (o LunResponseOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LunResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Instances this Lun is attached to.
+func (o LunResponseOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LunResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
 
 // The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
@@ -3551,6 +3565,8 @@ func (o VolumeConfigResponseArrayOutput) Index(i pulumi.IntInput) VolumeConfigRe
 
 // A storage volume.
 type VolumeResponse struct {
+	// Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
+	Attached bool `pulumi:"attached"`
 	// The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
 	AutoGrownSizeGib string `pulumi:"autoGrownSizeGib"`
 	// Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
@@ -3559,6 +3575,10 @@ type VolumeResponse struct {
 	CurrentSizeGib string `pulumi:"currentSizeGib"`
 	// Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 	EmergencySizeGib string `pulumi:"emergencySizeGib"`
+	// Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
+	ExpireTime string `pulumi:"expireTime"`
+	// Instances this Volume is attached to. This field is set only in Get requests.
+	Instances []string `pulumi:"instances"`
 	// Labels as key value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// Maximum size volume can be expanded to in case of evergency, in GiB.
@@ -3612,6 +3632,11 @@ func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
+// Is the Volume attached at at least one instance. This field is a lightweight counterpart of `instances` field. It is filled in List responses as well.
+func (o VolumeResponseOutput) Attached() pulumi.BoolOutput {
+	return o.ApplyT(func(v VolumeResponse) bool { return v.Attached }).(pulumi.BoolOutput)
+}
+
 // The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
 func (o VolumeResponseOutput) AutoGrownSizeGib() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.AutoGrownSizeGib }).(pulumi.StringOutput)
@@ -3630,6 +3655,16 @@ func (o VolumeResponseOutput) CurrentSizeGib() pulumi.StringOutput {
 // Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
 func (o VolumeResponseOutput) EmergencySizeGib() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.EmergencySizeGib }).(pulumi.StringOutput)
+}
+
+// Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
+func (o VolumeResponseOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// Instances this Volume is attached to. This field is set only in Get requests.
+func (o VolumeResponseOutput) Instances() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VolumeResponse) []string { return v.Instances }).(pulumi.StringArrayOutput)
 }
 
 // Labels as key value pairs.

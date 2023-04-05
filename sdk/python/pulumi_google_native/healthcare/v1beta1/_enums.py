@@ -354,7 +354,7 @@ class SchemaConfigSchemaType(str, Enum):
     """
     LOSSLESS = "LOSSLESS"
     """
-    A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
+    A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification. This type cannot be used for streaming to BigQuery.
     """
     ANALYTICS = "ANALYTICS"
     """

@@ -11,8 +11,12 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
+    'BindingResponse',
     'CodeCompilationConfigResponse',
+    'CommitAuthorResponse',
+    'CommitMetadataResponse',
     'CompilationErrorResponse',
+    'ExprResponse',
     'GitRemoteSettingsResponse',
     'IntervalResponse',
     'InvocationConfigResponse',
@@ -22,6 +26,50 @@ __all__ = [
     'TargetResponse',
     'WorkspaceCompilationOverridesResponse',
 ]
+
+@pulumi.output_type
+class BindingResponse(dict):
+    """
+    Associates `members`, or principals, with a `role`.
+    """
+    def __init__(__self__, *,
+                 condition: 'outputs.ExprResponse',
+                 members: Sequence[str],
+                 role: str):
+        """
+        Associates `members`, or principals, with a `role`.
+        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        """
+        pulumi.set(__self__, "condition", condition)
+        pulumi.set(__self__, "members", members)
+        pulumi.set(__self__, "role", role)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.ExprResponse':
+        """
+        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        """
+        return pulumi.get(self, "condition")
+
+    @property
+    @pulumi.getter
+    def members(self) -> Sequence[str]:
+        """
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def role(self) -> str:
+        """
+        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        """
+        return pulumi.get(self, "role")
+
 
 @pulumi.output_type
 class CodeCompilationConfigResponse(dict):
@@ -152,6 +200,106 @@ class CodeCompilationConfigResponse(dict):
 
 
 @pulumi.output_type
+class CommitAuthorResponse(dict):
+    """
+    Represents the author of a Git commit.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "emailAddress":
+            suggest = "email_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CommitAuthorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CommitAuthorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CommitAuthorResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 email_address: str,
+                 name: str):
+        """
+        Represents the author of a Git commit.
+        :param str email_address: The commit author's email address.
+        :param str name: The commit author's name.
+        """
+        pulumi.set(__self__, "email_address", email_address)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="emailAddress")
+    def email_address(self) -> str:
+        """
+        The commit author's email address.
+        """
+        return pulumi.get(self, "email_address")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The commit author's name.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class CommitMetadataResponse(dict):
+    """
+    Represents a Dataform Git commit.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commitMessage":
+            suggest = "commit_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CommitMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CommitMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CommitMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 author: 'outputs.CommitAuthorResponse',
+                 commit_message: str):
+        """
+        Represents a Dataform Git commit.
+        :param 'CommitAuthorResponse' author: The commit's author.
+        :param str commit_message: Optional. The commit's message.
+        """
+        pulumi.set(__self__, "author", author)
+        pulumi.set(__self__, "commit_message", commit_message)
+
+    @property
+    @pulumi.getter
+    def author(self) -> 'outputs.CommitAuthorResponse':
+        """
+        The commit's author.
+        """
+        return pulumi.get(self, "author")
+
+    @property
+    @pulumi.getter(name="commitMessage")
+    def commit_message(self) -> str:
+        """
+        Optional. The commit's message.
+        """
+        return pulumi.get(self, "commit_message")
+
+
+@pulumi.output_type
 class CompilationErrorResponse(dict):
     """
     An error encountered when attempting to compile a Dataform project.
@@ -221,6 +369,61 @@ class CompilationErrorResponse(dict):
         The error's full stack trace.
         """
         return pulumi.get(self, "stack")
+
+
+@pulumi.output_type
+class ExprResponse(dict):
+    """
+    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+    """
+    def __init__(__self__, *,
+                 description: str,
+                 expression: str,
+                 location: str,
+                 title: str):
+        """
+        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
+        :param str description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

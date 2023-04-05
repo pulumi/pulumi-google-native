@@ -28,6 +28,10 @@ export interface GetDlpJobArgs {
 
 export interface GetDlpJobResult {
     /**
+     * Events that should occur after the job has completed.
+     */
+    readonly actionDetails: outputs.dlp.v2.GooglePrivacyDlpV2ActionDetailsResponse[];
+    /**
      * Time when the job was created.
      */
     readonly createTime: string;

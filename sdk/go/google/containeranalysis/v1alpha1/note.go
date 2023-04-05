@@ -47,6 +47,8 @@ type Note struct {
 	RelatedUrl RelatedUrlResponseArrayOutput `pulumi:"relatedUrl"`
 	// A note describing a software bill of materials.
 	Sbom DocumentNoteResponseOutput `pulumi:"sbom"`
+	// A note describing a reference to an SBOM.
+	SbomReference SBOMReferenceNoteResponseOutput `pulumi:"sbomReference"`
 	// A one sentence description of this `Note`.
 	ShortDescription pulumi.StringOutput `pulumi:"shortDescription"`
 	// A note describing an SPDX File.
@@ -59,6 +61,8 @@ type Note struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// A note describing an upgrade.
 	Upgrade UpgradeNoteResponseOutput `pulumi:"upgrade"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNoteResponseOutput `pulumi:"vulnerabilityAssessment"`
 	// A package vulnerability type of note.
 	VulnerabilityType VulnerabilityTypeResponseOutput `pulumi:"vulnerabilityType"`
 }
@@ -135,6 +139,8 @@ type noteArgs struct {
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
 	// A note describing a software bill of materials.
 	Sbom *DocumentNote `pulumi:"sbom"`
+	// A note describing a reference to an SBOM.
+	SbomReference *SBOMReferenceNote `pulumi:"sbomReference"`
 	// A one sentence description of this `Note`.
 	ShortDescription *string `pulumi:"shortDescription"`
 	// A note describing an SPDX File.
@@ -145,6 +151,8 @@ type noteArgs struct {
 	SpdxRelationship *RelationshipNote `pulumi:"spdxRelationship"`
 	// A note describing an upgrade.
 	Upgrade *UpgradeNote `pulumi:"upgrade"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment *VulnerabilityAssessmentNote `pulumi:"vulnerabilityAssessment"`
 	// A package vulnerability type of note.
 	VulnerabilityType *VulnerabilityType `pulumi:"vulnerabilityType"`
 }
@@ -180,6 +188,8 @@ type NoteArgs struct {
 	RelatedUrl RelatedUrlArrayInput
 	// A note describing a software bill of materials.
 	Sbom DocumentNotePtrInput
+	// A note describing a reference to an SBOM.
+	SbomReference SBOMReferenceNotePtrInput
 	// A one sentence description of this `Note`.
 	ShortDescription pulumi.StringPtrInput
 	// A note describing an SPDX File.
@@ -190,6 +200,8 @@ type NoteArgs struct {
 	SpdxRelationship RelationshipNotePtrInput
 	// A note describing an upgrade.
 	Upgrade UpgradeNotePtrInput
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNotePtrInput
 	// A package vulnerability type of note.
 	VulnerabilityType VulnerabilityTypePtrInput
 }
@@ -315,6 +327,11 @@ func (o NoteOutput) Sbom() DocumentNoteResponseOutput {
 	return o.ApplyT(func(v *Note) DocumentNoteResponseOutput { return v.Sbom }).(DocumentNoteResponseOutput)
 }
 
+// A note describing a reference to an SBOM.
+func (o NoteOutput) SbomReference() SBOMReferenceNoteResponseOutput {
+	return o.ApplyT(func(v *Note) SBOMReferenceNoteResponseOutput { return v.SbomReference }).(SBOMReferenceNoteResponseOutput)
+}
+
 // A one sentence description of this `Note`.
 func (o NoteOutput) ShortDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *Note) pulumi.StringOutput { return v.ShortDescription }).(pulumi.StringOutput)
@@ -343,6 +360,11 @@ func (o NoteOutput) UpdateTime() pulumi.StringOutput {
 // A note describing an upgrade.
 func (o NoteOutput) Upgrade() UpgradeNoteResponseOutput {
 	return o.ApplyT(func(v *Note) UpgradeNoteResponseOutput { return v.Upgrade }).(UpgradeNoteResponseOutput)
+}
+
+// A note describing a vulnerability assessment.
+func (o NoteOutput) VulnerabilityAssessment() VulnerabilityAssessmentNoteResponseOutput {
+	return o.ApplyT(func(v *Note) VulnerabilityAssessmentNoteResponseOutput { return v.VulnerabilityAssessment }).(VulnerabilityAssessmentNoteResponseOutput)
 }
 
 // A package vulnerability type of note.

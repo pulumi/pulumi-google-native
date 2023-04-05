@@ -867,6 +867,8 @@ const (
 	LunStateReady = LunState("READY")
 	// The LUN has been requested to be deleted.
 	LunStateDeleting = LunState("DELETING")
+	// The LUN is in cool off state. It will be deleted after `expire_time`.
+	LunStateCoolOff = LunState("COOL_OFF")
 )
 
 func (LunState) ElementType() reflect.Type {
@@ -2913,6 +2915,8 @@ const (
 	VolumeStateDeleting = VolumeState("DELETING")
 	// The storage volume is being updated.
 	VolumeStateUpdating = VolumeState("UPDATING")
+	// The storage volume is in cool off state. It will be deleted after `expire_time`.
+	VolumeStateCoolOff = VolumeState("COOL_OFF")
 )
 
 func (VolumeState) ElementType() reflect.Type {

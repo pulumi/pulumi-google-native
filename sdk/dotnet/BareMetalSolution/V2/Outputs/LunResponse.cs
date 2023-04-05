@@ -21,6 +21,14 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly bool BootLun;
         /// <summary>
+        /// Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
+        /// </summary>
+        public readonly string ExpireTime;
+        /// <summary>
+        /// Instances this Lun is attached to.
+        /// </summary>
+        public readonly ImmutableArray<string> Instances;
+        /// <summary>
         /// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
         /// </summary>
         public readonly string MultiprotocolType;
@@ -57,6 +65,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         private LunResponse(
             bool bootLun,
 
+            string expireTime,
+
+            ImmutableArray<string> instances,
+
             string multiprotocolType,
 
             string name,
@@ -74,6 +86,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             string wwid)
         {
             BootLun = bootLun;
+            ExpireTime = expireTime;
+            Instances = instances;
             MultiprotocolType = multiprotocolType;
             Name = name;
             Shareable = shareable;

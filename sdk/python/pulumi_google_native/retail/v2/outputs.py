@@ -21,6 +21,7 @@ __all__ = [
     'GoogleCloudRetailV2ImageResponse',
     'GoogleCloudRetailV2IntervalResponse',
     'GoogleCloudRetailV2LocalInventoryResponse',
+    'GoogleCloudRetailV2ModelServingConfigListResponse',
     'GoogleCloudRetailV2PriceInfoPriceRangeResponse',
     'GoogleCloudRetailV2PriceInfoResponse',
     'GoogleCloudRetailV2ProductResponse',
@@ -538,6 +539,45 @@ class GoogleCloudRetailV2LocalInventoryResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRetailV2ModelServingConfigListResponse(dict):
+    """
+    Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "servingConfigIds":
+            suggest = "serving_config_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2ModelServingConfigListResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2ModelServingConfigListResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2ModelServingConfigListResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 serving_config_ids: Sequence[str]):
+        """
+        Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+        :param Sequence[str] serving_config_ids: Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+        """
+        pulumi.set(__self__, "serving_config_ids", serving_config_ids)
+
+    @property
+    @pulumi.getter(name="servingConfigIds")
+    def serving_config_ids(self) -> Sequence[str]:
+        """
+        Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+        """
+        return pulumi.get(self, "serving_config_ids")
+
+
+@pulumi.output_type
 class GoogleCloudRetailV2PriceInfoPriceRangeResponse(dict):
     """
     The price range of all variant Product having the same Product.primary_product_id.
@@ -796,7 +836,7 @@ class GoogleCloudRetailV2ProductResponse(dict):
         :param str gtin: The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
         :param Sequence['GoogleCloudRetailV2ImageResponse'] images: Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         :param str language_code: Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
-        :param Sequence['GoogleCloudRetailV2LocalInventoryResponse'] local_inventories: A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+        :param Sequence['GoogleCloudRetailV2LocalInventoryResponse'] local_inventories: A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         :param Sequence[str] materials: The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
         :param str name: Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
         :param Sequence[str] patterns: The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
@@ -980,7 +1020,7 @@ class GoogleCloudRetailV2ProductResponse(dict):
     @pulumi.getter(name="localInventories")
     def local_inventories(self) -> Sequence['outputs.GoogleCloudRetailV2LocalInventoryResponse']:
         """
-        A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+        A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
         """
         return pulumi.get(self, "local_inventories")
 

@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableArray<string>> HttpFilters { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+        /// </summary>
+        [Output("httpKeepAliveTimeoutSec")]
+        public Output<int> HttpKeepAliveTimeoutSec { get; private set; } = null!;
+
+        /// <summary>
         /// Type of resource. Always compute#targetHttpsProxy for target HTTPS proxies.
         /// </summary>
         [Output("kind")]
@@ -115,7 +121,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> SelfLinkWithId { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string> ServerTlsPolicy { get; private set; } = null!;
@@ -230,6 +236,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
 
         /// <summary>
+        /// Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+        /// </summary>
+        [Input("httpKeepAliveTimeoutSec")]
+        public Input<int>? HttpKeepAliveTimeoutSec { get; set; }
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Input("name")]
@@ -257,7 +269,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }

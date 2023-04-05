@@ -41,7 +41,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * List of accelerators enabled for this CDF instance.
      */
-    public readonly accelerators!: pulumi.Output<outputs.datafusion.v1beta1.AcceleratorResponse[]>;
+    public /*out*/ readonly accelerators!: pulumi.Output<outputs.datafusion.v1beta1.AcceleratorResponse[]>;
     /**
      * Endpoint on which the REST APIs is accessible.
      */
@@ -49,7 +49,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Available versions that the instance can be upgraded to using UpdateInstanceRequest.
      */
-    public readonly availableVersion!: pulumi.Output<outputs.datafusion.v1beta1.VersionResponse[]>;
+    public /*out*/ readonly availableVersion!: pulumi.Output<outputs.datafusion.v1beta1.VersionResponse[]>;
     /**
      * The time the instance was created.
      */
@@ -184,8 +184,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["accelerators"] = args ? args.accelerators : undefined;
-            resourceInputs["availableVersion"] = args ? args.availableVersion : undefined;
             resourceInputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
             resourceInputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -205,7 +203,9 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["version"] = args ? args.version : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
+            resourceInputs["accelerators"] = undefined /*out*/;
             resourceInputs["apiEndpoint"] = undefined /*out*/;
+            resourceInputs["availableVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["disabledReason"] = undefined /*out*/;
             resourceInputs["gcsBucket"] = undefined /*out*/;
@@ -263,14 +263,6 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
-    /**
-     * List of accelerators enabled for this CDF instance.
-     */
-    accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.AcceleratorArgs>[]>;
-    /**
-     * Available versions that the instance can be upgraded to using UpdateInstanceRequest.
-     */
-    availableVersion?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.VersionArgs>[]>;
     /**
      * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
      */

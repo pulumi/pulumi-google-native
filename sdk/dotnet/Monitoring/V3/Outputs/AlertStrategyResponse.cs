@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         /// </summary>
         public readonly string AutoClose;
         /// <summary>
+        /// Control how notifications will be sent out, on a per-channel basis.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NotificationChannelStrategyResponse> NotificationChannelStrategy;
+        /// <summary>
         /// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
         /// </summary>
         public readonly Outputs.NotificationRateLimitResponse NotificationRateLimit;
@@ -29,9 +33,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
         private AlertStrategyResponse(
             string autoClose,
 
+            ImmutableArray<Outputs.NotificationChannelStrategyResponse> notificationChannelStrategy,
+
             Outputs.NotificationRateLimitResponse notificationRateLimit)
         {
             AutoClose = autoClose;
+            NotificationChannelStrategy = notificationChannelStrategy;
             NotificationRateLimit = notificationRateLimit;
         }
     }

@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
         /// </summary>
         public readonly string Identity;
         /// <summary>
-        /// The GCP service name.
+        /// The Google Cloud service name.
         /// </summary>
         public readonly string Name;
 

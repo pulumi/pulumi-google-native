@@ -35,10 +35,35 @@ export const getServiceAccountIamPolicy: typeof import("./getServiceAccountIamPo
 export const getServiceAccountIamPolicyOutput: typeof import("./getServiceAccountIamPolicy").getServiceAccountIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAccountIamPolicy","getServiceAccountIamPolicyOutput"], () => require("./getServiceAccountIamPolicy"));
 
+export { GetWorkforcePoolArgs, GetWorkforcePoolResult, GetWorkforcePoolOutputArgs } from "./getWorkforcePool";
+export const getWorkforcePool: typeof import("./getWorkforcePool").getWorkforcePool = null as any;
+export const getWorkforcePoolOutput: typeof import("./getWorkforcePool").getWorkforcePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkforcePool","getWorkforcePoolOutput"], () => require("./getWorkforcePool"));
+
+export { GetWorkforcePoolIamPolicyArgs, GetWorkforcePoolIamPolicyResult, GetWorkforcePoolIamPolicyOutputArgs } from "./getWorkforcePoolIamPolicy";
+export const getWorkforcePoolIamPolicy: typeof import("./getWorkforcePoolIamPolicy").getWorkforcePoolIamPolicy = null as any;
+export const getWorkforcePoolIamPolicyOutput: typeof import("./getWorkforcePoolIamPolicy").getWorkforcePoolIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkforcePoolIamPolicy","getWorkforcePoolIamPolicyOutput"], () => require("./getWorkforcePoolIamPolicy"));
+
+export { GetWorkforcePoolKeyArgs, GetWorkforcePoolKeyResult, GetWorkforcePoolKeyOutputArgs } from "./getWorkforcePoolKey";
+export const getWorkforcePoolKey: typeof import("./getWorkforcePoolKey").getWorkforcePoolKey = null as any;
+export const getWorkforcePoolKeyOutput: typeof import("./getWorkforcePoolKey").getWorkforcePoolKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkforcePoolKey","getWorkforcePoolKeyOutput"], () => require("./getWorkforcePoolKey"));
+
+export { GetWorkforcePoolProviderArgs, GetWorkforcePoolProviderResult, GetWorkforcePoolProviderOutputArgs } from "./getWorkforcePoolProvider";
+export const getWorkforcePoolProvider: typeof import("./getWorkforcePoolProvider").getWorkforcePoolProvider = null as any;
+export const getWorkforcePoolProviderOutput: typeof import("./getWorkforcePoolProvider").getWorkforcePoolProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkforcePoolProvider","getWorkforcePoolProviderOutput"], () => require("./getWorkforcePoolProvider"));
+
 export { GetWorkloadIdentityPoolArgs, GetWorkloadIdentityPoolResult, GetWorkloadIdentityPoolOutputArgs } from "./getWorkloadIdentityPool";
 export const getWorkloadIdentityPool: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPool = null as any;
 export const getWorkloadIdentityPoolOutput: typeof import("./getWorkloadIdentityPool").getWorkloadIdentityPoolOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadIdentityPool","getWorkloadIdentityPoolOutput"], () => require("./getWorkloadIdentityPool"));
+
+export { GetWorkloadIdentityPoolKeyArgs, GetWorkloadIdentityPoolKeyResult, GetWorkloadIdentityPoolKeyOutputArgs } from "./getWorkloadIdentityPoolKey";
+export const getWorkloadIdentityPoolKey: typeof import("./getWorkloadIdentityPoolKey").getWorkloadIdentityPoolKey = null as any;
+export const getWorkloadIdentityPoolKeyOutput: typeof import("./getWorkloadIdentityPoolKey").getWorkloadIdentityPoolKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkloadIdentityPoolKey","getWorkloadIdentityPoolKeyOutput"], () => require("./getWorkloadIdentityPoolKey"));
 
 export { KeyArgs } from "./key";
 export type Key = import("./key").Key;
@@ -80,10 +105,45 @@ export type ServiceAccountIamPolicy = import("./serviceAccountIamPolicy").Servic
 export const ServiceAccountIamPolicy: typeof import("./serviceAccountIamPolicy").ServiceAccountIamPolicy = null as any;
 utilities.lazyLoad(exports, ["ServiceAccountIamPolicy"], () => require("./serviceAccountIamPolicy"));
 
+export { WorkforcePoolArgs } from "./workforcePool";
+export type WorkforcePool = import("./workforcePool").WorkforcePool;
+export const WorkforcePool: typeof import("./workforcePool").WorkforcePool = null as any;
+utilities.lazyLoad(exports, ["WorkforcePool"], () => require("./workforcePool"));
+
+export { WorkforcePoolIamBindingArgs } from "./workforcePoolIamBinding";
+export type WorkforcePoolIamBinding = import("./workforcePoolIamBinding").WorkforcePoolIamBinding;
+export const WorkforcePoolIamBinding: typeof import("./workforcePoolIamBinding").WorkforcePoolIamBinding = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolIamBinding"], () => require("./workforcePoolIamBinding"));
+
+export { WorkforcePoolIamMemberArgs } from "./workforcePoolIamMember";
+export type WorkforcePoolIamMember = import("./workforcePoolIamMember").WorkforcePoolIamMember;
+export const WorkforcePoolIamMember: typeof import("./workforcePoolIamMember").WorkforcePoolIamMember = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolIamMember"], () => require("./workforcePoolIamMember"));
+
+export { WorkforcePoolIamPolicyArgs } from "./workforcePoolIamPolicy";
+export type WorkforcePoolIamPolicy = import("./workforcePoolIamPolicy").WorkforcePoolIamPolicy;
+export const WorkforcePoolIamPolicy: typeof import("./workforcePoolIamPolicy").WorkforcePoolIamPolicy = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolIamPolicy"], () => require("./workforcePoolIamPolicy"));
+
+export { WorkforcePoolKeyArgs } from "./workforcePoolKey";
+export type WorkforcePoolKey = import("./workforcePoolKey").WorkforcePoolKey;
+export const WorkforcePoolKey: typeof import("./workforcePoolKey").WorkforcePoolKey = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolKey"], () => require("./workforcePoolKey"));
+
+export { WorkforcePoolProviderArgs } from "./workforcePoolProvider";
+export type WorkforcePoolProvider = import("./workforcePoolProvider").WorkforcePoolProvider;
+export const WorkforcePoolProvider: typeof import("./workforcePoolProvider").WorkforcePoolProvider = null as any;
+utilities.lazyLoad(exports, ["WorkforcePoolProvider"], () => require("./workforcePoolProvider"));
+
 export { WorkloadIdentityPoolArgs } from "./workloadIdentityPool";
 export type WorkloadIdentityPool = import("./workloadIdentityPool").WorkloadIdentityPool;
 export const WorkloadIdentityPool: typeof import("./workloadIdentityPool").WorkloadIdentityPool = null as any;
 utilities.lazyLoad(exports, ["WorkloadIdentityPool"], () => require("./workloadIdentityPool"));
+
+export { WorkloadIdentityPoolKeyArgs } from "./workloadIdentityPoolKey";
+export type WorkloadIdentityPoolKey = import("./workloadIdentityPoolKey").WorkloadIdentityPoolKey;
+export const WorkloadIdentityPoolKey: typeof import("./workloadIdentityPoolKey").WorkloadIdentityPoolKey = null as any;
+utilities.lazyLoad(exports, ["WorkloadIdentityPoolKey"], () => require("./workloadIdentityPoolKey"));
 
 
 // Export enums:
@@ -109,8 +169,22 @@ const _module = {
                 return new ServiceAccountIamMember(name, <any>undefined, { urn })
             case "google-native:iam/v1:ServiceAccountIamPolicy":
                 return new ServiceAccountIamPolicy(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkforcePool":
+                return new WorkforcePool(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkforcePoolIamBinding":
+                return new WorkforcePoolIamBinding(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkforcePoolIamMember":
+                return new WorkforcePoolIamMember(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkforcePoolIamPolicy":
+                return new WorkforcePoolIamPolicy(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkforcePoolKey":
+                return new WorkforcePoolKey(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkforcePoolProvider":
+                return new WorkforcePoolProvider(name, <any>undefined, { urn })
             case "google-native:iam/v1:WorkloadIdentityPool":
                 return new WorkloadIdentityPool(name, <any>undefined, { urn })
+            case "google-native:iam/v1:WorkloadIdentityPoolKey":
+                return new WorkloadIdentityPoolKey(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

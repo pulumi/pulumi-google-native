@@ -272,9 +272,9 @@ class CustomerEncryptionKeyArgs:
                  kms_key: Optional[pulumi.Input[str]] = None,
                  kms_key_service_account: Optional[pulumi.Input[str]] = None):
         """
-        A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
-        :param pulumi.Input[str] kms_key: The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
-        :param pulumi.Input[str] kms_key_service_account: The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+        A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
+        :param pulumi.Input[str] kms_key: The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        :param pulumi.Input[str] kms_key_service_account: The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         """
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
@@ -285,7 +285,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="kmsKey")
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
         """
         return pulumi.get(self, "kms_key")
 
@@ -297,7 +297,7 @@ class CustomerEncryptionKeyArgs:
     @pulumi.getter(name="kmsKeyServiceAccount")
     def kms_key_service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+        The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
         """
         return pulumi.get(self, "kms_key_service_account")
 
@@ -415,12 +415,12 @@ class GceInstanceArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A runtime using a Compute Engine instance.
-        :param pulumi.Input[int] boot_disk_size_gb: Size of the boot disk in GB.
+        :param pulumi.Input[int] boot_disk_size_gb: Size of the boot disk in GB. Defaults to 50.
         :param pulumi.Input['GceConfidentialInstanceConfigArgs'] confidential_instance_config: A set of Compute Engine Confidential VM instance options.
         :param pulumi.Input[bool] disable_public_ip_addresses: Whether instances have no public IP address.
         :param pulumi.Input[str] machine_type: The name of a Compute Engine machine type.
         :param pulumi.Input[int] pool_size: Number of instances to pool for faster workstation starup.
-        :param pulumi.Input[str] service_account: Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        :param pulumi.Input[str] service_account: Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
         :param pulumi.Input['GceShieldedInstanceConfigArgs'] shielded_instance_config: A set of Compute Engine Shielded instance options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Network tags to add to the Compute Engine machines backing the Workstations.
         """
@@ -445,7 +445,7 @@ class GceInstanceArgs:
     @pulumi.getter(name="bootDiskSizeGb")
     def boot_disk_size_gb(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the boot disk in GB.
+        Size of the boot disk in GB. Defaults to 50.
         """
         return pulumi.get(self, "boot_disk_size_gb")
 
@@ -505,7 +505,7 @@ class GceInstanceArgs:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
         """
         return pulumi.get(self, "service_account")
 
@@ -544,13 +544,15 @@ class GceRegionalPersistentDiskArgs:
                  disk_type: Optional[pulumi.Input[str]] = None,
                  fs_type: Optional[pulumi.Input[str]] = None,
                  reclaim_policy: Optional[pulumi.Input['GceRegionalPersistentDiskReclaimPolicy']] = None,
-                 size_gb: Optional[pulumi.Input[int]] = None):
+                 size_gb: Optional[pulumi.Input[int]] = None,
+                 source_snapshot: Optional[pulumi.Input[str]] = None):
         """
         A PersistentDirectory backed by a Compute Engine regional persistent disk.
-        :param pulumi.Input[str] disk_type: Type of the disk to use.
-        :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+        :param pulumi.Input[str] disk_type: Type of the disk to use. Defaults to pd-standard.
+        :param pulumi.Input[str] fs_type: Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
         :param pulumi.Input['GceRegionalPersistentDiskReclaimPolicy'] reclaim_policy: What should happen to the disk after the workstation is deleted. Defaults to DELETE.
-        :param pulumi.Input[int] size_gb: Size of the disk in GB. Must be empty if source_snapshot is set.
+        :param pulumi.Input[int] size_gb: Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
+        :param pulumi.Input[str] source_snapshot: Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
         """
         if disk_type is not None:
             pulumi.set(__self__, "disk_type", disk_type)
@@ -560,12 +562,14 @@ class GceRegionalPersistentDiskArgs:
             pulumi.set(__self__, "reclaim_policy", reclaim_policy)
         if size_gb is not None:
             pulumi.set(__self__, "size_gb", size_gb)
+        if source_snapshot is not None:
+            pulumi.set(__self__, "source_snapshot", source_snapshot)
 
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of the disk to use.
+        Type of the disk to use. Defaults to pd-standard.
         """
         return pulumi.get(self, "disk_type")
 
@@ -577,7 +581,7 @@ class GceRegionalPersistentDiskArgs:
     @pulumi.getter(name="fsType")
     def fs_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+        Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
         """
         return pulumi.get(self, "fs_type")
 
@@ -601,13 +605,25 @@ class GceRegionalPersistentDiskArgs:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[pulumi.Input[int]]:
         """
-        Size of the disk in GB. Must be empty if source_snapshot is set.
+        Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
         """
         return pulumi.get(self, "size_gb")
 
     @size_gb.setter
     def size_gb(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "size_gb", value)
+
+    @property
+    @pulumi.getter(name="sourceSnapshot")
+    def source_snapshot(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        """
+        return pulumi.get(self, "source_snapshot")
+
+    @source_snapshot.setter
+    def source_snapshot(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_snapshot", value)
 
 
 @pulumi.input_type

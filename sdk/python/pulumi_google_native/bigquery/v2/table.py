@@ -422,6 +422,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["clone_definition"] = None
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["default_collation"] = None
+            __props__.__dict__["default_rounding_mode"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["last_modified_time"] = None
@@ -471,6 +472,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["dataset_id"] = None
         __props__.__dict__["default_collation"] = None
+        __props__.__dict__["default_rounding_mode"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["encryption_configuration"] = None
         __props__.__dict__["etag"] = None
@@ -545,6 +547,14 @@ class Table(pulumi.CustomResource):
         The default collation of the table.
         """
         return pulumi.get(self, "default_collation")
+
+    @property
+    @pulumi.getter(name="defaultRoundingMode")
+    def default_rounding_mode(self) -> pulumi.Output[str]:
+        """
+        The default rounding mode of the table.
+        """
+        return pulumi.get(self, "default_rounding_mode")
 
     @property
     @pulumi.getter

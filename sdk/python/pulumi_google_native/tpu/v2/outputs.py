@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AcceleratorConfigResponse',
     'AccessConfigResponse',
     'AttachedDiskResponse',
     'NetworkConfigResponse',
@@ -21,6 +22,39 @@ __all__ = [
     'ShieldedInstanceConfigResponse',
     'SymptomResponse',
 ]
+
+@pulumi.output_type
+class AcceleratorConfigResponse(dict):
+    """
+    A TPU accelerator configuration.
+    """
+    def __init__(__self__, *,
+                 topology: str,
+                 type: str):
+        """
+        A TPU accelerator configuration.
+        :param str topology: Topology of TPU in chips.
+        :param str type: Type of TPU.
+        """
+        pulumi.set(__self__, "topology", topology)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def topology(self) -> str:
+        """
+        Topology of TPU in chips.
+        """
+        return pulumi.get(self, "topology")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Type of TPU.
+        """
+        return pulumi.get(self, "type")
+
 
 @pulumi.output_type
 class AccessConfigResponse(dict):

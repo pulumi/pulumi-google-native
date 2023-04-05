@@ -32,11 +32,13 @@ class NoteArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
                  sbom: Optional[pulumi.Input['DocumentNoteArgs']] = None,
+                 sbom_reference: Optional[pulumi.Input['SBOMReferenceNoteArgs']] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  spdx_file: Optional[pulumi.Input['FileNoteArgs']] = None,
                  spdx_package: Optional[pulumi.Input['PackageInfoNoteArgs']] = None,
                  spdx_relationship: Optional[pulumi.Input['RelationshipNoteArgs']] = None,
                  upgrade: Optional[pulumi.Input['UpgradeNoteArgs']] = None,
+                 vulnerability_assessment: Optional[pulumi.Input['VulnerabilityAssessmentNoteArgs']] = None,
                  vulnerability_type: Optional[pulumi.Input['VulnerabilityTypeArgs']] = None):
         """
         The set of arguments for constructing a Note resource.
@@ -54,11 +56,13 @@ class NoteArgs:
         :param pulumi.Input['PackageArgs'] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]] related_url: URLs associated with this note
         :param pulumi.Input['DocumentNoteArgs'] sbom: A note describing a software bill of materials.
+        :param pulumi.Input['SBOMReferenceNoteArgs'] sbom_reference: A note describing a reference to an SBOM.
         :param pulumi.Input[str] short_description: A one sentence description of this `Note`.
         :param pulumi.Input['FileNoteArgs'] spdx_file: A note describing an SPDX File.
         :param pulumi.Input['PackageInfoNoteArgs'] spdx_package: A note describing an SPDX Package.
         :param pulumi.Input['RelationshipNoteArgs'] spdx_relationship: A note describing a relationship between SPDX elements.
         :param pulumi.Input['UpgradeNoteArgs'] upgrade: A note describing an upgrade.
+        :param pulumi.Input['VulnerabilityAssessmentNoteArgs'] vulnerability_assessment: A note describing a vulnerability assessment.
         :param pulumi.Input['VulnerabilityTypeArgs'] vulnerability_type: A package vulnerability type of note.
         """
         if attestation_authority is not None:
@@ -91,6 +95,8 @@ class NoteArgs:
             pulumi.set(__self__, "related_url", related_url)
         if sbom is not None:
             pulumi.set(__self__, "sbom", sbom)
+        if sbom_reference is not None:
+            pulumi.set(__self__, "sbom_reference", sbom_reference)
         if short_description is not None:
             pulumi.set(__self__, "short_description", short_description)
         if spdx_file is not None:
@@ -101,6 +107,8 @@ class NoteArgs:
             pulumi.set(__self__, "spdx_relationship", spdx_relationship)
         if upgrade is not None:
             pulumi.set(__self__, "upgrade", upgrade)
+        if vulnerability_assessment is not None:
+            pulumi.set(__self__, "vulnerability_assessment", vulnerability_assessment)
         if vulnerability_type is not None:
             pulumi.set(__self__, "vulnerability_type", vulnerability_type)
 
@@ -282,6 +290,18 @@ class NoteArgs:
         pulumi.set(self, "sbom", value)
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> Optional[pulumi.Input['SBOMReferenceNoteArgs']]:
+        """
+        A note describing a reference to an SBOM.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @sbom_reference.setter
+    def sbom_reference(self, value: Optional[pulumi.Input['SBOMReferenceNoteArgs']]):
+        pulumi.set(self, "sbom_reference", value)
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -342,6 +362,18 @@ class NoteArgs:
         pulumi.set(self, "upgrade", value)
 
     @property
+    @pulumi.getter(name="vulnerabilityAssessment")
+    def vulnerability_assessment(self) -> Optional[pulumi.Input['VulnerabilityAssessmentNoteArgs']]:
+        """
+        A note describing a vulnerability assessment.
+        """
+        return pulumi.get(self, "vulnerability_assessment")
+
+    @vulnerability_assessment.setter
+    def vulnerability_assessment(self, value: Optional[pulumi.Input['VulnerabilityAssessmentNoteArgs']]):
+        pulumi.set(self, "vulnerability_assessment", value)
+
+    @property
     @pulumi.getter(name="vulnerabilityType")
     def vulnerability_type(self) -> Optional[pulumi.Input['VulnerabilityTypeArgs']]:
         """
@@ -374,11 +406,13 @@ class Note(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
+                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
                  spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
                  vulnerability_type: Optional[pulumi.Input[pulumi.InputType['VulnerabilityTypeArgs']]] = None,
                  __props__=None):
         """
@@ -400,11 +434,13 @@ class Note(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PackageArgs']] package: A note describing a package hosted by various package managers.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]] related_url: URLs associated with this note
         :param pulumi.Input[pulumi.InputType['DocumentNoteArgs']] sbom: A note describing a software bill of materials.
+        :param pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']] sbom_reference: A note describing a reference to an SBOM.
         :param pulumi.Input[str] short_description: A one sentence description of this `Note`.
         :param pulumi.Input[pulumi.InputType['FileNoteArgs']] spdx_file: A note describing an SPDX File.
         :param pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']] spdx_package: A note describing an SPDX Package.
         :param pulumi.Input[pulumi.InputType['RelationshipNoteArgs']] spdx_relationship: A note describing a relationship between SPDX elements.
         :param pulumi.Input[pulumi.InputType['UpgradeNoteArgs']] upgrade: A note describing an upgrade.
+        :param pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']] vulnerability_assessment: A note describing a vulnerability assessment.
         :param pulumi.Input[pulumi.InputType['VulnerabilityTypeArgs']] vulnerability_type: A package vulnerability type of note.
         """
         ...
@@ -446,11 +482,13 @@ class Note(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentNoteArgs']]] = None,
+                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceNoteArgs']]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileNoteArgs']]] = None,
                  spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoNoteArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipNoteArgs']]] = None,
                  upgrade: Optional[pulumi.Input[pulumi.InputType['UpgradeNoteArgs']]] = None,
+                 vulnerability_assessment: Optional[pulumi.Input[pulumi.InputType['VulnerabilityAssessmentNoteArgs']]] = None,
                  vulnerability_type: Optional[pulumi.Input[pulumi.InputType['VulnerabilityTypeArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -476,11 +514,13 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["related_url"] = related_url
             __props__.__dict__["sbom"] = sbom
+            __props__.__dict__["sbom_reference"] = sbom_reference
             __props__.__dict__["short_description"] = short_description
             __props__.__dict__["spdx_file"] = spdx_file
             __props__.__dict__["spdx_package"] = spdx_package
             __props__.__dict__["spdx_relationship"] = spdx_relationship
             __props__.__dict__["upgrade"] = upgrade
+            __props__.__dict__["vulnerability_assessment"] = vulnerability_assessment
             __props__.__dict__["vulnerability_type"] = vulnerability_type
             __props__.__dict__["create_time"] = None
             __props__.__dict__["kind"] = None
@@ -526,12 +566,14 @@ class Note(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["related_url"] = None
         __props__.__dict__["sbom"] = None
+        __props__.__dict__["sbom_reference"] = None
         __props__.__dict__["short_description"] = None
         __props__.__dict__["spdx_file"] = None
         __props__.__dict__["spdx_package"] = None
         __props__.__dict__["spdx_relationship"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["upgrade"] = None
+        __props__.__dict__["vulnerability_assessment"] = None
         __props__.__dict__["vulnerability_type"] = None
         return Note(resource_name, opts=opts, __props__=__props__)
 
@@ -669,6 +711,14 @@ class Note(pulumi.CustomResource):
         return pulumi.get(self, "sbom")
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> pulumi.Output['outputs.SBOMReferenceNoteResponse']:
+        """
+        A note describing a reference to an SBOM.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @property
     @pulumi.getter(name="shortDescription")
     def short_description(self) -> pulumi.Output[str]:
         """
@@ -715,6 +765,14 @@ class Note(pulumi.CustomResource):
         A note describing an upgrade.
         """
         return pulumi.get(self, "upgrade")
+
+    @property
+    @pulumi.getter(name="vulnerabilityAssessment")
+    def vulnerability_assessment(self) -> pulumi.Output['outputs.VulnerabilityAssessmentNoteResponse']:
+        """
+        A note describing a vulnerability assessment.
+        """
+        return pulumi.get(self, "vulnerability_assessment")
 
     @property
     @pulumi.getter(name="vulnerabilityType")

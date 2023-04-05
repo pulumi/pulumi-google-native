@@ -27,6 +27,8 @@ type LookupContactCenterArgs struct {
 }
 
 type LookupContactCenterResult struct {
+	// Optional. Info about the first admin user, such as given name and family name.
+	AdminUser AdminUserResponse `pulumi:"adminUser"`
 	// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
 	CcaipManagedUsers bool `pulumi:"ccaipManagedUsers"`
 	// [Output only] Create time stamp
@@ -49,7 +51,7 @@ type LookupContactCenterResult struct {
 	UpdateTime string `pulumi:"updateTime"`
 	// URIs to access the deployed ContactCenters.
 	Uris URIsResponse `pulumi:"uris"`
-	// Optional. Email address of the first admin users.
+	// Optional. Email address of the first admin user.
 	UserEmail string `pulumi:"userEmail"`
 }
 
@@ -88,6 +90,11 @@ func (o LookupContactCenterResultOutput) ToLookupContactCenterResultOutput() Loo
 
 func (o LookupContactCenterResultOutput) ToLookupContactCenterResultOutputWithContext(ctx context.Context) LookupContactCenterResultOutput {
 	return o
+}
+
+// Optional. Info about the first admin user, such as given name and family name.
+func (o LookupContactCenterResultOutput) AdminUser() AdminUserResponseOutput {
+	return o.ApplyT(func(v LookupContactCenterResult) AdminUserResponse { return v.AdminUser }).(AdminUserResponseOutput)
 }
 
 // Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
@@ -145,7 +152,7 @@ func (o LookupContactCenterResultOutput) Uris() URIsResponseOutput {
 	return o.ApplyT(func(v LookupContactCenterResult) URIsResponse { return v.Uris }).(URIsResponseOutput)
 }
 
-// Optional. Email address of the first admin users.
+// Optional. Email address of the first admin user.
 func (o LookupContactCenterResultOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupContactCenterResult) string { return v.UserEmail }).(pulumi.StringOutput)
 }

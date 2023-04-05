@@ -126,7 +126,7 @@ export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType = {
     /**
      * Parameter.
      */
-    Paremeter: "PAREMETER",
+    Parameter: "PARAMETER",
 } as const;
 
 /**

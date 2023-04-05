@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Outputs
         /// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.ConsumerResponse> Consumers;
+        /// <summary>
+        /// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+        /// </summary>
+        public readonly bool CustomRoutesEnabled;
 
         [OutputConstructor]
-        private NetworkConfigResponse(ImmutableArray<Outputs.ConsumerResponse> consumers)
+        private NetworkConfigResponse(
+            ImmutableArray<Outputs.ConsumerResponse> consumers,
+
+            bool customRoutesEnabled)
         {
             Consumers = consumers;
+            CustomRoutesEnabled = customRoutesEnabled;
         }
     }
 }

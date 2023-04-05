@@ -1223,8 +1223,8 @@ func (o PublisherResponseOutput) PrimaryContact() pulumi.StringOutput {
 
 // Restricted export config, used to configure restricted export on linked dataset.
 type RestrictedExportConfig struct {
-	// If true, restrict direct table access(read api/tabledata.list) on linked table.
-	RestrictDirectTableAccess *bool `pulumi:"restrictDirectTableAccess"`
+	// If true, enable restricted export.
+	Enabled *bool `pulumi:"enabled"`
 	// If true, restrict export of query result derived from restricted linked dataset table.
 	RestrictQueryResult *bool `pulumi:"restrictQueryResult"`
 }
@@ -1242,8 +1242,8 @@ type RestrictedExportConfigInput interface {
 
 // Restricted export config, used to configure restricted export on linked dataset.
 type RestrictedExportConfigArgs struct {
-	// If true, restrict direct table access(read api/tabledata.list) on linked table.
-	RestrictDirectTableAccess pulumi.BoolPtrInput `pulumi:"restrictDirectTableAccess"`
+	// If true, enable restricted export.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// If true, restrict export of query result derived from restricted linked dataset table.
 	RestrictQueryResult pulumi.BoolPtrInput `pulumi:"restrictQueryResult"`
 }
@@ -1326,9 +1326,9 @@ func (o RestrictedExportConfigOutput) ToRestrictedExportConfigPtrOutputWithConte
 	}).(RestrictedExportConfigPtrOutput)
 }
 
-// If true, restrict direct table access(read api/tabledata.list) on linked table.
-func (o RestrictedExportConfigOutput) RestrictDirectTableAccess() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.RestrictDirectTableAccess }).(pulumi.BoolPtrOutput)
+// If true, enable restricted export.
+func (o RestrictedExportConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RestrictedExportConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
 // If true, restrict export of query result derived from restricted linked dataset table.
@@ -1360,13 +1360,13 @@ func (o RestrictedExportConfigPtrOutput) Elem() RestrictedExportConfigOutput {
 	}).(RestrictedExportConfigOutput)
 }
 
-// If true, restrict direct table access(read api/tabledata.list) on linked table.
-func (o RestrictedExportConfigPtrOutput) RestrictDirectTableAccess() pulumi.BoolPtrOutput {
+// If true, enable restricted export.
+func (o RestrictedExportConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RestrictedExportConfig) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.RestrictDirectTableAccess
+		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -1382,8 +1382,8 @@ func (o RestrictedExportConfigPtrOutput) RestrictQueryResult() pulumi.BoolPtrOut
 
 // Restricted export config, used to configure restricted export on linked dataset.
 type RestrictedExportConfigResponse struct {
-	// If true, restrict direct table access(read api/tabledata.list) on linked table.
-	RestrictDirectTableAccess bool `pulumi:"restrictDirectTableAccess"`
+	// If true, enable restricted export.
+	Enabled bool `pulumi:"enabled"`
 	// If true, restrict export of query result derived from restricted linked dataset table.
 	RestrictQueryResult bool `pulumi:"restrictQueryResult"`
 }
@@ -1403,9 +1403,9 @@ func (o RestrictedExportConfigResponseOutput) ToRestrictedExportConfigResponseOu
 	return o
 }
 
-// If true, restrict direct table access(read api/tabledata.list) on linked table.
-func (o RestrictedExportConfigResponseOutput) RestrictDirectTableAccess() pulumi.BoolOutput {
-	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.RestrictDirectTableAccess }).(pulumi.BoolOutput)
+// If true, enable restricted export.
+func (o RestrictedExportConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v RestrictedExportConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // If true, restrict export of query result derived from restricted linked dataset table.

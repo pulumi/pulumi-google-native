@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+ * Returns the specified Snapshot resource.
  */
 export function getSnapshot(args: GetSnapshotArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotResult> {
 
@@ -139,7 +139,7 @@ export interface GetSnapshotResult {
     readonly storageLocations: string[];
 }
 /**
- * Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+ * Returns the specified Snapshot resource.
  */
 export function getSnapshotOutput(args: GetSnapshotOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotResult> {
     return pulumi.output(args).apply((a: any) => getSnapshot(a, opts))

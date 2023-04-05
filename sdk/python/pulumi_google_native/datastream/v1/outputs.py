@@ -144,6 +144,9 @@ class BackfillNoneStrategyResponse(dict):
 
 @pulumi.output_type
 class BigQueryDestinationConfigResponse(dict):
+    """
+    BigQuery destination configuration
+    """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -170,6 +173,7 @@ class BigQueryDestinationConfigResponse(dict):
                  single_target_dataset: 'outputs.SingleTargetDatasetResponse',
                  source_hierarchy_datasets: 'outputs.SourceHierarchyDatasetsResponse'):
         """
+        BigQuery destination configuration
         :param str data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
         :param 'SingleTargetDatasetResponse' single_target_dataset: Single destination dataset.
         :param 'SourceHierarchyDatasetsResponse' source_hierarchy_datasets: Source hierarchy datasets.
@@ -1005,6 +1009,8 @@ class MysqlSourceConfigResponse(dict):
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
         elif key == "maxConcurrentCdcTasks":
             suggest = "max_concurrent_cdc_tasks"
 
@@ -1022,15 +1028,18 @@ class MysqlSourceConfigResponse(dict):
     def __init__(__self__, *,
                  exclude_objects: 'outputs.MysqlRdbmsResponse',
                  include_objects: 'outputs.MysqlRdbmsResponse',
+                 max_concurrent_backfill_tasks: int,
                  max_concurrent_cdc_tasks: int):
         """
         MySQL source configuration
         :param 'MysqlRdbmsResponse' exclude_objects: MySQL objects to exclude from the stream.
         :param 'MysqlRdbmsResponse' include_objects: MySQL objects to retrieve from the source.
+        :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         """
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
 
     @property
@@ -1048,6 +1057,14 @@ class MysqlSourceConfigResponse(dict):
         MySQL objects to retrieve from the source.
         """
         return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> int:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @property
     @pulumi.getter(name="maxConcurrentCdcTasks")
@@ -1542,6 +1559,8 @@ class OracleSourceConfigResponse(dict):
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
         elif key == "maxConcurrentCdcTasks":
             suggest = "max_concurrent_cdc_tasks"
         elif key == "streamLargeObjects":
@@ -1562,6 +1581,7 @@ class OracleSourceConfigResponse(dict):
                  drop_large_objects: 'outputs.DropLargeObjectsResponse',
                  exclude_objects: 'outputs.OracleRdbmsResponse',
                  include_objects: 'outputs.OracleRdbmsResponse',
+                 max_concurrent_backfill_tasks: int,
                  max_concurrent_cdc_tasks: int,
                  stream_large_objects: 'outputs.StreamLargeObjectsResponse'):
         """
@@ -1569,12 +1589,14 @@ class OracleSourceConfigResponse(dict):
         :param 'DropLargeObjectsResponse' drop_large_objects: Drop large object values.
         :param 'OracleRdbmsResponse' exclude_objects: Oracle objects to exclude from the stream.
         :param 'OracleRdbmsResponse' include_objects: Oracle objects to include in the stream.
-        :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+        :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         :param 'StreamLargeObjectsResponse' stream_large_objects: Stream large object values. NOTE: This feature is currently experimental.
         """
         pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
         pulumi.set(__self__, "stream_large_objects", stream_large_objects)
 
@@ -1603,10 +1625,18 @@ class OracleSourceConfigResponse(dict):
         return pulumi.get(self, "include_objects")
 
     @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> int:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
+
+    @property
     @pulumi.getter(name="maxConcurrentCdcTasks")
     def max_concurrent_cdc_tasks(self) -> int:
         """
-        Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
         """
         return pulumi.get(self, "max_concurrent_cdc_tasks")
 
@@ -1956,6 +1986,8 @@ class PostgresqlSourceConfigResponse(dict):
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
+        elif key == "maxConcurrentBackfillTasks":
+            suggest = "max_concurrent_backfill_tasks"
         elif key == "replicationSlot":
             suggest = "replication_slot"
 
@@ -1973,17 +2005,20 @@ class PostgresqlSourceConfigResponse(dict):
     def __init__(__self__, *,
                  exclude_objects: 'outputs.PostgresqlRdbmsResponse',
                  include_objects: 'outputs.PostgresqlRdbmsResponse',
+                 max_concurrent_backfill_tasks: int,
                  publication: str,
                  replication_slot: str):
         """
         PostgreSQL data source configuration
         :param 'PostgresqlRdbmsResponse' exclude_objects: PostgreSQL objects to exclude from the stream.
         :param 'PostgresqlRdbmsResponse' include_objects: PostgreSQL objects to include in the stream.
+        :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         :param str publication: The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
         :param str replication_slot: Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
         """
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         pulumi.set(__self__, "publication", publication)
         pulumi.set(__self__, "replication_slot", replication_slot)
 
@@ -2002,6 +2037,14 @@ class PostgresqlSourceConfigResponse(dict):
         PostgreSQL objects to include in the stream.
         """
         return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentBackfillTasks")
+    def max_concurrent_backfill_tasks(self) -> int:
+        """
+        Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_backfill_tasks")
 
     @property
     @pulumi.getter
@@ -2252,23 +2295,27 @@ class SourceHierarchyDatasetsResponse(dict):
                  dataset_template: 'outputs.DatasetTemplateResponse'):
         """
         Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        :param 'DatasetTemplateResponse' dataset_template: The dataset template to use for dynamic dataset creation.
         """
         pulumi.set(__self__, "dataset_template", dataset_template)
 
     @property
     @pulumi.getter(name="datasetTemplate")
     def dataset_template(self) -> 'outputs.DatasetTemplateResponse':
+        """
+        The dataset template to use for dynamic dataset creation.
+        """
         return pulumi.get(self, "dataset_template")
 
 
 @pulumi.output_type
 class StaticServiceIpConnectivityResponse(dict):
     """
-    Static IP address connectivity.
+    Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
     """
     def __init__(__self__):
         """
-        Static IP address connectivity.
+        Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
         """
         pass
 

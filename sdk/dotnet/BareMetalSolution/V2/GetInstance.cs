@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// The firmware version for the instance.
+        /// </summary>
+        public readonly string FirmwareVersion;
+        /// <summary>
         /// True if you enable hyperthreading for the server, otherwise false. The default value is false.
         /// </summary>
         public readonly bool HyperthreadingEnabled;
@@ -136,6 +140,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         private GetInstanceResult(
             string createTime,
 
+            string firmwareVersion,
+
             bool hyperthreadingEnabled,
 
             bool interactiveSerialConsoleEnabled,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
             string workloadProfile)
         {
             CreateTime = createTime;
+            FirmwareVersion = firmwareVersion;
             HyperthreadingEnabled = hyperthreadingEnabled;
             InteractiveSerialConsoleEnabled = interactiveSerialConsoleEnabled;
             Labels = labels;

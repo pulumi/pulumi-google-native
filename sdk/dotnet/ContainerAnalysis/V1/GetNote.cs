@@ -133,6 +133,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         /// A note describing a package vulnerability.
         /// </summary>
         public readonly Outputs.VulnerabilityNoteResponse Vulnerability;
+        /// <summary>
+        /// A note describing a vulnerability assessment.
+        /// </summary>
+        public readonly Outputs.VulnerabilityAssessmentNoteResponse VulnerabilityAssessment;
 
         [OutputConstructor]
         private GetNoteResult(
@@ -172,7 +176,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
 
             Outputs.UpgradeNoteResponse upgrade,
 
-            Outputs.VulnerabilityNoteResponse vulnerability)
+            Outputs.VulnerabilityNoteResponse vulnerability,
+
+            Outputs.VulnerabilityAssessmentNoteResponse vulnerabilityAssessment)
         {
             Attestation = attestation;
             Build = build;
@@ -193,6 +199,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
             UpdateTime = updateTime;
             Upgrade = upgrade;
             Vulnerability = vulnerability;
+            VulnerabilityAssessment = vulnerabilityAssessment;
         }
     }
 }

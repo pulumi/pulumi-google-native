@@ -6,19 +6,27 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
+from .binding import *
 from .feature import *
 from .feature_iam_binding import *
 from .feature_iam_member import *
 from .feature_iam_policy import *
 from .fleet import *
+from .get_binding import *
 from .get_feature import *
 from .get_feature_iam_policy import *
 from .get_fleet import *
 from .get_membership import *
 from .get_membership_iam_policy import *
+from .get_namespace import *
+from .get_rbacrolebinding import *
+from .get_scope import *
 from .membership import *
 from .membership_iam_binding import *
 from .membership_iam_member import *
 from .membership_iam_policy import *
+from .namespace import *
+from .rbacrolebinding import *
+from .scope import *
 from ._inputs import *
 from . import outputs

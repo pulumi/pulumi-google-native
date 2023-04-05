@@ -26,7 +26,8 @@ class DataScanArgs:
                  execution_spec: Optional[pulumi.Input['GoogleCloudDataplexV1DataScanExecutionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a DataScan resource.
         :param pulumi.Input['GoogleCloudDataplexV1DataSourceArgs'] data: The data source for DataScan.
@@ -37,6 +38,7 @@ class DataScanArgs:
         :param pulumi.Input[str] display_name: Optional. User friendly display name. Must be between 1-256 characters.
         :param pulumi.Input['GoogleCloudDataplexV1DataScanExecutionSpecArgs'] execution_spec: Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the scan.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data", data)
         pulumi.set(__self__, "data_scan_id", data_scan_id)
@@ -56,6 +58,8 @@ class DataScanArgs:
             pulumi.set(__self__, "location", location)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter
@@ -171,6 +175,18 @@ class DataScanArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class DataScan(pulumi.CustomResource):
     @overload
@@ -187,6 +203,7 @@ class DataScan(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a DataScan resource.
@@ -202,6 +219,7 @@ class DataScan(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User friendly display name. Must be between 1-256 characters.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataScanExecutionSpecArgs']] execution_spec: Optional. DataScan execution settings.If not specified, the fields in it will use their default values.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the scan.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -238,6 +256,7 @@ class DataScan(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -261,6 +280,7 @@ class DataScan(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["data_profile_result"] = None
             __props__.__dict__["data_quality_result"] = None
@@ -313,6 +333,7 @@ class DataScan(pulumi.CustomResource):
         __props__.__dict__["type"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
+        __props__.__dict__["validate_only"] = None
         return DataScan(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -460,4 +481,12 @@ class DataScan(pulumi.CustomResource):
         The time when the scan was last updated.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Optional. Only validate the request, but do not perform mutations. The default is false.
+        """
+        return pulumi.get(self, "validate_only")
 

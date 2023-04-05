@@ -176,6 +176,9 @@ __all__ = [
     'SecurityPolicyRuleHttpHeaderActionArgs',
     'SecurityPolicyRuleMatcherConfigArgs',
     'SecurityPolicyRuleMatcherArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigArgs',
     'SecurityPolicyRuleRateLimitOptionsThresholdArgs',
     'SecurityPolicyRuleRateLimitOptionsArgs',
     'SecurityPolicyRuleRedirectOptionsArgs',
@@ -258,14 +261,14 @@ class AccessConfigArgs:
                  type: Optional[pulumi.Input['AccessConfigType']] = None):
         """
         An access configuration attached to an instance's network interface. Only one access config per instance is supported.
-        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-        :param pulumi.Input[int] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
-        :param pulumi.Input[str] name: The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
-        :param pulumi.Input[str] nat_ip: An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+        :param pulumi.Input[str] external_ipv6: Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        :param pulumi.Input[int] external_ipv6_prefix_length: Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
+        :param pulumi.Input[str] name: The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
+        :param pulumi.Input[str] nat_ip: Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param pulumi.Input['AccessConfigNetworkTier'] network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
         :param pulumi.Input[bool] set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
-        :param pulumi.Input['AccessConfigType'] type: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+        :param pulumi.Input['AccessConfigType'] type: The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
         """
         if external_ipv6 is not None:
             pulumi.set(__self__, "external_ipv6", external_ipv6)
@@ -288,7 +291,7 @@ class AccessConfigArgs:
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
         """
-        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "external_ipv6")
 
@@ -300,7 +303,7 @@ class AccessConfigArgs:
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
         """
-        The prefix length of the external IPv6 range.
+        Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
         """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
@@ -312,7 +315,7 @@ class AccessConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+        The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
         """
         return pulumi.get(self, "name")
 
@@ -324,7 +327,7 @@ class AccessConfigArgs:
     @pulumi.getter(name="natIP")
     def nat_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+        Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         """
         return pulumi.get(self, "nat_ip")
 
@@ -372,7 +375,7 @@ class AccessConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['AccessConfigType']]:
         """
-        The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+        The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
         """
         return pulumi.get(self, "type")
 
@@ -2699,7 +2702,7 @@ class BindingArgs:
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input[str] binding_id: This is deprecated and has no effect. Do not use.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if binding_id is not None:
@@ -2739,7 +2742,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -4083,25 +4086,81 @@ class FirewallPolicyRuleMatcherLayer4ConfigArgs:
 @pulumi.input_type
 class FirewallPolicyRuleMatcherArgs:
     def __init__(__self__, *,
+                 dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  layer4_configs: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]] = None,
+                 src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None):
+                 src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]] = None,
+                 src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]] layer4_configs: Pairs of IP protocols and ports that the rule should match.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         """
+        if dest_address_groups is not None:
+            pulumi.set(__self__, "dest_address_groups", dest_address_groups)
+        if dest_fqdns is not None:
+            pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_region_codes is not None:
+            pulumi.set(__self__, "dest_region_codes", dest_region_codes)
+        if dest_threat_intelligences is not None:
+            pulumi.set(__self__, "dest_threat_intelligences", dest_threat_intelligences)
         if layer4_configs is not None:
             pulumi.set(__self__, "layer4_configs", layer4_configs)
+        if src_address_groups is not None:
+            pulumi.set(__self__, "src_address_groups", src_address_groups)
+        if src_fqdns is not None:
+            pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_region_codes is not None:
+            pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
             pulumi.set(__self__, "src_secure_tags", src_secure_tags)
+        if src_threat_intelligences is not None:
+            pulumi.set(__self__, "src_threat_intelligences", src_threat_intelligences)
+
+    @property
+    @pulumi.getter(name="destAddressGroups")
+    def dest_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        """
+        return pulumi.get(self, "dest_address_groups")
+
+    @dest_address_groups.setter
+    def dest_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_address_groups", value)
+
+    @property
+    @pulumi.getter(name="destFqdns")
+    def dest_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
+        """
+        return pulumi.get(self, "dest_fqdns")
+
+    @dest_fqdns.setter
+    def dest_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_fqdns", value)
 
     @property
     @pulumi.getter(name="destIpRanges")
@@ -4116,6 +4175,30 @@ class FirewallPolicyRuleMatcherArgs:
         pulumi.set(self, "dest_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="destRegionCodes")
+    def dest_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        """
+        return pulumi.get(self, "dest_region_codes")
+
+    @dest_region_codes.setter
+    def dest_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_region_codes", value)
+
+    @property
+    @pulumi.getter(name="destThreatIntelligences")
+    def dest_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        """
+        return pulumi.get(self, "dest_threat_intelligences")
+
+    @dest_threat_intelligences.setter
+    def dest_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dest_threat_intelligences", value)
+
+    @property
     @pulumi.getter(name="layer4Configs")
     def layer4_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]]:
         """
@@ -4126,6 +4209,30 @@ class FirewallPolicyRuleMatcherArgs:
     @layer4_configs.setter
     def layer4_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleMatcherLayer4ConfigArgs']]]]):
         pulumi.set(self, "layer4_configs", value)
+
+    @property
+    @pulumi.getter(name="srcAddressGroups")
+    def src_address_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        """
+        return pulumi.get(self, "src_address_groups")
+
+    @src_address_groups.setter
+    def src_address_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_address_groups", value)
+
+    @property
+    @pulumi.getter(name="srcFqdns")
+    def src_fqdns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
+        """
+        return pulumi.get(self, "src_fqdns")
+
+    @src_fqdns.setter
+    def src_fqdns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_fqdns", value)
 
     @property
     @pulumi.getter(name="srcIpRanges")
@@ -4140,6 +4247,18 @@ class FirewallPolicyRuleMatcherArgs:
         pulumi.set(self, "src_ip_ranges", value)
 
     @property
+    @pulumi.getter(name="srcRegionCodes")
+    def src_region_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        """
+        return pulumi.get(self, "src_region_codes")
+
+    @src_region_codes.setter
+    def src_region_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_region_codes", value)
+
+    @property
     @pulumi.getter(name="srcSecureTags")
     def src_secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]:
         """
@@ -4150,6 +4269,18 @@ class FirewallPolicyRuleMatcherArgs:
     @src_secure_tags.setter
     def src_secure_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]]]):
         pulumi.set(self, "src_secure_tags", value)
+
+    @property
+    @pulumi.getter(name="srcThreatIntelligences")
+    def src_threat_intelligences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        """
+        return pulumi.get(self, "src_threat_intelligences")
+
+    @src_threat_intelligences.setter
+    def src_threat_intelligences(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_threat_intelligences", value)
 
 
 @pulumi.input_type
@@ -4532,7 +4663,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -4541,7 +4672,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -7517,13 +7648,13 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
         :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
-        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param pulumi.Input['NetworkInterfaceNicType'] nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
-        :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+        :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
         :param pulumi.Input[str] subnetwork: The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         """
         if access_configs is not None:
@@ -7603,7 +7734,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
-        An IPv6 internal network address for this network interface.
+        An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -7675,7 +7806,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input['NetworkInterfaceStackType']]:
         """
-        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+        The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
         """
         return pulumi.get(self, "stack_type")
 
@@ -8712,6 +8843,7 @@ class ReservationArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
@@ -8720,6 +8852,7 @@ class ReservationArgs:
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_policies: Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
         :param pulumi.Input['ShareSettingsArgs'] share_settings: Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -8729,6 +8862,8 @@ class ReservationArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if share_settings is not None:
             pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation is not None:
@@ -8761,6 +8896,18 @@ class ReservationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_policies", value)
 
     @property
     @pulumi.getter(name="shareSettings")
@@ -9039,7 +9186,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
         An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
         :param pulumi.Input[str] expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
         :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
-        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs'] vm_start_schedule: Specifies the schedule for starting instances.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs'] vm_stop_schedule: Specifies the schedule for stopping instances.
         """
@@ -9082,7 +9229,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
         """
         return pulumi.get(self, "time_zone")
 
@@ -9522,7 +9669,7 @@ class RouterBgpPeerArgs:
                  router_appliance_instance: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['RouterBgpPeerAdvertiseMode'] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
-        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
         :param pulumi.Input['RouterBgpPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
@@ -9587,7 +9734,7 @@ class RouterBgpPeerArgs:
     @pulumi.getter(name="advertisedGroups")
     def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]]]:
         """
-        User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -11262,6 +11409,171 @@ class SecurityPolicyRuleMatcherArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs:
+    def __init__(__self__, *,
+                 op: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp']] = None,
+                 val: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp'] op: The match operator for the field.
+        :param pulumi.Input[str] val: The value of the field.
+        """
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if val is not None:
+            pulumi.set(__self__, "val", val)
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp']]:
+        """
+        The match operator for the field.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp']]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def val(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the field.
+        """
+        return pulumi.get(self, "val")
+
+    @val.setter
+    def val(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "val", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
+    def __init__(__self__, *,
+                 request_cookies_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 request_headers_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 request_query_params_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 request_uris_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 target_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_rule_set: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_cookies_to_exclude: A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_headers_to_exclude: A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_query_params_to_exclude: A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_uris_to_exclude: A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        :param pulumi.Input[str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        if request_cookies_to_exclude is not None:
+            pulumi.set(__self__, "request_cookies_to_exclude", request_cookies_to_exclude)
+        if request_headers_to_exclude is not None:
+            pulumi.set(__self__, "request_headers_to_exclude", request_headers_to_exclude)
+        if request_query_params_to_exclude is not None:
+            pulumi.set(__self__, "request_query_params_to_exclude", request_query_params_to_exclude)
+        if request_uris_to_exclude is not None:
+            pulumi.set(__self__, "request_uris_to_exclude", request_uris_to_exclude)
+        if target_rule_ids is not None:
+            pulumi.set(__self__, "target_rule_ids", target_rule_ids)
+        if target_rule_set is not None:
+            pulumi.set(__self__, "target_rule_set", target_rule_set)
+
+    @property
+    @pulumi.getter(name="requestCookiesToExclude")
+    def request_cookies_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_cookies_to_exclude")
+
+    @request_cookies_to_exclude.setter
+    def request_cookies_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_cookies_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="requestHeadersToExclude")
+    def request_headers_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_headers_to_exclude")
+
+    @request_headers_to_exclude.setter
+    def request_headers_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_headers_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="requestQueryParamsToExclude")
+    def request_query_params_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+        """
+        return pulumi.get(self, "request_query_params_to_exclude")
+
+    @request_query_params_to_exclude.setter
+    def request_query_params_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_query_params_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="requestUrisToExclude")
+    def request_uris_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        """
+        return pulumi.get(self, "request_uris_to_exclude")
+
+    @request_uris_to_exclude.setter
+    def request_uris_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_uris_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="targetRuleIds")
+    def target_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        return pulumi.get(self, "target_rule_ids")
+
+    @target_rule_ids.setter
+    def target_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_rule_ids", value)
+
+    @property
+    @pulumi.getter(name="targetRuleSet")
+    def target_rule_set(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        return pulumi.get(self, "target_rule_set")
+
+    @target_rule_set.setter
+    def target_rule_set(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_rule_set", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRulePreconfiguredWafConfigArgs:
+    def __init__(__self__, *,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]] exclusions: A list of exclusions to apply during preconfigured WAF evaluation.
+        """
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]:
+        """
+        A list of exclusions to apply during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]):
+        pulumi.set(self, "exclusions", value)
+
+
+@pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsThresholdArgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[int]] = None,
@@ -11481,6 +11793,7 @@ class SecurityPolicyRuleArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs']] = None,
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatcherArgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
@@ -11491,6 +11804,7 @@ class SecurityPolicyRuleArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers.
         :param pulumi.Input['SecurityPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
@@ -11504,6 +11818,8 @@ class SecurityPolicyRuleArgs:
             pulumi.set(__self__, "header_action", header_action)
         if match is not None:
             pulumi.set(__self__, "match", match)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
         if priority is not None:
@@ -11560,6 +11876,18 @@ class SecurityPolicyRuleArgs:
     @match.setter
     def match(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatcherArgs']]):
         pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
 
     @property
     @pulumi.getter

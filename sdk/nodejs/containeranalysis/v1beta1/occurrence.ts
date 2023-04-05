@@ -100,6 +100,10 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1beta1.DocumentOccurrenceResponse>;
     /**
+     * Describes a specific SBOM reference occurrences.
+     */
+    public readonly sbomReference!: pulumi.Output<outputs.containeranalysis.v1beta1.SBOMReferenceOccurrenceResponse>;
+    /**
      * Describes a specific SPDX File.
      */
     public readonly spdxFile!: pulumi.Output<outputs.containeranalysis.v1beta1.FileOccurrenceResponse>;
@@ -150,6 +154,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["remediation"] = args ? args.remediation : undefined;
             resourceInputs["resource"] = args ? args.resource : undefined;
             resourceInputs["sbom"] = args ? args.sbom : undefined;
+            resourceInputs["sbomReference"] = args ? args.sbomReference : undefined;
             resourceInputs["spdxFile"] = args ? args.spdxFile : undefined;
             resourceInputs["spdxPackage"] = args ? args.spdxPackage : undefined;
             resourceInputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
@@ -175,6 +180,7 @@ export class Occurrence extends pulumi.CustomResource {
             resourceInputs["remediation"] = undefined /*out*/;
             resourceInputs["resource"] = undefined /*out*/;
             resourceInputs["sbom"] = undefined /*out*/;
+            resourceInputs["sbomReference"] = undefined /*out*/;
             resourceInputs["spdxFile"] = undefined /*out*/;
             resourceInputs["spdxPackage"] = undefined /*out*/;
             resourceInputs["spdxRelationship"] = undefined /*out*/;
@@ -241,6 +247,10 @@ export interface OccurrenceArgs {
      * Describes a specific software bill of materials document.
      */
     sbom?: pulumi.Input<inputs.containeranalysis.v1beta1.DocumentOccurrenceArgs>;
+    /**
+     * Describes a specific SBOM reference occurrences.
+     */
+    sbomReference?: pulumi.Input<inputs.containeranalysis.v1beta1.SBOMReferenceOccurrenceArgs>;
     /**
      * Describes a specific SPDX File.
      */

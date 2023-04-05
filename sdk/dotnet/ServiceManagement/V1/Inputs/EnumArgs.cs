@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// </summary>
     public sealed class EnumArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
         [Input("enumvalue")]
         private InputList<Inputs.EnumValueArgs>? _enumvalue;
 

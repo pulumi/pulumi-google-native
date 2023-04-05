@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// Log only exceptions that are raised from call steps within workflows.
         /// </summary>
         public static ExecutionCallLogLevel LogErrorsOnly { get; } = new ExecutionCallLogLevel("LOG_ERRORS_ONLY");
+        /// <summary>
+        /// Explicitly log nothing.
+        /// </summary>
+        public static ExecutionCallLogLevel LogNone { get; } = new ExecutionCallLogLevel("LOG_NONE");
 
         public static bool operator ==(ExecutionCallLogLevel left, ExecutionCallLogLevel right) => left.Equals(right);
         public static bool operator !=(ExecutionCallLogLevel left, ExecutionCallLogLevel right) => !left.Equals(right);

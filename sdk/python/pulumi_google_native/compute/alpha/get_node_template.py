@@ -139,7 +139,7 @@ class GetNodeTemplateResult:
     @pulumi.getter(name="nodeTypeFlexibility")
     def node_type_flexibility(self) -> 'outputs.NodeTemplateNodeTypeFlexibilityResponse':
         """
-        The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        Do not use. Instead, use the node_type property.
         """
         return pulumi.get(self, "node_type_flexibility")
 
@@ -221,7 +221,7 @@ def get_node_template(node_template: Optional[str] = None,
                       region: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNodeTemplateResult:
     """
-    Returns the specified node template. Gets a list of available node templates by making a list() request.
+    Returns the specified node template.
     """
     __args__ = dict()
     __args__['nodeTemplate'] = node_template
@@ -255,6 +255,6 @@ def get_node_template_output(node_template: Optional[pulumi.Input[str]] = None,
                              region: Optional[pulumi.Input[str]] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTemplateResult]:
     """
-    Returns the specified node template. Gets a list of available node templates by making a list() request.
+    Returns the specified node template.
     """
     ...

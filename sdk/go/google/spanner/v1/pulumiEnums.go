@@ -16,7 +16,7 @@ type DatabaseDatabaseDialect string
 const (
 	// Default value. This value will create a database with the GOOGLE_STANDARD_SQL dialect.
 	DatabaseDatabaseDialectDatabaseDialectUnspecified = DatabaseDatabaseDialect("DATABASE_DIALECT_UNSPECIFIED")
-	// Google standard SQL.
+	// GoogleSQL supported SQL.
 	DatabaseDatabaseDialectGoogleStandardSql = DatabaseDatabaseDialect("GOOGLE_STANDARD_SQL")
 	// PostgreSQL supported SQL.
 	DatabaseDatabaseDialectPostgresql = DatabaseDatabaseDialect("POSTGRESQL")

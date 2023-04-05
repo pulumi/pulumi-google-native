@@ -86,6 +86,10 @@ export interface GetNoteResult {
      */
     readonly sbom: outputs.containeranalysis.v1beta1.DocumentNoteResponse;
     /**
+     * A note describing an SBOM reference.
+     */
+    readonly sbomReference: outputs.containeranalysis.v1beta1.SBOMReferenceNoteResponse;
+    /**
      * A one sentence description of this note.
      */
     readonly shortDescription: string;
@@ -109,6 +113,10 @@ export interface GetNoteResult {
      * A note describing a package vulnerability.
      */
     readonly vulnerability: outputs.containeranalysis.v1beta1.VulnerabilityResponse;
+    /**
+     * A note describing a vulnerability assessment.
+     */
+    readonly vulnerabilityAssessment: outputs.containeranalysis.v1beta1.VulnerabilityAssessmentNoteResponse;
 }
 /**
  * Gets the specified note.

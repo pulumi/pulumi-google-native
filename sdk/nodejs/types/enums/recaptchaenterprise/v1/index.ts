@@ -39,6 +39,10 @@ export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature = {
      * Use reCAPTCHA action-tokens to protect user actions.
      */
     ActionToken: "ACTION_TOKEN",
+    /**
+     * Use reCAPTCHA WAF express protection to protect any content other than web pages, like APIs and IoT devices.
+     */
+    Express: "EXPRESS",
 } as const;
 
 /**
@@ -55,6 +59,10 @@ export const GoogleCloudRecaptchaenterpriseV1WafSettingsWafService = {
      * Cloud Armor
      */
     Ca: "CA",
+    /**
+     * Fastly
+     */
+    Fastly: "FASTLY",
 } as const;
 
 /**

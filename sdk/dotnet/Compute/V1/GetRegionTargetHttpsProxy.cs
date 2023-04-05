@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetRegionTargetHttpsProxy
     {
         /// <summary>
-        /// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+        /// Returns the specified TargetHttpsProxy resource in the specified region.
         /// </summary>
         public static Task<GetRegionTargetHttpsProxyResult> InvokeAsync(GetRegionTargetHttpsProxyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionTargetHttpsProxyResult>("google-native:compute/v1:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified TargetHttpsProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.
+        /// Returns the specified TargetHttpsProxy resource in the specified region.
         /// </summary>
         public static Output<GetRegionTargetHttpsProxyResult> Invoke(GetRegionTargetHttpsProxyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionTargetHttpsProxyResult>("google-native:compute/v1:getRegionTargetHttpsProxy", args ?? new GetRegionTargetHttpsProxyInvokeArgs(), options.WithDefaults());
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string SelfLink;
         /// <summary>
-        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        /// Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         /// </summary>
         public readonly string ServerTlsPolicy;
         /// <summary>

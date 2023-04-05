@@ -37,7 +37,7 @@ type LookupEntitlementResult struct {
 	Name string `pulumi:"name"`
 	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer string `pulumi:"offer"`
-	// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For GCP billing accounts, the following Parameter may be accepted as input: - display_name: The display name of the billing account.
+	// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For GCP billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
 	Parameters []GoogleCloudChannelV1ParameterResponse `pulumi:"parameters"`
 	// Service provisioning details for the entitlement.
 	ProvisionedService GoogleCloudChannelV1ProvisionedServiceResponse `pulumi:"provisionedService"`
@@ -117,7 +117,7 @@ func (o LookupEntitlementResultOutput) Offer() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEntitlementResult) string { return v.Offer }).(pulumi.StringOutput)
 }
 
-// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For GCP billing accounts, the following Parameter may be accepted as input: - display_name: The display name of the billing account.
+// Extended entitlement parameters. When creating an entitlement, valid parameter names and values are defined in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input: - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for commitment-based offers The response may additionally include the following output-only Parameters: - assigned_units: The number of licenses assigned to users. For GCP billing subaccounts, the following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
 func (o LookupEntitlementResultOutput) Parameters() GoogleCloudChannelV1ParameterResponseArrayOutput {
 	return o.ApplyT(func(v LookupEntitlementResult) []GoogleCloudChannelV1ParameterResponse { return v.Parameters }).(GoogleCloudChannelV1ParameterResponseArrayOutput)
 }

@@ -16,13 +16,23 @@ __all__ = [
     'AuditLogConfigArgs',
     'BindingArgs',
     'BuildArtifactArgs',
+    'CanaryDeploymentArgs',
+    'CanaryArgs',
+    'CloudRunConfigArgs',
     'CloudRunLocationArgs',
+    'CustomCanaryDeploymentArgs',
     'DefaultPoolArgs',
     'ExecutionConfigArgs',
     'ExprArgs',
+    'GatewayServiceMeshArgs',
     'GkeClusterArgs',
+    'KubernetesConfigArgs',
+    'MultiTargetArgs',
+    'PhaseConfigArgs',
     'PrivatePoolArgs',
+    'RuntimeConfigArgs',
     'SerialPipelineArgs',
+    'ServiceNetworkingArgs',
     'StageArgs',
     'StandardArgs',
     'StrategyArgs',
@@ -229,6 +239,125 @@ class BuildArtifactArgs:
 
 
 @pulumi.input_type
+class CanaryDeploymentArgs:
+    def __init__(__self__, *,
+                 percentages: pulumi.Input[Sequence[pulumi.Input[int]]],
+                 verify: Optional[pulumi.Input[bool]] = None):
+        """
+        CanaryDeployment represents the canary deployment configuration
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] percentages: The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param pulumi.Input[bool] verify: Whether to run verify tests after each percentage deployment.
+        """
+        pulumi.set(__self__, "percentages", percentages)
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def percentages(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
+        """
+        The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        """
+        return pulumi.get(self, "percentages")
+
+    @percentages.setter
+    def percentages(self, value: pulumi.Input[Sequence[pulumi.Input[int]]]):
+        pulumi.set(self, "percentages", value)
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run verify tests after each percentage deployment.
+        """
+        return pulumi.get(self, "verify")
+
+    @verify.setter
+    def verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verify", value)
+
+
+@pulumi.input_type
+class CanaryArgs:
+    def __init__(__self__, *,
+                 canary_deployment: Optional[pulumi.Input['CanaryDeploymentArgs']] = None,
+                 custom_canary_deployment: Optional[pulumi.Input['CustomCanaryDeploymentArgs']] = None,
+                 runtime_config: Optional[pulumi.Input['RuntimeConfigArgs']] = None):
+        """
+        Canary represents the canary deployment strategy.
+        :param pulumi.Input['CanaryDeploymentArgs'] canary_deployment: Configures the progressive based deployment for a Target.
+        :param pulumi.Input['CustomCanaryDeploymentArgs'] custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        :param pulumi.Input['RuntimeConfigArgs'] runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        """
+        if canary_deployment is not None:
+            pulumi.set(__self__, "canary_deployment", canary_deployment)
+        if custom_canary_deployment is not None:
+            pulumi.set(__self__, "custom_canary_deployment", custom_canary_deployment)
+        if runtime_config is not None:
+            pulumi.set(__self__, "runtime_config", runtime_config)
+
+    @property
+    @pulumi.getter(name="canaryDeployment")
+    def canary_deployment(self) -> Optional[pulumi.Input['CanaryDeploymentArgs']]:
+        """
+        Configures the progressive based deployment for a Target.
+        """
+        return pulumi.get(self, "canary_deployment")
+
+    @canary_deployment.setter
+    def canary_deployment(self, value: Optional[pulumi.Input['CanaryDeploymentArgs']]):
+        pulumi.set(self, "canary_deployment", value)
+
+    @property
+    @pulumi.getter(name="customCanaryDeployment")
+    def custom_canary_deployment(self) -> Optional[pulumi.Input['CustomCanaryDeploymentArgs']]:
+        """
+        Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        """
+        return pulumi.get(self, "custom_canary_deployment")
+
+    @custom_canary_deployment.setter
+    def custom_canary_deployment(self, value: Optional[pulumi.Input['CustomCanaryDeploymentArgs']]):
+        pulumi.set(self, "custom_canary_deployment", value)
+
+    @property
+    @pulumi.getter(name="runtimeConfig")
+    def runtime_config(self) -> Optional[pulumi.Input['RuntimeConfigArgs']]:
+        """
+        Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        """
+        return pulumi.get(self, "runtime_config")
+
+    @runtime_config.setter
+    def runtime_config(self, value: Optional[pulumi.Input['RuntimeConfigArgs']]):
+        pulumi.set(self, "runtime_config", value)
+
+
+@pulumi.input_type
+class CloudRunConfigArgs:
+    def __init__(__self__, *,
+                 automatic_traffic_control: Optional[pulumi.Input[bool]] = None):
+        """
+        CloudRunConfig contains the Cloud Run runtime configuration.
+        :param pulumi.Input[bool] automatic_traffic_control: Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        """
+        if automatic_traffic_control is not None:
+            pulumi.set(__self__, "automatic_traffic_control", automatic_traffic_control)
+
+    @property
+    @pulumi.getter(name="automaticTrafficControl")
+    def automatic_traffic_control(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        """
+        return pulumi.get(self, "automatic_traffic_control")
+
+    @automatic_traffic_control.setter
+    def automatic_traffic_control(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "automatic_traffic_control", value)
+
+
+@pulumi.input_type
 class CloudRunLocationArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str]):
@@ -249,6 +378,29 @@ class CloudRunLocationArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+
+@pulumi.input_type
+class CustomCanaryDeploymentArgs:
+    def __init__(__self__, *,
+                 phase_configs: pulumi.Input[Sequence[pulumi.Input['PhaseConfigArgs']]]):
+        """
+        CustomCanaryDeployment represents the custom canary deployment configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['PhaseConfigArgs']]] phase_configs: Configuration for each phase in the canary deployment in the order executed.
+        """
+        pulumi.set(__self__, "phase_configs", phase_configs)
+
+    @property
+    @pulumi.getter(name="phaseConfigs")
+    def phase_configs(self) -> pulumi.Input[Sequence[pulumi.Input['PhaseConfigArgs']]]:
+        """
+        Configuration for each phase in the canary deployment in the order executed.
+        """
+        return pulumi.get(self, "phase_configs")
+
+    @phase_configs.setter
+    def phase_configs(self, value: pulumi.Input[Sequence[pulumi.Input['PhaseConfigArgs']]]):
+        pulumi.set(self, "phase_configs", value)
 
 
 @pulumi.input_type
@@ -483,6 +635,59 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class GatewayServiceMeshArgs:
+    def __init__(__self__, *,
+                 deployment: pulumi.Input[str],
+                 http_route: pulumi.Input[str],
+                 service: pulumi.Input[str]):
+        """
+        Information about the Kubernetes Gateway API service mesh configuration.
+        :param pulumi.Input[str] deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        :param pulumi.Input[str] http_route: Name of the Gateway API HTTPRoute.
+        :param pulumi.Input[str] service: Name of the Kubernetes Service.
+        """
+        pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "http_route", http_route)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> pulumi.Input[str]:
+        """
+        Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        """
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deployment", value)
+
+    @property
+    @pulumi.getter(name="httpRoute")
+    def http_route(self) -> pulumi.Input[str]:
+        """
+        Name of the Gateway API HTTPRoute.
+        """
+        return pulumi.get(self, "http_route")
+
+    @http_route.setter
+    def http_route(self, value: pulumi.Input[str]):
+        pulumi.set(self, "http_route", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Name of the Kubernetes Service.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+
+@pulumi.input_type
 class GkeClusterArgs:
     def __init__(__self__, *,
                  cluster: Optional[pulumi.Input[str]] = None,
@@ -520,6 +725,139 @@ class GkeClusterArgs:
     @internal_ip.setter
     def internal_ip(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "internal_ip", value)
+
+
+@pulumi.input_type
+class KubernetesConfigArgs:
+    def __init__(__self__, *,
+                 gateway_service_mesh: Optional[pulumi.Input['GatewayServiceMeshArgs']] = None,
+                 service_networking: Optional[pulumi.Input['ServiceNetworkingArgs']] = None):
+        """
+        KubernetesConfig contains the Kubernetes runtime configuration.
+        :param pulumi.Input['GatewayServiceMeshArgs'] gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
+        :param pulumi.Input['ServiceNetworkingArgs'] service_networking: Kubernetes Service networking configuration.
+        """
+        if gateway_service_mesh is not None:
+            pulumi.set(__self__, "gateway_service_mesh", gateway_service_mesh)
+        if service_networking is not None:
+            pulumi.set(__self__, "service_networking", service_networking)
+
+    @property
+    @pulumi.getter(name="gatewayServiceMesh")
+    def gateway_service_mesh(self) -> Optional[pulumi.Input['GatewayServiceMeshArgs']]:
+        """
+        Kubernetes Gateway API service mesh configuration.
+        """
+        return pulumi.get(self, "gateway_service_mesh")
+
+    @gateway_service_mesh.setter
+    def gateway_service_mesh(self, value: Optional[pulumi.Input['GatewayServiceMeshArgs']]):
+        pulumi.set(self, "gateway_service_mesh", value)
+
+    @property
+    @pulumi.getter(name="serviceNetworking")
+    def service_networking(self) -> Optional[pulumi.Input['ServiceNetworkingArgs']]:
+        """
+        Kubernetes Service networking configuration.
+        """
+        return pulumi.get(self, "service_networking")
+
+    @service_networking.setter
+    def service_networking(self, value: Optional[pulumi.Input['ServiceNetworkingArgs']]):
+        pulumi.set(self, "service_networking", value)
+
+
+@pulumi.input_type
+class MultiTargetArgs:
+    def __init__(__self__, *,
+                 target_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        Information specifying a multiTarget.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_ids: The target_ids of this multiTarget.
+        """
+        pulumi.set(__self__, "target_ids", target_ids)
+
+    @property
+    @pulumi.getter(name="targetIds")
+    def target_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The target_ids of this multiTarget.
+        """
+        return pulumi.get(self, "target_ids")
+
+    @target_ids.setter
+    def target_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "target_ids", value)
+
+
+@pulumi.input_type
+class PhaseConfigArgs:
+    def __init__(__self__, *,
+                 percentage: pulumi.Input[int],
+                 phase_id: pulumi.Input[str],
+                 profiles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 verify: Optional[pulumi.Input[bool]] = None):
+        """
+        PhaseConfig represents the configuration for a phase in the custom canary deployment.
+        :param pulumi.Input[int] percentage: Percentage deployment for the phase.
+        :param pulumi.Input[str] phase_id: The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        :param pulumi.Input[bool] verify: Whether to run verify tests after the deployment.
+        """
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "phase_id", phase_id)
+        if profiles is not None:
+            pulumi.set(__self__, "profiles", profiles)
+        if verify is not None:
+            pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> pulumi.Input[int]:
+        """
+        Percentage deployment for the phase.
+        """
+        return pulumi.get(self, "percentage")
+
+    @percentage.setter
+    def percentage(self, value: pulumi.Input[int]):
+        pulumi.set(self, "percentage", value)
+
+    @property
+    @pulumi.getter(name="phaseId")
+    def phase_id(self) -> pulumi.Input[str]:
+        """
+        The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "phase_id")
+
+    @phase_id.setter
+    def phase_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phase_id", value)
+
+    @property
+    @pulumi.getter
+    def profiles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        """
+        return pulumi.get(self, "profiles")
+
+    @profiles.setter
+    def profiles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "profiles", value)
+
+    @property
+    @pulumi.getter
+    def verify(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to run verify tests after the deployment.
+        """
+        return pulumi.get(self, "verify")
+
+    @verify.setter
+    def verify(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "verify", value)
 
 
 @pulumi.input_type
@@ -578,6 +916,46 @@ class PrivatePoolArgs:
 
 
 @pulumi.input_type
+class RuntimeConfigArgs:
+    def __init__(__self__, *,
+                 cloud_run: Optional[pulumi.Input['CloudRunConfigArgs']] = None,
+                 kubernetes: Optional[pulumi.Input['KubernetesConfigArgs']] = None):
+        """
+        RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+        :param pulumi.Input['CloudRunConfigArgs'] cloud_run: Cloud Run runtime configuration.
+        :param pulumi.Input['KubernetesConfigArgs'] kubernetes: Kubernetes runtime configuration.
+        """
+        if cloud_run is not None:
+            pulumi.set(__self__, "cloud_run", cloud_run)
+        if kubernetes is not None:
+            pulumi.set(__self__, "kubernetes", kubernetes)
+
+    @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> Optional[pulumi.Input['CloudRunConfigArgs']]:
+        """
+        Cloud Run runtime configuration.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @cloud_run.setter
+    def cloud_run(self, value: Optional[pulumi.Input['CloudRunConfigArgs']]):
+        pulumi.set(self, "cloud_run", value)
+
+    @property
+    @pulumi.getter
+    def kubernetes(self) -> Optional[pulumi.Input['KubernetesConfigArgs']]:
+        """
+        Kubernetes runtime configuration.
+        """
+        return pulumi.get(self, "kubernetes")
+
+    @kubernetes.setter
+    def kubernetes(self, value: Optional[pulumi.Input['KubernetesConfigArgs']]):
+        pulumi.set(self, "kubernetes", value)
+
+
+@pulumi.input_type
 class SerialPipelineArgs:
     def __init__(__self__, *,
                  stages: Optional[pulumi.Input[Sequence[pulumi.Input['StageArgs']]]] = None):
@@ -599,6 +977,44 @@ class SerialPipelineArgs:
     @stages.setter
     def stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StageArgs']]]]):
         pulumi.set(self, "stages", value)
+
+
+@pulumi.input_type
+class ServiceNetworkingArgs:
+    def __init__(__self__, *,
+                 deployment: pulumi.Input[str],
+                 service: pulumi.Input[str]):
+        """
+        Information about the Kubernetes Service networking configuration.
+        :param pulumi.Input[str] deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        :param pulumi.Input[str] service: Name of the Kubernetes Service.
+        """
+        pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> pulumi.Input[str]:
+        """
+        Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        """
+        return pulumi.get(self, "deployment")
+
+    @deployment.setter
+    def deployment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deployment", value)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Name of the Kubernetes Service.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
 
 
 @pulumi.input_type
@@ -684,13 +1100,29 @@ class StandardArgs:
 @pulumi.input_type
 class StrategyArgs:
     def __init__(__self__, *,
+                 canary: Optional[pulumi.Input['CanaryArgs']] = None,
                  standard: Optional[pulumi.Input['StandardArgs']] = None):
         """
         Strategy contains deployment strategy information.
+        :param pulumi.Input['CanaryArgs'] canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
         :param pulumi.Input['StandardArgs'] standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
+        if canary is not None:
+            pulumi.set(__self__, "canary", canary)
         if standard is not None:
             pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def canary(self) -> Optional[pulumi.Input['CanaryArgs']]:
+        """
+        Canary deployment strategy provides progressive percentage based deployments to a Target.
+        """
+        return pulumi.get(self, "canary")
+
+    @canary.setter
+    def canary(self, value: Optional[pulumi.Input['CanaryArgs']]):
+        pulumi.set(self, "canary", value)
 
     @property
     @pulumi.getter

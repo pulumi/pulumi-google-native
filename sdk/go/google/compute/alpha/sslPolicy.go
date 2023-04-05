@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
+// Returns the specified SSL policy resource.
 type SslPolicy struct {
 	pulumi.CustomResourceState
 

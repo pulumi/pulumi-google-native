@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Outputs
     public sealed class SamlSpConfigResponse
     {
         /// <summary>
-        /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Currently assumed to accept response messages via the `HTTP-POST` binding.
+        /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
         /// </summary>
         public readonly string AssertionConsumerServiceUri;
         /// <summary>

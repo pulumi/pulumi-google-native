@@ -28,6 +28,7 @@ __all__ = [
     'Oauth2JwtBearerResponse',
     'SecretResponse',
     'SshPublicKeyResponse',
+    'SslConfigResponse',
     'UserPasswordResponse',
 ]
 
@@ -905,6 +906,160 @@ class SshPublicKeyResponse(dict):
         The user account used to authenticate.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class SslConfigResponse(dict):
+    """
+    SSL Configuration of a connection
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalVariables":
+            suggest = "additional_variables"
+        elif key == "clientCertType":
+            suggest = "client_cert_type"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientPrivateKey":
+            suggest = "client_private_key"
+        elif key == "clientPrivateKeyPass":
+            suggest = "client_private_key_pass"
+        elif key == "privateServerCertificate":
+            suggest = "private_server_certificate"
+        elif key == "serverCertType":
+            suggest = "server_cert_type"
+        elif key == "trustModel":
+            suggest = "trust_model"
+        elif key == "useSsl":
+            suggest = "use_ssl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_variables: Sequence['outputs.ConfigVariableResponse'],
+                 client_cert_type: str,
+                 client_certificate: 'outputs.SecretResponse',
+                 client_private_key: 'outputs.SecretResponse',
+                 client_private_key_pass: 'outputs.SecretResponse',
+                 private_server_certificate: 'outputs.SecretResponse',
+                 server_cert_type: str,
+                 trust_model: str,
+                 type: str,
+                 use_ssl: bool):
+        """
+        SSL Configuration of a connection
+        :param Sequence['ConfigVariableResponse'] additional_variables: Additional SSL related field values
+        :param str client_cert_type: Type of Client Cert (PEM/JKS/.. etc.)
+        :param 'SecretResponse' client_certificate: Client Certificate
+        :param 'SecretResponse' client_private_key: Client Private Key
+        :param 'SecretResponse' client_private_key_pass: Secret containing the passphrase protecting the Client Private Key
+        :param 'SecretResponse' private_server_certificate: Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+        :param str server_cert_type: Type of Server Cert (PEM/JKS/.. etc.)
+        :param str trust_model: Trust Model of the SSL connection
+        :param str type: Controls the ssl type for the given connector version.
+        :param bool use_ssl: Bool for enabling SSL
+        """
+        pulumi.set(__self__, "additional_variables", additional_variables)
+        pulumi.set(__self__, "client_cert_type", client_cert_type)
+        pulumi.set(__self__, "client_certificate", client_certificate)
+        pulumi.set(__self__, "client_private_key", client_private_key)
+        pulumi.set(__self__, "client_private_key_pass", client_private_key_pass)
+        pulumi.set(__self__, "private_server_certificate", private_server_certificate)
+        pulumi.set(__self__, "server_cert_type", server_cert_type)
+        pulumi.set(__self__, "trust_model", trust_model)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "use_ssl", use_ssl)
+
+    @property
+    @pulumi.getter(name="additionalVariables")
+    def additional_variables(self) -> Sequence['outputs.ConfigVariableResponse']:
+        """
+        Additional SSL related field values
+        """
+        return pulumi.get(self, "additional_variables")
+
+    @property
+    @pulumi.getter(name="clientCertType")
+    def client_cert_type(self) -> str:
+        """
+        Type of Client Cert (PEM/JKS/.. etc.)
+        """
+        return pulumi.get(self, "client_cert_type")
+
+    @property
+    @pulumi.getter(name="clientCertificate")
+    def client_certificate(self) -> 'outputs.SecretResponse':
+        """
+        Client Certificate
+        """
+        return pulumi.get(self, "client_certificate")
+
+    @property
+    @pulumi.getter(name="clientPrivateKey")
+    def client_private_key(self) -> 'outputs.SecretResponse':
+        """
+        Client Private Key
+        """
+        return pulumi.get(self, "client_private_key")
+
+    @property
+    @pulumi.getter(name="clientPrivateKeyPass")
+    def client_private_key_pass(self) -> 'outputs.SecretResponse':
+        """
+        Secret containing the passphrase protecting the Client Private Key
+        """
+        return pulumi.get(self, "client_private_key_pass")
+
+    @property
+    @pulumi.getter(name="privateServerCertificate")
+    def private_server_certificate(self) -> 'outputs.SecretResponse':
+        """
+        Private Server Certificate. Needs to be specified if trust model is `PRIVATE`.
+        """
+        return pulumi.get(self, "private_server_certificate")
+
+    @property
+    @pulumi.getter(name="serverCertType")
+    def server_cert_type(self) -> str:
+        """
+        Type of Server Cert (PEM/JKS/.. etc.)
+        """
+        return pulumi.get(self, "server_cert_type")
+
+    @property
+    @pulumi.getter(name="trustModel")
+    def trust_model(self) -> str:
+        """
+        Trust Model of the SSL connection
+        """
+        return pulumi.get(self, "trust_model")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Controls the ssl type for the given connector version.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="useSsl")
+    def use_ssl(self) -> bool:
+        """
+        Bool for enabling SSL
+        """
+        return pulumi.get(self, "use_ssl")
 
 
 @pulumi.output_type

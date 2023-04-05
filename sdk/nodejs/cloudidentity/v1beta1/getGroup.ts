@@ -24,6 +24,10 @@ export interface GetGroupArgs {
 
 export interface GetGroupResult {
     /**
+     * Additional group keys associated with the Group.
+     */
+    readonly additionalGroupKeys: outputs.cloudidentity.v1beta1.EntityKeyResponse[];
+    /**
      * The time when the `Group` was created.
      */
     readonly createTime: string;

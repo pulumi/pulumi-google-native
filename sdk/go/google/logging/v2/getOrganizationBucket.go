@@ -27,6 +27,8 @@ type LookupOrganizationBucketArgs struct {
 }
 
 type LookupOrganizationBucketResult struct {
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled bool `pulumi:"analyticsEnabled"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
 	CmekSettings CmekSettingsResponse `pulumi:"cmekSettings"`
 	// The creation timestamp of the bucket. This is not set for any of the default buckets.
@@ -84,6 +86,11 @@ func (o LookupOrganizationBucketResultOutput) ToLookupOrganizationBucketResultOu
 
 func (o LookupOrganizationBucketResultOutput) ToLookupOrganizationBucketResultOutputWithContext(ctx context.Context) LookupOrganizationBucketResultOutput {
 	return o
+}
+
+// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+func (o LookupOrganizationBucketResultOutput) AnalyticsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOrganizationBucketResult) bool { return v.AnalyticsEnabled }).(pulumi.BoolOutput)
 }
 
 // The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.

@@ -43,6 +43,8 @@ type LookupTargetResult struct {
 	Gke GkeClusterResponse `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
+	// Information specifying a multiTarget.
+	MultiTarget MultiTargetResponse `pulumi:"multiTarget"`
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
@@ -132,6 +134,11 @@ func (o LookupTargetResultOutput) Gke() GkeClusterResponseOutput {
 // Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o LookupTargetResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTargetResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Information specifying a multiTarget.
+func (o LookupTargetResultOutput) MultiTarget() MultiTargetResponseOutput {
+	return o.ApplyT(func(v LookupTargetResult) MultiTargetResponse { return v.MultiTarget }).(MultiTargetResponseOutput)
 }
 
 // Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWorkloadResult:
-    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
+    def __init__(__self__, billing_account=None, compliance_regime=None, compliance_status=None, compliant_but_disallowed_services=None, create_time=None, display_name=None, ekm_provisioning_response=None, enable_sovereign_controls=None, etag=None, kaj_enrollment_state=None, kms_settings=None, labels=None, name=None, partner=None, provisioned_resources_parent=None, resource_settings=None, resources=None, saa_enrollment_response=None):
         if billing_account and not isinstance(billing_account, str):
             raise TypeError("Expected argument 'billing_account' to be a str")
         pulumi.set(__self__, "billing_account", billing_account)
@@ -38,6 +38,9 @@ class GetWorkloadResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if ekm_provisioning_response and not isinstance(ekm_provisioning_response, dict):
+            raise TypeError("Expected argument 'ekm_provisioning_response' to be a dict")
+        pulumi.set(__self__, "ekm_provisioning_response", ekm_provisioning_response)
         if enable_sovereign_controls and not isinstance(enable_sovereign_controls, bool):
             raise TypeError("Expected argument 'enable_sovereign_controls' to be a bool")
         pulumi.set(__self__, "enable_sovereign_controls", enable_sovereign_controls)
@@ -123,6 +126,14 @@ class GetWorkloadResult:
         The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="ekmProvisioningResponse")
+    def ekm_provisioning_response(self) -> 'outputs.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse':
+        """
+        Optional. Represents the Ekm Provisioning State of the given workload.
+        """
+        return pulumi.get(self, "ekm_provisioning_response")
 
     @property
     @pulumi.getter(name="enableSovereignControls")
@@ -225,6 +236,7 @@ class AwaitableGetWorkloadResult(GetWorkloadResult):
             compliant_but_disallowed_services=self.compliant_but_disallowed_services,
             create_time=self.create_time,
             display_name=self.display_name,
+            ekm_provisioning_response=self.ekm_provisioning_response,
             enable_sovereign_controls=self.enable_sovereign_controls,
             etag=self.etag,
             kaj_enrollment_state=self.kaj_enrollment_state,
@@ -259,6 +271,7 @@ def get_workload(location: Optional[str] = None,
         compliant_but_disallowed_services=__ret__.compliant_but_disallowed_services,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,
+        ekm_provisioning_response=__ret__.ekm_provisioning_response,
         enable_sovereign_controls=__ret__.enable_sovereign_controls,
         etag=__ret__.etag,
         kaj_enrollment_state=__ret__.kaj_enrollment_state,

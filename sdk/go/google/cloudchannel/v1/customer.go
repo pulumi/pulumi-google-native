@@ -26,6 +26,8 @@ type Customer struct {
 	CloudIdentityId pulumi.StringOutput `pulumi:"cloudIdentityId"`
 	// Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponseOutput `pulumi:"cloudIdentityInfo"`
+	// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+	CorrelationId pulumi.StringOutput `pulumi:"correlationId"`
 	// Time when the customer was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The customer's primary domain. Must match the primary contact email's domain.
@@ -109,6 +111,8 @@ type customerArgs struct {
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     *string `pulumi:"channelPartnerId"`
 	ChannelPartnerLinkId string  `pulumi:"channelPartnerLinkId"`
+	// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+	CorrelationId *string `pulumi:"correlationId"`
 	// The customer's primary domain. Must match the primary contact email's domain.
 	Domain string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
@@ -129,6 +133,8 @@ type CustomerArgs struct {
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     pulumi.StringPtrInput
 	ChannelPartnerLinkId pulumi.StringInput
+	// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+	CorrelationId pulumi.StringPtrInput
 	// The customer's primary domain. Must match the primary contact email's domain.
 	Domain pulumi.StringInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
@@ -204,6 +210,11 @@ func (o CustomerOutput) CloudIdentityId() pulumi.StringOutput {
 // Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer.
 func (o CustomerOutput) CloudIdentityInfo() GoogleCloudChannelV1CloudIdentityInfoResponseOutput {
 	return o.ApplyT(func(v *Customer) GoogleCloudChannelV1CloudIdentityInfoResponseOutput { return v.CloudIdentityInfo }).(GoogleCloudChannelV1CloudIdentityInfoResponseOutput)
+}
+
+// Optional. External CRM ID for the customer. Populated only if a CRM ID exists for this customer.
+func (o CustomerOutput) CorrelationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Customer) pulumi.StringOutput { return v.CorrelationId }).(pulumi.StringOutput)
 }
 
 // Time when the customer was created.

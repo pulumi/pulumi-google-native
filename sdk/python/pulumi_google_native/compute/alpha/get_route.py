@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRouteResult:
-    def __init__(__self__, allow_conflicting_subnetworks=None, as_paths=None, creation_timestamp=None, description=None, dest_range=None, ilb_route_behavior_on_unhealthy=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, self_link_with_id=None, tags=None, warnings=None):
+    def __init__(__self__, allow_conflicting_subnetworks=None, as_paths=None, creation_timestamp=None, description=None, dest_range=None, ilb_route_behavior_on_unhealthy=None, kind=None, name=None, network=None, next_hop_gateway=None, next_hop_hub=None, next_hop_ilb=None, next_hop_instance=None, next_hop_interconnect_attachment=None, next_hop_ip=None, next_hop_network=None, next_hop_peering=None, next_hop_vpn_tunnel=None, priority=None, route_status=None, route_type=None, self_link=None, self_link_with_id=None, tags=None, warnings=None):
         if allow_conflicting_subnetworks and not isinstance(allow_conflicting_subnetworks, bool):
             raise TypeError("Expected argument 'allow_conflicting_subnetworks' to be a bool")
         pulumi.set(__self__, "allow_conflicting_subnetworks", allow_conflicting_subnetworks)
@@ -50,6 +50,9 @@ class GetRouteResult:
         if next_hop_gateway and not isinstance(next_hop_gateway, str):
             raise TypeError("Expected argument 'next_hop_gateway' to be a str")
         pulumi.set(__self__, "next_hop_gateway", next_hop_gateway)
+        if next_hop_hub and not isinstance(next_hop_hub, str):
+            raise TypeError("Expected argument 'next_hop_hub' to be a str")
+        pulumi.set(__self__, "next_hop_hub", next_hop_hub)
         if next_hop_ilb and not isinstance(next_hop_ilb, str):
             raise TypeError("Expected argument 'next_hop_ilb' to be a str")
         pulumi.set(__self__, "next_hop_ilb", next_hop_ilb)
@@ -172,6 +175,14 @@ class GetRouteResult:
         The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         """
         return pulumi.get(self, "next_hop_gateway")
+
+    @property
+    @pulumi.getter(name="nextHopHub")
+    def next_hop_hub(self) -> str:
+        """
+        The full resource name of the network connectivity center hub that should handle matching packets.
+        """
+        return pulumi.get(self, "next_hop_hub")
 
     @property
     @pulumi.getter(name="nextHopIlb")
@@ -302,6 +313,7 @@ class AwaitableGetRouteResult(GetRouteResult):
             name=self.name,
             network=self.network,
             next_hop_gateway=self.next_hop_gateway,
+            next_hop_hub=self.next_hop_hub,
             next_hop_ilb=self.next_hop_ilb,
             next_hop_instance=self.next_hop_instance,
             next_hop_interconnect_attachment=self.next_hop_interconnect_attachment,
@@ -322,7 +334,7 @@ def get_route(project: Optional[str] = None,
               route: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRouteResult:
     """
-    Returns the specified Route resource. Gets a list of available routes by making a list() request.
+    Returns the specified Route resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -341,6 +353,7 @@ def get_route(project: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         next_hop_gateway=__ret__.next_hop_gateway,
+        next_hop_hub=__ret__.next_hop_hub,
         next_hop_ilb=__ret__.next_hop_ilb,
         next_hop_instance=__ret__.next_hop_instance,
         next_hop_interconnect_attachment=__ret__.next_hop_interconnect_attachment,
@@ -362,6 +375,6 @@ def get_route_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                      route: Optional[pulumi.Input[str]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouteResult]:
     """
-    Returns the specified Route resource. Gets a list of available routes by making a list() request.
+    Returns the specified Route resource.
     """
     ...

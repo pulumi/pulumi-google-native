@@ -100,6 +100,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<string> TimeZone { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+        /// </summary>
+        [Output("ttsConfig")]
+        public Output<Outputs.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse> TtsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Update time of the conversation profile.
         /// </summary>
         [Output("updateTime")]
@@ -232,6 +238,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         [Input("timeZone")]
         public Input<string>? TimeZone { get; set; }
+
+        /// <summary>
+        /// Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+        /// </summary>
+        [Input("ttsConfig")]
+        public Input<Inputs.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs>? TtsConfig { get; set; }
 
         public ConversationProfileArgs()
         {

@@ -41,6 +41,8 @@ type LookupWorkloadResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName string `pulumi:"displayName"`
+	// Optional. Represents the Ekm Provisioning State of the given workload.
+	EkmProvisioningResponse GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse `pulumi:"ekmProvisioningResponse"`
 	// Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
 	EnableSovereignControls bool `pulumi:"enableSovereignControls"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
@@ -147,6 +149,13 @@ func (o LookupWorkloadResultOutput) CreateTime() pulumi.StringOutput {
 // The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 func (o LookupWorkloadResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkloadResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Optional. Represents the Ekm Provisioning State of the given workload.
+func (o LookupWorkloadResultOutput) EkmProvisioningResponse() GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponseOutput {
+	return o.ApplyT(func(v LookupWorkloadResult) GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponse {
+		return v.EkmProvisioningResponse
+	}).(GoogleCloudAssuredworkloadsV1beta1WorkloadEkmProvisioningResponseResponseOutput)
 }
 
 // Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.

@@ -44,6 +44,10 @@ export interface GetRolloutResult {
      */
     readonly approveTime: string;
     /**
+     * Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+     */
+    readonly controllerRollout: string;
+    /**
      * Time at which the `Rollout` was created.
      */
     readonly createTime: string;

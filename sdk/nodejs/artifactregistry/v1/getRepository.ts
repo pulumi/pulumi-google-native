@@ -36,6 +36,10 @@ export interface GetRepositoryResult {
      */
     readonly description: string;
     /**
+     * Docker repository config contains repository level configuration for the repositories of docker type.
+     */
+    readonly dockerConfig: outputs.artifactregistry.v1.DockerRepositoryConfigResponse;
+    /**
      * The format of packages that are stored in the repository.
      */
     readonly format: string;

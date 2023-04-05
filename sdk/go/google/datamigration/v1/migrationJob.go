@@ -47,7 +47,7 @@ type MigrationJob struct {
 	// The current migration job phase.
 	Phase   pulumi.StringOutput `pulumi:"phase"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityResponseOutput `pulumi:"reverseSshConnectivity"`
@@ -146,7 +146,7 @@ type migrationJobArgs struct {
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
@@ -188,7 +188,7 @@ type MigrationJobArgs struct {
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput
@@ -326,7 +326,7 @@ func (o MigrationJobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 func (o MigrationJobOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigrationJob) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

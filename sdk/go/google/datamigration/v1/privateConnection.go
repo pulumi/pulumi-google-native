@@ -24,20 +24,20 @@ type PrivateConnection struct {
 	// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The resource's name.
+	// The name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Required. The private connection identifier.
 	PrivateConnectionId pulumi.StringOutput `pulumi:"privateConnectionId"`
 	Project             pulumi.StringOutput `pulumi:"project"`
-	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. If set to true, will skip validations.
 	SkipValidation pulumi.BoolPtrOutput `pulumi:"skipValidation"`
-	// The state of the Private Connection.
+	// The state of the private connection.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The last update time of the resource.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// VPC Peering Config.
+	// VPC peering configuration.
 	VpcPeeringConfig VpcPeeringConfigResponseOutput `pulumi:"vpcPeeringConfig"`
 }
 
@@ -94,16 +94,16 @@ type privateConnectionArgs struct {
 	// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// The resource's name.
+	// The name of the resource.
 	Name *string `pulumi:"name"`
 	// Required. The private connection identifier.
 	PrivateConnectionId string  `pulumi:"privateConnectionId"`
 	Project             *string `pulumi:"project"`
-	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId *string `pulumi:"requestId"`
 	// Optional. If set to true, will skip validations.
 	SkipValidation *bool `pulumi:"skipValidation"`
-	// VPC Peering Config.
+	// VPC peering configuration.
 	VpcPeeringConfig *VpcPeeringConfig `pulumi:"vpcPeeringConfig"`
 }
 
@@ -114,16 +114,16 @@ type PrivateConnectionArgs struct {
 	// The resource labels for private connections to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// The resource's name.
+	// The name of the resource.
 	Name pulumi.StringPtrInput
 	// Required. The private connection identifier.
 	PrivateConnectionId pulumi.StringInput
 	Project             pulumi.StringPtrInput
-	// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+	// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 	RequestId pulumi.StringPtrInput
 	// Optional. If set to true, will skip validations.
 	SkipValidation pulumi.BoolPtrInput
-	// VPC Peering Config.
+	// VPC peering configuration.
 	VpcPeeringConfig VpcPeeringConfigPtrInput
 }
 
@@ -188,7 +188,7 @@ func (o PrivateConnectionOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The resource's name.
+// The name of the resource.
 func (o PrivateConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -202,7 +202,7 @@ func (o PrivateConnectionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Optional. A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+// Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
 func (o PrivateConnectionOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
@@ -212,7 +212,7 @@ func (o PrivateConnectionOutput) SkipValidation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.BoolPtrOutput { return v.SkipValidation }).(pulumi.BoolPtrOutput)
 }
 
-// The state of the Private Connection.
+// The state of the private connection.
 func (o PrivateConnectionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -222,7 +222,7 @@ func (o PrivateConnectionOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateConnection) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// VPC Peering Config.
+// VPC peering configuration.
 func (o PrivateConnectionOutput) VpcPeeringConfig() VpcPeeringConfigResponseOutput {
 	return o.ApplyT(func(v *PrivateConnection) VpcPeeringConfigResponseOutput { return v.VpcPeeringConfig }).(VpcPeeringConfigResponseOutput)
 }

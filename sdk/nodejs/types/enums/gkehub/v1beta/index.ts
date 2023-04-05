@@ -45,3 +45,27 @@ export const MultiClusterIngressFeatureSpecBilling = {
  * Deprecated: This field will be ignored and should not be set. Customer's billing structure.
  */
 export type MultiClusterIngressFeatureSpecBilling = (typeof MultiClusterIngressFeatureSpecBilling)[keyof typeof MultiClusterIngressFeatureSpecBilling];
+
+export const RolePredefinedRole = {
+    /**
+     * UNKNOWN
+     */
+    Unknown: "UNKNOWN",
+    /**
+     * ADMIN has EDIT and RBAC permissions
+     */
+    Admin: "ADMIN",
+    /**
+     * EDIT can edit all resources except RBAC
+     */
+    Edit: "EDIT",
+    /**
+     * VIEW can only read resources
+     */
+    View: "VIEW",
+} as const;
+
+/**
+ * predefined_role is the Kubernetes default role to use
+ */
+export type RolePredefinedRole = (typeof RolePredefinedRole)[keyof typeof RolePredefinedRole];

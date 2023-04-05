@@ -70,9 +70,17 @@ namespace Pulumi.GoogleNative.Workflows.V1
     public sealed class GetWorkflowResult
     {
         /// <summary>
+        /// Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        /// </summary>
+        public readonly string CallLogLevel;
+        /// <summary>
         /// The timestamp for when the workflow was created.
         /// </summary>
         public readonly string CreateTime;
+        /// <summary>
+        /// Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+        /// </summary>
+        public readonly string CryptoKeyName;
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         /// </summary>
@@ -106,13 +114,21 @@ namespace Pulumi.GoogleNative.Workflows.V1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+        /// </summary>
+        public readonly Outputs.StateErrorResponse StateError;
+        /// <summary>
         /// The timestamp for when the workflow was last updated.
         /// </summary>
         public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetWorkflowResult(
+            string callLogLevel,
+
             string createTime,
+
+            string cryptoKeyName,
 
             string description,
 
@@ -130,9 +146,13 @@ namespace Pulumi.GoogleNative.Workflows.V1
 
             string state,
 
+            Outputs.StateErrorResponse stateError,
+
             string updateTime)
         {
+            CallLogLevel = callLogLevel;
             CreateTime = createTime;
+            CryptoKeyName = cryptoKeyName;
             Description = description;
             Labels = labels;
             Name = name;
@@ -141,6 +161,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
             ServiceAccount = serviceAccount;
             SourceContents = sourceContents;
             State = state;
+            StateError = stateError;
             UpdateTime = updateTime;
         }
     }

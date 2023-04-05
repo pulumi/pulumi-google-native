@@ -51,6 +51,8 @@ type LookupMigratingVmResult struct {
 	Group string `pulumi:"group"`
 	// The labels of the migrating VM.
 	Labels map[string]string `pulumi:"labels"`
+	// Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+	LastReplicationCycle ReplicationCycleResponse `pulumi:"lastReplicationCycle"`
 	// The most updated snapshot created time in the source that finished replication.
 	LastSync ReplicationSyncResponse `pulumi:"lastSync"`
 	// The identifier of the MigratingVm.
@@ -166,6 +168,11 @@ func (o LookupMigratingVmResultOutput) Group() pulumi.StringOutput {
 // The labels of the migrating VM.
 func (o LookupMigratingVmResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupMigratingVmResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+func (o LookupMigratingVmResultOutput) LastReplicationCycle() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v LookupMigratingVmResult) ReplicationCycleResponse { return v.LastReplicationCycle }).(ReplicationCycleResponseOutput)
 }
 
 // The most updated snapshot created time in the source that finished replication.

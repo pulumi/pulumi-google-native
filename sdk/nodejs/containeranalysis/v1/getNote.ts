@@ -101,6 +101,10 @@ export interface GetNoteResult {
      * A note describing a package vulnerability.
      */
     readonly vulnerability: outputs.containeranalysis.v1.VulnerabilityNoteResponse;
+    /**
+     * A note describing a vulnerability assessment.
+     */
+    readonly vulnerabilityAssessment: outputs.containeranalysis.v1.VulnerabilityAssessmentNoteResponse;
 }
 /**
  * Gets the specified note.

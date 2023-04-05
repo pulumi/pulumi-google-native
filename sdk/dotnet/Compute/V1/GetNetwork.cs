@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetNetwork
     {
         /// <summary>
-        /// Returns the specified network. Gets a list of available networks by making a list() request.
+        /// Returns the specified network.
         /// </summary>
         public static Task<GetNetworkResult> InvokeAsync(GetNetworkArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("google-native:compute/v1:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified network. Gets a list of available networks by making a list() request.
+        /// Returns the specified network.
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("google-native:compute/v1:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string FirewallPolicy;
         /// <summary>
-        /// The gateway address for default routing out of the network, selected by GCP.
+        /// The gateway address for default routing out of the network, selected by Google Cloud.
         /// </summary>
         public readonly string GatewayIPv4;
         /// <summary>

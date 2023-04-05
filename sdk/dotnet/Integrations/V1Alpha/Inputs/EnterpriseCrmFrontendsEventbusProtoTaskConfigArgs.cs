@@ -52,6 +52,15 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<bool>? DisableStrictTypeValidation { get; set; }
 
         /// <summary>
+        /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        [Input("errorCatcherId")]
+        public Input<string>? ErrorCatcherId { get; set; }
+
+        [Input("externalTaskType")]
+        public Input<Pulumi.GoogleNative.Integrations.V1Alpha.EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType>? ExternalTaskType { get; set; }
+
+        /// <summary>
         /// Optional. Determines the number of times the task will be retried on failure and with what retry strategy. This is applicable for asynchronous calls to Eventbus alone (Post To Queue, Schedule etc.).
         /// </summary>
         [Input("failurePolicy")]

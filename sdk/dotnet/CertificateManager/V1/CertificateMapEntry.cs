@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public Output<string> CertificateMapId { get; private set; } = null!;
 
         /// <summary>
-        /// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+        /// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         /// </summary>
         [Output("certificates")]
         public Output<ImmutableArray<string>> Certificates { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         private InputList<string>? _certificates;
 
         /// <summary>
-        /// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+        /// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         /// </summary>
         public InputList<string> Certificates
         {

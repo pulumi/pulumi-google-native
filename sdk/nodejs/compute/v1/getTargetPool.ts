@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified target pool. Gets a list of available target pools by making a list() request.
+ * Returns the specified target pool.
  */
 export function getTargetPool(args: GetTargetPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetPoolResult> {
 
@@ -70,7 +70,7 @@ export interface GetTargetPoolResult {
     readonly sessionAffinity: string;
 }
 /**
- * Returns the specified target pool. Gets a list of available target pools by making a list() request.
+ * Returns the specified target pool.
  */
 export function getTargetPoolOutput(args: GetTargetPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetPoolResult> {
     return pulumi.output(args).apply((a: any) => getTargetPool(a, opts))

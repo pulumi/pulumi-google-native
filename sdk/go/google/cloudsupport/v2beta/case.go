@@ -19,6 +19,8 @@ type Case struct {
 
 	// The issue classification applicable to this case.
 	Classification CaseClassificationResponseOutput `pulumi:"classification"`
+	// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+	ContactEmail pulumi.StringOutput `pulumi:"contactEmail"`
 	// The time this case was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
@@ -105,6 +107,8 @@ func (CaseState) ElementType() reflect.Type {
 type caseArgs struct {
 	// The issue classification applicable to this case.
 	Classification *CaseClassification `pulumi:"classification"`
+	// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+	ContactEmail *string `pulumi:"contactEmail"`
 	// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
 	Creator *Actor `pulumi:"creator"`
 	// A broad description of the issue.
@@ -137,6 +141,8 @@ type caseArgs struct {
 type CaseArgs struct {
 	// The issue classification applicable to this case.
 	Classification CaseClassificationPtrInput
+	// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+	ContactEmail pulumi.StringPtrInput
 	// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.
 	Creator ActorPtrInput
 	// A broad description of the issue.
@@ -205,6 +211,11 @@ func (o CaseOutput) ToCaseOutputWithContext(ctx context.Context) CaseOutput {
 // The issue classification applicable to this case.
 func (o CaseOutput) Classification() CaseClassificationResponseOutput {
 	return o.ApplyT(func(v *Case) CaseClassificationResponseOutput { return v.Classification }).(CaseClassificationResponseOutput)
+}
+
+// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+func (o CaseOutput) ContactEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Case) pulumi.StringOutput { return v.ContactEmail }).(pulumi.StringOutput)
 }
 
 // The time this case was created.

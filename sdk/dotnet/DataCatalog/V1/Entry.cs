@@ -35,6 +35,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1BusinessContextResponse> BusinessContext { get; private set; } = null!;
 
         /// <summary>
+        /// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        /// </summary>
+        [Output("cloudBigtableSystemSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse> CloudBigtableSystemSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Physical location of the entry.
         /// </summary>
         [Output("dataSource")]
@@ -146,6 +152,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Output<Outputs.GoogleCloudDatacatalogV1SchemaResponse> Schema { get; private set; } = null!;
 
         /// <summary>
+        /// Specification that applies to a Service resource.
+        /// </summary>
+        [Output("serviceSpec")]
+        public Output<Outputs.GoogleCloudDatacatalogV1ServiceSpecResponse> ServiceSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         /// </summary>
         [Output("sourceSystemTimestamps")]
@@ -240,6 +252,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<Inputs.GoogleCloudDatacatalogV1BusinessContextArgs>? BusinessContext { get; set; }
 
         /// <summary>
+        /// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        /// </summary>
+        [Input("cloudBigtableSystemSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs>? CloudBigtableSystemSpec { get; set; }
+
+        /// <summary>
         /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
         /// </summary>
         [Input("dataSourceConnectionSpec")]
@@ -331,6 +349,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         [Input("schema")]
         public Input<Inputs.GoogleCloudDatacatalogV1SchemaArgs>? Schema { get; set; }
+
+        /// <summary>
+        /// Specification that applies to a Service resource.
+        /// </summary>
+        [Input("serviceSpec")]
+        public Input<Inputs.GoogleCloudDatacatalogV1ServiceSpecArgs>? ServiceSpec { get; set; }
 
         /// <summary>
         /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.

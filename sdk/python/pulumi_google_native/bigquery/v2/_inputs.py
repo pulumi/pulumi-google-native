@@ -2545,6 +2545,7 @@ class JobConfigurationQueryArgs:
                  allow_large_results: Optional[pulumi.Input[bool]] = None,
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  connection_properties: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]]] = None,
+                 continuous: Optional[pulumi.Input[bool]] = None,
                  create_disposition: Optional[pulumi.Input[str]] = None,
                  create_session: Optional[pulumi.Input[bool]] = None,
                  default_dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
@@ -2570,6 +2571,7 @@ class JobConfigurationQueryArgs:
         :param pulumi.Input[bool] allow_large_results: [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]] connection_properties: Connection properties.
+        :param pulumi.Input[bool] continuous: [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
         :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         :param pulumi.Input[bool] create_session: If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
         :param pulumi.Input['DatasetReferenceArgs'] default_dataset: [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
@@ -2598,6 +2600,8 @@ class JobConfigurationQueryArgs:
             pulumi.set(__self__, "clustering", clustering)
         if connection_properties is not None:
             pulumi.set(__self__, "connection_properties", connection_properties)
+        if continuous is not None:
+            pulumi.set(__self__, "continuous", continuous)
         if create_disposition is not None:
             pulumi.set(__self__, "create_disposition", create_disposition)
         if create_session is not None:
@@ -2679,6 +2683,18 @@ class JobConfigurationQueryArgs:
     @connection_properties.setter
     def connection_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionPropertyArgs']]]]):
         pulumi.set(self, "connection_properties", value)
+
+    @property
+    @pulumi.getter
+    def continuous(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+        """
+        return pulumi.get(self, "continuous")
+
+    @continuous.setter
+    def continuous(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "continuous", value)
 
     @property
     @pulumi.getter(name="createDisposition")
@@ -3956,6 +3972,7 @@ class SparkOptionsArgs:
                  container_image: Optional[pulumi.Input[str]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 main_class: Optional[pulumi.Input[str]] = None,
                  main_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  py_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3967,8 +3984,9 @@ class SparkOptionsArgs:
         :param pulumi.Input[str] container_image: Custom container image for the runtime environment.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_uris: JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
-        :param pulumi.Input[str] main_file_uri: The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        :param pulumi.Input[str] main_class: The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+        :param pulumi.Input[str] main_file_uri: The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] py_file_uris: Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param pulumi.Input[str] runtime_version: Runtime version. If not specified, the default runtime version is used.
         """
@@ -3982,6 +4000,8 @@ class SparkOptionsArgs:
             pulumi.set(__self__, "file_uris", file_uris)
         if jar_uris is not None:
             pulumi.set(__self__, "jar_uris", jar_uris)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
         if main_file_uri is not None:
             pulumi.set(__self__, "main_file_uri", main_file_uri)
         if properties is not None:
@@ -4052,10 +4072,22 @@ class SparkOptionsArgs:
         pulumi.set(self, "jar_uris", value)
 
     @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+        """
+        return pulumi.get(self, "main_class")
+
+    @main_class.setter
+    def main_class(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "main_class", value)
+
+    @property
     @pulumi.getter(name="mainFileUri")
     def main_file_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+        The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
         """
         return pulumi.get(self, "main_file_uri")
 
@@ -4067,7 +4099,7 @@ class SparkOptionsArgs:
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
         """
         return pulumi.get(self, "properties")
 
@@ -4108,7 +4140,7 @@ class StandardSqlDataTypeArgs:
                  struct_type: Optional[pulumi.Input['StandardSqlStructTypeArgs']] = None):
         """
         The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
-        :param pulumi.Input['StandardSqlDataTypeTypeKind'] type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        :param pulumi.Input['StandardSqlDataTypeTypeKind'] type_kind: The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         :param pulumi.Input['StandardSqlDataTypeArgs'] array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param pulumi.Input['StandardSqlStructTypeArgs'] struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
         """
@@ -4122,7 +4154,7 @@ class StandardSqlDataTypeArgs:
     @pulumi.getter(name="typeKind")
     def type_kind(self) -> pulumi.Input['StandardSqlDataTypeTypeKind']:
         """
-        The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
         return pulumi.get(self, "type_kind")
 
@@ -4296,6 +4328,7 @@ class TableFieldSchemaArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  policy_tags: Optional[pulumi.Input['TableFieldSchemaPolicyTagsArgs']] = None,
                  precision: Optional[pulumi.Input[str]] = None,
+                 rounding_mode: Optional[pulumi.Input[str]] = None,
                  scale: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -4308,6 +4341,7 @@ class TableFieldSchemaArgs:
         :param pulumi.Input[str] mode: [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
         :param pulumi.Input[str] name: [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
         :param pulumi.Input[str] precision: [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        :param pulumi.Input[str] rounding_mode: Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
         :param pulumi.Input[str] scale: [Optional] See documentation for precision.
         :param pulumi.Input[str] type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
         """
@@ -4331,6 +4365,8 @@ class TableFieldSchemaArgs:
             pulumi.set(__self__, "policy_tags", policy_tags)
         if precision is not None:
             pulumi.set(__self__, "precision", precision)
+        if rounding_mode is not None:
+            pulumi.set(__self__, "rounding_mode", rounding_mode)
         if scale is not None:
             pulumi.set(__self__, "scale", scale)
         if type is not None:
@@ -4452,6 +4488,18 @@ class TableFieldSchemaArgs:
     @precision.setter
     def precision(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="roundingMode")
+    def rounding_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+        """
+        return pulumi.get(self, "rounding_mode")
+
+    @rounding_mode.setter
+    def rounding_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rounding_mode", value)
 
     @property
     @pulumi.getter

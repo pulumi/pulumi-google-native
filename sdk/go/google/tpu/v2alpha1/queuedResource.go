@@ -23,13 +23,15 @@ type QueuedResource struct {
 	// Immutable. The name of the QueuedResource.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
 	QueuedResourceId pulumi.StringPtrOutput `pulumi:"queuedResourceId"`
 	// The queueing policy of the QueuedRequest.
 	QueueingPolicy QueueingPolicyResponseOutput `pulumi:"queueingPolicy"`
 	// Idempotent request UUID.
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
-	// State of the QueuedResource request
+	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+	ReservationName pulumi.StringOutput `pulumi:"reservationName"`
+	// State of the QueuedResource request.
 	State QueuedResourceStateResponseOutput `pulumi:"state"`
 	// Defines a TPU resource.
 	Tpu TpuResponseOutput `pulumi:"tpu"`
@@ -85,12 +87,14 @@ type queuedResourceArgs struct {
 	Guaranteed *Guaranteed `pulumi:"guaranteed"`
 	Location   *string     `pulumi:"location"`
 	Project    *string     `pulumi:"project"`
-	// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
 	QueuedResourceId *string `pulumi:"queuedResourceId"`
 	// The queueing policy of the QueuedRequest.
 	QueueingPolicy *QueueingPolicy `pulumi:"queueingPolicy"`
 	// Idempotent request UUID.
 	RequestId *string `pulumi:"requestId"`
+	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+	ReservationName *string `pulumi:"reservationName"`
 	// Defines a TPU resource.
 	Tpu *Tpu `pulumi:"tpu"`
 }
@@ -103,12 +107,14 @@ type QueuedResourceArgs struct {
 	Guaranteed GuaranteedPtrInput
 	Location   pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
-	// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+	// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
 	QueuedResourceId pulumi.StringPtrInput
 	// The queueing policy of the QueuedRequest.
 	QueueingPolicy QueueingPolicyPtrInput
 	// Idempotent request UUID.
 	RequestId pulumi.StringPtrInput
+	// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+	ReservationName pulumi.StringPtrInput
 	// Defines a TPU resource.
 	Tpu TpuPtrInput
 }
@@ -173,7 +179,7 @@ func (o QueuedResourceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *QueuedResource) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The unqualified resource name. Should follow the ^[A-Za-z0-9_.~+%-]+$ regex format.
+// The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format.
 func (o QueuedResourceOutput) QueuedResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueuedResource) pulumi.StringPtrOutput { return v.QueuedResourceId }).(pulumi.StringPtrOutput)
 }
@@ -188,7 +194,12 @@ func (o QueuedResourceOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *QueuedResource) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
-// State of the QueuedResource request
+// Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+func (o QueuedResourceOutput) ReservationName() pulumi.StringOutput {
+	return o.ApplyT(func(v *QueuedResource) pulumi.StringOutput { return v.ReservationName }).(pulumi.StringOutput)
+}
+
+// State of the QueuedResource request.
 func (o QueuedResourceOutput) State() QueuedResourceStateResponseOutput {
 	return o.ApplyT(func(v *QueuedResource) QueuedResourceStateResponseOutput { return v.State }).(QueuedResourceStateResponseOutput)
 }

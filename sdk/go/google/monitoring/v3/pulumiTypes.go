@@ -208,6 +208,8 @@ func (o AggregationResponseArrayOutput) Index(i pulumi.IntInput) AggregationResp
 type AlertStrategy struct {
 	// If an alert policy that was active has no data for this long, any open incidents will close
 	AutoClose *string `pulumi:"autoClose"`
+	// Control how notifications will be sent out, on a per-channel basis.
+	NotificationChannelStrategy []NotificationChannelStrategy `pulumi:"notificationChannelStrategy"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit *NotificationRateLimit `pulumi:"notificationRateLimit"`
 }
@@ -227,6 +229,8 @@ type AlertStrategyInput interface {
 type AlertStrategyArgs struct {
 	// If an alert policy that was active has no data for this long, any open incidents will close
 	AutoClose pulumi.StringPtrInput `pulumi:"autoClose"`
+	// Control how notifications will be sent out, on a per-channel basis.
+	NotificationChannelStrategy NotificationChannelStrategyArrayInput `pulumi:"notificationChannelStrategy"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitPtrInput `pulumi:"notificationRateLimit"`
 }
@@ -314,6 +318,11 @@ func (o AlertStrategyOutput) AutoClose() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertStrategy) *string { return v.AutoClose }).(pulumi.StringPtrOutput)
 }
 
+// Control how notifications will be sent out, on a per-channel basis.
+func (o AlertStrategyOutput) NotificationChannelStrategy() NotificationChannelStrategyArrayOutput {
+	return o.ApplyT(func(v AlertStrategy) []NotificationChannelStrategy { return v.NotificationChannelStrategy }).(NotificationChannelStrategyArrayOutput)
+}
+
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyOutput) NotificationRateLimit() NotificationRateLimitPtrOutput {
 	return o.ApplyT(func(v AlertStrategy) *NotificationRateLimit { return v.NotificationRateLimit }).(NotificationRateLimitPtrOutput)
@@ -353,6 +362,16 @@ func (o AlertStrategyPtrOutput) AutoClose() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Control how notifications will be sent out, on a per-channel basis.
+func (o AlertStrategyPtrOutput) NotificationChannelStrategy() NotificationChannelStrategyArrayOutput {
+	return o.ApplyT(func(v *AlertStrategy) []NotificationChannelStrategy {
+		if v == nil {
+			return nil
+		}
+		return v.NotificationChannelStrategy
+	}).(NotificationChannelStrategyArrayOutput)
+}
+
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 func (o AlertStrategyPtrOutput) NotificationRateLimit() NotificationRateLimitPtrOutput {
 	return o.ApplyT(func(v *AlertStrategy) *NotificationRateLimit {
@@ -367,6 +386,8 @@ func (o AlertStrategyPtrOutput) NotificationRateLimit() NotificationRateLimitPtr
 type AlertStrategyResponse struct {
 	// If an alert policy that was active has no data for this long, any open incidents will close
 	AutoClose string `pulumi:"autoClose"`
+	// Control how notifications will be sent out, on a per-channel basis.
+	NotificationChannelStrategy []NotificationChannelStrategyResponse `pulumi:"notificationChannelStrategy"`
 	// Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
 	NotificationRateLimit NotificationRateLimitResponse `pulumi:"notificationRateLimit"`
 }
@@ -389,6 +410,13 @@ func (o AlertStrategyResponseOutput) ToAlertStrategyResponseOutputWithContext(ct
 // If an alert policy that was active has no data for this long, any open incidents will close
 func (o AlertStrategyResponseOutput) AutoClose() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertStrategyResponse) string { return v.AutoClose }).(pulumi.StringOutput)
+}
+
+// Control how notifications will be sent out, on a per-channel basis.
+func (o AlertStrategyResponseOutput) NotificationChannelStrategy() NotificationChannelStrategyResponseArrayOutput {
+	return o.ApplyT(func(v AlertStrategyResponse) []NotificationChannelStrategyResponse {
+		return v.NotificationChannelStrategy
+	}).(NotificationChannelStrategyResponseArrayOutput)
 }
 
 // Required for alert policies with a LogMatch condition.This limit is not implemented for alert policies that are not log-based.
@@ -4090,6 +4118,8 @@ type HttpCheck struct {
 	Body *string `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType *HttpCheckContentType `pulumi:"contentType"`
+	// A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+	CustomContentType *string `pulumi:"customContentType"`
 	// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
@@ -4129,6 +4159,8 @@ type HttpCheckArgs struct {
 	Body pulumi.StringPtrInput `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType HttpCheckContentTypePtrInput `pulumi:"contentType"`
+	// A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+	CustomContentType pulumi.StringPtrInput `pulumi:"customContentType"`
 	// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
@@ -4245,6 +4277,11 @@ func (o HttpCheckOutput) ContentType() HttpCheckContentTypePtrOutput {
 	return o.ApplyT(func(v HttpCheck) *HttpCheckContentType { return v.ContentType }).(HttpCheckContentTypePtrOutput)
 }
 
+// A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+func (o HttpCheckOutput) CustomContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v HttpCheck) *string { return v.CustomContentType }).(pulumi.StringPtrOutput)
+}
+
 // The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 func (o HttpCheckOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HttpCheck) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
@@ -4349,6 +4386,16 @@ func (o HttpCheckPtrOutput) ContentType() HttpCheckContentTypePtrOutput {
 	}).(HttpCheckContentTypePtrOutput)
 }
 
+// A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+func (o HttpCheckPtrOutput) CustomContentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HttpCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomContentType
+	}).(pulumi.StringPtrOutput)
+}
+
 // The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 func (o HttpCheckPtrOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *HttpCheck) map[string]string {
@@ -4439,6 +4486,8 @@ type HttpCheckResponse struct {
 	Body string `pulumi:"body"`
 	// The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 	ContentType string `pulumi:"contentType"`
+	// A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+	CustomContentType string `pulumi:"customContentType"`
 	// The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
 	Headers map[string]string `pulumi:"headers"`
 	// Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
@@ -4490,6 +4539,11 @@ func (o HttpCheckResponseOutput) Body() pulumi.StringOutput {
 // The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
 func (o HttpCheckResponseOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpCheckResponse) string { return v.ContentType }).(pulumi.StringOutput)
+}
+
+// A user provided content type header to use for the check. The invalid configurations outlined in the content_type field apply to custom_content_type, as well as the following: 1. content_type is URL_ENCODED and custom_content_type is set. 2. content_type is USER_PROVIDED and custom_content_type is not set.
+func (o HttpCheckResponseOutput) CustomContentType() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpCheckResponse) string { return v.CustomContentType }).(pulumi.StringOutput)
 }
 
 // The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
@@ -7683,6 +7737,168 @@ func (o MutationRecordResponseArrayOutput) Index(i pulumi.IntInput) MutationReco
 	}).(MutationRecordResponseOutput)
 }
 
+// Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+type NotificationChannelStrategy struct {
+	// The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+	NotificationChannelNames []string `pulumi:"notificationChannelNames"`
+	// The frequency at which to send reminder notifications for open incidents.
+	RenotifyInterval *string `pulumi:"renotifyInterval"`
+}
+
+// NotificationChannelStrategyInput is an input type that accepts NotificationChannelStrategyArgs and NotificationChannelStrategyOutput values.
+// You can construct a concrete instance of `NotificationChannelStrategyInput` via:
+//
+//	NotificationChannelStrategyArgs{...}
+type NotificationChannelStrategyInput interface {
+	pulumi.Input
+
+	ToNotificationChannelStrategyOutput() NotificationChannelStrategyOutput
+	ToNotificationChannelStrategyOutputWithContext(context.Context) NotificationChannelStrategyOutput
+}
+
+// Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+type NotificationChannelStrategyArgs struct {
+	// The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+	NotificationChannelNames pulumi.StringArrayInput `pulumi:"notificationChannelNames"`
+	// The frequency at which to send reminder notifications for open incidents.
+	RenotifyInterval pulumi.StringPtrInput `pulumi:"renotifyInterval"`
+}
+
+func (NotificationChannelStrategyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelStrategy)(nil)).Elem()
+}
+
+func (i NotificationChannelStrategyArgs) ToNotificationChannelStrategyOutput() NotificationChannelStrategyOutput {
+	return i.ToNotificationChannelStrategyOutputWithContext(context.Background())
+}
+
+func (i NotificationChannelStrategyArgs) ToNotificationChannelStrategyOutputWithContext(ctx context.Context) NotificationChannelStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelStrategyOutput)
+}
+
+// NotificationChannelStrategyArrayInput is an input type that accepts NotificationChannelStrategyArray and NotificationChannelStrategyArrayOutput values.
+// You can construct a concrete instance of `NotificationChannelStrategyArrayInput` via:
+//
+//	NotificationChannelStrategyArray{ NotificationChannelStrategyArgs{...} }
+type NotificationChannelStrategyArrayInput interface {
+	pulumi.Input
+
+	ToNotificationChannelStrategyArrayOutput() NotificationChannelStrategyArrayOutput
+	ToNotificationChannelStrategyArrayOutputWithContext(context.Context) NotificationChannelStrategyArrayOutput
+}
+
+type NotificationChannelStrategyArray []NotificationChannelStrategyInput
+
+func (NotificationChannelStrategyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationChannelStrategy)(nil)).Elem()
+}
+
+func (i NotificationChannelStrategyArray) ToNotificationChannelStrategyArrayOutput() NotificationChannelStrategyArrayOutput {
+	return i.ToNotificationChannelStrategyArrayOutputWithContext(context.Background())
+}
+
+func (i NotificationChannelStrategyArray) ToNotificationChannelStrategyArrayOutputWithContext(ctx context.Context) NotificationChannelStrategyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NotificationChannelStrategyArrayOutput)
+}
+
+// Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+type NotificationChannelStrategyOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelStrategy)(nil)).Elem()
+}
+
+func (o NotificationChannelStrategyOutput) ToNotificationChannelStrategyOutput() NotificationChannelStrategyOutput {
+	return o
+}
+
+func (o NotificationChannelStrategyOutput) ToNotificationChannelStrategyOutputWithContext(ctx context.Context) NotificationChannelStrategyOutput {
+	return o
+}
+
+// The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+func (o NotificationChannelStrategyOutput) NotificationChannelNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationChannelStrategy) []string { return v.NotificationChannelNames }).(pulumi.StringArrayOutput)
+}
+
+// The frequency at which to send reminder notifications for open incidents.
+func (o NotificationChannelStrategyOutput) RenotifyInterval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NotificationChannelStrategy) *string { return v.RenotifyInterval }).(pulumi.StringPtrOutput)
+}
+
+type NotificationChannelStrategyArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelStrategyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationChannelStrategy)(nil)).Elem()
+}
+
+func (o NotificationChannelStrategyArrayOutput) ToNotificationChannelStrategyArrayOutput() NotificationChannelStrategyArrayOutput {
+	return o
+}
+
+func (o NotificationChannelStrategyArrayOutput) ToNotificationChannelStrategyArrayOutputWithContext(ctx context.Context) NotificationChannelStrategyArrayOutput {
+	return o
+}
+
+func (o NotificationChannelStrategyArrayOutput) Index(i pulumi.IntInput) NotificationChannelStrategyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationChannelStrategy {
+		return vs[0].([]NotificationChannelStrategy)[vs[1].(int)]
+	}).(NotificationChannelStrategyOutput)
+}
+
+// Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+type NotificationChannelStrategyResponse struct {
+	// The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+	NotificationChannelNames []string `pulumi:"notificationChannelNames"`
+	// The frequency at which to send reminder notifications for open incidents.
+	RenotifyInterval string `pulumi:"renotifyInterval"`
+}
+
+// Control over how the notification channels in notification_channels are notified when this alert fires, on a per-channel basis.
+type NotificationChannelStrategyResponseOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelStrategyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelStrategyResponse)(nil)).Elem()
+}
+
+func (o NotificationChannelStrategyResponseOutput) ToNotificationChannelStrategyResponseOutput() NotificationChannelStrategyResponseOutput {
+	return o
+}
+
+func (o NotificationChannelStrategyResponseOutput) ToNotificationChannelStrategyResponseOutputWithContext(ctx context.Context) NotificationChannelStrategyResponseOutput {
+	return o
+}
+
+// The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID]
+func (o NotificationChannelStrategyResponseOutput) NotificationChannelNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NotificationChannelStrategyResponse) []string { return v.NotificationChannelNames }).(pulumi.StringArrayOutput)
+}
+
+// The frequency at which to send reminder notifications for open incidents.
+func (o NotificationChannelStrategyResponseOutput) RenotifyInterval() pulumi.StringOutput {
+	return o.ApplyT(func(v NotificationChannelStrategyResponse) string { return v.RenotifyInterval }).(pulumi.StringOutput)
+}
+
+type NotificationChannelStrategyResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelStrategyResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NotificationChannelStrategyResponse)(nil)).Elem()
+}
+
+func (o NotificationChannelStrategyResponseArrayOutput) ToNotificationChannelStrategyResponseArrayOutput() NotificationChannelStrategyResponseArrayOutput {
+	return o
+}
+
+func (o NotificationChannelStrategyResponseArrayOutput) ToNotificationChannelStrategyResponseArrayOutputWithContext(ctx context.Context) NotificationChannelStrategyResponseArrayOutput {
+	return o
+}
+
+func (o NotificationChannelStrategyResponseArrayOutput) Index(i pulumi.IntInput) NotificationChannelStrategyResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationChannelStrategyResponse {
+		return vs[0].([]NotificationChannelStrategyResponse)[vs[1].(int)]
+	}).(NotificationChannelStrategyResponseOutput)
+}
+
 // Control over the rate of notifications sent to this alert policy's notification channels.
 type NotificationRateLimit struct {
 	// Not more than one notification per period.
@@ -10423,6 +10639,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordInput)(nil)).Elem(), MutationRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordPtrInput)(nil)).Elem(), MutationRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MutationRecordArrayInput)(nil)).Elem(), MutationRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelStrategyInput)(nil)).Elem(), NotificationChannelStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NotificationChannelStrategyArrayInput)(nil)).Elem(), NotificationChannelStrategyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitInput)(nil)).Elem(), NotificationRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitPtrInput)(nil)).Elem(), NotificationRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdInput)(nil)).Elem(), PerformanceThresholdArgs{})
@@ -10564,6 +10782,10 @@ func init() {
 	pulumi.RegisterOutputType(MutationRecordArrayOutput{})
 	pulumi.RegisterOutputType(MutationRecordResponseOutput{})
 	pulumi.RegisterOutputType(MutationRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(NotificationChannelStrategyOutput{})
+	pulumi.RegisterOutputType(NotificationChannelStrategyArrayOutput{})
+	pulumi.RegisterOutputType(NotificationChannelStrategyResponseOutput{})
+	pulumi.RegisterOutputType(NotificationChannelStrategyResponseArrayOutput{})
 	pulumi.RegisterOutputType(NotificationRateLimitOutput{})
 	pulumi.RegisterOutputType(NotificationRateLimitPtrOutput{})
 	pulumi.RegisterOutputType(NotificationRateLimitResponseOutput{})

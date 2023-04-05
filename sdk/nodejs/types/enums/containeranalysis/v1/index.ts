@@ -26,6 +26,34 @@ export const AliasContextKind = {
  */
 export type AliasContextKind = (typeof AliasContextKind)[keyof typeof AliasContextKind];
 
+export const AssessmentState = {
+    /**
+     * No state is specified.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * This product is known to be affected by this vulnerability.
+     */
+    Affected: "AFFECTED",
+    /**
+     * This product is known to be not affected by this vulnerability.
+     */
+    NotAffected: "NOT_AFFECTED",
+    /**
+     * This product contains a fix for this vulnerability.
+     */
+    Fixed: "FIXED",
+    /**
+     * It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+     */
+    UnderInvestigation: "UNDER_INVESTIGATION",
+} as const;
+
+/**
+ * Provides the state of this Vulnerability assessment.
+ */
+export type AssessmentState = (typeof AssessmentState)[keyof typeof AssessmentState];
+
 export const CVSSAttackComplexity = {
     AttackComplexityUnspecified: "ATTACK_COMPLEXITY_UNSPECIFIED",
     AttackComplexityLow: "ATTACK_COMPLEXITY_LOW",
@@ -279,6 +307,10 @@ export const DiscoveryNoteAnalysisKind = {
      * This represents a DSSE attestation Note
      */
     DsseAttestation: "DSSE_ATTESTATION",
+    /**
+     * This represents a Vulnerability Assessment.
+     */
+    VulnerabilityAssessment: "VULNERABILITY_ASSESSMENT",
 } as const;
 
 /**
@@ -362,6 +394,38 @@ export const DistributionArchitecture = {
  */
 export type DistributionArchitecture = (typeof DistributionArchitecture)[keyof typeof DistributionArchitecture];
 
+export const JustificationJustificationType = {
+    /**
+     * JUSTIFICATION_TYPE_UNSPECIFIED.
+     */
+    JustificationTypeUnspecified: "JUSTIFICATION_TYPE_UNSPECIFIED",
+    /**
+     * The vulnerable component is not present in the product.
+     */
+    ComponentNotPresent: "COMPONENT_NOT_PRESENT",
+    /**
+     * The vulnerable code is not present. Typically this case occurs when source code is configured or built in a way that excludes the vulnerable code.
+     */
+    VulnerableCodeNotPresent: "VULNERABLE_CODE_NOT_PRESENT",
+    /**
+     * The vulnerable code can not be executed. Typically this case occurs when the product includes the vulnerable code but does not call or use the vulnerable code.
+     */
+    VulnerableCodeNotInExecutePath: "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH",
+    /**
+     * The vulnerable code cannot be controlled by an attacker to exploit the vulnerability.
+     */
+    VulnerableCodeCannotBeControlledByAdversary: "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY",
+    /**
+     * The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors.
+     */
+    InlineMitigationsAlreadyExist: "INLINE_MITIGATIONS_ALREADY_EXIST",
+} as const;
+
+/**
+ * The justification type for this vulnerability.
+ */
+export type JustificationJustificationType = (typeof JustificationJustificationType)[keyof typeof JustificationJustificationType];
+
 export const PackageNoteArchitecture = {
     /**
      * Unknown architecture.
@@ -381,6 +445,38 @@ export const PackageNoteArchitecture = {
  * The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
  */
 export type PackageNoteArchitecture = (typeof PackageNoteArchitecture)[keyof typeof PackageNoteArchitecture];
+
+export const RemediationRemediationType = {
+    /**
+     * No remediation type specified.
+     */
+    RemediationTypeUnspecified: "REMEDIATION_TYPE_UNSPECIFIED",
+    /**
+     * A MITIGATION is available.
+     */
+    Mitigation: "MITIGATION",
+    /**
+     * No fix is planned.
+     */
+    NoFixPlanned: "NO_FIX_PLANNED",
+    /**
+     * Not available.
+     */
+    NoneAvailable: "NONE_AVAILABLE",
+    /**
+     * A vendor fix is available.
+     */
+    VendorFix: "VENDOR_FIX",
+    /**
+     * A workaround is available.
+     */
+    Workaround: "WORKAROUND",
+} as const;
+
+/**
+ * The type of remediation that can be applied.
+ */
+export type RemediationRemediationType = (typeof RemediationRemediationType)[keyof typeof RemediationRemediationType];
 
 export const VersionKind = {
     /**
@@ -405,6 +501,34 @@ export const VersionKind = {
  * Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
  */
 export type VersionKind = (typeof VersionKind)[keyof typeof VersionKind];
+
+export const VexAssessmentState = {
+    /**
+     * No state is specified.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * This product is known to be affected by this vulnerability.
+     */
+    Affected: "AFFECTED",
+    /**
+     * This product is known to be not affected by this vulnerability.
+     */
+    NotAffected: "NOT_AFFECTED",
+    /**
+     * This product contains a fix for this vulnerability.
+     */
+    Fixed: "FIXED",
+    /**
+     * It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+     */
+    UnderInvestigation: "UNDER_INVESTIGATION",
+} as const;
+
+/**
+ * Provides the state of this Vulnerability assessment.
+ */
+export type VexAssessmentState = (typeof VexAssessmentState)[keyof typeof VexAssessmentState];
 
 export const VulnerabilityNoteCvssVersion = {
     CvssVersionUnspecified: "CVSS_VERSION_UNSPECIFIED",

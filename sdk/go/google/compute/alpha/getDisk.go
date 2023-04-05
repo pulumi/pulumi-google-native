@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+// Returns the specified persistent disk.
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	var rv LookupDiskResult
 	err := ctx.Invoke("google-native:compute/alpha:getDisk", args, &rv, opts...)
@@ -39,6 +39,8 @@ type LookupDiskResult struct {
 	Description string `pulumi:"description"`
 	// Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 	DiskEncryptionKey CustomerEncryptionKeyResponse `pulumi:"diskEncryptionKey"`
+	// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+	EnableConfidentialCompute bool `pulumi:"enableConfidentialCompute"`
 	// Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
 	EraseWindowsVssSignature bool `pulumi:"eraseWindowsVssSignature"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
@@ -202,6 +204,11 @@ func (o LookupDiskResultOutput) Description() pulumi.StringOutput {
 // Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
 func (o LookupDiskResultOutput) DiskEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v LookupDiskResult) CustomerEncryptionKeyResponse { return v.DiskEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+func (o LookupDiskResultOutput) EnableConfidentialCompute() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupDiskResult) bool { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }
 
 // Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.

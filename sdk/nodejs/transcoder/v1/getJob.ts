@@ -52,6 +52,10 @@ export interface GetJobResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+     */
+    readonly mode: string;
+    /**
      * The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
      */
     readonly name: string;
@@ -68,7 +72,7 @@ export interface GetJobResult {
      */
     readonly state: string;
     /**
-     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+     * Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
      */
     readonly templateId: string;
     /**

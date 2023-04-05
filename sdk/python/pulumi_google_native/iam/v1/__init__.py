@@ -12,7 +12,12 @@ from .get_provider import *
 from .get_role import *
 from .get_service_account import *
 from .get_service_account_iam_policy import *
+from .get_workforce_pool import *
+from .get_workforce_pool_iam_policy import *
+from .get_workforce_pool_key import *
+from .get_workforce_pool_provider import *
 from .get_workload_identity_pool import *
+from .get_workload_identity_pool_key import *
 from .key import *
 from .organization_role import *
 from .provider import *
@@ -21,6 +26,13 @@ from .service_account import *
 from .service_account_iam_binding import *
 from .service_account_iam_member import *
 from .service_account_iam_policy import *
+from .workforce_pool import *
+from .workforce_pool_iam_binding import *
+from .workforce_pool_iam_member import *
+from .workforce_pool_iam_policy import *
+from .workforce_pool_key import *
+from .workforce_pool_provider import *
 from .workload_identity_pool import *
+from .workload_identity_pool_key import *
 from ._inputs import *
 from . import outputs

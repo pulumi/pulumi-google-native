@@ -5,6 +5,7 @@
 from enum import Enum
 
 __all__ = [
+    'AssessmentState',
     'BuildSignatureKeyType',
     'CVSSAttackComplexity',
     'CVSSAttackVector',
@@ -25,14 +26,45 @@ __all__ = [
     'FileNoteFileType',
     'GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind',
     'HashType',
+    'IdentifierHelperField',
+    'JustificationJustificationType',
     'LayerDirective',
     'PackageArchitecture',
     'PgpSignedAttestationContentType',
     'RelationshipNoteType',
+    'RemediationRemediationType',
     'VersionKind',
+    'VexAssessmentState',
     'VulnerabilityDetailsEffectiveSeverity',
+    'VulnerabilityTypeCvssVersion',
     'VulnerabilityTypeSeverity',
 ]
+
+
+class AssessmentState(str, Enum):
+    """
+    Provides the state of this Vulnerability assessment.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    No state is specified.
+    """
+    AFFECTED = "AFFECTED"
+    """
+    This product is known to be affected by this vulnerability.
+    """
+    NOT_AFFECTED = "NOT_AFFECTED"
+    """
+    This product is known to be not affected by this vulnerability.
+    """
+    FIXED = "FIXED"
+    """
+    This product contains a fix for this vulnerability.
+    """
+    UNDER_INVESTIGATION = "UNDER_INVESTIGATION"
+    """
+    It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+    """
 
 
 class BuildSignatureKeyType(str, Enum):
@@ -439,6 +471,14 @@ class DiscoveryAnalysisKind(str, Enum):
     """
     This represents a DSSE attestation Note
     """
+    VULNERABILITY_ASSESSMENT = "VULNERABILITY_ASSESSMENT"
+    """
+    This represents a Vulnerability Assessment.
+    """
+    SBOM_REFERENCE = "SBOM_REFERENCE"
+    """
+    This represents a reference to an SBOM.
+    """
 
 
 class DistributionArchitecture(str, Enum):
@@ -572,6 +612,50 @@ class HashType(str, Enum):
     SHA256 = "SHA256"
     """
     A sha256 hash.
+    """
+
+
+class IdentifierHelperField(str, Enum):
+    """
+    The field that is set in the API proto.
+    """
+    IDENTIFIER_HELPER_FIELD_UNSPECIFIED = "IDENTIFIER_HELPER_FIELD_UNSPECIFIED"
+    """
+    The helper isn't set.
+    """
+    GENERIC_URI = "GENERIC_URI"
+    """
+    The generic_uri one-of field is set.
+    """
+
+
+class JustificationJustificationType(str, Enum):
+    """
+    The justification type for this vulnerability.
+    """
+    JUSTIFICATION_TYPE_UNSPECIFIED = "JUSTIFICATION_TYPE_UNSPECIFIED"
+    """
+    JUSTIFICATION_TYPE_UNSPECIFIED.
+    """
+    COMPONENT_NOT_PRESENT = "COMPONENT_NOT_PRESENT"
+    """
+    The vulnerable component is not present in the product.
+    """
+    VULNERABLE_CODE_NOT_PRESENT = "VULNERABLE_CODE_NOT_PRESENT"
+    """
+    The vulnerable code is not present. Typically this case occurs when source code is configured or built in a way that excludes the vulnerable code.
+    """
+    VULNERABLE_CODE_NOT_IN_EXECUTE_PATH = "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH"
+    """
+    The vulnerable code can not be executed. Typically this case occurs when the product includes the vulnerable code but does not call or use the vulnerable code.
+    """
+    VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY = "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY"
+    """
+    The vulnerable code cannot be controlled by an attacker to exploit the vulnerability.
+    """
+    INLINE_MITIGATIONS_ALREADY_EXIST = "INLINE_MITIGATIONS_ALREADY_EXIST"
+    """
+    The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors.
     """
 
 
@@ -867,6 +951,36 @@ class RelationshipNoteType(str, Enum):
     """
 
 
+class RemediationRemediationType(str, Enum):
+    """
+    The type of remediation that can be applied.
+    """
+    REMEDIATION_TYPE_UNSPECIFIED = "REMEDIATION_TYPE_UNSPECIFIED"
+    """
+    No remediation type specified.
+    """
+    MITIGATION = "MITIGATION"
+    """
+    A MITIGATION is available.
+    """
+    NO_FIX_PLANNED = "NO_FIX_PLANNED"
+    """
+    No fix is planned.
+    """
+    NONE_AVAILABLE = "NONE_AVAILABLE"
+    """
+    Not available.
+    """
+    VENDOR_FIX = "VENDOR_FIX"
+    """
+    A vendor fix is available.
+    """
+    WORKAROUND = "WORKAROUND"
+    """
+    A workaround is available.
+    """
+
+
 class VersionKind(str, Enum):
     """
     Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
@@ -882,6 +996,32 @@ class VersionKind(str, Enum):
     MAXIMUM = "MAXIMUM"
     """
     A special version representing positive infinity, other fields are ignored.
+    """
+
+
+class VexAssessmentState(str, Enum):
+    """
+    Provides the state of this Vulnerability assessment.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    No state is specified.
+    """
+    AFFECTED = "AFFECTED"
+    """
+    This product is known to be affected by this vulnerability.
+    """
+    NOT_AFFECTED = "NOT_AFFECTED"
+    """
+    This product is known to be not affected by this vulnerability.
+    """
+    FIXED = "FIXED"
+    """
+    This product contains a fix for this vulnerability.
+    """
+    UNDER_INVESTIGATION = "UNDER_INVESTIGATION"
+    """
+    It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
     """
 
 
@@ -912,6 +1052,24 @@ class VulnerabilityDetailsEffectiveSeverity(str, Enum):
     CRITICAL = "CRITICAL"
     """
     Critical Impact
+    """
+
+
+class VulnerabilityTypeCvssVersion(str, Enum):
+    """
+    CVSS version used to populate cvss_score and severity.
+    """
+    CVSS_VERSION_UNSPECIFIED = "CVSS_VERSION_UNSPECIFIED"
+    """
+    CVSS Version unspecified.
+    """
+    CVSS_VERSION2 = "CVSS_VERSION_2"
+    """
+    CVSS v2.
+    """
+    CVSS_VERSION3 = "CVSS_VERSION_3"
+    """
+    CVSS v3.
     """
 
 

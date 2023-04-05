@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetDlpJobResult:
-    def __init__(__self__, create_time=None, end_time=None, errors=None, inspect_details=None, job_trigger_name=None, name=None, risk_details=None, start_time=None, state=None, type=None):
+    def __init__(__self__, action_details=None, create_time=None, end_time=None, errors=None, inspect_details=None, job_trigger_name=None, name=None, risk_details=None, start_time=None, state=None, type=None):
+        if action_details and not isinstance(action_details, list):
+            raise TypeError("Expected argument 'action_details' to be a list")
+        pulumi.set(__self__, "action_details", action_details)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -50,6 +53,14 @@ class GetDlpJobResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="actionDetails")
+    def action_details(self) -> Sequence['outputs.GooglePrivacyDlpV2ActionDetailsResponse']:
+        """
+        Events that should occur after the job has completed.
+        """
+        return pulumi.get(self, "action_details")
 
     @property
     @pulumi.getter(name="createTime")
@@ -138,6 +149,7 @@ class AwaitableGetDlpJobResult(GetDlpJobResult):
         if False:
             yield self
         return GetDlpJobResult(
+            action_details=self.action_details,
             create_time=self.create_time,
             end_time=self.end_time,
             errors=self.errors,
@@ -165,6 +177,7 @@ def get_dlp_job(dlp_job_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:dlp/v2:getDlpJob', __args__, opts=opts, typ=GetDlpJobResult).value
 
     return AwaitableGetDlpJobResult(
+        action_details=__ret__.action_details,
         create_time=__ret__.create_time,
         end_time=__ret__.end_time,
         errors=__ret__.errors,

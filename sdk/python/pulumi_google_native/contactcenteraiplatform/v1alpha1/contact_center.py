@@ -20,6 +20,7 @@ class ContactCenterArgs:
                  contact_center_id: pulumi.Input[str],
                  customer_domain_prefix: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 admin_user: Optional[pulumi.Input['AdminUserArgs']] = None,
                  ccaip_managed_users: Optional[pulumi.Input[bool]] = None,
                  instance_config: Optional[pulumi.Input['InstanceConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -34,17 +35,20 @@ class ContactCenterArgs:
         :param pulumi.Input[str] contact_center_id: Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC
         :param pulumi.Input[str] customer_domain_prefix: Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
         :param pulumi.Input[str] display_name: A user friendly name for the ContactCenter.
+        :param pulumi.Input['AdminUserArgs'] admin_user: Optional. Info about the first admin user, such as given name and family name.
         :param pulumi.Input[bool] ccaip_managed_users: Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         :param pulumi.Input['InstanceConfigArgs'] instance_config: The configuration of this instance, it is currently immutable once created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource
-        :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['SAMLParamsArgs'] saml_params: Optional. Params that sets up Google as IdP.
-        :param pulumi.Input[str] user_email: Optional. Email address of the first admin users.
+        :param pulumi.Input[str] user_email: Optional. Email address of the first admin user.
         """
         pulumi.set(__self__, "contact_center_id", contact_center_id)
         pulumi.set(__self__, "customer_domain_prefix", customer_domain_prefix)
         pulumi.set(__self__, "display_name", display_name)
+        if admin_user is not None:
+            pulumi.set(__self__, "admin_user", admin_user)
         if ccaip_managed_users is not None:
             pulumi.set(__self__, "ccaip_managed_users", ccaip_managed_users)
         if instance_config is not None:
@@ -99,6 +103,18 @@ class ContactCenterArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="adminUser")
+    def admin_user(self) -> Optional[pulumi.Input['AdminUserArgs']]:
+        """
+        Optional. Info about the first admin user, such as given name and family name.
+        """
+        return pulumi.get(self, "admin_user")
+
+    @admin_user.setter
+    def admin_user(self, value: Optional[pulumi.Input['AdminUserArgs']]):
+        pulumi.set(self, "admin_user", value)
 
     @property
     @pulumi.getter(name="ccaipManagedUsers")
@@ -170,7 +186,7 @@ class ContactCenterArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
 
@@ -194,7 +210,7 @@ class ContactCenterArgs:
     @pulumi.getter(name="userEmail")
     def user_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Email address of the first admin users.
+        Optional. Email address of the first admin user.
         """
         return pulumi.get(self, "user_email")
 
@@ -208,6 +224,7 @@ class ContactCenter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_user: Optional[pulumi.Input[pulumi.InputType['AdminUserArgs']]] = None,
                  ccaip_managed_users: Optional[pulumi.Input[bool]] = None,
                  contact_center_id: Optional[pulumi.Input[str]] = None,
                  customer_domain_prefix: Optional[pulumi.Input[str]] = None,
@@ -226,6 +243,7 @@ class ContactCenter(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AdminUserArgs']] admin_user: Optional. Info about the first admin user, such as given name and family name.
         :param pulumi.Input[bool] ccaip_managed_users: Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
         :param pulumi.Input[str] contact_center_id: Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC
         :param pulumi.Input[str] customer_domain_prefix: Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt).
@@ -233,9 +251,9 @@ class ContactCenter(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['InstanceConfigArgs']] instance_config: The configuration of this instance, it is currently immutable once created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs
         :param pulumi.Input[str] name: name of resource
-        :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SAMLParamsArgs']] saml_params: Optional. Params that sets up Google as IdP.
-        :param pulumi.Input[str] user_email: Optional. Email address of the first admin users.
+        :param pulumi.Input[str] user_email: Optional. Email address of the first admin user.
         """
         ...
     @overload
@@ -261,6 +279,7 @@ class ContactCenter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_user: Optional[pulumi.Input[pulumi.InputType['AdminUserArgs']]] = None,
                  ccaip_managed_users: Optional[pulumi.Input[bool]] = None,
                  contact_center_id: Optional[pulumi.Input[str]] = None,
                  customer_domain_prefix: Optional[pulumi.Input[str]] = None,
@@ -282,6 +301,7 @@ class ContactCenter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ContactCenterArgs.__new__(ContactCenterArgs)
 
+            __props__.__dict__["admin_user"] = admin_user
             __props__.__dict__["ccaip_managed_users"] = ccaip_managed_users
             if contact_center_id is None and not opts.urn:
                 raise TypeError("Missing required property 'contact_center_id'")
@@ -328,6 +348,7 @@ class ContactCenter(pulumi.CustomResource):
 
         __props__ = ContactCenterArgs.__new__(ContactCenterArgs)
 
+        __props__.__dict__["admin_user"] = None
         __props__.__dict__["ccaip_managed_users"] = None
         __props__.__dict__["contact_center_id"] = None
         __props__.__dict__["create_time"] = None
@@ -345,6 +366,14 @@ class ContactCenter(pulumi.CustomResource):
         __props__.__dict__["uris"] = None
         __props__.__dict__["user_email"] = None
         return ContactCenter(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adminUser")
+    def admin_user(self) -> pulumi.Output['outputs.AdminUserResponse']:
+        """
+        Optional. Info about the first admin user, such as given name and family name.
+        """
+        return pulumi.get(self, "admin_user")
 
     @property
     @pulumi.getter(name="ccaipManagedUsers")
@@ -424,7 +453,7 @@ class ContactCenter(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
 
@@ -464,7 +493,7 @@ class ContactCenter(pulumi.CustomResource):
     @pulumi.getter(name="userEmail")
     def user_email(self) -> pulumi.Output[str]:
         """
-        Optional. Email address of the first admin users.
+        Optional. Email address of the first admin user.
         """
         return pulumi.get(self, "user_email")
 

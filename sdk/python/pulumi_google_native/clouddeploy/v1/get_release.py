@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetReleaseResult:
-    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, create_time=None, delivery_pipeline_snapshot=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
+    def __init__(__self__, abandoned=None, annotations=None, build_artifacts=None, condition=None, create_time=None, delivery_pipeline_snapshot=None, description=None, etag=None, labels=None, name=None, render_end_time=None, render_start_time=None, render_state=None, skaffold_config_path=None, skaffold_config_uri=None, skaffold_version=None, target_artifacts=None, target_renders=None, target_snapshots=None, uid=None):
         if abandoned and not isinstance(abandoned, bool):
             raise TypeError("Expected argument 'abandoned' to be a bool")
         pulumi.set(__self__, "abandoned", abandoned)
@@ -29,6 +29,9 @@ class GetReleaseResult:
         if build_artifacts and not isinstance(build_artifacts, list):
             raise TypeError("Expected argument 'build_artifacts' to be a list")
         pulumi.set(__self__, "build_artifacts", build_artifacts)
+        if condition and not isinstance(condition, dict):
+            raise TypeError("Expected argument 'condition' to be a dict")
+        pulumi.set(__self__, "condition", condition)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -101,6 +104,14 @@ class GetReleaseResult:
         List of artifacts to pass through to Skaffold command.
         """
         return pulumi.get(self, "build_artifacts")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> 'outputs.ReleaseConditionResponse':
+        """
+        Information around the state of the Release.
+        """
+        return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="createTime")
@@ -240,6 +251,7 @@ class AwaitableGetReleaseResult(GetReleaseResult):
             abandoned=self.abandoned,
             annotations=self.annotations,
             build_artifacts=self.build_artifacts,
+            condition=self.condition,
             create_time=self.create_time,
             delivery_pipeline_snapshot=self.delivery_pipeline_snapshot,
             description=self.description,
@@ -278,6 +290,7 @@ def get_release(delivery_pipeline_id: Optional[str] = None,
         abandoned=__ret__.abandoned,
         annotations=__ret__.annotations,
         build_artifacts=__ret__.build_artifacts,
+        condition=__ret__.condition,
         create_time=__ret__.create_time,
         delivery_pipeline_snapshot=__ret__.delivery_pipeline_snapshot,
         description=__ret__.description,

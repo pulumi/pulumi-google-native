@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// A globally unique identifier (in UUID4 format) for this namespace.
+        /// </summary>
+        [Output("uid")]
+        public Output<string> Uid { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the namespace was last updated.
         /// </summary>
         [Output("updateTime")]

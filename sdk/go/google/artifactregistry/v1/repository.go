@@ -18,6 +18,8 @@ type Repository struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	DockerConfig DockerRepositoryConfigResponseOutput `pulumi:"dockerConfig"`
 	// The format of packages that are stored in the repository.
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
@@ -90,10 +92,10 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// The time when the repository was created.
-	CreateTime *string `pulumi:"createTime"`
 	// The user-provided description of the repository.
 	Description *string `pulumi:"description"`
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	DockerConfig *DockerRepositoryConfig `pulumi:"dockerConfig"`
 	// The format of packages that are stored in the repository.
 	Format *RepositoryFormat `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
@@ -112,18 +114,16 @@ type repositoryArgs struct {
 	RemoteRepositoryConfig *RemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The repository id to use for this repository.
 	RepositoryId *string `pulumi:"repositoryId"`
-	// The time when the repository was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 	// Configuration specific for a Virtual Repository.
 	VirtualRepositoryConfig *VirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// The time when the repository was created.
-	CreateTime pulumi.StringPtrInput
 	// The user-provided description of the repository.
 	Description pulumi.StringPtrInput
+	// Docker repository config contains repository level configuration for the repositories of docker type.
+	DockerConfig DockerRepositoryConfigPtrInput
 	// The format of packages that are stored in the repository.
 	Format RepositoryFormatPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that's used to encrypt the contents of the Repository. Has the form: `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`. This value may not be changed after the Repository has been created.
@@ -142,8 +142,6 @@ type RepositoryArgs struct {
 	RemoteRepositoryConfig RemoteRepositoryConfigPtrInput
 	// The repository id to use for this repository.
 	RepositoryId pulumi.StringPtrInput
-	// The time when the repository was last updated.
-	UpdateTime pulumi.StringPtrInput
 	// Configuration specific for a Virtual Repository.
 	VirtualRepositoryConfig VirtualRepositoryConfigPtrInput
 }
@@ -193,6 +191,11 @@ func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 // The user-provided description of the repository.
 func (o RepositoryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Docker repository config contains repository level configuration for the repositories of docker type.
+func (o RepositoryOutput) DockerConfig() DockerRepositoryConfigResponseOutput {
+	return o.ApplyT(func(v *Repository) DockerRepositoryConfigResponseOutput { return v.DockerConfig }).(DockerRepositoryConfigResponseOutput)
 }
 
 // The format of packages that are stored in the repository.

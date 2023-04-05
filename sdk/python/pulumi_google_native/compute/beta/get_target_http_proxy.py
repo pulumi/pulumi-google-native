@@ -153,7 +153,7 @@ def get_target_http_proxy(project: Optional[str] = None,
                           target_http_proxy: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetHttpProxyResult:
     """
-    Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+    Returns the specified TargetHttpProxy resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -179,6 +179,6 @@ def get_target_http_proxy_output(project: Optional[pulumi.Input[Optional[str]]] 
                                  target_http_proxy: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetHttpProxyResult]:
     """
-    Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+    Returns the specified TargetHttpProxy resource.
     """
     ...

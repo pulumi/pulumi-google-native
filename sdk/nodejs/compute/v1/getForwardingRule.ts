@@ -40,6 +40,10 @@ export interface GetForwardingRuleResult {
      */
     readonly backendService: string;
     /**
+     * The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+     */
+    readonly baseForwardingRule: string;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -136,6 +140,10 @@ export interface GetForwardingRuleResult {
      * The internal fully qualified service name for this Forwarding Rule. This field is only used for internal load balancing.
      */
     readonly serviceName: string;
+    /**
+     * If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+     */
+    readonly sourceIpRanges: string[];
     /**
      * This field identifies the subnetwork that the load balanced IP should belong to for this Forwarding Rule, used in internal load balancing and network load balancing with IPv6. If the network specified is in auto subnet mode, this field is optional. However, a subnetwork must be specified if the network is in custom subnet mode or when creating external forwarding rule with IPv6.
      */

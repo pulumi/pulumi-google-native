@@ -202,7 +202,7 @@ def get_ssl_certificate(project: Optional[str] = None,
                         ssl_certificate: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSslCertificateResult:
     """
-    Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
+    Returns the specified SslCertificate resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -232,6 +232,6 @@ def get_ssl_certificate_output(project: Optional[pulumi.Input[Optional[str]]] = 
                                ssl_certificate: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSslCertificateResult]:
     """
-    Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making a list() request.
+    Returns the specified SslCertificate resource.
     """
     ...

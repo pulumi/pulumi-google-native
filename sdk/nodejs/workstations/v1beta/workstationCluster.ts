@@ -104,7 +104,7 @@ export class WorkstationCluster extends pulumi.CustomResource {
      */
     public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     /**
-     * Required. ID to use for the cluster.
+     * Required. ID to use for the workstation cluster.
      */
     public readonly workstationClusterId!: pulumi.Output<string>;
 
@@ -212,7 +212,7 @@ export interface WorkstationClusterArgs {
      */
     validateOnly?: pulumi.Input<boolean>;
     /**
-     * Required. ID to use for the cluster.
+     * Required. ID to use for the workstation cluster.
      */
     workstationClusterId: pulumi.Input<string>;
 }

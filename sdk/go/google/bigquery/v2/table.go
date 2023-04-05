@@ -25,6 +25,8 @@ type Table struct {
 	DatasetId    pulumi.StringOutput `pulumi:"datasetId"`
 	// The default collation of the table.
 	DefaultCollation pulumi.StringOutput `pulumi:"defaultCollation"`
+	// The default rounding mode of the table.
+	DefaultRoundingMode pulumi.StringOutput `pulumi:"defaultRoundingMode"`
 	// [Optional] A user-friendly description of this table.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Custom encryption configuration (e.g., Cloud KMS keys).
@@ -278,6 +280,11 @@ func (o TableOutput) DatasetId() pulumi.StringOutput {
 // The default collation of the table.
 func (o TableOutput) DefaultCollation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DefaultCollation }).(pulumi.StringOutput)
+}
+
+// The default rounding mode of the table.
+func (o TableOutput) DefaultRoundingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Table) pulumi.StringOutput { return v.DefaultRoundingMode }).(pulumi.StringOutput)
 }
 
 // [Optional] A user-friendly description of this table.

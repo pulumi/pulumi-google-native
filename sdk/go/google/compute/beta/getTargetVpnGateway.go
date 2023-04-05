@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a list() request.
+// Returns the specified target VPN gateway.
 func LookupTargetVpnGateway(ctx *pulumi.Context, args *LookupTargetVpnGatewayArgs, opts ...pulumi.InvokeOption) (*LookupTargetVpnGatewayResult, error) {
 	var rv LookupTargetVpnGatewayResult
 	err := ctx.Invoke("google-native:compute/beta:getTargetVpnGateway", args, &rv, opts...)

@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         private InputList<Inputs.HeaderOverrideArgs>? _headerOverrides;
 
         /// <summary>
-        /// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-Google-Cloud-Tasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
+        /// HTTP target headers. This map contains the header field names and values. Headers will be set when running the task is created and/or task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Any header that is prefixed with "X-CloudTasks-" will be treated as service header. Service headers define properties of the task and are predefined in CloudTask. * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-CloudTasks"`. * `X-Google-*`: Google use only. * `X-AppEngine-*`: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB. Queue-level headers to override headers of all the tasks in the queue.
         /// </summary>
         public InputList<Inputs.HeaderOverrideArgs> HeaderOverrides
         {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         }
 
         /// <summary>
-        /// The HTTP method to use for the request. When specified, it will override HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
+        /// The HTTP method to use for the request. When specified, it overrides HttpRequest for the task. Note that if the value is set to HttpMethod the HttpRequest of the task will be ignored at execution time.
         /// </summary>
         [Input("httpMethod")]
         public Input<Pulumi.GoogleNative.CloudTasks.V2Beta2.HttpTargetHttpMethod>? HttpMethod { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public Input<Inputs.OidcTokenArgs>? OidcToken { get; set; }
 
         /// <summary>
-        /// Uri override. When specified, modifies the execution Uri for all the tasks in the queue.
+        /// Uri override. When specified, overrides the execution Uri for all the tasks in the queue.
         /// </summary>
         [Input("uriOverride")]
         public Input<Inputs.UriOverrideArgs>? UriOverride { get; set; }

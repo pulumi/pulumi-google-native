@@ -31,7 +31,8 @@ class AgentArgs:
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
-                 supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs']] = None):
         """
         The set of arguments for constructing a Agent resource.
         :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
@@ -48,6 +49,7 @@ class AgentArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs'] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by the agent (except for the `default_language_code`).
+        :param pulumi.Input['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs'] text_to_speech_settings: Settings on instructing the speech synthesizer on how to generate the output audio content.
         """
         pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
@@ -78,6 +80,8 @@ class AgentArgs:
             pulumi.set(__self__, "start_flow", start_flow)
         if supported_language_codes is not None:
             pulumi.set(__self__, "supported_language_codes", supported_language_codes)
+        if text_to_speech_settings is not None:
+            pulumi.set(__self__, "text_to_speech_settings", text_to_speech_settings)
 
     @property
     @pulumi.getter(name="defaultLanguageCode")
@@ -265,6 +269,18 @@ class AgentArgs:
     def supported_language_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "supported_language_codes", value)
 
+    @property
+    @pulumi.getter(name="textToSpeechSettings")
+    def text_to_speech_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs']]:
+        """
+        Settings on instructing the speech synthesizer on how to generate the output audio content.
+        """
+        return pulumi.get(self, "text_to_speech_settings")
+
+    @text_to_speech_settings.setter
+    def text_to_speech_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs']]):
+        pulumi.set(self, "text_to_speech_settings", value)
+
 
 class Agent(pulumi.CustomResource):
     @overload
@@ -286,6 +302,7 @@ class Agent(pulumi.CustomResource):
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -306,6 +323,7 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by the agent (except for the `default_language_code`).
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs']] text_to_speech_settings: Settings on instructing the speech synthesizer on how to generate the output audio content.
         :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
         ...
@@ -347,6 +365,7 @@ class Agent(pulumi.CustomResource):
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
                  supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 text_to_speech_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -376,6 +395,7 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
             __props__.__dict__["start_flow"] = start_flow
             __props__.__dict__["supported_language_codes"] = supported_language_codes
+            __props__.__dict__["text_to_speech_settings"] = text_to_speech_settings
             if time_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone'")
             __props__.__dict__["time_zone"] = time_zone
@@ -418,6 +438,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["speech_to_text_settings"] = None
         __props__.__dict__["start_flow"] = None
         __props__.__dict__["supported_language_codes"] = None
+        __props__.__dict__["text_to_speech_settings"] = None
         __props__.__dict__["time_zone"] = None
         return Agent(resource_name, opts=opts, __props__=__props__)
 
@@ -534,6 +555,14 @@ class Agent(pulumi.CustomResource):
         The list of all languages supported by the agent (except for the `default_language_code`).
         """
         return pulumi.get(self, "supported_language_codes")
+
+    @property
+    @pulumi.getter(name="textToSpeechSettings")
+    def text_to_speech_settings(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse']:
+        """
+        Settings on instructing the speech synthesizer on how to generate the output audio content.
+        """
+        return pulumi.get(self, "text_to_speech_settings")
 
     @property
     @pulumi.getter(name="timeZone")

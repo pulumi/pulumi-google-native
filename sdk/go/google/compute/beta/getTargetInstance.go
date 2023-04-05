@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified TargetInstance resource. Gets a list of available target instances by making a list() request.
+// Returns the specified TargetInstance resource.
 func LookupTargetInstance(ctx *pulumi.Context, args *LookupTargetInstanceArgs, opts ...pulumi.InvokeOption) (*LookupTargetInstanceResult, error) {
 	var rv LookupTargetInstanceResult
 	err := ctx.Invoke("google-native:compute/beta:getTargetInstance", args, &rv, opts...)

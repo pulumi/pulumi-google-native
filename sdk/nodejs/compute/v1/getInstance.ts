@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified Instance resource. Gets a list of available instances by making a list() request.
+ * Returns the specified Instance resource.
  */
 export function getInstance(args: GetInstanceArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceResult> {
 
@@ -189,7 +189,7 @@ export interface GetInstanceResult {
     readonly zone: string;
 }
 /**
- * Returns the specified Instance resource. Gets a list of available instances by making a list() request.
+ * Returns the specified Instance resource.
  */
 export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
     return pulumi.output(args).apply((a: any) => getInstance(a, opts))

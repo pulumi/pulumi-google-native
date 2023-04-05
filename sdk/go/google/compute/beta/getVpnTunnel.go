@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list() request.
+// Returns the specified VpnTunnel resource.
 func LookupVpnTunnel(ctx *pulumi.Context, args *LookupVpnTunnelArgs, opts ...pulumi.InvokeOption) (*LookupVpnTunnelResult, error) {
 	var rv LookupVpnTunnelResult
 	err := ctx.Invoke("google-native:compute/beta:getVpnTunnel", args, &rv, opts...)

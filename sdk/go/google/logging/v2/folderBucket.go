@@ -16,6 +16,8 @@ import (
 type FolderBucket struct {
 	pulumi.CustomResourceState
 
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled pulumi.BoolOutput `pulumi:"analyticsEnabled"`
 	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
@@ -93,6 +95,8 @@ func (FolderBucketState) ElementType() reflect.Type {
 }
 
 type folderBucketArgs struct {
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled *bool `pulumi:"analyticsEnabled"`
 	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	BucketId string `pulumi:"bucketId"`
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
@@ -113,6 +117,8 @@ type folderBucketArgs struct {
 
 // The set of arguments for constructing a FolderBucket resource.
 type FolderBucketArgs struct {
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled pulumi.BoolPtrInput
 	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	BucketId pulumi.StringInput
 	// The CMEK settings of the log bucket. If present, new log entries written to this log bucket are encrypted using the CMEK key provided in this configuration. If a log bucket has CMEK settings, the CMEK settings cannot be disabled later by updating the log bucket. Changing the KMS key is allowed.
@@ -166,6 +172,11 @@ func (o FolderBucketOutput) ToFolderBucketOutput() FolderBucketOutput {
 
 func (o FolderBucketOutput) ToFolderBucketOutputWithContext(ctx context.Context) FolderBucketOutput {
 	return o
+}
+
+// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+func (o FolderBucketOutput) AnalyticsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *FolderBucket) pulumi.BoolOutput { return v.AnalyticsEnabled }).(pulumi.BoolOutput)
 }
 
 // Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.

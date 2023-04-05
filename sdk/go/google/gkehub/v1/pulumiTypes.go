@@ -873,7 +873,7 @@ func (o AuthorityResponseOutput) WorkloadIdentityPool() pulumi.StringOutput {
 }
 
 // Associates `members`, or principals, with a `role`.
-type Binding struct {
+type BindingType struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
 	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
@@ -882,19 +882,19 @@ type Binding struct {
 	Role *string `pulumi:"role"`
 }
 
-// BindingInput is an input type that accepts BindingArgs and BindingOutput values.
-// You can construct a concrete instance of `BindingInput` via:
+// BindingTypeInput is an input type that accepts BindingTypeArgs and BindingTypeOutput values.
+// You can construct a concrete instance of `BindingTypeInput` via:
 //
-//	BindingArgs{...}
-type BindingInput interface {
+//	BindingTypeArgs{...}
+type BindingTypeInput interface {
 	pulumi.Input
 
-	ToBindingOutput() BindingOutput
-	ToBindingOutputWithContext(context.Context) BindingOutput
+	ToBindingTypeOutput() BindingTypeOutput
+	ToBindingTypeOutputWithContext(context.Context) BindingTypeOutput
 }
 
 // Associates `members`, or principals, with a `role`.
-type BindingArgs struct {
+type BindingTypeArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
 	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
@@ -903,91 +903,91 @@ type BindingArgs struct {
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 
-func (BindingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*Binding)(nil)).Elem()
+func (BindingTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingType)(nil)).Elem()
 }
 
-func (i BindingArgs) ToBindingOutput() BindingOutput {
-	return i.ToBindingOutputWithContext(context.Background())
+func (i BindingTypeArgs) ToBindingTypeOutput() BindingTypeOutput {
+	return i.ToBindingTypeOutputWithContext(context.Background())
 }
 
-func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingOutput)
+func (i BindingTypeArgs) ToBindingTypeOutputWithContext(ctx context.Context) BindingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingTypeOutput)
 }
 
-// BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
-// You can construct a concrete instance of `BindingArrayInput` via:
+// BindingTypeArrayInput is an input type that accepts BindingTypeArray and BindingTypeArrayOutput values.
+// You can construct a concrete instance of `BindingTypeArrayInput` via:
 //
-//	BindingArray{ BindingArgs{...} }
-type BindingArrayInput interface {
+//	BindingTypeArray{ BindingTypeArgs{...} }
+type BindingTypeArrayInput interface {
 	pulumi.Input
 
-	ToBindingArrayOutput() BindingArrayOutput
-	ToBindingArrayOutputWithContext(context.Context) BindingArrayOutput
+	ToBindingTypeArrayOutput() BindingTypeArrayOutput
+	ToBindingTypeArrayOutputWithContext(context.Context) BindingTypeArrayOutput
 }
 
-type BindingArray []BindingInput
+type BindingTypeArray []BindingTypeInput
 
-func (BindingArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Binding)(nil)).Elem()
+func (BindingTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingType)(nil)).Elem()
 }
 
-func (i BindingArray) ToBindingArrayOutput() BindingArrayOutput {
-	return i.ToBindingArrayOutputWithContext(context.Background())
+func (i BindingTypeArray) ToBindingTypeArrayOutput() BindingTypeArrayOutput {
+	return i.ToBindingTypeArrayOutputWithContext(context.Background())
 }
 
-func (i BindingArray) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BindingArrayOutput)
+func (i BindingTypeArray) ToBindingTypeArrayOutputWithContext(ctx context.Context) BindingTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BindingTypeArrayOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
-type BindingOutput struct{ *pulumi.OutputState }
+type BindingTypeOutput struct{ *pulumi.OutputState }
 
-func (BindingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*Binding)(nil)).Elem()
+func (BindingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BindingType)(nil)).Elem()
 }
 
-func (o BindingOutput) ToBindingOutput() BindingOutput {
+func (o BindingTypeOutput) ToBindingTypeOutput() BindingTypeOutput {
 	return o
 }
 
-func (o BindingOutput) ToBindingOutputWithContext(ctx context.Context) BindingOutput {
+func (o BindingTypeOutput) ToBindingTypeOutputWithContext(ctx context.Context) BindingTypeOutput {
 	return o
 }
 
 // The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-func (o BindingOutput) Condition() ExprPtrOutput {
-	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
+func (o BindingTypeOutput) Condition() ExprPtrOutput {
+	return o.ApplyT(func(v BindingType) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
 // Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-func (o BindingOutput) Members() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
+func (o BindingTypeOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BindingType) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
 
 // Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-func (o BindingOutput) Role() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Binding) *string { return v.Role }).(pulumi.StringPtrOutput)
+func (o BindingTypeOutput) Role() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BindingType) *string { return v.Role }).(pulumi.StringPtrOutput)
 }
 
-type BindingArrayOutput struct{ *pulumi.OutputState }
+type BindingTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (BindingArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]Binding)(nil)).Elem()
+func (BindingTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BindingType)(nil)).Elem()
 }
 
-func (o BindingArrayOutput) ToBindingArrayOutput() BindingArrayOutput {
+func (o BindingTypeArrayOutput) ToBindingTypeArrayOutput() BindingTypeArrayOutput {
 	return o
 }
 
-func (o BindingArrayOutput) ToBindingArrayOutputWithContext(ctx context.Context) BindingArrayOutput {
+func (o BindingTypeArrayOutput) ToBindingTypeArrayOutputWithContext(ctx context.Context) BindingTypeArrayOutput {
 	return o
 }
 
-func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Binding {
-		return vs[0].([]Binding)[vs[1].(int)]
-	}).(BindingOutput)
+func (o BindingTypeArrayOutput) Index(i pulumi.IntInput) BindingTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingType {
+		return vs[0].([]BindingType)[vs[1].(int)]
+	}).(BindingTypeOutput)
 }
 
 // Associates `members`, or principals, with a `role`.
@@ -2523,6 +2523,32 @@ func (o KubernetesResourceResponseOutput) ResourceOptions() ResourceOptionsRespo
 	return o.ApplyT(func(v KubernetesResourceResponse) ResourceOptionsResponse { return v.ResourceOptions }).(ResourceOptionsResponseOutput)
 }
 
+// MembershipBindingLifecycleState describes the state of a Binding resource.
+type MembershipBindingLifecycleStateResponse struct {
+	// The current state of the MembershipBinding resource.
+	Code string `pulumi:"code"`
+}
+
+// MembershipBindingLifecycleState describes the state of a Binding resource.
+type MembershipBindingLifecycleStateResponseOutput struct{ *pulumi.OutputState }
+
+func (MembershipBindingLifecycleStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MembershipBindingLifecycleStateResponse)(nil)).Elem()
+}
+
+func (o MembershipBindingLifecycleStateResponseOutput) ToMembershipBindingLifecycleStateResponseOutput() MembershipBindingLifecycleStateResponseOutput {
+	return o
+}
+
+func (o MembershipBindingLifecycleStateResponseOutput) ToMembershipBindingLifecycleStateResponseOutputWithContext(ctx context.Context) MembershipBindingLifecycleStateResponseOutput {
+	return o
+}
+
+// The current state of the MembershipBinding resource.
+func (o MembershipBindingLifecycleStateResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v MembershipBindingLifecycleStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
 // MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
 type MembershipEndpoint struct {
 	// Optional. Specific information for a GDC Edge Appliance cluster.
@@ -2766,6 +2792,8 @@ type MembershipEndpointResponse struct {
 	EdgeCluster EdgeClusterResponse `pulumi:"edgeCluster"`
 	// Optional. Specific information for a GKE-on-GCP cluster.
 	GkeCluster GkeClusterResponse `pulumi:"gkeCluster"`
+	// Whether the lifecycle of this membership is managed by a google cluster platform service.
+	GoogleManaged bool `pulumi:"googleManaged"`
 	// Useful Kubernetes-specific metadata.
 	KubernetesMetadata KubernetesMetadataResponse `pulumi:"kubernetesMetadata"`
 	// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure proper initial configuration of default Hub Features.
@@ -2804,6 +2832,11 @@ func (o MembershipEndpointResponseOutput) EdgeCluster() EdgeClusterResponseOutpu
 // Optional. Specific information for a GKE-on-GCP cluster.
 func (o MembershipEndpointResponseOutput) GkeCluster() GkeClusterResponseOutput {
 	return o.ApplyT(func(v MembershipEndpointResponse) GkeClusterResponse { return v.GkeCluster }).(GkeClusterResponseOutput)
+}
+
+// Whether the lifecycle of this membership is managed by a google cluster platform service.
+func (o MembershipEndpointResponseOutput) GoogleManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v MembershipEndpointResponse) bool { return v.GoogleManaged }).(pulumi.BoolOutput)
 }
 
 // Useful Kubernetes-specific metadata.
@@ -3687,6 +3720,32 @@ func (o ResourceOptionsResponseOutput) V1beta1Crd() pulumi.BoolOutput {
 	return o.ApplyT(func(v ResourceOptionsResponse) bool { return v.V1beta1Crd }).(pulumi.BoolOutput)
 }
 
+// ScopeLifecycleState describes the state of a Scope resource.
+type ScopeLifecycleStateResponse struct {
+	// The current state of the scope resource.
+	Code string `pulumi:"code"`
+}
+
+// ScopeLifecycleState describes the state of a Scope resource.
+type ScopeLifecycleStateResponseOutput struct{ *pulumi.OutputState }
+
+func (ScopeLifecycleStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScopeLifecycleStateResponse)(nil)).Elem()
+}
+
+func (o ScopeLifecycleStateResponseOutput) ToScopeLifecycleStateResponseOutput() ScopeLifecycleStateResponseOutput {
+	return o
+}
+
+func (o ScopeLifecycleStateResponseOutput) ToScopeLifecycleStateResponseOutputWithContext(ctx context.Context) ScopeLifecycleStateResponseOutput {
+	return o
+}
+
+// The current state of the scope resource.
+func (o ScopeLifecycleStateResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v ScopeLifecycleStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
 // Status specifies state for the subcomponent.
 type StatusResponse struct {
 	// Code specifies AppDevExperienceFeature's subcomponent ready state.
@@ -3731,8 +3790,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigArrayInput)(nil)).Elem(), AuditLogConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityInput)(nil)).Elem(), AuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorityPtrInput)(nil)).Elem(), AuthorityArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingTypeInput)(nil)).Elem(), BindingTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BindingTypeArrayInput)(nil)).Elem(), BindingTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecInput)(nil)).Elem(), CommonFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFeatureSpecPtrInput)(nil)).Elem(), CommonFeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CommonFleetDefaultMemberConfigSpecInput)(nil)).Elem(), CommonFleetDefaultMemberConfigSpecArgs{})
@@ -3775,8 +3834,8 @@ func init() {
 	pulumi.RegisterOutputType(AuthorityOutput{})
 	pulumi.RegisterOutputType(AuthorityPtrOutput{})
 	pulumi.RegisterOutputType(AuthorityResponseOutput{})
-	pulumi.RegisterOutputType(BindingOutput{})
-	pulumi.RegisterOutputType(BindingArrayOutput{})
+	pulumi.RegisterOutputType(BindingTypeOutput{})
+	pulumi.RegisterOutputType(BindingTypeArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
 	pulumi.RegisterOutputType(CommonFeatureSpecOutput{})
@@ -3805,6 +3864,7 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesResourceOutput{})
 	pulumi.RegisterOutputType(KubernetesResourcePtrOutput{})
 	pulumi.RegisterOutputType(KubernetesResourceResponseOutput{})
+	pulumi.RegisterOutputType(MembershipBindingLifecycleStateResponseOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointPtrOutput{})
 	pulumi.RegisterOutputType(MembershipEndpointResponseOutput{})
@@ -3823,5 +3883,6 @@ func init() {
 	pulumi.RegisterOutputType(ResourceOptionsOutput{})
 	pulumi.RegisterOutputType(ResourceOptionsPtrOutput{})
 	pulumi.RegisterOutputType(ResourceOptionsResponseOutput{})
+	pulumi.RegisterOutputType(ScopeLifecycleStateResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 }

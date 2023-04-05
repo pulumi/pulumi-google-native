@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Outputs
         /// Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
         /// </summary>
         public readonly ImmutableArray<string> AllowedPackageNames;
+        /// <summary>
+        /// Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        /// </summary>
+        public readonly bool SupportNonGoogleAppStoreDistribution;
 
         [OutputConstructor]
         private GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse(
             bool allowAllPackageNames,
 
-            ImmutableArray<string> allowedPackageNames)
+            ImmutableArray<string> allowedPackageNames,
+
+            bool supportNonGoogleAppStoreDistribution)
         {
             AllowAllPackageNames = allowAllPackageNames;
             AllowedPackageNames = allowedPackageNames;
+            SupportNonGoogleAppStoreDistribution = supportNonGoogleAppStoreDistribution;
         }
     }
 }

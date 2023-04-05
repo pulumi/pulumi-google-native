@@ -25,6 +25,7 @@ class InstanceArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_share_count: Optional[pulumi.Input[str]] = None,
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FileShareConfigArgs']]] file_shares: File system shares on the instance. For this version, only a single file share is supported.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] max_share_count: The max number of shares allowed.
         :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigArgs']]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceProtocol'] protocol: Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
@@ -59,6 +61,8 @@ class InstanceArgs:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
+        if max_share_count is not None:
+            pulumi.set(__self__, "max_share_count", max_share_count)
         if multi_share_enabled is not None:
             pulumi.set(__self__, "multi_share_enabled", multi_share_enabled)
         if networks is not None:
@@ -164,6 +168,18 @@ class InstanceArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="maxShareCount")
+    def max_share_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        The max number of shares allowed.
+        """
+        return pulumi.get(self, "max_share_count")
+
+    @max_share_count.setter
+    def max_share_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_share_count", value)
+
+    @property
     @pulumi.getter(name="multiShareEnabled")
     def multi_share_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -234,6 +250,7 @@ class Instance(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_share_count: Optional[pulumi.Input[str]] = None,
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -253,6 +270,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: Required. The ID of the instance to create. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] max_share_count: The max number of shares allowed.
         :param pulumi.Input[bool] multi_share_enabled: Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]] networks: VPC networks to which the instance is connected. For this version, only a single network is supported.
         :param pulumi.Input['InstanceProtocol'] protocol: Immutable. The protocol indicates the access protocol for all shares in the instance. This field is immutable and it cannot be changed after the instance has been created. Default value: `NFS_V3`.
@@ -291,6 +309,7 @@ class Instance(pulumi.CustomResource):
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 max_share_count: Optional[pulumi.Input[str]] = None,
                  multi_share_enabled: Optional[pulumi.Input[bool]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -315,6 +334,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
+            __props__.__dict__["max_share_count"] = max_share_count
             __props__.__dict__["multi_share_enabled"] = multi_share_enabled
             __props__.__dict__["networks"] = networks
             __props__.__dict__["project"] = project
@@ -323,7 +343,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["capacity_step_size_gb"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["max_capacity_gb"] = None
-            __props__.__dict__["max_share_count"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None

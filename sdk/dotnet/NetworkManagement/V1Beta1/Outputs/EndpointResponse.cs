@@ -33,6 +33,14 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string CloudSqlInstance;
         /// <summary>
+        /// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol Forwarding. Format: projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
+        /// </summary>
+        public readonly string ForwardingRule;
+        /// <summary>
+        /// Specifies the type of the target of the forwarding rule.
+        /// </summary>
+        public readonly string ForwardingRuleTarget;
+        /// <summary>
         /// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         /// </summary>
         public readonly string GkeMasterCluster;
@@ -44,6 +52,14 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed when the test's destination is a [global load balancer VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
         /// </summary>
         public readonly string IpAddress;
+        /// <summary>
+        /// ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related to load balancers.
+        /// </summary>
+        public readonly string LoadBalancerId;
+        /// <summary>
+        /// Type of the load balancer the forwarding rule points to.
+        /// </summary>
+        public readonly string LoadBalancerType;
         /// <summary>
         /// A Compute Engine network URI.
         /// </summary>
@@ -71,11 +87,19 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
 
             string cloudSqlInstance,
 
+            string forwardingRule,
+
+            string forwardingRuleTarget,
+
             string gkeMasterCluster,
 
             string instance,
 
             string ipAddress,
+
+            string loadBalancerId,
+
+            string loadBalancerType,
 
             string network,
 
@@ -89,9 +113,13 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
             CloudFunction = cloudFunction;
             CloudRunRevision = cloudRunRevision;
             CloudSqlInstance = cloudSqlInstance;
+            ForwardingRule = forwardingRule;
+            ForwardingRuleTarget = forwardingRuleTarget;
             GkeMasterCluster = gkeMasterCluster;
             Instance = instance;
             IpAddress = ipAddress;
+            LoadBalancerId = loadBalancerId;
+            LoadBalancerType = loadBalancerType;
             Network = network;
             NetworkType = networkType;
             Port = port;

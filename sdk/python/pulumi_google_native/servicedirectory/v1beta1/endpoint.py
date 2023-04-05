@@ -248,6 +248,7 @@ class Endpoint(pulumi.CustomResource):
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["endpoint_id", "location", "namespace_id", "project", "service_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -284,6 +285,7 @@ class Endpoint(pulumi.CustomResource):
         __props__.__dict__["port"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["service_id"] = None
+        __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Endpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -362,6 +364,14 @@ class Endpoint(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        A globally unique identifier (in UUID4 format) for this endpoint.
+        """
+        return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter(name="updateTime")

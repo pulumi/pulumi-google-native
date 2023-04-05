@@ -27,6 +27,8 @@ type LookupDlpJobArgs struct {
 }
 
 type LookupDlpJobResult struct {
+	// Events that should occur after the job has completed.
+	ActionDetails []GooglePrivacyDlpV2ActionDetailsResponse `pulumi:"actionDetails"`
 	// Time when the job was created.
 	CreateTime string `pulumi:"createTime"`
 	// Time when the job finished.
@@ -84,6 +86,11 @@ func (o LookupDlpJobResultOutput) ToLookupDlpJobResultOutput() LookupDlpJobResul
 
 func (o LookupDlpJobResultOutput) ToLookupDlpJobResultOutputWithContext(ctx context.Context) LookupDlpJobResultOutput {
 	return o
+}
+
+// Events that should occur after the job has completed.
+func (o LookupDlpJobResultOutput) ActionDetails() GooglePrivacyDlpV2ActionDetailsResponseArrayOutput {
+	return o.ApplyT(func(v LookupDlpJobResult) []GooglePrivacyDlpV2ActionDetailsResponse { return v.ActionDetails }).(GooglePrivacyDlpV2ActionDetailsResponseArrayOutput)
 }
 
 // Time when the job was created.

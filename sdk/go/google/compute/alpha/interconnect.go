@@ -16,6 +16,8 @@ type Interconnect struct {
 
 	// Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 	AdminEnabled pulumi.BoolOutput `pulumi:"adminEnabled"`
+	// [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+	AvailableFeatures pulumi.StringArrayOutput `pulumi:"availableFeatures"`
 	// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
 	CircuitInfos InterconnectCircuitInfoResponseArrayOutput `pulumi:"circuitInfos"`
 	// Creation timestamp in RFC3339 text format.
@@ -63,9 +65,11 @@ type Interconnect struct {
 	RemoteLocation pulumi.StringOutput `pulumi:"remoteLocation"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
+	// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+	RequestedFeatures pulumi.StringArrayOutput `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntOutput `pulumi:"requestedLinkCount"`
-	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -145,6 +149,8 @@ type interconnectArgs struct {
 	RemoteLocation *string `pulumi:"remoteLocation"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
+	// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+	RequestedFeatures []InterconnectRequestedFeaturesItem `pulumi:"requestedFeatures"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
 }
@@ -178,6 +184,8 @@ type InterconnectArgs struct {
 	RemoteLocation pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
+	// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+	RequestedFeatures InterconnectRequestedFeaturesItemArrayInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput
 }
@@ -222,6 +230,11 @@ func (o InterconnectOutput) ToInterconnectOutputWithContext(ctx context.Context)
 // Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
 func (o InterconnectOutput) AdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.BoolOutput { return v.AdminEnabled }).(pulumi.BoolOutput)
+}
+
+// [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+func (o InterconnectOutput) AvailableFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.AvailableFeatures }).(pulumi.StringArrayOutput)
 }
 
 // A list of CircuitInfo objects, that describe the individual circuits in this LAG.
@@ -343,12 +356,17 @@ func (o InterconnectOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
 
+// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+func (o InterconnectOutput) RequestedFeatures() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Interconnect) pulumi.StringArrayOutput { return v.RequestedFeatures }).(pulumi.StringArrayOutput)
+}
+
 // Target number of physical links in the link bundle, as requested by the customer.
 func (o InterconnectOutput) RequestedLinkCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.IntOutput { return v.RequestedLinkCount }).(pulumi.IntOutput)
 }
 
-// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+// Reserved for future use.
 func (o InterconnectOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Interconnect) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }

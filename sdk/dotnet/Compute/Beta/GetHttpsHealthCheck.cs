@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public static class GetHttpsHealthCheck
     {
         /// <summary>
-        /// Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+        /// Returns the specified HttpsHealthCheck resource.
         /// </summary>
         public static Task<GetHttpsHealthCheckResult> InvokeAsync(GetHttpsHealthCheckArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHttpsHealthCheckResult>("google-native:compute/beta:getHttpsHealthCheck", args ?? new GetHttpsHealthCheckArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by making a list() request.
+        /// Returns the specified HttpsHealthCheck resource.
         /// </summary>
         public static Output<GetHttpsHealthCheckResult> Invoke(GetHttpsHealthCheckInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHttpsHealthCheckResult>("google-native:compute/beta:getHttpsHealthCheck", args ?? new GetHttpsHealthCheckInvokeArgs(), options.WithDefaults());
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// The request path of the HTTPS health check request. The default value is "/".
+        /// The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
         /// </summary>
         public readonly string RequestPath;
         /// <summary>

@@ -8,7 +8,7 @@ export const DatabaseDatabaseDialect = {
      */
     DatabaseDialectUnspecified: "DATABASE_DIALECT_UNSPECIFIED",
     /**
-     * Google standard SQL.
+     * GoogleSQL supported SQL.
      */
     GoogleStandardSql: "GOOGLE_STANDARD_SQL",
     /**

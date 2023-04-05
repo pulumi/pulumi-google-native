@@ -73,7 +73,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
-        /// The request path of the HTTPS health check request. The default value is "/".
+        /// The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
         /// </summary>
         [Output("requestPath")]
         public Output<string> RequestPath { get; private set; } = null!;
@@ -203,7 +203,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? RequestId { get; set; }
 
         /// <summary>
-        /// The request path of the HTTPS health check request. The default value is "/".
+        /// The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
         /// </summary>
         [Input("requestPath")]
         public Input<string>? RequestPath { get; set; }

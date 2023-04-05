@@ -81,7 +81,7 @@ class GetPrivateConnectionResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The resource's name.
+        The name of the resource.
         """
         return pulumi.get(self, "name")
 
@@ -89,7 +89,7 @@ class GetPrivateConnectionResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        The state of the Private Connection.
+        The state of the private connection.
         """
         return pulumi.get(self, "state")
 
@@ -105,7 +105,7 @@ class GetPrivateConnectionResult:
     @pulumi.getter(name="vpcPeeringConfig")
     def vpc_peering_config(self) -> 'outputs.VpcPeeringConfigResponse':
         """
-        VPC Peering Config.
+        VPC peering configuration.
         """
         return pulumi.get(self, "vpc_peering_config")
 

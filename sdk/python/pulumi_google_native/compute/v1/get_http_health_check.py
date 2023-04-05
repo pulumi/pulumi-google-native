@@ -124,7 +124,7 @@ class GetHttpHealthCheckResult:
     @pulumi.getter(name="requestPath")
     def request_path(self) -> str:
         """
-        The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+        The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
         """
         return pulumi.get(self, "request_path")
 
@@ -177,7 +177,7 @@ def get_http_health_check(http_health_check: Optional[str] = None,
                           project: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetHttpHealthCheckResult:
     """
-    Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by making a list() request.
+    Returns the specified HttpHealthCheck resource.
     """
     __args__ = dict()
     __args__['httpHealthCheck'] = http_health_check
@@ -205,6 +205,6 @@ def get_http_health_check_output(http_health_check: Optional[pulumi.Input[str]] 
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHttpHealthCheckResult]:
     """
-    Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by making a list() request.
+    Returns the specified HttpHealthCheck resource.
     """
     ...

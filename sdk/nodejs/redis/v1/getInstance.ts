@@ -40,6 +40,10 @@ export interface GetInstanceResult {
      */
     readonly authorizedNetwork: string;
     /**
+     * Optional. The available maintenance versions that an instance could update to.
+     */
+    readonly availableMaintenanceVersions: string[];
+    /**
      * Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
      */
     readonly connectMode: string;
@@ -79,6 +83,10 @@ export interface GetInstanceResult {
      * Date and time of upcoming maintenance events which have been scheduled.
      */
     readonly maintenanceSchedule: outputs.redis.v1.MaintenanceScheduleResponse;
+    /**
+     * Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+     */
+    readonly maintenanceVersion: string;
     /**
      * Redis memory size in GiB.
      */

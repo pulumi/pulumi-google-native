@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetInstanceTemplate
     {
         /// <summary>
-        /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+        /// Returns the specified instance template.
         /// </summary>
         public static Task<GetInstanceTemplateResult> InvokeAsync(GetInstanceTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTemplateResult>("google-native:compute/v1:getInstanceTemplate", args ?? new GetInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+        /// Returns the specified instance template.
         /// </summary>
         public static Output<GetInstanceTemplateResult> Invoke(GetInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTemplateResult>("google-native:compute/v1:getInstanceTemplate", args ?? new GetInstanceTemplateInvokeArgs(), options.WithDefaults());
@@ -78,6 +78,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.InstancePropertiesResponse Properties;
         /// <summary>
+        /// URL of the region where the instance template resides. Only applicable for regional resources.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// The URL for this instance template. The server defines this URL.
         /// </summary>
         public readonly string SelfLink;
@@ -102,6 +106,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.InstancePropertiesResponse properties,
 
+            string region,
+
             string selfLink,
 
             string sourceInstance,
@@ -113,6 +119,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Kind = kind;
             Name = name;
             Properties = properties;
+            Region = region;
             SelfLink = selfLink;
             SourceInstance = sourceInstance;
             SourceInstanceParams = sourceInstanceParams;

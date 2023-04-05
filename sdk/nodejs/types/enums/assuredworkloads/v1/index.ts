@@ -2,6 +2,62 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain = {
+    /**
+     * No error domain
+     */
+    EkmProvisioningErrorDomainUnspecified: "EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED",
+    /**
+     * Error but domain is unspecified.
+     */
+    UnspecifiedError: "UNSPECIFIED_ERROR",
+    /**
+     * Internal logic breaks within provisioning code.
+     */
+    GoogleServerError: "GOOGLE_SERVER_ERROR",
+    /**
+     * Error occurred with the customer not granting permission/creating resource.
+     */
+    ExternalUserError: "EXTERNAL_USER_ERROR",
+    /**
+     * Error occurred within the partner’s provisioning cluster.
+     */
+    ExternalPartnerError: "EXTERNAL_PARTNER_ERROR",
+    /**
+     * Resource wasn't provisioned in the required 7 day time period
+     */
+    TimeoutError: "TIMEOUT_ERROR",
+} as const;
+
+/**
+ * Indicates Ekm provisioning error if any.
+ */
+export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningErrorDomain];
+
+export const GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState = {
+    /**
+     * Default State for Ekm Provisioning
+     */
+    EkmProvisioningStateUnspecified: "EKM_PROVISIONING_STATE_UNSPECIFIED",
+    /**
+     * Pending State for Ekm Provisioning
+     */
+    EkmProvisioningStatePending: "EKM_PROVISIONING_STATE_PENDING",
+    /**
+     * Failed State for Ekm Provisioning
+     */
+    EkmProvisioningStateFailed: "EKM_PROVISIONING_STATE_FAILED",
+    /**
+     * Completed State for Ekm Provisioning
+     */
+    EkmProvisioningStateCompleted: "EKM_PROVISIONING_STATE_COMPLETED",
+} as const;
+
+/**
+ * Indicates Ekm enrollment Provisioning of a given workload.
+ */
+export type GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState = (typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState)[keyof typeof GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseEkmProvisioningState];
+
 export const GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType = {
     /**
      * Unknown resource type.
@@ -87,6 +143,10 @@ export const WorkloadComplianceRegime = {
      * Assured Workloads for Israel Regions
      */
     IsrRegions: "ISR_REGIONS",
+    /**
+     * Assured Workloads for Israel Regions
+     */
+    IsrRegionsAndSupport: "ISR_REGIONS_AND_SUPPORT",
     /**
      * Assured Workloads for Canada Protected B regime
      */

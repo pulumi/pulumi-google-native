@@ -304,9 +304,9 @@ class SamlIdpConfigArgs:
         """
         SAML IDP (identity provider) configuration.
         :param pulumi.Input[str] entity_id: The SAML **Entity ID** of the identity provider.
-        :param pulumi.Input[str] single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        :param pulumi.Input[str] single_sign_on_service_uri: The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
         :param pulumi.Input[str] change_password_uri: The **Change Password URL** of the identity provider. Users will be sent to this URL when changing their passwords at `myaccount.google.com`. This takes precedence over the change password URL configured at customer-level. Must use `HTTPS`.
-        :param pulumi.Input[str] logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        :param pulumi.Input[str] logout_redirect_uri: The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
         """
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "single_sign_on_service_uri", single_sign_on_service_uri)
@@ -331,7 +331,7 @@ class SamlIdpConfigArgs:
     @pulumi.getter(name="singleSignOnServiceUri")
     def single_sign_on_service_uri(self) -> pulumi.Input[str]:
         """
-        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Currently assumed to accept the `HTTP-Redirect` binding.
+        The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
         """
         return pulumi.get(self, "single_sign_on_service_uri")
 
@@ -355,7 +355,7 @@ class SamlIdpConfigArgs:
     @pulumi.getter(name="logoutRedirectUri")
     def logout_redirect_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is currently not supported. Must use `HTTPS`.
+        The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
         """
         return pulumi.get(self, "logout_redirect_uri")
 

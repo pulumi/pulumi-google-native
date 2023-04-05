@@ -23,6 +23,7 @@ __all__ = [
     'DatabaseTypeArgs',
     'DumpFlagsArgs',
     'DumpFlagArgs',
+    'EncryptionConfigArgs',
     'ExprArgs',
     'ForwardSshTunnelConnectivityArgs',
     'MachineConfigArgs',
@@ -87,16 +88,20 @@ class AlloyDbSettingsArgs:
     def __init__(__self__, *,
                  initial_user: pulumi.Input['UserPasswordArgs'],
                  vpc_network: pulumi.Input[str],
+                 encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  primary_instance_settings: Optional[pulumi.Input['PrimaryInstanceSettingsArgs']] = None):
         """
         Settings for creating an AlloyDB cluster.
         :param pulumi.Input['UserPasswordArgs'] initial_user: Input only. Initial user to setup during cluster creation. Required.
         :param pulumi.Input[str] vpc_network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
         """
         pulumi.set(__self__, "initial_user", initial_user)
         pulumi.set(__self__, "vpc_network", vpc_network)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if primary_instance_settings is not None:
@@ -125,6 +130,18 @@ class AlloyDbSettingsArgs:
     @vpc_network.setter
     def vpc_network(self, value: pulumi.Input[str]):
         pulumi.set(self, "vpc_network", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['EncryptionConfigArgs']]:
+        """
+        Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter
@@ -634,9 +651,9 @@ class DatabaseEngineInfoArgs:
                  engine: pulumi.Input['DatabaseEngineInfoEngine'],
                  version: pulumi.Input[str]):
         """
-        The type and version of a source or destination DB.
-        :param pulumi.Input['DatabaseEngineInfoEngine'] engine: Engine Type.
-        :param pulumi.Input[str] version: Engine named version, for e.g. 12.c.1
+        The type and version of a source or destination database.
+        :param pulumi.Input['DatabaseEngineInfoEngine'] engine: Engine type.
+        :param pulumi.Input[str] version: Engine named version, for example 12.c.1.
         """
         pulumi.set(__self__, "engine", engine)
         pulumi.set(__self__, "version", version)
@@ -645,7 +662,7 @@ class DatabaseEngineInfoArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input['DatabaseEngineInfoEngine']:
         """
-        Engine Type.
+        Engine type.
         """
         return pulumi.get(self, "engine")
 
@@ -657,7 +674,7 @@ class DatabaseEngineInfoArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        Engine named version, for e.g. 12.c.1
+        Engine named version, for example 12.c.1.
         """
         return pulumi.get(self, "version")
 
@@ -768,6 +785,30 @@ class DumpFlagArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class EncryptionConfigArgs:
+    def __init__(__self__, *,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+        :param pulumi.Input[str] kms_key_name: The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
 
 
 @pulumi.input_type
@@ -1705,7 +1746,7 @@ class SslConfigArgs:
 class StaticIpConnectivityArgs:
     def __init__(__self__):
         """
-        The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+        The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
         """
         pass
 
@@ -1765,9 +1806,9 @@ class VpcPeeringConfigArgs:
                  subnet: pulumi.Input[str],
                  vpc_name: pulumi.Input[str]):
         """
-        The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+        The VPC peering configuration is used to create VPC peering with the consumer's VPC.
         :param pulumi.Input[str] subnet: A free subnet for peering. (CIDR of /29)
-        :param pulumi.Input[str] vpc_name: Fully qualified name of the VPC DMS will peer to.
+        :param pulumi.Input[str] vpc_name: Fully qualified name of the VPC that Database Migration Service will peer to.
         """
         pulumi.set(__self__, "subnet", subnet)
         pulumi.set(__self__, "vpc_name", vpc_name)
@@ -1788,7 +1829,7 @@ class VpcPeeringConfigArgs:
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> pulumi.Input[str]:
         """
-        Fully qualified name of the VPC DMS will peer to.
+        Fully qualified name of the VPC that Database Migration Service will peer to.
         """
         return pulumi.get(self, "vpc_name")
 

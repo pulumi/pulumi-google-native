@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("resourcePolicies")]
+        private InputMap<string>? _resourcePolicies;
+
+        /// <summary>
+        /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        /// </summary>
+        public InputMap<string> ResourcePolicies
+        {
+            get => _resourcePolicies ?? (_resourcePolicies = new InputMap<string>());
+            set => _resourcePolicies = value;
+        }
+
         /// <summary>
         /// Specify share-settings to create a shared reservation. This property is optional. For more information about the syntax and options for this field and its subfields, see the guide for creating a shared reservation.
         /// </summary>

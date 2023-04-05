@@ -393,7 +393,7 @@ const (
 	// Measure.
 	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeMeasure = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("MEASURE")
 	// Parameter.
-	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeParemeter = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PAREMETER")
+	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeParameter = GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType("PARAMETER")
 )
 
 func (GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType) ElementType() reflect.Type {

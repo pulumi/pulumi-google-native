@@ -3126,6 +3126,198 @@ func (o FeatureSettingsResponseOutput) UseContainerOptimizedOs() pulumi.BoolOutp
 	return o.ApplyT(func(v FeatureSettingsResponse) bool { return v.UseContainerOptimizedOs }).(pulumi.BoolOutput)
 }
 
+// Runtime settings for the App Engine flexible environment.
+type FlexibleRuntimeSettings struct {
+	// The operating system of the application runtime.
+	OperatingSystem *string `pulumi:"operatingSystem"`
+	// The runtime version of an App Engine flexible application.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// FlexibleRuntimeSettingsInput is an input type that accepts FlexibleRuntimeSettingsArgs and FlexibleRuntimeSettingsOutput values.
+// You can construct a concrete instance of `FlexibleRuntimeSettingsInput` via:
+//
+//	FlexibleRuntimeSettingsArgs{...}
+type FlexibleRuntimeSettingsInput interface {
+	pulumi.Input
+
+	ToFlexibleRuntimeSettingsOutput() FlexibleRuntimeSettingsOutput
+	ToFlexibleRuntimeSettingsOutputWithContext(context.Context) FlexibleRuntimeSettingsOutput
+}
+
+// Runtime settings for the App Engine flexible environment.
+type FlexibleRuntimeSettingsArgs struct {
+	// The operating system of the application runtime.
+	OperatingSystem pulumi.StringPtrInput `pulumi:"operatingSystem"`
+	// The runtime version of an App Engine flexible application.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (FlexibleRuntimeSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (i FlexibleRuntimeSettingsArgs) ToFlexibleRuntimeSettingsOutput() FlexibleRuntimeSettingsOutput {
+	return i.ToFlexibleRuntimeSettingsOutputWithContext(context.Background())
+}
+
+func (i FlexibleRuntimeSettingsArgs) ToFlexibleRuntimeSettingsOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleRuntimeSettingsOutput)
+}
+
+func (i FlexibleRuntimeSettingsArgs) ToFlexibleRuntimeSettingsPtrOutput() FlexibleRuntimeSettingsPtrOutput {
+	return i.ToFlexibleRuntimeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i FlexibleRuntimeSettingsArgs) ToFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleRuntimeSettingsOutput).ToFlexibleRuntimeSettingsPtrOutputWithContext(ctx)
+}
+
+// FlexibleRuntimeSettingsPtrInput is an input type that accepts FlexibleRuntimeSettingsArgs, FlexibleRuntimeSettingsPtr and FlexibleRuntimeSettingsPtrOutput values.
+// You can construct a concrete instance of `FlexibleRuntimeSettingsPtrInput` via:
+//
+//	        FlexibleRuntimeSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FlexibleRuntimeSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFlexibleRuntimeSettingsPtrOutput() FlexibleRuntimeSettingsPtrOutput
+	ToFlexibleRuntimeSettingsPtrOutputWithContext(context.Context) FlexibleRuntimeSettingsPtrOutput
+}
+
+type flexibleRuntimeSettingsPtrType FlexibleRuntimeSettingsArgs
+
+func FlexibleRuntimeSettingsPtr(v *FlexibleRuntimeSettingsArgs) FlexibleRuntimeSettingsPtrInput {
+	return (*flexibleRuntimeSettingsPtrType)(v)
+}
+
+func (*flexibleRuntimeSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (i *flexibleRuntimeSettingsPtrType) ToFlexibleRuntimeSettingsPtrOutput() FlexibleRuntimeSettingsPtrOutput {
+	return i.ToFlexibleRuntimeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *flexibleRuntimeSettingsPtrType) ToFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FlexibleRuntimeSettingsPtrOutput)
+}
+
+// Runtime settings for the App Engine flexible environment.
+type FlexibleRuntimeSettingsOutput struct{ *pulumi.OutputState }
+
+func (FlexibleRuntimeSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (o FlexibleRuntimeSettingsOutput) ToFlexibleRuntimeSettingsOutput() FlexibleRuntimeSettingsOutput {
+	return o
+}
+
+func (o FlexibleRuntimeSettingsOutput) ToFlexibleRuntimeSettingsOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsOutput {
+	return o
+}
+
+func (o FlexibleRuntimeSettingsOutput) ToFlexibleRuntimeSettingsPtrOutput() FlexibleRuntimeSettingsPtrOutput {
+	return o.ToFlexibleRuntimeSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FlexibleRuntimeSettingsOutput) ToFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FlexibleRuntimeSettings) *FlexibleRuntimeSettings {
+		return &v
+	}).(FlexibleRuntimeSettingsPtrOutput)
+}
+
+// The operating system of the application runtime.
+func (o FlexibleRuntimeSettingsOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleRuntimeSettings) *string { return v.OperatingSystem }).(pulumi.StringPtrOutput)
+}
+
+// The runtime version of an App Engine flexible application.
+func (o FlexibleRuntimeSettingsOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FlexibleRuntimeSettings) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type FlexibleRuntimeSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FlexibleRuntimeSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FlexibleRuntimeSettings)(nil)).Elem()
+}
+
+func (o FlexibleRuntimeSettingsPtrOutput) ToFlexibleRuntimeSettingsPtrOutput() FlexibleRuntimeSettingsPtrOutput {
+	return o
+}
+
+func (o FlexibleRuntimeSettingsPtrOutput) ToFlexibleRuntimeSettingsPtrOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsPtrOutput {
+	return o
+}
+
+func (o FlexibleRuntimeSettingsPtrOutput) Elem() FlexibleRuntimeSettingsOutput {
+	return o.ApplyT(func(v *FlexibleRuntimeSettings) FlexibleRuntimeSettings {
+		if v != nil {
+			return *v
+		}
+		var ret FlexibleRuntimeSettings
+		return ret
+	}).(FlexibleRuntimeSettingsOutput)
+}
+
+// The operating system of the application runtime.
+func (o FlexibleRuntimeSettingsPtrOutput) OperatingSystem() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleRuntimeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OperatingSystem
+	}).(pulumi.StringPtrOutput)
+}
+
+// The runtime version of an App Engine flexible application.
+func (o FlexibleRuntimeSettingsPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FlexibleRuntimeSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Runtime settings for the App Engine flexible environment.
+type FlexibleRuntimeSettingsResponse struct {
+	// The operating system of the application runtime.
+	OperatingSystem string `pulumi:"operatingSystem"`
+	// The runtime version of an App Engine flexible application.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+}
+
+// Runtime settings for the App Engine flexible environment.
+type FlexibleRuntimeSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (FlexibleRuntimeSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FlexibleRuntimeSettingsResponse)(nil)).Elem()
+}
+
+func (o FlexibleRuntimeSettingsResponseOutput) ToFlexibleRuntimeSettingsResponseOutput() FlexibleRuntimeSettingsResponseOutput {
+	return o
+}
+
+func (o FlexibleRuntimeSettingsResponseOutput) ToFlexibleRuntimeSettingsResponseOutputWithContext(ctx context.Context) FlexibleRuntimeSettingsResponseOutput {
+	return o
+}
+
+// The operating system of the application runtime.
+func (o FlexibleRuntimeSettingsResponseOutput) OperatingSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleRuntimeSettingsResponse) string { return v.OperatingSystem }).(pulumi.StringOutput)
+}
+
+// The runtime version of an App Engine flexible application.
+func (o FlexibleRuntimeSettingsResponseOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v FlexibleRuntimeSettingsResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
 // Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
 type HealthCheck struct {
 	// Interval between health checks.
@@ -7698,6 +7890,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ErrorHandlerArrayInput)(nil)).Elem(), ErrorHandlerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSettingsInput)(nil)).Elem(), FeatureSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSettingsPtrInput)(nil)).Elem(), FeatureSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleRuntimeSettingsInput)(nil)).Elem(), FlexibleRuntimeSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FlexibleRuntimeSettingsPtrInput)(nil)).Elem(), FlexibleRuntimeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckInput)(nil)).Elem(), HealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HealthCheckPtrInput)(nil)).Elem(), HealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*IdentityAwareProxyInput)(nil)).Elem(), IdentityAwareProxyArgs{})
@@ -7779,6 +7973,9 @@ func init() {
 	pulumi.RegisterOutputType(FeatureSettingsOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSettingsResponseOutput{})
+	pulumi.RegisterOutputType(FlexibleRuntimeSettingsOutput{})
+	pulumi.RegisterOutputType(FlexibleRuntimeSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FlexibleRuntimeSettingsResponseOutput{})
 	pulumi.RegisterOutputType(HealthCheckOutput{})
 	pulumi.RegisterOutputType(HealthCheckPtrOutput{})
 	pulumi.RegisterOutputType(HealthCheckResponseOutput{})

@@ -54,8 +54,11 @@ __all__ = [
     'ConsistentHashLoadBalancerSettingsHttpCookieArgs',
     'ConsistentHashLoadBalancerSettingsArgs',
     'CorsPolicyArgs',
+    'CustomErrorResponsePolicyCustomErrorResponseRuleArgs',
+    'CustomErrorResponsePolicyArgs',
     'CustomerEncryptionKeyArgs',
     'DeprecationStatusArgs',
+    'DiskAsyncReplicationArgs',
     'DiskInstantiationConfigArgs',
     'DiskParamsArgs',
     'DisplayDeviceArgs',
@@ -148,6 +151,7 @@ __all__ = [
     'ReservationArgs',
     'ResourceCommitmentArgs',
     'ResourcePolicyDailyCycleArgs',
+    'ResourcePolicyDiskConsistencyGroupPolicyArgs',
     'ResourcePolicyGroupPlacementPolicyArgs',
     'ResourcePolicyHourlyCycleArgs',
     'ResourcePolicyInstanceSchedulePolicyScheduleArgs',
@@ -348,14 +352,14 @@ class AccessConfigArgs:
                  type: Optional[pulumi.Input['AccessConfigType']] = None):
         """
         An access configuration attached to an instance's network interface. Only one access config per instance is supported.
-        :param pulumi.Input[str] external_ipv6: The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
-        :param pulumi.Input[int] external_ipv6_prefix_length: The prefix length of the external IPv6 range.
-        :param pulumi.Input[str] name: The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
-        :param pulumi.Input[str] nat_ip: An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+        :param pulumi.Input[str] external_ipv6: Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
+        :param pulumi.Input[int] external_ipv6_prefix_length: Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
+        :param pulumi.Input[str] name: The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
+        :param pulumi.Input[str] nat_ip: Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         :param pulumi.Input['AccessConfigNetworkTier'] network_tier: This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         :param pulumi.Input[str] public_ptr_domain_name: The DNS domain name for the public PTR record. You can set this field only if the `setPublicPtr` field is enabled in accessConfig. If this field is unspecified in ipv6AccessConfig, a default PTR record will be createc for first IP in associated external IPv6 range.
         :param pulumi.Input[bool] set_public_ptr: Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
-        :param pulumi.Input['AccessConfigType'] type: The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+        :param pulumi.Input['AccessConfigType'] type: The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
         """
         if external_ipv6 is not None:
             pulumi.set(__self__, "external_ipv6", external_ipv6)
@@ -378,7 +382,7 @@ class AccessConfigArgs:
     @pulumi.getter(name="externalIpv6")
     def external_ipv6(self) -> Optional[pulumi.Input[str]]:
         """
-        The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "external_ipv6")
 
@@ -390,7 +394,7 @@ class AccessConfigArgs:
     @pulumi.getter(name="externalIpv6PrefixLength")
     def external_ipv6_prefix_length(self) -> Optional[pulumi.Input[int]]:
         """
-        The prefix length of the external IPv6 range.
+        Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
         """
         return pulumi.get(self, "external_ipv6_prefix_length")
 
@@ -402,7 +406,7 @@ class AccessConfigArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+        The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
         """
         return pulumi.get(self, "name")
 
@@ -414,7 +418,7 @@ class AccessConfigArgs:
     @pulumi.getter(name="natIP")
     def nat_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+        Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
         """
         return pulumi.get(self, "nat_ip")
 
@@ -462,7 +466,7 @@ class AccessConfigArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['AccessConfigType']]:
         """
-        The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+        The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
         """
         return pulumi.get(self, "type")
 
@@ -2921,7 +2925,7 @@ class BindingArgs:
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input[str] binding_id: This is deprecated and has no effect. Do not use.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if binding_id is not None:
@@ -2961,7 +2965,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -3591,6 +3595,102 @@ class CorsPolicyArgs:
 
 
 @pulumi.input_type
+class CustomErrorResponsePolicyCustomErrorResponseRuleArgs:
+    def __init__(__self__, *,
+                 match_response_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 override_response_code: Optional[pulumi.Input[int]] = None,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] match_response_codes: Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        :param pulumi.Input[int] override_response_code: The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        :param pulumi.Input[str] path: The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+        """
+        if match_response_codes is not None:
+            pulumi.set(__self__, "match_response_codes", match_response_codes)
+        if override_response_code is not None:
+            pulumi.set(__self__, "override_response_code", override_response_code)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="matchResponseCodes")
+    def match_response_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+        """
+        return pulumi.get(self, "match_response_codes")
+
+    @match_response_codes.setter
+    def match_response_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "match_response_codes", value)
+
+    @property
+    @pulumi.getter(name="overrideResponseCode")
+    def override_response_code(self) -> Optional[pulumi.Input[int]]:
+        """
+        The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+        """
+        return pulumi.get(self, "override_response_code")
+
+    @override_response_code.setter
+    def override_response_code(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "override_response_code", value)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class CustomErrorResponsePolicyArgs:
+    def __init__(__self__, *,
+                 error_response_rules: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]]] = None,
+                 error_service: Optional[pulumi.Input[str]] = None):
+        """
+        Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+        :param pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]] error_response_rules: Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        :param pulumi.Input[str] error_service: The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+        """
+        if error_response_rules is not None:
+            pulumi.set(__self__, "error_response_rules", error_response_rules)
+        if error_service is not None:
+            pulumi.set(__self__, "error_service", error_service)
+
+    @property
+    @pulumi.getter(name="errorResponseRules")
+    def error_response_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]]]:
+        """
+        Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+        """
+        return pulumi.get(self, "error_response_rules")
+
+    @error_response_rules.setter
+    def error_response_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CustomErrorResponsePolicyCustomErrorResponseRuleArgs']]]]):
+        pulumi.set(self, "error_response_rules", value)
+
+    @property
+    @pulumi.getter(name="errorService")
+    def error_service(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+        """
+        return pulumi.get(self, "error_service")
+
+    @error_service.setter
+    def error_service(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_service", value)
+
+
+@pulumi.input_type
 class CustomerEncryptionKeyArgs:
     def __init__(__self__, *,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
@@ -3763,6 +3863,29 @@ class DeprecationStatusArgs:
     @state_override.setter
     def state_override(self, value: Optional[pulumi.Input['RolloutPolicyArgs']]):
         pulumi.set(self, "state_override", value)
+
+
+@pulumi.input_type
+class DiskAsyncReplicationArgs:
+    def __init__(__self__, *,
+                 disk: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] disk: The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        """
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk", value)
 
 
 @pulumi.input_type
@@ -4914,7 +5037,7 @@ class GuestOsFeatureArgs:
                  type: Optional[pulumi.Input['GuestOsFeatureType']] = None):
         """
         Guest OS features.
-        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        :param pulumi.Input['GuestOsFeatureType'] type: The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -4923,7 +5046,7 @@ class GuestOsFeatureArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GuestOsFeatureType']]:
         """
-        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+        The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
         """
         return pulumi.get(self, "type")
 
@@ -6315,6 +6438,7 @@ class HttpRouteRuleMatchArgs:
 @pulumi.input_type
 class HttpRouteRuleArgs:
     def __init__(__self__, *,
+                 custom_error_response_policy: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  header_action: Optional[pulumi.Input['HttpHeaderActionArgs']] = None,
                  http_filter_configs: Optional[pulumi.Input[Sequence[pulumi.Input['HttpFilterConfigArgs']]]] = None,
@@ -6326,6 +6450,7 @@ class HttpRouteRuleArgs:
                  url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None):
         """
         The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
+        :param pulumi.Input['CustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param pulumi.Input[str] description: The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
         :param pulumi.Input['HttpHeaderActionArgs'] header_action: Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input['HttpFilterConfigArgs']]] http_filter_configs: Outbound route specific configuration for networkservices.HttpFilter resources enabled by Traffic Director. httpFilterConfigs only applies for load balancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -6336,6 +6461,8 @@ class HttpRouteRuleArgs:
         :param pulumi.Input[str] service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         :param pulumi.Input['HttpRedirectActionArgs'] url_redirect: When this rule is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
+        if custom_error_response_policy is not None:
+            pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if header_action is not None:
@@ -6354,6 +6481,18 @@ class HttpRouteRuleArgs:
             pulumi.set(__self__, "service", service)
         if url_redirect is not None:
             pulumi.set(__self__, "url_redirect", url_redirect)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]:
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
+
+    @custom_error_response_policy.setter
+    def custom_error_response_policy(self, value: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "custom_error_response_policy", value)
 
     @property
     @pulumi.getter
@@ -8290,13 +8429,13 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AliasIpRangeArgs']]] alias_ip_ranges: An array of alias IP ranges for this network interface. You can only specify this field for network interfaces in VPC networks.
         :param pulumi.Input[int] internal_ipv6_prefix_length: The prefix length of the primary internal IPv6 range.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigArgs']]] ipv6_access_configs: An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
-        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface.
+        :param pulumi.Input[str] ipv6_address: An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         :param pulumi.Input[str] network: URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{project_number}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: An IPv4 internal IP address to assign to the instance for this network interface. If not specified by the user, an unused internal IP is assigned by the system.
         :param pulumi.Input['NetworkInterfaceNicType'] nic_type: The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
-        :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+        :param pulumi.Input['NetworkInterfaceStackType'] stack_type: The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
         :param pulumi.Input[str] subnetwork: The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         """
         if access_configs is not None:
@@ -8376,7 +8515,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="ipv6Address")
     def ipv6_address(self) -> Optional[pulumi.Input[str]]:
         """
-        An IPv6 internal network address for this network interface.
+        An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
         """
         return pulumi.get(self, "ipv6_address")
 
@@ -8448,7 +8587,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> Optional[pulumi.Input['NetworkInterfaceStackType']]:
         """
-        The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+        The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
         """
         return pulumi.get(self, "stack_type")
 
@@ -9107,6 +9246,7 @@ class PacketMirroringNetworkInfoArgs:
 @pulumi.input_type
 class PathMatcherArgs:
     def __init__(__self__, *,
+                 default_custom_error_response_policy: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']] = None,
                  default_route_action: Optional[pulumi.Input['HttpRouteActionArgs']] = None,
                  default_service: Optional[pulumi.Input[str]] = None,
                  default_url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None,
@@ -9117,6 +9257,7 @@ class PathMatcherArgs:
                  route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]]] = None):
         """
         A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
+        :param pulumi.Input['CustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param pulumi.Input['HttpRouteActionArgs'] default_route_action: defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
         :param pulumi.Input[str] default_service: The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use 
         :param pulumi.Input['HttpRedirectActionArgs'] default_url_redirect: When none of the specified pathRules or routeRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
@@ -9126,6 +9267,8 @@ class PathMatcherArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PathRuleArgs']]] path_rules: The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one of pathRules or routeRules must be set.
         :param pulumi.Input[Sequence[pulumi.Input['HttpRouteRuleArgs']]] route_rules: The list of HTTP route rules. Use this list instead of pathRules when advanced route matching and routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest number. Within a given pathMatcher, you can set only one of pathRules or routeRules.
         """
+        if default_custom_error_response_policy is not None:
+            pulumi.set(__self__, "default_custom_error_response_policy", default_custom_error_response_policy)
         if default_route_action is not None:
             pulumi.set(__self__, "default_route_action", default_route_action)
         if default_service is not None:
@@ -9142,6 +9285,18 @@ class PathMatcherArgs:
             pulumi.set(__self__, "path_rules", path_rules)
         if route_rules is not None:
             pulumi.set(__self__, "route_rules", route_rules)
+
+    @property
+    @pulumi.getter(name="defaultCustomErrorResponsePolicy")
+    def default_custom_error_response_policy(self) -> Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]:
+        """
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "default_custom_error_response_policy")
+
+    @default_custom_error_response_policy.setter
+    def default_custom_error_response_policy(self, value: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "default_custom_error_response_policy", value)
 
     @property
     @pulumi.getter(name="defaultRouteAction")
@@ -9243,17 +9398,21 @@ class PathMatcherArgs:
 @pulumi.input_type
 class PathRuleArgs:
     def __init__(__self__, *,
+                 custom_error_response_policy: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']] = None,
                  paths: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  route_action: Optional[pulumi.Input['HttpRouteActionArgs']] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  url_redirect: Optional[pulumi.Input['HttpRedirectActionArgs']] = None):
         """
         A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
+        :param pulumi.Input['CustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] paths: The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
         :param pulumi.Input['HttpRouteActionArgs'] route_action: In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
         :param pulumi.Input[str] service: The full or partial URL of the backend service resource to which traffic is directed if this rule is matched. If routeAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if service is specified, routeAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of urlRedirect, service or routeAction.weightedBackendService must be set.
         :param pulumi.Input['HttpRedirectActionArgs'] url_redirect: When a path pattern is matched, the request is redirected to a URL specified by urlRedirect. If urlRedirect is specified, service or routeAction must not be set. Not supported when the URL map is bound to a target gRPC proxy.
         """
+        if custom_error_response_policy is not None:
+            pulumi.set(__self__, "custom_error_response_policy", custom_error_response_policy)
         if paths is not None:
             pulumi.set(__self__, "paths", paths)
         if route_action is not None:
@@ -9262,6 +9421,18 @@ class PathRuleArgs:
             pulumi.set(__self__, "service", service)
         if url_redirect is not None:
             pulumi.set(__self__, "url_redirect", url_redirect)
+
+    @property
+    @pulumi.getter(name="customErrorResponsePolicy")
+    def custom_error_response_policy(self) -> Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]:
+        """
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+        """
+        return pulumi.get(self, "custom_error_response_policy")
+
+    @custom_error_response_policy.setter
+    def custom_error_response_policy(self, value: Optional[pulumi.Input['CustomErrorResponsePolicyArgs']]):
+        pulumi.set(self, "custom_error_response_policy", value)
 
     @property
     @pulumi.getter
@@ -9697,21 +9868,34 @@ class ResourcePolicyDailyCycleArgs:
 
 
 @pulumi.input_type
+class ResourcePolicyDiskConsistencyGroupPolicyArgs:
+    def __init__(__self__):
+        """
+        Resource policy for disk consistency groups.
+        """
+        pass
+
+
+@pulumi.input_type
 class ResourcePolicyGroupPlacementPolicyArgs:
     def __init__(__self__, *,
                  availability_domain_count: Optional[pulumi.Input[int]] = None,
                  collocation: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyCollocation']] = None,
+                 max_distance: Optional[pulumi.Input[int]] = None,
                  vm_count: Optional[pulumi.Input[int]] = None):
         """
         A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
         :param pulumi.Input[int] availability_domain_count: The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
         :param pulumi.Input['ResourcePolicyGroupPlacementPolicyCollocation'] collocation: Specifies network collocation
+        :param pulumi.Input[int] max_distance: Specifies the number of max logical switches.
         :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
         """
         if availability_domain_count is not None:
             pulumi.set(__self__, "availability_domain_count", availability_domain_count)
         if collocation is not None:
             pulumi.set(__self__, "collocation", collocation)
+        if max_distance is not None:
+            pulumi.set(__self__, "max_distance", max_distance)
         if vm_count is not None:
             pulumi.set(__self__, "vm_count", vm_count)
 
@@ -9738,6 +9922,18 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @collocation.setter
     def collocation(self, value: Optional[pulumi.Input['ResourcePolicyGroupPlacementPolicyCollocation']]):
         pulumi.set(self, "collocation", value)
+
+    @property
+    @pulumi.getter(name="maxDistance")
+    def max_distance(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the number of max logical switches.
+        """
+        return pulumi.get(self, "max_distance")
+
+    @max_distance.setter
+    def max_distance(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_distance", value)
 
     @property
     @pulumi.getter(name="vmCount")
@@ -9828,7 +10024,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
         An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
         :param pulumi.Input[str] expiration_time: The expiration time of the schedule. The timestamp is an RFC3339 string.
         :param pulumi.Input[str] start_time: The start time of the schedule. The timestamp is an RFC3339 string.
-        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        :param pulumi.Input[str] time_zone: Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs'] vm_start_schedule: Specifies the schedule for starting instances.
         :param pulumi.Input['ResourcePolicyInstanceSchedulePolicyScheduleArgs'] vm_stop_schedule: Specifies the schedule for stopping instances.
         """
@@ -9871,7 +10067,7 @@ class ResourcePolicyInstanceSchedulePolicyArgs:
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+        Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
         """
         return pulumi.get(self, "time_zone")
 
@@ -10351,7 +10547,7 @@ class RouterBgpPeerArgs:
                  router_appliance_instance: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['RouterBgpPeerAdvertiseMode'] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
-        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        :param pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]] advertised_groups: User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         :param pulumi.Input[Sequence[pulumi.Input['RouterAdvertisedIpRangeArgs']]] advertised_ip_ranges: User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
         :param pulumi.Input[int] advertised_route_priority: The priority of routes advertised to this BGP peer. Where there is more than one matching route of maximum length, the routes with the lowest priority value win.
         :param pulumi.Input['RouterBgpPeerBfdArgs'] bfd: BFD configuration for the BGP peering.
@@ -10416,7 +10612,7 @@ class RouterBgpPeerArgs:
     @pulumi.getter(name="advertisedGroups")
     def advertised_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterBgpPeerAdvertisedGroupsItem']]]]:
         """
-        User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         """
         return pulumi.get(self, "advertised_groups")
 
@@ -12015,9 +12211,11 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     def __init__(__self__, *,
                  json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']] = None,
                  json_parsing: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonParsing']] = None,
-                 log_level: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigLogLevel']] = None):
+                 log_level: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigLogLevel']] = None,
+                 user_ip_request_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
             pulumi.set(__self__, "json_custom_config", json_custom_config)
@@ -12025,6 +12223,8 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+        if user_ip_request_headers is not None:
+            pulumi.set(__self__, "user_ip_request_headers", user_ip_request_headers)
 
     @property
     @pulumi.getter(name="jsonCustomConfig")
@@ -12055,6 +12255,18 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     @log_level.setter
     def log_level(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigLogLevel']]):
         pulumi.set(self, "log_level", value)
+
+    @property
+    @pulumi.getter(name="userIpRequestHeaders")
+    def user_ip_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        """
+        return pulumi.get(self, "user_ip_request_headers")
+
+    @user_ip_request_headers.setter
+    def user_ip_request_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_ip_request_headers", value)
 
 
 @pulumi.input_type

@@ -335,7 +335,7 @@ def get_subnetwork(project: Optional[str] = None,
                    subnetwork: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubnetworkResult:
     """
-    Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+    Returns the specified subnetwork.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -378,6 +378,6 @@ def get_subnetwork_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                           subnetwork: Optional[pulumi.Input[str]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetworkResult]:
     """
-    Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+    Returns the specified subnetwork.
     """
     ...

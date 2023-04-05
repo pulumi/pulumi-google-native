@@ -33,6 +33,7 @@ class ClusterArgs:
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 fleet: Optional[pulumi.Input['FleetArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['IdentityServiceConfigArgs']] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -95,6 +96,7 @@ class ClusterArgs:
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input['FleetArgs'] fleet: Fleet information for the cluster.
         :param pulumi.Input['IdentityServiceConfigArgs'] identity_service_config: Configuration for Identity Service component.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
@@ -174,6 +176,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if fleet is not None:
+            pulumi.set(__self__, "fleet", fleet)
         if identity_service_config is not None:
             pulumi.set(__self__, "identity_service_config", identity_service_config)
         if initial_cluster_version is not None:
@@ -475,6 +479,18 @@ class ClusterArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> Optional[pulumi.Input['FleetArgs']]:
+        """
+        Fleet information for the cluster.
+        """
+        return pulumi.get(self, "fleet")
+
+    @fleet.setter
+    def fleet(self, value: Optional[pulumi.Input['FleetArgs']]):
+        pulumi.set(self, "fleet", value)
 
     @property
     @pulumi.getter(name="identityServiceConfig")
@@ -1023,6 +1039,7 @@ class Cluster(pulumi.CustomResource):
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['FleetArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -1089,6 +1106,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_kubernetes_alpha: Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1beta1) and features that may not be production ready in the kubernetes version of the master and nodes. The cluster has no SLA for uptime and master/node upgrades are disabled. Alpha enabled clusters are automatically deleted thirty days after creation.
         :param pulumi.Input[bool] enable_tpu: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of cluster fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+        :param pulumi.Input[pulumi.InputType['FleetArgs']] fleet: Fleet information for the cluster.
         :param pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']] identity_service_config: Configuration for Identity Service component.
         :param pulumi.Input[str] initial_cluster_version: The initial Kubernetes version for this cluster. Valid versions are those found in validMasterVersions returned by getServerConfig. The version can be upgraded over time; such upgrades are reflected in currentMasterVersion and currentNodeVersion. Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "","-": picks the default Kubernetes version
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this cluster. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "node_config") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. This field is deprecated, use node_pool.initial_node_count instead.
@@ -1173,6 +1191,7 @@ class Cluster(pulumi.CustomResource):
                  enable_kubernetes_alpha: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 fleet: Optional[pulumi.Input[pulumi.InputType['FleetArgs']]] = None,
                  identity_service_config: Optional[pulumi.Input[pulumi.InputType['IdentityServiceConfigArgs']]] = None,
                  initial_cluster_version: Optional[pulumi.Input[str]] = None,
                  initial_node_count: Optional[pulumi.Input[int]] = None,
@@ -1245,6 +1264,7 @@ class Cluster(pulumi.CustomResource):
                 pulumi.log.warn("""enable_tpu is deprecated: Enable the ability to use Cloud TPUs in this cluster. This field is deprecated, use tpu_config.enabled instead.""")
             __props__.__dict__["enable_tpu"] = enable_tpu
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["fleet"] = fleet
             __props__.__dict__["identity_service_config"] = identity_service_config
             __props__.__dict__["initial_cluster_version"] = initial_cluster_version
             if initial_node_count is not None and not opts.urn:
@@ -1369,6 +1389,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["endpoint"] = None
         __props__.__dict__["etag"] = None
         __props__.__dict__["expire_time"] = None
+        __props__.__dict__["fleet"] = None
         __props__.__dict__["identity_service_config"] = None
         __props__.__dict__["initial_cluster_version"] = None
         __props__.__dict__["initial_node_count"] = None
@@ -1596,6 +1617,14 @@ class Cluster(pulumi.CustomResource):
         [Output only] The time the cluster will be automatically deleted in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         """
         return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter
+    def fleet(self) -> pulumi.Output['outputs.FleetResponse']:
+        """
+        Fleet information for the cluster.
+        """
+        return pulumi.get(self, "fleet")
 
     @property
     @pulumi.getter(name="identityServiceConfig")

@@ -6,10 +6,13 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'KeyDataKeySpec',
     'KeyKeyAlgorithm',
     'KeyPrivateKeyType',
     'OrganizationRoleStage',
     'RoleStage',
+    'WorkforcePoolKeyUse',
+    'WorkloadIdentityPoolKeyUse',
 ]
 
 
@@ -32,6 +35,28 @@ class AuditLogConfigLogType(str, Enum):
     DATA_READ = "DATA_READ"
     """
     Data reads. Example: CloudSQL Users list
+    """
+
+
+class KeyDataKeySpec(str, Enum):
+    """
+    Immutable. The specifications for the key.
+    """
+    KEY_SPEC_UNSPECIFIED = "KEY_SPEC_UNSPECIFIED"
+    """
+    No key specification specified.
+    """
+    RSA2048 = "RSA_2048"
+    """
+    A 2048 bit RSA key.
+    """
+    RSA3072 = "RSA_3072"
+    """
+    A 3072 bit RSA key.
+    """
+    RSA4096 = "RSA_4096"
+    """
+    A 4096 bit RSA key.
     """
 
 
@@ -128,4 +153,32 @@ class RoleStage(str, Enum):
     EAP = "EAP"
     """
     The user has indicated this role is currently in an EAP phase.
+    """
+
+
+class WorkforcePoolKeyUse(str, Enum):
+    """
+    Immutable. The purpose of the key.
+    """
+    KEY_USE_UNSPECIFIED = "KEY_USE_UNSPECIFIED"
+    """
+    KeyUse unspecified.
+    """
+    ENCRYPTION = "ENCRYPTION"
+    """
+    The key is used for encryption.
+    """
+
+
+class WorkloadIdentityPoolKeyUse(str, Enum):
+    """
+    Immutable. The purpose of the key.
+    """
+    KEY_USE_UNSPECIFIED = "KEY_USE_UNSPECIFIED"
+    """
+    The key use is not known.
+    """
+    ENCRYPTION = "ENCRYPTION"
+    """
+    The public key is used for encryption purposes.
     """

@@ -47,7 +47,7 @@ type Job struct {
 	LastModifier pulumi.StringOutput `pulumi:"lastModifier"`
 	// Name of the last created execution.
 	LatestCreatedExecution GoogleCloudRunV2ExecutionReferenceResponseOutput `pulumi:"latestCreatedExecution"`
-	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	LaunchStage pulumi.StringOutput `pulumi:"launchStage"`
 	Location    pulumi.StringOutput `pulumi:"location"`
 	// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
@@ -57,6 +57,8 @@ type Job struct {
 	Project            pulumi.StringOutput `pulumi:"project"`
 	// Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 	Reconciling pulumi.BoolOutput `pulumi:"reconciling"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The template used to create executions for this Job.
 	Template GoogleCloudRunV2ExecutionTemplateResponseOutput `pulumi:"template"`
 	// The Condition of this Job, containing its readiness status, and detailed error information in case it did not reach the desired state.
@@ -132,7 +134,7 @@ type jobArgs struct {
 	JobId string `pulumi:"jobId"`
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
 	Labels map[string]string `pulumi:"labels"`
-	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	LaunchStage *JobLaunchStage `pulumi:"launchStage"`
 	Location    *string         `pulumi:"location"`
 	// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
@@ -158,7 +160,7 @@ type JobArgs struct {
 	JobId pulumi.StringInput
 	// KRM-style labels for the resource. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 Job.
 	Labels pulumi.StringMapInput
-	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+	// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 	LaunchStage JobLaunchStagePtrInput
 	Location    pulumi.StringPtrInput
 	// The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job}
@@ -287,7 +289,7 @@ func (o JobOutput) LatestCreatedExecution() GoogleCloudRunV2ExecutionReferenceRe
 	return o.ApplyT(func(v *Job) GoogleCloudRunV2ExecutionReferenceResponseOutput { return v.LatestCreatedExecution }).(GoogleCloudRunV2ExecutionReferenceResponseOutput)
 }
 
-// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
 func (o JobOutput) LaunchStage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.LaunchStage }).(pulumi.StringOutput)
 }
@@ -313,6 +315,11 @@ func (o JobOutput) Project() pulumi.StringOutput {
 // Returns true if the Job is currently being acted upon by the system to bring it into the desired state. When a new Job is created, or an existing one is updated, Cloud Run will asynchronously perform all necessary steps to bring the Job to the desired state. This process is called reconciliation. While reconciliation is in process, `observed_generation` and `latest_succeeded_execution`, will have transient values that might mismatch the intended state: Once reconciliation is over (and this field is false), there are two possible outcomes: reconciliation succeeded and the state matches the Job, or there was an error, and reconciliation failed. This state can be found in `terminal_condition.state`. If reconciliation succeeded, the following fields will match: `observed_generation` and `generation`, `latest_succeeded_execution` and `latest_created_execution`. If reconciliation failed, `observed_generation` and `latest_succeeded_execution` will have the state of the last succeeded execution or empty for newly created Job. Additional information on the failure can be found in `terminal_condition` and `conditions`.
 func (o JobOutput) Reconciling() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.Reconciling }).(pulumi.BoolOutput)
+}
+
+// Reserved for future use.
+func (o JobOutput) SatisfiesPzs() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
 // The template used to create executions for this Job.

@@ -231,7 +231,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public Input<Inputs.GoogleCloudDataplexV1StorageFormatArgs> Format { get; set; } = null!;
 
         /// <summary>
-        /// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores. Must begin with a letter and consist of 256 or fewer characters.
+        /// A user-provided entity ID. It is mutable, and will be used as the published table name. Specifying a new ID in an update entity request will override the existing value. The ID must contain only letters (a-z, A-Z), numbers (0-9), and underscores, and consist of 256 or fewer characters.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;

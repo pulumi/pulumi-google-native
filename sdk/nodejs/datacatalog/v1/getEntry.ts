@@ -42,6 +42,10 @@ export interface GetEntryResult {
      */
     readonly businessContext: outputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextResponse;
     /**
+     * Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+     */
+    readonly cloudBigtableSystemSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse;
+    /**
      * Physical location of the entry.
      */
     readonly dataSource: outputs.datacatalog.v1.GoogleCloudDatacatalogV1DataSourceResponse;
@@ -105,6 +109,10 @@ export interface GetEntryResult {
      * Schema of the entry. An entry might not have any schema attached to it.
      */
     readonly schema: outputs.datacatalog.v1.GoogleCloudDatacatalogV1SchemaResponse;
+    /**
+     * Specification that applies to a Service resource.
+     */
+    readonly serviceSpec: outputs.datacatalog.v1.GoogleCloudDatacatalogV1ServiceSpecResponse;
     /**
      * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */

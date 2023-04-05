@@ -24,6 +24,8 @@ type Release struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// List of artifacts to pass through to Skaffold command.
 	BuildArtifacts BuildArtifactResponseArrayOutput `pulumi:"buildArtifacts"`
+	// Information around the state of the Release.
+	Condition ReleaseConditionResponseOutput `pulumi:"condition"`
 	// Time at which the `Release` was created.
 	CreateTime         pulumi.StringOutput `pulumi:"createTime"`
 	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
@@ -229,6 +231,11 @@ func (o ReleaseOutput) Annotations() pulumi.StringMapOutput {
 // List of artifacts to pass through to Skaffold command.
 func (o ReleaseOutput) BuildArtifacts() BuildArtifactResponseArrayOutput {
 	return o.ApplyT(func(v *Release) BuildArtifactResponseArrayOutput { return v.BuildArtifacts }).(BuildArtifactResponseArrayOutput)
+}
+
+// Information around the state of the Release.
+func (o ReleaseOutput) Condition() ReleaseConditionResponseOutput {
+	return o.ApplyT(func(v *Release) ReleaseConditionResponseOutput { return v.Condition }).(ReleaseConditionResponseOutput)
 }
 
 // Time at which the `Release` was created.

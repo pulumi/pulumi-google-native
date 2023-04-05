@@ -418,13 +418,13 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfig struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 	ExternalIpv6 *string `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
+	// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength *int `pulumi:"externalIpv6PrefixLength"`
-	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+	// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 	Name *string `pulumi:"name"`
-	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+	// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 	NatIP *string `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier *AccessConfigNetworkTier `pulumi:"networkTier"`
@@ -434,7 +434,7 @@ type AccessConfig struct {
 	SetPublicDns *bool `pulumi:"setPublicDns"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr *bool `pulumi:"setPublicPtr"`
-	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 	Type *AccessConfigType `pulumi:"type"`
 }
 
@@ -451,13 +451,13 @@ type AccessConfigInput interface {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigArgs struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
+	// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"externalIpv6PrefixLength"`
-	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+	// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+	// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 	NatIP pulumi.StringPtrInput `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier AccessConfigNetworkTierPtrInput `pulumi:"networkTier"`
@@ -467,7 +467,7 @@ type AccessConfigArgs struct {
 	SetPublicDns pulumi.BoolPtrInput `pulumi:"setPublicDns"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr pulumi.BoolPtrInput `pulumi:"setPublicPtr"`
-	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 	Type AccessConfigTypePtrInput `pulumi:"type"`
 }
 
@@ -523,22 +523,22 @@ func (o AccessConfigOutput) ToAccessConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 func (o AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.ExternalIpv6 }).(pulumi.StringPtrOutput)
 }
 
-// The prefix length of the external IPv6 range.
+// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 func (o AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *int { return v.ExternalIpv6PrefixLength }).(pulumi.IntPtrOutput)
 }
 
-// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 func (o AccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 func (o AccessConfigOutput) NatIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.NatIP }).(pulumi.StringPtrOutput)
 }
@@ -563,7 +563,7 @@ func (o AccessConfigOutput) SetPublicPtr() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *bool { return v.SetPublicPtr }).(pulumi.BoolPtrOutput)
 }
 
-// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 func (o AccessConfigOutput) Type() AccessConfigTypePtrOutput {
 	return o.ApplyT(func(v AccessConfig) *AccessConfigType { return v.Type }).(AccessConfigTypePtrOutput)
 }
@@ -590,15 +590,15 @@ func (o AccessConfigArrayOutput) Index(i pulumi.IntInput) AccessConfigOutput {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigResponse struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 	ExternalIpv6 string `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
+	// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength int `pulumi:"externalIpv6PrefixLength"`
 	// Type of the resource. Always compute#accessConfig for access configs.
 	Kind string `pulumi:"kind"`
-	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+	// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 	Name string `pulumi:"name"`
-	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+	// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 	NatIP string `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier string `pulumi:"networkTier"`
@@ -612,7 +612,7 @@ type AccessConfigResponse struct {
 	SetPublicDns bool `pulumi:"setPublicDns"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr bool `pulumi:"setPublicPtr"`
-	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 	Type string `pulumi:"type"`
 }
 
@@ -631,12 +631,12 @@ func (o AccessConfigResponseOutput) ToAccessConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 func (o AccessConfigResponseOutput) ExternalIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
 }
 
-// The prefix length of the external IPv6 range.
+// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 func (o AccessConfigResponseOutput) ExternalIpv6PrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessConfigResponse) int { return v.ExternalIpv6PrefixLength }).(pulumi.IntOutput)
 }
@@ -646,12 +646,12 @@ func (o AccessConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 func (o AccessConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 func (o AccessConfigResponseOutput) NatIP() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.NatIP }).(pulumi.StringOutput)
 }
@@ -686,7 +686,7 @@ func (o AccessConfigResponseOutput) SetPublicPtr() pulumi.BoolOutput {
 	return o.ApplyT(func(v AccessConfigResponse) bool { return v.SetPublicPtr }).(pulumi.BoolOutput)
 }
 
-// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 func (o AccessConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9723,7 +9723,7 @@ type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -9746,7 +9746,7 @@ type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -9814,7 +9814,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -9850,7 +9850,7 @@ type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -9881,7 +9881,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -15348,6 +15348,8 @@ type ExternalVpnGatewayInterface struct {
 	Id *int `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress *string `pulumi:"ipAddress"`
+	// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address *string `pulumi:"ipv6Address"`
 }
 
 // ExternalVpnGatewayInterfaceInput is an input type that accepts ExternalVpnGatewayInterfaceArgs and ExternalVpnGatewayInterfaceOutput values.
@@ -15367,6 +15369,8 @@ type ExternalVpnGatewayInterfaceArgs struct {
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 }
 
 func (ExternalVpnGatewayInterfaceArgs) ElementType() reflect.Type {
@@ -15431,6 +15435,11 @@ func (o ExternalVpnGatewayInterfaceOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExternalVpnGatewayInterface) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
 }
 
+// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+func (o ExternalVpnGatewayInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
+}
+
 type ExternalVpnGatewayInterfaceArrayOutput struct{ *pulumi.OutputState }
 
 func (ExternalVpnGatewayInterfaceArrayOutput) ElementType() reflect.Type {
@@ -15455,6 +15464,8 @@ func (o ExternalVpnGatewayInterfaceArrayOutput) Index(i pulumi.IntInput) Externa
 type ExternalVpnGatewayInterfaceResponse struct {
 	// IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 	IpAddress string `pulumi:"ipAddress"`
+	// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address string `pulumi:"ipv6Address"`
 }
 
 // The interface for the external VPN gateway.
@@ -15475,6 +15486,11 @@ func (o ExternalVpnGatewayInterfaceResponseOutput) ToExternalVpnGatewayInterface
 // IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.
 func (o ExternalVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+func (o ExternalVpnGatewayInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalVpnGatewayInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 type ExternalVpnGatewayInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -16260,6 +16276,8 @@ type FirewallPolicyAssociation struct {
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
 	// The name for an association.
 	Name *string `pulumi:"name"`
+	// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
+	Priority *int `pulumi:"priority"`
 }
 
 // FirewallPolicyAssociationInput is an input type that accepts FirewallPolicyAssociationArgs and FirewallPolicyAssociationOutput values.
@@ -16278,6 +16296,8 @@ type FirewallPolicyAssociationArgs struct {
 	AttachmentTarget pulumi.StringPtrInput `pulumi:"attachmentTarget"`
 	// The name for an association.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
 }
 
 func (FirewallPolicyAssociationArgs) ElementType() reflect.Type {
@@ -16341,6 +16361,11 @@ func (o FirewallPolicyAssociationOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
+// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
+func (o FirewallPolicyAssociationOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociation) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
 type FirewallPolicyAssociationArrayOutput struct{ *pulumi.OutputState }
 
 func (FirewallPolicyAssociationArrayOutput) ElementType() reflect.Type {
@@ -16370,6 +16395,8 @@ type FirewallPolicyAssociationResponse struct {
 	FirewallPolicyId string `pulumi:"firewallPolicyId"`
 	// The name for an association.
 	Name string `pulumi:"name"`
+	// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
+	Priority int `pulumi:"priority"`
 	// The short name of the firewall policy of the association.
 	ShortName string `pulumi:"shortName"`
 }
@@ -16406,6 +16433,11 @@ func (o FirewallPolicyAssociationResponseOutput) FirewallPolicyId() pulumi.Strin
 // The name for an association.
 func (o FirewallPolicyAssociationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyAssociationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// An integer indicating the priority of an association. The priority must be a positive value between 1 and 2147483647. Firewall Policies are evaluated from highest to lowest priority where 1 is the highest priority and 2147483647 is the lowest priority. The default value is `1000`. If two associations have the same priority then lexicographical order on association names is applied.
+func (o FirewallPolicyAssociationResponseOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v FirewallPolicyAssociationResponse) int { return v.Priority }).(pulumi.IntOutput)
 }
 
 // The short name of the firewall policy of the association.
@@ -16459,6 +16491,8 @@ type FirewallPolicyRule struct {
 	TargetSecureTags []FirewallPolicyRuleSecureTag `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect *bool `pulumi:"tlsInspect"`
 }
 
 // FirewallPolicyRuleInput is an input type that accepts FirewallPolicyRuleArgs and FirewallPolicyRuleOutput values.
@@ -16498,6 +16532,8 @@ type FirewallPolicyRuleArgs struct {
 	TargetSecureTags FirewallPolicyRuleSecureTagArrayInput `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect pulumi.BoolPtrInput `pulumi:"tlsInspect"`
 }
 
 func (FirewallPolicyRuleArgs) ElementType() reflect.Type {
@@ -16610,6 +16646,11 @@ func (o FirewallPolicyRuleOutput) TargetSecureTags() FirewallPolicyRuleSecureTag
 // A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o FirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+func (o FirewallPolicyRuleOutput) TlsInspect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FirewallPolicyRule) *bool { return v.TlsInspect }).(pulumi.BoolPtrOutput)
 }
 
 type FirewallPolicyRuleArrayOutput struct{ *pulumi.OutputState }
@@ -17275,6 +17316,8 @@ type FirewallPolicyRuleResponse struct {
 	TargetSecureTags []FirewallPolicyRuleSecureTagResponse `pulumi:"targetSecureTags"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+	TlsInspect bool `pulumi:"tlsInspect"`
 }
 
 // Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
@@ -17360,6 +17403,11 @@ func (o FirewallPolicyRuleResponseOutput) TargetSecureTags() FirewallPolicyRuleS
 // A list of service accounts indicating the sets of instances that are applied with this rule.
 func (o FirewallPolicyRuleResponseOutput) TargetServiceAccounts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) []string { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
+}
+
+// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action = 'apply_security_profile_group' and cannot be set for other actions.
+func (o FirewallPolicyRuleResponseOutput) TlsInspect() pulumi.BoolOutput {
+	return o.ApplyT(func(v FirewallPolicyRuleResponse) bool { return v.TlsInspect }).(pulumi.BoolOutput)
 }
 
 type FirewallPolicyRuleResponseArrayOutput struct{ *pulumi.OutputState }
@@ -18864,7 +18912,7 @@ func (o GrpcServiceConfigResponseOutput) TargetUri() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -18881,7 +18929,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -18937,7 +18985,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -18964,7 +19012,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -18983,7 +19031,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -34197,7 +34245,7 @@ type NetworkInterface struct {
 	InternalIpv6PrefixLength *int `pulumi:"internalIpv6PrefixLength"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs []AccessConfig `pulumi:"ipv6AccessConfigs"`
-	// An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network *string `pulumi:"network"`
@@ -34211,7 +34259,7 @@ type NetworkInterface struct {
 	ParentNicName *string `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
 	QueueCount *int `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+	// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 	StackType *NetworkInterfaceStackType `pulumi:"stackType"`
 	// SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
 	Subinterfaces []NetworkInterfaceSubInterface `pulumi:"subinterfaces"`
@@ -34242,7 +34290,7 @@ type NetworkInterfaceArgs struct {
 	InternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"internalIpv6PrefixLength"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	// An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -34256,7 +34304,7 @@ type NetworkInterfaceArgs struct {
 	ParentNicName pulumi.StringPtrInput `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
 	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+	// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 	StackType NetworkInterfaceStackTypePtrInput `pulumi:"stackType"`
 	// SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
 	Subinterfaces NetworkInterfaceSubInterfaceArrayInput `pulumi:"subinterfaces"`
@@ -34338,7 +34386,7 @@ func (o NetworkInterfaceOutput) Ipv6AccessConfigs() AccessConfigArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AccessConfig { return v.Ipv6AccessConfigs }).(AccessConfigArrayOutput)
 }
 
-// An IPv6 internal network address for this network interface.
+// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o NetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
@@ -34373,7 +34421,7 @@ func (o NetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
 }
 
-// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 func (o NetworkInterfaceOutput) StackType() NetworkInterfaceStackTypePtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *NetworkInterfaceStackType { return v.StackType }).(NetworkInterfaceStackTypePtrOutput)
 }
@@ -34427,7 +34475,7 @@ type NetworkInterfaceResponse struct {
 	Ipv6AccessConfigs []AccessConfigResponse `pulumi:"ipv6AccessConfigs"`
 	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.
 	Ipv6AccessType string `pulumi:"ipv6AccessType"`
-	// An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind string `pulumi:"kind"`
@@ -34445,7 +34493,7 @@ type NetworkInterfaceResponse struct {
 	ParentNicName string `pulumi:"parentNicName"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
 	QueueCount int `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+	// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 	StackType string `pulumi:"stackType"`
 	// SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
 	Subinterfaces []NetworkInterfaceSubInterfaceResponse `pulumi:"subinterfaces"`
@@ -34500,7 +34548,7 @@ func (o NetworkInterfaceResponseOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
-// An IPv6 internal network address for this network interface.
+// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o NetworkInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -34545,7 +34593,7 @@ func (o NetworkInterfaceResponseOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
-// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 func (o NetworkInterfaceResponseOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
@@ -41918,7 +41966,7 @@ type ResourcePolicyInstanceSchedulePolicy struct {
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime *string `pulumi:"startTime"`
-	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 	TimeZone *string `pulumi:"timeZone"`
 	// Specifies the schedule for starting instances.
 	VmStartSchedule *ResourcePolicyInstanceSchedulePolicySchedule `pulumi:"vmStartSchedule"`
@@ -41943,7 +41991,7 @@ type ResourcePolicyInstanceSchedulePolicyArgs struct {
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// Specifies the schedule for starting instances.
 	VmStartSchedule ResourcePolicyInstanceSchedulePolicySchedulePtrInput `pulumi:"vmStartSchedule"`
@@ -42039,7 +42087,7 @@ func (o ResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringPtr
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 func (o ResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -42102,7 +42150,7 @@ func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) StartTime() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
 		if v == nil {
@@ -42138,7 +42186,7 @@ type ResourcePolicyInstanceSchedulePolicyResponse struct {
 	ExpirationTime string `pulumi:"expirationTime"`
 	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime string `pulumi:"startTime"`
-	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 	TimeZone string `pulumi:"timeZone"`
 	// Specifies the schedule for starting instances.
 	VmStartSchedule ResourcePolicyInstanceSchedulePolicyScheduleResponse `pulumi:"vmStartSchedule"`
@@ -42171,7 +42219,7 @@ func (o ResourcePolicyInstanceSchedulePolicyResponseOutput) StartTime() pulumi.S
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 func (o ResourcePolicyInstanceSchedulePolicyResponseOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyResponse) string { return v.TimeZone }).(pulumi.StringOutput)
 }
@@ -44998,7 +45046,7 @@ func (o RouterBgpPtrOutput) KeepaliveInterval() pulumi.IntPtrOutput {
 type RouterBgpPeer struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode *RouterBgpPeerAdvertiseMode `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []RouterBgpPeerAdvertisedGroupsItem `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges []RouterAdvertisedIpRange `pulumi:"advertisedIpRanges"`
@@ -45006,6 +45054,10 @@ type RouterBgpPeer struct {
 	AdvertisedRoutePriority *int `pulumi:"advertisedRoutePriority"`
 	// BFD configuration for the BGP peering.
 	Bfd *RouterBgpPeerBfd `pulumi:"bfd"`
+	// A list of user-defined custom learned route IP address ranges for a BGP session.
+	CustomLearnedIpRanges []RouterBgpPeerCustomLearnedIpRange `pulumi:"customLearnedIpRanges"`
+	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable *RouterBgpPeerEnable `pulumi:"enable"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
@@ -45044,7 +45096,7 @@ type RouterBgpPeerInput interface {
 type RouterBgpPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode RouterBgpPeerAdvertiseModePtrInput `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups RouterBgpPeerAdvertisedGroupsItemArrayInput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
@@ -45052,6 +45104,10 @@ type RouterBgpPeerArgs struct {
 	AdvertisedRoutePriority pulumi.IntPtrInput `pulumi:"advertisedRoutePriority"`
 	// BFD configuration for the BGP peering.
 	Bfd RouterBgpPeerBfdPtrInput `pulumi:"bfd"`
+	// A list of user-defined custom learned route IP address ranges for a BGP session.
+	CustomLearnedIpRanges RouterBgpPeerCustomLearnedIpRangeArrayInput `pulumi:"customLearnedIpRanges"`
+	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+	CustomLearnedRoutePriority pulumi.IntPtrInput `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable RouterBgpPeerEnablePtrInput `pulumi:"enable"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
@@ -45132,7 +45188,7 @@ func (o RouterBgpPeerOutput) AdvertiseMode() RouterBgpPeerAdvertiseModePtrOutput
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerAdvertiseMode { return v.AdvertiseMode }).(RouterBgpPeerAdvertiseModePtrOutput)
 }
 
-// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 func (o RouterBgpPeerOutput) AdvertisedGroups() RouterBgpPeerAdvertisedGroupsItemArrayOutput {
 	return o.ApplyT(func(v RouterBgpPeer) []RouterBgpPeerAdvertisedGroupsItem { return v.AdvertisedGroups }).(RouterBgpPeerAdvertisedGroupsItemArrayOutput)
 }
@@ -45150,6 +45206,16 @@ func (o RouterBgpPeerOutput) AdvertisedRoutePriority() pulumi.IntPtrOutput {
 // BFD configuration for the BGP peering.
 func (o RouterBgpPeerOutput) Bfd() RouterBgpPeerBfdPtrOutput {
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerBfd { return v.Bfd }).(RouterBgpPeerBfdPtrOutput)
+}
+
+// A list of user-defined custom learned route IP address ranges for a BGP session.
+func (o RouterBgpPeerOutput) CustomLearnedIpRanges() RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeer) []RouterBgpPeerCustomLearnedIpRange { return v.CustomLearnedIpRanges }).(RouterBgpPeerCustomLearnedIpRangeArrayOutput)
+}
+
+// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+func (o RouterBgpPeerOutput) CustomLearnedRoutePriority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeer) *int { return v.CustomLearnedRoutePriority }).(pulumi.IntPtrOutput)
 }
 
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
@@ -45546,10 +45612,151 @@ func (o RouterBgpPeerBfdResponseOutput) SlowTimerInterval() pulumi.IntOutput {
 	return o.ApplyT(func(v RouterBgpPeerBfdResponse) int { return v.SlowTimerInterval }).(pulumi.IntOutput)
 }
 
+type RouterBgpPeerCustomLearnedIpRange struct {
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+	Range *string `pulumi:"range"`
+}
+
+// RouterBgpPeerCustomLearnedIpRangeInput is an input type that accepts RouterBgpPeerCustomLearnedIpRangeArgs and RouterBgpPeerCustomLearnedIpRangeOutput values.
+// You can construct a concrete instance of `RouterBgpPeerCustomLearnedIpRangeInput` via:
+//
+//	RouterBgpPeerCustomLearnedIpRangeArgs{...}
+type RouterBgpPeerCustomLearnedIpRangeInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerCustomLearnedIpRangeOutput() RouterBgpPeerCustomLearnedIpRangeOutput
+	ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(context.Context) RouterBgpPeerCustomLearnedIpRangeOutput
+}
+
+type RouterBgpPeerCustomLearnedIpRangeArgs struct {
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+	Range pulumi.StringPtrInput `pulumi:"range"`
+}
+
+func (RouterBgpPeerCustomLearnedIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArgs) ToRouterBgpPeerCustomLearnedIpRangeOutput() RouterBgpPeerCustomLearnedIpRangeOutput {
+	return i.ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArgs) ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerCustomLearnedIpRangeOutput)
+}
+
+// RouterBgpPeerCustomLearnedIpRangeArrayInput is an input type that accepts RouterBgpPeerCustomLearnedIpRangeArray and RouterBgpPeerCustomLearnedIpRangeArrayOutput values.
+// You can construct a concrete instance of `RouterBgpPeerCustomLearnedIpRangeArrayInput` via:
+//
+//	RouterBgpPeerCustomLearnedIpRangeArray{ RouterBgpPeerCustomLearnedIpRangeArgs{...} }
+type RouterBgpPeerCustomLearnedIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToRouterBgpPeerCustomLearnedIpRangeArrayOutput() RouterBgpPeerCustomLearnedIpRangeArrayOutput
+	ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(context.Context) RouterBgpPeerCustomLearnedIpRangeArrayOutput
+}
+
+type RouterBgpPeerCustomLearnedIpRangeArray []RouterBgpPeerCustomLearnedIpRangeInput
+
+func (RouterBgpPeerCustomLearnedIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArray) ToRouterBgpPeerCustomLearnedIpRangeArrayOutput() RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return i.ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i RouterBgpPeerCustomLearnedIpRangeArray) ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RouterBgpPeerCustomLearnedIpRangeArrayOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeOutput) ToRouterBgpPeerCustomLearnedIpRangeOutput() RouterBgpPeerCustomLearnedIpRangeOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeOutput) ToRouterBgpPeerCustomLearnedIpRangeOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeOutput {
+	return o
+}
+
+// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+func (o RouterBgpPeerCustomLearnedIpRangeOutput) Range() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RouterBgpPeerCustomLearnedIpRange) *string { return v.Range }).(pulumi.StringPtrOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpPeerCustomLearnedIpRange)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeArrayOutput() RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeArrayOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerCustomLearnedIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpPeerCustomLearnedIpRange {
+		return vs[0].([]RouterBgpPeerCustomLearnedIpRange)[vs[1].(int)]
+	}).(RouterBgpPeerCustomLearnedIpRangeOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeResponse struct {
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+	Range string `pulumi:"range"`
+}
+
+type RouterBgpPeerCustomLearnedIpRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRangeResponse)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseOutput() RouterBgpPeerCustomLearnedIpRangeResponseOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeResponseOutput {
+	return o
+}
+
+// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.
+func (o RouterBgpPeerCustomLearnedIpRangeResponseOutput) Range() pulumi.StringOutput {
+	return o.ApplyT(func(v RouterBgpPeerCustomLearnedIpRangeResponse) string { return v.Range }).(pulumi.StringOutput)
+}
+
+type RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RouterBgpPeerCustomLearnedIpRangeResponse)(nil)).Elem()
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseArrayOutput() RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) ToRouterBgpPeerCustomLearnedIpRangeResponseArrayOutputWithContext(ctx context.Context) RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput {
+	return o
+}
+
+func (o RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput) Index(i pulumi.IntInput) RouterBgpPeerCustomLearnedIpRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RouterBgpPeerCustomLearnedIpRangeResponse {
+		return vs[0].([]RouterBgpPeerCustomLearnedIpRangeResponse)[vs[1].(int)]
+	}).(RouterBgpPeerCustomLearnedIpRangeResponseOutput)
+}
+
 type RouterBgpPeerResponse struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode string `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges []RouterAdvertisedIpRangeResponse `pulumi:"advertisedIpRanges"`
@@ -45557,6 +45764,10 @@ type RouterBgpPeerResponse struct {
 	AdvertisedRoutePriority int `pulumi:"advertisedRoutePriority"`
 	// BFD configuration for the BGP peering.
 	Bfd RouterBgpPeerBfdResponse `pulumi:"bfd"`
+	// A list of user-defined custom learned route IP address ranges for a BGP session.
+	CustomLearnedIpRanges []RouterBgpPeerCustomLearnedIpRangeResponse `pulumi:"customLearnedIpRanges"`
+	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+	CustomLearnedRoutePriority int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
 	Enable string `pulumi:"enable"`
 	// Enable IPv6 traffic over BGP Peer. If not specified, it is disabled by default.
@@ -45602,7 +45813,7 @@ func (o RouterBgpPeerResponseOutput) AdvertiseMode() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.AdvertiseMode }).(pulumi.StringOutput)
 }
 
-// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 func (o RouterBgpPeerResponseOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
 }
@@ -45620,6 +45831,18 @@ func (o RouterBgpPeerResponseOutput) AdvertisedRoutePriority() pulumi.IntOutput 
 // BFD configuration for the BGP peering.
 func (o RouterBgpPeerResponseOutput) Bfd() RouterBgpPeerBfdResponseOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) RouterBgpPeerBfdResponse { return v.Bfd }).(RouterBgpPeerBfdResponseOutput)
+}
+
+// A list of user-defined custom learned route IP address ranges for a BGP session.
+func (o RouterBgpPeerResponseOutput) CustomLearnedIpRanges() RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) []RouterBgpPeerCustomLearnedIpRangeResponse {
+		return v.CustomLearnedIpRanges
+	}).(RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput)
+}
+
+// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.
+func (o RouterBgpPeerResponseOutput) CustomLearnedRoutePriority() pulumi.IntOutput {
+	return o.ApplyT(func(v RouterBgpPeerResponse) int { return v.CustomLearnedRoutePriority }).(pulumi.IntOutput)
 }
 
 // The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
@@ -48274,6 +48497,8 @@ type Scheduling struct {
 	InstanceTerminationAction *SchedulingInstanceTerminationAction `pulumi:"instanceTerminationAction"`
 	// Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
 	LatencyTolerant *bool `pulumi:"latencyTolerant"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+	LocalSsdRecoveryTimeout *Duration `pulumi:"localSsdRecoveryTimeout"`
 	// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
 	LocationHint *string `pulumi:"locationHint"`
 	// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
@@ -48323,6 +48548,8 @@ type SchedulingArgs struct {
 	InstanceTerminationAction SchedulingInstanceTerminationActionPtrInput `pulumi:"instanceTerminationAction"`
 	// Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
 	LatencyTolerant pulumi.BoolPtrInput `pulumi:"latencyTolerant"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+	LocalSsdRecoveryTimeout DurationPtrInput `pulumi:"localSsdRecoveryTimeout"`
 	// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
 	LocationHint pulumi.StringPtrInput `pulumi:"locationHint"`
 	// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
@@ -48456,6 +48683,11 @@ func (o SchedulingOutput) InstanceTerminationAction() SchedulingInstanceTerminat
 // Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
 func (o SchedulingOutput) LatencyTolerant() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Scheduling) *bool { return v.LatencyTolerant }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+func (o SchedulingOutput) LocalSsdRecoveryTimeout() DurationPtrOutput {
+	return o.ApplyT(func(v Scheduling) *Duration { return v.LocalSsdRecoveryTimeout }).(DurationPtrOutput)
 }
 
 // An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
@@ -48600,6 +48832,16 @@ func (o SchedulingPtrOutput) LatencyTolerant() pulumi.BoolPtrOutput {
 		}
 		return v.LatencyTolerant
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+func (o SchedulingPtrOutput) LocalSsdRecoveryTimeout() DurationPtrOutput {
+	return o.ApplyT(func(v *Scheduling) *Duration {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdRecoveryTimeout
+	}).(DurationPtrOutput)
 }
 
 // An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
@@ -48896,6 +49138,8 @@ type SchedulingResponse struct {
 	InstanceTerminationAction string `pulumi:"instanceTerminationAction"`
 	// Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
 	LatencyTolerant bool `pulumi:"latencyTolerant"`
+	// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+	LocalSsdRecoveryTimeout DurationResponse `pulumi:"localSsdRecoveryTimeout"`
 	// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
 	LocationHint string `pulumi:"locationHint"`
 	// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
@@ -48966,6 +49210,11 @@ func (o SchedulingResponseOutput) InstanceTerminationAction() pulumi.StringOutpu
 // Defines whether the instance is tolerant of higher cpu latency. This can only be set during instance creation, or when the instance is not currently running. It must not be set if the preemptible option is also set.
 func (o SchedulingResponseOutput) LatencyTolerant() pulumi.BoolOutput {
 	return o.ApplyT(func(v SchedulingResponse) bool { return v.LatencyTolerant }).(pulumi.BoolOutput)
+}
+
+// Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour.
+func (o SchedulingResponseOutput) LocalSsdRecoveryTimeout() DurationResponseOutput {
+	return o.ApplyT(func(v SchedulingResponse) DurationResponse { return v.LocalSsdRecoveryTimeout }).(DurationResponseOutput)
 }
 
 // An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
@@ -49805,6 +50054,8 @@ type SecurityPolicyAdvancedOptionsConfig struct {
 	JsonCustomConfig *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfig"`
 	JsonParsing      *SecurityPolicyAdvancedOptionsConfigJsonParsing      `pulumi:"jsonParsing"`
 	LogLevel         *SecurityPolicyAdvancedOptionsConfigLogLevel         `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
 }
 
 // SecurityPolicyAdvancedOptionsConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigArgs and SecurityPolicyAdvancedOptionsConfigOutput values.
@@ -49823,6 +50074,8 @@ type SecurityPolicyAdvancedOptionsConfigArgs struct {
 	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput `pulumi:"jsonCustomConfig"`
 	JsonParsing      SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput      `pulumi:"jsonParsing"`
 	LogLevel         SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput         `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
 }
 
 func (SecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
@@ -49921,6 +50174,11 @@ func (o SecurityPolicyAdvancedOptionsConfigOutput) LogLevel() SecurityPolicyAdva
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
 }
 
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
 type SecurityPolicyAdvancedOptionsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdvancedOptionsConfigPtrOutput) ElementType() reflect.Type {
@@ -49971,6 +50229,16 @@ func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) LogLevel() SecurityPolicyA
 		}
 		return v.LogLevel
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserIpRequestHeaders
+	}).(pulumi.StringArrayOutput)
 }
 
 type SecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
@@ -50139,6 +50407,8 @@ type SecurityPolicyAdvancedOptionsConfigResponse struct {
 	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse `pulumi:"jsonCustomConfig"`
 	JsonParsing      string                                                      `pulumi:"jsonParsing"`
 	LogLevel         string                                                      `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
 }
 
 type SecurityPolicyAdvancedOptionsConfigResponseOutput struct{ *pulumi.OutputState }
@@ -50168,6 +50438,11 @@ func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) JsonParsing() pulumi.
 
 func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) LogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
 }
 
 type SecurityPolicyAssociation struct {
@@ -53659,154 +53934,6 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput) Index(i
 	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput)
 }
 
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return o
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
-		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)[vs[1].(int)]
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput)
-}
-
-type SecurityPolicyRuleRateLimitOptionsResponse struct {
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-	BanDurationSec int `pulumi:"banDurationSec"`
-	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
-	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-	ConformAction string `pulumi:"conformAction"`
-	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-	EnforceOnKey string `pulumi:"enforceOnKey"`
-	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
-	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
-	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
-	ExceedAction string `pulumi:"exceedAction"`
-	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusResponse `pulumi:"exceedActionRpcStatus"`
-	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
-	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
-	// Threshold at which to begin ratelimiting.
-	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
-}
-
-type SecurityPolicyRuleRateLimitOptionsResponseOutput struct{ *pulumi.OutputState }
-
-func (SecurityPolicyRuleRateLimitOptionsResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
-	return o
-}
-
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
-	return o
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanDurationSec() pulumi.IntOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) int { return v.BanDurationSec }).(pulumi.IntOutput)
-}
-
-// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
-		return v.BanThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
-}
-
-// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
-}
-
-// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
-}
-
-// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
-		return v.EnforceOnKeyConfigs
-	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput)
-}
-
-// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
-}
-
-// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
-}
-
-// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
-		return v.ExceedActionRpcStatus
-	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput)
-}
-
-// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
-		return v.ExceedRedirectOptions
-	}).(SecurityPolicyRuleRedirectOptionsResponseOutput)
-}
-
-// Threshold at which to begin ratelimiting.
-func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
-	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
-		return v.RateLimitThreshold
-	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignatureInput)(nil)).Elem(), AWSV4SignatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AWSV4SignaturePtrInput)(nil)).Elem(), AWSV4SignatureArgs{})
@@ -54191,6 +54318,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerArrayInput)(nil)).Elem(), RouterBgpPeerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerBfdPtrInput)(nil)).Elem(), RouterBgpPeerBfdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRangeInput)(nil)).Elem(), RouterBgpPeerCustomLearnedIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RouterBgpPeerCustomLearnedIpRangeArrayInput)(nil)).Elem(), RouterBgpPeerCustomLearnedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceInput)(nil)).Elem(), RouterInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterInterfaceArrayInput)(nil)).Elem(), RouterInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RouterMd5AuthenticationKeyInput)(nil)).Elem(), RouterMd5AuthenticationKeyArgs{})
@@ -54963,6 +55092,10 @@ func init() {
 	pulumi.RegisterOutputType(RouterBgpPeerBfdOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerBfdPtrOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerBfdResponseOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeResponseOutput{})
+	pulumi.RegisterOutputType(RouterBgpPeerCustomLearnedIpRangeResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerResponseOutput{})
 	pulumi.RegisterOutputType(RouterBgpPeerResponseArrayOutput{})
 	pulumi.RegisterOutputType(RouterBgpResponseOutput{})
@@ -55088,7 +55221,4 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput{})
-	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
 }

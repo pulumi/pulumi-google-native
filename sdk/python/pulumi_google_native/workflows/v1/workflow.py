@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._enums import *
 
 __all__ = ['WorkflowArgs', 'Workflow']
 
@@ -15,6 +17,8 @@ __all__ = ['WorkflowArgs', 'Workflow']
 class WorkflowArgs:
     def __init__(__self__, *,
                  workflow_id: pulumi.Input[str],
+                 call_log_level: Optional[pulumi.Input['WorkflowCallLogLevel']] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -25,6 +29,8 @@ class WorkflowArgs:
         """
         The set of arguments for constructing a Workflow resource.
         :param pulumi.Input[str] workflow_id: Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
+        :param pulumi.Input['WorkflowCallLogLevel'] call_log_level: Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        :param pulumi.Input[str] crypto_key_name: Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
         :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
@@ -32,6 +38,10 @@ class WorkflowArgs:
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 128KB.
         """
         pulumi.set(__self__, "workflow_id", workflow_id)
+        if call_log_level is not None:
+            pulumi.set(__self__, "call_log_level", call_log_level)
+        if crypto_key_name is not None:
+            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -58,6 +68,30 @@ class WorkflowArgs:
     @workflow_id.setter
     def workflow_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "workflow_id", value)
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> Optional[pulumi.Input['WorkflowCallLogLevel']]:
+        """
+        Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        """
+        return pulumi.get(self, "call_log_level")
+
+    @call_log_level.setter
+    def call_log_level(self, value: Optional[pulumi.Input['WorkflowCallLogLevel']]):
+        pulumi.set(self, "call_log_level", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+        """
+        return pulumi.get(self, "crypto_key_name")
+
+    @crypto_key_name.setter
+    def crypto_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "crypto_key_name", value)
 
     @property
     @pulumi.getter
@@ -143,6 +177,8 @@ class Workflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 call_log_level: Optional[pulumi.Input['WorkflowCallLogLevel']] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -157,6 +193,8 @@ class Workflow(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input['WorkflowCallLogLevel'] call_log_level: Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        :param pulumi.Input[str] crypto_key_name: Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
         :param pulumi.Input[str] description: Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed.
         :param pulumi.Input[str] name: The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
@@ -188,6 +226,8 @@ class Workflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 call_log_level: Optional[pulumi.Input['WorkflowCallLogLevel']] = None,
+                 crypto_key_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -205,6 +245,8 @@ class Workflow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
+            __props__.__dict__["call_log_level"] = call_log_level
+            __props__.__dict__["crypto_key_name"] = crypto_key_name
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -219,6 +261,7 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["revision_create_time"] = None
             __props__.__dict__["revision_id"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["state_error"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflow_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -244,7 +287,9 @@ class Workflow(pulumi.CustomResource):
 
         __props__ = WorkflowArgs.__new__(WorkflowArgs)
 
+        __props__.__dict__["call_log_level"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["crypto_key_name"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
@@ -255,9 +300,18 @@ class Workflow(pulumi.CustomResource):
         __props__.__dict__["service_account"] = None
         __props__.__dict__["source_contents"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["state_error"] = None
         __props__.__dict__["update_time"] = None
         __props__.__dict__["workflow_id"] = None
         return Workflow(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="callLogLevel")
+    def call_log_level(self) -> pulumi.Output[str]:
+        """
+        Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+        """
+        return pulumi.get(self, "call_log_level")
 
     @property
     @pulumi.getter(name="createTime")
@@ -266,6 +320,14 @@ class Workflow(pulumi.CustomResource):
         The timestamp for when the workflow was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyName")
+    def crypto_key_name(self) -> pulumi.Output[str]:
+        """
+        Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+        """
+        return pulumi.get(self, "crypto_key_name")
 
     @property
     @pulumi.getter
@@ -340,6 +402,14 @@ class Workflow(pulumi.CustomResource):
         State of the workflow deployment.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateError")
+    def state_error(self) -> pulumi.Output['outputs.StateErrorResponse']:
+        """
+        Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+        """
+        return pulumi.get(self, "state_error")
 
     @property
     @pulumi.getter(name="updateTime")

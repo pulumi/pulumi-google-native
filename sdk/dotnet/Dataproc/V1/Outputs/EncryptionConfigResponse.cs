@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
         /// </summary>
         public readonly string GcePdKmsKeyName;
+        /// <summary>
+        /// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all instances in the cluster.
+        /// </summary>
+        public readonly string KmsKey;
 
         [OutputConstructor]
-        private EncryptionConfigResponse(string gcePdKmsKeyName)
+        private EncryptionConfigResponse(
+            string gcePdKmsKeyName,
+
+            string kmsKey)
         {
             GcePdKmsKeyName = gcePdKmsKeyName;
+            KmsKey = kmsKey;
         }
     }
 }

@@ -18,13 +18,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetDatabaseResult:
-    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, etag=None, key_prefix=None, location=None, name=None, type=None):
+    def __init__(__self__, app_engine_integration_mode=None, concurrency_mode=None, create_time=None, etag=None, key_prefix=None, location=None, name=None, type=None, uid=None, update_time=None):
         if app_engine_integration_mode and not isinstance(app_engine_integration_mode, str):
             raise TypeError("Expected argument 'app_engine_integration_mode' to be a str")
         pulumi.set(__self__, "app_engine_integration_mode", app_engine_integration_mode)
         if concurrency_mode and not isinstance(concurrency_mode, str):
             raise TypeError("Expected argument 'concurrency_mode' to be a str")
         pulumi.set(__self__, "concurrency_mode", concurrency_mode)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
@@ -40,6 +43,12 @@ class GetDatabaseResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter(name="appEngineIntegrationMode")
@@ -56,6 +65,14 @@ class GetDatabaseResult:
         The concurrency control mode to use for this database.
         """
         return pulumi.get(self, "concurrency_mode")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp at which this database was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -97,6 +114,22 @@ class GetDatabaseResult:
         """
         return pulumi.get(self, "type")
 
+    @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        The system-generated UUID4 for this Database.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+        """
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetDatabaseResult(GetDatabaseResult):
     # pylint: disable=using-constant-test
@@ -106,11 +139,14 @@ class AwaitableGetDatabaseResult(GetDatabaseResult):
         return GetDatabaseResult(
             app_engine_integration_mode=self.app_engine_integration_mode,
             concurrency_mode=self.concurrency_mode,
+            create_time=self.create_time,
             etag=self.etag,
             key_prefix=self.key_prefix,
             location=self.location,
             name=self.name,
-            type=self.type)
+            type=self.type,
+            uid=self.uid,
+            update_time=self.update_time)
 
 
 def get_database(database_id: Optional[str] = None,
@@ -128,11 +164,14 @@ def get_database(database_id: Optional[str] = None,
     return AwaitableGetDatabaseResult(
         app_engine_integration_mode=__ret__.app_engine_integration_mode,
         concurrency_mode=__ret__.concurrency_mode,
+        create_time=__ret__.create_time,
         etag=__ret__.etag,
         key_prefix=__ret__.key_prefix,
         location=__ret__.location,
         name=__ret__.name,
-        type=__ret__.type)
+        type=__ret__.type,
+        uid=__ret__.uid,
+        update_time=__ret__.update_time)
 
 
 @_utilities.lift_output_func(get_database)

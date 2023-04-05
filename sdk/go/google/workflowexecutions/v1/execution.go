@@ -28,7 +28,7 @@ type Execution struct {
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The error which caused the execution to finish prematurely. The value is only present if the execution's state is `FAILED` or `CANCELLED`.
 	Error ErrorResponseOutput `pulumi:"error"`
-	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
@@ -99,7 +99,7 @@ type executionArgs struct {
 	Argument *string `pulumi:"argument"`
 	// The call logging level associated to this execution.
 	CallLogLevel *ExecutionCallLogLevel `pulumi:"callLogLevel"`
-	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 	Labels     map[string]string `pulumi:"labels"`
 	Location   *string           `pulumi:"location"`
 	Project    *string           `pulumi:"project"`
@@ -112,7 +112,7 @@ type ExecutionArgs struct {
 	Argument pulumi.StringPtrInput
 	// The call logging level associated to this execution.
 	CallLogLevel ExecutionCallLogLevelPtrInput
-	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+	// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 	Labels     pulumi.StringMapInput
 	Location   pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
@@ -181,7 +181,7 @@ func (o ExecutionOutput) Error() ErrorResponseOutput {
 	return o.ApplyT(func(v *Execution) ErrorResponseOutput { return v.Error }).(ErrorResponseOutput)
 }
 
-// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores and dashes. Label keys must start with a letter. International characters are allowed.
+// Labels associated with this execution. Labels can contain at most 64 entries. Keys and values can be no longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and dashes. Label keys must start with a letter. International characters are allowed. By default, labels are inherited from the workflow but are overridden by any labels associated with the execution.
 func (o ExecutionOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

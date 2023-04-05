@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// Configuration detail of a trigger. Next available id: 17
+    /// Configuration detail of a trigger. Next available id: 19
     /// </summary>
     public sealed class EnterpriseCrmFrontendsEventbusProtoTriggerConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -47,6 +47,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
             get => _enabledClients ?? (_enabledClients = new InputList<string>());
             set => _enabledClients = value;
         }
+
+        /// <summary>
+        /// Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        [Input("errorCatcherId")]
+        public Input<string>? ErrorCatcherId { get; set; }
 
         /// <summary>
         /// The user created label for a particular trigger.

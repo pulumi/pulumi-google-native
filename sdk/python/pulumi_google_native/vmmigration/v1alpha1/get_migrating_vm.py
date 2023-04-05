@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMigratingVmResult:
-    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
+    def __init__(__self__, aws_source_vm_details=None, compute_engine_target_defaults=None, compute_engine_vm_defaults=None, create_time=None, current_sync_info=None, description=None, display_name=None, error=None, group=None, labels=None, last_replication_cycle=None, last_sync=None, name=None, policy=None, recent_clone_jobs=None, recent_cutover_jobs=None, source_vm_id=None, state=None, state_time=None, target_defaults=None, update_time=None):
         if aws_source_vm_details and not isinstance(aws_source_vm_details, dict):
             raise TypeError("Expected argument 'aws_source_vm_details' to be a dict")
         pulumi.set(__self__, "aws_source_vm_details", aws_source_vm_details)
@@ -54,6 +54,9 @@ class GetMigratingVmResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if last_replication_cycle and not isinstance(last_replication_cycle, dict):
+            raise TypeError("Expected argument 'last_replication_cycle' to be a dict")
+        pulumi.set(__self__, "last_replication_cycle", last_replication_cycle)
         if last_sync and not isinstance(last_sync, dict):
             raise TypeError("Expected argument 'last_sync' to be a dict")
         pulumi.set(__self__, "last_sync", last_sync)
@@ -170,6 +173,14 @@ class GetMigratingVmResult:
         return pulumi.get(self, "labels")
 
     @property
+    @pulumi.getter(name="lastReplicationCycle")
+    def last_replication_cycle(self) -> 'outputs.ReplicationCycleResponse':
+        """
+        Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+        """
+        return pulumi.get(self, "last_replication_cycle")
+
+    @property
     @pulumi.getter(name="lastSync")
     def last_sync(self) -> 'outputs.ReplicationSyncResponse':
         """
@@ -266,6 +277,7 @@ class AwaitableGetMigratingVmResult(GetMigratingVmResult):
             error=self.error,
             group=self.group,
             labels=self.labels,
+            last_replication_cycle=self.last_replication_cycle,
             last_sync=self.last_sync,
             name=self.name,
             policy=self.policy,
@@ -307,6 +319,7 @@ def get_migrating_vm(location: Optional[str] = None,
         error=__ret__.error,
         group=__ret__.group,
         labels=__ret__.labels,
+        last_replication_cycle=__ret__.last_replication_cycle,
         last_sync=__ret__.last_sync,
         name=__ret__.name,
         policy=__ret__.policy,

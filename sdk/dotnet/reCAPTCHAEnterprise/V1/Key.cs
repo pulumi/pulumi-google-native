@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public Output<Outputs.GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse> AndroidSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp corresponding to the creation of this Key.
+        /// The timestamp corresponding to the creation of this key.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -126,12 +126,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         /// </summary>
         [Input("androidSettings")]
         public Input<Inputs.GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs>? AndroidSettings { get; set; }
-
-        /// <summary>
-        /// The timestamp corresponding to the creation of this Key.
-        /// </summary>
-        [Input("createTime")]
-        public Input<string>? CreateTime { get; set; }
 
         /// <summary>
         /// Human-readable display name of this key. Modifiable by user.

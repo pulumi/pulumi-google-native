@@ -3385,6 +3385,7 @@ class JobConfigurationQueryResponse(dict):
                  allow_large_results: bool,
                  clustering: 'outputs.ClusteringResponse',
                  connection_properties: Sequence['outputs.ConnectionPropertyResponse'],
+                 continuous: bool,
                  create_disposition: str,
                  create_session: bool,
                  default_dataset: 'outputs.DatasetReferenceResponse',
@@ -3410,6 +3411,7 @@ class JobConfigurationQueryResponse(dict):
         :param bool allow_large_results: [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
         :param 'ClusteringResponse' clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param Sequence['ConnectionPropertyResponse'] connection_properties: Connection properties.
+        :param bool continuous: [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
         :param str create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         :param bool create_session: If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
         :param 'DatasetReferenceResponse' default_dataset: [Optional] Specifies the default dataset to use for unqualified table names in the query. Note that this does not alter behavior of unqualified dataset names.
@@ -3435,6 +3437,7 @@ class JobConfigurationQueryResponse(dict):
         pulumi.set(__self__, "allow_large_results", allow_large_results)
         pulumi.set(__self__, "clustering", clustering)
         pulumi.set(__self__, "connection_properties", connection_properties)
+        pulumi.set(__self__, "continuous", continuous)
         pulumi.set(__self__, "create_disposition", create_disposition)
         pulumi.set(__self__, "create_session", create_session)
         pulumi.set(__self__, "default_dataset", default_dataset)
@@ -3480,6 +3483,14 @@ class JobConfigurationQueryResponse(dict):
         Connection properties.
         """
         return pulumi.get(self, "connection_properties")
+
+    @property
+    @pulumi.getter
+    def continuous(self) -> bool:
+        """
+        [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+        """
+        return pulumi.get(self, "continuous")
 
     @property
     @pulumi.getter(name="createDisposition")
@@ -6325,6 +6336,8 @@ class SparkOptionsResponse(dict):
             suggest = "file_uris"
         elif key == "jarUris":
             suggest = "jar_uris"
+        elif key == "mainClass":
+            suggest = "main_class"
         elif key == "mainFileUri":
             suggest = "main_file_uri"
         elif key == "pyFileUris":
@@ -6349,6 +6362,7 @@ class SparkOptionsResponse(dict):
                  container_image: str,
                  file_uris: Sequence[str],
                  jar_uris: Sequence[str],
+                 main_class: str,
                  main_file_uri: str,
                  properties: Mapping[str, str],
                  py_file_uris: Sequence[str],
@@ -6360,8 +6374,9 @@ class SparkOptionsResponse(dict):
         :param str container_image: Custom container image for the runtime environment.
         :param Sequence[str] file_uris: Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param Sequence[str] jar_uris: JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
-        :param str main_file_uri: The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
-        :param Mapping[str, str] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        :param str main_class: The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+        :param str main_file_uri: The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
+        :param Mapping[str, str] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
         :param Sequence[str] py_file_uris: Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
         :param str runtime_version: Runtime version. If not specified, the default runtime version is used.
         """
@@ -6370,6 +6385,7 @@ class SparkOptionsResponse(dict):
         pulumi.set(__self__, "container_image", container_image)
         pulumi.set(__self__, "file_uris", file_uris)
         pulumi.set(__self__, "jar_uris", jar_uris)
+        pulumi.set(__self__, "main_class", main_class)
         pulumi.set(__self__, "main_file_uri", main_file_uri)
         pulumi.set(__self__, "properties", properties)
         pulumi.set(__self__, "py_file_uris", py_file_uris)
@@ -6416,10 +6432,18 @@ class SparkOptionsResponse(dict):
         return pulumi.get(self, "jar_uris")
 
     @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> str:
+        """
+        The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+        """
+        return pulumi.get(self, "main_class")
+
+    @property
     @pulumi.getter(name="mainFileUri")
     def main_file_uri(self) -> str:
         """
-        The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+        The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
         """
         return pulumi.get(self, "main_file_uri")
 
@@ -6427,7 +6451,7 @@ class SparkOptionsResponse(dict):
     @pulumi.getter
     def properties(self) -> Mapping[str, str]:
         """
-        Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+        Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
         """
         return pulumi.get(self, "properties")
 
@@ -6554,7 +6578,7 @@ class StandardSqlDataTypeResponse(dict):
         The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
         :param 'StandardSqlDataTypeResponse' array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param 'StandardSqlStructTypeResponse' struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
-        :param str type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        :param str type_kind: The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
         pulumi.set(__self__, "array_element_type", array_element_type)
         pulumi.set(__self__, "struct_type", struct_type)
@@ -6580,7 +6604,7 @@ class StandardSqlDataTypeResponse(dict):
     @pulumi.getter(name="typeKind")
     def type_kind(self) -> str:
         """
-        The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         """
         return pulumi.get(self, "type_kind")
 
@@ -6764,6 +6788,8 @@ class TableFieldSchemaResponse(dict):
             suggest = "max_length"
         elif key == "policyTags":
             suggest = "policy_tags"
+        elif key == "roundingMode":
+            suggest = "rounding_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TableFieldSchemaResponse. Access the value via the '{suggest}' property getter instead.")
@@ -6787,6 +6813,7 @@ class TableFieldSchemaResponse(dict):
                  name: str,
                  policy_tags: 'outputs.TableFieldSchemaPolicyTagsResponse',
                  precision: str,
+                 rounding_mode: str,
                  scale: str,
                  type: str):
         """
@@ -6799,6 +6826,7 @@ class TableFieldSchemaResponse(dict):
         :param str mode: [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
         :param str name: [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
         :param str precision: [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
+        :param str rounding_mode: Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
         :param str scale: [Optional] See documentation for precision.
         :param str type: [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
         """
@@ -6812,6 +6840,7 @@ class TableFieldSchemaResponse(dict):
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "policy_tags", policy_tags)
         pulumi.set(__self__, "precision", precision)
+        pulumi.set(__self__, "rounding_mode", rounding_mode)
         pulumi.set(__self__, "scale", scale)
         pulumi.set(__self__, "type", type)
 
@@ -6891,6 +6920,14 @@ class TableFieldSchemaResponse(dict):
         [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
         """
         return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="roundingMode")
+    def rounding_mode(self) -> str:
+        """
+        Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+        """
+        return pulumi.get(self, "rounding_mode")
 
     @property
     @pulumi.getter

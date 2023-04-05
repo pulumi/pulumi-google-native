@@ -60,6 +60,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public readonly defaultPartitionExpirationMs!: pulumi.Output<string>;
     /**
+     * The default rounding mode of the dataset.
+     */
+    public /*out*/ readonly defaultRoundingMode!: pulumi.Output<string>;
+    /**
      * [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
      */
     public readonly defaultTableExpirationMs!: pulumi.Output<string>;
@@ -144,6 +148,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["defaultRoundingMode"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
@@ -156,6 +161,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultCollation"] = undefined /*out*/;
             resourceInputs["defaultEncryptionConfiguration"] = undefined /*out*/;
             resourceInputs["defaultPartitionExpirationMs"] = undefined /*out*/;
+            resourceInputs["defaultRoundingMode"] = undefined /*out*/;
             resourceInputs["defaultTableExpirationMs"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

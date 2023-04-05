@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+// Returns the specified autoscaler resource.
 func LookupAutoscaler(ctx *pulumi.Context, args *LookupAutoscalerArgs, opts ...pulumi.InvokeOption) (*LookupAutoscalerResult, error) {
 	var rv LookupAutoscalerResult
 	err := ctx.Invoke("google-native:compute/alpha:getAutoscaler", args, &rv, opts...)

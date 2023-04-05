@@ -388,10 +388,14 @@ class CryptoKeyVersionResponse(dict):
             suggest = "destroy_event_time"
         elif key == "destroyTime":
             suggest = "destroy_time"
+        elif key == "externalDestructionFailureReason":
+            suggest = "external_destruction_failure_reason"
         elif key == "externalProtectionLevelOptions":
             suggest = "external_protection_level_options"
         elif key == "generateTime":
             suggest = "generate_time"
+        elif key == "generationFailureReason":
+            suggest = "generation_failure_reason"
         elif key == "importFailureReason":
             suggest = "import_failure_reason"
         elif key == "importJob":
@@ -420,8 +424,10 @@ class CryptoKeyVersionResponse(dict):
                  create_time: str,
                  destroy_event_time: str,
                  destroy_time: str,
+                 external_destruction_failure_reason: str,
                  external_protection_level_options: 'outputs.ExternalProtectionLevelOptionsResponse',
                  generate_time: str,
+                 generation_failure_reason: str,
                  import_failure_reason: str,
                  import_job: str,
                  import_time: str,
@@ -436,8 +442,10 @@ class CryptoKeyVersionResponse(dict):
         :param str create_time: The time at which this CryptoKeyVersion was created.
         :param str destroy_event_time: The time this CryptoKeyVersion's key material was destroyed. Only present if state is DESTROYED.
         :param str destroy_time: The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED.
+        :param str external_destruction_failure_reason: The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
         :param 'ExternalProtectionLevelOptionsResponse' external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
         :param str generate_time: The time this CryptoKeyVersion's key material was generated.
+        :param str generation_failure_reason: The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
         :param str import_failure_reason: The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
         :param str import_job: The name of the ImportJob used in the most recent import of this CryptoKeyVersion. Only present if the underlying key material was imported.
         :param str import_time: The time at which this CryptoKeyVersion's key material was most recently imported.
@@ -451,8 +459,10 @@ class CryptoKeyVersionResponse(dict):
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "destroy_event_time", destroy_event_time)
         pulumi.set(__self__, "destroy_time", destroy_time)
+        pulumi.set(__self__, "external_destruction_failure_reason", external_destruction_failure_reason)
         pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         pulumi.set(__self__, "generate_time", generate_time)
+        pulumi.set(__self__, "generation_failure_reason", generation_failure_reason)
         pulumi.set(__self__, "import_failure_reason", import_failure_reason)
         pulumi.set(__self__, "import_job", import_job)
         pulumi.set(__self__, "import_time", import_time)
@@ -502,6 +512,14 @@ class CryptoKeyVersionResponse(dict):
         return pulumi.get(self, "destroy_time")
 
     @property
+    @pulumi.getter(name="externalDestructionFailureReason")
+    def external_destruction_failure_reason(self) -> str:
+        """
+        The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        """
+        return pulumi.get(self, "external_destruction_failure_reason")
+
+    @property
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> 'outputs.ExternalProtectionLevelOptionsResponse':
         """
@@ -516,6 +534,14 @@ class CryptoKeyVersionResponse(dict):
         The time this CryptoKeyVersion's key material was generated.
         """
         return pulumi.get(self, "generate_time")
+
+    @property
+    @pulumi.getter(name="generationFailureReason")
+    def generation_failure_reason(self) -> str:
+        """
+        The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+        """
+        return pulumi.get(self, "generation_failure_reason")
 
     @property
     @pulumi.getter(name="importFailureReason")

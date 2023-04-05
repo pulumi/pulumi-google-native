@@ -57,6 +57,8 @@ type Note struct {
 	Upgrade UpgradeNoteResponseOutput `pulumi:"upgrade"`
 	// A note describing a package vulnerability.
 	Vulnerability VulnerabilityNoteResponseOutput `pulumi:"vulnerability"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNoteResponseOutput `pulumi:"vulnerabilityAssessment"`
 }
 
 // NewNote registers a new resource with the given unique name, arguments, and options.
@@ -139,6 +141,8 @@ type noteArgs struct {
 	Upgrade *UpgradeNote `pulumi:"upgrade"`
 	// A note describing a package vulnerability.
 	Vulnerability *VulnerabilityNote `pulumi:"vulnerability"`
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment *VulnerabilityAssessmentNote `pulumi:"vulnerabilityAssessment"`
 }
 
 // The set of arguments for constructing a Note resource.
@@ -176,6 +180,8 @@ type NoteArgs struct {
 	Upgrade UpgradeNotePtrInput
 	// A note describing a package vulnerability.
 	Vulnerability VulnerabilityNotePtrInput
+	// A note describing a vulnerability assessment.
+	VulnerabilityAssessment VulnerabilityAssessmentNotePtrInput
 }
 
 func (NoteArgs) ElementType() reflect.Type {
@@ -317,6 +323,11 @@ func (o NoteOutput) Upgrade() UpgradeNoteResponseOutput {
 // A note describing a package vulnerability.
 func (o NoteOutput) Vulnerability() VulnerabilityNoteResponseOutput {
 	return o.ApplyT(func(v *Note) VulnerabilityNoteResponseOutput { return v.Vulnerability }).(VulnerabilityNoteResponseOutput)
+}
+
+// A note describing a vulnerability assessment.
+func (o NoteOutput) VulnerabilityAssessment() VulnerabilityAssessmentNoteResponseOutput {
+	return o.ApplyT(func(v *Note) VulnerabilityAssessmentNoteResponseOutput { return v.VulnerabilityAssessment }).(VulnerabilityAssessmentNoteResponseOutput)
 }
 
 func init() {

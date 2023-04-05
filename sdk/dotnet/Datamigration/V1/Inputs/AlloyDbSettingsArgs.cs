@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     public sealed class AlloyDbSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+        /// </summary>
+        [Input("encryptionConfig")]
+        public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
+
+        /// <summary>
         /// Input only. Initial user to setup during cluster creation. Required.
         /// </summary>
         [Input("initialUser", required: true)]

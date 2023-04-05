@@ -663,7 +663,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static SchemaConfigSchemaType SchemaTypeUnspecified { get; } = new SchemaConfigSchemaType("SCHEMA_TYPE_UNSPECIFIED");
         /// <summary>
-        /// A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification.
+        /// A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification. This type cannot be used for streaming to BigQuery.
         /// </summary>
         public static SchemaConfigSchemaType Lossless { get; } = new SchemaConfigSchemaType("LOSSLESS");
         /// <summary>

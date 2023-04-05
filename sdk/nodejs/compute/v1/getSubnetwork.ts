@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+ * Returns the specified subnetwork.
  */
 export function getSubnetwork(args: GetSubnetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetworkResult> {
 
@@ -121,7 +121,7 @@ export interface GetSubnetworkResult {
     readonly state: string;
 }
 /**
- * Returns the specified subnetwork. Gets a list of available subnetworks list() request.
+ * Returns the specified subnetwork.
  */
 export function getSubnetworkOutput(args: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
     return pulumi.output(args).apply((a: any) => getSubnetwork(a, opts))

@@ -710,7 +710,7 @@ const (
 	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessDisabled = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED")
 	// Enables private IPv6 access to Google Services from GKE
 	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessToGoogle = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE")
-	// Enables priate IPv6 access to and from Google Services
+	// Enables private IPv6 access to and from Google Services
 	ClusterUpdateDesiredPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional = ClusterUpdateDesiredPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL")
 )
 
@@ -3415,7 +3415,7 @@ const (
 	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessDisabled = NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_DISABLED")
 	// Enables private IPv6 access to Google Services from GKE
 	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessToGoogle = NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_TO_GOOGLE")
-	// Enables priate IPv6 access to and from Google Services
+	// Enables private IPv6 access to and from Google Services
 	NetworkConfigPrivateIpv6GoogleAccessPrivateIpv6GoogleAccessBidirectional = NetworkConfigPrivateIpv6GoogleAccess("PRIVATE_IPV6_GOOGLE_ACCESS_BIDIRECTIONAL")
 )
 

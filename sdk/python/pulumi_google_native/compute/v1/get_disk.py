@@ -479,7 +479,7 @@ def get_disk(disk: Optional[str] = None,
              zone: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDiskResult:
     """
-    Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+    Returns the specified persistent disk.
     """
     __args__ = dict()
     __args__['disk'] = disk
@@ -534,6 +534,6 @@ def get_disk_output(disk: Optional[pulumi.Input[str]] = None,
                     zone: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskResult]:
     """
-    Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+    Returns the specified persistent disk.
     """
     ...

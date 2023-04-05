@@ -142,6 +142,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<string> ExpireTime { get; private set; } = null!;
 
         /// <summary>
+        /// Fleet information for the cluster.
+        /// </summary>
+        [Output("fleet")]
+        public Output<Outputs.FleetResponse> Fleet { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for Identity Service component.
         /// </summary>
         [Output("identityServiceConfig")]
@@ -544,6 +550,12 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Fleet information for the cluster.
+        /// </summary>
+        [Input("fleet")]
+        public Input<Inputs.FleetArgs>? Fleet { get; set; }
 
         /// <summary>
         /// Configuration for Identity Service component.

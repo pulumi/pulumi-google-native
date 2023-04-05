@@ -7699,6 +7699,8 @@ type JobConfigurationQuery struct {
 	Clustering *Clustering `pulumi:"clustering"`
 	// Connection properties.
 	ConnectionProperties []ConnectionProperty `pulumi:"connectionProperties"`
+	// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+	Continuous *bool `pulumi:"continuous"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition *string `pulumi:"createDisposition"`
 	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
@@ -7763,6 +7765,8 @@ type JobConfigurationQueryArgs struct {
 	Clustering ClusteringPtrInput `pulumi:"clustering"`
 	// Connection properties.
 	ConnectionProperties ConnectionPropertyArrayInput `pulumi:"connectionProperties"`
+	// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+	Continuous pulumi.BoolPtrInput `pulumi:"continuous"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition pulumi.StringPtrInput `pulumi:"createDisposition"`
 	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
@@ -7899,6 +7903,11 @@ func (o JobConfigurationQueryOutput) Clustering() ClusteringPtrOutput {
 // Connection properties.
 func (o JobConfigurationQueryOutput) ConnectionProperties() ConnectionPropertyArrayOutput {
 	return o.ApplyT(func(v JobConfigurationQuery) []ConnectionProperty { return v.ConnectionProperties }).(ConnectionPropertyArrayOutput)
+}
+
+// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+func (o JobConfigurationQueryOutput) Continuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v JobConfigurationQuery) *bool { return v.Continuous }).(pulumi.BoolPtrOutput)
 }
 
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
@@ -8060,6 +8069,16 @@ func (o JobConfigurationQueryPtrOutput) ConnectionProperties() ConnectionPropert
 		}
 		return v.ConnectionProperties
 	}).(ConnectionPropertyArrayOutput)
+}
+
+// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+func (o JobConfigurationQueryPtrOutput) Continuous() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationQuery) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Continuous
+	}).(pulumi.BoolPtrOutput)
 }
 
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
@@ -8281,6 +8300,8 @@ type JobConfigurationQueryResponse struct {
 	Clustering ClusteringResponse `pulumi:"clustering"`
 	// Connection properties.
 	ConnectionProperties []ConnectionPropertyResponse `pulumi:"connectionProperties"`
+	// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+	Continuous bool `pulumi:"continuous"`
 	// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
 	CreateDisposition string `pulumi:"createDisposition"`
 	// If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.
@@ -8354,6 +8375,11 @@ func (o JobConfigurationQueryResponseOutput) Clustering() ClusteringResponseOutp
 // Connection properties.
 func (o JobConfigurationQueryResponseOutput) ConnectionProperties() ConnectionPropertyResponseArrayOutput {
 	return o.ApplyT(func(v JobConfigurationQueryResponse) []ConnectionPropertyResponse { return v.ConnectionProperties }).(ConnectionPropertyResponseArrayOutput)
+}
+
+// [Optional] Specifies whether the query should be executed as a continuous query. The default value is false.
+func (o JobConfigurationQueryResponseOutput) Continuous() pulumi.BoolOutput {
+	return o.ApplyT(func(v JobConfigurationQueryResponse) bool { return v.Continuous }).(pulumi.BoolOutput)
 }
 
 // [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
@@ -13021,9 +13047,11 @@ type SparkOptions struct {
 	FileUris []string `pulumi:"fileUris"`
 	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	JarUris []string `pulumi:"jarUris"`
-	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+	// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+	MainClass *string `pulumi:"mainClass"`
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
 	MainFileUri *string `pulumi:"mainFileUri"`
-	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 	Properties map[string]string `pulumi:"properties"`
 	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	PyFileUris []string `pulumi:"pyFileUris"`
@@ -13054,9 +13082,11 @@ type SparkOptionsArgs struct {
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	JarUris pulumi.StringArrayInput `pulumi:"jarUris"`
-	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+	// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
 	MainFileUri pulumi.StringPtrInput `pulumi:"mainFileUri"`
-	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	PyFileUris pulumi.StringArrayInput `pulumi:"pyFileUris"`
@@ -13167,12 +13197,17 @@ func (o SparkOptionsOutput) JarUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SparkOptions) []string { return v.JarUris }).(pulumi.StringArrayOutput)
 }
 
-// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+func (o SparkOptionsOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkOptions) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
 func (o SparkOptionsOutput) MainFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkOptions) *string { return v.MainFileUri }).(pulumi.StringPtrOutput)
 }
 
-// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 func (o SparkOptionsOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkOptions) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -13261,7 +13296,17 @@ func (o SparkOptionsPtrOutput) JarUris() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+func (o SparkOptionsPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
 func (o SparkOptionsPtrOutput) MainFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkOptions) *string {
 		if v == nil {
@@ -13271,7 +13316,7 @@ func (o SparkOptionsPtrOutput) MainFileUri() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 func (o SparkOptionsPtrOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *SparkOptions) map[string]string {
 		if v == nil {
@@ -13313,9 +13358,11 @@ type SparkOptionsResponse struct {
 	FileUris []string `pulumi:"fileUris"`
 	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	JarUris []string `pulumi:"jarUris"`
-	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+	// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+	MainClass string `pulumi:"mainClass"`
+	// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
 	MainFileUri string `pulumi:"mainFileUri"`
-	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 	Properties map[string]string `pulumi:"properties"`
 	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
 	PyFileUris []string `pulumi:"pyFileUris"`
@@ -13363,12 +13410,17 @@ func (o SparkOptionsResponseOutput) JarUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) []string { return v.JarUris }).(pulumi.StringArrayOutput)
 }
 
-// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.
+// The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.
+func (o SparkOptionsResponseOutput) MainClass() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) string { return v.MainClass }).(pulumi.StringOutput)
+}
+
+// The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.
 func (o SparkOptionsResponseOutput) MainFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) string { return v.MainFileUri }).(pulumi.StringOutput)
 }
 
-// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
 func (o SparkOptionsResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkOptionsResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -13434,7 +13486,7 @@ type StandardSqlDataType struct {
 	ArrayElementType *StandardSqlDataType `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType *StandardSqlStructType `pulumi:"structType"`
-	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 	TypeKind StandardSqlDataTypeTypeKind `pulumi:"typeKind"`
 }
 
@@ -13455,7 +13507,7 @@ type StandardSqlDataTypeArgs struct {
 	ArrayElementType StandardSqlDataTypePtrInput `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypePtrInput `pulumi:"structType"`
-	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 	TypeKind StandardSqlDataTypeTypeKindInput `pulumi:"typeKind"`
 }
 
@@ -13547,7 +13599,7 @@ func (o StandardSqlDataTypeOutput) StructType() StandardSqlStructTypePtrOutput {
 	return o.ApplyT(func(v StandardSqlDataType) *StandardSqlStructType { return v.StructType }).(StandardSqlStructTypePtrOutput)
 }
 
-// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypeOutput) TypeKind() StandardSqlDataTypeTypeKindOutput {
 	return o.ApplyT(func(v StandardSqlDataType) StandardSqlDataTypeTypeKind { return v.TypeKind }).(StandardSqlDataTypeTypeKindOutput)
 }
@@ -13596,7 +13648,7 @@ func (o StandardSqlDataTypePtrOutput) StructType() StandardSqlStructTypePtrOutpu
 	}).(StandardSqlStructTypePtrOutput)
 }
 
-// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypePtrOutput) TypeKind() StandardSqlDataTypeTypeKindPtrOutput {
 	return o.ApplyT(func(v *StandardSqlDataType) *StandardSqlDataTypeTypeKind {
 		if v == nil {
@@ -13612,7 +13664,7 @@ type StandardSqlDataTypeResponse struct {
 	ArrayElementType *StandardSqlDataTypeResponse `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypeResponse `pulumi:"structType"`
-	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 	TypeKind string `pulumi:"typeKind"`
 }
 
@@ -13641,7 +13693,7 @@ func (o StandardSqlDataTypeResponseOutput) StructType() StandardSqlStructTypeRes
 	return o.ApplyT(func(v StandardSqlDataTypeResponse) StandardSqlStructTypeResponse { return v.StructType }).(StandardSqlStructTypeResponseOutput)
 }
 
-// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypeResponseOutput) TypeKind() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardSqlDataTypeResponse) string { return v.TypeKind }).(pulumi.StringOutput)
 }
@@ -13690,7 +13742,7 @@ func (o StandardSqlDataTypeResponsePtrOutput) StructType() StandardSqlStructType
 	}).(StandardSqlStructTypeResponsePtrOutput)
 }
 
-// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypeResponsePtrOutput) TypeKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardSqlDataTypeResponse) *string {
 		if v == nil {
@@ -14274,6 +14326,8 @@ type TableFieldSchema struct {
 	PolicyTags *TableFieldSchemaPolicyTags `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision *string `pulumi:"precision"`
+	// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+	RoundingMode *string `pulumi:"roundingMode"`
 	// [Optional] See documentation for precision.
 	Scale *string `pulumi:"scale"`
 	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
@@ -14311,6 +14365,8 @@ type TableFieldSchemaArgs struct {
 	PolicyTags TableFieldSchemaPolicyTagsPtrInput `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision pulumi.StringPtrInput `pulumi:"precision"`
+	// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+	RoundingMode pulumi.StringPtrInput `pulumi:"roundingMode"`
 	// [Optional] See documentation for precision.
 	Scale pulumi.StringPtrInput `pulumi:"scale"`
 	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
@@ -14415,6 +14471,11 @@ func (o TableFieldSchemaOutput) PolicyTags() TableFieldSchemaPolicyTagsPtrOutput
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 func (o TableFieldSchemaOutput) Precision() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableFieldSchema) *string { return v.Precision }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+func (o TableFieldSchemaOutput) RoundingMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableFieldSchema) *string { return v.RoundingMode }).(pulumi.StringPtrOutput)
 }
 
 // [Optional] See documentation for precision.
@@ -14794,6 +14855,8 @@ type TableFieldSchemaResponse struct {
 	PolicyTags TableFieldSchemaPolicyTagsResponse `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision string `pulumi:"precision"`
+	// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+	RoundingMode string `pulumi:"roundingMode"`
 	// [Optional] See documentation for precision.
 	Scale string `pulumi:"scale"`
 	// [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
@@ -14861,6 +14924,11 @@ func (o TableFieldSchemaResponseOutput) PolicyTags() TableFieldSchemaPolicyTagsR
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 func (o TableFieldSchemaResponseOutput) Precision() pulumi.StringOutput {
 	return o.ApplyT(func(v TableFieldSchemaResponse) string { return v.Precision }).(pulumi.StringOutput)
+}
+
+// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
+func (o TableFieldSchemaResponseOutput) RoundingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) string { return v.RoundingMode }).(pulumi.StringOutput)
 }
 
 // [Optional] See documentation for precision.

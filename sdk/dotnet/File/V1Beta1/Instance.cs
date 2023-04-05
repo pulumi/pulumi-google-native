@@ -251,6 +251,12 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public Input<string>? Location { get; set; }
 
         /// <summary>
+        /// The max number of shares allowed.
+        /// </summary>
+        [Input("maxShareCount")]
+        public Input<string>? MaxShareCount { get; set; }
+
+        /// <summary>
         /// Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
         /// </summary>
         [Input("multiShareEnabled")]

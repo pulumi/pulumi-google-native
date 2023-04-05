@@ -30,6 +30,10 @@ export interface GetMembershipResult {
      */
     readonly createTime: string;
     /**
+     * Delivery setting associated with the membership.
+     */
+    readonly deliverySetting: string;
+    /**
      * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
     readonly memberKey: outputs.cloudidentity.v1beta1.EntityKeyResponse;

@@ -70,7 +70,7 @@ export interface GetInstanceGroupManagerResizeRequestResult {
      */
     readonly status: outputs.compute.alpha.InstanceGroupManagerResizeRequestStatusResponse;
     /**
-     * The URL of a zone where the resize request is located.
+     * The URL of a zone where the resize request is located. Populated only for zonal resize requests.
      */
     readonly zone: string;
 }

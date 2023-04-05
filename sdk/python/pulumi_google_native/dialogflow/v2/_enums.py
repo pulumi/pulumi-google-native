@@ -22,6 +22,7 @@ __all__ = [
     'GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant',
     'GoogleCloudDialogflowV2SuggestionFeatureType',
     'GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding',
+    'GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender',
     'IntentDefaultResponsePlatformsItem',
     'IntentWebhookState',
     'ParticipantRole',
@@ -389,6 +390,28 @@ class GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding(str, Enum):
     OUTPUT_AUDIO_ENCODING_MULAW = "OUTPUT_AUDIO_ENCODING_MULAW"
     """
     8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+    """
+
+
+class GoogleCloudDialogflowV2VoiceSelectionParamsSsmlGender(str, Enum):
+    """
+    Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+    """
+    SSML_VOICE_GENDER_UNSPECIFIED = "SSML_VOICE_GENDER_UNSPECIFIED"
+    """
+    An unspecified gender, which means that the client doesn't care which gender the selected voice will have.
+    """
+    SSML_VOICE_GENDER_MALE = "SSML_VOICE_GENDER_MALE"
+    """
+    A male voice.
+    """
+    SSML_VOICE_GENDER_FEMALE = "SSML_VOICE_GENDER_FEMALE"
+    """
+    A female voice.
+    """
+    SSML_VOICE_GENDER_NEUTRAL = "SSML_VOICE_GENDER_NEUTRAL"
+    """
+    A gender-neutral voice.
     """
 
 

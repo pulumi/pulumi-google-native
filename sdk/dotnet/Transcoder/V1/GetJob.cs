@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+        /// </summary>
+        public readonly string Mode;
+        /// <summary>
         /// The resource name of the job. Format: `projects/{project_number}/locations/{location}/jobs/{job}`
         /// </summary>
         public readonly string Name;
@@ -104,7 +108,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`
+        /// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`, which is the only supported preset. User defined JobTemplate: `{job_template_id}`
         /// </summary>
         public readonly string TemplateId;
         /// <summary>
@@ -126,6 +130,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1
 
             ImmutableDictionary<string, string> labels,
 
+            string mode,
+
             string name,
 
             string outputUri,
@@ -144,6 +150,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
             Error = error;
             InputUri = inputUri;
             Labels = labels;
+            Mode = mode;
             Name = name;
             OutputUri = outputUri;
             StartTime = startTime;

@@ -68,6 +68,10 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         public readonly Outputs.CaseClassificationResponse Classification;
         /// <summary>
+        /// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+        /// </summary>
+        public readonly string ContactEmail;
+        /// <summary>
         /// The time this case was created.
         /// </summary>
         public readonly string CreateTime;
@@ -128,6 +132,8 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         private GetCaseResult(
             Outputs.CaseClassificationResponse classification,
 
+            string contactEmail,
+
             string createTime,
 
             Outputs.ActorResponse creator,
@@ -157,6 +163,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
             string updateTime)
         {
             Classification = classification;
+            ContactEmail = contactEmail;
             CreateTime = createTime;
             Creator = creator;
             Description = description;

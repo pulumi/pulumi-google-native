@@ -42,6 +42,10 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly adminEnabled!: pulumi.Output<boolean>;
     /**
+     * [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+     */
+    public /*out*/ readonly availableFeatures!: pulumi.Output<string[]>;
+    /**
      * A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      */
     public /*out*/ readonly circuitInfos!: pulumi.Output<outputs.compute.alpha.InterconnectCircuitInfoResponse[]>;
@@ -135,11 +139,15 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+     */
+    public readonly requestedFeatures!: pulumi.Output<string[]>;
+    /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */
     public readonly requestedLinkCount!: pulumi.Output<number>;
     /**
-     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
@@ -180,7 +188,9 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["remoteLocation"] = args ? args.remoteLocation : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["requestedFeatures"] = args ? args.requestedFeatures : undefined;
             resourceInputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
+            resourceInputs["availableFeatures"] = undefined /*out*/;
             resourceInputs["circuitInfos"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["expectedOutages"] = undefined /*out*/;
@@ -198,6 +208,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["state"] = undefined /*out*/;
         } else {
             resourceInputs["adminEnabled"] = undefined /*out*/;
+            resourceInputs["availableFeatures"] = undefined /*out*/;
             resourceInputs["circuitInfos"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customerName"] = undefined /*out*/;
@@ -222,6 +233,7 @@ export class Interconnect extends pulumi.CustomResource {
             resourceInputs["provisionedLinkCount"] = undefined /*out*/;
             resourceInputs["remoteLocation"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["requestedFeatures"] = undefined /*out*/;
             resourceInputs["requestedLinkCount"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -292,6 +304,10 @@ export interface InterconnectArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+     */
+    requestedFeatures?: pulumi.Input<pulumi.Input<enums.compute.alpha.InterconnectRequestedFeaturesItem>[]>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */

@@ -24,6 +24,8 @@ type MigratingVm struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Details of the current running replication cycle.
 	CurrentSyncInfo ReplicationCycleResponseOutput `pulumi:"currentSyncInfo"`
+	// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+	CutoverForecast CutoverForecastResponseOutput `pulumi:"cutoverForecast"`
 	// The description attached to the migrating VM by the user.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The display name attached to the MigratingVm by the user.
@@ -34,6 +36,8 @@ type MigratingVm struct {
 	Group pulumi.StringOutput `pulumi:"group"`
 	// The labels of the migrating VM.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+	LastReplicationCycle ReplicationCycleResponseOutput `pulumi:"lastReplicationCycle"`
 	// The most updated snapshot created time in the source that finished replication.
 	LastSync ReplicationSyncResponseOutput `pulumi:"lastSync"`
 	Location pulumi.StringOutput           `pulumi:"location"`
@@ -48,7 +52,7 @@ type MigratingVm struct {
 	RecentCloneJobs CloneJobResponseArrayOutput `pulumi:"recentCloneJobs"`
 	// The recent cutover jobs performed on the migrating VM. This field holds the vm's last completed cutover job and the vm's running cutover job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request.
 	RecentCutoverJobs CutoverJobResponseArrayOutput `pulumi:"recentCutoverJobs"`
-	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	SourceId  pulumi.StringOutput    `pulumi:"sourceId"`
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
@@ -127,7 +131,7 @@ type migratingVmArgs struct {
 	// The replication schedule policy.
 	Policy  *SchedulePolicy `pulumi:"policy"`
 	Project *string         `pulumi:"project"`
-	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	SourceId  string  `pulumi:"sourceId"`
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
@@ -150,7 +154,7 @@ type MigratingVmArgs struct {
 	// The replication schedule policy.
 	Policy  SchedulePolicyPtrInput
 	Project pulumi.StringPtrInput
-	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	SourceId  pulumi.StringInput
 	// The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
@@ -214,6 +218,11 @@ func (o MigratingVmOutput) CurrentSyncInfo() ReplicationCycleResponseOutput {
 	return o.ApplyT(func(v *MigratingVm) ReplicationCycleResponseOutput { return v.CurrentSyncInfo }).(ReplicationCycleResponseOutput)
 }
 
+// Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+func (o MigratingVmOutput) CutoverForecast() CutoverForecastResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) CutoverForecastResponseOutput { return v.CutoverForecast }).(CutoverForecastResponseOutput)
+}
+
 // The description attached to the migrating VM by the user.
 func (o MigratingVmOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
@@ -237,6 +246,11 @@ func (o MigratingVmOutput) Group() pulumi.StringOutput {
 // The labels of the migrating VM.
 func (o MigratingVmOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+func (o MigratingVmOutput) LastReplicationCycle() ReplicationCycleResponseOutput {
+	return o.ApplyT(func(v *MigratingVm) ReplicationCycleResponseOutput { return v.LastReplicationCycle }).(ReplicationCycleResponseOutput)
 }
 
 // The most updated snapshot created time in the source that finished replication.
@@ -277,7 +291,7 @@ func (o MigratingVmOutput) RecentCutoverJobs() CutoverJobResponseArrayOutput {
 	return o.ApplyT(func(v *MigratingVm) CutoverJobResponseArrayOutput { return v.RecentCutoverJobs }).(CutoverJobResponseArrayOutput)
 }
 
-// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+// A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o MigratingVmOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MigratingVm) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }

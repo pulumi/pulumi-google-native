@@ -74,6 +74,10 @@ export interface GetMigratingVmResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+     */
+    readonly lastReplicationCycle: outputs.vmmigration.v1alpha1.ReplicationCycleResponse;
+    /**
      * The most updated snapshot created time in the source that finished replication.
      */
     readonly lastSync: outputs.vmmigration.v1alpha1.ReplicationSyncResponse;

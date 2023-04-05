@@ -44,6 +44,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> DefaultCollation { get; private set; } = null!;
 
         /// <summary>
+        /// The default rounding mode of the table.
+        /// </summary>
+        [Output("defaultRoundingMode")]
+        public Output<string> DefaultRoundingMode { get; private set; } = null!;
+
+        /// <summary>
         /// [Optional] A user-friendly description of this table.
         /// </summary>
         [Output("description")]

@@ -569,6 +569,8 @@ class BackendRuleResponse(dict):
             suggest = "min_deadline"
         elif key == "operationDeadline":
             suggest = "operation_deadline"
+        elif key == "overridesByRequestProtocol":
+            suggest = "overrides_by_request_protocol"
         elif key == "pathTranslation":
             suggest = "path_translation"
 
@@ -590,6 +592,7 @@ class BackendRuleResponse(dict):
                  jwt_audience: str,
                  min_deadline: float,
                  operation_deadline: float,
+                 overrides_by_request_protocol: Mapping[str, str],
                  path_translation: str,
                  protocol: str,
                  selector: str):
@@ -601,6 +604,7 @@ class BackendRuleResponse(dict):
         :param str jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         :param float min_deadline: Deprecated, do not use.
         :param float operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
+        :param Mapping[str, str] overrides_by_request_protocol: The map between request protocol and the backend address.
         :param str protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param str selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
@@ -610,6 +614,7 @@ class BackendRuleResponse(dict):
         pulumi.set(__self__, "jwt_audience", jwt_audience)
         pulumi.set(__self__, "min_deadline", min_deadline)
         pulumi.set(__self__, "operation_deadline", operation_deadline)
+        pulumi.set(__self__, "overrides_by_request_protocol", overrides_by_request_protocol)
         pulumi.set(__self__, "path_translation", path_translation)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "selector", selector)
@@ -661,6 +666,14 @@ class BackendRuleResponse(dict):
         The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         """
         return pulumi.get(self, "operation_deadline")
+
+    @property
+    @pulumi.getter(name="overridesByRequestProtocol")
+    def overrides_by_request_protocol(self) -> Mapping[str, str]:
+        """
+        The map between request protocol and the backend address.
+        """
+        return pulumi.get(self, "overrides_by_request_protocol")
 
     @property
     @pulumi.getter(name="pathTranslation")
@@ -881,7 +894,7 @@ class ClientLibrarySettingsResponse(dict):
         :param 'PythonSettingsResponse' python_settings: Settings for Python client libraries.
         :param bool rest_numeric_enums: When using transport=rest, the client request will encode enums as numbers rather than strings.
         :param 'RubySettingsResponse' ruby_settings: Settings for Ruby client libraries.
-        :param str version: Version of the API to apply these settings to.
+        :param str version: Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
         """
         pulumi.set(__self__, "cpp_settings", cpp_settings)
         pulumi.set(__self__, "dotnet_settings", dotnet_settings)
@@ -979,7 +992,7 @@ class ClientLibrarySettingsResponse(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        Version of the API to apply these settings to.
+        Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
         """
         return pulumi.get(self, "version")
 
@@ -1587,6 +1600,7 @@ class EnumResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 edition: str,
                  enumvalue: Sequence['outputs.EnumValueResponse'],
                  name: str,
                  options: Sequence['outputs.OptionResponse'],
@@ -1594,17 +1608,27 @@ class EnumResponse(dict):
                  syntax: str):
         """
         Enum type definition.
+        :param str edition: The source edition string, only valid when syntax is SYNTAX_EDITIONS.
         :param Sequence['EnumValueResponse'] enumvalue: Enum value definitions.
         :param str name: Enum type name.
         :param Sequence['OptionResponse'] options: Protocol buffer options.
         :param 'SourceContextResponse' source_context: The source context.
         :param str syntax: The source syntax.
         """
+        pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "enumvalue", enumvalue)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "source_context", source_context)
         pulumi.set(__self__, "syntax", syntax)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter
@@ -2688,7 +2712,7 @@ class MethodSettingsResponse(dict):
                  selector: str):
         """
         Describes the generator configuration for a method.
-        :param 'LongRunningResponse' long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        :param 'LongRunningResponse' long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
         :param str selector: The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
         """
         pulumi.set(__self__, "long_running", long_running)
@@ -2698,7 +2722,7 @@ class MethodSettingsResponse(dict):
     @pulumi.getter(name="longRunning")
     def long_running(self) -> 'outputs.LongRunningResponse':
         """
-        Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
         """
         return pulumi.get(self, "long_running")
 
@@ -2986,13 +3010,13 @@ class MetricRuleResponse(dict):
 @pulumi.output_type
 class MixinResponse(dict):
     """
-    Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+    Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inherting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
     """
     def __init__(__self__, *,
                  name: str,
                  root: str):
         """
-        Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+        Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inherting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
         :param str name: The fully qualified name of the interface which is included.
         :param str root: If non-empty specifies a path under which inherited HTTP paths are rooted.
         """
@@ -3398,6 +3422,8 @@ class PublishingResponse(dict):
             suggest = "method_settings"
         elif key == "newIssueUri":
             suggest = "new_issue_uri"
+        elif key == "protoReferenceDocumentationUri":
+            suggest = "proto_reference_documentation_uri"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PublishingResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3419,7 +3445,8 @@ class PublishingResponse(dict):
                  library_settings: Sequence['outputs.ClientLibrarySettingsResponse'],
                  method_settings: Sequence['outputs.MethodSettingsResponse'],
                  new_issue_uri: str,
-                 organization: str):
+                 organization: str,
+                 proto_reference_documentation_uri: str):
         """
         This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
         :param str api_short_name: Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
@@ -3431,6 +3458,7 @@ class PublishingResponse(dict):
         :param Sequence['MethodSettingsResponse'] method_settings: A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
         :param str new_issue_uri: Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
         :param str organization: For whom the client library is being published.
+        :param str proto_reference_documentation_uri: Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
         """
         pulumi.set(__self__, "api_short_name", api_short_name)
         pulumi.set(__self__, "codeowner_github_teams", codeowner_github_teams)
@@ -3441,6 +3469,7 @@ class PublishingResponse(dict):
         pulumi.set(__self__, "method_settings", method_settings)
         pulumi.set(__self__, "new_issue_uri", new_issue_uri)
         pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "proto_reference_documentation_uri", proto_reference_documentation_uri)
 
     @property
     @pulumi.getter(name="apiShortName")
@@ -3513,6 +3542,14 @@ class PublishingResponse(dict):
         For whom the client library is being published.
         """
         return pulumi.get(self, "organization")
+
+    @property
+    @pulumi.getter(name="protoReferenceDocumentationUri")
+    def proto_reference_documentation_uri(self) -> str:
+        """
+        Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
+        """
+        return pulumi.get(self, "proto_reference_documentation_uri")
 
 
 @pulumi.output_type
@@ -3994,6 +4031,7 @@ class TypeResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 edition: str,
                  fields: Sequence['outputs.FieldResponse'],
                  name: str,
                  oneofs: Sequence[str],
@@ -4002,6 +4040,7 @@ class TypeResponse(dict):
                  syntax: str):
         """
         A protocol buffer message type.
+        :param str edition: The source edition string, only valid when syntax is SYNTAX_EDITIONS.
         :param Sequence['FieldResponse'] fields: The list of fields.
         :param str name: The fully qualified message name.
         :param Sequence[str] oneofs: The list of types appearing in `oneof` definitions in this type.
@@ -4009,12 +4048,21 @@ class TypeResponse(dict):
         :param 'SourceContextResponse' source_context: The source context.
         :param str syntax: The source syntax.
         """
+        pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "fields", fields)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "oneofs", oneofs)
         pulumi.set(__self__, "options", options)
         pulumi.set(__self__, "source_context", source_context)
         pulumi.set(__self__, "syntax", syntax)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> str:
+        """
+        The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        """
+        return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter

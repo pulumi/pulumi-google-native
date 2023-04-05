@@ -18,7 +18,7 @@ const (
 	DatabaseAppEngineIntegrationModeAppEngineIntegrationModeUnspecified = DatabaseAppEngineIntegrationMode("APP_ENGINE_INTEGRATION_MODE_UNSPECIFIED")
 	// If an App Engine application exists in the same region as this database, App Engine configuration will impact this database. This includes disabling of the application & database, as well as disabling writes to the database.
 	DatabaseAppEngineIntegrationModeEnabled = DatabaseAppEngineIntegrationMode("ENABLED")
-	// Appengine has no affect on the ability of this database to serve requests.
+	// App Engine has no effect on the ability of this database to serve requests. This is the default setting for databases created with the Firestore API.
 	DatabaseAppEngineIntegrationModeDisabled = DatabaseAppEngineIntegrationMode("DISABLED")
 )
 

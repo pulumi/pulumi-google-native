@@ -204,6 +204,8 @@ func (o AlloyDbConnectionProfileResponseOutput) Settings() AlloyDbSettingsRespon
 
 // Settings for creating an AlloyDB cluster.
 type AlloyDbSettings struct {
+	// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Input only. Initial user to setup during cluster creation. Required.
 	InitialUser UserPassword `pulumi:"initialUser"`
 	// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
@@ -226,6 +228,8 @@ type AlloyDbSettingsInput interface {
 
 // Settings for creating an AlloyDB cluster.
 type AlloyDbSettingsArgs struct {
+	// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Input only. Initial user to setup during cluster creation. Required.
 	InitialUser UserPasswordInput `pulumi:"initialUser"`
 	// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
@@ -313,6 +317,11 @@ func (o AlloyDbSettingsOutput) ToAlloyDbSettingsPtrOutputWithContext(ctx context
 	}).(AlloyDbSettingsPtrOutput)
 }
 
+// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+func (o AlloyDbSettingsOutput) EncryptionConfig() EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v AlloyDbSettings) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
+}
+
 // Input only. Initial user to setup during cluster creation. Required.
 func (o AlloyDbSettingsOutput) InitialUser() UserPasswordOutput {
 	return o.ApplyT(func(v AlloyDbSettings) UserPassword { return v.InitialUser }).(UserPasswordOutput)
@@ -356,6 +365,16 @@ func (o AlloyDbSettingsPtrOutput) Elem() AlloyDbSettingsOutput {
 	}).(AlloyDbSettingsOutput)
 }
 
+// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+func (o AlloyDbSettingsPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) *EncryptionConfig {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionConfig
+	}).(EncryptionConfigPtrOutput)
+}
+
 // Input only. Initial user to setup during cluster creation. Required.
 func (o AlloyDbSettingsPtrOutput) InitialUser() UserPasswordPtrOutput {
 	return o.ApplyT(func(v *AlloyDbSettings) *UserPassword {
@@ -397,6 +416,8 @@ func (o AlloyDbSettingsPtrOutput) VpcNetwork() pulumi.StringPtrOutput {
 
 // Settings for creating an AlloyDB cluster.
 type AlloyDbSettingsResponse struct {
+	// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// Input only. Initial user to setup during cluster creation. Required.
 	InitialUser UserPasswordResponse `pulumi:"initialUser"`
 	// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
@@ -419,6 +440,11 @@ func (o AlloyDbSettingsResponseOutput) ToAlloyDbSettingsResponseOutput() AlloyDb
 
 func (o AlloyDbSettingsResponseOutput) ToAlloyDbSettingsResponseOutputWithContext(ctx context.Context) AlloyDbSettingsResponseOutput {
 	return o
+}
+
+// Optional. The encryption config can be specified to encrypt the data disks and other persistent data resources of a cluster with a customer-managed encryption key (CMEK). When this field is not specified, the cluster will then use default encryption scheme to protect the user data.
+func (o AlloyDbSettingsResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v AlloyDbSettingsResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
 
 // Input only. Initial user to setup during cluster creation. Required.
@@ -1917,11 +1943,11 @@ func (o ConversionWorkspaceInfoResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConversionWorkspaceInfoResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The type and version of a source or destination DB.
+// The type and version of a source or destination database.
 type DatabaseEngineInfo struct {
-	// Engine Type.
+	// Engine type.
 	Engine DatabaseEngineInfoEngine `pulumi:"engine"`
-	// Engine named version, for e.g. 12.c.1
+	// Engine named version, for example 12.c.1.
 	Version string `pulumi:"version"`
 }
 
@@ -1936,11 +1962,11 @@ type DatabaseEngineInfoInput interface {
 	ToDatabaseEngineInfoOutputWithContext(context.Context) DatabaseEngineInfoOutput
 }
 
-// The type and version of a source or destination DB.
+// The type and version of a source or destination database.
 type DatabaseEngineInfoArgs struct {
-	// Engine Type.
+	// Engine type.
 	Engine DatabaseEngineInfoEngineInput `pulumi:"engine"`
-	// Engine named version, for e.g. 12.c.1
+	// Engine named version, for example 12.c.1.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -1956,7 +1982,7 @@ func (i DatabaseEngineInfoArgs) ToDatabaseEngineInfoOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(DatabaseEngineInfoOutput)
 }
 
-// The type and version of a source or destination DB.
+// The type and version of a source or destination database.
 type DatabaseEngineInfoOutput struct{ *pulumi.OutputState }
 
 func (DatabaseEngineInfoOutput) ElementType() reflect.Type {
@@ -1971,25 +1997,25 @@ func (o DatabaseEngineInfoOutput) ToDatabaseEngineInfoOutputWithContext(ctx cont
 	return o
 }
 
-// Engine Type.
+// Engine type.
 func (o DatabaseEngineInfoOutput) Engine() DatabaseEngineInfoEngineOutput {
 	return o.ApplyT(func(v DatabaseEngineInfo) DatabaseEngineInfoEngine { return v.Engine }).(DatabaseEngineInfoEngineOutput)
 }
 
-// Engine named version, for e.g. 12.c.1
+// Engine named version, for example 12.c.1.
 func (o DatabaseEngineInfoOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEngineInfo) string { return v.Version }).(pulumi.StringOutput)
 }
 
-// The type and version of a source or destination DB.
+// The type and version of a source or destination database.
 type DatabaseEngineInfoResponse struct {
-	// Engine Type.
+	// Engine type.
 	Engine string `pulumi:"engine"`
-	// Engine named version, for e.g. 12.c.1
+	// Engine named version, for example 12.c.1.
 	Version string `pulumi:"version"`
 }
 
-// The type and version of a source or destination DB.
+// The type and version of a source or destination database.
 type DatabaseEngineInfoResponseOutput struct{ *pulumi.OutputState }
 
 func (DatabaseEngineInfoResponseOutput) ElementType() reflect.Type {
@@ -2004,12 +2030,12 @@ func (o DatabaseEngineInfoResponseOutput) ToDatabaseEngineInfoResponseOutputWith
 	return o
 }
 
-// Engine Type.
+// Engine type.
 func (o DatabaseEngineInfoResponseOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEngineInfoResponse) string { return v.Engine }).(pulumi.StringOutput)
 }
 
-// Engine named version, for e.g. 12.c.1
+// Engine named version, for example 12.c.1.
 func (o DatabaseEngineInfoResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseEngineInfoResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -2532,6 +2558,172 @@ func (o DumpFlagsResponseOutput) ToDumpFlagsResponseOutputWithContext(ctx contex
 // The flags for the initial dump.
 func (o DumpFlagsResponseOutput) DumpFlags() DumpFlagResponseArrayOutput {
 	return o.ApplyT(func(v DumpFlagsResponse) []DumpFlagResponse { return v.DumpFlags }).(DumpFlagResponseArrayOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+type EncryptionConfig struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+}
+
+// EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
+// You can construct a concrete instance of `EncryptionConfigInput` via:
+//
+//	EncryptionConfigArgs{...}
+type EncryptionConfigInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigOutput() EncryptionConfigOutput
+	ToEncryptionConfigOutputWithContext(context.Context) EncryptionConfigOutput
+}
+
+// EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+type EncryptionConfigArgs struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+}
+
+func (EncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return i.ToEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput).ToEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigPtrInput` via:
+//
+//	        EncryptionConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type EncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput
+	ToEncryptionConfigPtrOutputWithContext(context.Context) EncryptionConfigPtrOutput
+}
+
+type encryptionConfigPtrType EncryptionConfigArgs
+
+func EncryptionConfigPtr(v *EncryptionConfigArgs) EncryptionConfigPtrInput {
+	return (*encryptionConfigPtrType)(v)
+}
+
+func (*encryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+type EncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EncryptionConfig) *EncryptionConfig {
+		return &v
+	}).(EncryptionConfigPtrOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+func (o EncryptionConfigOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig {
+		if v != nil {
+			return *v
+		}
+		var ret EncryptionConfig
+		return ret
+	}).(EncryptionConfigOutput)
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+func (o EncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+type EncryptionConfigResponse struct {
+	// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+	KmsKeyName string `pulumi:"kmsKeyName"`
+}
+
+// EncryptionConfig describes the encryption config of a cluster that is encrypted with a CMEK (customer-managed encryption key).
+type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
+	return o
+}
+
+// The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+func (o EncryptionConfigResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -5727,7 +5919,7 @@ func (o SslConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SslConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+// The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivity struct {
 }
 
@@ -5742,7 +5934,7 @@ type StaticIpConnectivityInput interface {
 	ToStaticIpConnectivityOutputWithContext(context.Context) StaticIpConnectivityOutput
 }
 
-// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+// The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivityArgs struct {
 }
 
@@ -5799,7 +5991,7 @@ func (i *staticIpConnectivityPtrType) ToStaticIpConnectivityPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(StaticIpConnectivityPtrOutput)
 }
 
-// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+// The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivityOutput struct{ *pulumi.OutputState }
 
 func (StaticIpConnectivityOutput) ElementType() reflect.Type {
@@ -5848,11 +6040,11 @@ func (o StaticIpConnectivityPtrOutput) Elem() StaticIpConnectivityOutput {
 	}).(StaticIpConnectivityOutput)
 }
 
-// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+// The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivityResponse struct {
 }
 
-// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
+// The source database will allow incoming connections from the public IP of the destination database. You can retrieve the public IP of the Cloud SQL instance from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
 type StaticIpConnectivityResponseOutput struct{ *pulumi.OutputState }
 
 func (StaticIpConnectivityResponseOutput) ElementType() reflect.Type {
@@ -6246,11 +6438,11 @@ func (o UserPasswordResponseOutput) User() pulumi.StringOutput {
 	return o.ApplyT(func(v UserPasswordResponse) string { return v.User }).(pulumi.StringOutput)
 }
 
-// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+// The VPC peering configuration is used to create VPC peering with the consumer's VPC.
 type VpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
-	// Fully qualified name of the VPC DMS will peer to.
+	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	VpcName string `pulumi:"vpcName"`
 }
 
@@ -6265,11 +6457,11 @@ type VpcPeeringConfigInput interface {
 	ToVpcPeeringConfigOutputWithContext(context.Context) VpcPeeringConfigOutput
 }
 
-// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+// The VPC peering configuration is used to create VPC peering with the consumer's VPC.
 type VpcPeeringConfigArgs struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet pulumi.StringInput `pulumi:"subnet"`
-	// Fully qualified name of the VPC DMS will peer to.
+	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	VpcName pulumi.StringInput `pulumi:"vpcName"`
 }
 
@@ -6326,7 +6518,7 @@ func (i *vpcPeeringConfigPtrType) ToVpcPeeringConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(VpcPeeringConfigPtrOutput)
 }
 
-// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+// The VPC peering configuration is used to create VPC peering with the consumer's VPC.
 type VpcPeeringConfigOutput struct{ *pulumi.OutputState }
 
 func (VpcPeeringConfigOutput) ElementType() reflect.Type {
@@ -6356,7 +6548,7 @@ func (o VpcPeeringConfigOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfig) string { return v.Subnet }).(pulumi.StringOutput)
 }
 
-// Fully qualified name of the VPC DMS will peer to.
+// Fully qualified name of the VPC that Database Migration Service will peer to.
 func (o VpcPeeringConfigOutput) VpcName() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfig) string { return v.VpcName }).(pulumi.StringOutput)
 }
@@ -6395,7 +6587,7 @@ func (o VpcPeeringConfigPtrOutput) Subnet() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Fully qualified name of the VPC DMS will peer to.
+// Fully qualified name of the VPC that Database Migration Service will peer to.
 func (o VpcPeeringConfigPtrOutput) VpcName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VpcPeeringConfig) *string {
 		if v == nil {
@@ -6405,15 +6597,15 @@ func (o VpcPeeringConfigPtrOutput) VpcName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+// The VPC peering configuration is used to create VPC peering with the consumer's VPC.
 type VpcPeeringConfigResponse struct {
 	// A free subnet for peering. (CIDR of /29)
 	Subnet string `pulumi:"subnet"`
-	// Fully qualified name of the VPC DMS will peer to.
+	// Fully qualified name of the VPC that Database Migration Service will peer to.
 	VpcName string `pulumi:"vpcName"`
 }
 
-// The VPC Peering configuration is used to create VPC peering with the consumer's VPC.
+// The VPC peering configuration is used to create VPC peering with the consumer's VPC.
 type VpcPeeringConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (VpcPeeringConfigResponseOutput) ElementType() reflect.Type {
@@ -6433,7 +6625,7 @@ func (o VpcPeeringConfigResponseOutput) Subnet() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.Subnet }).(pulumi.StringOutput)
 }
 
-// Fully qualified name of the VPC DMS will peer to.
+// Fully qualified name of the VPC that Database Migration Service will peer to.
 func (o VpcPeeringConfigResponseOutput) VpcName() pulumi.StringOutput {
 	return o.ApplyT(func(v VpcPeeringConfigResponse) string { return v.VpcName }).(pulumi.StringOutput)
 }
@@ -6628,6 +6820,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagArrayInput)(nil)).Elem(), DumpFlagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsInput)(nil)).Elem(), DumpFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsPtrInput)(nil)).Elem(), DumpFlagsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigInput)(nil)).Elem(), EncryptionConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardSshTunnelConnectivityInput)(nil)).Elem(), ForwardSshTunnelConnectivityArgs{})
@@ -6703,6 +6897,9 @@ func init() {
 	pulumi.RegisterOutputType(DumpFlagsOutput{})
 	pulumi.RegisterOutputType(DumpFlagsPtrOutput{})
 	pulumi.RegisterOutputType(DumpFlagsResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

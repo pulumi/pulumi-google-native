@@ -1390,6 +1390,10 @@ type AudioStream struct {
 	ChannelLayout []string `pulumi:"channelLayout"`
 	// The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
 	Codec *string `pulumi:"codec"`
+	// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+	DisplayName *string `pulumi:"displayName"`
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+	LanguageCode *string `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
 	Mapping []AudioMapping `pulumi:"mapping"`
 	// The audio sample rate in Hertz. The default is 48000 Hertz.
@@ -1417,6 +1421,10 @@ type AudioStreamArgs struct {
 	ChannelLayout pulumi.StringArrayInput `pulumi:"channelLayout"`
 	// The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
 	Codec pulumi.StringPtrInput `pulumi:"codec"`
+	// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
 	Mapping AudioMappingArrayInput `pulumi:"mapping"`
 	// The audio sample rate in Hertz. The default is 48000 Hertz.
@@ -1521,6 +1529,16 @@ func (o AudioStreamOutput) Codec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AudioStream) *string { return v.Codec }).(pulumi.StringPtrOutput)
 }
 
+// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+func (o AudioStreamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AudioStream) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+func (o AudioStreamOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AudioStream) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
 // The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
 func (o AudioStreamOutput) Mapping() AudioMappingArrayOutput {
 	return o.ApplyT(func(v AudioStream) []AudioMapping { return v.Mapping }).(AudioMappingArrayOutput)
@@ -1595,6 +1613,26 @@ func (o AudioStreamPtrOutput) Codec() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+func (o AudioStreamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AudioStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+func (o AudioStreamPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AudioStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
 func (o AudioStreamPtrOutput) Mapping() AudioMappingArrayOutput {
 	return o.ApplyT(func(v *AudioStream) []AudioMapping {
@@ -1625,6 +1663,10 @@ type AudioStreamResponse struct {
 	ChannelLayout []string `pulumi:"channelLayout"`
 	// The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
 	Codec string `pulumi:"codec"`
+	// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+	DisplayName string `pulumi:"displayName"`
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+	LanguageCode string `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
 	Mapping []AudioMappingResponse `pulumi:"mapping"`
 	// The audio sample rate in Hertz. The default is 48000 Hertz.
@@ -1664,6 +1706,16 @@ func (o AudioStreamResponseOutput) ChannelLayout() pulumi.StringArrayOutput {
 // The codec for this audio stream. The default is `aac`. Supported audio codecs: - `aac` - `aac-he` - `aac-he-v2` - `mp3` - `ac3` - `eac3`
 func (o AudioStreamResponseOutput) Codec() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioStreamResponse) string { return v.Codec }).(pulumi.StringOutput)
+}
+
+// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+func (o AudioStreamResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioStreamResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+func (o AudioStreamResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioStreamResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
@@ -7770,6 +7822,10 @@ func (o TextMappingResponseArrayOutput) Index(i pulumi.IntInput) TextMappingResp
 type TextStream struct {
 	// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
 	Codec *string `pulumi:"codec"`
+	// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+	DisplayName *string `pulumi:"displayName"`
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+	LanguageCode *string `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping []TextMapping `pulumi:"mapping"`
 }
@@ -7789,6 +7845,10 @@ type TextStreamInput interface {
 type TextStreamArgs struct {
 	// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
 	Codec pulumi.StringPtrInput `pulumi:"codec"`
+	// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping TextMappingArrayInput `pulumi:"mapping"`
 }
@@ -7876,6 +7936,16 @@ func (o TextStreamOutput) Codec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextStream) *string { return v.Codec }).(pulumi.StringPtrOutput)
 }
 
+// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+func (o TextStreamOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextStream) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+func (o TextStreamOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TextStream) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
 // The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 func (o TextStreamOutput) Mapping() TextMappingArrayOutput {
 	return o.ApplyT(func(v TextStream) []TextMapping { return v.Mapping }).(TextMappingArrayOutput)
@@ -7915,6 +7985,26 @@ func (o TextStreamPtrOutput) Codec() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+func (o TextStreamPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TextStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+func (o TextStreamPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TextStream) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
 // The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 func (o TextStreamPtrOutput) Mapping() TextMappingArrayOutput {
 	return o.ApplyT(func(v *TextStream) []TextMapping {
@@ -7929,6 +8019,10 @@ func (o TextStreamPtrOutput) Mapping() TextMappingArrayOutput {
 type TextStreamResponse struct {
 	// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
 	Codec string `pulumi:"codec"`
+	// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+	DisplayName string `pulumi:"displayName"`
+	// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+	LanguageCode string `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping []TextMappingResponse `pulumi:"mapping"`
 }
@@ -7951,6 +8045,16 @@ func (o TextStreamResponseOutput) ToTextStreamResponseOutputWithContext(ctx cont
 // The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
 func (o TextStreamResponseOutput) Codec() pulumi.StringOutput {
 	return o.ApplyT(func(v TextStreamResponse) string { return v.Codec }).(pulumi.StringOutput)
+}
+
+// The name for this particular text stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+func (o TextStreamResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStreamResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+func (o TextStreamResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStreamResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.

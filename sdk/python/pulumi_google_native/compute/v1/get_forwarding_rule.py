@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetForwardingRuleResult:
-    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, subnetwork=None, target=None):
+    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, base_forwarding_rule=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, ports=None, psc_connection_id=None, psc_connection_status=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, source_ip_ranges=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -29,6 +29,9 @@ class GetForwardingRuleResult:
         if backend_service and not isinstance(backend_service, str):
             raise TypeError("Expected argument 'backend_service' to be a str")
         pulumi.set(__self__, "backend_service", backend_service)
+        if base_forwarding_rule and not isinstance(base_forwarding_rule, str):
+            raise TypeError("Expected argument 'base_forwarding_rule' to be a str")
+        pulumi.set(__self__, "base_forwarding_rule", base_forwarding_rule)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -104,6 +107,9 @@ class GetForwardingRuleResult:
         if service_name and not isinstance(service_name, str):
             raise TypeError("Expected argument 'service_name' to be a str")
         pulumi.set(__self__, "service_name", service_name)
+        if source_ip_ranges and not isinstance(source_ip_ranges, list):
+            raise TypeError("Expected argument 'source_ip_ranges' to be a list")
+        pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
         if subnetwork and not isinstance(subnetwork, str):
             raise TypeError("Expected argument 'subnetwork' to be a str")
         pulumi.set(__self__, "subnetwork", subnetwork)
@@ -134,6 +140,14 @@ class GetForwardingRuleResult:
         Identifies the backend service to which the forwarding rule sends traffic. Required for Internal TCP/UDP Load Balancing and Network Load Balancing; must be omitted for all other load balancer types.
         """
         return pulumi.get(self, "backend_service")
+
+    @property
+    @pulumi.getter(name="baseForwardingRule")
+    def base_forwarding_rule(self) -> str:
+        """
+        The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
+        """
+        return pulumi.get(self, "base_forwarding_rule")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -333,6 +347,14 @@ class GetForwardingRuleResult:
         return pulumi.get(self, "service_name")
 
     @property
+    @pulumi.getter(name="sourceIpRanges")
+    def source_ip_ranges(self) -> Sequence[str]:
+        """
+        If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each source_ip_range entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
+        """
+        return pulumi.get(self, "source_ip_ranges")
+
+    @property
     @pulumi.getter
     def subnetwork(self) -> str:
         """
@@ -358,6 +380,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             all_ports=self.all_ports,
             allow_global_access=self.allow_global_access,
             backend_service=self.backend_service,
+            base_forwarding_rule=self.base_forwarding_rule,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
@@ -383,6 +406,7 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
             service_directory_registrations=self.service_directory_registrations,
             service_label=self.service_label,
             service_name=self.service_name,
+            source_ip_ranges=self.source_ip_ranges,
             subnetwork=self.subnetwork,
             target=self.target)
 
@@ -405,6 +429,7 @@ def get_forwarding_rule(forwarding_rule: Optional[str] = None,
         all_ports=__ret__.all_ports,
         allow_global_access=__ret__.allow_global_access,
         backend_service=__ret__.backend_service,
+        base_forwarding_rule=__ret__.base_forwarding_rule,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
@@ -430,6 +455,7 @@ def get_forwarding_rule(forwarding_rule: Optional[str] = None,
         service_directory_registrations=__ret__.service_directory_registrations,
         service_label=__ret__.service_label,
         service_name=__ret__.service_name,
+        source_ip_ranges=__ret__.source_ip_ranges,
         subnetwork=__ret__.subnetwork,
         target=__ret__.target)
 

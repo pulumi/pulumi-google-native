@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V2.Outputs
         /// </summary>
         public readonly int Parallelism;
         /// <summary>
-        /// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
         /// </summary>
         public readonly int TaskCount;
         /// <summary>

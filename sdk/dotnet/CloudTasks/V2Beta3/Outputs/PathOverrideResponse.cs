@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3.Outputs
     public sealed class PathOverrideResponse
     {
         /// <summary>
-        /// The URI path (e.g., a/b/c). Default is Empty string.
+        /// The URI path (e.g., /users/1234). Default is an empty string.
         /// </summary>
         public readonly string Path;
 

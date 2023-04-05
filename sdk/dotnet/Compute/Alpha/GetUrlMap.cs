@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetUrlMap
     {
         /// <summary>
-        /// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+        /// Returns the specified UrlMap resource.
         /// </summary>
         public static Task<GetUrlMapResult> InvokeAsync(GetUrlMapArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUrlMapResult>("google-native:compute/alpha:getUrlMap", args ?? new GetUrlMapArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+        /// Returns the specified UrlMap resource.
         /// </summary>
         public static Output<GetUrlMapResult> Invoke(GetUrlMapInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUrlMapResult>("google-native:compute/alpha:getUrlMap", args ?? new GetUrlMapInvokeArgs(), options.WithDefaults());

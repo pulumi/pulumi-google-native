@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified Route resource. Gets a list of available routes by making a list() request.
+ * Returns the specified Route resource.
  */
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
 
@@ -65,6 +65,10 @@ export interface GetRouteResult {
      * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
      */
     readonly nextHopGateway: string;
+    /**
+     * The full resource name of the network connectivity center hub that should handle matching packets.
+     */
+    readonly nextHopHub: string;
     /**
      * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
      */
@@ -123,7 +127,7 @@ export interface GetRouteResult {
     readonly warnings: outputs.compute.alpha.RouteWarningsItemResponse[];
 }
 /**
- * Returns the specified Route resource. Gets a list of available routes by making a list() request.
+ * Returns the specified Route resource.
  */
 export function getRouteOutput(args: GetRouteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteResult> {
     return pulumi.output(args).apply((a: any) => getRoute(a, opts))

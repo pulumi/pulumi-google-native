@@ -19,6 +19,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         public readonly Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse JsonCustomConfig;
         public readonly string JsonParsing;
         public readonly string LogLevel;
+        /// <summary>
+        /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        /// </summary>
+        public readonly ImmutableArray<string> UserIpRequestHeaders;
 
         [OutputConstructor]
         private SecurityPolicyAdvancedOptionsConfigResponse(
@@ -26,11 +30,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string jsonParsing,
 
-            string logLevel)
+            string logLevel,
+
+            ImmutableArray<string> userIpRequestHeaders)
         {
             JsonCustomConfig = jsonCustomConfig;
             JsonParsing = jsonParsing;
             LogLevel = logLevel;
+            UserIpRequestHeaders = userIpRequestHeaders;
         }
     }
 }

@@ -16,6 +16,8 @@ import (
 type BillingAccountBucket struct {
 	pulumi.CustomResourceState
 
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled pulumi.BoolOutput   `pulumi:"analyticsEnabled"`
 	BillingAccountId pulumi.StringOutput `pulumi:"billingAccountId"`
 	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	BucketId pulumi.StringOutput `pulumi:"bucketId"`
@@ -93,6 +95,8 @@ func (BillingAccountBucketState) ElementType() reflect.Type {
 }
 
 type billingAccountBucketArgs struct {
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled *bool  `pulumi:"analyticsEnabled"`
 	BillingAccountId string `pulumi:"billingAccountId"`
 	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	BucketId string `pulumi:"bucketId"`
@@ -113,6 +117,8 @@ type billingAccountBucketArgs struct {
 
 // The set of arguments for constructing a BillingAccountBucket resource.
 type BillingAccountBucketArgs struct {
+	// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+	AnalyticsEnabled pulumi.BoolPtrInput
 	BillingAccountId pulumi.StringInput
 	// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
 	BucketId pulumi.StringInput
@@ -166,6 +172,11 @@ func (o BillingAccountBucketOutput) ToBillingAccountBucketOutput() BillingAccoun
 
 func (o BillingAccountBucketOutput) ToBillingAccountBucketOutputWithContext(ctx context.Context) BillingAccountBucketOutput {
 	return o
+}
+
+// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+func (o BillingAccountBucketOutput) AnalyticsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *BillingAccountBucket) pulumi.BoolOutput { return v.AnalyticsEnabled }).(pulumi.BoolOutput)
 }
 
 func (o BillingAccountBucketOutput) BillingAccountId() pulumi.StringOutput {

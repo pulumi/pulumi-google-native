@@ -126,6 +126,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly string ServiceDirectory;
         /// <summary>
+        /// Optional. Ssl config of a connection
+        /// </summary>
+        public readonly Outputs.SslConfigResponse SslConfig;
+        /// <summary>
         /// Current status of the connection.
         /// </summary>
         public readonly Outputs.ConnectionStatusResponse Status;
@@ -168,6 +172,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string serviceDirectory,
 
+            Outputs.SslConfigResponse sslConfig,
+
             Outputs.ConnectionStatusResponse status,
 
             bool suspended,
@@ -188,6 +194,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
             NodeConfig = nodeConfig;
             ServiceAccount = serviceAccount;
             ServiceDirectory = serviceDirectory;
+            SslConfig = sslConfig;
             Status = status;
             Suspended = suspended;
             UpdateTime = updateTime;

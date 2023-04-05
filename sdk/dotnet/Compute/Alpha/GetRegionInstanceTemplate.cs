@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetRegionInstanceTemplate
     {
         /// <summary>
-        /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+        /// Returns the specified instance template.
         /// </summary>
         public static Task<GetRegionInstanceTemplateResult> InvokeAsync(GetRegionInstanceTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionInstanceTemplateResult>("google-native:compute/alpha:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+        /// Returns the specified instance template.
         /// </summary>
         public static Output<GetRegionInstanceTemplateResult> Invoke(GetRegionInstanceTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceTemplateResult>("google-native:compute/alpha:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateInvokeArgs(), options.WithDefaults());

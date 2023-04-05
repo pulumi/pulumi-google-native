@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a list() request.
+// Returns the specified BackendBucket resource.
 func LookupBackendBucket(ctx *pulumi.Context, args *LookupBackendBucketArgs, opts ...pulumi.InvokeOption) (*LookupBackendBucketResult, error) {
 	var rv LookupBackendBucketResult
 	err := ctx.Invoke("google-native:compute/beta:getBackendBucket", args, &rv, opts...)

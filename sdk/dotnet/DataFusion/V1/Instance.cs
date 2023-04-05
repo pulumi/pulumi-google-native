@@ -259,30 +259,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1
 
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
-        [Input("accelerators")]
-        private InputList<Inputs.AcceleratorArgs>? _accelerators;
-
-        /// <summary>
-        /// List of accelerators enabled for this CDF instance.
-        /// </summary>
-        public InputList<Inputs.AcceleratorArgs> Accelerators
-        {
-            get => _accelerators ?? (_accelerators = new InputList<Inputs.AcceleratorArgs>());
-            set => _accelerators = value;
-        }
-
-        [Input("availableVersion")]
-        private InputList<Inputs.VersionArgs>? _availableVersion;
-
-        /// <summary>
-        /// Available versions that the instance can be upgraded to using UpdateInstanceRequest.
-        /// </summary>
-        public InputList<Inputs.VersionArgs> AvailableVersion
-        {
-            get => _availableVersion ?? (_availableVersion = new InputList<Inputs.VersionArgs>());
-            set => _availableVersion = value;
-        }
-
         /// <summary>
         /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         /// </summary>

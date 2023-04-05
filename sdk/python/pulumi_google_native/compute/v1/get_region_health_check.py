@@ -233,7 +233,7 @@ def get_region_health_check(health_check: Optional[str] = None,
                             region: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionHealthCheckResult:
     """
-    Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+    Returns the specified HealthCheck resource.
     """
     __args__ = dict()
     __args__['healthCheck'] = health_check
@@ -269,6 +269,6 @@ def get_region_health_check_output(health_check: Optional[pulumi.Input[str]] = N
                                    region: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionHealthCheckResult]:
     """
-    Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+    Returns the specified HealthCheck resource.
     """
     ...

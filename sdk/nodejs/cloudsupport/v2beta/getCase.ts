@@ -32,6 +32,10 @@ export interface GetCaseResult {
      */
     readonly classification: outputs.cloudsupport.v2beta.CaseClassificationResponse;
     /**
+     * A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+     */
+    readonly contactEmail: string;
+    /**
      * The time this case was created.
      */
     readonly createTime: string;

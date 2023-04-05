@@ -56,6 +56,10 @@ export class Table extends pulumi.CustomResource {
      */
     public /*out*/ readonly defaultCollation!: pulumi.Output<string>;
     /**
+     * The default rounding mode of the table.
+     */
+    public /*out*/ readonly defaultRoundingMode!: pulumi.Output<string>;
+    /**
      * [Optional] A user-friendly description of this table.
      */
     public readonly description!: pulumi.Output<string>;
@@ -232,6 +236,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["cloneDefinition"] = undefined /*out*/;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["defaultRoundingMode"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
@@ -258,6 +263,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["datasetId"] = undefined /*out*/;
             resourceInputs["defaultCollation"] = undefined /*out*/;
+            resourceInputs["defaultRoundingMode"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["encryptionConfiguration"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;

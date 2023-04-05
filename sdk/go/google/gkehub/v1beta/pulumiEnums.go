@@ -350,13 +350,188 @@ func (in *multiClusterIngressFeatureSpecBillingPtr) ToMultiClusterIngressFeature
 	return pulumi.ToOutputWithContext(ctx, in).(MultiClusterIngressFeatureSpecBillingPtrOutput)
 }
 
+// predefined_role is the Kubernetes default role to use
+type RolePredefinedRole string
+
+const (
+	// UNKNOWN
+	RolePredefinedRoleUnknown = RolePredefinedRole("UNKNOWN")
+	// ADMIN has EDIT and RBAC permissions
+	RolePredefinedRoleAdmin = RolePredefinedRole("ADMIN")
+	// EDIT can edit all resources except RBAC
+	RolePredefinedRoleEdit = RolePredefinedRole("EDIT")
+	// VIEW can only read resources
+	RolePredefinedRoleView = RolePredefinedRole("VIEW")
+)
+
+func (RolePredefinedRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePredefinedRole)(nil)).Elem()
+}
+
+func (e RolePredefinedRole) ToRolePredefinedRoleOutput() RolePredefinedRoleOutput {
+	return pulumi.ToOutput(e).(RolePredefinedRoleOutput)
+}
+
+func (e RolePredefinedRole) ToRolePredefinedRoleOutputWithContext(ctx context.Context) RolePredefinedRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RolePredefinedRoleOutput)
+}
+
+func (e RolePredefinedRole) ToRolePredefinedRolePtrOutput() RolePredefinedRolePtrOutput {
+	return e.ToRolePredefinedRolePtrOutputWithContext(context.Background())
+}
+
+func (e RolePredefinedRole) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
+	return RolePredefinedRole(e).ToRolePredefinedRoleOutputWithContext(ctx).ToRolePredefinedRolePtrOutputWithContext(ctx)
+}
+
+func (e RolePredefinedRole) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RolePredefinedRole) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RolePredefinedRole) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RolePredefinedRole) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RolePredefinedRoleOutput struct{ *pulumi.OutputState }
+
+func (RolePredefinedRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RolePredefinedRole)(nil)).Elem()
+}
+
+func (o RolePredefinedRoleOutput) ToRolePredefinedRoleOutput() RolePredefinedRoleOutput {
+	return o
+}
+
+func (o RolePredefinedRoleOutput) ToRolePredefinedRoleOutputWithContext(ctx context.Context) RolePredefinedRoleOutput {
+	return o
+}
+
+func (o RolePredefinedRoleOutput) ToRolePredefinedRolePtrOutput() RolePredefinedRolePtrOutput {
+	return o.ToRolePredefinedRolePtrOutputWithContext(context.Background())
+}
+
+func (o RolePredefinedRoleOutput) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RolePredefinedRole) *RolePredefinedRole {
+		return &v
+	}).(RolePredefinedRolePtrOutput)
+}
+
+func (o RolePredefinedRoleOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RolePredefinedRoleOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RolePredefinedRole) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RolePredefinedRoleOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RolePredefinedRoleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RolePredefinedRole) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RolePredefinedRolePtrOutput struct{ *pulumi.OutputState }
+
+func (RolePredefinedRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RolePredefinedRole)(nil)).Elem()
+}
+
+func (o RolePredefinedRolePtrOutput) ToRolePredefinedRolePtrOutput() RolePredefinedRolePtrOutput {
+	return o
+}
+
+func (o RolePredefinedRolePtrOutput) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
+	return o
+}
+
+func (o RolePredefinedRolePtrOutput) Elem() RolePredefinedRoleOutput {
+	return o.ApplyT(func(v *RolePredefinedRole) RolePredefinedRole {
+		if v != nil {
+			return *v
+		}
+		var ret RolePredefinedRole
+		return ret
+	}).(RolePredefinedRoleOutput)
+}
+
+func (o RolePredefinedRolePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RolePredefinedRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RolePredefinedRole) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RolePredefinedRoleInput is an input type that accepts RolePredefinedRoleArgs and RolePredefinedRoleOutput values.
+// You can construct a concrete instance of `RolePredefinedRoleInput` via:
+//
+//	RolePredefinedRoleArgs{...}
+type RolePredefinedRoleInput interface {
+	pulumi.Input
+
+	ToRolePredefinedRoleOutput() RolePredefinedRoleOutput
+	ToRolePredefinedRoleOutputWithContext(context.Context) RolePredefinedRoleOutput
+}
+
+var rolePredefinedRolePtrType = reflect.TypeOf((**RolePredefinedRole)(nil)).Elem()
+
+type RolePredefinedRolePtrInput interface {
+	pulumi.Input
+
+	ToRolePredefinedRolePtrOutput() RolePredefinedRolePtrOutput
+	ToRolePredefinedRolePtrOutputWithContext(context.Context) RolePredefinedRolePtrOutput
+}
+
+type rolePredefinedRolePtr string
+
+func RolePredefinedRolePtr(v string) RolePredefinedRolePtrInput {
+	return (*rolePredefinedRolePtr)(&v)
+}
+
+func (*rolePredefinedRolePtr) ElementType() reflect.Type {
+	return rolePredefinedRolePtrType
+}
+
+func (in *rolePredefinedRolePtr) ToRolePredefinedRolePtrOutput() RolePredefinedRolePtrOutput {
+	return pulumi.ToOutput(in).(RolePredefinedRolePtrOutput)
+}
+
+func (in *rolePredefinedRolePtr) ToRolePredefinedRolePtrOutputWithContext(ctx context.Context) RolePredefinedRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RolePredefinedRolePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypeInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigLogTypePtrInput)(nil)).Elem(), AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MultiClusterIngressFeatureSpecBillingPtrInput)(nil)).Elem(), MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePredefinedRoleInput)(nil)).Elem(), RolePredefinedRole("UNKNOWN"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RolePredefinedRolePtrInput)(nil)).Elem(), RolePredefinedRole("UNKNOWN"))
 	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingOutput{})
 	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecBillingPtrOutput{})
+	pulumi.RegisterOutputType(RolePredefinedRoleOutput{})
+	pulumi.RegisterOutputType(RolePredefinedRolePtrOutput{})
 }

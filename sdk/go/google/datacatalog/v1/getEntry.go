@@ -34,6 +34,8 @@ type LookupEntryResult struct {
 	BigqueryTableSpec GoogleCloudDatacatalogV1BigQueryTableSpecResponse `pulumi:"bigqueryTableSpec"`
 	// Business Context of the entry. Not supported for BigQuery datasets
 	BusinessContext GoogleCloudDatacatalogV1BusinessContextResponse `pulumi:"businessContext"`
+	// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+	CloudBigtableSystemSpec GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse `pulumi:"cloudBigtableSystemSpec"`
 	// Physical location of the entry.
 	DataSource GoogleCloudDatacatalogV1DataSourceResponse `pulumi:"dataSource"`
 	// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
@@ -66,6 +68,8 @@ type LookupEntryResult struct {
 	RoutineSpec GoogleCloudDatacatalogV1RoutineSpecResponse `pulumi:"routineSpec"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1SchemaResponse `pulumi:"schema"`
+	// Specification that applies to a Service resource.
+	ServiceSpec GoogleCloudDatacatalogV1ServiceSpecResponse `pulumi:"serviceSpec"`
 	// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
 	SourceSystemTimestamps GoogleCloudDatacatalogV1SystemTimestampsResponse `pulumi:"sourceSystemTimestamps"`
 	// Specification that applies to a relational database system. Only settable when `user_specified_system` is equal to `SQL_DATABASE`
@@ -135,6 +139,13 @@ func (o LookupEntryResultOutput) BigqueryTableSpec() GoogleCloudDatacatalogV1Big
 // Business Context of the entry. Not supported for BigQuery datasets
 func (o LookupEntryResultOutput) BusinessContext() GoogleCloudDatacatalogV1BusinessContextResponseOutput {
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1BusinessContextResponse { return v.BusinessContext }).(GoogleCloudDatacatalogV1BusinessContextResponseOutput)
+}
+
+// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+func (o LookupEntryResultOutput) CloudBigtableSystemSpec() GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse {
+		return v.CloudBigtableSystemSpec
+	}).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput)
 }
 
 // Physical location of the entry.
@@ -219,6 +230,11 @@ func (o LookupEntryResultOutput) RoutineSpec() GoogleCloudDatacatalogV1RoutineSp
 // Schema of the entry. An entry might not have any schema attached to it.
 func (o LookupEntryResultOutput) Schema() GoogleCloudDatacatalogV1SchemaResponseOutput {
 	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1SchemaResponse { return v.Schema }).(GoogleCloudDatacatalogV1SchemaResponseOutput)
+}
+
+// Specification that applies to a Service resource.
+func (o LookupEntryResultOutput) ServiceSpec() GoogleCloudDatacatalogV1ServiceSpecResponseOutput {
+	return o.ApplyT(func(v LookupEntryResult) GoogleCloudDatacatalogV1ServiceSpecResponse { return v.ServiceSpec }).(GoogleCloudDatacatalogV1ServiceSpecResponseOutput)
 }
 
 // Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.

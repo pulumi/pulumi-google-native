@@ -166,7 +166,7 @@ def get_target_pool(project: Optional[str] = None,
                     target_pool: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetPoolResult:
     """
-    Returns the specified target pool. Gets a list of available target pools by making a list() request.
+    Returns the specified target pool.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -195,6 +195,6 @@ def get_target_pool_output(project: Optional[pulumi.Input[Optional[str]]] = None
                            target_pool: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetPoolResult]:
     """
-    Returns the specified target pool. Gets a list of available target pools by making a list() request.
+    Returns the specified target pool.
     """
     ...

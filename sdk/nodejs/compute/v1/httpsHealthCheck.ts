@@ -72,7 +72,7 @@ export class HttpsHealthCheck extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
-     * The request path of the HTTPS health check request. The default value is "/".
+     * The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
      */
     public readonly requestPath!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface HttpsHealthCheckArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * The request path of the HTTPS health check request. The default value is "/".
+     * The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
      */
     requestPath?: pulumi.Input<string>;
     /**

@@ -68,6 +68,18 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         /// </summary>
         public readonly Outputs.GitRemoteSettingsResponse GitRemoteSettings;
         /// <summary>
+        /// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> InitialCommitFileContents;
+        /// <summary>
+        /// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+        /// </summary>
+        public readonly Outputs.CommitMetadataResponse InitialCommitMetadata;
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// The repository's name.
         /// </summary>
         public readonly string Name;
@@ -84,6 +96,12 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
         private GetRepositoryResult(
             Outputs.GitRemoteSettingsResponse gitRemoteSettings,
 
+            ImmutableDictionary<string, string> initialCommitFileContents,
+
+            Outputs.CommitMetadataResponse initialCommitMetadata,
+
+            ImmutableDictionary<string, string> labels,
+
             string name,
 
             string npmrcEnvironmentVariablesSecretVersion,
@@ -91,6 +109,9 @@ namespace Pulumi.GoogleNative.Dataform.V1Beta1
             Outputs.WorkspaceCompilationOverridesResponse workspaceCompilationOverrides)
         {
             GitRemoteSettings = gitRemoteSettings;
+            InitialCommitFileContents = initialCommitFileContents;
+            InitialCommitMetadata = initialCommitMetadata;
+            Labels = labels;
             Name = name;
             NpmrcEnvironmentVariablesSecretVersion = npmrcEnvironmentVariablesSecretVersion;
             WorkspaceCompilationOverrides = workspaceCompilationOverrides;

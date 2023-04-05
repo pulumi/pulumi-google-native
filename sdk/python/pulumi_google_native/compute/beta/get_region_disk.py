@@ -19,10 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, async_primary_disk=None, async_secondary_disks=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, provisioned_throughput=None, region=None, replica_zones=None, resource_policies=None, resource_status=None, satisfies_pzs=None, self_link=None, size_gb=None, source_consistency_group_policy=None, source_consistency_group_policy_id=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
+        if async_primary_disk and not isinstance(async_primary_disk, dict):
+            raise TypeError("Expected argument 'async_primary_disk' to be a dict")
+        pulumi.set(__self__, "async_primary_disk", async_primary_disk)
+        if async_secondary_disks and not isinstance(async_secondary_disks, dict):
+            raise TypeError("Expected argument 'async_secondary_disks' to be a dict")
+        pulumi.set(__self__, "async_secondary_disks", async_secondary_disks)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -102,6 +108,9 @@ class GetRegionDiskResult:
         if resource_policies and not isinstance(resource_policies, list):
             raise TypeError("Expected argument 'resource_policies' to be a list")
         pulumi.set(__self__, "resource_policies", resource_policies)
+        if resource_status and not isinstance(resource_status, dict):
+            raise TypeError("Expected argument 'resource_status' to be a dict")
+        pulumi.set(__self__, "resource_status", resource_status)
         if satisfies_pzs and not isinstance(satisfies_pzs, bool):
             raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
@@ -111,6 +120,12 @@ class GetRegionDiskResult:
         if size_gb and not isinstance(size_gb, str):
             raise TypeError("Expected argument 'size_gb' to be a str")
         pulumi.set(__self__, "size_gb", size_gb)
+        if source_consistency_group_policy and not isinstance(source_consistency_group_policy, str):
+            raise TypeError("Expected argument 'source_consistency_group_policy' to be a str")
+        pulumi.set(__self__, "source_consistency_group_policy", source_consistency_group_policy)
+        if source_consistency_group_policy_id and not isinstance(source_consistency_group_policy_id, str):
+            raise TypeError("Expected argument 'source_consistency_group_policy_id' to be a str")
+        pulumi.set(__self__, "source_consistency_group_policy_id", source_consistency_group_policy_id)
         if source_disk and not isinstance(source_disk, str):
             raise TypeError("Expected argument 'source_disk' to be a str")
         pulumi.set(__self__, "source_disk", source_disk)
@@ -168,6 +183,22 @@ class GetRegionDiskResult:
         The architecture of the disk. Valid values are ARM64 or X86_64.
         """
         return pulumi.get(self, "architecture")
+
+    @property
+    @pulumi.getter(name="asyncPrimaryDisk")
+    def async_primary_disk(self) -> 'outputs.DiskAsyncReplicationResponse':
+        """
+        Disk asynchronously replicated into this disk.
+        """
+        return pulumi.get(self, "async_primary_disk")
+
+    @property
+    @pulumi.getter(name="asyncSecondaryDisks")
+    def async_secondary_disks(self) -> Mapping[str, str]:
+        """
+        A list of disks this disk is asynchronously replicated to.
+        """
+        return pulumi.get(self, "async_secondary_disks")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -370,6 +401,14 @@ class GetRegionDiskResult:
         return pulumi.get(self, "resource_policies")
 
     @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.DiskResourceStatusResponse':
+        """
+        Status information for the disk resource.
+        """
+        return pulumi.get(self, "resource_status")
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> bool:
         """
@@ -392,6 +431,22 @@ class GetRegionDiskResult:
         Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         """
         return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter(name="sourceConsistencyGroupPolicy")
+    def source_consistency_group_policy(self) -> str:
+        """
+        URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+        """
+        return pulumi.get(self, "source_consistency_group_policy")
+
+    @property
+    @pulumi.getter(name="sourceConsistencyGroupPolicyId")
+    def source_consistency_group_policy_id(self) -> str:
+        """
+        ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+        """
+        return pulumi.get(self, "source_consistency_group_policy_id")
 
     @property
     @pulumi.getter(name="sourceDisk")
@@ -521,6 +576,8 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             yield self
         return GetRegionDiskResult(
             architecture=self.architecture,
+            async_primary_disk=self.async_primary_disk,
+            async_secondary_disks=self.async_secondary_disks,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_encryption_key=self.disk_encryption_key,
@@ -546,9 +603,12 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             region=self.region,
             replica_zones=self.replica_zones,
             resource_policies=self.resource_policies,
+            resource_status=self.resource_status,
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             size_gb=self.size_gb,
+            source_consistency_group_policy=self.source_consistency_group_policy,
+            source_consistency_group_policy_id=self.source_consistency_group_policy_id,
             source_disk=self.source_disk,
             source_disk_id=self.source_disk_id,
             source_image=self.source_image,
@@ -582,6 +642,8 @@ def get_region_disk(disk: Optional[str] = None,
 
     return AwaitableGetRegionDiskResult(
         architecture=__ret__.architecture,
+        async_primary_disk=__ret__.async_primary_disk,
+        async_secondary_disks=__ret__.async_secondary_disks,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_encryption_key=__ret__.disk_encryption_key,
@@ -607,9 +669,12 @@ def get_region_disk(disk: Optional[str] = None,
         region=__ret__.region,
         replica_zones=__ret__.replica_zones,
         resource_policies=__ret__.resource_policies,
+        resource_status=__ret__.resource_status,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         size_gb=__ret__.size_gb,
+        source_consistency_group_policy=__ret__.source_consistency_group_policy,
+        source_consistency_group_policy_id=__ret__.source_consistency_group_policy_id,
         source_disk=__ret__.source_disk,
         source_disk_id=__ret__.source_disk_id,
         source_image=__ret__.source_image,

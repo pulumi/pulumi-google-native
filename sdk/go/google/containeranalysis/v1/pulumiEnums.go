@@ -181,6 +181,179 @@ func (in *aliasContextKindPtr) ToAliasContextKindPtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(AliasContextKindPtrOutput)
 }
 
+// Provides the state of this Vulnerability assessment.
+type AssessmentState string
+
+const (
+	// No state is specified.
+	AssessmentStateStateUnspecified = AssessmentState("STATE_UNSPECIFIED")
+	// This product is known to be affected by this vulnerability.
+	AssessmentStateAffected = AssessmentState("AFFECTED")
+	// This product is known to be not affected by this vulnerability.
+	AssessmentStateNotAffected = AssessmentState("NOT_AFFECTED")
+	// This product contains a fix for this vulnerability.
+	AssessmentStateFixed = AssessmentState("FIXED")
+	// It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+	AssessmentStateUnderInvestigation = AssessmentState("UNDER_INVESTIGATION")
+)
+
+func (AssessmentState) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentState)(nil)).Elem()
+}
+
+func (e AssessmentState) ToAssessmentStateOutput() AssessmentStateOutput {
+	return pulumi.ToOutput(e).(AssessmentStateOutput)
+}
+
+func (e AssessmentState) ToAssessmentStateOutputWithContext(ctx context.Context) AssessmentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AssessmentStateOutput)
+}
+
+func (e AssessmentState) ToAssessmentStatePtrOutput() AssessmentStatePtrOutput {
+	return e.ToAssessmentStatePtrOutputWithContext(context.Background())
+}
+
+func (e AssessmentState) ToAssessmentStatePtrOutputWithContext(ctx context.Context) AssessmentStatePtrOutput {
+	return AssessmentState(e).ToAssessmentStateOutputWithContext(ctx).ToAssessmentStatePtrOutputWithContext(ctx)
+}
+
+func (e AssessmentState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AssessmentState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AssessmentState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AssessmentState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AssessmentStateOutput struct{ *pulumi.OutputState }
+
+func (AssessmentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AssessmentState)(nil)).Elem()
+}
+
+func (o AssessmentStateOutput) ToAssessmentStateOutput() AssessmentStateOutput {
+	return o
+}
+
+func (o AssessmentStateOutput) ToAssessmentStateOutputWithContext(ctx context.Context) AssessmentStateOutput {
+	return o
+}
+
+func (o AssessmentStateOutput) ToAssessmentStatePtrOutput() AssessmentStatePtrOutput {
+	return o.ToAssessmentStatePtrOutputWithContext(context.Background())
+}
+
+func (o AssessmentStateOutput) ToAssessmentStatePtrOutputWithContext(ctx context.Context) AssessmentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AssessmentState) *AssessmentState {
+		return &v
+	}).(AssessmentStatePtrOutput)
+}
+
+func (o AssessmentStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AssessmentStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssessmentState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AssessmentStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AssessmentStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AssessmentState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AssessmentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (AssessmentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AssessmentState)(nil)).Elem()
+}
+
+func (o AssessmentStatePtrOutput) ToAssessmentStatePtrOutput() AssessmentStatePtrOutput {
+	return o
+}
+
+func (o AssessmentStatePtrOutput) ToAssessmentStatePtrOutputWithContext(ctx context.Context) AssessmentStatePtrOutput {
+	return o
+}
+
+func (o AssessmentStatePtrOutput) Elem() AssessmentStateOutput {
+	return o.ApplyT(func(v *AssessmentState) AssessmentState {
+		if v != nil {
+			return *v
+		}
+		var ret AssessmentState
+		return ret
+	}).(AssessmentStateOutput)
+}
+
+func (o AssessmentStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AssessmentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AssessmentState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AssessmentStateInput is an input type that accepts AssessmentStateArgs and AssessmentStateOutput values.
+// You can construct a concrete instance of `AssessmentStateInput` via:
+//
+//	AssessmentStateArgs{...}
+type AssessmentStateInput interface {
+	pulumi.Input
+
+	ToAssessmentStateOutput() AssessmentStateOutput
+	ToAssessmentStateOutputWithContext(context.Context) AssessmentStateOutput
+}
+
+var assessmentStatePtrType = reflect.TypeOf((**AssessmentState)(nil)).Elem()
+
+type AssessmentStatePtrInput interface {
+	pulumi.Input
+
+	ToAssessmentStatePtrOutput() AssessmentStatePtrOutput
+	ToAssessmentStatePtrOutputWithContext(context.Context) AssessmentStatePtrOutput
+}
+
+type assessmentStatePtr string
+
+func AssessmentStatePtr(v string) AssessmentStatePtrInput {
+	return (*assessmentStatePtr)(&v)
+}
+
+func (*assessmentStatePtr) ElementType() reflect.Type {
+	return assessmentStatePtrType
+}
+
+func (in *assessmentStatePtr) ToAssessmentStatePtrOutput() AssessmentStatePtrOutput {
+	return pulumi.ToOutput(in).(AssessmentStatePtrOutput)
+}
+
+func (in *assessmentStatePtr) ToAssessmentStatePtrOutputWithContext(ctx context.Context) AssessmentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AssessmentStatePtrOutput)
+}
+
 type CVSSAttackComplexity string
 
 const (
@@ -3372,6 +3545,8 @@ const (
 	DiscoveryNoteAnalysisKindCompliance = DiscoveryNoteAnalysisKind("COMPLIANCE")
 	// This represents a DSSE attestation Note
 	DiscoveryNoteAnalysisKindDsseAttestation = DiscoveryNoteAnalysisKind("DSSE_ATTESTATION")
+	// This represents a Vulnerability Assessment.
+	DiscoveryNoteAnalysisKindVulnerabilityAssessment = DiscoveryNoteAnalysisKind("VULNERABILITY_ASSESSMENT")
 )
 
 func (DiscoveryNoteAnalysisKind) ElementType() reflect.Type {
@@ -4046,6 +4221,181 @@ func (in *distributionArchitecturePtr) ToDistributionArchitecturePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(DistributionArchitecturePtrOutput)
 }
 
+// The justification type for this vulnerability.
+type JustificationJustificationType string
+
+const (
+	// JUSTIFICATION_TYPE_UNSPECIFIED.
+	JustificationJustificationTypeJustificationTypeUnspecified = JustificationJustificationType("JUSTIFICATION_TYPE_UNSPECIFIED")
+	// The vulnerable component is not present in the product.
+	JustificationJustificationTypeComponentNotPresent = JustificationJustificationType("COMPONENT_NOT_PRESENT")
+	// The vulnerable code is not present. Typically this case occurs when source code is configured or built in a way that excludes the vulnerable code.
+	JustificationJustificationTypeVulnerableCodeNotPresent = JustificationJustificationType("VULNERABLE_CODE_NOT_PRESENT")
+	// The vulnerable code can not be executed. Typically this case occurs when the product includes the vulnerable code but does not call or use the vulnerable code.
+	JustificationJustificationTypeVulnerableCodeNotInExecutePath = JustificationJustificationType("VULNERABLE_CODE_NOT_IN_EXECUTE_PATH")
+	// The vulnerable code cannot be controlled by an attacker to exploit the vulnerability.
+	JustificationJustificationTypeVulnerableCodeCannotBeControlledByAdversary = JustificationJustificationType("VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY")
+	// The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors.
+	JustificationJustificationTypeInlineMitigationsAlreadyExist = JustificationJustificationType("INLINE_MITIGATIONS_ALREADY_EXIST")
+)
+
+func (JustificationJustificationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*JustificationJustificationType)(nil)).Elem()
+}
+
+func (e JustificationJustificationType) ToJustificationJustificationTypeOutput() JustificationJustificationTypeOutput {
+	return pulumi.ToOutput(e).(JustificationJustificationTypeOutput)
+}
+
+func (e JustificationJustificationType) ToJustificationJustificationTypeOutputWithContext(ctx context.Context) JustificationJustificationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JustificationJustificationTypeOutput)
+}
+
+func (e JustificationJustificationType) ToJustificationJustificationTypePtrOutput() JustificationJustificationTypePtrOutput {
+	return e.ToJustificationJustificationTypePtrOutputWithContext(context.Background())
+}
+
+func (e JustificationJustificationType) ToJustificationJustificationTypePtrOutputWithContext(ctx context.Context) JustificationJustificationTypePtrOutput {
+	return JustificationJustificationType(e).ToJustificationJustificationTypeOutputWithContext(ctx).ToJustificationJustificationTypePtrOutputWithContext(ctx)
+}
+
+func (e JustificationJustificationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JustificationJustificationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JustificationJustificationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JustificationJustificationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JustificationJustificationTypeOutput struct{ *pulumi.OutputState }
+
+func (JustificationJustificationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JustificationJustificationType)(nil)).Elem()
+}
+
+func (o JustificationJustificationTypeOutput) ToJustificationJustificationTypeOutput() JustificationJustificationTypeOutput {
+	return o
+}
+
+func (o JustificationJustificationTypeOutput) ToJustificationJustificationTypeOutputWithContext(ctx context.Context) JustificationJustificationTypeOutput {
+	return o
+}
+
+func (o JustificationJustificationTypeOutput) ToJustificationJustificationTypePtrOutput() JustificationJustificationTypePtrOutput {
+	return o.ToJustificationJustificationTypePtrOutputWithContext(context.Background())
+}
+
+func (o JustificationJustificationTypeOutput) ToJustificationJustificationTypePtrOutputWithContext(ctx context.Context) JustificationJustificationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JustificationJustificationType) *JustificationJustificationType {
+		return &v
+	}).(JustificationJustificationTypePtrOutput)
+}
+
+func (o JustificationJustificationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JustificationJustificationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JustificationJustificationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JustificationJustificationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JustificationJustificationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JustificationJustificationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JustificationJustificationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (JustificationJustificationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JustificationJustificationType)(nil)).Elem()
+}
+
+func (o JustificationJustificationTypePtrOutput) ToJustificationJustificationTypePtrOutput() JustificationJustificationTypePtrOutput {
+	return o
+}
+
+func (o JustificationJustificationTypePtrOutput) ToJustificationJustificationTypePtrOutputWithContext(ctx context.Context) JustificationJustificationTypePtrOutput {
+	return o
+}
+
+func (o JustificationJustificationTypePtrOutput) Elem() JustificationJustificationTypeOutput {
+	return o.ApplyT(func(v *JustificationJustificationType) JustificationJustificationType {
+		if v != nil {
+			return *v
+		}
+		var ret JustificationJustificationType
+		return ret
+	}).(JustificationJustificationTypeOutput)
+}
+
+func (o JustificationJustificationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JustificationJustificationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JustificationJustificationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JustificationJustificationTypeInput is an input type that accepts JustificationJustificationTypeArgs and JustificationJustificationTypeOutput values.
+// You can construct a concrete instance of `JustificationJustificationTypeInput` via:
+//
+//	JustificationJustificationTypeArgs{...}
+type JustificationJustificationTypeInput interface {
+	pulumi.Input
+
+	ToJustificationJustificationTypeOutput() JustificationJustificationTypeOutput
+	ToJustificationJustificationTypeOutputWithContext(context.Context) JustificationJustificationTypeOutput
+}
+
+var justificationJustificationTypePtrType = reflect.TypeOf((**JustificationJustificationType)(nil)).Elem()
+
+type JustificationJustificationTypePtrInput interface {
+	pulumi.Input
+
+	ToJustificationJustificationTypePtrOutput() JustificationJustificationTypePtrOutput
+	ToJustificationJustificationTypePtrOutputWithContext(context.Context) JustificationJustificationTypePtrOutput
+}
+
+type justificationJustificationTypePtr string
+
+func JustificationJustificationTypePtr(v string) JustificationJustificationTypePtrInput {
+	return (*justificationJustificationTypePtr)(&v)
+}
+
+func (*justificationJustificationTypePtr) ElementType() reflect.Type {
+	return justificationJustificationTypePtrType
+}
+
+func (in *justificationJustificationTypePtr) ToJustificationJustificationTypePtrOutput() JustificationJustificationTypePtrOutput {
+	return pulumi.ToOutput(in).(JustificationJustificationTypePtrOutput)
+}
+
+func (in *justificationJustificationTypePtr) ToJustificationJustificationTypePtrOutputWithContext(ctx context.Context) JustificationJustificationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JustificationJustificationTypePtrOutput)
+}
+
 // The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
 type PackageNoteArchitecture string
 
@@ -4213,6 +4563,181 @@ func (in *packageNoteArchitecturePtr) ToPackageNoteArchitecturePtrOutput() Packa
 
 func (in *packageNoteArchitecturePtr) ToPackageNoteArchitecturePtrOutputWithContext(ctx context.Context) PackageNoteArchitecturePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(PackageNoteArchitecturePtrOutput)
+}
+
+// The type of remediation that can be applied.
+type RemediationRemediationType string
+
+const (
+	// No remediation type specified.
+	RemediationRemediationTypeRemediationTypeUnspecified = RemediationRemediationType("REMEDIATION_TYPE_UNSPECIFIED")
+	// A MITIGATION is available.
+	RemediationRemediationTypeMitigation = RemediationRemediationType("MITIGATION")
+	// No fix is planned.
+	RemediationRemediationTypeNoFixPlanned = RemediationRemediationType("NO_FIX_PLANNED")
+	// Not available.
+	RemediationRemediationTypeNoneAvailable = RemediationRemediationType("NONE_AVAILABLE")
+	// A vendor fix is available.
+	RemediationRemediationTypeVendorFix = RemediationRemediationType("VENDOR_FIX")
+	// A workaround is available.
+	RemediationRemediationTypeWorkaround = RemediationRemediationType("WORKAROUND")
+)
+
+func (RemediationRemediationType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationRemediationType)(nil)).Elem()
+}
+
+func (e RemediationRemediationType) ToRemediationRemediationTypeOutput() RemediationRemediationTypeOutput {
+	return pulumi.ToOutput(e).(RemediationRemediationTypeOutput)
+}
+
+func (e RemediationRemediationType) ToRemediationRemediationTypeOutputWithContext(ctx context.Context) RemediationRemediationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RemediationRemediationTypeOutput)
+}
+
+func (e RemediationRemediationType) ToRemediationRemediationTypePtrOutput() RemediationRemediationTypePtrOutput {
+	return e.ToRemediationRemediationTypePtrOutputWithContext(context.Background())
+}
+
+func (e RemediationRemediationType) ToRemediationRemediationTypePtrOutputWithContext(ctx context.Context) RemediationRemediationTypePtrOutput {
+	return RemediationRemediationType(e).ToRemediationRemediationTypeOutputWithContext(ctx).ToRemediationRemediationTypePtrOutputWithContext(ctx)
+}
+
+func (e RemediationRemediationType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RemediationRemediationType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RemediationRemediationType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RemediationRemediationType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RemediationRemediationTypeOutput struct{ *pulumi.OutputState }
+
+func (RemediationRemediationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RemediationRemediationType)(nil)).Elem()
+}
+
+func (o RemediationRemediationTypeOutput) ToRemediationRemediationTypeOutput() RemediationRemediationTypeOutput {
+	return o
+}
+
+func (o RemediationRemediationTypeOutput) ToRemediationRemediationTypeOutputWithContext(ctx context.Context) RemediationRemediationTypeOutput {
+	return o
+}
+
+func (o RemediationRemediationTypeOutput) ToRemediationRemediationTypePtrOutput() RemediationRemediationTypePtrOutput {
+	return o.ToRemediationRemediationTypePtrOutputWithContext(context.Background())
+}
+
+func (o RemediationRemediationTypeOutput) ToRemediationRemediationTypePtrOutputWithContext(ctx context.Context) RemediationRemediationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RemediationRemediationType) *RemediationRemediationType {
+		return &v
+	}).(RemediationRemediationTypePtrOutput)
+}
+
+func (o RemediationRemediationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RemediationRemediationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RemediationRemediationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RemediationRemediationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RemediationRemediationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RemediationRemediationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RemediationRemediationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RemediationRemediationTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RemediationRemediationType)(nil)).Elem()
+}
+
+func (o RemediationRemediationTypePtrOutput) ToRemediationRemediationTypePtrOutput() RemediationRemediationTypePtrOutput {
+	return o
+}
+
+func (o RemediationRemediationTypePtrOutput) ToRemediationRemediationTypePtrOutputWithContext(ctx context.Context) RemediationRemediationTypePtrOutput {
+	return o
+}
+
+func (o RemediationRemediationTypePtrOutput) Elem() RemediationRemediationTypeOutput {
+	return o.ApplyT(func(v *RemediationRemediationType) RemediationRemediationType {
+		if v != nil {
+			return *v
+		}
+		var ret RemediationRemediationType
+		return ret
+	}).(RemediationRemediationTypeOutput)
+}
+
+func (o RemediationRemediationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RemediationRemediationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RemediationRemediationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RemediationRemediationTypeInput is an input type that accepts RemediationRemediationTypeArgs and RemediationRemediationTypeOutput values.
+// You can construct a concrete instance of `RemediationRemediationTypeInput` via:
+//
+//	RemediationRemediationTypeArgs{...}
+type RemediationRemediationTypeInput interface {
+	pulumi.Input
+
+	ToRemediationRemediationTypeOutput() RemediationRemediationTypeOutput
+	ToRemediationRemediationTypeOutputWithContext(context.Context) RemediationRemediationTypeOutput
+}
+
+var remediationRemediationTypePtrType = reflect.TypeOf((**RemediationRemediationType)(nil)).Elem()
+
+type RemediationRemediationTypePtrInput interface {
+	pulumi.Input
+
+	ToRemediationRemediationTypePtrOutput() RemediationRemediationTypePtrOutput
+	ToRemediationRemediationTypePtrOutputWithContext(context.Context) RemediationRemediationTypePtrOutput
+}
+
+type remediationRemediationTypePtr string
+
+func RemediationRemediationTypePtr(v string) RemediationRemediationTypePtrInput {
+	return (*remediationRemediationTypePtr)(&v)
+}
+
+func (*remediationRemediationTypePtr) ElementType() reflect.Type {
+	return remediationRemediationTypePtrType
+}
+
+func (in *remediationRemediationTypePtr) ToRemediationRemediationTypePtrOutput() RemediationRemediationTypePtrOutput {
+	return pulumi.ToOutput(in).(RemediationRemediationTypePtrOutput)
+}
+
+func (in *remediationRemediationTypePtr) ToRemediationRemediationTypePtrOutputWithContext(ctx context.Context) RemediationRemediationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RemediationRemediationTypePtrOutput)
 }
 
 // Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
@@ -4384,6 +4909,179 @@ func (in *versionKindPtr) ToVersionKindPtrOutput() VersionKindPtrOutput {
 
 func (in *versionKindPtr) ToVersionKindPtrOutputWithContext(ctx context.Context) VersionKindPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VersionKindPtrOutput)
+}
+
+// Provides the state of this Vulnerability assessment.
+type VexAssessmentState string
+
+const (
+	// No state is specified.
+	VexAssessmentStateStateUnspecified = VexAssessmentState("STATE_UNSPECIFIED")
+	// This product is known to be affected by this vulnerability.
+	VexAssessmentStateAffected = VexAssessmentState("AFFECTED")
+	// This product is known to be not affected by this vulnerability.
+	VexAssessmentStateNotAffected = VexAssessmentState("NOT_AFFECTED")
+	// This product contains a fix for this vulnerability.
+	VexAssessmentStateFixed = VexAssessmentState("FIXED")
+	// It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+	VexAssessmentStateUnderInvestigation = VexAssessmentState("UNDER_INVESTIGATION")
+)
+
+func (VexAssessmentState) ElementType() reflect.Type {
+	return reflect.TypeOf((*VexAssessmentState)(nil)).Elem()
+}
+
+func (e VexAssessmentState) ToVexAssessmentStateOutput() VexAssessmentStateOutput {
+	return pulumi.ToOutput(e).(VexAssessmentStateOutput)
+}
+
+func (e VexAssessmentState) ToVexAssessmentStateOutputWithContext(ctx context.Context) VexAssessmentStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VexAssessmentStateOutput)
+}
+
+func (e VexAssessmentState) ToVexAssessmentStatePtrOutput() VexAssessmentStatePtrOutput {
+	return e.ToVexAssessmentStatePtrOutputWithContext(context.Background())
+}
+
+func (e VexAssessmentState) ToVexAssessmentStatePtrOutputWithContext(ctx context.Context) VexAssessmentStatePtrOutput {
+	return VexAssessmentState(e).ToVexAssessmentStateOutputWithContext(ctx).ToVexAssessmentStatePtrOutputWithContext(ctx)
+}
+
+func (e VexAssessmentState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VexAssessmentState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VexAssessmentState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VexAssessmentState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VexAssessmentStateOutput struct{ *pulumi.OutputState }
+
+func (VexAssessmentStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VexAssessmentState)(nil)).Elem()
+}
+
+func (o VexAssessmentStateOutput) ToVexAssessmentStateOutput() VexAssessmentStateOutput {
+	return o
+}
+
+func (o VexAssessmentStateOutput) ToVexAssessmentStateOutputWithContext(ctx context.Context) VexAssessmentStateOutput {
+	return o
+}
+
+func (o VexAssessmentStateOutput) ToVexAssessmentStatePtrOutput() VexAssessmentStatePtrOutput {
+	return o.ToVexAssessmentStatePtrOutputWithContext(context.Background())
+}
+
+func (o VexAssessmentStateOutput) ToVexAssessmentStatePtrOutputWithContext(ctx context.Context) VexAssessmentStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VexAssessmentState) *VexAssessmentState {
+		return &v
+	}).(VexAssessmentStatePtrOutput)
+}
+
+func (o VexAssessmentStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VexAssessmentStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VexAssessmentState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VexAssessmentStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VexAssessmentStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VexAssessmentState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VexAssessmentStatePtrOutput struct{ *pulumi.OutputState }
+
+func (VexAssessmentStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VexAssessmentState)(nil)).Elem()
+}
+
+func (o VexAssessmentStatePtrOutput) ToVexAssessmentStatePtrOutput() VexAssessmentStatePtrOutput {
+	return o
+}
+
+func (o VexAssessmentStatePtrOutput) ToVexAssessmentStatePtrOutputWithContext(ctx context.Context) VexAssessmentStatePtrOutput {
+	return o
+}
+
+func (o VexAssessmentStatePtrOutput) Elem() VexAssessmentStateOutput {
+	return o.ApplyT(func(v *VexAssessmentState) VexAssessmentState {
+		if v != nil {
+			return *v
+		}
+		var ret VexAssessmentState
+		return ret
+	}).(VexAssessmentStateOutput)
+}
+
+func (o VexAssessmentStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VexAssessmentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VexAssessmentState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VexAssessmentStateInput is an input type that accepts VexAssessmentStateArgs and VexAssessmentStateOutput values.
+// You can construct a concrete instance of `VexAssessmentStateInput` via:
+//
+//	VexAssessmentStateArgs{...}
+type VexAssessmentStateInput interface {
+	pulumi.Input
+
+	ToVexAssessmentStateOutput() VexAssessmentStateOutput
+	ToVexAssessmentStateOutputWithContext(context.Context) VexAssessmentStateOutput
+}
+
+var vexAssessmentStatePtrType = reflect.TypeOf((**VexAssessmentState)(nil)).Elem()
+
+type VexAssessmentStatePtrInput interface {
+	pulumi.Input
+
+	ToVexAssessmentStatePtrOutput() VexAssessmentStatePtrOutput
+	ToVexAssessmentStatePtrOutputWithContext(context.Context) VexAssessmentStatePtrOutput
+}
+
+type vexAssessmentStatePtr string
+
+func VexAssessmentStatePtr(v string) VexAssessmentStatePtrInput {
+	return (*vexAssessmentStatePtr)(&v)
+}
+
+func (*vexAssessmentStatePtr) ElementType() reflect.Type {
+	return vexAssessmentStatePtrType
+}
+
+func (in *vexAssessmentStatePtr) ToVexAssessmentStatePtrOutput() VexAssessmentStatePtrOutput {
+	return pulumi.ToOutput(in).(VexAssessmentStatePtrOutput)
+}
+
+func (in *vexAssessmentStatePtr) ToVexAssessmentStatePtrOutputWithContext(ctx context.Context) VexAssessmentStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VexAssessmentStatePtrOutput)
 }
 
 // CVSS version used to populate cvss_score and severity.
@@ -4905,6 +5603,8 @@ func (in *vulnerabilityOccurrenceEffectiveSeverityPtr) ToVulnerabilityOccurrence
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextKindInput)(nil)).Elem(), AliasContextKind("KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AliasContextKindPtrInput)(nil)).Elem(), AliasContextKind("KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentStateInput)(nil)).Elem(), AssessmentState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AssessmentStatePtrInput)(nil)).Elem(), AssessmentState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackComplexityInput)(nil)).Elem(), CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackComplexityPtrInput)(nil)).Elem(), CVSSAttackComplexity("ATTACK_COMPLEXITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*CVSSAttackVectorInput)(nil)).Elem(), CVSSAttackVector("ATTACK_VECTOR_UNSPECIFIED"))
@@ -4951,10 +5651,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DiscoveryOccurrenceContinuousAnalysisPtrInput)(nil)).Elem(), DiscoveryOccurrenceContinuousAnalysis("CONTINUOUS_ANALYSIS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionArchitectureInput)(nil)).Elem(), DistributionArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionArchitecturePtrInput)(nil)).Elem(), DistributionArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JustificationJustificationTypeInput)(nil)).Elem(), JustificationJustificationType("JUSTIFICATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JustificationJustificationTypePtrInput)(nil)).Elem(), JustificationJustificationType("JUSTIFICATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteArchitectureInput)(nil)).Elem(), PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PackageNoteArchitecturePtrInput)(nil)).Elem(), PackageNoteArchitecture("ARCHITECTURE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RemediationRemediationTypeInput)(nil)).Elem(), RemediationRemediationType("REMEDIATION_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RemediationRemediationTypePtrInput)(nil)).Elem(), RemediationRemediationType("REMEDIATION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VersionKindPtrInput)(nil)).Elem(), VersionKind("VERSION_KIND_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VexAssessmentStateInput)(nil)).Elem(), VexAssessmentState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VexAssessmentStatePtrInput)(nil)).Elem(), VexAssessmentState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteCvssVersionInput)(nil)).Elem(), VulnerabilityNoteCvssVersion("CVSS_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteCvssVersionPtrInput)(nil)).Elem(), VulnerabilityNoteCvssVersion("CVSS_VERSION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityNoteSeverityInput)(nil)).Elem(), VulnerabilityNoteSeverity("SEVERITY_UNSPECIFIED"))
@@ -4963,6 +5669,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityOccurrenceEffectiveSeverityPtrInput)(nil)).Elem(), VulnerabilityOccurrenceEffectiveSeverity("SEVERITY_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AliasContextKindOutput{})
 	pulumi.RegisterOutputType(AliasContextKindPtrOutput{})
+	pulumi.RegisterOutputType(AssessmentStateOutput{})
+	pulumi.RegisterOutputType(AssessmentStatePtrOutput{})
 	pulumi.RegisterOutputType(CVSSAttackComplexityOutput{})
 	pulumi.RegisterOutputType(CVSSAttackComplexityPtrOutput{})
 	pulumi.RegisterOutputType(CVSSAttackVectorOutput{})
@@ -5009,10 +5717,16 @@ func init() {
 	pulumi.RegisterOutputType(DiscoveryOccurrenceContinuousAnalysisPtrOutput{})
 	pulumi.RegisterOutputType(DistributionArchitectureOutput{})
 	pulumi.RegisterOutputType(DistributionArchitecturePtrOutput{})
+	pulumi.RegisterOutputType(JustificationJustificationTypeOutput{})
+	pulumi.RegisterOutputType(JustificationJustificationTypePtrOutput{})
 	pulumi.RegisterOutputType(PackageNoteArchitectureOutput{})
 	pulumi.RegisterOutputType(PackageNoteArchitecturePtrOutput{})
+	pulumi.RegisterOutputType(RemediationRemediationTypeOutput{})
+	pulumi.RegisterOutputType(RemediationRemediationTypePtrOutput{})
 	pulumi.RegisterOutputType(VersionKindOutput{})
 	pulumi.RegisterOutputType(VersionKindPtrOutput{})
+	pulumi.RegisterOutputType(VexAssessmentStateOutput{})
+	pulumi.RegisterOutputType(VexAssessmentStatePtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteCvssVersionOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteCvssVersionPtrOutput{})
 	pulumi.RegisterOutputType(VulnerabilityNoteSeverityOutput{})

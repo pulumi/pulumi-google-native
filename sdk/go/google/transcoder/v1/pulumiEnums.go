@@ -179,6 +179,175 @@ func (in *animationFadeFadeTypePtr) ToAnimationFadeFadeTypePtrOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, in).(AnimationFadeFadeTypePtrOutput)
 }
 
+// The processing mode of the job. The default is `PROCESSING_MODE_INTERACTIVE`.
+type JobMode string
+
+const (
+	// The job processing mode is not specified.
+	JobModeProcessingModeUnspecified = JobMode("PROCESSING_MODE_UNSPECIFIED")
+	// The job processing mode is interactive mode. Interactive job will either be ran or rejected if quota does not allow for it.
+	JobModeProcessingModeInteractive = JobMode("PROCESSING_MODE_INTERACTIVE")
+	// The job processing mode is batch mode. Batch mode allows queuing of jobs.
+	JobModeProcessingModeBatch = JobMode("PROCESSING_MODE_BATCH")
+)
+
+func (JobMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobMode)(nil)).Elem()
+}
+
+func (e JobMode) ToJobModeOutput() JobModeOutput {
+	return pulumi.ToOutput(e).(JobModeOutput)
+}
+
+func (e JobMode) ToJobModeOutputWithContext(ctx context.Context) JobModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobModeOutput)
+}
+
+func (e JobMode) ToJobModePtrOutput() JobModePtrOutput {
+	return e.ToJobModePtrOutputWithContext(context.Background())
+}
+
+func (e JobMode) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
+	return JobMode(e).ToJobModeOutputWithContext(ctx).ToJobModePtrOutputWithContext(ctx)
+}
+
+func (e JobMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e JobMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e JobMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobModeOutput struct{ *pulumi.OutputState }
+
+func (JobModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobMode)(nil)).Elem()
+}
+
+func (o JobModeOutput) ToJobModeOutput() JobModeOutput {
+	return o
+}
+
+func (o JobModeOutput) ToJobModeOutputWithContext(ctx context.Context) JobModeOutput {
+	return o
+}
+
+func (o JobModeOutput) ToJobModePtrOutput() JobModePtrOutput {
+	return o.ToJobModePtrOutputWithContext(context.Background())
+}
+
+func (o JobModeOutput) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobMode) *JobMode {
+		return &v
+	}).(JobModePtrOutput)
+}
+
+func (o JobModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobModePtrOutput struct{ *pulumi.OutputState }
+
+func (JobModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobMode)(nil)).Elem()
+}
+
+func (o JobModePtrOutput) ToJobModePtrOutput() JobModePtrOutput {
+	return o
+}
+
+func (o JobModePtrOutput) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
+	return o
+}
+
+func (o JobModePtrOutput) Elem() JobModeOutput {
+	return o.ApplyT(func(v *JobMode) JobMode {
+		if v != nil {
+			return *v
+		}
+		var ret JobMode
+		return ret
+	}).(JobModeOutput)
+}
+
+func (o JobModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// JobModeInput is an input type that accepts JobModeArgs and JobModeOutput values.
+// You can construct a concrete instance of `JobModeInput` via:
+//
+//	JobModeArgs{...}
+type JobModeInput interface {
+	pulumi.Input
+
+	ToJobModeOutput() JobModeOutput
+	ToJobModeOutputWithContext(context.Context) JobModeOutput
+}
+
+var jobModePtrType = reflect.TypeOf((**JobMode)(nil)).Elem()
+
+type JobModePtrInput interface {
+	pulumi.Input
+
+	ToJobModePtrOutput() JobModePtrOutput
+	ToJobModePtrOutputWithContext(context.Context) JobModePtrOutput
+}
+
+type jobModePtr string
+
+func JobModePtr(v string) JobModePtrInput {
+	return (*jobModePtr)(&v)
+}
+
+func (*jobModePtr) ElementType() reflect.Type {
+	return jobModePtrType
+}
+
+func (in *jobModePtr) ToJobModePtrOutput() JobModePtrOutput {
+	return pulumi.ToOutput(in).(JobModePtrOutput)
+}
+
+func (in *jobModePtr) ToJobModePtrOutputWithContext(ctx context.Context) JobModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobModePtrOutput)
+}
+
 // Required. Type of the manifest, can be `HLS` or `DASH`.
 type ManifestType string
 
@@ -351,10 +520,14 @@ func (in *manifestTypePtr) ToManifestTypePtrOutputWithContext(ctx context.Contex
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypeInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AnimationFadeFadeTypePtrInput)(nil)).Elem(), AnimationFadeFadeType("FADE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobModeInput)(nil)).Elem(), JobMode("PROCESSING_MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*JobModePtrInput)(nil)).Elem(), JobMode("PROCESSING_MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypeInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ManifestTypePtrInput)(nil)).Elem(), ManifestType("MANIFEST_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AnimationFadeFadeTypeOutput{})
 	pulumi.RegisterOutputType(AnimationFadeFadeTypePtrOutput{})
+	pulumi.RegisterOutputType(JobModeOutput{})
+	pulumi.RegisterOutputType(JobModePtrOutput{})
 	pulumi.RegisterOutputType(ManifestTypeOutput{})
 	pulumi.RegisterOutputType(ManifestTypePtrOutput{})
 }

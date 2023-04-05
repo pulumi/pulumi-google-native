@@ -545,6 +545,7 @@ class BackendRuleArgs:
                  jwt_audience: Optional[pulumi.Input[str]] = None,
                  min_deadline: Optional[pulumi.Input[float]] = None,
                  operation_deadline: Optional[pulumi.Input[float]] = None,
+                 overrides_by_request_protocol: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  path_translation: Optional[pulumi.Input['BackendRulePathTranslation']] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  selector: Optional[pulumi.Input[str]] = None):
@@ -556,6 +557,7 @@ class BackendRuleArgs:
         :param pulumi.Input[str] jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         :param pulumi.Input[float] min_deadline: Deprecated, do not use.
         :param pulumi.Input[float] operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] overrides_by_request_protocol: The map between request protocol and the backend address.
         :param pulumi.Input[str] protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param pulumi.Input[str] selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
         """
@@ -574,6 +576,8 @@ class BackendRuleArgs:
             pulumi.set(__self__, "min_deadline", min_deadline)
         if operation_deadline is not None:
             pulumi.set(__self__, "operation_deadline", operation_deadline)
+        if overrides_by_request_protocol is not None:
+            pulumi.set(__self__, "overrides_by_request_protocol", overrides_by_request_protocol)
         if path_translation is not None:
             pulumi.set(__self__, "path_translation", path_translation)
         if protocol is not None:
@@ -652,6 +656,18 @@ class BackendRuleArgs:
     @operation_deadline.setter
     def operation_deadline(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "operation_deadline", value)
+
+    @property
+    @pulumi.getter(name="overridesByRequestProtocol")
+    def overrides_by_request_protocol(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The map between request protocol and the backend address.
+        """
+        return pulumi.get(self, "overrides_by_request_protocol")
+
+    @overrides_by_request_protocol.setter
+    def overrides_by_request_protocol(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "overrides_by_request_protocol", value)
 
     @property
     @pulumi.getter(name="pathTranslation")
@@ -857,7 +873,7 @@ class ClientLibrarySettingsArgs:
         :param pulumi.Input['PythonSettingsArgs'] python_settings: Settings for Python client libraries.
         :param pulumi.Input[bool] rest_numeric_enums: When using transport=rest, the client request will encode enums as numbers rather than strings.
         :param pulumi.Input['RubySettingsArgs'] ruby_settings: Settings for Ruby client libraries.
-        :param pulumi.Input[str] version: Version of the API to apply these settings to.
+        :param pulumi.Input[str] version: Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
         """
         if cpp_settings is not None:
             pulumi.set(__self__, "cpp_settings", cpp_settings)
@@ -1006,7 +1022,7 @@ class ClientLibrarySettingsArgs:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        Version of the API to apply these settings to.
+        Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
         """
         return pulumi.get(self, "version")
 
@@ -1662,6 +1678,7 @@ class EnumValueArgs:
 @pulumi.input_type
 class EnumArgs:
     def __init__(__self__, *,
+                 edition: Optional[pulumi.Input[str]] = None,
                  enumvalue: Optional[pulumi.Input[Sequence[pulumi.Input['EnumValueArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[Sequence[pulumi.Input['OptionArgs']]]] = None,
@@ -1669,12 +1686,15 @@ class EnumArgs:
                  syntax: Optional[pulumi.Input['EnumSyntax']] = None):
         """
         Enum type definition.
+        :param pulumi.Input[str] edition: The source edition string, only valid when syntax is SYNTAX_EDITIONS.
         :param pulumi.Input[Sequence[pulumi.Input['EnumValueArgs']]] enumvalue: Enum value definitions.
         :param pulumi.Input[str] name: Enum type name.
         :param pulumi.Input[Sequence[pulumi.Input['OptionArgs']]] options: Protocol buffer options.
         :param pulumi.Input['SourceContextArgs'] source_context: The source context.
         :param pulumi.Input['EnumSyntax'] syntax: The source syntax.
         """
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if enumvalue is not None:
             pulumi.set(__self__, "enumvalue", enumvalue)
         if name is not None:
@@ -1685,6 +1705,18 @@ class EnumArgs:
             pulumi.set(__self__, "source_context", source_context)
         if syntax is not None:
             pulumi.set(__self__, "syntax", syntax)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter
@@ -2634,7 +2666,7 @@ class MethodSettingsArgs:
                  selector: Optional[pulumi.Input[str]] = None):
         """
         Describes the generator configuration for a method.
-        :param pulumi.Input['LongRunningArgs'] long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        :param pulumi.Input['LongRunningArgs'] long_running: Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
         :param pulumi.Input[str] selector: The fully qualified name of the method, for which the options below apply. This is used to find the method to apply the options.
         """
         if long_running is not None:
@@ -2646,7 +2678,7 @@ class MethodSettingsArgs:
     @pulumi.getter(name="longRunning")
     def long_running(self) -> Optional[pulumi.Input['LongRunningArgs']]:
         """
-        Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_behavior: - selector: CreateAdDomain long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
+        Describes settings to use for long-running operations when generating API methods for RPCs. Complements RPCs that use the annotations in google/longrunning/operations.proto. Example of a YAML configuration:: publishing: method_settings: - selector: google.cloud.speech.v2.Speech.BatchRecognize long_running: initial_poll_delay: seconds: 60 # 1 minute poll_delay_multiplier: 1.5 max_poll_delay: seconds: 360 # 6 minutes total_poll_timeout: seconds: 54000 # 90 minutes
         """
         return pulumi.get(self, "long_running")
 
@@ -3076,7 +3108,7 @@ class MixinArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  root: Optional[pulumi.Input[str]] = None):
         """
-        Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inheriting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
+        Declares an API Interface to be included in this interface. The including interface must redeclare all the methods from the included interface, but documentation and options are inherited as follows: - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will be inherited from the original method. - Each annotation belonging to the service config (http, visibility) which is not set in the redeclared method will be inherited. - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be replaced by the version of the including interface plus the root path if specified. Example of a simple mixin: package google.acl.v1; service AccessControl { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v1/{resource=**}:getAcl"; } } package google.storage.v2; service Storage { // rpc GetAcl(GetAclRequest) returns (Acl); // Get a data record. rpc GetData(GetDataRequest) returns (Data) { option (google.api.http).get = "/v2/{resource=**}"; } } Example of a mixin configuration: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl The mixin construct implies that all methods in `AccessControl` are also declared with same name and request/response types in `Storage`. A documentation generator or annotation processor will see the effective `Storage.GetAcl` method after inherting documentation and annotations as follows: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/{resource=**}:getAcl"; } ... } Note how the version in the path pattern changed from `v1` to `v2`. If the `root` field in the mixin is specified, it should be a relative path under which inherited HTTP paths are placed. Example: apis: - name: google.storage.v2.Storage mixins: - name: google.acl.v1.AccessControl root: acls This implies the following inherited HTTP annotation: service Storage { // Get the underlying ACL object. rpc GetAcl(GetAclRequest) returns (Acl) { option (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }
         :param pulumi.Input[str] name: The fully qualified name of the interface which is included.
         :param pulumi.Input[str] root: If non-empty specifies a path under which inherited HTTP paths are rooted.
         """
@@ -3471,7 +3503,8 @@ class PublishingArgs:
                  library_settings: Optional[pulumi.Input[Sequence[pulumi.Input['ClientLibrarySettingsArgs']]]] = None,
                  method_settings: Optional[pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]]] = None,
                  new_issue_uri: Optional[pulumi.Input[str]] = None,
-                 organization: Optional[pulumi.Input['PublishingOrganization']] = None):
+                 organization: Optional[pulumi.Input['PublishingOrganization']] = None,
+                 proto_reference_documentation_uri: Optional[pulumi.Input[str]] = None):
         """
         This message configures the settings for publishing [Google Cloud Client libraries](https://cloud.google.com/apis/docs/cloud-client-libraries) generated from the service config.
         :param pulumi.Input[str] api_short_name: Used as a tracking tag when collecting data about the APIs developer relations artifacts like docs, packages delivered to package managers, etc. Example: "speech".
@@ -3483,6 +3516,7 @@ class PublishingArgs:
         :param pulumi.Input[Sequence[pulumi.Input['MethodSettingsArgs']]] method_settings: A list of API method settings, e.g. the behavior for methods that use the long-running operation pattern.
         :param pulumi.Input[str] new_issue_uri: Link to a place that API users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
         :param pulumi.Input['PublishingOrganization'] organization: For whom the client library is being published.
+        :param pulumi.Input[str] proto_reference_documentation_uri: Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
         """
         if api_short_name is not None:
             pulumi.set(__self__, "api_short_name", api_short_name)
@@ -3502,6 +3536,8 @@ class PublishingArgs:
             pulumi.set(__self__, "new_issue_uri", new_issue_uri)
         if organization is not None:
             pulumi.set(__self__, "organization", organization)
+        if proto_reference_documentation_uri is not None:
+            pulumi.set(__self__, "proto_reference_documentation_uri", proto_reference_documentation_uri)
 
     @property
     @pulumi.getter(name="apiShortName")
@@ -3610,6 +3646,18 @@ class PublishingArgs:
     @organization.setter
     def organization(self, value: Optional[pulumi.Input['PublishingOrganization']]):
         pulumi.set(self, "organization", value)
+
+    @property
+    @pulumi.getter(name="protoReferenceDocumentationUri")
+    def proto_reference_documentation_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
+        """
+        return pulumi.get(self, "proto_reference_documentation_uri")
+
+    @proto_reference_documentation_uri.setter
+    def proto_reference_documentation_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proto_reference_documentation_uri", value)
 
 
 @pulumi.input_type
@@ -4039,6 +4087,7 @@ class TrafficPercentStrategyArgs:
 @pulumi.input_type
 class TypeArgs:
     def __init__(__self__, *,
+                 edition: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['FieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  oneofs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -4047,6 +4096,7 @@ class TypeArgs:
                  syntax: Optional[pulumi.Input['TypeSyntax']] = None):
         """
         A protocol buffer message type.
+        :param pulumi.Input[str] edition: The source edition string, only valid when syntax is SYNTAX_EDITIONS.
         :param pulumi.Input[Sequence[pulumi.Input['FieldArgs']]] fields: The list of fields.
         :param pulumi.Input[str] name: The fully qualified message name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] oneofs: The list of types appearing in `oneof` definitions in this type.
@@ -4054,6 +4104,8 @@ class TypeArgs:
         :param pulumi.Input['SourceContextArgs'] source_context: The source context.
         :param pulumi.Input['TypeSyntax'] syntax: The source syntax.
         """
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
         if name is not None:
@@ -4066,6 +4118,18 @@ class TypeArgs:
             pulumi.set(__self__, "source_context", source_context)
         if syntax is not None:
             pulumi.set(__self__, "syntax", syntax)
+
+    @property
+    @pulumi.getter
+    def edition(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "edition", value)
 
     @property
     @pulumi.getter

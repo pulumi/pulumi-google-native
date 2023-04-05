@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class GceRegionalPersistentDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Type of the disk to use.
+        /// Type of the disk to use. Defaults to pd-standard.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
         /// <summary>
-        /// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+        /// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
         /// </summary>
         [Input("fsType")]
         public Input<string>? FsType { get; set; }
@@ -34,10 +34,16 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         public Input<Pulumi.GoogleNative.Workstations.V1Beta.GceRegionalPersistentDiskReclaimPolicy>? ReclaimPolicy { get; set; }
 
         /// <summary>
-        /// Size of the disk in GB. Must be empty if source_snapshot is set.
+        /// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
         /// </summary>
         [Input("sizeGb")]
         public Input<int>? SizeGb { get; set; }
+
+        /// <summary>
+        /// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        /// </summary>
+        [Input("sourceSnapshot")]
+        public Input<string>? SourceSnapshot { get; set; }
 
         public GceRegionalPersistentDiskArgs()
         {

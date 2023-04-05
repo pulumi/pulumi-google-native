@@ -42,6 +42,10 @@ export class Membership extends pulumi.CustomResource {
      * The time when the `Membership` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Delivery setting associated with the membership.
+     */
+    public /*out*/ readonly deliverySetting!: pulumi.Output<string>;
     public readonly groupId!: pulumi.Output<string>;
     /**
      * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
@@ -90,11 +94,13 @@ export class Membership extends pulumi.CustomResource {
             resourceInputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliverySetting"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliverySetting"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["memberKey"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

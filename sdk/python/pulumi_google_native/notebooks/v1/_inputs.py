@@ -927,6 +927,7 @@ class RuntimeSoftwareConfigArgs:
                  idle_shutdown_timeout: Optional[pulumi.Input[int]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
                  kernels: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]] = None,
+                 mixer_disabled: Optional[pulumi.Input[bool]] = None,
                  notebook_upgrade_schedule: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
                  post_startup_script_behavior: Optional[pulumi.Input['RuntimeSoftwareConfigPostStartupScriptBehavior']] = None):
@@ -939,6 +940,7 @@ class RuntimeSoftwareConfigArgs:
         :param pulumi.Input[int] idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
         :param pulumi.Input[bool] install_gpu_driver: Install Nvidia Driver automatically. Default: True
         :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] kernels: Optional. Use a list of container images to use as Kernels in the notebook instance.
+        :param pulumi.Input[bool] mixer_disabled: Bool indicating whether mixer client should be disabled. Default: False
         :param pulumi.Input[str] notebook_upgrade_schedule: Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (`gs://path-to-file/file-name`).
         :param pulumi.Input['RuntimeSoftwareConfigPostStartupScriptBehavior'] post_startup_script_behavior: Behavior for the post startup script.
@@ -957,6 +959,8 @@ class RuntimeSoftwareConfigArgs:
             pulumi.set(__self__, "install_gpu_driver", install_gpu_driver)
         if kernels is not None:
             pulumi.set(__self__, "kernels", kernels)
+        if mixer_disabled is not None:
+            pulumi.set(__self__, "mixer_disabled", mixer_disabled)
         if notebook_upgrade_schedule is not None:
             pulumi.set(__self__, "notebook_upgrade_schedule", notebook_upgrade_schedule)
         if post_startup_script is not None:
@@ -1047,6 +1051,18 @@ class RuntimeSoftwareConfigArgs:
     @kernels.setter
     def kernels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]]):
         pulumi.set(self, "kernels", value)
+
+    @property
+    @pulumi.getter(name="mixerDisabled")
+    def mixer_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Bool indicating whether mixer client should be disabled. Default: False
+        """
+        return pulumi.get(self, "mixer_disabled")
+
+    @mixer_disabled.setter
+    def mixer_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mixer_disabled", value)
 
     @property
     @pulumi.getter(name="notebookUpgradeSchedule")

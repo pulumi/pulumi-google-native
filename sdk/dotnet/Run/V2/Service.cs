@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Run.V2
         public Output<string> LatestReadyRevision { get; private set; } = null!;
 
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// </summary>
         [Output("launchStage")]
         public Output<string> LaunchStage { get; private set; } = null!;
@@ -146,6 +146,12 @@ namespace Pulumi.GoogleNative.Run.V2
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
+
+        /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
         /// Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}.
@@ -307,7 +313,7 @@ namespace Pulumi.GoogleNative.Run.V2
         }
 
         /// <summary>
-        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed.
+        /// The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output.
         /// </summary>
         [Input("launchStage")]
         public Input<Pulumi.GoogleNative.Run.V2.ServiceLaunchStage>? LaunchStage { get; set; }

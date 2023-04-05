@@ -215,7 +215,7 @@ def get_region_url_map(project: Optional[str] = None,
                        url_map: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionUrlMapResult:
     """
-    Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+    Returns the specified UrlMap resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -248,6 +248,6 @@ def get_region_url_map_output(project: Optional[pulumi.Input[Optional[str]]] = N
                               url_map: Optional[pulumi.Input[str]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionUrlMapResult]:
     """
-    Returns the specified UrlMap resource. Gets a list of available URL maps by making a list() request.
+    Returns the specified UrlMap resource.
     """
     ...

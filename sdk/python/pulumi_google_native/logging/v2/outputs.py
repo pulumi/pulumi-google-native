@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'BigQueryDatasetResponse',
     'BigQueryOptionsResponse',
     'BucketOptionsResponse',
     'CmekSettingsResponse',
@@ -24,6 +25,45 @@ __all__ = [
     'MetricDescriptorMetadataResponse',
     'MetricDescriptorResponse',
 ]
+
+@pulumi.output_type
+class BigQueryDatasetResponse(dict):
+    """
+    Describes a BigQuery dataset that was created by a link.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigQueryDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigQueryDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigQueryDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str):
+        """
+        Describes a BigQuery dataset that was created by a link.
+        :param str dataset_id: The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID"
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        """
+        The full resource name of the BigQuery dataset. The DATASET_ID will match the ID of the link, so the link must match the naming restrictions of BigQuery datasets (alphanumeric characters and underscores only).The dataset will have a resource path of "bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID"
+        """
+        return pulumi.get(self, "dataset_id")
+
 
 @pulumi.output_type
 class BigQueryOptionsResponse(dict):

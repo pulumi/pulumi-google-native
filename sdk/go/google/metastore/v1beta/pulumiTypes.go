@@ -2634,6 +2634,8 @@ func (o MetadataManagementActivityResponseOutput) Restores() RestoreResponseArra
 type NetworkConfig struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers []Consumer `pulumi:"consumers"`
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled *bool `pulumi:"customRoutesEnabled"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -2651,6 +2653,8 @@ type NetworkConfigInput interface {
 type NetworkConfigArgs struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers ConsumerArrayInput `pulumi:"consumers"`
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled pulumi.BoolPtrInput `pulumi:"customRoutesEnabled"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -2736,6 +2740,11 @@ func (o NetworkConfigOutput) Consumers() ConsumerArrayOutput {
 	return o.ApplyT(func(v NetworkConfig) []Consumer { return v.Consumers }).(ConsumerArrayOutput)
 }
 
+// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+func (o NetworkConfigOutput) CustomRoutesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *bool { return v.CustomRoutesEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (NetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -2770,10 +2779,22 @@ func (o NetworkConfigPtrOutput) Consumers() ConsumerArrayOutput {
 	}).(ConsumerArrayOutput)
 }
 
+// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+func (o NetworkConfigPtrOutput) CustomRoutesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRoutesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Network configuration for the Dataproc Metastore service.
 type NetworkConfigResponse struct {
 	// Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 	Consumers []ConsumerResponse `pulumi:"consumers"`
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled bool `pulumi:"customRoutesEnabled"`
 }
 
 // Network configuration for the Dataproc Metastore service.
@@ -2794,6 +2815,11 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponseOutputWithContext(ct
 // Immutable. The consumer-side network configuration for the Dataproc Metastore instance.
 func (o NetworkConfigResponseOutput) Consumers() ConsumerResponseArrayOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) []ConsumerResponse { return v.Consumers }).(ConsumerResponseArrayOutput)
+}
+
+// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+func (o NetworkConfigResponseOutput) CustomRoutesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.CustomRoutesEnabled }).(pulumi.BoolOutput)
 }
 
 // The details of a metadata restore operation.
@@ -2875,6 +2901,198 @@ func (o RestoreResponseArrayOutput) Index(i pulumi.IntInput) RestoreResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RestoreResponse {
 		return vs[0].([]RestoreResponse)[vs[1].(int)]
 	}).(RestoreResponseOutput)
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfig struct {
+	// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+	InstanceSize *ScalingConfigInstanceSize `pulumi:"instanceSize"`
+	// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor *float64 `pulumi:"scalingFactor"`
+}
+
+// ScalingConfigInput is an input type that accepts ScalingConfigArgs and ScalingConfigOutput values.
+// You can construct a concrete instance of `ScalingConfigInput` via:
+//
+//	ScalingConfigArgs{...}
+type ScalingConfigInput interface {
+	pulumi.Input
+
+	ToScalingConfigOutput() ScalingConfigOutput
+	ToScalingConfigOutputWithContext(context.Context) ScalingConfigOutput
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigArgs struct {
+	// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+	InstanceSize ScalingConfigInstanceSizePtrInput `pulumi:"instanceSize"`
+	// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor pulumi.Float64PtrInput `pulumi:"scalingFactor"`
+}
+
+func (ScalingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfig)(nil)).Elem()
+}
+
+func (i ScalingConfigArgs) ToScalingConfigOutput() ScalingConfigOutput {
+	return i.ToScalingConfigOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigArgs) ToScalingConfigOutputWithContext(ctx context.Context) ScalingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigOutput)
+}
+
+func (i ScalingConfigArgs) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return i.ToScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ScalingConfigArgs) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigOutput).ToScalingConfigPtrOutputWithContext(ctx)
+}
+
+// ScalingConfigPtrInput is an input type that accepts ScalingConfigArgs, ScalingConfigPtr and ScalingConfigPtrOutput values.
+// You can construct a concrete instance of `ScalingConfigPtrInput` via:
+//
+//	        ScalingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ScalingConfigPtrInput interface {
+	pulumi.Input
+
+	ToScalingConfigPtrOutput() ScalingConfigPtrOutput
+	ToScalingConfigPtrOutputWithContext(context.Context) ScalingConfigPtrOutput
+}
+
+type scalingConfigPtrType ScalingConfigArgs
+
+func ScalingConfigPtr(v *ScalingConfigArgs) ScalingConfigPtrInput {
+	return (*scalingConfigPtrType)(v)
+}
+
+func (*scalingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfig)(nil)).Elem()
+}
+
+func (i *scalingConfigPtrType) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return i.ToScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *scalingConfigPtrType) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ScalingConfigPtrOutput)
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfig)(nil)).Elem()
+}
+
+func (o ScalingConfigOutput) ToScalingConfigOutput() ScalingConfigOutput {
+	return o
+}
+
+func (o ScalingConfigOutput) ToScalingConfigOutputWithContext(ctx context.Context) ScalingConfigOutput {
+	return o
+}
+
+func (o ScalingConfigOutput) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return o.ToScalingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ScalingConfigOutput) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ScalingConfig) *ScalingConfig {
+		return &v
+	}).(ScalingConfigPtrOutput)
+}
+
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+func (o ScalingConfigOutput) InstanceSize() ScalingConfigInstanceSizePtrOutput {
+	return o.ApplyT(func(v ScalingConfig) *ScalingConfigInstanceSize { return v.InstanceSize }).(ScalingConfigInstanceSizePtrOutput)
+}
+
+// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o ScalingConfigOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v ScalingConfig) *float64 { return v.ScalingFactor }).(pulumi.Float64PtrOutput)
+}
+
+type ScalingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ScalingConfig)(nil)).Elem()
+}
+
+func (o ScalingConfigPtrOutput) ToScalingConfigPtrOutput() ScalingConfigPtrOutput {
+	return o
+}
+
+func (o ScalingConfigPtrOutput) ToScalingConfigPtrOutputWithContext(ctx context.Context) ScalingConfigPtrOutput {
+	return o
+}
+
+func (o ScalingConfigPtrOutput) Elem() ScalingConfigOutput {
+	return o.ApplyT(func(v *ScalingConfig) ScalingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ScalingConfig
+		return ret
+	}).(ScalingConfigOutput)
+}
+
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+func (o ScalingConfigPtrOutput) InstanceSize() ScalingConfigInstanceSizePtrOutput {
+	return o.ApplyT(func(v *ScalingConfig) *ScalingConfigInstanceSize {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceSize
+	}).(ScalingConfigInstanceSizePtrOutput)
+}
+
+// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o ScalingConfigPtrOutput) ScalingFactor() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *ScalingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.ScalingFactor
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigResponse struct {
+	// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+	InstanceSize string `pulumi:"instanceSize"`
+	// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+	ScalingFactor float64 `pulumi:"scalingFactor"`
+}
+
+// Represents the scaling configuration of a metastore service.
+type ScalingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ScalingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ScalingConfigResponse)(nil)).Elem()
+}
+
+func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutput() ScalingConfigResponseOutput {
+	return o
+}
+
+func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutputWithContext(ctx context.Context) ScalingConfigResponseOutput {
+	return o
+}
+
+// An enum of readable instance sizes, with each instance size mapping to a float value (e.g. InstanceSize.EXTRA_SMALL = scaling_factor(0.1))
+func (o ScalingConfigResponseOutput) InstanceSize() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingConfigResponse) string { return v.InstanceSize }).(pulumi.StringOutput)
+}
+
+// Scaling factor, increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
+func (o ScalingConfigResponseOutput) ScalingFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v ScalingConfigResponse) float64 { return v.ScalingFactor }).(pulumi.Float64Output)
 }
 
 // A securely stored value.
@@ -3075,6 +3293,8 @@ type ServiceResponse struct {
 	Port int `pulumi:"port"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel string `pulumi:"releaseChannel"`
+	// Scaling configuration of the metastore service.
+	ScalingConfig ScalingConfigResponse `pulumi:"scalingConfig"`
 	// The current state of the metastore service.
 	State string `pulumi:"state"`
 	// Additional information about the current state of the metastore service, if available.
@@ -3177,6 +3397,11 @@ func (o ServiceResponseOutput) Port() pulumi.IntOutput {
 // Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 func (o ServiceResponseOutput) ReleaseChannel() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.ReleaseChannel }).(pulumi.StringOutput)
+}
+
+// Scaling configuration of the metastore service.
+func (o ServiceResponseOutput) ScalingConfig() ScalingConfigResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) ScalingConfigResponse { return v.ScalingConfig }).(ScalingConfigResponseOutput)
 }
 
 // The current state of the metastore service.
@@ -3404,6 +3629,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataIntegrationPtrInput)(nil)).Elem(), MetadataIntegrationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigInput)(nil)).Elem(), NetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigPtrInput)(nil)).Elem(), NetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigInput)(nil)).Elem(), ScalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ScalingConfigPtrInput)(nil)).Elem(), ScalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecretPtrInput)(nil)).Elem(), SecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryConfigInput)(nil)).Elem(), TelemetryConfigArgs{})
@@ -3459,6 +3686,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(RestoreResponseOutput{})
 	pulumi.RegisterOutputType(RestoreResponseArrayOutput{})
+	pulumi.RegisterOutputType(ScalingConfigOutput{})
+	pulumi.RegisterOutputType(ScalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ScalingConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecretOutput{})
 	pulumi.RegisterOutputType(SecretPtrOutput{})
 	pulumi.RegisterOutputType(SecretResponseOutput{})

@@ -15,6 +15,30 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// </summary>
     public sealed class FirewallPolicyRuleMatcherArgs : global::Pulumi.ResourceArgs
     {
+        [Input("destAddressGroups")]
+        private InputList<string>? _destAddressGroups;
+
+        /// <summary>
+        /// Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
+        /// </summary>
+        public InputList<string> DestAddressGroups
+        {
+            get => _destAddressGroups ?? (_destAddressGroups = new InputList<string>());
+            set => _destAddressGroups = value;
+        }
+
+        [Input("destFqdns")]
+        private InputList<string>? _destFqdns;
+
+        /// <summary>
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
+        /// </summary>
+        public InputList<string> DestFqdns
+        {
+            get => _destFqdns ?? (_destFqdns = new InputList<string>());
+            set => _destFqdns = value;
+        }
+
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
 
@@ -25,6 +49,30 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         {
             get => _destIpRanges ?? (_destIpRanges = new InputList<string>());
             set => _destIpRanges = value;
+        }
+
+        [Input("destRegionCodes")]
+        private InputList<string>? _destRegionCodes;
+
+        /// <summary>
+        /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
+        /// </summary>
+        public InputList<string> DestRegionCodes
+        {
+            get => _destRegionCodes ?? (_destRegionCodes = new InputList<string>());
+            set => _destRegionCodes = value;
+        }
+
+        [Input("destThreatIntelligences")]
+        private InputList<string>? _destThreatIntelligences;
+
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
+        /// </summary>
+        public InputList<string> DestThreatIntelligences
+        {
+            get => _destThreatIntelligences ?? (_destThreatIntelligences = new InputList<string>());
+            set => _destThreatIntelligences = value;
         }
 
         [Input("layer4Configs")]
@@ -39,6 +87,30 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             set => _layer4Configs = value;
         }
 
+        [Input("srcAddressGroups")]
+        private InputList<string>? _srcAddressGroups;
+
+        /// <summary>
+        /// Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
+        /// </summary>
+        public InputList<string> SrcAddressGroups
+        {
+            get => _srcAddressGroups ?? (_srcAddressGroups = new InputList<string>());
+            set => _srcAddressGroups = value;
+        }
+
+        [Input("srcFqdns")]
+        private InputList<string>? _srcFqdns;
+
+        /// <summary>
+        /// Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
+        /// </summary>
+        public InputList<string> SrcFqdns
+        {
+            get => _srcFqdns ?? (_srcFqdns = new InputList<string>());
+            set => _srcFqdns = value;
+        }
+
         [Input("srcIpRanges")]
         private InputList<string>? _srcIpRanges;
 
@@ -51,6 +123,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             set => _srcIpRanges = value;
         }
 
+        [Input("srcRegionCodes")]
+        private InputList<string>? _srcRegionCodes;
+
+        /// <summary>
+        /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
+        /// </summary>
+        public InputList<string> SrcRegionCodes
+        {
+            get => _srcRegionCodes ?? (_srcRegionCodes = new InputList<string>());
+            set => _srcRegionCodes = value;
+        }
+
         [Input("srcSecureTags")]
         private InputList<Inputs.FirewallPolicyRuleSecureTagArgs>? _srcSecureTags;
 
@@ -61,6 +145,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         {
             get => _srcSecureTags ?? (_srcSecureTags = new InputList<Inputs.FirewallPolicyRuleSecureTagArgs>());
             set => _srcSecureTags = value;
+        }
+
+        [Input("srcThreatIntelligences")]
+        private InputList<string>? _srcThreatIntelligences;
+
+        /// <summary>
+        /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
+        /// </summary>
+        public InputList<string> SrcThreatIntelligences
+        {
+            get => _srcThreatIntelligences ?? (_srcThreatIntelligences = new InputList<string>());
+            set => _srcThreatIntelligences = value;
         }
 
         public FirewallPolicyRuleMatcherArgs()

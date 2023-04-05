@@ -181,7 +181,7 @@ func (in *accessConfigNetworkTierPtr) ToAccessConfigNetworkTierPtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(AccessConfigNetworkTierPtrOutput)
 }
 
-// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 type AccessConfigType string
 
 const (
@@ -4414,6 +4414,8 @@ const (
 	BackendServiceLocalityLbPolicyRingHash = BackendServiceLocalityLbPolicy("RING_HASH")
 	// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
 	BackendServiceLocalityLbPolicyRoundRobin = BackendServiceLocalityLbPolicy("ROUND_ROBIN")
+	// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+	BackendServiceLocalityLbPolicyWeightedMaglev = BackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV")
 )
 
 func (BackendServiceLocalityLbPolicy) ElementType() reflect.Type {
@@ -4590,6 +4592,8 @@ const (
 	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameRingHash = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("RING_HASH")
 	// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
 	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameRoundRobin = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("ROUND_ROBIN")
+	// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameWeightedMaglev = BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("WEIGHTED_MAGLEV")
 )
 
 func (BackendServiceLocalityLoadBalancingPolicyConfigPolicyName) ElementType() reflect.Type {
@@ -10210,7 +10214,7 @@ func (in *globalNetworkEndpointGroupNetworkEndpointTypePtr) ToGlobalNetworkEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 type GuestOsFeatureType string
 
 const (
@@ -10219,6 +10223,7 @@ const (
 	GuestOsFeatureTypeMultiIpSubnet          = GuestOsFeatureType("MULTI_IP_SUBNET")
 	GuestOsFeatureTypeSecureBoot             = GuestOsFeatureType("SECURE_BOOT")
 	GuestOsFeatureTypeSevCapable             = GuestOsFeatureType("SEV_CAPABLE")
+	GuestOsFeatureTypeSevLiveMigratable      = GuestOsFeatureType("SEV_LIVE_MIGRATABLE")
 	GuestOsFeatureTypeSevSnpCapable          = GuestOsFeatureType("SEV_SNP_CAPABLE")
 	GuestOsFeatureTypeUefiCompatible         = GuestOsFeatureType("UEFI_COMPATIBLE")
 	GuestOsFeatureTypeVirtioScsiMultiqueue   = GuestOsFeatureType("VIRTIO_SCSI_MULTIQUEUE")
@@ -16118,7 +16123,7 @@ func (in *networkInterfaceNicTypePtr) ToNetworkInterfaceNicTypePtrOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, in).(NetworkInterfaceNicTypePtrOutput)
 }
 
-// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 type NetworkInterfaceStackType string
 
 const (
@@ -18163,6 +18168,8 @@ const (
 	RegionBackendServiceLocalityLbPolicyRingHash = RegionBackendServiceLocalityLbPolicy("RING_HASH")
 	// This is a simple policy in which each healthy backend is selected in round robin order. This is the default.
 	RegionBackendServiceLocalityLbPolicyRoundRobin = RegionBackendServiceLocalityLbPolicy("ROUND_ROBIN")
+	// Per-instance weighted Load Balancing via health check reported weights. If set, the Backend Service must configure a non legacy HTTP-based Health Check, and health check replies are expected to contain non-standard HTTP response header field X-Load-Balancing-Endpoint-Weight to specify the per-instance weights. If set, Load Balancing is weighted based on the per-instance weights reported in the last processed health check replies, as long as every instance either reported a valid weight or had UNAVAILABLE_WEIGHT. Otherwise, Load Balancing remains equal-weight. This option is only supported in Network Load Balancing.
+	RegionBackendServiceLocalityLbPolicyWeightedMaglev = RegionBackendServiceLocalityLbPolicy("WEIGHTED_MAGLEV")
 )
 
 func (RegionBackendServiceLocalityLbPolicy) ElementType() reflect.Type {
@@ -19017,6 +19024,7 @@ const (
 	RegionCommitmentTypeAcceleratorOptimized = RegionCommitmentType("ACCELERATOR_OPTIMIZED")
 	RegionCommitmentTypeComputeOptimized     = RegionCommitmentType("COMPUTE_OPTIMIZED")
 	RegionCommitmentTypeComputeOptimizedC2d  = RegionCommitmentType("COMPUTE_OPTIMIZED_C2D")
+	RegionCommitmentTypeComputeOptimizedC3   = RegionCommitmentType("COMPUTE_OPTIMIZED_C3")
 	RegionCommitmentTypeGeneralPurpose       = RegionCommitmentType("GENERAL_PURPOSE")
 	RegionCommitmentTypeGeneralPurposeE2     = RegionCommitmentType("GENERAL_PURPOSE_E2")
 	RegionCommitmentTypeGeneralPurposeN2     = RegionCommitmentType("GENERAL_PURPOSE_N2")
@@ -20034,7 +20042,7 @@ func (in *regionNetworkEndpointGroupNetworkEndpointTypePtr) ToRegionNetworkEndpo
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput)
 }
 
-// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
 type RegionSecurityPolicyType string
 
 const (
@@ -25892,6 +25900,179 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
+// The match operator for the field.
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp string
+
+const (
+	// The operator matches if the field value contains the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpContains = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS")
+	// The operator matches if the field value ends with the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEndsWith = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("ENDS_WITH")
+	// The operator matches if the field value equals the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEquals = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS")
+	// The operator matches if the field value is any value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEqualsAny = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS_ANY")
+	// The operator matches if the field value starts with the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpStartsWith = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("STARTS_WITH")
+)
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return e.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(e).ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx).ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		return &v
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp
+		return ret
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput
+}
+
+var securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrType = reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput
+}
+
+type securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr string
+
+func SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr(v string) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput {
+	return (*securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr)(&v)
+}
+
+func (*securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ElementType() reflect.Type {
+	return securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrType
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
@@ -26228,7 +26409,7 @@ func (in *securityPolicyRuleRedirectOptionsTypePtr) ToSecurityPolicyRuleRedirect
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleRedirectOptionsTypePtrOutput)
 }
 
-// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
+// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. - CLOUD_ARMOR_NETWORK: Cloud Armor network policies can be configured to filter packets targeting network load balancing resources such as backend services, target pools, target instances, and instances with external IPs. They filter requests before the request is served from the application. This field can be set only at resource creation time.
 type SecurityPolicyType string
 
 const (
@@ -30568,6 +30749,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigDdosProtectionPtrInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigDdosProtection("ADVANCED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("SRC_IPS_V1"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("SRC_IPS_V1"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsTypeInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsType("EXTERNAL_302"))
@@ -30928,6 +31111,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypeOutput{})

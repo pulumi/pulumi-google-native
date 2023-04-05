@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
     public sealed class IPAllocationPolicyResponse
     {
         /// <summary>
+        /// [Output only] The additional pod ranges that are added to the cluster. These pod ranges can be used by new node pools to allocate pod IPs automatically. Once the range is removed it will not show up in IPAllocationPolicy.
+        /// </summary>
+        public readonly Outputs.AdditionalPodRangesConfigResponse AdditionalPodRangesConfig;
+        /// <summary>
         /// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
         /// </summary>
         public readonly bool AllowRouteOverlap;
@@ -48,6 +52,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// The IP address range of the instance IPs in this cluster. This is applicable only if `create_subnetwork` is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask. Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`) from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific range to use.
         /// </summary>
         public readonly string NodeIpv4CidrBlock;
+        /// <summary>
+        /// [PRIVATE FIELD] Pod CIDR size overprovisioning config for the cluster. Pod CIDR size per node depends on max_pods_per_node. By default, the value of max_pods_per_node is doubled and then rounded off to next power of 2 to get the size of pod CIDR block per node. Example: max_pods_per_node of 30 would result in 64 IPs (/26). This config can disable the doubling of IPs (we still round off to next power of 2) Example: max_pods_per_node of 30 will result in 32 IPs (/27) when overprovisioning is disabled.
+        /// </summary>
+        public readonly Outputs.PodCIDROverprovisionConfigResponse PodCidrOverprovisionConfig;
         /// <summary>
         /// This field is deprecated, use services_ipv4_cidr_block.
         /// </summary>
@@ -91,6 +99,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
         [OutputConstructor]
         private IPAllocationPolicyResponse(
+            Outputs.AdditionalPodRangesConfigResponse additionalPodRangesConfig,
+
             bool allowRouteOverlap,
 
             string clusterIpv4Cidr,
@@ -106,6 +116,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             string nodeIpv4Cidr,
 
             string nodeIpv4CidrBlock,
+
+            Outputs.PodCIDROverprovisionConfigResponse podCidrOverprovisionConfig,
 
             string servicesIpv4Cidr,
 
@@ -127,6 +139,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             bool useRoutes)
         {
+            AdditionalPodRangesConfig = additionalPodRangesConfig;
             AllowRouteOverlap = allowRouteOverlap;
             ClusterIpv4Cidr = clusterIpv4Cidr;
             ClusterIpv4CidrBlock = clusterIpv4CidrBlock;
@@ -135,6 +148,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             Ipv6AccessType = ipv6AccessType;
             NodeIpv4Cidr = nodeIpv4Cidr;
             NodeIpv4CidrBlock = nodeIpv4CidrBlock;
+            PodCidrOverprovisionConfig = podCidrOverprovisionConfig;
             ServicesIpv4Cidr = servicesIpv4Cidr;
             ServicesIpv4CidrBlock = servicesIpv4CidrBlock;
             ServicesIpv6CidrBlock = servicesIpv6CidrBlock;

@@ -10,6 +10,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An advanceChildRollout Job.
+type AdvanceChildRolloutJobResponse struct {
+}
+
+// An advanceChildRollout Job.
+type AdvanceChildRolloutJobResponseOutput struct{ *pulumi.OutputState }
+
+func (AdvanceChildRolloutJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AdvanceChildRolloutJobResponse)(nil)).Elem()
+}
+
+func (o AdvanceChildRolloutJobResponseOutput) ToAdvanceChildRolloutJobResponseOutput() AdvanceChildRolloutJobResponseOutput {
+	return o
+}
+
+func (o AdvanceChildRolloutJobResponseOutput) ToAdvanceChildRolloutJobResponseOutputWithContext(ctx context.Context) AdvanceChildRolloutJobResponseOutput {
+	return o
+}
+
 // Information specifying an Anthos Cluster.
 type AnthosCluster struct {
 	// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -840,6 +859,615 @@ func (o BuildArtifactResponseArrayOutput) Index(i pulumi.IntInput) BuildArtifact
 	}).(BuildArtifactResponseOutput)
 }
 
+// Canary represents the canary deployment strategy.
+type Canary struct {
+	// Configures the progressive based deployment for a Target.
+	CanaryDeployment *CanaryDeployment `pulumi:"canaryDeployment"`
+	// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+	CustomCanaryDeployment *CustomCanaryDeployment `pulumi:"customCanaryDeployment"`
+	// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+	RuntimeConfig *RuntimeConfig `pulumi:"runtimeConfig"`
+}
+
+// CanaryInput is an input type that accepts CanaryArgs and CanaryOutput values.
+// You can construct a concrete instance of `CanaryInput` via:
+//
+//	CanaryArgs{...}
+type CanaryInput interface {
+	pulumi.Input
+
+	ToCanaryOutput() CanaryOutput
+	ToCanaryOutputWithContext(context.Context) CanaryOutput
+}
+
+// Canary represents the canary deployment strategy.
+type CanaryArgs struct {
+	// Configures the progressive based deployment for a Target.
+	CanaryDeployment CanaryDeploymentPtrInput `pulumi:"canaryDeployment"`
+	// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+	CustomCanaryDeployment CustomCanaryDeploymentPtrInput `pulumi:"customCanaryDeployment"`
+	// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+	RuntimeConfig RuntimeConfigPtrInput `pulumi:"runtimeConfig"`
+}
+
+func (CanaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Canary)(nil)).Elem()
+}
+
+func (i CanaryArgs) ToCanaryOutput() CanaryOutput {
+	return i.ToCanaryOutputWithContext(context.Background())
+}
+
+func (i CanaryArgs) ToCanaryOutputWithContext(ctx context.Context) CanaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CanaryOutput)
+}
+
+func (i CanaryArgs) ToCanaryPtrOutput() CanaryPtrOutput {
+	return i.ToCanaryPtrOutputWithContext(context.Background())
+}
+
+func (i CanaryArgs) ToCanaryPtrOutputWithContext(ctx context.Context) CanaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CanaryOutput).ToCanaryPtrOutputWithContext(ctx)
+}
+
+// CanaryPtrInput is an input type that accepts CanaryArgs, CanaryPtr and CanaryPtrOutput values.
+// You can construct a concrete instance of `CanaryPtrInput` via:
+//
+//	        CanaryArgs{...}
+//
+//	or:
+//
+//	        nil
+type CanaryPtrInput interface {
+	pulumi.Input
+
+	ToCanaryPtrOutput() CanaryPtrOutput
+	ToCanaryPtrOutputWithContext(context.Context) CanaryPtrOutput
+}
+
+type canaryPtrType CanaryArgs
+
+func CanaryPtr(v *CanaryArgs) CanaryPtrInput {
+	return (*canaryPtrType)(v)
+}
+
+func (*canaryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Canary)(nil)).Elem()
+}
+
+func (i *canaryPtrType) ToCanaryPtrOutput() CanaryPtrOutput {
+	return i.ToCanaryPtrOutputWithContext(context.Background())
+}
+
+func (i *canaryPtrType) ToCanaryPtrOutputWithContext(ctx context.Context) CanaryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CanaryPtrOutput)
+}
+
+// Canary represents the canary deployment strategy.
+type CanaryOutput struct{ *pulumi.OutputState }
+
+func (CanaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Canary)(nil)).Elem()
+}
+
+func (o CanaryOutput) ToCanaryOutput() CanaryOutput {
+	return o
+}
+
+func (o CanaryOutput) ToCanaryOutputWithContext(ctx context.Context) CanaryOutput {
+	return o
+}
+
+func (o CanaryOutput) ToCanaryPtrOutput() CanaryPtrOutput {
+	return o.ToCanaryPtrOutputWithContext(context.Background())
+}
+
+func (o CanaryOutput) ToCanaryPtrOutputWithContext(ctx context.Context) CanaryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Canary) *Canary {
+		return &v
+	}).(CanaryPtrOutput)
+}
+
+// Configures the progressive based deployment for a Target.
+func (o CanaryOutput) CanaryDeployment() CanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v Canary) *CanaryDeployment { return v.CanaryDeployment }).(CanaryDeploymentPtrOutput)
+}
+
+// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+func (o CanaryOutput) CustomCanaryDeployment() CustomCanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v Canary) *CustomCanaryDeployment { return v.CustomCanaryDeployment }).(CustomCanaryDeploymentPtrOutput)
+}
+
+// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+func (o CanaryOutput) RuntimeConfig() RuntimeConfigPtrOutput {
+	return o.ApplyT(func(v Canary) *RuntimeConfig { return v.RuntimeConfig }).(RuntimeConfigPtrOutput)
+}
+
+type CanaryPtrOutput struct{ *pulumi.OutputState }
+
+func (CanaryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Canary)(nil)).Elem()
+}
+
+func (o CanaryPtrOutput) ToCanaryPtrOutput() CanaryPtrOutput {
+	return o
+}
+
+func (o CanaryPtrOutput) ToCanaryPtrOutputWithContext(ctx context.Context) CanaryPtrOutput {
+	return o
+}
+
+func (o CanaryPtrOutput) Elem() CanaryOutput {
+	return o.ApplyT(func(v *Canary) Canary {
+		if v != nil {
+			return *v
+		}
+		var ret Canary
+		return ret
+	}).(CanaryOutput)
+}
+
+// Configures the progressive based deployment for a Target.
+func (o CanaryPtrOutput) CanaryDeployment() CanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v *Canary) *CanaryDeployment {
+		if v == nil {
+			return nil
+		}
+		return v.CanaryDeployment
+	}).(CanaryDeploymentPtrOutput)
+}
+
+// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+func (o CanaryPtrOutput) CustomCanaryDeployment() CustomCanaryDeploymentPtrOutput {
+	return o.ApplyT(func(v *Canary) *CustomCanaryDeployment {
+		if v == nil {
+			return nil
+		}
+		return v.CustomCanaryDeployment
+	}).(CustomCanaryDeploymentPtrOutput)
+}
+
+// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+func (o CanaryPtrOutput) RuntimeConfig() RuntimeConfigPtrOutput {
+	return o.ApplyT(func(v *Canary) *RuntimeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeConfig
+	}).(RuntimeConfigPtrOutput)
+}
+
+// CanaryDeployment represents the canary deployment configuration
+type CanaryDeployment struct {
+	// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+	Percentages []int `pulumi:"percentages"`
+	// Whether to run verify tests after each percentage deployment.
+	Verify *bool `pulumi:"verify"`
+}
+
+// CanaryDeploymentInput is an input type that accepts CanaryDeploymentArgs and CanaryDeploymentOutput values.
+// You can construct a concrete instance of `CanaryDeploymentInput` via:
+//
+//	CanaryDeploymentArgs{...}
+type CanaryDeploymentInput interface {
+	pulumi.Input
+
+	ToCanaryDeploymentOutput() CanaryDeploymentOutput
+	ToCanaryDeploymentOutputWithContext(context.Context) CanaryDeploymentOutput
+}
+
+// CanaryDeployment represents the canary deployment configuration
+type CanaryDeploymentArgs struct {
+	// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+	Percentages pulumi.IntArrayInput `pulumi:"percentages"`
+	// Whether to run verify tests after each percentage deployment.
+	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+}
+
+func (CanaryDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CanaryDeployment)(nil)).Elem()
+}
+
+func (i CanaryDeploymentArgs) ToCanaryDeploymentOutput() CanaryDeploymentOutput {
+	return i.ToCanaryDeploymentOutputWithContext(context.Background())
+}
+
+func (i CanaryDeploymentArgs) ToCanaryDeploymentOutputWithContext(ctx context.Context) CanaryDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CanaryDeploymentOutput)
+}
+
+func (i CanaryDeploymentArgs) ToCanaryDeploymentPtrOutput() CanaryDeploymentPtrOutput {
+	return i.ToCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i CanaryDeploymentArgs) ToCanaryDeploymentPtrOutputWithContext(ctx context.Context) CanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CanaryDeploymentOutput).ToCanaryDeploymentPtrOutputWithContext(ctx)
+}
+
+// CanaryDeploymentPtrInput is an input type that accepts CanaryDeploymentArgs, CanaryDeploymentPtr and CanaryDeploymentPtrOutput values.
+// You can construct a concrete instance of `CanaryDeploymentPtrInput` via:
+//
+//	        CanaryDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CanaryDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToCanaryDeploymentPtrOutput() CanaryDeploymentPtrOutput
+	ToCanaryDeploymentPtrOutputWithContext(context.Context) CanaryDeploymentPtrOutput
+}
+
+type canaryDeploymentPtrType CanaryDeploymentArgs
+
+func CanaryDeploymentPtr(v *CanaryDeploymentArgs) CanaryDeploymentPtrInput {
+	return (*canaryDeploymentPtrType)(v)
+}
+
+func (*canaryDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CanaryDeployment)(nil)).Elem()
+}
+
+func (i *canaryDeploymentPtrType) ToCanaryDeploymentPtrOutput() CanaryDeploymentPtrOutput {
+	return i.ToCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *canaryDeploymentPtrType) ToCanaryDeploymentPtrOutputWithContext(ctx context.Context) CanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CanaryDeploymentPtrOutput)
+}
+
+// CanaryDeployment represents the canary deployment configuration
+type CanaryDeploymentOutput struct{ *pulumi.OutputState }
+
+func (CanaryDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CanaryDeployment)(nil)).Elem()
+}
+
+func (o CanaryDeploymentOutput) ToCanaryDeploymentOutput() CanaryDeploymentOutput {
+	return o
+}
+
+func (o CanaryDeploymentOutput) ToCanaryDeploymentOutputWithContext(ctx context.Context) CanaryDeploymentOutput {
+	return o
+}
+
+func (o CanaryDeploymentOutput) ToCanaryDeploymentPtrOutput() CanaryDeploymentPtrOutput {
+	return o.ToCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o CanaryDeploymentOutput) ToCanaryDeploymentPtrOutputWithContext(ctx context.Context) CanaryDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CanaryDeployment) *CanaryDeployment {
+		return &v
+	}).(CanaryDeploymentPtrOutput)
+}
+
+// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+func (o CanaryDeploymentOutput) Percentages() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CanaryDeployment) []int { return v.Percentages }).(pulumi.IntArrayOutput)
+}
+
+// Whether to run verify tests after each percentage deployment.
+func (o CanaryDeploymentOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CanaryDeployment) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
+}
+
+type CanaryDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (CanaryDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CanaryDeployment)(nil)).Elem()
+}
+
+func (o CanaryDeploymentPtrOutput) ToCanaryDeploymentPtrOutput() CanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o CanaryDeploymentPtrOutput) ToCanaryDeploymentPtrOutputWithContext(ctx context.Context) CanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o CanaryDeploymentPtrOutput) Elem() CanaryDeploymentOutput {
+	return o.ApplyT(func(v *CanaryDeployment) CanaryDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret CanaryDeployment
+		return ret
+	}).(CanaryDeploymentOutput)
+}
+
+// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+func (o CanaryDeploymentPtrOutput) Percentages() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v *CanaryDeployment) []int {
+		if v == nil {
+			return nil
+		}
+		return v.Percentages
+	}).(pulumi.IntArrayOutput)
+}
+
+// Whether to run verify tests after each percentage deployment.
+func (o CanaryDeploymentPtrOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CanaryDeployment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Verify
+	}).(pulumi.BoolPtrOutput)
+}
+
+// CanaryDeployment represents the canary deployment configuration
+type CanaryDeploymentResponse struct {
+	// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+	Percentages []int `pulumi:"percentages"`
+	// Whether to run verify tests after each percentage deployment.
+	Verify bool `pulumi:"verify"`
+}
+
+// CanaryDeployment represents the canary deployment configuration
+type CanaryDeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (CanaryDeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CanaryDeploymentResponse)(nil)).Elem()
+}
+
+func (o CanaryDeploymentResponseOutput) ToCanaryDeploymentResponseOutput() CanaryDeploymentResponseOutput {
+	return o
+}
+
+func (o CanaryDeploymentResponseOutput) ToCanaryDeploymentResponseOutputWithContext(ctx context.Context) CanaryDeploymentResponseOutput {
+	return o
+}
+
+// The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+func (o CanaryDeploymentResponseOutput) Percentages() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v CanaryDeploymentResponse) []int { return v.Percentages }).(pulumi.IntArrayOutput)
+}
+
+// Whether to run verify tests after each percentage deployment.
+func (o CanaryDeploymentResponseOutput) Verify() pulumi.BoolOutput {
+	return o.ApplyT(func(v CanaryDeploymentResponse) bool { return v.Verify }).(pulumi.BoolOutput)
+}
+
+// Canary represents the canary deployment strategy.
+type CanaryResponse struct {
+	// Configures the progressive based deployment for a Target.
+	CanaryDeployment CanaryDeploymentResponse `pulumi:"canaryDeployment"`
+	// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+	CustomCanaryDeployment CustomCanaryDeploymentResponse `pulumi:"customCanaryDeployment"`
+	// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+	RuntimeConfig RuntimeConfigResponse `pulumi:"runtimeConfig"`
+}
+
+// Canary represents the canary deployment strategy.
+type CanaryResponseOutput struct{ *pulumi.OutputState }
+
+func (CanaryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CanaryResponse)(nil)).Elem()
+}
+
+func (o CanaryResponseOutput) ToCanaryResponseOutput() CanaryResponseOutput {
+	return o
+}
+
+func (o CanaryResponseOutput) ToCanaryResponseOutputWithContext(ctx context.Context) CanaryResponseOutput {
+	return o
+}
+
+// Configures the progressive based deployment for a Target.
+func (o CanaryResponseOutput) CanaryDeployment() CanaryDeploymentResponseOutput {
+	return o.ApplyT(func(v CanaryResponse) CanaryDeploymentResponse { return v.CanaryDeployment }).(CanaryDeploymentResponseOutput)
+}
+
+// Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+func (o CanaryResponseOutput) CustomCanaryDeployment() CustomCanaryDeploymentResponseOutput {
+	return o.ApplyT(func(v CanaryResponse) CustomCanaryDeploymentResponse { return v.CustomCanaryDeployment }).(CustomCanaryDeploymentResponseOutput)
+}
+
+// Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+func (o CanaryResponseOutput) RuntimeConfig() RuntimeConfigResponseOutput {
+	return o.ApplyT(func(v CanaryResponse) RuntimeConfigResponse { return v.RuntimeConfig }).(RuntimeConfigResponseOutput)
+}
+
+// ChildRollouts job composition
+type ChildRolloutJobsResponse struct {
+	// List of AdvanceChildRolloutJobs
+	AdvanceRolloutJobs []JobResponse `pulumi:"advanceRolloutJobs"`
+	// List of CreateChildRolloutJobs
+	CreateRolloutJobs []JobResponse `pulumi:"createRolloutJobs"`
+}
+
+// ChildRollouts job composition
+type ChildRolloutJobsResponseOutput struct{ *pulumi.OutputState }
+
+func (ChildRolloutJobsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChildRolloutJobsResponse)(nil)).Elem()
+}
+
+func (o ChildRolloutJobsResponseOutput) ToChildRolloutJobsResponseOutput() ChildRolloutJobsResponseOutput {
+	return o
+}
+
+func (o ChildRolloutJobsResponseOutput) ToChildRolloutJobsResponseOutputWithContext(ctx context.Context) ChildRolloutJobsResponseOutput {
+	return o
+}
+
+// List of AdvanceChildRolloutJobs
+func (o ChildRolloutJobsResponseOutput) AdvanceRolloutJobs() JobResponseArrayOutput {
+	return o.ApplyT(func(v ChildRolloutJobsResponse) []JobResponse { return v.AdvanceRolloutJobs }).(JobResponseArrayOutput)
+}
+
+// List of CreateChildRolloutJobs
+func (o ChildRolloutJobsResponseOutput) CreateRolloutJobs() JobResponseArrayOutput {
+	return o.ApplyT(func(v ChildRolloutJobsResponse) []JobResponse { return v.CreateRolloutJobs }).(JobResponseArrayOutput)
+}
+
+// CloudRunConfig contains the Cloud Run runtime configuration.
+type CloudRunConfig struct {
+	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+	AutomaticTrafficControl *bool `pulumi:"automaticTrafficControl"`
+}
+
+// CloudRunConfigInput is an input type that accepts CloudRunConfigArgs and CloudRunConfigOutput values.
+// You can construct a concrete instance of `CloudRunConfigInput` via:
+//
+//	CloudRunConfigArgs{...}
+type CloudRunConfigInput interface {
+	pulumi.Input
+
+	ToCloudRunConfigOutput() CloudRunConfigOutput
+	ToCloudRunConfigOutputWithContext(context.Context) CloudRunConfigOutput
+}
+
+// CloudRunConfig contains the Cloud Run runtime configuration.
+type CloudRunConfigArgs struct {
+	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+	AutomaticTrafficControl pulumi.BoolPtrInput `pulumi:"automaticTrafficControl"`
+}
+
+func (CloudRunConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunConfig)(nil)).Elem()
+}
+
+func (i CloudRunConfigArgs) ToCloudRunConfigOutput() CloudRunConfigOutput {
+	return i.ToCloudRunConfigOutputWithContext(context.Background())
+}
+
+func (i CloudRunConfigArgs) ToCloudRunConfigOutputWithContext(ctx context.Context) CloudRunConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunConfigOutput)
+}
+
+func (i CloudRunConfigArgs) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutput {
+	return i.ToCloudRunConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CloudRunConfigArgs) ToCloudRunConfigPtrOutputWithContext(ctx context.Context) CloudRunConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunConfigOutput).ToCloudRunConfigPtrOutputWithContext(ctx)
+}
+
+// CloudRunConfigPtrInput is an input type that accepts CloudRunConfigArgs, CloudRunConfigPtr and CloudRunConfigPtrOutput values.
+// You can construct a concrete instance of `CloudRunConfigPtrInput` via:
+//
+//	        CloudRunConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudRunConfigPtrInput interface {
+	pulumi.Input
+
+	ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutput
+	ToCloudRunConfigPtrOutputWithContext(context.Context) CloudRunConfigPtrOutput
+}
+
+type cloudRunConfigPtrType CloudRunConfigArgs
+
+func CloudRunConfigPtr(v *CloudRunConfigArgs) CloudRunConfigPtrInput {
+	return (*cloudRunConfigPtrType)(v)
+}
+
+func (*cloudRunConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunConfig)(nil)).Elem()
+}
+
+func (i *cloudRunConfigPtrType) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutput {
+	return i.ToCloudRunConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRunConfigPtrType) ToCloudRunConfigPtrOutputWithContext(ctx context.Context) CloudRunConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunConfigPtrOutput)
+}
+
+// CloudRunConfig contains the Cloud Run runtime configuration.
+type CloudRunConfigOutput struct{ *pulumi.OutputState }
+
+func (CloudRunConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunConfig)(nil)).Elem()
+}
+
+func (o CloudRunConfigOutput) ToCloudRunConfigOutput() CloudRunConfigOutput {
+	return o
+}
+
+func (o CloudRunConfigOutput) ToCloudRunConfigOutputWithContext(ctx context.Context) CloudRunConfigOutput {
+	return o
+}
+
+func (o CloudRunConfigOutput) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutput {
+	return o.ToCloudRunConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CloudRunConfigOutput) ToCloudRunConfigPtrOutputWithContext(ctx context.Context) CloudRunConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunConfig) *CloudRunConfig {
+		return &v
+	}).(CloudRunConfigPtrOutput)
+}
+
+// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+func (o CloudRunConfigOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CloudRunConfig) *bool { return v.AutomaticTrafficControl }).(pulumi.BoolPtrOutput)
+}
+
+type CloudRunConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRunConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunConfig)(nil)).Elem()
+}
+
+func (o CloudRunConfigPtrOutput) ToCloudRunConfigPtrOutput() CloudRunConfigPtrOutput {
+	return o
+}
+
+func (o CloudRunConfigPtrOutput) ToCloudRunConfigPtrOutputWithContext(ctx context.Context) CloudRunConfigPtrOutput {
+	return o
+}
+
+func (o CloudRunConfigPtrOutput) Elem() CloudRunConfigOutput {
+	return o.ApplyT(func(v *CloudRunConfig) CloudRunConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunConfig
+		return ret
+	}).(CloudRunConfigOutput)
+}
+
+// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+func (o CloudRunConfigPtrOutput) AutomaticTrafficControl() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudRunConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AutomaticTrafficControl
+	}).(pulumi.BoolPtrOutput)
+}
+
+// CloudRunConfig contains the Cloud Run runtime configuration.
+type CloudRunConfigResponse struct {
+	// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+	AutomaticTrafficControl bool `pulumi:"automaticTrafficControl"`
+}
+
+// CloudRunConfig contains the Cloud Run runtime configuration.
+type CloudRunConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunConfigResponse)(nil)).Elem()
+}
+
+func (o CloudRunConfigResponseOutput) ToCloudRunConfigResponseOutput() CloudRunConfigResponseOutput {
+	return o
+}
+
+func (o CloudRunConfigResponseOutput) ToCloudRunConfigResponseOutputWithContext(ctx context.Context) CloudRunConfigResponseOutput {
+	return o
+}
+
+// Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+func (o CloudRunConfigResponseOutput) AutomaticTrafficControl() pulumi.BoolOutput {
+	return o.ApplyT(func(v CloudRunConfigResponse) bool { return v.AutomaticTrafficControl }).(pulumi.BoolOutput)
+}
+
 // Information specifying where to deploy a Cloud Run Service.
 type CloudRunLocation struct {
 	// The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
@@ -1044,6 +1672,191 @@ func (o CloudRunMetadataResponseOutput) Service() pulumi.StringOutput {
 // The Cloud Run Service urls that are associated with a `Rollout`.
 func (o CloudRunMetadataResponseOutput) ServiceUrls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CloudRunMetadataResponse) []string { return v.ServiceUrls }).(pulumi.StringArrayOutput)
+}
+
+// A createChildRollout Job.
+type CreateChildRolloutJobResponse struct {
+}
+
+// A createChildRollout Job.
+type CreateChildRolloutJobResponseOutput struct{ *pulumi.OutputState }
+
+func (CreateChildRolloutJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CreateChildRolloutJobResponse)(nil)).Elem()
+}
+
+func (o CreateChildRolloutJobResponseOutput) ToCreateChildRolloutJobResponseOutput() CreateChildRolloutJobResponseOutput {
+	return o
+}
+
+func (o CreateChildRolloutJobResponseOutput) ToCreateChildRolloutJobResponseOutputWithContext(ctx context.Context) CreateChildRolloutJobResponseOutput {
+	return o
+}
+
+// CustomCanaryDeployment represents the custom canary deployment configuration.
+type CustomCanaryDeployment struct {
+	// Configuration for each phase in the canary deployment in the order executed.
+	PhaseConfigs []PhaseConfig `pulumi:"phaseConfigs"`
+}
+
+// CustomCanaryDeploymentInput is an input type that accepts CustomCanaryDeploymentArgs and CustomCanaryDeploymentOutput values.
+// You can construct a concrete instance of `CustomCanaryDeploymentInput` via:
+//
+//	CustomCanaryDeploymentArgs{...}
+type CustomCanaryDeploymentInput interface {
+	pulumi.Input
+
+	ToCustomCanaryDeploymentOutput() CustomCanaryDeploymentOutput
+	ToCustomCanaryDeploymentOutputWithContext(context.Context) CustomCanaryDeploymentOutput
+}
+
+// CustomCanaryDeployment represents the custom canary deployment configuration.
+type CustomCanaryDeploymentArgs struct {
+	// Configuration for each phase in the canary deployment in the order executed.
+	PhaseConfigs PhaseConfigArrayInput `pulumi:"phaseConfigs"`
+}
+
+func (CustomCanaryDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomCanaryDeployment)(nil)).Elem()
+}
+
+func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentOutput() CustomCanaryDeploymentOutput {
+	return i.ToCustomCanaryDeploymentOutputWithContext(context.Background())
+}
+
+func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentOutputWithContext(ctx context.Context) CustomCanaryDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomCanaryDeploymentOutput)
+}
+
+func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentPtrOutput() CustomCanaryDeploymentPtrOutput {
+	return i.ToCustomCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i CustomCanaryDeploymentArgs) ToCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) CustomCanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomCanaryDeploymentOutput).ToCustomCanaryDeploymentPtrOutputWithContext(ctx)
+}
+
+// CustomCanaryDeploymentPtrInput is an input type that accepts CustomCanaryDeploymentArgs, CustomCanaryDeploymentPtr and CustomCanaryDeploymentPtrOutput values.
+// You can construct a concrete instance of `CustomCanaryDeploymentPtrInput` via:
+//
+//	        CustomCanaryDeploymentArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomCanaryDeploymentPtrInput interface {
+	pulumi.Input
+
+	ToCustomCanaryDeploymentPtrOutput() CustomCanaryDeploymentPtrOutput
+	ToCustomCanaryDeploymentPtrOutputWithContext(context.Context) CustomCanaryDeploymentPtrOutput
+}
+
+type customCanaryDeploymentPtrType CustomCanaryDeploymentArgs
+
+func CustomCanaryDeploymentPtr(v *CustomCanaryDeploymentArgs) CustomCanaryDeploymentPtrInput {
+	return (*customCanaryDeploymentPtrType)(v)
+}
+
+func (*customCanaryDeploymentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomCanaryDeployment)(nil)).Elem()
+}
+
+func (i *customCanaryDeploymentPtrType) ToCustomCanaryDeploymentPtrOutput() CustomCanaryDeploymentPtrOutput {
+	return i.ToCustomCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (i *customCanaryDeploymentPtrType) ToCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) CustomCanaryDeploymentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomCanaryDeploymentPtrOutput)
+}
+
+// CustomCanaryDeployment represents the custom canary deployment configuration.
+type CustomCanaryDeploymentOutput struct{ *pulumi.OutputState }
+
+func (CustomCanaryDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomCanaryDeployment)(nil)).Elem()
+}
+
+func (o CustomCanaryDeploymentOutput) ToCustomCanaryDeploymentOutput() CustomCanaryDeploymentOutput {
+	return o
+}
+
+func (o CustomCanaryDeploymentOutput) ToCustomCanaryDeploymentOutputWithContext(ctx context.Context) CustomCanaryDeploymentOutput {
+	return o
+}
+
+func (o CustomCanaryDeploymentOutput) ToCustomCanaryDeploymentPtrOutput() CustomCanaryDeploymentPtrOutput {
+	return o.ToCustomCanaryDeploymentPtrOutputWithContext(context.Background())
+}
+
+func (o CustomCanaryDeploymentOutput) ToCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) CustomCanaryDeploymentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomCanaryDeployment) *CustomCanaryDeployment {
+		return &v
+	}).(CustomCanaryDeploymentPtrOutput)
+}
+
+// Configuration for each phase in the canary deployment in the order executed.
+func (o CustomCanaryDeploymentOutput) PhaseConfigs() PhaseConfigArrayOutput {
+	return o.ApplyT(func(v CustomCanaryDeployment) []PhaseConfig { return v.PhaseConfigs }).(PhaseConfigArrayOutput)
+}
+
+type CustomCanaryDeploymentPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomCanaryDeploymentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomCanaryDeployment)(nil)).Elem()
+}
+
+func (o CustomCanaryDeploymentPtrOutput) ToCustomCanaryDeploymentPtrOutput() CustomCanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o CustomCanaryDeploymentPtrOutput) ToCustomCanaryDeploymentPtrOutputWithContext(ctx context.Context) CustomCanaryDeploymentPtrOutput {
+	return o
+}
+
+func (o CustomCanaryDeploymentPtrOutput) Elem() CustomCanaryDeploymentOutput {
+	return o.ApplyT(func(v *CustomCanaryDeployment) CustomCanaryDeployment {
+		if v != nil {
+			return *v
+		}
+		var ret CustomCanaryDeployment
+		return ret
+	}).(CustomCanaryDeploymentOutput)
+}
+
+// Configuration for each phase in the canary deployment in the order executed.
+func (o CustomCanaryDeploymentPtrOutput) PhaseConfigs() PhaseConfigArrayOutput {
+	return o.ApplyT(func(v *CustomCanaryDeployment) []PhaseConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PhaseConfigs
+	}).(PhaseConfigArrayOutput)
+}
+
+// CustomCanaryDeployment represents the custom canary deployment configuration.
+type CustomCanaryDeploymentResponse struct {
+	// Configuration for each phase in the canary deployment in the order executed.
+	PhaseConfigs []PhaseConfigResponse `pulumi:"phaseConfigs"`
+}
+
+// CustomCanaryDeployment represents the custom canary deployment configuration.
+type CustomCanaryDeploymentResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomCanaryDeploymentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomCanaryDeploymentResponse)(nil)).Elem()
+}
+
+func (o CustomCanaryDeploymentResponseOutput) ToCustomCanaryDeploymentResponseOutput() CustomCanaryDeploymentResponseOutput {
+	return o
+}
+
+func (o CustomCanaryDeploymentResponseOutput) ToCustomCanaryDeploymentResponseOutputWithContext(ctx context.Context) CustomCanaryDeploymentResponseOutput {
+	return o
+}
+
+// Configuration for each phase in the canary deployment in the order executed.
+func (o CustomCanaryDeploymentResponseOutput) PhaseConfigs() PhaseConfigResponseArrayOutput {
+	return o.ApplyT(func(v CustomCanaryDeploymentResponse) []PhaseConfigResponse { return v.PhaseConfigs }).(PhaseConfigResponseArrayOutput)
 }
 
 // Execution using the default Cloud Build pool.
@@ -1872,6 +2685,224 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Information about the Kubernetes Gateway API service mesh configuration.
+type GatewayServiceMesh struct {
+	// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+	Deployment string `pulumi:"deployment"`
+	// Name of the Gateway API HTTPRoute.
+	HttpRoute string `pulumi:"httpRoute"`
+	// Name of the Kubernetes Service.
+	Service string `pulumi:"service"`
+}
+
+// GatewayServiceMeshInput is an input type that accepts GatewayServiceMeshArgs and GatewayServiceMeshOutput values.
+// You can construct a concrete instance of `GatewayServiceMeshInput` via:
+//
+//	GatewayServiceMeshArgs{...}
+type GatewayServiceMeshInput interface {
+	pulumi.Input
+
+	ToGatewayServiceMeshOutput() GatewayServiceMeshOutput
+	ToGatewayServiceMeshOutputWithContext(context.Context) GatewayServiceMeshOutput
+}
+
+// Information about the Kubernetes Gateway API service mesh configuration.
+type GatewayServiceMeshArgs struct {
+	// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// Name of the Gateway API HTTPRoute.
+	HttpRoute pulumi.StringInput `pulumi:"httpRoute"`
+	// Name of the Kubernetes Service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GatewayServiceMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServiceMesh)(nil)).Elem()
+}
+
+func (i GatewayServiceMeshArgs) ToGatewayServiceMeshOutput() GatewayServiceMeshOutput {
+	return i.ToGatewayServiceMeshOutputWithContext(context.Background())
+}
+
+func (i GatewayServiceMeshArgs) ToGatewayServiceMeshOutputWithContext(ctx context.Context) GatewayServiceMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServiceMeshOutput)
+}
+
+func (i GatewayServiceMeshArgs) ToGatewayServiceMeshPtrOutput() GatewayServiceMeshPtrOutput {
+	return i.ToGatewayServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (i GatewayServiceMeshArgs) ToGatewayServiceMeshPtrOutputWithContext(ctx context.Context) GatewayServiceMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServiceMeshOutput).ToGatewayServiceMeshPtrOutputWithContext(ctx)
+}
+
+// GatewayServiceMeshPtrInput is an input type that accepts GatewayServiceMeshArgs, GatewayServiceMeshPtr and GatewayServiceMeshPtrOutput values.
+// You can construct a concrete instance of `GatewayServiceMeshPtrInput` via:
+//
+//	        GatewayServiceMeshArgs{...}
+//
+//	or:
+//
+//	        nil
+type GatewayServiceMeshPtrInput interface {
+	pulumi.Input
+
+	ToGatewayServiceMeshPtrOutput() GatewayServiceMeshPtrOutput
+	ToGatewayServiceMeshPtrOutputWithContext(context.Context) GatewayServiceMeshPtrOutput
+}
+
+type gatewayServiceMeshPtrType GatewayServiceMeshArgs
+
+func GatewayServiceMeshPtr(v *GatewayServiceMeshArgs) GatewayServiceMeshPtrInput {
+	return (*gatewayServiceMeshPtrType)(v)
+}
+
+func (*gatewayServiceMeshPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServiceMesh)(nil)).Elem()
+}
+
+func (i *gatewayServiceMeshPtrType) ToGatewayServiceMeshPtrOutput() GatewayServiceMeshPtrOutput {
+	return i.ToGatewayServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (i *gatewayServiceMeshPtrType) ToGatewayServiceMeshPtrOutputWithContext(ctx context.Context) GatewayServiceMeshPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GatewayServiceMeshPtrOutput)
+}
+
+// Information about the Kubernetes Gateway API service mesh configuration.
+type GatewayServiceMeshOutput struct{ *pulumi.OutputState }
+
+func (GatewayServiceMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServiceMesh)(nil)).Elem()
+}
+
+func (o GatewayServiceMeshOutput) ToGatewayServiceMeshOutput() GatewayServiceMeshOutput {
+	return o
+}
+
+func (o GatewayServiceMeshOutput) ToGatewayServiceMeshOutputWithContext(ctx context.Context) GatewayServiceMeshOutput {
+	return o
+}
+
+func (o GatewayServiceMeshOutput) ToGatewayServiceMeshPtrOutput() GatewayServiceMeshPtrOutput {
+	return o.ToGatewayServiceMeshPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayServiceMeshOutput) ToGatewayServiceMeshPtrOutputWithContext(ctx context.Context) GatewayServiceMeshPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayServiceMesh) *GatewayServiceMesh {
+		return &v
+	}).(GatewayServiceMeshPtrOutput)
+}
+
+// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+func (o GatewayServiceMeshOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMesh) string { return v.Deployment }).(pulumi.StringOutput)
+}
+
+// Name of the Gateway API HTTPRoute.
+func (o GatewayServiceMeshOutput) HttpRoute() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMesh) string { return v.HttpRoute }).(pulumi.StringOutput)
+}
+
+// Name of the Kubernetes Service.
+func (o GatewayServiceMeshOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMesh) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GatewayServiceMeshPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayServiceMeshPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GatewayServiceMesh)(nil)).Elem()
+}
+
+func (o GatewayServiceMeshPtrOutput) ToGatewayServiceMeshPtrOutput() GatewayServiceMeshPtrOutput {
+	return o
+}
+
+func (o GatewayServiceMeshPtrOutput) ToGatewayServiceMeshPtrOutputWithContext(ctx context.Context) GatewayServiceMeshPtrOutput {
+	return o
+}
+
+func (o GatewayServiceMeshPtrOutput) Elem() GatewayServiceMeshOutput {
+	return o.ApplyT(func(v *GatewayServiceMesh) GatewayServiceMesh {
+		if v != nil {
+			return *v
+		}
+		var ret GatewayServiceMesh
+		return ret
+	}).(GatewayServiceMeshOutput)
+}
+
+// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+func (o GatewayServiceMeshPtrOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Deployment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Gateway API HTTPRoute.
+func (o GatewayServiceMeshPtrOutput) HttpRoute() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.HttpRoute
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Kubernetes Service.
+func (o GatewayServiceMeshPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GatewayServiceMesh) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about the Kubernetes Gateway API service mesh configuration.
+type GatewayServiceMeshResponse struct {
+	// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+	Deployment string `pulumi:"deployment"`
+	// Name of the Gateway API HTTPRoute.
+	HttpRoute string `pulumi:"httpRoute"`
+	// Name of the Kubernetes Service.
+	Service string `pulumi:"service"`
+}
+
+// Information about the Kubernetes Gateway API service mesh configuration.
+type GatewayServiceMeshResponseOutput struct{ *pulumi.OutputState }
+
+func (GatewayServiceMeshResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayServiceMeshResponse)(nil)).Elem()
+}
+
+func (o GatewayServiceMeshResponseOutput) ToGatewayServiceMeshResponseOutput() GatewayServiceMeshResponseOutput {
+	return o
+}
+
+func (o GatewayServiceMeshResponseOutput) ToGatewayServiceMeshResponseOutputWithContext(ctx context.Context) GatewayServiceMeshResponseOutput {
+	return o
+}
+
+// Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+func (o GatewayServiceMeshResponseOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.Deployment }).(pulumi.StringOutput)
+}
+
+// Name of the Gateway API HTTPRoute.
+func (o GatewayServiceMeshResponseOutput) HttpRoute() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.HttpRoute }).(pulumi.StringOutput)
+}
+
+// Name of the Kubernetes Service.
+func (o GatewayServiceMeshResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GatewayServiceMeshResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
 // Information specifying a GKE Cluster.
 type GkeCluster struct {
 	// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
@@ -2066,10 +3097,16 @@ func (o GkeClusterResponseOutput) InternalIp() pulumi.BoolOutput {
 
 // Job represents an operation for a `Rollout`.
 type JobResponse struct {
+	// An advanceChildRollout Job.
+	AdvanceChildRolloutJob AdvanceChildRolloutJobResponse `pulumi:"advanceChildRolloutJob"`
+	// A createChildRollout Job.
+	CreateChildRolloutJob CreateChildRolloutJobResponse `pulumi:"createChildRolloutJob"`
 	// A deploy Job.
 	DeployJob DeployJobResponse `pulumi:"deployJob"`
 	// The name of the `JobRun` responsible for the most recent invocation of this Job.
 	JobRun string `pulumi:"jobRun"`
+	// Additional information on why the Job was skipped, if available.
+	SkipMessage string `pulumi:"skipMessage"`
 	// The current state of the Job.
 	State string `pulumi:"state"`
 	// A verify Job.
@@ -2091,6 +3128,16 @@ func (o JobResponseOutput) ToJobResponseOutputWithContext(ctx context.Context) J
 	return o
 }
 
+// An advanceChildRollout Job.
+func (o JobResponseOutput) AdvanceChildRolloutJob() AdvanceChildRolloutJobResponseOutput {
+	return o.ApplyT(func(v JobResponse) AdvanceChildRolloutJobResponse { return v.AdvanceChildRolloutJob }).(AdvanceChildRolloutJobResponseOutput)
+}
+
+// A createChildRollout Job.
+func (o JobResponseOutput) CreateChildRolloutJob() CreateChildRolloutJobResponseOutput {
+	return o.ApplyT(func(v JobResponse) CreateChildRolloutJobResponse { return v.CreateChildRolloutJob }).(CreateChildRolloutJobResponseOutput)
+}
+
 // A deploy Job.
 func (o JobResponseOutput) DeployJob() DeployJobResponseOutput {
 	return o.ApplyT(func(v JobResponse) DeployJobResponse { return v.DeployJob }).(DeployJobResponseOutput)
@@ -2101,6 +3148,11 @@ func (o JobResponseOutput) JobRun() pulumi.StringOutput {
 	return o.ApplyT(func(v JobResponse) string { return v.JobRun }).(pulumi.StringOutput)
 }
 
+// Additional information on why the Job was skipped, if available.
+func (o JobResponseOutput) SkipMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v JobResponse) string { return v.SkipMessage }).(pulumi.StringOutput)
+}
+
 // The current state of the Job.
 func (o JobResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v JobResponse) string { return v.State }).(pulumi.StringOutput)
@@ -2109,6 +3161,218 @@ func (o JobResponseOutput) State() pulumi.StringOutput {
 // A verify Job.
 func (o JobResponseOutput) VerifyJob() VerifyJobResponseOutput {
 	return o.ApplyT(func(v JobResponse) VerifyJobResponse { return v.VerifyJob }).(VerifyJobResponseOutput)
+}
+
+type JobResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JobResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobResponse)(nil)).Elem()
+}
+
+func (o JobResponseArrayOutput) ToJobResponseArrayOutput() JobResponseArrayOutput {
+	return o
+}
+
+func (o JobResponseArrayOutput) ToJobResponseArrayOutputWithContext(ctx context.Context) JobResponseArrayOutput {
+	return o
+}
+
+func (o JobResponseArrayOutput) Index(i pulumi.IntInput) JobResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobResponse {
+		return vs[0].([]JobResponse)[vs[1].(int)]
+	}).(JobResponseOutput)
+}
+
+// KubernetesConfig contains the Kubernetes runtime configuration.
+type KubernetesConfig struct {
+	// Kubernetes Gateway API service mesh configuration.
+	GatewayServiceMesh *GatewayServiceMesh `pulumi:"gatewayServiceMesh"`
+	// Kubernetes Service networking configuration.
+	ServiceNetworking *ServiceNetworking `pulumi:"serviceNetworking"`
+}
+
+// KubernetesConfigInput is an input type that accepts KubernetesConfigArgs and KubernetesConfigOutput values.
+// You can construct a concrete instance of `KubernetesConfigInput` via:
+//
+//	KubernetesConfigArgs{...}
+type KubernetesConfigInput interface {
+	pulumi.Input
+
+	ToKubernetesConfigOutput() KubernetesConfigOutput
+	ToKubernetesConfigOutputWithContext(context.Context) KubernetesConfigOutput
+}
+
+// KubernetesConfig contains the Kubernetes runtime configuration.
+type KubernetesConfigArgs struct {
+	// Kubernetes Gateway API service mesh configuration.
+	GatewayServiceMesh GatewayServiceMeshPtrInput `pulumi:"gatewayServiceMesh"`
+	// Kubernetes Service networking configuration.
+	ServiceNetworking ServiceNetworkingPtrInput `pulumi:"serviceNetworking"`
+}
+
+func (KubernetesConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConfig)(nil)).Elem()
+}
+
+func (i KubernetesConfigArgs) ToKubernetesConfigOutput() KubernetesConfigOutput {
+	return i.ToKubernetesConfigOutputWithContext(context.Background())
+}
+
+func (i KubernetesConfigArgs) ToKubernetesConfigOutputWithContext(ctx context.Context) KubernetesConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConfigOutput)
+}
+
+func (i KubernetesConfigArgs) ToKubernetesConfigPtrOutput() KubernetesConfigPtrOutput {
+	return i.ToKubernetesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesConfigArgs) ToKubernetesConfigPtrOutputWithContext(ctx context.Context) KubernetesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConfigOutput).ToKubernetesConfigPtrOutputWithContext(ctx)
+}
+
+// KubernetesConfigPtrInput is an input type that accepts KubernetesConfigArgs, KubernetesConfigPtr and KubernetesConfigPtrOutput values.
+// You can construct a concrete instance of `KubernetesConfigPtrInput` via:
+//
+//	        KubernetesConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesConfigPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesConfigPtrOutput() KubernetesConfigPtrOutput
+	ToKubernetesConfigPtrOutputWithContext(context.Context) KubernetesConfigPtrOutput
+}
+
+type kubernetesConfigPtrType KubernetesConfigArgs
+
+func KubernetesConfigPtr(v *KubernetesConfigArgs) KubernetesConfigPtrInput {
+	return (*kubernetesConfigPtrType)(v)
+}
+
+func (*kubernetesConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConfig)(nil)).Elem()
+}
+
+func (i *kubernetesConfigPtrType) ToKubernetesConfigPtrOutput() KubernetesConfigPtrOutput {
+	return i.ToKubernetesConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesConfigPtrType) ToKubernetesConfigPtrOutputWithContext(ctx context.Context) KubernetesConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesConfigPtrOutput)
+}
+
+// KubernetesConfig contains the Kubernetes runtime configuration.
+type KubernetesConfigOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConfig)(nil)).Elem()
+}
+
+func (o KubernetesConfigOutput) ToKubernetesConfigOutput() KubernetesConfigOutput {
+	return o
+}
+
+func (o KubernetesConfigOutput) ToKubernetesConfigOutputWithContext(ctx context.Context) KubernetesConfigOutput {
+	return o
+}
+
+func (o KubernetesConfigOutput) ToKubernetesConfigPtrOutput() KubernetesConfigPtrOutput {
+	return o.ToKubernetesConfigPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesConfigOutput) ToKubernetesConfigPtrOutputWithContext(ctx context.Context) KubernetesConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesConfig) *KubernetesConfig {
+		return &v
+	}).(KubernetesConfigPtrOutput)
+}
+
+// Kubernetes Gateway API service mesh configuration.
+func (o KubernetesConfigOutput) GatewayServiceMesh() GatewayServiceMeshPtrOutput {
+	return o.ApplyT(func(v KubernetesConfig) *GatewayServiceMesh { return v.GatewayServiceMesh }).(GatewayServiceMeshPtrOutput)
+}
+
+// Kubernetes Service networking configuration.
+func (o KubernetesConfigOutput) ServiceNetworking() ServiceNetworkingPtrOutput {
+	return o.ApplyT(func(v KubernetesConfig) *ServiceNetworking { return v.ServiceNetworking }).(ServiceNetworkingPtrOutput)
+}
+
+type KubernetesConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesConfig)(nil)).Elem()
+}
+
+func (o KubernetesConfigPtrOutput) ToKubernetesConfigPtrOutput() KubernetesConfigPtrOutput {
+	return o
+}
+
+func (o KubernetesConfigPtrOutput) ToKubernetesConfigPtrOutputWithContext(ctx context.Context) KubernetesConfigPtrOutput {
+	return o
+}
+
+func (o KubernetesConfigPtrOutput) Elem() KubernetesConfigOutput {
+	return o.ApplyT(func(v *KubernetesConfig) KubernetesConfig {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesConfig
+		return ret
+	}).(KubernetesConfigOutput)
+}
+
+// Kubernetes Gateway API service mesh configuration.
+func (o KubernetesConfigPtrOutput) GatewayServiceMesh() GatewayServiceMeshPtrOutput {
+	return o.ApplyT(func(v *KubernetesConfig) *GatewayServiceMesh {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayServiceMesh
+	}).(GatewayServiceMeshPtrOutput)
+}
+
+// Kubernetes Service networking configuration.
+func (o KubernetesConfigPtrOutput) ServiceNetworking() ServiceNetworkingPtrOutput {
+	return o.ApplyT(func(v *KubernetesConfig) *ServiceNetworking {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceNetworking
+	}).(ServiceNetworkingPtrOutput)
+}
+
+// KubernetesConfig contains the Kubernetes runtime configuration.
+type KubernetesConfigResponse struct {
+	// Kubernetes Gateway API service mesh configuration.
+	GatewayServiceMesh GatewayServiceMeshResponse `pulumi:"gatewayServiceMesh"`
+	// Kubernetes Service networking configuration.
+	ServiceNetworking ServiceNetworkingResponse `pulumi:"serviceNetworking"`
+}
+
+// KubernetesConfig contains the Kubernetes runtime configuration.
+type KubernetesConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (KubernetesConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesConfigResponse)(nil)).Elem()
+}
+
+func (o KubernetesConfigResponseOutput) ToKubernetesConfigResponseOutput() KubernetesConfigResponseOutput {
+	return o
+}
+
+func (o KubernetesConfigResponseOutput) ToKubernetesConfigResponseOutputWithContext(ctx context.Context) KubernetesConfigResponseOutput {
+	return o
+}
+
+// Kubernetes Gateway API service mesh configuration.
+func (o KubernetesConfigResponseOutput) GatewayServiceMesh() GatewayServiceMeshResponseOutput {
+	return o.ApplyT(func(v KubernetesConfigResponse) GatewayServiceMeshResponse { return v.GatewayServiceMesh }).(GatewayServiceMeshResponseOutput)
+}
+
+// Kubernetes Service networking configuration.
+func (o KubernetesConfigResponseOutput) ServiceNetworking() ServiceNetworkingResponseOutput {
+	return o.ApplyT(func(v KubernetesConfigResponse) ServiceNetworkingResponse { return v.ServiceNetworking }).(ServiceNetworkingResponseOutput)
 }
 
 // Metadata includes information associated with a `Rollout`.
@@ -2137,10 +3401,374 @@ func (o MetadataResponseOutput) CloudRun() CloudRunMetadataResponseOutput {
 	return o.ApplyT(func(v MetadataResponse) CloudRunMetadataResponse { return v.CloudRun }).(CloudRunMetadataResponseOutput)
 }
 
+// Information specifying a multiTarget.
+type MultiTarget struct {
+	// The target_ids of this multiTarget.
+	TargetIds []string `pulumi:"targetIds"`
+}
+
+// MultiTargetInput is an input type that accepts MultiTargetArgs and MultiTargetOutput values.
+// You can construct a concrete instance of `MultiTargetInput` via:
+//
+//	MultiTargetArgs{...}
+type MultiTargetInput interface {
+	pulumi.Input
+
+	ToMultiTargetOutput() MultiTargetOutput
+	ToMultiTargetOutputWithContext(context.Context) MultiTargetOutput
+}
+
+// Information specifying a multiTarget.
+type MultiTargetArgs struct {
+	// The target_ids of this multiTarget.
+	TargetIds pulumi.StringArrayInput `pulumi:"targetIds"`
+}
+
+func (MultiTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiTarget)(nil)).Elem()
+}
+
+func (i MultiTargetArgs) ToMultiTargetOutput() MultiTargetOutput {
+	return i.ToMultiTargetOutputWithContext(context.Background())
+}
+
+func (i MultiTargetArgs) ToMultiTargetOutputWithContext(ctx context.Context) MultiTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiTargetOutput)
+}
+
+func (i MultiTargetArgs) ToMultiTargetPtrOutput() MultiTargetPtrOutput {
+	return i.ToMultiTargetPtrOutputWithContext(context.Background())
+}
+
+func (i MultiTargetArgs) ToMultiTargetPtrOutputWithContext(ctx context.Context) MultiTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiTargetOutput).ToMultiTargetPtrOutputWithContext(ctx)
+}
+
+// MultiTargetPtrInput is an input type that accepts MultiTargetArgs, MultiTargetPtr and MultiTargetPtrOutput values.
+// You can construct a concrete instance of `MultiTargetPtrInput` via:
+//
+//	        MultiTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type MultiTargetPtrInput interface {
+	pulumi.Input
+
+	ToMultiTargetPtrOutput() MultiTargetPtrOutput
+	ToMultiTargetPtrOutputWithContext(context.Context) MultiTargetPtrOutput
+}
+
+type multiTargetPtrType MultiTargetArgs
+
+func MultiTargetPtr(v *MultiTargetArgs) MultiTargetPtrInput {
+	return (*multiTargetPtrType)(v)
+}
+
+func (*multiTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiTarget)(nil)).Elem()
+}
+
+func (i *multiTargetPtrType) ToMultiTargetPtrOutput() MultiTargetPtrOutput {
+	return i.ToMultiTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *multiTargetPtrType) ToMultiTargetPtrOutputWithContext(ctx context.Context) MultiTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiTargetPtrOutput)
+}
+
+// Information specifying a multiTarget.
+type MultiTargetOutput struct{ *pulumi.OutputState }
+
+func (MultiTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiTarget)(nil)).Elem()
+}
+
+func (o MultiTargetOutput) ToMultiTargetOutput() MultiTargetOutput {
+	return o
+}
+
+func (o MultiTargetOutput) ToMultiTargetOutputWithContext(ctx context.Context) MultiTargetOutput {
+	return o
+}
+
+func (o MultiTargetOutput) ToMultiTargetPtrOutput() MultiTargetPtrOutput {
+	return o.ToMultiTargetPtrOutputWithContext(context.Background())
+}
+
+func (o MultiTargetOutput) ToMultiTargetPtrOutputWithContext(ctx context.Context) MultiTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MultiTarget) *MultiTarget {
+		return &v
+	}).(MultiTargetPtrOutput)
+}
+
+// The target_ids of this multiTarget.
+func (o MultiTargetOutput) TargetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MultiTarget) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
+}
+
+type MultiTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiTarget)(nil)).Elem()
+}
+
+func (o MultiTargetPtrOutput) ToMultiTargetPtrOutput() MultiTargetPtrOutput {
+	return o
+}
+
+func (o MultiTargetPtrOutput) ToMultiTargetPtrOutputWithContext(ctx context.Context) MultiTargetPtrOutput {
+	return o
+}
+
+func (o MultiTargetPtrOutput) Elem() MultiTargetOutput {
+	return o.ApplyT(func(v *MultiTarget) MultiTarget {
+		if v != nil {
+			return *v
+		}
+		var ret MultiTarget
+		return ret
+	}).(MultiTargetOutput)
+}
+
+// The target_ids of this multiTarget.
+func (o MultiTargetPtrOutput) TargetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *MultiTarget) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TargetIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Information specifying a multiTarget.
+type MultiTargetResponse struct {
+	// The target_ids of this multiTarget.
+	TargetIds []string `pulumi:"targetIds"`
+}
+
+// Information specifying a multiTarget.
+type MultiTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiTargetResponse)(nil)).Elem()
+}
+
+func (o MultiTargetResponseOutput) ToMultiTargetResponseOutput() MultiTargetResponseOutput {
+	return o
+}
+
+func (o MultiTargetResponseOutput) ToMultiTargetResponseOutputWithContext(ctx context.Context) MultiTargetResponseOutput {
+	return o
+}
+
+// The target_ids of this multiTarget.
+func (o MultiTargetResponseOutput) TargetIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v MultiTargetResponse) []string { return v.TargetIds }).(pulumi.StringArrayOutput)
+}
+
+// PhaseConfig represents the configuration for a phase in the custom canary deployment.
+type PhaseConfig struct {
+	// Percentage deployment for the phase.
+	Percentage int `pulumi:"percentage"`
+	// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	PhaseId string `pulumi:"phaseId"`
+	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+	Profiles []string `pulumi:"profiles"`
+	// Whether to run verify tests after the deployment.
+	Verify *bool `pulumi:"verify"`
+}
+
+// PhaseConfigInput is an input type that accepts PhaseConfigArgs and PhaseConfigOutput values.
+// You can construct a concrete instance of `PhaseConfigInput` via:
+//
+//	PhaseConfigArgs{...}
+type PhaseConfigInput interface {
+	pulumi.Input
+
+	ToPhaseConfigOutput() PhaseConfigOutput
+	ToPhaseConfigOutputWithContext(context.Context) PhaseConfigOutput
+}
+
+// PhaseConfig represents the configuration for a phase in the custom canary deployment.
+type PhaseConfigArgs struct {
+	// Percentage deployment for the phase.
+	Percentage pulumi.IntInput `pulumi:"percentage"`
+	// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	PhaseId pulumi.StringInput `pulumi:"phaseId"`
+	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+	Profiles pulumi.StringArrayInput `pulumi:"profiles"`
+	// Whether to run verify tests after the deployment.
+	Verify pulumi.BoolPtrInput `pulumi:"verify"`
+}
+
+func (PhaseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhaseConfig)(nil)).Elem()
+}
+
+func (i PhaseConfigArgs) ToPhaseConfigOutput() PhaseConfigOutput {
+	return i.ToPhaseConfigOutputWithContext(context.Background())
+}
+
+func (i PhaseConfigArgs) ToPhaseConfigOutputWithContext(ctx context.Context) PhaseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhaseConfigOutput)
+}
+
+// PhaseConfigArrayInput is an input type that accepts PhaseConfigArray and PhaseConfigArrayOutput values.
+// You can construct a concrete instance of `PhaseConfigArrayInput` via:
+//
+//	PhaseConfigArray{ PhaseConfigArgs{...} }
+type PhaseConfigArrayInput interface {
+	pulumi.Input
+
+	ToPhaseConfigArrayOutput() PhaseConfigArrayOutput
+	ToPhaseConfigArrayOutputWithContext(context.Context) PhaseConfigArrayOutput
+}
+
+type PhaseConfigArray []PhaseConfigInput
+
+func (PhaseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhaseConfig)(nil)).Elem()
+}
+
+func (i PhaseConfigArray) ToPhaseConfigArrayOutput() PhaseConfigArrayOutput {
+	return i.ToPhaseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i PhaseConfigArray) ToPhaseConfigArrayOutputWithContext(ctx context.Context) PhaseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PhaseConfigArrayOutput)
+}
+
+// PhaseConfig represents the configuration for a phase in the custom canary deployment.
+type PhaseConfigOutput struct{ *pulumi.OutputState }
+
+func (PhaseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhaseConfig)(nil)).Elem()
+}
+
+func (o PhaseConfigOutput) ToPhaseConfigOutput() PhaseConfigOutput {
+	return o
+}
+
+func (o PhaseConfigOutput) ToPhaseConfigOutputWithContext(ctx context.Context) PhaseConfigOutput {
+	return o
+}
+
+// Percentage deployment for the phase.
+func (o PhaseConfigOutput) Percentage() pulumi.IntOutput {
+	return o.ApplyT(func(v PhaseConfig) int { return v.Percentage }).(pulumi.IntOutput)
+}
+
+// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o PhaseConfigOutput) PhaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseConfig) string { return v.PhaseId }).(pulumi.StringOutput)
+}
+
+// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+func (o PhaseConfigOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PhaseConfig) []string { return v.Profiles }).(pulumi.StringArrayOutput)
+}
+
+// Whether to run verify tests after the deployment.
+func (o PhaseConfigOutput) Verify() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PhaseConfig) *bool { return v.Verify }).(pulumi.BoolPtrOutput)
+}
+
+type PhaseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (PhaseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhaseConfig)(nil)).Elem()
+}
+
+func (o PhaseConfigArrayOutput) ToPhaseConfigArrayOutput() PhaseConfigArrayOutput {
+	return o
+}
+
+func (o PhaseConfigArrayOutput) ToPhaseConfigArrayOutputWithContext(ctx context.Context) PhaseConfigArrayOutput {
+	return o
+}
+
+func (o PhaseConfigArrayOutput) Index(i pulumi.IntInput) PhaseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhaseConfig {
+		return vs[0].([]PhaseConfig)[vs[1].(int)]
+	}).(PhaseConfigOutput)
+}
+
+// PhaseConfig represents the configuration for a phase in the custom canary deployment.
+type PhaseConfigResponse struct {
+	// Percentage deployment for the phase.
+	Percentage int `pulumi:"percentage"`
+	// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+	PhaseId string `pulumi:"phaseId"`
+	// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+	Profiles []string `pulumi:"profiles"`
+	// Whether to run verify tests after the deployment.
+	Verify bool `pulumi:"verify"`
+}
+
+// PhaseConfig represents the configuration for a phase in the custom canary deployment.
+type PhaseConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PhaseConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PhaseConfigResponse)(nil)).Elem()
+}
+
+func (o PhaseConfigResponseOutput) ToPhaseConfigResponseOutput() PhaseConfigResponseOutput {
+	return o
+}
+
+func (o PhaseConfigResponseOutput) ToPhaseConfigResponseOutputWithContext(ctx context.Context) PhaseConfigResponseOutput {
+	return o
+}
+
+// Percentage deployment for the phase.
+func (o PhaseConfigResponseOutput) Percentage() pulumi.IntOutput {
+	return o.ApplyT(func(v PhaseConfigResponse) int { return v.Percentage }).(pulumi.IntOutput)
+}
+
+// The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+func (o PhaseConfigResponseOutput) PhaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseConfigResponse) string { return v.PhaseId }).(pulumi.StringOutput)
+}
+
+// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+func (o PhaseConfigResponseOutput) Profiles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PhaseConfigResponse) []string { return v.Profiles }).(pulumi.StringArrayOutput)
+}
+
+// Whether to run verify tests after the deployment.
+func (o PhaseConfigResponseOutput) Verify() pulumi.BoolOutput {
+	return o.ApplyT(func(v PhaseConfigResponse) bool { return v.Verify }).(pulumi.BoolOutput)
+}
+
+type PhaseConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PhaseConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PhaseConfigResponse)(nil)).Elem()
+}
+
+func (o PhaseConfigResponseArrayOutput) ToPhaseConfigResponseArrayOutput() PhaseConfigResponseArrayOutput {
+	return o
+}
+
+func (o PhaseConfigResponseArrayOutput) ToPhaseConfigResponseArrayOutputWithContext(ctx context.Context) PhaseConfigResponseArrayOutput {
+	return o
+}
+
+func (o PhaseConfigResponseArrayOutput) Index(i pulumi.IntInput) PhaseConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PhaseConfigResponse {
+		return vs[0].([]PhaseConfigResponse)[vs[1].(int)]
+	}).(PhaseConfigResponseOutput)
+}
+
 // Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
 type PhaseResponse struct {
+	// ChildRollout job composition.
+	ChildRolloutJobs ChildRolloutJobsResponse `pulumi:"childRolloutJobs"`
 	// Deployment job composition.
 	DeploymentJobs DeploymentJobsResponse `pulumi:"deploymentJobs"`
+	// Additional information on why the Phase was skipped, if available.
+	SkipMessage string `pulumi:"skipMessage"`
 	// Current state of the Phase.
 	State string `pulumi:"state"`
 }
@@ -2160,9 +3788,19 @@ func (o PhaseResponseOutput) ToPhaseResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
+// ChildRollout job composition.
+func (o PhaseResponseOutput) ChildRolloutJobs() ChildRolloutJobsResponseOutput {
+	return o.ApplyT(func(v PhaseResponse) ChildRolloutJobsResponse { return v.ChildRolloutJobs }).(ChildRolloutJobsResponseOutput)
+}
+
 // Deployment job composition.
 func (o PhaseResponseOutput) DeploymentJobs() DeploymentJobsResponseOutput {
 	return o.ApplyT(func(v PhaseResponse) DeploymentJobsResponse { return v.DeploymentJobs }).(DeploymentJobsResponseOutput)
+}
+
+// Additional information on why the Phase was skipped, if available.
+func (o PhaseResponseOutput) SkipMessage() pulumi.StringOutput {
+	return o.ApplyT(func(v PhaseResponse) string { return v.SkipMessage }).(pulumi.StringOutput)
 }
 
 // Current state of the Phase.
@@ -2481,6 +4119,259 @@ func (o PrivatePoolResponseOutput) WorkerPool() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivatePoolResponse) string { return v.WorkerPool }).(pulumi.StringOutput)
 }
 
+// ReleaseCondition contains all conditions relevant to a Release.
+type ReleaseConditionResponse struct {
+	// Details around the Releases's overall status.
+	ReleaseReadyCondition ReleaseReadyConditionResponse `pulumi:"releaseReadyCondition"`
+	// Details around the support state of the release's skaffold version.
+	SkaffoldSupportedCondition SkaffoldSupportedConditionResponse `pulumi:"skaffoldSupportedCondition"`
+}
+
+// ReleaseCondition contains all conditions relevant to a Release.
+type ReleaseConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ReleaseConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseConditionResponse)(nil)).Elem()
+}
+
+func (o ReleaseConditionResponseOutput) ToReleaseConditionResponseOutput() ReleaseConditionResponseOutput {
+	return o
+}
+
+func (o ReleaseConditionResponseOutput) ToReleaseConditionResponseOutputWithContext(ctx context.Context) ReleaseConditionResponseOutput {
+	return o
+}
+
+// Details around the Releases's overall status.
+func (o ReleaseConditionResponseOutput) ReleaseReadyCondition() ReleaseReadyConditionResponseOutput {
+	return o.ApplyT(func(v ReleaseConditionResponse) ReleaseReadyConditionResponse { return v.ReleaseReadyCondition }).(ReleaseReadyConditionResponseOutput)
+}
+
+// Details around the support state of the release's skaffold version.
+func (o ReleaseConditionResponseOutput) SkaffoldSupportedCondition() SkaffoldSupportedConditionResponseOutput {
+	return o.ApplyT(func(v ReleaseConditionResponse) SkaffoldSupportedConditionResponse {
+		return v.SkaffoldSupportedCondition
+	}).(SkaffoldSupportedConditionResponseOutput)
+}
+
+// ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you cannot create a rollout with the release.
+type ReleaseReadyConditionResponse struct {
+	// True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
+	Status bool `pulumi:"status"`
+}
+
+// ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you cannot create a rollout with the release.
+type ReleaseReadyConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (ReleaseReadyConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseReadyConditionResponse)(nil)).Elem()
+}
+
+func (o ReleaseReadyConditionResponseOutput) ToReleaseReadyConditionResponseOutput() ReleaseReadyConditionResponseOutput {
+	return o
+}
+
+func (o ReleaseReadyConditionResponseOutput) ToReleaseReadyConditionResponseOutputWithContext(ctx context.Context) ReleaseReadyConditionResponseOutput {
+	return o
+}
+
+// True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
+func (o ReleaseReadyConditionResponseOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v ReleaseReadyConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
+}
+
+// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+type RuntimeConfig struct {
+	// Cloud Run runtime configuration.
+	CloudRun *CloudRunConfig `pulumi:"cloudRun"`
+	// Kubernetes runtime configuration.
+	Kubernetes *KubernetesConfig `pulumi:"kubernetes"`
+}
+
+// RuntimeConfigInput is an input type that accepts RuntimeConfigArgs and RuntimeConfigOutput values.
+// You can construct a concrete instance of `RuntimeConfigInput` via:
+//
+//	RuntimeConfigArgs{...}
+type RuntimeConfigInput interface {
+	pulumi.Input
+
+	ToRuntimeConfigOutput() RuntimeConfigOutput
+	ToRuntimeConfigOutputWithContext(context.Context) RuntimeConfigOutput
+}
+
+// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+type RuntimeConfigArgs struct {
+	// Cloud Run runtime configuration.
+	CloudRun CloudRunConfigPtrInput `pulumi:"cloudRun"`
+	// Kubernetes runtime configuration.
+	Kubernetes KubernetesConfigPtrInput `pulumi:"kubernetes"`
+}
+
+func (RuntimeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeConfig)(nil)).Elem()
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigOutput() RuntimeConfigOutput {
+	return i.ToRuntimeConfigOutputWithContext(context.Background())
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigOutputWithContext(ctx context.Context) RuntimeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigOutput)
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return i.ToRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RuntimeConfigArgs) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigOutput).ToRuntimeConfigPtrOutputWithContext(ctx)
+}
+
+// RuntimeConfigPtrInput is an input type that accepts RuntimeConfigArgs, RuntimeConfigPtr and RuntimeConfigPtrOutput values.
+// You can construct a concrete instance of `RuntimeConfigPtrInput` via:
+//
+//	        RuntimeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuntimeConfigPtrInput interface {
+	pulumi.Input
+
+	ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput
+	ToRuntimeConfigPtrOutputWithContext(context.Context) RuntimeConfigPtrOutput
+}
+
+type runtimeConfigPtrType RuntimeConfigArgs
+
+func RuntimeConfigPtr(v *RuntimeConfigArgs) RuntimeConfigPtrInput {
+	return (*runtimeConfigPtrType)(v)
+}
+
+func (*runtimeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeConfig)(nil)).Elem()
+}
+
+func (i *runtimeConfigPtrType) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return i.ToRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *runtimeConfigPtrType) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuntimeConfigPtrOutput)
+}
+
+// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+type RuntimeConfigOutput struct{ *pulumi.OutputState }
+
+func (RuntimeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeConfig)(nil)).Elem()
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigOutput() RuntimeConfigOutput {
+	return o
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigOutputWithContext(ctx context.Context) RuntimeConfigOutput {
+	return o
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return o.ToRuntimeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RuntimeConfigOutput) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuntimeConfig) *RuntimeConfig {
+		return &v
+	}).(RuntimeConfigPtrOutput)
+}
+
+// Cloud Run runtime configuration.
+func (o RuntimeConfigOutput) CloudRun() CloudRunConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeConfig) *CloudRunConfig { return v.CloudRun }).(CloudRunConfigPtrOutput)
+}
+
+// Kubernetes runtime configuration.
+func (o RuntimeConfigOutput) Kubernetes() KubernetesConfigPtrOutput {
+	return o.ApplyT(func(v RuntimeConfig) *KubernetesConfig { return v.Kubernetes }).(KubernetesConfigPtrOutput)
+}
+
+type RuntimeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RuntimeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuntimeConfig)(nil)).Elem()
+}
+
+func (o RuntimeConfigPtrOutput) ToRuntimeConfigPtrOutput() RuntimeConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeConfigPtrOutput) ToRuntimeConfigPtrOutputWithContext(ctx context.Context) RuntimeConfigPtrOutput {
+	return o
+}
+
+func (o RuntimeConfigPtrOutput) Elem() RuntimeConfigOutput {
+	return o.ApplyT(func(v *RuntimeConfig) RuntimeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RuntimeConfig
+		return ret
+	}).(RuntimeConfigOutput)
+}
+
+// Cloud Run runtime configuration.
+func (o RuntimeConfigPtrOutput) CloudRun() CloudRunConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeConfig) *CloudRunConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CloudRun
+	}).(CloudRunConfigPtrOutput)
+}
+
+// Kubernetes runtime configuration.
+func (o RuntimeConfigPtrOutput) Kubernetes() KubernetesConfigPtrOutput {
+	return o.ApplyT(func(v *RuntimeConfig) *KubernetesConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Kubernetes
+	}).(KubernetesConfigPtrOutput)
+}
+
+// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+type RuntimeConfigResponse struct {
+	// Cloud Run runtime configuration.
+	CloudRun CloudRunConfigResponse `pulumi:"cloudRun"`
+	// Kubernetes runtime configuration.
+	Kubernetes KubernetesConfigResponse `pulumi:"kubernetes"`
+}
+
+// RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+type RuntimeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (RuntimeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuntimeConfigResponse)(nil)).Elem()
+}
+
+func (o RuntimeConfigResponseOutput) ToRuntimeConfigResponseOutput() RuntimeConfigResponseOutput {
+	return o
+}
+
+func (o RuntimeConfigResponseOutput) ToRuntimeConfigResponseOutputWithContext(ctx context.Context) RuntimeConfigResponseOutput {
+	return o
+}
+
+// Cloud Run runtime configuration.
+func (o RuntimeConfigResponseOutput) CloudRun() CloudRunConfigResponseOutput {
+	return o.ApplyT(func(v RuntimeConfigResponse) CloudRunConfigResponse { return v.CloudRun }).(CloudRunConfigResponseOutput)
+}
+
+// Kubernetes runtime configuration.
+func (o RuntimeConfigResponseOutput) Kubernetes() KubernetesConfigResponseOutput {
+	return o.ApplyT(func(v RuntimeConfigResponse) KubernetesConfigResponse { return v.Kubernetes }).(KubernetesConfigResponseOutput)
+}
+
 // SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
 type SerialPipeline struct {
 	// Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
@@ -2645,6 +4536,245 @@ func (o SerialPipelineResponseOutput) ToSerialPipelineResponseOutputWithContext(
 // Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
 func (o SerialPipelineResponseOutput) Stages() StageResponseArrayOutput {
 	return o.ApplyT(func(v SerialPipelineResponse) []StageResponse { return v.Stages }).(StageResponseArrayOutput)
+}
+
+// Information about the Kubernetes Service networking configuration.
+type ServiceNetworking struct {
+	// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+	Deployment string `pulumi:"deployment"`
+	// Name of the Kubernetes Service.
+	Service string `pulumi:"service"`
+}
+
+// ServiceNetworkingInput is an input type that accepts ServiceNetworkingArgs and ServiceNetworkingOutput values.
+// You can construct a concrete instance of `ServiceNetworkingInput` via:
+//
+//	ServiceNetworkingArgs{...}
+type ServiceNetworkingInput interface {
+	pulumi.Input
+
+	ToServiceNetworkingOutput() ServiceNetworkingOutput
+	ToServiceNetworkingOutputWithContext(context.Context) ServiceNetworkingOutput
+}
+
+// Information about the Kubernetes Service networking configuration.
+type ServiceNetworkingArgs struct {
+	// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+	Deployment pulumi.StringInput `pulumi:"deployment"`
+	// Name of the Kubernetes Service.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (ServiceNetworkingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworking)(nil)).Elem()
+}
+
+func (i ServiceNetworkingArgs) ToServiceNetworkingOutput() ServiceNetworkingOutput {
+	return i.ToServiceNetworkingOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkingArgs) ToServiceNetworkingOutputWithContext(ctx context.Context) ServiceNetworkingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkingOutput)
+}
+
+func (i ServiceNetworkingArgs) ToServiceNetworkingPtrOutput() ServiceNetworkingPtrOutput {
+	return i.ToServiceNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceNetworkingArgs) ToServiceNetworkingPtrOutputWithContext(ctx context.Context) ServiceNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkingOutput).ToServiceNetworkingPtrOutputWithContext(ctx)
+}
+
+// ServiceNetworkingPtrInput is an input type that accepts ServiceNetworkingArgs, ServiceNetworkingPtr and ServiceNetworkingPtrOutput values.
+// You can construct a concrete instance of `ServiceNetworkingPtrInput` via:
+//
+//	        ServiceNetworkingArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceNetworkingPtrInput interface {
+	pulumi.Input
+
+	ToServiceNetworkingPtrOutput() ServiceNetworkingPtrOutput
+	ToServiceNetworkingPtrOutputWithContext(context.Context) ServiceNetworkingPtrOutput
+}
+
+type serviceNetworkingPtrType ServiceNetworkingArgs
+
+func ServiceNetworkingPtr(v *ServiceNetworkingArgs) ServiceNetworkingPtrInput {
+	return (*serviceNetworkingPtrType)(v)
+}
+
+func (*serviceNetworkingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNetworking)(nil)).Elem()
+}
+
+func (i *serviceNetworkingPtrType) ToServiceNetworkingPtrOutput() ServiceNetworkingPtrOutput {
+	return i.ToServiceNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceNetworkingPtrType) ToServiceNetworkingPtrOutputWithContext(ctx context.Context) ServiceNetworkingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceNetworkingPtrOutput)
+}
+
+// Information about the Kubernetes Service networking configuration.
+type ServiceNetworkingOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworking)(nil)).Elem()
+}
+
+func (o ServiceNetworkingOutput) ToServiceNetworkingOutput() ServiceNetworkingOutput {
+	return o
+}
+
+func (o ServiceNetworkingOutput) ToServiceNetworkingOutputWithContext(ctx context.Context) ServiceNetworkingOutput {
+	return o
+}
+
+func (o ServiceNetworkingOutput) ToServiceNetworkingPtrOutput() ServiceNetworkingPtrOutput {
+	return o.ToServiceNetworkingPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceNetworkingOutput) ToServiceNetworkingPtrOutputWithContext(ctx context.Context) ServiceNetworkingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceNetworking) *ServiceNetworking {
+		return &v
+	}).(ServiceNetworkingPtrOutput)
+}
+
+// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+func (o ServiceNetworkingOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceNetworking) string { return v.Deployment }).(pulumi.StringOutput)
+}
+
+// Name of the Kubernetes Service.
+func (o ServiceNetworkingOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceNetworking) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type ServiceNetworkingPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceNetworking)(nil)).Elem()
+}
+
+func (o ServiceNetworkingPtrOutput) ToServiceNetworkingPtrOutput() ServiceNetworkingPtrOutput {
+	return o
+}
+
+func (o ServiceNetworkingPtrOutput) ToServiceNetworkingPtrOutputWithContext(ctx context.Context) ServiceNetworkingPtrOutput {
+	return o
+}
+
+func (o ServiceNetworkingPtrOutput) Elem() ServiceNetworkingOutput {
+	return o.ApplyT(func(v *ServiceNetworking) ServiceNetworking {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceNetworking
+		return ret
+	}).(ServiceNetworkingOutput)
+}
+
+// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+func (o ServiceNetworkingPtrOutput) Deployment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Deployment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Kubernetes Service.
+func (o ServiceNetworkingPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceNetworking) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information about the Kubernetes Service networking configuration.
+type ServiceNetworkingResponse struct {
+	// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+	Deployment string `pulumi:"deployment"`
+	// Name of the Kubernetes Service.
+	Service string `pulumi:"service"`
+}
+
+// Information about the Kubernetes Service networking configuration.
+type ServiceNetworkingResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceNetworkingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceNetworkingResponse)(nil)).Elem()
+}
+
+func (o ServiceNetworkingResponseOutput) ToServiceNetworkingResponseOutput() ServiceNetworkingResponseOutput {
+	return o
+}
+
+func (o ServiceNetworkingResponseOutput) ToServiceNetworkingResponseOutputWithContext(ctx context.Context) ServiceNetworkingResponseOutput {
+	return o
+}
+
+// Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+func (o ServiceNetworkingResponseOutput) Deployment() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceNetworkingResponse) string { return v.Deployment }).(pulumi.StringOutput)
+}
+
+// Name of the Kubernetes Service.
+func (o ServiceNetworkingResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceNetworkingResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+type SkaffoldSupportedConditionResponse struct {
+	// The time at which this release's version of skaffold will enter maintenance mode.
+	MaintenanceModeTime string `pulumi:"maintenanceModeTime"`
+	// The skaffold support state for this release's version of skaffold.
+	SkaffoldSupportState string `pulumi:"skaffoldSupportState"`
+	// True if the version of skaffold used by this release is supported.
+	Status bool `pulumi:"status"`
+	// The time at which this release's version of skaffold will no longer be supported.
+	SupportExpirationTime string `pulumi:"supportExpirationTime"`
+}
+
+// SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+type SkaffoldSupportedConditionResponseOutput struct{ *pulumi.OutputState }
+
+func (SkaffoldSupportedConditionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkaffoldSupportedConditionResponse)(nil)).Elem()
+}
+
+func (o SkaffoldSupportedConditionResponseOutput) ToSkaffoldSupportedConditionResponseOutput() SkaffoldSupportedConditionResponseOutput {
+	return o
+}
+
+func (o SkaffoldSupportedConditionResponseOutput) ToSkaffoldSupportedConditionResponseOutputWithContext(ctx context.Context) SkaffoldSupportedConditionResponseOutput {
+	return o
+}
+
+// The time at which this release's version of skaffold will enter maintenance mode.
+func (o SkaffoldSupportedConditionResponseOutput) MaintenanceModeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) string { return v.MaintenanceModeTime }).(pulumi.StringOutput)
+}
+
+// The skaffold support state for this release's version of skaffold.
+func (o SkaffoldSupportedConditionResponseOutput) SkaffoldSupportState() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) string { return v.SkaffoldSupportState }).(pulumi.StringOutput)
+}
+
+// True if the version of skaffold used by this release is supported.
+func (o SkaffoldSupportedConditionResponseOutput) Status() pulumi.BoolOutput {
+	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) bool { return v.Status }).(pulumi.BoolOutput)
+}
+
+// The time at which this release's version of skaffold will no longer be supported.
+func (o SkaffoldSupportedConditionResponseOutput) SupportExpirationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v SkaffoldSupportedConditionResponse) string { return v.SupportExpirationTime }).(pulumi.StringOutput)
 }
 
 // Stage specifies a location to which to deploy.
@@ -2993,6 +5123,8 @@ func (o StandardResponseOutput) Verify() pulumi.BoolOutput {
 
 // Strategy contains deployment strategy information.
 type Strategy struct {
+	// Canary deployment strategy provides progressive percentage based deployments to a Target.
+	Canary *Canary `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard *Standard `pulumi:"standard"`
 }
@@ -3010,6 +5142,8 @@ type StrategyInput interface {
 
 // Strategy contains deployment strategy information.
 type StrategyArgs struct {
+	// Canary deployment strategy provides progressive percentage based deployments to a Target.
+	Canary CanaryPtrInput `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard StandardPtrInput `pulumi:"standard"`
 }
@@ -3092,6 +5226,11 @@ func (o StrategyOutput) ToStrategyPtrOutputWithContext(ctx context.Context) Stra
 	}).(StrategyPtrOutput)
 }
 
+// Canary deployment strategy provides progressive percentage based deployments to a Target.
+func (o StrategyOutput) Canary() CanaryPtrOutput {
+	return o.ApplyT(func(v Strategy) *Canary { return v.Canary }).(CanaryPtrOutput)
+}
+
 // Standard deployment strategy executes a single deploy and allows verifying the deployment.
 func (o StrategyOutput) Standard() StandardPtrOutput {
 	return o.ApplyT(func(v Strategy) *Standard { return v.Standard }).(StandardPtrOutput)
@@ -3121,6 +5260,16 @@ func (o StrategyPtrOutput) Elem() StrategyOutput {
 	}).(StrategyOutput)
 }
 
+// Canary deployment strategy provides progressive percentage based deployments to a Target.
+func (o StrategyPtrOutput) Canary() CanaryPtrOutput {
+	return o.ApplyT(func(v *Strategy) *Canary {
+		if v == nil {
+			return nil
+		}
+		return v.Canary
+	}).(CanaryPtrOutput)
+}
+
 // Standard deployment strategy executes a single deploy and allows verifying the deployment.
 func (o StrategyPtrOutput) Standard() StandardPtrOutput {
 	return o.ApplyT(func(v *Strategy) *Standard {
@@ -3133,6 +5282,8 @@ func (o StrategyPtrOutput) Standard() StandardPtrOutput {
 
 // Strategy contains deployment strategy information.
 type StrategyResponse struct {
+	// Canary deployment strategy provides progressive percentage based deployments to a Target.
+	Canary CanaryResponse `pulumi:"canary"`
 	// Standard deployment strategy executes a single deploy and allows verifying the deployment.
 	Standard StandardResponse `pulumi:"standard"`
 }
@@ -3150,6 +5301,11 @@ func (o StrategyResponseOutput) ToStrategyResponseOutput() StrategyResponseOutpu
 
 func (o StrategyResponseOutput) ToStrategyResponseOutputWithContext(ctx context.Context) StrategyResponseOutput {
 	return o
+}
+
+// Canary deployment strategy provides progressive percentage based deployments to a Target.
+func (o StrategyResponseOutput) Canary() CanaryResponseOutput {
+	return o.ApplyT(func(v StrategyResponse) CanaryResponse { return v.Canary }).(CanaryResponseOutput)
 }
 
 // Standard deployment strategy executes a single deploy and allows verifying the deployment.
@@ -3175,6 +5331,8 @@ type TargetResponse struct {
 	Gke GkeClusterResponse `pulumi:"gke"`
 	// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
+	// Information specifying a multiTarget.
+	MultiTarget MultiTargetResponse `pulumi:"multiTarget"`
 	// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
@@ -3242,6 +5400,11 @@ func (o TargetResponseOutput) Gke() GkeClusterResponseOutput {
 // Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o TargetResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v TargetResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Information specifying a multiTarget.
+func (o TargetResponseOutput) MultiTarget() MultiTargetResponseOutput {
+	return o.ApplyT(func(v TargetResponse) MultiTargetResponse { return v.MultiTarget }).(MultiTargetResponseOutput)
 }
 
 // Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
@@ -3397,26 +5560,47 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactInput)(nil)).Elem(), BuildArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactArrayInput)(nil)).Elem(), BuildArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CanaryInput)(nil)).Elem(), CanaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CanaryPtrInput)(nil)).Elem(), CanaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CanaryDeploymentInput)(nil)).Elem(), CanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CanaryDeploymentPtrInput)(nil)).Elem(), CanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigInput)(nil)).Elem(), CloudRunConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunConfigPtrInput)(nil)).Elem(), CloudRunConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunLocationInput)(nil)).Elem(), CloudRunLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunLocationPtrInput)(nil)).Elem(), CloudRunLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomCanaryDeploymentInput)(nil)).Elem(), CustomCanaryDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomCanaryDeploymentPtrInput)(nil)).Elem(), CustomCanaryDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolPtrInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigInput)(nil)).Elem(), ExecutionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigArrayInput)(nil)).Elem(), ExecutionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServiceMeshInput)(nil)).Elem(), GatewayServiceMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GatewayServiceMeshPtrInput)(nil)).Elem(), GatewayServiceMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterInput)(nil)).Elem(), GkeClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GkeClusterPtrInput)(nil)).Elem(), GkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConfigInput)(nil)).Elem(), KubernetesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesConfigPtrInput)(nil)).Elem(), KubernetesConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiTargetInput)(nil)).Elem(), MultiTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MultiTargetPtrInput)(nil)).Elem(), MultiTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhaseConfigInput)(nil)).Elem(), PhaseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PhaseConfigArrayInput)(nil)).Elem(), PhaseConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolInput)(nil)).Elem(), PrivatePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivatePoolPtrInput)(nil)).Elem(), PrivatePoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigInput)(nil)).Elem(), RuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuntimeConfigPtrInput)(nil)).Elem(), RuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelineInput)(nil)).Elem(), SerialPipelineArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SerialPipelinePtrInput)(nil)).Elem(), SerialPipelineArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkingInput)(nil)).Elem(), ServiceNetworkingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceNetworkingPtrInput)(nil)).Elem(), ServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageInput)(nil)).Elem(), StageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StageArrayInput)(nil)).Elem(), StageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardInput)(nil)).Elem(), StandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardPtrInput)(nil)).Elem(), StandardArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyInput)(nil)).Elem(), StrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StrategyPtrInput)(nil)).Elem(), StrategyArgs{})
+	pulumi.RegisterOutputType(AdvanceChildRolloutJobResponseOutput{})
 	pulumi.RegisterOutputType(AnthosClusterOutput{})
 	pulumi.RegisterOutputType(AnthosClusterPtrOutput{})
 	pulumi.RegisterOutputType(AnthosClusterResponseOutput{})
@@ -3436,10 +5620,24 @@ func init() {
 	pulumi.RegisterOutputType(BuildArtifactArrayOutput{})
 	pulumi.RegisterOutputType(BuildArtifactResponseOutput{})
 	pulumi.RegisterOutputType(BuildArtifactResponseArrayOutput{})
+	pulumi.RegisterOutputType(CanaryOutput{})
+	pulumi.RegisterOutputType(CanaryPtrOutput{})
+	pulumi.RegisterOutputType(CanaryDeploymentOutput{})
+	pulumi.RegisterOutputType(CanaryDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(CanaryDeploymentResponseOutput{})
+	pulumi.RegisterOutputType(CanaryResponseOutput{})
+	pulumi.RegisterOutputType(ChildRolloutJobsResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunConfigOutput{})
+	pulumi.RegisterOutputType(CloudRunConfigPtrOutput{})
+	pulumi.RegisterOutputType(CloudRunConfigResponseOutput{})
 	pulumi.RegisterOutputType(CloudRunLocationOutput{})
 	pulumi.RegisterOutputType(CloudRunLocationPtrOutput{})
 	pulumi.RegisterOutputType(CloudRunLocationResponseOutput{})
 	pulumi.RegisterOutputType(CloudRunMetadataResponseOutput{})
+	pulumi.RegisterOutputType(CreateChildRolloutJobResponseOutput{})
+	pulumi.RegisterOutputType(CustomCanaryDeploymentOutput{})
+	pulumi.RegisterOutputType(CustomCanaryDeploymentPtrOutput{})
+	pulumi.RegisterOutputType(CustomCanaryDeploymentResponseOutput{})
 	pulumi.RegisterOutputType(DefaultPoolOutput{})
 	pulumi.RegisterOutputType(DefaultPoolPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPoolResponseOutput{})
@@ -3453,11 +5651,25 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GatewayServiceMeshOutput{})
+	pulumi.RegisterOutputType(GatewayServiceMeshPtrOutput{})
+	pulumi.RegisterOutputType(GatewayServiceMeshResponseOutput{})
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
 	pulumi.RegisterOutputType(JobResponseOutput{})
+	pulumi.RegisterOutputType(JobResponseArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesConfigOutput{})
+	pulumi.RegisterOutputType(KubernetesConfigPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesConfigResponseOutput{})
 	pulumi.RegisterOutputType(MetadataResponseOutput{})
+	pulumi.RegisterOutputType(MultiTargetOutput{})
+	pulumi.RegisterOutputType(MultiTargetPtrOutput{})
+	pulumi.RegisterOutputType(MultiTargetResponseOutput{})
+	pulumi.RegisterOutputType(PhaseConfigOutput{})
+	pulumi.RegisterOutputType(PhaseConfigArrayOutput{})
+	pulumi.RegisterOutputType(PhaseConfigResponseOutput{})
+	pulumi.RegisterOutputType(PhaseConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(PhaseResponseOutput{})
 	pulumi.RegisterOutputType(PhaseResponseArrayOutput{})
 	pulumi.RegisterOutputType(PipelineConditionResponseOutput{})
@@ -3465,9 +5677,18 @@ func init() {
 	pulumi.RegisterOutputType(PrivatePoolOutput{})
 	pulumi.RegisterOutputType(PrivatePoolPtrOutput{})
 	pulumi.RegisterOutputType(PrivatePoolResponseOutput{})
+	pulumi.RegisterOutputType(ReleaseConditionResponseOutput{})
+	pulumi.RegisterOutputType(ReleaseReadyConditionResponseOutput{})
+	pulumi.RegisterOutputType(RuntimeConfigOutput{})
+	pulumi.RegisterOutputType(RuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(RuntimeConfigResponseOutput{})
 	pulumi.RegisterOutputType(SerialPipelineOutput{})
 	pulumi.RegisterOutputType(SerialPipelinePtrOutput{})
 	pulumi.RegisterOutputType(SerialPipelineResponseOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkingOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkingPtrOutput{})
+	pulumi.RegisterOutputType(ServiceNetworkingResponseOutput{})
+	pulumi.RegisterOutputType(SkaffoldSupportedConditionResponseOutput{})
 	pulumi.RegisterOutputType(StageOutput{})
 	pulumi.RegisterOutputType(StageArrayOutput{})
 	pulumi.RegisterOutputType(StageResponseOutput{})

@@ -103,6 +103,10 @@ export class Note extends pulumi.CustomResource {
      */
     public readonly sbom!: pulumi.Output<outputs.containeranalysis.v1alpha1.DocumentNoteResponse>;
     /**
+     * A note describing a reference to an SBOM.
+     */
+    public readonly sbomReference!: pulumi.Output<outputs.containeranalysis.v1alpha1.SBOMReferenceNoteResponse>;
+    /**
      * A one sentence description of this `Note`.
      */
     public readonly shortDescription!: pulumi.Output<string>;
@@ -126,6 +130,10 @@ export class Note extends pulumi.CustomResource {
      * A note describing an upgrade.
      */
     public readonly upgrade!: pulumi.Output<outputs.containeranalysis.v1alpha1.UpgradeNoteResponse>;
+    /**
+     * A note describing a vulnerability assessment.
+     */
+    public readonly vulnerabilityAssessment!: pulumi.Output<outputs.containeranalysis.v1alpha1.VulnerabilityAssessmentNoteResponse>;
     /**
      * A package vulnerability type of note.
      */
@@ -157,11 +165,13 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["relatedUrl"] = args ? args.relatedUrl : undefined;
             resourceInputs["sbom"] = args ? args.sbom : undefined;
+            resourceInputs["sbomReference"] = args ? args.sbomReference : undefined;
             resourceInputs["shortDescription"] = args ? args.shortDescription : undefined;
             resourceInputs["spdxFile"] = args ? args.spdxFile : undefined;
             resourceInputs["spdxPackage"] = args ? args.spdxPackage : undefined;
             resourceInputs["spdxRelationship"] = args ? args.spdxRelationship : undefined;
             resourceInputs["upgrade"] = args ? args.upgrade : undefined;
+            resourceInputs["vulnerabilityAssessment"] = args ? args.vulnerabilityAssessment : undefined;
             resourceInputs["vulnerabilityType"] = args ? args.vulnerabilityType : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
@@ -184,12 +194,14 @@ export class Note extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["relatedUrl"] = undefined /*out*/;
             resourceInputs["sbom"] = undefined /*out*/;
+            resourceInputs["sbomReference"] = undefined /*out*/;
             resourceInputs["shortDescription"] = undefined /*out*/;
             resourceInputs["spdxFile"] = undefined /*out*/;
             resourceInputs["spdxPackage"] = undefined /*out*/;
             resourceInputs["spdxRelationship"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["upgrade"] = undefined /*out*/;
+            resourceInputs["vulnerabilityAssessment"] = undefined /*out*/;
             resourceInputs["vulnerabilityType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -261,6 +273,10 @@ export interface NoteArgs {
      */
     sbom?: pulumi.Input<inputs.containeranalysis.v1alpha1.DocumentNoteArgs>;
     /**
+     * A note describing a reference to an SBOM.
+     */
+    sbomReference?: pulumi.Input<inputs.containeranalysis.v1alpha1.SBOMReferenceNoteArgs>;
+    /**
      * A one sentence description of this `Note`.
      */
     shortDescription?: pulumi.Input<string>;
@@ -280,6 +296,10 @@ export interface NoteArgs {
      * A note describing an upgrade.
      */
     upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeNoteArgs>;
+    /**
+     * A note describing a vulnerability assessment.
+     */
+    vulnerabilityAssessment?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityAssessmentNoteArgs>;
     /**
      * A package vulnerability type of note.
      */

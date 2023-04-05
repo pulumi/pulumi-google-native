@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetHttpsProxyResult:
-    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
+    def __init__(__self__, authentication=None, authorization=None, authorization_policy=None, certificate_map=None, creation_timestamp=None, description=None, fingerprint=None, http_filters=None, http_keep_alive_timeout_sec=None, kind=None, name=None, proxy_bind=None, quic_override=None, region=None, self_link=None, self_link_with_id=None, server_tls_policy=None, ssl_certificates=None, ssl_policy=None, url_map=None):
         if authentication and not isinstance(authentication, str):
             raise TypeError("Expected argument 'authentication' to be a str")
         if authentication is not None:
@@ -51,6 +51,9 @@ class GetTargetHttpsProxyResult:
         if http_filters and not isinstance(http_filters, list):
             raise TypeError("Expected argument 'http_filters' to be a list")
         pulumi.set(__self__, "http_filters", http_filters)
+        if http_keep_alive_timeout_sec and not isinstance(http_keep_alive_timeout_sec, int):
+            raise TypeError("Expected argument 'http_keep_alive_timeout_sec' to be a int")
+        pulumi.set(__self__, "http_keep_alive_timeout_sec", http_keep_alive_timeout_sec)
         if kind and not isinstance(kind, str):
             raise TypeError("Expected argument 'kind' to be a str")
         pulumi.set(__self__, "kind", kind)
@@ -150,6 +153,14 @@ class GetTargetHttpsProxyResult:
         return pulumi.get(self, "http_filters")
 
     @property
+    @pulumi.getter(name="httpKeepAliveTimeoutSec")
+    def http_keep_alive_timeout_sec(self) -> int:
+        """
+        Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+        """
+        return pulumi.get(self, "http_keep_alive_timeout_sec")
+
+    @property
     @pulumi.getter
     def kind(self) -> str:
         """
@@ -209,7 +220,7 @@ class GetTargetHttpsProxyResult:
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> str:
         """
-        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
+        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED or EXTERNAL or EXTERNAL_MANAGED. For details which ServerTlsPolicy resources are accepted with INTERNAL_SELF_MANAGED and which with EXTERNAL, EXTERNAL_MANAGED loadBalancingScheme consult ServerTlsPolicy documentation. If left blank, communications are not encrypted.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -252,6 +263,7 @@ class AwaitableGetTargetHttpsProxyResult(GetTargetHttpsProxyResult):
             description=self.description,
             fingerprint=self.fingerprint,
             http_filters=self.http_filters,
+            http_keep_alive_timeout_sec=self.http_keep_alive_timeout_sec,
             kind=self.kind,
             name=self.name,
             proxy_bind=self.proxy_bind,
@@ -269,7 +281,7 @@ def get_target_https_proxy(project: Optional[str] = None,
                            target_https_proxy: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTargetHttpsProxyResult:
     """
-    Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+    Returns the specified TargetHttpsProxy resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -286,6 +298,7 @@ def get_target_https_proxy(project: Optional[str] = None,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
         http_filters=__ret__.http_filters,
+        http_keep_alive_timeout_sec=__ret__.http_keep_alive_timeout_sec,
         kind=__ret__.kind,
         name=__ret__.name,
         proxy_bind=__ret__.proxy_bind,
@@ -304,6 +317,6 @@ def get_target_https_proxy_output(project: Optional[pulumi.Input[Optional[str]]]
                                   target_https_proxy: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTargetHttpsProxyResult]:
     """
-    Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by making a list() request.
+    Returns the specified TargetHttpsProxy resource.
     """
     ...

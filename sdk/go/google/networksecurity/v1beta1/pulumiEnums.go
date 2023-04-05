@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+type AddressGroupType string
+
+const (
+	// Default value.
+	AddressGroupTypeTypeUnspecified = AddressGroupType("TYPE_UNSPECIFIED")
+	// IP v4 ranges.
+	AddressGroupTypeIpv4 = AddressGroupType("IPV4")
+	// IP v6 ranges.
+	AddressGroupTypeIpv6 = AddressGroupType("IPV6")
+)
+
+func (AddressGroupType) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupType)(nil)).Elem()
+}
+
+func (e AddressGroupType) ToAddressGroupTypeOutput() AddressGroupTypeOutput {
+	return pulumi.ToOutput(e).(AddressGroupTypeOutput)
+}
+
+func (e AddressGroupType) ToAddressGroupTypeOutputWithContext(ctx context.Context) AddressGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AddressGroupTypeOutput)
+}
+
+func (e AddressGroupType) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return e.ToAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (e AddressGroupType) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return AddressGroupType(e).ToAddressGroupTypeOutputWithContext(ctx).ToAddressGroupTypePtrOutputWithContext(ctx)
+}
+
+func (e AddressGroupType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AddressGroupType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AddressGroupType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AddressGroupType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AddressGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupType)(nil)).Elem()
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypeOutput() AddressGroupTypeOutput {
+	return o
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypeOutputWithContext(ctx context.Context) AddressGroupTypeOutput {
+	return o
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return o.ToAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypeOutput) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressGroupType) *AddressGroupType {
+		return &v
+	}).(AddressGroupTypePtrOutput)
+}
+
+func (o AddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddressGroupType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AddressGroupTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AddressGroupType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AddressGroupTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressGroupType)(nil)).Elem()
+}
+
+func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return o
+}
+
+func (o AddressGroupTypePtrOutput) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return o
+}
+
+func (o AddressGroupTypePtrOutput) Elem() AddressGroupTypeOutput {
+	return o.ApplyT(func(v *AddressGroupType) AddressGroupType {
+		if v != nil {
+			return *v
+		}
+		var ret AddressGroupType
+		return ret
+	}).(AddressGroupTypeOutput)
+}
+
+func (o AddressGroupTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AddressGroupType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AddressGroupTypeInput is an input type that accepts AddressGroupTypeArgs and AddressGroupTypeOutput values.
+// You can construct a concrete instance of `AddressGroupTypeInput` via:
+//
+//	AddressGroupTypeArgs{...}
+type AddressGroupTypeInput interface {
+	pulumi.Input
+
+	ToAddressGroupTypeOutput() AddressGroupTypeOutput
+	ToAddressGroupTypeOutputWithContext(context.Context) AddressGroupTypeOutput
+}
+
+var addressGroupTypePtrType = reflect.TypeOf((**AddressGroupType)(nil)).Elem()
+
+type AddressGroupTypePtrInput interface {
+	pulumi.Input
+
+	ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput
+	ToAddressGroupTypePtrOutputWithContext(context.Context) AddressGroupTypePtrOutput
+}
+
+type addressGroupTypePtr string
+
+func AddressGroupTypePtr(v string) AddressGroupTypePtrInput {
+	return (*addressGroupTypePtr)(&v)
+}
+
+func (*addressGroupTypePtr) ElementType() reflect.Type {
+	return addressGroupTypePtrType
+}
+
+func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutput() AddressGroupTypePtrOutput {
+	return pulumi.ToOutput(in).(AddressGroupTypePtrOutput)
+}
+
+func (in *addressGroupTypePtr) ToAddressGroupTypePtrOutputWithContext(ctx context.Context) AddressGroupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AddressGroupTypePtrOutput)
+}
+
 // Required. The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
 type AuthorizationPolicyAction string
 
@@ -350,13 +519,363 @@ func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTyp
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
+// Required. The type of the Address Group. Possible values are "IPv4" or "IPV6".
+type OrganizationAddressGroupType string
+
+const (
+	// Default value.
+	OrganizationAddressGroupTypeTypeUnspecified = OrganizationAddressGroupType("TYPE_UNSPECIFIED")
+	// IP v4 ranges.
+	OrganizationAddressGroupTypeIpv4 = OrganizationAddressGroupType("IPV4")
+	// IP v6 ranges.
+	OrganizationAddressGroupTypeIpv6 = OrganizationAddressGroupType("IPV6")
+)
+
+func (OrganizationAddressGroupType) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAddressGroupType)(nil)).Elem()
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypeOutput() OrganizationAddressGroupTypeOutput {
+	return pulumi.ToOutput(e).(OrganizationAddressGroupTypeOutput)
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypeOutputWithContext(ctx context.Context) OrganizationAddressGroupTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationAddressGroupTypeOutput)
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return e.ToOrganizationAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationAddressGroupType) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return OrganizationAddressGroupType(e).ToOrganizationAddressGroupTypeOutputWithContext(ctx).ToOrganizationAddressGroupTypePtrOutputWithContext(ctx)
+}
+
+func (e OrganizationAddressGroupType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationAddressGroupType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e OrganizationAddressGroupType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationAddressGroupType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OrganizationAddressGroupTypeOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAddressGroupTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationAddressGroupType)(nil)).Elem()
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypeOutput() OrganizationAddressGroupTypeOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypeOutputWithContext(ctx context.Context) OrganizationAddressGroupTypeOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return o.ToOrganizationAddressGroupTypePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationAddressGroupType) *OrganizationAddressGroupType {
+		return &v
+	}).(OrganizationAddressGroupTypePtrOutput)
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationAddressGroupType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationAddressGroupType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationAddressGroupTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationAddressGroupTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationAddressGroupType)(nil)).Elem()
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return o
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) Elem() OrganizationAddressGroupTypeOutput {
+	return o.ApplyT(func(v *OrganizationAddressGroupType) OrganizationAddressGroupType {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationAddressGroupType
+		return ret
+	}).(OrganizationAddressGroupTypeOutput)
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationAddressGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationAddressGroupType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// OrganizationAddressGroupTypeInput is an input type that accepts OrganizationAddressGroupTypeArgs and OrganizationAddressGroupTypeOutput values.
+// You can construct a concrete instance of `OrganizationAddressGroupTypeInput` via:
+//
+//	OrganizationAddressGroupTypeArgs{...}
+type OrganizationAddressGroupTypeInput interface {
+	pulumi.Input
+
+	ToOrganizationAddressGroupTypeOutput() OrganizationAddressGroupTypeOutput
+	ToOrganizationAddressGroupTypeOutputWithContext(context.Context) OrganizationAddressGroupTypeOutput
+}
+
+var organizationAddressGroupTypePtrType = reflect.TypeOf((**OrganizationAddressGroupType)(nil)).Elem()
+
+type OrganizationAddressGroupTypePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput
+	ToOrganizationAddressGroupTypePtrOutputWithContext(context.Context) OrganizationAddressGroupTypePtrOutput
+}
+
+type organizationAddressGroupTypePtr string
+
+func OrganizationAddressGroupTypePtr(v string) OrganizationAddressGroupTypePtrInput {
+	return (*organizationAddressGroupTypePtr)(&v)
+}
+
+func (*organizationAddressGroupTypePtr) ElementType() reflect.Type {
+	return organizationAddressGroupTypePtrType
+}
+
+func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutput() OrganizationAddressGroupTypePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationAddressGroupTypePtrOutput)
+}
+
+func (in *organizationAddressGroupTypePtr) ToOrganizationAddressGroupTypePtrOutputWithContext(ctx context.Context) OrganizationAddressGroupTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationAddressGroupTypePtrOutput)
+}
+
+// Required. Profile which tells what the primitive action should be.
+type RuleBasicProfile string
+
+const (
+	// If there is not a mentioned action for the target.
+	RuleBasicProfileBasicProfileUnspecified = RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED")
+	// Allow the matched traffic.
+	RuleBasicProfileAllow = RuleBasicProfile("ALLOW")
+	// Deny the matched traffic.
+	RuleBasicProfileDeny = RuleBasicProfile("DENY")
+)
+
+func (RuleBasicProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleBasicProfile)(nil)).Elem()
+}
+
+func (e RuleBasicProfile) ToRuleBasicProfileOutput() RuleBasicProfileOutput {
+	return pulumi.ToOutput(e).(RuleBasicProfileOutput)
+}
+
+func (e RuleBasicProfile) ToRuleBasicProfileOutputWithContext(ctx context.Context) RuleBasicProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RuleBasicProfileOutput)
+}
+
+func (e RuleBasicProfile) ToRuleBasicProfilePtrOutput() RuleBasicProfilePtrOutput {
+	return e.ToRuleBasicProfilePtrOutputWithContext(context.Background())
+}
+
+func (e RuleBasicProfile) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
+	return RuleBasicProfile(e).ToRuleBasicProfileOutputWithContext(ctx).ToRuleBasicProfilePtrOutputWithContext(ctx)
+}
+
+func (e RuleBasicProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuleBasicProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RuleBasicProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RuleBasicProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RuleBasicProfileOutput struct{ *pulumi.OutputState }
+
+func (RuleBasicProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleBasicProfile)(nil)).Elem()
+}
+
+func (o RuleBasicProfileOutput) ToRuleBasicProfileOutput() RuleBasicProfileOutput {
+	return o
+}
+
+func (o RuleBasicProfileOutput) ToRuleBasicProfileOutputWithContext(ctx context.Context) RuleBasicProfileOutput {
+	return o
+}
+
+func (o RuleBasicProfileOutput) ToRuleBasicProfilePtrOutput() RuleBasicProfilePtrOutput {
+	return o.ToRuleBasicProfilePtrOutputWithContext(context.Background())
+}
+
+func (o RuleBasicProfileOutput) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleBasicProfile) *RuleBasicProfile {
+		return &v
+	}).(RuleBasicProfilePtrOutput)
+}
+
+func (o RuleBasicProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RuleBasicProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuleBasicProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RuleBasicProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuleBasicProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RuleBasicProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RuleBasicProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (RuleBasicProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleBasicProfile)(nil)).Elem()
+}
+
+func (o RuleBasicProfilePtrOutput) ToRuleBasicProfilePtrOutput() RuleBasicProfilePtrOutput {
+	return o
+}
+
+func (o RuleBasicProfilePtrOutput) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
+	return o
+}
+
+func (o RuleBasicProfilePtrOutput) Elem() RuleBasicProfileOutput {
+	return o.ApplyT(func(v *RuleBasicProfile) RuleBasicProfile {
+		if v != nil {
+			return *v
+		}
+		var ret RuleBasicProfile
+		return ret
+	}).(RuleBasicProfileOutput)
+}
+
+func (o RuleBasicProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RuleBasicProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RuleBasicProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RuleBasicProfileInput is an input type that accepts RuleBasicProfileArgs and RuleBasicProfileOutput values.
+// You can construct a concrete instance of `RuleBasicProfileInput` via:
+//
+//	RuleBasicProfileArgs{...}
+type RuleBasicProfileInput interface {
+	pulumi.Input
+
+	ToRuleBasicProfileOutput() RuleBasicProfileOutput
+	ToRuleBasicProfileOutputWithContext(context.Context) RuleBasicProfileOutput
+}
+
+var ruleBasicProfilePtrType = reflect.TypeOf((**RuleBasicProfile)(nil)).Elem()
+
+type RuleBasicProfilePtrInput interface {
+	pulumi.Input
+
+	ToRuleBasicProfilePtrOutput() RuleBasicProfilePtrOutput
+	ToRuleBasicProfilePtrOutputWithContext(context.Context) RuleBasicProfilePtrOutput
+}
+
+type ruleBasicProfilePtr string
+
+func RuleBasicProfilePtr(v string) RuleBasicProfilePtrInput {
+	return (*ruleBasicProfilePtr)(&v)
+}
+
+func (*ruleBasicProfilePtr) ElementType() reflect.Type {
+	return ruleBasicProfilePtrType
+}
+
+func (in *ruleBasicProfilePtr) ToRuleBasicProfilePtrOutput() RuleBasicProfilePtrOutput {
+	return pulumi.ToOutput(in).(RuleBasicProfilePtrOutput)
+}
+
+func (in *ruleBasicProfilePtr) ToRuleBasicProfilePtrOutputWithContext(ctx context.Context) RuleBasicProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RuleBasicProfilePtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupTypeInput)(nil)).Elem(), AddressGroupType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupTypePtrInput)(nil)).Elem(), AddressGroupType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyActionPtrInput)(nil)).Elem(), AuthorizationPolicyAction("ACTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypeInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditLogConfigLogTypePtrInput)(nil)).Elem(), GoogleIamV1AuditLogConfigLogType("LOG_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypeInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationAddressGroupTypePtrInput)(nil)).Elem(), OrganizationAddressGroupType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfileInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleBasicProfilePtrInput)(nil)).Elem(), RuleBasicProfile("BASIC_PROFILE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AddressGroupTypeOutput{})
+	pulumi.RegisterOutputType(AddressGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyActionOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
 	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationAddressGroupTypeOutput{})
+	pulumi.RegisterOutputType(OrganizationAddressGroupTypePtrOutput{})
+	pulumi.RegisterOutputType(RuleBasicProfileOutput{})
+	pulumi.RegisterOutputType(RuleBasicProfilePtrOutput{})
 }

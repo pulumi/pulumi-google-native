@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointResult:
-    def __init__(__self__, address=None, create_time=None, metadata=None, name=None, network=None, port=None, update_time=None):
+    def __init__(__self__, address=None, create_time=None, metadata=None, name=None, network=None, port=None, uid=None, update_time=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
@@ -37,6 +37,9 @@ class GetEndpointResult:
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if uid and not isinstance(uid, str):
+            raise TypeError("Expected argument 'uid' to be a str")
+        pulumi.set(__self__, "uid", uid)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -90,6 +93,14 @@ class GetEndpointResult:
         return pulumi.get(self, "port")
 
     @property
+    @pulumi.getter
+    def uid(self) -> str:
+        """
+        A globally unique identifier (in UUID4 format) for this endpoint.
+        """
+        return pulumi.get(self, "uid")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -110,6 +121,7 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             name=self.name,
             network=self.network,
             port=self.port,
+            uid=self.uid,
             update_time=self.update_time)
 
 
@@ -138,6 +150,7 @@ def get_endpoint(endpoint_id: Optional[str] = None,
         name=__ret__.name,
         network=__ret__.network,
         port=__ret__.port,
+        uid=__ret__.uid,
         update_time=__ret__.update_time)
 
 

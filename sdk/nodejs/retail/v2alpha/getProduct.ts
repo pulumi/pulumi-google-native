@@ -96,7 +96,7 @@ export interface GetProductResult {
      */
     readonly languageCode: string;
     /**
-     * A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+     * A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
      */
     readonly localInventories: outputs.retail.v2alpha.GoogleCloudRetailV2alphaLocalInventoryResponse[];
     /**

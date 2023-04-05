@@ -27,6 +27,18 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2.Inputs
             set => _enabledProviders = value;
         }
 
+        [Input("providerConfigs")]
+        private InputList<Inputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs>? _providerConfigs;
+
+        /// <summary>
+        /// A list of usable second factors for this project along with their configurations. This field does not support phone based MFA, for that use the 'enabled_providers' field.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs> ProviderConfigs
+        {
+            get => _providerConfigs ?? (_providerConfigs = new InputList<Inputs.GoogleCloudIdentitytoolkitAdminV2ProviderConfigArgs>());
+            set => _providerConfigs = value;
+        }
+
         /// <summary>
         /// Whether MultiFactor Authentication has been enabled for this project.
         /// </summary>

@@ -533,7 +533,7 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -554,7 +554,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -617,7 +617,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -651,7 +651,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -677,7 +677,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -3559,6 +3559,380 @@ func (o KeyVersionSpecResponseOutput) CloudKmsKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVersionSpecResponse) string { return v.CloudKmsKeyVersion }).(pulumi.StringOutput)
 }
 
+// Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+type NameConstraints struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical *bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+	PermittedUris []string `pulumi:"permittedUris"`
+}
+
+// NameConstraintsInput is an input type that accepts NameConstraintsArgs and NameConstraintsOutput values.
+// You can construct a concrete instance of `NameConstraintsInput` via:
+//
+//	NameConstraintsArgs{...}
+type NameConstraintsInput interface {
+	pulumi.Input
+
+	ToNameConstraintsOutput() NameConstraintsOutput
+	ToNameConstraintsOutputWithContext(context.Context) NameConstraintsOutput
+}
+
+// Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+type NameConstraintsArgs struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical pulumi.BoolPtrInput `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames pulumi.StringArrayInput `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+	ExcludedEmailAddresses pulumi.StringArrayInput `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+	ExcludedIpRanges pulumi.StringArrayInput `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+	ExcludedUris pulumi.StringArrayInput `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames pulumi.StringArrayInput `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+	PermittedEmailAddresses pulumi.StringArrayInput `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+	PermittedIpRanges pulumi.StringArrayInput `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+	PermittedUris pulumi.StringArrayInput `pulumi:"permittedUris"`
+}
+
+func (NameConstraintsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameConstraints)(nil)).Elem()
+}
+
+func (i NameConstraintsArgs) ToNameConstraintsOutput() NameConstraintsOutput {
+	return i.ToNameConstraintsOutputWithContext(context.Background())
+}
+
+func (i NameConstraintsArgs) ToNameConstraintsOutputWithContext(ctx context.Context) NameConstraintsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameConstraintsOutput)
+}
+
+func (i NameConstraintsArgs) ToNameConstraintsPtrOutput() NameConstraintsPtrOutput {
+	return i.ToNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i NameConstraintsArgs) ToNameConstraintsPtrOutputWithContext(ctx context.Context) NameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameConstraintsOutput).ToNameConstraintsPtrOutputWithContext(ctx)
+}
+
+// NameConstraintsPtrInput is an input type that accepts NameConstraintsArgs, NameConstraintsPtr and NameConstraintsPtrOutput values.
+// You can construct a concrete instance of `NameConstraintsPtrInput` via:
+//
+//	        NameConstraintsArgs{...}
+//
+//	or:
+//
+//	        nil
+type NameConstraintsPtrInput interface {
+	pulumi.Input
+
+	ToNameConstraintsPtrOutput() NameConstraintsPtrOutput
+	ToNameConstraintsPtrOutputWithContext(context.Context) NameConstraintsPtrOutput
+}
+
+type nameConstraintsPtrType NameConstraintsArgs
+
+func NameConstraintsPtr(v *NameConstraintsArgs) NameConstraintsPtrInput {
+	return (*nameConstraintsPtrType)(v)
+}
+
+func (*nameConstraintsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameConstraints)(nil)).Elem()
+}
+
+func (i *nameConstraintsPtrType) ToNameConstraintsPtrOutput() NameConstraintsPtrOutput {
+	return i.ToNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (i *nameConstraintsPtrType) ToNameConstraintsPtrOutputWithContext(ctx context.Context) NameConstraintsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NameConstraintsPtrOutput)
+}
+
+// Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+type NameConstraintsOutput struct{ *pulumi.OutputState }
+
+func (NameConstraintsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameConstraints)(nil)).Elem()
+}
+
+func (o NameConstraintsOutput) ToNameConstraintsOutput() NameConstraintsOutput {
+	return o
+}
+
+func (o NameConstraintsOutput) ToNameConstraintsOutputWithContext(ctx context.Context) NameConstraintsOutput {
+	return o
+}
+
+func (o NameConstraintsOutput) ToNameConstraintsPtrOutput() NameConstraintsPtrOutput {
+	return o.ToNameConstraintsPtrOutputWithContext(context.Background())
+}
+
+func (o NameConstraintsOutput) ToNameConstraintsPtrOutputWithContext(ctx context.Context) NameConstraintsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NameConstraints) *NameConstraints {
+		return &v
+	}).(NameConstraintsPtrOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o NameConstraintsOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NameConstraints) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+func (o NameConstraintsOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+func (o NameConstraintsOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+func (o NameConstraintsOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+func (o NameConstraintsOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+func (o NameConstraintsOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+func (o NameConstraintsOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+func (o NameConstraintsOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+func (o NameConstraintsOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraints) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
+}
+
+type NameConstraintsPtrOutput struct{ *pulumi.OutputState }
+
+func (NameConstraintsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NameConstraints)(nil)).Elem()
+}
+
+func (o NameConstraintsPtrOutput) ToNameConstraintsPtrOutput() NameConstraintsPtrOutput {
+	return o
+}
+
+func (o NameConstraintsPtrOutput) ToNameConstraintsPtrOutputWithContext(ctx context.Context) NameConstraintsPtrOutput {
+	return o
+}
+
+func (o NameConstraintsPtrOutput) Elem() NameConstraintsOutput {
+	return o.ApplyT(func(v *NameConstraints) NameConstraints {
+		if v != nil {
+			return *v
+		}
+		var ret NameConstraints
+		return ret
+	}).(NameConstraintsOutput)
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o NameConstraintsPtrOutput) Critical() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NameConstraints) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Critical
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+func (o NameConstraintsPtrOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+func (o NameConstraintsPtrOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+func (o NameConstraintsPtrOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+func (o NameConstraintsPtrOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+func (o NameConstraintsPtrOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedDnsNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+func (o NameConstraintsPtrOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedEmailAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+func (o NameConstraintsPtrOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedIpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+func (o NameConstraintsPtrOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NameConstraints) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PermittedUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+type NameConstraintsResponse struct {
+	// Indicates whether or not the name constraints are marked critical.
+	Critical bool `pulumi:"critical"`
+	// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+	ExcludedDnsNames []string `pulumi:"excludedDnsNames"`
+	// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+	ExcludedEmailAddresses []string `pulumi:"excludedEmailAddresses"`
+	// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+	ExcludedIpRanges []string `pulumi:"excludedIpRanges"`
+	// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+	ExcludedUris []string `pulumi:"excludedUris"`
+	// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+	PermittedDnsNames []string `pulumi:"permittedDnsNames"`
+	// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+	PermittedEmailAddresses []string `pulumi:"permittedEmailAddresses"`
+	// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+	PermittedIpRanges []string `pulumi:"permittedIpRanges"`
+	// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+	PermittedUris []string `pulumi:"permittedUris"`
+}
+
+// Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+type NameConstraintsResponseOutput struct{ *pulumi.OutputState }
+
+func (NameConstraintsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NameConstraintsResponse)(nil)).Elem()
+}
+
+func (o NameConstraintsResponseOutput) ToNameConstraintsResponseOutput() NameConstraintsResponseOutput {
+	return o
+}
+
+func (o NameConstraintsResponseOutput) ToNameConstraintsResponseOutputWithContext(ctx context.Context) NameConstraintsResponseOutput {
+	return o
+}
+
+// Indicates whether or not the name constraints are marked critical.
+func (o NameConstraintsResponseOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) bool { return v.Critical }).(pulumi.BoolOutput)
+}
+
+// Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+func (o NameConstraintsResponseOutput) ExcludedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.ExcludedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+func (o NameConstraintsResponseOutput) ExcludedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.ExcludedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+func (o NameConstraintsResponseOutput) ExcludedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.ExcludedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+func (o NameConstraintsResponseOutput) ExcludedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.ExcludedUris }).(pulumi.StringArrayOutput)
+}
+
+// Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+func (o NameConstraintsResponseOutput) PermittedDnsNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.PermittedDnsNames }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+func (o NameConstraintsResponseOutput) PermittedEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.PermittedEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+func (o NameConstraintsResponseOutput) PermittedIpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.PermittedIpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+func (o NameConstraintsResponseOutput) PermittedUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NameConstraintsResponse) []string { return v.PermittedUris }).(pulumi.StringArrayOutput)
+}
+
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 type ObjectId struct {
 	// The parts of an OID path. The most significant parts of the path come first.
@@ -5731,6 +6105,8 @@ type X509Parameters struct {
 	CaOptions *CaOptions `pulumi:"caOptions"`
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
 	KeyUsage *KeyUsage `pulumi:"keyUsage"`
+	// Optional. Describes the X.509 name constraints extension.
+	NameConstraints *NameConstraints `pulumi:"nameConstraints"`
 	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	PolicyIds []ObjectId `pulumi:"policyIds"`
 }
@@ -5756,6 +6132,8 @@ type X509ParametersArgs struct {
 	CaOptions CaOptionsPtrInput `pulumi:"caOptions"`
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
 	KeyUsage KeyUsagePtrInput `pulumi:"keyUsage"`
+	// Optional. Describes the X.509 name constraints extension.
+	NameConstraints NameConstraintsPtrInput `pulumi:"nameConstraints"`
 	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	PolicyIds ObjectIdArrayInput `pulumi:"policyIds"`
 }
@@ -5858,6 +6236,11 @@ func (o X509ParametersOutput) KeyUsage() KeyUsagePtrOutput {
 	return o.ApplyT(func(v X509Parameters) *KeyUsage { return v.KeyUsage }).(KeyUsagePtrOutput)
 }
 
+// Optional. Describes the X.509 name constraints extension.
+func (o X509ParametersOutput) NameConstraints() NameConstraintsPtrOutput {
+	return o.ApplyT(func(v X509Parameters) *NameConstraints { return v.NameConstraints }).(NameConstraintsPtrOutput)
+}
+
 // Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 func (o X509ParametersOutput) PolicyIds() ObjectIdArrayOutput {
 	return o.ApplyT(func(v X509Parameters) []ObjectId { return v.PolicyIds }).(ObjectIdArrayOutput)
@@ -5927,6 +6310,16 @@ func (o X509ParametersPtrOutput) KeyUsage() KeyUsagePtrOutput {
 	}).(KeyUsagePtrOutput)
 }
 
+// Optional. Describes the X.509 name constraints extension.
+func (o X509ParametersPtrOutput) NameConstraints() NameConstraintsPtrOutput {
+	return o.ApplyT(func(v *X509Parameters) *NameConstraints {
+		if v == nil {
+			return nil
+		}
+		return v.NameConstraints
+	}).(NameConstraintsPtrOutput)
+}
+
 // Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 func (o X509ParametersPtrOutput) PolicyIds() ObjectIdArrayOutput {
 	return o.ApplyT(func(v *X509Parameters) []ObjectId {
@@ -5947,6 +6340,8 @@ type X509ParametersResponse struct {
 	CaOptions CaOptionsResponse `pulumi:"caOptions"`
 	// Optional. Indicates the intended use for keys that correspond to a certificate.
 	KeyUsage KeyUsageResponse `pulumi:"keyUsage"`
+	// Optional. Describes the X.509 name constraints extension.
+	NameConstraints NameConstraintsResponse `pulumi:"nameConstraints"`
 	// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 	PolicyIds []ObjectIdResponse `pulumi:"policyIds"`
 }
@@ -5986,6 +6381,11 @@ func (o X509ParametersResponseOutput) KeyUsage() KeyUsageResponseOutput {
 	return o.ApplyT(func(v X509ParametersResponse) KeyUsageResponse { return v.KeyUsage }).(KeyUsageResponseOutput)
 }
 
+// Optional. Describes the X.509 name constraints extension.
+func (o X509ParametersResponseOutput) NameConstraints() NameConstraintsResponseOutput {
+	return o.ApplyT(func(v X509ParametersResponse) NameConstraintsResponse { return v.NameConstraints }).(NameConstraintsResponseOutput)
+}
+
 // Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
 func (o X509ParametersResponseOutput) PolicyIds() ObjectIdResponseArrayOutput {
 	return o.ApplyT(func(v X509ParametersResponse) []ObjectIdResponse { return v.PolicyIds }).(ObjectIdResponseArrayOutput)
@@ -6023,6 +6423,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsInput)(nil)).Elem(), KeyUsageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyUsageOptionsPtrInput)(nil)).Elem(), KeyUsageOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyVersionSpecInput)(nil)).Elem(), KeyVersionSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameConstraintsInput)(nil)).Elem(), NameConstraintsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NameConstraintsPtrInput)(nil)).Elem(), NameConstraintsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdInput)(nil)).Elem(), ObjectIdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObjectIdArrayInput)(nil)).Elem(), ObjectIdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicKeyInput)(nil)).Elem(), PublicKeyArgs{})
@@ -6101,6 +6503,9 @@ func init() {
 	pulumi.RegisterOutputType(KeyUsageResponseOutput{})
 	pulumi.RegisterOutputType(KeyVersionSpecOutput{})
 	pulumi.RegisterOutputType(KeyVersionSpecResponseOutput{})
+	pulumi.RegisterOutputType(NameConstraintsOutput{})
+	pulumi.RegisterOutputType(NameConstraintsPtrOutput{})
+	pulumi.RegisterOutputType(NameConstraintsResponseOutput{})
 	pulumi.RegisterOutputType(ObjectIdOutput{})
 	pulumi.RegisterOutputType(ObjectIdArrayOutput{})
 	pulumi.RegisterOutputType(ObjectIdResponseOutput{})

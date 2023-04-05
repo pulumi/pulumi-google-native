@@ -84,6 +84,55 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     }
 
     /// <summary>
+    /// Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction : IEquatable<GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified value for restriction.
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction RestrictionUnspecified { get; } = new GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("RESTRICTION_UNSPECIFIED");
+        /// <summary>
+        /// Allow any ServingConfig to be show on any number of panels. Example: `Panel1 candidates`: pdp_ctr, pdp_cvr, home_page_ctr_no_diversity `Panel2 candidates`: home_page_ctr_no_diversity, home_page_ctr_diversity, pdp_cvr_no_diversity `Restriction` = NO_RESTRICTION `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: []
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction NoRestriction { get; } = new GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("NO_RESTRICTION");
+        /// <summary>
+        /// Do not allow the same ServingConfig.name to be shown on multiple panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_SERVING_CONFIG_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity_low) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) *
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction UniqueServingConfigRestriction { get; } = new GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("UNIQUE_SERVING_CONFIG_RESTRICTION");
+        /// <summary>
+        /// Do not allow multiple ServingConfigs with same Model.name to be show on on different panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_MODEL_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (pdp_cvr, pdp_cvr_no_diversity) *
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction UniqueModelRestriction { get; } = new GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("UNIQUE_MODEL_RESTRICTION");
+        /// <summary>
+        /// Do not allow multiple ServingConfigs with same Model.type to be shown on different panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_MODEL_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity) *
+        /// </summary>
+        public static GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction UniqueModelTypeRestriction { get; } = new GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction("UNIQUE_MODEL_TYPE_RESTRICTION");
+
+        public static bool operator ==(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction left, GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction left, GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction other && Equals(other);
+        public bool Equals(GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
     /// </summary>
     [EnumType]
@@ -158,6 +207,133 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode other && Equals(other);
         public bool Equals(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+    /// </summary>
+    [EnumType]
+    public readonly struct ModelFilteringOption : IEquatable<ModelFilteringOption>
+    {
+        private readonly string _value;
+
+        private ModelFilteringOption(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.
+        /// </summary>
+        public static ModelFilteringOption RecommendationsFilteringOptionUnspecified { get; } = new ModelFilteringOption("RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED");
+        /// <summary>
+        /// Recommendation filtering is disabled.
+        /// </summary>
+        public static ModelFilteringOption RecommendationsFilteringDisabled { get; } = new ModelFilteringOption("RECOMMENDATIONS_FILTERING_DISABLED");
+        /// <summary>
+        /// Recommendation filtering is enabled.
+        /// </summary>
+        public static ModelFilteringOption RecommendationsFilteringEnabled { get; } = new ModelFilteringOption("RECOMMENDATIONS_FILTERING_ENABLED");
+
+        public static bool operator ==(ModelFilteringOption left, ModelFilteringOption right) => left.Equals(right);
+        public static bool operator !=(ModelFilteringOption left, ModelFilteringOption right) => !left.Equals(right);
+
+        public static explicit operator string(ModelFilteringOption value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ModelFilteringOption other && Equals(other);
+        public bool Equals(ModelFilteringOption other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+    /// </summary>
+    [EnumType]
+    public readonly struct ModelPeriodicTuningState : IEquatable<ModelPeriodicTuningState>
+    {
+        private readonly string _value;
+
+        private ModelPeriodicTuningState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified default value, should never be explicitly set.
+        /// </summary>
+        public static ModelPeriodicTuningState PeriodicTuningStateUnspecified { get; } = new ModelPeriodicTuningState("PERIODIC_TUNING_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.
+        /// </summary>
+        public static ModelPeriodicTuningState PeriodicTuningDisabled { get; } = new ModelPeriodicTuningState("PERIODIC_TUNING_DISABLED");
+        /// <summary>
+        /// The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.
+        /// </summary>
+        public static ModelPeriodicTuningState AllTuningDisabled { get; } = new ModelPeriodicTuningState("ALL_TUNING_DISABLED");
+        /// <summary>
+        /// The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method.
+        /// </summary>
+        public static ModelPeriodicTuningState PeriodicTuningEnabled { get; } = new ModelPeriodicTuningState("PERIODIC_TUNING_ENABLED");
+
+        public static bool operator ==(ModelPeriodicTuningState left, ModelPeriodicTuningState right) => left.Equals(right);
+        public static bool operator !=(ModelPeriodicTuningState left, ModelPeriodicTuningState right) => !left.Equals(right);
+
+        public static explicit operator string(ModelPeriodicTuningState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ModelPeriodicTuningState other && Equals(other);
+        public bool Equals(ModelPeriodicTuningState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
+    /// </summary>
+    [EnumType]
+    public readonly struct ModelTrainingState : IEquatable<ModelTrainingState>
+    {
+        private readonly string _value;
+
+        private ModelTrainingState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified training state.
+        /// </summary>
+        public static ModelTrainingState TrainingStateUnspecified { get; } = new ModelTrainingState("TRAINING_STATE_UNSPECIFIED");
+        /// <summary>
+        /// The model training is paused.
+        /// </summary>
+        public static ModelTrainingState Paused { get; } = new ModelTrainingState("PAUSED");
+        /// <summary>
+        /// The model is training.
+        /// </summary>
+        public static ModelTrainingState Training { get; } = new ModelTrainingState("TRAINING");
+
+        public static bool operator ==(ModelTrainingState left, ModelTrainingState right) => left.Equals(right);
+        public static bool operator !=(ModelTrainingState left, ModelTrainingState right) => !left.Equals(right);
+
+        public static explicit operator string(ModelTrainingState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ModelTrainingState other && Equals(other);
+        public bool Equals(ModelTrainingState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

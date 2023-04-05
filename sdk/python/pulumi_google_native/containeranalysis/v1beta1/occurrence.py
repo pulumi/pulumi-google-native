@@ -30,6 +30,7 @@ class OccurrenceArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
                  sbom: Optional[pulumi.Input['DocumentOccurrenceArgs']] = None,
+                 sbom_reference: Optional[pulumi.Input['SBOMReferenceOccurrenceArgs']] = None,
                  spdx_file: Optional[pulumi.Input['FileOccurrenceArgs']] = None,
                  spdx_package: Optional[pulumi.Input['PackageInfoOccurrenceArgs']] = None,
                  spdx_relationship: Optional[pulumi.Input['RelationshipOccurrenceArgs']] = None,
@@ -48,6 +49,7 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1IntotoDetailsArgs'] intoto: Describes a specific in-toto link.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input['DocumentOccurrenceArgs'] sbom: Describes a specific software bill of materials document.
+        :param pulumi.Input['SBOMReferenceOccurrenceArgs'] sbom_reference: Describes a specific SBOM reference occurrences.
         :param pulumi.Input['FileOccurrenceArgs'] spdx_file: Describes a specific SPDX File.
         :param pulumi.Input['PackageInfoOccurrenceArgs'] spdx_package: Describes a specific SPDX Package.
         :param pulumi.Input['RelationshipOccurrenceArgs'] spdx_relationship: Describes a specific SPDX Relationship.
@@ -77,6 +79,8 @@ class OccurrenceArgs:
             pulumi.set(__self__, "remediation", remediation)
         if sbom is not None:
             pulumi.set(__self__, "sbom", sbom)
+        if sbom_reference is not None:
+            pulumi.set(__self__, "sbom_reference", sbom_reference)
         if spdx_file is not None:
             pulumi.set(__self__, "spdx_file", spdx_file)
         if spdx_package is not None:
@@ -240,6 +244,18 @@ class OccurrenceArgs:
         pulumi.set(self, "sbom", value)
 
     @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> Optional[pulumi.Input['SBOMReferenceOccurrenceArgs']]:
+        """
+        Describes a specific SBOM reference occurrences.
+        """
+        return pulumi.get(self, "sbom_reference")
+
+    @sbom_reference.setter
+    def sbom_reference(self, value: Optional[pulumi.Input['SBOMReferenceOccurrenceArgs']]):
+        pulumi.set(self, "sbom_reference", value)
+
+    @property
     @pulumi.getter(name="spdxFile")
     def spdx_file(self) -> Optional[pulumi.Input['FileOccurrenceArgs']]:
         """
@@ -306,6 +322,7 @@ class Occurrence(pulumi.CustomResource):
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
+                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
                  spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
@@ -329,6 +346,7 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
         :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Immutable. The resource for which the occurrence applies.
         :param pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']] sbom: Describes a specific software bill of materials document.
+        :param pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']] sbom_reference: Describes a specific SBOM reference occurrences.
         :param pulumi.Input[pulumi.InputType['FileOccurrenceArgs']] spdx_file: Describes a specific SPDX File.
         :param pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']] spdx_package: Describes a specific SPDX Package.
         :param pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']] spdx_relationship: Describes a specific SPDX Relationship.
@@ -372,6 +390,7 @@ class Occurrence(pulumi.CustomResource):
                  remediation: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[pulumi.InputType['ResourceArgs']]] = None,
                  sbom: Optional[pulumi.Input[pulumi.InputType['DocumentOccurrenceArgs']]] = None,
+                 sbom_reference: Optional[pulumi.Input[pulumi.InputType['SBOMReferenceOccurrenceArgs']]] = None,
                  spdx_file: Optional[pulumi.Input[pulumi.InputType['FileOccurrenceArgs']]] = None,
                  spdx_package: Optional[pulumi.Input[pulumi.InputType['PackageInfoOccurrenceArgs']]] = None,
                  spdx_relationship: Optional[pulumi.Input[pulumi.InputType['RelationshipOccurrenceArgs']]] = None,
@@ -402,6 +421,7 @@ class Occurrence(pulumi.CustomResource):
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
             __props__.__dict__["sbom"] = sbom
+            __props__.__dict__["sbom_reference"] = sbom_reference
             __props__.__dict__["spdx_file"] = spdx_file
             __props__.__dict__["spdx_package"] = spdx_package
             __props__.__dict__["spdx_relationship"] = spdx_relationship
@@ -450,6 +470,7 @@ class Occurrence(pulumi.CustomResource):
         __props__.__dict__["remediation"] = None
         __props__.__dict__["resource"] = None
         __props__.__dict__["sbom"] = None
+        __props__.__dict__["sbom_reference"] = None
         __props__.__dict__["spdx_file"] = None
         __props__.__dict__["spdx_package"] = None
         __props__.__dict__["spdx_relationship"] = None
@@ -581,6 +602,14 @@ class Occurrence(pulumi.CustomResource):
         Describes a specific software bill of materials document.
         """
         return pulumi.get(self, "sbom")
+
+    @property
+    @pulumi.getter(name="sbomReference")
+    def sbom_reference(self) -> pulumi.Output['outputs.SBOMReferenceOccurrenceResponse']:
+        """
+        Describes a specific SBOM reference occurrences.
+        """
+        return pulumi.get(self, "sbom_reference")
 
     @property
     @pulumi.getter(name="spdxFile")

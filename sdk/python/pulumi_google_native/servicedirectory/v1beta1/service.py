@@ -174,6 +174,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["endpoints"] = None
+            __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "namespace_id", "project", "service_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -207,6 +208,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["namespace_id"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["service_id"] = None
+        __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
 
@@ -264,6 +266,14 @@ class Service(pulumi.CustomResource):
         Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> pulumi.Output[str]:
+        """
+        A globally unique identifier (in UUID4 format) for this service.
+        """
+        return pulumi.get(self, "uid")
 
     @property
     @pulumi.getter(name="updateTime")

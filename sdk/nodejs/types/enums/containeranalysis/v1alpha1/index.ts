@@ -2,6 +2,34 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AssessmentState = {
+    /**
+     * No state is specified.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * This product is known to be affected by this vulnerability.
+     */
+    Affected: "AFFECTED",
+    /**
+     * This product is known to be not affected by this vulnerability.
+     */
+    NotAffected: "NOT_AFFECTED",
+    /**
+     * This product contains a fix for this vulnerability.
+     */
+    Fixed: "FIXED",
+    /**
+     * It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+     */
+    UnderInvestigation: "UNDER_INVESTIGATION",
+} as const;
+
+/**
+ * Provides the state of this Vulnerability assessment.
+ */
+export type AssessmentState = (typeof AssessmentState)[keyof typeof AssessmentState];
+
 export const BuildSignatureKeyType = {
     /**
      * `KeyType` is not set.
@@ -431,6 +459,14 @@ export const DiscoveryAnalysisKind = {
      * This represents a DSSE attestation Note
      */
     DsseAttestation: "DSSE_ATTESTATION",
+    /**
+     * This represents a Vulnerability Assessment.
+     */
+    VulnerabilityAssessment: "VULNERABILITY_ASSESSMENT",
+    /**
+     * This represents a reference to an SBOM.
+     */
+    SbomReference: "SBOM_REFERENCE",
 } as const;
 
 /**
@@ -581,6 +617,54 @@ export const HashType = {
  * The type of hash that was performed.
  */
 export type HashType = (typeof HashType)[keyof typeof HashType];
+
+export const IdentifierHelperField = {
+    /**
+     * The helper isn't set.
+     */
+    IdentifierHelperFieldUnspecified: "IDENTIFIER_HELPER_FIELD_UNSPECIFIED",
+    /**
+     * The generic_uri one-of field is set.
+     */
+    GenericUri: "GENERIC_URI",
+} as const;
+
+/**
+ * The field that is set in the API proto.
+ */
+export type IdentifierHelperField = (typeof IdentifierHelperField)[keyof typeof IdentifierHelperField];
+
+export const JustificationJustificationType = {
+    /**
+     * JUSTIFICATION_TYPE_UNSPECIFIED.
+     */
+    JustificationTypeUnspecified: "JUSTIFICATION_TYPE_UNSPECIFIED",
+    /**
+     * The vulnerable component is not present in the product.
+     */
+    ComponentNotPresent: "COMPONENT_NOT_PRESENT",
+    /**
+     * The vulnerable code is not present. Typically this case occurs when source code is configured or built in a way that excludes the vulnerable code.
+     */
+    VulnerableCodeNotPresent: "VULNERABLE_CODE_NOT_PRESENT",
+    /**
+     * The vulnerable code can not be executed. Typically this case occurs when the product includes the vulnerable code but does not call or use the vulnerable code.
+     */
+    VulnerableCodeNotInExecutePath: "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH",
+    /**
+     * The vulnerable code cannot be controlled by an attacker to exploit the vulnerability.
+     */
+    VulnerableCodeCannotBeControlledByAdversary: "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY",
+    /**
+     * The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors.
+     */
+    InlineMitigationsAlreadyExist: "INLINE_MITIGATIONS_ALREADY_EXIST",
+} as const;
+
+/**
+ * The justification type for this vulnerability.
+ */
+export type JustificationJustificationType = (typeof JustificationJustificationType)[keyof typeof JustificationJustificationType];
 
 export const LayerDirective = {
     /**
@@ -882,6 +966,38 @@ export const RelationshipNoteType = {
  */
 export type RelationshipNoteType = (typeof RelationshipNoteType)[keyof typeof RelationshipNoteType];
 
+export const RemediationRemediationType = {
+    /**
+     * No remediation type specified.
+     */
+    RemediationTypeUnspecified: "REMEDIATION_TYPE_UNSPECIFIED",
+    /**
+     * A MITIGATION is available.
+     */
+    Mitigation: "MITIGATION",
+    /**
+     * No fix is planned.
+     */
+    NoFixPlanned: "NO_FIX_PLANNED",
+    /**
+     * Not available.
+     */
+    NoneAvailable: "NONE_AVAILABLE",
+    /**
+     * A vendor fix is available.
+     */
+    VendorFix: "VENDOR_FIX",
+    /**
+     * A workaround is available.
+     */
+    Workaround: "WORKAROUND",
+} as const;
+
+/**
+ * The type of remediation that can be applied.
+ */
+export type RemediationRemediationType = (typeof RemediationRemediationType)[keyof typeof RemediationRemediationType];
+
 export const VersionKind = {
     /**
      * A standard package version, defined by the other fields.
@@ -901,6 +1017,34 @@ export const VersionKind = {
  * Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
  */
 export type VersionKind = (typeof VersionKind)[keyof typeof VersionKind];
+
+export const VexAssessmentState = {
+    /**
+     * No state is specified.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * This product is known to be affected by this vulnerability.
+     */
+    Affected: "AFFECTED",
+    /**
+     * This product is known to be not affected by this vulnerability.
+     */
+    NotAffected: "NOT_AFFECTED",
+    /**
+     * This product contains a fix for this vulnerability.
+     */
+    Fixed: "FIXED",
+    /**
+     * It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
+     */
+    UnderInvestigation: "UNDER_INVESTIGATION",
+} as const;
+
+/**
+ * Provides the state of this Vulnerability assessment.
+ */
+export type VexAssessmentState = (typeof VexAssessmentState)[keyof typeof VexAssessmentState];
 
 export const VulnerabilityDetailsEffectiveSeverity = {
     /**
@@ -933,6 +1077,26 @@ export const VulnerabilityDetailsEffectiveSeverity = {
  * The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple package issues for this vulnerability, they can have different effective severities because some might come from the distro and some might come from installed language packs (e.g. Maven JARs or Go binaries). For this reason, it is advised to use the effective severity on the PackageIssue level, as this field may eventually be deprecated. In the case where multiple PackageIssues have different effective severities, the one set here will be the highest severity of any of the PackageIssues.
  */
 export type VulnerabilityDetailsEffectiveSeverity = (typeof VulnerabilityDetailsEffectiveSeverity)[keyof typeof VulnerabilityDetailsEffectiveSeverity];
+
+export const VulnerabilityTypeCvssVersion = {
+    /**
+     * CVSS Version unspecified.
+     */
+    CvssVersionUnspecified: "CVSS_VERSION_UNSPECIFIED",
+    /**
+     * CVSS v2.
+     */
+    CvssVersion2: "CVSS_VERSION_2",
+    /**
+     * CVSS v3.
+     */
+    CvssVersion3: "CVSS_VERSION_3",
+} as const;
+
+/**
+ * CVSS version used to populate cvss_score and severity.
+ */
+export type VulnerabilityTypeCvssVersion = (typeof VulnerabilityTypeCvssVersion)[keyof typeof VulnerabilityTypeCvssVersion];
 
 export const VulnerabilityTypeSeverity = {
     /**

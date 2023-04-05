@@ -46,7 +46,11 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly concurrencyMode!: pulumi.Output<string>;
     /**
-     * Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+     * The timestamp at which this database was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
      */
     public readonly databaseId!: pulumi.Output<string>;
     /**
@@ -70,6 +74,14 @@ export class Database extends pulumi.CustomResource {
      * The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
      */
     public readonly type!: pulumi.Output<string>;
+    /**
+     * The system-generated UUID4 for this Database.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
+     * The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Database resource with the given unique name, arguments, and options.
@@ -93,10 +105,14 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["keyPrefix"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["appEngineIntegrationMode"] = undefined /*out*/;
             resourceInputs["concurrencyMode"] = undefined /*out*/;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["databaseId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["keyPrefix"] = undefined /*out*/;
@@ -104,6 +120,8 @@ export class Database extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
+            resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["databaseId", "project"] };
@@ -125,7 +143,7 @@ export interface DatabaseArgs {
      */
     concurrencyMode?: pulumi.Input<enums.firestore.v1.DatabaseConcurrencyMode>;
     /**
-     * Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+     * Required. The ID to use for the database, which will become the final component of the database's resource name. The value must be set to "(default)".
      */
     databaseId: pulumi.Input<string>;
     /**

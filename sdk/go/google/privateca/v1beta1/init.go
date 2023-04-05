@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "google-native:privateca/v1beta1:Certificate":
-		r = &Certificate{}
-	case "google-native:privateca/v1beta1:CertificateAuthority":
-		r = &CertificateAuthority{}
 	case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamBinding":
 		r = &CertificateAuthorityCertificateRevocationListIamBinding{}
 	case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamMember":

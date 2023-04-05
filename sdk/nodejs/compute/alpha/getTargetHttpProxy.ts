@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpProxy resource.
  */
 export function getTargetHttpProxy(args: GetTargetHttpProxyArgs, opts?: pulumi.InvokeOptions): Promise<GetTargetHttpProxyResult> {
 
@@ -39,6 +39,10 @@ export interface GetTargetHttpProxyResult {
      */
     readonly httpFilters: string[];
     /**
+     * Specifies how long to keep a connection open, after completing a response, while there is no matching traffic (in seconds). If an HTTP keep-alive is not specified, a default value (610 seconds) will be used. For Global external HTTP(S) load balancer, the minimum allowed value is 5 seconds and the maximum allowed value is 1200 seconds. For Global external HTTP(S) load balancer (classic), this option is not available publicly.
+     */
+    readonly httpKeepAliveTimeoutSec: number;
+    /**
      * Type of resource. Always compute#targetHttpProxy for target HTTP proxies.
      */
     readonly kind: string;
@@ -68,7 +72,7 @@ export interface GetTargetHttpProxyResult {
     readonly urlMap: string;
 }
 /**
- * Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+ * Returns the specified TargetHttpProxy resource.
  */
 export function getTargetHttpProxyOutput(args: GetTargetHttpProxyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetHttpProxyResult> {
     return pulumi.output(args).apply((a: any) => getTargetHttpProxy(a, opts))

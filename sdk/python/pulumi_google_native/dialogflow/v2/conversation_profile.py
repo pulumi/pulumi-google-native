@@ -30,7 +30,8 @@ class ConversationProfileArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] = None,
-                 time_zone: Optional[pulumi.Input[str]] = None):
+                 time_zone: Optional[pulumi.Input[str]] = None,
+                 tts_config: Optional[pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']] = None):
         """
         The set of arguments for constructing a ConversationProfile resource.
         :param pulumi.Input[str] display_name: Human readable name for this profile. Max length 1024 bytes.
@@ -45,6 +46,7 @@ class ConversationProfileArgs:
         :param pulumi.Input[str] security_settings: Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs'] stt_config: Settings for speech transcription.
         :param pulumi.Input[str] time_zone: The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        :param pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs'] tts_config: Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
         """
         pulumi.set(__self__, "display_name", display_name)
         if automated_agent_config is not None:
@@ -73,6 +75,8 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "stt_config", stt_config)
         if time_zone is not None:
             pulumi.set(__self__, "time_zone", time_zone)
+        if tts_config is not None:
+            pulumi.set(__self__, "tts_config", tts_config)
 
     @property
     @pulumi.getter(name="displayName")
@@ -236,6 +240,18 @@ class ConversationProfileArgs:
     def time_zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "time_zone", value)
 
+    @property
+    @pulumi.getter(name="ttsConfig")
+    def tts_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]:
+        """
+        Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+        """
+        return pulumi.get(self, "tts_config")
+
+    @tts_config.setter
+    def tts_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]):
+        pulumi.set(self, "tts_config", value)
+
 
 class ConversationProfile(pulumi.CustomResource):
     @overload
@@ -256,6 +272,7 @@ class ConversationProfile(pulumi.CustomResource):
                  security_settings: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
+                 tts_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]] = None,
                  __props__=None):
         """
         Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
@@ -274,6 +291,7 @@ class ConversationProfile(pulumi.CustomResource):
         :param pulumi.Input[str] security_settings: Name of the CX SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] stt_config: Settings for speech transcription.
         :param pulumi.Input[str] time_zone: The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']] tts_config: Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
         """
         ...
     @overload
@@ -313,6 +331,7 @@ class ConversationProfile(pulumi.CustomResource):
                  security_settings: Optional[pulumi.Input[str]] = None,
                  stt_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SpeechToTextConfigArgs']]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
+                 tts_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2SynthesizeSpeechConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -338,6 +357,7 @@ class ConversationProfile(pulumi.CustomResource):
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["stt_config"] = stt_config
             __props__.__dict__["time_zone"] = time_zone
+            __props__.__dict__["tts_config"] = tts_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project"])
@@ -379,6 +399,7 @@ class ConversationProfile(pulumi.CustomResource):
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["stt_config"] = None
         __props__.__dict__["time_zone"] = None
+        __props__.__dict__["tts_config"] = None
         __props__.__dict__["update_time"] = None
         return ConversationProfile(resource_name, opts=opts, __props__=__props__)
 
@@ -495,6 +516,14 @@ class ConversationProfile(pulumi.CustomResource):
         The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.
         """
         return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="ttsConfig")
+    def tts_config(self) -> pulumi.Output['outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse']:
+        """
+        Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+        """
+        return pulumi.get(self, "tts_config")
 
     @property
     @pulumi.getter(name="updateTime")

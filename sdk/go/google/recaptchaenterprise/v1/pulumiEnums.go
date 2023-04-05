@@ -191,6 +191,8 @@ const (
 	GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureSessionToken = GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("SESSION_TOKEN")
 	// Use reCAPTCHA action-tokens to protect user actions.
 	GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureActionToken = GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("ACTION_TOKEN")
+	// Use reCAPTCHA WAF express protection to protect any content other than web pages, like APIs and IoT devices.
+	GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureExpress = GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature("EXPRESS")
 )
 
 func (GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeature) ElementType() reflect.Type {
@@ -358,6 +360,8 @@ const (
 	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceWafServiceUnspecified = GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("WAF_SERVICE_UNSPECIFIED")
 	// Cloud Armor
 	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceCa = GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("CA")
+	// Fastly
+	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceFastly = GoogleCloudRecaptchaenterpriseV1WafSettingsWafService("FASTLY")
 )
 
 func (GoogleCloudRecaptchaenterpriseV1WafSettingsWafService) ElementType() reflect.Type {

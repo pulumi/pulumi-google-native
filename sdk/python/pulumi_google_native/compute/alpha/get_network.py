@@ -123,7 +123,7 @@ class GetNetworkResult:
     @pulumi.getter(name="gatewayIPv4")
     def gateway_i_pv4(self) -> str:
         """
-        The gateway address for default routing out of the network, selected by GCP.
+        The gateway address for default routing out of the network, selected by Google Cloud.
         """
         return pulumi.get(self, "gateway_i_pv4")
 
@@ -254,7 +254,7 @@ def get_network(network: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
-    Returns the specified network. Gets a list of available networks by making a list() request.
+    Returns the specified network.
     """
     __args__ = dict()
     __args__['network'] = network
@@ -288,6 +288,6 @@ def get_network_output(network: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
-    Returns the specified network. Gets a list of available networks by making a list() request.
+    Returns the specified network.
     """
     ...

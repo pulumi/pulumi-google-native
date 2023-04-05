@@ -33,6 +33,14 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly string Codec;
         /// <summary>
+        /// The name for this particular audio stream that will be added to the HLS/DASH manifest. Not supported in MP4 files.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
+        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
+        /// </summary>
+        public readonly string LanguageCode;
+        /// <summary>
         /// The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
         /// </summary>
         public readonly ImmutableArray<Outputs.AudioMappingResponse> Mapping;
@@ -51,6 +59,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             string codec,
 
+            string displayName,
+
+            string languageCode,
+
             ImmutableArray<Outputs.AudioMappingResponse> mapping,
 
             int sampleRateHertz)
@@ -59,6 +71,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
             ChannelCount = channelCount;
             ChannelLayout = channelLayout;
             Codec = codec;
+            DisplayName = displayName;
+            LanguageCode = languageCode;
             Mapping = mapping;
             SampleRateHertz = sampleRateHertz;
         }

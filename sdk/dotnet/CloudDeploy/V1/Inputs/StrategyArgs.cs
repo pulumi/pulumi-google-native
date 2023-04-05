@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     public sealed class StrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Canary deployment strategy provides progressive percentage based deployments to a Target.
+        /// </summary>
+        [Input("canary")]
+        public Input<Inputs.CanaryArgs>? Canary { get; set; }
+
+        /// <summary>
         /// Standard deployment strategy executes a single deploy and allows verifying the deployment.
         /// </summary>
         [Input("standard")]

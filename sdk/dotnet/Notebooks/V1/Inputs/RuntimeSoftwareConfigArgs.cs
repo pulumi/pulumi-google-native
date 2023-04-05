@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         }
 
         /// <summary>
+        /// Bool indicating whether mixer client should be disabled. Default: False
+        /// </summary>
+        [Input("mixerDisabled")]
+        public Input<bool>? MixerDisabled { get; set; }
+
+        /// <summary>
         /// Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron).
         /// </summary>
         [Input("notebookUpgradeSchedule")]

@@ -44,6 +44,10 @@ export class EkmConnection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+     */
+    public readonly cryptoSpacePath!: pulumi.Output<string>;
+    /**
      * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
      */
     public readonly ekmConnectionId!: pulumi.Output<string>;
@@ -51,6 +55,10 @@ export class EkmConnection extends pulumi.CustomResource {
      * Optional. Etag of the currently stored EkmConnection.
      */
     public readonly etag!: pulumi.Output<string>;
+    /**
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+     */
+    public readonly keyManagementMode!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
      * The resource name for the EkmConnection in the format `projects/*&#47;locations/*&#47;ekmConnections/*`.
@@ -73,8 +81,10 @@ export class EkmConnection extends pulumi.CustomResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            resourceInputs["cryptoSpacePath"] = args ? args.cryptoSpacePath : undefined;
             resourceInputs["ekmConnectionId"] = args ? args.ekmConnectionId : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
+            resourceInputs["keyManagementMode"] = args ? args.keyManagementMode : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceResolvers"] = args ? args.serviceResolvers : undefined;
@@ -82,8 +92,10 @@ export class EkmConnection extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["cryptoSpacePath"] = undefined /*out*/;
             resourceInputs["ekmConnectionId"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
+            resourceInputs["keyManagementMode"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -101,6 +113,10 @@ export class EkmConnection extends pulumi.CustomResource {
  */
 export interface EkmConnectionArgs {
     /**
+     * Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+     */
+    cryptoSpacePath?: pulumi.Input<string>;
+    /**
      * Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
      */
     ekmConnectionId?: pulumi.Input<string>;
@@ -108,6 +124,10 @@ export interface EkmConnectionArgs {
      * Optional. Etag of the currently stored EkmConnection.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+     */
+    keyManagementMode?: pulumi.Input<enums.cloudkms.v1.EkmConnectionKeyManagementMode>;
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
 {
 
     /// <summary>
-    /// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+    /// A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
     /// </summary>
     [OutputType]
     public sealed class DiskResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string DiskInterface;
         /// <summary>
-        /// Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+        /// Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
         /// </summary>
         public readonly string Image;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly string SizeGb;
         /// <summary>
-        /// Name of a snapshot used as the data source.
+        /// Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
         /// </summary>
         public readonly string Snapshot;
         /// <summary>

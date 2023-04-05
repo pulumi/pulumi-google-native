@@ -10,6 +10,154 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse struct {
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKeyType string `pulumi:"enforceOnKeyType"`
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return o
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKeyConfigs" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput) EnforceOnKeyType() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse) string { return v.EnforceOnKeyType }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) ToSecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
+		return vs[0].([]SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse)[vs[1].(int)]
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput)
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponse struct {
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+	BanDurationSec int `pulumi:"banDurationSec"`
+	// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+	BanThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"banThreshold"`
+	// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+	ConformAction string `pulumi:"conformAction"`
+	// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+	EnforceOnKey string `pulumi:"enforceOnKey"`
+	// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+	EnforceOnKeyConfigs []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse `pulumi:"enforceOnKeyConfigs"`
+	// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+	EnforceOnKeyName string `pulumi:"enforceOnKeyName"`
+	// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+	ExceedAction string `pulumi:"exceedAction"`
+	// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+	ExceedActionRpcStatus SecurityPolicyRuleRateLimitOptionsRpcStatusResponse `pulumi:"exceedActionRpcStatus"`
+	// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+	ExceedRedirectOptions SecurityPolicyRuleRedirectOptionsResponse `pulumi:"exceedRedirectOptions"`
+	// Threshold at which to begin ratelimiting.
+	RateLimitThreshold SecurityPolicyRuleRateLimitOptionsThresholdResponse `pulumi:"rateLimitThreshold"`
+}
+
+type SecurityPolicyRuleRateLimitOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRuleRateLimitOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutput() SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ToSecurityPolicyRuleRateLimitOptionsResponseOutputWithContext(ctx context.Context) SecurityPolicyRuleRateLimitOptionsResponseOutput {
+	return o
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanDurationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) int { return v.BanDurationSec }).(pulumi.IntOutput)
+}
+
+// Can only be specified if the action for the rule is "rate_based_ban". If specified, the key will be banned for the configured 'ban_duration_sec' when the number of requests that exceed the 'rate_limit_threshold' also exceed this 'ban_threshold'.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) BanThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
+		return v.BanThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
+// Action to take for requests that are under the configured rate limit threshold. Valid option is "allow" only.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ConformAction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ConformAction }).(pulumi.StringOutput)
+}
+
+// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if "enforceOnKey" is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforceOnKeyName". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. - HTTP_PATH: The URL path of the HTTP request. The key value is truncated to the first 128 bytes. - SNI: Server name indication in the TLS session of the HTTPS request. The key value is truncated to the first 128 bytes. The key type defaults to ALL on a HTTP session. - REGION_CODE: The country/region from which the request originates.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKey() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKey }).(pulumi.StringOutput)
+}
+
+// If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which ratelimit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If enforce_on_key_configs is specified, enforce_on_key must not be specified.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyConfigs() SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) []SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponse {
+		return v.EnforceOnKeyConfigs
+	}).(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput)
+}
+
+// Rate limit key name applicable only for the following key types: HTTP_HEADER -- Name of the HTTP header whose value is taken as the key value. HTTP_COOKIE -- Name of the HTTP cookie whose value is taken as the key value.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) EnforceOnKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.EnforceOnKeyName }).(pulumi.StringOutput)
+}
+
+// Action to take for requests that are above the configured rate limit threshold, to either deny with a specified HTTP response code, or redirect to a different endpoint. Valid options are `deny(STATUS)`, where valid values for `STATUS` are 403, 404, 429, and 502, and `redirect`, where the redirect parameters come from `exceedRedirectOptions` below.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) string { return v.ExceedAction }).(pulumi.StringOutput)
+}
+
+// Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedActionRpcStatus() SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsRpcStatusResponse {
+		return v.ExceedActionRpcStatus
+	}).(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput)
+}
+
+// Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) ExceedRedirectOptions() SecurityPolicyRuleRedirectOptionsResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRedirectOptionsResponse {
+		return v.ExceedRedirectOptions
+	}).(SecurityPolicyRuleRedirectOptionsResponseOutput)
+}
+
+// Threshold at which to begin ratelimiting.
+func (o SecurityPolicyRuleRateLimitOptionsResponseOutput) RateLimitThreshold() SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleRateLimitOptionsResponse) SecurityPolicyRuleRateLimitOptionsThresholdResponse {
+		return v.RateLimitThreshold
+	}).(SecurityPolicyRuleRateLimitOptionsThresholdResponseOutput)
+}
+
 // Simplified google.rpc.Status type (omitting details).
 type SecurityPolicyRuleRateLimitOptionsRpcStatus struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -4412,6 +4560,74 @@ func (o StatefulPolicyResponseOutput) PreservedState() StatefulPolicyPreservedSt
 	return o.ApplyT(func(v StatefulPolicyResponse) StatefulPolicyPreservedStateResponse { return v.PreservedState }).(StatefulPolicyPreservedStateResponseOutput)
 }
 
+// [Output Only] Contains output only fields.
+type StoragePoolResourceStatusResponse struct {
+	// Sum of all the disk' provisioned IOPS.
+	AggregateDiskProvisionedIops string `pulumi:"aggregateDiskProvisionedIops"`
+	// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+	AggregateDiskSizeGb string `pulumi:"aggregateDiskSizeGb"`
+	// Timestamp of the last successful resize in RFC3339 text format.
+	LastResizeTimestamp string `pulumi:"lastResizeTimestamp"`
+	// Maximum allowed aggregate disk size in gigabytes.
+	MaxAggregateDiskSizeGb string `pulumi:"maxAggregateDiskSizeGb"`
+	// Number of disks used.
+	NumberOfDisks string `pulumi:"numberOfDisks"`
+	// Sum of all the disks' local used bytes. This specifically refers to the amount of bytes used on the disk without any encryption or compression.
+	UsedBytes string `pulumi:"usedBytes"`
+	// Sum of all the disks' used reduced bytes. This is the actual storage capacity consumed by all of the disks.
+	UsedReducedBytes string `pulumi:"usedReducedBytes"`
+}
+
+// [Output Only] Contains output only fields.
+type StoragePoolResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (StoragePoolResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StoragePoolResourceStatusResponse)(nil)).Elem()
+}
+
+func (o StoragePoolResourceStatusResponseOutput) ToStoragePoolResourceStatusResponseOutput() StoragePoolResourceStatusResponseOutput {
+	return o
+}
+
+func (o StoragePoolResourceStatusResponseOutput) ToStoragePoolResourceStatusResponseOutputWithContext(ctx context.Context) StoragePoolResourceStatusResponseOutput {
+	return o
+}
+
+// Sum of all the disk' provisioned IOPS.
+func (o StoragePoolResourceStatusResponseOutput) AggregateDiskProvisionedIops() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.AggregateDiskProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Sum of all the capacity provisioned in disks in this storage pool. A disk's provisioned capacity is the same as its total capacity.
+func (o StoragePoolResourceStatusResponseOutput) AggregateDiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.AggregateDiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Timestamp of the last successful resize in RFC3339 text format.
+func (o StoragePoolResourceStatusResponseOutput) LastResizeTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.LastResizeTimestamp }).(pulumi.StringOutput)
+}
+
+// Maximum allowed aggregate disk size in gigabytes.
+func (o StoragePoolResourceStatusResponseOutput) MaxAggregateDiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.MaxAggregateDiskSizeGb }).(pulumi.StringOutput)
+}
+
+// Number of disks used.
+func (o StoragePoolResourceStatusResponseOutput) NumberOfDisks() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.NumberOfDisks }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' local used bytes. This specifically refers to the amount of bytes used on the disk without any encryption or compression.
+func (o StoragePoolResourceStatusResponseOutput) UsedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedBytes }).(pulumi.StringOutput)
+}
+
+// Sum of all the disks' used reduced bytes. This is the actual storage capacity consumed by all of the disks.
+func (o StoragePoolResourceStatusResponseOutput) UsedReducedBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v StoragePoolResourceStatusResponse) string { return v.UsedReducedBytes }).(pulumi.StringOutput)
+}
+
 // The available logging options for this subnetwork.
 type SubnetworkLogConfig struct {
 	// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
@@ -6622,25 +6838,34 @@ func (o Uint128ResponseOutput) Low() pulumi.StringOutput {
 	return o.ApplyT(func(v Uint128Response) string { return v.Low }).(pulumi.StringOutput)
 }
 
-// Upcoming Maintenance notification information. TODO(b/242069500) Deprecate this proto once it's fully migrated to be under proto ResourceStatus.UpcomingMaintenance.
+// Upcoming Maintenance notification information.
 type UpcomingMaintenanceResponse struct {
 	// Indicates if the maintenance can be customer triggered. From more detail, see go/sf-ctm-design.
 	CanReschedule bool `pulumi:"canReschedule"`
-	// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 	//
-	// Deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	// Deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 	Date string `pulumi:"date"`
-	// The start time window of the maintenance disruption.
-	StartTimeWindow UpcomingMaintenanceTimeWindowResponse `pulumi:"startTimeWindow"`
-	// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+	LatestWindowStartTime string `pulumi:"latestWindowStartTime"`
+	MaintenanceStatus     string `pulumi:"maintenanceStatus"`
+	// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
 	//
-	// Deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+	// Deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+	StartTimeWindow UpcomingMaintenanceTimeWindowResponse `pulumi:"startTimeWindow"`
+	// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
+	//
+	// Deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 	Time string `pulumi:"time"`
 	// Defines the type of maintenance.
 	Type string `pulumi:"type"`
+	// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+	WindowEndTime string `pulumi:"windowEndTime"`
+	// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+	WindowStartTime string `pulumi:"windowStartTime"`
 }
 
-// Upcoming Maintenance notification information. TODO(b/242069500) Deprecate this proto once it's fully migrated to be under proto ResourceStatus.UpcomingMaintenance.
+// Upcoming Maintenance notification information.
 type UpcomingMaintenanceResponseOutput struct{ *pulumi.OutputState }
 
 func (UpcomingMaintenanceResponseOutput) ElementType() reflect.Type {
@@ -6660,21 +6885,32 @@ func (o UpcomingMaintenanceResponseOutput) CanReschedule() pulumi.BoolOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
 }
 
-// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+// The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 //
-// Deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+// Deprecated: [Output Only] The date when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 func (o UpcomingMaintenanceResponseOutput) Date() pulumi.StringOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.Date }).(pulumi.StringOutput)
 }
 
-// The start time window of the maintenance disruption.
+// The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format.
+func (o UpcomingMaintenanceResponseOutput) LatestWindowStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.LatestWindowStartTime }).(pulumi.StringOutput)
+}
+
+func (o UpcomingMaintenanceResponseOutput) MaintenanceStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.MaintenanceStatus }).(pulumi.StringOutput)
+}
+
+// The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
+//
+// Deprecated: [Output Only] The start time window of the maintenance disruption. DEPRECATED: Use window_start_time instead.
 func (o UpcomingMaintenanceResponseOutput) StartTimeWindow() UpcomingMaintenanceTimeWindowResponseOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) UpcomingMaintenanceTimeWindowResponse { return v.StartTimeWindow }).(UpcomingMaintenanceTimeWindowResponseOutput)
 }
 
-// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+// The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 //
-// Deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use start_time_window instead.
+// Deprecated: [Output Only] The time when the maintenance will take place. This value is in RFC3339 text format. DEPRECATED: Use window_start_time instead.
 func (o UpcomingMaintenanceResponseOutput) Time() pulumi.StringOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.Time }).(pulumi.StringOutput)
 }
@@ -6682,6 +6918,16 @@ func (o UpcomingMaintenanceResponseOutput) Time() pulumi.StringOutput {
 // Defines the type of maintenance.
 func (o UpcomingMaintenanceResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The time by which the maintenance disruption will be completed. This timestamp value is in RFC3339 text format.
+func (o UpcomingMaintenanceResponseOutput) WindowEndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.WindowEndTime }).(pulumi.StringOutput)
+}
+
+// The current start time of the maintenance window. This timestamp value is in RFC3339 text format.
+func (o UpcomingMaintenanceResponseOutput) WindowStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v UpcomingMaintenanceResponse) string { return v.WindowStartTime }).(pulumi.StringOutput)
 }
 
 // Represents a window of time using two timestamps: `earliest` and `latest`. This timestamp values are in RFC3339 text format.
@@ -7483,6 +7729,8 @@ type VpnGatewayVpnGatewayInterfaceResponse struct {
 	InterconnectAttachment string `pulumi:"interconnectAttachment"`
 	// IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 	IpAddress string `pulumi:"ipAddress"`
+	// IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+	Ipv6Address string `pulumi:"ipv6Address"`
 }
 
 // A VPN gateway interface.
@@ -7508,6 +7756,11 @@ func (o VpnGatewayVpnGatewayInterfaceResponseOutput) InterconnectAttachment() pu
 // IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.
 func (o VpnGatewayVpnGatewayInterfaceResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).
+func (o VpnGatewayVpnGatewayInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnGatewayVpnGatewayInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
 
 type VpnGatewayVpnGatewayInterfaceResponseArrayOutput struct{ *pulumi.OutputState }
@@ -7779,6 +8032,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayVpnGatewayInterfaceArrayInput)(nil)).Elem(), VpnGatewayVpnGatewayInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceInput)(nil)).Elem(), WeightedBackendServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WeightedBackendServiceArrayInput)(nil)).Elem(), WeightedBackendServiceArray{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsRpcStatusResponseOutput{})
@@ -7852,6 +8108,7 @@ func init() {
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStatePtrOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyPreservedStateResponseOutput{})
 	pulumi.RegisterOutputType(StatefulPolicyResponseOutput{})
+	pulumi.RegisterOutputType(StoragePoolResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigPtrOutput{})
 	pulumi.RegisterOutputType(SubnetworkLogConfigResponseOutput{})

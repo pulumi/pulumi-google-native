@@ -5,9 +5,32 @@
 from enum import Enum
 
 __all__ = [
+    'AcceleratorConfigType',
     'AttachedDiskMode',
     'NodeHealth',
 ]
+
+
+class AcceleratorConfigType(str, Enum):
+    """
+    Required. Type of TPU.
+    """
+    TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """
+    Unspecified version.
+    """
+    V2 = "V2"
+    """
+    TPU v2.
+    """
+    V3 = "V3"
+    """
+    TPU v3.
+    """
+    V4 = "V4"
+    """
+    TPU v4.
+    """
 
 
 class AttachedDiskMode(str, Enum):

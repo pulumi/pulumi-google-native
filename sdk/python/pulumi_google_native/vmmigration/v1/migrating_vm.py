@@ -36,7 +36,7 @@ class MigratingVmArgs:
         :param pulumi.Input[str] display_name: The display name attached to the MigratingVm by the user.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
         :param pulumi.Input['SchedulePolicyArgs'] policy: The replication schedule policy.
-        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
         """
         pulumi.set(__self__, "migrating_vm_id", migrating_vm_id)
@@ -163,7 +163,7 @@ class MigratingVmArgs:
     @pulumi.getter(name="requestId")
     def request_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
 
@@ -213,7 +213,7 @@ class MigratingVm(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels of the migrating VM.
         :param pulumi.Input[str] migrating_vm_id: Required. The migratingVm identifier.
         :param pulumi.Input[pulumi.InputType['SchedulePolicyArgs']] policy: The replication schedule policy.
-        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[str] request_id: A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[str] source_vm_id: The unique ID of the VM in the source. The VM's name in vSphere can be changed, so this is not the VM's name but rather its moRef id. This id is of the form vm-.
         """
         ...
@@ -279,8 +279,10 @@ class MigratingVm(pulumi.CustomResource):
             __props__.__dict__["aws_source_vm_details"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["current_sync_info"] = None
+            __props__.__dict__["cutover_forecast"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["group"] = None
+            __props__.__dict__["last_replication_cycle"] = None
             __props__.__dict__["last_sync"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["recent_clone_jobs"] = None
@@ -316,11 +318,13 @@ class MigratingVm(pulumi.CustomResource):
         __props__.__dict__["compute_engine_target_defaults"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_sync_info"] = None
+        __props__.__dict__["cutover_forecast"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["error"] = None
         __props__.__dict__["group"] = None
         __props__.__dict__["labels"] = None
+        __props__.__dict__["last_replication_cycle"] = None
         __props__.__dict__["last_sync"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["migrating_vm_id"] = None
@@ -370,6 +374,14 @@ class MigratingVm(pulumi.CustomResource):
         return pulumi.get(self, "current_sync_info")
 
     @property
+    @pulumi.getter(name="cutoverForecast")
+    def cutover_forecast(self) -> pulumi.Output['outputs.CutoverForecastResponse']:
+        """
+        Provides details of future CutoverJobs of a MigratingVm. Set to empty when cutover forecast is unavailable.
+        """
+        return pulumi.get(self, "cutover_forecast")
+
+    @property
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
@@ -408,6 +420,14 @@ class MigratingVm(pulumi.CustomResource):
         The labels of the migrating VM.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="lastReplicationCycle")
+    def last_replication_cycle(self) -> pulumi.Output['outputs.ReplicationCycleResponse']:
+        """
+        Details of the last replication cycle. This will be updated whenever a replication cycle is finished and is not to be confused with last_sync which is only updated on successful replication cycles.
+        """
+        return pulumi.get(self, "last_replication_cycle")
 
     @property
     @pulumi.getter(name="lastSync")
@@ -471,7 +491,7 @@ class MigratingVm(pulumi.CustomResource):
     @pulumi.getter(name="requestId")
     def request_id(self) -> pulumi.Output[Optional[str]]:
         """
-        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+        A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         """
         return pulumi.get(self, "request_id")
 

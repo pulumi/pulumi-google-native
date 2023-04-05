@@ -61,6 +61,10 @@ export class Service extends pulumi.CustomResource {
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
+     * A globally unique identifier (in UUID4 format) for this service.
+     */
+    public /*out*/ readonly uid!: pulumi.Output<string>;
+    /**
      * The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -90,6 +94,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["serviceId"] = args ? args.serviceId : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["endpoints"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["namespaceId"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceId"] = undefined /*out*/;
+            resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

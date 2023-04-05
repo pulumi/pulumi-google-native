@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
 {
 
     /// <summary>
-    /// Represents a subresource of a given resource, and associated bindings with it.
+    /// Represents a subresource of the given resource, and associated bindings with it. Currently supported subresources are column and partition schema fields within a table.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDataplexV1DataAttributeBindingPathResponse
@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Attributes;
         /// <summary>
-        /// The name identifier of the path. Nested columns should be of the form: 'country.state.city'.
+        /// The name identifier of the path. Nested columns should be of the form: 'address.city'.
         /// </summary>
         public readonly string Name;
 

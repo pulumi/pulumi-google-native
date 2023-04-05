@@ -19,6 +19,18 @@ export const InstanceConfigInstanceSize = {
      * Instance Size STANDARD_LARGE.
      */
     StandardLarge: "STANDARD_LARGE",
+    /**
+     * Instance Size STANDARD_XLARGE.
+     */
+    StandardXlarge: "STANDARD_XLARGE",
+    /**
+     * Instance Size STANDARD_2XLARGE.
+     */
+    Standard2xlarge: "STANDARD_2XLARGE",
+    /**
+     * Instance Size STANDARD_3XLARGE.
+     */
+    Standard3xlarge: "STANDARD_3XLARGE",
 } as const;
 
 /**

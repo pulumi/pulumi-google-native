@@ -38,6 +38,7 @@ class BackendServiceArgs:
                  locality_lb_policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input['BackendServiceLogConfigArgs']] = None,
                  max_stream_duration: Optional[pulumi.Input['DurationArgs']] = None,
+                 metadatas: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input['OutlierDetectionArgs']] = None,
@@ -74,6 +75,7 @@ class BackendServiceArgs:
         :param pulumi.Input['BackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
         :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadatas: Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input['OutlierDetectionArgs'] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2, or GRPC, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
@@ -130,6 +132,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "log_config", log_config)
         if max_stream_duration is not None:
             pulumi.set(__self__, "max_stream_duration", max_stream_duration)
+        if metadatas is not None:
+            pulumi.set(__self__, "metadatas", metadatas)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -412,6 +416,18 @@ class BackendServiceArgs:
 
     @property
     @pulumi.getter
+    def metadatas(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+        """
+        return pulumi.get(self, "metadatas")
+
+    @metadatas.setter
+    def metadatas(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "metadatas", value)
+
+    @property
+    @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -611,6 +627,7 @@ class BackendService(pulumi.CustomResource):
                  locality_lb_policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 metadatas: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
@@ -651,6 +668,7 @@ class BackendService(pulumi.CustomResource):
         :param pulumi.Input['BackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
         :param pulumi.Input[pulumi.InputType['DurationArgs']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadatas: Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
         :param pulumi.Input[pulumi.InputType['OutlierDetectionArgs']] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, HTTP2, or GRPC, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
@@ -710,6 +728,7 @@ class BackendService(pulumi.CustomResource):
                  locality_lb_policy: Optional[pulumi.Input['BackendServiceLocalityLbPolicy']] = None,
                  log_config: Optional[pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']]] = None,
                  max_stream_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
+                 metadatas: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  outlier_detection: Optional[pulumi.Input[pulumi.InputType['OutlierDetectionArgs']]] = None,
@@ -755,6 +774,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["locality_lb_policy"] = locality_lb_policy
             __props__.__dict__["log_config"] = log_config
             __props__.__dict__["max_stream_duration"] = max_stream_duration
+            __props__.__dict__["metadatas"] = metadatas
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["outlier_detection"] = outlier_detection
@@ -830,6 +850,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["locality_lb_policy"] = None
         __props__.__dict__["log_config"] = None
         __props__.__dict__["max_stream_duration"] = None
+        __props__.__dict__["metadatas"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
         __props__.__dict__["outlier_detection"] = None
@@ -1044,6 +1065,14 @@ class BackendService(pulumi.CustomResource):
         Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "max_stream_duration")
+
+    @property
+    @pulumi.getter
+    def metadatas(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Deployment metadata associated with the resource to be set by a GKE hub controller and read by the backend RCTH
+        """
+        return pulumi.get(self, "metadatas")
 
     @property
     @pulumi.getter

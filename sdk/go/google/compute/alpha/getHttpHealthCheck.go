@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by making a list() request.
+// Returns the specified HttpHealthCheck resource.
 func LookupHttpHealthCheck(ctx *pulumi.Context, args *LookupHttpHealthCheckArgs, opts ...pulumi.InvokeOption) (*LookupHttpHealthCheckResult, error) {
 	var rv LookupHttpHealthCheckResult
 	err := ctx.Invoke("google-native:compute/alpha:getHttpHealthCheck", args, &rv, opts...)
@@ -42,7 +42,7 @@ type LookupHttpHealthCheckResult struct {
 	Name string `pulumi:"name"`
 	// The TCP port number for the HTTP health check request. The default value is 80.
 	Port int `pulumi:"port"`
-	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+	// The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
 	RequestPath string `pulumi:"requestPath"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -130,7 +130,7 @@ func (o LookupHttpHealthCheckResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupHttpHealthCheckResult) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+// The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
 func (o LookupHttpHealthCheckResultOutput) RequestPath() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupHttpHealthCheckResult) string { return v.RequestPath }).(pulumi.StringOutput)
 }

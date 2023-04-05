@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ContainerResponse> Containers;
         /// <summary>
-        /// Optional. Number of retries allowed per task, before marking this job failed.
+        /// Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
         /// </summary>
         public readonly int MaxRetries;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string ServiceAccountName;
         /// <summary>
-        /// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        /// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
         /// </summary>
         public readonly string TimeoutSeconds;
         /// <summary>

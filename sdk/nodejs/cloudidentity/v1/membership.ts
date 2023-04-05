@@ -42,6 +42,10 @@ export class Membership extends pulumi.CustomResource {
      * The time when the `Membership` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Delivery setting associated with the membership.
+     */
+    public /*out*/ readonly deliverySetting!: pulumi.Output<string>;
     public readonly groupId!: pulumi.Output<string>;
     /**
      * The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
@@ -85,11 +89,13 @@ export class Membership extends pulumi.CustomResource {
             resourceInputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             resourceInputs["roles"] = args ? args.roles : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliverySetting"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["deliverySetting"] = undefined /*out*/;
             resourceInputs["groupId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["preferredMemberKey"] = undefined /*out*/;

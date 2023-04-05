@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified address resource. Gets a list of available addresses by making a list() request.
+// Returns the specified address resource.
 func LookupGlobalAddress(ctx *pulumi.Context, args *LookupGlobalAddressArgs, opts ...pulumi.InvokeOption) (*LookupGlobalAddressResult, error) {
 	var rv LookupGlobalAddressResult
 	err := ctx.Invoke("google-native:compute/alpha:getGlobalAddress", args, &rv, opts...)

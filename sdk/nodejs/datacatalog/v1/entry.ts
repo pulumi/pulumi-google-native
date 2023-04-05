@@ -51,6 +51,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly businessContext!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextResponse>;
     /**
+     * Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+     */
+    public readonly cloudBigtableSystemSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse>;
+    /**
      * Physical location of the entry.
      */
     public /*out*/ readonly dataSource!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1DataSourceResponse>;
@@ -122,6 +126,10 @@ export class Entry extends pulumi.CustomResource {
      */
     public readonly schema!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SchemaResponse>;
     /**
+     * Specification that applies to a Service resource.
+     */
+    public readonly serviceSpec!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1ServiceSpecResponse>;
+    /**
      * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */
     public readonly sourceSystemTimestamps!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1SystemTimestampsResponse>;
@@ -164,6 +172,7 @@ export class Entry extends pulumi.CustomResource {
                 throw new Error("Missing required property 'entryId'");
             }
             resourceInputs["businessContext"] = args ? args.businessContext : undefined;
+            resourceInputs["cloudBigtableSystemSpec"] = args ? args.cloudBigtableSystemSpec : undefined;
             resourceInputs["dataSourceConnectionSpec"] = args ? args.dataSourceConnectionSpec : undefined;
             resourceInputs["databaseTableSpec"] = args ? args.databaseTableSpec : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -180,6 +189,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routineSpec"] = args ? args.routineSpec : undefined;
             resourceInputs["schema"] = args ? args.schema : undefined;
+            resourceInputs["serviceSpec"] = args ? args.serviceSpec : undefined;
             resourceInputs["sourceSystemTimestamps"] = args ? args.sourceSystemTimestamps : undefined;
             resourceInputs["sqlDatabaseSystemSpec"] = args ? args.sqlDatabaseSystemSpec : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -196,6 +206,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
             resourceInputs["bigqueryTableSpec"] = undefined /*out*/;
             resourceInputs["businessContext"] = undefined /*out*/;
+            resourceInputs["cloudBigtableSystemSpec"] = undefined /*out*/;
             resourceInputs["dataSource"] = undefined /*out*/;
             resourceInputs["dataSourceConnectionSpec"] = undefined /*out*/;
             resourceInputs["databaseTableSpec"] = undefined /*out*/;
@@ -216,6 +227,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["routineSpec"] = undefined /*out*/;
             resourceInputs["schema"] = undefined /*out*/;
+            resourceInputs["serviceSpec"] = undefined /*out*/;
             resourceInputs["sourceSystemTimestamps"] = undefined /*out*/;
             resourceInputs["sqlDatabaseSystemSpec"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
@@ -238,6 +250,10 @@ export interface EntryArgs {
      * Business Context of the entry. Not supported for BigQuery datasets
      */
     businessContext?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1BusinessContextArgs>;
+    /**
+     * Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+     */
+    cloudBigtableSystemSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs>;
     /**
      * Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
      */
@@ -293,6 +309,10 @@ export interface EntryArgs {
      * Schema of the entry. An entry might not have any schema attached to it.
      */
     schema?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1SchemaArgs>;
+    /**
+     * Specification that applies to a Service resource.
+     */
+    serviceSpec?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1ServiceSpecArgs>;
     /**
      * Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
      */

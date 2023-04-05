@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+ * Returns the specified instance template.
  */
 export function getRegionInstanceTemplate(args: GetRegionInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionInstanceTemplateResult> {
 
@@ -69,7 +69,7 @@ export interface GetRegionInstanceTemplateResult {
     readonly sourceInstanceParams: outputs.compute.alpha.SourceInstanceParamsResponse;
 }
 /**
- * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+ * Returns the specified instance template.
  */
 export function getRegionInstanceTemplateOutput(args: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
     return pulumi.output(args).apply((a: any) => getRegionInstanceTemplate(a, opts))

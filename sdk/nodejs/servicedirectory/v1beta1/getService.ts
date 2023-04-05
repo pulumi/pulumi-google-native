@@ -46,6 +46,10 @@ export interface GetServiceResult {
      */
     readonly name: string;
     /**
+     * A globally unique identifier (in UUID4 format) for this service.
+     */
+    readonly uid: string;
+    /**
      * The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
      */
     readonly updateTime: string;

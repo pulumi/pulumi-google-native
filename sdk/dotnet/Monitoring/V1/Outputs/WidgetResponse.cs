@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.CollapsibleGroupResponse CollapsibleGroup;
         /// <summary>
+        /// A widget that shows list of incidents.
+        /// </summary>
+        public readonly Outputs.IncidentListResponse IncidentList;
+        /// <summary>
         /// A widget that shows a stream of logs.
         /// </summary>
         public readonly Outputs.LogsPanelResponse LogsPanel;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
 
             Outputs.CollapsibleGroupResponse collapsibleGroup,
 
+            Outputs.IncidentListResponse incidentList,
+
             Outputs.LogsPanelResponse logsPanel,
 
             Outputs.ScorecardResponse scorecard,
@@ -76,6 +82,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
             AlertChart = alertChart;
             Blank = blank;
             CollapsibleGroup = collapsibleGroup;
+            IncidentList = incidentList;
             LogsPanel = logsPanel;
             Scorecard = scorecard;
             Text = text;

@@ -66,7 +66,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
+     * Optional. Name of the environment.
      */
     public readonly name!: pulumi.Output<string>;
     /**

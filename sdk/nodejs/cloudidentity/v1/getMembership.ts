@@ -30,6 +30,10 @@ export interface GetMembershipResult {
      */
     readonly createTime: string;
     /**
+     * Delivery setting associated with the membership.
+     */
+    readonly deliverySetting: string;
+    /**
      * The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group}/memberships/{membership}`.
      */
     readonly name: string;

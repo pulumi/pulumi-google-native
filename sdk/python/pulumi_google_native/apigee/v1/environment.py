@@ -344,7 +344,7 @@ class Environment(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
+        Optional. Name of the environment.
         """
         return pulumi.get(self, "name")
 

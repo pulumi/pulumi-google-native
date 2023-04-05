@@ -32,6 +32,14 @@ export interface GetRegionDiskResult {
      */
     readonly architecture: string;
     /**
+     * Disk asynchronously replicated into this disk.
+     */
+    readonly asyncPrimaryDisk: outputs.compute.beta.DiskAsyncReplicationResponse;
+    /**
+     * A list of disks this disk is asynchronously replicated to.
+     */
+    readonly asyncSecondaryDisks: {[key: string]: string};
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     readonly creationTimestamp: string;
@@ -134,6 +142,10 @@ export interface GetRegionDiskResult {
      */
     readonly resourcePolicies: string[];
     /**
+     * Status information for the disk resource.
+     */
+    readonly resourceStatus: outputs.compute.beta.DiskResourceStatusResponse;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;
@@ -145,6 +157,14 @@ export interface GetRegionDiskResult {
      * Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
      */
     readonly sizeGb: string;
+    /**
+     * URL of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+     */
+    readonly sourceConsistencyGroupPolicy: string;
+    /**
+     * ID of the DiskConsistencyGroupPolicy for a secondary disk that was created using a consistency group.
+     */
+    readonly sourceConsistencyGroupPolicyId: string;
     /**
      * The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
      */

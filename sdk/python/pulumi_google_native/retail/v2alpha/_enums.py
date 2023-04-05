@@ -7,8 +7,12 @@ from enum import Enum
 __all__ = [
     'ControlSearchSolutionUseCaseItem',
     'ControlSolutionTypesItem',
+    'GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction',
     'GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode',
     'GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode',
+    'ModelFilteringOption',
+    'ModelPeriodicTuningState',
+    'ModelTrainingState',
     'ProductAvailability',
     'ProductType',
     'ServingConfigDiversityType',
@@ -46,6 +50,32 @@ class ControlSolutionTypesItem(str, Enum):
     """
 
 
+class GoogleCloudRetailV2alphaModelPageOptimizationConfigRestriction(str, Enum):
+    """
+    Optional. How to restrict results across panels e.g. can the same ServingConfig be shown on multiple panels at once. If unspecified, default to `UNIQUE_MODEL_RESTRICTION`.
+    """
+    RESTRICTION_UNSPECIFIED = "RESTRICTION_UNSPECIFIED"
+    """
+    Unspecified value for restriction.
+    """
+    NO_RESTRICTION = "NO_RESTRICTION"
+    """
+    Allow any ServingConfig to be show on any number of panels. Example: `Panel1 candidates`: pdp_ctr, pdp_cvr, home_page_ctr_no_diversity `Panel2 candidates`: home_page_ctr_no_diversity, home_page_ctr_diversity, pdp_cvr_no_diversity `Restriction` = NO_RESTRICTION `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: []
+    """
+    UNIQUE_SERVING_CONFIG_RESTRICTION = "UNIQUE_SERVING_CONFIG_RESTRICTION"
+    """
+    Do not allow the same ServingConfig.name to be shown on multiple panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_SERVING_CONFIG_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity_low) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) *
+    """
+    UNIQUE_MODEL_RESTRICTION = "UNIQUE_MODEL_RESTRICTION"
+    """
+    Do not allow multiple ServingConfigs with same Model.name to be show on on different panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_MODEL_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (pdp_cvr, pdp_cvr_no_diversity) *
+    """
+    UNIQUE_MODEL_TYPE_RESTRICTION = "UNIQUE_MODEL_TYPE_RESTRICTION"
+    """
+    Do not allow multiple ServingConfigs with same Model.type to be shown on different panels. Example: `Panel1 candidates`: * pdp_ctr, pdp_cvr, home_page_ctr_no_diversity * `Panel2 candidates`: * home_page_ctr_no_diversity, home_page_ctr_diversity_low, pdp_cvr_no_diversity * `Restriction` = `UNIQUE_MODEL_RESTRICTION` `Valid combinations`: * * (pdp_ctr, home_page_ctr_no_diversity) * (pdp_ctr, home_page_ctr_diversity) * (pdp_cvr, home_page_ctr_no_diversity) * (pdp_cvr, home_page_ctr_diversity_low) * (home_page_ctr_no_diversity, pdp_cvr_no_diversity) * `Invalid combinations`: * * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_ctr, pdp_cvr_no_diversity) * (pdp_cvr, pdp_cvr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_no_diversity) * (home_page_ctr_no_diversity, home_page_ctr_diversity) *
+    """
+
+
 class GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode(str, Enum):
     """
     Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
@@ -79,6 +109,64 @@ class GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode(str, Enum):
     DISABLED = "DISABLED"
     """
     Disable personalization.
+    """
+
+
+class ModelFilteringOption(str, Enum):
+    """
+    Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+    """
+    RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED = "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
+    """
+    Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.
+    """
+    RECOMMENDATIONS_FILTERING_DISABLED = "RECOMMENDATIONS_FILTERING_DISABLED"
+    """
+    Recommendation filtering is disabled.
+    """
+    RECOMMENDATIONS_FILTERING_ENABLED = "RECOMMENDATIONS_FILTERING_ENABLED"
+    """
+    Recommendation filtering is enabled.
+    """
+
+
+class ModelPeriodicTuningState(str, Enum):
+    """
+    Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+    """
+    PERIODIC_TUNING_STATE_UNSPECIFIED = "PERIODIC_TUNING_STATE_UNSPECIFIED"
+    """
+    Unspecified default value, should never be explicitly set.
+    """
+    PERIODIC_TUNING_DISABLED = "PERIODIC_TUNING_DISABLED"
+    """
+    The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.
+    """
+    ALL_TUNING_DISABLED = "ALL_TUNING_DISABLED"
+    """
+    The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.
+    """
+    PERIODIC_TUNING_ENABLED = "PERIODIC_TUNING_ENABLED"
+    """
+    The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method.
+    """
+
+
+class ModelTrainingState(str, Enum):
+    """
+    Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
+    """
+    TRAINING_STATE_UNSPECIFIED = "TRAINING_STATE_UNSPECIFIED"
+    """
+    Unspecified training state.
+    """
+    PAUSED = "PAUSED"
+    """
+    The model training is paused.
+    """
+    TRAINING = "TRAINING"
+    """
+    The model is training.
     """
 
 

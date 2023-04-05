@@ -929,6 +929,552 @@ func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) EntryOverview() G
 	}).(GoogleCloudDatacatalogV1EntryOverviewResponseOutput)
 }
 
+// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpec struct {
+	// The list of clusters for the Instance.
+	CloudBigtableClusterSpecs []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec `pulumi:"cloudBigtableClusterSpecs"`
+}
+
+// GoogleCloudDatacatalogV1CloudBigtableInstanceSpecInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs and GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableInstanceSpecInput` via:
+//
+//	GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs{...}
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput
+}
+
+// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs struct {
+	// The list of clusters for the Instance.
+	CloudBigtableClusterSpecs GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput `pulumi:"cloudBigtableClusterSpecs"`
+}
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput).ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs, GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtr and GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrInput` via:
+//
+//	        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs
+
+func GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtr(v *GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrInput {
+	return (*googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudBigtableInstanceSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1CloudBigtableInstanceSpecPtrType) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput)
+}
+
+// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1CloudBigtableInstanceSpec) *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput)
+}
+
+// The list of clusters for the Instance.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput) CloudBigtableClusterSpecs() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpec) []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
+		return v.CloudBigtableClusterSpecs
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput)
+}
+
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudBigtableInstanceSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) Elem() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec) GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1CloudBigtableInstanceSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput)
+}
+
+// The list of clusters for the Instance.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput) CloudBigtableClusterSpecs() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec) []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
+		if v == nil {
+			return nil
+		}
+		return v.CloudBigtableClusterSpecs
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput)
+}
+
+// Spec that applies to clusters of an Instance of Cloud Bigtable.
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec struct {
+	// Name of the cluster.
+	DisplayName *string `pulumi:"displayName"`
+	// A link back to the parent resource, in this case Instance.
+	LinkedResource *string `pulumi:"linkedResource"`
+	// Location of the cluster, typically a Cloud zone.
+	Location *string `pulumi:"location"`
+	// Type of the resource. For a cluster this would be "CLUSTER".
+	Type *string `pulumi:"type"`
+}
+
+// GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs and GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecInput` via:
+//
+//	GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs{...}
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput
+}
+
+// Spec that applies to clusters of an Instance of Cloud Bigtable.
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs struct {
+	// Name of the cluster.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// A link back to the parent resource, in this case Instance.
+	LinkedResource pulumi.StringPtrInput `pulumi:"linkedResource"`
+	// Location of the cluster, typically a Cloud zone.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Type of the resource. For a cluster this would be "CLUSTER".
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput)
+}
+
+// GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray and GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput` via:
+//
+//	GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray{ GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs{...} }
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput
+	ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput
+}
+
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecInput
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput)
+}
+
+// Spec that applies to clusters of an Instance of Cloud Bigtable.
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
+	return o
+}
+
+// Name of the cluster.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec) *string {
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A link back to the parent resource, in this case Instance.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) LinkedResource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec) *string {
+		return v.LinkedResource
+	}).(pulumi.StringPtrOutput)
+}
+
+// Location of the cluster, typically a Cloud zone.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec) *string {
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Type of the resource. For a cluster this would be "CLUSTER".
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec) *string {
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
+		return vs[0].([]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput)
+}
+
+// Spec that applies to clusters of an Instance of Cloud Bigtable.
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse struct {
+	// Name of the cluster.
+	DisplayName string `pulumi:"displayName"`
+	// A link back to the parent resource, in this case Instance.
+	LinkedResource string `pulumi:"linkedResource"`
+	// Location of the cluster, typically a Cloud zone.
+	Location string `pulumi:"location"`
+	// Type of the resource. For a cluster this would be "CLUSTER".
+	Type string `pulumi:"type"`
+}
+
+// Spec that applies to clusters of an Instance of Cloud Bigtable.
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput {
+	return o
+}
+
+// Name of the cluster.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse) string {
+		return v.DisplayName
+	}).(pulumi.StringOutput)
+}
+
+// A link back to the parent resource, in this case Instance.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) LinkedResource() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse) string {
+		return v.LinkedResource
+	}).(pulumi.StringOutput)
+}
+
+// Location of the cluster, typically a Cloud zone.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse) string {
+		return v.Location
+	}).(pulumi.StringOutput)
+}
+
+// Type of the resource. For a cluster this would be "CLUSTER".
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse {
+		return vs[0].([]GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse)[vs[1].(int)]
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput)
+}
+
+// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse struct {
+	// The list of clusters for the Instance.
+	CloudBigtableClusterSpecs []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse `pulumi:"cloudBigtableClusterSpecs"`
+}
+
+// Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput {
+	return o
+}
+
+// The list of clusters for the Instance.
+func (o GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput) CloudBigtableClusterSpecs() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse) []GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponse {
+		return v.CloudBigtableClusterSpecs
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput)
+}
+
+// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpec struct {
+	// Display name of the Instance. This is user specified and different from the resource name.
+	InstanceDisplayName *string `pulumi:"instanceDisplayName"`
+}
+
+// GoogleCloudDatacatalogV1CloudBigtableSystemSpecInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs and GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableSystemSpecInput` via:
+//
+//	GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs{...}
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput
+	ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput
+}
+
+// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs struct {
+	// Display name of the Instance. This is user specified and different from the resource name.
+	InstanceDisplayName pulumi.StringPtrInput `pulumi:"instanceDisplayName"`
+}
+
+func (GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableSystemSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput).ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs, GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtr and GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrInput` via:
+//
+//	        GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput
+	ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs
+
+func GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtr(v *GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrInput {
+	return (*googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudBigtableSystemSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1CloudBigtableSystemSpecPtrType) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput)
+}
+
+// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableSystemSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1CloudBigtableSystemSpec) *GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput)
+}
+
+// Display name of the Instance. This is user specified and different from the resource name.
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput) InstanceDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableSystemSpec) *string { return v.InstanceDisplayName }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudBigtableSystemSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) Elem() GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudBigtableSystemSpec) GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1CloudBigtableSystemSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput)
+}
+
+// Display name of the Instance. This is user specified and different from the resource name.
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput) InstanceDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudBigtableSystemSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceDisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse struct {
+	// Display name of the Instance. This is user specified and different from the resource name.
+	InstanceDisplayName string `pulumi:"instanceDisplayName"`
+}
+
+// Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+type GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput() GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) ToGoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput {
+	return o
+}
+
+// Display name of the Instance. This is user specified and different from the resource name.
+func (o GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput) InstanceDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse) string { return v.InstanceDisplayName }).(pulumi.StringOutput)
+}
+
 // Specification for the BigQuery connection to a Cloud SQL instance.
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse struct {
 	// Database name.
@@ -5715,6 +6261,176 @@ func (o GoogleCloudDatacatalogV1SchemaResponseOutput) Columns() GoogleCloudDatac
 	}).(GoogleCloudDatacatalogV1ColumnSchemaResponseArrayOutput)
 }
 
+// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+type GoogleCloudDatacatalogV1ServiceSpec struct {
+	// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+	CloudBigtableInstanceSpec *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec `pulumi:"cloudBigtableInstanceSpec"`
+}
+
+// GoogleCloudDatacatalogV1ServiceSpecInput is an input type that accepts GoogleCloudDatacatalogV1ServiceSpecArgs and GoogleCloudDatacatalogV1ServiceSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ServiceSpecInput` via:
+//
+//	GoogleCloudDatacatalogV1ServiceSpecArgs{...}
+type GoogleCloudDatacatalogV1ServiceSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ServiceSpecOutput() GoogleCloudDatacatalogV1ServiceSpecOutput
+	ToGoogleCloudDatacatalogV1ServiceSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1ServiceSpecOutput
+}
+
+// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+type GoogleCloudDatacatalogV1ServiceSpecArgs struct {
+	// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+	CloudBigtableInstanceSpec GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrInput `pulumi:"cloudBigtableInstanceSpec"`
+}
+
+func (GoogleCloudDatacatalogV1ServiceSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ServiceSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToGoogleCloudDatacatalogV1ServiceSpecOutput() GoogleCloudDatacatalogV1ServiceSpecOutput {
+	return i.ToGoogleCloudDatacatalogV1ServiceSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToGoogleCloudDatacatalogV1ServiceSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ServiceSpecOutput)
+}
+
+func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutput() GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1ServiceSpecArgs) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ServiceSpecOutput).ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1ServiceSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1ServiceSpecArgs, GoogleCloudDatacatalogV1ServiceSpecPtr and GoogleCloudDatacatalogV1ServiceSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1ServiceSpecPtrInput` via:
+//
+//	        GoogleCloudDatacatalogV1ServiceSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDatacatalogV1ServiceSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1ServiceSpecPtrOutput() GoogleCloudDatacatalogV1ServiceSpecPtrOutput
+	ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1ServiceSpecPtrOutput
+}
+
+type googleCloudDatacatalogV1ServiceSpecPtrType GoogleCloudDatacatalogV1ServiceSpecArgs
+
+func GoogleCloudDatacatalogV1ServiceSpecPtr(v *GoogleCloudDatacatalogV1ServiceSpecArgs) GoogleCloudDatacatalogV1ServiceSpecPtrInput {
+	return (*googleCloudDatacatalogV1ServiceSpecPtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1ServiceSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1ServiceSpec)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1ServiceSpecPtrType) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutput() GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return i.ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1ServiceSpecPtrType) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1ServiceSpecPtrOutput)
+}
+
+// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+type GoogleCloudDatacatalogV1ServiceSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ServiceSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ServiceSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecOutput) ToGoogleCloudDatacatalogV1ServiceSpecOutput() GoogleCloudDatacatalogV1ServiceSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecOutput) ToGoogleCloudDatacatalogV1ServiceSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecOutput) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutput() GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return o.ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecOutput) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1ServiceSpec) *GoogleCloudDatacatalogV1ServiceSpec {
+		return &v
+	}).(GoogleCloudDatacatalogV1ServiceSpecPtrOutput)
+}
+
+// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+func (o GoogleCloudDatacatalogV1ServiceSpecOutput) CloudBigtableInstanceSpec() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ServiceSpec) *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
+		return v.CloudBigtableInstanceSpec
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1ServiceSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ServiceSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1ServiceSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutput() GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) ToGoogleCloudDatacatalogV1ServiceSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) Elem() GoogleCloudDatacatalogV1ServiceSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ServiceSpec) GoogleCloudDatacatalogV1ServiceSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDatacatalogV1ServiceSpec
+		return ret
+	}).(GoogleCloudDatacatalogV1ServiceSpecOutput)
+}
+
+// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+func (o GoogleCloudDatacatalogV1ServiceSpecPtrOutput) CloudBigtableInstanceSpec() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1ServiceSpec) *GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
+		if v == nil {
+			return nil
+		}
+		return v.CloudBigtableInstanceSpec
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput)
+}
+
+// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+type GoogleCloudDatacatalogV1ServiceSpecResponse struct {
+	// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+	CloudBigtableInstanceSpec GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse `pulumi:"cloudBigtableInstanceSpec"`
+}
+
+// Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+type GoogleCloudDatacatalogV1ServiceSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1ServiceSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1ServiceSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecResponseOutput) ToGoogleCloudDatacatalogV1ServiceSpecResponseOutput() GoogleCloudDatacatalogV1ServiceSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1ServiceSpecResponseOutput) ToGoogleCloudDatacatalogV1ServiceSpecResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1ServiceSpecResponseOutput {
+	return o
+}
+
+// Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+func (o GoogleCloudDatacatalogV1ServiceSpecResponseOutput) CloudBigtableInstanceSpec() GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1ServiceSpecResponse) GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse {
+		return v.CloudBigtableInstanceSpec
+	}).(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput)
+}
+
 // Specification that applies to entries that are part `SQL_DATABASE` system (user_specified_type)
 type GoogleCloudDatacatalogV1SqlDatabaseSystemSpec struct {
 	// Version of the database engine.
@@ -6195,7 +6911,7 @@ func (o GoogleCloudDatacatalogV1TableSpecResponseOutput) GroupedEntry() pulumi.S
 type GoogleCloudDatacatalogV1TaxonomyServiceResponse struct {
 	// P4SA Identity of the service.
 	Identity string `pulumi:"identity"`
-	// The GCP service name.
+	// The Google Cloud service name.
 	Name string `pulumi:"name"`
 }
 
@@ -6219,7 +6935,7 @@ func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) Identity() pulumi
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1TaxonomyServiceResponse) string { return v.Identity }).(pulumi.StringOutput)
 }
 
-// The GCP service name.
+// The Google Cloud service name.
 func (o GoogleCloudDatacatalogV1TaxonomyServiceResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1TaxonomyServiceResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -6486,6 +7202,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableSystemSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{})
@@ -6532,6 +7254,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1RoutineSpecArgumentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SchemaPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ServiceSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1ServiceSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ServiceSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1ServiceSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SqlDatabaseSystemSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1SystemTimestampsInput)(nil)).Elem(), GoogleCloudDatacatalogV1SystemTimestampsArgs{})
@@ -6554,6 +7278,16 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableSystemSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableSystemSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput{})
@@ -6634,6 +7368,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SchemaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ServiceSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ServiceSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ServiceSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponseOutput{})

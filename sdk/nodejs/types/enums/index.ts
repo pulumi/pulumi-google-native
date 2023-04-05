@@ -45,6 +45,7 @@ import * as datacatalog from "./datacatalog";
 import * as dataflow from "./dataflow";
 import * as datafusion from "./datafusion";
 import * as datalabeling from "./datalabeling";
+import * as datalineage from "./datalineage";
 import * as datamigration from "./datamigration";
 import * as datapipelines from "./datapipelines";
 import * as dataplex from "./dataplex";
@@ -75,6 +76,7 @@ import * as jobs from "./jobs";
 import * as logging from "./logging";
 import * as memcache from "./memcache";
 import * as metastore from "./metastore";
+import * as migrationcenter from "./migrationcenter";
 import * as ml from "./ml";
 import * as monitoring from "./monitoring";
 import * as networkconnectivity from "./networkconnectivity";
@@ -108,6 +110,7 @@ import * as transcoder from "./transcoder";
 import * as vmmigration from "./vmmigration";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
+import * as workflows from "./workflows";
 import * as workstations from "./workstations";
 
 export {
@@ -154,6 +157,7 @@ export {
     dataflow,
     datafusion,
     datalabeling,
+    datalineage,
     datamigration,
     datapipelines,
     dataplex,
@@ -184,6 +188,7 @@ export {
     logging,
     memcache,
     metastore,
+    migrationcenter,
     ml,
     monitoring,
     networkconnectivity,
@@ -217,5 +222,6 @@ export {
     vmmigration,
     websecurityscanner,
     workflowexecutions,
+    workflows,
     workstations,
 };

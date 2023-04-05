@@ -26,6 +26,8 @@ type Dataset struct {
 	DefaultEncryptionConfiguration EncryptionConfigurationResponseOutput `pulumi:"defaultEncryptionConfiguration"`
 	// [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
 	DefaultPartitionExpirationMs pulumi.StringOutput `pulumi:"defaultPartitionExpirationMs"`
+	// The default rounding mode of the dataset.
+	DefaultRoundingMode pulumi.StringOutput `pulumi:"defaultRoundingMode"`
 	// [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
 	DefaultTableExpirationMs pulumi.StringOutput `pulumi:"defaultTableExpirationMs"`
 	// [Optional] A user-friendly description of the dataset.
@@ -222,6 +224,11 @@ func (o DatasetOutput) DefaultEncryptionConfiguration() EncryptionConfigurationR
 // [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
 func (o DatasetOutput) DefaultPartitionExpirationMs() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DefaultPartitionExpirationMs }).(pulumi.StringOutput)
+}
+
+// The default rounding mode of the dataset.
+func (o DatasetOutput) DefaultRoundingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.DefaultRoundingMode }).(pulumi.StringOutput)
 }
 
 // [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.

@@ -35,8 +35,8 @@ class DataAttributeBindingArgs:
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Etags must be used when calling the DeleteDataAttributeBinding and the UpdateDataAttributeBinding method.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttributeBinding.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]] paths: Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
-        :param pulumi.Input[str] resource: Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]] paths: Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
+        :param pulumi.Input[str] resource: Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
         :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data_attribute_binding_id", data_attribute_binding_id)
@@ -146,7 +146,7 @@ class DataAttributeBindingArgs:
     @pulumi.getter
     def paths(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]]:
         """
-        Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+        Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
         """
         return pulumi.get(self, "paths")
 
@@ -167,7 +167,7 @@ class DataAttributeBindingArgs:
     @pulumi.getter
     def resource(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+        Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
         """
         return pulumi.get(self, "resource")
 
@@ -217,8 +217,8 @@ class DataAttributeBinding(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. Etags must be used when calling the DeleteDataAttributeBinding and the UpdateDataAttributeBinding method.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for the DataAttributeBinding.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]] paths: Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
-        :param pulumi.Input[str] resource: Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1DataAttributeBindingPathArgs']]]] paths: Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
+        :param pulumi.Input[str] resource: Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
         :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
@@ -397,7 +397,7 @@ class DataAttributeBinding(pulumi.CustomResource):
     @pulumi.getter
     def paths(self) -> pulumi.Output[Sequence['outputs.GoogleCloudDataplexV1DataAttributeBindingPathResponse']]:
         """
-        Optional. The list of paths for items within the associated resource (eg. columns within a table) along with attribute bindings.
+        Optional. The list of paths for items within the associated resource (eg. columns and partitions within a table) along with attribute bindings.
         """
         return pulumi.get(self, "paths")
 
@@ -410,7 +410,7 @@ class DataAttributeBinding(pulumi.CustomResource):
     @pulumi.getter
     def resource(self) -> pulumi.Output[str]:
         """
-        Optional. Immutable. The resource name of the resource that is binded to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
+        Optional. Immutable. The resource name of the resource that is associated to attributes. Presently, only entity resource is supported in the form: projects/{project}/locations/{location}/lakes/{lake}/zones/{zone}/entities/{entity_id} Must belong in the same project and region as the attribute binding, and there can only exist one active binding for a resource.
         """
         return pulumi.get(self, "resource")
 

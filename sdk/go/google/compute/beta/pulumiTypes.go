@@ -418,13 +418,13 @@ func (o AcceleratorConfigResponseArrayOutput) Index(i pulumi.IntInput) Accelerat
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfig struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 	ExternalIpv6 *string `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
+	// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength *int `pulumi:"externalIpv6PrefixLength"`
-	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+	// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 	Name *string `pulumi:"name"`
-	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+	// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 	NatIP *string `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier *AccessConfigNetworkTier `pulumi:"networkTier"`
@@ -432,7 +432,7 @@ type AccessConfig struct {
 	PublicPtrDomainName *string `pulumi:"publicPtrDomainName"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr *bool `pulumi:"setPublicPtr"`
-	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 	Type *AccessConfigType `pulumi:"type"`
 }
 
@@ -449,13 +449,13 @@ type AccessConfigInput interface {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigArgs struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 	ExternalIpv6 pulumi.StringPtrInput `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
+	// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"externalIpv6PrefixLength"`
-	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+	// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+	// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 	NatIP pulumi.StringPtrInput `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier AccessConfigNetworkTierPtrInput `pulumi:"networkTier"`
@@ -463,7 +463,7 @@ type AccessConfigArgs struct {
 	PublicPtrDomainName pulumi.StringPtrInput `pulumi:"publicPtrDomainName"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr pulumi.BoolPtrInput `pulumi:"setPublicPtr"`
-	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 	Type AccessConfigTypePtrInput `pulumi:"type"`
 }
 
@@ -519,22 +519,22 @@ func (o AccessConfigOutput) ToAccessConfigOutputWithContext(ctx context.Context)
 	return o
 }
 
-// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 func (o AccessConfigOutput) ExternalIpv6() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.ExternalIpv6 }).(pulumi.StringPtrOutput)
 }
 
-// The prefix length of the external IPv6 range.
+// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 func (o AccessConfigOutput) ExternalIpv6PrefixLength() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *int { return v.ExternalIpv6PrefixLength }).(pulumi.IntPtrOutput)
 }
 
-// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 func (o AccessConfigOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 func (o AccessConfigOutput) NatIP() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *string { return v.NatIP }).(pulumi.StringPtrOutput)
 }
@@ -554,7 +554,7 @@ func (o AccessConfigOutput) SetPublicPtr() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessConfig) *bool { return v.SetPublicPtr }).(pulumi.BoolPtrOutput)
 }
 
-// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 func (o AccessConfigOutput) Type() AccessConfigTypePtrOutput {
 	return o.ApplyT(func(v AccessConfig) *AccessConfigType { return v.Type }).(AccessConfigTypePtrOutput)
 }
@@ -581,15 +581,15 @@ func (o AccessConfigArrayOutput) Index(i pulumi.IntInput) AccessConfigOutput {
 
 // An access configuration attached to an instance's network interface. Only one access config per instance is supported.
 type AccessConfigResponse struct {
-	// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+	// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 	ExternalIpv6 string `pulumi:"externalIpv6"`
-	// The prefix length of the external IPv6 range.
+	// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 	ExternalIpv6PrefixLength int `pulumi:"externalIpv6PrefixLength"`
 	// Type of the resource. Always compute#accessConfig for access configs.
 	Kind string `pulumi:"kind"`
-	// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+	// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 	Name string `pulumi:"name"`
-	// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+	// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 	NatIP string `pulumi:"natIP"`
 	// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
 	NetworkTier string `pulumi:"networkTier"`
@@ -597,7 +597,7 @@ type AccessConfigResponse struct {
 	PublicPtrDomainName string `pulumi:"publicPtrDomainName"`
 	// Specifies whether a public DNS 'PTR' record should be created to map the external IP address of the instance to a DNS domain name. This field is not used in ipv6AccessConfig. A default PTR record will be created if the VM has external IPv6 range associated.
 	SetPublicPtr bool `pulumi:"setPublicPtr"`
-	// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+	// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 	Type string `pulumi:"type"`
 }
 
@@ -616,12 +616,12 @@ func (o AccessConfigResponseOutput) ToAccessConfigResponseOutputWithContext(ctx 
 	return o
 }
 
-// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+// Applies to ipv6AccessConfigs only. The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. To use a static external IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an external IPv6 address from the instance's subnetwork.
 func (o AccessConfigResponseOutput) ExternalIpv6() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.ExternalIpv6 }).(pulumi.StringOutput)
 }
 
-// The prefix length of the external IPv6 range.
+// Applies to ipv6AccessConfigs only. The prefix length of the external IPv6 range.
 func (o AccessConfigResponseOutput) ExternalIpv6PrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessConfigResponse) int { return v.ExternalIpv6PrefixLength }).(pulumi.IntOutput)
 }
@@ -631,12 +631,12 @@ func (o AccessConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// The name of this access configuration. The default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access.
+// The name of this access configuration. In accessConfigs (IPv4), the default and recommended name is External NAT, but you can use any arbitrary string, such as My external IP or Network Access. In ipv6AccessConfigs, the recommend name is External IPv6.
 func (o AccessConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
+// Applies to accessConfigs (IPv4) only. An external IP address associated with this instance. Specify an unused static external IP address available to the project or leave this field undefined to use an IP from a shared ephemeral IP address pool. If you specify a static external IP address, it must live in the same region as the zone of the instance.
 func (o AccessConfigResponseOutput) NatIP() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.NatIP }).(pulumi.StringOutput)
 }
@@ -656,7 +656,7 @@ func (o AccessConfigResponseOutput) SetPublicPtr() pulumi.BoolOutput {
 	return o.ApplyT(func(v AccessConfigResponse) bool { return v.SetPublicPtr }).(pulumi.BoolOutput)
 }
 
-// The type of configuration. The default and only option is ONE_TO_ONE_NAT.
+// The type of configuration. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6.
 func (o AccessConfigResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessConfigResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8277,7 +8277,7 @@ type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -8300,7 +8300,7 @@ type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -8368,7 +8368,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -8404,7 +8404,7 @@ type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -8435,7 +8435,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -10413,6 +10413,380 @@ func (o CorsPolicyResponseOutput) MaxAge() pulumi.IntOutput {
 	return o.ApplyT(func(v CorsPolicyResponse) int { return v.MaxAge }).(pulumi.IntOutput)
 }
 
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicy struct {
+	// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	ErrorResponseRules []CustomErrorResponsePolicyCustomErrorResponseRule `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+	ErrorService *string `pulumi:"errorService"`
+}
+
+// CustomErrorResponsePolicyInput is an input type that accepts CustomErrorResponsePolicyArgs and CustomErrorResponsePolicyOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyInput` via:
+//
+//	CustomErrorResponsePolicyArgs{...}
+type CustomErrorResponsePolicyInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyOutput() CustomErrorResponsePolicyOutput
+	ToCustomErrorResponsePolicyOutputWithContext(context.Context) CustomErrorResponsePolicyOutput
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyArgs struct {
+	// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	ErrorResponseRules CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+	ErrorService pulumi.StringPtrInput `pulumi:"errorService"`
+}
+
+func (CustomErrorResponsePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyOutput() CustomErrorResponsePolicyOutput {
+	return i.ToCustomErrorResponsePolicyOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyOutputWithContext(ctx context.Context) CustomErrorResponsePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyOutput)
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return i.ToCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyArgs) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyOutput).ToCustomErrorResponsePolicyPtrOutputWithContext(ctx)
+}
+
+// CustomErrorResponsePolicyPtrInput is an input type that accepts CustomErrorResponsePolicyArgs, CustomErrorResponsePolicyPtr and CustomErrorResponsePolicyPtrOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyPtrInput` via:
+//
+//	        CustomErrorResponsePolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type CustomErrorResponsePolicyPtrInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput
+	ToCustomErrorResponsePolicyPtrOutputWithContext(context.Context) CustomErrorResponsePolicyPtrOutput
+}
+
+type customErrorResponsePolicyPtrType CustomErrorResponsePolicyArgs
+
+func CustomErrorResponsePolicyPtr(v *CustomErrorResponsePolicyArgs) CustomErrorResponsePolicyPtrInput {
+	return (*customErrorResponsePolicyPtrType)(v)
+}
+
+func (*customErrorResponsePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (i *customErrorResponsePolicyPtrType) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return i.ToCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *customErrorResponsePolicyPtrType) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyPtrOutput)
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyOutput() CustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyOutputWithContext(ctx context.Context) CustomErrorResponsePolicyOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return o.ToCustomErrorResponsePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CustomErrorResponsePolicyOutput) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CustomErrorResponsePolicy) *CustomErrorResponsePolicy {
+		return &v
+	}).(CustomErrorResponsePolicyPtrOutput)
+}
+
+// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+func (o CustomErrorResponsePolicyOutput) ErrorResponseRules() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicy) []CustomErrorResponsePolicyCustomErrorResponseRule {
+		return v.ErrorResponseRules
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+func (o CustomErrorResponsePolicyOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicy) *string { return v.ErrorService }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponsePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomErrorResponsePolicy)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyPtrOutput) ToCustomErrorResponsePolicyPtrOutput() CustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyPtrOutput) ToCustomErrorResponsePolicyPtrOutputWithContext(ctx context.Context) CustomErrorResponsePolicyPtrOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyPtrOutput) Elem() CustomErrorResponsePolicyOutput {
+	return o.ApplyT(func(v *CustomErrorResponsePolicy) CustomErrorResponsePolicy {
+		if v != nil {
+			return *v
+		}
+		var ret CustomErrorResponsePolicy
+		return ret
+	}).(CustomErrorResponsePolicyOutput)
+}
+
+// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+func (o CustomErrorResponsePolicyPtrOutput) ErrorResponseRules() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o.ApplyT(func(v *CustomErrorResponsePolicy) []CustomErrorResponsePolicyCustomErrorResponseRule {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorResponseRules
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+func (o CustomErrorResponsePolicyPtrOutput) ErrorService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomErrorResponsePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ErrorService
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRule struct {
+	// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes []string `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode *int `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+	Path *string `pulumi:"path"`
+}
+
+// CustomErrorResponsePolicyCustomErrorResponseRuleInput is an input type that accepts CustomErrorResponsePolicyCustomErrorResponseRuleArgs and CustomErrorResponsePolicyCustomErrorResponseRuleOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyCustomErrorResponseRuleInput` via:
+//
+//	CustomErrorResponsePolicyCustomErrorResponseRuleArgs{...}
+type CustomErrorResponsePolicyCustomErrorResponseRuleInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleOutput() CustomErrorResponsePolicyCustomErrorResponseRuleOutput
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleOutput
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleArgs struct {
+	// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes pulumi.StringArrayInput `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode pulumi.IntPtrInput `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArgs) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutput() CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return i.ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArgs) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyCustomErrorResponseRuleOutput)
+}
+
+// CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput is an input type that accepts CustomErrorResponsePolicyCustomErrorResponseRuleArray and CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput values.
+// You can construct a concrete instance of `CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput` via:
+//
+//	CustomErrorResponsePolicyCustomErrorResponseRuleArray{ CustomErrorResponsePolicyCustomErrorResponseRuleArgs{...} }
+type CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput interface {
+	pulumi.Input
+
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput
+	ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput
+}
+
+type CustomErrorResponsePolicyCustomErrorResponseRuleArray []CustomErrorResponsePolicyCustomErrorResponseRuleInput
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArray) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return i.ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CustomErrorResponsePolicyCustomErrorResponseRuleArray) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput)
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutput() CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return o
+}
+
+// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) MatchResponseCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRule) []string { return v.MatchResponseCodes }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) OverrideResponseCode() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRule) *int { return v.OverrideResponseCode }).(pulumi.IntPtrOutput)
+}
+
+// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRule) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponsePolicyCustomErrorResponseRule)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleArrayOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput) Index(i pulumi.IntInput) CustomErrorResponsePolicyCustomErrorResponseRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponsePolicyCustomErrorResponseRule {
+		return vs[0].([]CustomErrorResponsePolicyCustomErrorResponseRule)[vs[1].(int)]
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleOutput)
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleResponse struct {
+	// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+	MatchResponseCodes []string `pulumi:"matchResponseCodes"`
+	// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+	OverrideResponseCode int `pulumi:"overrideResponseCode"`
+	// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+	Path string `pulumi:"path"`
+}
+
+// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
+type CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRuleResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput() CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput {
+	return o
+}
+
+// Valid values include: - A number between 400 and 599: For example 401 or 503, in which case the load balancer applies the policy if the error code exactly matches this value. - 5xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 500 to 599. - 4xx: Load Balancer will apply the policy if the backend service responds with any response code in the range of 400 to 499. Values must be unique within matchResponseCodes and across all errorResponseRules of CustomErrorResponsePolicy.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) MatchResponseCodes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRuleResponse) []string { return v.MatchResponseCodes }).(pulumi.StringArrayOutput)
+}
+
+// The HTTP status code returned with the response containing the custom error content. If overrideResponseCode is not supplied, the same response code returned by the original backend bucket or backend service is returned to the client.
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) OverrideResponseCode() pulumi.IntOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRuleResponse) int { return v.OverrideResponseCode }).(pulumi.IntOutput)
+}
+
+// The full path to a file within backendBucket . For example: /errors/defaultError.html path must start with a leading slash. path cannot have trailing slashes. If the file is not available in backendBucket or the load balancer cannot reach the BackendBucket, a simple Not Found Error is returned to the client. The value must be from 1 to 1024 characters
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyCustomErrorResponseRuleResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomErrorResponsePolicyCustomErrorResponseRuleResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput() CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) ToCustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutputWithContext(ctx context.Context) CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput) Index(i pulumi.IntInput) CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomErrorResponsePolicyCustomErrorResponseRuleResponse {
+		return vs[0].([]CustomErrorResponsePolicyCustomErrorResponseRuleResponse)[vs[1].(int)]
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput)
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyResponse struct {
+	// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+	ErrorResponseRules []CustomErrorResponsePolicyCustomErrorResponseRuleResponse `pulumi:"errorResponseRules"`
+	// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+	ErrorService string `pulumi:"errorService"`
+}
+
+// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
+type CustomErrorResponsePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomErrorResponsePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomErrorResponsePolicyResponse)(nil)).Elem()
+}
+
+func (o CustomErrorResponsePolicyResponseOutput) ToCustomErrorResponsePolicyResponseOutput() CustomErrorResponsePolicyResponseOutput {
+	return o
+}
+
+func (o CustomErrorResponsePolicyResponseOutput) ToCustomErrorResponsePolicyResponseOutputWithContext(ctx context.Context) CustomErrorResponsePolicyResponseOutput {
+	return o
+}
+
+// Specifies rules for returning error responses. In a given policy, if you specify rules for both a range of error codes as well as rules for specific error codes then rules with specific error codes have a higher priority. For example, assume that you configure a rule for 401 (Un-authorized) code, and another for all 4 series error codes (4XX). If the backend service returns a 401, then the rule for 401 will be applied. However if the backend service returns a 403, the rule for 4xx takes effect.
+func (o CustomErrorResponsePolicyResponseOutput) ErrorResponseRules() CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyResponse) []CustomErrorResponsePolicyCustomErrorResponseRuleResponse {
+		return v.ErrorResponseRules
+	}).(CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput)
+}
+
+// The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are: - https://www.googleapis.com/compute/v1/projects/project/global/backendBuckets/myBackendBucket - compute/v1/projects/project/global/backendBuckets/myBackendBucket - global/backendBuckets/myBackendBucket If errorService is not specified at lower levels like pathMatcher, pathRule and routeRule, an errorService specified at a higher level in the UrlMap will be used. If UrlMap.defaultCustomErrorResponsePolicy contains one or more errorResponseRules[], it must specify errorService. If load balancer cannot reach the backendBucket, a simple Not Found Error will be returned, with the original response code (or overrideResponseCode if configured). errorService is not supported for internal or regional HTTP/HTTPS load balancers.
+func (o CustomErrorResponsePolicyResponseOutput) ErrorService() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomErrorResponsePolicyResponse) string { return v.ErrorService }).(pulumi.StringOutput)
+}
+
 type CustomerEncryptionKey struct {
 	// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -10955,6 +11329,174 @@ func (o DeprecationStatusResponseOutput) StateOverride() RolloutPolicyResponseOu
 	return o.ApplyT(func(v DeprecationStatusResponse) RolloutPolicyResponse { return v.StateOverride }).(RolloutPolicyResponseOutput)
 }
 
+type DiskAsyncReplication struct {
+	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+	Disk *string `pulumi:"disk"`
+}
+
+// DiskAsyncReplicationInput is an input type that accepts DiskAsyncReplicationArgs and DiskAsyncReplicationOutput values.
+// You can construct a concrete instance of `DiskAsyncReplicationInput` via:
+//
+//	DiskAsyncReplicationArgs{...}
+type DiskAsyncReplicationInput interface {
+	pulumi.Input
+
+	ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput
+	ToDiskAsyncReplicationOutputWithContext(context.Context) DiskAsyncReplicationOutput
+}
+
+type DiskAsyncReplicationArgs struct {
+	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+	Disk pulumi.StringPtrInput `pulumi:"disk"`
+}
+
+func (DiskAsyncReplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplication)(nil)).Elem()
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput {
+	return i.ToDiskAsyncReplicationOutputWithContext(context.Background())
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput)
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return i.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i DiskAsyncReplicationArgs) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationOutput).ToDiskAsyncReplicationPtrOutputWithContext(ctx)
+}
+
+// DiskAsyncReplicationPtrInput is an input type that accepts DiskAsyncReplicationArgs, DiskAsyncReplicationPtr and DiskAsyncReplicationPtrOutput values.
+// You can construct a concrete instance of `DiskAsyncReplicationPtrInput` via:
+//
+//	        DiskAsyncReplicationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DiskAsyncReplicationPtrInput interface {
+	pulumi.Input
+
+	ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput
+	ToDiskAsyncReplicationPtrOutputWithContext(context.Context) DiskAsyncReplicationPtrOutput
+}
+
+type diskAsyncReplicationPtrType DiskAsyncReplicationArgs
+
+func DiskAsyncReplicationPtr(v *DiskAsyncReplicationArgs) DiskAsyncReplicationPtrInput {
+	return (*diskAsyncReplicationPtrType)(v)
+}
+
+func (*diskAsyncReplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAsyncReplication)(nil)).Elem()
+}
+
+func (i *diskAsyncReplicationPtrType) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return i.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *diskAsyncReplicationPtrType) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskAsyncReplicationPtrOutput)
+}
+
+type DiskAsyncReplicationOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplication)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutput() DiskAsyncReplicationOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationOutputWithContext(ctx context.Context) DiskAsyncReplicationOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return o.ToDiskAsyncReplicationPtrOutputWithContext(context.Background())
+}
+
+func (o DiskAsyncReplicationOutput) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskAsyncReplication) *DiskAsyncReplication {
+		return &v
+	}).(DiskAsyncReplicationPtrOutput)
+}
+
+// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+func (o DiskAsyncReplicationOutput) Disk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DiskAsyncReplication) *string { return v.Disk }).(pulumi.StringPtrOutput)
+}
+
+type DiskAsyncReplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskAsyncReplication)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationPtrOutput) ToDiskAsyncReplicationPtrOutput() DiskAsyncReplicationPtrOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationPtrOutput) ToDiskAsyncReplicationPtrOutputWithContext(ctx context.Context) DiskAsyncReplicationPtrOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationPtrOutput) Elem() DiskAsyncReplicationOutput {
+	return o.ApplyT(func(v *DiskAsyncReplication) DiskAsyncReplication {
+		if v != nil {
+			return *v
+		}
+		var ret DiskAsyncReplication
+		return ret
+	}).(DiskAsyncReplicationOutput)
+}
+
+// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+func (o DiskAsyncReplicationPtrOutput) Disk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DiskAsyncReplication) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskAsyncReplicationResponse struct {
+	// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+	Disk string `pulumi:"disk"`
+	// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+	DiskId string `pulumi:"diskId"`
+}
+
+type DiskAsyncReplicationResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskAsyncReplicationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskAsyncReplicationResponse)(nil)).Elem()
+}
+
+func (o DiskAsyncReplicationResponseOutput) ToDiskAsyncReplicationResponseOutput() DiskAsyncReplicationResponseOutput {
+	return o
+}
+
+func (o DiskAsyncReplicationResponseOutput) ToDiskAsyncReplicationResponseOutputWithContext(ctx context.Context) DiskAsyncReplicationResponseOutput {
+	return o
+}
+
+// The other disk asynchronously replicated to or from the current disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk
+func (o DiskAsyncReplicationResponseOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.Disk }).(pulumi.StringOutput)
+}
+
+// The unique ID of the other disk asynchronously replicated to or from the current disk. This value identifies the exact disk that was used to create this replication. For example, if you started replicating the persistent disk from a disk that was later deleted and recreated under the same name, the disk ID would identify the exact version of the disk that was used.
+func (o DiskAsyncReplicationResponseOutput) DiskId() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskAsyncReplicationResponse) string { return v.DiskId }).(pulumi.StringOutput)
+}
+
 // A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
 type DiskInstantiationConfig struct {
 	// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -11313,6 +11855,59 @@ func (o DiskParamsResponseOutput) ToDiskParamsResponseOutputWithContext(ctx cont
 // Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
 func (o DiskParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
 	return o.ApplyT(func(v DiskParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type DiskResourceStatusAsyncReplicationStatusResponse struct {
+	State string `pulumi:"state"`
+}
+
+type DiskResourceStatusAsyncReplicationStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusAsyncReplicationStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskResourceStatusAsyncReplicationStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) ToDiskResourceStatusAsyncReplicationStatusResponseOutput() DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) ToDiskResourceStatusAsyncReplicationStatusResponseOutputWithContext(ctx context.Context) DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusAsyncReplicationStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v DiskResourceStatusAsyncReplicationStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type DiskResourceStatusResponse struct {
+	AsyncPrimaryDisk DiskResourceStatusAsyncReplicationStatusResponse `pulumi:"asyncPrimaryDisk"`
+	// Key: disk, value: AsyncReplicationStatus message
+	AsyncSecondaryDisks map[string]string `pulumi:"asyncSecondaryDisks"`
+}
+
+type DiskResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskResourceStatusResponse)(nil)).Elem()
+}
+
+func (o DiskResourceStatusResponseOutput) ToDiskResourceStatusResponseOutput() DiskResourceStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusResponseOutput) ToDiskResourceStatusResponseOutputWithContext(ctx context.Context) DiskResourceStatusResponseOutput {
+	return o
+}
+
+func (o DiskResourceStatusResponseOutput) AsyncPrimaryDisk() DiskResourceStatusAsyncReplicationStatusResponseOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) DiskResourceStatusAsyncReplicationStatusResponse {
+		return v.AsyncPrimaryDisk
+	}).(DiskResourceStatusAsyncReplicationStatusResponseOutput)
+}
+
+// Key: disk, value: AsyncReplicationStatus message
+func (o DiskResourceStatusResponseOutput) AsyncSecondaryDisks() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskResourceStatusResponse) map[string]string { return v.AsyncSecondaryDisks }).(pulumi.StringMapOutput)
 }
 
 // A set of Display Device options
@@ -15035,7 +15630,7 @@ func (o GRPCHealthCheckResponseOutput) PortSpecification() pulumi.StringOutput {
 
 // Guest OS features.
 type GuestOsFeature struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 	Type *GuestOsFeatureType `pulumi:"type"`
 }
 
@@ -15052,7 +15647,7 @@ type GuestOsFeatureInput interface {
 
 // Guest OS features.
 type GuestOsFeatureArgs struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 	Type GuestOsFeatureTypePtrInput `pulumi:"type"`
 }
 
@@ -15108,7 +15703,7 @@ func (o GuestOsFeatureOutput) ToGuestOsFeatureOutputWithContext(ctx context.Cont
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureOutput) Type() GuestOsFeatureTypePtrOutput {
 	return o.ApplyT(func(v GuestOsFeature) *GuestOsFeatureType { return v.Type }).(GuestOsFeatureTypePtrOutput)
 }
@@ -15135,7 +15730,7 @@ func (o GuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GuestOsFeatureOutput
 
 // Guest OS features.
 type GuestOsFeatureResponse struct {
-	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+	// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 	Type string `pulumi:"type"`
 }
 
@@ -15154,7 +15749,7 @@ func (o GuestOsFeatureResponseOutput) ToGuestOsFeatureResponseOutputWithContext(
 	return o
 }
 
-// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_SNP_CAPABLE For more information, see Enabling guest operating system features.
+// The ID of a supported feature. To add multiple values, use commas to separate values. Set to one or more of the following values: - VIRTIO_SCSI_MULTIQUEUE - WINDOWS - MULTI_IP_SUBNET - UEFI_COMPATIBLE - GVNIC - SEV_CAPABLE - SUSPEND_RESUME_COMPATIBLE - SEV_LIVE_MIGRATABLE - SEV_SNP_CAPABLE - TDX_CAPABLE For more information, see Enabling guest operating system features.
 func (o GuestOsFeatureResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GuestOsFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18961,6 +19556,8 @@ func (o HttpRouteActionResponseOutput) WeightedBackendServices() WeightedBackend
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRule struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description *string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -18994,6 +19591,8 @@ type HttpRouteRuleInput interface {
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleArgs struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -19064,6 +19663,11 @@ func (o HttpRouteRuleOutput) ToHttpRouteRuleOutput() HttpRouteRuleOutput {
 
 func (o HttpRouteRuleOutput) ToHttpRouteRuleOutputWithContext(ctx context.Context) HttpRouteRuleOutput {
 	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o HttpRouteRuleOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v HttpRouteRule) *CustomErrorResponsePolicy { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
 }
 
 // The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
@@ -19391,6 +19995,8 @@ func (o HttpRouteRuleMatchResponseArrayOutput) Index(i pulumi.IntInput) HttpRout
 
 // The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
 type HttpRouteRuleResponse struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"customErrorResponsePolicy"`
 	// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
 	Description string `pulumi:"description"`
 	// Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction value specified here is applied before the matching pathMatchers[].headerAction and after pathMatchers[].routeRules[].routeAction.weightedBackendService.backendServiceWeightAction[].headerAction HeaderAction is not supported for load balancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to a target gRPC proxy that has validateForProxyless field set to true.
@@ -19424,6 +20030,11 @@ func (o HttpRouteRuleResponseOutput) ToHttpRouteRuleResponseOutput() HttpRouteRu
 
 func (o HttpRouteRuleResponseOutput) ToHttpRouteRuleResponseOutputWithContext(ctx context.Context) HttpRouteRuleResponseOutput {
 	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the RouteRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with routeRules.routeAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the customErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the customErrorResponsePolicy is ignored and the response from the service is returned to the client. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o HttpRouteRuleResponseOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
+	return o.ApplyT(func(v HttpRouteRuleResponse) CustomErrorResponsePolicyResponse { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyResponseOutput)
 }
 
 // The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
@@ -26685,7 +27296,7 @@ type NetworkInterface struct {
 	InternalIpv6PrefixLength *int `pulumi:"internalIpv6PrefixLength"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs []AccessConfig `pulumi:"ipv6AccessConfigs"`
-	// An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 	Ipv6Address *string `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network *string `pulumi:"network"`
@@ -26697,7 +27308,7 @@ type NetworkInterface struct {
 	NicType *NetworkInterfaceNicType `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
 	QueueCount *int `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+	// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 	StackType *NetworkInterfaceStackType `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -26724,7 +27335,7 @@ type NetworkInterfaceArgs struct {
 	InternalIpv6PrefixLength pulumi.IntPtrInput `pulumi:"internalIpv6PrefixLength"`
 	// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
 	Ipv6AccessConfigs AccessConfigArrayInput `pulumi:"ipv6AccessConfigs"`
-	// An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 	Ipv6Address pulumi.StringPtrInput `pulumi:"ipv6Address"`
 	// URL of the VPC network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used. If the selected project doesn't have the default network, you must specify a network or subnet. If the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default
 	Network pulumi.StringPtrInput `pulumi:"network"`
@@ -26736,7 +27347,7 @@ type NetworkInterfaceArgs struct {
 	NicType NetworkInterfaceNicTypePtrInput `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
 	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+	// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 	StackType NetworkInterfaceStackTypePtrInput `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
@@ -26814,7 +27425,7 @@ func (o NetworkInterfaceOutput) Ipv6AccessConfigs() AccessConfigArrayOutput {
 	return o.ApplyT(func(v NetworkInterface) []AccessConfig { return v.Ipv6AccessConfigs }).(AccessConfigArrayOutput)
 }
 
-// An IPv6 internal network address for this network interface.
+// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o NetworkInterfaceOutput) Ipv6Address() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *string { return v.Ipv6Address }).(pulumi.StringPtrOutput)
 }
@@ -26844,7 +27455,7 @@ func (o NetworkInterfaceOutput) QueueCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
 }
 
-// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 func (o NetworkInterfaceOutput) StackType() NetworkInterfaceStackTypePtrOutput {
 	return o.ApplyT(func(v NetworkInterface) *NetworkInterfaceStackType { return v.StackType }).(NetworkInterfaceStackTypePtrOutput)
 }
@@ -26888,7 +27499,7 @@ type NetworkInterfaceResponse struct {
 	Ipv6AccessConfigs []AccessConfigResponse `pulumi:"ipv6AccessConfigs"`
 	// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.
 	Ipv6AccessType string `pulumi:"ipv6AccessType"`
-	// An IPv6 internal network address for this network interface.
+	// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 	Ipv6Address string `pulumi:"ipv6Address"`
 	// Type of the resource. Always compute#networkInterface for network interfaces.
 	Kind string `pulumi:"kind"`
@@ -26904,7 +27515,7 @@ type NetworkInterfaceResponse struct {
 	NicType string `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It'll be empty if not specified by the users.
 	QueueCount int `pulumi:"queueCount"`
-	// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+	// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 	StackType string `pulumi:"stackType"`
 	// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
 	Subnetwork string `pulumi:"subnetwork"`
@@ -26955,7 +27566,7 @@ func (o NetworkInterfaceResponseOutput) Ipv6AccessType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Ipv6AccessType }).(pulumi.StringOutput)
 }
 
-// An IPv6 internal network address for this network interface.
+// An IPv6 internal network address for this network interface. To use a static internal IP address, it must be unused and in the same region as the instance's zone. If not specified, Google Cloud will automatically assign an internal IPv6 address from the instance's subnetwork.
 func (o NetworkInterfaceResponseOutput) Ipv6Address() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.Ipv6Address }).(pulumi.StringOutput)
 }
@@ -26995,7 +27606,7 @@ func (o NetworkInterfaceResponseOutput) QueueCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) int { return v.QueueCount }).(pulumi.IntOutput)
 }
 
-// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+// The stack type for this network interface. To assign only IPv4 addresses, use IPV4_ONLY. To assign both IPv4 and IPv6 addresses, use IPV4_IPV6. If not specified, IPV4_ONLY is used. This field can be both set at instance creation and update network interface operations.
 func (o NetworkInterfaceResponseOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkInterfaceResponse) string { return v.StackType }).(pulumi.StringOutput)
 }
@@ -29816,6 +30427,8 @@ func (o PacketMirroringNetworkInfoResponseOutput) Url() pulumi.StringOutput {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcher struct {
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	DefaultCustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"defaultCustomErrorResponsePolicy"`
 	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction *HttpRouteAction `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
@@ -29847,6 +30460,8 @@ type PathMatcherInput interface {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherArgs struct {
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	DefaultCustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"defaultCustomErrorResponsePolicy"`
 	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionPtrInput `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
@@ -29917,6 +30532,11 @@ func (o PathMatcherOutput) ToPathMatcherOutputWithContext(ctx context.Context) P
 	return o
 }
 
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathMatcherOutput) DefaultCustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v PathMatcher) *CustomErrorResponsePolicy { return v.DefaultCustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
+}
+
 // defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 func (o PathMatcherOutput) DefaultRouteAction() HttpRouteActionPtrOutput {
 	return o.ApplyT(func(v PathMatcher) *HttpRouteAction { return v.DefaultRouteAction }).(HttpRouteActionPtrOutput)
@@ -29979,6 +30599,8 @@ func (o PathMatcherArrayOutput) Index(i pulumi.IntInput) PathMatcherOutput {
 
 // A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
 type PathMatcherResponse struct {
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	DefaultCustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"defaultCustomErrorResponsePolicy"`
 	// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
 	DefaultRouteAction HttpRouteActionResponse `pulumi:"defaultRouteAction"`
 	// The full or partial URL to the BackendService resource. This URL is used if none of the pathRules or routeRules defined by this PathMatcher are matched. For example, the following are all valid URLs to a BackendService resource: - https://www.googleapis.com/compute/v1/projects/project /global/backendServices/backendService - compute/v1/projects/project/global/backendServices/backendService - global/backendServices/backendService If defaultRouteAction is also specified, advanced routing actions, such as URL rewrites, take effect before sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if defaultRouteAction specifies any weightedBackendServices, defaultService must not be specified. Only one of defaultService, defaultUrlRedirect , or defaultRouteAction.weightedBackendService must be set. Authorization requires one or more of the following Google IAM permissions on the specified resource default_service: - compute.backendBuckets.use - compute.backendServices.use
@@ -30010,6 +30632,13 @@ func (o PathMatcherResponseOutput) ToPathMatcherResponseOutput() PathMatcherResp
 
 func (o PathMatcherResponseOutput) ToPathMatcherResponseOutputWithContext(ctx context.Context) PathMatcherResponseOutput {
 	return o
+}
+
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors - A RouteRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in RouteRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. When used in conjunction with pathMatcher.defaultRouteAction.retryPolicy, retries take precedence. Only once all retries are exhausted, the defaultCustomErrorResponsePolicy is applied. While attempting a retry, if load balancer is successful in reaching the service, the defaultCustomErrorResponsePolicy is ignored and the response from the service is returned to the client. defaultCustomErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathMatcherResponseOutput) DefaultCustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
+	return o.ApplyT(func(v PathMatcherResponse) CustomErrorResponsePolicyResponse {
+		return v.DefaultCustomErrorResponsePolicy
+	}).(CustomErrorResponsePolicyResponseOutput)
 }
 
 // defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path matcher's defaultRouteAction.
@@ -30074,6 +30703,8 @@ func (o PathMatcherResponseArrayOutput) Index(i pulumi.IntInput) PathMatcherResp
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRule struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy *CustomErrorResponsePolicy `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
 	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
@@ -30097,6 +30728,8 @@ type PathRuleInput interface {
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRuleArgs struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyPtrInput `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths pulumi.StringArrayInput `pulumi:"paths"`
 	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
@@ -30159,6 +30792,11 @@ func (o PathRuleOutput) ToPathRuleOutputWithContext(ctx context.Context) PathRul
 	return o
 }
 
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathRuleOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyPtrOutput {
+	return o.ApplyT(func(v PathRule) *CustomErrorResponsePolicy { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyPtrOutput)
+}
+
 // The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 func (o PathRuleOutput) Paths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PathRule) []string { return v.Paths }).(pulumi.StringArrayOutput)
@@ -30201,6 +30839,8 @@ func (o PathRuleArrayOutput) Index(i pulumi.IntInput) PathRuleOutput {
 
 // A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
 type PathRuleResponse struct {
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+	CustomErrorResponsePolicy CustomErrorResponsePolicyResponse `pulumi:"customErrorResponsePolicy"`
 	// The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
 	Paths []string `pulumi:"paths"`
 	// In response to a matching path, the load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If routeAction specifies any weightedBackendServices, service must not be set. Conversely if service is set, routeAction cannot contain any weightedBackendServices. Only one of routeAction or urlRedirect must be set. URL maps for Classic external HTTP(S) load balancers only support the urlRewrite action within a path rule's routeAction.
@@ -30224,6 +30864,11 @@ func (o PathRuleResponseOutput) ToPathRuleResponseOutput() PathRuleResponseOutpu
 
 func (o PathRuleResponseOutput) ToPathRuleResponseOutputWithContext(ctx context.Context) PathRuleResponseOutput {
 	return o
+}
+
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error. If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect. For example, consider a UrlMap with the following configuration: - UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors - A PathRule for /coming_soon/ is configured for the error code 404. If the request is for www.myotherdomain.com and a 404 is encountered, the policy under UrlMap.defaultCustomErrorResponsePolicy takes effect. If a 404 response is encountered for the request www.example.com/current_events/, the pathMatcher's policy takes effect. If however, the request for www.example.com/coming_soon/ encounters a 404, the policy in PathRule.customErrorResponsePolicy takes effect. If any of the requests in this example encounter a 500 error code, the policy at UrlMap.defaultCustomErrorResponsePolicy takes effect. customErrorResponsePolicy is supported only for Global External HTTP(S) load balancing.
+func (o PathRuleResponseOutput) CustomErrorResponsePolicy() CustomErrorResponsePolicyResponseOutput {
+	return o.ApplyT(func(v PathRuleResponse) CustomErrorResponsePolicyResponse { return v.CustomErrorResponsePolicy }).(CustomErrorResponsePolicyResponseOutput)
 }
 
 // The list of path patterns to match. Each must start with / and the only place a * is allowed is at the end following a /. The string fed to the path matcher does not include any text after the first ? or #, and those chars are not allowed here.
@@ -31729,12 +32374,154 @@ func (o ResourcePolicyDailyCycleResponseOutput) StartTime() pulumi.StringOutput 
 	return o.ApplyT(func(v ResourcePolicyDailyCycleResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicy struct {
+}
+
+// ResourcePolicyDiskConsistencyGroupPolicyInput is an input type that accepts ResourcePolicyDiskConsistencyGroupPolicyArgs and ResourcePolicyDiskConsistencyGroupPolicyOutput values.
+// You can construct a concrete instance of `ResourcePolicyDiskConsistencyGroupPolicyInput` via:
+//
+//	ResourcePolicyDiskConsistencyGroupPolicyArgs{...}
+type ResourcePolicyDiskConsistencyGroupPolicyInput interface {
+	pulumi.Input
+
+	ToResourcePolicyDiskConsistencyGroupPolicyOutput() ResourcePolicyDiskConsistencyGroupPolicyOutput
+	ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Context) ResourcePolicyDiskConsistencyGroupPolicyOutput
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyArgs struct {
+}
+
+func (ResourcePolicyDiskConsistencyGroupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyOutput() ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return i.ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return i.ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i ResourcePolicyDiskConsistencyGroupPolicyArgs) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyDiskConsistencyGroupPolicyOutput).ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx)
+}
+
+// ResourcePolicyDiskConsistencyGroupPolicyPtrInput is an input type that accepts ResourcePolicyDiskConsistencyGroupPolicyArgs, ResourcePolicyDiskConsistencyGroupPolicyPtr and ResourcePolicyDiskConsistencyGroupPolicyPtrOutput values.
+// You can construct a concrete instance of `ResourcePolicyDiskConsistencyGroupPolicyPtrInput` via:
+//
+//	        ResourcePolicyDiskConsistencyGroupPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type ResourcePolicyDiskConsistencyGroupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput
+	ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput
+}
+
+type resourcePolicyDiskConsistencyGroupPolicyPtrType ResourcePolicyDiskConsistencyGroupPolicyArgs
+
+func ResourcePolicyDiskConsistencyGroupPolicyPtr(v *ResourcePolicyDiskConsistencyGroupPolicyArgs) ResourcePolicyDiskConsistencyGroupPolicyPtrInput {
+	return (*resourcePolicyDiskConsistencyGroupPolicyPtrType)(v)
+}
+
+func (*resourcePolicyDiskConsistencyGroupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (i *resourcePolicyDiskConsistencyGroupPolicyPtrType) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return i.ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *resourcePolicyDiskConsistencyGroupPolicyPtrType) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResourcePolicyDiskConsistencyGroupPolicyPtrOutput)
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyDiskConsistencyGroupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyOutput() ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o.ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourcePolicyDiskConsistencyGroupPolicy) *ResourcePolicyDiskConsistencyGroupPolicy {
+		return &v
+	}).(ResourcePolicyDiskConsistencyGroupPolicyPtrOutput)
+}
+
+type ResourcePolicyDiskConsistencyGroupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ResourcePolicyDiskConsistencyGroupPolicy)(nil)).Elem()
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutput() ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) ToResourcePolicyDiskConsistencyGroupPolicyPtrOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyPtrOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyPtrOutput) Elem() ResourcePolicyDiskConsistencyGroupPolicyOutput {
+	return o.ApplyT(func(v *ResourcePolicyDiskConsistencyGroupPolicy) ResourcePolicyDiskConsistencyGroupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ResourcePolicyDiskConsistencyGroupPolicy
+		return ret
+	}).(ResourcePolicyDiskConsistencyGroupPolicyOutput)
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyResponse struct {
+}
+
+// Resource policy for disk consistency groups.
+type ResourcePolicyDiskConsistencyGroupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (ResourcePolicyDiskConsistencyGroupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicyResponse)(nil)).Elem()
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyResponseOutput) ToResourcePolicyDiskConsistencyGroupPolicyResponseOutput() ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+	return o
+}
+
+func (o ResourcePolicyDiskConsistencyGroupPolicyResponseOutput) ToResourcePolicyDiskConsistencyGroupPolicyResponseOutputWithContext(ctx context.Context) ResourcePolicyDiskConsistencyGroupPolicyResponseOutput {
+	return o
+}
+
 // A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
 type ResourcePolicyGroupPlacementPolicy struct {
 	// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
 	AvailabilityDomainCount *int `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
 	Collocation *ResourcePolicyGroupPlacementPolicyCollocation `pulumi:"collocation"`
+	// Specifies the number of max logical switches.
+	MaxDistance *int `pulumi:"maxDistance"`
 	// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 	VmCount *int `pulumi:"vmCount"`
 }
@@ -31756,6 +32543,8 @@ type ResourcePolicyGroupPlacementPolicyArgs struct {
 	AvailabilityDomainCount pulumi.IntPtrInput `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
 	Collocation ResourcePolicyGroupPlacementPolicyCollocationPtrInput `pulumi:"collocation"`
+	// Specifies the number of max logical switches.
+	MaxDistance pulumi.IntPtrInput `pulumi:"maxDistance"`
 	// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 	VmCount pulumi.IntPtrInput `pulumi:"vmCount"`
 }
@@ -31850,6 +32639,11 @@ func (o ResourcePolicyGroupPlacementPolicyOutput) Collocation() ResourcePolicyGr
 	}).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
 }
 
+// Specifies the number of max logical switches.
+func (o ResourcePolicyGroupPlacementPolicyOutput) MaxDistance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.MaxDistance }).(pulumi.IntPtrOutput)
+}
+
 // Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 func (o ResourcePolicyGroupPlacementPolicyOutput) VmCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicy) *int { return v.VmCount }).(pulumi.IntPtrOutput)
@@ -31899,6 +32693,16 @@ func (o ResourcePolicyGroupPlacementPolicyPtrOutput) Collocation() ResourcePolic
 	}).(ResourcePolicyGroupPlacementPolicyCollocationPtrOutput)
 }
 
+// Specifies the number of max logical switches.
+func (o ResourcePolicyGroupPlacementPolicyPtrOutput) MaxDistance() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDistance
+	}).(pulumi.IntPtrOutput)
+}
+
 // Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 func (o ResourcePolicyGroupPlacementPolicyPtrOutput) VmCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyGroupPlacementPolicy) *int {
@@ -31915,6 +32719,8 @@ type ResourcePolicyGroupPlacementPolicyResponse struct {
 	AvailabilityDomainCount int `pulumi:"availabilityDomainCount"`
 	// Specifies network collocation
 	Collocation string `pulumi:"collocation"`
+	// Specifies the number of max logical switches.
+	MaxDistance int `pulumi:"maxDistance"`
 	// Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
 	VmCount int `pulumi:"vmCount"`
 }
@@ -31942,6 +32748,11 @@ func (o ResourcePolicyGroupPlacementPolicyResponseOutput) AvailabilityDomainCoun
 // Specifies network collocation
 func (o ResourcePolicyGroupPlacementPolicyResponseOutput) Collocation() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) string { return v.Collocation }).(pulumi.StringOutput)
+}
+
+// Specifies the number of max logical switches.
+func (o ResourcePolicyGroupPlacementPolicyResponseOutput) MaxDistance() pulumi.IntOutput {
+	return o.ApplyT(func(v ResourcePolicyGroupPlacementPolicyResponse) int { return v.MaxDistance }).(pulumi.IntOutput)
 }
 
 // Number of VMs in this placement group. Google does not recommend that you use this field unless you use a compact policy and you want your policy to work only if it contains this exact number of VMs.
@@ -32154,7 +32965,7 @@ type ResourcePolicyInstanceSchedulePolicy struct {
 	ExpirationTime *string `pulumi:"expirationTime"`
 	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime *string `pulumi:"startTime"`
-	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 	TimeZone *string `pulumi:"timeZone"`
 	// Specifies the schedule for starting instances.
 	VmStartSchedule *ResourcePolicyInstanceSchedulePolicySchedule `pulumi:"vmStartSchedule"`
@@ -32179,7 +32990,7 @@ type ResourcePolicyInstanceSchedulePolicyArgs struct {
 	ExpirationTime pulumi.StringPtrInput `pulumi:"expirationTime"`
 	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// Specifies the schedule for starting instances.
 	VmStartSchedule ResourcePolicyInstanceSchedulePolicySchedulePtrInput `pulumi:"vmStartSchedule"`
@@ -32275,7 +33086,7 @@ func (o ResourcePolicyInstanceSchedulePolicyOutput) StartTime() pulumi.StringPtr
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 func (o ResourcePolicyInstanceSchedulePolicyOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicy) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
 }
@@ -32338,7 +33149,7 @@ func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) StartTime() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 func (o ResourcePolicyInstanceSchedulePolicyPtrOutput) TimeZone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourcePolicyInstanceSchedulePolicy) *string {
 		if v == nil {
@@ -32374,7 +33185,7 @@ type ResourcePolicyInstanceSchedulePolicyResponse struct {
 	ExpirationTime string `pulumi:"expirationTime"`
 	// The start time of the schedule. The timestamp is an RFC3339 string.
 	StartTime string `pulumi:"startTime"`
-	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+	// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 	TimeZone string `pulumi:"timeZone"`
 	// Specifies the schedule for starting instances.
 	VmStartSchedule ResourcePolicyInstanceSchedulePolicyScheduleResponse `pulumi:"vmStartSchedule"`
@@ -32407,7 +33218,7 @@ func (o ResourcePolicyInstanceSchedulePolicyResponseOutput) StartTime() pulumi.S
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
+// Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
 func (o ResourcePolicyInstanceSchedulePolicyResponseOutput) TimeZone() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourcePolicyInstanceSchedulePolicyResponse) string { return v.TimeZone }).(pulumi.StringOutput)
 }
@@ -34656,7 +35467,7 @@ func (o RouterBgpPtrOutput) KeepaliveInterval() pulumi.IntPtrOutput {
 type RouterBgpPeer struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode *RouterBgpPeerAdvertiseMode `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []RouterBgpPeerAdvertisedGroupsItem `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges []RouterAdvertisedIpRange `pulumi:"advertisedIpRanges"`
@@ -34702,7 +35513,7 @@ type RouterBgpPeerInput interface {
 type RouterBgpPeerArgs struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode RouterBgpPeerAdvertiseModePtrInput `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups RouterBgpPeerAdvertisedGroupsItemArrayInput `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges RouterAdvertisedIpRangeArrayInput `pulumi:"advertisedIpRanges"`
@@ -34790,7 +35601,7 @@ func (o RouterBgpPeerOutput) AdvertiseMode() RouterBgpPeerAdvertiseModePtrOutput
 	return o.ApplyT(func(v RouterBgpPeer) *RouterBgpPeerAdvertiseMode { return v.AdvertiseMode }).(RouterBgpPeerAdvertiseModePtrOutput)
 }
 
-// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 func (o RouterBgpPeerOutput) AdvertisedGroups() RouterBgpPeerAdvertisedGroupsItemArrayOutput {
 	return o.ApplyT(func(v RouterBgpPeer) []RouterBgpPeerAdvertisedGroupsItem { return v.AdvertisedGroups }).(RouterBgpPeerAdvertisedGroupsItemArrayOutput)
 }
@@ -35129,7 +35940,7 @@ func (o RouterBgpPeerBfdResponseOutput) SessionInitializationMode() pulumi.Strin
 type RouterBgpPeerResponse struct {
 	// User-specified flag to indicate which mode to use for advertisement.
 	AdvertiseMode string `pulumi:"advertiseMode"`
-	// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+	// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 	AdvertisedGroups []string `pulumi:"advertisedGroups"`
 	// User-specified list of individual IP ranges to advertise in custom mode. This field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These IP ranges are advertised in addition to any specified groups. Leave this field blank to advertise no custom IP ranges.
 	AdvertisedIpRanges []RouterAdvertisedIpRangeResponse `pulumi:"advertisedIpRanges"`
@@ -35182,7 +35993,7 @@ func (o RouterBgpPeerResponseOutput) AdvertiseMode() pulumi.StringOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) string { return v.AdvertiseMode }).(pulumi.StringOutput)
 }
 
-// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+// User-specified list of prefix groups to advertise in custom mode, which currently supports the following option: - ALL_SUBNETS: Advertises all of the router's own VPC subnets. This excludes any routes learned for subnets that use VPC Network Peering. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
 func (o RouterBgpPeerResponseOutput) AdvertisedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RouterBgpPeerResponse) []string { return v.AdvertisedGroups }).(pulumi.StringArrayOutput)
 }
@@ -39031,6 +39842,8 @@ type SecurityPolicyAdvancedOptionsConfig struct {
 	JsonCustomConfig *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfig"`
 	JsonParsing      *SecurityPolicyAdvancedOptionsConfigJsonParsing      `pulumi:"jsonParsing"`
 	LogLevel         *SecurityPolicyAdvancedOptionsConfigLogLevel         `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
 }
 
 // SecurityPolicyAdvancedOptionsConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigArgs and SecurityPolicyAdvancedOptionsConfigOutput values.
@@ -39049,6 +39862,8 @@ type SecurityPolicyAdvancedOptionsConfigArgs struct {
 	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput `pulumi:"jsonCustomConfig"`
 	JsonParsing      SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput      `pulumi:"jsonParsing"`
 	LogLevel         SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput         `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
 }
 
 func (SecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
@@ -39147,6 +39962,11 @@ func (o SecurityPolicyAdvancedOptionsConfigOutput) LogLevel() SecurityPolicyAdva
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
 }
 
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
 type SecurityPolicyAdvancedOptionsConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (SecurityPolicyAdvancedOptionsConfigPtrOutput) ElementType() reflect.Type {
@@ -39197,6 +40017,16 @@ func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) LogLevel() SecurityPolicyA
 		}
 		return v.LogLevel
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserIpRequestHeaders
+	}).(pulumi.StringArrayOutput)
 }
 
 type SecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
@@ -39365,6 +40195,8 @@ type SecurityPolicyAdvancedOptionsConfigResponse struct {
 	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse `pulumi:"jsonCustomConfig"`
 	JsonParsing      string                                                      `pulumi:"jsonParsing"`
 	LogLevel         string                                                      `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
 }
 
 type SecurityPolicyAdvancedOptionsConfigResponseOutput struct{ *pulumi.OutputState }
@@ -39394,6 +40226,11 @@ func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) JsonParsing() pulumi.
 
 func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) LogLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) string { return v.LogLevel }).(pulumi.StringOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
 }
 
 type SecurityPolicyAssociation struct {
@@ -47936,10 +48773,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConsistentHashLoadBalancerSettingsHttpCookiePtrInput)(nil)).Elem(), ConsistentHashLoadBalancerSettingsHttpCookieArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyInput)(nil)).Elem(), CorsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CorsPolicyPtrInput)(nil)).Elem(), CorsPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyInput)(nil)).Elem(), CustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyPtrInput)(nil)).Elem(), CustomErrorResponsePolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRuleInput)(nil)).Elem(), CustomErrorResponsePolicyCustomErrorResponseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomErrorResponsePolicyCustomErrorResponseRuleArrayInput)(nil)).Elem(), CustomErrorResponsePolicyCustomErrorResponseRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CustomerEncryptionKeyPtrInput)(nil)).Elem(), CustomerEncryptionKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusInput)(nil)).Elem(), DeprecationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusPtrInput)(nil)).Elem(), DeprecationStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskAsyncReplicationPtrInput)(nil)).Elem(), DiskAsyncReplicationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInput)(nil)).Elem(), DiskInstantiationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigArrayInput)(nil)).Elem(), DiskInstantiationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskParamsInput)(nil)).Elem(), DiskParamsArgs{})
@@ -48125,6 +48968,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentArrayInput)(nil)).Elem(), ResourceCommitmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCycleInput)(nil)).Elem(), ResourcePolicyDailyCycleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDailyCyclePtrInput)(nil)).Elem(), ResourcePolicyDailyCycleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicyInput)(nil)).Elem(), ResourcePolicyDiskConsistencyGroupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyDiskConsistencyGroupPolicyPtrInput)(nil)).Elem(), ResourcePolicyDiskConsistencyGroupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyGroupPlacementPolicyPtrInput)(nil)).Elem(), ResourcePolicyGroupPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourcePolicyHourlyCycleInput)(nil)).Elem(), ResourcePolicyHourlyCycleArgs{})
@@ -48420,12 +49265,22 @@ func init() {
 	pulumi.RegisterOutputType(CorsPolicyOutput{})
 	pulumi.RegisterOutputType(CorsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(CorsPolicyResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyPtrOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleResponseOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyCustomErrorResponseRuleResponseArrayOutput{})
+	pulumi.RegisterOutputType(CustomErrorResponsePolicyResponseOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyPtrOutput{})
 	pulumi.RegisterOutputType(CustomerEncryptionKeyResponseOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusPtrOutput{})
 	pulumi.RegisterOutputType(DeprecationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationPtrOutput{})
+	pulumi.RegisterOutputType(DiskAsyncReplicationResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseOutput{})
@@ -48433,6 +49288,8 @@ func init() {
 	pulumi.RegisterOutputType(DiskParamsOutput{})
 	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
 	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusAsyncReplicationStatusResponseOutput{})
+	pulumi.RegisterOutputType(DiskResourceStatusResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceResponseOutput{})
@@ -48760,6 +49617,9 @@ func init() {
 	pulumi.RegisterOutputType(ResourcePolicyDailyCycleOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyDailyCyclePtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyDailyCycleResponseOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyDiskConsistencyGroupPolicyOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyDiskConsistencyGroupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ResourcePolicyDiskConsistencyGroupPolicyResponseOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ResourcePolicyGroupPlacementPolicyResponseOutput{})

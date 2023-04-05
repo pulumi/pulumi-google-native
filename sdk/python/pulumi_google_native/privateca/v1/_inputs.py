@@ -27,6 +27,7 @@ __all__ = [
     'KeyUsageOptionsArgs',
     'KeyUsageArgs',
     'KeyVersionSpecArgs',
+    'NameConstraintsArgs',
     'ObjectIdArgs',
     'PublicKeyArgs',
     'PublishingOptionsArgs',
@@ -169,7 +170,7 @@ class BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
@@ -195,7 +196,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
         """
         return pulumi.get(self, "members")
 
@@ -997,6 +998,158 @@ class KeyVersionSpecArgs:
 
 
 @pulumi.input_type
+class NameConstraintsArgs:
+    def __init__(__self__, *,
+                 critical: Optional[pulumi.Input[bool]] = None,
+                 excluded_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 permitted_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Describes the X.509 name constraints extension, per https://tools.ietf.org/html/rfc5280#section-4.2.1.10
+        :param pulumi.Input[bool] critical: Indicates whether or not the name constraints are marked critical.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_dns_names: Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_email_addresses: Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_ip_ranges: Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_uris: Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_dns_names: Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_email_addresses: Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_ip_ranges: Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permitted_uris: Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+        """
+        if critical is not None:
+            pulumi.set(__self__, "critical", critical)
+        if excluded_dns_names is not None:
+            pulumi.set(__self__, "excluded_dns_names", excluded_dns_names)
+        if excluded_email_addresses is not None:
+            pulumi.set(__self__, "excluded_email_addresses", excluded_email_addresses)
+        if excluded_ip_ranges is not None:
+            pulumi.set(__self__, "excluded_ip_ranges", excluded_ip_ranges)
+        if excluded_uris is not None:
+            pulumi.set(__self__, "excluded_uris", excluded_uris)
+        if permitted_dns_names is not None:
+            pulumi.set(__self__, "permitted_dns_names", permitted_dns_names)
+        if permitted_email_addresses is not None:
+            pulumi.set(__self__, "permitted_email_addresses", permitted_email_addresses)
+        if permitted_ip_ranges is not None:
+            pulumi.set(__self__, "permitted_ip_ranges", permitted_ip_ranges)
+        if permitted_uris is not None:
+            pulumi.set(__self__, "permitted_uris", permitted_uris)
+
+    @property
+    @pulumi.getter
+    def critical(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether or not the name constraints are marked critical.
+        """
+        return pulumi.get(self, "critical")
+
+    @critical.setter
+    def critical(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "critical", value)
+
+    @property
+    @pulumi.getter(name="excludedDnsNames")
+    def excluded_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains excluded DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "excluded_dns_names")
+
+    @excluded_dns_names.setter
+    def excluded_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_dns_names", value)
+
+    @property
+    @pulumi.getter(name="excludedEmailAddresses")
+    def excluded_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+        """
+        return pulumi.get(self, "excluded_email_addresses")
+
+    @excluded_email_addresses.setter
+    def excluded_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="excludedIpRanges")
+    def excluded_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+        """
+        return pulumi.get(self, "excluded_ip_ranges")
+
+    @excluded_ip_ranges.setter
+    def excluded_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="excludedUris")
+    def excluded_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the excluded URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "excluded_uris")
+
+    @excluded_uris.setter
+    def excluded_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_uris", value)
+
+    @property
+    @pulumi.getter(name="permittedDnsNames")
+    def permitted_dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains permitted DNS names. Any DNS name that can be constructed by simply adding zero or more labels to the left-hand side of the name satisfies the name constraint. For example, `example.com`, `www.example.com`, `www.sub.example.com` would satisfy `example.com` while `example1.com` does not.
+        """
+        return pulumi.get(self, "permitted_dns_names")
+
+    @permitted_dns_names.setter
+    def permitted_dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_dns_names", value)
+
+    @property
+    @pulumi.getter(name="permittedEmailAddresses")
+    def permitted_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
+        """
+        return pulumi.get(self, "permitted_email_addresses")
+
+    @permitted_email_addresses.setter
+    def permitted_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="permittedIpRanges")
+    def permitted_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
+        """
+        return pulumi.get(self, "permitted_ip_ranges")
+
+    @permitted_ip_ranges.setter
+    def permitted_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="permittedUris")
+    def permitted_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
+        """
+        return pulumi.get(self, "permitted_uris")
+
+    @permitted_uris.setter
+    def permitted_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "permitted_uris", value)
+
+
+@pulumi.input_type
 class ObjectIdArgs:
     def __init__(__self__, *,
                  object_id_path: pulumi.Input[Sequence[pulumi.Input[int]]]):
@@ -1522,6 +1675,7 @@ class X509ParametersArgs:
                  aia_ocsp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ca_options: Optional[pulumi.Input['CaOptionsArgs']] = None,
                  key_usage: Optional[pulumi.Input['KeyUsageArgs']] = None,
+                 name_constraints: Optional[pulumi.Input['NameConstraintsArgs']] = None,
                  policy_ids: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]] = None):
         """
         An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
@@ -1529,6 +1683,7 @@ class X509ParametersArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] aia_ocsp_servers: Optional. Describes Online Certificate Status Protocol (OCSP) endpoint addresses that appear in the "Authority Information Access" extension in the certificate.
         :param pulumi.Input['CaOptionsArgs'] ca_options: Optional. Describes options in this X509Parameters that are relevant in a CA certificate.
         :param pulumi.Input['KeyUsageArgs'] key_usage: Optional. Indicates the intended use for keys that correspond to a certificate.
+        :param pulumi.Input['NameConstraintsArgs'] name_constraints: Optional. Describes the X.509 name constraints extension.
         :param pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]] policy_ids: Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         """
         if additional_extensions is not None:
@@ -1539,6 +1694,8 @@ class X509ParametersArgs:
             pulumi.set(__self__, "ca_options", ca_options)
         if key_usage is not None:
             pulumi.set(__self__, "key_usage", key_usage)
+        if name_constraints is not None:
+            pulumi.set(__self__, "name_constraints", name_constraints)
         if policy_ids is not None:
             pulumi.set(__self__, "policy_ids", policy_ids)
 
@@ -1589,6 +1746,18 @@ class X509ParametersArgs:
     @key_usage.setter
     def key_usage(self, value: Optional[pulumi.Input['KeyUsageArgs']]):
         pulumi.set(self, "key_usage", value)
+
+    @property
+    @pulumi.getter(name="nameConstraints")
+    def name_constraints(self) -> Optional[pulumi.Input['NameConstraintsArgs']]:
+        """
+        Optional. Describes the X.509 name constraints extension.
+        """
+        return pulumi.get(self, "name_constraints")
+
+    @name_constraints.setter
+    def name_constraints(self, value: Optional[pulumi.Input['NameConstraintsArgs']]):
+        pulumi.set(self, "name_constraints", value)
 
     @property
     @pulumi.getter(name="policyIds")

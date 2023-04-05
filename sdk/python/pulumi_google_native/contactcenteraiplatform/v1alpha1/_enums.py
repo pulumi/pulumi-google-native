@@ -29,3 +29,15 @@ class InstanceConfigInstanceSize(str, Enum):
     """
     Instance Size STANDARD_LARGE.
     """
+    STANDARD_XLARGE = "STANDARD_XLARGE"
+    """
+    Instance Size STANDARD_XLARGE.
+    """
+    STANDARD2XLARGE = "STANDARD_2XLARGE"
+    """
+    Instance Size STANDARD_2XLARGE.
+    """
+    STANDARD3XLARGE = "STANDARD_3XLARGE"
+    """
+    Instance Size STANDARD_3XLARGE.
+    """

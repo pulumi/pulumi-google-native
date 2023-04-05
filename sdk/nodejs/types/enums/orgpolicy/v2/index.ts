@@ -4,7 +4,7 @@
 
 export const CustomConstraintActionType = {
     /**
-     * Unspecified. Will results in user error.
+     * Unspecified. Results in an error.
      */
     ActionTypeUnspecified: "ACTION_TYPE_UNSPECIFIED",
     /**
@@ -24,7 +24,7 @@ export type CustomConstraintActionType = (typeof CustomConstraintActionType)[key
 
 export const CustomConstraintMethodTypesItem = {
     /**
-     * Unspecified. Will results in user error.
+     * Unspecified. Results in an error.
      */
     MethodTypeUnspecified: "METHOD_TYPE_UNSPECIFIED",
     /**

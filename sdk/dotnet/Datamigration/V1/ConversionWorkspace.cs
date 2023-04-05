@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<Outputs.DatabaseEngineInfoResponse> Destination { get; private set; } = null!;
 
         /// <summary>
-        /// The display name for the workspace
+        /// The display name for the workspace.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -46,13 +46,13 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<ImmutableDictionary<string, string>> GlobalSettings { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+        /// Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
         /// </summary>
         [Output("hasUncommittedChanges")]
         public Output<bool> HasUncommittedChanges { get; private set; } = null!;
 
         /// <summary>
-        /// The latest commit id
+        /// The latest commit ID.
         /// </summary>
         [Output("latestCommitId")]
         public Output<string> LatestCommitId { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Output("requestId")]
         public Output<string?> RequestId { get; private set; } = null!;
@@ -157,7 +157,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<Inputs.DatabaseEngineInfoArgs> Destination { get; set; } = null!;
 
         /// <summary>
-        /// The display name for the workspace
+        /// The display name for the workspace.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -187,7 +187,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        /// A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

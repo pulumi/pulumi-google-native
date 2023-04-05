@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+ * Returns the specified instance template.
  */
 export function getInstanceTemplate(args: GetInstanceTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTemplateResult> {
 
@@ -46,6 +46,10 @@ export interface GetInstanceTemplateResult {
      */
     readonly properties: outputs.compute.v1.InstancePropertiesResponse;
     /**
+     * URL of the region where the instance template resides. Only applicable for regional resources.
+     */
+    readonly region: string;
+    /**
      * The URL for this instance template. The server defines this URL.
      */
     readonly selfLink: string;
@@ -59,7 +63,7 @@ export interface GetInstanceTemplateResult {
     readonly sourceInstanceParams: outputs.compute.v1.SourceInstanceParamsResponse;
 }
 /**
- * Returns the specified instance template. Gets a list of available instance templates by making a list() request.
+ * Returns the specified instance template.
  */
 export function getInstanceTemplateOutput(args: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTemplate(a, opts))

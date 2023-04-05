@@ -30,6 +30,8 @@ type LookupDatabaseResult struct {
 	AppEngineIntegrationMode string `pulumi:"appEngineIntegrationMode"`
 	// The concurrency control mode to use for this database.
 	ConcurrencyMode string `pulumi:"concurrencyMode"`
+	// The timestamp at which this database was created.
+	CreateTime string `pulumi:"createTime"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
 	// The key_prefix for this database. This key_prefix is used, in combination with the project id ("~") to construct the application id that is returned from the Cloud Datastore APIs in Google App Engine first generation runtimes. This value may be empty in which case the appid to use for URL-encoded keys is the project_id (eg: foo instead of v~foo).
@@ -40,6 +42,10 @@ type LookupDatabaseResult struct {
 	Name string `pulumi:"name"`
 	// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 	Type string `pulumi:"type"`
+	// The system-generated UUID4 for this Database.
+	Uid string `pulumi:"uid"`
+	// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
@@ -88,6 +94,11 @@ func (o LookupDatabaseResultOutput) ConcurrencyMode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.ConcurrencyMode }).(pulumi.StringOutput)
 }
 
+// The timestamp at which this database was created.
+func (o LookupDatabaseResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 func (o LookupDatabaseResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Etag }).(pulumi.StringOutput)
@@ -111,6 +122,16 @@ func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
 // The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
 func (o LookupDatabaseResultOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The system-generated UUID4 for this Database.
+func (o LookupDatabaseResultOutput) Uid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Uid }).(pulumi.StringOutput)
+}
+
+// The timestamp at which this database was most recently updated. Note this only includes updates to the database resource and not data contained by the database.
+func (o LookupDatabaseResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupDatabaseResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+ * Returns the specified autoscaler resource.
  */
 export function getAutoscaler(args: GetAutoscalerArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoscalerResult> {
 
@@ -85,7 +85,7 @@ export interface GetAutoscalerResult {
     readonly zone: string;
 }
 /**
- * Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list() request.
+ * Returns the specified autoscaler resource.
  */
 export function getAutoscalerOutput(args: GetAutoscalerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalerResult> {
     return pulumi.output(args).apply((a: any) => getAutoscaler(a, opts))

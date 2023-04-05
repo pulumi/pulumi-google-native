@@ -241,6 +241,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// The LUN has been requested to be deleted.
         /// </summary>
         public static LunState Deleting { get; } = new LunState("DELETING");
+        /// <summary>
+        /// The LUN is in cool off state. It will be deleted after `expire_time`.
+        /// </summary>
+        public static LunState CoolOff { get; } = new LunState("COOL_OFF");
 
         public static bool operator ==(LunState left, LunState right) => left.Equals(right);
         public static bool operator !=(LunState left, LunState right) => !left.Equals(right);
@@ -769,6 +773,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         /// The storage volume is being updated.
         /// </summary>
         public static VolumeState Updating { get; } = new VolumeState("UPDATING");
+        /// <summary>
+        /// The storage volume is in cool off state. It will be deleted after `expire_time`.
+        /// </summary>
+        public static VolumeState CoolOff { get; } = new VolumeState("COOL_OFF");
 
         public static bool operator ==(VolumeState left, VolumeState right) => left.Equals(right);
         public static bool operator !=(VolumeState left, VolumeState right) => !left.Equals(right);

@@ -80,6 +80,10 @@ export interface GetConversationProfileResult {
      */
     readonly timeZone: string;
     /**
+     * Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+     */
+    readonly ttsConfig: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse;
+    /**
      * Update time of the conversation profile.
      */
     readonly updateTime: string;

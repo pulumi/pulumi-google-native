@@ -18,6 +18,8 @@ type Instance struct {
 
 	// Create a time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The firmware version for the instance.
+	FirmwareVersion pulumi.StringOutput `pulumi:"firmwareVersion"`
 	// True if you enable hyperthreading for the server, otherwise false. The default value is false.
 	HyperthreadingEnabled pulumi.BoolOutput `pulumi:"hyperthreadingEnabled"`
 	// True if the interactive serial console feature is enabled for the instance, false otherwise. The default value is false.
@@ -192,6 +194,11 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 // Create a time stamp.
 func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The firmware version for the instance.
+func (o InstanceOutput) FirmwareVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FirmwareVersion }).(pulumi.StringOutput)
 }
 
 // True if you enable hyperthreading for the server, otherwise false. The default value is false.

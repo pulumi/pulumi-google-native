@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified Route resource. Gets a list of available routes by making a list() request.
+ * Returns the specified Route resource.
  */
 export function getRoute(args: GetRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteResult> {
 
@@ -107,7 +107,7 @@ export interface GetRouteResult {
     readonly warnings: outputs.compute.v1.RouteWarningsItemResponse[];
 }
 /**
- * Returns the specified Route resource. Gets a list of available routes by making a list() request.
+ * Returns the specified Route resource.
  */
 export function getRouteOutput(args: GetRouteOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteResult> {
     return pulumi.output(args).apply((a: any) => getRoute(a, opts))

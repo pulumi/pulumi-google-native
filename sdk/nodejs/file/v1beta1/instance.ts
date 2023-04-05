@@ -82,7 +82,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The max number of shares allowed.
      */
-    public /*out*/ readonly maxShareCount!: pulumi.Output<string>;
+    public readonly maxShareCount!: pulumi.Output<string>;
     /**
      * Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
      */
@@ -143,6 +143,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["maxShareCount"] = args ? args.maxShareCount : undefined;
             resourceInputs["multiShareEnabled"] = args ? args.multiShareEnabled : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -151,7 +152,6 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["capacityStepSizeGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["maxCapacityGb"] = undefined /*out*/;
-            resourceInputs["maxShareCount"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -221,6 +221,10 @@ export interface InstanceArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
+    /**
+     * The max number of shares allowed.
+     */
+    maxShareCount?: pulumi.Input<string>;
     /**
      * Indicates whether this instance uses a multi-share configuration with which it can have more than one file-share or none at all. File-shares are added, updated and removed through the separate file-share APIs.
      */

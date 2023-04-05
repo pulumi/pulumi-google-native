@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     public sealed class GetCertificateMapEntryResult
     {
         /// <summary>
-        /// A set of Certificates defines for the given `hostname`. There can be defined up to fifteen certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
+        /// A set of Certificates defines for the given `hostname`. There can be defined up to four certificates in each Certificate Map Entry. Each certificate must match pattern `projects/*/locations/*/certificates/*`.
         /// </summary>
         public readonly ImmutableArray<string> Certificates;
         /// <summary>

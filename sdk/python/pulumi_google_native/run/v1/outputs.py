@@ -457,7 +457,7 @@ class ContainerPortResponse(dict):
                  protocol: str):
         """
         ContainerPort represents a network port in a single container.
-        :param int container_port: Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param int container_port: Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
         :param str name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         :param str protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
@@ -469,7 +469,7 @@ class ContainerPortResponse(dict):
     @pulumi.getter(name="containerPort")
     def container_port(self) -> int:
         """
-        Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        Port number the container listens on. If present, this must be a valid port number, 0 < x < 65536. If not present, it will default to port 8080. For more information, see https://cloud.google.com/run/docs/container-contract#port
         """
         return pulumi.get(self, "container_port")
 
@@ -1129,7 +1129,7 @@ class ExecutionSpecResponse(dict):
         """
         ExecutionSpec describes how the execution will look.
         :param int parallelism: Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
-        :param int task_count: Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
+        :param int task_count: Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
         :param 'TaskTemplateSpecResponse' template: Optional. The template used to create tasks for this execution.
         """
         pulumi.set(__self__, "parallelism", parallelism)
@@ -1148,7 +1148,7 @@ class ExecutionSpecResponse(dict):
     @pulumi.getter(name="taskCount")
     def task_count(self) -> int:
         """
-        Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
+        Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
         """
         return pulumi.get(self, "task_count")
 
@@ -1402,17 +1402,20 @@ class HTTPGetActionResponse(dict):
                  host: str,
                  http_headers: Sequence['outputs.HTTPHeaderResponse'],
                  path: str,
+                 port: int,
                  scheme: str):
         """
         HTTPGetAction describes an action based on HTTP Get requests.
         :param str host: Not supported by Cloud Run.
         :param Sequence['HTTPHeaderResponse'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
         :param str path: Path to access on the HTTP server.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
         :param str scheme: Not supported by Cloud Run.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http_headers", http_headers)
         pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "scheme", scheme)
 
     @property
@@ -1438,6 +1441,14 @@ class HTTPGetActionResponse(dict):
         Path to access on the HTTP server.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port number to access on the container. Number must be in the range 1 to 65535.
+        """
+        return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
@@ -2722,9 +2733,9 @@ class TaskSpecResponse(dict):
         """
         TaskSpec is a description of a task.
         :param Sequence['ContainerResponse'] containers: Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
-        :param int max_retries: Optional. Number of retries allowed per task, before marking this job failed.
+        :param int max_retries: Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
         :param str service_account_name: Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
-        :param str timeout_seconds: Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        :param str timeout_seconds: Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
         :param Sequence['VolumeResponse'] volumes: Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
         """
         pulumi.set(__self__, "containers", containers)
@@ -2745,7 +2756,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter(name="maxRetries")
     def max_retries(self) -> int:
         """
-        Optional. Number of retries allowed per task, before marking this job failed.
+        Optional. Number of retries allowed per task, before marking this job failed. Defaults to 3.
         """
         return pulumi.get(self, "max_retries")
 
@@ -2761,7 +2772,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> str:
         """
-        Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
         """
         return pulumi.get(self, "timeout_seconds")
 

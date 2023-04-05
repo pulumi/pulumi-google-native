@@ -92,6 +92,10 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly supportedLanguageCodes!: pulumi.Output<string[]>;
     /**
+     * Settings on instructing the speech synthesizer on how to generate the output audio content.
+     */
+    public readonly textToSpeechSettings!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3TextToSpeechSettingsResponse>;
+    /**
      * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */
     public readonly timeZone!: pulumi.Output<string>;
@@ -131,6 +135,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
             resourceInputs["startFlow"] = args ? args.startFlow : undefined;
             resourceInputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
+            resourceInputs["textToSpeechSettings"] = args ? args.textToSpeechSettings : undefined;
             resourceInputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
             resourceInputs["advancedSettings"] = undefined /*out*/;
@@ -148,6 +153,7 @@ export class Agent extends pulumi.CustomResource {
             resourceInputs["speechToTextSettings"] = undefined /*out*/;
             resourceInputs["startFlow"] = undefined /*out*/;
             resourceInputs["supportedLanguageCodes"] = undefined /*out*/;
+            resourceInputs["textToSpeechSettings"] = undefined /*out*/;
             resourceInputs["timeZone"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -215,6 +221,10 @@ export interface AgentArgs {
      * The list of all languages supported by the agent (except for the `default_language_code`).
      */
     supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Settings on instructing the speech synthesizer on how to generate the output audio content.
+     */
+    textToSpeechSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TextToSpeechSettingsArgs>;
     /**
      * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */

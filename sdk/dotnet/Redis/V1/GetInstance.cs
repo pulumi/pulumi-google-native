@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         public readonly string AuthorizedNetwork;
         /// <summary>
+        /// Optional. The available maintenance versions that an instance could update to.
+        /// </summary>
+        public readonly ImmutableArray<string> AvailableMaintenanceVersions;
+        /// <summary>
         /// Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         /// </summary>
         public readonly string ConnectMode;
@@ -115,6 +119,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// Date and time of upcoming maintenance events which have been scheduled.
         /// </summary>
         public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
+        /// <summary>
+        /// Optional. The self service update maintenance version. The version is date based such as "20210712_00_00".
+        /// </summary>
+        public readonly string MaintenanceVersion;
         /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
@@ -204,6 +212,8 @@ namespace Pulumi.GoogleNative.Redis.V1
 
             string authorizedNetwork,
 
+            ImmutableArray<string> availableMaintenanceVersions,
+
             string connectMode,
 
             string createTime,
@@ -223,6 +233,8 @@ namespace Pulumi.GoogleNative.Redis.V1
             Outputs.MaintenancePolicyResponse maintenancePolicy,
 
             Outputs.MaintenanceScheduleResponse maintenanceSchedule,
+
+            string maintenanceVersion,
 
             int memorySizeGb,
 
@@ -267,6 +279,7 @@ namespace Pulumi.GoogleNative.Redis.V1
             AlternativeLocationId = alternativeLocationId;
             AuthEnabled = authEnabled;
             AuthorizedNetwork = authorizedNetwork;
+            AvailableMaintenanceVersions = availableMaintenanceVersions;
             ConnectMode = connectMode;
             CreateTime = createTime;
             CurrentLocationId = currentLocationId;
@@ -277,6 +290,7 @@ namespace Pulumi.GoogleNative.Redis.V1
             Location = location;
             MaintenancePolicy = maintenancePolicy;
             MaintenanceSchedule = maintenanceSchedule;
+            MaintenanceVersion = maintenanceVersion;
             MemorySizeGb = memorySizeGb;
             Name = name;
             Nodes = nodes;

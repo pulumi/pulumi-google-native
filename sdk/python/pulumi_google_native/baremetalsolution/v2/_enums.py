@@ -138,6 +138,10 @@ class LunState(str, Enum):
     """
     The LUN has been requested to be deleted.
     """
+    COOL_OFF = "COOL_OFF"
+    """
+    The LUN is in cool off state. It will be deleted after `expire_time`.
+    """
 
 
 class LunStorageType(str, Enum):
@@ -389,6 +393,10 @@ class VolumeState(str, Enum):
     UPDATING = "UPDATING"
     """
     The storage volume is being updated.
+    """
+    COOL_OFF = "COOL_OFF"
+    """
+    The storage volume is in cool off state. It will be deleted after `expire_time`.
     """
 
 

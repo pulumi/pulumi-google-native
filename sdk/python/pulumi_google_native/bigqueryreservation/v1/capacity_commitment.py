@@ -30,7 +30,7 @@ class CapacityCommitmentArgs:
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
         :param pulumi.Input['CapacityCommitmentEdition'] edition: Edition of the capacity commitment.
         :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
-        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
@@ -103,7 +103,7 @@ class CapacityCommitmentArgs:
     @pulumi.getter(name="multiRegionAuxiliary")
     def multi_region_auxiliary(self) -> Optional[pulumi.Input[bool]]:
         """
-        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         """
         return pulumi.get(self, "multi_region_auxiliary")
 
@@ -181,7 +181,7 @@ class CapacityCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
         :param pulumi.Input['CapacityCommitmentEdition'] edition: Edition of the capacity commitment.
         :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
-        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
@@ -340,7 +340,7 @@ class CapacityCommitment(pulumi.CustomResource):
     @pulumi.getter(name="multiRegionAuxiliary")
     def multi_region_auxiliary(self) -> pulumi.Output[bool]:
         """
-        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         """
         return pulumi.get(self, "multi_region_auxiliary")
 

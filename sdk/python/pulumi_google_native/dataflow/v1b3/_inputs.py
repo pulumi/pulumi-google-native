@@ -1154,7 +1154,8 @@ class JobMetadataArgs:
                  file_details: Optional[pulumi.Input[Sequence[pulumi.Input['FileIODetailsArgs']]]] = None,
                  pubsub_details: Optional[pulumi.Input[Sequence[pulumi.Input['PubSubIODetailsArgs']]]] = None,
                  sdk_version: Optional[pulumi.Input['SdkVersionArgs']] = None,
-                 spanner_details: Optional[pulumi.Input[Sequence[pulumi.Input['SpannerIODetailsArgs']]]] = None):
+                 spanner_details: Optional[pulumi.Input[Sequence[pulumi.Input['SpannerIODetailsArgs']]]] = None,
+                 user_display_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
         :param pulumi.Input[Sequence[pulumi.Input['BigTableIODetailsArgs']]] big_table_details: Identification of a Cloud Bigtable source used in the Dataflow job.
@@ -1164,6 +1165,7 @@ class JobMetadataArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PubSubIODetailsArgs']]] pubsub_details: Identification of a Pub/Sub source used in the Dataflow job.
         :param pulumi.Input['SdkVersionArgs'] sdk_version: The SDK version used to run the job.
         :param pulumi.Input[Sequence[pulumi.Input['SpannerIODetailsArgs']]] spanner_details: Identification of a Spanner source used in the Dataflow job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_display_properties: List of display properties to help UI filter jobs.
         """
         if big_table_details is not None:
             pulumi.set(__self__, "big_table_details", big_table_details)
@@ -1179,6 +1181,8 @@ class JobMetadataArgs:
             pulumi.set(__self__, "sdk_version", sdk_version)
         if spanner_details is not None:
             pulumi.set(__self__, "spanner_details", spanner_details)
+        if user_display_properties is not None:
+            pulumi.set(__self__, "user_display_properties", user_display_properties)
 
     @property
     @pulumi.getter(name="bigTableDetails")
@@ -1263,6 +1267,18 @@ class JobMetadataArgs:
     @spanner_details.setter
     def spanner_details(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpannerIODetailsArgs']]]]):
         pulumi.set(self, "spanner_details", value)
+
+    @property
+    @pulumi.getter(name="userDisplayProperties")
+    def user_display_properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        List of display properties to help UI filter jobs.
+        """
+        return pulumi.get(self, "user_display_properties")
+
+    @user_display_properties.setter
+    def user_display_properties(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_display_properties", value)
 
 
 @pulumi.input_type

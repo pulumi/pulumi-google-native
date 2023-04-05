@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        /// </summary>
+        [Output("cryptoSpacePath")]
+        public Output<string> CryptoSpacePath { get; private set; } = null!;
+
+        /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
         /// </summary>
         [Output("ekmConnectionId")]
@@ -34,6 +40,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+        /// </summary>
+        [Output("keyManagementMode")]
+        public Output<string> KeyManagementMode { get; private set; } = null!;
 
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -105,6 +117,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     public sealed class EkmConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+        /// </summary>
+        [Input("cryptoSpacePath")]
+        public Input<string>? CryptoSpacePath { get; set; }
+
+        /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
         /// </summary>
         [Input("ekmConnectionId")]
@@ -115,6 +133,12 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+        /// </summary>
+        [Input("keyManagementMode")]
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.EkmConnectionKeyManagementMode>? KeyManagementMode { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

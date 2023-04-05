@@ -44,7 +44,11 @@ export interface GetQueuedResourceResult {
      */
     readonly queueingPolicy: outputs.tpu.v2alpha1.QueueingPolicyResponse;
     /**
-     * State of the QueuedResource request
+     * Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
+     */
+    readonly reservationName: string;
+    /**
+     * State of the QueuedResource request.
      */
     readonly state: outputs.tpu.v2alpha1.QueuedResourceStateResponse;
     /**

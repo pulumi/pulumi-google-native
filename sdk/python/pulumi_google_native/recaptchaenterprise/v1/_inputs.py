@@ -12,6 +12,12 @@ from ._enums import *
 
 __all__ = [
     'GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs',
+    'GoogleCloudRecaptchaenterpriseV1FirewallActionArgs',
     'GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs',
     'GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs',
     'GoogleCloudRecaptchaenterpriseV1WafSettingsArgs',
@@ -22,16 +28,20 @@ __all__ = [
 class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
     def __init__(__self__, *,
                  allow_all_package_names: Optional[pulumi.Input[bool]] = None,
-                 allowed_package_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 allowed_package_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 support_non_google_app_store_distribution: Optional[pulumi.Input[bool]] = None):
         """
         Settings specific to keys that can be used by Android apps.
         :param pulumi.Input[bool] allow_all_package_names: If set to true, allowed_package_names are not enforced.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_package_names: Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
+        :param pulumi.Input[bool] support_non_google_app_store_distribution: Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
         """
         if allow_all_package_names is not None:
             pulumi.set(__self__, "allow_all_package_names", allow_all_package_names)
         if allowed_package_names is not None:
             pulumi.set(__self__, "allowed_package_names", allowed_package_names)
+        if support_non_google_app_store_distribution is not None:
+            pulumi.set(__self__, "support_non_google_app_store_distribution", support_non_google_app_store_distribution)
 
     @property
     @pulumi.getter(name="allowAllPackageNames")
@@ -56,6 +66,197 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs:
     @allowed_package_names.setter
     def allowed_package_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "allowed_package_names", value)
+
+    @property
+    @pulumi.getter(name="supportNonGoogleAppStoreDistribution")
+    def support_non_google_app_store_distribution(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
+        """
+        return pulumi.get(self, "support_non_google_app_store_distribution")
+
+    @support_non_google_app_store_distribution.setter
+    def support_non_google_app_store_distribution(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "support_non_google_app_store_distribution", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs:
+    def __init__(__self__):
+        """
+        An allow action continues processing a request unimpeded.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs:
+    def __init__(__self__):
+        """
+        A block action serves an HTTP error code a prevents the request from hitting the backend.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs:
+    def __init__(__self__):
+        """
+        A redirect action returns a 307 (temporary redirect) response, pointing the user to a ReCaptcha interstitial page to attach a token.
+        """
+        pass
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        A set header action sets a header and forwards the request to the backend. This can be used to trigger custom protection implemented on the backend.
+        :param pulumi.Input[str] key: The header key to set in the request to the backend server.
+        :param pulumi.Input[str] value: The header value to set in the request to the backend server.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header key to set in the request to the backend server.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The header value to set in the request to the backend server.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs:
+    def __init__(__self__, *,
+                 path: Optional[pulumi.Input[str]] = None):
+        """
+        A substitute action transparently serves a different page than the one requested.
+        :param pulumi.Input[str] path: The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        """
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input[str]]:
+        """
+        The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecaptchaenterpriseV1FirewallActionArgs:
+    def __init__(__self__, *,
+                 allow: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs']] = None,
+                 block: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs']] = None,
+                 redirect: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs']] = None,
+                 set_header: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs']] = None,
+                 substitute: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs']] = None):
+        """
+        An individual action. Each action represents what to do if a policy matches.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs'] allow: The user request did not match any policy and should be allowed access to the requested resource.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs'] block: This action will deny access to a given page. The user will get an HTTP error code.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs'] redirect: This action will redirect the request to a ReCaptcha interstitial to attach a token.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs'] set_header: This action will set a custom header but allow the request to continue to the customer backend.
+        :param pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs'] substitute: This action will transparently serve a different page to an offending user.
+        """
+        if allow is not None:
+            pulumi.set(__self__, "allow", allow)
+        if block is not None:
+            pulumi.set(__self__, "block", block)
+        if redirect is not None:
+            pulumi.set(__self__, "redirect", redirect)
+        if set_header is not None:
+            pulumi.set(__self__, "set_header", set_header)
+        if substitute is not None:
+            pulumi.set(__self__, "substitute", substitute)
+
+    @property
+    @pulumi.getter
+    def allow(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs']]:
+        """
+        The user request did not match any policy and should be allowed access to the requested resource.
+        """
+        return pulumi.get(self, "allow")
+
+    @allow.setter
+    def allow(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionAllowActionArgs']]):
+        pulumi.set(self, "allow", value)
+
+    @property
+    @pulumi.getter
+    def block(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs']]:
+        """
+        This action will deny access to a given page. The user will get an HTTP error code.
+        """
+        return pulumi.get(self, "block")
+
+    @block.setter
+    def block(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionBlockActionArgs']]):
+        pulumi.set(self, "block", value)
+
+    @property
+    @pulumi.getter
+    def redirect(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs']]:
+        """
+        This action will redirect the request to a ReCaptcha interstitial to attach a token.
+        """
+        return pulumi.get(self, "redirect")
+
+    @redirect.setter
+    def redirect(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionRedirectActionArgs']]):
+        pulumi.set(self, "redirect", value)
+
+    @property
+    @pulumi.getter(name="setHeader")
+    def set_header(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs']]:
+        """
+        This action will set a custom header but allow the request to continue to the customer backend.
+        """
+        return pulumi.get(self, "set_header")
+
+    @set_header.setter
+    def set_header(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderActionArgs']]):
+        pulumi.set(self, "set_header", value)
+
+    @property
+    @pulumi.getter
+    def substitute(self) -> Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs']]:
+        """
+        This action will transparently serve a different page to an offending user.
+        """
+        return pulumi.get(self, "substitute")
+
+    @substitute.setter
+    def substitute(self, value: Optional[pulumi.Input['GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionArgs']]):
+        pulumi.set(self, "substitute", value)
 
 
 @pulumi.input_type

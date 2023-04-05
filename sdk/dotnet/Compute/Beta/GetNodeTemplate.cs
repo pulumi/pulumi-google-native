@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public static class GetNodeTemplate
     {
         /// <summary>
-        /// Returns the specified node template. Gets a list of available node templates by making a list() request.
+        /// Returns the specified node template.
         /// </summary>
         public static Task<GetNodeTemplateResult> InvokeAsync(GetNodeTemplateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNodeTemplateResult>("google-native:compute/beta:getNodeTemplate", args ?? new GetNodeTemplateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified node template. Gets a list of available node templates by making a list() request.
+        /// Returns the specified node template.
         /// </summary>
         public static Output<GetNodeTemplateResult> Invoke(GetNodeTemplateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNodeTemplateResult>("google-native:compute/beta:getNodeTemplate", args ?? new GetNodeTemplateInvokeArgs(), options.WithDefaults());
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string NodeType;
         /// <summary>
-        /// The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        /// Do not use. Instead, use the node_type property.
         /// </summary>
         public readonly Outputs.NodeTemplateNodeTypeFlexibilityResponse NodeTypeFlexibility;
         /// <summary>

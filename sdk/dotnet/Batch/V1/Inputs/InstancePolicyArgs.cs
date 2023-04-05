@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         }
 
         /// <summary>
-        /// Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+        /// Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
         /// </summary>
         [Input("bootDisk")]
         public Input<Inputs.DiskArgs>? BootDisk { get; set; }
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Inputs
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
-        /// The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
         /// </summary>
         [Input("minCpuPlatform")]
         public Input<string>? MinCpuPlatform { get; set; }

@@ -59,7 +59,7 @@ export class Reservation extends pulumi.CustomResource {
     public readonly ignoreIdleSlots!: pulumi.Output<boolean>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
      */
     public readonly multiRegionAuxiliary!: pulumi.Output<boolean>;
     /**
@@ -146,7 +146,7 @@ export interface ReservationArgs {
     ignoreIdleSlots?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
-     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region.
+     * Applicable only for reservations located within one of the BigQuery multi-regions (US or EU). If set to true, this reservation is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this reservation is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
      */
     multiRegionAuxiliary?: pulumi.Input<boolean>;
     /**

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+// Returns the specified HealthCheck resource.
 func LookupHealthCheck(ctx *pulumi.Context, args *LookupHealthCheckArgs, opts ...pulumi.InvokeOption) (*LookupHealthCheckResult, error) {
 	var rv LookupHealthCheckResult
 	err := ctx.Invoke("google-native:compute/alpha:getHealthCheck", args, &rv, opts...)

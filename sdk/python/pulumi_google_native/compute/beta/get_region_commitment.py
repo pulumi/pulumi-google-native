@@ -263,7 +263,7 @@ def get_region_commitment(commitment: Optional[str] = None,
                           region: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionCommitmentResult:
     """
-    Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+    Returns the specified commitment resource.
     """
     __args__ = dict()
     __args__['commitment'] = commitment
@@ -300,6 +300,6 @@ def get_region_commitment_output(commitment: Optional[pulumi.Input[str]] = None,
                                  region: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionCommitmentResult]:
     """
-    Returns the specified commitment resource. Gets a list of available commitments by making a list() request.
+    Returns the specified commitment resource.
     """
     ...

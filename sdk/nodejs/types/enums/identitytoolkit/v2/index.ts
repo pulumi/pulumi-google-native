@@ -39,6 +39,30 @@ export const GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState = {
  */
 export type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState = (typeof GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigState];
 
+export const GoogleCloudIdentitytoolkitAdminV2ProviderConfigState = {
+    /**
+     * Illegal State, should not be used.
+     */
+    MfaStateUnspecified: "MFA_STATE_UNSPECIFIED",
+    /**
+     * Multi-factor authentication cannot be used for this project.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Multi-factor authentication can be used for this project.
+     */
+    Enabled: "ENABLED",
+    /**
+     * Multi-factor authentication is required for this project. Users from this project must authenticate with the second factor.
+     */
+    Mandatory: "MANDATORY",
+} as const;
+
+/**
+ * Describes the state of the MultiFactor Authentication type.
+ */
+export type GoogleCloudIdentitytoolkitAdminV2ProviderConfigState = (typeof GoogleCloudIdentitytoolkitAdminV2ProviderConfigState)[keyof typeof GoogleCloudIdentitytoolkitAdminV2ProviderConfigState];
+
 export const GoogleIamV1AuditLogConfigLogType = {
     /**
      * Default case. Should never be this.

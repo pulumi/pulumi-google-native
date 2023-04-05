@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
     public static class GetCustomConstraint
     {
         /// <summary>
-        /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
+        /// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
         /// </summary>
         public static Task<GetCustomConstraintResult> InvokeAsync(GetCustomConstraintArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomConstraintResult>("google-native:orgpolicy/v2:getCustomConstraint", args ?? new GetCustomConstraintArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets a CustomConstraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the CustomConstraint does not exist.
+        /// Gets a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the custom constraint does not exist.
         /// </summary>
         public static Output<GetCustomConstraintResult> Invoke(GetCustomConstraintInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomConstraintResult>("google-native:orgpolicy/v2:getCustomConstraint", args ?? new GetCustomConstraintInvokeArgs(), options.WithDefaults());
@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         /// </summary>
         public readonly ImmutableArray<string> MethodTypes;
         /// <summary>
-        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example : "organizations/123/customConstraints/custom.createOnlyE2TypeVms" The max length is 70 characters and the min length is 1. Note that the prefix "organizations/{organization_id}/customConstraints/" is not counted.
+        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Immutable. The Resource Instance type on which this policy applies to. Format will be of the form : "/" Example: * `compute.googleapis.com/Instance`.
+        /// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`.
         /// </summary>
         public readonly ImmutableArray<string> ResourceTypes;
         /// <summary>

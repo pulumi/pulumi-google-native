@@ -87,6 +87,51 @@ namespace Pulumi.GoogleNative.IdentityToolkit.V2
     }
 
     /// <summary>
+    /// Describes the state of the MultiFactor Authentication type.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIdentitytoolkitAdminV2ProviderConfigState : IEquatable<GoogleCloudIdentitytoolkitAdminV2ProviderConfigState>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIdentitytoolkitAdminV2ProviderConfigState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Illegal State, should not be used.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2ProviderConfigState MfaStateUnspecified { get; } = new GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MFA_STATE_UNSPECIFIED");
+        /// <summary>
+        /// Multi-factor authentication cannot be used for this project.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2ProviderConfigState Disabled { get; } = new GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("DISABLED");
+        /// <summary>
+        /// Multi-factor authentication can be used for this project.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2ProviderConfigState Enabled { get; } = new GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("ENABLED");
+        /// <summary>
+        /// Multi-factor authentication is required for this project. Users from this project must authenticate with the second factor.
+        /// </summary>
+        public static GoogleCloudIdentitytoolkitAdminV2ProviderConfigState Mandatory { get; } = new GoogleCloudIdentitytoolkitAdminV2ProviderConfigState("MANDATORY");
+
+        public static bool operator ==(GoogleCloudIdentitytoolkitAdminV2ProviderConfigState left, GoogleCloudIdentitytoolkitAdminV2ProviderConfigState right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIdentitytoolkitAdminV2ProviderConfigState left, GoogleCloudIdentitytoolkitAdminV2ProviderConfigState right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIdentitytoolkitAdminV2ProviderConfigState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIdentitytoolkitAdminV2ProviderConfigState other && Equals(other);
+        public bool Equals(GoogleCloudIdentitytoolkitAdminV2ProviderConfigState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The log type that this config enables.
     /// </summary>
     [EnumType]

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Optional. Optional Error catcher id of the error catch flow which will be executed when execution error happens in the task
+        /// </summary>
+        [Input("errorCatcherId")]
+        public Input<string>? ErrorCatcherId { get; set; }
+
+        /// <summary>
         /// Optional. The user created label for a particular trigger.
         /// </summary>
         [Input("label")]
@@ -50,6 +56,12 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha.Inputs
         /// </summary>
         [Input("nextTasksExecutionPolicy")]
         public Input<Pulumi.GoogleNative.Integrations.V1Alpha.GoogleCloudIntegrationsV1alphaTriggerConfigNextTasksExecutionPolicy>? NextTasksExecutionPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. Informs the front-end application where to draw this error catcher config on the UI.
+        /// </summary>
+        [Input("position")]
+        public Input<Inputs.GoogleCloudIntegrationsV1alphaCoordinateArgs>? Position { get; set; }
 
         [Input("properties")]
         private InputMap<string>? _properties;

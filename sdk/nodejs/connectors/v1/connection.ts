@@ -101,6 +101,10 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly serviceDirectory!: pulumi.Output<string>;
     /**
+     * Optional. Ssl config of a connection
+     */
+    public readonly sslConfig!: pulumi.Output<outputs.connectors.v1.SslConfigResponse>;
+    /**
      * Current status of the connection.
      */
     public /*out*/ readonly status!: pulumi.Output<outputs.connectors.v1.ConnectionStatusResponse>;
@@ -142,6 +146,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["sslConfig"] = args ? args.sslConfig : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
@@ -168,6 +173,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
+            resourceInputs["sslConfig"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["suspended"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -225,6 +231,10 @@ export interface ConnectionArgs {
      * Optional. Service account needed for runtime plane to access GCP resources.
      */
     serviceAccount?: pulumi.Input<string>;
+    /**
+     * Optional. Ssl config of a connection
+     */
+    sslConfig?: pulumi.Input<inputs.connectors.v1.SslConfigArgs>;
     /**
      * Optional. Suspended indicates if a user has suspended a connection or not.
      */

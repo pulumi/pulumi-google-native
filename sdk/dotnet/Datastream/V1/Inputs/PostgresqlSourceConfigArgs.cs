@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<Inputs.PostgresqlRdbmsArgs>? IncludeObjects { get; set; }
 
         /// <summary>
+        /// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        [Input("maxConcurrentBackfillTasks")]
+        public Input<int>? MaxConcurrentBackfillTasks { get; set; }
+
+        /// <summary>
         /// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
         /// </summary>
         [Input("publication", required: true)]

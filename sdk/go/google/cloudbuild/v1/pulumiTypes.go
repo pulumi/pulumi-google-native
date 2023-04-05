@@ -1626,6 +1626,8 @@ func (o BuildApprovalResponseOutput) State() pulumi.StringOutput {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptions struct {
+	// Optional. Option to specify how default logs buckets are setup.
+	DefaultLogsBucketBehavior *BuildOptionsDefaultLogsBucketBehavior `pulumi:"defaultLogsBucketBehavior"`
 	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
@@ -1667,6 +1669,8 @@ type BuildOptionsInput interface {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptionsArgs struct {
+	// Optional. Option to specify how default logs buckets are setup.
+	DefaultLogsBucketBehavior BuildOptionsDefaultLogsBucketBehaviorPtrInput `pulumi:"defaultLogsBucketBehavior"`
 	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
@@ -1773,6 +1777,11 @@ func (o BuildOptionsOutput) ToBuildOptionsPtrOutputWithContext(ctx context.Conte
 	}).(BuildOptionsPtrOutput)
 }
 
+// Optional. Option to specify how default logs buckets are setup.
+func (o BuildOptionsOutput) DefaultLogsBucketBehavior() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return o.ApplyT(func(v BuildOptions) *BuildOptionsDefaultLogsBucketBehavior { return v.DefaultLogsBucketBehavior }).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
+}
+
 // Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 func (o BuildOptionsOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildOptions) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
@@ -1860,6 +1869,16 @@ func (o BuildOptionsPtrOutput) Elem() BuildOptionsOutput {
 		var ret BuildOptions
 		return ret
 	}).(BuildOptionsOutput)
+}
+
+// Optional. Option to specify how default logs buckets are setup.
+func (o BuildOptionsPtrOutput) DefaultLogsBucketBehavior() BuildOptionsDefaultLogsBucketBehaviorPtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *BuildOptionsDefaultLogsBucketBehavior {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultLogsBucketBehavior
+	}).(BuildOptionsDefaultLogsBucketBehaviorPtrOutput)
 }
 
 // Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
@@ -1994,6 +2013,8 @@ func (o BuildOptionsPtrOutput) WorkerPool() pulumi.StringPtrOutput {
 
 // Optional arguments to enable specific features of builds.
 type BuildOptionsResponse struct {
+	// Optional. Option to specify how default logs buckets are setup.
+	DefaultLogsBucketBehavior string `pulumi:"defaultLogsBucketBehavior"`
 	// Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.
 	DiskSizeGb string `pulumi:"diskSizeGb"`
 	// Option to specify whether or not to apply bash style string operations to the substitutions. NOTE: this is always enabled for triggered builds and cannot be overridden in the build configuration file.
@@ -2035,6 +2056,11 @@ func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutput() BuildOptionsR
 
 func (o BuildOptionsResponseOutput) ToBuildOptionsResponseOutputWithContext(ctx context.Context) BuildOptionsResponseOutput {
 	return o
+}
+
+// Optional. Option to specify how default logs buckets are setup.
+func (o BuildOptionsResponseOutput) DefaultLogsBucketBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildOptionsResponse) string { return v.DefaultLogsBucketBehavior }).(pulumi.StringOutput)
 }
 
 // Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 2000GB; builds that request more than the maximum are rejected with an error.

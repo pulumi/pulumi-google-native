@@ -16,6 +16,8 @@ type AccessKeyCredentials struct {
 	AccessKeyId *string `pulumi:"accessKeyId"`
 	// Input only. AWS secret access key.
 	SecretAccessKey *string `pulumi:"secretAccessKey"`
+	// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+	SessionToken *string `pulumi:"sessionToken"`
 }
 
 // AccessKeyCredentialsInput is an input type that accepts AccessKeyCredentialsArgs and AccessKeyCredentialsOutput values.
@@ -35,6 +37,8 @@ type AccessKeyCredentialsArgs struct {
 	AccessKeyId pulumi.StringPtrInput `pulumi:"accessKeyId"`
 	// Input only. AWS secret access key.
 	SecretAccessKey pulumi.StringPtrInput `pulumi:"secretAccessKey"`
+	// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+	SessionToken pulumi.StringPtrInput `pulumi:"sessionToken"`
 }
 
 func (AccessKeyCredentialsArgs) ElementType() reflect.Type {
@@ -125,6 +129,11 @@ func (o AccessKeyCredentialsOutput) SecretAccessKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessKeyCredentials) *string { return v.SecretAccessKey }).(pulumi.StringPtrOutput)
 }
 
+// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+func (o AccessKeyCredentialsOutput) SessionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessKeyCredentials) *string { return v.SessionToken }).(pulumi.StringPtrOutput)
+}
+
 type AccessKeyCredentialsPtrOutput struct{ *pulumi.OutputState }
 
 func (AccessKeyCredentialsPtrOutput) ElementType() reflect.Type {
@@ -169,12 +178,24 @@ func (o AccessKeyCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+func (o AccessKeyCredentialsPtrOutput) SessionToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessKeyCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SessionToken
+	}).(pulumi.StringPtrOutput)
+}
+
 // Message describing AWS Credentials using access key id and secret.
 type AccessKeyCredentialsResponse struct {
 	// AWS access key ID.
 	AccessKeyId string `pulumi:"accessKeyId"`
 	// Input only. AWS secret access key.
 	SecretAccessKey string `pulumi:"secretAccessKey"`
+	// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+	SessionToken string `pulumi:"sessionToken"`
 }
 
 // Message describing AWS Credentials using access key id and secret.
@@ -200,6 +221,11 @@ func (o AccessKeyCredentialsResponseOutput) AccessKeyId() pulumi.StringOutput {
 // Input only. AWS secret access key.
 func (o AccessKeyCredentialsResponseOutput) SecretAccessKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessKeyCredentialsResponse) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+// Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+func (o AccessKeyCredentialsResponseOutput) SessionToken() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessKeyCredentialsResponse) string { return v.SessionToken }).(pulumi.StringOutput)
 }
 
 // AdaptingOSStep contains specific step details.
@@ -1786,6 +1812,32 @@ func (o ComputeSchedulingResponseOutput) RestartType() pulumi.StringOutput {
 	return o.ApplyT(func(v ComputeSchedulingResponse) string { return v.RestartType }).(pulumi.StringOutput)
 }
 
+// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+type CutoverForecastResponse struct {
+	// Estimation of the CutoverJob duration.
+	EstimatedCutoverJobDuration string `pulumi:"estimatedCutoverJobDuration"`
+}
+
+// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
+type CutoverForecastResponseOutput struct{ *pulumi.OutputState }
+
+func (CutoverForecastResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CutoverForecastResponse)(nil)).Elem()
+}
+
+func (o CutoverForecastResponseOutput) ToCutoverForecastResponseOutput() CutoverForecastResponseOutput {
+	return o
+}
+
+func (o CutoverForecastResponseOutput) ToCutoverForecastResponseOutputWithContext(ctx context.Context) CutoverForecastResponseOutput {
+	return o
+}
+
+// Estimation of the CutoverJob duration.
+func (o CutoverForecastResponseOutput) EstimatedCutoverJobDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v CutoverForecastResponse) string { return v.EstimatedCutoverJobDuration }).(pulumi.StringOutput)
+}
+
 // CutoverJob message describes a cutover of a migrating VM. The CutoverJob is the operation of shutting down the VM, creating a snapshot and clonning the VM using the replicated snapshot.
 type CutoverJobResponse struct {
 	// Details of the target VM in Compute Engine.
@@ -2095,6 +2147,166 @@ func (o InstantiatingMigratedVMStepResponseOutput) ToInstantiatingMigratedVMStep
 	return o
 }
 
+// Describes a URL link.
+type LinkResponse struct {
+	// Describes what the link offers.
+	Description string `pulumi:"description"`
+	// The URL of the link.
+	Url string `pulumi:"url"`
+}
+
+// Describes a URL link.
+type LinkResponseOutput struct{ *pulumi.OutputState }
+
+func (LinkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LinkResponse)(nil)).Elem()
+}
+
+func (o LinkResponseOutput) ToLinkResponseOutput() LinkResponseOutput {
+	return o
+}
+
+func (o LinkResponseOutput) ToLinkResponseOutputWithContext(ctx context.Context) LinkResponseOutput {
+	return o
+}
+
+// Describes what the link offers.
+func (o LinkResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The URL of the link.
+func (o LinkResponseOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v LinkResponse) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type LinkResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (LinkResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]LinkResponse)(nil)).Elem()
+}
+
+func (o LinkResponseArrayOutput) ToLinkResponseArrayOutput() LinkResponseArrayOutput {
+	return o
+}
+
+func (o LinkResponseArrayOutput) ToLinkResponseArrayOutputWithContext(ctx context.Context) LinkResponseArrayOutput {
+	return o
+}
+
+func (o LinkResponseArrayOutput) Index(i pulumi.IntInput) LinkResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) LinkResponse {
+		return vs[0].([]LinkResponse)[vs[1].(int)]
+	}).(LinkResponseOutput)
+}
+
+// Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+type LocalizedMessageResponse struct {
+	// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+	Locale string `pulumi:"locale"`
+	// The localized error message in the above locale.
+	Message string `pulumi:"message"`
+}
+
+// Provides a localized error message that is safe to return to the user which can be attached to an RPC error.
+type LocalizedMessageResponseOutput struct{ *pulumi.OutputState }
+
+func (LocalizedMessageResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LocalizedMessageResponse)(nil)).Elem()
+}
+
+func (o LocalizedMessageResponseOutput) ToLocalizedMessageResponseOutput() LocalizedMessageResponseOutput {
+	return o
+}
+
+func (o LocalizedMessageResponseOutput) ToLocalizedMessageResponseOutputWithContext(ctx context.Context) LocalizedMessageResponseOutput {
+	return o
+}
+
+// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+func (o LocalizedMessageResponseOutput) Locale() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalizedMessageResponse) string { return v.Locale }).(pulumi.StringOutput)
+}
+
+// The localized error message in the above locale.
+func (o LocalizedMessageResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalizedMessageResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+// Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations.
+type MigrationWarningResponse struct {
+	// Suggested action for solving the warning.
+	ActionItem LocalizedMessageResponse `pulumi:"actionItem"`
+	// The warning code.
+	Code string `pulumi:"code"`
+	// URL(s) pointing to additional information on handling the current warning.
+	HelpLinks []LinkResponse `pulumi:"helpLinks"`
+	// The localized warning message.
+	WarningMessage LocalizedMessageResponse `pulumi:"warningMessage"`
+	// The time the warning occurred.
+	WarningTime string `pulumi:"warningTime"`
+}
+
+// Represents migration resource warning information that can be used with google.rpc.Status message. MigrationWarning is used to present the user with warning information in migration operations.
+type MigrationWarningResponseOutput struct{ *pulumi.OutputState }
+
+func (MigrationWarningResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationWarningResponse)(nil)).Elem()
+}
+
+func (o MigrationWarningResponseOutput) ToMigrationWarningResponseOutput() MigrationWarningResponseOutput {
+	return o
+}
+
+func (o MigrationWarningResponseOutput) ToMigrationWarningResponseOutputWithContext(ctx context.Context) MigrationWarningResponseOutput {
+	return o
+}
+
+// Suggested action for solving the warning.
+func (o MigrationWarningResponseOutput) ActionItem() LocalizedMessageResponseOutput {
+	return o.ApplyT(func(v MigrationWarningResponse) LocalizedMessageResponse { return v.ActionItem }).(LocalizedMessageResponseOutput)
+}
+
+// The warning code.
+func (o MigrationWarningResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationWarningResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// URL(s) pointing to additional information on handling the current warning.
+func (o MigrationWarningResponseOutput) HelpLinks() LinkResponseArrayOutput {
+	return o.ApplyT(func(v MigrationWarningResponse) []LinkResponse { return v.HelpLinks }).(LinkResponseArrayOutput)
+}
+
+// The localized warning message.
+func (o MigrationWarningResponseOutput) WarningMessage() LocalizedMessageResponseOutput {
+	return o.ApplyT(func(v MigrationWarningResponse) LocalizedMessageResponse { return v.WarningMessage }).(LocalizedMessageResponseOutput)
+}
+
+// The time the warning occurred.
+func (o MigrationWarningResponseOutput) WarningTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MigrationWarningResponse) string { return v.WarningTime }).(pulumi.StringOutput)
+}
+
+type MigrationWarningResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (MigrationWarningResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MigrationWarningResponse)(nil)).Elem()
+}
+
+func (o MigrationWarningResponseArrayOutput) ToMigrationWarningResponseArrayOutput() MigrationWarningResponseArrayOutput {
+	return o
+}
+
+func (o MigrationWarningResponseArrayOutput) ToMigrationWarningResponseArrayOutputWithContext(ctx context.Context) MigrationWarningResponseArrayOutput {
+	return o
+}
+
+func (o MigrationWarningResponseArrayOutput) Index(i pulumi.IntInput) MigrationWarningResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MigrationWarningResponse {
+		return vs[0].([]MigrationWarningResponse)[vs[1].(int)]
+	}).(MigrationWarningResponseOutput)
+}
+
 // NetworkInterface represents a NIC of a VM.
 type NetworkInterface struct {
 	// The external IP to define in the NIC.
@@ -2394,6 +2606,8 @@ type ReplicationCycleResponse struct {
 	Steps []CycleStepResponse `pulumi:"steps"`
 	// The accumulated duration the replication cycle was paused.
 	TotalPauseDuration string `pulumi:"totalPauseDuration"`
+	// Warnings that occurred during the cycle.
+	Warnings []MigrationWarningResponse `pulumi:"warnings"`
 }
 
 // ReplicationCycle contains information about the current replication cycle status.
@@ -2454,6 +2668,11 @@ func (o ReplicationCycleResponseOutput) Steps() CycleStepResponseArrayOutput {
 // The accumulated duration the replication cycle was paused.
 func (o ReplicationCycleResponseOutput) TotalPauseDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v ReplicationCycleResponse) string { return v.TotalPauseDuration }).(pulumi.StringOutput)
+}
+
+// Warnings that occurred during the cycle.
+func (o ReplicationCycleResponseOutput) Warnings() MigrationWarningResponseArrayOutput {
+	return o.ApplyT(func(v ReplicationCycleResponse) []MigrationWarningResponse { return v.Warnings }).(MigrationWarningResponseArrayOutput)
 }
 
 // ReplicationSync contain information about the last replica sync to the cloud.
@@ -4377,6 +4596,7 @@ func init() {
 	pulumi.RegisterOutputType(ComputeSchedulingOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(ComputeSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(CutoverForecastResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseOutput{})
 	pulumi.RegisterOutputType(CutoverJobResponseArrayOutput{})
 	pulumi.RegisterOutputType(CutoverStepResponseOutput{})
@@ -4385,6 +4605,11 @@ func init() {
 	pulumi.RegisterOutputType(CycleStepResponseArrayOutput{})
 	pulumi.RegisterOutputType(InitializingReplicationStepResponseOutput{})
 	pulumi.RegisterOutputType(InstantiatingMigratedVMStepResponseOutput{})
+	pulumi.RegisterOutputType(LinkResponseOutput{})
+	pulumi.RegisterOutputType(LinkResponseArrayOutput{})
+	pulumi.RegisterOutputType(LocalizedMessageResponseOutput{})
+	pulumi.RegisterOutputType(MigrationWarningResponseOutput{})
+	pulumi.RegisterOutputType(MigrationWarningResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(NetworkInterfaceResponseOutput{})

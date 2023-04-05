@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly int PolicyTagCount;
         /// <summary>
-        /// Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a GCP service. Currently only 'DATAPLEX' is supported.
+        /// Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1TaxonomyServiceResponse Service;
         /// <summary>

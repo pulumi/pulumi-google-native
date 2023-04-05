@@ -1370,6 +1370,52 @@ func (o GoogleCloudRetailV2LocalInventoryResponseArrayOutput) Index(i pulumi.Int
 	}).(GoogleCloudRetailV2LocalInventoryResponseOutput)
 }
 
+// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+type GoogleCloudRetailV2ModelServingConfigListResponse struct {
+	// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+	ServingConfigIds []string `pulumi:"servingConfigIds"`
+}
+
+// Represents an ordered combination of valid serving configs, which can be used for `PAGE_OPTIMIZATION` recommendations.
+type GoogleCloudRetailV2ModelServingConfigListResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelServingConfigListResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2ModelServingConfigListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelServingConfigListResponseOutput) ToGoogleCloudRetailV2ModelServingConfigListResponseOutput() GoogleCloudRetailV2ModelServingConfigListResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelServingConfigListResponseOutput) ToGoogleCloudRetailV2ModelServingConfigListResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelServingConfigListResponseOutput {
+	return o
+}
+
+// Optional. A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
+func (o GoogleCloudRetailV2ModelServingConfigListResponseOutput) ServingConfigIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2ModelServingConfigListResponse) []string { return v.ServingConfigIds }).(pulumi.StringArrayOutput)
+}
+
+type GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2ModelServingConfigListResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2ModelServingConfigListResponseArrayOutput() GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput) ToGoogleCloudRetailV2ModelServingConfigListResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2ModelServingConfigListResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2ModelServingConfigListResponse {
+		return vs[0].([]GoogleCloudRetailV2ModelServingConfigListResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2ModelServingConfigListResponseOutput)
+}
+
 // The price information of a Product.
 type GoogleCloudRetailV2PriceInfo struct {
 	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -1746,7 +1792,7 @@ type GoogleCloudRetailV2ProductResponse struct {
 	Images []GoogleCloudRetailV2ImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
-	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+	// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 	LocalInventories []GoogleCloudRetailV2LocalInventoryResponse `pulumi:"localInventories"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
@@ -1881,7 +1927,7 @@ func (o GoogleCloudRetailV2ProductResponseOutput) LanguageCode() pulumi.StringOu
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
+// A list of local inventories specific to different places. This field can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs if fine-grained, high-volume updates are necessary.
 func (o GoogleCloudRetailV2ProductResponseOutput) LocalInventories() GoogleCloudRetailV2LocalInventoryResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2ProductResponse) []GoogleCloudRetailV2LocalInventoryResponse {
 		return v.LocalInventories
@@ -4667,6 +4713,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2IntervalResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2LocalInventoryResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2LocalInventoryResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelServingConfigListResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2ModelServingConfigListResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2PriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2PriceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2PriceInfoPriceRangeResponseOutput{})

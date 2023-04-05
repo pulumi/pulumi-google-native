@@ -10,30 +10,10 @@ export const getJob: typeof import("./getJob").getJob = null as any;
 export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
 utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
 
-export { GetJobIamPolicyArgs, GetJobIamPolicyResult, GetJobIamPolicyOutputArgs } from "./getJobIamPolicy";
-export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy = null as any;
-export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
-utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
-
 export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
-
-export { JobIamBindingArgs } from "./jobIamBinding";
-export type JobIamBinding = import("./jobIamBinding").JobIamBinding;
-export const JobIamBinding: typeof import("./jobIamBinding").JobIamBinding = null as any;
-utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
-
-export { JobIamMemberArgs } from "./jobIamMember";
-export type JobIamMember = import("./jobIamMember").JobIamMember;
-export const JobIamMember: typeof import("./jobIamMember").JobIamMember = null as any;
-utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
-
-export { JobIamPolicyArgs } from "./jobIamPolicy";
-export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
-export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
-utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
 
 
 // Export enums:
@@ -45,12 +25,6 @@ const _module = {
         switch (type) {
             case "google-native:batch/v1:Job":
                 return new Job(name, <any>undefined, { urn })
-            case "google-native:batch/v1:JobIamBinding":
-                return new JobIamBinding(name, <any>undefined, { urn })
-            case "google-native:batch/v1:JobIamMember":
-                return new JobIamMember(name, <any>undefined, { urn })
-            case "google-native:batch/v1:JobIamPolicy":
-                return new JobIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -179,6 +179,10 @@ export const SoftwareConfigOptionalComponentsItem = {
      */
     HiveWebhcat: "HIVE_WEBHCAT",
     /**
+     * Hudi.
+     */
+    Hudi: "HUDI",
+    /**
      * The Jupyter Notebook.
      */
     Jupyter: "JUPYTER",

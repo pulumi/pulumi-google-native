@@ -50,7 +50,7 @@ export class ConversionWorkspace extends pulumi.CustomResource {
      */
     public readonly destination!: pulumi.Output<outputs.datamigration.v1.DatabaseEngineInfoResponse>;
     /**
-     * The display name for the workspace
+     * The display name for the workspace.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -58,11 +58,11 @@ export class ConversionWorkspace extends pulumi.CustomResource {
      */
     public readonly globalSettings!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether the workspace has uncommitted changes (changes which were made after the workspace was committed)
+     * Whether the workspace has uncommitted changes (changes which were made after the workspace was committed).
      */
     public /*out*/ readonly hasUncommittedChanges!: pulumi.Output<boolean>;
     /**
-     * The latest commit id
+     * The latest commit ID.
      */
     public /*out*/ readonly latestCommitId!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class ConversionWorkspace extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
@@ -158,7 +158,7 @@ export interface ConversionWorkspaceArgs {
      */
     destination: pulumi.Input<inputs.datamigration.v1.DatabaseEngineInfoArgs>;
     /**
-     * The display name for the workspace
+     * The display name for the workspace.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -172,7 +172,7 @@ export interface ConversionWorkspaceArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+     * A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
      */
     requestId?: pulumi.Input<string>;
     /**

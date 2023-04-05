@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ * Returns the specified persistent disk.
  */
 export function getDisk(args: GetDiskArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskResult> {
 
@@ -51,6 +51,10 @@ export interface GetDiskResult {
      * Encrypts the disk using a customer-supplied encryption key or a customer-managed encryption key. Encryption keys do not protect access to metadata of the disk. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later. For example, to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine. After you encrypt a disk with a customer-managed key, the diskEncryptionKey.kmsKeyName is set to a key *version* name once the disk is created. The disk is encrypted with this version of the key. In the response, diskEncryptionKey.kmsKeyName appears in the following format: "diskEncryptionKey.kmsKeyName": "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeysVersions/version If you do not provide an encryption key when creating the disk, then the disk is encrypted using an automatically generated key and you don't need to provide a key to use the disk later.
      */
     readonly diskEncryptionKey: outputs.compute.alpha.CustomerEncryptionKeyResponse;
+    /**
+     * Whether this disk is using confidential compute mode. see go/confidential-mode-in-arcus for details.
+     */
+    readonly enableConfidentialCompute: boolean;
     /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
@@ -241,7 +245,7 @@ export interface GetDiskResult {
     readonly zone: string;
 }
 /**
- * Returns a specified persistent disk. Gets a list of available persistent disks by making a list() request.
+ * Returns the specified persistent disk.
  */
 export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
     return pulumi.output(args).apply((a: any) => getDisk(a, opts))

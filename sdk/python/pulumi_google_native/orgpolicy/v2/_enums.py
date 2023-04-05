@@ -16,7 +16,7 @@ class CustomConstraintActionType(str, Enum):
     """
     ACTION_TYPE_UNSPECIFIED = "ACTION_TYPE_UNSPECIFIED"
     """
-    Unspecified. Will results in user error.
+    Unspecified. Results in an error.
     """
     ALLOW = "ALLOW"
     """
@@ -31,7 +31,7 @@ class CustomConstraintActionType(str, Enum):
 class CustomConstraintMethodTypesItem(str, Enum):
     METHOD_TYPE_UNSPECIFIED = "METHOD_TYPE_UNSPECIFIED"
     """
-    Unspecified. Will results in user error.
+    Unspecified. Results in an error.
     """
     CREATE = "CREATE"
     """

@@ -508,6 +508,7 @@ func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutput
 	return o
 }
 
+// BigQuery destination configuration
 type BigQueryDestinationConfig struct {
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 	DataFreshness *string `pulumi:"dataFreshness"`
@@ -528,6 +529,7 @@ type BigQueryDestinationConfigInput interface {
 	ToBigQueryDestinationConfigOutputWithContext(context.Context) BigQueryDestinationConfigOutput
 }
 
+// BigQuery destination configuration
 type BigQueryDestinationConfigArgs struct {
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 	DataFreshness pulumi.StringPtrInput `pulumi:"dataFreshness"`
@@ -590,6 +592,7 @@ func (i *bigQueryDestinationConfigPtrType) ToBigQueryDestinationConfigPtrOutputW
 	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationConfigPtrOutput)
 }
 
+// BigQuery destination configuration
 type BigQueryDestinationConfigOutput struct{ *pulumi.OutputState }
 
 func (BigQueryDestinationConfigOutput) ElementType() reflect.Type {
@@ -683,6 +686,7 @@ func (o BigQueryDestinationConfigPtrOutput) SourceHierarchyDatasets() SourceHier
 	}).(SourceHierarchyDatasetsPtrOutput)
 }
 
+// BigQuery destination configuration
 type BigQueryDestinationConfigResponse struct {
 	// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
 	DataFreshness string `pulumi:"dataFreshness"`
@@ -692,6 +696,7 @@ type BigQueryDestinationConfigResponse struct {
 	SourceHierarchyDatasets SourceHierarchyDatasetsResponse `pulumi:"sourceHierarchyDatasets"`
 }
 
+// BigQuery destination configuration
 type BigQueryDestinationConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (BigQueryDestinationConfigResponseOutput) ElementType() reflect.Type {
@@ -3180,6 +3185,8 @@ type MysqlSourceConfig struct {
 	ExcludeObjects *MysqlRdbms `pulumi:"excludeObjects"`
 	// MySQL objects to retrieve from the source.
 	IncludeObjects *MysqlRdbms `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
 }
@@ -3201,6 +3208,8 @@ type MysqlSourceConfigArgs struct {
 	ExcludeObjects MysqlRdbmsPtrInput `pulumi:"excludeObjects"`
 	// MySQL objects to retrieve from the source.
 	IncludeObjects MysqlRdbmsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
 }
@@ -3293,6 +3302,11 @@ func (o MysqlSourceConfigOutput) IncludeObjects() MysqlRdbmsPtrOutput {
 	return o.ApplyT(func(v MysqlSourceConfig) *MysqlRdbms { return v.IncludeObjects }).(MysqlRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o MysqlSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MysqlSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 func (o MysqlSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v MysqlSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
@@ -3342,6 +3356,16 @@ func (o MysqlSourceConfigPtrOutput) IncludeObjects() MysqlRdbmsPtrOutput {
 	}).(MysqlRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o MysqlSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MysqlSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
 // Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 func (o MysqlSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MysqlSourceConfig) *int {
@@ -3358,6 +3382,8 @@ type MysqlSourceConfigResponse struct {
 	ExcludeObjects MysqlRdbmsResponse `pulumi:"excludeObjects"`
 	// MySQL objects to retrieve from the source.
 	IncludeObjects MysqlRdbmsResponse `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks int `pulumi:"maxConcurrentBackfillTasks"`
 	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
 	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
 }
@@ -3385,6 +3411,11 @@ func (o MysqlSourceConfigResponseOutput) ExcludeObjects() MysqlRdbmsResponseOutp
 // MySQL objects to retrieve from the source.
 func (o MysqlSourceConfigResponseOutput) IncludeObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v MysqlSourceConfigResponse) MysqlRdbmsResponse { return v.IncludeObjects }).(MysqlRdbmsResponseOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o MysqlSourceConfigResponseOutput) MaxConcurrentBackfillTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlSourceConfigResponse) int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntOutput)
 }
 
 // Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
@@ -4699,7 +4730,9 @@ type OracleSourceConfig struct {
 	ExcludeObjects *OracleRdbms `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
 	IncludeObjects *OracleRdbms `pulumi:"includeObjects"`
-	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
+	// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
 	// Stream large object values. NOTE: This feature is currently experimental.
 	StreamLargeObjects *StreamLargeObjects `pulumi:"streamLargeObjects"`
@@ -4724,7 +4757,9 @@ type OracleSourceConfigArgs struct {
 	ExcludeObjects OracleRdbmsPtrInput `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
 	IncludeObjects OracleRdbmsPtrInput `pulumi:"includeObjects"`
-	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
+	// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
 	// Stream large object values. NOTE: This feature is currently experimental.
 	StreamLargeObjects StreamLargeObjectsPtrInput `pulumi:"streamLargeObjects"`
@@ -4823,7 +4858,12 @@ func (o OracleSourceConfigOutput) IncludeObjects() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *OracleRdbms { return v.IncludeObjects }).(OracleRdbmsPtrOutput)
 }
 
-// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+func (o OracleSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OracleSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 func (o OracleSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
 }
@@ -4887,7 +4927,17 @@ func (o OracleSourceConfigPtrOutput) IncludeObjects() OracleRdbmsPtrOutput {
 	}).(OracleRdbmsPtrOutput)
 }
 
-// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+func (o OracleSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OracleSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 func (o OracleSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *OracleSourceConfig) *int {
 		if v == nil {
@@ -4915,7 +4965,9 @@ type OracleSourceConfigResponse struct {
 	ExcludeObjects OracleRdbmsResponse `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
 	IncludeObjects OracleRdbmsResponse `pulumi:"includeObjects"`
-	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+	MaxConcurrentBackfillTasks int `pulumi:"maxConcurrentBackfillTasks"`
+	// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
 	// Stream large object values. NOTE: This feature is currently experimental.
 	StreamLargeObjects StreamLargeObjectsResponse `pulumi:"streamLargeObjects"`
@@ -4951,7 +5003,12 @@ func (o OracleSourceConfigResponseOutput) IncludeObjects() OracleRdbmsResponseOu
 	return o.ApplyT(func(v OracleSourceConfigResponse) OracleRdbmsResponse { return v.IncludeObjects }).(OracleRdbmsResponseOutput)
 }
 
-// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+// Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
+func (o OracleSourceConfigResponseOutput) MaxConcurrentBackfillTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v OracleSourceConfigResponse) int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
 func (o OracleSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) int { return v.MaxConcurrentCdcTasks }).(pulumi.IntOutput)
 }
@@ -5985,6 +6042,8 @@ type PostgresqlSourceConfig struct {
 	ExcludeObjects *PostgresqlRdbms `pulumi:"excludeObjects"`
 	// PostgreSQL objects to include in the stream.
 	IncludeObjects *PostgresqlRdbms `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks *int `pulumi:"maxConcurrentBackfillTasks"`
 	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 	Publication string `pulumi:"publication"`
 	// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
@@ -6008,6 +6067,8 @@ type PostgresqlSourceConfigArgs struct {
 	ExcludeObjects PostgresqlRdbmsPtrInput `pulumi:"excludeObjects"`
 	// PostgreSQL objects to include in the stream.
 	IncludeObjects PostgresqlRdbmsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks pulumi.IntPtrInput `pulumi:"maxConcurrentBackfillTasks"`
 	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 	Publication pulumi.StringInput `pulumi:"publication"`
 	// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
@@ -6102,6 +6163,11 @@ func (o PostgresqlSourceConfigOutput) IncludeObjects() PostgresqlRdbmsPtrOutput 
 	return o.ApplyT(func(v PostgresqlSourceConfig) *PostgresqlRdbms { return v.IncludeObjects }).(PostgresqlRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o PostgresqlSourceConfigOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfig) *int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntPtrOutput)
+}
+
 // The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 func (o PostgresqlSourceConfigOutput) Publication() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresqlSourceConfig) string { return v.Publication }).(pulumi.StringOutput)
@@ -6156,6 +6222,16 @@ func (o PostgresqlSourceConfigPtrOutput) IncludeObjects() PostgresqlRdbmsPtrOutp
 	}).(PostgresqlRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o PostgresqlSourceConfigPtrOutput) MaxConcurrentBackfillTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresqlSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentBackfillTasks
+	}).(pulumi.IntPtrOutput)
+}
+
 // The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 func (o PostgresqlSourceConfigPtrOutput) Publication() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresqlSourceConfig) *string {
@@ -6182,6 +6258,8 @@ type PostgresqlSourceConfigResponse struct {
 	ExcludeObjects PostgresqlRdbmsResponse `pulumi:"excludeObjects"`
 	// PostgreSQL objects to include in the stream.
 	IncludeObjects PostgresqlRdbmsResponse `pulumi:"includeObjects"`
+	// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentBackfillTasks int `pulumi:"maxConcurrentBackfillTasks"`
 	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
 	Publication string `pulumi:"publication"`
 	// Immutable. The name of the logical replication slot that's configured with the pgoutput plugin.
@@ -6211,6 +6289,11 @@ func (o PostgresqlSourceConfigResponseOutput) ExcludeObjects() PostgresqlRdbmsRe
 // PostgreSQL objects to include in the stream.
 func (o PostgresqlSourceConfigResponseOutput) IncludeObjects() PostgresqlRdbmsResponseOutput {
 	return o.ApplyT(func(v PostgresqlSourceConfigResponse) PostgresqlRdbmsResponse { return v.IncludeObjects }).(PostgresqlRdbmsResponseOutput)
+}
+
+// Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o PostgresqlSourceConfigResponseOutput) MaxConcurrentBackfillTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfigResponse) int { return v.MaxConcurrentBackfillTasks }).(pulumi.IntOutput)
 }
 
 // The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
@@ -6848,6 +6931,7 @@ func (o SourceConfigResponseOutput) SourceConnectionProfile() pulumi.StringOutpu
 
 // Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
 type SourceHierarchyDatasets struct {
+	// The dataset template to use for dynamic dataset creation.
 	DatasetTemplate *DatasetTemplate `pulumi:"datasetTemplate"`
 }
 
@@ -6864,6 +6948,7 @@ type SourceHierarchyDatasetsInput interface {
 
 // Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
 type SourceHierarchyDatasetsArgs struct {
+	// The dataset template to use for dynamic dataset creation.
 	DatasetTemplate DatasetTemplatePtrInput `pulumi:"datasetTemplate"`
 }
 
@@ -6945,6 +7030,7 @@ func (o SourceHierarchyDatasetsOutput) ToSourceHierarchyDatasetsPtrOutputWithCon
 	}).(SourceHierarchyDatasetsPtrOutput)
 }
 
+// The dataset template to use for dynamic dataset creation.
 func (o SourceHierarchyDatasetsOutput) DatasetTemplate() DatasetTemplatePtrOutput {
 	return o.ApplyT(func(v SourceHierarchyDatasets) *DatasetTemplate { return v.DatasetTemplate }).(DatasetTemplatePtrOutput)
 }
@@ -6973,6 +7059,7 @@ func (o SourceHierarchyDatasetsPtrOutput) Elem() SourceHierarchyDatasetsOutput {
 	}).(SourceHierarchyDatasetsOutput)
 }
 
+// The dataset template to use for dynamic dataset creation.
 func (o SourceHierarchyDatasetsPtrOutput) DatasetTemplate() DatasetTemplatePtrOutput {
 	return o.ApplyT(func(v *SourceHierarchyDatasets) *DatasetTemplate {
 		if v == nil {
@@ -6984,6 +7071,7 @@ func (o SourceHierarchyDatasetsPtrOutput) DatasetTemplate() DatasetTemplatePtrOu
 
 // Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
 type SourceHierarchyDatasetsResponse struct {
+	// The dataset template to use for dynamic dataset creation.
 	DatasetTemplate DatasetTemplateResponse `pulumi:"datasetTemplate"`
 }
 
@@ -7002,11 +7090,12 @@ func (o SourceHierarchyDatasetsResponseOutput) ToSourceHierarchyDatasetsResponse
 	return o
 }
 
+// The dataset template to use for dynamic dataset creation.
 func (o SourceHierarchyDatasetsResponseOutput) DatasetTemplate() DatasetTemplateResponseOutput {
 	return o.ApplyT(func(v SourceHierarchyDatasetsResponse) DatasetTemplateResponse { return v.DatasetTemplate }).(DatasetTemplateResponseOutput)
 }
 
-// Static IP address connectivity.
+// Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
 type StaticServiceIpConnectivity struct {
 }
 
@@ -7021,7 +7110,7 @@ type StaticServiceIpConnectivityInput interface {
 	ToStaticServiceIpConnectivityOutputWithContext(context.Context) StaticServiceIpConnectivityOutput
 }
 
-// Static IP address connectivity.
+// Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
 type StaticServiceIpConnectivityArgs struct {
 }
 
@@ -7078,7 +7167,7 @@ func (i *staticServiceIpConnectivityPtrType) ToStaticServiceIpConnectivityPtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(StaticServiceIpConnectivityPtrOutput)
 }
 
-// Static IP address connectivity.
+// Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
 type StaticServiceIpConnectivityOutput struct{ *pulumi.OutputState }
 
 func (StaticServiceIpConnectivityOutput) ElementType() reflect.Type {
@@ -7127,11 +7216,11 @@ func (o StaticServiceIpConnectivityPtrOutput) Elem() StaticServiceIpConnectivity
 	}).(StaticServiceIpConnectivityOutput)
 }
 
-// Static IP address connectivity.
+// Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
 type StaticServiceIpConnectivityResponse struct {
 }
 
-// Static IP address connectivity.
+// Static IP address connectivity. Used when the source database is configured to allow incoming connections from the Datastream public IP addresses for the region specified in the connection profile.
 type StaticServiceIpConnectivityResponseOutput struct{ *pulumi.OutputState }
 
 func (StaticServiceIpConnectivityResponseOutput) ElementType() reflect.Type {

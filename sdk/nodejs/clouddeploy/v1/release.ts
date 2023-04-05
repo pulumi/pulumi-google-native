@@ -53,6 +53,10 @@ export class Release extends pulumi.CustomResource {
      */
     public readonly buildArtifacts!: pulumi.Output<outputs.clouddeploy.v1.BuildArtifactResponse[]>;
     /**
+     * Information around the state of the Release.
+     */
+    public /*out*/ readonly condition!: pulumi.Output<outputs.clouddeploy.v1.ReleaseConditionResponse>;
+    /**
      * Time at which the `Release` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -165,6 +169,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["skaffoldVersion"] = args ? args.skaffoldVersion : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["abandoned"] = undefined /*out*/;
+            resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deliveryPipelineSnapshot"] = undefined /*out*/;
             resourceInputs["renderEndTime"] = undefined /*out*/;
@@ -178,6 +183,7 @@ export class Release extends pulumi.CustomResource {
             resourceInputs["abandoned"] = undefined /*out*/;
             resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["buildArtifacts"] = undefined /*out*/;
+            resourceInputs["condition"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["deliveryPipelineId"] = undefined /*out*/;
             resourceInputs["deliveryPipelineSnapshot"] = undefined /*out*/;

@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
     public sealed class GceRegionalPersistentDiskResponse
     {
         /// <summary>
-        /// Type of the disk to use.
+        /// Type of the disk to use. Defaults to pd-standard.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+        /// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
         /// </summary>
         public readonly string FsType;
         /// <summary>
@@ -29,9 +29,13 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
         /// </summary>
         public readonly string ReclaimPolicy;
         /// <summary>
-        /// Size of the disk in GB. Must be empty if source_snapshot is set.
+        /// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
         /// </summary>
         public readonly int SizeGb;
+        /// <summary>
+        /// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        /// </summary>
+        public readonly string SourceSnapshot;
 
         [OutputConstructor]
         private GceRegionalPersistentDiskResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Outputs
 
             string reclaimPolicy,
 
-            int sizeGb)
+            int sizeGb,
+
+            string sourceSnapshot)
         {
             DiskType = diskType;
             FsType = fsType;
             ReclaimPolicy = reclaimPolicy;
             SizeGb = sizeGb;
+            SourceSnapshot = sourceSnapshot;
         }
     }
 }

@@ -67,6 +67,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Information specifying a multiTarget.
+        /// </summary>
+        [Output("multiTarget")]
+        public Output<Outputs.MultiTargetResponse> MultiTarget { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         /// </summary>
         [Output("name")]
@@ -230,6 +236,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
         [Input("location")]
         public Input<string>? Location { get; set; }
+
+        /// <summary>
+        /// Information specifying a multiTarget.
+        /// </summary>
+        [Input("multiTarget")]
+        public Input<Inputs.MultiTargetArgs>? MultiTarget { get; set; }
 
         /// <summary>
         /// Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.

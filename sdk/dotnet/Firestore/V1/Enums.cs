@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         /// </summary>
         public static DatabaseAppEngineIntegrationMode Enabled { get; } = new DatabaseAppEngineIntegrationMode("ENABLED");
         /// <summary>
-        /// Appengine has no affect on the ability of this database to serve requests.
+        /// App Engine has no effect on the ability of this database to serve requests. This is the default setting for databases created with the Firestore API.
         /// </summary>
         public static DatabaseAppEngineIntegrationMode Disabled { get; } = new DatabaseAppEngineIntegrationMode("DISABLED");
 

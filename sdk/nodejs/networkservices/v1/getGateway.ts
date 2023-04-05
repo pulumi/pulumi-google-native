@@ -25,6 +25,14 @@ export interface GetGatewayArgs {
 
 export interface GetGatewayResult {
     /**
+     * Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+     */
+    readonly addresses: string[];
+    /**
+     * Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    readonly certificateUrls: string[];
+    /**
      * The timestamp when the resource was created.
      */
     readonly createTime: string;
@@ -32,6 +40,10 @@ export interface GetGatewayResult {
      * Optional. A free-text description of the resource. Max length 1024 characters.
      */
     readonly description: string;
+    /**
+     * Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*&#47;locations/*&#47;gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    readonly gatewaySecurityPolicy: string;
     /**
      * Optional. Set of label tags associated with the Gateway resource.
      */
@@ -41,11 +53,15 @@ export interface GetGatewayResult {
      */
     readonly name: string;
     /**
+     * Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*&#47;global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+     */
+    readonly network: string;
+    /**
      * One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
      */
     readonly ports: number[];
     /**
-     * Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+     * Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
      */
     readonly scope: string;
     /**
@@ -56,6 +72,10 @@ export interface GetGatewayResult {
      * Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
      */
     readonly serverTlsPolicy: string;
+    /**
+     * Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*&#47;regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+     */
+    readonly subnetwork: string;
     /**
      * Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
      */

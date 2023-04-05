@@ -60,7 +60,7 @@ class GetKeyResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The timestamp corresponding to the creation of this Key.
+        The timestamp corresponding to the creation of this key.
         """
         return pulumi.get(self, "create_time")
 

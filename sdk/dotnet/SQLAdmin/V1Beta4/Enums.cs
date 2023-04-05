@@ -346,6 +346,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public static InstanceDatabaseVersion Mysql8031 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_31");
         /// <summary>
+        /// The database major version is MySQL 8.0 and the minor version is 32.
+        /// </summary>
+        public static InstanceDatabaseVersion Mysql8032 { get; } = new InstanceDatabaseVersion("MYSQL_8_0_32");
+        /// <summary>
         /// The database version is SQL Server 2019 Standard.
         /// </summary>
         public static InstanceDatabaseVersion Sqlserver2019Standard { get; } = new InstanceDatabaseVersion("SQLSERVER_2019_STANDARD");

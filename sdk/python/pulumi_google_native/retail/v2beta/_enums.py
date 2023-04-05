@@ -9,6 +9,9 @@ __all__ = [
     'ControlSolutionTypesItem',
     'GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode',
     'GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode',
+    'ModelFilteringOption',
+    'ModelPeriodicTuningState',
+    'ModelTrainingState',
     'ProductAvailability',
     'ProductType',
     'ServingConfigDiversityType',
@@ -79,6 +82,64 @@ class GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode(str, Enum):
     DISABLED = "DISABLED"
     """
     Disable personalization.
+    """
+
+
+class ModelFilteringOption(str, Enum):
+    """
+    Optional. If `RECOMMENDATIONS_FILTERING_ENABLED`, recommendation filtering by attributes is enabled for the model.
+    """
+    RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED = "RECOMMENDATIONS_FILTERING_OPTION_UNSPECIFIED"
+    """
+    Value used when unset. In this case, server behavior defaults to RECOMMENDATIONS_FILTERING_DISABLED.
+    """
+    RECOMMENDATIONS_FILTERING_DISABLED = "RECOMMENDATIONS_FILTERING_DISABLED"
+    """
+    Recommendation filtering is disabled.
+    """
+    RECOMMENDATIONS_FILTERING_ENABLED = "RECOMMENDATIONS_FILTERING_ENABLED"
+    """
+    Recommendation filtering is enabled.
+    """
+
+
+class ModelPeriodicTuningState(str, Enum):
+    """
+    Optional. The state of periodic tuning. The period we use is 3 months - to do a one-off tune earlier use the `TuneModel` method. Default value is `PERIODIC_TUNING_ENABLED`.
+    """
+    PERIODIC_TUNING_STATE_UNSPECIFIED = "PERIODIC_TUNING_STATE_UNSPECIFIED"
+    """
+    Unspecified default value, should never be explicitly set.
+    """
+    PERIODIC_TUNING_DISABLED = "PERIODIC_TUNING_DISABLED"
+    """
+    The model has periodic tuning disabled. Tuning can be reenabled by calling the `EnableModelPeriodicTuning` method or by calling the `TuneModel` method.
+    """
+    ALL_TUNING_DISABLED = "ALL_TUNING_DISABLED"
+    """
+    The model cannot be tuned with periodic tuning OR the `TuneModel` method. Hide the options in customer UI and reject any requests through the backend self serve API.
+    """
+    PERIODIC_TUNING_ENABLED = "PERIODIC_TUNING_ENABLED"
+    """
+    The model has periodic tuning enabled. Tuning can be disabled by calling the `DisableModelPeriodicTuning` method.
+    """
+
+
+class ModelTrainingState(str, Enum):
+    """
+    Optional. The training state that the model is in (e.g. `TRAINING` or `PAUSED`). Since part of the cost of running the service is frequency of training - this can be used to determine when to train model in order to control cost. If not specified: the default value for `CreateModel` method is `TRAINING`. The default value for `UpdateModel` method is to keep the state the same as before.
+    """
+    TRAINING_STATE_UNSPECIFIED = "TRAINING_STATE_UNSPECIFIED"
+    """
+    Unspecified training state.
+    """
+    PAUSED = "PAUSED"
+    """
+    The model training is paused.
+    """
+    TRAINING = "TRAINING"
+    """
+    The model is training.
     """
 
 

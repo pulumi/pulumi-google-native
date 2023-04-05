@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Contains;
         /// <summary>
-        /// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must not be set for facet with text values. Maximum number of intervals is 30.
+        /// For all numerical facet keys that appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals are not specified in the search request, these percentiles will become the bounds for its intervals and will be returned in the response. If the facet key intervals are specified in the request, then the specified intervals will be returned instead.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2betaIntervalResponse> Intervals;
         /// <summary>

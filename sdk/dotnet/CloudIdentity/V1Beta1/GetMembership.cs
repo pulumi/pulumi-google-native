@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Delivery setting associated with the membership.
+        /// </summary>
+        public readonly string DeliverySetting;
+        /// <summary>
         /// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         /// </summary>
         public readonly Outputs.EntityKeyResponse MemberKey;
@@ -90,6 +94,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         private GetMembershipResult(
             string createTime,
 
+            string deliverySetting,
+
             Outputs.EntityKeyResponse memberKey,
 
             string name,
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
             string updateTime)
         {
             CreateTime = createTime;
+            DeliverySetting = deliverySetting;
             MemberKey = memberKey;
             Name = name;
             PreferredMemberKey = preferredMemberKey;

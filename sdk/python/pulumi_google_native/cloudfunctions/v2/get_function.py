@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFunctionResult:
-    def __init__(__self__, build_config=None, description=None, environment=None, event_trigger=None, labels=None, name=None, service_config=None, state=None, state_messages=None, update_time=None):
+    def __init__(__self__, build_config=None, description=None, environment=None, event_trigger=None, kms_key_name=None, labels=None, name=None, service_config=None, state=None, state_messages=None, update_time=None):
         if build_config and not isinstance(build_config, dict):
             raise TypeError("Expected argument 'build_config' to be a dict")
         pulumi.set(__self__, "build_config", build_config)
@@ -32,6 +32,9 @@ class GetFunctionResult:
         if event_trigger and not isinstance(event_trigger, dict):
             raise TypeError("Expected argument 'event_trigger' to be a dict")
         pulumi.set(__self__, "event_trigger", event_trigger)
+        if kms_key_name and not isinstance(kms_key_name, str):
+            raise TypeError("Expected argument 'kms_key_name' to be a str")
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -82,6 +85,14 @@ class GetFunctionResult:
         An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
         """
         return pulumi.get(self, "event_trigger")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter
@@ -142,6 +153,7 @@ class AwaitableGetFunctionResult(GetFunctionResult):
             description=self.description,
             environment=self.environment,
             event_trigger=self.event_trigger,
+            kms_key_name=self.kms_key_name,
             labels=self.labels,
             name=self.name,
             service_config=self.service_config,
@@ -169,6 +181,7 @@ def get_function(function_id: Optional[str] = None,
         description=__ret__.description,
         environment=__ret__.environment,
         event_trigger=__ret__.event_trigger,
+        kms_key_name=__ret__.kms_key_name,
         labels=__ret__.labels,
         name=__ret__.name,
         service_config=__ret__.service_config,

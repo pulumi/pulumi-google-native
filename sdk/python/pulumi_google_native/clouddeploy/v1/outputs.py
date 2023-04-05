@@ -12,27 +12,43 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AdvanceChildRolloutJobResponse',
     'AnthosClusterResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
     'BuildArtifactResponse',
+    'CanaryDeploymentResponse',
+    'CanaryResponse',
+    'ChildRolloutJobsResponse',
+    'CloudRunConfigResponse',
     'CloudRunLocationResponse',
     'CloudRunMetadataResponse',
+    'CreateChildRolloutJobResponse',
+    'CustomCanaryDeploymentResponse',
     'DefaultPoolResponse',
     'DeliveryPipelineResponse',
     'DeployJobResponse',
     'DeploymentJobsResponse',
     'ExecutionConfigResponse',
     'ExprResponse',
+    'GatewayServiceMeshResponse',
     'GkeClusterResponse',
     'JobResponse',
+    'KubernetesConfigResponse',
     'MetadataResponse',
+    'MultiTargetResponse',
+    'PhaseConfigResponse',
     'PhaseResponse',
     'PipelineConditionResponse',
     'PipelineReadyConditionResponse',
     'PrivatePoolResponse',
+    'ReleaseConditionResponse',
+    'ReleaseReadyConditionResponse',
+    'RuntimeConfigResponse',
     'SerialPipelineResponse',
+    'ServiceNetworkingResponse',
+    'SkaffoldSupportedConditionResponse',
     'StageResponse',
     'StandardResponse',
     'StrategyResponse',
@@ -41,6 +57,18 @@ __all__ = [
     'TargetsTypeConditionResponse',
     'VerifyJobResponse',
 ]
+
+@pulumi.output_type
+class AdvanceChildRolloutJobResponse(dict):
+    """
+    An advanceChildRollout Job.
+    """
+    def __init__(__self__):
+        """
+        An advanceChildRollout Job.
+        """
+        pass
+
 
 @pulumi.output_type
 class AnthosClusterResponse(dict):
@@ -244,6 +272,195 @@ class BuildArtifactResponse(dict):
 
 
 @pulumi.output_type
+class CanaryDeploymentResponse(dict):
+    """
+    CanaryDeployment represents the canary deployment configuration
+    """
+    def __init__(__self__, *,
+                 percentages: Sequence[int],
+                 verify: bool):
+        """
+        CanaryDeployment represents the canary deployment configuration
+        :param Sequence[int] percentages: The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        :param bool verify: Whether to run verify tests after each percentage deployment.
+        """
+        pulumi.set(__self__, "percentages", percentages)
+        pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def percentages(self) -> Sequence[int]:
+        """
+        The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 <= n < 100.
+        """
+        return pulumi.get(self, "percentages")
+
+    @property
+    @pulumi.getter
+    def verify(self) -> bool:
+        """
+        Whether to run verify tests after each percentage deployment.
+        """
+        return pulumi.get(self, "verify")
+
+
+@pulumi.output_type
+class CanaryResponse(dict):
+    """
+    Canary represents the canary deployment strategy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canaryDeployment":
+            suggest = "canary_deployment"
+        elif key == "customCanaryDeployment":
+            suggest = "custom_canary_deployment"
+        elif key == "runtimeConfig":
+            suggest = "runtime_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CanaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CanaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CanaryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 canary_deployment: 'outputs.CanaryDeploymentResponse',
+                 custom_canary_deployment: 'outputs.CustomCanaryDeploymentResponse',
+                 runtime_config: 'outputs.RuntimeConfigResponse'):
+        """
+        Canary represents the canary deployment strategy.
+        :param 'CanaryDeploymentResponse' canary_deployment: Configures the progressive based deployment for a Target.
+        :param 'CustomCanaryDeploymentResponse' custom_canary_deployment: Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        :param 'RuntimeConfigResponse' runtime_config: Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        """
+        pulumi.set(__self__, "canary_deployment", canary_deployment)
+        pulumi.set(__self__, "custom_canary_deployment", custom_canary_deployment)
+        pulumi.set(__self__, "runtime_config", runtime_config)
+
+    @property
+    @pulumi.getter(name="canaryDeployment")
+    def canary_deployment(self) -> 'outputs.CanaryDeploymentResponse':
+        """
+        Configures the progressive based deployment for a Target.
+        """
+        return pulumi.get(self, "canary_deployment")
+
+    @property
+    @pulumi.getter(name="customCanaryDeployment")
+    def custom_canary_deployment(self) -> 'outputs.CustomCanaryDeploymentResponse':
+        """
+        Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments.
+        """
+        return pulumi.get(self, "custom_canary_deployment")
+
+    @property
+    @pulumi.getter(name="runtimeConfig")
+    def runtime_config(self) -> 'outputs.RuntimeConfigResponse':
+        """
+        Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment.
+        """
+        return pulumi.get(self, "runtime_config")
+
+
+@pulumi.output_type
+class ChildRolloutJobsResponse(dict):
+    """
+    ChildRollouts job composition
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advanceRolloutJobs":
+            suggest = "advance_rollout_jobs"
+        elif key == "createRolloutJobs":
+            suggest = "create_rollout_jobs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ChildRolloutJobsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ChildRolloutJobsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ChildRolloutJobsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advance_rollout_jobs: Sequence['outputs.JobResponse'],
+                 create_rollout_jobs: Sequence['outputs.JobResponse']):
+        """
+        ChildRollouts job composition
+        :param Sequence['JobResponse'] advance_rollout_jobs: List of AdvanceChildRolloutJobs
+        :param Sequence['JobResponse'] create_rollout_jobs: List of CreateChildRolloutJobs
+        """
+        pulumi.set(__self__, "advance_rollout_jobs", advance_rollout_jobs)
+        pulumi.set(__self__, "create_rollout_jobs", create_rollout_jobs)
+
+    @property
+    @pulumi.getter(name="advanceRolloutJobs")
+    def advance_rollout_jobs(self) -> Sequence['outputs.JobResponse']:
+        """
+        List of AdvanceChildRolloutJobs
+        """
+        return pulumi.get(self, "advance_rollout_jobs")
+
+    @property
+    @pulumi.getter(name="createRolloutJobs")
+    def create_rollout_jobs(self) -> Sequence['outputs.JobResponse']:
+        """
+        List of CreateChildRolloutJobs
+        """
+        return pulumi.get(self, "create_rollout_jobs")
+
+
+@pulumi.output_type
+class CloudRunConfigResponse(dict):
+    """
+    CloudRunConfig contains the Cloud Run runtime configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automaticTrafficControl":
+            suggest = "automatic_traffic_control"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudRunConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudRunConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudRunConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 automatic_traffic_control: bool):
+        """
+        CloudRunConfig contains the Cloud Run runtime configuration.
+        :param bool automatic_traffic_control: Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        """
+        pulumi.set(__self__, "automatic_traffic_control", automatic_traffic_control)
+
+    @property
+    @pulumi.getter(name="automaticTrafficControl")
+    def automatic_traffic_control(self) -> bool:
+        """
+        Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
+        """
+        return pulumi.get(self, "automatic_traffic_control")
+
+
+@pulumi.output_type
 class CloudRunLocationResponse(dict):
     """
     Information specifying where to deploy a Cloud Run Service.
@@ -324,6 +541,57 @@ class CloudRunMetadataResponse(dict):
         The Cloud Run Service urls that are associated with a `Rollout`.
         """
         return pulumi.get(self, "service_urls")
+
+
+@pulumi.output_type
+class CreateChildRolloutJobResponse(dict):
+    """
+    A createChildRollout Job.
+    """
+    def __init__(__self__):
+        """
+        A createChildRollout Job.
+        """
+        pass
+
+
+@pulumi.output_type
+class CustomCanaryDeploymentResponse(dict):
+    """
+    CustomCanaryDeployment represents the custom canary deployment configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phaseConfigs":
+            suggest = "phase_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomCanaryDeploymentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomCanaryDeploymentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomCanaryDeploymentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phase_configs: Sequence['outputs.PhaseConfigResponse']):
+        """
+        CustomCanaryDeployment represents the custom canary deployment configuration.
+        :param Sequence['PhaseConfigResponse'] phase_configs: Configuration for each phase in the canary deployment in the order executed.
+        """
+        pulumi.set(__self__, "phase_configs", phase_configs)
+
+    @property
+    @pulumi.getter(name="phaseConfigs")
+    def phase_configs(self) -> Sequence['outputs.PhaseConfigResponse']:
+        """
+        Configuration for each phase in the canary deployment in the order executed.
+        """
+        return pulumi.get(self, "phase_configs")
 
 
 @pulumi.output_type
@@ -766,6 +1034,67 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class GatewayServiceMeshResponse(dict):
+    """
+    Information about the Kubernetes Gateway API service mesh configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpRoute":
+            suggest = "http_route"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayServiceMeshResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayServiceMeshResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayServiceMeshResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deployment: str,
+                 http_route: str,
+                 service: str):
+        """
+        Information about the Kubernetes Gateway API service mesh configuration.
+        :param str deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        :param str http_route: Name of the Gateway API HTTPRoute.
+        :param str service: Name of the Kubernetes Service.
+        """
+        pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "http_route", http_route)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> str:
+        """
+        Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter(name="httpRoute")
+    def http_route(self) -> str:
+        """
+        Name of the Gateway API HTTPRoute.
+        """
+        return pulumi.get(self, "http_route")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Name of the Kubernetes Service.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
 class GkeClusterResponse(dict):
     """
     Information specifying a GKE Cluster.
@@ -823,10 +1152,16 @@ class JobResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "deployJob":
+        if key == "advanceChildRolloutJob":
+            suggest = "advance_child_rollout_job"
+        elif key == "createChildRolloutJob":
+            suggest = "create_child_rollout_job"
+        elif key == "deployJob":
             suggest = "deploy_job"
         elif key == "jobRun":
             suggest = "job_run"
+        elif key == "skipMessage":
+            suggest = "skip_message"
         elif key == "verifyJob":
             suggest = "verify_job"
 
@@ -842,21 +1177,46 @@ class JobResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 advance_child_rollout_job: 'outputs.AdvanceChildRolloutJobResponse',
+                 create_child_rollout_job: 'outputs.CreateChildRolloutJobResponse',
                  deploy_job: 'outputs.DeployJobResponse',
                  job_run: str,
+                 skip_message: str,
                  state: str,
                  verify_job: 'outputs.VerifyJobResponse'):
         """
         Job represents an operation for a `Rollout`.
+        :param 'AdvanceChildRolloutJobResponse' advance_child_rollout_job: An advanceChildRollout Job.
+        :param 'CreateChildRolloutJobResponse' create_child_rollout_job: A createChildRollout Job.
         :param 'DeployJobResponse' deploy_job: A deploy Job.
         :param str job_run: The name of the `JobRun` responsible for the most recent invocation of this Job.
+        :param str skip_message: Additional information on why the Job was skipped, if available.
         :param str state: The current state of the Job.
         :param 'VerifyJobResponse' verify_job: A verify Job.
         """
+        pulumi.set(__self__, "advance_child_rollout_job", advance_child_rollout_job)
+        pulumi.set(__self__, "create_child_rollout_job", create_child_rollout_job)
         pulumi.set(__self__, "deploy_job", deploy_job)
         pulumi.set(__self__, "job_run", job_run)
+        pulumi.set(__self__, "skip_message", skip_message)
         pulumi.set(__self__, "state", state)
         pulumi.set(__self__, "verify_job", verify_job)
+
+    @property
+    @pulumi.getter(name="advanceChildRolloutJob")
+    def advance_child_rollout_job(self) -> 'outputs.AdvanceChildRolloutJobResponse':
+        """
+        An advanceChildRollout Job.
+        """
+        return pulumi.get(self, "advance_child_rollout_job")
+
+    @property
+    @pulumi.getter(name="createChildRolloutJob")
+    def create_child_rollout_job(self) -> 'outputs.CreateChildRolloutJobResponse':
+        """
+        A createChildRollout Job.
+        """
+        return pulumi.get(self, "create_child_rollout_job")
 
     @property
     @pulumi.getter(name="deployJob")
@@ -875,6 +1235,14 @@ class JobResponse(dict):
         return pulumi.get(self, "job_run")
 
     @property
+    @pulumi.getter(name="skipMessage")
+    def skip_message(self) -> str:
+        """
+        Additional information on why the Job was skipped, if available.
+        """
+        return pulumi.get(self, "skip_message")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -889,6 +1257,58 @@ class JobResponse(dict):
         A verify Job.
         """
         return pulumi.get(self, "verify_job")
+
+
+@pulumi.output_type
+class KubernetesConfigResponse(dict):
+    """
+    KubernetesConfig contains the Kubernetes runtime configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayServiceMesh":
+            suggest = "gateway_service_mesh"
+        elif key == "serviceNetworking":
+            suggest = "service_networking"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gateway_service_mesh: 'outputs.GatewayServiceMeshResponse',
+                 service_networking: 'outputs.ServiceNetworkingResponse'):
+        """
+        KubernetesConfig contains the Kubernetes runtime configuration.
+        :param 'GatewayServiceMeshResponse' gateway_service_mesh: Kubernetes Gateway API service mesh configuration.
+        :param 'ServiceNetworkingResponse' service_networking: Kubernetes Service networking configuration.
+        """
+        pulumi.set(__self__, "gateway_service_mesh", gateway_service_mesh)
+        pulumi.set(__self__, "service_networking", service_networking)
+
+    @property
+    @pulumi.getter(name="gatewayServiceMesh")
+    def gateway_service_mesh(self) -> 'outputs.GatewayServiceMeshResponse':
+        """
+        Kubernetes Gateway API service mesh configuration.
+        """
+        return pulumi.get(self, "gateway_service_mesh")
+
+    @property
+    @pulumi.getter(name="serviceNetworking")
+    def service_networking(self) -> 'outputs.ServiceNetworkingResponse':
+        """
+        Kubernetes Service networking configuration.
+        """
+        return pulumi.get(self, "service_networking")
 
 
 @pulumi.output_type
@@ -931,6 +1351,117 @@ class MetadataResponse(dict):
 
 
 @pulumi.output_type
+class MultiTargetResponse(dict):
+    """
+    Information specifying a multiTarget.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetIds":
+            suggest = "target_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 target_ids: Sequence[str]):
+        """
+        Information specifying a multiTarget.
+        :param Sequence[str] target_ids: The target_ids of this multiTarget.
+        """
+        pulumi.set(__self__, "target_ids", target_ids)
+
+    @property
+    @pulumi.getter(name="targetIds")
+    def target_ids(self) -> Sequence[str]:
+        """
+        The target_ids of this multiTarget.
+        """
+        return pulumi.get(self, "target_ids")
+
+
+@pulumi.output_type
+class PhaseConfigResponse(dict):
+    """
+    PhaseConfig represents the configuration for a phase in the custom canary deployment.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phaseId":
+            suggest = "phase_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PhaseConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PhaseConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PhaseConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 percentage: int,
+                 phase_id: str,
+                 profiles: Sequence[str],
+                 verify: bool):
+        """
+        PhaseConfig represents the configuration for a phase in the custom canary deployment.
+        :param int percentage: Percentage deployment for the phase.
+        :param str phase_id: The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        :param Sequence[str] profiles: Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        :param bool verify: Whether to run verify tests after the deployment.
+        """
+        pulumi.set(__self__, "percentage", percentage)
+        pulumi.set(__self__, "phase_id", phase_id)
+        pulumi.set(__self__, "profiles", profiles)
+        pulumi.set(__self__, "verify", verify)
+
+    @property
+    @pulumi.getter
+    def percentage(self) -> int:
+        """
+        Percentage deployment for the phase.
+        """
+        return pulumi.get(self, "percentage")
+
+    @property
+    @pulumi.getter(name="phaseId")
+    def phase_id(self) -> str:
+        """
+        The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+        """
+        return pulumi.get(self, "phase_id")
+
+    @property
+    @pulumi.getter
+    def profiles(self) -> Sequence[str]:
+        """
+        Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
+        """
+        return pulumi.get(self, "profiles")
+
+    @property
+    @pulumi.getter
+    def verify(self) -> bool:
+        """
+        Whether to run verify tests after the deployment.
+        """
+        return pulumi.get(self, "verify")
+
+
+@pulumi.output_type
 class PhaseResponse(dict):
     """
     Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
@@ -938,8 +1469,12 @@ class PhaseResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "deploymentJobs":
+        if key == "childRolloutJobs":
+            suggest = "child_rollout_jobs"
+        elif key == "deploymentJobs":
             suggest = "deployment_jobs"
+        elif key == "skipMessage":
+            suggest = "skip_message"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PhaseResponse. Access the value via the '{suggest}' property getter instead.")
@@ -953,15 +1488,29 @@ class PhaseResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 child_rollout_jobs: 'outputs.ChildRolloutJobsResponse',
                  deployment_jobs: 'outputs.DeploymentJobsResponse',
+                 skip_message: str,
                  state: str):
         """
         Phase represents a collection of jobs that are logically grouped together for a `Rollout`.
+        :param 'ChildRolloutJobsResponse' child_rollout_jobs: ChildRollout job composition.
         :param 'DeploymentJobsResponse' deployment_jobs: Deployment job composition.
+        :param str skip_message: Additional information on why the Phase was skipped, if available.
         :param str state: Current state of the Phase.
         """
+        pulumi.set(__self__, "child_rollout_jobs", child_rollout_jobs)
         pulumi.set(__self__, "deployment_jobs", deployment_jobs)
+        pulumi.set(__self__, "skip_message", skip_message)
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="childRolloutJobs")
+    def child_rollout_jobs(self) -> 'outputs.ChildRolloutJobsResponse':
+        """
+        ChildRollout job composition.
+        """
+        return pulumi.get(self, "child_rollout_jobs")
 
     @property
     @pulumi.getter(name="deploymentJobs")
@@ -970,6 +1519,14 @@ class PhaseResponse(dict):
         Deployment job composition.
         """
         return pulumi.get(self, "deployment_jobs")
+
+    @property
+    @pulumi.getter(name="skipMessage")
+    def skip_message(self) -> str:
+        """
+        Additional information on why the Phase was skipped, if available.
+        """
+        return pulumi.get(self, "skip_message")
 
     @property
     @pulumi.getter
@@ -1161,6 +1718,130 @@ class PrivatePoolResponse(dict):
 
 
 @pulumi.output_type
+class ReleaseConditionResponse(dict):
+    """
+    ReleaseCondition contains all conditions relevant to a Release.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseReadyCondition":
+            suggest = "release_ready_condition"
+        elif key == "skaffoldSupportedCondition":
+            suggest = "skaffold_supported_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 release_ready_condition: 'outputs.ReleaseReadyConditionResponse',
+                 skaffold_supported_condition: 'outputs.SkaffoldSupportedConditionResponse'):
+        """
+        ReleaseCondition contains all conditions relevant to a Release.
+        :param 'ReleaseReadyConditionResponse' release_ready_condition: Details around the Releases's overall status.
+        :param 'SkaffoldSupportedConditionResponse' skaffold_supported_condition: Details around the support state of the release's skaffold version.
+        """
+        pulumi.set(__self__, "release_ready_condition", release_ready_condition)
+        pulumi.set(__self__, "skaffold_supported_condition", skaffold_supported_condition)
+
+    @property
+    @pulumi.getter(name="releaseReadyCondition")
+    def release_ready_condition(self) -> 'outputs.ReleaseReadyConditionResponse':
+        """
+        Details around the Releases's overall status.
+        """
+        return pulumi.get(self, "release_ready_condition")
+
+    @property
+    @pulumi.getter(name="skaffoldSupportedCondition")
+    def skaffold_supported_condition(self) -> 'outputs.SkaffoldSupportedConditionResponse':
+        """
+        Details around the support state of the release's skaffold version.
+        """
+        return pulumi.get(self, "skaffold_supported_condition")
+
+
+@pulumi.output_type
+class ReleaseReadyConditionResponse(dict):
+    """
+    ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you cannot create a rollout with the release.
+    """
+    def __init__(__self__, *,
+                 status: bool):
+        """
+        ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you cannot create a rollout with the release.
+        :param bool status: True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
+        """
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def status(self) -> bool:
+        """
+        True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class RuntimeConfigResponse(dict):
+    """
+    RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRun":
+            suggest = "cloud_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_run: 'outputs.CloudRunConfigResponse',
+                 kubernetes: 'outputs.KubernetesConfigResponse'):
+        """
+        RuntimeConfig contains the runtime specific configurations for a deployment strategy.
+        :param 'CloudRunConfigResponse' cloud_run: Cloud Run runtime configuration.
+        :param 'KubernetesConfigResponse' kubernetes: Kubernetes runtime configuration.
+        """
+        pulumi.set(__self__, "cloud_run", cloud_run)
+        pulumi.set(__self__, "kubernetes", kubernetes)
+
+    @property
+    @pulumi.getter(name="cloudRun")
+    def cloud_run(self) -> 'outputs.CloudRunConfigResponse':
+        """
+        Cloud Run runtime configuration.
+        """
+        return pulumi.get(self, "cloud_run")
+
+    @property
+    @pulumi.getter
+    def kubernetes(self) -> 'outputs.KubernetesConfigResponse':
+        """
+        Kubernetes runtime configuration.
+        """
+        return pulumi.get(self, "kubernetes")
+
+
+@pulumi.output_type
 class SerialPipelineResponse(dict):
     """
     SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
@@ -1180,6 +1861,115 @@ class SerialPipelineResponse(dict):
         Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
         """
         return pulumi.get(self, "stages")
+
+
+@pulumi.output_type
+class ServiceNetworkingResponse(dict):
+    """
+    Information about the Kubernetes Service networking configuration.
+    """
+    def __init__(__self__, *,
+                 deployment: str,
+                 service: str):
+        """
+        Information about the Kubernetes Service networking configuration.
+        :param str deployment: Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        :param str service: Name of the Kubernetes Service.
+        """
+        pulumi.set(__self__, "deployment", deployment)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def deployment(self) -> str:
+        """
+        Name of the Kubernetes Deployment whose traffic is managed by the specified Service.
+        """
+        return pulumi.get(self, "deployment")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        Name of the Kubernetes Service.
+        """
+        return pulumi.get(self, "service")
+
+
+@pulumi.output_type
+class SkaffoldSupportedConditionResponse(dict):
+    """
+    SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceModeTime":
+            suggest = "maintenance_mode_time"
+        elif key == "skaffoldSupportState":
+            suggest = "skaffold_support_state"
+        elif key == "supportExpirationTime":
+            suggest = "support_expiration_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkaffoldSupportedConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkaffoldSupportedConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkaffoldSupportedConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 maintenance_mode_time: str,
+                 skaffold_support_state: str,
+                 status: bool,
+                 support_expiration_time: str):
+        """
+        SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.
+        :param str maintenance_mode_time: The time at which this release's version of skaffold will enter maintenance mode.
+        :param str skaffold_support_state: The skaffold support state for this release's version of skaffold.
+        :param bool status: True if the version of skaffold used by this release is supported.
+        :param str support_expiration_time: The time at which this release's version of skaffold will no longer be supported.
+        """
+        pulumi.set(__self__, "maintenance_mode_time", maintenance_mode_time)
+        pulumi.set(__self__, "skaffold_support_state", skaffold_support_state)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "support_expiration_time", support_expiration_time)
+
+    @property
+    @pulumi.getter(name="maintenanceModeTime")
+    def maintenance_mode_time(self) -> str:
+        """
+        The time at which this release's version of skaffold will enter maintenance mode.
+        """
+        return pulumi.get(self, "maintenance_mode_time")
+
+    @property
+    @pulumi.getter(name="skaffoldSupportState")
+    def skaffold_support_state(self) -> str:
+        """
+        The skaffold support state for this release's version of skaffold.
+        """
+        return pulumi.get(self, "skaffold_support_state")
+
+    @property
+    @pulumi.getter
+    def status(self) -> bool:
+        """
+        True if the version of skaffold used by this release is supported.
+        """
+        return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="supportExpirationTime")
+    def support_expiration_time(self) -> str:
+        """
+        The time at which this release's version of skaffold will no longer be supported.
+        """
+        return pulumi.get(self, "support_expiration_time")
 
 
 @pulumi.output_type
@@ -1271,12 +2061,23 @@ class StrategyResponse(dict):
     Strategy contains deployment strategy information.
     """
     def __init__(__self__, *,
+                 canary: 'outputs.CanaryResponse',
                  standard: 'outputs.StandardResponse'):
         """
         Strategy contains deployment strategy information.
+        :param 'CanaryResponse' canary: Canary deployment strategy provides progressive percentage based deployments to a Target.
         :param 'StandardResponse' standard: Standard deployment strategy executes a single deploy and allows verifying the deployment.
         """
+        pulumi.set(__self__, "canary", canary)
         pulumi.set(__self__, "standard", standard)
+
+    @property
+    @pulumi.getter
+    def canary(self) -> 'outputs.CanaryResponse':
+        """
+        Canary deployment strategy provides progressive percentage based deployments to a Target.
+        """
+        return pulumi.get(self, "canary")
 
     @property
     @pulumi.getter
@@ -1301,6 +2102,8 @@ class TargetResponse(dict):
             suggest = "create_time"
         elif key == "executionConfigs":
             suggest = "execution_configs"
+        elif key == "multiTarget":
+            suggest = "multi_target"
         elif key == "requireApproval":
             suggest = "require_approval"
         elif key == "targetId":
@@ -1328,6 +2131,7 @@ class TargetResponse(dict):
                  execution_configs: Sequence['outputs.ExecutionConfigResponse'],
                  gke: 'outputs.GkeClusterResponse',
                  labels: Mapping[str, str],
+                 multi_target: 'outputs.MultiTargetResponse',
                  name: str,
                  require_approval: bool,
                  run: 'outputs.CloudRunLocationResponse',
@@ -1344,6 +2148,7 @@ class TargetResponse(dict):
         :param Sequence['ExecutionConfigResponse'] execution_configs: Configurations for all execution that relates to this `Target`. Each `ExecutionEnvironmentUsage` value may only be used in a single configuration; using the same value multiple times is an error. When one or more configurations are specified, they must include the `RENDER` and `DEPLOY` `ExecutionEnvironmentUsage` values. When no configurations are specified, execution will use the default specified in `DefaultPool`.
         :param 'GkeClusterResponse' gke: Information specifying a GKE Cluster.
         :param Mapping[str, str] labels: Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
+        :param 'MultiTargetResponse' multi_target: Information specifying a multiTarget.
         :param str name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         :param bool require_approval: Optional. Whether or not the `Target` requires approval.
         :param 'CloudRunLocationResponse' run: Information specifying a Cloud Run deployment target.
@@ -1359,6 +2164,7 @@ class TargetResponse(dict):
         pulumi.set(__self__, "execution_configs", execution_configs)
         pulumi.set(__self__, "gke", gke)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "multi_target", multi_target)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "require_approval", require_approval)
         pulumi.set(__self__, "run", run)
@@ -1429,6 +2235,14 @@ class TargetResponse(dict):
         Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="multiTarget")
+    def multi_target(self) -> 'outputs.MultiTargetResponse':
+        """
+        Information specifying a multiTarget.
+        """
+        return pulumi.get(self, "multi_target")
 
     @property
     @pulumi.getter

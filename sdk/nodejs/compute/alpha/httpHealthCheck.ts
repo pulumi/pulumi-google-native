@@ -72,7 +72,7 @@ export class HttpHealthCheck extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
-     * The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+     * The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
      */
     public readonly requestPath!: pulumi.Output<string>;
     /**
@@ -176,7 +176,7 @@ export interface HttpHealthCheckArgs {
      */
     requestId?: pulumi.Input<string>;
     /**
-     * The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
+     * The request path of the HTTP health check request. The default value is /. This field does not support query parameters. Must comply with RFC3986.
      */
     requestPath?: pulumi.Input<string>;
     /**

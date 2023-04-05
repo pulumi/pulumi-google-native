@@ -15,6 +15,8 @@ import (
 type ContactCenter struct {
 	pulumi.CustomResourceState
 
+	// Optional. Info about the first admin user, such as given name and family name.
+	AdminUser AdminUserResponseOutput `pulumi:"adminUser"`
 	// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
 	CcaipManagedUsers pulumi.BoolOutput `pulumi:"ccaipManagedUsers"`
 	// Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC
@@ -33,7 +35,7 @@ type ContactCenter struct {
 	// name of resource
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Params that sets up Google as IdP.
 	SamlParams SAMLParamsResponseOutput `pulumi:"samlParams"`
@@ -43,7 +45,7 @@ type ContactCenter struct {
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// URIs to access the deployed ContactCenters.
 	Uris URIsResponseOutput `pulumi:"uris"`
-	// Optional. Email address of the first admin users.
+	// Optional. Email address of the first admin user.
 	UserEmail pulumi.StringOutput `pulumi:"userEmail"`
 }
 
@@ -101,6 +103,8 @@ func (ContactCenterState) ElementType() reflect.Type {
 }
 
 type contactCenterArgs struct {
+	// Optional. Info about the first admin user, such as given name and family name.
+	AdminUser *AdminUser `pulumi:"adminUser"`
 	// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
 	CcaipManagedUsers *bool `pulumi:"ccaipManagedUsers"`
 	// Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC
@@ -117,16 +121,18 @@ type contactCenterArgs struct {
 	// name of resource
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Params that sets up Google as IdP.
 	SamlParams *SAMLParams `pulumi:"samlParams"`
-	// Optional. Email address of the first admin users.
+	// Optional. Email address of the first admin user.
 	UserEmail *string `pulumi:"userEmail"`
 }
 
 // The set of arguments for constructing a ContactCenter resource.
 type ContactCenterArgs struct {
+	// Optional. Info about the first admin user, such as given name and family name.
+	AdminUser AdminUserPtrInput
 	// Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
 	CcaipManagedUsers pulumi.BoolPtrInput
 	// Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC
@@ -143,11 +149,11 @@ type ContactCenterArgs struct {
 	// name of resource
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+	// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// Optional. Params that sets up Google as IdP.
 	SamlParams SAMLParamsPtrInput
-	// Optional. Email address of the first admin users.
+	// Optional. Email address of the first admin user.
 	UserEmail pulumi.StringPtrInput
 }
 
@@ -186,6 +192,11 @@ func (o ContactCenterOutput) ToContactCenterOutput() ContactCenterOutput {
 
 func (o ContactCenterOutput) ToContactCenterOutputWithContext(ctx context.Context) ContactCenterOutput {
 	return o
+}
+
+// Optional. Info about the first admin user, such as given name and family name.
+func (o ContactCenterOutput) AdminUser() AdminUserResponseOutput {
+	return o.ApplyT(func(v *ContactCenter) AdminUserResponseOutput { return v.AdminUser }).(AdminUserResponseOutput)
 }
 
 // Optional. Whether to enable users to be created in the CCAIP-instance concurrently to having users in Cloud identity
@@ -236,7 +247,7 @@ func (o ContactCenterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContactCenter) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
 func (o ContactCenterOutput) RequestId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContactCenter) pulumi.StringPtrOutput { return v.RequestId }).(pulumi.StringPtrOutput)
 }
@@ -261,7 +272,7 @@ func (o ContactCenterOutput) Uris() URIsResponseOutput {
 	return o.ApplyT(func(v *ContactCenter) URIsResponseOutput { return v.Uris }).(URIsResponseOutput)
 }
 
-// Optional. Email address of the first admin users.
+// Optional. Email address of the first admin user.
 func (o ContactCenterOutput) UserEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *ContactCenter) pulumi.StringOutput { return v.UserEmail }).(pulumi.StringOutput)
 }

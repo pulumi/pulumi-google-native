@@ -14201,6 +14201,280 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureResponseOutput) Type() pulu
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SuggestionFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig struct {
+	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileId []string `pulumi:"effectsProfileId"`
+	// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch *float64 `pulumi:"pitch"`
+	// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+	SpeakingRate *float64 `pulumi:"speakingRate"`
+	// Optional. The desired voice of the synthesized audio.
+	Voice *GoogleCloudDialogflowV2beta1VoiceSelectionParams `pulumi:"voice"`
+	// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+	VolumeGainDb *float64 `pulumi:"volumeGainDb"`
+}
+
+// GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs and GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigInput` via:
+//
+//	GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{...}
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput
+	ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs struct {
+	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileId pulumi.StringArrayInput `pulumi:"effectsProfileId"`
+	// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch pulumi.Float64PtrInput `pulumi:"pitch"`
+	// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+	SpeakingRate pulumi.Float64PtrInput `pulumi:"speakingRate"`
+	// Optional. The desired voice of the synthesized audio.
+	Voice GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrInput `pulumi:"voice"`
+	// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+	VolumeGainDb pulumi.Float64PtrInput `pulumi:"volumeGainDb"`
+}
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput).ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs, GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtr and GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput` via:
+//
+//	        GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput
+	ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput
+}
+
+type googleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrType GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs
+
+func GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtr(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput {
+	return (*googleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrType) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrType) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput)
+}
+
+// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) EffectsProfileId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) []string { return v.EffectsProfileId }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) Pitch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *float64 { return v.Pitch }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) SpeakingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *float64 { return v.SpeakingRate }).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The desired voice of the synthesized audio.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) Voice() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *GoogleCloudDialogflowV2beta1VoiceSelectionParams {
+		return v.Voice
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput) VolumeGainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *float64 { return v.VolumeGainDb }).(pulumi.Float64PtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) Elem() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig
+		return ret
+	}).(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput)
+}
+
+// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) EffectsProfileId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EffectsProfileId
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) Pitch() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Pitch
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) SpeakingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SpeakingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Optional. The desired voice of the synthesized audio.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) Voice() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *GoogleCloudDialogflowV2beta1VoiceSelectionParams {
+		if v == nil {
+			return nil
+		}
+		return v.Voice
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput) VolumeGainDb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.VolumeGainDb
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse struct {
+	// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+	EffectsProfileId []string `pulumi:"effectsProfileId"`
+	// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+	Pitch float64 `pulumi:"pitch"`
+	// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+	SpeakingRate float64 `pulumi:"speakingRate"`
+	// Optional. The desired voice of the synthesized audio.
+	Voice GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse `pulumi:"voice"`
+	// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+	VolumeGainDb float64 `pulumi:"volumeGainDb"`
+}
+
+// Configuration of how speech should be synthesized.
+type GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput() GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) ToGoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput {
+	return o
+}
+
+// Optional. An identifier which selects 'audio effects' profiles that are applied on (post synthesized) text to speech. Effects are applied on top of each other in the order they are given.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) EffectsProfileId() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse) []string { return v.EffectsProfileId }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Speaking pitch, in the range [-20.0, 20.0]. 20 means increase 20 semitones from the original pitch. -20 means decrease 20 semitones from the original pitch.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) Pitch() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse) float64 { return v.Pitch }).(pulumi.Float64Output)
+}
+
+// Optional. Speaking rate/speed, in the range [0.25, 4.0]. 1.0 is the normal native speed supported by the specific voice. 2.0 is twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the native 1.0 speed. Any other values < 0.25 or > 4.0 will return an error.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) SpeakingRate() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse) float64 { return v.SpeakingRate }).(pulumi.Float64Output)
+}
+
+// Optional. The desired voice of the synthesized audio.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) Voice() GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse) GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse {
+		return v.Voice
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput)
+}
+
+// Optional. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. We strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that.
+func (o GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput) VolumeGainDb() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponse) float64 { return v.VolumeGainDb }).(pulumi.Float64Output)
+}
+
 // Instructs the speech synthesizer on how to generate the output audio content.
 type GoogleCloudDialogflowV2beta1TextToSpeechSettings struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
@@ -14451,6 +14725,200 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) Synthesi
 	}).(pulumi.StringMapOutput)
 }
 
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowV2beta1VoiceSelectionParams struct {
+	// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+	Name *string `pulumi:"name"`
+	// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+	SsmlGender *GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender `pulumi:"ssmlGender"`
+}
+
+// GoogleCloudDialogflowV2beta1VoiceSelectionParamsInput is an input type that accepts GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs and GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1VoiceSelectionParamsInput` via:
+//
+//	GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs{...}
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput
+	ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs struct {
+	// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+	SsmlGender GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrInput `pulumi:"ssmlGender"`
+}
+
+func (GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput {
+	return i.ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput).ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs, GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtr and GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrInput` via:
+//
+//	        GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput
+	ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput
+}
+
+type googleCloudDialogflowV2beta1VoiceSelectionParamsPtrType GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs
+
+func GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtr(v *GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs) GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrInput {
+	return (*googleCloudDialogflowV2beta1VoiceSelectionParamsPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1VoiceSelectionParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1VoiceSelectionParamsPtrType) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1VoiceSelectionParamsPtrType) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowV2beta1VoiceSelectionParams) *GoogleCloudDialogflowV2beta1VoiceSelectionParams {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput)
+}
+
+// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1VoiceSelectionParams) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput) SsmlGender() GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1VoiceSelectionParams) *GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender {
+		return v.SsmlGender
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1VoiceSelectionParams)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput) Elem() GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1VoiceSelectionParams) GoogleCloudDialogflowV2beta1VoiceSelectionParams {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudDialogflowV2beta1VoiceSelectionParams
+		return ret
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput)
+}
+
+// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1VoiceSelectionParams) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput) SsmlGender() GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1VoiceSelectionParams) *GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender {
+		if v == nil {
+			return nil
+		}
+		return v.SsmlGender
+	}).(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGenderPtrOutput)
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse struct {
+	// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+	Name string `pulumi:"name"`
+	// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+	SsmlGender string `pulumi:"ssmlGender"`
+}
+
+// Description of which voice to use for speech synthesis.
+type GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput() GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput) ToGoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput {
+	return o
+}
+
+// Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and ssml_gender. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices).
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+func (o GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput) SsmlGender() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponse) string { return v.SsmlGender }).(pulumi.StringOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -14630,8 +15098,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SuggestionFeatureInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1VoiceSelectionParamsInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrInput)(nil)).Elem(), GoogleCloudDialogflowV2beta1VoiceSelectionParamsArgs{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponseOutput{})
@@ -14865,8 +15337,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeatureOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeatureResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SynthesizeSpeechConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1VoiceSelectionParamsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1VoiceSelectionParamsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1VoiceSelectionParamsResponseOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 }

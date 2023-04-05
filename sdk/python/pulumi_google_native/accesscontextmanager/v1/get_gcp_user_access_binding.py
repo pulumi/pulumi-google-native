@@ -18,10 +18,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetGcpUserAccessBindingResult:
-    def __init__(__self__, access_levels=None, group_key=None, name=None):
+    def __init__(__self__, access_levels=None, dry_run_access_levels=None, group_key=None, name=None):
         if access_levels and not isinstance(access_levels, list):
             raise TypeError("Expected argument 'access_levels' to be a list")
         pulumi.set(__self__, "access_levels", access_levels)
+        if dry_run_access_levels and not isinstance(dry_run_access_levels, list):
+            raise TypeError("Expected argument 'dry_run_access_levels' to be a list")
+        pulumi.set(__self__, "dry_run_access_levels", dry_run_access_levels)
         if group_key and not isinstance(group_key, str):
             raise TypeError("Expected argument 'group_key' to be a str")
         pulumi.set(__self__, "group_key", group_key)
@@ -33,9 +36,17 @@ class GetGcpUserAccessBindingResult:
     @pulumi.getter(name="accessLevels")
     def access_levels(self) -> Sequence[str]:
         """
-        Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         """
         return pulumi.get(self, "access_levels")
+
+    @property
+    @pulumi.getter(name="dryRunAccessLevels")
+    def dry_run_access_levels(self) -> Sequence[str]:
+        """
+        Optional. Dry run access level that will be evaluated but will not be enforced. The access denial based on dry run policy will be logged. Only one access level is supported, not multiple. This list must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "dry_run_access_levels")
 
     @property
     @pulumi.getter(name="groupKey")
@@ -61,6 +72,7 @@ class AwaitableGetGcpUserAccessBindingResult(GetGcpUserAccessBindingResult):
             yield self
         return GetGcpUserAccessBindingResult(
             access_levels=self.access_levels,
+            dry_run_access_levels=self.dry_run_access_levels,
             group_key=self.group_key,
             name=self.name)
 
@@ -79,6 +91,7 @@ def get_gcp_user_access_binding(gcp_user_access_binding_id: Optional[str] = None
 
     return AwaitableGetGcpUserAccessBindingResult(
         access_levels=__ret__.access_levels,
+        dry_run_access_levels=__ret__.dry_run_access_levels,
         group_key=__ret__.group_key,
         name=__ret__.name)
 

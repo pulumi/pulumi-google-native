@@ -29,8 +29,12 @@ type LookupEkmConnectionArgs struct {
 type LookupEkmConnectionResult struct {
 	// The time at which the EkmConnection was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+	CryptoSpacePath string `pulumi:"cryptoSpacePath"`
 	// Optional. Etag of the currently stored EkmConnection.
 	Etag string `pulumi:"etag"`
+	// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+	KeyManagementMode string `pulumi:"keyManagementMode"`
 	// The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
 	Name string `pulumi:"name"`
 	// A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
@@ -79,9 +83,19 @@ func (o LookupEkmConnectionResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEkmConnectionResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if KeyManagementMode is CLOUD_KMS.
+func (o LookupEkmConnectionResultOutput) CryptoSpacePath() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEkmConnectionResult) string { return v.CryptoSpacePath }).(pulumi.StringOutput)
+}
+
 // Optional. Etag of the currently stored EkmConnection.
 func (o LookupEkmConnectionResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEkmConnectionResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
+func (o LookupEkmConnectionResultOutput) KeyManagementMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEkmConnectionResult) string { return v.KeyManagementMode }).(pulumi.StringOutput)
 }
 
 // The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.

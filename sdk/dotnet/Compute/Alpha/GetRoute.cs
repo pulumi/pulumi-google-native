@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public static class GetRoute
     {
         /// <summary>
-        /// Returns the specified Route resource. Gets a list of available routes by making a list() request.
+        /// Returns the specified Route resource.
         /// </summary>
         public static Task<GetRouteResult> InvokeAsync(GetRouteArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteResult>("google-native:compute/alpha:getRoute", args ?? new GetRouteArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified Route resource. Gets a list of available routes by making a list() request.
+        /// Returns the specified Route resource.
         /// </summary>
         public static Output<GetRouteResult> Invoke(GetRouteInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteResult>("google-native:compute/alpha:getRoute", args ?? new GetRouteInvokeArgs(), options.WithDefaults());
@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string NextHopGateway;
         /// <summary>
+        /// The full resource name of the network connectivity center hub that should handle matching packets.
+        /// </summary>
+        public readonly string NextHopHub;
+        /// <summary>
         /// The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         /// </summary>
         public readonly string NextHopIlb;
@@ -176,6 +180,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string nextHopGateway,
 
+            string nextHopHub,
+
             string nextHopIlb,
 
             string nextHopInstance,
@@ -214,6 +220,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             Network = network;
             NextHopGateway = nextHopGateway;
+            NextHopHub = nextHopHub;
             NextHopIlb = nextHopIlb;
             NextHopInstance = nextHopInstance;
             NextHopInterconnectAttachment = nextHopInterconnectAttachment;

@@ -219,6 +219,10 @@ export const HttpCheckContentType = {
      * body is in URL-encoded form. Equivalent to setting the Content-Type to application/x-www-form-urlencoded in the HTTP request.
      */
     UrlEncoded: "URL_ENCODED",
+    /**
+     * body is in custom_content_type form. Equivalent to setting the Content-Type to the contents of custom_content_type in the HTTP request.
+     */
+    UserProvided: "USER_PROVIDED",
 } as const;
 
 /**

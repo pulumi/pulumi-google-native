@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<Inputs.RubySettingsArgs>? RubySettings { get; set; }
 
         /// <summary>
-        /// Version of the API to apply these settings to.
+        /// Version of the API to apply these settings to. This is the full protobuf package for the API, ending in the version element. Examples: "google.cloud.speech.v1" and "google.spanner.admin.database.v1".
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

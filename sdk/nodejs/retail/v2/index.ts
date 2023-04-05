@@ -15,6 +15,11 @@ export const getControl: typeof import("./getControl").getControl = null as any;
 export const getControlOutput: typeof import("./getControl").getControlOutput = null as any;
 utilities.lazyLoad(exports, ["getControl","getControlOutput"], () => require("./getControl"));
 
+export { GetModelArgs, GetModelResult, GetModelOutputArgs } from "./getModel";
+export const getModel: typeof import("./getModel").getModel = null as any;
+export const getModelOutput: typeof import("./getModel").getModelOutput = null as any;
+utilities.lazyLoad(exports, ["getModel","getModelOutput"], () => require("./getModel"));
+
 export { GetProductArgs, GetProductResult, GetProductOutputArgs } from "./getProduct";
 export const getProduct: typeof import("./getProduct").getProduct = null as any;
 export const getProductOutput: typeof import("./getProduct").getProductOutput = null as any;
@@ -24,6 +29,11 @@ export { GetServingConfigArgs, GetServingConfigResult, GetServingConfigOutputArg
 export const getServingConfig: typeof import("./getServingConfig").getServingConfig = null as any;
 export const getServingConfigOutput: typeof import("./getServingConfig").getServingConfigOutput = null as any;
 utilities.lazyLoad(exports, ["getServingConfig","getServingConfigOutput"], () => require("./getServingConfig"));
+
+export { ModelArgs } from "./model";
+export type Model = import("./model").Model;
+export const Model: typeof import("./model").Model = null as any;
+utilities.lazyLoad(exports, ["Model"], () => require("./model"));
 
 export { ProductArgs } from "./product";
 export type Product = import("./product").Product;
@@ -45,6 +55,8 @@ const _module = {
         switch (type) {
             case "google-native:retail/v2:Control":
                 return new Control(name, <any>undefined, { urn })
+            case "google-native:retail/v2:Model":
+                return new Model(name, <any>undefined, { urn })
             case "google-native:retail/v2:Product":
                 return new Product(name, <any>undefined, { urn })
             case "google-native:retail/v2:ServingConfig":

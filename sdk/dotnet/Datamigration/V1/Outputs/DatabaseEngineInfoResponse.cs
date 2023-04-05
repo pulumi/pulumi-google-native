@@ -11,17 +11,17 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 {
 
     /// <summary>
-    /// The type and version of a source or destination DB.
+    /// The type and version of a source or destination database.
     /// </summary>
     [OutputType]
     public sealed class DatabaseEngineInfoResponse
     {
         /// <summary>
-        /// Engine Type.
+        /// Engine type.
         /// </summary>
         public readonly string Engine;
         /// <summary>
-        /// Engine named version, for e.g. 12.c.1
+        /// Engine named version, for example 12.c.1.
         /// </summary>
         public readonly string Version;
 

@@ -322,6 +322,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["volumes"] = volumes
             __props__.__dict__["workload_profile"] = workload_profile
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["firmware_version"] = None
             __props__.__dict__["interactive_serial_console_enabled"] = None
             __props__.__dict__["login_info"] = None
             __props__.__dict__["networks"] = None
@@ -352,6 +353,7 @@ class Instance(pulumi.CustomResource):
         __props__ = InstanceArgs.__new__(InstanceArgs)
 
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["firmware_version"] = None
         __props__.__dict__["hyperthreading_enabled"] = None
         __props__.__dict__["interactive_serial_console_enabled"] = None
         __props__.__dict__["labels"] = None
@@ -379,6 +381,14 @@ class Instance(pulumi.CustomResource):
         Create a time stamp.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="firmwareVersion")
+    def firmware_version(self) -> pulumi.Output[str]:
+        """
+        The firmware version for the instance.
+        """
+        return pulumi.get(self, "firmware_version")
 
     @property
     @pulumi.getter(name="hyperthreadingEnabled")

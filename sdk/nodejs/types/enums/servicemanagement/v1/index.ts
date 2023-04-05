@@ -11,6 +11,10 @@ export const ApiSyntax = {
      * Syntax `proto3`.
      */
     SyntaxProto3: "SYNTAX_PROTO3",
+    /**
+     * Syntax `editions`.
+     */
+    SyntaxEditions: "SYNTAX_EDITIONS",
 } as const;
 
 /**
@@ -122,6 +126,10 @@ export const EnumSyntax = {
      * Syntax `proto3`.
      */
     SyntaxProto3: "SYNTAX_PROTO3",
+    /**
+     * Syntax `editions`.
+     */
+    SyntaxEditions: "SYNTAX_EDITIONS",
 } as const;
 
 /**
@@ -266,6 +274,10 @@ export const MethodSyntax = {
      * Syntax `proto3`.
      */
     SyntaxProto3: "SYNTAX_PROTO3",
+    /**
+     * Syntax `editions`.
+     */
+    SyntaxEditions: "SYNTAX_EDITIONS",
 } as const;
 
 /**
@@ -526,6 +538,10 @@ export const TypeSyntax = {
      * Syntax `proto3`.
      */
     SyntaxProto3: "SYNTAX_PROTO3",
+    /**
+     * Syntax `editions`.
+     */
+    SyntaxEditions: "SYNTAX_EDITIONS",
 } as const;
 
 /**

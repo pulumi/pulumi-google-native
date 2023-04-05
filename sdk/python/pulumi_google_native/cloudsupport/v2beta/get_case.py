@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetCaseResult:
-    def __init__(__self__, classification=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, language_code=None, name=None, priority=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
+    def __init__(__self__, classification=None, contact_email=None, create_time=None, creator=None, description=None, display_name=None, escalated=None, language_code=None, name=None, priority=None, severity=None, state=None, subscriber_email_addresses=None, test_case=None, time_zone=None, update_time=None):
         if classification and not isinstance(classification, dict):
             raise TypeError("Expected argument 'classification' to be a dict")
         pulumi.set(__self__, "classification", classification)
+        if contact_email and not isinstance(contact_email, str):
+            raise TypeError("Expected argument 'contact_email' to be a str")
+        pulumi.set(__self__, "contact_email", contact_email)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -77,6 +80,14 @@ class GetCaseResult:
         The issue classification applicable to this case.
         """
         return pulumi.get(self, "classification")
+
+    @property
+    @pulumi.getter(name="contactEmail")
+    def contact_email(self) -> str:
+        """
+        A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+        """
+        return pulumi.get(self, "contact_email")
 
     @property
     @pulumi.getter(name="createTime")
@@ -198,6 +209,7 @@ class AwaitableGetCaseResult(GetCaseResult):
             yield self
         return GetCaseResult(
             classification=self.classification,
+            contact_email=self.contact_email,
             create_time=self.create_time,
             creator=self.creator,
             description=self.description,
@@ -230,6 +242,7 @@ def get_case(case_id: Optional[str] = None,
 
     return AwaitableGetCaseResult(
         classification=__ret__.classification,
+        contact_email=__ret__.contact_email,
         create_time=__ret__.create_time,
         creator=__ret__.creator,
         description=__ret__.description,

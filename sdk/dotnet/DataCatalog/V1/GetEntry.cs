@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1BusinessContextResponse BusinessContext;
         /// <summary>
+        /// Specification that applies to Cloud Bigtable system. Only settable when `integrated_system` is equal to `CLOUD_BIGTABLE`
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse CloudBigtableSystemSpec;
+        /// <summary>
         /// Physical location of the entry.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1DataSourceResponse DataSource;
@@ -146,6 +150,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SchemaResponse Schema;
         /// <summary>
+        /// Specification that applies to a Service resource.
+        /// </summary>
+        public readonly Outputs.GoogleCloudDatacatalogV1ServiceSpecResponse ServiceSpec;
+        /// <summary>
         /// Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a system listed in the `IntegratedSystem` enum. For entries with `user_specified_system`, this field is optional and defaults to an empty timestamp.
         /// </summary>
         public readonly Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse SourceSystemTimestamps;
@@ -177,6 +185,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             Outputs.GoogleCloudDatacatalogV1BigQueryTableSpecResponse bigqueryTableSpec,
 
             Outputs.GoogleCloudDatacatalogV1BusinessContextResponse businessContext,
+
+            Outputs.GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse cloudBigtableSystemSpec,
 
             Outputs.GoogleCloudDatacatalogV1DataSourceResponse dataSource,
 
@@ -210,6 +220,8 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 
             Outputs.GoogleCloudDatacatalogV1SchemaResponse schema,
 
+            Outputs.GoogleCloudDatacatalogV1ServiceSpecResponse serviceSpec,
+
             Outputs.GoogleCloudDatacatalogV1SystemTimestampsResponse sourceSystemTimestamps,
 
             Outputs.GoogleCloudDatacatalogV1SqlDatabaseSystemSpecResponse sqlDatabaseSystemSpec,
@@ -225,6 +237,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             BigqueryDateShardedSpec = bigqueryDateShardedSpec;
             BigqueryTableSpec = bigqueryTableSpec;
             BusinessContext = businessContext;
+            CloudBigtableSystemSpec = cloudBigtableSystemSpec;
             DataSource = dataSource;
             DataSourceConnectionSpec = dataSourceConnectionSpec;
             DatabaseTableSpec = databaseTableSpec;
@@ -241,6 +254,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
             PersonalDetails = personalDetails;
             RoutineSpec = routineSpec;
             Schema = schema;
+            ServiceSpec = serviceSpec;
             SourceSystemTimestamps = sourceSystemTimestamps;
             SqlDatabaseSystemSpec = sqlDatabaseSystemSpec;
             Type = type;

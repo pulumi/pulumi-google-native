@@ -8,8 +8,10 @@ import typing
 from ._enums import *
 from .control import *
 from .get_control import *
+from .get_model import *
 from .get_product import *
 from .get_serving_config import *
+from .model import *
 from .product import *
 from .serving_config import *
 from ._inputs import *

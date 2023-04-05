@@ -19,10 +19,13 @@ __all__ = [
 
 @pulumi.output_type
 class GetMembershipResult:
-    def __init__(__self__, create_time=None, name=None, preferred_member_key=None, roles=None, type=None, update_time=None):
+    def __init__(__self__, create_time=None, delivery_setting=None, name=None, preferred_member_key=None, roles=None, type=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if delivery_setting and not isinstance(delivery_setting, str):
+            raise TypeError("Expected argument 'delivery_setting' to be a str")
+        pulumi.set(__self__, "delivery_setting", delivery_setting)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -46,6 +49,14 @@ class GetMembershipResult:
         The time when the `Membership` was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deliverySetting")
+    def delivery_setting(self) -> str:
+        """
+        Delivery setting associated with the membership.
+        """
+        return pulumi.get(self, "delivery_setting")
 
     @property
     @pulumi.getter
@@ -95,6 +106,7 @@ class AwaitableGetMembershipResult(GetMembershipResult):
             yield self
         return GetMembershipResult(
             create_time=self.create_time,
+            delivery_setting=self.delivery_setting,
             name=self.name,
             preferred_member_key=self.preferred_member_key,
             roles=self.roles,
@@ -116,6 +128,7 @@ def get_membership(group_id: Optional[str] = None,
 
     return AwaitableGetMembershipResult(
         create_time=__ret__.create_time,
+        delivery_setting=__ret__.delivery_setting,
         name=__ret__.name,
         preferred_member_key=__ret__.preferred_member_key,
         roles=__ret__.roles,

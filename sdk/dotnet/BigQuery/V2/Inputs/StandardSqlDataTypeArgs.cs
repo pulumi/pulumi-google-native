@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.StandardSqlStructTypeArgs>? StructType { get; set; }
 
         /// <summary>
-        /// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        /// The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
         /// </summary>
         [Input("typeKind", required: true)]
         public Input<Pulumi.GoogleNative.BigQuery.V2.StandardSqlDataTypeTypeKind> TypeKind { get; set; } = null!;

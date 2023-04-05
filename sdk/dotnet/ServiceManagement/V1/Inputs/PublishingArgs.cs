@@ -87,6 +87,12 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         [Input("organization")]
         public Input<Pulumi.GoogleNative.ServiceManagement.V1.PublishingOrganization>? Organization { get; set; }
 
+        /// <summary>
+        /// Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
+        /// </summary>
+        [Input("protoReferenceDocumentationUri")]
+        public Input<string>? ProtoReferenceDocumentationUri { get; set; }
+
         public PublishingArgs()
         {
         }

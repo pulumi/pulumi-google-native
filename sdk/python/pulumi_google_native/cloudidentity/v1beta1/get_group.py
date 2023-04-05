@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetGroupResult:
-    def __init__(__self__, create_time=None, description=None, display_name=None, dynamic_group_metadata=None, group_key=None, labels=None, name=None, parent=None, posix_groups=None, update_time=None):
+    def __init__(__self__, additional_group_keys=None, create_time=None, description=None, display_name=None, dynamic_group_metadata=None, group_key=None, labels=None, name=None, parent=None, posix_groups=None, update_time=None):
+        if additional_group_keys and not isinstance(additional_group_keys, list):
+            raise TypeError("Expected argument 'additional_group_keys' to be a list")
+        pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -50,6 +53,14 @@ class GetGroupResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="additionalGroupKeys")
+    def additional_group_keys(self) -> Sequence['outputs.EntityKeyResponse']:
+        """
+        Additional group keys associated with the Group.
+        """
+        return pulumi.get(self, "additional_group_keys")
 
     @property
     @pulumi.getter(name="createTime")
@@ -138,6 +149,7 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            additional_group_keys=self.additional_group_keys,
             create_time=self.create_time,
             description=self.description,
             display_name=self.display_name,
@@ -161,6 +173,7 @@ def get_group(group_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:cloudidentity/v1beta1:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
+        additional_group_keys=__ret__.additional_group_keys,
         create_time=__ret__.create_time,
         description=__ret__.description,
         display_name=__ret__.display_name,

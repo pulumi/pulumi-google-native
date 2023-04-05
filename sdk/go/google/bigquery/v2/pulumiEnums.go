@@ -912,6 +912,10 @@ const (
 	RoutineLanguageJavascript = RoutineLanguage("JAVASCRIPT")
 	// Python language.
 	RoutineLanguagePython = RoutineLanguage("PYTHON")
+	// Java language.
+	RoutineLanguageJava = RoutineLanguage("JAVA")
+	// Scala language.
+	RoutineLanguageScala = RoutineLanguage("SCALA")
 )
 
 func (RoutineLanguage) ElementType() reflect.Type {
@@ -1241,7 +1245,7 @@ func (in *routineRoutineTypePtr) ToRoutineRoutineTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(RoutineRoutineTypePtrOutput)
 }
 
-// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// Required. The top level type of this field. Can be any GoogleSQL data type (e.g., "INT64", "DATE", "ARRAY").
 type StandardSqlDataTypeTypeKind string
 
 const (

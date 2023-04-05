@@ -765,6 +765,10 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         /// include connecting to Vector salesforce, CRM Hub Spanner etc. Task entities that derive from a custom task template.
         /// </summary>
         public static EnterpriseCrmEventbusProtoTaskMetadataCategory CustomTaskTemplate { get; } = new EnterpriseCrmEventbusProtoTaskMetadataCategory("CUSTOM_TASK_TEMPLATE");
+        /// <summary>
+        /// Category to show task recommendations
+        /// </summary>
+        public static EnterpriseCrmEventbusProtoTaskMetadataCategory TaskRecommendations { get; } = new EnterpriseCrmEventbusProtoTaskMetadataCategory("TASK_RECOMMENDATIONS");
 
         public static bool operator ==(EnterpriseCrmEventbusProtoTaskMetadataCategory left, EnterpriseCrmEventbusProtoTaskMetadataCategory right) => left.Equals(right);
         public static bool operator !=(EnterpriseCrmEventbusProtoTaskMetadataCategory left, EnterpriseCrmEventbusProtoTaskMetadataCategory right) => !left.Equals(right);
@@ -1314,6 +1318,44 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType other && Equals(other);
         public bool Equals(EnterpriseCrmFrontendsEventbusProtoParameterEntryDataType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType : IEquatable<EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType>
+    {
+        private readonly string _value;
+
+        private EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. External task type is not specified
+        /// </summary>
+        public static EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType ExternalTaskTypeUnspecified { get; } = new EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Tasks belongs to the normal task flows
+        /// </summary>
+        public static EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType NormalTask { get; } = new EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("NORMAL_TASK");
+        /// <summary>
+        /// Task belongs to the error catch task flows
+        /// </summary>
+        public static EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType ErrorTask { get; } = new EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType("ERROR_TASK");
+
+        public static bool operator ==(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType left, EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType right) => left.Equals(right);
+        public static bool operator !=(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType left, EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType right) => !left.Equals(right);
+
+        public static explicit operator string(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType other && Equals(other);
+        public bool Equals(EnterpriseCrmFrontendsEventbusProtoTaskConfigExternalTaskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -2655,6 +2697,47 @@ namespace Pulumi.GoogleNative.Integrations.V1Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState other && Equals(other);
         public bool Equals(GoogleCloudIntegrationsV1alphaSuccessPolicyFinalState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. External task type of the task
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType : IEquatable<GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType>
+    {
+        private readonly string _value;
+
+        private GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. External task type is not specified
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType ExternalTaskTypeUnspecified { get; } = new GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("EXTERNAL_TASK_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Tasks belongs to the normal task flows
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType NormalTask { get; } = new GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("NORMAL_TASK");
+        /// <summary>
+        /// Task belongs to the error catch task flows
+        /// </summary>
+        public static GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType ErrorTask { get; } = new GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType("ERROR_TASK");
+
+        public static bool operator ==(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType left, GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType left, GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType other && Equals(other);
+        public bool Equals(GoogleCloudIntegrationsV1alphaTaskConfigExternalTaskType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

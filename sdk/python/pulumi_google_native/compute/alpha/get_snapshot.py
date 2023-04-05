@@ -454,7 +454,7 @@ def get_snapshot(project: Optional[str] = None,
                  snapshot: Optional[str] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSnapshotResult:
     """
-    Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+    Returns the specified Snapshot resource.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -505,6 +505,6 @@ def get_snapshot_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                         snapshot: Optional[pulumi.Input[str]] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotResult]:
     """
-    Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+    Returns the specified Snapshot resource.
     """
     ...

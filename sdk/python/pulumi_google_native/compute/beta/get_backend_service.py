@@ -485,7 +485,7 @@ def get_backend_service(backend_service: Optional[str] = None,
                         project: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackendServiceResult:
     """
-    Returns the specified BackendService resource. Gets a list of available backend services.
+    Returns the specified BackendService resource.
     """
     __args__ = dict()
     __args__['backendService'] = backend_service
@@ -539,6 +539,6 @@ def get_backend_service_output(backend_service: Optional[pulumi.Input[str]] = No
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendServiceResult]:
     """
-    Returns the specified BackendService resource. Gets a list of available backend services.
+    Returns the specified BackendService resource.
     """
     ...

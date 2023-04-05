@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified BackendService resource. Gets a list of available backend services.
+// Returns the specified BackendService resource.
 func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceResult, error) {
 	var rv LookupBackendServiceResult
 	err := ctx.Invoke("google-native:compute/beta:getBackendService", args, &rv, opts...)

@@ -15,6 +15,10 @@ export const ExecutionCallLogLevel = {
      * Log only exceptions that are raised from call steps within workflows.
      */
     LogErrorsOnly: "LOG_ERRORS_ONLY",
+    /**
+     * Explicitly log nothing.
+     */
+    LogNone: "LOG_NONE",
 } as const;
 
 /**

@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified Router resource. Gets a list of available routers by making a list() request.
+ * Returns the specified Router resource.
  */
 export function getRouter(args: GetRouterArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterResult> {
 
@@ -85,7 +85,7 @@ export interface GetRouterResult {
     readonly selfLinkWithId: string;
 }
 /**
- * Returns the specified Router resource. Gets a list of available routers by making a list() request.
+ * Returns the specified Router resource.
  */
 export function getRouterOutput(args: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
     return pulumi.output(args).apply((a: any) => getRouter(a, opts))

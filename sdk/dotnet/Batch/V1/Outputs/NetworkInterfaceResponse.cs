@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
     public sealed class NetworkInterfaceResponse
     {
         /// <summary>
-        /// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+        /// The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Batch.V1.Outputs
         /// </summary>
         public readonly bool NoExternalIpAddress;
         /// <summary>
-        /// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+        /// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
         /// </summary>
         public readonly string Subnetwork;
 

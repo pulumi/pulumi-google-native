@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified Router resource. Gets a list of available routers by making a list() request.
+// Returns the specified Router resource.
 func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.InvokeOption) (*LookupRouterResult, error) {
 	var rv LookupRouterResult
 	err := ctx.Invoke("google-native:compute/alpha:getRouter", args, &rv, opts...)

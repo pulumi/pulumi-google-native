@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AliasContextKind',
+    'AssessmentState',
     'CVSSAttackComplexity',
     'CVSSAttackVector',
     'CVSSAuthentication',
@@ -29,8 +30,11 @@ __all__ = [
     'DiscoveryOccurrenceAnalysisStatus',
     'DiscoveryOccurrenceContinuousAnalysis',
     'DistributionArchitecture',
+    'JustificationJustificationType',
     'PackageNoteArchitecture',
+    'RemediationRemediationType',
     'VersionKind',
+    'VexAssessmentState',
     'VulnerabilityNoteCvssVersion',
     'VulnerabilityNoteSeverity',
     'VulnerabilityOccurrenceEffectiveSeverity',
@@ -56,6 +60,32 @@ class AliasContextKind(str, Enum):
     OTHER = "OTHER"
     """
     Used to specify non-standard aliases. For example, if a Git repo has a ref named "refs/foo/bar".
+    """
+
+
+class AssessmentState(str, Enum):
+    """
+    Provides the state of this Vulnerability assessment.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    No state is specified.
+    """
+    AFFECTED = "AFFECTED"
+    """
+    This product is known to be affected by this vulnerability.
+    """
+    NOT_AFFECTED = "NOT_AFFECTED"
+    """
+    This product is known to be not affected by this vulnerability.
+    """
+    FIXED = "FIXED"
+    """
+    This product contains a fix for this vulnerability.
+    """
+    UNDER_INVESTIGATION = "UNDER_INVESTIGATION"
+    """
+    It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
     """
 
 
@@ -277,6 +307,10 @@ class DiscoveryNoteAnalysisKind(str, Enum):
     """
     This represents a DSSE attestation Note
     """
+    VULNERABILITY_ASSESSMENT = "VULNERABILITY_ASSESSMENT"
+    """
+    This represents a Vulnerability Assessment.
+    """
 
 
 class DiscoveryOccurrenceAnalysisStatus(str, Enum):
@@ -349,6 +383,36 @@ class DistributionArchitecture(str, Enum):
     """
 
 
+class JustificationJustificationType(str, Enum):
+    """
+    The justification type for this vulnerability.
+    """
+    JUSTIFICATION_TYPE_UNSPECIFIED = "JUSTIFICATION_TYPE_UNSPECIFIED"
+    """
+    JUSTIFICATION_TYPE_UNSPECIFIED.
+    """
+    COMPONENT_NOT_PRESENT = "COMPONENT_NOT_PRESENT"
+    """
+    The vulnerable component is not present in the product.
+    """
+    VULNERABLE_CODE_NOT_PRESENT = "VULNERABLE_CODE_NOT_PRESENT"
+    """
+    The vulnerable code is not present. Typically this case occurs when source code is configured or built in a way that excludes the vulnerable code.
+    """
+    VULNERABLE_CODE_NOT_IN_EXECUTE_PATH = "VULNERABLE_CODE_NOT_IN_EXECUTE_PATH"
+    """
+    The vulnerable code can not be executed. Typically this case occurs when the product includes the vulnerable code but does not call or use the vulnerable code.
+    """
+    VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY = "VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY"
+    """
+    The vulnerable code cannot be controlled by an attacker to exploit the vulnerability.
+    """
+    INLINE_MITIGATIONS_ALREADY_EXIST = "INLINE_MITIGATIONS_ALREADY_EXIST"
+    """
+    The product includes built-in protections or features that prevent exploitation of the vulnerability. These built-in protections cannot be subverted by the attacker and cannot be configured or disabled by the user. These mitigations completely prevent exploitation based on known attack vectors.
+    """
+
+
 class PackageNoteArchitecture(str, Enum):
     """
     The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
@@ -364,6 +428,36 @@ class PackageNoteArchitecture(str, Enum):
     X64 = "X64"
     """
     X64 architecture.
+    """
+
+
+class RemediationRemediationType(str, Enum):
+    """
+    The type of remediation that can be applied.
+    """
+    REMEDIATION_TYPE_UNSPECIFIED = "REMEDIATION_TYPE_UNSPECIFIED"
+    """
+    No remediation type specified.
+    """
+    MITIGATION = "MITIGATION"
+    """
+    A MITIGATION is available.
+    """
+    NO_FIX_PLANNED = "NO_FIX_PLANNED"
+    """
+    No fix is planned.
+    """
+    NONE_AVAILABLE = "NONE_AVAILABLE"
+    """
+    Not available.
+    """
+    VENDOR_FIX = "VENDOR_FIX"
+    """
+    A vendor fix is available.
+    """
+    WORKAROUND = "WORKAROUND"
+    """
+    A workaround is available.
     """
 
 
@@ -386,6 +480,32 @@ class VersionKind(str, Enum):
     MAXIMUM = "MAXIMUM"
     """
     A special version representing positive infinity.
+    """
+
+
+class VexAssessmentState(str, Enum):
+    """
+    Provides the state of this Vulnerability assessment.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    No state is specified.
+    """
+    AFFECTED = "AFFECTED"
+    """
+    This product is known to be affected by this vulnerability.
+    """
+    NOT_AFFECTED = "NOT_AFFECTED"
+    """
+    This product is known to be not affected by this vulnerability.
+    """
+    FIXED = "FIXED"
+    """
+    This product contains a fix for this vulnerability.
+    """
+    UNDER_INVESTIGATION = "UNDER_INVESTIGATION"
+    """
+    It is not known yet whether these versions are or are not affected by the vulnerability. However, it is still under investigation.
     """
 
 

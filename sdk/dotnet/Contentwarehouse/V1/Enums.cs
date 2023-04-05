@@ -289,6 +289,10 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         /// Delete the properties by names.
         /// </summary>
         public static GoogleCloudContentwarehouseV1UpdateOptionsUpdateType UpdateTypeDeletePropertiesByNames { get; } = new GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_DELETE_PROPERTIES_BY_NAMES");
+        /// <summary>
+        /// For each of the property, replaces the property if the it exists, otherwise inserts a new property. And for the rest of the fields, merge them based on update mask and merge fields options.
+        /// </summary>
+        public static GoogleCloudContentwarehouseV1UpdateOptionsUpdateType UpdateTypeMergeAndReplaceOrInsertPropertiesByNames { get; } = new GoogleCloudContentwarehouseV1UpdateOptionsUpdateType("UPDATE_TYPE_MERGE_AND_REPLACE_OR_INSERT_PROPERTIES_BY_NAMES");
 
         public static bool operator ==(GoogleCloudContentwarehouseV1UpdateOptionsUpdateType left, GoogleCloudContentwarehouseV1UpdateOptionsUpdateType right) => left.Equals(right);
         public static bool operator !=(GoogleCloudContentwarehouseV1UpdateOptionsUpdateType left, GoogleCloudContentwarehouseV1UpdateOptionsUpdateType right) => !left.Equals(right);
@@ -486,7 +490,7 @@ namespace Pulumi.GoogleNative.Contentwarehouse.V1
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType Remove { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("REMOVE");
         /// <summary>
-        /// Updates any fields within the given provenance scope of the message. It 'overwrites' the fields rather than replacing them. This is especially relevant when we just want to update a field value of an entity without also affecting all the child properties.
+        /// Updates any fields within the given provenance scope of the message. It overwrites the fields rather than replacing them. Use this when you want to update a field value of an entity without also updating all the child properties.
         /// </summary>
         public static GoogleCloudDocumentaiV1DocumentProvenanceType Update { get; } = new GoogleCloudDocumentaiV1DocumentProvenanceType("UPDATE");
         /// <summary>

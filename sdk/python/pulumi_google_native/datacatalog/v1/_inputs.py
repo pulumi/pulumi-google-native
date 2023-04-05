@@ -15,6 +15,9 @@ __all__ = [
     'ExprArgs',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs',
     'GoogleCloudDatacatalogV1BusinessContextArgs',
+    'GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs',
+    'GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs',
+    'GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
     'GoogleCloudDatacatalogV1ContactsPersonArgs',
@@ -38,6 +41,7 @@ __all__ = [
     'GoogleCloudDatacatalogV1RoutineSpecArgumentArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgs',
     'GoogleCloudDatacatalogV1SchemaArgs',
+    'GoogleCloudDatacatalogV1ServiceSpecArgs',
     'GoogleCloudDatacatalogV1SqlDatabaseSystemSpecArgs',
     'GoogleCloudDatacatalogV1SystemTimestampsArgs',
     'GoogleCloudDatacatalogV1UsageSignalArgs',
@@ -233,6 +237,126 @@ class GoogleCloudDatacatalogV1BusinessContextArgs:
     @entry_overview.setter
     def entry_overview(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1EntryOverviewArgs']]):
         pulumi.set(self, "entry_overview", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 linked_resource: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Spec that applies to clusters of an Instance of Cloud Bigtable.
+        :param pulumi.Input[str] display_name: Name of the cluster.
+        :param pulumi.Input[str] linked_resource: A link back to the parent resource, in this case Instance.
+        :param pulumi.Input[str] location: Location of the cluster, typically a Cloud zone.
+        :param pulumi.Input[str] type: Type of the resource. For a cluster this would be "CLUSTER".
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if linked_resource is not None:
+            pulumi.set(__self__, "linked_resource", linked_resource)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the cluster.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="linkedResource")
+    def linked_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        A link back to the parent resource, in this case Instance.
+        """
+        return pulumi.get(self, "linked_resource")
+
+    @linked_resource.setter
+    def linked_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linked_resource", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Location of the cluster, typically a Cloud zone.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the resource. For a cluster this would be "CLUSTER".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs:
+    def __init__(__self__, *,
+                 cloud_bigtable_cluster_specs: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs']]]] = None):
+        """
+        Specification that applies to Instance entries that are part of `CLOUD_BIGTABLE` system. (user_specified_type)
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs']]] cloud_bigtable_cluster_specs: The list of clusters for the Instance.
+        """
+        if cloud_bigtable_cluster_specs is not None:
+            pulumi.set(__self__, "cloud_bigtable_cluster_specs", cloud_bigtable_cluster_specs)
+
+    @property
+    @pulumi.getter(name="cloudBigtableClusterSpecs")
+    def cloud_bigtable_cluster_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs']]]]:
+        """
+        The list of clusters for the Instance.
+        """
+        return pulumi.get(self, "cloud_bigtable_cluster_specs")
+
+    @cloud_bigtable_cluster_specs.setter
+    def cloud_bigtable_cluster_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpecArgs']]]]):
+        pulumi.set(self, "cloud_bigtable_cluster_specs", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1CloudBigtableSystemSpecArgs:
+    def __init__(__self__, *,
+                 instance_display_name: Optional[pulumi.Input[str]] = None):
+        """
+        Specification that applies to all entries that are part of `CLOUD_BIGTABLE` system (user_specified_type)
+        :param pulumi.Input[str] instance_display_name: Display name of the Instance. This is user specified and different from the resource name.
+        """
+        if instance_display_name is not None:
+            pulumi.set(__self__, "instance_display_name", instance_display_name)
+
+    @property
+    @pulumi.getter(name="instanceDisplayName")
+    def instance_display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the Instance. This is user specified and different from the resource name.
+        """
+        return pulumi.get(self, "instance_display_name")
+
+    @instance_display_name.setter
+    def instance_display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_display_name", value)
 
 
 @pulumi.input_type
@@ -1250,6 +1374,30 @@ class GoogleCloudDatacatalogV1SchemaArgs:
     @columns.setter
     def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1ColumnSchemaArgs']]]]):
         pulumi.set(self, "columns", value)
+
+
+@pulumi.input_type
+class GoogleCloudDatacatalogV1ServiceSpecArgs:
+    def __init__(__self__, *,
+                 cloud_bigtable_instance_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs']] = None):
+        """
+        Specification that applies to a Service resource. Valid only for entries with the `SERVICE` type.
+        :param pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs'] cloud_bigtable_instance_spec: Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+        """
+        if cloud_bigtable_instance_spec is not None:
+            pulumi.set(__self__, "cloud_bigtable_instance_spec", cloud_bigtable_instance_spec)
+
+    @property
+    @pulumi.getter(name="cloudBigtableInstanceSpec")
+    def cloud_bigtable_instance_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs']]:
+        """
+        Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
+        """
+        return pulumi.get(self, "cloud_bigtable_instance_spec")
+
+    @cloud_bigtable_instance_spec.setter
+    def cloud_bigtable_instance_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudBigtableInstanceSpecArgs']]):
+        pulumi.set(self, "cloud_bigtable_instance_spec", value)
 
 
 @pulumi.input_type

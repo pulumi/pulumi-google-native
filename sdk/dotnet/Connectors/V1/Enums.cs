@@ -104,4 +104,160 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Type of Client Cert (PEM/JKS/.. etc.)
+    /// </summary>
+    [EnumType]
+    public readonly struct SslConfigClientCertType : IEquatable<SslConfigClientCertType>
+    {
+        private readonly string _value;
+
+        private SslConfigClientCertType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Cert type unspecified.
+        /// </summary>
+        public static SslConfigClientCertType CertTypeUnspecified { get; } = new SslConfigClientCertType("CERT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Privacy Enhanced Mail (PEM) Type
+        /// </summary>
+        public static SslConfigClientCertType Pem { get; } = new SslConfigClientCertType("PEM");
+
+        public static bool operator ==(SslConfigClientCertType left, SslConfigClientCertType right) => left.Equals(right);
+        public static bool operator !=(SslConfigClientCertType left, SslConfigClientCertType right) => !left.Equals(right);
+
+        public static explicit operator string(SslConfigClientCertType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SslConfigClientCertType other && Equals(other);
+        public bool Equals(SslConfigClientCertType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Type of Server Cert (PEM/JKS/.. etc.)
+    /// </summary>
+    [EnumType]
+    public readonly struct SslConfigServerCertType : IEquatable<SslConfigServerCertType>
+    {
+        private readonly string _value;
+
+        private SslConfigServerCertType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Cert type unspecified.
+        /// </summary>
+        public static SslConfigServerCertType CertTypeUnspecified { get; } = new SslConfigServerCertType("CERT_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Privacy Enhanced Mail (PEM) Type
+        /// </summary>
+        public static SslConfigServerCertType Pem { get; } = new SslConfigServerCertType("PEM");
+
+        public static bool operator ==(SslConfigServerCertType left, SslConfigServerCertType right) => left.Equals(right);
+        public static bool operator !=(SslConfigServerCertType left, SslConfigServerCertType right) => !left.Equals(right);
+
+        public static explicit operator string(SslConfigServerCertType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SslConfigServerCertType other && Equals(other);
+        public bool Equals(SslConfigServerCertType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Trust Model of the SSL connection
+    /// </summary>
+    [EnumType]
+    public readonly struct SslConfigTrustModel : IEquatable<SslConfigTrustModel>
+    {
+        private readonly string _value;
+
+        private SslConfigTrustModel(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Public Trust Model. Takes the Default Java trust store.
+        /// </summary>
+        public static SslConfigTrustModel Public { get; } = new SslConfigTrustModel("PUBLIC");
+        /// <summary>
+        /// Private Trust Model. Takes custom/private trust store.
+        /// </summary>
+        public static SslConfigTrustModel Private { get; } = new SslConfigTrustModel("PRIVATE");
+        /// <summary>
+        /// Insecure Trust Model. Accept all certificates.
+        /// </summary>
+        public static SslConfigTrustModel Insecure { get; } = new SslConfigTrustModel("INSECURE");
+
+        public static bool operator ==(SslConfigTrustModel left, SslConfigTrustModel right) => left.Equals(right);
+        public static bool operator !=(SslConfigTrustModel left, SslConfigTrustModel right) => !left.Equals(right);
+
+        public static explicit operator string(SslConfigTrustModel value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SslConfigTrustModel other && Equals(other);
+        public bool Equals(SslConfigTrustModel other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Controls the ssl type for the given connector version.
+    /// </summary>
+    [EnumType]
+    public readonly struct SslConfigType : IEquatable<SslConfigType>
+    {
+        private readonly string _value;
+
+        private SslConfigType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// No SSL configuration required.
+        /// </summary>
+        public static SslConfigType SslTypeUnspecified { get; } = new SslConfigType("SSL_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// TLS Handshake
+        /// </summary>
+        public static SslConfigType Tls { get; } = new SslConfigType("TLS");
+        /// <summary>
+        /// mutual TLS (MTLS) Handshake
+        /// </summary>
+        public static SslConfigType Mtls { get; } = new SslConfigType("MTLS");
+
+        public static bool operator ==(SslConfigType left, SslConfigType right) => left.Equals(right);
+        public static bool operator !=(SslConfigType left, SslConfigType right) => !left.Equals(right);
+
+        public static explicit operator string(SslConfigType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SslConfigType other && Equals(other);
+        public bool Equals(SslConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

@@ -355,7 +355,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     }
 
     /// <summary>
-    /// Required. Engine Type.
+    /// Required. Engine type.
     /// </summary>
     [EnumType]
     public readonly struct DatabaseEngineInfoEngine : IEquatable<DatabaseEngineInfoEngine>
@@ -380,7 +380,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static DatabaseEngineInfoEngine Postgresql { get; } = new DatabaseEngineInfoEngine("POSTGRESQL");
         /// <summary>
-        /// The source engine is Oracle
+        /// The source engine is Oracle.
         /// </summary>
         public static DatabaseEngineInfoEngine Oracle { get; } = new DatabaseEngineInfoEngine("ORACLE");
 
@@ -425,7 +425,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public static DatabaseTypeEngine Postgresql { get; } = new DatabaseTypeEngine("POSTGRESQL");
         /// <summary>
-        /// The source engine is Oracle
+        /// The source engine is Oracle.
         /// </summary>
         public static DatabaseTypeEngine Oracle { get; } = new DatabaseTypeEngine("ORACLE");
 

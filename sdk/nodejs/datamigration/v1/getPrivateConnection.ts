@@ -44,11 +44,11 @@ export interface GetPrivateConnectionResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The resource's name.
+     * The name of the resource.
      */
     readonly name: string;
     /**
-     * The state of the Private Connection.
+     * The state of the private connection.
      */
     readonly state: string;
     /**
@@ -56,7 +56,7 @@ export interface GetPrivateConnectionResult {
      */
     readonly updateTime: string;
     /**
-     * VPC Peering Config.
+     * VPC peering configuration.
      */
     readonly vpcPeeringConfig: outputs.datamigration.v1.VpcPeeringConfigResponse;
 }

@@ -18,7 +18,13 @@ type Repository struct {
 
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsResponseOutput `pulumi:"gitRemoteSettings"`
-	Location          pulumi.StringOutput             `pulumi:"location"`
+	// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+	InitialCommitFileContents pulumi.StringMapOutput `pulumi:"initialCommitFileContents"`
+	// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+	InitialCommitMetadata CommitMetadataResponseOutput `pulumi:"initialCommitMetadata"`
+	// Optional. Repository user labels.
+	Labels   pulumi.StringMapOutput `pulumi:"labels"`
+	Location pulumi.StringOutput    `pulumi:"location"`
 	// The repository's name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
@@ -80,7 +86,13 @@ func (RepositoryState) ElementType() reflect.Type {
 type repositoryArgs struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings *GitRemoteSettings `pulumi:"gitRemoteSettings"`
-	Location          *string            `pulumi:"location"`
+	// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+	InitialCommitFileContents map[string]string `pulumi:"initialCommitFileContents"`
+	// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+	InitialCommitMetadata *CommitMetadata `pulumi:"initialCommitMetadata"`
+	// Optional. Repository user labels.
+	Labels   map[string]string `pulumi:"labels"`
+	Location *string           `pulumi:"location"`
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion *string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
 	Project                                *string `pulumi:"project"`
@@ -94,7 +106,13 @@ type repositoryArgs struct {
 type RepositoryArgs struct {
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	GitRemoteSettings GitRemoteSettingsPtrInput
-	Location          pulumi.StringPtrInput
+	// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+	InitialCommitFileContents pulumi.StringMapInput
+	// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+	InitialCommitMetadata CommitMetadataPtrInput
+	// Optional. Repository user labels.
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringPtrInput
 	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format `projects/*/secrets/*/versions/*`. The file itself must be in a JSON format.
 	NpmrcEnvironmentVariablesSecretVersion pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
@@ -144,6 +162,21 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 // Optional. If set, configures this repository to be linked to a Git remote.
 func (o RepositoryOutput) GitRemoteSettings() GitRemoteSettingsResponseOutput {
 	return o.ApplyT(func(v *Repository) GitRemoteSettingsResponseOutput { return v.GitRemoteSettings }).(GitRemoteSettingsResponseOutput)
+}
+
+// Optional. Input only. The initial commit file contents. Represented as map from file path to contents. The path is the full file path to commit including filename, from repository root.
+func (o RepositoryOutput) InitialCommitFileContents() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.InitialCommitFileContents }).(pulumi.StringMapOutput)
+}
+
+// Optional. Input only. An optional initial commit metadata for the Repository. The Repository must not have a value for `git_remote_settings.url`.
+func (o RepositoryOutput) InitialCommitMetadata() CommitMetadataResponseOutput {
+	return o.ApplyT(func(v *Repository) CommitMetadataResponseOutput { return v.InitialCommitMetadata }).(CommitMetadataResponseOutput)
+}
+
+// Optional. Repository user labels.
+func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 func (o RepositoryOutput) Location() pulumi.StringOutput {

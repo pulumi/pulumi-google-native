@@ -42,6 +42,10 @@ export interface GetReleaseResult {
      */
     readonly buildArtifacts: outputs.clouddeploy.v1.BuildArtifactResponse[];
     /**
+     * Information around the state of the Release.
+     */
+    readonly condition: outputs.clouddeploy.v1.ReleaseConditionResponse;
+    /**
      * Time at which the `Release` was created.
      */
     readonly createTime: string;

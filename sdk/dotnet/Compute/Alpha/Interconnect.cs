@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<bool> AdminEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// [Output only] List of features available for this interconnect, which can take one of the following values: - MACSEC If present then the interconnect was created on MACsec capable hardware ports. If not present then the interconnect is provisioned on non-MACsec capable ports and MACsec enablement will fail.
+        /// </summary>
+        [Output("availableFeatures")]
+        public Output<ImmutableArray<string>> AvailableFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// A list of CircuitInfo objects, that describe the individual circuits in this LAG.
         /// </summary>
         [Output("circuitInfos")]
@@ -163,13 +169,19 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string?> RequestId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        /// </summary>
+        [Output("requestedFeatures")]
+        public Output<ImmutableArray<string>> RequestedFeatures { get; private set; } = null!;
+
+        /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.
         /// </summary>
         [Output("requestedLinkCount")]
         public Output<int> RequestedLinkCount { get; private set; } = null!;
 
         /// <summary>
-        /// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
@@ -327,6 +339,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        [Input("requestedFeatures")]
+        private InputList<Pulumi.GoogleNative.Compute.Alpha.InterconnectRequestedFeaturesItem>? _requestedFeatures;
+
+        /// <summary>
+        /// Optional. List of features requested for this interconnect, which can take one of the following values: - MACSEC If specified then the interconnect will be created on MACsec capable hardware ports. If not specified, the default value is false, which will allocate non-MACsec capable ports first if available. This parameter can only be provided during interconnect INSERT and cannot be changed using interconnect PATCH. Please review Interconnect Pricing for implications on enabling this flag.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Compute.Alpha.InterconnectRequestedFeaturesItem> RequestedFeatures
+        {
+            get => _requestedFeatures ?? (_requestedFeatures = new InputList<Pulumi.GoogleNative.Compute.Alpha.InterconnectRequestedFeaturesItem>());
+            set => _requestedFeatures = value;
+        }
 
         /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.

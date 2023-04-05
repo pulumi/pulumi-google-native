@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified machine image. Gets a list of available machine images by making a list() request.
+// Returns the specified machine image.
 func LookupMachineImage(ctx *pulumi.Context, args *LookupMachineImageArgs, opts ...pulumi.InvokeOption) (*LookupMachineImageResult, error) {
 	var rv LookupMachineImageResult
 	err := ctx.Invoke("google-native:compute/alpha:getMachineImage", args, &rv, opts...)

@@ -80,11 +80,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The resource's name.
+        /// The name of the resource.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The state of the Private Connection.
+        /// The state of the private connection.
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// VPC Peering Config.
+        /// VPC peering configuration.
         /// </summary>
         public readonly Outputs.VpcPeeringConfigResponse VpcPeeringConfig;
 

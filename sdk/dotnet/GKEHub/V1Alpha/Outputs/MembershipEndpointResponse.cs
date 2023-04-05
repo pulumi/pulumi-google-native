@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.GkeClusterResponse GkeCluster;
         /// <summary>
+        /// Whether the lifecycle of this membership is managed by a google cluster platform service.
+        /// </summary>
+        public readonly bool GoogleManaged;
+        /// <summary>
         /// Useful Kubernetes-specific metadata.
         /// </summary>
         public readonly Outputs.KubernetesMetadataResponse KubernetesMetadata;
@@ -53,6 +57,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
 
             Outputs.GkeClusterResponse gkeCluster,
 
+            bool googleManaged,
+
             Outputs.KubernetesMetadataResponse kubernetesMetadata,
 
             Outputs.KubernetesResourceResponse kubernetesResource,
@@ -64,6 +70,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
             ApplianceCluster = applianceCluster;
             EdgeCluster = edgeCluster;
             GkeCluster = gkeCluster;
+            GoogleManaged = googleManaged;
             KubernetesMetadata = kubernetesMetadata;
             KubernetesResource = kubernetesResource;
             MultiCloudCluster = multiCloudCluster;

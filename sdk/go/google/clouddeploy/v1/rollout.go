@@ -24,6 +24,8 @@ type Rollout struct {
 	ApprovalState pulumi.StringOutput `pulumi:"approvalState"`
 	// Time at which the `Rollout` was approved.
 	ApproveTime pulumi.StringOutput `pulumi:"approveTime"`
+	// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+	ControllerRollout pulumi.StringOutput `pulumi:"controllerRollout"`
 	// Time at which the `Rollout` was created.
 	CreateTime         pulumi.StringOutput `pulumi:"createTime"`
 	DeliveryPipelineId pulumi.StringOutput `pulumi:"deliveryPipelineId"`
@@ -233,6 +235,11 @@ func (o RolloutOutput) ApprovalState() pulumi.StringOutput {
 // Time at which the `Rollout` was approved.
 func (o RolloutOutput) ApproveTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ApproveTime }).(pulumi.StringOutput)
+}
+
+// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+func (o RolloutOutput) ControllerRollout() pulumi.StringOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.ControllerRollout }).(pulumi.StringOutput)
 }
 
 // Time at which the `Rollout` was created.

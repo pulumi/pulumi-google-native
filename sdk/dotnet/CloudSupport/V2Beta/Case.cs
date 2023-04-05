@@ -24,6 +24,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public Output<Outputs.CaseClassificationResponse> Classification { get; private set; } = null!;
 
         /// <summary>
+        /// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+        /// </summary>
+        [Output("contactEmail")]
+        public Output<string> ContactEmail { get; private set; } = null!;
+
+        /// <summary>
         /// The time this case was created.
         /// </summary>
         [Output("createTime")]
@@ -168,6 +174,12 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         [Input("classification")]
         public Input<Inputs.CaseClassificationArgs>? Classification { get; set; }
+
+        /// <summary>
+        /// A user-supplied email address to send case update notifications for. This should only be used in BYOID flows, where we cannot infer the user's email address directly from their EUCs.
+        /// </summary>
+        [Input("contactEmail")]
+        public Input<string>? ContactEmail { get; set; }
 
         /// <summary>
         /// The user who created the case. Note: The name and email will be obfuscated if the case was created by Google Support.

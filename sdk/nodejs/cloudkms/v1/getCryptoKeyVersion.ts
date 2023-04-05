@@ -52,6 +52,10 @@ export interface GetCryptoKeyVersionResult {
      */
     readonly destroyTime: string;
     /**
+     * The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+     */
+    readonly externalDestructionFailureReason: string;
+    /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
      */
     readonly externalProtectionLevelOptions: outputs.cloudkms.v1.ExternalProtectionLevelOptionsResponse;
@@ -59,6 +63,10 @@ export interface GetCryptoKeyVersionResult {
      * The time this CryptoKeyVersion's key material was generated.
      */
     readonly generateTime: string;
+    /**
+     * The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+     */
+    readonly generationFailureReason: string;
     /**
      * The root cause of the most recent import failure. Only present if state is IMPORT_FAILED.
      */

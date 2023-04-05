@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified network. Gets a list of available networks by making a list() request.
+ * Returns the specified network.
  */
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
 
@@ -46,7 +46,7 @@ export interface GetNetworkResult {
      */
     readonly firewallPolicy: string;
     /**
-     * The gateway address for default routing out of the network, selected by GCP.
+     * The gateway address for default routing out of the network, selected by Google Cloud.
      */
     readonly gatewayIPv4: string;
     /**
@@ -97,7 +97,7 @@ export interface GetNetworkResult {
     readonly subnetworks: string[];
 }
 /**
- * Returns the specified network. Gets a list of available networks by making a list() request.
+ * Returns the specified network.
  */
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkResult> {
     return pulumi.output(args).apply((a: any) => getNetwork(a, opts))

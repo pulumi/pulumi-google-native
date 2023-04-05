@@ -25,6 +25,16 @@ export const getRepository: typeof import("./getRepository").getRepository = nul
 export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
 utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
 
+export { GetRepositoryIamPolicyArgs, GetRepositoryIamPolicyResult, GetRepositoryIamPolicyOutputArgs } from "./getRepositoryIamPolicy";
+export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicy = null as any;
+export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
+
+export { GetRepositoryWorkspaceIamPolicyArgs, GetRepositoryWorkspaceIamPolicyResult, GetRepositoryWorkspaceIamPolicyOutputArgs } from "./getRepositoryWorkspaceIamPolicy";
+export const getRepositoryWorkspaceIamPolicy: typeof import("./getRepositoryWorkspaceIamPolicy").getRepositoryWorkspaceIamPolicy = null as any;
+export const getRepositoryWorkspaceIamPolicyOutput: typeof import("./getRepositoryWorkspaceIamPolicy").getRepositoryWorkspaceIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getRepositoryWorkspaceIamPolicy","getRepositoryWorkspaceIamPolicyOutput"], () => require("./getRepositoryWorkspaceIamPolicy"));
+
 export { GetWorkflowConfigArgs, GetWorkflowConfigResult, GetWorkflowConfigOutputArgs } from "./getWorkflowConfig";
 export const getWorkflowConfig: typeof import("./getWorkflowConfig").getWorkflowConfig = null as any;
 export const getWorkflowConfigOutput: typeof import("./getWorkflowConfig").getWorkflowConfigOutput = null as any;
@@ -49,6 +59,36 @@ export { RepositoryArgs } from "./repository";
 export type Repository = import("./repository").Repository;
 export const Repository: typeof import("./repository").Repository = null as any;
 utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
+
+export { RepositoryIamBindingArgs } from "./repositoryIamBinding";
+export type RepositoryIamBinding = import("./repositoryIamBinding").RepositoryIamBinding;
+export const RepositoryIamBinding: typeof import("./repositoryIamBinding").RepositoryIamBinding = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamBinding"], () => require("./repositoryIamBinding"));
+
+export { RepositoryIamMemberArgs } from "./repositoryIamMember";
+export type RepositoryIamMember = import("./repositoryIamMember").RepositoryIamMember;
+export const RepositoryIamMember: typeof import("./repositoryIamMember").RepositoryIamMember = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamMember"], () => require("./repositoryIamMember"));
+
+export { RepositoryIamPolicyArgs } from "./repositoryIamPolicy";
+export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
+export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
+
+export { RepositoryWorkspaceIamBindingArgs } from "./repositoryWorkspaceIamBinding";
+export type RepositoryWorkspaceIamBinding = import("./repositoryWorkspaceIamBinding").RepositoryWorkspaceIamBinding;
+export const RepositoryWorkspaceIamBinding: typeof import("./repositoryWorkspaceIamBinding").RepositoryWorkspaceIamBinding = null as any;
+utilities.lazyLoad(exports, ["RepositoryWorkspaceIamBinding"], () => require("./repositoryWorkspaceIamBinding"));
+
+export { RepositoryWorkspaceIamMemberArgs } from "./repositoryWorkspaceIamMember";
+export type RepositoryWorkspaceIamMember = import("./repositoryWorkspaceIamMember").RepositoryWorkspaceIamMember;
+export const RepositoryWorkspaceIamMember: typeof import("./repositoryWorkspaceIamMember").RepositoryWorkspaceIamMember = null as any;
+utilities.lazyLoad(exports, ["RepositoryWorkspaceIamMember"], () => require("./repositoryWorkspaceIamMember"));
+
+export { RepositoryWorkspaceIamPolicyArgs } from "./repositoryWorkspaceIamPolicy";
+export type RepositoryWorkspaceIamPolicy = import("./repositoryWorkspaceIamPolicy").RepositoryWorkspaceIamPolicy;
+export const RepositoryWorkspaceIamPolicy: typeof import("./repositoryWorkspaceIamPolicy").RepositoryWorkspaceIamPolicy = null as any;
+utilities.lazyLoad(exports, ["RepositoryWorkspaceIamPolicy"], () => require("./repositoryWorkspaceIamPolicy"));
 
 export { WorkflowConfigArgs } from "./workflowConfig";
 export type WorkflowConfig = import("./workflowConfig").WorkflowConfig;
@@ -76,6 +116,18 @@ const _module = {
                 return new ReleaseConfig(name, <any>undefined, { urn })
             case "google-native:dataform/v1beta1:Repository":
                 return new Repository(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:RepositoryIamBinding":
+                return new RepositoryIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:RepositoryIamMember":
+                return new RepositoryIamMember(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:RepositoryIamPolicy":
+                return new RepositoryIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:RepositoryWorkspaceIamBinding":
+                return new RepositoryWorkspaceIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:RepositoryWorkspaceIamMember":
+                return new RepositoryWorkspaceIamMember(name, <any>undefined, { urn })
+            case "google-native:dataform/v1beta1:RepositoryWorkspaceIamPolicy":
+                return new RepositoryWorkspaceIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataform/v1beta1:WorkflowConfig":
                 return new WorkflowConfig(name, <any>undefined, { urn })
             case "google-native:dataform/v1beta1:WorkflowInvocation":

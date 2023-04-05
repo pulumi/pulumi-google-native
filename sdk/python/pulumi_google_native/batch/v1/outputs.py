@@ -16,15 +16,11 @@ __all__ = [
     'ActionConditionResponse',
     'AllocationPolicyResponse',
     'AttachedDiskResponse',
-    'AuditConfigResponse',
-    'AuditLogConfigResponse',
     'BarrierResponse',
-    'BindingResponse',
     'ComputeResourceResponse',
     'ContainerResponse',
     'DiskResponse',
     'EnvironmentResponse',
-    'ExprResponse',
     'GCSResponse',
     'InstancePolicyOrTemplateResponse',
     'InstancePolicyResponse',
@@ -293,108 +289,6 @@ class AttachedDiskResponse(dict):
 
 
 @pulumi.output_type
-class AuditConfigResponse(dict):
-    """
-    Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "auditLogConfigs":
-            suggest = "audit_log_configs"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuditConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuditConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
-                 service: str):
-        """
-        Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
-        :param Sequence['AuditLogConfigResponse'] audit_log_configs: The configuration for logging of each type of permission.
-        :param str service: Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-        """
-        pulumi.set(__self__, "audit_log_configs", audit_log_configs)
-        pulumi.set(__self__, "service", service)
-
-    @property
-    @pulumi.getter(name="auditLogConfigs")
-    def audit_log_configs(self) -> Sequence['outputs.AuditLogConfigResponse']:
-        """
-        The configuration for logging of each type of permission.
-        """
-        return pulumi.get(self, "audit_log_configs")
-
-    @property
-    @pulumi.getter
-    def service(self) -> str:
-        """
-        Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-        """
-        return pulumi.get(self, "service")
-
-
-@pulumi.output_type
-class AuditLogConfigResponse(dict):
-    """
-    Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "exemptedMembers":
-            suggest = "exempted_members"
-        elif key == "logType":
-            suggest = "log_type"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AuditLogConfigResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AuditLogConfigResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 exempted_members: Sequence[str],
-                 log_type: str):
-        """
-        Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-        :param Sequence[str] exempted_members: Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        :param str log_type: The log type that this config enables.
-        """
-        pulumi.set(__self__, "exempted_members", exempted_members)
-        pulumi.set(__self__, "log_type", log_type)
-
-    @property
-    @pulumi.getter(name="exemptedMembers")
-    def exempted_members(self) -> Sequence[str]:
-        """
-        Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-        """
-        return pulumi.get(self, "exempted_members")
-
-    @property
-    @pulumi.getter(name="logType")
-    def log_type(self) -> str:
-        """
-        The log type that this config enables.
-        """
-        return pulumi.get(self, "log_type")
-
-
-@pulumi.output_type
 class BarrierResponse(dict):
     """
     Barrier runnable blocks until all tasks in a taskgroup reach it.
@@ -414,50 +308,6 @@ class BarrierResponse(dict):
         Barriers are identified by their index in runnable list. Names are not required, but if present should be an identifier.
         """
         return pulumi.get(self, "name")
-
-
-@pulumi.output_type
-class BindingResponse(dict):
-    """
-    Associates `members`, or principals, with a `role`.
-    """
-    def __init__(__self__, *,
-                 condition: 'outputs.ExprResponse',
-                 members: Sequence[str],
-                 role: str):
-        """
-        Associates `members`, or principals, with a `role`.
-        :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        """
-        pulumi.set(__self__, "condition", condition)
-        pulumi.set(__self__, "members", members)
-        pulumi.set(__self__, "role", role)
-
-    @property
-    @pulumi.getter
-    def condition(self) -> 'outputs.ExprResponse':
-        """
-        The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        """
-        return pulumi.get(self, "condition")
-
-    @property
-    @pulumi.getter
-    def members(self) -> Sequence[str]:
-        """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding.
-        """
-        return pulumi.get(self, "members")
-
-    @property
-    @pulumi.getter
-    def role(self) -> str:
-        """
-        Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-        """
-        return pulumi.get(self, "role")
 
 
 @pulumi.output_type
@@ -560,7 +410,7 @@ class ContainerResponse(dict):
                  volumes: Sequence[str]):
         """
         Container runnable.
-        :param bool block_external_network: If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+        :param bool block_external_network: If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
         :param Sequence[str] commands: Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
         :param str entrypoint: Overrides the `ENTRYPOINT` specified in the container.
         :param str image_uri: The URI to pull the container image from.
@@ -582,7 +432,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="blockExternalNetwork")
     def block_external_network(self) -> bool:
         """
-        If set to true, external network access to and from container will be blocked. The container will use the default internal network 'goog-internal'.
+        If set to true, external network access to and from container will be blocked, containers that are with block_external_network as true can still communicate with each other, network cannot be specified in the `container.options` field.
         """
         return pulumi.get(self, "block_external_network")
 
@@ -646,7 +496,7 @@ class ContainerResponse(dict):
 @pulumi.output_type
 class DiskResponse(dict):
     """
-    A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+    A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -674,11 +524,11 @@ class DiskResponse(dict):
                  snapshot: str,
                  type: str):
         """
-        A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. https://cloud.google.com/compute/docs/disks#pdspecs. https://cloud.google.com/compute/docs/disks#localssds.
+        A new persistent disk or a local ssd. A VM can only have one local SSD setting but multiple local SSD partitions. See https://cloud.google.com/compute/docs/disks#pdspecs and https://cloud.google.com/compute/docs/disks#localssds.
         :param str disk_interface: Local SSDs are available through both "SCSI" and "NVMe" interfaces. If not indicated, "NVMe" will be the default one for local ssds. We only support "SCSI" for persistent disks now.
-        :param str image: Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+        :param str image: Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
         :param str size_gb: Disk size in GB. For persistent disk, this field is ignored if `data_source` is `image` or `snapshot`. For local SSD, size_gb should be a multiple of 375GB, otherwise, the final size will be the next greater multiple of 375 GB. For boot disk, Batch will calculate the boot disk size based on source image and task requirements if you do not speicify the size. If both this field and the boot_disk_mib field in task spec's compute_resource are defined, Batch will only honor this field.
-        :param str snapshot: Name of a snapshot used as the data source.
+        :param str snapshot: Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
         :param str type: Disk type as shown in `gcloud compute disk-types list`. For example, local SSD uses type "local-ssd". Persistent disks and boot disks use "pd-balanced", "pd-extreme", "pd-ssd" or "pd-standard".
         """
         pulumi.set(__self__, "disk_interface", disk_interface)
@@ -699,7 +549,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        Name of a public or custom image used as the data source. For example, the following are all valid URLs: (1) Specify the image by its family name: projects/{project}/global/images/family/{image_family} (2) Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: "batch-debian": use Batch Debian images. "batch-centos": use Batch CentOS images. "batch-cos": use Batch Container-Optimized images.
+        Name of a public or custom image used as the data source. For example, the following are all valid URLs: * Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
         """
         return pulumi.get(self, "image")
 
@@ -715,7 +565,7 @@ class DiskResponse(dict):
     @pulumi.getter
     def snapshot(self) -> str:
         """
-        Name of a snapshot used as the data source.
+        Name of a snapshot used as the data source. Snapshot is not supported as boot disk now.
         """
         return pulumi.get(self, "snapshot")
 
@@ -789,61 +639,6 @@ class EnvironmentResponse(dict):
         A map of environment variable names to values.
         """
         return pulumi.get(self, "variables")
-
-
-@pulumi.output_type
-class ExprResponse(dict):
-    """
-    Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-    """
-    def __init__(__self__, *,
-                 description: str,
-                 expression: str,
-                 location: str,
-                 title: str):
-        """
-        Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-        :param str description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        :param str expression: Textual representation of an expression in Common Expression Language syntax.
-        :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-        pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "expression", expression)
-        pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter
-    def description(self) -> str:
-        """
-        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-        """
-        return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def expression(self) -> str:
-        """
-        Textual representation of an expression in Common Expression Language syntax.
-        """
-        return pulumi.get(self, "expression")
-
-    @property
-    @pulumi.getter
-    def location(self) -> str:
-        """
-        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-        """
-        return pulumi.get(self, "location")
-
-    @property
-    @pulumi.getter
-    def title(self) -> str:
-        """
-        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-        """
-        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -986,10 +781,10 @@ class InstancePolicyResponse(dict):
         """
         InstancePolicy describes an instance type and resources attached to each VM created by this InstancePolicy.
         :param Sequence['AcceleratorResponse'] accelerators: The accelerators attached to each VM instance.
-        :param 'DiskResponse' boot_disk: Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+        :param 'DiskResponse' boot_disk: Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
         :param Sequence['AttachedDiskResponse'] disks: Non-boot disks to be attached for each VM created by this InstancePolicy. New disks will be deleted when the VM is deleted.
         :param str machine_type: The Compute Engine machine type.
-        :param str min_cpu_platform: The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+        :param str min_cpu_platform: The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
         :param str provisioning_model: The provisioning model.
         """
         pulumi.set(__self__, "accelerators", accelerators)
@@ -1011,7 +806,7 @@ class InstancePolicyResponse(dict):
     @pulumi.getter(name="bootDisk")
     def boot_disk(self) -> 'outputs.DiskResponse':
         """
-        Book disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted.
+        Boot disk to be created and attached to each VM by this InstancePolicy. Boot disk will be deleted when the VM is deleted. Batch API now only supports booting from image.
         """
         return pulumi.get(self, "boot_disk")
 
@@ -1035,7 +830,7 @@ class InstancePolicyResponse(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> str:
         """
-        The minimum CPU platform. See `https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform`. Not yet implemented.
+        The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not yet implemented.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -1249,7 +1044,7 @@ class LifecyclePolicyResponse(dict):
                  action_condition: 'outputs.ActionConditionResponse'):
         """
         LifecyclePolicy describes how to deal with task failures based on different conditions.
-        :param str action: Action to execute when ActionCondition is true.
+        :param str action: Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
         :param 'ActionConditionResponse' action_condition: Conditions that decide why a task failure is dealt with a specific action.
         """
         pulumi.set(__self__, "action", action)
@@ -1259,7 +1054,7 @@ class LifecyclePolicyResponse(dict):
     @pulumi.getter
     def action(self) -> str:
         """
-        Action to execute when ActionCondition is true.
+        Action to execute when ActionCondition is true. When RETRY_TASK is specified, we will retry failed tasks if we notice any exit code match and fail tasks if no match is found. Likewise, when FAIL_TASK is specified, we will fail tasks if we notice any exit code match and retry tasks if no match is found.
         """
         return pulumi.get(self, "action")
 
@@ -1498,9 +1293,9 @@ class NetworkInterfaceResponse(dict):
                  subnetwork: str):
         """
         A network interface.
-        :param str network: The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+        :param str network: The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
         :param bool no_external_ip_address: Default is false (with an external IP address). Required if no external public IP address is attached to the VM. If no external public IP address, additional configuration is required to allow the VM to access Google Services. See https://cloud.google.com/vpc/docs/configure-private-google-access and https://cloud.google.com/nat/docs/gce-example#create-nat for more information.
-        :param str subnetwork: The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+        :param str subnetwork: The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "no_external_ip_address", no_external_ip_address)
@@ -1510,7 +1305,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} projects/{project}/global/networks/{network} global/networks/{network}
+        The URL of an existing network resource. You can specify the network as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} * projects/{project}/global/networks/{network} * global/networks/{network}
         """
         return pulumi.get(self, "network")
 
@@ -1526,7 +1321,7 @@ class NetworkInterfaceResponse(dict):
     @pulumi.getter
     def subnetwork(self) -> str:
         """
-        The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} projects/{project}/regions/{region}/subnetworks/{subnetwork} regions/{region}/subnetworks/{subnetwork}
+        The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: * https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} * projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
         """
         return pulumi.get(self, "subnetwork")
 
@@ -1924,10 +1719,10 @@ class TaskGroupResponse(dict):
         """
         A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
         :param str name: TaskGroup name. The system generates this field based on parent Job name. For example: "projects/123456/locations/us-west1/jobs/job01/taskGroups/group01".
-        :param str parallelism: Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+        :param str parallelism: Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         :param bool permissive_ssh: When true, Batch will configure SSH to allow passwordless login between VMs running the Batch tasks in the same TaskGroup.
         :param bool require_hosts_file: When true, Batch will populate a file with a list of all VMs assigned to the TaskGroup and set the BATCH_HOSTS_FILE environment variable to the path of that file. Defaults to false.
-        :param str task_count: Number of Tasks in the TaskGroup. default is 1
+        :param str task_count: Number of Tasks in the TaskGroup. Default is 1.
         :param str task_count_per_node: Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
         :param Sequence['EnvironmentResponse'] task_environments: An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1). task_environments supports up to 200 entries.
         :param 'TaskSpecResponse' task_spec: Tasks in the group share the same task spec.
@@ -1953,7 +1748,7 @@ class TaskGroupResponse(dict):
     @pulumi.getter
     def parallelism(self) -> str:
         """
-        Max number of tasks that can run in parallel. Default to min(task_count, 1000).
+        Max number of tasks that can run in parallel. Default to min(task_count, 1000). Field parallelism must be 1 if the scheduling_policy is IN_ORDER.
         """
         return pulumi.get(self, "parallelism")
 
@@ -1977,7 +1772,7 @@ class TaskGroupResponse(dict):
     @pulumi.getter(name="taskCount")
     def task_count(self) -> str:
         """
-        Number of Tasks in the TaskGroup. default is 1
+        Number of Tasks in the TaskGroup. Default is 1.
         """
         return pulumi.get(self, "task_count")
 
@@ -2048,7 +1843,7 @@ class TaskSpecResponse(dict):
         :param 'ComputeResourceResponse' compute_resource: ComputeResource requirements.
         :param 'EnvironmentResponse' environment: Environment variables to set before running the Task.
         :param Mapping[str, str] environments: Deprecated: please use environment(non-plural) instead.
-        :param Sequence['LifecyclePolicyResponse'] lifecycle_policies: Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+        :param Sequence['LifecyclePolicyResponse'] lifecycle_policies: Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
         :param int max_retry_count: Maximum number of retries on failures. The default, 0, which means never retry. The valid value range is [0, 10].
         :param str max_run_duration: Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
         :param Sequence['RunnableResponse'] runnables: The sequence of scripts or containers to run for this Task. Each Task using this TaskSpec executes its list of runnables in order. The Task succeeds if all of its runnables either exit with a zero status or any that exit with a non-zero status have the ignore_exit_status flag. Background runnables are killed automatically (if they have not already exited) a short time after all foreground runnables have completed. Even though this is likely to result in a non-zero exit status for the background runnable, these automatic kills are not treated as Task failures.
@@ -2091,7 +1886,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter(name="lifecyclePolicies")
     def lifecycle_policies(self) -> Sequence['outputs.LifecyclePolicyResponse']:
         """
-        Lifecycle management schema when any task in a task group is failed. The valid size of lifecycle policies are [0, 10]. For each lifecycle policy, when the condition is met, the action in that policy will execute. If there are multiple policies that the task execution result matches, we use the action from the first matched policy. If task execution result does not meet with any of the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
+        Lifecycle management schema when any task in a task group is failed. Currently we only support one lifecycle policy. When the lifecycle policy condition is met, the action in the policy will execute. If task execution result does not meet with the defined lifecycle policy, we consider it as the default policy. Default policy means if the exit code is 0, exit task. If task ends with non-zero exit code, retry the task with max_retry_count.
         """
         return pulumi.get(self, "lifecycle_policies")
 

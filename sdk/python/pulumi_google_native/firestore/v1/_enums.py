@@ -29,7 +29,7 @@ class DatabaseAppEngineIntegrationMode(str, Enum):
     """
     DISABLED = "DISABLED"
     """
-    Appengine has no affect on the ability of this database to serve requests.
+    App Engine has no effect on the ability of this database to serve requests. This is the default setting for databases created with the Firestore API.
     """
 
 

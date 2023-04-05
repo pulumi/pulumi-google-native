@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// </summary>
+        [Output("addresses")]
+        public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Output("certificateUrls")]
+        public Output<ImmutableArray<string>> CertificateUrls { get; private set; } = null!;
+
+        /// <summary>
         /// The timestamp when the resource was created.
         /// </summary>
         [Output("createTime")]
@@ -34,6 +46,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> GatewayId { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Output("gatewaySecurityPolicy")]
+        public Output<string> GatewaySecurityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Set of label tags associated with the Gateway resource.
         /// </summary>
         [Output("labels")]
@@ -49,6 +67,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Output("network")]
+        public Output<string> Network { get; private set; } = null!;
+
+        /// <summary>
         /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         [Output("ports")]
@@ -58,7 +82,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+        /// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -74,6 +98,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Output("serverTlsPolicy")]
         public Output<string> ServerTlsPolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+        /// </summary>
+        [Output("subnetwork")]
+        public Output<string> Subnetwork { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
@@ -138,6 +168,30 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
 
     public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
+        [Input("addresses")]
+        private InputList<string>? _addresses;
+
+        /// <summary>
+        /// Optional. Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided, an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'. Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
+        /// </summary>
+        public InputList<string> Addresses
+        {
+            get => _addresses ?? (_addresses = new InputList<string>());
+            set => _addresses = value;
+        }
+
+        [Input("certificateUrls")]
+        private InputList<string>? _certificateUrls;
+
+        /// <summary>
+        /// Optional. A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection. This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        public InputList<string> CertificateUrls
+        {
+            get => _certificateUrls ?? (_certificateUrls = new InputList<string>());
+            set => _certificateUrls = value;
+        }
+
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
         /// </summary>
@@ -149,6 +203,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         /// </summary>
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/*/locations/*/gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Input("gatewaySecurityPolicy")]
+        public Input<string>? GatewaySecurityPolicy { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -171,6 +231,12 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Optional. The relative resource name identifying the VPC network that is using this configuration. For example: `projects/*/global/networks/network-1`. Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY'.
+        /// </summary>
+        [Input("network")]
+        public Input<string>? Network { get; set; }
+
         [Input("ports", required: true)]
         private InputList<int>? _ports;
 
@@ -187,16 +253,22 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
+        /// Optional. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         /// </summary>
-        [Input("scope", required: true)]
-        public Input<string> Scope { get; set; } = null!;
+        [Input("scope")]
+        public Input<string>? Scope { get; set; }
 
         /// <summary>
         /// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
         /// </summary>
         [Input("serverTlsPolicy")]
         public Input<string>? ServerTlsPolicy { get; set; }
+
+        /// <summary>
+        /// Optional. The relative resource name identifying the subnetwork in which this SWG is allocated. For example: `projects/*/regions/us-central1/subnetworks/network-1` Currently, this field is specific to gateways of type 'SECURE_WEB_GATEWAY".
+        /// </summary>
+        [Input("subnetwork")]
+        public Input<string>? Subnetwork { get; set; }
 
         /// <summary>
         /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.

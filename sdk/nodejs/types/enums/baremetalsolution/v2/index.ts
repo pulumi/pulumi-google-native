@@ -119,6 +119,10 @@ export const LunState = {
      * The LUN has been requested to be deleted.
      */
     Deleting: "DELETING",
+    /**
+     * The LUN is in cool off state. It will be deleted after `expire_time`.
+     */
+    CoolOff: "COOL_OFF",
 } as const;
 
 /**
@@ -395,6 +399,10 @@ export const VolumeState = {
      * The storage volume is being updated.
      */
     Updating: "UPDATING",
+    /**
+     * The storage volume is in cool off state. It will be deleted after `expire_time`.
+     */
+    CoolOff: "COOL_OFF",
 } as const;
 
 /**

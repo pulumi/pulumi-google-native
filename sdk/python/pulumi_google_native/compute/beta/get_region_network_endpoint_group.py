@@ -276,7 +276,7 @@ def get_region_network_endpoint_group(network_endpoint_group: Optional[str] = No
                                       region: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRegionNetworkEndpointGroupResult:
     """
-    Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+    Returns the specified network endpoint group.
     """
     __args__ = dict()
     __args__['networkEndpointGroup'] = network_endpoint_group
@@ -314,6 +314,6 @@ def get_region_network_endpoint_group_output(network_endpoint_group: Optional[pu
                                              region: Optional[pulumi.Input[str]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionNetworkEndpointGroupResult]:
     """
-    Returns the specified network endpoint group. Gets a list of available network endpoint groups by making a list() request.
+    Returns the specified network endpoint group.
     """
     ...

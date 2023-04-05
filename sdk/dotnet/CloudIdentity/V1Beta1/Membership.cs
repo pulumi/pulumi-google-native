@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Delivery setting associated with the membership.
+        /// </summary>
+        [Output("deliverySetting")]
+        public Output<string> DeliverySetting { get; private set; } = null!;
+
         [Output("groupId")]
         public Output<string> GroupId { get; private set; } = null!;
 

@@ -127,7 +127,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly requestedLinkCount!: pulumi.Output<number>;
     /**
-     * Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+     * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetCryptoKeyVersionResult:
-    def __init__(__self__, algorithm=None, attestation=None, create_time=None, destroy_event_time=None, destroy_time=None, external_protection_level_options=None, generate_time=None, import_failure_reason=None, import_job=None, import_time=None, name=None, protection_level=None, reimport_eligible=None, state=None):
+    def __init__(__self__, algorithm=None, attestation=None, create_time=None, destroy_event_time=None, destroy_time=None, external_destruction_failure_reason=None, external_protection_level_options=None, generate_time=None, generation_failure_reason=None, import_failure_reason=None, import_job=None, import_time=None, name=None, protection_level=None, reimport_eligible=None, state=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -35,12 +35,18 @@ class GetCryptoKeyVersionResult:
         if destroy_time and not isinstance(destroy_time, str):
             raise TypeError("Expected argument 'destroy_time' to be a str")
         pulumi.set(__self__, "destroy_time", destroy_time)
+        if external_destruction_failure_reason and not isinstance(external_destruction_failure_reason, str):
+            raise TypeError("Expected argument 'external_destruction_failure_reason' to be a str")
+        pulumi.set(__self__, "external_destruction_failure_reason", external_destruction_failure_reason)
         if external_protection_level_options and not isinstance(external_protection_level_options, dict):
             raise TypeError("Expected argument 'external_protection_level_options' to be a dict")
         pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         if generate_time and not isinstance(generate_time, str):
             raise TypeError("Expected argument 'generate_time' to be a str")
         pulumi.set(__self__, "generate_time", generate_time)
+        if generation_failure_reason and not isinstance(generation_failure_reason, str):
+            raise TypeError("Expected argument 'generation_failure_reason' to be a str")
+        pulumi.set(__self__, "generation_failure_reason", generation_failure_reason)
         if import_failure_reason and not isinstance(import_failure_reason, str):
             raise TypeError("Expected argument 'import_failure_reason' to be a str")
         pulumi.set(__self__, "import_failure_reason", import_failure_reason)
@@ -104,6 +110,14 @@ class GetCryptoKeyVersionResult:
         return pulumi.get(self, "destroy_time")
 
     @property
+    @pulumi.getter(name="externalDestructionFailureReason")
+    def external_destruction_failure_reason(self) -> str:
+        """
+        The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        """
+        return pulumi.get(self, "external_destruction_failure_reason")
+
+    @property
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> 'outputs.ExternalProtectionLevelOptionsResponse':
         """
@@ -118,6 +132,14 @@ class GetCryptoKeyVersionResult:
         The time this CryptoKeyVersion's key material was generated.
         """
         return pulumi.get(self, "generate_time")
+
+    @property
+    @pulumi.getter(name="generationFailureReason")
+    def generation_failure_reason(self) -> str:
+        """
+        The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+        """
+        return pulumi.get(self, "generation_failure_reason")
 
     @property
     @pulumi.getter(name="importFailureReason")
@@ -187,8 +209,10 @@ class AwaitableGetCryptoKeyVersionResult(GetCryptoKeyVersionResult):
             create_time=self.create_time,
             destroy_event_time=self.destroy_event_time,
             destroy_time=self.destroy_time,
+            external_destruction_failure_reason=self.external_destruction_failure_reason,
             external_protection_level_options=self.external_protection_level_options,
             generate_time=self.generate_time,
+            generation_failure_reason=self.generation_failure_reason,
             import_failure_reason=self.import_failure_reason,
             import_job=self.import_job,
             import_time=self.import_time,
@@ -222,8 +246,10 @@ def get_crypto_key_version(crypto_key_id: Optional[str] = None,
         create_time=__ret__.create_time,
         destroy_event_time=__ret__.destroy_event_time,
         destroy_time=__ret__.destroy_time,
+        external_destruction_failure_reason=__ret__.external_destruction_failure_reason,
         external_protection_level_options=__ret__.external_protection_level_options,
         generate_time=__ret__.generate_time,
+        generation_failure_reason=__ret__.generation_failure_reason,
         import_failure_reason=__ret__.import_failure_reason,
         import_job=__ret__.import_job,
         import_time=__ret__.import_time,

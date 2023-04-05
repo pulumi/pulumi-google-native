@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1.Inputs
     public sealed class RestrictedExportConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// If true, restrict direct table access(read api/tabledata.list) on linked table.
+        /// If true, enable restricted export.
         /// </summary>
-        [Input("restrictDirectTableAccess")]
-        public Input<bool>? RestrictDirectTableAccess { get; set; }
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// If true, restrict export of query result derived from restricted linked dataset table.

@@ -17,6 +17,7 @@ __all__ = [
     'ArtifactHashesResponse',
     'ArtifactResponse',
     'ArtifactRuleResponse',
+    'AssessmentResponse',
     'AttestationResponse',
     'AuthorityResponse',
     'BasisResponse',
@@ -64,6 +65,7 @@ __all__ = [
     'HintResponse',
     'InTotoResponse',
     'InstallationResponse',
+    'JustificationResponse',
     'KnowledgeBaseResponse',
     'LayerResponse',
     'LicenseResponse',
@@ -74,18 +76,28 @@ __all__ = [
     'PackageIssueResponse',
     'PackageResponse',
     'PgpSignedAttestationResponse',
+    'ProductResponse',
     'ProjectRepoIdResponse',
+    'PublisherResponse',
     'RelatedUrlResponse',
     'RelationshipNoteResponse',
     'RelationshipOccurrenceResponse',
+    'RemediationResponse',
     'RepoIdResponse',
     'ResourceResponse',
+    'SBOMReferenceNoteResponse',
+    'SBOMReferenceOccurrenceResponse',
+    'SbomReferenceIntotoPayloadResponse',
+    'SbomReferenceIntotoPredicateResponse',
     'SignatureResponse',
     'SigningKeyResponse',
     'SourceContextResponse',
     'SourceResponse',
     'StatusResponse',
+    'SubjectResponse',
     'VersionResponse',
+    'VexAssessmentResponse',
+    'VulnerabilityAssessmentNoteResponse',
     'VulnerabilityLocationResponse',
     'VulnerabilityResponse',
     'WindowsDetailResponse',
@@ -243,6 +255,126 @@ class ArtifactRuleResponse(dict):
     @pulumi.getter(name="artifactRule")
     def artifact_rule(self) -> Sequence[str]:
         return pulumi.get(self, "artifact_rule")
+
+
+@pulumi.output_type
+class AssessmentResponse(dict):
+    """
+    Assessment provides all information that is related to a single vulnerability for this product.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "longDescription":
+            suggest = "long_description"
+        elif key == "relatedUris":
+            suggest = "related_uris"
+        elif key == "shortDescription":
+            suggest = "short_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AssessmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AssessmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AssessmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cve: str,
+                 impacts: Sequence[str],
+                 justification: 'outputs.JustificationResponse',
+                 long_description: str,
+                 related_uris: Sequence['outputs.RelatedUrlResponse'],
+                 remediations: Sequence['outputs.RemediationResponse'],
+                 short_description: str,
+                 state: str):
+        """
+        Assessment provides all information that is related to a single vulnerability for this product.
+        :param str cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        :param Sequence[str] impacts: Contains information about the impact of this vulnerability, this will change with time.
+        :param 'JustificationResponse' justification: Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        :param str long_description: A detailed description of this Vex.
+        :param Sequence['RelatedUrlResponse'] related_uris: Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+        :param Sequence['RemediationResponse'] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
+        :param str short_description: A one sentence description of this Vex.
+        :param str state: Provides the state of this Vulnerability assessment.
+        """
+        pulumi.set(__self__, "cve", cve)
+        pulumi.set(__self__, "impacts", impacts)
+        pulumi.set(__self__, "justification", justification)
+        pulumi.set(__self__, "long_description", long_description)
+        pulumi.set(__self__, "related_uris", related_uris)
+        pulumi.set(__self__, "remediations", remediations)
+        pulumi.set(__self__, "short_description", short_description)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def cve(self) -> str:
+        """
+        Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        """
+        return pulumi.get(self, "cve")
+
+    @property
+    @pulumi.getter
+    def impacts(self) -> Sequence[str]:
+        """
+        Contains information about the impact of this vulnerability, this will change with time.
+        """
+        return pulumi.get(self, "impacts")
+
+    @property
+    @pulumi.getter
+    def justification(self) -> 'outputs.JustificationResponse':
+        """
+        Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        """
+        return pulumi.get(self, "justification")
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> str:
+        """
+        A detailed description of this Vex.
+        """
+        return pulumi.get(self, "long_description")
+
+    @property
+    @pulumi.getter(name="relatedUris")
+    def related_uris(self) -> Sequence['outputs.RelatedUrlResponse']:
+        """
+        Holds a list of references associated with this vulnerability item and assessment. These uris have additional information about the vulnerability and the assessment itself. E.g. Link to a document which details how this assessment concluded the state of this vulnerability.
+        """
+        return pulumi.get(self, "related_uris")
+
+    @property
+    @pulumi.getter
+    def remediations(self) -> Sequence['outputs.RemediationResponse']:
+        """
+        Specifies details on how to handle (and presumably, fix) a vulnerability.
+        """
+        return pulumi.get(self, "remediations")
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> str:
+        """
+        A one sentence description of this Vex.
+        """
+        return pulumi.get(self, "short_description")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Provides the state of this Vulnerability assessment.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -2964,6 +3096,10 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         suggest = None
         if key == "cvssScore":
             suggest = "cvss_score"
+        elif key == "cvssV2":
+            suggest = "cvss_v2"
+        elif key == "cvssV3":
+            suggest = "cvss_v3"
         elif key == "cvssVersion":
             suggest = "cvss_version"
         elif key == "effectiveSeverity":
@@ -2976,6 +3112,8 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
             suggest = "related_urls"
         elif key == "shortDescription":
             suggest = "short_description"
+        elif key == "vexAssessment":
+            suggest = "vex_assessment"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GrafeasV1beta1VulnerabilityDetailsResponse. Access the value via the '{suggest}' property getter instead.")
@@ -2990,6 +3128,8 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
 
     def __init__(__self__, *,
                  cvss_score: float,
+                 cvss_v2: 'outputs.CVSSResponse',
+                 cvss_v3: 'outputs.CVSSResponse',
                  cvss_version: str,
                  effective_severity: str,
                  long_description: str,
@@ -2997,10 +3137,13 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
                  related_urls: Sequence['outputs.RelatedUrlResponse'],
                  severity: str,
                  short_description: str,
-                 type: str):
+                 type: str,
+                 vex_assessment: 'outputs.VexAssessmentResponse'):
         """
         Details of a vulnerability Occurrence.
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
+        :param 'CVSSResponse' cvss_v2: The cvss v2 score for the vulnerability.
+        :param 'CVSSResponse' cvss_v3: The cvss v3 score for the vulnerability.
         :param str cvss_version: CVSS version used to populate cvss_score and severity.
         :param str effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability. When there are multiple PackageIssues for this vulnerability, they can have different effective severities because some might be provided by the distro while others are provided by the language ecosystem for a language pack. For this reason, it is advised to use the effective severity on the PackageIssue level. In the case where multiple PackageIssues have differing effective severities, this field should be the highest severity for any of the PackageIssues.
         :param str long_description: A detailed description of this vulnerability.
@@ -3011,6 +3154,8 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         :param str type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
         pulumi.set(__self__, "cvss_score", cvss_score)
+        pulumi.set(__self__, "cvss_v2", cvss_v2)
+        pulumi.set(__self__, "cvss_v3", cvss_v3)
         pulumi.set(__self__, "cvss_version", cvss_version)
         pulumi.set(__self__, "effective_severity", effective_severity)
         pulumi.set(__self__, "long_description", long_description)
@@ -3019,6 +3164,7 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         pulumi.set(__self__, "severity", severity)
         pulumi.set(__self__, "short_description", short_description)
         pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vex_assessment", vex_assessment)
 
     @property
     @pulumi.getter(name="cvssScore")
@@ -3027,6 +3173,22 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         """
         return pulumi.get(self, "cvss_score")
+
+    @property
+    @pulumi.getter(name="cvssV2")
+    def cvss_v2(self) -> 'outputs.CVSSResponse':
+        """
+        The cvss v2 score for the vulnerability.
+        """
+        return pulumi.get(self, "cvss_v2")
+
+    @property
+    @pulumi.getter(name="cvssV3")
+    def cvss_v3(self) -> 'outputs.CVSSResponse':
+        """
+        The cvss v3 score for the vulnerability.
+        """
+        return pulumi.get(self, "cvss_v3")
 
     @property
     @pulumi.getter(name="cvssVersion")
@@ -3091,6 +3253,11 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         The type of package; whether native or non native(ruby gems, node.js packages etc)
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vexAssessment")
+    def vex_assessment(self) -> 'outputs.VexAssessmentResponse':
+        return pulumi.get(self, "vex_assessment")
 
 
 @pulumi.output_type
@@ -3368,6 +3535,56 @@ class InstallationResponse(dict):
         The version of the package.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class JustificationResponse(dict):
+    """
+    Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "justificationType":
+            suggest = "justification_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JustificationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JustificationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JustificationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 details: str,
+                 justification_type: str):
+        """
+        Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        :param str details: Additional details on why this justification was chosen.
+        :param str justification_type: The justification type for this vulnerability.
+        """
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "justification_type", justification_type)
+
+    @property
+    @pulumi.getter
+    def details(self) -> str:
+        """
+        Additional details on why this justification was chosen.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter(name="justificationType")
+    def justification_type(self) -> str:
+        """
+        The justification type for this vulnerability.
+        """
+        return pulumi.get(self, "justification_type")
 
 
 @pulumi.output_type
@@ -4264,6 +4481,56 @@ class PgpSignedAttestationResponse(dict):
 
 
 @pulumi.output_type
+class ProductResponse(dict):
+    """
+    Product contains information about a product and how to uniquely identify it.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "genericUri":
+            suggest = "generic_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProductResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProductResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProductResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generic_uri: str,
+                 name: str):
+        """
+        Product contains information about a product and how to uniquely identify it.
+        :param str generic_uri: Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+        :param str name: Name of the product.
+        """
+        pulumi.set(__self__, "generic_uri", generic_uri)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="genericUri")
+    def generic_uri(self) -> str:
+        """
+        Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
+        """
+        return pulumi.get(self, "generic_uri")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the product.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class ProjectRepoIdResponse(dict):
     """
     Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
@@ -4311,6 +4578,69 @@ class ProjectRepoIdResponse(dict):
         The name of the repo. Leave empty for the default repo.
         """
         return pulumi.get(self, "repo_name")
+
+
+@pulumi.output_type
+class PublisherResponse(dict):
+    """
+    Publisher contains information about the publisher of this Note.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "issuingAuthority":
+            suggest = "issuing_authority"
+        elif key == "publisherNamespace":
+            suggest = "publisher_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublisherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublisherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublisherResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 issuing_authority: str,
+                 name: str,
+                 publisher_namespace: str):
+        """
+        Publisher contains information about the publisher of this Note.
+        :param str issuing_authority: Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+        :param str name: Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+        :param str publisher_namespace: The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+        """
+        pulumi.set(__self__, "issuing_authority", issuing_authority)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "publisher_namespace", publisher_namespace)
+
+    @property
+    @pulumi.getter(name="issuingAuthority")
+    def issuing_authority(self) -> str:
+        """
+        Provides information about the authority of the issuing party to release the document, in particular, the party's constituency and responsibilities or other obligations.
+        """
+        return pulumi.get(self, "issuing_authority")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the publisher. Examples: 'Google', 'Google Cloud Platform'.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="publisherNamespace")
+    def publisher_namespace(self) -> str:
+        """
+        The context or namespace. Contains a URL which is under control of the issuing party and can be used as a globally unique identifier for that issuing party. Example: https://csaf.io
+        """
+        return pulumi.get(self, "publisher_namespace")
 
 
 @pulumi.output_type
@@ -4424,6 +4754,69 @@ class RelationshipOccurrenceResponse(dict):
 
 
 @pulumi.output_type
+class RemediationResponse(dict):
+    """
+    Specifies details on how to handle (and presumably, fix) a vulnerability.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remediationType":
+            suggest = "remediation_type"
+        elif key == "remediationUri":
+            suggest = "remediation_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RemediationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RemediationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RemediationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 details: str,
+                 remediation_type: str,
+                 remediation_uri: 'outputs.RelatedUrlResponse'):
+        """
+        Specifies details on how to handle (and presumably, fix) a vulnerability.
+        :param str details: Contains a comprehensive human-readable discussion of the remediation.
+        :param str remediation_type: The type of remediation that can be applied.
+        :param 'RelatedUrlResponse' remediation_uri: Contains the URL where to obtain the remediation.
+        """
+        pulumi.set(__self__, "details", details)
+        pulumi.set(__self__, "remediation_type", remediation_type)
+        pulumi.set(__self__, "remediation_uri", remediation_uri)
+
+    @property
+    @pulumi.getter
+    def details(self) -> str:
+        """
+        Contains a comprehensive human-readable discussion of the remediation.
+        """
+        return pulumi.get(self, "details")
+
+    @property
+    @pulumi.getter(name="remediationType")
+    def remediation_type(self) -> str:
+        """
+        The type of remediation that can be applied.
+        """
+        return pulumi.get(self, "remediation_type")
+
+    @property
+    @pulumi.getter(name="remediationUri")
+    def remediation_uri(self) -> 'outputs.RelatedUrlResponse':
+        """
+        Contains the URL where to obtain the remediation.
+        """
+        return pulumi.get(self, "remediation_uri")
+
+
+@pulumi.output_type
 class RepoIdResponse(dict):
     """
     A unique identifier for a Cloud Repo.
@@ -4532,6 +4925,246 @@ class ResourceResponse(dict):
         The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class SBOMReferenceNoteResponse(dict):
+    """
+    The note representing an SBOM reference.
+    """
+    def __init__(__self__, *,
+                 format: str,
+                 version: str):
+        """
+        The note representing an SBOM reference.
+        :param str format: The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        :param str version: The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        """
+        pulumi.set(__self__, "format", format)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def format(self) -> str:
+        """
+        The format that SBOM takes. E.g. may be spdx, cyclonedx, etc...
+        """
+        return pulumi.get(self, "format")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version of the format that the SBOM takes. E.g. if the format is spdx, the version may be 2.3.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class SBOMReferenceOccurrenceResponse(dict):
+    """
+    The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "payloadType":
+            suggest = "payload_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SBOMReferenceOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SBOMReferenceOccurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SBOMReferenceOccurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 payload: 'outputs.SbomReferenceIntotoPayloadResponse',
+                 payload_type: str,
+                 signatures: Sequence['outputs.EnvelopeSignatureResponse']):
+        """
+        The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+        :param 'SbomReferenceIntotoPayloadResponse' payload: The actual payload that contains the SBOM reference data.
+        :param str payload_type: The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        :param Sequence['EnvelopeSignatureResponse'] signatures: The signatures over the payload.
+        """
+        pulumi.set(__self__, "payload", payload)
+        pulumi.set(__self__, "payload_type", payload_type)
+        pulumi.set(__self__, "signatures", signatures)
+
+    @property
+    @pulumi.getter
+    def payload(self) -> 'outputs.SbomReferenceIntotoPayloadResponse':
+        """
+        The actual payload that contains the SBOM reference data.
+        """
+        return pulumi.get(self, "payload")
+
+    @property
+    @pulumi.getter(name="payloadType")
+    def payload_type(self) -> str:
+        """
+        The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
+        """
+        return pulumi.get(self, "payload_type")
+
+    @property
+    @pulumi.getter
+    def signatures(self) -> Sequence['outputs.EnvelopeSignatureResponse']:
+        """
+        The signatures over the payload.
+        """
+        return pulumi.get(self, "signatures")
+
+
+@pulumi.output_type
+class SbomReferenceIntotoPayloadResponse(dict):
+    """
+    The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predicateType":
+            suggest = "predicate_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SbomReferenceIntotoPayloadResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SbomReferenceIntotoPayloadResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SbomReferenceIntotoPayloadResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predicate: 'outputs.SbomReferenceIntotoPredicateResponse',
+                 predicate_type: str,
+                 subject: Sequence['outputs.SubjectResponse'],
+                 type: str):
+        """
+        The actual payload that contains the SBOM Reference data. The payload follows the intoto statement specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+        :param 'SbomReferenceIntotoPredicateResponse' predicate: Additional parameters of the Predicate. Includes the actual data about the SBOM.
+        :param str predicate_type: URI identifying the type of the Predicate.
+        :param Sequence['SubjectResponse'] subject: Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        :param str type: Identifier for the schema of the Statement.
+        """
+        pulumi.set(__self__, "predicate", predicate)
+        pulumi.set(__self__, "predicate_type", predicate_type)
+        pulumi.set(__self__, "subject", subject)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def predicate(self) -> 'outputs.SbomReferenceIntotoPredicateResponse':
+        """
+        Additional parameters of the Predicate. Includes the actual data about the SBOM.
+        """
+        return pulumi.get(self, "predicate")
+
+    @property
+    @pulumi.getter(name="predicateType")
+    def predicate_type(self) -> str:
+        """
+        URI identifying the type of the Predicate.
+        """
+        return pulumi.get(self, "predicate_type")
+
+    @property
+    @pulumi.getter
+    def subject(self) -> Sequence['outputs.SubjectResponse']:
+        """
+        Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        """
+        return pulumi.get(self, "subject")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        Identifier for the schema of the Statement.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class SbomReferenceIntotoPredicateResponse(dict):
+    """
+    A predicate which describes the SBOM being referenced.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+        elif key == "referrerId":
+            suggest = "referrer_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SbomReferenceIntotoPredicateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SbomReferenceIntotoPredicateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SbomReferenceIntotoPredicateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 location: str,
+                 mime_type: str,
+                 referrer_id: str):
+        """
+        A predicate which describes the SBOM being referenced.
+        :param Mapping[str, str] digest: A map of algorithm to digest of the contents of the SBOM.
+        :param str location: The location of the SBOM.
+        :param str mime_type: The mime type of the SBOM.
+        :param str referrer_id: The person or system referring this predicate to the consumer.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "mime_type", mime_type)
+        pulumi.set(__self__, "referrer_id", referrer_id)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        """
+        A map of algorithm to digest of the contents of the SBOM.
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The location of the SBOM.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> str:
+        """
+        The mime type of the SBOM.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @property
+    @pulumi.getter(name="referrerId")
+    def referrer_id(self) -> str:
+        """
+        The person or system referring this predicate to the consumer.
+        """
+        return pulumi.get(self, "referrer_id")
 
 
 @pulumi.output_type
@@ -4855,6 +5488,39 @@ class StatusResponse(dict):
 
 
 @pulumi.output_type
+class SubjectResponse(dict):
+    """
+    Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+    """
+    def __init__(__self__, *,
+                 digest: Mapping[str, str],
+                 name: str):
+        """
+        Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
+        :param Mapping[str, str] digest: `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        :param str name: Identifier to distinguish this artifact from others within the subject.
+        """
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def digest(self) -> Mapping[str, str]:
+        """
+        `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Identifier to distinguish this artifact from others within the subject.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class VersionResponse(dict):
     """
     Version contains structured information about the version of a package.
@@ -4918,6 +5584,222 @@ class VersionResponse(dict):
         The iteration of the package build from the above version.
         """
         return pulumi.get(self, "revision")
+
+
+@pulumi.output_type
+class VexAssessmentResponse(dict):
+    """
+    VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noteName":
+            suggest = "note_name"
+        elif key == "relatedUris":
+            suggest = "related_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VexAssessmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VexAssessmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VexAssessmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cve: str,
+                 impacts: Sequence[str],
+                 justification: 'outputs.JustificationResponse',
+                 note_name: str,
+                 related_uris: Sequence['outputs.RelatedUrlResponse'],
+                 remediations: Sequence['outputs.RemediationResponse'],
+                 state: str):
+        """
+        VexAssessment provides all publisher provided Vex information that is related to this vulnerability.
+        :param str cve: Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        :param Sequence[str] impacts: Contains information about the impact of this vulnerability, this will change with time.
+        :param 'JustificationResponse' justification: Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        :param str note_name: The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        :param Sequence['RelatedUrlResponse'] related_uris: Holds a list of references associated with this vulnerability item and assessment.
+        :param Sequence['RemediationResponse'] remediations: Specifies details on how to handle (and presumably, fix) a vulnerability.
+        :param str state: Provides the state of this Vulnerability assessment.
+        """
+        pulumi.set(__self__, "cve", cve)
+        pulumi.set(__self__, "impacts", impacts)
+        pulumi.set(__self__, "justification", justification)
+        pulumi.set(__self__, "note_name", note_name)
+        pulumi.set(__self__, "related_uris", related_uris)
+        pulumi.set(__self__, "remediations", remediations)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def cve(self) -> str:
+        """
+        Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        """
+        return pulumi.get(self, "cve")
+
+    @property
+    @pulumi.getter
+    def impacts(self) -> Sequence[str]:
+        """
+        Contains information about the impact of this vulnerability, this will change with time.
+        """
+        return pulumi.get(self, "impacts")
+
+    @property
+    @pulumi.getter
+    def justification(self) -> 'outputs.JustificationResponse':
+        """
+        Justification provides the justification when the state of the assessment if NOT_AFFECTED.
+        """
+        return pulumi.get(self, "justification")
+
+    @property
+    @pulumi.getter(name="noteName")
+    def note_name(self) -> str:
+        """
+        The VulnerabilityAssessment note from which this VexAssessment was generated. This will be of the form: `projects/[PROJECT_ID]/notes/[NOTE_ID]`.
+        """
+        return pulumi.get(self, "note_name")
+
+    @property
+    @pulumi.getter(name="relatedUris")
+    def related_uris(self) -> Sequence['outputs.RelatedUrlResponse']:
+        """
+        Holds a list of references associated with this vulnerability item and assessment.
+        """
+        return pulumi.get(self, "related_uris")
+
+    @property
+    @pulumi.getter
+    def remediations(self) -> Sequence['outputs.RemediationResponse']:
+        """
+        Specifies details on how to handle (and presumably, fix) a vulnerability.
+        """
+        return pulumi.get(self, "remediations")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Provides the state of this Vulnerability assessment.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class VulnerabilityAssessmentNoteResponse(dict):
+    """
+    A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCode":
+            suggest = "language_code"
+        elif key == "longDescription":
+            suggest = "long_description"
+        elif key == "shortDescription":
+            suggest = "short_description"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityAssessmentNoteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VulnerabilityAssessmentNoteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VulnerabilityAssessmentNoteResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assessment: 'outputs.AssessmentResponse',
+                 language_code: str,
+                 long_description: str,
+                 product: 'outputs.ProductResponse',
+                 publisher: 'outputs.PublisherResponse',
+                 short_description: str,
+                 title: str):
+        """
+        A single VulnerabilityAssessmentNote represents one particular product's vulnerability assessment for one CVE.
+        :param 'AssessmentResponse' assessment: Represents a vulnerability assessment for the product.
+        :param str language_code: Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+        :param str long_description: A detailed description of this Vex.
+        :param 'ProductResponse' product: The product affected by this vex.
+        :param 'PublisherResponse' publisher: Publisher details of this Note.
+        :param str short_description: A one sentence description of this Vex.
+        :param str title: The title of the note. E.g. `Vex-Debian-11.4`
+        """
+        pulumi.set(__self__, "assessment", assessment)
+        pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "long_description", long_description)
+        pulumi.set(__self__, "product", product)
+        pulumi.set(__self__, "publisher", publisher)
+        pulumi.set(__self__, "short_description", short_description)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def assessment(self) -> 'outputs.AssessmentResponse':
+        """
+        Represents a vulnerability assessment for the product.
+        """
+        return pulumi.get(self, "assessment")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        Identifies the language used by this document, corresponding to IETF BCP 47 / RFC 5646.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter(name="longDescription")
+    def long_description(self) -> str:
+        """
+        A detailed description of this Vex.
+        """
+        return pulumi.get(self, "long_description")
+
+    @property
+    @pulumi.getter
+    def product(self) -> 'outputs.ProductResponse':
+        """
+        The product affected by this vex.
+        """
+        return pulumi.get(self, "product")
+
+    @property
+    @pulumi.getter
+    def publisher(self) -> 'outputs.PublisherResponse':
+        """
+        Publisher details of this Note.
+        """
+        return pulumi.get(self, "publisher")
+
+    @property
+    @pulumi.getter(name="shortDescription")
+    def short_description(self) -> str:
+        """
+        A one sentence description of this Vex.
+        """
+        return pulumi.get(self, "short_description")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title of the note. E.g. `Vex-Debian-11.4`
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

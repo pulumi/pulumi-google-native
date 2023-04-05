@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Compute.V1
     public static class GetSnapshot
     {
         /// <summary>
-        /// Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+        /// Returns the specified Snapshot resource.
         /// </summary>
         public static Task<GetSnapshotResult> InvokeAsync(GetSnapshotArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotResult>("google-native:compute/v1:getSnapshot", args ?? new GetSnapshotArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Returns the specified Snapshot resource. Gets a list of available snapshots by making a list() request.
+        /// Returns the specified Snapshot resource.
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("google-native:compute/v1:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());

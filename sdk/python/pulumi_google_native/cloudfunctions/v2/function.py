@@ -22,6 +22,7 @@ class FunctionArgs:
                  environment: Optional[pulumi.Input['FunctionEnvironment']] = None,
                  event_trigger: Optional[pulumi.Input['EventTriggerArgs']] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class FunctionArgs:
         :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is 1st Gen or 2nd Gen.
         :param pulumi.Input['EventTriggerArgs'] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
         :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[str] kms_key_name: [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input['ServiceConfigArgs'] service_config: Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
@@ -48,6 +50,8 @@ class FunctionArgs:
             pulumi.set(__self__, "event_trigger", event_trigger)
         if function_id is not None:
             pulumi.set(__self__, "function_id", function_id)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
@@ -120,6 +124,18 @@ class FunctionArgs:
         pulumi.set(self, "function_id", value)
 
     @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -184,6 +200,7 @@ class Function(pulumi.CustomResource):
                  environment: Optional[pulumi.Input['FunctionEnvironment']] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -200,6 +217,7 @@ class Function(pulumi.CustomResource):
         :param pulumi.Input['FunctionEnvironment'] environment: Describe whether the function is 1st Gen or 2nd Gen.
         :param pulumi.Input[pulumi.InputType['EventTriggerArgs']] event_trigger: An Eventarc trigger managed by Google Cloud Functions that fires events in response to a condition in another service.
         :param pulumi.Input[str] function_id: The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+        :param pulumi.Input[str] kms_key_name: [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels associated with this Cloud Function.
         :param pulumi.Input[str] name: A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
         :param pulumi.Input[pulumi.InputType['ServiceConfigArgs']] service_config: Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
@@ -233,6 +251,7 @@ class Function(pulumi.CustomResource):
                  environment: Optional[pulumi.Input['FunctionEnvironment']] = None,
                  event_trigger: Optional[pulumi.Input[pulumi.InputType['EventTriggerArgs']]] = None,
                  function_id: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -252,6 +271,7 @@ class Function(pulumi.CustomResource):
             __props__.__dict__["environment"] = environment
             __props__.__dict__["event_trigger"] = event_trigger
             __props__.__dict__["function_id"] = function_id
+            __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
@@ -289,6 +309,7 @@ class Function(pulumi.CustomResource):
         __props__.__dict__["environment"] = None
         __props__.__dict__["event_trigger"] = None
         __props__.__dict__["function_id"] = None
+        __props__.__dict__["kms_key_name"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["name"] = None
@@ -338,6 +359,14 @@ class Function(pulumi.CustomResource):
         The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
         """
         return pulumi.get(self, "function_id")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> pulumi.Output[str]:
+        """
+        [Preview] Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function resources. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+        """
+        return pulumi.get(self, "kms_key_name")
 
     @property
     @pulumi.getter

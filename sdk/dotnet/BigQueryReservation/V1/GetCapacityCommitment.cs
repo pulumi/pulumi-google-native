@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         /// </summary>
         public readonly Outputs.StatusResponse FailureStatus;
         /// <summary>
-        /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
+        /// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region. NOTE: this is a preview feature. Project must be allow-listed in order to set this field.
         /// </summary>
         public readonly bool MultiRegionAuxiliary;
         /// <summary>

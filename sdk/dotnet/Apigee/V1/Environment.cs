@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> LastModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
+        /// Optional. Name of the environment.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

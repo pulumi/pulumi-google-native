@@ -177,7 +177,9 @@ class CryptoKeyVersion(pulumi.CustomResource):
             __props__.__dict__["create_time"] = None
             __props__.__dict__["destroy_event_time"] = None
             __props__.__dict__["destroy_time"] = None
+            __props__.__dict__["external_destruction_failure_reason"] = None
             __props__.__dict__["generate_time"] = None
+            __props__.__dict__["generation_failure_reason"] = None
             __props__.__dict__["import_failure_reason"] = None
             __props__.__dict__["import_job"] = None
             __props__.__dict__["import_time"] = None
@@ -214,8 +216,10 @@ class CryptoKeyVersion(pulumi.CustomResource):
         __props__.__dict__["crypto_key_id"] = None
         __props__.__dict__["destroy_event_time"] = None
         __props__.__dict__["destroy_time"] = None
+        __props__.__dict__["external_destruction_failure_reason"] = None
         __props__.__dict__["external_protection_level_options"] = None
         __props__.__dict__["generate_time"] = None
+        __props__.__dict__["generation_failure_reason"] = None
         __props__.__dict__["import_failure_reason"] = None
         __props__.__dict__["import_job"] = None
         __props__.__dict__["import_time"] = None
@@ -274,6 +278,14 @@ class CryptoKeyVersion(pulumi.CustomResource):
         return pulumi.get(self, "destroy_time")
 
     @property
+    @pulumi.getter(name="externalDestructionFailureReason")
+    def external_destruction_failure_reason(self) -> pulumi.Output[str]:
+        """
+        The root cause of the most recent external destruction failure. Only present if state is EXTERNAL_DESTRUCTION_FAILED.
+        """
+        return pulumi.get(self, "external_destruction_failure_reason")
+
+    @property
     @pulumi.getter(name="externalProtectionLevelOptions")
     def external_protection_level_options(self) -> pulumi.Output['outputs.ExternalProtectionLevelOptionsResponse']:
         """
@@ -288,6 +300,14 @@ class CryptoKeyVersion(pulumi.CustomResource):
         The time this CryptoKeyVersion's key material was generated.
         """
         return pulumi.get(self, "generate_time")
+
+    @property
+    @pulumi.getter(name="generationFailureReason")
+    def generation_failure_reason(self) -> pulumi.Output[str]:
+        """
+        The root cause of the most recent generation failure. Only present if state is GENERATION_FAILED.
+        """
+        return pulumi.get(self, "generation_failure_reason")
 
     @property
     @pulumi.getter(name="importFailureReason")

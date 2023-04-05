@@ -808,11 +808,11 @@ func (o ContainerResponseOutput) WorkingDir() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerResponse) string { return v.WorkingDir }).(pulumi.StringOutput)
 }
 
-// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKey struct {
-	// The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 	KmsKey *string `pulumi:"kmsKey"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+	// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount *string `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -827,11 +827,11 @@ type CustomerEncryptionKeyInput interface {
 	ToCustomerEncryptionKeyOutputWithContext(context.Context) CustomerEncryptionKeyOutput
 }
 
-// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKeyArgs struct {
-	// The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+	// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount pulumi.StringPtrInput `pulumi:"kmsKeyServiceAccount"`
 }
 
@@ -888,7 +888,7 @@ func (i *customerEncryptionKeyPtrType) ToCustomerEncryptionKeyPtrOutputWithConte
 	return pulumi.ToOutputWithContext(ctx, i).(CustomerEncryptionKeyPtrOutput)
 }
 
-// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKeyOutput struct{ *pulumi.OutputState }
 
 func (CustomerEncryptionKeyOutput) ElementType() reflect.Type {
@@ -913,12 +913,12 @@ func (o CustomerEncryptionKeyOutput) ToCustomerEncryptionKeyPtrOutputWithContext
 	}).(CustomerEncryptionKeyPtrOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 func (o CustomerEncryptionKeyOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CustomerEncryptionKey) *string { return v.KmsKeyServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -947,7 +947,7 @@ func (o CustomerEncryptionKeyPtrOutput) Elem() CustomerEncryptionKeyOutput {
 	}).(CustomerEncryptionKeyOutput)
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 func (o CustomerEncryptionKeyPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -957,7 +957,7 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomerEncryptionKey) *string {
 		if v == nil {
@@ -967,15 +967,15 @@ func (o CustomerEncryptionKeyPtrOutput) KmsKeyServiceAccount() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKeyResponse struct {
-	// The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+	// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 	KmsKey string `pulumi:"kmsKey"`
-	// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+	// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 	KmsKeyServiceAccount string `pulumi:"kmsKeyServiceAccount"`
 }
 
-// A customer-specified encryption key for the Compute Engine resources of this workstation configuration.
+// A customer-managed encryption key for the Compute Engine resources of this workstation configuration.
 type CustomerEncryptionKeyResponseOutput struct{ *pulumi.OutputState }
 
 func (CustomerEncryptionKeyResponseOutput) ElementType() reflect.Type {
@@ -990,12 +990,12 @@ func (o CustomerEncryptionKeyResponseOutput) ToCustomerEncryptionKeyResponseOutp
 	return o
 }
 
-// The name of the encryption key that is stored in Google Cloud KMS, for example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+// The name of the Google Cloud KMS encryption key. For example, `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
 func (o CustomerEncryptionKeyResponseOutput) KmsKey() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKey }).(pulumi.StringOutput)
 }
 
-// The service account being used for the encryption request for the given KMS key. If absent, the Compute Engine default service account is used. However, it is recommended to use a separate service account and to follow KMS best practices mentioned at https://cloud.google.com/kms/docs/separation-of-duties
+// The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
 func (o CustomerEncryptionKeyResponseOutput) KmsKeyServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomerEncryptionKeyResponse) string { return v.KmsKeyServiceAccount }).(pulumi.StringOutput)
 }
@@ -1412,7 +1412,7 @@ func (o GceConfidentialInstanceConfigResponseOutput) EnableConfidentialCompute()
 
 // A runtime using a Compute Engine instance.
 type GceInstance struct {
-	// Size of the boot disk in GB.
+	// Size of the boot disk in GB. Defaults to 50.
 	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig *GceConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
@@ -1422,7 +1422,7 @@ type GceInstance struct {
 	MachineType *string `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation starup.
 	PoolSize *int `pulumi:"poolSize"`
-	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+	// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig *GceShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
@@ -1443,7 +1443,7 @@ type GceInstanceInput interface {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceArgs struct {
-	// Size of the boot disk in GB.
+	// Size of the boot disk in GB. Defaults to 50.
 	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig GceConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
@@ -1453,7 +1453,7 @@ type GceInstanceArgs struct {
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation starup.
 	PoolSize pulumi.IntPtrInput `pulumi:"poolSize"`
-	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+	// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig GceShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
@@ -1539,7 +1539,7 @@ func (o GceInstanceOutput) ToGceInstancePtrOutputWithContext(ctx context.Context
 	}).(GceInstancePtrOutput)
 }
 
-// Size of the boot disk in GB.
+// Size of the boot disk in GB. Defaults to 50.
 func (o GceInstanceOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.BootDiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -1564,7 +1564,7 @@ func (o GceInstanceOutput) PoolSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceInstance) *int { return v.PoolSize }).(pulumi.IntPtrOutput)
 }
 
-// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
 func (o GceInstanceOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceInstance) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -1603,7 +1603,7 @@ func (o GceInstancePtrOutput) Elem() GceInstanceOutput {
 	}).(GceInstanceOutput)
 }
 
-// Size of the boot disk in GB.
+// Size of the boot disk in GB. Defaults to 50.
 func (o GceInstancePtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *int {
 		if v == nil {
@@ -1653,7 +1653,7 @@ func (o GceInstancePtrOutput) PoolSize() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
 func (o GceInstancePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceInstance) *string {
 		if v == nil {
@@ -1685,7 +1685,7 @@ func (o GceInstancePtrOutput) Tags() pulumi.StringArrayOutput {
 
 // A runtime using a Compute Engine instance.
 type GceInstanceResponse struct {
-	// Size of the boot disk in GB.
+	// Size of the boot disk in GB. Defaults to 50.
 	BootDiskSizeGb int `pulumi:"bootDiskSizeGb"`
 	// A set of Compute Engine Confidential VM instance options.
 	ConfidentialInstanceConfig GceConfidentialInstanceConfigResponse `pulumi:"confidentialInstanceConfig"`
@@ -1695,7 +1695,7 @@ type GceInstanceResponse struct {
 	MachineType string `pulumi:"machineType"`
 	// Number of instances to pool for faster workstation starup.
 	PoolSize int `pulumi:"poolSize"`
-	// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+	// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// A set of Compute Engine Shielded instance options.
 	ShieldedInstanceConfig GceShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
@@ -1718,7 +1718,7 @@ func (o GceInstanceResponseOutput) ToGceInstanceResponseOutputWithContext(ctx co
 	return o
 }
 
-// Size of the boot disk in GB.
+// Size of the boot disk in GB. Defaults to 50.
 func (o GceInstanceResponseOutput) BootDiskSizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.BootDiskSizeGb }).(pulumi.IntOutput)
 }
@@ -1743,7 +1743,7 @@ func (o GceInstanceResponseOutput) PoolSize() pulumi.IntOutput {
 	return o.ApplyT(func(v GceInstanceResponse) int { return v.PoolSize }).(pulumi.IntOutput)
 }
 
-// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
 func (o GceInstanceResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v GceInstanceResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -1760,14 +1760,16 @@ func (o GceInstanceResponseOutput) Tags() pulumi.StringArrayOutput {
 
 // A PersistentDirectory backed by a Compute Engine regional persistent disk.
 type GceRegionalPersistentDisk struct {
-	// Type of the disk to use.
+	// Type of the disk to use. Defaults to pd-standard.
 	DiskType *string `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
 	FsType *string `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
 	ReclaimPolicy *GceRegionalPersistentDiskReclaimPolicy `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if source_snapshot is set.
+	// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
 	SizeGb *int `pulumi:"sizeGb"`
+	// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+	SourceSnapshot *string `pulumi:"sourceSnapshot"`
 }
 
 // GceRegionalPersistentDiskInput is an input type that accepts GceRegionalPersistentDiskArgs and GceRegionalPersistentDiskOutput values.
@@ -1783,14 +1785,16 @@ type GceRegionalPersistentDiskInput interface {
 
 // A PersistentDirectory backed by a Compute Engine regional persistent disk.
 type GceRegionalPersistentDiskArgs struct {
-	// Type of the disk to use.
+	// Type of the disk to use. Defaults to pd-standard.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
 	FsType pulumi.StringPtrInput `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
 	ReclaimPolicy GceRegionalPersistentDiskReclaimPolicyPtrInput `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if source_snapshot is set.
+	// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
+	// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+	SourceSnapshot pulumi.StringPtrInput `pulumi:"sourceSnapshot"`
 }
 
 func (GceRegionalPersistentDiskArgs) ElementType() reflect.Type {
@@ -1871,12 +1875,12 @@ func (o GceRegionalPersistentDiskOutput) ToGceRegionalPersistentDiskPtrOutputWit
 	}).(GceRegionalPersistentDiskPtrOutput)
 }
 
-// Type of the disk to use.
+// Type of the disk to use. Defaults to pd-standard.
 func (o GceRegionalPersistentDiskOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
 func (o GceRegionalPersistentDiskOutput) FsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *string { return v.FsType }).(pulumi.StringPtrOutput)
 }
@@ -1886,9 +1890,14 @@ func (o GceRegionalPersistentDiskOutput) ReclaimPolicy() GceRegionalPersistentDi
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *GceRegionalPersistentDiskReclaimPolicy { return v.ReclaimPolicy }).(GceRegionalPersistentDiskReclaimPolicyPtrOutput)
 }
 
-// Size of the disk in GB. Must be empty if source_snapshot is set.
+// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
 func (o GceRegionalPersistentDiskOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDisk) *int { return v.SizeGb }).(pulumi.IntPtrOutput)
+}
+
+// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+func (o GceRegionalPersistentDiskOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GceRegionalPersistentDisk) *string { return v.SourceSnapshot }).(pulumi.StringPtrOutput)
 }
 
 type GceRegionalPersistentDiskPtrOutput struct{ *pulumi.OutputState }
@@ -1915,7 +1924,7 @@ func (o GceRegionalPersistentDiskPtrOutput) Elem() GceRegionalPersistentDiskOutp
 	}).(GceRegionalPersistentDiskOutput)
 }
 
-// Type of the disk to use.
+// Type of the disk to use. Defaults to pd-standard.
 func (o GceRegionalPersistentDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *string {
 		if v == nil {
@@ -1925,7 +1934,7 @@ func (o GceRegionalPersistentDiskPtrOutput) DiskType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
 func (o GceRegionalPersistentDiskPtrOutput) FsType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *string {
 		if v == nil {
@@ -1945,7 +1954,7 @@ func (o GceRegionalPersistentDiskPtrOutput) ReclaimPolicy() GceRegionalPersisten
 	}).(GceRegionalPersistentDiskReclaimPolicyPtrOutput)
 }
 
-// Size of the disk in GB. Must be empty if source_snapshot is set.
+// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
 func (o GceRegionalPersistentDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GceRegionalPersistentDisk) *int {
 		if v == nil {
@@ -1955,16 +1964,28 @@ func (o GceRegionalPersistentDiskPtrOutput) SizeGb() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+func (o GceRegionalPersistentDiskPtrOutput) SourceSnapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GceRegionalPersistentDisk) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceSnapshot
+	}).(pulumi.StringPtrOutput)
+}
+
 // A PersistentDirectory backed by a Compute Engine regional persistent disk.
 type GceRegionalPersistentDiskResponse struct {
-	// Type of the disk to use.
+	// Type of the disk to use. Defaults to pd-standard.
 	DiskType string `pulumi:"diskType"`
-	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+	// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
 	FsType string `pulumi:"fsType"`
 	// What should happen to the disk after the workstation is deleted. Defaults to DELETE.
 	ReclaimPolicy string `pulumi:"reclaimPolicy"`
-	// Size of the disk in GB. Must be empty if source_snapshot is set.
+	// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
 	SizeGb int `pulumi:"sizeGb"`
+	// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+	SourceSnapshot string `pulumi:"sourceSnapshot"`
 }
 
 // A PersistentDirectory backed by a Compute Engine regional persistent disk.
@@ -1982,12 +2003,12 @@ func (o GceRegionalPersistentDiskResponseOutput) ToGceRegionalPersistentDiskResp
 	return o
 }
 
-// Type of the disk to use.
+// Type of the disk to use. Defaults to pd-standard.
 func (o GceRegionalPersistentDiskResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
-// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set.
+// Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to ext4.
 func (o GceRegionalPersistentDiskResponseOutput) FsType() pulumi.StringOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.FsType }).(pulumi.StringOutput)
 }
@@ -1997,9 +2018,14 @@ func (o GceRegionalPersistentDiskResponseOutput) ReclaimPolicy() pulumi.StringOu
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.ReclaimPolicy }).(pulumi.StringOutput)
 }
 
-// Size of the disk in GB. Must be empty if source_snapshot is set.
+// Size of the disk in GB. Must be empty if source_snapshot is set. Defaults to 200.
 func (o GceRegionalPersistentDiskResponseOutput) SizeGb() pulumi.IntOutput {
 	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) int { return v.SizeGb }).(pulumi.IntOutput)
+}
+
+// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+func (o GceRegionalPersistentDiskResponseOutput) SourceSnapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GceRegionalPersistentDiskResponse) string { return v.SourceSnapshot }).(pulumi.StringOutput)
 }
 
 // A set of Compute Engine Shielded instance options.

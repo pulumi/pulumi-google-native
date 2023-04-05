@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Logging.V2
     [GoogleNativeResourceType("google-native:logging/v2:BillingAccountBucket")]
     public partial class BillingAccountBucket : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// </summary>
+        [Output("analyticsEnabled")]
+        public Output<bool> AnalyticsEnabled { get; private set; } = null!;
+
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
 
@@ -139,6 +145,12 @@ namespace Pulumi.GoogleNative.Logging.V2
 
     public sealed class BillingAccountBucketArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether log analytics is enabled for this bucket.Once enabled, log analytics features cannot be disabled.
+        /// </summary>
+        [Input("analyticsEnabled")]
+        public Input<bool>? AnalyticsEnabled { get; set; }
+
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
 

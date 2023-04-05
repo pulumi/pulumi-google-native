@@ -28,6 +28,8 @@ type LookupMembershipArgs struct {
 type LookupMembershipResult struct {
 	// The time when the `Membership` was created.
 	CreateTime string `pulumi:"createTime"`
+	// Delivery setting associated with the membership.
+	DeliverySetting string `pulumi:"deliverySetting"`
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	MemberKey EntityKeyResponse `pulumi:"memberKey"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
@@ -81,6 +83,11 @@ func (o LookupMembershipResultOutput) ToLookupMembershipResultOutputWithContext(
 // The time when the `Membership` was created.
 func (o LookupMembershipResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMembershipResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Delivery setting associated with the membership.
+func (o LookupMembershipResultOutput) DeliverySetting() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMembershipResult) string { return v.DeliverySetting }).(pulumi.StringOutput)
 }
 
 // Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.

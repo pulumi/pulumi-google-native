@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by making a list() request.
+// Returns the specified TargetHttpProxy resource.
 func LookupTargetHttpProxy(ctx *pulumi.Context, args *LookupTargetHttpProxyArgs, opts ...pulumi.InvokeOption) (*LookupTargetHttpProxyResult, error) {
 	var rv LookupTargetHttpProxyResult
 	err := ctx.Invoke("google-native:compute/beta:getTargetHttpProxy", args, &rv, opts...)

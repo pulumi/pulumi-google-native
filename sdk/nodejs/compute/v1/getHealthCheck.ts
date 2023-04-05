@@ -8,7 +8,7 @@ import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+ * Returns the specified HealthCheck resource.
  */
 export function getHealthCheck(args: GetHealthCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetHealthCheckResult> {
 
@@ -81,7 +81,7 @@ export interface GetHealthCheckResult {
     readonly unhealthyThreshold: number;
 }
 /**
- * Returns the specified HealthCheck resource. Gets a list of available health checks by making a list() request.
+ * Returns the specified HealthCheck resource.
  */
 export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckResult> {
     return pulumi.output(args).apply((a: any) => getHealthCheck(a, opts))

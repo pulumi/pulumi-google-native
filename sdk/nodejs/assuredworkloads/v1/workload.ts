@@ -62,6 +62,10 @@ export class Workload extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Optional. Represents the Ekm Provisioning State of the given workload.
+     */
+    public readonly ekmProvisioningResponse!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseResponse>;
+    /**
      * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
      */
     public readonly enableSovereignControls!: pulumi.Output<boolean>;
@@ -137,6 +141,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
             resourceInputs["complianceRegime"] = args ? args.complianceRegime : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["ekmProvisioningResponse"] = args ? args.ekmProvisioningResponse : undefined;
             resourceInputs["enableSovereignControls"] = args ? args.enableSovereignControls : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["externalId"] = args ? args.externalId : undefined;
@@ -161,6 +166,7 @@ export class Workload extends pulumi.CustomResource {
             resourceInputs["compliantButDisallowedServices"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["ekmProvisioningResponse"] = undefined /*out*/;
             resourceInputs["enableSovereignControls"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["externalId"] = undefined /*out*/;
@@ -199,6 +205,10 @@ export interface WorkloadArgs {
      * The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Optional. Represents the Ekm Provisioning State of the given workload.
+     */
+    ekmProvisioningResponse?: pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponseArgs>;
     /**
      * Optional. Indicates the sovereignty status of the given workload. Currently meant to be used by Europe/Canada customers.
      */

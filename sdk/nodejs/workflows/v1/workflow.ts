@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -35,9 +38,17 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+     */
+    public readonly callLogLevel!: pulumi.Output<string>;
+    /**
      * The timestamp for when the workflow was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+     */
+    public readonly cryptoKeyName!: pulumi.Output<string>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -73,6 +84,10 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
+     */
+    public /*out*/ readonly stateError!: pulumi.Output<outputs.workflows.v1.StateErrorResponse>;
+    /**
      * The timestamp for when the workflow was last updated.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
@@ -95,6 +110,8 @@ export class Workflow extends pulumi.CustomResource {
             if ((!args || args.workflowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowId'");
             }
+            resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
+            resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -107,9 +124,12 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["revisionCreateTime"] = undefined /*out*/;
             resourceInputs["revisionId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateError"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["callLogLevel"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
+            resourceInputs["cryptoKeyName"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
@@ -120,6 +140,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["sourceContents"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateError"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["workflowId"] = undefined /*out*/;
         }
@@ -134,6 +155,14 @@ export class Workflow extends pulumi.CustomResource {
  * The set of arguments for constructing a Workflow resource.
  */
 export interface WorkflowArgs {
+    /**
+     * Optional. Describes the level of platform logging to apply to calls and call responses during executions of this workflow. If both the workflow and the execution specify a logging level, the execution level takes precedence.
+     */
+    callLogLevel?: pulumi.Input<enums.workflows.v1.WorkflowCallLogLevel>;
+    /**
+     * Optional. The resource name of a KMS crypto key used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. If not provided, data associated with the workflow will not be CMEK-encrypted.
+     */
+    cryptoKeyName?: pulumi.Input<string>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */

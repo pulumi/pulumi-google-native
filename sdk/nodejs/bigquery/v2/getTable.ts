@@ -48,6 +48,10 @@ export interface GetTableResult {
      */
     readonly defaultCollation: string;
     /**
+     * The default rounding mode of the table.
+     */
+    readonly defaultRoundingMode: string;
+    /**
      * [Optional] A user-friendly description of this table.
      */
     readonly description: string;

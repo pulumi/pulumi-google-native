@@ -37,6 +37,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> ApproveTime { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
+        /// </summary>
+        [Output("controllerRollout")]
+        public Output<string> ControllerRollout { get; private set; } = null!;
+
+        /// <summary>
         /// Time at which the `Rollout` was created.
         /// </summary>
         [Output("createTime")]

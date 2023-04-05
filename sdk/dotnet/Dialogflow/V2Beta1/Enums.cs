@@ -689,11 +689,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat MessageFormatUnspecified { get; } = new GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat("MESSAGE_FORMAT_UNSPECIFIED");
         /// <summary>
-        /// Pubsub message will be serialized proto.
+        /// Pub/Sub message will be serialized proto.
         /// </summary>
         public static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat Proto { get; } = new GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat("PROTO");
         /// <summary>
-        /// Pubsub message will be json.
+        /// Pub/Sub message will be json.
         /// </summary>
         public static GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat Json { get; } = new GoogleCloudDialogflowV2beta1NotificationConfigMessageFormat("JSON");
 
@@ -852,6 +852,51 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding other && Equals(other);
         public bool Equals(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Optional. The preferred gender of the voice. If not set, the service will choose a voice based on the other parameters such as language_code and name. Note that this is only a preference, not requirement. If a voice of the appropriate gender is not available, the synthesizer should substitute a voice with a different gender rather than failing the request.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender : IEquatable<GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender>
+    {
+        private readonly string _value;
+
+        private GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// An unspecified gender, which means that the client doesn't care which gender the selected voice will have.
+        /// </summary>
+        public static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderUnspecified { get; } = new GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_UNSPECIFIED");
+        /// <summary>
+        /// A male voice.
+        /// </summary>
+        public static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderMale { get; } = new GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_MALE");
+        /// <summary>
+        /// A female voice.
+        /// </summary>
+        public static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderFemale { get; } = new GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_FEMALE");
+        /// <summary>
+        /// A gender-neutral voice.
+        /// </summary>
+        public static GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender SsmlVoiceGenderNeutral { get; } = new GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender("SSML_VOICE_GENDER_NEUTRAL");
+
+        public static bool operator ==(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender left, GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender left, GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender other && Equals(other);
+        public bool Equals(GoogleCloudDialogflowV2beta1VoiceSelectionParamsSsmlGender other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

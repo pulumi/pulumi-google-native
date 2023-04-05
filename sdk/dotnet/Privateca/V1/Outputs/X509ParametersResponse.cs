@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Privateca.V1.Outputs
         /// </summary>
         public readonly Outputs.KeyUsageResponse KeyUsage;
         /// <summary>
+        /// Optional. Describes the X.509 name constraints extension.
+        /// </summary>
+        public readonly Outputs.NameConstraintsResponse NameConstraints;
+        /// <summary>
         /// Optional. Describes the X.509 certificate policy object identifiers, per https://tools.ietf.org/html/rfc5280#section-4.2.1.4.
         /// </summary>
         public readonly ImmutableArray<Outputs.ObjectIdResponse> PolicyIds;
@@ -47,12 +51,15 @@ namespace Pulumi.GoogleNative.Privateca.V1.Outputs
 
             Outputs.KeyUsageResponse keyUsage,
 
+            Outputs.NameConstraintsResponse nameConstraints,
+
             ImmutableArray<Outputs.ObjectIdResponse> policyIds)
         {
             AdditionalExtensions = additionalExtensions;
             AiaOcspServers = aiaOcspServers;
             CaOptions = caOptions;
             KeyUsage = keyUsage;
+            NameConstraints = nameConstraints;
             PolicyIds = policyIds;
         }
     }

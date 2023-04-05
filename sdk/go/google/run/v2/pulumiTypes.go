@@ -1327,7 +1327,7 @@ type GoogleCloudRunV2ExecutionTemplate struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism *int `pulumi:"parallelism"`
-	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 	TaskCount *int `pulumi:"taskCount"`
 	// Describes the task(s) that will be created when executing an execution.
 	Template GoogleCloudRunV2TaskTemplate `pulumi:"template"`
@@ -1352,7 +1352,7 @@ type GoogleCloudRunV2ExecutionTemplateArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism pulumi.IntPtrInput `pulumi:"parallelism"`
-	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 	TaskCount pulumi.IntPtrInput `pulumi:"taskCount"`
 	// Describes the task(s) that will be created when executing an execution.
 	Template GoogleCloudRunV2TaskTemplateInput `pulumi:"template"`
@@ -1400,7 +1400,7 @@ func (o GoogleCloudRunV2ExecutionTemplateOutput) Parallelism() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) *int { return v.Parallelism }).(pulumi.IntPtrOutput)
 }
 
-// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 func (o GoogleCloudRunV2ExecutionTemplateOutput) TaskCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplate) *int { return v.TaskCount }).(pulumi.IntPtrOutput)
 }
@@ -1418,7 +1418,7 @@ type GoogleCloudRunV2ExecutionTemplateResponse struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism.
 	Parallelism int `pulumi:"parallelism"`
-	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+	// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 	TaskCount int `pulumi:"taskCount"`
 	// Describes the task(s) that will be created when executing an execution.
 	Template GoogleCloudRunV2TaskTemplateResponse `pulumi:"template"`
@@ -1454,7 +1454,7 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Parallelism() pulumi.In
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) int { return v.Parallelism }).(pulumi.IntOutput)
 }
 
-// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+// Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. Defaults to 1.
 func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) TaskCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2ExecutionTemplateResponse) int { return v.TaskCount }).(pulumi.IntOutput)
 }
@@ -1468,7 +1468,7 @@ func (o GoogleCloudRunV2ExecutionTemplateResponseOutput) Template() GoogleCloudR
 
 // GRPCAction describes an action involving a GRPC port.
 type GoogleCloudRunV2GRPCAction struct {
-	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
 	Service *string `pulumi:"service"`
@@ -1487,7 +1487,7 @@ type GoogleCloudRunV2GRPCActionInput interface {
 
 // GRPCAction describes an action involving a GRPC port.
 type GoogleCloudRunV2GRPCActionArgs struct {
-	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
 	Service pulumi.StringPtrInput `pulumi:"service"`
@@ -1571,7 +1571,7 @@ func (o GoogleCloudRunV2GRPCActionOutput) ToGoogleCloudRunV2GRPCActionPtrOutputW
 	}).(GoogleCloudRunV2GRPCActionPtrOutput)
 }
 
-// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2GRPCActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1605,7 +1605,7 @@ func (o GoogleCloudRunV2GRPCActionPtrOutput) Elem() GoogleCloudRunV2GRPCActionOu
 	}).(GoogleCloudRunV2GRPCActionOutput)
 }
 
-// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2GRPCActionPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2GRPCAction) *int {
 		if v == nil {
@@ -1627,7 +1627,7 @@ func (o GoogleCloudRunV2GRPCActionPtrOutput) Service() pulumi.StringPtrOutput {
 
 // GRPCAction describes an action involving a GRPC port.
 type GoogleCloudRunV2GRPCActionResponse struct {
-	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port int `pulumi:"port"`
 	// Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
 	Service string `pulumi:"service"`
@@ -1648,7 +1648,7 @@ func (o GoogleCloudRunV2GRPCActionResponseOutput) ToGoogleCloudRunV2GRPCActionRe
 	return o
 }
 
-// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2GRPCActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2GRPCActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -1664,6 +1664,8 @@ type GoogleCloudRunV2HTTPGetAction struct {
 	HttpHeaders []GoogleCloudRunV2HTTPHeader `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path *string `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port *int `pulumi:"port"`
 }
 
 // GoogleCloudRunV2HTTPGetActionInput is an input type that accepts GoogleCloudRunV2HTTPGetActionArgs and GoogleCloudRunV2HTTPGetActionOutput values.
@@ -1683,6 +1685,8 @@ type GoogleCloudRunV2HTTPGetActionArgs struct {
 	HttpHeaders GoogleCloudRunV2HTTPHeaderArrayInput `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
 func (GoogleCloudRunV2HTTPGetActionArgs) ElementType() reflect.Type {
@@ -1773,6 +1777,11 @@ func (o GoogleCloudRunV2HTTPGetActionOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetAction) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GoogleCloudRunV2HTTPGetActionOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetAction) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
 type GoogleCloudRunV2HTTPGetActionPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRunV2HTTPGetActionPtrOutput) ElementType() reflect.Type {
@@ -1817,12 +1826,24 @@ func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GoogleCloudRunV2HTTPGetActionPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRunV2HTTPGetAction) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
 // HTTPGetAction describes an action based on HTTP Get requests.
 type GoogleCloudRunV2HTTPGetActionResponse struct {
 	// Custom headers to set in the request. HTTP allows repeated headers.
 	HttpHeaders []GoogleCloudRunV2HTTPHeaderResponse `pulumi:"httpHeaders"`
 	// Path to access on the HTTP server. Defaults to '/'.
 	Path string `pulumi:"path"`
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+	Port int `pulumi:"port"`
 }
 
 // HTTPGetAction describes an action based on HTTP Get requests.
@@ -1850,6 +1871,11 @@ func (o GoogleCloudRunV2HTTPGetActionResponseOutput) HttpHeaders() GoogleCloudRu
 // Path to access on the HTTP server. Defaults to '/'.
 func (o GoogleCloudRunV2HTTPGetActionResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+func (o GoogleCloudRunV2HTTPGetActionResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudRunV2HTTPGetActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // HTTPHeader describes a custom header to be used in HTTP probes
@@ -3397,7 +3423,7 @@ func (o GoogleCloudRunV2SecretVolumeSourceResponseOutput) Secret() pulumi.String
 
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketAction struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port *int `pulumi:"port"`
 }
 
@@ -3414,7 +3440,7 @@ type GoogleCloudRunV2TCPSocketActionInput interface {
 
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketActionArgs struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -3496,7 +3522,7 @@ func (o GoogleCloudRunV2TCPSocketActionOutput) ToGoogleCloudRunV2TCPSocketAction
 	}).(GoogleCloudRunV2TCPSocketActionPtrOutput)
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2TCPSocketActionOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketAction) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3525,7 +3551,7 @@ func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Elem() GoogleCloudRunV2TCPSock
 	}).(GoogleCloudRunV2TCPSocketActionOutput)
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRunV2TCPSocketAction) *int {
 		if v == nil {
@@ -3537,7 +3563,7 @@ func (o GoogleCloudRunV2TCPSocketActionPtrOutput) Port() pulumi.IntPtrOutput {
 
 // TCPSocketAction describes an action based on opening a socket
 type GoogleCloudRunV2TCPSocketActionResponse struct {
-	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+	// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 	Port int `pulumi:"port"`
 }
 
@@ -3556,7 +3582,7 @@ func (o GoogleCloudRunV2TCPSocketActionResponseOutput) ToGoogleCloudRunV2TCPSock
 	return o
 }
 
-// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to 8080.
+// Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
 func (o GoogleCloudRunV2TCPSocketActionResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TCPSocketActionResponse) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -3569,11 +3595,11 @@ type GoogleCloudRunV2TaskTemplate struct {
 	EncryptionKey *string `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
 	ExecutionEnvironment *GoogleCloudRunV2TaskTemplateExecutionEnvironment `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
 	MaxRetries *int `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
-	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	Timeout *string `pulumi:"timeout"`
 	// A list of Volumes to make available to containers.
 	Volumes []GoogleCloudRunV2Volume `pulumi:"volumes"`
@@ -3600,11 +3626,11 @@ type GoogleCloudRunV2TaskTemplateArgs struct {
 	EncryptionKey pulumi.StringPtrInput `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
 	ExecutionEnvironment GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrInput `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
 	MaxRetries pulumi.IntPtrInput `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
-	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	Timeout pulumi.StringPtrInput `pulumi:"timeout"`
 	// A list of Volumes to make available to containers.
 	Volumes GoogleCloudRunV2VolumeArrayInput `pulumi:"volumes"`
@@ -3656,7 +3682,7 @@ func (o GoogleCloudRunV2TaskTemplateOutput) ExecutionEnvironment() GoogleCloudRu
 	}).(GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput)
 }
 
-// Number of retries allowed per Task, before marking this Task failed.
+// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
 func (o GoogleCloudRunV2TaskTemplateOutput) MaxRetries() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *int { return v.MaxRetries }).(pulumi.IntPtrOutput)
 }
@@ -3666,7 +3692,7 @@ func (o GoogleCloudRunV2TaskTemplateOutput) ServiceAccount() pulumi.StringPtrOut
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
 
-// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 func (o GoogleCloudRunV2TaskTemplateOutput) Timeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplate) *string { return v.Timeout }).(pulumi.StringPtrOutput)
 }
@@ -3689,11 +3715,11 @@ type GoogleCloudRunV2TaskTemplateResponse struct {
 	EncryptionKey string `pulumi:"encryptionKey"`
 	// The execution environment being used to host this Task.
 	ExecutionEnvironment string `pulumi:"executionEnvironment"`
-	// Number of retries allowed per Task, before marking this Task failed.
+	// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
 	MaxRetries int `pulumi:"maxRetries"`
 	// Email address of the IAM service account associated with the Task of a Job. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
-	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+	// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 	Timeout string `pulumi:"timeout"`
 	// A list of Volumes to make available to containers.
 	Volumes []GoogleCloudRunV2VolumeResponse `pulumi:"volumes"`
@@ -3731,7 +3757,7 @@ func (o GoogleCloudRunV2TaskTemplateResponseOutput) ExecutionEnvironment() pulum
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.ExecutionEnvironment }).(pulumi.StringOutput)
 }
 
-// Number of retries allowed per Task, before marking this Task failed.
+// Number of retries allowed per Task, before marking this Task failed. Defaults to 3.
 func (o GoogleCloudRunV2TaskTemplateResponseOutput) MaxRetries() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) int { return v.MaxRetries }).(pulumi.IntOutput)
 }
@@ -3741,7 +3767,7 @@ func (o GoogleCloudRunV2TaskTemplateResponseOutput) ServiceAccount() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
 
-// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+// Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. Defaults to 600 seconds.
 func (o GoogleCloudRunV2TaskTemplateResponseOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRunV2TaskTemplateResponse) string { return v.Timeout }).(pulumi.StringOutput)
 }

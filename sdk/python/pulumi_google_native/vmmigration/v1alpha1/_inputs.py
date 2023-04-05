@@ -30,16 +30,20 @@ __all__ = [
 class AccessKeyCredentialsArgs:
     def __init__(__self__, *,
                  access_key_id: Optional[pulumi.Input[str]] = None,
-                 secret_access_key: Optional[pulumi.Input[str]] = None):
+                 secret_access_key: Optional[pulumi.Input[str]] = None,
+                 session_token: Optional[pulumi.Input[str]] = None):
         """
         Message describing AWS Credentials using access key id and secret.
         :param pulumi.Input[str] access_key_id: AWS access key ID.
         :param pulumi.Input[str] secret_access_key: Input only. AWS secret access key.
+        :param pulumi.Input[str] session_token: Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
         """
         if access_key_id is not None:
             pulumi.set(__self__, "access_key_id", access_key_id)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
+        if session_token is not None:
+            pulumi.set(__self__, "session_token", session_token)
 
     @property
     @pulumi.getter(name="accessKeyId")
@@ -64,6 +68,18 @@ class AccessKeyCredentialsArgs:
     @secret_access_key.setter
     def secret_access_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "secret_access_key", value)
+
+    @property
+    @pulumi.getter(name="sessionToken")
+    def session_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
+        """
+        return pulumi.get(self, "session_token")
+
+    @session_token.setter
+    def session_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "session_token", value)
 
 
 @pulumi.input_type

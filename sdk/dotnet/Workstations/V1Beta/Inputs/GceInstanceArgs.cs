@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
     public sealed class GceInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Size of the boot disk in GB.
+        /// Size of the boot disk in GB. Defaults to 50.
         /// </summary>
         [Input("bootDiskSizeGb")]
         public Input<int>? BootDiskSizeGb { get; set; }
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Workstations.V1Beta.Inputs
         public Input<int>? PoolSize { get; set; }
 
         /// <summary>
-        /// Email address of the service account that will be used on VM instances used to support this config. This service account must have permission to pull the specified container image. If not set, VMs will run without a service account, in which case the image must be publicly accessible.
+        /// Email address of the service account that will be used on VM instances used to support this config. If not set, VMs will run with a Google-managed service account. This service account must have permission to pull the specified container image, otherwise the image must be publicly accessible.
         /// </summary>
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }

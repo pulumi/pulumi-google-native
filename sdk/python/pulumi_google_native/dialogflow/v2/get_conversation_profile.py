@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConversationProfileResult:
-    def __init__(__self__, automated_agent_config=None, create_time=None, display_name=None, human_agent_assistant_config=None, human_agent_handoff_config=None, language_code=None, logging_config=None, name=None, new_message_event_notification_config=None, notification_config=None, security_settings=None, stt_config=None, time_zone=None, update_time=None):
+    def __init__(__self__, automated_agent_config=None, create_time=None, display_name=None, human_agent_assistant_config=None, human_agent_handoff_config=None, language_code=None, logging_config=None, name=None, new_message_event_notification_config=None, notification_config=None, security_settings=None, stt_config=None, time_zone=None, tts_config=None, update_time=None):
         if automated_agent_config and not isinstance(automated_agent_config, dict):
             raise TypeError("Expected argument 'automated_agent_config' to be a dict")
         pulumi.set(__self__, "automated_agent_config", automated_agent_config)
@@ -59,6 +59,9 @@ class GetConversationProfileResult:
         if time_zone and not isinstance(time_zone, str):
             raise TypeError("Expected argument 'time_zone' to be a str")
         pulumi.set(__self__, "time_zone", time_zone)
+        if tts_config and not isinstance(tts_config, dict):
+            raise TypeError("Expected argument 'tts_config' to be a dict")
+        pulumi.set(__self__, "tts_config", tts_config)
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
@@ -168,6 +171,14 @@ class GetConversationProfileResult:
         return pulumi.get(self, "time_zone")
 
     @property
+    @pulumi.getter(name="ttsConfig")
+    def tts_config(self) -> 'outputs.GoogleCloudDialogflowV2SynthesizeSpeechConfigResponse':
+        """
+        Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here.
+        """
+        return pulumi.get(self, "tts_config")
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
         """
@@ -195,6 +206,7 @@ class AwaitableGetConversationProfileResult(GetConversationProfileResult):
             security_settings=self.security_settings,
             stt_config=self.stt_config,
             time_zone=self.time_zone,
+            tts_config=self.tts_config,
             update_time=self.update_time)
 
 
@@ -226,6 +238,7 @@ def get_conversation_profile(conversation_profile_id: Optional[str] = None,
         security_settings=__ret__.security_settings,
         stt_config=__ret__.stt_config,
         time_zone=__ret__.time_zone,
+        tts_config=__ret__.tts_config,
         update_time=__ret__.update_time)
 
 
