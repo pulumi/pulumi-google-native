@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
  */
 export function getV1beta1IamPolicy(args: GetV1beta1IamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetV1beta1IamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:iap/v1beta1:getV1beta1IamPolicy", {
         "v1beta1Id": args.v1beta1Id,
     }, opts);
@@ -39,9 +36,11 @@ export interface GetV1beta1IamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+ */
 export function getV1beta1IamPolicyOutput(args: GetV1beta1IamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV1beta1IamPolicyResult> {
-    return pulumi.output(args).apply(a => getV1beta1IamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getV1beta1IamPolicy(a, opts))
 }
 
 export interface GetV1beta1IamPolicyOutputArgs {

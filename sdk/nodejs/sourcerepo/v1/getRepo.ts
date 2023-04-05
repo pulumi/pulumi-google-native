@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns information about a repo.
  */
 export function getRepo(args: GetRepoArgs, opts?: pulumi.InvokeOptions): Promise<GetRepoResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:sourcerepo/v1:getRepo", {
         "project": args.project,
         "repoId": args.repoId,
@@ -49,9 +46,11 @@ export interface GetRepoResult {
      */
     readonly url: string;
 }
-
+/**
+ * Returns information about a repo.
+ */
 export function getRepoOutput(args: GetRepoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepoResult> {
-    return pulumi.output(args).apply(a => getRepo(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepo(a, opts))
 }
 
 export interface GetRepoOutputArgs {

@@ -8,11 +8,8 @@ import * as utilities from "../../utilities";
  * Gets the description of an exclusion in the _Default sink.
  */
 export function getFolderExclusion(args: GetFolderExclusionArgs, opts?: pulumi.InvokeOptions): Promise<GetFolderExclusionResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:logging/v2:getFolderExclusion", {
         "exclusionId": args.exclusionId,
         "folderId": args.folderId,
@@ -50,9 +47,11 @@ export interface GetFolderExclusionResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets the description of an exclusion in the _Default sink.
+ */
 export function getFolderExclusionOutput(args: GetFolderExclusionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderExclusionResult> {
-    return pulumi.output(args).apply(a => getFolderExclusion(a, opts))
+    return pulumi.output(args).apply((a: any) => getFolderExclusion(a, opts))
 }
 
 export interface GetFolderExclusionOutputArgs {

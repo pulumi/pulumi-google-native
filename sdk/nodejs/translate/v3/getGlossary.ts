@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
  */
 export function getGlossary(args: GetGlossaryArgs, opts?: pulumi.InvokeOptions): Promise<GetGlossaryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:translate/v3:getGlossary", {
         "glossaryId": args.glossaryId,
         "location": args.location,
@@ -63,9 +60,11 @@ export interface GetGlossaryResult {
      */
     readonly submitTime: string;
 }
-
+/**
+ * Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
+ */
 export function getGlossaryOutput(args: GetGlossaryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlossaryResult> {
-    return pulumi.output(args).apply(a => getGlossary(a, opts))
+    return pulumi.output(args).apply((a: any) => getGlossary(a, opts))
 }
 
 export interface GetGlossaryOutputArgs {

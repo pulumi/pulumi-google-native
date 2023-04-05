@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Returns a CaPool.
  */
 export function getCaPool(args: GetCaPoolArgs, opts?: pulumi.InvokeOptions): Promise<GetCaPoolResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:privateca/v1:getCaPool", {
         "caPoolId": args.caPoolId,
         "location": args.location,
@@ -51,9 +48,11 @@ export interface GetCaPoolResult {
      */
     readonly tier: string;
 }
-
+/**
+ * Returns a CaPool.
+ */
 export function getCaPoolOutput(args: GetCaPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolResult> {
-    return pulumi.output(args).apply(a => getCaPool(a, opts))
+    return pulumi.output(args).apply((a: any) => getCaPool(a, opts))
 }
 
 export interface GetCaPoolOutputArgs {

@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
  */
 export function getOccurrenceIamPolicy(args: GetOccurrenceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetOccurrenceIamPolicyResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:containeranalysis/v1beta1:getOccurrenceIamPolicy", {
         "occurrenceId": args.occurrenceId,
         "project": args.project,
@@ -41,9 +38,11 @@ export interface GetOccurrenceIamPolicyResult {
      */
     readonly version: number;
 }
-
+/**
+ * Gets the access control policy for a note or an occurrence resource. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
+ */
 export function getOccurrenceIamPolicyOutput(args: GetOccurrenceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOccurrenceIamPolicyResult> {
-    return pulumi.output(args).apply(a => getOccurrenceIamPolicy(a, opts))
+    return pulumi.output(args).apply((a: any) => getOccurrenceIamPolicy(a, opts))
 }
 
 export interface GetOccurrenceIamPolicyOutputArgs {

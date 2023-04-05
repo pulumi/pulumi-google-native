@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Get details of a single NFS share.
  */
 export function getNfsShare(args: GetNfsShareArgs, opts?: pulumi.InvokeOptions): Promise<GetNfsShareResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:baremetalsolution/v2:getNfsShare", {
         "location": args.location,
         "nfsShareId": args.nfsShareId,
@@ -63,9 +60,11 @@ export interface GetNfsShareResult {
      */
     readonly volume: string;
 }
-
+/**
+ * Get details of a single NFS share.
+ */
 export function getNfsShareOutput(args: GetNfsShareOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNfsShareResult> {
-    return pulumi.output(args).apply(a => getNfsShare(a, opts))
+    return pulumi.output(args).apply((a: any) => getNfsShare(a, opts))
 }
 
 export interface GetNfsShareOutputArgs {

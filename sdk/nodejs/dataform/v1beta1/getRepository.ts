@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Fetches a single Repository.
  */
 export function getRepository(args: GetRepositoryArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataform/v1beta1:getRepository", {
         "location": args.location,
         "project": args.project,
@@ -47,9 +44,11 @@ export interface GetRepositoryResult {
      */
     readonly workspaceCompilationOverrides: outputs.dataform.v1beta1.WorkspaceCompilationOverridesResponse;
 }
-
+/**
+ * Fetches a single Repository.
+ */
 export function getRepositoryOutput(args: GetRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRepositoryResult> {
-    return pulumi.output(args).apply(a => getRepository(a, opts))
+    return pulumi.output(args).apply((a: any) => getRepository(a, opts))
 }
 
 export interface GetRepositoryOutputArgs {

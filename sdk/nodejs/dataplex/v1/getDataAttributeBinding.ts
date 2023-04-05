@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Retrieves a DataAttributeBinding resource.
  */
 export function getDataAttributeBinding(args: GetDataAttributeBindingArgs, opts?: pulumi.InvokeOptions): Promise<GetDataAttributeBindingResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:dataplex/v1:getDataAttributeBinding", {
         "dataAttributeBindingId": args.dataAttributeBindingId,
         "location": args.location,
@@ -75,9 +72,11 @@ export interface GetDataAttributeBindingResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Retrieves a DataAttributeBinding resource.
+ */
 export function getDataAttributeBindingOutput(args: GetDataAttributeBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataAttributeBindingResult> {
-    return pulumi.output(args).apply(a => getDataAttributeBinding(a, opts))
+    return pulumi.output(args).apply((a: any) => getDataAttributeBinding(a, opts))
 }
 
 export interface GetDataAttributeBindingOutputArgs {

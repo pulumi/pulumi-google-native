@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets details about an asset feed.
  */
 export function getFeed(args: GetFeedArgs, opts?: pulumi.InvokeOptions): Promise<GetFeedResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:cloudasset/v1:getFeed", {
         "feedId": args.feedId,
         "v1Id": args.v1Id,
@@ -59,9 +56,11 @@ export interface GetFeedResult {
      */
     readonly relationshipTypes: string[];
 }
-
+/**
+ * Gets details about an asset feed.
+ */
 export function getFeedOutput(args: GetFeedOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeedResult> {
-    return pulumi.output(args).apply(a => getFeed(a, opts))
+    return pulumi.output(args).apply((a: any) => getFeed(a, opts))
 }
 
 export interface GetFeedOutputArgs {

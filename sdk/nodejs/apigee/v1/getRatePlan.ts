@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a rate plan.
  */
 export function getRatePlan(args: GetRatePlanArgs, opts?: pulumi.InvokeOptions): Promise<GetRatePlanResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:apigee/v1:getRatePlan", {
         "apiproductId": args.apiproductId,
         "organizationId": args.organizationId,
@@ -109,9 +106,11 @@ export interface GetRatePlanResult {
      */
     readonly state: string;
 }
-
+/**
+ * Gets the details of a rate plan.
+ */
 export function getRatePlanOutput(args: GetRatePlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRatePlanResult> {
-    return pulumi.output(args).apply(a => getRatePlan(a, opts))
+    return pulumi.output(args).apply((a: any) => getRatePlan(a, opts))
 }
 
 export interface GetRatePlanOutputArgs {

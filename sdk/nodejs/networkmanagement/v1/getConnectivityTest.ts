@@ -11,11 +11,8 @@ import * as utilities from "../../utilities";
  * Gets the details of a specific Connectivity Test.
  */
 export function getConnectivityTest(args: GetConnectivityTestArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectivityTestResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("google-native:networkmanagement/v1:getConnectivityTest", {
         "connectivityTestId": args.connectivityTestId,
         "project": args.project,
@@ -73,9 +70,11 @@ export interface GetConnectivityTestResult {
      */
     readonly updateTime: string;
 }
-
+/**
+ * Gets the details of a specific Connectivity Test.
+ */
 export function getConnectivityTestOutput(args: GetConnectivityTestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectivityTestResult> {
-    return pulumi.output(args).apply(a => getConnectivityTest(a, opts))
+    return pulumi.output(args).apply((a: any) => getConnectivityTest(a, opts))
 }
 
 export interface GetConnectivityTestOutputArgs {
