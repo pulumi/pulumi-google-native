@@ -41,16 +41,14 @@ jobs:
         lfs: true
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
-    - name: Install Go
-      uses: actions/setup-go@v2
+    - name: Install Languages & Frameworks
+      uses: ./.github/actions/install
       with:
-        go-version: 1.19.x
+        skip_dotnet_and_java: "true"
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
         repo: pulumi/pulumictl
-    - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
     - name: Cleanup SDK Folder
       run: make clean
     - name: Preparing Git Branch
