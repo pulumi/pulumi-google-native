@@ -886,7 +886,7 @@
         "lro": {
           "methods": {
             "list": {
-              "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+              "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
               "flatPath": "v1/operations/{operationsId}/lro",
               "httpMethod": "GET",
               "id": "cloudsearch.operations.lro.list",
@@ -2077,7 +2077,7 @@
       }
     }
   },
-  "revision": "20230124",
+  "revision": "20230321",
   "rootUrl": "https://cloudsearch.googleapis.com/",
   "schemas": {
     "AbuseReportingConfig": {
@@ -2322,7 +2322,7 @@
       "type": "object"
     },
     "Annotation": {
-      "description": "NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new fields with potential PII, so they get scrubbed when logging protos for errors. NEXT TAG: 29",
+      "description": "NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new fields with potential PII, so they get scrubbed when logging protos for errors. NEXT TAG: 32",
       "id": "Annotation",
       "properties": {
         "babelPlaceholderMetadata": {
@@ -2333,7 +2333,7 @@
           "description": "LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java)"
         },
         "chipRenderType": {
-          "description": "Whether the annotation should be rendered as a chip. If this is missing or unspecified, fallback to should_not_render on the metadata.",
+          "description": "Whether the annotation should be rendered as a preview chip. If this is missing or unspecified, fallback to should_not_render on the metadata.",
           "enum": [
             "CHIP_RENDER_TYPE_UNSPECIFIED",
             "RENDER",
@@ -2342,11 +2342,15 @@
           ],
           "enumDescriptions": [
             "",
-            "Clients must render the annotation as a chip, and if they cannot render this many Annotations, show a fallback card.",
+            "Clients must render the annotation as a preview chip, and if they cannot render this many Annotations, show a fallback card.",
             "Client can render the annotation if it has room to render it.",
-            "Client should not render the annotation as a chip."
+            "Client should not render the annotation as a preview chip."
           ],
           "type": "string"
+        },
+        "componentSearchInfo": {
+          "$ref": "AppsDynamiteSharedMessageComponentSearchInfo",
+          "description": "Contains additional metadata that further enhances the annotation when it is returned as part of search response. For example, this can be used to define how the annotation matches the search. Information can be used to highlight in rendering search results. The following are the different annotation text fields that can be highlighted by this field: 1. DriveMetadata.title 2. UploadMetadata.content_name 3. GsuiteIntegrationMetadata.TasksMessageIntegrationRenderData.title 4. GsuiteIntegrationMetadata.CalendarEventAnnotationData.title"
         },
         "consentedAppUnfurlMetadata": {
           "$ref": "ConsentedAppUnfurlMetadata"
@@ -2374,9 +2378,25 @@
         "incomingWebhookChangedMetadata": {
           "$ref": "IncomingWebhookChangedMetadata"
         },
+        "inlineRenderFormat": {
+          "description": "The inline render format of this annotation. go/drive-smart-chips-chat-v2.",
+          "enum": [
+            "INLINE_RENDER_FORMAT_UNSPECIFIED",
+            "SMART_CHIP"
+          ],
+          "enumDescriptions": [
+            "",
+            ""
+          ],
+          "type": "string"
+        },
         "integrationConfigUpdated": {
           "$ref": "IntegrationConfigUpdatedMetadata",
           "description": "LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java)"
+        },
+        "interactionData": {
+          "$ref": "InteractionData",
+          "description": "Additional interaction data for this annotation."
         },
         "length": {
           "description": "Length of the text_body substring beginning from start_index the Annotation corresponds to.",
@@ -2384,7 +2404,7 @@
           "type": "integer"
         },
         "localId": {
-          "description": "A unique client-assigned ID for this annotation. This is helpful in matching the back-filled annotations to the original annotations on client side, without having to re-parse the message.",
+          "description": "* A client-assigned ID for this annotation. This is helpful in matching the back-filled annotations to the original annotations on client side, without having to re-parse the message. There is no guarantee an annotation has a local_id, it's a purely client used and controlled field with no guarantee of uniqueness.",
           "type": "string"
         },
         "membershipChanged": {
@@ -2480,7 +2500,7 @@
           "type": "string"
         },
         "uniqueId": {
-          "description": "A unique server-assigned ID for this annotation. This is helpful in matching annotation objects when fetched from service.",
+          "description": "* A unique server-assigned ID for this annotation. This is helpful in matching annotation objects when fetched from service. All uploads should have a unique_id after the message they are attached to is successfully sent. Url annotations that originally were uploads (i.e. policy violations) will have a unique_id after the message they are attached to is successfully sent. No other url annotations should have a unique_id. All drive annotations should have a unique_id after the message they are attached to is successfully sent.",
           "type": "string"
         },
         "uploadMetadata": {
@@ -3536,6 +3556,21 @@
       },
       "type": "object"
     },
+    "AppsDynamiteSharedMessageComponentSearchInfo": {
+      "description": "Metadata used to describe search information in a specific component of a chat message, for example an annotation or an attachment.",
+      "id": "AppsDynamiteSharedMessageComponentSearchInfo",
+      "properties": {
+        "matchedSearch": {
+          "description": "Whether the whole component matched the search.",
+          "type": "boolean"
+        },
+        "titleTextWithDescription": {
+          "$ref": "AppsDynamiteSharedTextWithDescription",
+          "description": "Backend should always set TextWithDescription.text_body based on the title (or its snippet) of the annotation or attachment."
+        }
+      },
+      "type": "object"
+    },
     "AppsDynamiteSharedMessageInfo": {
       "description": "Information that references a Dynamite chat message. This is only used for Activity Feed messages.",
       "id": "AppsDynamiteSharedMessageInfo",
@@ -3777,8 +3812,13 @@
           "type": "string"
         },
         "numMembers": {
+          "description": "Deprecated. Use segmented_membership_counts instead which also includes other counts such as rosters.",
           "format": "int32",
           "type": "integer"
+        },
+        "segmentedMembershipCounts": {
+          "$ref": "AppsDynamiteSharedSegmentedMembershipCounts",
+          "description": "Member counts object with types of members and their respective counts."
         },
         "userMembershipState": {
           "description": "searching user's membership state in this space",
@@ -3904,6 +3944,63 @@
       "properties": {},
       "type": "object"
     },
+    "AppsDynamiteSharedTextSegment": {
+      "description": "Defines a segment in a text.",
+      "id": "AppsDynamiteSharedTextSegment",
+      "properties": {
+        "length": {
+          "description": "Length of the segment in the text.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "startIndex": {
+          "description": "Start index (0-indexed and inclusive) of the segment in the text.",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "AppsDynamiteSharedTextSegmentsWithDescription": {
+      "description": "Defines text segments with description type associated.",
+      "id": "AppsDynamiteSharedTextSegmentsWithDescription",
+      "properties": {
+        "descriptionType": {
+          "enum": [
+            "DESCRIPTION_TYPE_UNSPECIFIED",
+            "KEYWORD_MATCH"
+          ],
+          "enumDescriptions": [
+            "",
+            "Indicates the text segments contain matched keywords. Client can highlight them in search results page."
+          ],
+          "type": "string"
+        },
+        "textSegment": {
+          "items": {
+            "$ref": "AppsDynamiteSharedTextSegment"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "AppsDynamiteSharedTextWithDescription": {
+      "description": "Defines a text with descriptive text segments associated.",
+      "id": "AppsDynamiteSharedTextWithDescription",
+      "properties": {
+        "textBody": {
+          "type": "string"
+        },
+        "textSegmentsWithDescription": {
+          "items": {
+            "$ref": "AppsDynamiteSharedTextSegmentsWithDescription"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "AppsDynamiteSharedUserBlockRelationship": {
       "description": "User-block relationship",
       "id": "AppsDynamiteSharedUserBlockRelationship",
@@ -3988,6 +4085,10 @@
             "$ref": "AppsDynamiteStorageActionActionParameter"
           },
           "type": "array"
+        },
+        "persistValues": {
+          "description": "Indicates whether form values persist after the action. The default value is `false`. If `true`, form values remain after the action is triggered. When using [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator) for actions, `persist_values` = `true`is recommended, as it ensures that any changes made by the user after form or on change actions are sent to the server are not overwritten by the response. If `false`, the form values are cleared when the action is triggered. When `persist_values` is set to `false`, it is strongly recommended that the card use [LoadIndicator.SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator) for all actions, as this locks the UI to ensure no changes are made by the user while the action is being processed.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -4551,6 +4652,10 @@
         "knownIcon": {
           "description": "The icon specified by the string name of a list of known icons",
           "type": "string"
+        },
+        "materialIcon": {
+          "$ref": "AppsDynamiteStorageMaterialIcon",
+          "description": "Display one of the [Google Material Icons](https://fonts.google.com/icons). For example, to display a [check box icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048), use \"material_icon\": { \"name\": \"check_box\" }"
         }
       },
       "type": "object"
@@ -4621,6 +4726,31 @@
             "Applies a rectangular crop with a 4:3 aspect ratio."
           ],
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AppsDynamiteStorageMaterialIcon": {
+      "description": "A [Google Font Icon](https://fonts.google.com/icons), which includes over 2500+ options. For example, to display a [check box icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048) with customized weight and grade, write { \"name\": \"check_box\", \"fill\": true, \"weight\": 300, \"grade\": -25 }",
+      "id": "AppsDynamiteStorageMaterialIcon",
+      "properties": {
+        "fill": {
+          "description": "Whether it renders a filled icon. Default value is false. See Customization in [Google Font Icon](https://fonts.google.com/icons) for details.",
+          "type": "boolean"
+        },
+        "grade": {
+          "description": "Weight and grade affect a symbol’s thickness. Adjustments to grade are more granular than adjustments to weight and have a small impact on the size of the symbol. Choose from {-25, 0, 200}. If absent, default value is 0. If any other value is specified, a broken image icon will be displayed. See Customization in [Google Font Icon](https://fonts.google.com/icons) for details.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "name": {
+          "description": "The icon name defined in the [Google Material Icon](https://fonts.google.com/icons) in snake_case. e.g. \"check_box\". Any invalid name will be trimmed as empty string result in the icon falied to render.",
+          "type": "string"
+        },
+        "weight": {
+          "description": "The stroke weight of the icon. Choose from {100, 200, 300, 400, 500, 600, 700}. If absent, default value is 400. If any other value is specified, a broken image icon will be displayed. See Customization in [Google Font Icon](https://fonts.google.com/icons) for details.",
+          "format": "int32",
+          "type": "integer"
         }
       },
       "type": "object"
@@ -4762,13 +4892,15 @@
             "CHECK_BOX",
             "RADIO_BUTTON",
             "SWITCH",
-            "DROPDOWN"
+            "DROPDOWN",
+            "MULTI_SELECT"
           ],
           "enumDescriptions": [
             "The selection type is a checkbox.",
             "The selection type is a radio button.",
             "The selection type is a switch.",
-            "The selection type is a dropdown."
+            "The selection type is a dropdown.",
+            "The selection type is multi-select"
           ],
           "type": "string"
         }
@@ -5830,13 +5962,15 @@
               "ACCESS_TYPE_UNSPECIFIED",
               "ACCESS_TYPE_OPEN",
               "ACCESS_TYPE_TRUSTED",
-              "ACCESS_TYPE_RESTRICTED"
+              "ACCESS_TYPE_RESTRICTED",
+              "ACCESS_TYPE_CLOSED"
             ],
             "enumDescriptions": [
               "Default value. This value is unused.",
               "Anyone with meeting join information (url, phone access...) can join, no knocking required. (Subject to organization policies)",
               "Members of the Host's organization, invited external users, and dial-in users can join without knocking, everyone else must knock. (Subject to organization policies)",
-              "Only participants invited by a host can automatically join, everyone else must knock and be admitted. (Subject to organization policies) Participants cannot dial out from the meeting. And only hosts can accept knocks."
+              "Only participants invited by a host can automatically join, everyone else must knock and be admitted. (Subject to organization policies) Participants cannot dial out from the meeting. And only hosts can accept knocks.",
+              "Only participants invited by a host can join. Knocking is not allowed, dial in and dial out are also disabled."
             ],
             "type": "string"
           },
@@ -5943,13 +6077,15 @@
             "ACCESS_TYPE_UNSPECIFIED",
             "ACCESS_TYPE_OPEN",
             "ACCESS_TYPE_TRUSTED",
-            "ACCESS_TYPE_RESTRICTED"
+            "ACCESS_TYPE_RESTRICTED",
+            "ACCESS_TYPE_CLOSED"
           ],
           "enumDescriptions": [
             "Default value. This value is unused.",
             "Anyone with meeting join information (url, phone access...) can join, no knocking required. (Subject to organization policies)",
             "Members of the Host's organization, invited external users, and dial-in users can join without knocking, everyone else must knock. (Subject to organization policies)",
-            "Only participants invited by a host can automatically join, everyone else must knock and be admitted. (Subject to organization policies) Participants cannot dial out from the meeting. And only hosts can accept knocks."
+            "Only participants invited by a host can automatically join, everyone else must knock and be admitted. (Subject to organization policies) Participants cannot dial out from the meeting. And only hosts can accept knocks.",
+            "Only participants invited by a host can join. Knocking is not allowed, dial in and dial out are also disabled."
           ],
           "type": "string"
         },
@@ -6431,7 +6567,8 @@
             "CO_ACTIVITY_APP_KAHOOT",
             "CO_ACTIVITY_APP_GQUEUES",
             "CO_ACTIVITY_APP_YOU_TUBE_MUSIC",
-            "CO_ACTIVITY_APP_SAMSUNG_NOTES"
+            "CO_ACTIVITY_APP_SAMSUNG_NOTES",
+            "CO_ACTIVITY_APP_HAPPY_AARDVARK"
           ],
           "enumDescriptions": [
             "Should never be used.",
@@ -6442,7 +6579,8 @@
             "Kahoot! educational software.",
             "GQueues task manager.",
             "YouTube Music",
-            "Samsung Notes"
+            "Samsung Notes",
+            "."
           ],
           "type": "string"
         }
@@ -7132,16 +7270,44 @@
       "properties": {},
       "type": "object"
     },
+    "DlpAction": {
+      "id": "DlpAction",
+      "properties": {
+        "actionType": {
+          "enum": [
+            "NO_ACTION",
+            "BLOCK",
+            "AUDIT_ONLY",
+            "WARN"
+          ],
+          "enumDescriptions": [
+            "LINT.IfChange",
+            "",
+            "",
+            "LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/external/dlp/ApplicableDlpActionEvaluator.java)"
+          ],
+          "type": "string"
+        },
+        "unsafeHtmlMessageBody": {
+          "description": "The custom error message defined by the customer administrator.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "DlpScanSummary": {
       "description": "A summary of a DLP scan event. This is a summary and should contain the minimum amount of data required to identify and process DLP scans. It is written to Starcast and encoded \u0026 returned to the client on attachment upload.",
       "id": "DlpScanSummary",
       "properties": {
+        "dlpAction": {
+          "$ref": "DlpAction"
+        },
         "scanId": {
           "description": "The scan ID of the corresponding {@link DlpViolationScanRecord} in the {@link EphemeralDlpScans} Spanner table. This can be used to fetch additional details about the scan, e.g. for audit logging.",
           "type": "string"
         },
         "scanNotApplicableForContext": {
-          "description": "Indicates that was no attempt to scan a message or attachment because it was not applicable in the given context (e.g. atomic mutuate). If this is true, scan_outcome should not be set. This flag is used to identify messages that DLP did not attempt to scan for monitoring scan coverage. Contents that DLP attempted to scan but skipped can be identified by DlpScanOutcome.SCAN_SKIPPED_* reasons.",
+          "description": "Indicates that was no attempt to scan a message or attachment because it was not applicable in the given context (e.g. atomic mutuate). If this is true, scan_outcome should not be set. This flag is used to identify messages that DLP did not attempt to scan for monitoring scan coverage. Contents that DLP attempted to scan but skipped can be identified by DlpScanOutcome.SCAN_SKIPPED_* reasons. DEPRECATED: The prober can determine this from the context.",
           "type": "boolean"
         },
         "scanOutcome": {
@@ -7543,6 +7709,10 @@
         "creatorInSearcherContactList": {
           "type": "boolean"
         },
+        "crowdingMultiplier": {
+          "format": "double",
+          "type": "number"
+        },
         "dasContactCount": {
           "format": "int64",
           "type": "string"
@@ -7556,6 +7726,10 @@
           "type": "number"
         },
         "joinedSpaceAffinityScore": {
+          "format": "double",
+          "type": "number"
+        },
+        "lastReadTimestampAgeInDays": {
           "format": "double",
           "type": "number"
         },
@@ -7621,6 +7795,10 @@
         "lastReadTimestampSecs": {
           "format": "int64",
           "type": "string"
+        },
+        "memberCountScore": {
+          "format": "double",
+          "type": "number"
         },
         "memberMetadataCount": {
           "format": "double",
@@ -10108,7 +10286,7 @@
       "type": "object"
     },
     "GsuiteIntegrationMetadata": {
-      "description": "Annotation metadata for an GsuiteIntegration artifact.",
+      "description": "Annotation metadata for a GsuiteIntegration artifact.",
       "id": "GsuiteIntegrationMetadata",
       "properties": {
         "activityFeedData": {
@@ -10528,7 +10706,7 @@
       "id": "Id",
       "properties": {
         "creatorUserId": {
-          "description": "The User account in which the DirEntry was originally created. If name_space==GAIA, then it's the gaia_id of the user this id is referring to.",
+          "description": "The User account in which the DirEntry was originally created. If name_space==GAIA, then it's the gaia_id of the user this id is referring to. This field should really be called the \"bucket ID\", not the creator ID. In some circumstances, such as copying a Google Docs file, a user can create an item in a different user's bucket, so it should not be relied upon for anything other than bucket location. To look up the requesting user who initially created item, use the `creator_id` DirEntry field instead.",
           "format": "uint64",
           "type": "string"
         },
@@ -11458,6 +11636,17 @@
             "This interaction indicates the user edited the item."
           ],
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "InteractionData": {
+      "description": "Interaction data for an annotation, which may be supplemental to the metadata oneof. For example, this will contain the fully built navigation target for smart chips. NEXT TAG: 2",
+      "id": "InteractionData",
+      "properties": {
+        "url": {
+          "$ref": "SafeUrlProto",
+          "description": "A general navigation target associated with the annotation this message is contained in. For smart chips, this will be the destination of the tap/click target and will be returned by the server. For scenarios where the chip originated from a user-provided url, this value will be provided by clients; otherwise it will be built by the corresponding metadata parts."
         }
       },
       "type": "object"
@@ -12741,71 +12930,9 @@
           "description": "Was this message deleted by Vault (Only used for Vault support) This is false if message is live or message was deleted by user.",
           "type": "boolean"
         },
-        "dlpScanOutcome": {
-          "description": "Data Loss Prevention scan information for this message. Messages are evaluated in the backend on create message/topic and edit message actions. DEPRECATED: use dlp_scan_summary instead.",
-          "enum": [
-            "SCAN_UNKNOWN_OUTCOME",
-            "SCAN_SUCCEEDED_NO_VIOLATION",
-            "SCAN_SUCCEEDED_BLOCK",
-            "SCAN_SUCCEEDED_WARN",
-            "SCAN_SUCCEEDED_AUDIT_ONLY",
-            "SCAN_FAILURE_EXCEPTION",
-            "SCAN_FAILURE_RULE_FETCH_FAILED",
-            "SCAN_FAILURE_TIMEOUT",
-            "SCAN_FAILURE_ALL_RULES_FAILED",
-            "SCAN_FAILURE_ILLEGAL_STATE_FOR_ATTACHMENTS",
-            "SCAN_SKIPPED_EXPERIMENT_DISABLED",
-            "SCAN_SKIPPED_CONSUMER",
-            "SCAN_SKIPPED_NON_HUMAN_USER",
-            "SCAN_SKIPPED_NO_MESSAGE",
-            "SCAN_SKIPPED_USER_ACKNOWLEDGED_WARNING",
-            "SCAN_SKIPPED_MESSAGE_FROM_UNSUPPORTED_ORIGIN",
-            "SCAN_SKIPPED_MESSAGE_SENT_DURING_SPACE_MIGRATION",
-            "SCAN_RULE_EVALUATION_SKIPPED_NO_RULES_FOUND",
-            "SCAN_RULE_EVALUATION_SKIPPED_NO_APPLICABLE_RULES_FOR_ACTION_PARAMS",
-            "SCAN_RULE_EVALUATION_SKIPPED_NO_APPLICABLE_RULES_FOR_TRIGGER",
-            "SCAN_RULE_EVALUATION_SKIPPED_CHANGELING_PERMANENT_ERROR",
-            "SCAN_RULE_EVALUATION_SKIPPED_CHANGELING_EMPTY_RESPONSE",
-            "SCAN_RULE_EVALUATION_SKIPPED_UNSUPPORTED_FILE_TYPE",
-            "SCAN_SUCCEEDED_WITH_FAILURES_NO_VIOLATION",
-            "SCAN_SUCCEEDED_WITH_FAILURES_BLOCK",
-            "SCAN_SUCCEEDED_WITH_FAILURES_WARN",
-            "SCAN_SUCCEEDED_WITH_FAILURES_AUDIT_ONLY"
-          ],
-          "enumDescriptions": [
-            "",
-            "This means no violation is detected on the given message/attachment.",
-            "Violation is detected. The message/attachment will be blocked (or deleted if this happens in failure recovery), the user will be warned, and the violation will be logged to BIP.",
-            "Violation is detected. The user will be warned, and the violation will be logged to BIP.",
-            "Violation is detected and will be logged to BIP (no user-facing action performed).",
-            "Rule fetch and evaluation were attempted but an exception occurred.",
-            "Rule fetch was attempted but failed, so rule evaluation could not be performed.",
-            "Rule fetch and evaluation were attempted but the scanning timed out.",
-            "Rule fetch completed and evaluation were attempted, but all of the rules failed to be evaluated.",
-            "An IllegalStateException is thrown when executing DLP on attachments. This could happen if the space row is missing.",
-            "Rule fetch and evaluation is skipped because DLP is not enabled for the user.",
-            "Rule fetch and evaluation are skipped because the user sending message is consumer.",
-            "Rule fetch and evaluation are skipped because the user sending message is a non-human user (i.e. a bot).",
-            "Rule fetch and evaluation are skipped because there is no message to scan. Deprecated: this should not happen since there must be message or attachment for DLP scan.",
-            "Rule fetch and evaluation are skipped because the user has acknowledged the warning on the message that triggered the Warn violation and sent the message anyway.",
-            "Scanning was skipped because the message originated from Interop or Babel.",
-            "Scanning was skipped because the message was sent while the space is in migration mode. See go/migration-mode for details.",
-            "Rule fetch happened, but rule evaluation is skipped because no rules were found.",
-            "Rule fetch happened, but rule evaluation is skipped because none of the rules are applicable to the given action params.",
-            "Rule fetch happened, but rule evaluation is skipped because none of the rules are applicable to the given trigger.",
-            "Rule fetch happened, but rule evaluation is skipped because Changeling returned permanent failure while converting the attachment to text.",
-            "Rule fetch happened, but rule evaluation is skipped because Changeling returned an empty response while converting the attachment to text.",
-            "Rule fetch happened, but rule evaluation is skipped because file type is unsupported.",
-            "Rules were fetched but some evaluations failed. No violation was found in the rules that were successfully evaluated.",
-            "Rules were fetched but some evaluations failed. A blocking violation was found in the rules that were successfully evaluated. The message/attachment will be blocked, the user will be notified, and the violation will be logged to BIP. A blocking violation takes precedence over all other violation types.",
-            "Rules were fetched but some evaluations failed. A warn violation was found in the rules that were successfully evaluated. The user will be warned, and the violation will be logged to BIP.",
-            "Rules were fetched but some evaluations failed. An audit-only violation was found in the rules that were successfully evaluated. The violation will be logged to BIP (no user-facing action performed)."
-          ],
-          "type": "string"
-        },
         "dlpScanSummary": {
           "$ref": "DlpScanSummary",
-          "description": "Data Loss Prevention scan information for this message. Messages are evaluated in the backend on create message/topic and edit message actions."
+          "description": "Data Loss Prevention scan information for this message. Messages are evaluated in the backend on create message/topic and edit message actions. DEPRECATED: Use DATA_LOSS_PREVENTION Annotation."
         },
         "editableBy": {
           "description": "Indicates who can edit the message. This field is set on the read path (e.g. ListTopics) but doesn’t have any effect on the write path (e.g. CreateMessageRequest).",
@@ -13065,6 +13192,13 @@
             "$ref": "MultiKey"
           },
           "type": "array"
+        },
+        "wonderCardMappings": {
+          "description": "Value of coproc's message delete history record extension that exports /wonder/message_mapping/{vertical} attribute of deleted messages which have smartmail label (eg. ^cob_sm_invoice, etc).",
+          "items": {
+            "$ref": "WonderCardDelete"
+          },
+          "type": "array"
         }
       },
       "type": "object"
@@ -13087,6 +13221,18 @@
     "MessageInfo": {
       "id": "MessageInfo",
       "properties": {
+        "authorUserType": {
+          "description": "Message author’s user type (human/bot).",
+          "enum": [
+            "HUMAN",
+            "BOT"
+          ],
+          "enumDescriptions": [
+            "Notes on HUMAN type: 1) Leaving UserId.UserType field empty will return HUMAN as default value. This is expected because all the existing UserIds are without explicitly setting UserType, most of which are HUMAN Ids. For Bot Ids we will always set BOT in UserType field. 2) DO NOT explicitly set HUMAN as type. This is a proto2 issue, that a UserId with explicitly set default value HUMAN as type is NOT equal to an id without setting the field. aka. UserId id1 = UserId.newBuilder() .setId(\"dummy\").setType(UserType.HUMAN).build(); UserId id2 = UserId.newBuilder().setId(\"dummy\").build(); AssertThat(id1).isNotEqual(id2); AssertThat(id2.getType()).isEqualTo(UserType.HUMAN);",
+            ""
+          ],
+          "type": "string"
+        },
         "message": {
           "$ref": "Message",
           "description": "The content of a matching message."
@@ -15034,9 +15180,11 @@
               "REQUIRED_FEATURE_UNSPECIFIED",
               "REQUIRED_FEATURE_MESSAGE_QUOTING",
               "REQUIRED_FEATURE_TOMBSTONES_IN_DMS_AND_UFRS",
-              "REQUIRED_FEATURE_CUSTOM_HYPERLINK"
+              "REQUIRED_FEATURE_CUSTOM_HYPERLINK",
+              "REQUIRED_FEATURE_SMART_CHIP"
             ],
             "enumDescriptions": [
+              "",
               "",
               "",
               "",
@@ -15984,13 +16132,15 @@
             "ACCESS_TYPE_UNSPECIFIED",
             "ACCESS_TYPE_OPEN",
             "ACCESS_TYPE_TRUSTED",
-            "ACCESS_TYPE_RESTRICTED"
+            "ACCESS_TYPE_RESTRICTED",
+            "ACCESS_TYPE_CLOSED"
           ],
           "enumDescriptions": [
             "Default value. This value is unused.",
             "Anyone with meeting join information (url, phone access...) can join, no knocking required. (Subject to organization policies)",
             "Members of the Host's organization, invited external users, and dial-in users can join without knocking, everyone else must knock. (Subject to organization policies)",
-            "Only participants invited by a host can automatically join, everyone else must knock and be admitted. (Subject to organization policies) Participants cannot dial out from the meeting. And only hosts can accept knocks."
+            "Only participants invited by a host can automatically join, everyone else must knock and be admitted. (Subject to organization policies) Participants cannot dial out from the meeting. And only hosts can accept knocks.",
+            "Only participants invited by a host can join. Knocking is not allowed, dial in and dial out are also disabled."
           ],
           "type": "string"
         },
@@ -17558,7 +17708,7 @@
       "id": "UploadMetadata",
       "properties": {
         "attachmentToken": {
-          "description": "Opaque token. Clients shall simply pass it back to the Backend. This field will NOT be saved into storage.",
+          "description": "Opaque token. Clients shall simply pass it back to the Backend. There is no guarantee the attachment_token returned on subsequent reads is the same even if nothing has changed. This field will NOT be saved into storage.",
           "type": "string"
         },
         "backendUploadMetadata": {
@@ -17980,6 +18130,18 @@
             "Server-generated user mention, for clients to strikethrough."
           ],
           "type": "string"
+        },
+        "userMentionError": {
+          "description": "Specific reason for the user mention failing, for fine-grained processing by clients (i.e. specific error message for space limit exceeded case) IMPORTANT: Set this only for FAILED_TO_ADD case.",
+          "enum": [
+            "USER_MENTION_ERROR_UNSPECIFIED",
+            "MEMBERSHIP_LIMIT_EXCEEDED"
+          ],
+          "enumDescriptions": [
+            "",
+            "Failure caused by adding user to a room that is full"
+          ],
+          "type": "string"
         }
       },
       "type": "object"
@@ -18209,6 +18371,39 @@
         "textParagraph": {
           "$ref": "TextParagraph",
           "description": "Read-only Widgets"
+        }
+      },
+      "type": "object"
+    },
+    "WonderCardDelete": {
+      "description": "Message delete history record extension that exports /wonder/message_mapping/{vertical} attribute of deleted messages which have any smartmail label (eg. ^cob_sm_invoice). go/how-dd-card-deletion",
+      "id": "WonderCardDelete",
+      "properties": {
+        "messageMappings": {
+          "additionalProperties": {
+            "$ref": "WonderMessageMapping"
+          },
+          "description": "Contains \u003c{@code WonderCardType} enum value, value of /wonder/message_mapping/{vertical} attribute of deleted message\u003e pairs.",
+          "type": "object"
+        },
+        "msgId": {
+          "description": "Message ID of the original deleted message",
+          "format": "uint64",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "WonderMessageMapping": {
+      "description": "Card mapping attached to original message as an attribute stored at /wonder/message_mapping/{vertical} Next ID: 2",
+      "id": "WonderMessageMapping",
+      "properties": {
+        "wonderCardMessageId": {
+          "description": "List of wonder card (client-generated) message IDs generated based on the original message.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
         }
       },
       "type": "object"

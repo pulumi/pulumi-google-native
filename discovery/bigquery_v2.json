@@ -1710,7 +1710,7 @@
       }
     }
   },
-  "revision": "20230128",
+  "revision": "20230325",
   "rootUrl": "https://bigquery.googleapis.com/",
   "schemas": {
     "AggregateClassificationMetrics": {
@@ -2800,6 +2800,10 @@
         "defaultPartitionExpirationMs": {
           "description": "[Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.",
           "format": "int64",
+          "type": "string"
+        },
+        "defaultRoundingMode": {
+          "description": "[Output-only] The default rounding mode of the dataset.",
           "type": "string"
         },
         "defaultTableExpirationMs": {
@@ -4276,6 +4280,10 @@
           },
           "type": "array"
         },
+        "continuous": {
+          "description": "[Optional] Specifies whether the query should be executed as a continuous query. The default value is false.",
+          "type": "boolean"
+        },
         "createDisposition": {
           "description": "[Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.",
           "type": "string"
@@ -5468,6 +5476,10 @@
           },
           "type": "array"
         },
+        "continuous": {
+          "description": "[Optional] Specifies whether the query should be executed as a continuous query. The default value is false.",
+          "type": "boolean"
+        },
         "createSession": {
           "description": "If true, creates a new session, where session id will be a server generated random id. If false, runs query with an existing session_id passed in ConnectionProperty, otherwise runs query in non-session mode.",
           "type": "boolean"
@@ -5830,13 +5842,17 @@
             "LANGUAGE_UNSPECIFIED",
             "SQL",
             "JAVASCRIPT",
-            "PYTHON"
+            "PYTHON",
+            "JAVA",
+            "SCALA"
           ],
           "enumDescriptions": [
             "",
             "SQL language.",
             "JavaScript language.",
-            "Python language."
+            "Python language.",
+            "Java language.",
+            "Scala language."
           ],
           "type": "string"
         },
@@ -6145,15 +6161,19 @@
           },
           "type": "array"
         },
+        "mainClass": {
+          "description": "The fully qualified name of a class in jar_uris, for example, com.example.wordcount. Exactly one of main_class and main_jar_uri field should be set for Java/Scala language type.",
+          "type": "string"
+        },
         "mainFileUri": {
-          "description": "The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python. Exactly one of main_class and main_file_uri field should be set for Java/Scala language type.",
+          "description": "The main file/jar URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set for Python.",
           "type": "string"
         },
         "properties": {
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).",
+          "description": "Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).",
           "type": "object"
         },
         "pyFileUris": {
@@ -6208,7 +6228,7 @@
           "description": "The fields of this struct, in order, if type_kind = \"STRUCT\"."
         },
         "typeKind": {
-          "description": "Required. The top level type of this field. Can be any standard SQL data type (e.g., \"INT64\", \"DATE\", \"ARRAY\").",
+          "description": "Required. The top level type of this field. Can be any GoogleSQL data type (e.g., \"INT64\", \"DATE\", \"ARRAY\").",
           "enum": [
             "TYPE_KIND_UNSPECIFIED",
             "INT64",
@@ -6346,6 +6366,10 @@
         },
         "defaultCollation": {
           "description": "[Output-only] The default collation of the table.",
+          "type": "string"
+        },
+        "defaultRoundingMode": {
+          "description": "[Output-only] The default rounding mode of the table.",
           "type": "string"
         },
         "description": {
@@ -6690,6 +6714,10 @@
         "precision": {
           "description": "[Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ \"NUMERIC\" and ≠ \"BIGNUMERIC\". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = \"NUMERIC\": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = \"BIGNUMERIC\": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = \"NUMERIC\": 1 ≤ precision ≤ 29. - If type = \"BIGNUMERIC\": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.",
           "format": "int64",
+          "type": "string"
+        },
+        "roundingMode": {
+          "description": "Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.",
           "type": "string"
         },
         "scale": {

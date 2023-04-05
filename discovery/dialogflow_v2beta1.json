@@ -7361,7 +7361,7 @@
                   ]
                 },
                 "list": {
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                   "flatPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/operations",
                   "httpMethod": "GET",
                   "id": "dialogflow.projects.locations.operations.list",
@@ -7461,7 +7461,7 @@
               ]
             },
             "list": {
-              "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+              "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
               "flatPath": "v2beta1/projects/{projectsId}/operations",
               "httpMethod": "GET",
               "id": "dialogflow.projects.operations.list",
@@ -7507,7 +7507,7 @@
       }
     }
   },
-  "revision": "20230203",
+  "revision": "20230402",
   "rootUrl": "https://dialogflow.googleapis.com/",
   "schemas": {
     "GoogleCloudDialogflowCxV3AudioInput": {
@@ -7515,7 +7515,7 @@
       "id": "GoogleCloudDialogflowCxV3AudioInput",
       "properties": {
         "audio": {
-          "description": "The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.",
+          "description": "The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.",
           "format": "byte",
           "type": "string"
         },
@@ -7798,7 +7798,7 @@
           "type": "string"
         },
         "versionConfigs": {
-          "description": "Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
+          "description": "A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
           "items": {
             "$ref": "GoogleCloudDialogflowCxV3EnvironmentVersionConfig"
           },
@@ -8241,7 +8241,7 @@
           "type": "boolean"
         },
         "model": {
-          "description": "Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.",
+          "description": "Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)",
           "type": "string"
         },
         "modelVariant": {
@@ -8280,7 +8280,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowCxV3Intent": {
-      "description": "An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.",
+      "description": "An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent. Next ID: 15",
       "id": "GoogleCloudDialogflowCxV3Intent",
       "properties": {
         "description": {
@@ -9165,6 +9165,10 @@
           "description": "Always present. The unique identifier of the DetectIntentResponse that will be returned to the API caller.",
           "type": "string"
         },
+        "dtmfDigits": {
+          "description": "If DTMF was provided as input, this field will contain the DTMF digits.",
+          "type": "string"
+        },
         "fulfillmentInfo": {
           "$ref": "GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo",
           "description": "Always present. Information about the fulfillment that triggered this webhook call."
@@ -9376,7 +9380,7 @@
       "id": "GoogleCloudDialogflowCxV3beta1AudioInput",
       "properties": {
         "audio": {
-          "description": "The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.",
+          "description": "The natural language speech audio to be processed. A single request can contain up to 2 minutes of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.",
           "format": "byte",
           "type": "string"
         },
@@ -9659,7 +9663,7 @@
           "type": "string"
         },
         "versionConfigs": {
-          "description": "Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
+          "description": "A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.",
           "items": {
             "$ref": "GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig"
           },
@@ -10102,7 +10106,7 @@
           "type": "boolean"
         },
         "model": {
-          "description": "Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.",
+          "description": "Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)",
           "type": "string"
         },
         "modelVariant": {
@@ -10224,7 +10228,7 @@
       "type": "object"
     },
     "GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase": {
-      "description": "Represents an example that the agent is trained on to identify the intent.",
+      "description": "Represents an example that the agent is trained on to identify the intent. Next ID: 15",
       "id": "GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase",
       "properties": {
         "id": {
@@ -11024,6 +11028,10 @@
       "properties": {
         "detectIntentResponseId": {
           "description": "Always present. The unique identifier of the DetectIntentResponse that will be returned to the API caller.",
+          "type": "string"
+        },
+        "dtmfDigits": {
+          "description": "If DTMF was provided as input, this field will contain the DTMF digits.",
           "type": "string"
         },
         "fulfillmentInfo": {
@@ -13865,6 +13873,23 @@
       },
       "type": "object"
     },
+    "GoogleCloudDialogflowV2beta1BargeInConfig": {
+      "description": "Configuration of the barge-in behavior. Barge-in instructs the API to return a detected utterance at a proper time while the client is playing back the response audio from a previous request. When the client sees the utterance, it should stop the playback and immediately get ready for receiving the responses for the current request. The barge-in handling requires the client to start streaming audio input as soon as it starts playing back the audio from the previous response. The playback is modeled into two phases: * No barge-in phase: which goes first and during which speech detection should not be carried out. * Barge-in phase: which follows the no barge-in phase and during which the API starts speech detection and may inform the client that an utterance has been detected. Note that no-speech event is not expected in this phase. The client provides this configuration in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the the start of the input audio. The flow goes like below: --\u003e Time without speech detection | utterance only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+ No-speech event is a response with END_OF_UTTERANCE without any transcript following up.",
+      "id": "GoogleCloudDialogflowV2beta1BargeInConfig",
+      "properties": {
+        "noBargeInDuration": {
+          "description": "Duration that is not eligible for barge-in at the beginning of the input audio.",
+          "format": "google-duration",
+          "type": "string"
+        },
+        "totalDuration": {
+          "description": "Total duration for the playback at the beginning of the input audio.",
+          "format": "google-duration",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest": {
       "description": "The request message for EntityTypes.BatchCreateEntities.",
       "id": "GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest",
@@ -14395,6 +14420,10 @@
         "timeZone": {
           "description": "The time zone of this conversational profile from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. Defaults to America/New_York.",
           "type": "string"
+        },
+        "ttsConfig": {
+          "$ref": "GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig",
+          "description": "Configuration for Text-to-Speech synthesization. Used by Phone Gateway to specify synthesization options. If agent defines synthesization options as well, agent settings overrides the option here."
         },
         "updateTime": {
           "description": "Output only. Update time of the conversation profile.",
@@ -15401,6 +15430,10 @@
           ],
           "type": "string"
         },
+        "bargeInConfig": {
+          "$ref": "GoogleCloudDialogflowV2beta1BargeInConfig",
+          "description": "Configuration of barge-in behavior during the streaming of input audio."
+        },
         "disableNoSpeechRecognizedEvent": {
           "description": "Only used in Participants.AnalyzeContent and Participants.StreamingAnalyzeContent. If `false` and recognition doesn't return any result, trigger `NO_SPEECH_RECOGNIZED` event to Dialogflow agent.",
           "type": "boolean"
@@ -15414,7 +15447,7 @@
           "type": "string"
         },
         "model": {
-          "description": "Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.",
+          "description": "Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details. If you specify a model, the following models typically have the best performance: - phone_call (best for Agent Assist and telephony) - latest_short (best for Dialogflow non-telephony) - command_and_search (best for very short utterances and commands)",
           "type": "string"
         },
         "modelVariant": {
@@ -17140,8 +17173,8 @@
           ],
           "enumDescriptions": [
             "If it is unspecified, PROTO will be used.",
-            "Pubsub message will be serialized proto.",
-            "Pubsub message will be json."
+            "Pub/Sub message will be serialized proto.",
+            "Pub/Sub message will be json."
           ],
           "type": "string"
         },
@@ -17893,6 +17926,10 @@
       "description": "The request message for Conversations.SuggestConversationSummary.",
       "id": "GoogleCloudDialogflowV2beta1SuggestConversationSummaryRequest",
       "properties": {
+        "assistQueryParams": {
+          "$ref": "GoogleCloudDialogflowV2beta1AssistQueryParameters",
+          "description": "Parameters for a human assist query."
+        },
         "contextSize": {
           "description": "Max number of messages prior to and including [latest_message] to use as context when compiling the suggestion. By default 500 and at most 1000.",
           "format": "int32",

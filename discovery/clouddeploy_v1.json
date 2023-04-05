@@ -654,6 +654,34 @@
                   "resources": {
                     "rollouts": {
                       "methods": {
+                        "advance": {
+                          "description": "Advances a Rollout in a given project and location.",
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:advance",
+                          "httpMethod": "POST",
+                          "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.advance",
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "parameters": {
+                            "name": {
+                              "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v1/{+name}:advance",
+                          "request": {
+                            "$ref": "AdvanceRolloutRequest"
+                          },
+                          "response": {
+                            "$ref": "AdvanceRolloutResponse"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        },
                         "approve": {
                           "description": "Approves a Rollout.",
                           "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:approve",
@@ -677,6 +705,34 @@
                           },
                           "response": {
                             "$ref": "ApproveRolloutResponse"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        },
+                        "cancel": {
+                          "description": "Cancels a Rollout in a given project and location.",
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:cancel",
+                          "httpMethod": "POST",
+                          "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.cancel",
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "parameters": {
+                            "name": {
+                              "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v1/{+name}:cancel",
+                          "request": {
+                            "$ref": "CancelRolloutRequest"
+                          },
+                          "response": {
+                            "$ref": "CancelRolloutResponse"
                           },
                           "scopes": [
                             "https://www.googleapis.com/auth/cloud-platform"
@@ -750,6 +806,34 @@
                           "path": "v1/{+name}",
                           "response": {
                             "$ref": "Rollout"
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ]
+                        },
+                        "ignoreJob": {
+                          "description": "Ignores the specified Job in a Rollout.",
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}:ignoreJob",
+                          "httpMethod": "POST",
+                          "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.ignoreJob",
+                          "parameterOrder": [
+                            "rollout"
+                          ],
+                          "parameters": {
+                            "rollout": {
+                              "description": "Required. Name of the Rollout. Format is projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}.",
+                              "location": "path",
+                              "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+$",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "path": "v1/{+rollout}:ignoreJob",
+                          "request": {
+                            "$ref": "IgnoreJobRequest"
+                          },
+                          "response": {
+                            "$ref": "IgnoreJobResponse"
                           },
                           "scopes": [
                             "https://www.googleapis.com/auth/cloud-platform"
@@ -903,6 +987,34 @@
                               "scopes": [
                                 "https://www.googleapis.com/auth/cloud-platform"
                               ]
+                            },
+                            "terminate": {
+                              "description": "Terminates a Job Run in a given project and location.",
+                              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/deliveryPipelines/{deliveryPipelinesId}/releases/{releasesId}/rollouts/{rolloutsId}/jobRuns/{jobRunsId}:terminate",
+                              "httpMethod": "POST",
+                              "id": "clouddeploy.projects.locations.deliveryPipelines.releases.rollouts.jobRuns.terminate",
+                              "parameterOrder": [
+                                "name"
+                              ],
+                              "parameters": {
+                                "name": {
+                                  "description": "Required. Name of the `JobRun`. Format must be projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/{rollout}/jobRuns/{jobRun}.",
+                                  "location": "path",
+                                  "pattern": "^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+/releases/[^/]+/rollouts/[^/]+/jobRuns/[^/]+$",
+                                  "required": true,
+                                  "type": "string"
+                                }
+                              },
+                              "path": "v1/{+name}:terminate",
+                              "request": {
+                                "$ref": "TerminateJobRunRequest"
+                              },
+                              "response": {
+                                "$ref": "TerminateJobRunResponse"
+                              },
+                              "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                              ]
                             }
                           }
                         }
@@ -993,7 +1105,7 @@
                   ]
                 },
                 "list": {
-                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`. NOTE: the `name` binding allows API services to override the binding to use different resource name schemes, such as `users/*/operations`. To override the binding, API services can add a binding such as `\"/v1/{name=users/*}/operations\"` to their service configuration. For backwards compatibility, the default name includes the operations collection id, however overriding users must ensure the name binding is the parent resource, without the operations collection id.",
+                  "description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
                   "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/operations",
                   "httpMethod": "GET",
                   "id": "clouddeploy.projects.locations.operations.list",
@@ -1339,7 +1451,7 @@
       }
     }
   },
-  "revision": "20230124",
+  "revision": "20230315",
   "rootUrl": "https://clouddeploy.googleapis.com/",
   "schemas": {
     "AbandonReleaseRequest": {
@@ -1351,6 +1463,46 @@
     "AbandonReleaseResponse": {
       "description": "The response object for `AbandonRelease`.",
       "id": "AbandonReleaseResponse",
+      "properties": {},
+      "type": "object"
+    },
+    "AdvanceChildRolloutJob": {
+      "description": "An advanceChildRollout Job.",
+      "id": "AdvanceChildRolloutJob",
+      "properties": {},
+      "type": "object"
+    },
+    "AdvanceChildRolloutJobRun": {
+      "description": "AdvanceChildRolloutJobRun contains information specific to a advanceChildRollout `JobRun`.",
+      "id": "AdvanceChildRolloutJobRun",
+      "properties": {
+        "rollout": {
+          "description": "Output only. Name of the `ChildRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "rolloutPhaseId": {
+          "description": "Output only. the ID of the ChildRollout's Phase.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AdvanceRolloutRequest": {
+      "description": "The request object used by `AdvanceRollout`.",
+      "id": "AdvanceRolloutRequest",
+      "properties": {
+        "phaseId": {
+          "description": "Required. The phase ID to advance the `Rollout` to.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "AdvanceRolloutResponse": {
+      "description": "The response object from `AdvanceRollout`.",
+      "id": "AdvanceRolloutResponse",
       "properties": {},
       "type": "object"
     },
@@ -1467,10 +1619,94 @@
       },
       "type": "object"
     },
+    "Canary": {
+      "description": "Canary represents the canary deployment strategy.",
+      "id": "Canary",
+      "properties": {
+        "canaryDeployment": {
+          "$ref": "CanaryDeployment",
+          "description": "Configures the progressive based deployment for a Target."
+        },
+        "customCanaryDeployment": {
+          "$ref": "CustomCanaryDeployment",
+          "description": "Configures the progressive based deployment for a Target, but allows customizing at the phase level where a phase represents each of the percentage deployments."
+        },
+        "runtimeConfig": {
+          "$ref": "RuntimeConfig",
+          "description": "Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment."
+        }
+      },
+      "type": "object"
+    },
+    "CanaryDeployment": {
+      "description": "CanaryDeployment represents the canary deployment configuration",
+      "id": "CanaryDeployment",
+      "properties": {
+        "percentages": {
+          "description": "Required. The percentage based deployments that will occur as a part of a `Rollout`. List is expected in ascending order and each integer n is 0 \u003c= n \u003c 100.",
+          "items": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "type": "array"
+        },
+        "verify": {
+          "description": "Whether to run verify tests after each percentage deployment.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "CancelOperationRequest": {
       "description": "The request message for Operations.CancelOperation.",
       "id": "CancelOperationRequest",
       "properties": {},
+      "type": "object"
+    },
+    "CancelRolloutRequest": {
+      "description": "The request object used by `CancelRollout`.",
+      "id": "CancelRolloutRequest",
+      "properties": {},
+      "type": "object"
+    },
+    "CancelRolloutResponse": {
+      "description": "The response object from `CancelRollout`.",
+      "id": "CancelRolloutResponse",
+      "properties": {},
+      "type": "object"
+    },
+    "ChildRolloutJobs": {
+      "description": "ChildRollouts job composition",
+      "id": "ChildRolloutJobs",
+      "properties": {
+        "advanceRolloutJobs": {
+          "description": "Output only. List of AdvanceChildRolloutJobs",
+          "items": {
+            "$ref": "Job"
+          },
+          "readOnly": true,
+          "type": "array"
+        },
+        "createRolloutJobs": {
+          "description": "Output only. List of CreateChildRolloutJobs",
+          "items": {
+            "$ref": "Job"
+          },
+          "readOnly": true,
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "CloudRunConfig": {
+      "description": "CloudRunConfig contains the Cloud Run runtime configuration.",
+      "id": "CloudRunConfig",
+      "properties": {
+        "automaticTrafficControl": {
+          "description": "Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.",
+          "type": "boolean"
+        }
+      },
       "type": "object"
     },
     "CloudRunLocation": {
@@ -1509,6 +1745,18 @@
       },
       "type": "object"
     },
+    "CloudRunRenderMetadata": {
+      "description": "CloudRunRenderMetadata contains Cloud Run information associated with a `Release` render.",
+      "id": "CloudRunRenderMetadata",
+      "properties": {
+        "service": {
+          "description": "Output only. The name of the Cloud Run Service in the rendered manifest. Format is projects/{project}/locations/{location}/services/{service}.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Config": {
       "description": "Service-wide configuration.",
       "id": "Config",
@@ -1525,6 +1773,43 @@
           "description": "All supported versions of Skaffold.",
           "items": {
             "$ref": "SkaffoldVersion"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "CreateChildRolloutJob": {
+      "description": "A createChildRollout Job.",
+      "id": "CreateChildRolloutJob",
+      "properties": {},
+      "type": "object"
+    },
+    "CreateChildRolloutJobRun": {
+      "description": "CreateChildRolloutJobRun contains information specific to a createChildRollout `JobRun`.",
+      "id": "CreateChildRolloutJobRun",
+      "properties": {
+        "rollout": {
+          "description": "Output only. Name of the `ChildRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "rolloutPhaseId": {
+          "description": "Output only. The ID of the childRollout Phase initiated by this JobRun.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "CustomCanaryDeployment": {
+      "description": "CustomCanaryDeployment represents the custom canary deployment configuration.",
+      "id": "CustomCanaryDeployment",
+      "properties": {
+        "phaseConfigs": {
+          "description": "Required. Configuration for each phase in the canary deployment in the order executed.",
+          "items": {
+            "$ref": "PhaseConfig"
           },
           "type": "array"
         }
@@ -1682,6 +1967,7 @@
             "CLOUD_BUILD_UNAVAILABLE",
             "EXECUTION_FAILED",
             "DEADLINE_EXCEEDED",
+            "MISSING_RESOURCES_FOR_CANARY",
             "CLOUD_BUILD_REQUEST_FAILED"
           ],
           "enumDescriptions": [
@@ -1689,6 +1975,7 @@
             "Cloud Build is not available, either because it is not enabled or because Google Cloud Deploy has insufficient permissions. See [Required permission](/deploy/docs/cloud-deploy-service-account#required_permissions).",
             "The deploy operation did not complete successfully; check Cloud Build logs.",
             "The deploy build did not complete within the alloted time.",
+            "There were missing resources in the runtime environment required for a canary deployment. Check the Cloud Build logs for more information.",
             "Cloud Build failed to fulfill Google Cloud Deploy's request. See failure_message for additional details."
           ],
           "readOnly": true,
@@ -1816,6 +2103,25 @@
       },
       "type": "object"
     },
+    "GatewayServiceMesh": {
+      "description": "Information about the Kubernetes Gateway API service mesh configuration.",
+      "id": "GatewayServiceMesh",
+      "properties": {
+        "deployment": {
+          "description": "Required. Name of the Kubernetes Deployment whose traffic is managed by the specified HTTPRoute and Service.",
+          "type": "string"
+        },
+        "httpRoute": {
+          "description": "Required. Name of the Gateway API HTTPRoute.",
+          "type": "string"
+        },
+        "service": {
+          "description": "Required. Name of the Kubernetes Service.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "GkeCluster": {
       "description": "Information specifying a GKE Cluster.",
       "id": "GkeCluster",
@@ -1831,10 +2137,41 @@
       },
       "type": "object"
     },
+    "IgnoreJobRequest": {
+      "description": "The request object used by `IgnoreJob`.",
+      "id": "IgnoreJobRequest",
+      "properties": {
+        "jobId": {
+          "description": "Required. The job ID for the Job to ignore.",
+          "type": "string"
+        },
+        "phaseId": {
+          "description": "Required. The phase ID the Job to ignore belongs to.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "IgnoreJobResponse": {
+      "description": "The response object from `IgnoreJob`.",
+      "id": "IgnoreJobResponse",
+      "properties": {},
+      "type": "object"
+    },
     "Job": {
       "description": "Job represents an operation for a `Rollout`.",
       "id": "Job",
       "properties": {
+        "advanceChildRolloutJob": {
+          "$ref": "AdvanceChildRolloutJob",
+          "description": "Output only. An advanceChildRollout Job.",
+          "readOnly": true
+        },
+        "createChildRolloutJob": {
+          "$ref": "CreateChildRolloutJob",
+          "description": "Output only. A createChildRollout Job.",
+          "readOnly": true
+        },
         "deployJob": {
           "$ref": "DeployJob",
           "description": "Output only. A deploy Job.",
@@ -1850,6 +2187,11 @@
           "readOnly": true,
           "type": "string"
         },
+        "skipMessage": {
+          "description": "Output only. Additional information on why the Job was skipped, if available.",
+          "readOnly": true,
+          "type": "string"
+        },
         "state": {
           "description": "Output only. The current state of the Job.",
           "enum": [
@@ -1859,7 +2201,9 @@
             "IN_PROGRESS",
             "SUCCEEDED",
             "FAILED",
-            "ABORTED"
+            "ABORTED",
+            "SKIPPED",
+            "IGNORED"
           ],
           "enumDescriptions": [
             "The Job has an unspecified state.",
@@ -1868,7 +2212,9 @@
             "The Job is in progress.",
             "The Job succeeded.",
             "The Job failed.",
-            "The Job was aborted."
+            "The Job was aborted.",
+            "The Job was skipped.",
+            "The Job was ignored."
           ],
           "readOnly": true,
           "type": "string"
@@ -1885,6 +2231,16 @@
       "description": "A `JobRun` resource in the Google Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job evaluation.",
       "id": "JobRun",
       "properties": {
+        "advanceChildRolloutJobRun": {
+          "$ref": "AdvanceChildRolloutJobRun",
+          "description": "Output only. Information specific to an advanceChildRollout `JobRun`",
+          "readOnly": true
+        },
+        "createChildRolloutJobRun": {
+          "$ref": "CreateChildRolloutJobRun",
+          "description": "Output only. Information specific to a createChildRollout `JobRun`.",
+          "readOnly": true
+        },
         "createTime": {
           "description": "Output only. Time at which the `JobRun` was created.",
           "format": "google-datetime",
@@ -1933,13 +2289,17 @@
             "STATE_UNSPECIFIED",
             "IN_PROGRESS",
             "SUCCEEDED",
-            "FAILED"
+            "FAILED",
+            "TERMINATING",
+            "TERMINATED"
           ],
           "enumDescriptions": [
             "The `JobRun` has an unspecified state.",
             "The `JobRun` is in progress.",
             "The `JobRun` has succeeded.",
-            "The `JobRun` has failed."
+            "The `JobRun` has failed.",
+            "The `JobRun` is terminating.",
+            "The `JobRun` was terminated."
           ],
           "readOnly": true,
           "type": "string"
@@ -1998,6 +2358,21 @@
             "Deprecated: This field is never used. Use release_render log type instead."
           ],
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "KubernetesConfig": {
+      "description": "KubernetesConfig contains the Kubernetes runtime configuration.",
+      "id": "KubernetesConfig",
+      "properties": {
+        "gatewayServiceMesh": {
+          "$ref": "GatewayServiceMesh",
+          "description": "Kubernetes Gateway API service mesh configuration."
+        },
+        "serviceNetworking": {
+          "$ref": "ServiceNetworking",
+          "description": "Kubernetes Service networking configuration."
         }
       },
       "type": "object"
@@ -2209,6 +2584,20 @@
       },
       "type": "object"
     },
+    "MultiTarget": {
+      "description": "Information specifying a multiTarget.",
+      "id": "MultiTarget",
+      "properties": {
+        "targetIds": {
+          "description": "Required. The target_ids of this multiTarget.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a network API call.",
       "id": "Operation",
@@ -2292,6 +2681,11 @@
       "description": "Phase represents a collection of jobs that are logically grouped together for a `Rollout`.",
       "id": "Phase",
       "properties": {
+        "childRolloutJobs": {
+          "$ref": "ChildRolloutJobs",
+          "description": "Output only. ChildRollout job composition.",
+          "readOnly": true
+        },
         "deploymentJobs": {
           "$ref": "DeploymentJobs",
           "description": "Output only. Deployment job composition.",
@@ -2299,6 +2693,11 @@
         },
         "id": {
           "description": "Output only. The ID of the Phase.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "skipMessage": {
+          "description": "Output only. Additional information on why the Phase was skipped, if available.",
           "readOnly": true,
           "type": "string"
         },
@@ -2310,7 +2709,8 @@
             "IN_PROGRESS",
             "SUCCEEDED",
             "FAILED",
-            "ABORTED"
+            "ABORTED",
+            "SKIPPED"
           ],
           "enumDescriptions": [
             "The Phase has an unspecified state.",
@@ -2318,10 +2718,55 @@
             "The Phase is in progress.",
             "The Phase has succeeded.",
             "The Phase has failed.",
-            "The Phase was aborted."
+            "The Phase was aborted.",
+            "The Phase was skipped."
           ],
           "readOnly": true,
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PhaseArtifact": {
+      "description": "Contains the paths to the artifacts, relative to the URI, for a phase.",
+      "id": "PhaseArtifact",
+      "properties": {
+        "manifestPath": {
+          "description": "Output only. File path of the rendered manifest relative to the URI.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "skaffoldConfigPath": {
+          "description": "Output only. File path of the resolved Skaffold configuration relative to the URI.",
+          "readOnly": true,
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "PhaseConfig": {
+      "description": "PhaseConfig represents the configuration for a phase in the custom canary deployment.",
+      "id": "PhaseConfig",
+      "properties": {
+        "percentage": {
+          "description": "Required. Percentage deployment for the phase.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "phaseId": {
+          "description": "Required. The ID to assign to the `Rollout` phase. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.",
+          "type": "string"
+        },
+        "profiles": {
+          "description": "Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "verify": {
+          "description": "Whether to run verify tests after the deployment.",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -2434,6 +2879,11 @@
           },
           "type": "array"
         },
+        "condition": {
+          "$ref": "ReleaseCondition",
+          "description": "Output only. Information around the state of the Release.",
+          "readOnly": true
+        },
         "createTime": {
           "description": "Output only. Time at which the `Release` was created.",
           "format": "google-datetime",
@@ -2537,6 +2987,21 @@
       },
       "type": "object"
     },
+    "ReleaseCondition": {
+      "description": "ReleaseCondition contains all conditions relevant to a Release.",
+      "id": "ReleaseCondition",
+      "properties": {
+        "releaseReadyCondition": {
+          "$ref": "ReleaseReadyCondition",
+          "description": "Details around the Releases's overall status."
+        },
+        "skaffoldSupportedCondition": {
+          "$ref": "SkaffoldSupportedCondition",
+          "description": "Details around the support state of the release's skaffold version."
+        }
+      },
+      "type": "object"
+    },
     "ReleaseNotificationEvent": {
       "description": "Payload proto for \"clouddeploy.googleapis.com/release_notification\" Platform Log event that describes the failure to send release status change Pub/Sub notification.",
       "id": "ReleaseNotificationEvent",
@@ -2566,6 +3031,17 @@
       },
       "type": "object"
     },
+    "ReleaseReadyCondition": {
+      "description": "ReleaseReadyCondition contains information around the status of the Release. If a release is not ready, you cannot create a rollout with the release.",
+      "id": "ReleaseReadyCondition",
+      "properties": {
+        "status": {
+          "description": "True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release.",
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
     "ReleaseRenderEvent": {
       "description": "Payload proto for \"clouddeploy.googleapis.com/release_render\" Platform Log event that describes the render status change.",
       "id": "ReleaseRenderEvent",
@@ -2577,6 +3053,18 @@
         "release": {
           "description": "The name of the `Release`.",
           "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "RenderMetadata": {
+      "description": "RenderMetadata includes information associated with a `Release` render.",
+      "id": "RenderMetadata",
+      "properties": {
+        "cloudRun": {
+          "$ref": "CloudRunRenderMetadata",
+          "description": "Output only. Metadata associated with rendering for Cloud Run.",
+          "readOnly": true
         }
       },
       "type": "object"
@@ -2635,6 +3123,11 @@
         "approveTime": {
           "description": "Output only. Time at which the `Rollout` was approved.",
           "format": "google-datetime",
+          "readOnly": true,
+          "type": "string"
+        },
+        "controllerRollout": {
+          "description": "Output only. Name of the `ControllerRollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.",
           "readOnly": true,
           "type": "string"
         },
@@ -2739,7 +3232,10 @@
             "PENDING_APPROVAL",
             "APPROVAL_REJECTED",
             "PENDING",
-            "PENDING_RELEASE"
+            "PENDING_RELEASE",
+            "CANCELLING",
+            "CANCELLED",
+            "HALTED"
           ],
           "enumDescriptions": [
             "The `Rollout` has an unspecified state.",
@@ -2749,7 +3245,10 @@
             "The `Rollout` needs approval.",
             "An approver rejected the `Rollout`.",
             "The `Rollout` is waiting for an earlier Rollout(s) to complete on this `Target`.",
-            "The `Rollout` is waiting for the `Release` to be fully rendered."
+            "The `Rollout` is waiting for the `Release` to be fully rendered.",
+            "The `Rollout` is in the process of being cancelled.",
+            "The `Rollout` has been cancelled.",
+            "The `Rollout` is halted."
           ],
           "readOnly": true,
           "type": "string"
@@ -2807,6 +3306,21 @@
       },
       "type": "object"
     },
+    "RuntimeConfig": {
+      "description": "RuntimeConfig contains the runtime specific configurations for a deployment strategy.",
+      "id": "RuntimeConfig",
+      "properties": {
+        "cloudRun": {
+          "$ref": "CloudRunConfig",
+          "description": "Cloud Run runtime configuration."
+        },
+        "kubernetes": {
+          "$ref": "KubernetesConfig",
+          "description": "Kubernetes runtime configuration."
+        }
+      },
+      "type": "object"
+    },
     "SerialPipeline": {
       "description": "SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.",
       "id": "SerialPipeline",
@@ -2817,6 +3331,21 @@
             "$ref": "Stage"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceNetworking": {
+      "description": "Information about the Kubernetes Service networking configuration.",
+      "id": "ServiceNetworking",
+      "properties": {
+        "deployment": {
+          "description": "Required. Name of the Kubernetes Deployment whose traffic is managed by the specified Service.",
+          "type": "string"
+        },
+        "service": {
+          "description": "Required. Name of the Kubernetes Service.",
+          "type": "string"
         }
       },
       "type": "object"
@@ -2837,13 +3366,60 @@
       },
       "type": "object"
     },
+    "SkaffoldSupportedCondition": {
+      "description": "SkaffoldSupportedCondition contains information about when support for the release's version of skaffold ends.",
+      "id": "SkaffoldSupportedCondition",
+      "properties": {
+        "maintenanceModeTime": {
+          "description": "The time at which this release's version of skaffold will enter maintenance mode.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "skaffoldSupportState": {
+          "description": "The skaffold support state for this release's version of skaffold.",
+          "enum": [
+            "SKAFFOLD_SUPPORT_STATE_UNSPECIFIED",
+            "SKAFFOLD_SUPPORT_STATE_SUPPORTED",
+            "SKAFFOLD_SUPPORT_STATE_MAINTENANCE_MODE",
+            "SKAFFOLD_SUPPORT_STATE_UNSUPPORTED"
+          ],
+          "enumDescriptions": [
+            "Default value. This value is unused.",
+            "This skaffold version is currently supported.",
+            "This skaffold version is in maintenance mode.",
+            "This skaffold version is no longer supported."
+          ],
+          "type": "string"
+        },
+        "status": {
+          "description": "True if the version of skaffold used by this release is supported.",
+          "type": "boolean"
+        },
+        "supportExpirationTime": {
+          "description": "The time at which this release's version of skaffold will no longer be supported.",
+          "format": "google-datetime",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "SkaffoldVersion": {
       "description": "Details of a supported Skaffold version.",
       "id": "SkaffoldVersion",
       "properties": {
+        "maintenanceModeTime": {
+          "description": "The time at which this version of skaffold will enter maintenance mode.",
+          "format": "google-datetime",
+          "type": "string"
+        },
         "supportEndDate": {
           "$ref": "Date",
           "description": "Date when this version is expected to no longer be supported."
+        },
+        "supportExpirationTime": {
+          "description": "The time at which this version of skaffold will no longer be supported.",
+          "format": "google-datetime",
+          "type": "string"
         },
         "version": {
           "description": "Release version number. For example, \"1.20.3\".",
@@ -2916,6 +3492,10 @@
       "description": "Strategy contains deployment strategy information.",
       "id": "Strategy",
       "properties": {
+        "canary": {
+          "$ref": "Canary",
+          "description": "Canary deployment strategy provides progressive percentage based deployments to a Target."
+        },
         "standard": {
           "$ref": "Standard",
           "description": "Standard deployment strategy executes a single deploy and allows verifying the deployment."
@@ -2970,6 +3550,10 @@
           "description": "Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be \u003c= 128 bytes.",
           "type": "object"
         },
+        "multiTarget": {
+          "$ref": "MultiTarget",
+          "description": "Information specifying a multiTarget."
+        },
         "name": {
           "description": "Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.",
           "type": "string"
@@ -3014,6 +3598,14 @@
           "description": "Output only. File path of the rendered manifest relative to the URI.",
           "readOnly": true,
           "type": "string"
+        },
+        "phaseArtifacts": {
+          "additionalProperties": {
+            "$ref": "PhaseArtifact"
+          },
+          "description": "Output only. Map from the phase ID to the phase artifacts for the `Target`.",
+          "readOnly": true,
+          "type": "object"
         },
         "skaffoldConfigPath": {
           "description": "Output only. File path of the resolved Skaffold configuration relative to the URI.",
@@ -3078,6 +3670,11 @@
           "readOnly": true,
           "type": "string"
         },
+        "metadata": {
+          "$ref": "RenderMetadata",
+          "description": "Output only. Metadata related to the `Release` render for this Target.",
+          "readOnly": true
+        },
         "renderingBuild": {
           "description": "Output only. The resource name of the Cloud Build `Build` object that is used to render the manifest for this target. Format is `projects/{project}/locations/{location}/builds/{build}`.",
           "readOnly": true,
@@ -3139,6 +3736,18 @@
           "type": "boolean"
         }
       },
+      "type": "object"
+    },
+    "TerminateJobRunRequest": {
+      "description": "The request object used by `TerminateJobRun`.",
+      "id": "TerminateJobRunRequest",
+      "properties": {},
+      "type": "object"
+    },
+    "TerminateJobRunResponse": {
+      "description": "The response object from `TerminateJobRun`.",
+      "id": "TerminateJobRunResponse",
+      "properties": {},
       "type": "object"
     },
     "TestIamPermissionsRequest": {
